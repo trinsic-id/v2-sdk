@@ -70,4 +70,63 @@ public interface TemplateFieldOrBuilder
    * @return The type.
    */
   trinsic.services.verifiablecredentials.templates.v1.FieldType getType();
+
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  int getAnnotationsCount();
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  boolean containsAnnotations(java.lang.String key);
+  /** Use {@link #getAnnotationsMap()} instead. */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, java.lang.String> getAnnotations();
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  java.util.Map<java.lang.String, java.lang.String> getAnnotationsMap();
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+
+  /* nullable */
+  java.lang.String getAnnotationsOrDefault(
+      java.lang.String key,
+      /* nullable */
+      java.lang.String defaultValue);
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  java.lang.String getAnnotationsOrThrow(java.lang.String key);
 }

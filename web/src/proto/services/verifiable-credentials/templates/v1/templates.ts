@@ -7,6 +7,7 @@ export enum FieldType {
     NUMBER = 1,
     BOOL = 2,
     DATETIME = 4,
+    URI = 5,
     UNRECOGNIZED = -1,
 }
 
@@ -24,6 +25,9 @@ export function fieldTypeFromJSON(object: any): FieldType {
         case 4:
         case "DATETIME":
             return FieldType.DATETIME;
+        case 5:
+        case "URI":
+            return FieldType.URI;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -41,6 +45,8 @@ export function fieldTypeToJSON(object: FieldType): string {
             return "BOOL";
         case FieldType.DATETIME:
             return "DATETIME";
+        case FieldType.URI:
+            return "URI";
         case FieldType.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";
@@ -142,6 +148,13 @@ export interface TemplateField {
     optional?: boolean;
     /** The type of the field */
     type?: FieldType;
+    /** Annotations for the field that may be used to add additional information */
+    annotations?: { [key: string]: string };
+}
+
+export interface TemplateField_AnnotationsEntry {
+    key: string;
+    value: string;
 }
 
 /** Unused */
@@ -1017,7 +1030,7 @@ export const CreateCredentialTemplateResponse = {
 };
 
 function createBaseTemplateField(): TemplateField {
-    return { description: "", optional: false, type: 0 };
+    return { description: "", optional: false, type: 0, annotations: {} };
 }
 
 export const TemplateField = {
@@ -1034,6 +1047,12 @@ export const TemplateField = {
         if (message.type !== undefined && message.type !== 0) {
             writer.uint32(32).int32(message.type);
         }
+        Object.entries(message.annotations || {}).forEach(([key, value]) => {
+            TemplateField_AnnotationsEntry.encode(
+                { key: key as any, value },
+                writer.uint32(42).fork()
+            ).ldelim();
+        });
         return writer;
     },
 
@@ -1054,6 +1073,15 @@ export const TemplateField = {
                 case 4:
                     message.type = reader.int32() as any;
                     break;
+                case 5:
+                    const entry5 = TemplateField_AnnotationsEntry.decode(
+                        reader,
+                        reader.uint32()
+                    );
+                    if (entry5.value !== undefined) {
+                        message.annotations![entry5.key] = entry5.value;
+                    }
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -1069,6 +1097,14 @@ export const TemplateField = {
                 : "",
             optional: isSet(object.optional) ? Boolean(object.optional) : false,
             type: isSet(object.type) ? fieldTypeFromJSON(object.type) : 0,
+            annotations: isObject(object.annotations)
+                ? Object.entries(object.annotations).reduce<{
+                      [key: string]: string;
+                  }>((acc, [key, value]) => {
+                      acc[key] = String(value);
+                      return acc;
+                  }, {})
+                : {},
         };
     },
 
@@ -1079,6 +1115,12 @@ export const TemplateField = {
         message.optional !== undefined && (obj.optional = message.optional);
         message.type !== undefined &&
             (obj.type = fieldTypeToJSON(message.type));
+        obj.annotations = {};
+        if (message.annotations) {
+            Object.entries(message.annotations).forEach(([k, v]) => {
+                obj.annotations[k] = v;
+            });
+        }
         return obj;
     },
 
@@ -1087,6 +1129,81 @@ export const TemplateField = {
         message.description = object.description ?? "";
         message.optional = object.optional ?? false;
         message.type = object.type ?? 0;
+        message.annotations = Object.entries(object.annotations ?? {}).reduce<{
+            [key: string]: string;
+        }>((acc, [key, value]) => {
+            if (value !== undefined) {
+                acc[key] = String(value);
+            }
+            return acc;
+        }, {});
+        return message;
+    },
+};
+
+function createBaseTemplateField_AnnotationsEntry(): TemplateField_AnnotationsEntry {
+    return { key: "", value: "" };
+}
+
+export const TemplateField_AnnotationsEntry = {
+    encode(
+        message: TemplateField_AnnotationsEntry,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.key !== "") {
+            writer.uint32(10).string(message.key);
+        }
+        if (message.value !== "") {
+            writer.uint32(18).string(message.value);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): TemplateField_AnnotationsEntry {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseTemplateField_AnnotationsEntry();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.key = reader.string();
+                    break;
+                case 2:
+                    message.value = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): TemplateField_AnnotationsEntry {
+        return {
+            key: isSet(object.key) ? String(object.key) : "",
+            value: isSet(object.value) ? String(object.value) : "",
+        };
+    },
+
+    toJSON(message: TemplateField_AnnotationsEntry): unknown {
+        const obj: any = {};
+        message.key !== undefined && (obj.key = message.key);
+        message.value !== undefined && (obj.value = message.value);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<TemplateField_AnnotationsEntry>
+    ): TemplateField_AnnotationsEntry {
+        const message = createBaseTemplateField_AnnotationsEntry();
+        message.key = object.key ?? "";
+        message.value = object.value ?? "";
         return message;
     },
 };

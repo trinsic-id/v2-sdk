@@ -90,6 +90,7 @@ impl Into<ProtoField> for Field {
             description: self.description,
             optional: self.optional,
             r#type: t as i32,
+            ..Default::default()
         };
     }
 }

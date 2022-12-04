@@ -61,6 +61,10 @@ public final class Templates {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable;
@@ -130,27 +134,32 @@ public final class Templates {
           + " \001(\0132:.services.verifiablecredentials.templates.v1.TemplateField:\0028\001\"k\n"
           + " CreateCredentialTemplateResponse\022G\n"
           + "\004data\030\001"
-          + " \001(\01329.services.verifiablecredentials.templates.v1.TemplateData\"|\n\r"
+          + " \001(\01329.services.verifiablecredentials.templates.v1.TemplateData\"\222\002\n\r"
           + "TemplateField\022\023\n"
           + "\013description\030\002 \001(\t\022\020\n"
           + "\010optional\030\003 \001(\010\022D\n"
-          + "\004type\030\004 \001(\01626.services.verifiablecredentials.templates.v1.FieldType\""
-          + " \n"
+          + "\004type\030\004"
+          + " \001(\01626.services.verifiablecredentials.templates.v1.FieldType\022`\n"
+          + "\013annotations\030\005 \003(\0132K.services.verifiablecred"
+          + "entials.templates.v1.TemplateField.AnnotationsEntry\0322\n"
+          + "\020AnnotationsEntry\022\013\n"
+          + "\003key\030\001 \001(\t\022\r\n"
+          + "\005value\030\002 \001(\t:\0028\001\" \n"
           + "\022GetTemplateRequest\022\n\n"
           + "\002id\030\001 \001(\t\"^\n"
           + "\023GetTemplateResponse\022G\n"
-          + "\004data\030\001 \001(\01329.services.verif"
-          + "iablecredentials.templates.v1.TemplateData\"\026\n"
+          + "\004data\030\001"
+          + " \001(\01329.services.verifiablecredentials.templates.v1.TemplateData\"\026\n"
           + "\024ListTemplatesRequest\"e\n"
           + "\025ListTemplatesResponse\022L\n"
-          + "\ttemplates\030\001 \003(\01329.service"
-          + "s.verifiablecredentials.templates.v1.TemplateData\"\302\003\n"
+          + "\ttemplates\030\001 \003(\01329.services.verifia"
+          + "blecredentials.templates.v1.TemplateData\"\302\003\n"
           + "\014TemplateData\022\016\n"
           + "\002id\030\001 \001(\tR\002id\022\014\n"
           + "\004name\030\002 \001(\t\022\017\n"
           + "\007version\030\003 \001(\005\022U\n"
-          + "\006fields\030\004 \003(\0132E.services.verifiablecredentia"
-          + "ls.templates.v1.TemplateData.FieldsEntry\022\037\n"
+          + "\006fields\030\004 \003(\013"
+          + "2E.services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry\022\037\n"
           + "\027allow_additional_fields\030\005 \001(\010\022\022\n\n"
           + "schema_uri\030\006 \001(\t\022\023\n"
           + "\013context_uri\030\007 \001(\t\022!\n"
@@ -161,13 +170,15 @@ public final class Templates {
           + "\014date_created\030\013 \001(\tR\013dateCreated\032i\n"
           + "\013FieldsEntry\022\013\n"
           + "\003key\030\001 \001(\t\022I\n"
-          + "\005value\030\002 \001(\0132:"
-          + ".services.verifiablecredentials.templates.v1.TemplateField:\0028\001*;\n"
+          + "\005value\030\002 \001(\0132:.services"
+          + ".verifiablecredentials.templates.v1.TemplateField:\0028\001*D\n"
           + "\tFieldType\022\n\n"
-          + "\006STRING\020\000\022\n\n"
+          + "\006STRING\020\000\022\n"
+          + "\n"
           + "\006NUMBER\020\001\022\010\n"
           + "\004BOOL\020\002\022\014\n"
-          + "\010DATETIME\020\0042\322\006\n"
+          + "\010DATETIME\020\004\022\007\n"
+          + "\003URI\020\0052\322\006\n"
           + "\023CredentialTemplates\022\245\001\n"
           + "\006Create\022L.services.verifiablecredentials.template"
           + "s.v1.CreateCredentialTemplateRequest\032M.s"
@@ -288,7 +299,17 @@ public final class Templates {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor,
             new java.lang.String[] {
-              "Description", "Optional", "Type",
+              "Description", "Optional", "Type", "Annotations",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_descriptor =
+        internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_descriptor,
+            new java.lang.String[] {
+              "Key", "Value",
             });
     internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor =
         getDescriptor().getMessageTypes().get(11);
