@@ -43,6 +43,17 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
         .internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(int number) {
+    switch (number) {
+      case 5:
+        return internalGetAnnotations();
+      default:
+        throw new RuntimeException("Invalid map field number: " + number);
+    }
+  }
+
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -158,6 +169,106 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
         : result;
   }
 
+  public static final int ANNOTATIONS_FIELD_NUMBER = 5;
+
+  private static final class AnnotationsDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<java.lang.String, java.lang.String> defaultEntry =
+        com.google.protobuf.MapEntry.<java.lang.String, java.lang.String>newDefaultInstance(
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_descriptor,
+            com.google.protobuf.WireFormat.FieldType.STRING,
+            "",
+            com.google.protobuf.WireFormat.FieldType.STRING,
+            "");
+  }
+
+  private com.google.protobuf.MapField<java.lang.String, java.lang.String> annotations_;
+
+  private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetAnnotations() {
+    if (annotations_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(AnnotationsDefaultEntryHolder.defaultEntry);
+    }
+    return annotations_;
+  }
+
+  public int getAnnotationsCount() {
+    return internalGetAnnotations().getMap().size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  @java.lang.Override
+  public boolean containsAnnotations(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    return internalGetAnnotations().getMap().containsKey(key);
+  }
+  /** Use {@link #getAnnotationsMap()} instead. */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.String, java.lang.String> getAnnotations() {
+    return getAnnotationsMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  @java.lang.Override
+  public java.util.Map<java.lang.String, java.lang.String> getAnnotationsMap() {
+    return internalGetAnnotations().getMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  @java.lang.Override
+  public java.lang.String getAnnotationsOrDefault(
+      java.lang.String key, java.lang.String defaultValue) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<java.lang.String, java.lang.String> map = internalGetAnnotations().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Annotations for the field that may be used to add additional information
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   */
+  @java.lang.Override
+  public java.lang.String getAnnotationsOrThrow(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<java.lang.String, java.lang.String> map = internalGetAnnotations().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -181,6 +292,8 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     if (type_ != trinsic.services.verifiablecredentials.templates.v1.FieldType.STRING.getNumber()) {
       output.writeEnum(4, type_);
     }
+    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+        output, internalGetAnnotations(), AnnotationsDefaultEntryHolder.defaultEntry, 5);
     getUnknownFields().writeTo(output);
   }
 
@@ -198,6 +311,16 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     }
     if (type_ != trinsic.services.verifiablecredentials.templates.v1.FieldType.STRING.getNumber()) {
       size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, type_);
+    }
+    for (java.util.Map.Entry<java.lang.String, java.lang.String> entry :
+        internalGetAnnotations().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, java.lang.String> annotations__ =
+          AnnotationsDefaultEntryHolder.defaultEntry
+              .newBuilderForType()
+              .setKey(entry.getKey())
+              .setValue(entry.getValue())
+              .build();
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, annotations__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -218,6 +341,7 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     if (!getDescription().equals(other.getDescription())) return false;
     if (getOptional() != other.getOptional()) return false;
     if (type_ != other.type_) return false;
+    if (!internalGetAnnotations().equals(other.internalGetAnnotations())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -235,6 +359,10 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getOptional());
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + type_;
+    if (!internalGetAnnotations().getMap().isEmpty()) {
+      hash = (37 * hash) + ANNOTATIONS_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetAnnotations().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -355,6 +483,26 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
           .internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
+      switch (number) {
+        case 5:
+          return internalGetAnnotations();
+        default:
+          throw new RuntimeException("Invalid map field number: " + number);
+      }
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
+      switch (number) {
+        case 5:
+          return internalGetMutableAnnotations();
+        default:
+          throw new RuntimeException("Invalid map field number: " + number);
+      }
+    }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -382,6 +530,7 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
 
       type_ = 0;
 
+      internalGetMutableAnnotations().clear();
       return this;
     }
 
@@ -410,9 +559,12 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     public trinsic.services.verifiablecredentials.templates.v1.TemplateField buildPartial() {
       trinsic.services.verifiablecredentials.templates.v1.TemplateField result =
           new trinsic.services.verifiablecredentials.templates.v1.TemplateField(this);
+      int from_bitField0_ = bitField0_;
       result.description_ = description_;
       result.optional_ = optional_;
       result.type_ = type_;
+      result.annotations_ = internalGetAnnotations();
+      result.annotations_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -475,6 +627,7 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       if (other.type_ != 0) {
         setTypeValue(other.getTypeValue());
       }
+      internalGetMutableAnnotations().mergeFrom(other.internalGetAnnotations());
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -519,6 +672,17 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 32
+            case 42:
+              {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.String> annotations__ =
+                    input.readMessage(
+                        AnnotationsDefaultEntryHolder.defaultEntry.getParserForType(),
+                        extensionRegistry);
+                internalGetMutableAnnotations()
+                    .getMutableMap()
+                    .put(annotations__.getKey(), annotations__.getValue());
+                break;
+              } // case 42
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -535,6 +699,8 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
+
+    private int bitField0_;
 
     private java.lang.Object description_ = "";
     /**
@@ -784,6 +950,167 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
 
       type_ = 0;
       onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String> annotations_;
+
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        internalGetAnnotations() {
+      if (annotations_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            AnnotationsDefaultEntryHolder.defaultEntry);
+      }
+      return annotations_;
+    }
+
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        internalGetMutableAnnotations() {
+      onChanged();
+      ;
+      if (annotations_ == null) {
+        annotations_ =
+            com.google.protobuf.MapField.newMapField(AnnotationsDefaultEntryHolder.defaultEntry);
+      }
+      if (!annotations_.isMutable()) {
+        annotations_ = annotations_.copy();
+      }
+      return annotations_;
+    }
+
+    public int getAnnotationsCount() {
+      return internalGetAnnotations().getMap().size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Annotations for the field that may be used to add additional information
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     */
+    @java.lang.Override
+    public boolean containsAnnotations(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      return internalGetAnnotations().getMap().containsKey(key);
+    }
+    /** Use {@link #getAnnotationsMap()} instead. */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getAnnotations() {
+      return getAnnotationsMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Annotations for the field that may be used to add additional information
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.String> getAnnotationsMap() {
+      return internalGetAnnotations().getMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Annotations for the field that may be used to add additional information
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getAnnotationsOrDefault(
+        java.lang.String key, java.lang.String defaultValue) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<java.lang.String, java.lang.String> map = internalGetAnnotations().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Annotations for the field that may be used to add additional information
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getAnnotationsOrThrow(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<java.lang.String, java.lang.String> map = internalGetAnnotations().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearAnnotations() {
+      internalGetMutableAnnotations().getMutableMap().clear();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Annotations for the field that may be used to add additional information
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     */
+    public Builder removeAnnotations(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      internalGetMutableAnnotations().getMutableMap().remove(key);
+      return this;
+    }
+    /** Use alternate mutation accessors instead. */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getMutableAnnotations() {
+      return internalGetMutableAnnotations().getMutableMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Annotations for the field that may be used to add additional information
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     */
+    public Builder putAnnotations(java.lang.String key, java.lang.String value) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      if (value == null) {
+        throw new NullPointerException("map value");
+      }
+
+      internalGetMutableAnnotations().getMutableMap().put(key, value);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Annotations for the field that may be used to add additional information
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     */
+    public Builder putAllAnnotations(java.util.Map<java.lang.String, java.lang.String> values) {
+      internalGetMutableAnnotations().getMutableMap().putAll(values);
       return this;
     }
 

@@ -1,6 +1,7 @@
 package trinsic;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
@@ -10,35 +11,33 @@ import trinsic.services.account.v1.AuthorizeWebhookRequest;
 import trinsic.services.account.v1.LoginRequest;
 import trinsic.services.account.v1.LoginResponse;
 
-import java.util.concurrent.ExecutionException;
-
 class AccountServiceTest {
-    @Test
+  @Test
   public void testLogin() {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-      LoginResponse myLoginResponse = LoginResponse.newBuilder().build();
-      try {
-          // loginRequest() {
-          var loginResponse =
-              trinsic
-                  .account()
-                  .login(LoginRequest.newBuilder().setEmail("bob@example.com").build())
-                  .get();
-          // }
-      } catch (Exception ignored) {
-          // This is expected
-      }
+    LoginResponse myLoginResponse = LoginResponse.newBuilder().build();
+    try {
+      // loginRequest() {
+      var loginResponse =
+          trinsic
+              .account()
+              .login(LoginRequest.newBuilder().setEmail("bob@example.com").build())
+              .get();
+      // }
+    } catch (Exception ignored) {
+      // This is expected
+    }
 
-      try {
-          // loginConfirm() {
-          var authToken =
-              trinsic.account().loginConfirm(myLoginResponse.getChallenge(), "12345").get();
-          // }
+    try {
+      // loginConfirm() {
+      var authToken = trinsic.account().loginConfirm(myLoginResponse.getChallenge(), "12345").get();
+      // }
 
-          // setAuthTokenSample() {
-          trinsic.setAuthToken(authToken);
-          // }
-      } catch (Exception ignored) {}
+      // setAuthTokenSample() {
+      trinsic.setAuthToken(authToken);
+      // }
+    } catch (Exception ignored) {
+    }
   }
 
   @Test

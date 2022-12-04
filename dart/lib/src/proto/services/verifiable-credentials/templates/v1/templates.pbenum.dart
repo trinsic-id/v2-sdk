@@ -30,12 +30,18 @@ class FieldType extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'DATETIME');
+  static const FieldType URI = FieldType._(
+      5,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'URI');
 
   static const $core.List<FieldType> values = <FieldType>[
     STRING,
     NUMBER,
     BOOL,
     DATETIME,
+    URI,
   ];
 
   static final $core.Map<$core.int, FieldType> _byValue =

@@ -48,6 +48,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :description, :string, 2
       optional :optional, :bool, 3
       optional :type, :enum, 4, "services.verifiablecredentials.templates.v1.FieldType"
+      map :annotations, :string, :string, 5
     end
     add_message "services.verifiablecredentials.templates.v1.GetTemplateRequest" do
       optional :id, :string, 1
@@ -78,6 +79,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :NUMBER, 1
       value :BOOL, 2
       value :DATETIME, 4
+      value :URI, 5
     end
   end
 end
