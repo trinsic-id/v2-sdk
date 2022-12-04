@@ -22,7 +22,7 @@ public class CredentialService : ServiceBase
     internal CredentialService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Invoker);
     }
-    
+
     internal CredentialService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
         Client = new(Invoker);
