@@ -898,6 +898,16 @@ class TemplateField extends $pb.GeneratedMessage {
         defaultOrMaker: FieldType.STRING,
         valueOf: FieldType.valueOf,
         enumValues: FieldType.values)
+    ..m<$core.String, $core.String>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'annotations',
+        entryClassName: 'TemplateField.AnnotationsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OS,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
     ..hasRequiredFields = false;
 
   TemplateField._() : super();
@@ -905,6 +915,7 @@ class TemplateField extends $pb.GeneratedMessage {
     $core.String? description,
     $core.bool? optional,
     FieldType? type,
+    $core.Map<$core.String, $core.String>? annotations,
   }) {
     final _result = create();
     if (description != null) {
@@ -915,6 +926,9 @@ class TemplateField extends $pb.GeneratedMessage {
     }
     if (type != null) {
       _result.type = type;
+    }
+    if (annotations != null) {
+      _result.annotations.addAll(annotations);
     }
     return _result;
   }
@@ -980,6 +994,9 @@ class TemplateField extends $pb.GeneratedMessage {
   $core.bool hasType() => $_has(2);
   @$pb.TagNumber(4)
   void clearType() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.Map<$core.String, $core.String> get annotations => $_getMap(3);
 }
 
 class GetTemplateRequest extends $pb.GeneratedMessage {

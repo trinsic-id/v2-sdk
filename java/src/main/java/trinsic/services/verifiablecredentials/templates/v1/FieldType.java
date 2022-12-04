@@ -21,6 +21,8 @@ public enum FieldType implements com.google.protobuf.ProtocolMessageEnum {
   BOOL(2),
   /** <code>DATETIME = 4;</code> */
   DATETIME(4),
+  /** <code>URI = 5;</code> */
+  URI(5),
   UNRECOGNIZED(-1),
   ;
 
@@ -32,6 +34,8 @@ public enum FieldType implements com.google.protobuf.ProtocolMessageEnum {
   public static final int BOOL_VALUE = 2;
   /** <code>DATETIME = 4;</code> */
   public static final int DATETIME_VALUE = 4;
+  /** <code>URI = 5;</code> */
+  public static final int URI_VALUE = 5;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -65,6 +69,8 @@ public enum FieldType implements com.google.protobuf.ProtocolMessageEnum {
         return BOOL;
       case 4:
         return DATETIME;
+      case 5:
+        return URI;
       default:
         return null;
     }

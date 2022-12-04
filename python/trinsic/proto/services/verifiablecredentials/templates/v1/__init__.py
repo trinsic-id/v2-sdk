@@ -26,6 +26,7 @@ class FieldType(betterproto.Enum):
     NUMBER = 1
     BOOL = 2
     DATETIME = 4
+    URI = 5
 
 
 @dataclass(eq=False, repr=False)
@@ -169,6 +170,13 @@ class TemplateField(betterproto.Message):
 
     type: "FieldType" = betterproto.enum_field(4)
     """The type of the field"""
+
+    annotations: Dict[str, str] = betterproto.map_field(
+        5, betterproto.TYPE_STRING, betterproto.TYPE_STRING
+    )
+    """
+    Annotations for the field that may be used to add additional information
+    """
 
 
 @dataclass(eq=False, repr=False)

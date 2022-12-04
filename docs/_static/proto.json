@@ -2400,6 +2400,12 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.FieldType"
     },
+    "services.verifiablecredentials.templates.v1.FieldType.URI": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.FieldType"
+    },
     "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest": {
       "type": "message",
       "collection": "messages",
@@ -2645,6 +2651,30 @@
       "collection": "messages",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.TemplateField"
+    },
+    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry"
+    },
+    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry"
+    },
+    "services.verifiablecredentials.templates.v1.TemplateField.annotations": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.TemplateField"
     },
     "services.verifiablecredentials.templates.v1.TemplateField.description": {
       "type": "field",
@@ -3820,6 +3850,7 @@
         "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry",
         "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse",
         "services.verifiablecredentials.templates.v1.TemplateField",
+        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry",
         "services.verifiablecredentials.templates.v1.GetTemplateRequest",
         "services.verifiablecredentials.templates.v1.GetTemplateResponse",
         "services.verifiablecredentials.templates.v1.ListTemplatesRequest",
@@ -3850,6 +3881,9 @@
         "services.verifiablecredentials.templates.v1.TemplateField.description",
         "services.verifiablecredentials.templates.v1.TemplateField.optional",
         "services.verifiablecredentials.templates.v1.TemplateField.type",
+        "services.verifiablecredentials.templates.v1.TemplateField.annotations",
+        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key",
+        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value",
         "services.verifiablecredentials.templates.v1.GetTemplateRequest.id",
         "services.verifiablecredentials.templates.v1.GetTemplateResponse.data",
         "services.verifiablecredentials.templates.v1.ListTemplatesResponse.templates",
@@ -3874,7 +3908,8 @@
         "services.verifiablecredentials.templates.v1.FieldType.STRING",
         "services.verifiablecredentials.templates.v1.FieldType.NUMBER",
         "services.verifiablecredentials.templates.v1.FieldType.BOOL",
-        "services.verifiablecredentials.templates.v1.FieldType.DATETIME"
+        "services.verifiablecredentials.templates.v1.FieldType.DATETIME",
+        "services.verifiablecredentials.templates.v1.FieldType.URI"
       ]
     },
     "services/verifiable-credentials/v1/verifiable-credentials.proto": {
@@ -5743,7 +5778,22 @@
       "fields": [
         "services.verifiablecredentials.templates.v1.TemplateField.description",
         "services.verifiablecredentials.templates.v1.TemplateField.optional",
-        "services.verifiablecredentials.templates.v1.TemplateField.type"
+        "services.verifiablecredentials.templates.v1.TemplateField.type",
+        "services.verifiablecredentials.templates.v1.TemplateField.annotations"
+      ],
+      "messages": [
+        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry"
+      ],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry": {
+      "name": "AnnotationsEntry",
+      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry",
+      "description": "",
+      "is_map_entry": true,
+      "fields": [
+        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key",
+        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value"
       ],
       "messages": [],
       "enums": []
@@ -7965,6 +8015,30 @@
       "full_type": "int32",
       "description": "Template version number"
     },
+    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key": {
+      "name": "key",
+      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value": {
+      "name": "value",
+      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.verifiablecredentials.templates.v1.TemplateField.annotations": {
+      "name": "annotations",
+      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.annotations",
+      "label": "LABEL_REPEATED",
+      "type": "AnnotationsEntry",
+      "full_type": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry",
+      "description": "Annotations for the field that may be used to add additional information"
+    },
     "services.verifiablecredentials.templates.v1.TemplateField.description": {
       "name": "description",
       "full_name": "services.verifiablecredentials.templates.v1.TemplateField.description",
@@ -8521,7 +8595,8 @@
         "services.verifiablecredentials.templates.v1.FieldType.STRING",
         "services.verifiablecredentials.templates.v1.FieldType.NUMBER",
         "services.verifiablecredentials.templates.v1.FieldType.BOOL",
-        "services.verifiablecredentials.templates.v1.FieldType.DATETIME"
+        "services.verifiablecredentials.templates.v1.FieldType.DATETIME",
+        "services.verifiablecredentials.templates.v1.FieldType.URI"
       ]
     },
     "trinsic.services.event.EventType": {
@@ -8722,6 +8797,12 @@
       "full_name": "services.verifiablecredentials.templates.v1.FieldType.STRING",
       "description": "",
       "value": 0
+    },
+    "services.verifiablecredentials.templates.v1.FieldType.URI": {
+      "name": "URI",
+      "full_name": "services.verifiablecredentials.templates.v1.FieldType.URI",
+      "description": "",
+      "value": 5
     },
     "trinsic.services.event.EventType.CREDENTIAL_ISSUED": {
       "name": "CREDENTIAL_ISSUED",

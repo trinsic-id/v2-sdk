@@ -724,13 +724,15 @@ class Services::Verifiablecredentials::Templates::V1::TemplateField
     params(
       description: T.nilable(String),
       optional: T.nilable(T::Boolean),
-      type: T.nilable(T.any(Symbol, String, Integer))
+      type: T.nilable(T.any(Symbol, String, Integer)),
+      annotations: T.nilable(T::Hash[String, String])
     ).void
   end
   def initialize(
     description: "",
     optional: false,
-    type: :STRING
+    type: :STRING,
+    annotations: Google::Protobuf::Map.new(:string, :string)
   )
   end
 
@@ -768,6 +770,18 @@ class Services::Verifiablecredentials::Templates::V1::TemplateField
 
   sig { void }
   def clear_type
+  end
+
+  sig { returns(T::Hash[String, String]) }
+  def annotations
+  end
+
+  sig { params(value: Google::Protobuf::Map).void }
+  def annotations=(value)
+  end
+
+  sig { void }
+  def clear_annotations
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -1209,6 +1223,7 @@ module Services::Verifiablecredentials::Templates::V1::FieldType
   self::NUMBER = T.let(1, Integer)
   self::BOOL = T.let(2, Integer)
   self::DATETIME = T.let(4, Integer)
+  self::URI = T.let(5, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

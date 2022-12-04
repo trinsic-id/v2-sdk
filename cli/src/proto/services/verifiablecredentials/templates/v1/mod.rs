@@ -103,6 +103,9 @@ pub struct TemplateField {
     /// The type of the field
     #[prost(enumeration = "FieldType", tag = "4")]
     pub r#type: i32,
+    /// Annotations for the field that may be used to add additional information
+    #[prost(map = "string, string", tag = "5")]
+    pub annotations: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
 }
 /// Unused
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -171,6 +174,7 @@ pub enum FieldType {
     Number = 1,
     Bool = 2,
     Datetime = 4,
+    Uri = 5,
 }
 impl FieldType {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -183,6 +187,7 @@ impl FieldType {
             FieldType::Number => "NUMBER",
             FieldType::Bool => "BOOL",
             FieldType::Datetime => "DATETIME",
+            FieldType::Uri => "URI",
         }
     }
 }

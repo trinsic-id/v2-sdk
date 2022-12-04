@@ -103,6 +103,9 @@ message TemplateField {
 
   // The type of the field
   FieldType type = 4;
+
+  // Annotations for the field that may be used to add additional information
+  map<string, string> annotations = 5;
 }
 
 // Valid types for credential fields
@@ -111,6 +114,7 @@ enum FieldType {
   NUMBER = 1;
   BOOL = 2;
   DATETIME = 4;
+  URI = 5;
 }
 
 // Unused
