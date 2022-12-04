@@ -26,7 +26,7 @@ public class AccessManagementService : ServiceBase
         Client = new(Invoker);
     }
 
-    internal AccessManagementService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+    internal AccessManagementService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options, CallInvoker invoker) : base(tokenProvider, options.Value, invoker) {
         Client = new(Invoker);
     }
 

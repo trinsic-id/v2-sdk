@@ -22,13 +22,13 @@ public class CredentialService : ServiceBase
     internal CredentialService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Invoker);
     }
-
-    internal CredentialService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+    
+    internal CredentialService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
         Client = new(Invoker);
     }
 
-    internal CredentialService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
+    internal CredentialService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options, CallInvoker invoker) : base(tokenProvider, options.Value, invoker) {
         Client = new(Invoker);
     }
 

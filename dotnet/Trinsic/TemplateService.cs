@@ -29,7 +29,7 @@ public class TemplateService : ServiceBase
         Client = new(Invoker);
     }
 
-    internal TemplateService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+    internal TemplateService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options, CallInvoker invoker) : base(tokenProvider, options.Value, invoker) {
         Client = new(Invoker);
     }
 

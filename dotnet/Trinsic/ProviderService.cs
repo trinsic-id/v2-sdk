@@ -28,7 +28,7 @@ public class ProviderService : ServiceBase
         Client = new(Invoker);
     }
 
-    internal ProviderService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+    internal ProviderService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options, CallInvoker invoker) : base(tokenProvider, options.Value, invoker) {
         Client = new(Invoker);
     }
 

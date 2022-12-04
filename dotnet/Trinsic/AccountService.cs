@@ -32,7 +32,7 @@ public class AccountService : ServiceBase
         : base(options.Value, tokenProvider) {
         Client = new(Invoker);
     }
-    internal AccountService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+    internal AccountService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options, CallInvoker invoker) : base(tokenProvider, options.Value, invoker) {
         Client = new(Invoker);
     }
 
