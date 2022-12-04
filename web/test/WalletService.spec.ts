@@ -90,12 +90,10 @@ describe("wallet service tests", () => {
             age: 42,
         });
 
-        let issueResponse = await trinsic.credential().issueFromTemplate(
-            {
-                templateId: template!.data!.id,
-                valuesJson: values,
-            }
-        );
+        let issueResponse = await trinsic.credential().issueFromTemplate({
+            templateId: template!.data!.id,
+            valuesJson: values,
+        });
         let jsonDocument = JSON.parse(issueResponse.documentJson!);
 
         expect(issueResponse).not.toBeNull();

@@ -33,7 +33,7 @@ describe("Demo: Credential Templates", () => {
 
     it("Issue Credential From Template", async () => {
         let response = JSON.parse(
-            (await issueCredentialFromTemplate(trinsic)).documentJson
+            (await issueCredentialFromTemplate(trinsic)).documentJson!
         );
 
         expect(response?.issuer).not.toBeNull();
