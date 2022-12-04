@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10+insiders-4.26.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.11+insiders-4.26.6">
     
     
       
@@ -2036,7 +2036,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">checkStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">CheckStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">checkStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">CheckStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2088,7 +2090,9 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">updateStatus</span><span class="p">(</span><span class="nx">UpdateStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">updateStatus</span><span class="p">(</span><span class="nx">UpdateStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2461,7 +2465,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.939a4419.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.02d7801c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.af94fead.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
@@ -2471,6 +2475,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
       
         <script src="../../../_static/javascripts/tab_sync.js"></script>
       
+    
     
   </body>
 </html>
