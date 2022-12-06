@@ -352,7 +352,14 @@ const TemplateData$json = const {
       '10': 'allowAdditionalFields'
     },
     const {'1': 'schema_uri', '3': 6, '4': 1, '5': 9, '10': 'schemaUri'},
-    const {'1': 'context_uri', '3': 7, '4': 1, '5': 9, '10': 'contextUri'},
+    const {
+      '1': 'context_uri',
+      '3': 7,
+      '4': 1,
+      '5': 9,
+      '8': const {'3': true},
+      '10': 'contextUri',
+    },
     const {'1': 'ecosystem_id', '3': 8, '4': 1, '5': 9, '10': 'ecosystemId'},
     const {'1': 'type', '3': 9, '4': 1, '5': 9, '10': 'type'},
     const {'1': 'created_by', '3': 10, '4': 1, '5': 9, '10': 'createdBy'},
@@ -380,4 +387,4 @@ const TemplateData_FieldsEntry$json = const {
 
 /// Descriptor for `TemplateData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List templateDataDescriptor = $convert.base64Decode(
-    'CgxUZW1wbGF0ZURhdGESDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJdCgZmaWVsZHMYBCADKAsyRS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRGF0YS5GaWVsZHNFbnRyeVIGZmllbGRzEjYKF2FsbG93X2FkZGl0aW9uYWxfZmllbGRzGAUgASgIUhVhbGxvd0FkZGl0aW9uYWxGaWVsZHMSHQoKc2NoZW1hX3VyaRgGIAEoCVIJc2NoZW1hVXJpEh8KC2NvbnRleHRfdXJpGAcgASgJUgpjb250ZXh0VXJpEiEKDGVjb3N5c3RlbV9pZBgIIAEoCVILZWNvc3lzdGVtSWQSEgoEdHlwZRgJIAEoCVIEdHlwZRIdCgpjcmVhdGVkX2J5GAogASgJUgljcmVhdGVkQnkSIQoMZGF0ZV9jcmVhdGVkGAsgASgJUgtkYXRlQ3JlYXRlZBp1CgtGaWVsZHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRJQCgV2YWx1ZRgCIAEoCzI6LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVGVtcGxhdGVGaWVsZFIFdmFsdWU6AjgB');
+    'CgxUZW1wbGF0ZURhdGESDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJdCgZmaWVsZHMYBCADKAsyRS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRGF0YS5GaWVsZHNFbnRyeVIGZmllbGRzEjYKF2FsbG93X2FkZGl0aW9uYWxfZmllbGRzGAUgASgIUhVhbGxvd0FkZGl0aW9uYWxGaWVsZHMSHQoKc2NoZW1hX3VyaRgGIAEoCVIJc2NoZW1hVXJpEiMKC2NvbnRleHRfdXJpGAcgASgJQgIYAVIKY29udGV4dFVyaRIhCgxlY29zeXN0ZW1faWQYCCABKAlSC2Vjb3N5c3RlbUlkEhIKBHR5cGUYCSABKAlSBHR5cGUSHQoKY3JlYXRlZF9ieRgKIAEoCVIJY3JlYXRlZEJ5EiEKDGRhdGVfY3JlYXRlZBgLIAEoCVILZGF0ZUNyZWF0ZWQadQoLRmllbGRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRmllbGRSBXZhbHVlOgI4AQ==');

@@ -2242,7 +2242,7 @@ Credential Template
 | fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] | Fields defined for the template |
 | allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials issued against this template may contain fields not defined by template |
 | schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
-| context_uri | [string](/reference/proto#string) | URI pointing to template JSON-LD context document |
+| context_uri | [string](/reference/proto#string) | **Deprecated.** URI pointing to template JSON-LD context document |
 | ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
 | type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
 | created_by | [string](/reference/proto#string) | ID of template creator |

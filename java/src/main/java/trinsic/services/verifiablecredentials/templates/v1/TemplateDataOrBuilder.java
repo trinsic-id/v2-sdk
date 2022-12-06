@@ -184,10 +184,13 @@ public interface TemplateDataOrBuilder
    * URI pointing to template JSON-LD context document
    * </pre>
    *
-   * <code>string context_uri = 7;</code>
+   * <code>string context_uri = 7 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
    * @return The contextUri.
    */
+  @java.lang.Deprecated
   java.lang.String getContextUri();
   /**
    *
@@ -196,10 +199,13 @@ public interface TemplateDataOrBuilder
    * URI pointing to template JSON-LD context document
    * </pre>
    *
-   * <code>string context_uri = 7;</code>
+   * <code>string context_uri = 7 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
    * @return The bytes for contextUri.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getContextUriBytes();
 
   /**

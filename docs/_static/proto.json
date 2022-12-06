@@ -7941,7 +7941,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "URI pointing to template JSON-LD context document"
+      "description": "URI pointing to template JSON-LD context document",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.verifiablecredentials.templates.v1.TemplateData.created_by": {
       "name": "created_by",
