@@ -328,6 +328,7 @@ public class Tests
 
         // loginRequest() {
         var loginResponse = await trinsic.Account.LoginAsync(new() {
+            // ecosystem id or name
             EcosystemId = ecosystemId,
             Email = "bob@example.com"
         });

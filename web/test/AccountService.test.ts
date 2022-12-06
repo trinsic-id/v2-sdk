@@ -26,6 +26,7 @@ describe("AccountService Unit Tests", () => {
         // loginRequest() {
         const loginResponse = await trinsic.account().login(
             LoginRequest.fromPartial({
+                ecosystemId: "<ecosystem id or name>",
                 email: "bob@example.com",
             })
         );

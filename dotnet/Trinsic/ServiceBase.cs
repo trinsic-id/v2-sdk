@@ -19,7 +19,7 @@ namespace Trinsic;
 [SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible")]
 public abstract class ServiceBase
 {
-    internal const string DefaultEcosystem = "default";
+    internal const string DefaultEcosystem = "";
     internal const bool DefaultServerUseTls = true;
     internal const int DefaultServerPort = 443;
     internal const string DefaultServerEndpoint = "prod.trinsic.cloud";

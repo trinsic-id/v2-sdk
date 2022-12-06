@@ -81,7 +81,7 @@ public class AccountService extends ServiceBase {
 
   public ListenableFuture<String> signIn(@NotNull SignInRequest request) {
     if (request.getEcosystemId().isBlank())
-      request = SignInRequest.newBuilder(request).setEcosystemId("default").build();
+      request = SignInRequest.newBuilder(request).build();
     var response = this.stub.signIn(request);
     return Futures.transform(
         response,

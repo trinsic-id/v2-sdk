@@ -104,8 +104,6 @@ export class AccountService extends ServiceBase {
     public async signIn(
         request: SignInRequest = SignInRequest.fromPartial({})
     ): Promise<string> {
-        request.ecosystemId ||= "default";
-
         let response = await this.client.signIn(request);
         const authToken = AccountService.convertToToken(response.profile!);
 
@@ -155,12 +153,10 @@ export class AccountService extends ServiceBase {
     }
 
     public async loginAnonymous(ecosystemId?: string): Promise<string> {
-        ecosystemId ||= "default";
-
         const request = LoginRequest.fromPartial({
             email: "",
             invitationCode: "",
-            ecosystemId: ecosystemId,
+            ecosystemId: ecosystemId ||= "",
         });
         let response = await this.login(request);
         if (response.profile === undefined) {
