@@ -20,9 +20,9 @@ enum EventType {
     PING = 0;
     LOG = 1;
 
-    EGF_CREATED = 5;
-    EGF_MEMBER_REGISTERED = 6;
-    EGF_MEMBER_UNREGISTERED = 7;
+    GOVERNANCE_FRAMEWORK_CREATED = 5;
+    GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = 6;
+    GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = 7;
 
     TEMPLATE_CREATED = 10;
     TEMPLATE_DELETED = 11;
@@ -32,21 +32,6 @@ enum EventType {
     CREDENTIAL_ISSUED = 17;
 }
 
-// Event
-message Event {
-    // UUID of event
-    string id = 1;
-
-    // Type of event
-    EventType type = 2;
-
-    // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
-    string timestamp = 3;
-
-    // Event-specific payload, as an encoded protobuf message
-    bytes data = 4;
-}
-
 message APICall {
     string source = 1;
     bytes request = 2;
@@ -54,7 +39,7 @@ message APICall {
 }
 
 // Webhook test event
-message Ping {
+message PingV1 {
     option (event_type) = PING;
 
     // UUID of this ping
@@ -68,12 +53,15 @@ message Ping {
 
     // Arbitrary message specified when ping was requested
     string message = 4;
+
+    // Ecosystem where this event originated, if any.
+    string ecosystem_id = 5;
 }
 
 
 // Entity Governance Framework created and attached to ecosystem
-message EGFCreated{
-    option (event_type) = EGF_CREATED;
+message GovernanceFrameworkCreatedV1 {
+    option (event_type) = GOVERNANCE_FRAMEWORK_CREATED;
 
     // UUID of the governance framework
     string id = 1;
@@ -98,10 +86,13 @@ message EGFCreated{
 
     // URI for the EGF
     string governance_framework = 8;
+
+    // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+    string timestamp = 9;
 }
 
 // Template created in ecosystem
-message TemplateCreated {
+message TemplateCreatedV1 {
     option (event_type) = TEMPLATE_CREATED;
 
     // UUID of the template
@@ -118,10 +109,13 @@ message TemplateCreated {
 
     // WalletID that created the template
     string created_by = 5;
+
+    // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+    string timestamp = 6;
 }
 
 // Item inserted into wallet
-message ItemReceived {
+message ItemReceivedV1 {
     option (event_type) = ITEM_RECEIVED;
 
     // UUID of the new item
@@ -129,6 +123,12 @@ message ItemReceived {
 
     // Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
     string received = 2;
+
+    // ID of wallet
+    string wallet_id = 3;
+
+    // Ecosystem where this event originated, if any.
+    string ecosystem_id = 4;
 }
 
 
