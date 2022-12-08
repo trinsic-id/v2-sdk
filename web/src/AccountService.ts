@@ -156,7 +156,7 @@ export class AccountService extends ServiceBase {
         const request = LoginRequest.fromPartial({
             email: "",
             invitationCode: "",
-            ecosystemId: ecosystemId ||= "",
+            ecosystemId: (ecosystemId ||= ""),
         });
         let response = await this.login(request);
         if (response.profile === undefined) {

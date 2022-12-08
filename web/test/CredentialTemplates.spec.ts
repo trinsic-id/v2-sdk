@@ -6,14 +6,13 @@ import {
 } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import { getTestServerOptions, setTestTimeout } from "./env";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 import {
     createCredentialTemplateTest,
     createRequiredTestObjects,
     issueCredentialFromTemplate,
     verifyCredential,
 } from "./CredentialTemplateShared";
-import {myEcosystemIdOrName} from "./TestData";
 
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
     createRequiredTestObjects();

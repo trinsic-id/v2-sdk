@@ -7,9 +7,8 @@ import {
     TemplateField,
     TrinsicService,
 } from "../browser";
-import { getTestServerOptions, setTestTimeout } from "./env";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 import { v4 as uuid } from "uuid";
-import {myEcosystemIdOrName} from "./TestData";
 
 let options = getTestServerOptions();
 

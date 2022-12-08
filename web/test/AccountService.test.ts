@@ -5,8 +5,7 @@ import {
     TrinsicService,
 } from "../node";
 
-import { getTestServerOptions, setTestTimeout } from "./env";
-import {myEcosystemIdOrName} from "./TestData";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 
 const options = getTestServerOptions();
 async function printGetInfo(service: TrinsicService, profile: string) {

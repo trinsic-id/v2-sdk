@@ -12,7 +12,7 @@ import {
     TrinsicService,
     VerifyProofRequest,
 } from "../src";
-import {myEcosystemIdOrName} from "./TestData";
+import {myEcosystemIdOrName} from "./env";
 
 export function createRequiredTestObjects() {
     // defineTemplate() {

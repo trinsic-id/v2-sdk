@@ -14,3 +14,7 @@ export function setTestTimeout(timeoutMs: number = 40000) {
         jasmine.DEFAULT_TIMEOUT_INTERVAL = timeoutMs;
     if (typeof jest !== "undefined") jest.setTimeout(timeoutMs);
 }
+
+export function myEcosystemIdOrName(): string {
+    return "default";
+}
