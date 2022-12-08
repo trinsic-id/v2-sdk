@@ -1,7 +1,7 @@
 import { TrinsicService } from "../node";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import { getTestServerOptions, setTestTimeout } from "./env";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 import {
     createCredentialTemplateTest,
     createRequiredTestObjects,
@@ -18,7 +18,7 @@ describe("Demo: Credential Templates", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(getTestServerOptions());
-        trinsic.options.authToken = await trinsic.account().loginAnonymous();
+        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("should run create credential templates", async () => {

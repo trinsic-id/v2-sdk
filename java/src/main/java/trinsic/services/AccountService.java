@@ -5,10 +5,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
@@ -16,6 +12,11 @@ import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.*;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -75,13 +76,13 @@ public class AccountService extends ServiceBase {
     return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
   }
 
-  public ListenableFuture<String> signIn() {
-    return signIn(SignInRequest.getDefaultInstance());
+  public ListenableFuture<String> signIn(String ecosystemId) {
+    return signIn(SignInRequest.newBuilder().setEcosystemId(ecosystemId).build());
   }
 
   public ListenableFuture<String> signIn(@NotNull SignInRequest request) {
     if (request.getEcosystemId().isBlank())
-      request = SignInRequest.newBuilder(request).setEcosystemId("default").build();
+      request = SignInRequest.newBuilder(request).build();
     var response = this.stub.signIn(request);
     return Futures.transform(
         response,

@@ -19,8 +19,6 @@ class AccountService extends ServiceBase {
 
   Future<String> signIn({SignInRequest? request}) async {
     request ??= SignInRequest();
-    request.ecosystemId =
-        request.ecosystemId != "" ? request.ecosystemId : "default";
     SignInResponse response = await client.signIn(request);
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
@@ -97,8 +95,10 @@ class AccountService extends ServiceBase {
     return token;
   }
 
-  Future<String> loginAnonymous() async {
-    var response = await login();
+  Future<String> loginAnonymous(String ecosystemId) async {
+    var loginRequest = LoginRequest();
+    loginRequest.ecosystemId = ecosystemId;
+    var response = await login(request: loginRequest);
 
     if (response.profile.protection.enabled) {
       throw Exception("protected profile returned from login()");

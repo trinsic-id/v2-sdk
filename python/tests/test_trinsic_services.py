@@ -74,8 +74,11 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         # accountServiceConstructor() {
         account_service = AccountService(server_config=trinsic_config())
         # }
+        my_ecosystem_id_or_name = "default"
         # accountServiceSignIn() {
-        my_profile = await account_service.login_anonymous()
+        my_profile = await account_service.login_anonymous(
+            ecosystem_id=my_ecosystem_id_or_name
+        )
         # }
         await self.print_get_info(account_service, my_profile)
 

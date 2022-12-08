@@ -8,7 +8,7 @@ import 'package:uuid/uuid.dart';
 
 Future runTemplatesDemo() async {
   var accountService = AccountService(trinsicConfig(), null);
-  var profile = await accountService.signIn();
+  var profile = await accountService.loginAnonymous("default");
   var templateService =
       TemplateService(trinsicConfig(authToken: profile), null);
   var credentialService =

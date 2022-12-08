@@ -7,7 +7,7 @@ import {
     TemplateField,
     TrinsicService,
 } from "../browser";
-import { getTestServerOptions, setTestTimeout } from "./env";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 import { v4 as uuid } from "uuid";
 
 let options = getTestServerOptions();
@@ -18,7 +18,7 @@ describe("wallet service tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        options.authToken = await trinsic.account().loginAnonymous();
+        options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("can retrieve account info", async () => {

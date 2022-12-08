@@ -5,7 +5,7 @@ The Account Service allows you to create and sign in to accounts.
 !!! question "Wallets vs Accounts"
     Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
 
-    Every account has exactly one wallet. 
+    Every account has exactly one wallet.
 
 !!! info "Authentication Tokens"
     When you create or sign in to an account, the response is an authentication token string.
@@ -25,13 +25,13 @@ Trinsic will response with a `challenge`, and send an authentication code to the
 The authentication code must be passed along with `challenge` to [LoginConfirm](#login-confirm) to finalize the login.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI" 
+    === "Trinsic CLI"
         ```bash
-        trinsic account login --email "bob@example.com"
+        trinsic account login --email "bob@example.com" --ecosystem "<ecosystem id or name>"
         ```
 
     === "TypeScript"
-        <!--codeinclude--> 
+        <!--codeinclude-->
         ```typescript
         [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:loginRequest
         ```
@@ -85,7 +85,7 @@ You must pass `challenge` as it was received in response to [Login](#login), alo
 Our SDK will take care of hashing the confirmation code for you.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI" 
+    === "Trinsic CLI"
         ```bash
         trinsic account login --email "bob@example.com"
         ```
@@ -342,7 +342,7 @@ Sign in to an existing account, or create a new one.
 If no account details are passed to this method, an anonymous account will be created.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI" 
+    === "Trinsic CLI"
         ```bash
         trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
         ```

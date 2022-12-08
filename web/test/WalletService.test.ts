@@ -10,10 +10,10 @@ import {
 } from "../node";
 import {
     getVaccineCertFrameJSON,
-    getVaccineCertUnsignedJSON,
+    getVaccineCertUnsignedJSON
 } from "./TestData";
 
-import { getTestServerOptions, setTestTimeout } from "./env";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 import { v4 as uuid } from "uuid";
 
 const options = getTestServerOptions();
@@ -25,9 +25,9 @@ let trinsic = new TrinsicService(options);
 describe("WalletService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
-        allison.authToken = await trinsic.account().loginAnonymous();
-        clinic.authToken = await trinsic.account().loginAnonymous();
-        airline.authToken = await trinsic.account().loginAnonymous();
+        allison.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        clinic.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        airline.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("get account info", async () => {
@@ -37,7 +37,7 @@ describe("WalletService Unit Tests", () => {
     });
 
     it("create new account", async () => {
-        let response = await trinsic.account().loginAnonymous();
+        let response = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
 
         expect(response).not.toBeNull();
         expect(response).not.toBe("");
@@ -99,6 +99,7 @@ describe("WalletService Unit Tests", () => {
     });
 
     it("Demo: template management and credential issuance from template", async () => {
+        let response = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
         // create example template
         let templateRequest = CreateCredentialTemplateRequest.fromPartial({
             name: `My Example Credential-${uuid()}`,

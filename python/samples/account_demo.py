@@ -14,7 +14,9 @@ async def account_demo():
 
     # loginRequest() {
     login_response = await trinsic.account.login(
-        request=LoginRequest(email="bob@example.com")
+        request=LoginRequest(
+            email="bob@example.com", ecosystem_id="<ecosystem id or name>"
+        )
     )
     # }
 

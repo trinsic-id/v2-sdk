@@ -11,7 +11,7 @@ import {
     UpgradeDidRequest,
 } from "../node";
 
-import { getTestServerOptions, setTestTimeout } from "./env";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 
 const options = getTestServerOptions();
 
@@ -19,7 +19,7 @@ describe("ProviderService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         let trinsic = new TrinsicService(options);
-        options.authToken = await trinsic.account().loginAnonymous();
+        options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("Demo: Ecosystem Tests", async () => {

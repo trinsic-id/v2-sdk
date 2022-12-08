@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"errors"
+
 	"github.com/trinsic-id/okapi/go/okapi/hashing/v1/hashing"
 	"github.com/trinsic-id/okapi/go/okapi/security/v1/security"
 
@@ -211,7 +212,7 @@ func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte
 func (a *accountBase) LoginAnonymous(userContext context.Context, ecosystemId ...string) (string, error) {
 	// `ecosystemId` is a `...string` to emulate default-value argument behavior, which Go doesn't support.
 	// We'll just use the first index of `ecosystemId`; if it's an empty array, we use the default value
-	ecoId := "default"
+	ecoId := ""
 	if len(ecosystemId) > 0 {
 		ecoId = ecosystemId[0]
 	}

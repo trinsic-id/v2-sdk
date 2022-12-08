@@ -49,7 +49,7 @@ func TestAuthWebhook(t *testing.T) {
 		return
 	}
 
-	authToken, err := trinsic.Account().LoginAnonymous(context.Background())
+	authToken, err := trinsic.Account().LoginAnonymous(context.Background(), "default")
 
 	if !assert2.Nil(err) {
 		return
@@ -81,8 +81,9 @@ func TestProtectUnprotectProfile(t *testing.T) {
 		return
 	}
 	// }
+	myEcosystemIdOrName := "default"
 	// accountServiceSignIn() {
-	profile, err := trinsic.Account().LoginAnonymous(context.Background())
+	profile, err := trinsic.Account().LoginAnonymous(context.Background(), myEcosystemIdOrName)
 	if !assert2.Nil(err) {
 		return
 	}
