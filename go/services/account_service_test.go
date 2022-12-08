@@ -16,7 +16,7 @@ func TestLogin(t *testing.T) {
 		return
 	}
 
-	myEcosystemIdOrName := "default"
+	myEcosystemIdOrName := "default" // Replace with the name of your ecosystem
 	// loginRequest() {
 	loginResponse, err := trinsic.Account().Login(context.Background(), &account.LoginRequest{
 		Email:       "bob@example.com",
