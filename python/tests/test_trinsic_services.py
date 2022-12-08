@@ -76,7 +76,9 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         # }
         my_ecosystem_id_or_name = "default"
         # accountServiceSignIn() {
-        my_profile = await account_service.login_anonymous(ecosystem_id=my_ecosystem_id_or_name)
+        my_profile = await account_service.login_anonymous(
+            ecosystem_id=my_ecosystem_id_or_name
+        )
         # }
         await self.print_get_info(account_service, my_profile)
 
