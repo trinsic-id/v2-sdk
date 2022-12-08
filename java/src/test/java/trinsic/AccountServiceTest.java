@@ -1,7 +1,6 @@
 package trinsic;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
@@ -11,17 +10,21 @@ import trinsic.services.account.v1.AuthorizeWebhookRequest;
 import trinsic.services.account.v1.LoginRequest;
 import trinsic.services.account.v1.LoginResponse;
 
+import java.util.concurrent.ExecutionException;
+
 class AccountServiceTest {
+    private static String myEcosystemIdOrName = "default";
   @Test
   public void testLogin() {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     LoginResponse myLoginResponse = LoginResponse.newBuilder().build();
     try {
+
       // loginRequest() {
       var loginResponse =
           trinsic
               .account()
-              .login(LoginRequest.newBuilder().setEmail("bob@example.com").build())
+              .login(LoginRequest.newBuilder().setEmail("bob@example.com").setEcosystemId(myEcosystemIdOrName).build())
               .get();
       // }
     } catch (Exception ignored) {
@@ -46,7 +49,7 @@ class AccountServiceTest {
           DidException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
 
-    var profile = trinsic.account().loginAnonymous().get();
+    var profile = trinsic.account().loginAnonymous(myEcosystemIdOrName).get();
     trinsic.setAuthToken(profile);
 
     // authorizeWebhook() {
@@ -69,7 +72,7 @@ class AccountServiceTest {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     // }
     // accountServiceSignIn() {
-    var myProfile = trinsic.account().signIn().get();
+    var myProfile = trinsic.account().signIn(myEcosystemIdOrName).get();
     // }
 
     // protectUnprotectProfile() {

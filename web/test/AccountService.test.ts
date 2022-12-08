@@ -6,9 +6,9 @@ import {
 } from "../node";
 
 import { getTestServerOptions, setTestTimeout } from "./env";
+import {myEcosystemIdOrName} from "./TestData";
 
 const options = getTestServerOptions();
-
 async function printGetInfo(service: TrinsicService, profile: string) {
     service.options.authToken = profile;
     const info = await service.account().getInfo();
@@ -19,14 +19,11 @@ describe("AccountService Unit Tests", () => {
     setTestTimeout();
 
     it("login / loginconfirm", async () => {
-        // TODO - Fix this?
-        return;
         let trinsic = new TrinsicService(options);
-
         // loginRequest() {
         const loginResponse = await trinsic.account().login(
             LoginRequest.fromPartial({
-                ecosystemId: "<ecosystem id or name>",
+                ecosystemId: myEcosystemIdOrName(),
                 email: "bob@example.com",
             })
         );
@@ -48,7 +45,7 @@ describe("AccountService Unit Tests", () => {
 
     it("authorize webhook", async () => {
         let trinsic = new TrinsicService(options);
-        let account = await trinsic.account().loginAnonymous();
+        let account = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
 
         trinsic.options.authToken = account.toString(); //wat
 
@@ -63,7 +60,7 @@ describe("AccountService Unit Tests", () => {
 
     it("protect/unprotect account profile", async () => {
         let trinsic = new TrinsicService(options);
-        let myProfile = await trinsic.account().loginAnonymous();
+        let myProfile = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
         await printGetInfo(trinsic, myProfile);
 
         const code = "1234";

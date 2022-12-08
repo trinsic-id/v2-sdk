@@ -2,6 +2,7 @@ import { IssueRequest, ServiceOptions, TrinsicService } from "../browser";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
 import { getTestServerOptions, setTestTimeout } from "./env";
+import {myEcosystemIdOrName} from "./TestData";
 
 let options: ServiceOptions = getTestServerOptions();
 let trinsic: TrinsicService;
@@ -10,7 +11,7 @@ describe("CredentialService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        trinsic.options.authToken = await trinsic.account().loginAnonymous();
+        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("Issue Credential From Template", async () => {

@@ -12,6 +12,7 @@ import {
     TrinsicService,
     VerifyProofRequest,
 } from "../src";
+import {myEcosystemIdOrName} from "./TestData";
 
 export function createRequiredTestObjects() {
     // defineTemplate() {
@@ -53,8 +54,8 @@ export async function verifyCredential(
     trinsic: TrinsicService,
     templateCertFrame: string
 ): Promise<boolean> {
-    const allison = await trinsic.account().loginAnonymous();
-    const airline = await trinsic.account().loginAnonymous();
+    const allison = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+    const airline = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
 
     const credential = await issueCredentialFromTemplate(trinsic);
 

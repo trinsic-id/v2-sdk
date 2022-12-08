@@ -9,6 +9,7 @@ import {
 } from "../browser";
 import { getTestServerOptions, setTestTimeout } from "./env";
 import { v4 as uuid } from "uuid";
+import {myEcosystemIdOrName} from "./TestData";
 
 let options = getTestServerOptions();
 
@@ -18,7 +19,7 @@ describe("wallet service tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        options.authToken = await trinsic.account().loginAnonymous();
+        options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("can retrieve account info", async () => {

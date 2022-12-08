@@ -4848,6 +4848,14 @@
             The type of the field
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.AnnotationsFieldNumber">
+            <summary>Field number for the "annotations" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Annotations">
+            <summary>
+            Annotations for the field that may be used to add additional information
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateRequest">
             <summary>
             Unused

@@ -359,12 +359,13 @@ public class Tests
 
     [Fact]
     public async Task TestProtectUnprotectProfile() {
+        var myEcosystemId = "default";
         // testSignInAndGetInfo() {
         // trinsicServiceConstructor() {
         var trinsic = new TrinsicService(_options);
         // }
         // accountServiceSignIn() {
-        var myProfile = await trinsic.Account.LoginAnonymousAsync();
+        var myProfile = await trinsic.Account.LoginAnonymousAsync(myEcosystemId);
         // }
         // accountServiceGetInfo() {
         var info = await trinsic.Account.GetInfoAsync();

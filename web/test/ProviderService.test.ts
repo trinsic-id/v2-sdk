@@ -12,6 +12,7 @@ import {
 } from "../node";
 
 import { getTestServerOptions, setTestTimeout } from "./env";
+import {myEcosystemIdOrName} from "./TestData";
 
 const options = getTestServerOptions();
 
@@ -19,7 +20,7 @@ describe("ProviderService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         let trinsic = new TrinsicService(options);
-        options.authToken = await trinsic.account().loginAnonymous();
+        options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("Demo: Ecosystem Tests", async () => {

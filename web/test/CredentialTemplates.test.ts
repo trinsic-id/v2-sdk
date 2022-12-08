@@ -8,6 +8,7 @@ import {
     issueCredentialFromTemplate,
     verifyCredential,
 } from "./CredentialTemplateShared";
+import {myEcosystemIdOrName} from "./TestData";
 
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
     createRequiredTestObjects();
@@ -18,7 +19,7 @@ describe("Demo: Credential Templates", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(getTestServerOptions());
-        trinsic.options.authToken = await trinsic.account().loginAnonymous();
+        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("should run create credential templates", async () => {

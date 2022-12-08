@@ -1,6 +1,10 @@
 import { resolve } from "path";
 import { readFileSync } from "fs";
 
+export function myEcosystemIdOrName(): string {
+    return "default";
+}
+
 export function vaccineCertFramePath(): string {
     return resolve(
         __dirname,
