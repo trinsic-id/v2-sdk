@@ -5,7 +5,7 @@ import 'package:trinsic_dart/trinsic.dart';
 
 Future runProviderDemo() async {
   var accountService = AccountService(trinsicConfig(), null);
-  var account = await accountService.signIn();
+  var account = await accountService.loginAnonymous("default");
   var providerService =
       ProviderService(trinsicConfig(authToken: account), null);
 
