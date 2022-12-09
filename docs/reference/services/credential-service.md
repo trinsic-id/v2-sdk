@@ -367,7 +367,10 @@ The specified email address must be tied to an existing account in the same ecos
     === "TypeScript"
 
         ```typescript
-        await credentialService.send(document, "admin@example.com");
+        await trinsic.credential().send(SendRequest.fromPartial({
+		    email: "",
+		    documentJson: JSON.stringify({}),
+	    }));
         ```
 
     === "C#"
