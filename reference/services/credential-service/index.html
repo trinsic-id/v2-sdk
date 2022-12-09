@@ -2321,7 +2321,10 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;admin@example.com&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">send</span><span class="p">(</span><span class="nx">SendRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">({}),</span><span class="w"></span>
+<span class="p">}));</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
