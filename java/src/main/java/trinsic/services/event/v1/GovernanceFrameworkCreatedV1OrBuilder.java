@@ -3,9 +3,9 @@
 
 package trinsic.services.event.v1;
 
-public interface EGFCreatedOrBuilder
+public interface GovernanceFrameworkCreatedV1OrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:trinsic.services.event.EGFCreated)
+    // @@protoc_insertion_point(interface_extends:trinsic.services.event.GovernanceFrameworkCreatedV1)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -207,4 +207,29 @@ public interface EGFCreatedOrBuilder
    * @return The bytes for governanceFramework.
    */
   com.google.protobuf.ByteString getGovernanceFrameworkBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+   * </pre>
+   *
+   * <code>string timestamp = 9;</code>
+   *
+   * @return The timestamp.
+   */
+  java.lang.String getTimestamp();
+  /**
+   *
+   *
+   * <pre>
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+   * </pre>
+   *
+   * <code>string timestamp = 9;</code>
+   *
+   * @return The bytes for timestamp.
+   */
+  com.google.protobuf.ByteString getTimestampBytes();
 }

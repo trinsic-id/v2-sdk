@@ -5,9 +5,9 @@ import _m0 from "protobufjs/minimal";
 export enum EventType {
   PING = 0,
   LOG = 1,
-  EGF_CREATED = 5,
-  EGF_MEMBER_REGISTERED = 6,
-  EGF_MEMBER_UNREGISTERED = 7,
+  GOVERNANCE_FRAMEWORK_CREATED = 5,
+  GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = 6,
+  GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = 7,
   TEMPLATE_CREATED = 10,
   TEMPLATE_DELETED = 11,
   WALLET_CREATED = 15,
@@ -25,14 +25,14 @@ export function eventTypeFromJSON(object: any): EventType {
     case "LOG":
       return EventType.LOG;
     case 5:
-    case "EGF_CREATED":
-      return EventType.EGF_CREATED;
+    case "GOVERNANCE_FRAMEWORK_CREATED":
+      return EventType.GOVERNANCE_FRAMEWORK_CREATED;
     case 6:
-    case "EGF_MEMBER_REGISTERED":
-      return EventType.EGF_MEMBER_REGISTERED;
+    case "GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED":
+      return EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED;
     case 7:
-    case "EGF_MEMBER_UNREGISTERED":
-      return EventType.EGF_MEMBER_UNREGISTERED;
+    case "GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED":
+      return EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED;
     case 10:
     case "TEMPLATE_CREATED":
       return EventType.TEMPLATE_CREATED;
@@ -61,12 +61,12 @@ export function eventTypeToJSON(object: EventType): string {
       return "PING";
     case EventType.LOG:
       return "LOG";
-    case EventType.EGF_CREATED:
-      return "EGF_CREATED";
-    case EventType.EGF_MEMBER_REGISTERED:
-      return "EGF_MEMBER_REGISTERED";
-    case EventType.EGF_MEMBER_UNREGISTERED:
-      return "EGF_MEMBER_UNREGISTERED";
+    case EventType.GOVERNANCE_FRAMEWORK_CREATED:
+      return "GOVERNANCE_FRAMEWORK_CREATED";
+    case EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED:
+      return "GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED";
+    case EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED:
+      return "GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED";
     case EventType.TEMPLATE_CREATED:
       return "TEMPLATE_CREATED";
     case EventType.TEMPLATE_DELETED:
@@ -83,18 +83,6 @@ export function eventTypeToJSON(object: EventType): string {
   }
 }
 
-/** Event */
-export interface Event {
-  /** UUID of event */
-  id?: string;
-  /** Type of event */
-  type?: EventType;
-  /** Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
-  timestamp?: string;
-  /** Event-specific payload, as an encoded protobuf message */
-  data?: Uint8Array;
-}
-
 export interface APICall {
   source?: string;
   request?: Uint8Array;
@@ -102,7 +90,7 @@ export interface APICall {
 }
 
 /** Webhook test event */
-export interface Ping {
+export interface PingV1 {
   /** UUID of this ping */
   id?: string;
   /** UUID of the webhook receiving the ping */
@@ -111,10 +99,12 @@ export interface Ping {
   timestamp?: string;
   /** Arbitrary message specified when ping was requested */
   message?: string;
+  /** Ecosystem where this event originated, if any. */
+  ecosystemId?: string;
 }
 
 /** Entity Governance Framework created and attached to ecosystem */
-export interface EGFCreated {
+export interface GovernanceFrameworkCreatedV1 {
   /** UUID of the governance framework */
   id?: string;
   /** UUID of the ecosystem that owns this EGF */
@@ -131,10 +121,12 @@ export interface EGFCreated {
   description?: string;
   /** URI for the EGF */
   governanceFramework?: string;
+  /** Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
+  timestamp?: string;
 }
 
 /** Template created in ecosystem */
-export interface TemplateCreated {
+export interface TemplateCreatedV1 {
   /** UUID of the template */
   id?: string;
   /** UUID of the ecosystem that owns this template */
@@ -145,96 +137,21 @@ export interface TemplateCreated {
   type?: string;
   /** WalletID that created the template */
   createdBy?: string;
+  /** Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
+  timestamp?: string;
 }
 
 /** Item inserted into wallet */
-export interface ItemReceived {
+export interface ItemReceivedV1 {
   /** UUID of the new item */
   id?: string;
   /** Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
   received?: string;
+  /** ID of wallet */
+  walletId?: string;
+  /** Ecosystem where this event originated, if any. */
+  ecosystemId?: string;
 }
-
-function createBaseEvent(): Event {
-  return { id: "", type: 0, timestamp: "", data: new Uint8Array() };
-}
-
-export const Event = {
-  encode(message: Event, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== undefined && message.id !== "") {
-      writer.uint32(10).string(message.id);
-    }
-    if (message.type !== undefined && message.type !== 0) {
-      writer.uint32(16).int32(message.type);
-    }
-    if (message.timestamp !== undefined && message.timestamp !== "") {
-      writer.uint32(26).string(message.timestamp);
-    }
-    if (message.data !== undefined && message.data.length !== 0) {
-      writer.uint32(34).bytes(message.data);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): Event {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseEvent();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.id = reader.string();
-          break;
-        case 2:
-          message.type = reader.int32() as any;
-          break;
-        case 3:
-          message.timestamp = reader.string();
-          break;
-        case 4:
-          message.data = reader.bytes();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): Event {
-    return {
-      id: isSet(object.id) ? String(object.id) : "",
-      type: isSet(object.type) ? eventTypeFromJSON(object.type) : 0,
-      timestamp: isSet(object.timestamp) ? String(object.timestamp) : "",
-      data: isSet(object.data)
-        ? bytesFromBase64(object.data)
-        : new Uint8Array(),
-    };
-  },
-
-  toJSON(message: Event): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.type !== undefined && (obj.type = eventTypeToJSON(message.type));
-    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
-    message.data !== undefined &&
-      (obj.data = base64FromBytes(
-        message.data !== undefined ? message.data : new Uint8Array()
-      ));
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<Event>): Event {
-    const message = createBaseEvent();
-    message.id = object.id ?? "";
-    message.type = object.type ?? 0;
-    message.timestamp = object.timestamp ?? "";
-    message.data = object.data ?? new Uint8Array();
-    return message;
-  },
-};
 
 function createBaseAPICall(): APICall {
   return { source: "", request: new Uint8Array(), response: new Uint8Array() };
@@ -316,12 +233,15 @@ export const APICall = {
   },
 };
 
-function createBasePing(): Ping {
-  return { id: "", webhookId: "", timestamp: "", message: "" };
+function createBasePingV1(): PingV1 {
+  return { id: "", webhookId: "", timestamp: "", message: "", ecosystemId: "" };
 }
 
-export const Ping = {
-  encode(message: Ping, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const PingV1 = {
+  encode(
+    message: PingV1,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     if (message.id !== undefined && message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -334,13 +254,16 @@ export const Ping = {
     if (message.message !== undefined && message.message !== "") {
       writer.uint32(34).string(message.message);
     }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      writer.uint32(42).string(message.ecosystemId);
+    }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): Ping {
+  decode(input: _m0.Reader | Uint8Array, length?: number): PingV1 {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePing();
+    const message = createBasePingV1();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -356,6 +279,9 @@ export const Ping = {
         case 4:
           message.message = reader.string();
           break;
+        case 5:
+          message.ecosystemId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -364,35 +290,39 @@ export const Ping = {
     return message;
   },
 
-  fromJSON(object: any): Ping {
+  fromJSON(object: any): PingV1 {
     return {
       id: isSet(object.id) ? String(object.id) : "",
       webhookId: isSet(object.webhookId) ? String(object.webhookId) : "",
       timestamp: isSet(object.timestamp) ? String(object.timestamp) : "",
       message: isSet(object.message) ? String(object.message) : "",
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
     };
   },
 
-  toJSON(message: Ping): unknown {
+  toJSON(message: PingV1): unknown {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.webhookId !== undefined && (obj.webhookId = message.webhookId);
     message.timestamp !== undefined && (obj.timestamp = message.timestamp);
     message.message !== undefined && (obj.message = message.message);
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<Ping>): Ping {
-    const message = createBasePing();
+  fromPartial(object: DeepPartial<PingV1>): PingV1 {
+    const message = createBasePingV1();
     message.id = object.id ?? "";
     message.webhookId = object.webhookId ?? "";
     message.timestamp = object.timestamp ?? "";
     message.message = object.message ?? "";
+    message.ecosystemId = object.ecosystemId ?? "";
     return message;
   },
 };
 
-function createBaseEGFCreated(): EGFCreated {
+function createBaseGovernanceFrameworkCreatedV1(): GovernanceFrameworkCreatedV1 {
   return {
     id: "",
     ecosystemId: "",
@@ -402,12 +332,13 @@ function createBaseEGFCreated(): EGFCreated {
     name: "",
     description: "",
     governanceFramework: "",
+    timestamp: "",
   };
 }
 
-export const EGFCreated = {
+export const GovernanceFrameworkCreatedV1 = {
   encode(
-    message: EGFCreated,
+    message: GovernanceFrameworkCreatedV1,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.id !== undefined && message.id !== "") {
@@ -440,13 +371,19 @@ export const EGFCreated = {
     ) {
       writer.uint32(66).string(message.governanceFramework);
     }
+    if (message.timestamp !== undefined && message.timestamp !== "") {
+      writer.uint32(74).string(message.timestamp);
+    }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): EGFCreated {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GovernanceFrameworkCreatedV1 {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseEGFCreated();
+    const message = createBaseGovernanceFrameworkCreatedV1();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -474,6 +411,9 @@ export const EGFCreated = {
         case 8:
           message.governanceFramework = reader.string();
           break;
+        case 9:
+          message.timestamp = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -482,7 +422,7 @@ export const EGFCreated = {
     return message;
   },
 
-  fromJSON(object: any): EGFCreated {
+  fromJSON(object: any): GovernanceFrameworkCreatedV1 {
     return {
       id: isSet(object.id) ? String(object.id) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
@@ -498,10 +438,11 @@ export const EGFCreated = {
       governanceFramework: isSet(object.governanceFramework)
         ? String(object.governanceFramework)
         : "",
+      timestamp: isSet(object.timestamp) ? String(object.timestamp) : "",
     };
   },
 
-  toJSON(message: EGFCreated): unknown {
+  toJSON(message: GovernanceFrameworkCreatedV1): unknown {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.ecosystemId !== undefined &&
@@ -516,11 +457,14 @@ export const EGFCreated = {
       (obj.description = message.description);
     message.governanceFramework !== undefined &&
       (obj.governanceFramework = message.governanceFramework);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<EGFCreated>): EGFCreated {
-    const message = createBaseEGFCreated();
+  fromPartial(
+    object: DeepPartial<GovernanceFrameworkCreatedV1>
+  ): GovernanceFrameworkCreatedV1 {
+    const message = createBaseGovernanceFrameworkCreatedV1();
     message.id = object.id ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.trustRegistry = object.trustRegistry ?? "";
@@ -529,17 +473,25 @@ export const EGFCreated = {
     message.name = object.name ?? "";
     message.description = object.description ?? "";
     message.governanceFramework = object.governanceFramework ?? "";
+    message.timestamp = object.timestamp ?? "";
     return message;
   },
 };
 
-function createBaseTemplateCreated(): TemplateCreated {
-  return { id: "", ecosystemId: "", name: "", type: "", createdBy: "" };
+function createBaseTemplateCreatedV1(): TemplateCreatedV1 {
+  return {
+    id: "",
+    ecosystemId: "",
+    name: "",
+    type: "",
+    createdBy: "",
+    timestamp: "",
+  };
 }
 
-export const TemplateCreated = {
+export const TemplateCreatedV1 = {
   encode(
-    message: TemplateCreated,
+    message: TemplateCreatedV1,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.id !== undefined && message.id !== "") {
@@ -557,13 +509,16 @@ export const TemplateCreated = {
     if (message.createdBy !== undefined && message.createdBy !== "") {
       writer.uint32(42).string(message.createdBy);
     }
+    if (message.timestamp !== undefined && message.timestamp !== "") {
+      writer.uint32(50).string(message.timestamp);
+    }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): TemplateCreated {
+  decode(input: _m0.Reader | Uint8Array, length?: number): TemplateCreatedV1 {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTemplateCreated();
+    const message = createBaseTemplateCreatedV1();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -582,6 +537,9 @@ export const TemplateCreated = {
         case 5:
           message.createdBy = reader.string();
           break;
+        case 6:
+          message.timestamp = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -590,17 +548,18 @@ export const TemplateCreated = {
     return message;
   },
 
-  fromJSON(object: any): TemplateCreated {
+  fromJSON(object: any): TemplateCreatedV1 {
     return {
       id: isSet(object.id) ? String(object.id) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       name: isSet(object.name) ? String(object.name) : "",
       type: isSet(object.type) ? String(object.type) : "",
       createdBy: isSet(object.createdBy) ? String(object.createdBy) : "",
+      timestamp: isSet(object.timestamp) ? String(object.timestamp) : "",
     };
   },
 
-  toJSON(message: TemplateCreated): unknown {
+  toJSON(message: TemplateCreatedV1): unknown {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.ecosystemId !== undefined &&
@@ -608,27 +567,29 @@ export const TemplateCreated = {
     message.name !== undefined && (obj.name = message.name);
     message.type !== undefined && (obj.type = message.type);
     message.createdBy !== undefined && (obj.createdBy = message.createdBy);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<TemplateCreated>): TemplateCreated {
-    const message = createBaseTemplateCreated();
+  fromPartial(object: DeepPartial<TemplateCreatedV1>): TemplateCreatedV1 {
+    const message = createBaseTemplateCreatedV1();
     message.id = object.id ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.name = object.name ?? "";
     message.type = object.type ?? "";
     message.createdBy = object.createdBy ?? "";
+    message.timestamp = object.timestamp ?? "";
     return message;
   },
 };
 
-function createBaseItemReceived(): ItemReceived {
-  return { id: "", received: "" };
+function createBaseItemReceivedV1(): ItemReceivedV1 {
+  return { id: "", received: "", walletId: "", ecosystemId: "" };
 }
 
-export const ItemReceived = {
+export const ItemReceivedV1 = {
   encode(
-    message: ItemReceived,
+    message: ItemReceivedV1,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.id !== undefined && message.id !== "") {
@@ -637,13 +598,19 @@ export const ItemReceived = {
     if (message.received !== undefined && message.received !== "") {
       writer.uint32(18).string(message.received);
     }
+    if (message.walletId !== undefined && message.walletId !== "") {
+      writer.uint32(26).string(message.walletId);
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      writer.uint32(34).string(message.ecosystemId);
+    }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ItemReceived {
+  decode(input: _m0.Reader | Uint8Array, length?: number): ItemReceivedV1 {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseItemReceived();
+    const message = createBaseItemReceivedV1();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -653,6 +620,12 @@ export const ItemReceived = {
         case 2:
           message.received = reader.string();
           break;
+        case 3:
+          message.walletId = reader.string();
+          break;
+        case 4:
+          message.ecosystemId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -661,24 +634,31 @@ export const ItemReceived = {
     return message;
   },
 
-  fromJSON(object: any): ItemReceived {
+  fromJSON(object: any): ItemReceivedV1 {
     return {
       id: isSet(object.id) ? String(object.id) : "",
       received: isSet(object.received) ? String(object.received) : "",
+      walletId: isSet(object.walletId) ? String(object.walletId) : "",
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
     };
   },
 
-  toJSON(message: ItemReceived): unknown {
+  toJSON(message: ItemReceivedV1): unknown {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.received !== undefined && (obj.received = message.received);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<ItemReceived>): ItemReceived {
-    const message = createBaseItemReceived();
+  fromPartial(object: DeepPartial<ItemReceivedV1>): ItemReceivedV1 {
+    const message = createBaseItemReceivedV1();
     message.id = object.id ?? "";
     message.received = object.received ?? "";
+    message.walletId = object.walletId ?? "";
+    message.ecosystemId = object.ecosystemId ?? "";
     return message;
   },
 };

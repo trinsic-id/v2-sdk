@@ -3,9 +3,9 @@
 
 package trinsic.services.event.v1;
 
-public interface PingOrBuilder
+public interface PingV1OrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:trinsic.services.event.Ping)
+    // @@protoc_insertion_point(interface_extends:trinsic.services.event.PingV1)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -107,4 +107,29 @@ public interface PingOrBuilder
    * @return The bytes for message.
    */
   com.google.protobuf.ByteString getMessageBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem where this event originated, if any.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 5;</code>
+   *
+   * @return The ecosystemId.
+   */
+  java.lang.String getEcosystemId();
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem where this event originated, if any.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 5;</code>
+   *
+   * @return The bytes for ecosystemId.
+   */
+  com.google.protobuf.ByteString getEcosystemIdBytes();
 }

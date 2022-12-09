@@ -3030,90 +3030,6 @@
       "file": "services/event/v1/event.proto",
       "parent": "trinsic.services.event.APICall"
     },
-    "trinsic.services.event.EGFCreated": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.EGFCreated.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.EGFCreated.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.EGFCreated.governance_framework": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.EGFCreated.governing_authority": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.EGFCreated.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.EGFCreated.name": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.EGFCreated.trust_registry": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.EGFCreated.type": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EGFCreated"
-    },
-    "trinsic.services.event.Event": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.Event.data": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Event"
-    },
-    "trinsic.services.event.Event.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Event"
-    },
-    "trinsic.services.event.Event.timestamp": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Event"
-    },
-    "trinsic.services.event.Event.type": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Event"
-    },
     "trinsic.services.event.EventType": {
       "type": "enum",
       "collection": "enums",
@@ -3126,19 +3042,19 @@
       "file": "services/event/v1/event.proto",
       "parent": "trinsic.services.event.EventType"
     },
-    "trinsic.services.event.EventType.EGF_CREATED": {
+    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED": {
       "type": "enum_value",
       "collection": "enum_values",
       "file": "services/event/v1/event.proto",
       "parent": "trinsic.services.event.EventType"
     },
-    "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED": {
+    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED": {
       "type": "enum_value",
       "collection": "enum_values",
       "file": "services/event/v1/event.proto",
       "parent": "trinsic.services.event.EventType"
     },
-    "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED": {
+    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED": {
       "type": "enum_value",
       "collection": "enum_values",
       "file": "services/event/v1/event.proto",
@@ -3180,89 +3096,173 @@
       "file": "services/event/v1/event.proto",
       "parent": "trinsic.services.event.EventType"
     },
-    "trinsic.services.event.ItemReceived": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1": {
       "type": "message",
       "collection": "messages",
       "file": "services/event/v1/event.proto",
       "parent": ""
     },
-    "trinsic.services.event.ItemReceived.id": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.description": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.ItemReceived"
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
     },
-    "trinsic.services.event.ItemReceived.received": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.ItemReceived"
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
     },
-    "trinsic.services.event.Ping": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
+    },
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
+    },
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
+    },
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
+    },
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
+    },
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
+    },
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
+    },
+    "trinsic.services.event.ItemReceivedV1": {
       "type": "message",
       "collection": "messages",
       "file": "services/event/v1/event.proto",
       "parent": ""
     },
-    "trinsic.services.event.Ping.id": {
+    "trinsic.services.event.ItemReceivedV1.ecosystem_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Ping"
+      "parent": "trinsic.services.event.ItemReceivedV1"
     },
-    "trinsic.services.event.Ping.message": {
+    "trinsic.services.event.ItemReceivedV1.id": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Ping"
+      "parent": "trinsic.services.event.ItemReceivedV1"
     },
-    "trinsic.services.event.Ping.timestamp": {
+    "trinsic.services.event.ItemReceivedV1.received": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Ping"
+      "parent": "trinsic.services.event.ItemReceivedV1"
     },
-    "trinsic.services.event.Ping.webhook_id": {
+    "trinsic.services.event.ItemReceivedV1.wallet_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.Ping"
+      "parent": "trinsic.services.event.ItemReceivedV1"
     },
-    "trinsic.services.event.TemplateCreated": {
+    "trinsic.services.event.PingV1": {
       "type": "message",
       "collection": "messages",
       "file": "services/event/v1/event.proto",
       "parent": ""
     },
-    "trinsic.services.event.TemplateCreated.created_by": {
+    "trinsic.services.event.PingV1.ecosystem_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreated"
+      "parent": "trinsic.services.event.PingV1"
     },
-    "trinsic.services.event.TemplateCreated.ecosystem_id": {
+    "trinsic.services.event.PingV1.id": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreated"
+      "parent": "trinsic.services.event.PingV1"
     },
-    "trinsic.services.event.TemplateCreated.id": {
+    "trinsic.services.event.PingV1.message": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreated"
+      "parent": "trinsic.services.event.PingV1"
     },
-    "trinsic.services.event.TemplateCreated.name": {
+    "trinsic.services.event.PingV1.timestamp": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreated"
+      "parent": "trinsic.services.event.PingV1"
     },
-    "trinsic.services.event.TemplateCreated.type": {
+    "trinsic.services.event.PingV1.webhook_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreated"
+      "parent": "trinsic.services.event.PingV1"
+    },
+    "trinsic.services.event.TemplateCreatedV1": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.TemplateCreatedV1.created_by": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreatedV1"
+    },
+    "trinsic.services.event.TemplateCreatedV1.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreatedV1"
+    },
+    "trinsic.services.event.TemplateCreatedV1.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreatedV1"
+    },
+    "trinsic.services.event.TemplateCreatedV1.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreatedV1"
+    },
+    "trinsic.services.event.TemplateCreatedV1.timestamp": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreatedV1"
+    },
+    "trinsic.services.event.TemplateCreatedV1.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreatedV1"
     }
   },
   "files": {
@@ -3402,40 +3402,40 @@
       "services": [],
       "methods": [],
       "messages": [
-        "trinsic.services.event.Event",
         "trinsic.services.event.APICall",
-        "trinsic.services.event.Ping",
-        "trinsic.services.event.EGFCreated",
-        "trinsic.services.event.TemplateCreated",
-        "trinsic.services.event.ItemReceived"
+        "trinsic.services.event.PingV1",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1",
+        "trinsic.services.event.TemplateCreatedV1",
+        "trinsic.services.event.ItemReceivedV1"
       ],
       "fields": [
-        "trinsic.services.event.Event.id",
-        "trinsic.services.event.Event.type",
-        "trinsic.services.event.Event.timestamp",
-        "trinsic.services.event.Event.data",
         "trinsic.services.event.APICall.source",
         "trinsic.services.event.APICall.request",
         "trinsic.services.event.APICall.response",
-        "trinsic.services.event.Ping.id",
-        "trinsic.services.event.Ping.webhook_id",
-        "trinsic.services.event.Ping.timestamp",
-        "trinsic.services.event.Ping.message",
-        "trinsic.services.event.EGFCreated.id",
-        "trinsic.services.event.EGFCreated.ecosystem_id",
-        "trinsic.services.event.EGFCreated.trust_registry",
-        "trinsic.services.event.EGFCreated.governing_authority",
-        "trinsic.services.event.EGFCreated.type",
-        "trinsic.services.event.EGFCreated.name",
-        "trinsic.services.event.EGFCreated.description",
-        "trinsic.services.event.EGFCreated.governance_framework",
-        "trinsic.services.event.TemplateCreated.id",
-        "trinsic.services.event.TemplateCreated.ecosystem_id",
-        "trinsic.services.event.TemplateCreated.name",
-        "trinsic.services.event.TemplateCreated.type",
-        "trinsic.services.event.TemplateCreated.created_by",
-        "trinsic.services.event.ItemReceived.id",
-        "trinsic.services.event.ItemReceived.received"
+        "trinsic.services.event.PingV1.id",
+        "trinsic.services.event.PingV1.webhook_id",
+        "trinsic.services.event.PingV1.timestamp",
+        "trinsic.services.event.PingV1.message",
+        "trinsic.services.event.PingV1.ecosystem_id",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.id",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.type",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.name",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.description",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp",
+        "trinsic.services.event.TemplateCreatedV1.id",
+        "trinsic.services.event.TemplateCreatedV1.ecosystem_id",
+        "trinsic.services.event.TemplateCreatedV1.name",
+        "trinsic.services.event.TemplateCreatedV1.type",
+        "trinsic.services.event.TemplateCreatedV1.created_by",
+        "trinsic.services.event.TemplateCreatedV1.timestamp",
+        "trinsic.services.event.ItemReceivedV1.id",
+        "trinsic.services.event.ItemReceivedV1.received",
+        "trinsic.services.event.ItemReceivedV1.wallet_id",
+        "trinsic.services.event.ItemReceivedV1.ecosystem_id"
       ],
       "enums": [
         "trinsic.services.event.EventType"
@@ -3443,9 +3443,9 @@
       "enum_values": [
         "trinsic.services.event.EventType.PING",
         "trinsic.services.event.EventType.LOG",
-        "trinsic.services.event.EventType.EGF_CREATED",
-        "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED",
-        "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED",
+        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED",
+        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
+        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
         "trinsic.services.event.EventType.TEMPLATE_CREATED",
         "trinsic.services.event.EventType.TEMPLATE_DELETED",
         "trinsic.services.event.EventType.WALLET_CREATED",
@@ -5983,9 +5983,9 @@
       "messages": [],
       "enums": []
     },
-    "trinsic.services.event.EGFCreated": {
-      "name": "EGFCreated",
-      "full_name": "trinsic.services.event.EGFCreated",
+    "trinsic.services.event.GovernanceFrameworkCreatedV1": {
+      "name": "GovernanceFrameworkCreatedV1",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1",
       "description": "Entity Governance Framework created and attached to ecosystem",
       "options": {
         "trinsic.services.event.event_type": {
@@ -5994,34 +5994,22 @@
         }
       },
       "fields": [
-        "trinsic.services.event.EGFCreated.id",
-        "trinsic.services.event.EGFCreated.ecosystem_id",
-        "trinsic.services.event.EGFCreated.trust_registry",
-        "trinsic.services.event.EGFCreated.governing_authority",
-        "trinsic.services.event.EGFCreated.type",
-        "trinsic.services.event.EGFCreated.name",
-        "trinsic.services.event.EGFCreated.description",
-        "trinsic.services.event.EGFCreated.governance_framework"
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.id",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.type",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.name",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.description",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework",
+        "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp"
       ],
       "messages": [],
       "enums": []
     },
-    "trinsic.services.event.Event": {
-      "name": "Event",
-      "full_name": "trinsic.services.event.Event",
-      "description": "Event",
-      "fields": [
-        "trinsic.services.event.Event.id",
-        "trinsic.services.event.Event.type",
-        "trinsic.services.event.Event.timestamp",
-        "trinsic.services.event.Event.data"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "trinsic.services.event.ItemReceived": {
-      "name": "ItemReceived",
-      "full_name": "trinsic.services.event.ItemReceived",
+    "trinsic.services.event.ItemReceivedV1": {
+      "name": "ItemReceivedV1",
+      "full_name": "trinsic.services.event.ItemReceivedV1",
       "description": "Item inserted into wallet",
       "options": {
         "trinsic.services.event.event_type": {
@@ -6030,15 +6018,17 @@
         }
       },
       "fields": [
-        "trinsic.services.event.ItemReceived.id",
-        "trinsic.services.event.ItemReceived.received"
+        "trinsic.services.event.ItemReceivedV1.id",
+        "trinsic.services.event.ItemReceivedV1.received",
+        "trinsic.services.event.ItemReceivedV1.wallet_id",
+        "trinsic.services.event.ItemReceivedV1.ecosystem_id"
       ],
       "messages": [],
       "enums": []
     },
-    "trinsic.services.event.Ping": {
-      "name": "Ping",
-      "full_name": "trinsic.services.event.Ping",
+    "trinsic.services.event.PingV1": {
+      "name": "PingV1",
+      "full_name": "trinsic.services.event.PingV1",
       "description": "Webhook test event",
       "options": {
         "trinsic.services.event.event_type": {
@@ -6047,17 +6037,18 @@
         }
       },
       "fields": [
-        "trinsic.services.event.Ping.id",
-        "trinsic.services.event.Ping.webhook_id",
-        "trinsic.services.event.Ping.timestamp",
-        "trinsic.services.event.Ping.message"
+        "trinsic.services.event.PingV1.id",
+        "trinsic.services.event.PingV1.webhook_id",
+        "trinsic.services.event.PingV1.timestamp",
+        "trinsic.services.event.PingV1.message",
+        "trinsic.services.event.PingV1.ecosystem_id"
       ],
       "messages": [],
       "enums": []
     },
-    "trinsic.services.event.TemplateCreated": {
-      "name": "TemplateCreated",
-      "full_name": "trinsic.services.event.TemplateCreated",
+    "trinsic.services.event.TemplateCreatedV1": {
+      "name": "TemplateCreatedV1",
+      "full_name": "trinsic.services.event.TemplateCreatedV1",
       "description": "Template created in ecosystem",
       "options": {
         "trinsic.services.event.event_type": {
@@ -6066,11 +6057,12 @@
         }
       },
       "fields": [
-        "trinsic.services.event.TemplateCreated.id",
-        "trinsic.services.event.TemplateCreated.ecosystem_id",
-        "trinsic.services.event.TemplateCreated.name",
-        "trinsic.services.event.TemplateCreated.type",
-        "trinsic.services.event.TemplateCreated.created_by"
+        "trinsic.services.event.TemplateCreatedV1.id",
+        "trinsic.services.event.TemplateCreatedV1.ecosystem_id",
+        "trinsic.services.event.TemplateCreatedV1.name",
+        "trinsic.services.event.TemplateCreatedV1.type",
+        "trinsic.services.event.TemplateCreatedV1.created_by",
+        "trinsic.services.event.TemplateCreatedV1.timestamp"
       ],
       "messages": [],
       "enums": []
@@ -8329,185 +8321,193 @@
       "full_type": "string",
       "description": ""
     },
-    "trinsic.services.event.EGFCreated.description": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.description": {
       "name": "description",
-      "full_name": "trinsic.services.event.EGFCreated.description",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.description",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Description of the EGF"
     },
-    "trinsic.services.event.EGFCreated.ecosystem_id": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id": {
       "name": "ecosystem_id",
-      "full_name": "trinsic.services.event.EGFCreated.ecosystem_id",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "UUID of the ecosystem that owns this EGF"
     },
-    "trinsic.services.event.EGFCreated.governance_framework": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework": {
       "name": "governance_framework",
-      "full_name": "trinsic.services.event.EGFCreated.governance_framework",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "URI for the EGF"
     },
-    "trinsic.services.event.EGFCreated.governing_authority": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority": {
       "name": "governing_authority",
-      "full_name": "trinsic.services.event.EGFCreated.governing_authority",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Wallet ID of the authority for this EGF"
     },
-    "trinsic.services.event.EGFCreated.id": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.id": {
       "name": "id",
-      "full_name": "trinsic.services.event.EGFCreated.id",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "UUID of the governance framework"
     },
-    "trinsic.services.event.EGFCreated.name": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.name": {
       "name": "name",
-      "full_name": "trinsic.services.event.EGFCreated.name",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.name",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "User-friendly name for the EGF"
     },
-    "trinsic.services.event.EGFCreated.trust_registry": {
-      "name": "trust_registry",
-      "full_name": "trinsic.services.event.EGFCreated.trust_registry",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Trust registry associated with this EGF"
-    },
-    "trinsic.services.event.EGFCreated.type": {
-      "name": "type",
-      "full_name": "trinsic.services.event.EGFCreated.type",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Type of EGF"
-    },
-    "trinsic.services.event.Event.data": {
-      "name": "data",
-      "full_name": "trinsic.services.event.Event.data",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": "Event-specific payload, as an encoded protobuf message"
-    },
-    "trinsic.services.event.Event.id": {
-      "name": "id",
-      "full_name": "trinsic.services.event.Event.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of event"
-    },
-    "trinsic.services.event.Event.timestamp": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp": {
       "name": "timestamp",
-      "full_name": "trinsic.services.event.Event.timestamp",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
     },
-    "trinsic.services.event.Event.type": {
-      "name": "type",
-      "full_name": "trinsic.services.event.Event.type",
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry": {
+      "name": "trust_registry",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry",
       "label": "LABEL_OPTIONAL",
-      "type": "EventType",
-      "full_type": "trinsic.services.event.EventType",
-      "description": "Type of event"
+      "type": "string",
+      "full_type": "string",
+      "description": "Trust registry associated with this EGF"
     },
-    "trinsic.services.event.ItemReceived.id": {
+    "trinsic.services.event.GovernanceFrameworkCreatedV1.type": {
+      "name": "type",
+      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Type of EGF"
+    },
+    "trinsic.services.event.ItemReceivedV1.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "trinsic.services.event.ItemReceivedV1.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Ecosystem where this event originated, if any."
+    },
+    "trinsic.services.event.ItemReceivedV1.id": {
       "name": "id",
-      "full_name": "trinsic.services.event.ItemReceived.id",
+      "full_name": "trinsic.services.event.ItemReceivedV1.id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "UUID of the new item"
     },
-    "trinsic.services.event.ItemReceived.received": {
+    "trinsic.services.event.ItemReceivedV1.received": {
       "name": "received",
-      "full_name": "trinsic.services.event.ItemReceived.received",
+      "full_name": "trinsic.services.event.ItemReceivedV1.received",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
     },
-    "trinsic.services.event.Ping.id": {
+    "trinsic.services.event.ItemReceivedV1.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "trinsic.services.event.ItemReceivedV1.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of wallet"
+    },
+    "trinsic.services.event.PingV1.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "trinsic.services.event.PingV1.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Ecosystem where this event originated, if any."
+    },
+    "trinsic.services.event.PingV1.id": {
       "name": "id",
-      "full_name": "trinsic.services.event.Ping.id",
+      "full_name": "trinsic.services.event.PingV1.id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "UUID of this ping"
     },
-    "trinsic.services.event.Ping.message": {
+    "trinsic.services.event.PingV1.message": {
       "name": "message",
-      "full_name": "trinsic.services.event.Ping.message",
+      "full_name": "trinsic.services.event.PingV1.message",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Arbitrary message specified when ping was requested"
     },
-    "trinsic.services.event.Ping.timestamp": {
+    "trinsic.services.event.PingV1.timestamp": {
       "name": "timestamp",
-      "full_name": "trinsic.services.event.Ping.timestamp",
+      "full_name": "trinsic.services.event.PingV1.timestamp",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
     },
-    "trinsic.services.event.Ping.webhook_id": {
+    "trinsic.services.event.PingV1.webhook_id": {
       "name": "webhook_id",
-      "full_name": "trinsic.services.event.Ping.webhook_id",
+      "full_name": "trinsic.services.event.PingV1.webhook_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "UUID of the webhook receiving the ping"
     },
-    "trinsic.services.event.TemplateCreated.created_by": {
+    "trinsic.services.event.TemplateCreatedV1.created_by": {
       "name": "created_by",
-      "full_name": "trinsic.services.event.TemplateCreated.created_by",
+      "full_name": "trinsic.services.event.TemplateCreatedV1.created_by",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "WalletID that created the template"
     },
-    "trinsic.services.event.TemplateCreated.ecosystem_id": {
+    "trinsic.services.event.TemplateCreatedV1.ecosystem_id": {
       "name": "ecosystem_id",
-      "full_name": "trinsic.services.event.TemplateCreated.ecosystem_id",
+      "full_name": "trinsic.services.event.TemplateCreatedV1.ecosystem_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "UUID of the ecosystem that owns this template"
     },
-    "trinsic.services.event.TemplateCreated.id": {
+    "trinsic.services.event.TemplateCreatedV1.id": {
       "name": "id",
-      "full_name": "trinsic.services.event.TemplateCreated.id",
+      "full_name": "trinsic.services.event.TemplateCreatedV1.id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "UUID of the template"
     },
-    "trinsic.services.event.TemplateCreated.name": {
+    "trinsic.services.event.TemplateCreatedV1.name": {
       "name": "name",
-      "full_name": "trinsic.services.event.TemplateCreated.name",
+      "full_name": "trinsic.services.event.TemplateCreatedV1.name",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Template name"
     },
-    "trinsic.services.event.TemplateCreated.type": {
+    "trinsic.services.event.TemplateCreatedV1.timestamp": {
+      "name": "timestamp",
+      "full_name": "trinsic.services.event.TemplateCreatedV1.timestamp",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
+    },
+    "trinsic.services.event.TemplateCreatedV1.type": {
       "name": "type",
-      "full_name": "trinsic.services.event.TemplateCreated.type",
+      "full_name": "trinsic.services.event.TemplateCreatedV1.type",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
@@ -8609,9 +8609,9 @@
       "values": [
         "trinsic.services.event.EventType.PING",
         "trinsic.services.event.EventType.LOG",
-        "trinsic.services.event.EventType.EGF_CREATED",
-        "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED",
-        "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED",
+        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED",
+        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
+        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
         "trinsic.services.event.EventType.TEMPLATE_CREATED",
         "trinsic.services.event.EventType.TEMPLATE_DELETED",
         "trinsic.services.event.EventType.WALLET_CREATED",
@@ -8813,21 +8813,21 @@
       "description": "",
       "value": 17
     },
-    "trinsic.services.event.EventType.EGF_CREATED": {
-      "name": "EGF_CREATED",
-      "full_name": "trinsic.services.event.EventType.EGF_CREATED",
+    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED": {
+      "name": "GOVERNANCE_FRAMEWORK_CREATED",
+      "full_name": "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED",
       "description": "",
       "value": 5
     },
-    "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED": {
-      "name": "EGF_MEMBER_REGISTERED",
-      "full_name": "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED",
+    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED": {
+      "name": "GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
+      "full_name": "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
       "description": "",
       "value": 6
     },
-    "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED": {
-      "name": "EGF_MEMBER_UNREGISTERED",
-      "full_name": "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED",
+    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED": {
+      "name": "GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
+      "full_name": "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
       "description": "",
       "value": 7
     },

@@ -2,112 +2,10 @@
 # source: services/event/v1/event.proto
 # typed: strict
 
-class Trinsic::Services::Event::Event
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Trinsic::Services::Event::Event) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Trinsic::Services::Event::Event).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::Event) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Trinsic::Services::Event::Event, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
-  sig do
-    params(
-      id: T.nilable(String),
-      type: T.nilable(T.any(Symbol, String, Integer)),
-      timestamp: T.nilable(String),
-      data: T.nilable(String)
-    ).void
-  end
-  def initialize(
-    id: "",
-    type: :PING,
-    timestamp: "",
-    data: ""
-  )
-  end
-
-  sig { returns(String) }
-  def id
-  end
-
-  sig { params(value: String).void }
-  def id=(value)
-  end
-
-  sig { void }
-  def clear_id
-  end
-
-  sig { returns(Symbol) }
-  def type
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def type=(value)
-  end
-
-  sig { void }
-  def clear_type
-  end
-
-  sig { returns(String) }
-  def timestamp
-  end
-
-  sig { params(value: String).void }
-  def timestamp=(value)
-  end
-
-  sig { void }
-  def clear_timestamp
-  end
-
-  sig { returns(String) }
-  def data
-  end
-
-  sig { params(value: String).void }
-  def data=(value)
-  end
-
-  sig { void }
-  def clear_data
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-end
-
 class Trinsic::Services::Event::APICall
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Trinsic::Services::Event::APICall) }
   def self.decode(str)
@@ -125,7 +23,7 @@ class Trinsic::Services::Event::APICall
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -192,28 +90,28 @@ class Trinsic::Services::Event::APICall
   end
 end
 
-class Trinsic::Services::Event::Ping
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+class Trinsic::Services::Event::PingV1
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Trinsic::Services::Event::Ping) }
+  sig { params(str: String).returns(Trinsic::Services::Event::PingV1) }
   def self.decode(str)
   end
 
-  sig { params(msg: Trinsic::Services::Event::Ping).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::PingV1).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::Ping) }
+  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::PingV1) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Trinsic::Services::Event::Ping, kw: T.untyped).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::PingV1, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -222,14 +120,16 @@ class Trinsic::Services::Event::Ping
       id: T.nilable(String),
       webhook_id: T.nilable(String),
       timestamp: T.nilable(String),
-      message: T.nilable(String)
+      message: T.nilable(String),
+      ecosystem_id: T.nilable(String)
     ).void
   end
   def initialize(
     id: "",
     webhook_id: "",
     timestamp: "",
-    message: ""
+    message: "",
+    ecosystem_id: ""
   )
   end
 
@@ -281,6 +181,18 @@ class Trinsic::Services::Event::Ping
   def clear_message
   end
 
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -294,28 +206,28 @@ class Trinsic::Services::Event::Ping
   end
 end
 
-class Trinsic::Services::Event::EGFCreated
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+class Trinsic::Services::Event::GovernanceFrameworkCreatedV1
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Trinsic::Services::Event::EGFCreated) }
+  sig { params(str: String).returns(Trinsic::Services::Event::GovernanceFrameworkCreatedV1) }
   def self.decode(str)
   end
 
-  sig { params(msg: Trinsic::Services::Event::EGFCreated).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::GovernanceFrameworkCreatedV1).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::EGFCreated) }
+  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::GovernanceFrameworkCreatedV1) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Trinsic::Services::Event::EGFCreated, kw: T.untyped).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::GovernanceFrameworkCreatedV1, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -328,7 +240,8 @@ class Trinsic::Services::Event::EGFCreated
       type: T.nilable(String),
       name: T.nilable(String),
       description: T.nilable(String),
-      governance_framework: T.nilable(String)
+      governance_framework: T.nilable(String),
+      timestamp: T.nilable(String)
     ).void
   end
   def initialize(
@@ -339,7 +252,8 @@ class Trinsic::Services::Event::EGFCreated
     type: "",
     name: "",
     description: "",
-    governance_framework: ""
+    governance_framework: "",
+    timestamp: ""
   )
   end
 
@@ -439,6 +353,18 @@ class Trinsic::Services::Event::EGFCreated
   def clear_governance_framework
   end
 
+  sig { returns(String) }
+  def timestamp
+  end
+
+  sig { params(value: String).void }
+  def timestamp=(value)
+  end
+
+  sig { void }
+  def clear_timestamp
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -452,28 +378,28 @@ class Trinsic::Services::Event::EGFCreated
   end
 end
 
-class Trinsic::Services::Event::TemplateCreated
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+class Trinsic::Services::Event::TemplateCreatedV1
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Trinsic::Services::Event::TemplateCreated) }
+  sig { params(str: String).returns(Trinsic::Services::Event::TemplateCreatedV1) }
   def self.decode(str)
   end
 
-  sig { params(msg: Trinsic::Services::Event::TemplateCreated).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::TemplateCreatedV1).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::TemplateCreated) }
+  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::TemplateCreatedV1) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Trinsic::Services::Event::TemplateCreated, kw: T.untyped).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::TemplateCreatedV1, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -483,7 +409,8 @@ class Trinsic::Services::Event::TemplateCreated
       ecosystem_id: T.nilable(String),
       name: T.nilable(String),
       type: T.nilable(String),
-      created_by: T.nilable(String)
+      created_by: T.nilable(String),
+      timestamp: T.nilable(String)
     ).void
   end
   def initialize(
@@ -491,7 +418,8 @@ class Trinsic::Services::Event::TemplateCreated
     ecosystem_id: "",
     name: "",
     type: "",
-    created_by: ""
+    created_by: "",
+    timestamp: ""
   )
   end
 
@@ -555,6 +483,18 @@ class Trinsic::Services::Event::TemplateCreated
   def clear_created_by
   end
 
+  sig { returns(String) }
+  def timestamp
+  end
+
+  sig { params(value: String).void }
+  def timestamp=(value)
+  end
+
+  sig { void }
+  def clear_timestamp
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -568,40 +508,44 @@ class Trinsic::Services::Event::TemplateCreated
   end
 end
 
-class Trinsic::Services::Event::ItemReceived
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+class Trinsic::Services::Event::ItemReceivedV1
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Trinsic::Services::Event::ItemReceived) }
+  sig { params(str: String).returns(Trinsic::Services::Event::ItemReceivedV1) }
   def self.decode(str)
   end
 
-  sig { params(msg: Trinsic::Services::Event::ItemReceived).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::ItemReceivedV1).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::ItemReceived) }
+  sig { params(str: String, kw: T.untyped).returns(Trinsic::Services::Event::ItemReceivedV1) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Trinsic::Services::Event::ItemReceived, kw: T.untyped).returns(String) }
+  sig { params(msg: Trinsic::Services::Event::ItemReceivedV1, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
   sig do
     params(
       id: T.nilable(String),
-      received: T.nilable(String)
+      received: T.nilable(String),
+      wallet_id: T.nilable(String),
+      ecosystem_id: T.nilable(String)
     ).void
   end
   def initialize(
     id: "",
-    received: ""
+    received: "",
+    wallet_id: "",
+    ecosystem_id: ""
   )
   end
 
@@ -629,6 +573,30 @@ class Trinsic::Services::Event::ItemReceived
   def clear_received
   end
 
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -645,9 +613,9 @@ end
 module Trinsic::Services::Event::EventType
   self::PING = T.let(0, Integer)
   self::LOG = T.let(1, Integer)
-  self::EGF_CREATED = T.let(5, Integer)
-  self::EGF_MEMBER_REGISTERED = T.let(6, Integer)
-  self::EGF_MEMBER_UNREGISTERED = T.let(7, Integer)
+  self::GOVERNANCE_FRAMEWORK_CREATED = T.let(5, Integer)
+  self::GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = T.let(6, Integer)
+  self::GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = T.let(7, Integer)
   self::TEMPLATE_CREATED = T.let(10, Integer)
   self::TEMPLATE_DELETED = T.let(11, Integer)
   self::WALLET_CREATED = T.let(15, Integer)

@@ -20,21 +20,21 @@ class EventType extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'LOG');
-  static const EventType EGF_CREATED = EventType._(
+  static const EventType GOVERNANCE_FRAMEWORK_CREATED = EventType._(
       5,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
-          : 'EGF_CREATED');
-  static const EventType EGF_MEMBER_REGISTERED = EventType._(
+          : 'GOVERNANCE_FRAMEWORK_CREATED');
+  static const EventType GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = EventType._(
       6,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
-          : 'EGF_MEMBER_REGISTERED');
-  static const EventType EGF_MEMBER_UNREGISTERED = EventType._(
+          : 'GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED');
+  static const EventType GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = EventType._(
       7,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
-          : 'EGF_MEMBER_UNREGISTERED');
+          : 'GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED');
   static const EventType TEMPLATE_CREATED = EventType._(
       10,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
@@ -64,9 +64,9 @@ class EventType extends $pb.ProtobufEnum {
   static const $core.List<EventType> values = <EventType>[
     PING,
     LOG,
-    EGF_CREATED,
-    EGF_MEMBER_REGISTERED,
-    EGF_MEMBER_UNREGISTERED,
+    GOVERNANCE_FRAMEWORK_CREATED,
+    GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED,
+    GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED,
     TEMPLATE_CREATED,
     TEMPLATE_DELETED,
     WALLET_CREATED,

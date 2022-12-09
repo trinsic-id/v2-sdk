@@ -10,19 +10,19 @@ package trinsic.services.event.v1;
  * Entity Governance Framework created and attached to ecosystem
  * </pre>
  *
- * Protobuf type {@code trinsic.services.event.EGFCreated}
+ * Protobuf type {@code trinsic.services.event.GovernanceFrameworkCreatedV1}
  */
-public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
+public final class GovernanceFrameworkCreatedV1 extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:trinsic.services.event.EGFCreated)
-    EGFCreatedOrBuilder {
+    // @@protoc_insertion_point(message_implements:trinsic.services.event.GovernanceFrameworkCreatedV1)
+    GovernanceFrameworkCreatedV1OrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use EGFCreated.newBuilder() to construct.
-  private EGFCreated(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GovernanceFrameworkCreatedV1.newBuilder() to construct.
+  private GovernanceFrameworkCreatedV1(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private EGFCreated() {
+  private GovernanceFrameworkCreatedV1() {
     id_ = "";
     ecosystemId_ = "";
     trustRegistry_ = "";
@@ -31,12 +31,13 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     name_ = "";
     description_ = "";
     governanceFramework_ = "";
+    timestamp_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new EGFCreated();
+    return new GovernanceFrameworkCreatedV1();
   }
 
   @java.lang.Override
@@ -45,18 +46,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_EGFCreated_descriptor;
+    return trinsic.services.event.v1.Event
+        .internal_static_trinsic_services_event_GovernanceFrameworkCreatedV1_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable
+    return trinsic.services.event.v1.Event
+        .internal_static_trinsic_services_event_GovernanceFrameworkCreatedV1_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.event.v1.EGFCreated.class,
-            trinsic.services.event.v1.EGFCreated.Builder.class);
+            trinsic.services.event.v1.GovernanceFrameworkCreatedV1.class,
+            trinsic.services.event.v1.GovernanceFrameworkCreatedV1.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
@@ -451,6 +452,55 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
+  public static final int TIMESTAMP_FIELD_NUMBER = 9;
+  private volatile java.lang.Object timestamp_;
+  /**
+   *
+   *
+   * <pre>
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+   * </pre>
+   *
+   * <code>string timestamp = 9;</code>
+   *
+   * @return The timestamp.
+   */
+  @java.lang.Override
+  public java.lang.String getTimestamp() {
+    java.lang.Object ref = timestamp_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      timestamp_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+   * </pre>
+   *
+   * <code>string timestamp = 9;</code>
+   *
+   * @return The bytes for timestamp.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getTimestampBytes() {
+    java.lang.Object ref = timestamp_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      timestamp_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -489,6 +539,9 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFramework_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, governanceFramework_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(timestamp_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, timestamp_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -522,6 +575,9 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFramework_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, governanceFramework_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(timestamp_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, timestamp_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -532,10 +588,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.event.v1.EGFCreated)) {
+    if (!(obj instanceof trinsic.services.event.v1.GovernanceFrameworkCreatedV1)) {
       return super.equals(obj);
     }
-    trinsic.services.event.v1.EGFCreated other = (trinsic.services.event.v1.EGFCreated) obj;
+    trinsic.services.event.v1.GovernanceFrameworkCreatedV1 other =
+        (trinsic.services.event.v1.GovernanceFrameworkCreatedV1) obj;
 
     if (!getId().equals(other.getId())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
@@ -545,6 +602,7 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (!getName().equals(other.getName())) return false;
     if (!getDescription().equals(other.getDescription())) return false;
     if (!getGovernanceFramework().equals(other.getGovernanceFramework())) return false;
+    if (!getTimestamp().equals(other.getTimestamp())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -572,75 +630,78 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + getDescription().hashCode();
     hash = (37 * hash) + GOVERNANCE_FRAMEWORK_FIELD_NUMBER;
     hash = (53 * hash) + getGovernanceFramework().hashCode();
+    hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+    hash = (53 * hash) + getTimestamp().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(com.google.protobuf.ByteString data)
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(byte[] data)
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
+      java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseDelimitedFrom(
+      java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseDelimitedFrom(
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -657,7 +718,8 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(trinsic.services.event.v1.EGFCreated prototype) {
+  public static Builder newBuilder(
+      trinsic.services.event.v1.GovernanceFrameworkCreatedV1 prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -678,28 +740,28 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
    * Entity Governance Framework created and attached to ecosystem
    * </pre>
    *
-   * Protobuf type {@code trinsic.services.event.EGFCreated}
+   * Protobuf type {@code trinsic.services.event.GovernanceFrameworkCreatedV1}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:trinsic.services.event.EGFCreated)
-      trinsic.services.event.v1.EGFCreatedOrBuilder {
+      // @@protoc_insertion_point(builder_implements:trinsic.services.event.GovernanceFrameworkCreatedV1)
+      trinsic.services.event.v1.GovernanceFrameworkCreatedV1OrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_EGFCreated_descriptor;
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_GovernanceFrameworkCreatedV1_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_GovernanceFrameworkCreatedV1_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.event.v1.EGFCreated.class,
-              trinsic.services.event.v1.EGFCreated.Builder.class);
+              trinsic.services.event.v1.GovernanceFrameworkCreatedV1.class,
+              trinsic.services.event.v1.GovernanceFrameworkCreatedV1.Builder.class);
     }
 
-    // Construct using trinsic.services.event.v1.EGFCreated.newBuilder()
+    // Construct using trinsic.services.event.v1.GovernanceFrameworkCreatedV1.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -725,23 +787,25 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
       governanceFramework_ = "";
 
+      timestamp_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_EGFCreated_descriptor;
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_GovernanceFrameworkCreatedV1_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.EGFCreated getDefaultInstanceForType() {
-      return trinsic.services.event.v1.EGFCreated.getDefaultInstance();
+    public trinsic.services.event.v1.GovernanceFrameworkCreatedV1 getDefaultInstanceForType() {
+      return trinsic.services.event.v1.GovernanceFrameworkCreatedV1.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.EGFCreated build() {
-      trinsic.services.event.v1.EGFCreated result = buildPartial();
+    public trinsic.services.event.v1.GovernanceFrameworkCreatedV1 build() {
+      trinsic.services.event.v1.GovernanceFrameworkCreatedV1 result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -749,8 +813,9 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.EGFCreated buildPartial() {
-      trinsic.services.event.v1.EGFCreated result = new trinsic.services.event.v1.EGFCreated(this);
+    public trinsic.services.event.v1.GovernanceFrameworkCreatedV1 buildPartial() {
+      trinsic.services.event.v1.GovernanceFrameworkCreatedV1 result =
+          new trinsic.services.event.v1.GovernanceFrameworkCreatedV1(this);
       result.id_ = id_;
       result.ecosystemId_ = ecosystemId_;
       result.trustRegistry_ = trustRegistry_;
@@ -759,6 +824,7 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       result.name_ = name_;
       result.description_ = description_;
       result.governanceFramework_ = governanceFramework_;
+      result.timestamp_ = timestamp_;
       onBuilt();
       return result;
     }
@@ -798,16 +864,17 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.event.v1.EGFCreated) {
-        return mergeFrom((trinsic.services.event.v1.EGFCreated) other);
+      if (other instanceof trinsic.services.event.v1.GovernanceFrameworkCreatedV1) {
+        return mergeFrom((trinsic.services.event.v1.GovernanceFrameworkCreatedV1) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.event.v1.EGFCreated other) {
-      if (other == trinsic.services.event.v1.EGFCreated.getDefaultInstance()) return this;
+    public Builder mergeFrom(trinsic.services.event.v1.GovernanceFrameworkCreatedV1 other) {
+      if (other == trinsic.services.event.v1.GovernanceFrameworkCreatedV1.getDefaultInstance())
+        return this;
       if (!other.getId().isEmpty()) {
         id_ = other.id_;
         onChanged();
@@ -838,6 +905,10 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
       if (!other.getGovernanceFramework().isEmpty()) {
         governanceFramework_ = other.governanceFramework_;
+        onChanged();
+      }
+      if (!other.getTimestamp().isEmpty()) {
+        timestamp_ = other.timestamp_;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -914,6 +985,12 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 66
+            case 74:
+              {
+                timestamp_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 74
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1779,6 +1856,112 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
+    private java.lang.Object timestamp_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 9;</code>
+     *
+     * @return The timestamp.
+     */
+    public java.lang.String getTimestamp() {
+      java.lang.Object ref = timestamp_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timestamp_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 9;</code>
+     *
+     * @return The bytes for timestamp.
+     */
+    public com.google.protobuf.ByteString getTimestampBytes() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        timestamp_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 9;</code>
+     *
+     * @param value The timestamp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTimestamp(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      timestamp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 9;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearTimestamp() {
+
+      timestamp_ = getDefaultInstance().getTimestamp();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 9;</code>
+     *
+     * @param value The bytes for timestamp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTimestampBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      timestamp_ = value;
+      onChanged();
+      return this;
+    }
+
     @java.lang.Override
     public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
@@ -1790,24 +1973,24 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:trinsic.services.event.EGFCreated)
+    // @@protoc_insertion_point(builder_scope:trinsic.services.event.GovernanceFrameworkCreatedV1)
   }
 
-  // @@protoc_insertion_point(class_scope:trinsic.services.event.EGFCreated)
-  private static final trinsic.services.event.v1.EGFCreated DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:trinsic.services.event.GovernanceFrameworkCreatedV1)
+  private static final trinsic.services.event.v1.GovernanceFrameworkCreatedV1 DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.event.v1.EGFCreated();
+    DEFAULT_INSTANCE = new trinsic.services.event.v1.GovernanceFrameworkCreatedV1();
   }
 
-  public static trinsic.services.event.v1.EGFCreated getDefaultInstance() {
+  public static trinsic.services.event.v1.GovernanceFrameworkCreatedV1 getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EGFCreated> PARSER =
-      new com.google.protobuf.AbstractParser<EGFCreated>() {
+  private static final com.google.protobuf.Parser<GovernanceFrameworkCreatedV1> PARSER =
+      new com.google.protobuf.AbstractParser<GovernanceFrameworkCreatedV1>() {
         @java.lang.Override
-        public EGFCreated parsePartialFrom(
+        public GovernanceFrameworkCreatedV1 parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1826,17 +2009,17 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
         }
       };
 
-  public static com.google.protobuf.Parser<EGFCreated> parser() {
+  public static com.google.protobuf.Parser<GovernanceFrameworkCreatedV1> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<EGFCreated> getParserForType() {
+  public com.google.protobuf.Parser<GovernanceFrameworkCreatedV1> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.event.v1.EGFCreated getDefaultInstanceForType() {
+  public trinsic.services.event.v1.GovernanceFrameworkCreatedV1 getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

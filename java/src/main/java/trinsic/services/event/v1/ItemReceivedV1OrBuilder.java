@@ -3,9 +3,9 @@
 
 package trinsic.services.event.v1;
 
-public interface ItemReceivedOrBuilder
+public interface ItemReceivedV1OrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:trinsic.services.event.ItemReceived)
+    // @@protoc_insertion_point(interface_extends:trinsic.services.event.ItemReceivedV1)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -57,4 +57,54 @@ public interface ItemReceivedOrBuilder
    * @return The bytes for received.
    */
   com.google.protobuf.ByteString getReceivedBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * ID of wallet
+   * </pre>
+   *
+   * <code>string wallet_id = 3;</code>
+   *
+   * @return The walletId.
+   */
+  java.lang.String getWalletId();
+  /**
+   *
+   *
+   * <pre>
+   * ID of wallet
+   * </pre>
+   *
+   * <code>string wallet_id = 3;</code>
+   *
+   * @return The bytes for walletId.
+   */
+  com.google.protobuf.ByteString getWalletIdBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem where this event originated, if any.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 4;</code>
+   *
+   * @return The ecosystemId.
+   */
+  java.lang.String getEcosystemId();
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem where this event originated, if any.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 4;</code>
+   *
+   * @return The bytes for ecosystemId.
+   */
+  com.google.protobuf.ByteString getEcosystemIdBytes();
 }

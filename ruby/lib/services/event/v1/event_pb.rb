@@ -7,24 +7,19 @@ require 'google/protobuf/descriptor_pb'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/event/v1/event.proto", :syntax => :proto3) do
-    add_message "trinsic.services.event.Event" do
-      optional :id, :string, 1
-      optional :type, :enum, 2, "trinsic.services.event.EventType"
-      optional :timestamp, :string, 3
-      optional :data, :bytes, 4
-    end
     add_message "trinsic.services.event.APICall" do
       optional :source, :string, 1
       optional :request, :bytes, 2
       optional :response, :bytes, 3
     end
-    add_message "trinsic.services.event.Ping" do
+    add_message "trinsic.services.event.PingV1" do
       optional :id, :string, 1
       optional :webhook_id, :string, 2
       optional :timestamp, :string, 3
       optional :message, :string, 4
+      optional :ecosystem_id, :string, 5
     end
-    add_message "trinsic.services.event.EGFCreated" do
+    add_message "trinsic.services.event.GovernanceFrameworkCreatedV1" do
       optional :id, :string, 1
       optional :ecosystem_id, :string, 2
       optional :trust_registry, :string, 3
@@ -33,24 +28,28 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 6
       optional :description, :string, 7
       optional :governance_framework, :string, 8
+      optional :timestamp, :string, 9
     end
-    add_message "trinsic.services.event.TemplateCreated" do
+    add_message "trinsic.services.event.TemplateCreatedV1" do
       optional :id, :string, 1
       optional :ecosystem_id, :string, 2
       optional :name, :string, 3
       optional :type, :string, 4
       optional :created_by, :string, 5
+      optional :timestamp, :string, 6
     end
-    add_message "trinsic.services.event.ItemReceived" do
+    add_message "trinsic.services.event.ItemReceivedV1" do
       optional :id, :string, 1
       optional :received, :string, 2
+      optional :wallet_id, :string, 3
+      optional :ecosystem_id, :string, 4
     end
     add_enum "trinsic.services.event.EventType" do
       value :PING, 0
       value :LOG, 1
-      value :EGF_CREATED, 5
-      value :EGF_MEMBER_REGISTERED, 6
-      value :EGF_MEMBER_UNREGISTERED, 7
+      value :GOVERNANCE_FRAMEWORK_CREATED, 5
+      value :GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED, 6
+      value :GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED, 7
       value :TEMPLATE_CREATED, 10
       value :TEMPLATE_DELETED, 11
       value :WALLET_CREATED, 15
@@ -63,12 +62,11 @@ end
 module Trinsic
   module Services
     module Event
-      Event = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.Event").msgclass
       APICall = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.APICall").msgclass
-      Ping = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.Ping").msgclass
-      EGFCreated = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.EGFCreated").msgclass
-      TemplateCreated = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.TemplateCreated").msgclass
-      ItemReceived = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.ItemReceived").msgclass
+      PingV1 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.PingV1").msgclass
+      GovernanceFrameworkCreatedV1 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.GovernanceFrameworkCreatedV1").msgclass
+      TemplateCreatedV1 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.TemplateCreatedV1").msgclass
+      ItemReceivedV1 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.ItemReceivedV1").msgclass
       EventType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.event.EventType").enummodule
     end
   end
