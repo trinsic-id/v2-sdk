@@ -3,9 +3,9 @@
 # typed: strict
 
 class Services::Universalwallet::V1::SearchRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::SearchRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Services::Universalwallet::V1::SearchRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -77,9 +77,9 @@ class Services::Universalwallet::V1::SearchRequest
 end
 
 class Services::Universalwallet::V1::SearchResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::SearchResponse) }
   def self.decode(str)
@@ -97,7 +97,7 @@ class Services::Universalwallet::V1::SearchResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -119,7 +119,7 @@ class Services::Universalwallet::V1::SearchResponse
   def items
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def items=(value)
   end
 
@@ -165,9 +165,9 @@ class Services::Universalwallet::V1::SearchResponse
 end
 
 class Services::Universalwallet::V1::GetItemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::GetItemRequest) }
   def self.decode(str)
@@ -185,7 +185,7 @@ class Services::Universalwallet::V1::GetItemRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -225,9 +225,9 @@ class Services::Universalwallet::V1::GetItemRequest
 end
 
 class Services::Universalwallet::V1::GetItemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::GetItemResponse) }
   def self.decode(str)
@@ -245,7 +245,7 @@ class Services::Universalwallet::V1::GetItemResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -299,9 +299,9 @@ class Services::Universalwallet::V1::GetItemResponse
 end
 
 class Services::Universalwallet::V1::UpdateItemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::UpdateItemRequest) }
   def self.decode(str)
@@ -319,7 +319,7 @@ class Services::Universalwallet::V1::UpdateItemRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -373,9 +373,9 @@ class Services::Universalwallet::V1::UpdateItemRequest
 end
 
 class Services::Universalwallet::V1::UpdateItemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::UpdateItemResponse) }
   def self.decode(str)
@@ -393,7 +393,7 @@ class Services::Universalwallet::V1::UpdateItemResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -414,9 +414,9 @@ class Services::Universalwallet::V1::UpdateItemResponse
 end
 
 class Services::Universalwallet::V1::InsertItemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::InsertItemRequest) }
   def self.decode(str)
@@ -434,7 +434,7 @@ class Services::Universalwallet::V1::InsertItemRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -488,9 +488,9 @@ class Services::Universalwallet::V1::InsertItemRequest
 end
 
 class Services::Universalwallet::V1::InsertItemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::InsertItemResponse) }
   def self.decode(str)
@@ -508,7 +508,7 @@ class Services::Universalwallet::V1::InsertItemResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -548,9 +548,9 @@ class Services::Universalwallet::V1::InsertItemResponse
 end
 
 class Services::Universalwallet::V1::DeleteItemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::DeleteItemRequest) }
   def self.decode(str)
@@ -568,7 +568,7 @@ class Services::Universalwallet::V1::DeleteItemRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -608,9 +608,9 @@ class Services::Universalwallet::V1::DeleteItemRequest
 end
 
 class Services::Universalwallet::V1::DeleteItemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Universalwallet::V1::DeleteItemResponse) }
   def self.decode(str)
@@ -628,7 +628,7 @@ class Services::Universalwallet::V1::DeleteItemResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

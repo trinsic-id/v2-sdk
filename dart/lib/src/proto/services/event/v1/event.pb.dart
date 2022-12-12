@@ -13,140 +13,6 @@ import 'event.pbenum.dart';
 
 export 'event.pbenum.dart';
 
-class Event extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Event',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'trinsic.services.event'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'id')
-    ..e<EventType>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'type',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: EventType.PING,
-        valueOf: EventType.valueOf,
-        enumValues: EventType.values)
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'timestamp')
-    ..a<$core.List<$core.int>>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
-  Event._() : super();
-  factory Event({
-    $core.String? id,
-    EventType? type,
-    $core.String? timestamp,
-    $core.List<$core.int>? data,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (type != null) {
-      _result.type = type;
-    }
-    if (timestamp != null) {
-      _result.timestamp = timestamp;
-    }
-    if (data != null) {
-      _result.data = data;
-    }
-    return _result;
-  }
-  factory Event.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Event.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  Event clone() => Event()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  Event copyWith(void Function(Event) updates) =>
-      super.copyWith((message) => updates(message as Event))
-          as Event; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static Event create() => Event._();
-  Event createEmptyInstance() => create();
-  static $pb.PbList<Event> createRepeated() => $pb.PbList<Event>();
-  @$core.pragma('dart2js:noInline')
-  static Event getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Event>(create);
-  static Event? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  EventType get type => $_getN(1);
-  @$pb.TagNumber(2)
-  set type(EventType v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasType() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearType() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get timestamp => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set timestamp($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasTimestamp() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearTimestamp() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.List<$core.int> get data => $_getN(3);
-  @$pb.TagNumber(4)
-  set data($core.List<$core.int> v) {
-    $_setBytes(3, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasData() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearData() => clearField(4);
-}
-
 class APICall extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -257,11 +123,11 @@ class APICall extends $pb.GeneratedMessage {
   void clearResponse() => clearField(3);
 }
 
-class Ping extends $pb.GeneratedMessage {
+class PingV1 extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'Ping',
+          : 'PingV1',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -287,14 +153,20 @@ class Ping extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'message')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
     ..hasRequiredFields = false;
 
-  Ping._() : super();
-  factory Ping({
+  PingV1._() : super();
+  factory PingV1({
     $core.String? id,
     $core.String? webhookId,
     $core.String? timestamp,
     $core.String? message,
+    $core.String? ecosystemId,
   }) {
     final _result = create();
     if (id != null) {
@@ -309,33 +181,36 @@ class Ping extends $pb.GeneratedMessage {
     if (message != null) {
       _result.message = message;
     }
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
+    }
     return _result;
   }
-  factory Ping.fromBuffer($core.List<$core.int> i,
+  factory PingV1.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Ping.fromJson($core.String i,
+  factory PingV1.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  Ping clone() => Ping()..mergeFromMessage(this);
+  PingV1 clone() => PingV1()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  Ping copyWith(void Function(Ping) updates) =>
-      super.copyWith((message) => updates(message as Ping))
-          as Ping; // ignore: deprecated_member_use
+  PingV1 copyWith(void Function(PingV1) updates) =>
+      super.copyWith((message) => updates(message as PingV1))
+          as PingV1; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static Ping create() => Ping._();
-  Ping createEmptyInstance() => create();
-  static $pb.PbList<Ping> createRepeated() => $pb.PbList<Ping>();
+  static PingV1 create() => PingV1._();
+  PingV1 createEmptyInstance() => create();
+  static $pb.PbList<PingV1> createRepeated() => $pb.PbList<PingV1>();
   @$core.pragma('dart2js:noInline')
-  static Ping getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Ping>(create);
-  static Ping? _defaultInstance;
+  static PingV1 getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PingV1>(create);
+  static PingV1? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -384,13 +259,25 @@ class Ping extends $pb.GeneratedMessage {
   $core.bool hasMessage() => $_has(3);
   @$pb.TagNumber(4)
   void clearMessage() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get ecosystemId => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set ecosystemId($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasEcosystemId() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearEcosystemId() => clearField(5);
 }
 
-class EGFCreated extends $pb.GeneratedMessage {
+class GovernanceFrameworkCreatedV1 extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'EGFCreated',
+          : 'GovernanceFrameworkCreatedV1',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -436,10 +323,15 @@ class EGFCreated extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'governanceFramework')
+    ..aOS(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'timestamp')
     ..hasRequiredFields = false;
 
-  EGFCreated._() : super();
-  factory EGFCreated({
+  GovernanceFrameworkCreatedV1._() : super();
+  factory GovernanceFrameworkCreatedV1({
     $core.String? id,
     $core.String? ecosystemId,
     $core.String? trustRegistry,
@@ -448,6 +340,7 @@ class EGFCreated extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     $core.String? governanceFramework,
+    $core.String? timestamp,
   }) {
     final _result = create();
     if (id != null) {
@@ -474,33 +367,41 @@ class EGFCreated extends $pb.GeneratedMessage {
     if (governanceFramework != null) {
       _result.governanceFramework = governanceFramework;
     }
+    if (timestamp != null) {
+      _result.timestamp = timestamp;
+    }
     return _result;
   }
-  factory EGFCreated.fromBuffer($core.List<$core.int> i,
+  factory GovernanceFrameworkCreatedV1.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory EGFCreated.fromJson($core.String i,
+  factory GovernanceFrameworkCreatedV1.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  EGFCreated clone() => EGFCreated()..mergeFromMessage(this);
+  GovernanceFrameworkCreatedV1 clone() =>
+      GovernanceFrameworkCreatedV1()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  EGFCreated copyWith(void Function(EGFCreated) updates) =>
-      super.copyWith((message) => updates(message as EGFCreated))
-          as EGFCreated; // ignore: deprecated_member_use
+  GovernanceFrameworkCreatedV1 copyWith(
+          void Function(GovernanceFrameworkCreatedV1) updates) =>
+      super.copyWith(
+              (message) => updates(message as GovernanceFrameworkCreatedV1))
+          as GovernanceFrameworkCreatedV1; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static EGFCreated create() => EGFCreated._();
-  EGFCreated createEmptyInstance() => create();
-  static $pb.PbList<EGFCreated> createRepeated() => $pb.PbList<EGFCreated>();
+  static GovernanceFrameworkCreatedV1 create() =>
+      GovernanceFrameworkCreatedV1._();
+  GovernanceFrameworkCreatedV1 createEmptyInstance() => create();
+  static $pb.PbList<GovernanceFrameworkCreatedV1> createRepeated() =>
+      $pb.PbList<GovernanceFrameworkCreatedV1>();
   @$core.pragma('dart2js:noInline')
-  static EGFCreated getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<EGFCreated>(create);
-  static EGFCreated? _defaultInstance;
+  static GovernanceFrameworkCreatedV1 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GovernanceFrameworkCreatedV1>(create);
+  static GovernanceFrameworkCreatedV1? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -597,13 +498,25 @@ class EGFCreated extends $pb.GeneratedMessage {
   $core.bool hasGovernanceFramework() => $_has(7);
   @$pb.TagNumber(8)
   void clearGovernanceFramework() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get timestamp => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set timestamp($core.String v) {
+    $_setString(8, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasTimestamp() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearTimestamp() => clearField(9);
 }
 
-class TemplateCreated extends $pb.GeneratedMessage {
+class TemplateCreatedV1 extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'TemplateCreated',
+          : 'TemplateCreatedV1',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -634,15 +547,21 @@ class TemplateCreated extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'createdBy')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'timestamp')
     ..hasRequiredFields = false;
 
-  TemplateCreated._() : super();
-  factory TemplateCreated({
+  TemplateCreatedV1._() : super();
+  factory TemplateCreatedV1({
     $core.String? id,
     $core.String? ecosystemId,
     $core.String? name,
     $core.String? type,
     $core.String? createdBy,
+    $core.String? timestamp,
   }) {
     final _result = create();
     if (id != null) {
@@ -660,34 +579,37 @@ class TemplateCreated extends $pb.GeneratedMessage {
     if (createdBy != null) {
       _result.createdBy = createdBy;
     }
+    if (timestamp != null) {
+      _result.timestamp = timestamp;
+    }
     return _result;
   }
-  factory TemplateCreated.fromBuffer($core.List<$core.int> i,
+  factory TemplateCreatedV1.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory TemplateCreated.fromJson($core.String i,
+  factory TemplateCreatedV1.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  TemplateCreated clone() => TemplateCreated()..mergeFromMessage(this);
+  TemplateCreatedV1 clone() => TemplateCreatedV1()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  TemplateCreated copyWith(void Function(TemplateCreated) updates) =>
-      super.copyWith((message) => updates(message as TemplateCreated))
-          as TemplateCreated; // ignore: deprecated_member_use
+  TemplateCreatedV1 copyWith(void Function(TemplateCreatedV1) updates) =>
+      super.copyWith((message) => updates(message as TemplateCreatedV1))
+          as TemplateCreatedV1; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static TemplateCreated create() => TemplateCreated._();
-  TemplateCreated createEmptyInstance() => create();
-  static $pb.PbList<TemplateCreated> createRepeated() =>
-      $pb.PbList<TemplateCreated>();
+  static TemplateCreatedV1 create() => TemplateCreatedV1._();
+  TemplateCreatedV1 createEmptyInstance() => create();
+  static $pb.PbList<TemplateCreatedV1> createRepeated() =>
+      $pb.PbList<TemplateCreatedV1>();
   @$core.pragma('dart2js:noInline')
-  static TemplateCreated getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TemplateCreated>(create);
-  static TemplateCreated? _defaultInstance;
+  static TemplateCreatedV1 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TemplateCreatedV1>(create);
+  static TemplateCreatedV1? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -748,13 +670,25 @@ class TemplateCreated extends $pb.GeneratedMessage {
   $core.bool hasCreatedBy() => $_has(4);
   @$pb.TagNumber(5)
   void clearCreatedBy() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get timestamp => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set timestamp($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasTimestamp() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearTimestamp() => clearField(6);
 }
 
-class ItemReceived extends $pb.GeneratedMessage {
+class ItemReceivedV1 extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'ItemReceived',
+          : 'ItemReceivedV1',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -770,12 +704,24 @@ class ItemReceived extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'received')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'walletId')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
     ..hasRequiredFields = false;
 
-  ItemReceived._() : super();
-  factory ItemReceived({
+  ItemReceivedV1._() : super();
+  factory ItemReceivedV1({
     $core.String? id,
     $core.String? received,
+    $core.String? walletId,
+    $core.String? ecosystemId,
   }) {
     final _result = create();
     if (id != null) {
@@ -784,34 +730,40 @@ class ItemReceived extends $pb.GeneratedMessage {
     if (received != null) {
       _result.received = received;
     }
+    if (walletId != null) {
+      _result.walletId = walletId;
+    }
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
+    }
     return _result;
   }
-  factory ItemReceived.fromBuffer($core.List<$core.int> i,
+  factory ItemReceivedV1.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory ItemReceived.fromJson($core.String i,
+  factory ItemReceivedV1.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  ItemReceived clone() => ItemReceived()..mergeFromMessage(this);
+  ItemReceivedV1 clone() => ItemReceivedV1()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  ItemReceived copyWith(void Function(ItemReceived) updates) =>
-      super.copyWith((message) => updates(message as ItemReceived))
-          as ItemReceived; // ignore: deprecated_member_use
+  ItemReceivedV1 copyWith(void Function(ItemReceivedV1) updates) =>
+      super.copyWith((message) => updates(message as ItemReceivedV1))
+          as ItemReceivedV1; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ItemReceived create() => ItemReceived._();
-  ItemReceived createEmptyInstance() => create();
-  static $pb.PbList<ItemReceived> createRepeated() =>
-      $pb.PbList<ItemReceived>();
+  static ItemReceivedV1 create() => ItemReceivedV1._();
+  ItemReceivedV1 createEmptyInstance() => create();
+  static $pb.PbList<ItemReceivedV1> createRepeated() =>
+      $pb.PbList<ItemReceivedV1>();
   @$core.pragma('dart2js:noInline')
-  static ItemReceived getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ItemReceived>(create);
-  static ItemReceived? _defaultInstance;
+  static ItemReceivedV1 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ItemReceivedV1>(create);
+  static ItemReceivedV1? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -836,9 +788,33 @@ class ItemReceived extends $pb.GeneratedMessage {
   $core.bool hasReceived() => $_has(1);
   @$pb.TagNumber(2)
   void clearReceived() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get walletId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set walletId($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasWalletId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearWalletId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get ecosystemId => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set ecosystemId($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasEcosystemId() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearEcosystemId() => clearField(4);
 }
 
-class EventExt {
+class Event {
   static final eventType = $pb.Extension<EventType>(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''

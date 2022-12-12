@@ -7,33 +7,33 @@ package trinsic.services.event.v1;
  *
  *
  * <pre>
- * Template created in ecosystem
+ * Webhook test event
  * </pre>
  *
- * Protobuf type {@code trinsic.services.event.TemplateCreated}
+ * Protobuf type {@code trinsic.services.event.PingV1}
  */
-public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV3
+public final class PingV1 extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:trinsic.services.event.TemplateCreated)
-    TemplateCreatedOrBuilder {
+    // @@protoc_insertion_point(message_implements:trinsic.services.event.PingV1)
+    PingV1OrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use TemplateCreated.newBuilder() to construct.
-  private TemplateCreated(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use PingV1.newBuilder() to construct.
+  private PingV1(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private TemplateCreated() {
+  private PingV1() {
     id_ = "";
+    webhookId_ = "";
+    timestamp_ = "";
+    message_ = "";
     ecosystemId_ = "";
-    name_ = "";
-    type_ = "";
-    createdBy_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new TemplateCreated();
+    return new PingV1();
   }
 
   @java.lang.Override
@@ -42,18 +42,16 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_TemplateCreated_descriptor;
+    return trinsic.services.event.v1.Event.internal_static_trinsic_services_event_PingV1_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable
+    return trinsic.services.event.v1.Event
+        .internal_static_trinsic_services_event_PingV1_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.event.v1.TemplateCreated.class,
-            trinsic.services.event.v1.TemplateCreated.Builder.class);
+            trinsic.services.event.v1.PingV1.class, trinsic.services.event.v1.PingV1.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
@@ -62,7 +60,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * UUID of the template
+   * UUID of this ping
    * </pre>
    *
    * <code>string id = 1;</code>
@@ -85,7 +83,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * UUID of the template
+   * UUID of this ping
    * </pre>
    *
    * <code>string id = 1;</code>
@@ -105,16 +103,163 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     }
   }
 
-  public static final int ECOSYSTEM_ID_FIELD_NUMBER = 2;
+  public static final int WEBHOOK_ID_FIELD_NUMBER = 2;
+  private volatile java.lang.Object webhookId_;
+  /**
+   *
+   *
+   * <pre>
+   * UUID of the webhook receiving the ping
+   * </pre>
+   *
+   * <code>string webhook_id = 2;</code>
+   *
+   * @return The webhookId.
+   */
+  @java.lang.Override
+  public java.lang.String getWebhookId() {
+    java.lang.Object ref = webhookId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      webhookId_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * UUID of the webhook receiving the ping
+   * </pre>
+   *
+   * <code>string webhook_id = 2;</code>
+   *
+   * @return The bytes for webhookId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getWebhookIdBytes() {
+    java.lang.Object ref = webhookId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      webhookId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TIMESTAMP_FIELD_NUMBER = 3;
+  private volatile java.lang.Object timestamp_;
+  /**
+   *
+   *
+   * <pre>
+   * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+   * </pre>
+   *
+   * <code>string timestamp = 3;</code>
+   *
+   * @return The timestamp.
+   */
+  @java.lang.Override
+  public java.lang.String getTimestamp() {
+    java.lang.Object ref = timestamp_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      timestamp_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+   * </pre>
+   *
+   * <code>string timestamp = 3;</code>
+   *
+   * @return The bytes for timestamp.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getTimestampBytes() {
+    java.lang.Object ref = timestamp_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      timestamp_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MESSAGE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object message_;
+  /**
+   *
+   *
+   * <pre>
+   * Arbitrary message specified when ping was requested
+   * </pre>
+   *
+   * <code>string message = 4;</code>
+   *
+   * @return The message.
+   */
+  @java.lang.Override
+  public java.lang.String getMessage() {
+    java.lang.Object ref = message_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      message_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Arbitrary message specified when ping was requested
+   * </pre>
+   *
+   * <code>string message = 4;</code>
+   *
+   * @return The bytes for message.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getMessageBytes() {
+    java.lang.Object ref = message_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      message_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ECOSYSTEM_ID_FIELD_NUMBER = 5;
   private volatile java.lang.Object ecosystemId_;
   /**
    *
    *
    * <pre>
-   * UUID of the ecosystem that owns this template
+   * Ecosystem where this event originated, if any.
    * </pre>
    *
-   * <code>string ecosystem_id = 2;</code>
+   * <code>string ecosystem_id = 5;</code>
    *
    * @return The ecosystemId.
    */
@@ -134,10 +279,10 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * UUID of the ecosystem that owns this template
+   * Ecosystem where this event originated, if any.
    * </pre>
    *
-   * <code>string ecosystem_id = 2;</code>
+   * <code>string ecosystem_id = 5;</code>
    *
    * @return The bytes for ecosystemId.
    */
@@ -148,153 +293,6 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       ecosystemId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int NAME_FIELD_NUMBER = 3;
-  private volatile java.lang.Object name_;
-  /**
-   *
-   *
-   * <pre>
-   * Template name
-   * </pre>
-   *
-   * <code>string name = 3;</code>
-   *
-   * @return The name.
-   */
-  @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      name_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Template name
-   * </pre>
-   *
-   * <code>string name = 3;</code>
-   *
-   * @return The bytes for name.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getNameBytes() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int TYPE_FIELD_NUMBER = 4;
-  private volatile java.lang.Object type_;
-  /**
-   *
-   *
-   * <pre>
-   * Template type
-   * </pre>
-   *
-   * <code>string type = 4;</code>
-   *
-   * @return The type.
-   */
-  @java.lang.Override
-  public java.lang.String getType() {
-    java.lang.Object ref = type_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      type_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Template type
-   * </pre>
-   *
-   * <code>string type = 4;</code>
-   *
-   * @return The bytes for type.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getTypeBytes() {
-    java.lang.Object ref = type_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      type_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CREATED_BY_FIELD_NUMBER = 5;
-  private volatile java.lang.Object createdBy_;
-  /**
-   *
-   *
-   * <pre>
-   * WalletID that created the template
-   * </pre>
-   *
-   * <code>string created_by = 5;</code>
-   *
-   * @return The createdBy.
-   */
-  @java.lang.Override
-  public java.lang.String getCreatedBy() {
-    java.lang.Object ref = createdBy_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      createdBy_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * WalletID that created the template
-   * </pre>
-   *
-   * <code>string created_by = 5;</code>
-   *
-   * @return The bytes for createdBy.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getCreatedByBytes() {
-    java.lang.Object ref = createdBy_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      createdBy_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -318,17 +316,17 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(webhookId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, webhookId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(timestamp_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, timestamp_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, message_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, ecosystemId_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, type_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, createdBy_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, ecosystemId_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -342,17 +340,17 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(webhookId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, webhookId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(timestamp_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, timestamp_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, message_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, ecosystemId_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, type_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, createdBy_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, ecosystemId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -364,17 +362,16 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.event.v1.TemplateCreated)) {
+    if (!(obj instanceof trinsic.services.event.v1.PingV1)) {
       return super.equals(obj);
     }
-    trinsic.services.event.v1.TemplateCreated other =
-        (trinsic.services.event.v1.TemplateCreated) obj;
+    trinsic.services.event.v1.PingV1 other = (trinsic.services.event.v1.PingV1) obj;
 
     if (!getId().equals(other.getId())) return false;
+    if (!getWebhookId().equals(other.getWebhookId())) return false;
+    if (!getTimestamp().equals(other.getTimestamp())) return false;
+    if (!getMessage().equals(other.getMessage())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
-    if (!getName().equals(other.getName())) return false;
-    if (!getType().equals(other.getType())) return false;
-    if (!getCreatedBy().equals(other.getCreatedBy())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -388,84 +385,83 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId().hashCode();
+    hash = (37 * hash) + WEBHOOK_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getWebhookId().hashCode();
+    hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+    hash = (53 * hash) + getTimestamp().hashCode();
+    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+    hash = (53 * hash) + getMessage().hashCode();
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getType().hashCode();
-    hash = (37 * hash) + CREATED_BY_FIELD_NUMBER;
-    hash = (53 * hash) + getCreatedBy().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.event.v1.PingV1 parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
+  public static trinsic.services.event.v1.PingV1 parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
-      com.google.protobuf.ByteString data)
+  public static trinsic.services.event.v1.PingV1 parseFrom(com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
+  public static trinsic.services.event.v1.PingV1 parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(byte[] data)
+  public static trinsic.services.event.v1.PingV1 parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
+  public static trinsic.services.event.v1.PingV1 parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(java.io.InputStream input)
+  public static trinsic.services.event.v1.PingV1 parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
+  public static trinsic.services.event.v1.PingV1 parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
+  public static trinsic.services.event.v1.PingV1 parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseDelimitedFrom(
+  public static trinsic.services.event.v1.PingV1 parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
+  public static trinsic.services.event.v1.PingV1 parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
+  public static trinsic.services.event.v1.PingV1 parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -482,7 +478,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(trinsic.services.event.v1.TemplateCreated prototype) {
+  public static Builder newBuilder(trinsic.services.event.v1.PingV1 prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -500,31 +496,31 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Template created in ecosystem
+   * Webhook test event
    * </pre>
    *
-   * Protobuf type {@code trinsic.services.event.TemplateCreated}
+   * Protobuf type {@code trinsic.services.event.PingV1}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:trinsic.services.event.TemplateCreated)
-      trinsic.services.event.v1.TemplateCreatedOrBuilder {
+      // @@protoc_insertion_point(builder_implements:trinsic.services.event.PingV1)
+      trinsic.services.event.v1.PingV1OrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_TemplateCreated_descriptor;
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_PingV1_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_PingV1_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.event.v1.TemplateCreated.class,
-              trinsic.services.event.v1.TemplateCreated.Builder.class);
+              trinsic.services.event.v1.PingV1.class,
+              trinsic.services.event.v1.PingV1.Builder.class);
     }
 
-    // Construct using trinsic.services.event.v1.TemplateCreated.newBuilder()
+    // Construct using trinsic.services.event.v1.PingV1.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -536,31 +532,31 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
       super.clear();
       id_ = "";
 
+      webhookId_ = "";
+
+      timestamp_ = "";
+
+      message_ = "";
+
       ecosystemId_ = "";
-
-      name_ = "";
-
-      type_ = "";
-
-      createdBy_ = "";
 
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_TemplateCreated_descriptor;
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_PingV1_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.TemplateCreated getDefaultInstanceForType() {
-      return trinsic.services.event.v1.TemplateCreated.getDefaultInstance();
+    public trinsic.services.event.v1.PingV1 getDefaultInstanceForType() {
+      return trinsic.services.event.v1.PingV1.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.TemplateCreated build() {
-      trinsic.services.event.v1.TemplateCreated result = buildPartial();
+    public trinsic.services.event.v1.PingV1 build() {
+      trinsic.services.event.v1.PingV1 result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -568,14 +564,13 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.TemplateCreated buildPartial() {
-      trinsic.services.event.v1.TemplateCreated result =
-          new trinsic.services.event.v1.TemplateCreated(this);
+    public trinsic.services.event.v1.PingV1 buildPartial() {
+      trinsic.services.event.v1.PingV1 result = new trinsic.services.event.v1.PingV1(this);
       result.id_ = id_;
+      result.webhookId_ = webhookId_;
+      result.timestamp_ = timestamp_;
+      result.message_ = message_;
       result.ecosystemId_ = ecosystemId_;
-      result.name_ = name_;
-      result.type_ = type_;
-      result.createdBy_ = createdBy_;
       onBuilt();
       return result;
     }
@@ -615,34 +610,34 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.event.v1.TemplateCreated) {
-        return mergeFrom((trinsic.services.event.v1.TemplateCreated) other);
+      if (other instanceof trinsic.services.event.v1.PingV1) {
+        return mergeFrom((trinsic.services.event.v1.PingV1) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.event.v1.TemplateCreated other) {
-      if (other == trinsic.services.event.v1.TemplateCreated.getDefaultInstance()) return this;
+    public Builder mergeFrom(trinsic.services.event.v1.PingV1 other) {
+      if (other == trinsic.services.event.v1.PingV1.getDefaultInstance()) return this;
       if (!other.getId().isEmpty()) {
         id_ = other.id_;
         onChanged();
       }
+      if (!other.getWebhookId().isEmpty()) {
+        webhookId_ = other.webhookId_;
+        onChanged();
+      }
+      if (!other.getTimestamp().isEmpty()) {
+        timestamp_ = other.timestamp_;
+        onChanged();
+      }
+      if (!other.getMessage().isEmpty()) {
+        message_ = other.message_;
+        onChanged();
+      }
       if (!other.getEcosystemId().isEmpty()) {
         ecosystemId_ = other.ecosystemId_;
-        onChanged();
-      }
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        onChanged();
-      }
-      if (!other.getType().isEmpty()) {
-        type_ = other.type_;
-        onChanged();
-      }
-      if (!other.getCreatedBy().isEmpty()) {
-        createdBy_ = other.createdBy_;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -679,25 +674,25 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
               } // case 10
             case 18:
               {
-                ecosystemId_ = input.readStringRequireUtf8();
+                webhookId_ = input.readStringRequireUtf8();
 
                 break;
               } // case 18
             case 26:
               {
-                name_ = input.readStringRequireUtf8();
+                timestamp_ = input.readStringRequireUtf8();
 
                 break;
               } // case 26
             case 34:
               {
-                type_ = input.readStringRequireUtf8();
+                message_ = input.readStringRequireUtf8();
 
                 break;
               } // case 34
             case 42:
               {
-                createdBy_ = input.readStringRequireUtf8();
+                ecosystemId_ = input.readStringRequireUtf8();
 
                 break;
               } // case 42
@@ -723,7 +718,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the template
+     * UUID of this ping
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -745,7 +740,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the template
+     * UUID of this ping
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -767,7 +762,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the template
+     * UUID of this ping
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -788,7 +783,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the template
+     * UUID of this ping
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -805,7 +800,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the template
+     * UUID of this ping
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -824,15 +819,333 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
       return this;
     }
 
+    private java.lang.Object webhookId_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * UUID of the webhook receiving the ping
+     * </pre>
+     *
+     * <code>string webhook_id = 2;</code>
+     *
+     * @return The webhookId.
+     */
+    public java.lang.String getWebhookId() {
+      java.lang.Object ref = webhookId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        webhookId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * UUID of the webhook receiving the ping
+     * </pre>
+     *
+     * <code>string webhook_id = 2;</code>
+     *
+     * @return The bytes for webhookId.
+     */
+    public com.google.protobuf.ByteString getWebhookIdBytes() {
+      java.lang.Object ref = webhookId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        webhookId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * UUID of the webhook receiving the ping
+     * </pre>
+     *
+     * <code>string webhook_id = 2;</code>
+     *
+     * @param value The webhookId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWebhookId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      webhookId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * UUID of the webhook receiving the ping
+     * </pre>
+     *
+     * <code>string webhook_id = 2;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearWebhookId() {
+
+      webhookId_ = getDefaultInstance().getWebhookId();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * UUID of the webhook receiving the ping
+     * </pre>
+     *
+     * <code>string webhook_id = 2;</code>
+     *
+     * @param value The bytes for webhookId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWebhookIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      webhookId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object timestamp_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 3;</code>
+     *
+     * @return The timestamp.
+     */
+    public java.lang.String getTimestamp() {
+      java.lang.Object ref = timestamp_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timestamp_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 3;</code>
+     *
+     * @return The bytes for timestamp.
+     */
+    public com.google.protobuf.ByteString getTimestampBytes() {
+      java.lang.Object ref = timestamp_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        timestamp_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 3;</code>
+     *
+     * @param value The timestamp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTimestamp(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      timestamp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 3;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearTimestamp() {
+
+      timestamp_ = getDefaultInstance().getTimestamp();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+     * </pre>
+     *
+     * <code>string timestamp = 3;</code>
+     *
+     * @param value The bytes for timestamp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTimestampBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      timestamp_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object message_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Arbitrary message specified when ping was requested
+     * </pre>
+     *
+     * <code>string message = 4;</code>
+     *
+     * @return The message.
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Arbitrary message specified when ping was requested
+     * </pre>
+     *
+     * <code>string message = 4;</code>
+     *
+     * @return The bytes for message.
+     */
+    public com.google.protobuf.ByteString getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Arbitrary message specified when ping was requested
+     * </pre>
+     *
+     * <code>string message = 4;</code>
+     *
+     * @param value The message to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMessage(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      message_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Arbitrary message specified when ping was requested
+     * </pre>
+     *
+     * <code>string message = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearMessage() {
+
+      message_ = getDefaultInstance().getMessage();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Arbitrary message specified when ping was requested
+     * </pre>
+     *
+     * <code>string message = 4;</code>
+     *
+     * @param value The bytes for message to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMessageBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      message_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object ecosystemId_ = "";
     /**
      *
      *
      * <pre>
-     * UUID of the ecosystem that owns this template
+     * Ecosystem where this event originated, if any.
      * </pre>
      *
-     * <code>string ecosystem_id = 2;</code>
+     * <code>string ecosystem_id = 5;</code>
      *
      * @return The ecosystemId.
      */
@@ -851,10 +1164,10 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the ecosystem that owns this template
+     * Ecosystem where this event originated, if any.
      * </pre>
      *
-     * <code>string ecosystem_id = 2;</code>
+     * <code>string ecosystem_id = 5;</code>
      *
      * @return The bytes for ecosystemId.
      */
@@ -873,10 +1186,10 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the ecosystem that owns this template
+     * Ecosystem where this event originated, if any.
      * </pre>
      *
-     * <code>string ecosystem_id = 2;</code>
+     * <code>string ecosystem_id = 5;</code>
      *
      * @param value The ecosystemId to set.
      * @return This builder for chaining.
@@ -894,10 +1207,10 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the ecosystem that owns this template
+     * Ecosystem where this event originated, if any.
      * </pre>
      *
-     * <code>string ecosystem_id = 2;</code>
+     * <code>string ecosystem_id = 5;</code>
      *
      * @return This builder for chaining.
      */
@@ -911,10 +1224,10 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * UUID of the ecosystem that owns this template
+     * Ecosystem where this event originated, if any.
      * </pre>
      *
-     * <code>string ecosystem_id = 2;</code>
+     * <code>string ecosystem_id = 5;</code>
      *
      * @param value The bytes for ecosystemId to set.
      * @return This builder for chaining.
@@ -930,324 +1243,6 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
       return this;
     }
 
-    private java.lang.Object name_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Template name
-     * </pre>
-     *
-     * <code>string name = 3;</code>
-     *
-     * @return The name.
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template name
-     * </pre>
-     *
-     * <code>string name = 3;</code>
-     *
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template name
-     * </pre>
-     *
-     * <code>string name = 3;</code>
-     *
-     * @param value The name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setName(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      name_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template name
-     * </pre>
-     *
-     * <code>string name = 3;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearName() {
-
-      name_ = getDefaultInstance().getName();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template name
-     * </pre>
-     *
-     * <code>string name = 3;</code>
-     *
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      name_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object type_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Template type
-     * </pre>
-     *
-     * <code>string type = 4;</code>
-     *
-     * @return The type.
-     */
-    public java.lang.String getType() {
-      java.lang.Object ref = type_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        type_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template type
-     * </pre>
-     *
-     * <code>string type = 4;</code>
-     *
-     * @return The bytes for type.
-     */
-    public com.google.protobuf.ByteString getTypeBytes() {
-      java.lang.Object ref = type_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        type_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template type
-     * </pre>
-     *
-     * <code>string type = 4;</code>
-     *
-     * @param value The type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setType(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      type_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template type
-     * </pre>
-     *
-     * <code>string type = 4;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearType() {
-
-      type_ = getDefaultInstance().getType();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Template type
-     * </pre>
-     *
-     * <code>string type = 4;</code>
-     *
-     * @param value The bytes for type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTypeBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      type_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object createdBy_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * WalletID that created the template
-     * </pre>
-     *
-     * <code>string created_by = 5;</code>
-     *
-     * @return The createdBy.
-     */
-    public java.lang.String getCreatedBy() {
-      java.lang.Object ref = createdBy_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        createdBy_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * WalletID that created the template
-     * </pre>
-     *
-     * <code>string created_by = 5;</code>
-     *
-     * @return The bytes for createdBy.
-     */
-    public com.google.protobuf.ByteString getCreatedByBytes() {
-      java.lang.Object ref = createdBy_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        createdBy_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * WalletID that created the template
-     * </pre>
-     *
-     * <code>string created_by = 5;</code>
-     *
-     * @param value The createdBy to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCreatedBy(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      createdBy_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * WalletID that created the template
-     * </pre>
-     *
-     * <code>string created_by = 5;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearCreatedBy() {
-
-      createdBy_ = getDefaultInstance().getCreatedBy();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * WalletID that created the template
-     * </pre>
-     *
-     * <code>string created_by = 5;</code>
-     *
-     * @param value The bytes for createdBy to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCreatedByBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      createdBy_ = value;
-      onChanged();
-      return this;
-    }
-
     @java.lang.Override
     public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
@@ -1259,24 +1254,24 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:trinsic.services.event.TemplateCreated)
+    // @@protoc_insertion_point(builder_scope:trinsic.services.event.PingV1)
   }
 
-  // @@protoc_insertion_point(class_scope:trinsic.services.event.TemplateCreated)
-  private static final trinsic.services.event.v1.TemplateCreated DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:trinsic.services.event.PingV1)
+  private static final trinsic.services.event.v1.PingV1 DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.event.v1.TemplateCreated();
+    DEFAULT_INSTANCE = new trinsic.services.event.v1.PingV1();
   }
 
-  public static trinsic.services.event.v1.TemplateCreated getDefaultInstance() {
+  public static trinsic.services.event.v1.PingV1 getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TemplateCreated> PARSER =
-      new com.google.protobuf.AbstractParser<TemplateCreated>() {
+  private static final com.google.protobuf.Parser<PingV1> PARSER =
+      new com.google.protobuf.AbstractParser<PingV1>() {
         @java.lang.Override
-        public TemplateCreated parsePartialFrom(
+        public PingV1 parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1295,17 +1290,17 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
         }
       };
 
-  public static com.google.protobuf.Parser<TemplateCreated> parser() {
+  public static com.google.protobuf.Parser<PingV1> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<TemplateCreated> getParserForType() {
+  public com.google.protobuf.Parser<PingV1> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.event.v1.TemplateCreated getDefaultInstanceForType() {
+  public trinsic.services.event.v1.PingV1 getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

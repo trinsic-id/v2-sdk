@@ -3,9 +3,9 @@
 # typed: strict
 
 class Services::Provider::V1::InviteRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::InviteRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Services::Provider::V1::InviteRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -91,9 +91,9 @@ class Services::Provider::V1::InviteRequest
 end
 
 class Services::Provider::V1::InviteResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::InviteResponse) }
   def self.decode(str)
@@ -111,7 +111,7 @@ class Services::Provider::V1::InviteResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -165,9 +165,9 @@ class Services::Provider::V1::InviteResponse
 end
 
 class Services::Provider::V1::InvitationStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::InvitationStatusRequest) }
   def self.decode(str)
@@ -185,7 +185,7 @@ class Services::Provider::V1::InvitationStatusRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -225,9 +225,9 @@ class Services::Provider::V1::InvitationStatusRequest
 end
 
 class Services::Provider::V1::InvitationStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::InvitationStatusResponse) }
   def self.decode(str)
@@ -245,7 +245,7 @@ class Services::Provider::V1::InvitationStatusResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -299,9 +299,9 @@ class Services::Provider::V1::InvitationStatusResponse
 end
 
 class Services::Provider::V1::Ecosystem
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::Ecosystem) }
   def self.decode(str)
@@ -319,7 +319,7 @@ class Services::Provider::V1::Ecosystem
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -397,7 +397,7 @@ class Services::Provider::V1::Ecosystem
   def webhooks
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def webhooks=(value)
   end
 
@@ -443,9 +443,9 @@ class Services::Provider::V1::Ecosystem
 end
 
 class Services::Provider::V1::WebhookConfig
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::WebhookConfig) }
   def self.decode(str)
@@ -463,7 +463,7 @@ class Services::Provider::V1::WebhookConfig
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -511,7 +511,7 @@ class Services::Provider::V1::WebhookConfig
   def events
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def events=(value)
   end
 
@@ -545,9 +545,9 @@ class Services::Provider::V1::WebhookConfig
 end
 
 class Services::Provider::V1::Grant
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::Grant) }
   def self.decode(str)
@@ -565,7 +565,7 @@ class Services::Provider::V1::Grant
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -599,7 +599,7 @@ class Services::Provider::V1::Grant
   def actions
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def actions=(value)
   end
 
@@ -611,7 +611,7 @@ class Services::Provider::V1::Grant
   def child_grants
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def child_grants=(value)
   end
 
@@ -633,9 +633,9 @@ class Services::Provider::V1::Grant
 end
 
 class Services::Provider::V1::CreateEcosystemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::CreateEcosystemRequest) }
   def self.decode(str)
@@ -653,7 +653,7 @@ class Services::Provider::V1::CreateEcosystemRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -749,9 +749,9 @@ class Services::Provider::V1::CreateEcosystemRequest
 end
 
 class Services::Provider::V1::CreateEcosystemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::CreateEcosystemResponse) }
   def self.decode(str)
@@ -769,7 +769,7 @@ class Services::Provider::V1::CreateEcosystemResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -837,9 +837,9 @@ class Services::Provider::V1::CreateEcosystemResponse
 end
 
 class Services::Provider::V1::UpdateEcosystemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::UpdateEcosystemRequest) }
   def self.decode(str)
@@ -857,7 +857,7 @@ class Services::Provider::V1::UpdateEcosystemRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -939,9 +939,9 @@ class Services::Provider::V1::UpdateEcosystemRequest
 end
 
 class Services::Provider::V1::EcosystemDisplayRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::EcosystemDisplayRequest) }
   def self.decode(str)
@@ -959,7 +959,7 @@ class Services::Provider::V1::EcosystemDisplayRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1013,9 +1013,9 @@ class Services::Provider::V1::EcosystemDisplayRequest
 end
 
 class Services::Provider::V1::EcosystemDisplayDetailsRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::EcosystemDisplayDetailsRequest) }
   def self.decode(str)
@@ -1033,7 +1033,7 @@ class Services::Provider::V1::EcosystemDisplayDetailsRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1101,9 +1101,9 @@ class Services::Provider::V1::EcosystemDisplayDetailsRequest
 end
 
 class Services::Provider::V1::UpdateEcosystemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::UpdateEcosystemResponse) }
   def self.decode(str)
@@ -1121,7 +1121,7 @@ class Services::Provider::V1::UpdateEcosystemResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1155,9 +1155,9 @@ class Services::Provider::V1::UpdateEcosystemResponse
 end
 
 class Services::Provider::V1::EcosystemDisplay
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::EcosystemDisplay) }
   def self.decode(str)
@@ -1175,7 +1175,7 @@ class Services::Provider::V1::EcosystemDisplay
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1229,9 +1229,9 @@ class Services::Provider::V1::EcosystemDisplay
 end
 
 class Services::Provider::V1::EcosystemDisplayDetails
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::EcosystemDisplayDetails) }
   def self.decode(str)
@@ -1249,7 +1249,7 @@ class Services::Provider::V1::EcosystemDisplayDetails
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1303,9 +1303,9 @@ class Services::Provider::V1::EcosystemDisplayDetails
 end
 
 class Services::Provider::V1::AddWebhookRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::AddWebhookRequest) }
   def self.decode(str)
@@ -1323,7 +1323,7 @@ class Services::Provider::V1::AddWebhookRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1369,7 +1369,7 @@ class Services::Provider::V1::AddWebhookRequest
   def events
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def events=(value)
   end
 
@@ -1391,9 +1391,9 @@ class Services::Provider::V1::AddWebhookRequest
 end
 
 class Services::Provider::V1::AddWebhookResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::AddWebhookResponse) }
   def self.decode(str)
@@ -1411,7 +1411,7 @@ class Services::Provider::V1::AddWebhookResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1451,9 +1451,9 @@ class Services::Provider::V1::AddWebhookResponse
 end
 
 class Services::Provider::V1::DeleteWebhookRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::DeleteWebhookRequest) }
   def self.decode(str)
@@ -1471,7 +1471,7 @@ class Services::Provider::V1::DeleteWebhookRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1511,9 +1511,9 @@ class Services::Provider::V1::DeleteWebhookRequest
 end
 
 class Services::Provider::V1::DeleteWebhookResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::DeleteWebhookResponse) }
   def self.decode(str)
@@ -1531,7 +1531,7 @@ class Services::Provider::V1::DeleteWebhookResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1571,9 +1571,9 @@ class Services::Provider::V1::DeleteWebhookResponse
 end
 
 class Services::Provider::V1::EcosystemInfoRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::EcosystemInfoRequest) }
   def self.decode(str)
@@ -1591,7 +1591,7 @@ class Services::Provider::V1::EcosystemInfoRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1612,9 +1612,9 @@ class Services::Provider::V1::EcosystemInfoRequest
 end
 
 class Services::Provider::V1::EcosystemInfoResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::EcosystemInfoResponse) }
   def self.decode(str)
@@ -1632,7 +1632,7 @@ class Services::Provider::V1::EcosystemInfoResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1672,9 +1672,9 @@ class Services::Provider::V1::EcosystemInfoResponse
 end
 
 class Services::Provider::V1::GetPublicEcosystemInfoRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetPublicEcosystemInfoRequest) }
   def self.decode(str)
@@ -1692,7 +1692,7 @@ class Services::Provider::V1::GetPublicEcosystemInfoRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1732,9 +1732,9 @@ class Services::Provider::V1::GetPublicEcosystemInfoRequest
 end
 
 class Services::Provider::V1::GetPublicEcosystemInfoResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetPublicEcosystemInfoResponse) }
   def self.decode(str)
@@ -1752,7 +1752,7 @@ class Services::Provider::V1::GetPublicEcosystemInfoResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1792,9 +1792,9 @@ class Services::Provider::V1::GetPublicEcosystemInfoResponse
 end
 
 class Services::Provider::V1::PublicEcosystemInformation
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::PublicEcosystemInformation) }
   def self.decode(str)
@@ -1812,7 +1812,7 @@ class Services::Provider::V1::PublicEcosystemInformation
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1908,9 +1908,9 @@ class Services::Provider::V1::PublicEcosystemInformation
 end
 
 class Services::Provider::V1::GenerateTokenRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GenerateTokenRequest) }
   def self.decode(str)
@@ -1928,7 +1928,7 @@ class Services::Provider::V1::GenerateTokenRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1968,9 +1968,9 @@ class Services::Provider::V1::GenerateTokenRequest
 end
 
 class Services::Provider::V1::GenerateTokenResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GenerateTokenResponse) }
   def self.decode(str)
@@ -1988,7 +1988,7 @@ class Services::Provider::V1::GenerateTokenResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2028,9 +2028,9 @@ class Services::Provider::V1::GenerateTokenResponse
 end
 
 class Services::Provider::V1::GetOberonKeyRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetOberonKeyRequest) }
   def self.decode(str)
@@ -2048,7 +2048,7 @@ class Services::Provider::V1::GetOberonKeyRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2069,9 +2069,9 @@ class Services::Provider::V1::GetOberonKeyRequest
 end
 
 class Services::Provider::V1::GetOberonKeyResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetOberonKeyResponse) }
   def self.decode(str)
@@ -2089,7 +2089,7 @@ class Services::Provider::V1::GetOberonKeyResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2129,9 +2129,9 @@ class Services::Provider::V1::GetOberonKeyResponse
 end
 
 class Services::Provider::V1::GetEventTokenRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetEventTokenRequest) }
   def self.decode(str)
@@ -2149,7 +2149,7 @@ class Services::Provider::V1::GetEventTokenRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2189,9 +2189,9 @@ class Services::Provider::V1::GetEventTokenRequest
 end
 
 class Services::Provider::V1::GetEventTokenResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetEventTokenResponse) }
   def self.decode(str)
@@ -2209,7 +2209,7 @@ class Services::Provider::V1::GetEventTokenResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2249,9 +2249,9 @@ class Services::Provider::V1::GetEventTokenResponse
 end
 
 class Services::Provider::V1::RetrieveDomainVerificationRecordRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RetrieveDomainVerificationRecordRequest) }
   def self.decode(str)
@@ -2269,7 +2269,7 @@ class Services::Provider::V1::RetrieveDomainVerificationRecordRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2290,9 +2290,9 @@ class Services::Provider::V1::RetrieveDomainVerificationRecordRequest
 end
 
 class Services::Provider::V1::RetrieveDomainVerificationRecordResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RetrieveDomainVerificationRecordResponse) }
   def self.decode(str)
@@ -2310,7 +2310,7 @@ class Services::Provider::V1::RetrieveDomainVerificationRecordResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2364,9 +2364,9 @@ class Services::Provider::V1::RetrieveDomainVerificationRecordResponse
 end
 
 class Services::Provider::V1::RefreshDomainVerificationStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RefreshDomainVerificationStatusRequest) }
   def self.decode(str)
@@ -2384,7 +2384,7 @@ class Services::Provider::V1::RefreshDomainVerificationStatusRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2405,9 +2405,9 @@ class Services::Provider::V1::RefreshDomainVerificationStatusRequest
 end
 
 class Services::Provider::V1::RefreshDomainVerificationStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RefreshDomainVerificationStatusResponse) }
   def self.decode(str)
@@ -2425,7 +2425,7 @@ class Services::Provider::V1::RefreshDomainVerificationStatusResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2479,9 +2479,9 @@ class Services::Provider::V1::RefreshDomainVerificationStatusResponse
 end
 
 class Services::Provider::V1::GrantAuthorizationRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GrantAuthorizationRequest) }
   def self.decode(str)
@@ -2499,7 +2499,7 @@ class Services::Provider::V1::GrantAuthorizationRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2585,9 +2585,9 @@ class Services::Provider::V1::GrantAuthorizationRequest
 end
 
 class Services::Provider::V1::GrantAuthorizationResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GrantAuthorizationResponse) }
   def self.decode(str)
@@ -2605,7 +2605,7 @@ class Services::Provider::V1::GrantAuthorizationResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2626,9 +2626,9 @@ class Services::Provider::V1::GrantAuthorizationResponse
 end
 
 class Services::Provider::V1::RevokeAuthorizationRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RevokeAuthorizationRequest) }
   def self.decode(str)
@@ -2646,7 +2646,7 @@ class Services::Provider::V1::RevokeAuthorizationRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2732,9 +2732,9 @@ class Services::Provider::V1::RevokeAuthorizationRequest
 end
 
 class Services::Provider::V1::RevokeAuthorizationResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RevokeAuthorizationResponse) }
   def self.decode(str)
@@ -2752,7 +2752,7 @@ class Services::Provider::V1::RevokeAuthorizationResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2773,9 +2773,9 @@ class Services::Provider::V1::RevokeAuthorizationResponse
 end
 
 class Services::Provider::V1::GetAuthorizationsRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetAuthorizationsRequest) }
   def self.decode(str)
@@ -2793,7 +2793,7 @@ class Services::Provider::V1::GetAuthorizationsRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2814,9 +2814,9 @@ class Services::Provider::V1::GetAuthorizationsRequest
 end
 
 class Services::Provider::V1::GetAuthorizationsResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::GetAuthorizationsResponse) }
   def self.decode(str)
@@ -2834,7 +2834,7 @@ class Services::Provider::V1::GetAuthorizationsResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2852,7 +2852,7 @@ class Services::Provider::V1::GetAuthorizationsResponse
   def grants
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def grants=(value)
   end
 
@@ -2874,9 +2874,9 @@ class Services::Provider::V1::GetAuthorizationsResponse
 end
 
 class Services::Provider::V1::SearchWalletConfigurationsRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::SearchWalletConfigurationsRequest) }
   def self.decode(str)
@@ -2894,7 +2894,7 @@ class Services::Provider::V1::SearchWalletConfigurationsRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2948,9 +2948,9 @@ class Services::Provider::V1::SearchWalletConfigurationsRequest
 end
 
 class Services::Provider::V1::SearchWalletConfigurationResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::SearchWalletConfigurationResponse) }
   def self.decode(str)
@@ -2968,7 +2968,7 @@ class Services::Provider::V1::SearchWalletConfigurationResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -2990,7 +2990,7 @@ class Services::Provider::V1::SearchWalletConfigurationResponse
   def results
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def results=(value)
   end
 
@@ -3036,9 +3036,9 @@ class Services::Provider::V1::SearchWalletConfigurationResponse
 end
 
 class Services::Provider::V1::WalletConfiguration
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::WalletConfiguration) }
   def self.decode(str)
@@ -3056,7 +3056,7 @@ class Services::Provider::V1::WalletConfiguration
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -3166,9 +3166,9 @@ class Services::Provider::V1::WalletConfiguration
 end
 
 class Services::Provider::V1::IonOptions
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::IonOptions) }
   def self.decode(str)
@@ -3186,7 +3186,7 @@ class Services::Provider::V1::IonOptions
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -3226,9 +3226,9 @@ class Services::Provider::V1::IonOptions
 end
 
 class Services::Provider::V1::UpgradeDidRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::UpgradeDidRequest) }
   def self.decode(str)
@@ -3246,7 +3246,7 @@ class Services::Provider::V1::UpgradeDidRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -3336,9 +3336,9 @@ class Services::Provider::V1::UpgradeDidRequest
 end
 
 class Services::Provider::V1::UpgradeDidResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::UpgradeDidResponse) }
   def self.decode(str)
@@ -3356,7 +3356,7 @@ class Services::Provider::V1::UpgradeDidResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -3396,9 +3396,9 @@ class Services::Provider::V1::UpgradeDidResponse
 end
 
 class Services::Provider::V1::InviteRequest::DidCommInvitation
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::InviteRequest::DidCommInvitation) }
   def self.decode(str)
@@ -3416,7 +3416,7 @@ class Services::Provider::V1::InviteRequest::DidCommInvitation
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

@@ -1576,9 +1576,9 @@ Type of participant being invited to ecosystem
 
 
 
-<a name="trinsic-services-event-EGFCreated"></a>
+<a name="trinsic-services-event-GovernanceFrameworkCreatedV1"></a>
 
-### EGFCreated
+### GovernanceFrameworkCreatedV1
 Entity Governance Framework created and attached to ecosystem
 
 
@@ -1592,33 +1592,16 @@ Entity Governance Framework created and attached to ecosystem
 | name | [string](/reference/proto#string) | User-friendly name for the EGF |
 | description | [string](/reference/proto#string) | Description of the EGF |
 | governance_framework | [string](/reference/proto#string) | URI for the EGF |
-
-
-
-
-
-
-<a name="trinsic-services-event-Event"></a>
-
-### Event
-Event
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | UUID of event |
-| type | [EventType](/reference/proto#trinsic-services-event-EventType) | Type of event |
 | timestamp | [string](/reference/proto#string) | Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
-| data | [bytes](/reference/proto#bytes) | Event-specific payload, as an encoded protobuf message |
 
 
 
 
 
 
-<a name="trinsic-services-event-ItemReceived"></a>
+<a name="trinsic-services-event-ItemReceivedV1"></a>
 
-### ItemReceived
+### ItemReceivedV1
 Item inserted into wallet
 
 
@@ -1626,15 +1609,17 @@ Item inserted into wallet
 | ----- | ---- | ----------- |
 | id | [string](/reference/proto#string) | UUID of the new item |
 | received | [string](/reference/proto#string) | Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
+| wallet_id | [string](/reference/proto#string) | ID of wallet |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem where this event originated, if any. |
 
 
 
 
 
 
-<a name="trinsic-services-event-Ping"></a>
+<a name="trinsic-services-event-PingV1"></a>
 
-### Ping
+### PingV1
 Webhook test event
 
 
@@ -1644,15 +1629,16 @@ Webhook test event
 | webhook_id | [string](/reference/proto#string) | UUID of the webhook receiving the ping |
 | timestamp | [string](/reference/proto#string) | Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
 | message | [string](/reference/proto#string) | Arbitrary message specified when ping was requested |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem where this event originated, if any. |
 
 
 
 
 
 
-<a name="trinsic-services-event-TemplateCreated"></a>
+<a name="trinsic-services-event-TemplateCreatedV1"></a>
 
-### TemplateCreated
+### TemplateCreatedV1
 Template created in ecosystem
 
 
@@ -1663,6 +1649,7 @@ Template created in ecosystem
 | name | [string](/reference/proto#string) | Template name |
 | type | [string](/reference/proto#string) | Template type |
 | created_by | [string](/reference/proto#string) | WalletID that created the template |
+| timestamp | [string](/reference/proto#string) | Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
 
 
 
@@ -1680,9 +1667,9 @@ All event types
 | ---- | ------ | ----------- |
 | PING | 0 |  |
 | LOG | 1 |  |
-| EGF_CREATED | 5 |  |
-| EGF_MEMBER_REGISTERED | 6 |  |
-| EGF_MEMBER_UNREGISTERED | 7 |  |
+| GOVERNANCE_FRAMEWORK_CREATED | 5 |  |
+| GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED | 6 |  |
+| GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED | 7 |  |
 | TEMPLATE_CREATED | 10 |  |
 | TEMPLATE_DELETED | 11 |  |
 | WALLET_CREATED | 15 |  |
@@ -2242,7 +2229,7 @@ Credential Template
 | fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] | Fields defined for the template |
 | allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials issued against this template may contain fields not defined by template |
 | schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
-| context_uri | [string](/reference/proto#string) | URI pointing to template JSON-LD context document |
+| context_uri | [string](/reference/proto#string) | **Deprecated.** URI pointing to template JSON-LD context document |
 | ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
 | type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
 | created_by | [string](/reference/proto#string) | ID of template creator |

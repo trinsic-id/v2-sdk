@@ -3,9 +3,9 @@
 # typed: strict
 
 class Services::Verifiablecredentials::V1::IssueRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::IssueRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Services::Verifiablecredentials::V1::IssueRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -63,9 +63,9 @@ class Services::Verifiablecredentials::V1::IssueRequest
 end
 
 class Services::Verifiablecredentials::V1::IssueResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::IssueResponse) }
   def self.decode(str)
@@ -83,7 +83,7 @@ class Services::Verifiablecredentials::V1::IssueResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -123,9 +123,9 @@ class Services::Verifiablecredentials::V1::IssueResponse
 end
 
 class Services::Verifiablecredentials::V1::IssueFromTemplateRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::IssueFromTemplateRequest) }
   def self.decode(str)
@@ -143,7 +143,7 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -211,9 +211,9 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateRequest
 end
 
 class Services::Verifiablecredentials::V1::IssueFromTemplateResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::IssueFromTemplateResponse) }
   def self.decode(str)
@@ -231,7 +231,7 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -271,9 +271,9 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateResponse
 end
 
 class Services::Verifiablecredentials::V1::CreateProofRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::CreateProofRequest) }
   def self.decode(str)
@@ -291,7 +291,7 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -377,9 +377,9 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
 end
 
 class Services::Verifiablecredentials::V1::CreateProofResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::CreateProofResponse) }
   def self.decode(str)
@@ -397,7 +397,7 @@ class Services::Verifiablecredentials::V1::CreateProofResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -437,9 +437,9 @@ class Services::Verifiablecredentials::V1::CreateProofResponse
 end
 
 class Services::Verifiablecredentials::V1::VerifyProofRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::VerifyProofRequest) }
   def self.decode(str)
@@ -457,7 +457,7 @@ class Services::Verifiablecredentials::V1::VerifyProofRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -497,9 +497,9 @@ class Services::Verifiablecredentials::V1::VerifyProofRequest
 end
 
 class Services::Verifiablecredentials::V1::VerifyProofResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::VerifyProofResponse) }
   def self.decode(str)
@@ -517,7 +517,7 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -531,7 +531,7 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
   def initialize(
     is_valid: false,
     validation_messages: [],
-    validation_results: Google::Protobuf::Map.new(:string, :message, Services::Verifiablecredentials::V1::ValidationMessage)
+    validation_results: ::Google::Protobuf::Map.new(:string, :message, Services::Verifiablecredentials::V1::ValidationMessage)
   )
   end
 
@@ -551,7 +551,7 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
   def validation_messages
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def validation_messages=(value)
   end
 
@@ -563,7 +563,7 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
   def validation_results
   end
 
-  sig { params(value: Google::Protobuf::Map).void }
+  sig { params(value: ::Google::Protobuf::Map).void }
   def validation_results=(value)
   end
 
@@ -585,9 +585,9 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
 end
 
 class Services::Verifiablecredentials::V1::ValidationMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::ValidationMessage) }
   def self.decode(str)
@@ -605,7 +605,7 @@ class Services::Verifiablecredentials::V1::ValidationMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -637,7 +637,7 @@ class Services::Verifiablecredentials::V1::ValidationMessage
   def messages
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def messages=(value)
   end
 
@@ -659,9 +659,9 @@ class Services::Verifiablecredentials::V1::ValidationMessage
 end
 
 class Services::Verifiablecredentials::V1::SendRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::SendRequest) }
   def self.decode(str)
@@ -679,7 +679,7 @@ class Services::Verifiablecredentials::V1::SendRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -779,9 +779,9 @@ class Services::Verifiablecredentials::V1::SendRequest
 end
 
 class Services::Verifiablecredentials::V1::SendResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::SendResponse) }
   def self.decode(str)
@@ -799,7 +799,7 @@ class Services::Verifiablecredentials::V1::SendResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -820,9 +820,9 @@ class Services::Verifiablecredentials::V1::SendResponse
 end
 
 class Services::Verifiablecredentials::V1::UpdateStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::UpdateStatusRequest) }
   def self.decode(str)
@@ -840,7 +840,7 @@ class Services::Verifiablecredentials::V1::UpdateStatusRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -894,9 +894,9 @@ class Services::Verifiablecredentials::V1::UpdateStatusRequest
 end
 
 class Services::Verifiablecredentials::V1::UpdateStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::UpdateStatusResponse) }
   def self.decode(str)
@@ -914,7 +914,7 @@ class Services::Verifiablecredentials::V1::UpdateStatusResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -935,9 +935,9 @@ class Services::Verifiablecredentials::V1::UpdateStatusResponse
 end
 
 class Services::Verifiablecredentials::V1::CheckStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::CheckStatusRequest) }
   def self.decode(str)
@@ -955,7 +955,7 @@ class Services::Verifiablecredentials::V1::CheckStatusRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -995,9 +995,9 @@ class Services::Verifiablecredentials::V1::CheckStatusRequest
 end
 
 class Services::Verifiablecredentials::V1::CheckStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Verifiablecredentials::V1::CheckStatusResponse) }
   def self.decode(str)
@@ -1015,7 +1015,7 @@ class Services::Verifiablecredentials::V1::CheckStatusResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

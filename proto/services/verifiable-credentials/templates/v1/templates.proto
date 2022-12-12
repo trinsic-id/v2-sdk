@@ -148,7 +148,7 @@ message TemplateData {
   // URI pointing to template JSON schema document
   string schema_uri = 6;
   // URI pointing to template JSON-LD context document
-  string context_uri = 7;
+  string context_uri = 7 [deprecated=true];
   // ID of ecosystem in which template resides
   string ecosystem_id = 8 [json_name="ecosystemId"];
   // Template type (`VerifiableCredential`)

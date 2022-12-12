@@ -386,11 +386,14 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
    * URI pointing to template JSON-LD context document
    * </pre>
    *
-   * <code>string context_uri = 7;</code>
+   * <code>string context_uri = 7 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
    * @return The contextUri.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getContextUri() {
     java.lang.Object ref = contextUri_;
     if (ref instanceof java.lang.String) {
@@ -409,11 +412,14 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
    * URI pointing to template JSON-LD context document
    * </pre>
    *
-   * <code>string context_uri = 7;</code>
+   * <code>string context_uri = 7 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
    * @return The bytes for contextUri.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getContextUriBytes() {
     java.lang.Object ref = contextUri_;
     if (ref instanceof java.lang.String) {
@@ -1840,10 +1846,13 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * URI pointing to template JSON-LD context document
      * </pre>
      *
-     * <code>string context_uri = 7;</code>
+     * <code>string context_uri = 7 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
      * @return The contextUri.
      */
+    @java.lang.Deprecated
     public java.lang.String getContextUri() {
       java.lang.Object ref = contextUri_;
       if (!(ref instanceof java.lang.String)) {
@@ -1862,10 +1871,13 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * URI pointing to template JSON-LD context document
      * </pre>
      *
-     * <code>string context_uri = 7;</code>
+     * <code>string context_uri = 7 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
      * @return The bytes for contextUri.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getContextUriBytes() {
       java.lang.Object ref = contextUri_;
       if (ref instanceof String) {
@@ -1884,11 +1896,14 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * URI pointing to template JSON-LD context document
      * </pre>
      *
-     * <code>string context_uri = 7;</code>
+     * <code>string context_uri = 7 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
      * @param value The contextUri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setContextUri(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1905,10 +1920,13 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * URI pointing to template JSON-LD context document
      * </pre>
      *
-     * <code>string context_uri = 7;</code>
+     * <code>string context_uri = 7 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearContextUri() {
 
       contextUri_ = getDefaultInstance().getContextUri();
@@ -1922,11 +1940,14 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * URI pointing to template JSON-LD context document
      * </pre>
      *
-     * <code>string context_uri = 7;</code>
+     * <code>string context_uri = 7 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
      * @param value The bytes for contextUri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setContextUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();

@@ -3,9 +3,9 @@
 # typed: strict
 
 class Services::Provider::V1::AddRoleAssignmentRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::AddRoleAssignmentRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Services::Provider::V1::AddRoleAssignmentRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -95,9 +95,9 @@ class Services::Provider::V1::AddRoleAssignmentRequest
 end
 
 class Services::Provider::V1::AddRoleAssignmentResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::AddRoleAssignmentResponse) }
   def self.decode(str)
@@ -115,7 +115,7 @@ class Services::Provider::V1::AddRoleAssignmentResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -136,9 +136,9 @@ class Services::Provider::V1::AddRoleAssignmentResponse
 end
 
 class Services::Provider::V1::RemoveRoleAssignmentRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RemoveRoleAssignmentRequest) }
   def self.decode(str)
@@ -156,7 +156,7 @@ class Services::Provider::V1::RemoveRoleAssignmentRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -228,9 +228,9 @@ class Services::Provider::V1::RemoveRoleAssignmentRequest
 end
 
 class Services::Provider::V1::RemoveRoleAssignmentResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::RemoveRoleAssignmentResponse) }
   def self.decode(str)
@@ -248,7 +248,7 @@ class Services::Provider::V1::RemoveRoleAssignmentResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -269,9 +269,9 @@ class Services::Provider::V1::RemoveRoleAssignmentResponse
 end
 
 class Services::Provider::V1::ListRoleAssignmentsRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::ListRoleAssignmentsRequest) }
   def self.decode(str)
@@ -289,7 +289,7 @@ class Services::Provider::V1::ListRoleAssignmentsRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -347,9 +347,9 @@ class Services::Provider::V1::ListRoleAssignmentsRequest
 end
 
 class Services::Provider::V1::ListRoleAssignmentsResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::ListRoleAssignmentsResponse) }
   def self.decode(str)
@@ -367,7 +367,7 @@ class Services::Provider::V1::ListRoleAssignmentsResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -385,7 +385,7 @@ class Services::Provider::V1::ListRoleAssignmentsResponse
   def roles
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def roles=(value)
   end
 
@@ -407,9 +407,9 @@ class Services::Provider::V1::ListRoleAssignmentsResponse
 end
 
 class Services::Provider::V1::ListAvailableRolesRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::ListAvailableRolesRequest) }
   def self.decode(str)
@@ -427,7 +427,7 @@ class Services::Provider::V1::ListAvailableRolesRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -448,9 +448,9 @@ class Services::Provider::V1::ListAvailableRolesRequest
 end
 
 class Services::Provider::V1::ListAvailableRolesResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Provider::V1::ListAvailableRolesResponse) }
   def self.decode(str)
@@ -468,7 +468,7 @@ class Services::Provider::V1::ListAvailableRolesResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -486,7 +486,7 @@ class Services::Provider::V1::ListAvailableRolesResponse
   def roles
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def roles=(value)
   end
 

@@ -1323,7 +1323,7 @@ class TemplateData extends $pb.GeneratedMessage {
     $core.Map<$core.String, TemplateField>? fields,
     $core.bool? allowAdditionalFields,
     $core.String? schemaUri,
-    $core.String? contextUri,
+    @$core.Deprecated('This field is deprecated.') $core.String? contextUri,
     $core.String? ecosystemId,
     $core.String? type,
     $core.String? createdBy,
@@ -1349,6 +1349,7 @@ class TemplateData extends $pb.GeneratedMessage {
       _result.schemaUri = schemaUri;
     }
     if (contextUri != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.contextUri = contextUri;
     }
     if (ecosystemId != null) {
@@ -1455,15 +1456,19 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearSchemaUri() => clearField(6);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(7)
   $core.String get contextUri => $_getSZ(6);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(7)
   set contextUri($core.String v) {
     $_setString(6, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(7)
   $core.bool hasContextUri() => $_has(6);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(7)
   void clearContextUri() => clearField(7);
 
