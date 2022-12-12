@@ -3,9 +3,9 @@
 # typed: strict
 
 class Services::Trustregistry::V1::AddFrameworkRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::AddFrameworkRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Services::Trustregistry::V1::AddFrameworkRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -91,9 +91,9 @@ class Services::Trustregistry::V1::AddFrameworkRequest
 end
 
 class Services::Trustregistry::V1::AddFrameworkResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::AddFrameworkResponse) }
   def self.decode(str)
@@ -111,7 +111,7 @@ class Services::Trustregistry::V1::AddFrameworkResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -179,9 +179,9 @@ class Services::Trustregistry::V1::AddFrameworkResponse
 end
 
 class Services::Trustregistry::V1::RemoveFrameworkRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::RemoveFrameworkRequest) }
   def self.decode(str)
@@ -199,7 +199,7 @@ class Services::Trustregistry::V1::RemoveFrameworkRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -239,9 +239,9 @@ class Services::Trustregistry::V1::RemoveFrameworkRequest
 end
 
 class Services::Trustregistry::V1::RemoveFrameworkResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::RemoveFrameworkResponse) }
   def self.decode(str)
@@ -259,7 +259,7 @@ class Services::Trustregistry::V1::RemoveFrameworkResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -280,9 +280,9 @@ class Services::Trustregistry::V1::RemoveFrameworkResponse
 end
 
 class Services::Trustregistry::V1::SearchRegistryRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::SearchRegistryRequest) }
   def self.decode(str)
@@ -300,7 +300,7 @@ class Services::Trustregistry::V1::SearchRegistryRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -354,9 +354,9 @@ class Services::Trustregistry::V1::SearchRegistryRequest
 end
 
 class Services::Trustregistry::V1::SearchRegistryResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::SearchRegistryResponse) }
   def self.decode(str)
@@ -374,7 +374,7 @@ class Services::Trustregistry::V1::SearchRegistryResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -442,9 +442,9 @@ class Services::Trustregistry::V1::SearchRegistryResponse
 end
 
 class Services::Trustregistry::V1::GovernanceFramework
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::GovernanceFramework) }
   def self.decode(str)
@@ -462,7 +462,7 @@ class Services::Trustregistry::V1::GovernanceFramework
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -530,9 +530,9 @@ class Services::Trustregistry::V1::GovernanceFramework
 end
 
 class Services::Trustregistry::V1::RegisterMemberRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::RegisterMemberRequest) }
   def self.decode(str)
@@ -550,7 +550,7 @@ class Services::Trustregistry::V1::RegisterMemberRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -678,9 +678,9 @@ class Services::Trustregistry::V1::RegisterMemberRequest
 end
 
 class Services::Trustregistry::V1::RegisterMemberResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::RegisterMemberResponse) }
   def self.decode(str)
@@ -698,7 +698,7 @@ class Services::Trustregistry::V1::RegisterMemberResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -719,9 +719,9 @@ class Services::Trustregistry::V1::RegisterMemberResponse
 end
 
 class Services::Trustregistry::V1::UnregisterMemberRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::UnregisterMemberRequest) }
   def self.decode(str)
@@ -739,7 +739,7 @@ class Services::Trustregistry::V1::UnregisterMemberRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -839,9 +839,9 @@ class Services::Trustregistry::V1::UnregisterMemberRequest
 end
 
 class Services::Trustregistry::V1::UnregisterMemberResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::UnregisterMemberResponse) }
   def self.decode(str)
@@ -859,7 +859,7 @@ class Services::Trustregistry::V1::UnregisterMemberResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -880,9 +880,9 @@ class Services::Trustregistry::V1::UnregisterMemberResponse
 end
 
 class Services::Trustregistry::V1::GetMembershipStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::GetMembershipStatusRequest) }
   def self.decode(str)
@@ -900,7 +900,7 @@ class Services::Trustregistry::V1::GetMembershipStatusRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -986,9 +986,9 @@ class Services::Trustregistry::V1::GetMembershipStatusRequest
 end
 
 class Services::Trustregistry::V1::GetMembershipStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::GetMembershipStatusResponse) }
   def self.decode(str)
@@ -1006,7 +1006,7 @@ class Services::Trustregistry::V1::GetMembershipStatusResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1046,9 +1046,9 @@ class Services::Trustregistry::V1::GetMembershipStatusResponse
 end
 
 class Services::Trustregistry::V1::FetchDataRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::FetchDataRequest) }
   def self.decode(str)
@@ -1066,7 +1066,7 @@ class Services::Trustregistry::V1::FetchDataRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -1120,9 +1120,9 @@ class Services::Trustregistry::V1::FetchDataRequest
 end
 
 class Services::Trustregistry::V1::FetchDataResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Services::Trustregistry::V1::FetchDataResponse) }
   def self.decode(str)
@@ -1140,7 +1140,7 @@ class Services::Trustregistry::V1::FetchDataResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

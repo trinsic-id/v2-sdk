@@ -12,34 +12,14 @@ class EventType(betterproto.Enum):
 
     PING = 0
     LOG = 1
-    EGF_CREATED = 5
-    EGF_MEMBER_REGISTERED = 6
-    EGF_MEMBER_UNREGISTERED = 7
+    GOVERNANCE_FRAMEWORK_CREATED = 5
+    GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = 6
+    GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = 7
     TEMPLATE_CREATED = 10
     TEMPLATE_DELETED = 11
     WALLET_CREATED = 15
     ITEM_RECEIVED = 16
     CREDENTIAL_ISSUED = 17
-
-
-@dataclass(eq=False, repr=False)
-class Event(betterproto.Message):
-    """Event"""
-
-    id: str = betterproto.string_field(1)
-    """UUID of event"""
-
-    type: "EventType" = betterproto.enum_field(2)
-    """Type of event"""
-
-    timestamp: str = betterproto.string_field(3)
-    """
-    Timestamp event occurred, in ISO 8601 format (ex.
-    `2022-07-07T08:09:10.11Z`)
-    """
-
-    data: bytes = betterproto.bytes_field(4)
-    """Event-specific payload, as an encoded protobuf message"""
 
 
 @dataclass(eq=False, repr=False)
@@ -50,7 +30,7 @@ class ApiCall(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class Ping(betterproto.Message):
+class PingV1(betterproto.Message):
     """Webhook test event"""
 
     id: str = betterproto.string_field(1)
@@ -68,9 +48,12 @@ class Ping(betterproto.Message):
     message: str = betterproto.string_field(4)
     """Arbitrary message specified when ping was requested"""
 
+    ecosystem_id: str = betterproto.string_field(5)
+    """Ecosystem where this event originated, if any."""
+
 
 @dataclass(eq=False, repr=False)
-class EgfCreated(betterproto.Message):
+class GovernanceFrameworkCreatedV1(betterproto.Message):
     """Entity Governance Framework created and attached to ecosystem"""
 
     id: str = betterproto.string_field(1)
@@ -97,9 +80,15 @@ class EgfCreated(betterproto.Message):
     governance_framework: str = betterproto.string_field(8)
     """URI for the EGF"""
 
+    timestamp: str = betterproto.string_field(9)
+    """
+    Timestamp event occurred, in ISO 8601 format (ex.
+    `2022-07-07T08:09:10.11Z`)
+    """
+
 
 @dataclass(eq=False, repr=False)
-class TemplateCreated(betterproto.Message):
+class TemplateCreatedV1(betterproto.Message):
     """Template created in ecosystem"""
 
     id: str = betterproto.string_field(1)
@@ -117,9 +106,15 @@ class TemplateCreated(betterproto.Message):
     created_by: str = betterproto.string_field(5)
     """WalletID that created the template"""
 
+    timestamp: str = betterproto.string_field(6)
+    """
+    Timestamp event occurred, in ISO 8601 format (ex.
+    `2022-07-07T08:09:10.11Z`)
+    """
+
 
 @dataclass(eq=False, repr=False)
-class ItemReceived(betterproto.Message):
+class ItemReceivedV1(betterproto.Message):
     """Item inserted into wallet"""
 
     id: str = betterproto.string_field(1)
@@ -130,3 +125,9 @@ class ItemReceived(betterproto.Message):
     Timestamp when the item was received, in ISO 8601 format (ex.
     `2022-07-07T08:09:10.11Z`)
     """
+
+    wallet_id: str = betterproto.string_field(3)
+    """ID of wallet"""
+
+    ecosystem_id: str = betterproto.string_field(4)
+    """Ecosystem where this event originated, if any."""

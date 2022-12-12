@@ -10,27 +10,29 @@ package trinsic.services.event.v1;
  * Item inserted into wallet
  * </pre>
  *
- * Protobuf type {@code trinsic.services.event.ItemReceived}
+ * Protobuf type {@code trinsic.services.event.ItemReceivedV1}
  */
-public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
+public final class ItemReceivedV1 extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:trinsic.services.event.ItemReceived)
-    ItemReceivedOrBuilder {
+    // @@protoc_insertion_point(message_implements:trinsic.services.event.ItemReceivedV1)
+    ItemReceivedV1OrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use ItemReceived.newBuilder() to construct.
-  private ItemReceived(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ItemReceivedV1.newBuilder() to construct.
+  private ItemReceivedV1(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private ItemReceived() {
+  private ItemReceivedV1() {
     id_ = "";
     received_ = "";
+    walletId_ = "";
+    ecosystemId_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new ItemReceived();
+    return new ItemReceivedV1();
   }
 
   @java.lang.Override
@@ -39,18 +41,18 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_ItemReceived_descriptor;
+    return trinsic.services.event.v1.Event
+        .internal_static_trinsic_services_event_ItemReceivedV1_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_ItemReceived_fieldAccessorTable
+    return trinsic.services.event.v1.Event
+        .internal_static_trinsic_services_event_ItemReceivedV1_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.event.v1.ItemReceived.class,
-            trinsic.services.event.v1.ItemReceived.Builder.class);
+            trinsic.services.event.v1.ItemReceivedV1.class,
+            trinsic.services.event.v1.ItemReceivedV1.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
@@ -151,6 +153,104 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
+  public static final int WALLET_ID_FIELD_NUMBER = 3;
+  private volatile java.lang.Object walletId_;
+  /**
+   *
+   *
+   * <pre>
+   * ID of wallet
+   * </pre>
+   *
+   * <code>string wallet_id = 3;</code>
+   *
+   * @return The walletId.
+   */
+  @java.lang.Override
+  public java.lang.String getWalletId() {
+    java.lang.Object ref = walletId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      walletId_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * ID of wallet
+   * </pre>
+   *
+   * <code>string wallet_id = 3;</code>
+   *
+   * @return The bytes for walletId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getWalletIdBytes() {
+    java.lang.Object ref = walletId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      walletId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ECOSYSTEM_ID_FIELD_NUMBER = 4;
+  private volatile java.lang.Object ecosystemId_;
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem where this event originated, if any.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 4;</code>
+   *
+   * @return The ecosystemId.
+   */
+  @java.lang.Override
+  public java.lang.String getEcosystemId() {
+    java.lang.Object ref = ecosystemId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      ecosystemId_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem where this event originated, if any.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 4;</code>
+   *
+   * @return The bytes for ecosystemId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getEcosystemIdBytes() {
+    java.lang.Object ref = ecosystemId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      ecosystemId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -171,6 +271,12 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(received_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, received_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, walletId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, ecosystemId_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -186,6 +292,12 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(received_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, received_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, walletId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, ecosystemId_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -196,13 +308,15 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.event.v1.ItemReceived)) {
+    if (!(obj instanceof trinsic.services.event.v1.ItemReceivedV1)) {
       return super.equals(obj);
     }
-    trinsic.services.event.v1.ItemReceived other = (trinsic.services.event.v1.ItemReceived) obj;
+    trinsic.services.event.v1.ItemReceivedV1 other = (trinsic.services.event.v1.ItemReceivedV1) obj;
 
     if (!getId().equals(other.getId())) return false;
     if (!getReceived().equals(other.getReceived())) return false;
+    if (!getWalletId().equals(other.getWalletId())) return false;
+    if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -218,76 +332,80 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + getId().hashCode();
     hash = (37 * hash) + RECEIVED_FIELD_NUMBER;
     hash = (53 * hash) + getReceived().hashCode();
+    hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getWalletId().hashCode();
+    hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getEcosystemId().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(byte[] data)
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(java.io.InputStream input)
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
+  public static trinsic.services.event.v1.ItemReceivedV1 parseDelimitedFrom(
+      java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseDelimitedFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.event.v1.ItemReceived parseFrom(
+  public static trinsic.services.event.v1.ItemReceivedV1 parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -304,7 +422,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(trinsic.services.event.v1.ItemReceived prototype) {
+  public static Builder newBuilder(trinsic.services.event.v1.ItemReceivedV1 prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -325,28 +443,28 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
    * Item inserted into wallet
    * </pre>
    *
-   * Protobuf type {@code trinsic.services.event.ItemReceived}
+   * Protobuf type {@code trinsic.services.event.ItemReceivedV1}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:trinsic.services.event.ItemReceived)
-      trinsic.services.event.v1.ItemReceivedOrBuilder {
+      // @@protoc_insertion_point(builder_implements:trinsic.services.event.ItemReceivedV1)
+      trinsic.services.event.v1.ItemReceivedV1OrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_ItemReceived_descriptor;
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_ItemReceivedV1_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_ItemReceived_fieldAccessorTable
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_ItemReceivedV1_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.event.v1.ItemReceived.class,
-              trinsic.services.event.v1.ItemReceived.Builder.class);
+              trinsic.services.event.v1.ItemReceivedV1.class,
+              trinsic.services.event.v1.ItemReceivedV1.Builder.class);
     }
 
-    // Construct using trinsic.services.event.v1.ItemReceived.newBuilder()
+    // Construct using trinsic.services.event.v1.ItemReceivedV1.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -360,23 +478,27 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
 
       received_ = "";
 
+      walletId_ = "";
+
+      ecosystemId_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_ItemReceived_descriptor;
+      return trinsic.services.event.v1.Event
+          .internal_static_trinsic_services_event_ItemReceivedV1_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.ItemReceived getDefaultInstanceForType() {
-      return trinsic.services.event.v1.ItemReceived.getDefaultInstance();
+    public trinsic.services.event.v1.ItemReceivedV1 getDefaultInstanceForType() {
+      return trinsic.services.event.v1.ItemReceivedV1.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.ItemReceived build() {
-      trinsic.services.event.v1.ItemReceived result = buildPartial();
+    public trinsic.services.event.v1.ItemReceivedV1 build() {
+      trinsic.services.event.v1.ItemReceivedV1 result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -384,11 +506,13 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public trinsic.services.event.v1.ItemReceived buildPartial() {
-      trinsic.services.event.v1.ItemReceived result =
-          new trinsic.services.event.v1.ItemReceived(this);
+    public trinsic.services.event.v1.ItemReceivedV1 buildPartial() {
+      trinsic.services.event.v1.ItemReceivedV1 result =
+          new trinsic.services.event.v1.ItemReceivedV1(this);
       result.id_ = id_;
       result.received_ = received_;
+      result.walletId_ = walletId_;
+      result.ecosystemId_ = ecosystemId_;
       onBuilt();
       return result;
     }
@@ -428,22 +552,30 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.event.v1.ItemReceived) {
-        return mergeFrom((trinsic.services.event.v1.ItemReceived) other);
+      if (other instanceof trinsic.services.event.v1.ItemReceivedV1) {
+        return mergeFrom((trinsic.services.event.v1.ItemReceivedV1) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.event.v1.ItemReceived other) {
-      if (other == trinsic.services.event.v1.ItemReceived.getDefaultInstance()) return this;
+    public Builder mergeFrom(trinsic.services.event.v1.ItemReceivedV1 other) {
+      if (other == trinsic.services.event.v1.ItemReceivedV1.getDefaultInstance()) return this;
       if (!other.getId().isEmpty()) {
         id_ = other.id_;
         onChanged();
       }
       if (!other.getReceived().isEmpty()) {
         received_ = other.received_;
+        onChanged();
+      }
+      if (!other.getWalletId().isEmpty()) {
+        walletId_ = other.walletId_;
+        onChanged();
+      }
+      if (!other.getEcosystemId().isEmpty()) {
+        ecosystemId_ = other.ecosystemId_;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -484,6 +616,18 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 18
+            case 26:
+              {
+                walletId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 26
+            case 34:
+              {
+                ecosystemId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 34
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -713,6 +857,218 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
+    private java.lang.Object walletId_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * ID of wallet
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     *
+     * @return The walletId.
+     */
+    public java.lang.String getWalletId() {
+      java.lang.Object ref = walletId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        walletId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * ID of wallet
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     *
+     * @return The bytes for walletId.
+     */
+    public com.google.protobuf.ByteString getWalletIdBytes() {
+      java.lang.Object ref = walletId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        walletId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * ID of wallet
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     *
+     * @param value The walletId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWalletId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      walletId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * ID of wallet
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearWalletId() {
+
+      walletId_ = getDefaultInstance().getWalletId();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * ID of wallet
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     *
+     * @param value The bytes for walletId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWalletIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      walletId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object ecosystemId_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem where this event originated, if any.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 4;</code>
+     *
+     * @return The ecosystemId.
+     */
+    public java.lang.String getEcosystemId() {
+      java.lang.Object ref = ecosystemId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ecosystemId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem where this event originated, if any.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 4;</code>
+     *
+     * @return The bytes for ecosystemId.
+     */
+    public com.google.protobuf.ByteString getEcosystemIdBytes() {
+      java.lang.Object ref = ecosystemId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        ecosystemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem where this event originated, if any.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 4;</code>
+     *
+     * @param value The ecosystemId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEcosystemId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      ecosystemId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem where this event originated, if any.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearEcosystemId() {
+
+      ecosystemId_ = getDefaultInstance().getEcosystemId();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem where this event originated, if any.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 4;</code>
+     *
+     * @param value The bytes for ecosystemId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      ecosystemId_ = value;
+      onChanged();
+      return this;
+    }
+
     @java.lang.Override
     public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
@@ -724,24 +1080,24 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:trinsic.services.event.ItemReceived)
+    // @@protoc_insertion_point(builder_scope:trinsic.services.event.ItemReceivedV1)
   }
 
-  // @@protoc_insertion_point(class_scope:trinsic.services.event.ItemReceived)
-  private static final trinsic.services.event.v1.ItemReceived DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:trinsic.services.event.ItemReceivedV1)
+  private static final trinsic.services.event.v1.ItemReceivedV1 DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.event.v1.ItemReceived();
+    DEFAULT_INSTANCE = new trinsic.services.event.v1.ItemReceivedV1();
   }
 
-  public static trinsic.services.event.v1.ItemReceived getDefaultInstance() {
+  public static trinsic.services.event.v1.ItemReceivedV1 getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ItemReceived> PARSER =
-      new com.google.protobuf.AbstractParser<ItemReceived>() {
+  private static final com.google.protobuf.Parser<ItemReceivedV1> PARSER =
+      new com.google.protobuf.AbstractParser<ItemReceivedV1>() {
         @java.lang.Override
-        public ItemReceived parsePartialFrom(
+        public ItemReceivedV1 parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -760,17 +1116,17 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
         }
       };
 
-  public static com.google.protobuf.Parser<ItemReceived> parser() {
+  public static com.google.protobuf.Parser<ItemReceivedV1> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ItemReceived> getParserForType() {
+  public com.google.protobuf.Parser<ItemReceivedV1> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.event.v1.ItemReceived getDefaultInstanceForType() {
+  public trinsic.services.event.v1.ItemReceivedV1 getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

@@ -15,9 +15,9 @@ const EventType$json = const {
   '2': const [
     const {'1': 'PING', '2': 0},
     const {'1': 'LOG', '2': 1},
-    const {'1': 'EGF_CREATED', '2': 5},
-    const {'1': 'EGF_MEMBER_REGISTERED', '2': 6},
-    const {'1': 'EGF_MEMBER_UNREGISTERED', '2': 7},
+    const {'1': 'GOVERNANCE_FRAMEWORK_CREATED', '2': 5},
+    const {'1': 'GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED', '2': 6},
+    const {'1': 'GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED', '2': 7},
     const {'1': 'TEMPLATE_CREATED', '2': 10},
     const {'1': 'TEMPLATE_DELETED', '2': 11},
     const {'1': 'WALLET_CREATED', '2': 15},
@@ -28,28 +28,7 @@ const EventType$json = const {
 
 /// Descriptor for `EventType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List eventTypeDescriptor = $convert.base64Decode(
-    'CglFdmVudFR5cGUSCAoEUElORxAAEgcKA0xPRxABEg8KC0VHRl9DUkVBVEVEEAUSGQoVRUdGX01FTUJFUl9SRUdJU1RFUkVEEAYSGwoXRUdGX01FTUJFUl9VTlJFR0lTVEVSRUQQBxIUChBURU1QTEFURV9DUkVBVEVEEAoSFAoQVEVNUExBVEVfREVMRVRFRBALEhIKDldBTExFVF9DUkVBVEVEEA8SEQoNSVRFTV9SRUNFSVZFRBAQEhUKEUNSRURFTlRJQUxfSVNTVUVEEBE=');
-@$core.Deprecated('Use eventDescriptor instead')
-const Event$json = const {
-  '1': 'Event',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    const {
-      '1': 'type',
-      '3': 2,
-      '4': 1,
-      '5': 14,
-      '6': '.trinsic.services.event.EventType',
-      '10': 'type'
-    },
-    const {'1': 'timestamp', '3': 3, '4': 1, '5': 9, '10': 'timestamp'},
-    const {'1': 'data', '3': 4, '4': 1, '5': 12, '10': 'data'},
-  ],
-};
-
-/// Descriptor for `Event`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventDescriptor = $convert.base64Decode(
-    'CgVFdmVudBIOCgJpZBgBIAEoCVICaWQSNQoEdHlwZRgCIAEoDjIhLnRyaW5zaWMuc2VydmljZXMuZXZlbnQuRXZlbnRUeXBlUgR0eXBlEhwKCXRpbWVzdGFtcBgDIAEoCVIJdGltZXN0YW1wEhIKBGRhdGEYBCABKAxSBGRhdGE=');
+    'CglFdmVudFR5cGUSCAoEUElORxAAEgcKA0xPRxABEiAKHEdPVkVSTkFOQ0VfRlJBTUVXT1JLX0NSRUFURUQQBRIqCiZHT1ZFUk5BTkNFX0ZSQU1FV09SS19NRU1CRVJfUkVHSVNURVJFRBAGEiwKKEdPVkVSTkFOQ0VfRlJBTUVXT1JLX01FTUJFUl9VTlJFR0lTVEVSRUQQBxIUChBURU1QTEFURV9DUkVBVEVEEAoSFAoQVEVNUExBVEVfREVMRVRFRBALEhIKDldBTExFVF9DUkVBVEVEEA8SEQoNSVRFTV9SRUNFSVZFRBAQEhUKEUNSRURFTlRJQUxfSVNTVUVEEBE=');
 @$core.Deprecated('Use aPICallDescriptor instead')
 const APICall$json = const {
   '1': 'APICall',
@@ -63,24 +42,25 @@ const APICall$json = const {
 /// Descriptor for `APICall`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List aPICallDescriptor = $convert.base64Decode(
     'CgdBUElDYWxsEhYKBnNvdXJjZRgBIAEoCVIGc291cmNlEhgKB3JlcXVlc3QYAiABKAxSB3JlcXVlc3QSGgoIcmVzcG9uc2UYAyABKAxSCHJlc3BvbnNl');
-@$core.Deprecated('Use pingDescriptor instead')
-const Ping$json = const {
-  '1': 'Ping',
+@$core.Deprecated('Use pingV1Descriptor instead')
+const PingV1$json = const {
+  '1': 'PingV1',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'webhook_id', '3': 2, '4': 1, '5': 9, '10': 'webhookId'},
     const {'1': 'timestamp', '3': 3, '4': 1, '5': 9, '10': 'timestamp'},
     const {'1': 'message', '3': 4, '4': 1, '5': 9, '10': 'message'},
+    const {'1': 'ecosystem_id', '3': 5, '4': 1, '5': 9, '10': 'ecosystemId'},
   ],
   '7': const {},
 };
 
-/// Descriptor for `Ping`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pingDescriptor = $convert.base64Decode(
-    'CgRQaW5nEg4KAmlkGAEgASgJUgJpZBIdCgp3ZWJob29rX2lkGAIgASgJUgl3ZWJob29rSWQSHAoJdGltZXN0YW1wGAMgASgJUgl0aW1lc3RhbXASGAoHbWVzc2FnZRgEIAEoCVIHbWVzc2FnZToEkKYdAA==');
-@$core.Deprecated('Use eGFCreatedDescriptor instead')
-const EGFCreated$json = const {
-  '1': 'EGFCreated',
+/// Descriptor for `PingV1`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List pingV1Descriptor = $convert.base64Decode(
+    'CgZQaW5nVjESDgoCaWQYASABKAlSAmlkEh0KCndlYmhvb2tfaWQYAiABKAlSCXdlYmhvb2tJZBIcCgl0aW1lc3RhbXAYAyABKAlSCXRpbWVzdGFtcBIYCgdtZXNzYWdlGAQgASgJUgdtZXNzYWdlEiEKDGVjb3N5c3RlbV9pZBgFIAEoCVILZWNvc3lzdGVtSWQ6BJCmHQA=');
+@$core.Deprecated('Use governanceFrameworkCreatedV1Descriptor instead')
+const GovernanceFrameworkCreatedV1$json = const {
+  '1': 'GovernanceFrameworkCreatedV1',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'ecosystem_id', '3': 2, '4': 1, '5': 9, '10': 'ecosystemId'},
@@ -108,39 +88,44 @@ const EGFCreated$json = const {
       '5': 9,
       '10': 'governanceFramework'
     },
+    const {'1': 'timestamp', '3': 9, '4': 1, '5': 9, '10': 'timestamp'},
   ],
   '7': const {},
 };
 
-/// Descriptor for `EGFCreated`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eGFCreatedDescriptor = $convert.base64Decode(
-    'CgpFR0ZDcmVhdGVkEg4KAmlkGAEgASgJUgJpZBIhCgxlY29zeXN0ZW1faWQYAiABKAlSC2Vjb3N5c3RlbUlkEiUKDnRydXN0X3JlZ2lzdHJ5GAMgASgJUg10cnVzdFJlZ2lzdHJ5Ei8KE2dvdmVybmluZ19hdXRob3JpdHkYBCABKAlSEmdvdmVybmluZ0F1dGhvcml0eRISCgR0eXBlGAUgASgJUgR0eXBlEhIKBG5hbWUYBiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YByABKAlSC2Rlc2NyaXB0aW9uEjEKFGdvdmVybmFuY2VfZnJhbWV3b3JrGAggASgJUhNnb3Zlcm5hbmNlRnJhbWV3b3JrOgSQph0F');
-@$core.Deprecated('Use templateCreatedDescriptor instead')
-const TemplateCreated$json = const {
-  '1': 'TemplateCreated',
+/// Descriptor for `GovernanceFrameworkCreatedV1`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List governanceFrameworkCreatedV1Descriptor =
+    $convert.base64Decode(
+        'ChxHb3Zlcm5hbmNlRnJhbWV3b3JrQ3JlYXRlZFYxEg4KAmlkGAEgASgJUgJpZBIhCgxlY29zeXN0ZW1faWQYAiABKAlSC2Vjb3N5c3RlbUlkEiUKDnRydXN0X3JlZ2lzdHJ5GAMgASgJUg10cnVzdFJlZ2lzdHJ5Ei8KE2dvdmVybmluZ19hdXRob3JpdHkYBCABKAlSEmdvdmVybmluZ0F1dGhvcml0eRISCgR0eXBlGAUgASgJUgR0eXBlEhIKBG5hbWUYBiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YByABKAlSC2Rlc2NyaXB0aW9uEjEKFGdvdmVybmFuY2VfZnJhbWV3b3JrGAggASgJUhNnb3Zlcm5hbmNlRnJhbWV3b3JrEhwKCXRpbWVzdGFtcBgJIAEoCVIJdGltZXN0YW1wOgSQph0F');
+@$core.Deprecated('Use templateCreatedV1Descriptor instead')
+const TemplateCreatedV1$json = const {
+  '1': 'TemplateCreatedV1',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'ecosystem_id', '3': 2, '4': 1, '5': 9, '10': 'ecosystemId'},
     const {'1': 'name', '3': 3, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'type', '3': 4, '4': 1, '5': 9, '10': 'type'},
     const {'1': 'created_by', '3': 5, '4': 1, '5': 9, '10': 'createdBy'},
+    const {'1': 'timestamp', '3': 6, '4': 1, '5': 9, '10': 'timestamp'},
   ],
   '7': const {},
 };
 
-/// Descriptor for `TemplateCreated`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List templateCreatedDescriptor = $convert.base64Decode(
-    'Cg9UZW1wbGF0ZUNyZWF0ZWQSDgoCaWQYASABKAlSAmlkEiEKDGVjb3N5c3RlbV9pZBgCIAEoCVILZWNvc3lzdGVtSWQSEgoEbmFtZRgDIAEoCVIEbmFtZRISCgR0eXBlGAQgASgJUgR0eXBlEh0KCmNyZWF0ZWRfYnkYBSABKAlSCWNyZWF0ZWRCeToEkKYdCg==');
-@$core.Deprecated('Use itemReceivedDescriptor instead')
-const ItemReceived$json = const {
-  '1': 'ItemReceived',
+/// Descriptor for `TemplateCreatedV1`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List templateCreatedV1Descriptor = $convert.base64Decode(
+    'ChFUZW1wbGF0ZUNyZWF0ZWRWMRIOCgJpZBgBIAEoCVICaWQSIQoMZWNvc3lzdGVtX2lkGAIgASgJUgtlY29zeXN0ZW1JZBISCgRuYW1lGAMgASgJUgRuYW1lEhIKBHR5cGUYBCABKAlSBHR5cGUSHQoKY3JlYXRlZF9ieRgFIAEoCVIJY3JlYXRlZEJ5EhwKCXRpbWVzdGFtcBgGIAEoCVIJdGltZXN0YW1wOgSQph0K');
+@$core.Deprecated('Use itemReceivedV1Descriptor instead')
+const ItemReceivedV1$json = const {
+  '1': 'ItemReceivedV1',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'received', '3': 2, '4': 1, '5': 9, '10': 'received'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '10': 'walletId'},
+    const {'1': 'ecosystem_id', '3': 4, '4': 1, '5': 9, '10': 'ecosystemId'},
   ],
   '7': const {},
 };
 
-/// Descriptor for `ItemReceived`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List itemReceivedDescriptor = $convert.base64Decode(
-    'CgxJdGVtUmVjZWl2ZWQSDgoCaWQYASABKAlSAmlkEhoKCHJlY2VpdmVkGAIgASgJUghyZWNlaXZlZDoEkKYdEA==');
+/// Descriptor for `ItemReceivedV1`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List itemReceivedV1Descriptor = $convert.base64Decode(
+    'Cg5JdGVtUmVjZWl2ZWRWMRIOCgJpZBgBIAEoCVICaWQSGgoIcmVjZWl2ZWQYAiABKAlSCHJlY2VpdmVkEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSIQoMZWNvc3lzdGVtX2lkGAQgASgJUgtlY29zeXN0ZW1JZDoEkKYdEA==');

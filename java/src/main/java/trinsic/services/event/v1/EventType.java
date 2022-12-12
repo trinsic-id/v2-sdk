@@ -17,12 +17,12 @@ public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
   PING(0),
   /** <code>LOG = 1;</code> */
   LOG(1),
-  /** <code>EGF_CREATED = 5;</code> */
-  EGF_CREATED(5),
-  /** <code>EGF_MEMBER_REGISTERED = 6;</code> */
-  EGF_MEMBER_REGISTERED(6),
-  /** <code>EGF_MEMBER_UNREGISTERED = 7;</code> */
-  EGF_MEMBER_UNREGISTERED(7),
+  /** <code>GOVERNANCE_FRAMEWORK_CREATED = 5;</code> */
+  GOVERNANCE_FRAMEWORK_CREATED(5),
+  /** <code>GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = 6;</code> */
+  GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED(6),
+  /** <code>GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = 7;</code> */
+  GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED(7),
   /** <code>TEMPLATE_CREATED = 10;</code> */
   TEMPLATE_CREATED(10),
   /** <code>TEMPLATE_DELETED = 11;</code> */
@@ -40,12 +40,12 @@ public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
   public static final int PING_VALUE = 0;
   /** <code>LOG = 1;</code> */
   public static final int LOG_VALUE = 1;
-  /** <code>EGF_CREATED = 5;</code> */
-  public static final int EGF_CREATED_VALUE = 5;
-  /** <code>EGF_MEMBER_REGISTERED = 6;</code> */
-  public static final int EGF_MEMBER_REGISTERED_VALUE = 6;
-  /** <code>EGF_MEMBER_UNREGISTERED = 7;</code> */
-  public static final int EGF_MEMBER_UNREGISTERED_VALUE = 7;
+  /** <code>GOVERNANCE_FRAMEWORK_CREATED = 5;</code> */
+  public static final int GOVERNANCE_FRAMEWORK_CREATED_VALUE = 5;
+  /** <code>GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = 6;</code> */
+  public static final int GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED_VALUE = 6;
+  /** <code>GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = 7;</code> */
+  public static final int GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED_VALUE = 7;
   /** <code>TEMPLATE_CREATED = 10;</code> */
   public static final int TEMPLATE_CREATED_VALUE = 10;
   /** <code>TEMPLATE_DELETED = 11;</code> */
@@ -86,11 +86,11 @@ public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
       case 1:
         return LOG;
       case 5:
-        return EGF_CREATED;
+        return GOVERNANCE_FRAMEWORK_CREATED;
       case 6:
-        return EGF_MEMBER_REGISTERED;
+        return GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED;
       case 7:
-        return EGF_MEMBER_UNREGISTERED;
+        return GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED;
       case 10:
         return TEMPLATE_CREATED;
       case 11:
@@ -130,7 +130,7 @@ public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
   }
 
   public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass.getDescriptor().getEnumTypes().get(0);
+    return trinsic.services.event.v1.Event.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final EventType[] VALUES = values();

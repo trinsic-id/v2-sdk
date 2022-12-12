@@ -4,14 +4,14 @@
 
 module Services::Verifiablecredentials::V1::VerifiableCredential
   class Service
-    include GRPC::GenericService
+    include ::GRPC::GenericService
   end
 
-  class Stub < GRPC::ClientStub
+  class Stub < ::GRPC::ClientStub
     sig do
       params(
         host: String,
-        creds: T.any(GRPC::Core::ChannelCredentials, Symbol),
+        creds: T.any(::GRPC::Core::ChannelCredentials, Symbol),
         kw: T.untyped,
       ).void
     end

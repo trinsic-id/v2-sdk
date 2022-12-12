@@ -32,14 +32,14 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass
+    return trinsic.services.event.v1.Event
         .internal_static_trinsic_services_event_APICall_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.event.v1.EventOuterClass
+    return trinsic.services.event.v1.Event
         .internal_static_trinsic_services_event_APICall_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             trinsic.services.event.v1.APICall.class,
@@ -288,14 +288,14 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
       // @@protoc_insertion_point(builder_implements:trinsic.services.event.APICall)
       trinsic.services.event.v1.APICallOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.event.v1.EventOuterClass
+      return trinsic.services.event.v1.Event
           .internal_static_trinsic_services_event_APICall_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.event.v1.EventOuterClass
+      return trinsic.services.event.v1.Event
           .internal_static_trinsic_services_event_APICall_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               trinsic.services.event.v1.APICall.class,
@@ -323,7 +323,7 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.event.v1.EventOuterClass
+      return trinsic.services.event.v1.Event
           .internal_static_trinsic_services_event_APICall_descriptor;
     }
 
