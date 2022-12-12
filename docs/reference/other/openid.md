@@ -113,13 +113,7 @@ If you specified a `nonce` in the authorization request, always verify that the 
 We've prepared a sample demonstrating client-side OIDC Verification.
 
 <div class="grid cards" markdown>
-
--   :octicons-browser-24: Interactive Sample
-
-    ---
-
-    Try out an [interactive demo](https://replit.com/@trinsic/oidc-sample) demonstrating client-side verifications
-
+    
 -   :fontawesome-brands-github: Sample Source
 
     ---
