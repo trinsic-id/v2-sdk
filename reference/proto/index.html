@@ -2485,45 +2485,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#egfcreated" class="md-nav__link">
+  <a href="#governanceframeworkcreatedv1" class="md-nav__link">
     <span class="md-ellipsis">
-      EGFCreated
+      GovernanceFrameworkCreatedV1
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#event" class="md-nav__link">
+  <a href="#itemreceivedv1" class="md-nav__link">
     <span class="md-ellipsis">
-      Event
+      ItemReceivedV1
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#itemreceived" class="md-nav__link">
+  <a href="#pingv1" class="md-nav__link">
     <span class="md-ellipsis">
-      ItemReceived
+      PingV1
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ping" class="md-nav__link">
+  <a href="#templatecreatedv1" class="md-nav__link">
     <span class="md-ellipsis">
-      Ping
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templatecreated" class="md-nav__link">
-    <span class="md-ellipsis">
-      TemplateCreated
+      TemplateCreatedV1
     </span>
   </a>
   
@@ -5800,8 +5791,8 @@ to verify authentication token validity</p>
 </tr>
 </tbody>
 </table>
-<p><a name="trinsic-services-event-EGFCreated"></a></p>
-<h3 id="egfcreated">EGFCreated<a class="headerlink" href="#egfcreated" title="Permanent link">&para;</a></h3>
+<p><a name="trinsic-services-event-GovernanceFrameworkCreatedV1"></a></p>
+<h3 id="governanceframeworkcreatedv1">GovernanceFrameworkCreatedV1<a class="headerlink" href="#governanceframeworkcreatedv1" title="Permanent link">&para;</a></h3>
 <p>Entity Governance Framework created and attached to ecosystem</p>
 <table>
 <thead>
@@ -5852,44 +5843,15 @@ to verify authentication token validity</p>
 <td><a href="/reference/proto#string">string</a></td>
 <td>URI for the EGF</td>
 </tr>
-</tbody>
-</table>
-<p><a name="trinsic-services-event-Event"></a></p>
-<h3 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h3>
-<p>Event</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>UUID of event</td>
-</tr>
-<tr>
-<td>type</td>
-<td><a href="/reference/proto#trinsic-services-event-EventType">EventType</a></td>
-<td>Type of event</td>
-</tr>
 <tr>
 <td>timestamp</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Timestamp event occurred, in ISO 8601 format (ex. <code>2022-07-07T08:09:10.11Z</code>)</td>
 </tr>
-<tr>
-<td>data</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Event-specific payload, as an encoded protobuf message</td>
-</tr>
 </tbody>
 </table>
-<p><a name="trinsic-services-event-ItemReceived"></a></p>
-<h3 id="itemreceived">ItemReceived<a class="headerlink" href="#itemreceived" title="Permanent link">&para;</a></h3>
+<p><a name="trinsic-services-event-ItemReceivedV1"></a></p>
+<h3 id="itemreceivedv1">ItemReceivedV1<a class="headerlink" href="#itemreceivedv1" title="Permanent link">&para;</a></h3>
 <p>Item inserted into wallet</p>
 <table>
 <thead>
@@ -5910,10 +5872,20 @@ to verify authentication token validity</p>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Timestamp when the item was received, in ISO 8601 format (ex. <code>2022-07-07T08:09:10.11Z</code>)</td>
 </tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of wallet</td>
+</tr>
+<tr>
+<td>ecosystem_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Ecosystem where this event originated, if any.</td>
+</tr>
 </tbody>
 </table>
-<p><a name="trinsic-services-event-Ping"></a></p>
-<h3 id="ping">Ping<a class="headerlink" href="#ping" title="Permanent link">&para;</a></h3>
+<p><a name="trinsic-services-event-PingV1"></a></p>
+<h3 id="pingv1">PingV1<a class="headerlink" href="#pingv1" title="Permanent link">&para;</a></h3>
 <p>Webhook test event</p>
 <table>
 <thead>
@@ -5944,10 +5916,15 @@ to verify authentication token validity</p>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Arbitrary message specified when ping was requested</td>
 </tr>
+<tr>
+<td>ecosystem_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Ecosystem where this event originated, if any.</td>
+</tr>
 </tbody>
 </table>
-<p><a name="trinsic-services-event-TemplateCreated"></a></p>
-<h3 id="templatecreated">TemplateCreated<a class="headerlink" href="#templatecreated" title="Permanent link">&para;</a></h3>
+<p><a name="trinsic-services-event-TemplateCreatedV1"></a></p>
+<h3 id="templatecreatedv1">TemplateCreatedV1<a class="headerlink" href="#templatecreatedv1" title="Permanent link">&para;</a></h3>
 <p>Template created in ecosystem</p>
 <table>
 <thead>
@@ -5983,6 +5960,11 @@ to verify authentication token validity</p>
 <td><a href="/reference/proto#string">string</a></td>
 <td>WalletID that created the template</td>
 </tr>
+<tr>
+<td>timestamp</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Timestamp event occurred, in ISO 8601 format (ex. <code>2022-07-07T08:09:10.11Z</code>)</td>
+</tr>
 </tbody>
 </table>
 <!-- end messages -->
@@ -6010,17 +5992,17 @@ to verify authentication token validity</p>
 <td></td>
 </tr>
 <tr>
-<td>EGF_CREATED</td>
+<td>GOVERNANCE_FRAMEWORK_CREATED</td>
 <td>5</td>
 <td></td>
 </tr>
 <tr>
-<td>EGF_MEMBER_REGISTERED</td>
+<td>GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED</td>
 <td>6</td>
 <td></td>
 </tr>
 <tr>
-<td>EGF_MEMBER_UNREGISTERED</td>
+<td>GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED</td>
 <td>7</td>
 <td></td>
 </tr>
@@ -6879,7 +6861,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>context_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>URI pointing to template JSON-LD context document</td>
+<td><strong>Deprecated.</strong> URI pointing to template JSON-LD context document</td>
 </tr>
 <tr>
 <td>ecosystem_id</td>
