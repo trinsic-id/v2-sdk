@@ -72,7 +72,16 @@ Fetches a template definition by `id`.
         ```bash
         trinsic template get --id <TEMPLATE_ID>
         ```
-
+        
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        await trinsic.template().get(GetCredentialTemplateRequest.fromPartial({
+            id: "id"
+        }));
+        ```
+        <!--/codeinclude-->
+        
     === "C#"
         <!--codeinclude-->
         ```csharp
