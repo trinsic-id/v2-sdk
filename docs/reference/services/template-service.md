@@ -76,9 +76,7 @@ Fetches a template definition by `id`.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        await trinsic.template().get(GetCredentialTemplateRequest.fromPartial({
-            id: "id"
-        }));
+        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:getCredentialTemplate
         ```
         <!--/codeinclude-->
         
