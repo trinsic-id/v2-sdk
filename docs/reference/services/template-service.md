@@ -72,7 +72,14 @@ Fetches a template definition by `id`.
         ```bash
         trinsic template get --id <TEMPLATE_ID>
         ```
-
+        
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:getCredentialTemplate
+        ```
+        <!--/codeinclude-->
+        
     === "C#"
         <!--codeinclude-->
         ```csharp
