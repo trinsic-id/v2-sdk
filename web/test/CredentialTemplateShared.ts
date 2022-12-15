@@ -4,6 +4,7 @@ import {
     CreateCredentialTemplateResponse,
     CreateProofRequest,
     FieldType,
+    GetCredentialTemplateRequest,
     InsertItemRequest,
     IssueFromTemplateRequest,
     IssueFromTemplateResponse,
@@ -142,4 +143,13 @@ export async function searchTemplate(trinsic: TrinsicService) {
     );
     // }
     return searchTemplateResponse;
+}
+
+export async function getTemplate(trinsic: TrinsicService) {
+    // getCredentialTemplate() {
+    let getTemplateResponse = trinsic.template().get(GetCredentialTemplateRequest.fromPartial({
+        id: "id"
+    }));
+    // }
+    return getTemplateResponse;
 }
