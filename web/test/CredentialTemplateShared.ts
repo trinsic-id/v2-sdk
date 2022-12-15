@@ -147,7 +147,7 @@ export async function searchTemplate(trinsic: TrinsicService) {
 
 export async function getTemplate(trinsic: TrinsicService) {
     // getCredentialTemplate() {
-    let getTemplateResponse = trinsic.template().get(GetCredentialTemplateRequest.fromPartial({
+    let getTemplateResponse = await trinsic.template().get(GetCredentialTemplateRequest.fromPartial({
         id: "id"
     }));
     // }
