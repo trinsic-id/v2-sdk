@@ -28,15 +28,8 @@ jobs:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
     steps:
       - uses: actions/checkout@v3
-      - name: Download ${{ matrix.os-artifact[0] }} binaries
-        uses: dawidd6/action-download-artifact@v2.24.2
-        with:
-          workflow: "build-libs.yml"
-          path: ./go/services
-          repo: trinsic-id/okapi
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ matrix.os-artifact[1] }}
-          workflow_conclusion: completed
+      - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
+        id: install_okapi_binaries
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
