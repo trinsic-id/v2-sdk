@@ -504,6 +504,234 @@
       "file": "services/common/v1/common.proto",
       "parent": "services.common.v1.SupportedDidMethod"
     },
+    "services.filemanagement.v1.DeleteFileRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.DeleteFileRequest.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.DeleteFileRequest"
+    },
+    "services.filemanagement.v1.DeleteFileResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.File": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.File.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.File"
+    },
+    "services.filemanagement.v1.File.mime_type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.File"
+    },
+    "services.filemanagement.v1.File.size": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.File"
+    },
+    "services.filemanagement.v1.File.uploaded": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.File"
+    },
+    "services.filemanagement.v1.File.uploader_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.File"
+    },
+    "services.filemanagement.v1.File.url": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.File"
+    },
+    "services.filemanagement.v1.FileManagement": {
+      "type": "service",
+      "collection": "services",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.FileManagement.DeleteFile": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.FileManagement.GetFile": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.FileManagement.GetStorageStats": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.FileManagement.ListFiles": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.FileManagement.UploadFile": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.GetFileRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.GetFileRequest.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.GetFileRequest"
+    },
+    "services.filemanagement.v1.GetFileResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.GetFileResponse.file": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.GetFileResponse"
+    },
+    "services.filemanagement.v1.GetStorageStatsRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.GetStorageStatsResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.GetStorageStatsResponse.stats": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.GetStorageStatsResponse"
+    },
+    "services.filemanagement.v1.ListFilesRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.ListFilesRequest.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.ListFilesRequest"
+    },
+    "services.filemanagement.v1.ListFilesRequest.query": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.ListFilesRequest"
+    },
+    "services.filemanagement.v1.ListFilesResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.ListFilesResponse.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.ListFilesResponse"
+    },
+    "services.filemanagement.v1.ListFilesResponse.files": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.ListFilesResponse"
+    },
+    "services.filemanagement.v1.ListFilesResponse.has_more_results": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.ListFilesResponse"
+    },
+    "services.filemanagement.v1.StorageStats": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.StorageStats.num_files": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.StorageStats"
+    },
+    "services.filemanagement.v1.StorageStats.total_size": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.StorageStats"
+    },
+    "services.filemanagement.v1.UploadFileRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.UploadFileRequest.contents": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.UploadFileRequest"
+    },
+    "services.filemanagement.v1.UploadFileRequest.mime_type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.UploadFileRequest"
+    },
+    "services.filemanagement.v1.UploadFileResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": ""
+    },
+    "services.filemanagement.v1.UploadFileResponse.uploaded_file": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/file-management/v1/file-management.proto",
+      "parent": "services.filemanagement.v1.UploadFileResponse"
+    },
     "services.options.SdkTemplateOption": {
       "type": "message",
       "collection": "messages",
@@ -3453,6 +3681,59 @@
         "trinsic.services.event.EventType.CREDENTIAL_ISSUED"
       ]
     },
+    "services/file-management/v1/file-management.proto": {
+      "name": "services/file-management/v1/file-management.proto",
+      "package": "services.filemanagement.v1",
+      "description": "",
+      "services": [
+        "services.filemanagement.v1.FileManagement"
+      ],
+      "methods": [
+        "services.filemanagement.v1.FileManagement.UploadFile",
+        "services.filemanagement.v1.FileManagement.GetFile",
+        "services.filemanagement.v1.FileManagement.DeleteFile",
+        "services.filemanagement.v1.FileManagement.ListFiles",
+        "services.filemanagement.v1.FileManagement.GetStorageStats"
+      ],
+      "messages": [
+        "services.filemanagement.v1.File",
+        "services.filemanagement.v1.StorageStats",
+        "services.filemanagement.v1.UploadFileRequest",
+        "services.filemanagement.v1.UploadFileResponse",
+        "services.filemanagement.v1.GetFileRequest",
+        "services.filemanagement.v1.GetFileResponse",
+        "services.filemanagement.v1.DeleteFileRequest",
+        "services.filemanagement.v1.DeleteFileResponse",
+        "services.filemanagement.v1.ListFilesRequest",
+        "services.filemanagement.v1.ListFilesResponse",
+        "services.filemanagement.v1.GetStorageStatsRequest",
+        "services.filemanagement.v1.GetStorageStatsResponse"
+      ],
+      "fields": [
+        "services.filemanagement.v1.File.id",
+        "services.filemanagement.v1.File.uploader_id",
+        "services.filemanagement.v1.File.size",
+        "services.filemanagement.v1.File.mime_type",
+        "services.filemanagement.v1.File.uploaded",
+        "services.filemanagement.v1.File.url",
+        "services.filemanagement.v1.StorageStats.num_files",
+        "services.filemanagement.v1.StorageStats.total_size",
+        "services.filemanagement.v1.UploadFileRequest.contents",
+        "services.filemanagement.v1.UploadFileRequest.mime_type",
+        "services.filemanagement.v1.UploadFileResponse.uploaded_file",
+        "services.filemanagement.v1.GetFileRequest.id",
+        "services.filemanagement.v1.GetFileResponse.file",
+        "services.filemanagement.v1.DeleteFileRequest.id",
+        "services.filemanagement.v1.ListFilesRequest.query",
+        "services.filemanagement.v1.ListFilesRequest.continuation_token",
+        "services.filemanagement.v1.ListFilesResponse.files",
+        "services.filemanagement.v1.ListFilesResponse.has_more_results",
+        "services.filemanagement.v1.ListFilesResponse.continuation_token",
+        "services.filemanagement.v1.GetStorageStatsResponse.stats"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
     "services/options/field-options.proto": {
       "name": "services/options/field-options.proto",
       "package": "services.options",
@@ -3995,6 +4276,18 @@
         "services.account.v1.Account.AuthorizeWebhook"
       ]
     },
+    "services.filemanagement.v1.FileManagement": {
+      "name": "FileManagement",
+      "full_name": "services.filemanagement.v1.FileManagement",
+      "description": "",
+      "methods": [
+        "services.filemanagement.v1.FileManagement.UploadFile",
+        "services.filemanagement.v1.FileManagement.GetFile",
+        "services.filemanagement.v1.FileManagement.DeleteFile",
+        "services.filemanagement.v1.FileManagement.ListFiles",
+        "services.filemanagement.v1.FileManagement.GetStorageStats"
+      ]
+    },
     "services.provider.v1.AccessManagement": {
       "name": "AccessManagement",
       "full_name": "services.provider.v1.AccessManagement",
@@ -4146,6 +4439,41 @@
         "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
+    },
+    "services.filemanagement.v1.FileManagement.DeleteFile": {
+      "name": "DeleteFile",
+      "full_name": "services.filemanagement.v1.FileManagement.DeleteFile",
+      "input_type": "services.filemanagement.v1.DeleteFileRequest",
+      "output_type": "services.filemanagement.v1.DeleteFileResponse",
+      "description": "Delete a file by its ID"
+    },
+    "services.filemanagement.v1.FileManagement.GetFile": {
+      "name": "GetFile",
+      "full_name": "services.filemanagement.v1.FileManagement.GetFile",
+      "input_type": "services.filemanagement.v1.GetFileRequest",
+      "output_type": "services.filemanagement.v1.GetFileResponse",
+      "description": "Fetch information about a file by its ID"
+    },
+    "services.filemanagement.v1.FileManagement.GetStorageStats": {
+      "name": "GetStorageStats",
+      "full_name": "services.filemanagement.v1.FileManagement.GetStorageStats",
+      "input_type": "services.filemanagement.v1.GetStorageStatsRequest",
+      "output_type": "services.filemanagement.v1.GetStorageStatsResponse",
+      "description": "Get statistics about files uploaded by the calling account"
+    },
+    "services.filemanagement.v1.FileManagement.ListFiles": {
+      "name": "ListFiles",
+      "full_name": "services.filemanagement.v1.FileManagement.ListFiles",
+      "input_type": "services.filemanagement.v1.ListFilesRequest",
+      "output_type": "services.filemanagement.v1.ListFilesResponse",
+      "description": "List files the calling account has uploaded"
+    },
+    "services.filemanagement.v1.FileManagement.UploadFile": {
+      "name": "UploadFile",
+      "full_name": "services.filemanagement.v1.FileManagement.UploadFile",
+      "input_type": "services.filemanagement.v1.UploadFileRequest",
+      "output_type": "services.filemanagement.v1.UploadFileResponse",
+      "description": "Upload a file to Trinsic's CDN"
     },
     "services.provider.v1.AccessManagement.AddRoleAssignment": {
       "name": "AddRoleAssignment",
@@ -4699,6 +5027,132 @@
       "fields": [
         "services.common.v1.Nonce.timestamp",
         "services.common.v1.Nonce.request_hash"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.DeleteFileRequest": {
+      "name": "DeleteFileRequest",
+      "full_name": "services.filemanagement.v1.DeleteFileRequest",
+      "description": "Request to delete a file from Trinsic's CDN by ID",
+      "fields": [
+        "services.filemanagement.v1.DeleteFileRequest.id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.DeleteFileResponse": {
+      "name": "DeleteFileResponse",
+      "full_name": "services.filemanagement.v1.DeleteFileResponse",
+      "description": "Response to `DeleteFileRequest`. Empty payload.",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.File": {
+      "name": "File",
+      "full_name": "services.filemanagement.v1.File",
+      "description": "Contains information about a file stored in Trinsic's CDN",
+      "fields": [
+        "services.filemanagement.v1.File.id",
+        "services.filemanagement.v1.File.uploader_id",
+        "services.filemanagement.v1.File.size",
+        "services.filemanagement.v1.File.mime_type",
+        "services.filemanagement.v1.File.uploaded",
+        "services.filemanagement.v1.File.url"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.GetFileRequest": {
+      "name": "GetFileRequest",
+      "full_name": "services.filemanagement.v1.GetFileRequest",
+      "description": "Request to fetch information about a stored file",
+      "fields": [
+        "services.filemanagement.v1.GetFileRequest.id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.GetFileResponse": {
+      "name": "GetFileResponse",
+      "full_name": "services.filemanagement.v1.GetFileResponse",
+      "description": "Response to `GetFileRequest`",
+      "fields": [
+        "services.filemanagement.v1.GetFileResponse.file"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.GetStorageStatsRequest": {
+      "name": "GetStorageStatsRequest",
+      "full_name": "services.filemanagement.v1.GetStorageStatsRequest",
+      "description": "Request to get statistics about files uploaded by this account",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.GetStorageStatsResponse": {
+      "name": "GetStorageStatsResponse",
+      "full_name": "services.filemanagement.v1.GetStorageStatsResponse",
+      "description": "Response to `GetStorageStatsRequest`",
+      "fields": [
+        "services.filemanagement.v1.GetStorageStatsResponse.stats"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.ListFilesRequest": {
+      "name": "ListFilesRequest",
+      "full_name": "services.filemanagement.v1.ListFilesRequest",
+      "description": "Request to list files",
+      "fields": [
+        "services.filemanagement.v1.ListFilesRequest.query",
+        "services.filemanagement.v1.ListFilesRequest.continuation_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.ListFilesResponse": {
+      "name": "ListFilesResponse",
+      "full_name": "services.filemanagement.v1.ListFilesResponse",
+      "description": "Response to `ListFilesRequest`",
+      "fields": [
+        "services.filemanagement.v1.ListFilesResponse.files",
+        "services.filemanagement.v1.ListFilesResponse.has_more_results",
+        "services.filemanagement.v1.ListFilesResponse.continuation_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.StorageStats": {
+      "name": "StorageStats",
+      "full_name": "services.filemanagement.v1.StorageStats",
+      "description": "Represents aggregate statistics of all files uploaded by a single issuer",
+      "fields": [
+        "services.filemanagement.v1.StorageStats.num_files",
+        "services.filemanagement.v1.StorageStats.total_size"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.UploadFileRequest": {
+      "name": "UploadFileRequest",
+      "full_name": "services.filemanagement.v1.UploadFileRequest",
+      "description": "Request to upload a file to Trinsic's CDN",
+      "fields": [
+        "services.filemanagement.v1.UploadFileRequest.contents",
+        "services.filemanagement.v1.UploadFileRequest.mime_type"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.filemanagement.v1.UploadFileResponse": {
+      "name": "UploadFileResponse",
+      "full_name": "services.filemanagement.v1.UploadFileResponse",
+      "description": "Response to `UploadFileRequest`",
+      "fields": [
+        "services.filemanagement.v1.UploadFileResponse.uploaded_file"
       ],
       "messages": [],
       "enums": []
@@ -6418,6 +6872,169 @@
       "type": "int64",
       "full_type": "int64",
       "description": "UTC unix millisecond timestamp the request was made"
+    },
+    "services.filemanagement.v1.DeleteFileRequest.id": {
+      "name": "id",
+      "full_name": "services.filemanagement.v1.DeleteFileRequest.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of file to delete"
+    },
+    "services.filemanagement.v1.File.id": {
+      "name": "id",
+      "full_name": "services.filemanagement.v1.File.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of file, generated randomly by Trinsic on upload"
+    },
+    "services.filemanagement.v1.File.mime_type": {
+      "name": "mime_type",
+      "full_name": "services.filemanagement.v1.File.mime_type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Uploader-provided MIME type of file"
+    },
+    "services.filemanagement.v1.File.size": {
+      "name": "size",
+      "full_name": "services.filemanagement.v1.File.size",
+      "label": "LABEL_OPTIONAL",
+      "type": "uint32",
+      "full_type": "uint32",
+      "description": "Size, in bytes, of file"
+    },
+    "services.filemanagement.v1.File.uploaded": {
+      "name": "uploaded",
+      "full_name": "services.filemanagement.v1.File.uploaded",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ISO 8601 timestamp of when file was uploaded to Trinsic"
+    },
+    "services.filemanagement.v1.File.uploader_id": {
+      "name": "uploader_id",
+      "full_name": "services.filemanagement.v1.File.uploader_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of uploader"
+    },
+    "services.filemanagement.v1.File.url": {
+      "name": "url",
+      "full_name": "services.filemanagement.v1.File.url",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "CDN URL of file"
+    },
+    "services.filemanagement.v1.GetFileRequest.id": {
+      "name": "id",
+      "full_name": "services.filemanagement.v1.GetFileRequest.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of file to fetch"
+    },
+    "services.filemanagement.v1.GetFileResponse.file": {
+      "name": "file",
+      "full_name": "services.filemanagement.v1.GetFileResponse.file",
+      "label": "LABEL_OPTIONAL",
+      "type": "File",
+      "full_type": "services.filemanagement.v1.File",
+      "description": "File specified by `id` parameter of `GetFileRequest`."
+    },
+    "services.filemanagement.v1.GetStorageStatsResponse.stats": {
+      "name": "stats",
+      "full_name": "services.filemanagement.v1.GetStorageStatsResponse.stats",
+      "label": "LABEL_OPTIONAL",
+      "type": "StorageStats",
+      "full_type": "services.filemanagement.v1.StorageStats",
+      "description": "Statistics about files uploaded by the calling account"
+    },
+    "services.filemanagement.v1.ListFilesRequest.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.filemanagement.v1.ListFilesRequest.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token provided by previous `ListFilesRequest`\nif more data is available for query",
+      "options": {
+        "services.options.optional": true
+      }
+    },
+    "services.filemanagement.v1.ListFilesRequest.query": {
+      "name": "query",
+      "full_name": "services.filemanagement.v1.ListFilesRequest.query",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Query to search with. If not specified, will return the most recent 100 files."
+    },
+    "services.filemanagement.v1.ListFilesResponse.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.filemanagement.v1.ListFilesResponse.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token to fetch next set of resuts via `ListFilesRequest`"
+    },
+    "services.filemanagement.v1.ListFilesResponse.files": {
+      "name": "files",
+      "full_name": "services.filemanagement.v1.ListFilesResponse.files",
+      "label": "LABEL_REPEATED",
+      "type": "File",
+      "full_type": "services.filemanagement.v1.File",
+      "description": "Files found by query"
+    },
+    "services.filemanagement.v1.ListFilesResponse.has_more_results": {
+      "name": "has_more_results",
+      "full_name": "services.filemanagement.v1.ListFilesResponse.has_more_results",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether more results are available for this query via `continuation_token`"
+    },
+    "services.filemanagement.v1.StorageStats.num_files": {
+      "name": "num_files",
+      "full_name": "services.filemanagement.v1.StorageStats.num_files",
+      "label": "LABEL_OPTIONAL",
+      "type": "uint32",
+      "full_type": "uint32",
+      "description": "Number of files uploaded by this account"
+    },
+    "services.filemanagement.v1.StorageStats.total_size": {
+      "name": "total_size",
+      "full_name": "services.filemanagement.v1.StorageStats.total_size",
+      "label": "LABEL_OPTIONAL",
+      "type": "uint64",
+      "full_type": "uint64",
+      "description": "Sum total size of all files, in bytes"
+    },
+    "services.filemanagement.v1.UploadFileRequest.contents": {
+      "name": "contents",
+      "full_name": "services.filemanagement.v1.UploadFileRequest.contents",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "Raw content of file"
+    },
+    "services.filemanagement.v1.UploadFileRequest.mime_type": {
+      "name": "mime_type",
+      "full_name": "services.filemanagement.v1.UploadFileRequest.mime_type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "MIME type describing file contents"
+    },
+    "services.filemanagement.v1.UploadFileResponse.uploaded_file": {
+      "name": "uploaded_file",
+      "full_name": "services.filemanagement.v1.UploadFileResponse.uploaded_file",
+      "label": "LABEL_OPTIONAL",
+      "type": "File",
+      "full_type": "services.filemanagement.v1.File",
+      "description": "Information about newly-uploaded file"
     },
     "services.options.SdkTemplateOption.anonymous": {
       "name": "anonymous",

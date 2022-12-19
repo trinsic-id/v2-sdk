@@ -13,7 +13,7 @@ import '../../account/v1/account.pb.dart' as $1;
 
 import 'provider.pbenum.dart';
 import '../../account/v1/account.pbenum.dart' as $1;
-import '../../common/v1/common.pbenum.dart' as $7;
+import '../../common/v1/common.pbenum.dart' as $8;
 
 export 'provider.pbenum.dart';
 
@@ -4097,15 +4097,15 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'walletId')
-    ..e<$7.SupportedDidMethod>(
+    ..e<$8.SupportedDidMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'method',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $7.SupportedDidMethod.KEY,
-        valueOf: $7.SupportedDidMethod.valueOf,
-        enumValues: $7.SupportedDidMethod.values)
+        defaultOrMaker: $8.SupportedDidMethod.KEY,
+        valueOf: $8.SupportedDidMethod.valueOf,
+        enumValues: $8.SupportedDidMethod.values)
     ..aOM<IonOptions>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -4118,7 +4118,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   factory UpgradeDidRequest({
     $core.String? email,
     $core.String? walletId,
-    $7.SupportedDidMethod? method,
+    $8.SupportedDidMethod? method,
     IonOptions? ionOptions,
   }) {
     final _result = create();
@@ -4196,9 +4196,9 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   void clearWalletId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $7.SupportedDidMethod get method => $_getN(2);
+  $8.SupportedDidMethod get method => $_getN(2);
   @$pb.TagNumber(3)
-  set method($7.SupportedDidMethod v) {
+  set method($8.SupportedDidMethod v) {
     setField(3, v);
   }
 
