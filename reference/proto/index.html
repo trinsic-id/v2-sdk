@@ -3105,6 +3105,138 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#servicesfile-managementv1file-managementproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/file-management/v1/file-management.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/file-management/v1/file-management.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-filemanagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - FileManagement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletefilerequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteFileRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletefileresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteFileResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    <span class="md-ellipsis">
+      File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfilerequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetFileRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfileresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetFileResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getstoragestatsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetStorageStatsRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getstoragestatsresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetStorageStatsResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listfilesrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListFilesRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listfilesresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListFilesResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storagestats" class="md-nav__link">
+    <span class="md-ellipsis">
+      StorageStats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploadfilerequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UploadFileRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploadfileresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UploadFileResponse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sdkoptionsv1optionsproto" class="md-nav__link">
     <span class="md-ellipsis">
       sdk/options/v1/options.proto
@@ -7426,6 +7558,308 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 
 <!-- end HasExtensions -->
 
+<p><a name="services_file-management_v1_file-management-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicesfile-managementv1file-managementproto">services/file-management/v1/file-management.proto<a class="headerlink" href="#servicesfile-managementv1file-managementproto" title="Permanent link">&para;</a></h2>
+<p><a name="services-filemanagement-v1-FileManagement"></a></p>
+<h3 id="service-filemanagement">Service - FileManagement<a class="headerlink" href="#service-filemanagement" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method Name</th>
+<th>Request Type</th>
+<th>Response Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UploadFile</td>
+<td><a href="/reference/proto#services-filemanagement-v1-UploadFileRequest">UploadFileRequest</a></td>
+<td><a href="/reference/proto#services-filemanagement-v1-UploadFileResponse">UploadFileResponse</a></td>
+<td>Upload a file to Trinsic's CDN</td>
+</tr>
+<tr>
+<td>GetFile</td>
+<td><a href="/reference/proto#services-filemanagement-v1-GetFileRequest">GetFileRequest</a></td>
+<td><a href="/reference/proto#services-filemanagement-v1-GetFileResponse">GetFileResponse</a></td>
+<td>Fetch information about a file by its ID</td>
+</tr>
+<tr>
+<td>DeleteFile</td>
+<td><a href="/reference/proto#services-filemanagement-v1-DeleteFileRequest">DeleteFileRequest</a></td>
+<td><a href="/reference/proto#services-filemanagement-v1-DeleteFileResponse">DeleteFileResponse</a></td>
+<td>Delete a file by its ID</td>
+</tr>
+<tr>
+<td>ListFiles</td>
+<td><a href="/reference/proto#services-filemanagement-v1-ListFilesRequest">ListFilesRequest</a></td>
+<td><a href="/reference/proto#services-filemanagement-v1-ListFilesResponse">ListFilesResponse</a></td>
+<td>List files the calling account has uploaded</td>
+</tr>
+<tr>
+<td>GetStorageStats</td>
+<td><a href="/reference/proto#services-filemanagement-v1-GetStorageStatsRequest">GetStorageStatsRequest</a></td>
+<td><a href="/reference/proto#services-filemanagement-v1-GetStorageStatsResponse">GetStorageStatsResponse</a></td>
+<td>Get statistics about files uploaded by the calling account</td>
+</tr>
+</tbody>
+</table>
+<!-- end services -->
+
+<p><a name="services-filemanagement-v1-DeleteFileRequest"></a></p>
+<h3 id="deletefilerequest">DeleteFileRequest<a class="headerlink" href="#deletefilerequest" title="Permanent link">&para;</a></h3>
+<p>Request to delete a file from Trinsic's CDN by ID</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of file to delete</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-DeleteFileResponse"></a></p>
+<h3 id="deletefileresponse">DeleteFileResponse<a class="headerlink" href="#deletefileresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>DeleteFileRequest</code>. Empty payload.</p>
+<p><a name="services-filemanagement-v1-File"></a></p>
+<h3 id="file">File<a class="headerlink" href="#file" title="Permanent link">&para;</a></h3>
+<p>Contains information about a file stored in Trinsic's CDN</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of file, generated randomly by Trinsic on upload</td>
+</tr>
+<tr>
+<td>uploader_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Wallet ID of uploader</td>
+</tr>
+<tr>
+<td>size</td>
+<td><a href="/reference/proto#uint32">uint32</a></td>
+<td>Size, in bytes, of file</td>
+</tr>
+<tr>
+<td>mime_type</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Uploader-provided MIME type of file</td>
+</tr>
+<tr>
+<td>uploaded</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ISO 8601 timestamp of when file was uploaded to Trinsic</td>
+</tr>
+<tr>
+<td>url</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>CDN URL of file</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-GetFileRequest"></a></p>
+<h3 id="getfilerequest">GetFileRequest<a class="headerlink" href="#getfilerequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch information about a stored file</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of file to fetch</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-GetFileResponse"></a></p>
+<h3 id="getfileresponse">GetFileResponse<a class="headerlink" href="#getfileresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetFileRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td><a href="/reference/proto#services-filemanagement-v1-File">File</a></td>
+<td>File specified by <code>id</code> parameter of <code>GetFileRequest</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-GetStorageStatsRequest"></a></p>
+<h3 id="getstoragestatsrequest">GetStorageStatsRequest<a class="headerlink" href="#getstoragestatsrequest" title="Permanent link">&para;</a></h3>
+<p>Request to get statistics about files uploaded by this account</p>
+<p><a name="services-filemanagement-v1-GetStorageStatsResponse"></a></p>
+<h3 id="getstoragestatsresponse">GetStorageStatsResponse<a class="headerlink" href="#getstoragestatsresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetStorageStatsRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stats</td>
+<td><a href="/reference/proto#services-filemanagement-v1-StorageStats">StorageStats</a></td>
+<td>Statistics about files uploaded by the calling account</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-ListFilesRequest"></a></p>
+<h3 id="listfilesrequest">ListFilesRequest<a class="headerlink" href="#listfilesrequest" title="Permanent link">&para;</a></h3>
+<p>Request to list files</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Query to search with. If not specified, will return the most recent 100 files.</td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Token provided by previous <code>ListFilesRequest</code> if more data is available for query</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-ListFilesResponse"></a></p>
+<h3 id="listfilesresponse">ListFilesResponse<a class="headerlink" href="#listfilesresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>ListFilesRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>files</td>
+<td><a href="/reference/proto#services-filemanagement-v1-File">File</a>[]</td>
+<td>Files found by query</td>
+</tr>
+<tr>
+<td>has_more_results</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Whether more results are available for this query via <code>continuation_token</code></td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Token to fetch next set of resuts via <code>ListFilesRequest</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-StorageStats"></a></p>
+<h3 id="storagestats">StorageStats<a class="headerlink" href="#storagestats" title="Permanent link">&para;</a></h3>
+<p>Represents aggregate statistics of all files uploaded by a single issuer</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num_files</td>
+<td><a href="/reference/proto#uint32">uint32</a></td>
+<td>Number of files uploaded by this account</td>
+</tr>
+<tr>
+<td>total_size</td>
+<td><a href="/reference/proto#uint64">uint64</a></td>
+<td>Sum total size of all files, in bytes</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-UploadFileRequest"></a></p>
+<h3 id="uploadfilerequest">UploadFileRequest<a class="headerlink" href="#uploadfilerequest" title="Permanent link">&para;</a></h3>
+<p>Request to upload a file to Trinsic's CDN</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>contents</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>Raw content of file</td>
+</tr>
+<tr>
+<td>mime_type</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>MIME type describing file contents</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-filemanagement-v1-UploadFileResponse"></a></p>
+<h3 id="uploadfileresponse">UploadFileResponse<a class="headerlink" href="#uploadfileresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>UploadFileRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uploaded_file</td>
+<td><a href="/reference/proto#services-filemanagement-v1-File">File</a></td>
+<td>Information about newly-uploaded file</td>
+</tr>
+</tbody>
+</table>
+<!-- end messages -->
+
+<!-- end enums -->
+
+<!-- end HasExtensions -->
+
 <p><a name="sdk_options_v1_options-proto"></a></p>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -7672,8 +8106,8 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
         <nav>
           
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
-            <a href="mailto:not.committed.yet">Not Committed Yet</a>
+            <a href="mailto:115157536+mewmba@users.noreply.github.com">Mewmba</a>, 
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>
         </nav>
       </span>
     
