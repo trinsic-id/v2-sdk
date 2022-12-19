@@ -1,6 +1,7 @@
 package trinsic;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
@@ -10,10 +11,9 @@ import trinsic.services.account.v1.AuthorizeWebhookRequest;
 import trinsic.services.account.v1.LoginRequest;
 import trinsic.services.account.v1.LoginResponse;
 
-import java.util.concurrent.ExecutionException;
-
 class AccountServiceTest {
-    private static String myEcosystemIdOrName = "default";
+  private static String myEcosystemIdOrName = "default";
+
   @Test
   public void testLogin() {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
@@ -24,7 +24,11 @@ class AccountServiceTest {
       var loginResponse =
           trinsic
               .account()
-              .login(LoginRequest.newBuilder().setEmail("bob@example.com").setEcosystemId(myEcosystemIdOrName).build())
+              .login(
+                  LoginRequest.newBuilder()
+                      .setEmail("bob@example.com")
+                      .setEcosystemId(myEcosystemIdOrName)
+                      .build())
               .get();
       // }
     } catch (Exception ignored) {
