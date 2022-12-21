@@ -43,7 +43,7 @@ jobs:
           cache: pip
       - name: Build and Test Golang
         run: |
-          Copy-Item -Path ../../libs
+          Copy-Item -Path "../../libs/*" -Recurse
           go version
           go test -covermode "atomic" -coverprofile "coverage.txt"
         working-directory: go/services
