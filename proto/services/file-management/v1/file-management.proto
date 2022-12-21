@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package services.filemanagement.v1;
+
+option csharp_namespace = "Trinsic.Services.FileManagement.V1";
+option go_package = "services/provider/v1/provider";
+option java_package = "trinsic.services.provider.v1";
+option java_multiple_files = true;
+
+import "services/options/field-options.proto";
+
+// Contains information about a file stored in Trinsic's CDN
+message File {
+    string id = 1; // ID of file, generated randomly by Trinsic on upload
+    string uploader_id = 2; // Wallet ID of uploader
+    uint32 size = 3; // Size, in bytes, of file
+    string mime_type = 4; // Uploader-provided MIME type of file
+    string uploaded = 5; // ISO 8601 timestamp of when file was uploaded to Trinsic
+    string url = 6; // CDN URL of file
+}
+
+// Represents aggregate statistics of all files uploaded by a single issuer
+message StorageStats {
+  uint32 num_files = 1; // Number of files uploaded by this account
+  uint64 total_size = 2; // Sum total size of all files, in bytes
+}
+
+// Request to upload a file to Trinsic's CDN
+message UploadFileRequest {
+  // Raw content of file
+  bytes contents = 1;
+
+  // MIME type describing file contents
+  string mime_type = 2;
+}
+
+// Response to `UploadFileRequest`
+message UploadFileResponse {
+    File uploaded_file = 1; // Information about newly-uploaded file
+}
+
+// Request to fetch information about a stored file
+message GetFileRequest {
+  string id = 1; // ID of file to fetch
+}
+
+// Response to `GetFileRequest`
+message GetFileResponse {
+  File file = 1; // File specified by `id` parameter of `GetFileRequest`.
+}
+
+// Request to delete a file from Trinsic's CDN by ID
+message DeleteFileRequest {
+    string id = 1; // ID of file to delete
+}
+
+// Response to `DeleteFileRequest`. Empty payload.
+message DeleteFileResponse { }
+
+// Request to list files
+message ListFilesRequest {
+    // Query to search with. If not specified, will return the most recent 100 files.
+    string query = 1;
+  
+    // Token provided by previous `ListFilesRequest`
+    // if more data is available for query
+    string continuation_token = 2 [(options.optional)=true];
+  }
+  
+// Response to `ListFilesRequest`
+message ListFilesResponse {
+  // Files found by query
+  repeated File files = 1;
+
+  // Whether more results are available for this query via `continuation_token`
+  bool has_more_results = 2;
+
+  // Token to fetch next set of resuts via `ListFilesRequest`
+  string continuation_token = 3;
+}
+
+// Request to get statistics about files uploaded by this account
+message GetStorageStatsRequest {
+}
+
+// Response to `GetStorageStatsRequest`
+message GetStorageStatsResponse {
+  StorageStats stats = 1; // Statistics about files uploaded by the calling account
+}
+
+service FileManagement {
+    // Upload a file to Trinsic's CDN
+    rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+    
+	// Fetch information about a file by its ID
+    rpc GetFile(GetFileRequest) returns (GetFileResponse);
+
+    // Delete a file by its ID
+    rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
+
+    // List files the calling account has uploaded
+    rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+    
+    // Get statistics about files uploaded by the calling account
+    rpc GetStorageStats(GetStorageStatsRequest) returns (GetStorageStatsResponse);
+}
