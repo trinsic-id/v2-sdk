@@ -8,3 +8,4 @@ runs:
       run: |
         curl -L -o libs.zip https://github.com/trinsic-id/okapi/releases/download/v1.6.0/libs.zip
         tar -xf libs.zip
+      shell: pwsh
