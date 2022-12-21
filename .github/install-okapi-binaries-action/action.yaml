@@ -4,23 +4,7 @@ description: "Install Okapi binaries on the github action runner"
 runs:
   using: "composite"
   steps:
-    - name: Install On Windows
-      if: runner.os == 'Windows'
-      # TODO - Update this with a better method, but currently winget is not installed on windows github action runners because winget-cli does not support Windows Server 2019
-      # TODO - Use this: https://github.com/microsoft/winget-cli/releases/download/v1.3.2691/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
-      # TODO - With this: https://www.advancedinstaller.com/msix-powershell-cmdlets.html
+    - name: Download Libs
       run: |
-        curl -L -o okapi.msi https://github.com/trinsic-id/okapi/releases/download/v1.6.0/okapi-1.6.0-x86_64.msi
-        msiexec /i okapi.msi /qn
-      shell: pwsh
-    - name: Set up Homebrew on Linux
-      if: runner.os == 'Linux'
-      id: set-up-homebrew
-      uses: Homebrew/actions/setup-homebrew@master
-    - name: Install On MacOS
-      if: runner.os == 'macOS' || runner.os == 'Linux'
-      run: |
-        brew install trinsic-id/tap/okapi
-        brew install okapi
-      shell: bash
-
+        curl -L -o libs.zip https://github.com/trinsic-id/okapi/releases/download/v1.6.0/libs.zip
+        tar -xf libs.zip
