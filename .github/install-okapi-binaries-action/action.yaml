@@ -6,8 +6,8 @@ runs:
   steps:
     - name: Download Libs
       run: |
-        curl -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/trinsic-id/okapi/releases/latest > "${{ github.workspace }}/okapi_release.json"
-        $myJson = Get-Content "${{ github.workspace }}/okapi_release.json" -Raw | ConvertFrom-Json
+        curl -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/trinsic-id/okapi/releases/latest > okapi_release.json
+        $myJson = Get-Content okapi_release.json -Raw | ConvertFrom-Json
         $latestVersion = $myJson.name
         curl -L -o libs.zip "https://github.com/trinsic-id/okapi/releases/download/$latestVersion/libs.zip"
         Expand-Archive -Path libs.zip -DestinationPath "${{ github.workspace }}"
