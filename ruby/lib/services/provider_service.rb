@@ -101,20 +101,6 @@ module Trinsic
       @client.generate_token(request, metadata: metadata(request))
     end
 
-    #  Invite a user to the ecosystem
-    # @param [InviteRequest] request
-    # @return [Services::Provider::V1::InviteResponse]
-    def invite(request)
-      @client.invite(request, metadata: metadata(request))
-    end
-
-    #  Check the status of an invitation
-    # @param [InvitationStatusRequest] request
-    # @return [Services::Provider::V1::InvitationStatusResponse]
-    def invitation_status(request)
-      @client.invitation_status(request, metadata: metadata(request))
-    end
-
     #  Returns the public key being used to create/verify oberon tokens
     # @param [GetOberonKeyRequest] request
     # @return [Services::Provider::V1::GetOberonKeyResponse]

@@ -42,8 +42,8 @@ const SignInRequest$json = const {
       '3': 2,
       '4': 1,
       '5': 9,
-      '8': const {},
-      '10': 'invitationCode'
+      '8': const {'3': true},
+      '10': 'invitationCode',
     },
     const {
       '1': 'ecosystem_id',
@@ -58,7 +58,7 @@ const SignInRequest$json = const {
 
 /// Descriptor for `SignInRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signInRequestDescriptor = $convert.base64Decode(
-    'Cg1TaWduSW5SZXF1ZXN0EkMKB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzQgSAph0BUgdkZXRhaWxzEi0KD2ludml0YXRpb25fY29kZRgCIAEoCUIEgKYdAVIOaW52aXRhdGlvbkNvZGUSJwoMZWNvc3lzdGVtX2lkGAMgASgJQgSAph0BUgtlY29zeXN0ZW1JZA==');
+    'Cg1TaWduSW5SZXF1ZXN0EkMKB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzQgSAph0BUgdkZXRhaWxzEi8KD2ludml0YXRpb25fY29kZRgCIAEoCUIGGAGAph0BUg5pbnZpdGF0aW9uQ29kZRInCgxlY29zeXN0ZW1faWQYAyABKAlCBICmHQFSC2Vjb3N5c3RlbUlk');
 @$core.Deprecated('Use accountDetailsDescriptor instead')
 const AccountDetails$json = const {
   '1': 'AccountDetails',
@@ -240,8 +240,8 @@ const LoginRequest$json = const {
       '3': 2,
       '4': 1,
       '5': 9,
-      '8': const {},
-      '10': 'invitationCode'
+      '8': const {'3': true},
+      '10': 'invitationCode',
     },
     const {
       '1': 'ecosystem_id',
@@ -256,7 +256,7 @@ const LoginRequest$json = const {
 
 /// Descriptor for `LoginRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode(
-    'CgxMb2dpblJlcXVlc3QSGgoFZW1haWwYASABKAlCBICmHQFSBWVtYWlsEi0KD2ludml0YXRpb25fY29kZRgCIAEoCUIEgKYdAVIOaW52aXRhdGlvbkNvZGUSJwoMZWNvc3lzdGVtX2lkGAMgASgJQgSAph0BUgtlY29zeXN0ZW1JZA==');
+    'CgxMb2dpblJlcXVlc3QSGgoFZW1haWwYASABKAlCBICmHQFSBWVtYWlsEi8KD2ludml0YXRpb25fY29kZRgCIAEoCUIGGAGAph0BUg5pbnZpdGF0aW9uQ29kZRInCgxlY29zeXN0ZW1faWQYAyABKAlCBICmHQFSC2Vjb3N5c3RlbUlk');
 @$core.Deprecated('Use loginResponseDescriptor instead')
 const LoginResponse$json = const {
   '1': 'LoginResponse',

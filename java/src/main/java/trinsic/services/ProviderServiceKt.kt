@@ -79,16 +79,6 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).generateToken(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun invite(request: InviteRequest): InviteResponse {
-    /** Invite a user to the ecosystem */
-    return withMetadata(stub, request).invite(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun invitationStatus(request: InvitationStatusRequest): InvitationStatusResponse {
-    /** Check the status of an invitation */
-    return withMetadata(stub, request).invitationStatus(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse {
     /** Returns the public key being used to create/verify oberon tokens */
     return withMetadata(stub, request).getOberonKey(request)

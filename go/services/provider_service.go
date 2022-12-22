@@ -47,10 +47,6 @@ type ProviderService interface {
 	// GenerateToken  Generates an unprotected authentication token that can be used to
 	// configure server side applications
 	GenerateToken(userContext context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error)
-	// Invite  Invite a user to the ecosystem
-	Invite(userContext context.Context, request *provider.InviteRequest) (*provider.InviteResponse, error)
-	// InvitationStatus  Check the status of an invitation
-	InvitationStatus(userContext context.Context, request *provider.InvitationStatusRequest) (*provider.InvitationStatusResponse, error)
 	// GetOberonKey  Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error)
 	// GetEventToken  Generate a signed token (JWT) that can be used to connect to the message bus
@@ -216,32 +212,6 @@ func (p *providerBase) GenerateToken(userContext context.Context, request *provi
 		return nil, err
 	}
 	response, err := p.client.GenerateToken(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// Invite  Invite a user to the ecosystem
-func (p *providerBase) Invite(userContext context.Context, request *provider.InviteRequest) (*provider.InviteResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.Invite(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// InvitationStatus  Check the status of an invitation
-func (p *providerBase) InvitationStatus(userContext context.Context, request *provider.InvitationStatusRequest) (*provider.InvitationStatusResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.InvitationStatus(md, request)
 	if err != nil {
 		return nil, err
 	}

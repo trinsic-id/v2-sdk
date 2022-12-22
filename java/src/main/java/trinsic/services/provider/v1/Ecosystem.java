@@ -216,7 +216,7 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
    * <code>string uri = 4 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=86
+   *     services/provider/v1/provider.proto;l=91
    * @return The uri.
    */
   @java.lang.Override
@@ -242,7 +242,7 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
    * <code>string uri = 4 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=86
+   *     services/provider/v1/provider.proto;l=91
    * @return The bytes for uri.
    */
   @java.lang.Override
@@ -1274,7 +1274,7 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
      * <code>string uri = 4 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=86
+     *     services/provider/v1/provider.proto;l=91
      * @return The uri.
      */
     @java.lang.Deprecated
@@ -1299,7 +1299,7 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
      * <code>string uri = 4 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=86
+     *     services/provider/v1/provider.proto;l=91
      * @return The bytes for uri.
      */
     @java.lang.Deprecated
@@ -1324,7 +1324,7 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
      * <code>string uri = 4 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=86
+     *     services/provider/v1/provider.proto;l=91
      * @param value The uri to set.
      * @return This builder for chaining.
      */
@@ -1348,7 +1348,7 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
      * <code>string uri = 4 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=86
+     *     services/provider/v1/provider.proto;l=91
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -1368,7 +1368,7 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
      * <code>string uri = 4 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=86
+     *     services/provider/v1/provider.proto;l=91
      * @param value The bytes for uri to set.
      * @return This builder for chaining.
      */

@@ -52,6 +52,7 @@ const InviteRequest$json = const {
     },
   ],
   '3': const [InviteRequest_DidCommInvitation$json],
+  '7': const {'3': true},
 };
 
 @$core.Deprecated('Use inviteRequestDescriptor instead')
@@ -61,7 +62,7 @@ const InviteRequest_DidCommInvitation$json = const {
 
 /// Descriptor for `InviteRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List inviteRequestDescriptor = $convert.base64Decode(
-    'Cg1JbnZpdGVSZXF1ZXN0EkcKC3BhcnRpY2lwYW50GAEgASgOMiUuc2VydmljZXMucHJvdmlkZXIudjEuUGFydGljaXBhbnRUeXBlUgtwYXJ0aWNpcGFudBImCgtkZXNjcmlwdGlvbhgCIAEoCUIEgKYdAVILZGVzY3JpcHRpb24SQwoHZGV0YWlscxgDIAEoCzIjLnNlcnZpY2VzLmFjY291bnQudjEuQWNjb3VudERldGFpbHNCBICmHQFSB2RldGFpbHMaEwoRRGlkQ29tbUludml0YXRpb24=');
+    'Cg1JbnZpdGVSZXF1ZXN0EkcKC3BhcnRpY2lwYW50GAEgASgOMiUuc2VydmljZXMucHJvdmlkZXIudjEuUGFydGljaXBhbnRUeXBlUgtwYXJ0aWNpcGFudBImCgtkZXNjcmlwdGlvbhgCIAEoCUIEgKYdAVILZGVzY3JpcHRpb24SQwoHZGV0YWlscxgDIAEoCzIjLnNlcnZpY2VzLmFjY291bnQudjEuQWNjb3VudERldGFpbHNCBICmHQFSB2RldGFpbHMaEwoRRGlkQ29tbUludml0YXRpb246AhgB');
 @$core.Deprecated('Use inviteResponseDescriptor instead')
 const InviteResponse$json = const {
   '1': 'InviteResponse',
@@ -75,23 +76,25 @@ const InviteResponse$json = const {
       '10': 'invitationCode'
     },
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `InviteResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List inviteResponseDescriptor = $convert.base64Decode(
-    'Cg5JbnZpdGVSZXNwb25zZRIjCg1pbnZpdGF0aW9uX2lkGAogASgJUgxpbnZpdGF0aW9uSWQSJwoPaW52aXRhdGlvbl9jb2RlGAsgASgJUg5pbnZpdGF0aW9uQ29kZQ==');
+    'Cg5JbnZpdGVSZXNwb25zZRIjCg1pbnZpdGF0aW9uX2lkGAogASgJUgxpbnZpdGF0aW9uSWQSJwoPaW52aXRhdGlvbl9jb2RlGAsgASgJUg5pbnZpdGF0aW9uQ29kZToCGAE=');
 @$core.Deprecated('Use invitationStatusRequestDescriptor instead')
 const InvitationStatusRequest$json = const {
   '1': 'InvitationStatusRequest',
   '2': const [
     const {'1': 'invitation_id', '3': 1, '4': 1, '5': 9, '10': 'invitationId'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `InvitationStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List invitationStatusRequestDescriptor =
     $convert.base64Decode(
-        'ChdJbnZpdGF0aW9uU3RhdHVzUmVxdWVzdBIjCg1pbnZpdGF0aW9uX2lkGAEgASgJUgxpbnZpdGF0aW9uSWQ=');
+        'ChdJbnZpdGF0aW9uU3RhdHVzUmVxdWVzdBIjCg1pbnZpdGF0aW9uX2lkGAEgASgJUgxpbnZpdGF0aW9uSWQ6AhgB');
 @$core.Deprecated('Use invitationStatusResponseDescriptor instead')
 const InvitationStatusResponse$json = const {
   '1': 'InvitationStatusResponse',
@@ -113,6 +116,7 @@ const InvitationStatusResponse$json = const {
     },
   ],
   '4': const [InvitationStatusResponse_Status$json],
+  '7': const {'3': true},
 };
 
 @$core.Deprecated('Use invitationStatusResponseDescriptor instead')
@@ -129,7 +133,7 @@ const InvitationStatusResponse_Status$json = const {
 /// Descriptor for `InvitationStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List invitationStatusResponseDescriptor =
     $convert.base64Decode(
-        'ChhJbnZpdGF0aW9uU3RhdHVzUmVzcG9uc2USTQoGc3RhdHVzGAEgASgOMjUuc2VydmljZXMucHJvdmlkZXIudjEuSW52aXRhdGlvblN0YXR1c1Jlc3BvbnNlLlN0YXR1c1IGc3RhdHVzEiUKDnN0YXR1c19kZXRhaWxzGAIgASgJUg1zdGF0dXNEZXRhaWxzIkMKBlN0YXR1cxIJCgVFcnJvchAAEhIKDkludml0YXRpb25TZW50EAESDQoJQ29tcGxldGVkEAISCwoHRXhwaXJlZBAD');
+        'ChhJbnZpdGF0aW9uU3RhdHVzUmVzcG9uc2USTQoGc3RhdHVzGAEgASgOMjUuc2VydmljZXMucHJvdmlkZXIudjEuSW52aXRhdGlvblN0YXR1c1Jlc3BvbnNlLlN0YXR1c1IGc3RhdHVzEiUKDnN0YXR1c19kZXRhaWxzGAIgASgJUg1zdGF0dXNEZXRhaWxzIkMKBlN0YXR1cxIJCgVFcnJvchAAEhIKDkludml0YXRpb25TZW50EAESDQoJQ29tcGxldGVkEAISCwoHRXhwaXJlZBADOgIYAQ==');
 @$core.Deprecated('Use ecosystemDescriptor instead')
 const Ecosystem$json = const {
   '1': 'Ecosystem',

@@ -49,7 +49,11 @@ export function participantTypeToJSON(object: ParticipantType): string {
   }
 }
 
-/** Request to invite a participant to an ecosystem */
+/**
+ * Request to invite a participant to an ecosystem
+ *
+ * @deprecated
+ */
 export interface InviteRequest {
   /** Type of participant being invited (individual/organization) */
   participant?: ParticipantType;
@@ -61,7 +65,11 @@ export interface InviteRequest {
 
 export interface InviteRequest_DidCommInvitation {}
 
-/** Response to `InviteRequest` */
+/**
+ * Response to `InviteRequest`
+ *
+ * @deprecated
+ */
 export interface InviteResponse {
   /** ID of created invitation */
   invitationId?: string;
@@ -69,13 +77,21 @@ export interface InviteResponse {
   invitationCode?: string;
 }
 
-/** Request details for the status of an invitation */
+/**
+ * Request details for the status of an invitation
+ *
+ * @deprecated
+ */
 export interface InvitationStatusRequest {
   /** ID of invitation, received from `InviteResponse` */
   invitationId?: string;
 }
 
-/** Response to `InvitationStatusRequest` */
+/**
+ * Response to `InvitationStatusRequest`
+ *
+ * @deprecated
+ */
 export interface InvitationStatusResponse {
   /** Status of invitation */
   status?: InvitationStatusResponse_Status;
@@ -4023,7 +4039,11 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Invite a user to the ecosystem */
+    /**
+     * Invite a user to the ecosystem
+     *
+     * @deprecated
+     */
     invite: {
       name: "Invite",
       requestType: InviteRequest,
@@ -4032,7 +4052,11 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Check the status of an invitation */
+    /**
+     * Check the status of an invitation
+     *
+     * @deprecated
+     */
     invitationStatus: {
       name: "InvitationStatus",
       requestType: InvitationStatusRequest,

@@ -1633,7 +1633,7 @@ Request to begin login flow
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | email | [string](/reference/proto#string) | Email address of account. If unspecified, an anonymous account will be created. |
-| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
+| invitation_code | [string](/reference/proto#string) | **Deprecated.** DEPRECATED, will be removed April 1st 2023 Invitation code associated with this registration |
 | ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to sign into. Ignored if `invitation_code` is passed. |
 
 
@@ -1686,7 +1686,7 @@ Request for creating or signing into an account
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | Account registration details |
-| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
+| invitation_code | [string](/reference/proto#string) | **Deprecated.** DEPRECATED, will be removed April 1st 2023 Invitation code associated with this registration |
 | ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to use Ignored if `invitation_code` is passed |
 
 

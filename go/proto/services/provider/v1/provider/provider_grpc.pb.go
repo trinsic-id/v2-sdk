@@ -43,8 +43,10 @@ type ProviderClient interface {
 	// Generates an unprotected authentication token that can be used to
 	// configure server side applications
 	GenerateToken(ctx context.Context, in *GenerateTokenRequest, opts ...grpc.CallOption) (*GenerateTokenResponse, error)
+	// Deprecated: Do not use.
 	// Invite a user to the ecosystem
 	Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error)
+	// Deprecated: Do not use.
 	// Check the status of an invitation
 	InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
@@ -159,6 +161,7 @@ func (c *providerClient) GenerateToken(ctx context.Context, in *GenerateTokenReq
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *providerClient) Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error) {
 	out := new(InviteResponse)
 	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/Invite", in, out, opts...)
@@ -168,6 +171,7 @@ func (c *providerClient) Invite(ctx context.Context, in *InviteRequest, opts ...
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *providerClient) InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error) {
 	out := new(InvitationStatusResponse)
 	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/InvitationStatus", in, out, opts...)
@@ -256,8 +260,10 @@ type ProviderServer interface {
 	// Generates an unprotected authentication token that can be used to
 	// configure server side applications
 	GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error)
+	// Deprecated: Do not use.
 	// Invite a user to the ecosystem
 	Invite(context.Context, *InviteRequest) (*InviteResponse, error)
+	// Deprecated: Do not use.
 	// Check the status of an invitation
 	InvitationStatus(context.Context, *InvitationStatusRequest) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens

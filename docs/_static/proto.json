@@ -4590,14 +4590,22 @@
       "full_name": "services.provider.v1.Provider.InvitationStatus",
       "input_type": "services.provider.v1.InvitationStatusRequest",
       "output_type": "services.provider.v1.InvitationStatusResponse",
-      "description": "Check the status of an invitation"
+      "description": "Check the status of an invitation",
+      "options": {
+        "deprecated": true,
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.Invite": {
       "name": "Invite",
       "full_name": "services.provider.v1.Provider.Invite",
       "input_type": "services.provider.v1.InviteRequest",
       "output_type": "services.provider.v1.InviteResponse",
-      "description": "Invite a user to the ecosystem"
+      "description": "Invite a user to the ecosystem",
+      "options": {
+        "deprecated": true,
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.RefreshDomainVerificationStatus": {
       "name": "RefreshDomainVerificationStatus",
@@ -5469,6 +5477,9 @@
       "name": "InvitationStatusRequest",
       "full_name": "services.provider.v1.InvitationStatusRequest",
       "description": "Request details for the status of an invitation",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.InvitationStatusRequest.invitation_id"
       ],
@@ -5479,6 +5490,9 @@
       "name": "InvitationStatusResponse",
       "full_name": "services.provider.v1.InvitationStatusResponse",
       "description": "Response to `InvitationStatusRequest`",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.InvitationStatusResponse.status",
         "services.provider.v1.InvitationStatusResponse.status_details"
@@ -5492,6 +5506,9 @@
       "name": "InviteRequest",
       "full_name": "services.provider.v1.InviteRequest",
       "description": "Request to invite a participant to an ecosystem",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.InviteRequest.participant",
         "services.provider.v1.InviteRequest.description",
@@ -5514,6 +5531,9 @@
       "name": "InviteResponse",
       "full_name": "services.provider.v1.InviteResponse",
       "description": "Response to `InviteRequest`",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.InviteResponse.invitation_id",
         "services.provider.v1.InviteResponse.invitation_code"
@@ -6771,8 +6791,9 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Invitation code associated with this registration",
+      "description": "DEPRECATED, will be removed April 1st 2023\nInvitation code associated with this registration",
       "options": {
+        "deprecated": true,
         "services.options.optional": true
       }
     },
@@ -6820,8 +6841,9 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Invitation code associated with this registration",
+      "description": "DEPRECATED, will be removed April 1st 2023\nInvitation code associated with this registration",
       "options": {
+        "deprecated": true,
         "services.options.optional": true
       }
     },

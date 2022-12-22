@@ -138,20 +138,6 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def invite(self, *, request: InviteRequest) -> InviteResponse:
-        """Invite a user to the ecosystem"""
-
-        return await self.client.invite(request, metadata=self.build_metadata(request))
-
-    async def invitation_status(
-        self, *, request: InvitationStatusRequest
-    ) -> InvitationStatusResponse:
-        """Check the status of an invitation"""
-
-        return await self.client.invitation_status(
-            request, metadata=self.build_metadata(request)
-        )
-
     async def get_oberon_key(
         self, *, request: GetOberonKeyRequest
     ) -> GetOberonKeyResponse:

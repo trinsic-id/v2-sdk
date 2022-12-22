@@ -62,7 +62,12 @@ export function confirmationMethodToJSON(object: ConfirmationMethod): string {
 export interface SignInRequest {
   /** Account registration details */
   details?: AccountDetails;
-  /** Invitation code associated with this registration */
+  /**
+   * DEPRECATED, will be removed April 1st 2023
+   * Invitation code associated with this registration
+   *
+   * @deprecated
+   */
   invitationCode?: string;
   /**
    * ID of Ecosystem to use
@@ -184,7 +189,12 @@ export interface AccountEcosystem {
 export interface LoginRequest {
   /** Email address of account. If unspecified, an anonymous account will be created. */
   email?: string;
-  /** Invitation code associated with this registration */
+  /**
+   * DEPRECATED, will be removed April 1st 2023
+   * Invitation code associated with this registration
+   *
+   * @deprecated
+   */
   invitationCode?: string;
   /**
    * ID of Ecosystem to sign into.

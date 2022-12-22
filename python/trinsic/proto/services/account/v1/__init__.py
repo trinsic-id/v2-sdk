@@ -47,10 +47,20 @@ class SignInRequest(betterproto.Message):
     """Account registration details"""
 
     invitation_code: str = betterproto.string_field(2)
-    """Invitation code associated with this registration"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Invitation code associated with
+    this registration
+    """
 
     ecosystem_id: str = betterproto.string_field(3)
     """ID of Ecosystem to use Ignored if `invitation_code` is passed"""
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if self.is_set("invitation_code"):
+            warnings.warn(
+                "SignInRequest.invitation_code is deprecated", DeprecationWarning
+            )
 
 
 @dataclass(eq=False, repr=False)
@@ -212,12 +222,22 @@ class LoginRequest(betterproto.Message):
     """
 
     invitation_code: str = betterproto.string_field(2)
-    """Invitation code associated with this registration"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Invitation code associated with
+    this registration
+    """
 
     ecosystem_id: str = betterproto.string_field(3)
     """
     ID of Ecosystem to sign into. Ignored if `invitation_code` is passed.
     """
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if self.is_set("invitation_code"):
+            warnings.warn(
+                "LoginRequest.invitation_code is deprecated", DeprecationWarning
+            )
 
 
 @dataclass(eq=False, repr=False)
