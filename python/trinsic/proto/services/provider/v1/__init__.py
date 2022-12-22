@@ -148,6 +148,10 @@ class InviteRequest(betterproto.Message):
     details: "__account_v1__.AccountDetails" = betterproto.message_field(3)
     """Account details of invitee"""
 
+    def __post_init__(self) -> None:
+        warnings.warn("InviteRequest is deprecated", DeprecationWarning)
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class InviteRequestDidCommInvitation(betterproto.Message):
@@ -164,6 +168,10 @@ class InviteResponse(betterproto.Message):
     invitation_code: str = betterproto.string_field(11)
     """Invitation code -- must be passed back in `LoginRequest`"""
 
+    def __post_init__(self) -> None:
+        warnings.warn("InviteResponse is deprecated", DeprecationWarning)
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusRequest(betterproto.Message):
@@ -171,6 +179,10 @@ class InvitationStatusRequest(betterproto.Message):
 
     invitation_id: str = betterproto.string_field(1)
     """ID of invitation, received from `InviteResponse`"""
+
+    def __post_init__(self) -> None:
+        warnings.warn("InvitationStatusRequest is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
@@ -182,6 +194,10 @@ class InvitationStatusResponse(betterproto.Message):
 
     status_details: str = betterproto.string_field(2)
     """Human-readable string with details about invitation status"""
+
+    def __post_init__(self) -> None:
+        warnings.warn("InvitationStatusResponse is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)

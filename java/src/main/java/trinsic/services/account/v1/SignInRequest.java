@@ -110,14 +110,19 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Invitation code associated with this registration
    * </pre>
    *
-   * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+   * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
+   * </code>
    *
+   * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
+   *     services/account/v1/account.proto;l=17
    * @return The invitationCode.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getInvitationCode() {
     java.lang.Object ref = invitationCode_;
     if (ref instanceof java.lang.String) {
@@ -133,14 +138,19 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Invitation code associated with this registration
    * </pre>
    *
-   * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+   * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
+   * </code>
    *
+   * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
+   *     services/account/v1/account.proto;l=17
    * @return The bytes for invitationCode.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getInvitationCodeBytes() {
     java.lang.Object ref = invitationCode_;
     if (ref instanceof java.lang.String) {
@@ -788,13 +798,18 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Invitation code associated with this registration
      * </pre>
      *
-     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
+     * </code>
      *
+     * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
+     *     services/account/v1/account.proto;l=17
      * @return The invitationCode.
      */
+    @java.lang.Deprecated
     public java.lang.String getInvitationCode() {
       java.lang.Object ref = invitationCode_;
       if (!(ref instanceof java.lang.String)) {
@@ -810,13 +825,18 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Invitation code associated with this registration
      * </pre>
      *
-     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
+     * </code>
      *
+     * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
+     *     services/account/v1/account.proto;l=17
      * @return The bytes for invitationCode.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getInvitationCodeBytes() {
       java.lang.Object ref = invitationCode_;
       if (ref instanceof String) {
@@ -832,14 +852,19 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Invitation code associated with this registration
      * </pre>
      *
-     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
+     * </code>
      *
+     * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
+     *     services/account/v1/account.proto;l=17
      * @param value The invitationCode to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setInvitationCode(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -853,13 +878,18 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Invitation code associated with this registration
      * </pre>
      *
-     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
+     * </code>
      *
+     * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
+     *     services/account/v1/account.proto;l=17
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearInvitationCode() {
 
       invitationCode_ = getDefaultInstance().getInvitationCode();
@@ -870,14 +900,19 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Invitation code associated with this registration
      * </pre>
      *
-     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
+     * </code>
      *
+     * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
+     *     services/account/v1/account.proto;l=17
      * @param value The bytes for invitationCode to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setInvitationCodeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();

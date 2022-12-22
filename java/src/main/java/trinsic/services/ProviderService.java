@@ -102,18 +102,6 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).generateToken(request);
   }
-  /** Invite a user to the ecosystem */
-  public ListenableFuture<InviteResponse> invite(InviteRequest request)
-      throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).invite(request);
-  }
-  /** Check the status of an invitation */
-  public ListenableFuture<InvitationStatusResponse> invitationStatus(
-      InvitationStatusRequest request) throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).invitationStatus(request);
-  }
   /** Returns the public key being used to create/verify oberon tokens */
   public ListenableFuture<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request)
       throws InvalidProtocolBufferException, DidException {

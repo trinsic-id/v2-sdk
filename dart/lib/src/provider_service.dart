@@ -104,21 +104,6 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
-  Future<InviteResponse> invite(InviteRequest request) async {
-    ///  Invite a user to the ecosystem
-
-    return client.invite(request,
-        options: await buildMetadata(request: request));
-  }
-
-  Future<InvitationStatusResponse> invitationStatus(
-      InvitationStatusRequest request) async {
-    ///  Check the status of an invitation
-
-    return client.invitationStatus(request,
-        options: await buildMetadata(request: request));
-  }
-
   Future<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request) async {
     ///  Returns the public key being used to create/verify oberon tokens
 

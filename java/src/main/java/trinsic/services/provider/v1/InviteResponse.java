@@ -12,6 +12,7 @@ package trinsic.services.provider.v1;
  *
  * Protobuf type {@code services.provider.v1.InviteResponse}
  */
+@java.lang.Deprecated
 public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.InviteResponse)

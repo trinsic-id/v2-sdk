@@ -74,7 +74,7 @@ public interface CreateEcosystemRequestOrBuilder
    * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=137
+   *     services/provider/v1/provider.proto;l=142
    * @return The uri.
    */
   @java.lang.Deprecated
@@ -89,7 +89,7 @@ public interface CreateEcosystemRequestOrBuilder
    * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=137
+   *     services/provider/v1/provider.proto;l=142
    * @return The bytes for uri.
    */
   @java.lang.Deprecated

@@ -1056,6 +1056,7 @@ public final class ProviderGrpc {
      * Invite a user to the ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public void invite(
         trinsic.services.provider.v1.InviteRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.provider.v1.InviteResponse> responseObserver) {
@@ -1069,6 +1070,7 @@ public final class ProviderGrpc {
      * Check the status of an invitation
      * </pre>
      */
+    @java.lang.Deprecated
     public void invitationStatus(
         trinsic.services.provider.v1.InvitationStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.provider.v1.InvitationStatusResponse>
@@ -1485,6 +1487,7 @@ public final class ProviderGrpc {
      * Invite a user to the ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public void invite(
         trinsic.services.provider.v1.InviteRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.provider.v1.InviteResponse> responseObserver) {
@@ -1499,6 +1502,7 @@ public final class ProviderGrpc {
      * Check the status of an invitation
      * </pre>
      */
+    @java.lang.Deprecated
     public void invitationStatus(
         trinsic.services.provider.v1.InvitationStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.provider.v1.InvitationStatusResponse>
@@ -1762,6 +1766,7 @@ public final class ProviderGrpc {
      * Invite a user to the ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public trinsic.services.provider.v1.InviteResponse invite(
         trinsic.services.provider.v1.InviteRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -1775,6 +1780,7 @@ public final class ProviderGrpc {
      * Check the status of an invitation
      * </pre>
      */
+    @java.lang.Deprecated
     public trinsic.services.provider.v1.InvitationStatusResponse invitationStatus(
         trinsic.services.provider.v1.InvitationStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -2023,6 +2029,7 @@ public final class ProviderGrpc {
      * Invite a user to the ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.provider.v1.InviteResponse>
         invite(trinsic.services.provider.v1.InviteRequest request) {
@@ -2037,6 +2044,7 @@ public final class ProviderGrpc {
      * Check the status of an invitation
      * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.provider.v1.InvitationStatusResponse>
         invitationStatus(trinsic.services.provider.v1.InvitationStatusRequest request) {

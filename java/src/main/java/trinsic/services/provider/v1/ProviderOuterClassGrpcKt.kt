@@ -16,6 +16,7 @@ import io.grpc.kotlin.AbstractCoroutineStub
 import io.grpc.kotlin.ClientCalls.unaryRpc
 import io.grpc.kotlin.ServerCalls.unaryServerMethodDefinition
 import io.grpc.kotlin.StubFor
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -288,6 +289,7 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     suspend fun invite(request: InviteRequest, headers: Metadata = Metadata()): InviteResponse =
         unaryRpc(channel, ProviderGrpc.getInviteMethod(), request, callOptions, headers)
     /**
@@ -302,6 +304,7 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     suspend fun invitationStatus(
         request: InvitationStatusRequest,
         headers: Metadata = Metadata()
@@ -601,6 +604,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     open suspend fun invite(request: InviteRequest): InviteResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
@@ -616,6 +620,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     open suspend fun invitationStatus(request: InvitationStatusRequest): InvitationStatusResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
