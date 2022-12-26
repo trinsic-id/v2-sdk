@@ -1,12 +1,13 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.trustregistry.v1.*;
+
+import java.io.IOException;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryDemo {
   private static String myEcosystemIdOrName = "default";
@@ -81,5 +82,6 @@ public class TrustRegistryDemo {
                 .setSchemaUri(typeUri)
                 .build());
     // }
+      trinsic.shutdown();
   }
 }
