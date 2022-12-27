@@ -67,8 +67,8 @@ dependencies {
     implementation 'io.grpc:grpc-protobuf:1.49.2'
     // This has to match the version of protoc-gen-grpc-java used in `sdk/devops/generate_proto_files.py`
     implementation 'io.grpc:grpc-stub:1.49.2'
-//    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.1.jar', 'trinsic-okapi-1.6.1')
-    implementation files("C:\\work\\okapi\\java\\build\\libs\\trinsic-okapi-1.6.1.jar")
+    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.2.jar', 'trinsic-okapi-1.6.2')
+//    implementation files("C:\\work\\okapi\\java\\build\\libs\\trinsic-okapi-1.6.1.jar")
 }
 
 test {
