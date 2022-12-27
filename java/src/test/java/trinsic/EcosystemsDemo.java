@@ -91,43 +91,12 @@ public class EcosystemsDemo {
 
     // listEcosystems() {
     // }
-    //        var actualList =
-    // service.listEcosystems(ListEcosystemsRequest.newBuilder().build()).get();
-    //        Assertions.assertNotNull(actualList);
-    //        Assertions.assertTrue(actualList.size() > 0);
 
-    InviteResponse inviteResponse = InviteResponse.newBuilder().setInvitationId("N/A").build();
-    try {
-      // inviteParticipant() {
-      inviteResponse =
-          trinsic
-              .provider()
-              .invite(
-                  InviteRequest.newBuilder()
-                      .setParticipant(ParticipantType.participant_type_individual)
-                      .setDetails(
-                          AccountDetails.newBuilder().setEmail("example@trinsic.id").build())
-                      .build())
-              .get();
-      // }
-    } catch (Exception e) {
-      // this is okay as an example
-    }
+    // inviteParticipant() {
+    // }
 
-    try {
-      // invitationStatus() {
-      var invitationStatus =
-          trinsic
-              .provider()
-              .invitationStatus(
-                  InvitationStatusRequest.newBuilder()
-                      .setInvitationId(inviteResponse.getInvitationId())
-                      .build())
-              .get();
-      // }
-    } catch (Exception e) {
-      // this is okay as an example
-    }
+    // invitationStatus() {
+    // }
 
     trinsic.shutdown();
   }
