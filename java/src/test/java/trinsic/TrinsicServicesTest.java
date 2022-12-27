@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
-import trinsic.services.ProviderService;
 import trinsic.services.account.v1.AccountInfoRequest;
-import trinsic.services.provider.v1.InvitationStatusRequest;
-import trinsic.services.provider.v1.InviteRequest;
 
 class TrinsicServicesTest {
 
