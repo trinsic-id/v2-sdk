@@ -51,9 +51,9 @@ jobs:
         name: Setup Node v18
         with:
           node-version: 18
-          cache: 'npm'
       - run: |
           npm ci
           npm run test:browser -- --trinsic_environment="${{ inputs.environment }}"
         name: "Run grpc-web tests"
         shell: pwsh
+        working-directory: ./sdk/samples/grpc-web
