@@ -405,3 +405,5 @@ samples/dotnet/vaccination-certificate-unsigned.jsonld
 web/src/proto/services/debug/v1/debug.js.map
 web/src/proto/services/debug/v1/DebugServiceClientPb.js.map
 dart/test/dart_test.dart.vm.json
+samples/grpc-web/build/
+samples/grpc-web/lib/

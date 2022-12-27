@@ -37,3 +37,23 @@ jobs:
       - name: Run CLI Demos
         run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}"
         shell: pwsh
+
+  test-infra-grpc-web:
+    name: Test Infrastructure via grpc-web ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      # Because called actions run in caller repository, we have to be explicit here.
+      - uses: actions/checkout@v3
+        with:
+          repository: trinsic-id/sdk
+          path: ./sdk
+      - uses: actions/setup-node@v3
+        name: Setup Node v18
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: |
+          npm ci
+          npm run test:browser -- --trinsic_environment="${{ inputs.environment }}"
+        name: "Run grpc-web tests"
+        shell: pwsh
