@@ -11,4 +11,4 @@ Risk in your ecosystem can be reduced by imposing rules that must be met before 
 
 ## Anatomy of governance
 
-One of the core building blocks of our governance implementation is the interoperable Trust Registry specified at the Trust Over IP Foundation. We contributed to the original [specification](https://github.com/trustoverip/tswg-trust-registry-tf) and later [open-sourced our implementation](https://trinsic.id/trinsic-builds-open-source-trust-registry-sponsored-by-essif-lab/) so the broader community can benefit from these features.
+One of the core building blocks of our governance implementation is the interoperable Trust Registry specified at the Trust Over IP Foundation. We contributed to the original [specification](https://github.com/trustoverip/tswg-trust-registry-tf) and later open-sourced our implementation so the broader community can benefit from these features.
