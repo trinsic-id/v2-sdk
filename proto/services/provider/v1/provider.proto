@@ -13,6 +13,7 @@ import "services/common/v1/common.proto";
 
 // Request to invite a participant to an ecosystem
 message InviteRequest {
+    option deprecated = true;
     // Type of participant being invited (individual/organization)
     ParticipantType participant = 1;
 
@@ -36,6 +37,8 @@ enum ParticipantType {
 
 // Response to `InviteRequest`
 message InviteResponse {
+    option deprecated = true;
+
     // ID of created invitation
     string invitation_id = 10;
 
@@ -45,12 +48,14 @@ message InviteResponse {
 
 // Request details for the status of an invitation
 message InvitationStatusRequest {
+    option deprecated = true;
     // ID of invitation, received from `InviteResponse`
     string invitation_id = 1;
 }
 
 // Response to `InvitationStatusRequest`
 message InvitationStatusResponse {
+    option deprecated = true;
     enum Status {
         // Onboarding resulted in error
         Error = 0;
@@ -489,10 +494,16 @@ service Provider {
     rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse);
 
     // Invite a user to the ecosystem
-    rpc Invite(InviteRequest) returns (InviteResponse);
+    rpc Invite(InviteRequest) returns (InviteResponse) {
+        option deprecated = true;
+        option (options.sdk_template_option).ignore = true;
+    }
 
     // Check the status of an invitation
-    rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
+    rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse) {
+        option deprecated = true;
+        option (options.sdk_template_option).ignore = true;
+    }
 
     // Returns the public key being used to create/verify oberon tokens
     rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse) {

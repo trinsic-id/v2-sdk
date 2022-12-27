@@ -3,6 +3,7 @@
     <PropertyGroup>
 <!--        <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>-->
         <TargetFramework>net6.0</TargetFramework>
+        <NoWarn>CS0612,CS1591</NoWarn>
         <Nullable>enable</Nullable>
         <IsBrowser>false</IsBrowser>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>

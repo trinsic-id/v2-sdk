@@ -16,36 +16,6 @@ public class ProviderServiceTest {
   private static String myEcosystemIdOrName = "default";
 
   @Test
-  @Disabled
-  public void testProviderServiceInviteParticipant()
-      throws IOException, DidException, ExecutionException, InterruptedException {
-    var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = accountService.signIn(myEcosystemIdOrName).get();
-
-    var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
-    var ecosystem =
-        providerService
-            .createEcosystem(CreateEcosystemRequest.newBuilder().setName("Test Ecosystem").build())
-            .get();
-    var invitation =
-        InviteRequest.newBuilder()
-            .setParticipant(ParticipantType.participant_type_individual)
-            .setDescription("I dunno")
-            .build();
-    var response = providerService.invite(invitation).get();
-    Assertions.assertNotNull(response);
-
-    var status =
-        providerService
-            .invitationStatus(
-                InvitationStatusRequest.newBuilder()
-                    .setInvitationId(response.getInvitationId())
-                    .build())
-            .get();
-    Assertions.assertNotNull(status);
-  }
-
-  @Test
   public void testUpgradeDid()
       throws IOException, DidException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());

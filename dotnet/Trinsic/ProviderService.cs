@@ -212,38 +212,6 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
-    /// Invite a user to the ecosystem
-    /// </summary>	
-    public InviteResponse Invite(InviteRequest request) {
-        
-        return Client.Invite(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Invite a user to the ecosystem
-    /// </summary>	
-    public async Task<InviteResponse> InviteAsync(InviteRequest request) {
-        
-        return await Client.InviteAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
-    /// Check the status of an invitation
-    /// </summary>	
-    public InvitationStatusResponse InvitationStatus(InvitationStatusRequest request) {
-        
-        return Client.InvitationStatus(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Check the status of an invitation
-    /// </summary>	
-    public async Task<InvitationStatusResponse> InvitationStatusAsync(InvitationStatusRequest request) {
-        
-        return await Client.InvitationStatusAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Returns the public key being used to create/verify oberon tokens
     /// </summary>	
     public GetOberonKeyResponse GetOberonKey(GetOberonKeyRequest request) {

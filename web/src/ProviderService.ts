@@ -99,20 +99,6 @@ export class ProviderService extends ServiceBase {
       metadata: await this.buildMetadata(proto.GenerateTokenRequest.encode(request).finish())
     });
   }
-  /** Invite a user to the ecosystem */
-  public async invite(request: proto.InviteRequest): Promise<proto.InviteResponse> {
-    
-    return this.client.invite(request, {
-      metadata: await this.buildMetadata(proto.InviteRequest.encode(request).finish())
-    });
-  }
-  /** Check the status of an invitation */
-  public async invitationStatus(request: proto.InvitationStatusRequest): Promise<proto.InvitationStatusResponse> {
-    
-    return this.client.invitationStatus(request, {
-      metadata: await this.buildMetadata(proto.InvitationStatusRequest.encode(request).finish())
-    });
-  }
   /** Returns the public key being used to create/verify oberon tokens */
   public async getOberonKey(request: proto.GetOberonKeyRequest): Promise<proto.GetOberonKeyResponse> {
     

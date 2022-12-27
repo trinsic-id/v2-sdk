@@ -5,7 +5,6 @@ import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
 import '../example/ecosystem_example.dart';
-import '../example/provider_example.dart';
 import '../example/templates_demo.dart';
 import '../example/trustregistry_demo.dart';
 import '../example/vaccine_example.dart';
@@ -21,9 +20,6 @@ void main() {
     });
     test('Ecosystem Demo', () async {
       await runEcosystemDemo();
-    });
-    test('Provider Demo', () async {
-      await runProviderDemo();
     });
     test('Templates Demo', () async {
       await runTemplatesDemo();

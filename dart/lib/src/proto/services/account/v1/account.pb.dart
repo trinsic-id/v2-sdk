@@ -44,7 +44,7 @@ class SignInRequest extends $pb.GeneratedMessage {
   SignInRequest._() : super();
   factory SignInRequest({
     AccountDetails? details,
-    $core.String? invitationCode,
+    @$core.Deprecated('This field is deprecated.') $core.String? invitationCode,
     $core.String? ecosystemId,
   }) {
     final _result = create();
@@ -52,6 +52,7 @@ class SignInRequest extends $pb.GeneratedMessage {
       _result.details = details;
     }
     if (invitationCode != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.invitationCode = invitationCode;
     }
     if (ecosystemId != null) {
@@ -100,15 +101,19 @@ class SignInRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   AccountDetails ensureDetails() => $_ensure(0);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get invitationCode => $_getSZ(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   set invitationCode($core.String v) {
     $_setString(1, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.bool hasInvitationCode() => $_has(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   void clearInvitationCode() => clearField(2);
 
@@ -1110,7 +1115,7 @@ class LoginRequest extends $pb.GeneratedMessage {
   LoginRequest._() : super();
   factory LoginRequest({
     $core.String? email,
-    $core.String? invitationCode,
+    @$core.Deprecated('This field is deprecated.') $core.String? invitationCode,
     $core.String? ecosystemId,
   }) {
     final _result = create();
@@ -1118,6 +1123,7 @@ class LoginRequest extends $pb.GeneratedMessage {
       _result.email = email;
     }
     if (invitationCode != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.invitationCode = invitationCode;
     }
     if (ecosystemId != null) {
@@ -1164,15 +1170,19 @@ class LoginRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get invitationCode => $_getSZ(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   set invitationCode($core.String v) {
     $_setString(1, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.bool hasInvitationCode() => $_has(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   void clearInvitationCode() => clearField(2);
 

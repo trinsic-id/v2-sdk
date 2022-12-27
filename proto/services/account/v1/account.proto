@@ -13,8 +13,9 @@ message SignInRequest {
     // Account registration details
     AccountDetails details = 1 [(options.optional)=true];
 
+    // DEPRECATED, will be removed April 1st 2023
     // Invitation code associated with this registration
-    string invitation_code = 2 [(options.optional)=true];
+     string invitation_code = 2 [(options.optional)=true, deprecated=true];
 
     // ID of Ecosystem to use
     // Ignored if `invitation_code` is passed
@@ -133,8 +134,9 @@ message LoginRequest {
     // Email address of account. If unspecified, an anonymous account will be created.
     string email = 1  [(options.optional) = true];
 
+    // DEPRECATED, will be removed April 1st 2023
     // Invitation code associated with this registration
-    string invitation_code = 2 [(options.optional) = true];
+    string invitation_code = 2 [(options.optional)=true, deprecated = true];
 
     // ID of Ecosystem to sign into.
     // Ignored if `invitation_code` is passed.

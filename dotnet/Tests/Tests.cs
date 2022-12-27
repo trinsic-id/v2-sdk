@@ -235,26 +235,11 @@ public class Tests
         infoResult.Should().NotBeNull();
         //infoResult.Ecosystem.Should().Be(updateResult.Ecosystem); //TODO: UNCOMMENT WHEN updateEcosystem() TEST IS UN-CATCHED.
 
-        try
-        {
-            // inviteParticipant() {
-            var inviteResponse = await trinsic.Provider.InviteAsync(new() {
-                Participant = ParticipantType.Individual,
-                Description = "Doc sample",
-                Details = new() {
-                    Email = "example@trinsic.id"
-                }
-            });
-            // }
-        } catch (Exception) { } // This is expected as a doc sample
+        // inviteParticipant() {
+        // }
 
-        var invitationId = "N/A";
-        try
-        {
-            // invitationStatus() {
-            var inviteStatus = await trinsic.Provider.InvitationStatusAsync(new() { InvitationId = invitationId });
-            // }
-        } catch (Exception) { } // This is expected as a doc sample
+        // invitationStatus() {
+        // }
 
 
         // Test upgrading account DID
@@ -386,35 +371,6 @@ public class Tests
         trinsic.SetAuthToken(myUnprotectedProfile);
         Assert.NotNull(await trinsic.Account.GetInfoAsync());
         Assert.NotNull(trinsic.Account.GetInfo());
-    }
-
-    [Fact(Skip = "Ecosystem support not complete yet")]
-    public async Task TestInvitationIdSet() {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
-        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
-
-        trinsic.SetAuthToken(authToken);
-        var invitationResponse = await trinsic.Provider.InviteAsync(new());
-
-        invitationResponse.Should().NotBeNull();
-        invitationResponse.InvitationCode.Should().NotBeEmpty();
-
-        await Assert.ThrowsAsync<RpcException>(async () => await trinsic.Provider.InvitationStatusAsync(new()));
-    }
-
-    [Fact(Skip = "Ecosystem support not complete yet")]
-    public async Task TestInviteParticipant() {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
-        var myProfile = await trinsic.Account.SignInAsync(new());
-
-        trinsic.SetAuthToken(myProfile);
-
-        var invite = new InviteRequest { Description = "Test invitation" };
-        var response = await trinsic.Provider.InviteAsync(invite);
-        Assert.NotNull(response);
-
-        var statusResponse = await trinsic.Provider.InvitationStatusAsync(new() { InvitationId = response.InvitationId });
-        Assert.NotNull(statusResponse);
     }
 
     [Fact]

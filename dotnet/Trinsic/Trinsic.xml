@@ -406,6 +406,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.SignInRequest.InvitationCode">
             <summary>
+            DEPRECATED, will be removed April 1st 2023
             Invitation code associated with this registration
             </summary>
         </member>
@@ -641,6 +642,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.LoginRequest.InvitationCode">
             <summary>
+            DEPRECATED, will be removed April 1st 2023
             Invitation code associated with this registration
             </summary>
         </member>
@@ -1098,43 +1100,6 @@
             All event types
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Event.V1.Event">
-            <summary>
-            Event
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Event.V1.Event.IdFieldNumber">
-            <summary>Field number for the "id" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Event.V1.Event.Id">
-            <summary>
-            UUID of event
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Event.V1.Event.TypeFieldNumber">
-            <summary>Field number for the "type" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Event.V1.Event.Type">
-            <summary>
-            Type of event
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Event.V1.Event.TimestampFieldNumber">
-            <summary>Field number for the "timestamp" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Event.V1.Event.Timestamp">
-            <summary>
-            Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Event.V1.Event.DataFieldNumber">
-            <summary>Field number for the "data" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Event.V1.Event.Data">
-            <summary>
-            Event-specific payload, as an encoded protobuf message
-            </summary>
-        </member>
         <member name="F:Trinsic.Services.Event.V1.APICall.SourceFieldNumber">
             <summary>Field number for the "source" field.</summary>
         </member>
@@ -1144,177 +1109,701 @@
         <member name="F:Trinsic.Services.Event.V1.APICall.ResponseFieldNumber">
             <summary>Field number for the "response" field.</summary>
         </member>
-        <member name="T:Trinsic.Services.Event.V1.Ping">
+        <member name="T:Trinsic.Services.Event.V1.PingV1">
             <summary>
             Webhook test event
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.Ping.IdFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.PingV1.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.Ping.Id">
+        <member name="P:Trinsic.Services.Event.V1.PingV1.Id">
             <summary>
             UUID of this ping
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.Ping.WebhookIdFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.PingV1.WebhookIdFieldNumber">
             <summary>Field number for the "webhook_id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.Ping.WebhookId">
+        <member name="P:Trinsic.Services.Event.V1.PingV1.WebhookId">
             <summary>
             UUID of the webhook receiving the ping
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.Ping.TimestampFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.PingV1.TimestampFieldNumber">
             <summary>Field number for the "timestamp" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.Ping.Timestamp">
+        <member name="P:Trinsic.Services.Event.V1.PingV1.Timestamp">
             <summary>
             Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.Ping.MessageFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.PingV1.MessageFieldNumber">
             <summary>Field number for the "message" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.Ping.Message">
+        <member name="P:Trinsic.Services.Event.V1.PingV1.Message">
             <summary>
             Arbitrary message specified when ping was requested
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Event.V1.EGFCreated">
+        <member name="F:Trinsic.Services.Event.V1.PingV1.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.PingV1.EcosystemId">
+            <summary>
+            Ecosystem where this event originated, if any.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1">
             <summary>
             Entity Governance Framework created and attached to ecosystem
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.IdFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Id">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.Id">
             <summary>
             UUID of the governance framework
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.EcosystemIdFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.EcosystemIdFieldNumber">
             <summary>Field number for the "ecosystem_id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.EcosystemId">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.EcosystemId">
             <summary>
             UUID of the ecosystem that owns this EGF
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.TrustRegistryFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.TrustRegistryFieldNumber">
             <summary>Field number for the "trust_registry" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.TrustRegistry">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.TrustRegistry">
             <summary>
             Trust registry associated with this EGF
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.GoverningAuthorityFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.GoverningAuthorityFieldNumber">
             <summary>Field number for the "governing_authority" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.GoverningAuthority">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.GoverningAuthority">
             <summary>
             Wallet ID of the authority for this EGF
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.TypeFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.TypeFieldNumber">
             <summary>Field number for the "type" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Type">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.Type">
             <summary>
             Type of EGF
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.NameFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.NameFieldNumber">
             <summary>Field number for the "name" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Name">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.Name">
             <summary>
             User-friendly name for the EGF
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.DescriptionFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.DescriptionFieldNumber">
             <summary>Field number for the "description" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Description">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.Description">
             <summary>
             Description of the EGF
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.EGFCreated.GovernanceFrameworkFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.GovernanceFrameworkFieldNumber">
             <summary>Field number for the "governance_framework" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.EGFCreated.GovernanceFramework">
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.GovernanceFramework">
             <summary>
             URI for the EGF
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Event.V1.TemplateCreated">
+        <member name="F:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.TimestampFieldNumber">
+            <summary>Field number for the "timestamp" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.GovernanceFrameworkCreatedV1.Timestamp">
+            <summary>
+            Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Event.V1.TemplateCreatedV1">
             <summary>
             Template created in ecosystem
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.IdFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreatedV1.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.Id">
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreatedV1.Id">
             <summary>
             UUID of the template
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.EcosystemIdFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreatedV1.EcosystemIdFieldNumber">
             <summary>Field number for the "ecosystem_id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.EcosystemId">
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreatedV1.EcosystemId">
             <summary>
             UUID of the ecosystem that owns this template
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.NameFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreatedV1.NameFieldNumber">
             <summary>Field number for the "name" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.Name">
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreatedV1.Name">
             <summary>
             Template name
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.TypeFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreatedV1.TypeFieldNumber">
             <summary>Field number for the "type" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.Type">
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreatedV1.Type">
             <summary>
             Template type
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.CreatedByFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreatedV1.CreatedByFieldNumber">
             <summary>Field number for the "created_by" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.CreatedBy">
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreatedV1.CreatedBy">
             <summary>
             WalletID that created the template
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Event.V1.ItemReceived">
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreatedV1.TimestampFieldNumber">
+            <summary>Field number for the "timestamp" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreatedV1.Timestamp">
+            <summary>
+            Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Event.V1.ItemReceivedV1">
             <summary>
             Item inserted into wallet
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.ItemReceived.IdFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.ItemReceivedV1.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.ItemReceived.Id">
+        <member name="P:Trinsic.Services.Event.V1.ItemReceivedV1.Id">
             <summary>
             UUID of the new item
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Event.V1.ItemReceived.ReceivedFieldNumber">
+        <member name="F:Trinsic.Services.Event.V1.ItemReceivedV1.ReceivedFieldNumber">
             <summary>Field number for the "received" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Event.V1.ItemReceived.Received">
+        <member name="P:Trinsic.Services.Event.V1.ItemReceivedV1.Received">
             <summary>
             Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
             </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.ItemReceivedV1.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.ItemReceivedV1.WalletId">
+            <summary>
+            ID of wallet
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.ItemReceivedV1.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.ItemReceivedV1.EcosystemId">
+            <summary>
+            Ecosystem where this event originated, if any.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.FileManagementReflection">
+            <summary>Holder for reflection information generated from services/file-management/v1/file-management.proto</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.FileManagementReflection.Descriptor">
+            <summary>File descriptor for services/file-management/v1/file-management.proto</summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.File">
+            <summary>
+            Contains information about a file stored in Trinsic's CDN
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.File.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.File.Id">
+            <summary>
+            ID of file, generated randomly by Trinsic on upload
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.File.UploaderIdFieldNumber">
+            <summary>Field number for the "uploader_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.File.UploaderId">
+            <summary>
+            Wallet ID of uploader
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.File.SizeFieldNumber">
+            <summary>Field number for the "size" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.File.Size">
+            <summary>
+            Size, in bytes, of file
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.File.MimeTypeFieldNumber">
+            <summary>Field number for the "mime_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.File.MimeType">
+            <summary>
+            Uploader-provided MIME type of file
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.File.UploadedFieldNumber">
+            <summary>Field number for the "uploaded" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.File.Uploaded">
+            <summary>
+            ISO 8601 timestamp of when file was uploaded to Trinsic
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.File.UrlFieldNumber">
+            <summary>Field number for the "url" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.File.Url">
+            <summary>
+            CDN URL of file
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.StorageStats">
+            <summary>
+            Represents aggregate statistics of all files uploaded by a single issuer
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.StorageStats.NumFilesFieldNumber">
+            <summary>Field number for the "num_files" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.StorageStats.NumFiles">
+            <summary>
+            Number of files uploaded by this account
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.StorageStats.TotalSizeFieldNumber">
+            <summary>Field number for the "total_size" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.StorageStats.TotalSize">
+            <summary>
+            Sum total size of all files, in bytes
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.UploadFileRequest">
+            <summary>
+            Request to upload a file to Trinsic's CDN
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.UploadFileRequest.ContentsFieldNumber">
+            <summary>Field number for the "contents" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.UploadFileRequest.Contents">
+            <summary>
+            Raw content of file
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.UploadFileRequest.MimeTypeFieldNumber">
+            <summary>Field number for the "mime_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.UploadFileRequest.MimeType">
+            <summary>
+            MIME type describing file contents
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.UploadFileResponse">
+            <summary>
+            Response to `UploadFileRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.UploadFileResponse.UploadedFileFieldNumber">
+            <summary>Field number for the "uploaded_file" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.UploadFileResponse.UploadedFile">
+            <summary>
+            Information about newly-uploaded file
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.GetFileRequest">
+            <summary>
+            Request to fetch information about a stored file
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.GetFileRequest.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.GetFileRequest.Id">
+            <summary>
+            ID of file to fetch
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.GetFileResponse">
+            <summary>
+            Response to `GetFileRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.GetFileResponse.FileFieldNumber">
+            <summary>Field number for the "file" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.GetFileResponse.File">
+            <summary>
+            File specified by `id` parameter of `GetFileRequest`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.DeleteFileRequest">
+            <summary>
+            Request to delete a file from Trinsic's CDN by ID
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.DeleteFileRequest.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.DeleteFileRequest.Id">
+            <summary>
+            ID of file to delete
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.DeleteFileResponse">
+            <summary>
+            Response to `DeleteFileRequest`. Empty payload.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.ListFilesRequest">
+            <summary>
+            Request to list files
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.ListFilesRequest.QueryFieldNumber">
+            <summary>Field number for the "query" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.ListFilesRequest.Query">
+            <summary>
+            Query to search with. If not specified, will return the most recent 100 files.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.ListFilesRequest.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.ListFilesRequest.ContinuationToken">
+            <summary>
+            Token provided by previous `ListFilesRequest`
+            if more data is available for query
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.ListFilesResponse">
+            <summary>
+            Response to `ListFilesRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.ListFilesResponse.FilesFieldNumber">
+            <summary>Field number for the "files" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.ListFilesResponse.Files">
+            <summary>
+            Files found by query
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.ListFilesResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.ListFilesResponse.HasMoreResults">
+            <summary>
+            Whether more results are available for this query via `continuation_token`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.ListFilesResponse.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.ListFilesResponse.ContinuationToken">
+            <summary>
+            Token to fetch next set of resuts via `ListFilesRequest`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.GetStorageStatsRequest">
+            <summary>
+            Request to get statistics about files uploaded by this account
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.GetStorageStatsResponse">
+            <summary>
+            Response to `GetStorageStatsRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.FileManagement.V1.GetStorageStatsResponse.StatsFieldNumber">
+            <summary>Field number for the "stats" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.GetStorageStatsResponse.Stats">
+            <summary>
+            Statistics about files uploaded by the calling account
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.FileManagement.V1.FileManagement.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase">
+            <summary>Base class for server-side implementations of FileManagement</summary>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase.UploadFile(Trinsic.Services.FileManagement.V1.UploadFileRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Upload a file to Trinsic's CDN
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase.GetFile(Trinsic.Services.FileManagement.V1.GetFileRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Fetch information about a file by its ID
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase.DeleteFile(Trinsic.Services.FileManagement.V1.DeleteFileRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Delete a file by its ID
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase.ListFiles(Trinsic.Services.FileManagement.V1.ListFilesRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            List files the calling account has uploaded
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase.GetStorageStats(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Get statistics about files uploaded by the calling account
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="T:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient">
+            <summary>Client for FileManagement</summary>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for FileManagement</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for FileManagement that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.UploadFile(Trinsic.Services.FileManagement.V1.UploadFileRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Upload a file to Trinsic's CDN
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.UploadFile(Trinsic.Services.FileManagement.V1.UploadFileRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Upload a file to Trinsic's CDN
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.UploadFileAsync(Trinsic.Services.FileManagement.V1.UploadFileRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Upload a file to Trinsic's CDN
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.UploadFileAsync(Trinsic.Services.FileManagement.V1.UploadFileRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Upload a file to Trinsic's CDN
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetFile(Trinsic.Services.FileManagement.V1.GetFileRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Fetch information about a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetFile(Trinsic.Services.FileManagement.V1.GetFileRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Fetch information about a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetFileAsync(Trinsic.Services.FileManagement.V1.GetFileRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Fetch information about a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetFileAsync(Trinsic.Services.FileManagement.V1.GetFileRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Fetch information about a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.DeleteFile(Trinsic.Services.FileManagement.V1.DeleteFileRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Delete a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.DeleteFile(Trinsic.Services.FileManagement.V1.DeleteFileRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Delete a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.DeleteFileAsync(Trinsic.Services.FileManagement.V1.DeleteFileRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Delete a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.DeleteFileAsync(Trinsic.Services.FileManagement.V1.DeleteFileRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Delete a file by its ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.ListFiles(Trinsic.Services.FileManagement.V1.ListFilesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List files the calling account has uploaded
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.ListFiles(Trinsic.Services.FileManagement.V1.ListFilesRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List files the calling account has uploaded
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.ListFilesAsync(Trinsic.Services.FileManagement.V1.ListFilesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List files the calling account has uploaded
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.ListFilesAsync(Trinsic.Services.FileManagement.V1.ListFilesRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List files the calling account has uploaded
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetStorageStats(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Get statistics about files uploaded by the calling account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetStorageStats(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Get statistics about files uploaded by the calling account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetStorageStatsAsync(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Get statistics about files uploaded by the calling account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.GetStorageStatsAsync(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Get statistics about files uploaded by the calling account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.FileManagementClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.BindService(Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:Trinsic.Services.FileManagement.V1.FileManagement.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.FileManagement.V1.FileManagement.FileManagementBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="T:Trinsic.Services.Protobuf.Options.FieldOptionsReflection">
             <summary>Holder for reflection information generated from services/options/field-options.proto</summary>
@@ -6019,26 +6508,6 @@
             <summary>
             Generates an unprotected authentication token that can be used to
              configure server side applications
-            </summary>	
-        </member>
-        <member name="M:Trinsic.ProviderService.Invite(Trinsic.Services.Provider.V1.InviteRequest)">
-            <summary>
-            Invite a user to the ecosystem
-            </summary>	
-        </member>
-        <member name="M:Trinsic.ProviderService.InviteAsync(Trinsic.Services.Provider.V1.InviteRequest)">
-            <summary>
-            Invite a user to the ecosystem
-            </summary>	
-        </member>
-        <member name="M:Trinsic.ProviderService.InvitationStatus(Trinsic.Services.Provider.V1.InvitationStatusRequest)">
-            <summary>
-            Check the status of an invitation
-            </summary>	
-        </member>
-        <member name="M:Trinsic.ProviderService.InvitationStatusAsync(Trinsic.Services.Provider.V1.InvitationStatusRequest)">
-            <summary>
-            Check the status of an invitation
             </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetOberonKey(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">

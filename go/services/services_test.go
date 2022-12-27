@@ -10,7 +10,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
-	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 	"github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry"
 )
@@ -165,17 +164,8 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
 	// inviteParticipant() {
-	inviteResponse, err := trinsic.Provider().Invite(context.Background(),
-		&provider.InviteRequest{Participant: provider.ParticipantType_participant_type_individual,
-			Details: &account.AccountDetails{Email: "example@trinsic.id"}})
 	// }
-	if inviteResponse == nil {
-		inviteResponse = &provider.InviteResponse{InvitationId: "NA"}
-	}
 	// invitationStatus() {
-	inviteStatus, err := trinsic.Provider().InvitationStatus(context.Background(), &provider.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
 	// }
-	if inviteStatus != nil {
-	}
 
 }

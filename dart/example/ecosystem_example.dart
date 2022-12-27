@@ -21,26 +21,11 @@ Future runEcosystemDemo() async {
   // listEcosystems() {
   // }
 
-  try {
-    // inviteParticipant() {
-    var inviteResponse = await providerService.invite(InviteRequest(
-        description: "Doc sample",
-        details: AccountDetails(email: "example@trinsic.id"),
-        participant: ParticipantType.participant_type_individual));
-    // }
-  } catch (e) {
-    // This is expected, this is a doc sample
-  }
+  // inviteParticipant() {
+  // }
 
-  var inviteId = "NA";
-  try {
-    // invitationStatus() {
-    var inviteStatus = await providerService
-        .invitationStatus(InvitationStatusRequest(invitationId: inviteId));
-    // }
-  } catch (e) {
-    // This is expected, this is a doc sample
-  }
+  // invitationStatus() {
+  // }
 }
 
 void main() async {
