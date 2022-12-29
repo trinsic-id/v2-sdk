@@ -2,12 +2,8 @@ package trinsic;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
-import trinsic.services.AccountService;
-import trinsic.services.ProviderService;
 import trinsic.services.TrinsicService;
 import trinsic.services.common.v1.SupportedDidMethod;
 import trinsic.services.provider.v1.*;
