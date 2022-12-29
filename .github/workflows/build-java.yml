@@ -21,11 +21,11 @@ on:
 jobs:
   build-and-test-java:
     name: Build
-    runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
 
     steps:
       - uses: actions/checkout@v3
@@ -40,10 +40,10 @@ jobs:
         with:
           python-version: 3.9
           cache: pip
-      - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
-        id: install_okapi_binaries
-        with:
-          apiGithubToken: ${{ secrets.API_GITHUB_TOKEN }}
+#       - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
+#         id: install_okapi_binaries
+#         with:
+#           apiGithubToken: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py --language=java

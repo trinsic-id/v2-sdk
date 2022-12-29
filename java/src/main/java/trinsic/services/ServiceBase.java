@@ -1,15 +1,11 @@
 package trinsic.services;
 
-import static trinsic.TrinsicUtilities.getSdkVersion;
-import static trinsic.TrinsicUtilities.getTrinsicServiceOptions;
-
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import io.grpc.stub.MetadataUtils;
-import java.util.Base64;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.okapi.OkapiMetadata;
@@ -19,6 +15,12 @@ import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountProfile;
 import trinsic.storage.ITokenProvider;
 import trinsic.storage.MemoryTokenProvider;
+
+import java.util.Base64;
+import java.util.concurrent.TimeUnit;
+
+import static trinsic.TrinsicUtilities.getSdkVersion;
+import static trinsic.TrinsicUtilities.getTrinsicServiceOptions;
 
 public abstract class ServiceBase {
   private final ISecurityProvider securityProvider = new OberonSecurityProvider();
@@ -33,7 +35,13 @@ public abstract class ServiceBase {
   }
 
   public void shutdown() {
-    if (channel instanceof ManagedChannel) ((ManagedChannel) this.channel).shutdownNow();
+      try {
+          if (channel instanceof ManagedChannel) {
+              ((ManagedChannel) this.channel).shutdownNow().awaitTermination(5000, TimeUnit.MILLISECONDS);
+          }
+      } catch (InterruptedException ignored) {
+          // We'd rather exit than worry about it not shut down.
+      }
   }
 
   private static void putMetadata(Metadata m, String key, String value) {

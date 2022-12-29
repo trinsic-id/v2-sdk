@@ -1,9 +1,5 @@
 import com.google.gson.Gson
 import com.google.protobuf.InvalidProtocolBufferException
-import java.io.File
-import java.io.IOException
-import java.nio.file.Path
-import java.util.concurrent.ExecutionException
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.TemplateServiceKt
@@ -16,6 +12,10 @@ import trinsic.services.verifiablecredentials.templates.v1.TemplateField
 import trinsic.services.verifiablecredentials.v1.CreateProofRequest
 import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
 import trinsic.services.verifiablecredentials.v1.VerifyProofRequest
+import java.io.File
+import java.io.IOException
+import java.nio.file.Path
+import java.util.concurrent.ExecutionException
 
 suspend fun main() {
   runVaccineDemo()
@@ -119,6 +119,7 @@ suspend fun runVaccineDemo() {
   // }
   println("Verification result: $isValid")
   assert(isValid)
+  trinsic.shutdown()
 }
 
 @Throws(
