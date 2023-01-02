@@ -2157,17 +2157,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic vc issue --document &lt;JSONLD_FILE&gt; --out &lt;OUTPUT_FILE&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>issue<span class="w"> </span>--document<span class="w"> </span>&lt;JSONLD_FILE&gt;<span class="w"> </span>--out<span class="w"> </span>&lt;OUTPUT_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">issue</span><span class="p">(</span><span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialJSON</span><span class="w"> </span><span class="p">}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">issue</span><span class="p">(</span><span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialJSON</span><span class="w"> </span><span class="p">}));</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">DocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">DocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2177,20 +2177,20 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">issueResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">Issue</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
-<span class="w">    </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">IssueRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">unsignedCredential</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">issueResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">Issue</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">IssueRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">unsignedCredential</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">issueResult</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">issue</span><span class="p">(</span><span class="n">IssueRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">unsignedCredential</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">issueResult</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">issue</span><span class="p">(</span><span class="n">IssueRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">unsignedCredential</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="n">signedCredentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">issueResult</span><span class="p">.</span><span class="na">getSignedDocumentJson</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">signedCredentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">issueResult</span><span class="p">.</span><span class="na">getSignedDocumentJson</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2220,7 +2220,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic vc issue-from-template <span class="o">[</span>OPTIONS<span class="o">]</span> --template-id &lt;ID&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>issue-from-template<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>--template-id<span class="w"> </span>&lt;ID&gt;
 
 <span class="c1"># OPTIONS</span>
 <span class="c1"># --out &lt;OUTPUT_FILE&gt;     (Optional) Output file to store the issued credential</span>
@@ -2229,24 +2229,24 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">IssueFromTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="kt">templateResponse?.data?.id</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">valuesJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">numberOfBags</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">dateOfBirth</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;1/1/2000&quot;</span><span class="p">).</span><span class="nx">toISOString</span><span class="p">(),</span><span class="w"></span>
-<span class="w">        </span><span class="nx">vaccinated</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">}),</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">IssueFromTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="kt">templateResponse?.data?.id</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">valuesJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">numberOfBags</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">dateOfBirth</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;1/1/2000&quot;</span><span class="p">).</span><span class="nx">toISOString</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">vaccinated</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="p">});</span>
 
-<span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">issueFromTemplate</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">issueFromTemplate</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">TemplateId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">templateId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">ValuesJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">values</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TemplateId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">templateId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ValuesJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2259,28 +2259,28 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">issueTemplateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">IssueFromTemplate</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
-<span class="w">    </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">IssueFromTemplateRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">ValuesJson</span><span class="p">:</span><span class="w"> </span><span class="nx">valuesJson</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">TemplateId</span><span class="p">:</span><span class="w"> </span><span class="nx">templateId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">issueTemplateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">IssueFromTemplate</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">IssueFromTemplateRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ValuesJson</span><span class="p">:</span><span class="w"> </span><span class="nx">valuesJson</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">TemplateId</span><span class="p">:</span><span class="w"> </span><span class="nx">templateId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">valuesMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jane&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">valuesJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Gson</span><span class="p">().</span><span class="na">toJson</span><span class="p">(</span><span class="n">valuesMap</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">issueFromTemplate</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">template</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setValuesJson</span><span class="p">(</span><span class="n">valuesJson</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">valuesMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jane&quot;</span><span class="p">);</span>
+<span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">);</span>
+<span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">valuesJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Gson</span><span class="p">().</span><span class="na">toJson</span><span class="p">(</span><span class="n">valuesMap</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">issueFromTemplate</span><span class="p">(</span>
+<span class="w">            </span><span class="n">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">template</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getId</span><span class="p">())</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setValuesJson</span><span class="p">(</span><span class="n">valuesJson</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2305,17 +2305,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic vc get-status --credential-status-id &lt;ID&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>get-status<span class="w"> </span>--credential-status-id<span class="w"> </span>&lt;ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">checkStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">CheckStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">checkStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">CheckStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">checkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CheckStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">checkResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CheckStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2325,12 +2325,12 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">CheckStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CheckStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">CheckStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CheckStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">checkStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">credential</span><span class="p">().</span><span class="na">checkStatus</span><span class="p">(</span><span class="n">CheckStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">checkStatusResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">credential</span><span class="p">().</span><span class="na">checkStatus</span><span class="p">(</span><span class="n">CheckStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2356,20 +2356,20 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Revoke a credential</span>
-trinsic vc update-status --revoked --credential-status-id &lt;ID&gt;
+trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span class="w"> </span>--revoked<span class="w"> </span>--credential-status-id<span class="w"> </span>&lt;ID&gt;
 
 <span class="c1"># Unrevoke a credential</span>
-trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
+trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span class="w"> </span>--unrevoked<span class="w"> </span>--credential-status-id<span class="w"> </span>&lt;ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">updateStatus</span><span class="p">(</span><span class="nx">UpdateStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">updateStatus</span><span class="p">(</span><span class="nx">UpdateStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">UpdateStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Revoked</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">UpdateStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Revoked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2379,11 +2379,11 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">updateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">UpdateStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">UpdateStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Revoked</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">updateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">UpdateStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">UpdateStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Revoked</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">credential</span><span class="p">().</span><span class="na">updateStatus</span><span class="p">(</span><span class="n">UpdateStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">credential</span><span class="p">().</span><span class="na">updateStatus</span><span class="p">(</span><span class="n">UpdateStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
 </div>
 </div>
@@ -2409,23 +2409,23 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label><label for="__tabbed_10_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic vc create-proof --document-id &lt;STRING&gt; --out &lt;OUTPUT_FILE&gt; --reveal-document &lt;JSONLD_FRAME_FILE&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>create-proof<span class="w"> </span>--document-id<span class="w"> </span>&lt;STRING&gt;<span class="w"> </span>--out<span class="w"> </span>&lt;OUTPUT_FILE&gt;<span class="w"> </span>--reveal-document<span class="w"> </span>&lt;JSONLD_FRAME_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertItemResponse.itemId</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">revealDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">getVaccineCertFrameJSON</span><span class="p">(),</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertItemResponse.itemId</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">revealDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">getVaccineCertFrameJSON</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">proof</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">DocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">None</span><span class="p">)</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">None</span><span class="p">)</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2437,27 +2437,27 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Proof</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest_DocumentJson</span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialJson</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Proof</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest_DocumentJson</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialJson</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">}</span>
 
-<span class="nx">proofResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span><span class="w"></span>
+<span class="nx">proofResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span>
+<span class="w">            </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2488,17 +2488,17 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># The JSONLD_FILE refers to the proof document obtained from a CreateProofResponse</span>
-trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
+trinsic<span class="w"> </span>vc<span class="w"> </span>issuer<span class="w"> </span>verify-proof<span class="w"> </span>--proof-document<span class="w"> </span>&lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">verifyProof</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proof.proofDocumentJson</span><span class="p">,</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">verifyProof</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proof.proofDocumentJson</span><span class="p">,</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2508,20 +2508,20 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">verifyResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">VerifyProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">VerifyProofRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">ProofDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">proofJson</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">verifyResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">VerifyProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">VerifyProofRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ProofDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">proofJson</span><span class="p">,</span>
+<span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">VerifyProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span>
+<span class="w">            </span><span class="n">VerifyProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 
-<span class="kt">boolean</span><span class="w"> </span><span class="n">isValid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="p">.</span><span class="na">getIsValid</span><span class="p">();</span><span class="w"></span>
+<span class="kt">boolean</span><span class="w"> </span><span class="n">isValid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="p">.</span><span class="na">getIsValid</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2583,18 +2583,18 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <div class="tabbed-set tabbed-alternate" data-tabs="14:6"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><input id="__tabbed_14_5" name="__tabbed_14" type="radio" /><input id="__tabbed_14_6" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Trinsic CLI</label><label for="__tabbed_14_2">TypeScript</label><label for="__tabbed_14_3">C#</label><label for="__tabbed_14_4">Python</label><label for="__tabbed_14_5">Go</label><label for="__tabbed_14_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic vc send --email &lt;EMAIL_ADDRESS&gt; --item &lt;FILE&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>send<span class="w"> </span>--email<span class="w"> </span>&lt;EMAIL_ADDRESS&gt;<span class="w"> </span>--item<span class="w"> </span>&lt;FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">send</span><span class="p">(</span><span class="nx">SendRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">({}),</span><span class="w"></span>
-<span class="p">}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">send</span><span class="p">(</span><span class="nx">SendRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">({}),</span>
+<span class="p">}));</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">sendResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">sendResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2606,22 +2606,22 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">sendResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">Send</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">SendRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">DeliveryMethod</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">SendRequest_Email</span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialJson</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">sendResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">Send</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">SendRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">DeliveryMethod</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">SendRequest_Email</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialJson</span><span class="p">,</span>
+<span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">SendRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="n">recipientEmail</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">send</span><span class="p">(</span>
+<span class="w">        </span><span class="n">SendRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="n">recipientEmail</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
 </div>
 </div>

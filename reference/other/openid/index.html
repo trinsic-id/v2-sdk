@@ -2233,37 +2233,37 @@
 <h3 id="response-data">Response Data<a class="headerlink" href="#response-data" title="Permanent link">&para;</a></h3>
 <p>Once the user has returned to your redirect URL, exchange the authorization code (added to your redirect URI as a query parameter named <code>code</code>) for an identity token using your OIDC library.</p>
 <p>You will receive a JSON object of the following form:</p>
-<div class="highlight"><span class="filename">Response JSON</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{JWT containing same data as vp_token}&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;@context&quot;</span><span class="p">:[</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;https://www.w3.org/2018/credentials/v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;https://w3id.org/bbs/v1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;{UUID of Holder Wallet}&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:[</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="s2">&quot;VerifiableCredential&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;credentialSchema&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;credentialStatus&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;credentialSubject&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;issuanceDate&quot;</span><span class="p">:</span><span class="s2">&quot;{Issue date of credential}&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="s2">&quot;{DID of Issuer}&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;proof&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">Response JSON</span><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{JWT containing same data as vp_token}&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;@context&quot;</span><span class="p">:[</span>
+<span class="w">            </span><span class="s2">&quot;https://www.w3.org/2018/credentials/v1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;https://w3id.org/bbs/v1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="err">...</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;{UUID of Holder Wallet}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:[</span>
+<span class="w">            </span><span class="err">...</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;VerifiableCredential&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;credentialSchema&quot;</span><span class="p">:{</span>
+<span class="w">            </span><span class="err">...</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;credentialStatus&quot;</span><span class="p">:{</span>
+<span class="w">            </span><span class="err">...</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;credentialSubject&quot;</span><span class="p">:{</span>
+<span class="w">            </span><span class="err">...</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;issuanceDate&quot;</span><span class="p">:</span><span class="s2">&quot;{Issue date of credential}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="s2">&quot;{DID of Issuer}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;proof&quot;</span><span class="p">:{</span>
+<span class="w">            </span><span class="err">...</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Credential Format</p>

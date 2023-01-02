@@ -2083,7 +2083,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>dotnet add package Trinsic
+<div class="highlight"><pre><span></span><code>dotnet<span class="w"> </span>add<span class="w"> </span>package<span class="w"> </span>Trinsic
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2093,30 +2093,30 @@
 </div>
 </div>
 <p>To register the services with dependency injection pipeline:</p>
-<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">();</span>
 </code></pre></div>
 <p>To configure additional parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="c1">// to configure the service with your auth token</span>
-<span class="w">    </span><span class="n">options</span><span class="p">.</span><span class="n">ServiceOptions</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="n">options</span><span class="p">.</span><span class="n">ServiceOptions</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span><span class="p">;</span>
+<span class="p">})</span>
 </code></pre></div>
 <p>The service can then be injected in your controller as</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MyController</span><span class="p">(</span><span class="n">TrinsicService</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MyController</span><span class="p">(</span><span class="n">TrinsicService</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="c1">// init</span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Alternatively, you can simply instantiate this service with or without parameters</p>
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">();</span>
 
 <span class="c1">// or</span>
 
-<span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServiceOptions</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServiceOptions</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">AuthToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span>
+<span class="p">});</span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Once the .NET SDK package is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>

@@ -2148,24 +2148,24 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account login --email <span class="s2">&quot;bob@example.com&quot;</span> --ecosystem <span class="s2">&quot;&lt;ecosystem id or name&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="w"> </span>--email<span class="w"> </span><span class="s2">&quot;bob@example.com&quot;</span><span class="w"> </span>--ecosystem<span class="w"> </span><span class="s2">&quot;&lt;ecosystem id or name&gt;&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">loginResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">login</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">LoginRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">ecosystemId</span><span class="o">:</span><span class="w"> </span><span class="kt">myEcosystemIdOrName</span><span class="p">(),</span><span class="w"></span>
-<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bob@example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">loginResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">login</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">LoginRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">ecosystemId</span><span class="o">:</span><span class="w"> </span><span class="kt">myEcosystemIdOrName</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bob@example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">loginResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">loginResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ecosystem id or name</span>
-<span class="w">    </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bob@example.com&quot;</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="n">EcosystemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;bob@example.com&quot;</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2177,22 +2177,22 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">loginResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Login</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">LoginRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Email</span><span class="p">:</span><span class="w">       </span><span class="s">&quot;bob@example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">EcosystemId</span><span class="p">:</span><span class="w"> </span><span class="nx">myEcosystemIdOrName</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">loginResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Login</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">LoginRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Email</span><span class="p">:</span><span class="w">       </span><span class="s">&quot;bob@example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">EcosystemId</span><span class="p">:</span><span class="w"> </span><span class="nx">myEcosystemIdOrName</span><span class="p">,</span>
+<span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">loginResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">account</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">login</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">LoginRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;bob@example.com&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setEcosystemId</span><span class="p">(</span><span class="n">myEcosystemIdOrName</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">loginResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">account</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">login</span><span class="p">(</span>
+<span class="w">            </span><span class="n">LoginRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;bob@example.com&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setEcosystemId</span><span class="p">(</span><span class="n">myEcosystemIdOrName</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2224,17 +2224,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account login --email <span class="s2">&quot;bob@example.com&quot;</span>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="w"> </span>--email<span class="w"> </span><span class="s2">&quot;bob@example.com&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">account</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">loginConfirm</span><span class="p">(</span><span class="nx">loginResponse</span><span class="p">.</span><span class="nx">challenge</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">account</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">loginConfirm</span><span class="p">(</span><span class="nx">loginResponse</span><span class="p">.</span><span class="nx">challenge</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">authToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginConfirmAsync</span><span class="p">(</span><span class="n">loginResponse</span><span class="p">.</span><span class="n">Challenge</span><span class="p">,</span><span class="w"> </span><span class="n">authCode</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginConfirmAsync</span><span class="p">(</span><span class="n">loginResponse</span><span class="p">.</span><span class="n">Challenge</span><span class="p">,</span><span class="w"> </span><span class="n">authCode</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2244,11 +2244,11 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">authToken</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginConfirm</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">loginResponse</span><span class="p">.</span><span class="nx">GetChallenge</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">authToken</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginConfirm</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">loginResponse</span><span class="p">.</span><span class="nx">GetChallenge</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">loginConfirm</span><span class="p">(</span><span class="n">myLoginResponse</span><span class="p">.</span><span class="na">getChallenge</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">loginConfirm</span><span class="p">(</span><span class="n">myLoginResponse</span><span class="p">.</span><span class="na">getChallenge</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2272,15 +2272,15 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account info
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>account<span class="w"> </span>info
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">info</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">info</span><span class="p">();</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2288,11 +2288,11 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">info2</span><span class="p">,</span><span class="w"> </span><span class="nx">err2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">info2</span><span class="p">,</span><span class="w"> </span><span class="nx">err2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">getInfo</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">getInfo</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2322,22 +2322,22 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Go</label><label for="__tabbed_8_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account authorize-webhook --events <span class="s2">&quot;*&quot;</span>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>account<span class="w"> </span>authorize-webhook<span class="w"> </span>--events<span class="w"> </span><span class="s2">&quot;*&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">authorizeWebhook</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">AuthorizeWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"> </span><span class="c1">// Authorize all events</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">authorizeWebhook</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">AuthorizeWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"> </span><span class="c1">// Authorize all events</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AuthorizeWebhookRequest</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AuthorizeWebhookRequest</span><span class="p">();</span>
 <span class="n">request</span><span class="p">.</span><span class="n">Events</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">//Authorize all events</span>
 
-<span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">AuthorizeWebhookAsync</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w"></span>
+<span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">AuthorizeWebhookAsync</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2347,22 +2347,22 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">AuthorizeWebhookRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Events</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;*&quot;</span><span class="p">},</span><span class="w"> </span><span class="c1">//Authorize all events</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">AuthorizeWebhookRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Events</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;*&quot;</span><span class="p">},</span><span class="w"> </span><span class="c1">//Authorize all events</span>
+<span class="p">}</span>
 
-<span class="nx">authResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">AuthorizeWebhook</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span><span class="w"></span>
+<span class="nx">authResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">AuthorizeWebhook</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">authorizeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">account</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">authorizeWebhook</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">AuthorizeWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Authorize all events</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">authorizeResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">account</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">authorizeWebhook</span><span class="p">(</span>
+<span class="w">            </span><span class="n">AuthorizeWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Authorize all events</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2387,13 +2387,13 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:5"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">TypeScript</label><label for="__tabbed_9_2">C#</label><label for="__tabbed_9_3">Python</label><label for="__tabbed_9_4">Go</label><label for="__tabbed_9_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">protectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">protect</span><span class="p">(</span><span class="nx">accountProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">protectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">protect</span><span class="p">(</span><span class="nx">accountProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">!,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2407,21 +2407,21 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="w"></span>
-<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span>
+<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="p">}</span>
+<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
 </code></pre></div>
 </div>
 </div>
@@ -2446,13 +2446,13 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:5"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">TypeScript</label><label for="__tabbed_10_2">C#</label><label for="__tabbed_10_3">Python</label><label for="__tabbed_10_4">Go</label><label for="__tabbed_10_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">accountProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">accountProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">!,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2466,21 +2466,21 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="w"></span>
-<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span>
+<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="p">}</span>
+<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
 </code></pre></div>
 </div>
 </div>
@@ -2501,15 +2501,15 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Go</label><label for="__tabbed_12_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account login --email &lt;PROFILE_EMAIL&gt; --name &lt;PROFILE_NAME&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="w"> </span>--email<span class="w"> </span>&lt;PROFILE_EMAIL&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;PROFILE_NAME&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">()).</span><span class="nx">getProfile</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">()).</span><span class="nx">getProfile</span><span class="p">();</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAnonymousAsync</span><span class="p">(</span><span class="n">myEcosystemId</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAnonymousAsync</span><span class="p">(</span><span class="n">myEcosystemId</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2519,14 +2519,14 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginAnonymous</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">myEcosystemIdOrName</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginAnonymous</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">myEcosystemIdOrName</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">(</span><span class="n">myEcosystemIdOrName</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">(</span><span class="n">myEcosystemIdOrName</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>

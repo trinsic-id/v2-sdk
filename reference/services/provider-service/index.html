@@ -2132,23 +2132,23 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic provider create-ecosystem --name &lt;ECOSYSTEM_NAME&gt; --email &lt;OWNER_EMAIL&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>create-ecosystem<span class="w"> </span>--name<span class="w"> </span>&lt;ECOSYSTEM_NAME&gt;<span class="w"> </span>--email<span class="w"> </span>&lt;OWNER_EMAIL&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">createResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">createEcosystem</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">createResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">createEcosystem</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">authToken</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">authToken</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2160,22 +2160,22 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span>
+<span class="w">            </span><span class="n">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2199,25 +2199,25 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic provider update-ecosystem <span class="se">\</span>
-                 --description <span class="s2">&quot;New description&quot;</span> <span class="se">\</span>
-                 --uri <span class="s2">&quot;https://new-example.com&quot;</span>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>update-ecosystem<span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>--description<span class="w"> </span><span class="s2">&quot;New description&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                 </span>--uri<span class="w"> </span><span class="s2">&quot;https://new-example.com&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">updateEcosystem</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">UpdateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New ecosystem description&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://new-example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">updateEcosystem</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">UpdateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New ecosystem description&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://new-example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">updateResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpdateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;New ecosystem description&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;New ecosystem URI&quot;</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">updateResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpdateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;New ecosystem description&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;New ecosystem URI&quot;</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2228,21 +2228,21 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">updateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpdateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My new description&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://new-example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">updateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpdateEcosystemRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My new description&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://new-example.com&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 
-<span class="nx">updateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">UpdateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">updateRequest</span><span class="p">)</span><span class="w"></span>
+<span class="nx">updateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">UpdateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">updateRequest</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">updateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">updateEcosystem</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">UpdateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My updated ecosystem&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">updateResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">updateEcosystem</span><span class="p">(</span>
+<span class="w">            </span><span class="n">UpdateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My updated ecosystem&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2266,19 +2266,19 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic provider ecosystem-info
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>ecosystem-info
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">infoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">provider</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="nx">ecosystemInfo</span><span class="p">(</span><span class="nx">EcosystemInfoRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">infoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">provider</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">ecosystemInfo</span><span class="p">(</span><span class="nx">EcosystemInfoRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infoResponse</span><span class="p">.</span><span class="nx">ecosystem</span><span class="p">;</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infoResponse</span><span class="p">.</span><span class="nx">ecosystem</span><span class="p">;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">infoResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">EcosystemInfoAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">infoResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">EcosystemInfoAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2287,12 +2287,12 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">infoResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">EcosystemInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">EcosystemInfoRequest</span><span class="p">{})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">infoResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">EcosystemInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">EcosystemInfoRequest</span><span class="p">{})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">infoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">ecosystemInfo</span><span class="p">(</span><span class="n">EcosystemInfoRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">infoResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">ecosystemInfo</span><span class="p">(</span><span class="n">EcosystemInfoRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2316,27 +2316,27 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Go</label><label for="__tabbed_8_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic provider add-webhook <span class="se">\</span>
-                --url <span class="s2">&quot;https://example.com/webhooks/trinsic&quot;</span> <span class="se">\</span>
-                --secret <span class="s2">&quot;my well-kept secret&quot;</span> <span class="se">\</span>
-                --events <span class="s2">&quot;*&quot;</span>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>add-webhook<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--url<span class="w"> </span><span class="s2">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--secret<span class="w"> </span><span class="s2">&quot;my well-kept secret&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--events<span class="w"> </span><span class="s2">&quot;*&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">addResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">addWebhook</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">AddWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">destinationUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my well-kept secret&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">addResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">addWebhook</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">AddWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">destinationUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my well-kept secret&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">addWebhookResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">AddWebhookAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">DestinationUrl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Secret</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;my well-kept secret&quot;</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">addWebhookResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">AddWebhookAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DestinationUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my well-kept secret&quot;</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2350,26 +2350,26 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">AddWebhookRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">DestinationUrl</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Secret</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;my well-kept secret&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Events</span><span class="p">:</span><span class="w">         </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;*&quot;</span><span class="p">},</span><span class="w"> </span><span class="c1">// All events</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">AddWebhookRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">DestinationUrl</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Secret</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;my well-kept secret&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Events</span><span class="p">:</span><span class="w">         </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;*&quot;</span><span class="p">},</span><span class="w"> </span><span class="c1">// All events</span>
+<span class="p">}</span>
 
-<span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">AddWebhook</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span><span class="w"></span>
+<span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">AddWebhook</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">addWebhookResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">addWebhook</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">AddWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDestinationUrl</span><span class="p">(</span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSecret</span><span class="p">(</span><span class="s">&quot;my well-kept secret&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// All events</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">addWebhookResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">addWebhook</span><span class="p">(</span>
+<span class="w">            </span><span class="n">AddWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDestinationUrl</span><span class="p">(</span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setSecret</span><span class="p">(</span><span class="s">&quot;my well-kept secret&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// All events</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2402,21 +2402,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label><label for="__tabbed_10_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic provider delete-webhook --webhook-id &lt;WEBHOOK_ID&gt;
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>delete-webhook<span class="w"> </span>--webhook-id<span class="w"> </span>&lt;WEBHOOK_ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">deleteResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">deleteWebhook</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">DeleteWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">webhookId</span><span class="o">:</span><span class="w"> </span><span class="kt">webhookId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">deleteResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">deleteWebhook</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">DeleteWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">webhookId</span><span class="o">:</span><span class="w"> </span><span class="kt">webhookId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">deleteWebhookResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">DeleteWebhookAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">WebhookId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">webhookId</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">deleteWebhookResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">DeleteWebhookAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">WebhookId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">webhookId</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2426,19 +2426,19 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">DeleteWebhookRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">WebhookId</span><span class="p">:</span><span class="w"> </span><span class="nx">webhookId</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">DeleteWebhookRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">WebhookId</span><span class="p">:</span><span class="w"> </span><span class="nx">webhookId</span><span class="p">,</span>
+<span class="p">}</span>
 
-<span class="nx">deleteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">DeleteWebhook</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span><span class="w"></span>
+<span class="nx">deleteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">DeleteWebhook</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">deleteWebhookResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">deleteWebhook</span><span class="p">(</span><span class="n">DeleteWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setWebhookId</span><span class="p">(</span><span class="n">webhookId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">deleteWebhookResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">deleteWebhook</span><span class="p">(</span><span class="n">DeleteWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setWebhookId</span><span class="p">(</span><span class="n">webhookId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2474,29 +2474,29 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Go</label><label for="__tabbed_12_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic provider upgrade-did --wallet-id <span class="o">{</span>wallet_id<span class="o">}</span> --method ion --method-options testnet
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>upgrade-did<span class="w"> </span>--wallet-id<span class="w"> </span><span class="o">{</span>wallet_id<span class="o">}</span><span class="w"> </span>--method<span class="w"> </span>ion<span class="w"> </span>--method-options<span class="w"> </span>testnet
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">upgradeDID</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">UpgradeDidRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">walletId</span><span class="o">:</span><span class="w"> </span><span class="kt">walletId</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">SupportedDidMethod.ION</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">ionOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions.fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">            </span><span class="nx">network</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions_IonNetwork.TestNet</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="p">}),</span><span class="w"></span>
-<span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">upgradeDID</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">UpgradeDidRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">walletId</span><span class="o">:</span><span class="w"> </span><span class="kt">walletId</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">SupportedDidMethod.ION</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">ionOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions.fromPartial</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">network</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions_IonNetwork.TestNet</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpgradeDIDAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">WalletId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">walletId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Method</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="n">Ion</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">IonOptions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">Network</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">IonOptions</span><span class="p">.</span><span class="n">Types</span><span class="p">.</span><span class="n">IonNetwork</span><span class="p">.</span><span class="n">TestNet</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpgradeDIDAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">WalletId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="n">Ion</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IonOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IonOptions</span><span class="p">.</span><span class="n">Types</span><span class="p">.</span><span class="n">IonNetwork</span><span class="p">.</span><span class="n">TestNet</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2510,29 +2510,29 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">upgradeResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">UpgradeDID</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Account</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_WalletId</span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">WalletId</span><span class="p">:</span><span class="w"> </span><span class="nx">walletId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Method</span><span class="p">:</span><span class="w"> </span><span class="nx">common</span><span class="p">.</span><span class="nx">SupportedDidMethod_ION</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Options</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_IonOptions</span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">IonOptions</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions</span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">Network</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions_TestNet</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">upgradeResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">UpgradeDID</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Account</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_WalletId</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">WalletId</span><span class="p">:</span><span class="w"> </span><span class="nx">walletId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">Method</span><span class="p">:</span><span class="w"> </span><span class="nx">common</span><span class="p">.</span><span class="nx">SupportedDidMethod_ION</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Options</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_IonOptions</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">IonOptions</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Network</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions_TestNet</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">upgradeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">UpgradeDidRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">setMethod</span><span class="p">(</span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="na">ION</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">setIonOptions</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">IonOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setNetwork</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">IonNetwork</span><span class="p">.</span><span class="na">TestNet</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">upgradeRequest</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">UpgradeDidRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setMethod</span><span class="p">(</span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="na">ION</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setIonOptions</span><span class="p">(</span>
+<span class="w">            </span><span class="n">IonOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setNetwork</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">IonNetwork</span><span class="p">.</span><span class="na">TestNet</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">upgradeDID</span><span class="p">(</span><span class="n">upgradeRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">upgradeDID</span><span class="p">(</span><span class="n">upgradeRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>

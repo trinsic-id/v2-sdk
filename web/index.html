@@ -2088,7 +2088,7 @@
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code>npm install @trinsic/trinsic
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@trinsic/trinsic
 </code></pre></div>
 <!-- prettier-ignore-start -->
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
@@ -2112,35 +2112,35 @@
 </div>
 <ol>
 <li>Install the <code>@craco/craco</code> package in case you're not yet using <code>craco</code>
-    <div class="highlight"><pre><span></span><code>npm install @craco/craco --save-exact --save-dev
+    <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@craco/craco<span class="w"> </span>--save-exact<span class="w"> </span>--save-dev
 </code></pre></div></li>
 <li>Adjust your <code>package.json</code> scripts to the below:
-    <div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco start&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco build&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco test&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;eject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;react-scripts eject&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco start&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco build&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco test&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;react-scripts eject&quot;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 <li>Add a <code>craco.config.js</code> file next to the <code>package.json</code> file with the following configuration:
-    <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">addBeforeLoader</span><span class="p">,</span><span class="w"> </span><span class="nx">loaderByName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@craco/craco&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">webpack</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">configure</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">webpackConfig</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmExtensionRegExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">;</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">addBeforeLoader</span><span class="p">,</span><span class="w"> </span><span class="nx">loaderByName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@craco/craco&#39;</span><span class="p">);</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">webpack</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">configure</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">webpackConfig</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmExtensionRegExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">;</span>
 
-<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">rule</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">oneOf</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">oneOf</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;file-loader&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">exclude</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">wasmExtensionRegExp</span><span class="p">);</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">                </span><span class="p">});</span><span class="w"></span>
-<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">rule</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">oneOf</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">oneOf</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;file-loader&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">exclude</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">wasmExtensionRegExp</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">            </span><span class="p">});</span>
 
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">webpackConfig</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">webpackConfig</span><span class="p">;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">};</span>
 </code></pre></div></li>
 </ol>
 </div>
@@ -2153,9 +2153,9 @@
 <p>You will have to enable the <code>asyncWebAssembly</code> experiment in Webpack 5.</p>
 <ol>
 <li>Adjust your <code>webpack.config.js</code>:
-    <div class="highlight"><pre><span></span><code><span class="nx">experiments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">asyncWebAssembly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="p">},</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><code><span class="nx">experiments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">asyncWebAssembly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="p">},</span>
 </code></pre></div></li>
 </ol>
 </div>
@@ -2168,36 +2168,36 @@
 <p>You will have to extend the Create React App Webpack configuration to allow the included <code>wasm</code> bundle to be loaded.</p>
 <ol>
 <li>Install the <code>@craco/craco</code> dependency in case you're not yet using <code>craco</code>
-    <div class="highlight"><pre><span></span><code>npm install @craco/craco --save-exact --save-dev
+    <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@craco/craco<span class="w"> </span>--save-exact<span class="w"> </span>--save-dev
 </code></pre></div></li>
 <li>Adjust your <code>package.json</code> scripts to the below:
-    <div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco start&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco build&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco test&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;eject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;react-scripts eject&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco start&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco build&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco test&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;react-scripts eject&quot;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 <li>Add a <code>craco.config.js</code> file next to the <code>package.json</code> file with the following configuration:
-    <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">webpack</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">configure</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">webpackConfig</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">experiments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nx">asyncWebAssembly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-<span class="w">            </span><span class="p">};</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">webpack</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">configure</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">webpackConfig</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">experiments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">asyncWebAssembly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="p">};</span>
 
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmExtensionRegExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">rule</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">oneOf</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">oneOf</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;asset/resource&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">exclude</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">wasmExtensionRegExp</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="p">}</span><span class="w"></span>
-<span class="w">                </span><span class="p">});</span><span class="w"></span>
-<span class="w">            </span><span class="p">});</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">webpackConfig</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmExtensionRegExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">;</span>
+<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">rule</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">oneOf</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">oneOf</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;asset/resource&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">exclude</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">wasmExtensionRegExp</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">webpackConfig</span><span class="p">;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">};</span>
 </code></pre></div></li>
 </ol>
 </div>

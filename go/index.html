@@ -2108,43 +2108,43 @@
 <li>Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the <a href="https://github.com/trinsic-id/okapi/">readme.md here</a></li>
 <li>You need to have <a href="https://pkg.go.dev/cmd/cgo">CGO configured</a> for the okapi native binary link</li>
 <li>Issue the following command:
-<div class="highlight"><pre><span></span><code>go install github.com/trinsic-id/sdk/go@latest
+<div class="highlight"><pre><span></span><code>go<span class="w"> </span>install<span class="w"> </span>github.com/trinsic-id/sdk/go@latest
 </code></pre></div></li>
 <li>To test the installation, try the following go code:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nx">trinsicService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">NewTrinsic</span><span class="p">()</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Account service not created&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">trinsicService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">NewTrinsic</span><span class="p">()</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Account service not created&quot;</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginAnonymous</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Sign in failed!&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profile</span><span class="p">)</span><span class="w"></span>
+<span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginAnonymous</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Sign in failed!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profile</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Once the go package is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>
 <p><a class="md-button md-button--primary" href="../walkthroughs/vaccination/">Start Walkthrough</a> <a class="md-button" href="../reference/">Explore API</a> <a class="md-button" href="../reference/">Go API Reference</a></p>
 <h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
 <h3 id="m1-architecture-install-issues">M1 Architecture install issues<a class="headerlink" href="#m1-architecture-install-issues" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>uname -m
-<span class="nb">echo</span> <span class="nv">$GOARCH</span>
+<div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-m
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$GOARCH</span>
 </code></pre></div>
 <p>The go architecture and apple processor architecture need to match for the dynamic okapi library loading to work.</p>
 <p>The long story short is though, when that happens, it actually sets all the environment variables also to AMD, including <code>GOHOSTARCH</code>, <code>GOARCH</code>, and <code>GOTOOLDIR</code>. This, then causes the bad env variable to impact the linker.</p>
 <p>If you receive an error that looks like the following on Apple M1 architecture, it is possible that you have the wrong architecture of golang installed/configured.
-<div class="highlight"><pre><span></span><code>panic: unable to open a handle to the library <span class="o">[</span>recovered<span class="o">]</span>
-panic: unable to open a handle to the library
+<div class="highlight"><pre><span></span><code>panic:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>a<span class="w"> </span>handle<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>library<span class="w"> </span><span class="o">[</span>recovered<span class="o">]</span>
+panic:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>a<span class="w"> </span>handle<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>library
 </code></pre></div></p>
 <p>Try running a test code with the following env vars set:
-<div class="highlight"><pre><span></span><code><span class="nv">GOARCH</span><span class="o">=</span>arm64  go <span class="nb">test</span> ./...
+<div class="highlight"><pre><span></span><code><span class="nv">GOARCH</span><span class="o">=</span>arm64<span class="w">  </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>./...
 </code></pre></div></p>
 <p>If <code>CGO</code> is not enabled, you will receive an error like the following:
-<div class="highlight"><pre><span></span><code>go/pkg/mod/github.com/trinsic-id/okapi/go@v1.6.1/okapi/didcomm.go:22:9: undefined: callOkapiNative
+<div class="highlight"><pre><span></span><code>go/pkg/mod/github.com/trinsic-id/okapi/go@v1.6.1/okapi/didcomm.go:22:9:<span class="w"> </span>undefined:<span class="w"> </span>callOkapiNative
 </code></pre></div></p>
 <p>Try running with the following env var set:
-<div class="highlight"><pre><span></span><code><span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">1</span>  go <span class="nb">test</span> ./...
+<div class="highlight"><pre><span></span><code><span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>./...
 </code></pre></div></p>
 
 
