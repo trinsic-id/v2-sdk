@@ -33,7 +33,7 @@ version = jarVersion
 
 // urlFileSample() {
 def urlFile = { url, name ->
-    File file = new File("$buildDir/download/${name}.jar")
+    File file = new File("$buildDir/download/${name}")
     file.parentFile.mkdirs()
     if (!file.exists()) {
         new URL(url).withInputStream { downloadStream ->
@@ -67,7 +67,7 @@ dependencies {
     implementation 'io.grpc:grpc-protobuf:1.49.2'
     // This has to match the version of protoc-gen-grpc-java used in `sdk/devops/generate_proto_files.py`
     implementation 'io.grpc:grpc-stub:1.49.2'
-    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.2.jar', 'trinsic-okapi-1.6.2')
+    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.2.jar', 'trinsic-okapi-1.6.2.jar')
 //    implementation files("C:\\work\\okapi\\java\\build\\libs\\trinsic-okapi-1.6.1.jar")
 }
 
