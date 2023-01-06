@@ -8,7 +8,7 @@ The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API fro
 3. Run `gradle build` to download the required jar files. This can take some time.
 
 ## Configuration
-1. Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the [readme.md here](https://github.com/trinsic-id/okapi/)
+1. Okapi binaries are now included with the server `.jar` or the corresponding android `.aar` file. The gradle include process is essentially similar (see below).
 2. If you install to a different location for debugging, use the environment variable `LD_LIBRARY_PATH`, even on Windows.
 3. For Android, the okapi binaries must be copied (currently manually) to a [specific location with a specific folder structure](https://github.com/trinsic-id/sdk-examples/tree/main/android/app/src/main/jniLibs). [The complete sample application is here](https://github.com/trinsic-id/sdk-examples/tree/main/android)
 
@@ -25,7 +25,9 @@ The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API fro
 ```java
 dependencies {
     // other dependencies
-    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.1.jar', 'trinsic-okapi-1.6.1')
+    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.2.jar', 'trinsic-okapi-1.6.2')
+    // android version:
+    // implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.1.aar', 'trinsic-okapi-1.6.1')
     implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.8.0/trinsic-services-1.8.1.jar', 'trinsic-services-1.8.1')
 }
 ```
