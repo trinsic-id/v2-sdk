@@ -32,6 +32,8 @@ jobs:
           go-version: ^1.16
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install protoc plugins
         run: |
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
