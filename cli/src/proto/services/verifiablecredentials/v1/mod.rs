@@ -47,15 +47,14 @@ pub struct IssueFromTemplateResponse {
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
-    /// A valid JSON-LD frame describing which fields should be
-    /// revealed in the generated proof.
-    /// If unspecified, all fields in the document will be revealed
-    #[prost(string, tag="1")]
-    pub reveal_document_json: ::prost::alloc::string::String,
     /// Nonce value used to derive the proof. If not specified, a random nonce will be generated.
     /// This value may be represented in base64 format in the proof model.
     #[prost(bytes="vec", tag="10")]
     pub nonce: ::prost::alloc::vec::Vec<u8>,
+    /// Selective disclosure specification. If nothing is provided, the entire proof is returned.
+    /// Either a custom JSON-LD frame is provided, or a list of attributes is provided for selective disclosure
+    #[prost(oneof="create_proof_request::Disclosure", tags="1, 11")]
+    pub disclosure: ::core::option::Option<create_proof_request::Disclosure>,
     /// Specify the input to be used to derive this proof.
     /// Input can be an existing item in the wallet or an input document
     #[prost(oneof="create_proof_request::Proof", tags="2, 3")]
@@ -63,6 +62,20 @@ pub struct CreateProofRequest {
 }
 /// Nested message and enum types in `CreateProofRequest`.
 pub mod create_proof_request {
+    /// Selective disclosure specification. If nothing is provided, the entire proof is returned.
+    /// Either a custom JSON-LD frame is provided, or a list of attributes is provided for selective disclosure
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Disclosure {
+        /// A valid JSON-LD frame describing which fields should be
+        /// revealed in the generated proof.
+        /// If unspecified, all fields in the document will be revealed
+        #[prost(string, tag="1")]
+        RevealDocumentJson(::prost::alloc::string::String),
+        /// Information about what sections of the document to reveal
+        #[prost(message, tag="11")]
+        RevealTemplate(super::RevealTemplateAttributes),
+    }
     /// Specify the input to be used to derive this proof.
     /// Input can be an existing item in the wallet or an input document
     #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -77,6 +90,13 @@ pub mod create_proof_request {
         #[prost(string, tag="3")]
         DocumentJson(::prost::alloc::string::String),
     }
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct RevealTemplateAttributes {
+    /// A list of document attributes to reveal. If unset, all attributes will be returned.
+    #[prost(string, repeated, tag="1")]
+    pub template_attributes: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// Response to `CreateProofRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]

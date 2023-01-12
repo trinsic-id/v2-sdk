@@ -37,14 +37,20 @@ impl ResponseStatus {
     }
 }
 /// Enum of all supported DID Methods
+/// <https://docs.godiddy.com/en/supported-methods>
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum SupportedDidMethod {
     /// The did:key method -- all wallets use this by default
     Key = 0,
-    /// The did:ion method
+    /// The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft
     Ion = 1,
+    /// The did:sov method -- Hyperledger Indy based by Sovrin Foundation
+    ///
+    /// The did:v1 method --Veres 1 Blockchain by Digital Bazaar
+    ///     V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys.
+    Indy = 2,
 }
 impl SupportedDidMethod {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -55,6 +61,7 @@ impl SupportedDidMethod {
         match self {
             SupportedDidMethod::Key => "KEY",
             SupportedDidMethod::Ion => "ION",
+            SupportedDidMethod::Indy => "INDY",
         }
     }
 }
