@@ -61,6 +61,8 @@ class AccountService(ServiceBase):
         if isinstance(profile, str):
             profile = AccountProfile().parse(base64.urlsafe_b64decode(profile))
         request = UnBlindOberonTokenRequest(token=profile.auth_token)
+        if isinstance(security_code, str):
+            security_code = bytes(security_code, "utf8")
         request.blinding.append(bytes(security_code))
         result = oberon.unblind_token(request)
         profile.auth_token = result.token
