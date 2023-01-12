@@ -2220,7 +2220,7 @@
 <p class="admonition-title">Warning</p>
 <p><strong><code>IssueCredential</code> requires a valid JSON-LD document to be provided</strong>. Do not confuse this operation with <a href="./#issue-credential-from-template">Issue Credential From Template</a>.</p>
 <p>When provided a valid credential, this endpoint creates and appends the <code>proof</code> object, using a key pair tied to the issuing Trinsic account.</p>
-<p>You can learn more about how to create these documents, and about VC data models in general, from W3C: <a href="https://www.w3.org/TR/vc-data-model/">VC Data Model v1.1</a>. </p>
+<p>You can learn more about how to create these documents, and about VC data models in general, from W3C: <a href="https://www.w3.org/TR/vc-data-model/">VC Data Model v1.1</a>.</p>
 </div>
 <hr />
 <h2 id="issue-credential-from-template">Issue Credential from Template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h2>
@@ -2413,7 +2413,16 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <h2 id="create-proof">Create Proof<a class="headerlink" href="#create-proof" title="Permanent link">&para;</a></h2>
 <p>Creates and signs a <a href="/">proof</a> for a valid JSON-LD credential, using the BBS+ Signature Suite.</p>
 <p>If the credential is stored in a Trinsic cloud wallet, pass its <code>item_id</code>; otherwise, pass the raw JSON-LD credential via <code>document_json</code>.</p>
-<p>If <code>reveal_document_json</code> is passed, a proof will be generated for only the fields specified.</p>
+<div class="admonition info">
+<p class="admonition-title">Selective Disclosure</p>
+</div>
+<p>BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.</p>
+<div class="highlight"><pre><span></span><code>This enables increased user privacy: fields which aren&#39;t included in `reveal_document_json` will not be present in the generated proof.
+
+1. If `reveal_document_json` is passed, a proof will be generated for only the fields specified. This is a JSON-LD frame.
+2. Rather than formulating a complete JSON-LD frame, you can instead provide a list of proof attributes to reveal, and the service will construct the JSON-LD proof frame internally
+3. If neither is provided, the entire proof will be returned.
+</code></pre></div>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_9_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_9_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2431,6 +2440,14 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <span class="w">        </span><span class="nx">revealDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">getVaccineCertFrameJSON</span><span class="p">(),</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">selectiveProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertItemResponse.itemId</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">revealTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">templateAttributes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;lastName&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2438,12 +2455,27 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <span class="w">    </span><span class="n">DocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">,</span>
 <span class="w">    </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">None</span><span class="p">)</span>
 <span class="p">});</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">selectiveProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RevealTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// The other field, not disclosed, is &quot;age&quot;</span>
+<span class="w">        </span><span class="n">TemplateAttributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="s">&quot;lastName&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span>
         <span class="n">reveal_document_json</span><span class="o">=</span><span class="n">proof_request_json</span><span class="p">,</span> <span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">selective_proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span>
+        <span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span><span class="p">,</span>
+        <span class="n">reveal_template</span><span class="o">=</span><span class="n">RevealTemplateAttributes</span><span class="p">(</span>
+            <span class="n">template_attributes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">]</span>
+        <span class="p">),</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2456,20 +2488,41 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <span class="p">}</span>
 
 <span class="nx">proofResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span>
+
+<span class="nx">selectiveRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Proof</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest_DocumentJson</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialJson</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">Disclosure</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest_RevealTemplate</span><span class="p">{</span><span class="nx">RevealTemplate</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">RevealTemplateAttributes</span><span class="p">{</span><span class="nx">TemplateAttributes</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">}}},</span>
+<span class="p">}</span>
+
+<span class="nx">selectiveResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">selectiveRequest</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">trinsic</span>
+<span class="w">          </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
+<span class="w">          </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span>
+<span class="w">              </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                  </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">.</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">)</span>
+<span class="w">                  </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">          </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">selectiveProofResponse</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">trinsic</span>
 <span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
 <span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span>
 <span class="w">            </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setRevealTemplate</span><span class="p">(</span><span class="n">RevealTemplateAttributes</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">addTemplateAttributes</span><span class="p">(</span><span class="s">&quot;batchNumber&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
 <span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">selectiveProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">selectiveProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2482,12 +2535,6 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.CreateProofResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.CreateProofResponse' href='/reference/proto#services.verifiablecredentials.v1.CreateProofResponse'>CreateProofResponse</a></div><div class='proto-obj-description'>Response to <code>CreateProofRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>proof_document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Valid JSON-LD proof for the specified credential</div></div></div></div></p>
 </div>
 </div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Selective Disclosure</p>
-<p>BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.</p>
-<p>This enables increased user privacy: fields which aren't included in <code>reveal_document_json</code> will not be present in the generated proof.</p>
-<p>We are working on documentation for the expected structure of <code>reveal_document_json</code> and will make it available soon.</p>
 </div>
 <hr />
 <h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
@@ -2507,6 +2554,10 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>issuer<span class="w"> 
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">verifyProof</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proof.proofDocumentJson</span><span class="p">,</span>
 <span class="p">});</span>
+
+<span class="err">⋯</span>
+
+<span class="w">    </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">selectiveProof.proofDocumentJson</span><span class="p">,</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2516,6 +2567,11 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>issuer<span class="w"> 
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">verify_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">VerifyProofRequest</span><span class="p">(</span><span class="n">proof_document_json</span><span class="o">=</span><span class="n">credential_proof</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">selective_verify_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">VerifyProofRequest</span><span class="p">(</span>
+        <span class="n">proof_document_json</span><span class="o">=</span><span class="n">selective_proof_response</span><span class="o">.</span><span class="n">proof_document_json</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
