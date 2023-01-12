@@ -84,6 +84,14 @@ describe("WalletService Unit Tests", () => {
                 revealDocumentJson: getVaccineCertFrameJSON(),
             })
         );
+        let selectiveProof = await trinsic.credential().createProof(
+            CreateProofRequest.fromPartial({
+                itemId: insertItemResponse.itemId,
+                revealTemplate: {
+                    templateAttributes: ["firstName", "lastName"]
+                }
+            })
+        );
         // }
 
         trinsic.options = airline;
