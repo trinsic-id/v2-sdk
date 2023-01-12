@@ -492,6 +492,12 @@
       "file": "services/common/v1/common.proto",
       "parent": ""
     },
+    "services.common.v1.SupportedDidMethod.INDY": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.SupportedDidMethod"
+    },
     "services.common.v1.SupportedDidMethod.ION": {
       "type": "enum_value",
       "collection": "enum_values",
@@ -1248,6 +1254,78 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.IndyOptions": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.Danube": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IdUnion": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IdUnionTest": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.Indicio": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IndicioDemo": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IndicioTest": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.Sovrin": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.SovrinBuilder": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.SovrinStaging": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions.IndyNetwork"
+    },
+    "services.provider.v1.IndyOptions.network": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IndyOptions"
+    },
     "services.provider.v1.InvitationStatusRequest": {
       "type": "message",
       "collection": "messages",
@@ -1807,6 +1885,12 @@
       "parent": ""
     },
     "services.provider.v1.UpgradeDidRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.UpgradeDidRequest"
+    },
+    "services.provider.v1.UpgradeDidRequest.indy_options": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
@@ -2976,6 +3060,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.CreateProofRequest"
     },
+    "services.verifiablecredentials.v1.CreateProofRequest.reveal_template": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateProofRequest"
+    },
     "services.verifiablecredentials.v1.CreateProofResponse": {
       "type": "message",
       "collection": "messages",
@@ -3047,6 +3137,18 @@
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.IssueResponse"
+    },
+    "services.verifiablecredentials.v1.RevealTemplateAttributes": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.RevealTemplateAttributes"
     },
     "services.verifiablecredentials.v1.SendRequest": {
       "type": "message",
@@ -3620,7 +3722,8 @@
         "services.common.v1.ResponseStatus.SERIALIZATION_ERROR",
         "services.common.v1.ResponseStatus.UNKNOWN_ERROR",
         "services.common.v1.SupportedDidMethod.KEY",
-        "services.common.v1.SupportedDidMethod.ION"
+        "services.common.v1.SupportedDidMethod.ION",
+        "services.common.v1.SupportedDidMethod.INDY"
       ]
     },
     "services/event/v1/event.proto": {
@@ -3862,6 +3965,7 @@
         "services.provider.v1.SearchWalletConfigurationResponse",
         "services.provider.v1.WalletConfiguration",
         "services.provider.v1.IonOptions",
+        "services.provider.v1.IndyOptions",
         "services.provider.v1.UpgradeDidRequest",
         "services.provider.v1.UpgradeDidResponse"
       ],
@@ -3954,15 +4058,18 @@
         "services.provider.v1.WalletConfiguration.public_did",
         "services.provider.v1.WalletConfiguration.config_type",
         "services.provider.v1.IonOptions.network",
+        "services.provider.v1.IndyOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
         "services.provider.v1.UpgradeDidRequest.wallet_id",
         "services.provider.v1.UpgradeDidRequest.method",
         "services.provider.v1.UpgradeDidRequest.ion_options",
+        "services.provider.v1.UpgradeDidRequest.indy_options",
         "services.provider.v1.UpgradeDidResponse.did"
       ],
       "enums": [
         "services.provider.v1.InvitationStatusResponse.Status",
         "services.provider.v1.IonOptions.IonNetwork",
+        "services.provider.v1.IndyOptions.IndyNetwork",
         "services.provider.v1.ParticipantType"
       ],
       "enum_values": [
@@ -3972,6 +4079,15 @@
         "services.provider.v1.InvitationStatusResponse.Status.Expired",
         "services.provider.v1.IonOptions.IonNetwork.TestNet",
         "services.provider.v1.IonOptions.IonNetwork.MainNet",
+        "services.provider.v1.IndyOptions.IndyNetwork.Danube",
+        "services.provider.v1.IndyOptions.IndyNetwork.SovrinBuilder",
+        "services.provider.v1.IndyOptions.IndyNetwork.SovrinStaging",
+        "services.provider.v1.IndyOptions.IndyNetwork.Sovrin",
+        "services.provider.v1.IndyOptions.IndyNetwork.IdUnionTest",
+        "services.provider.v1.IndyOptions.IndyNetwork.IdUnion",
+        "services.provider.v1.IndyOptions.IndyNetwork.IndicioTest",
+        "services.provider.v1.IndyOptions.IndyNetwork.IndicioDemo",
+        "services.provider.v1.IndyOptions.IndyNetwork.Indicio",
         "services.provider.v1.ParticipantType.participant_type_individual",
         "services.provider.v1.ParticipantType.participant_type_organization"
       ]
@@ -4215,6 +4331,7 @@
         "services.verifiablecredentials.v1.IssueFromTemplateRequest",
         "services.verifiablecredentials.v1.IssueFromTemplateResponse",
         "services.verifiablecredentials.v1.CreateProofRequest",
+        "services.verifiablecredentials.v1.RevealTemplateAttributes",
         "services.verifiablecredentials.v1.CreateProofResponse",
         "services.verifiablecredentials.v1.VerifyProofRequest",
         "services.verifiablecredentials.v1.VerifyProofResponse",
@@ -4235,9 +4352,11 @@
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id",
         "services.verifiablecredentials.v1.IssueFromTemplateResponse.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce",
+        "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes",
         "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json",
         "services.verifiablecredentials.v1.VerifyProofRequest.proof_document_json",
         "services.verifiablecredentials.v1.VerifyProofResponse.is_valid",
@@ -5473,6 +5592,18 @@
       "messages": [],
       "enums": []
     },
+    "services.provider.v1.IndyOptions": {
+      "name": "IndyOptions",
+      "full_name": "services.provider.v1.IndyOptions",
+      "description": "Options for creation of DID on the SOV network",
+      "fields": [
+        "services.provider.v1.IndyOptions.network"
+      ],
+      "messages": [],
+      "enums": [
+        "services.provider.v1.IndyOptions.IndyNetwork"
+      ]
+    },
     "services.provider.v1.InvitationStatusRequest": {
       "name": "InvitationStatusRequest",
       "full_name": "services.provider.v1.InvitationStatusRequest",
@@ -5739,7 +5870,8 @@
         "services.provider.v1.UpgradeDidRequest.email",
         "services.provider.v1.UpgradeDidRequest.wallet_id",
         "services.provider.v1.UpgradeDidRequest.method",
-        "services.provider.v1.UpgradeDidRequest.ion_options"
+        "services.provider.v1.UpgradeDidRequest.ion_options",
+        "services.provider.v1.UpgradeDidRequest.indy_options"
       ],
       "messages": [],
       "enums": []
@@ -6298,6 +6430,7 @@
       "description": "Request to create a proof for a Verifiable Credential using public key tied to caller.\nEither `item_id` or `document_json` may be provided, not both.",
       "fields": [
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce"
@@ -6353,6 +6486,16 @@
       "description": "Response to `IssueRequest`",
       "fields": [
         "services.verifiablecredentials.v1.IssueResponse.signed_document_json"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.v1.RevealTemplateAttributes": {
+      "name": "RevealTemplateAttributes",
+      "full_name": "services.verifiablecredentials.v1.RevealTemplateAttributes",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes"
       ],
       "messages": [],
       "enums": []
@@ -7490,6 +7633,14 @@
       "full_type": "string",
       "description": "Wallet ID of account being granted permission.\nMutually exclusive with `email`."
     },
+    "services.provider.v1.IndyOptions.network": {
+      "name": "network",
+      "full_name": "services.provider.v1.IndyOptions.network",
+      "label": "LABEL_OPTIONAL",
+      "type": "IndyNetwork",
+      "full_type": "services.provider.v1.IndyOptions.IndyNetwork",
+      "description": "SOV network on which DID should be published"
+    },
     "services.provider.v1.InvitationStatusRequest.invitation_id": {
       "name": "invitation_id",
       "full_name": "services.provider.v1.InvitationStatusRequest.invitation_id",
@@ -7821,6 +7972,14 @@
       "type": "string",
       "full_type": "string",
       "description": "Email address of account to upgrade.\nMutually exclusive with `walletId`."
+    },
+    "services.provider.v1.UpgradeDidRequest.indy_options": {
+      "name": "indy_options",
+      "full_name": "services.provider.v1.UpgradeDidRequest.indy_options",
+      "label": "LABEL_OPTIONAL",
+      "type": "IndyOptions",
+      "full_type": "services.provider.v1.IndyOptions",
+      "description": "Configuration for creation of DID on INDY network"
     },
     "services.provider.v1.UpgradeDidRequest.ion_options": {
       "name": "ion_options",
@@ -8748,6 +8907,14 @@
       "full_type": "string",
       "description": "A valid JSON-LD frame describing which fields should be\nrevealed in the generated proof.\nIf unspecified, all fields in the document will be revealed"
     },
+    "services.verifiablecredentials.v1.CreateProofRequest.reveal_template": {
+      "name": "reveal_template",
+      "full_name": "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
+      "label": "LABEL_OPTIONAL",
+      "type": "RevealTemplateAttributes",
+      "full_type": "services.verifiablecredentials.v1.RevealTemplateAttributes",
+      "description": "Information about what sections of the document to reveal"
+    },
     "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json": {
       "name": "proof_document_json",
       "full_name": "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json",
@@ -8806,6 +8973,14 @@
       "type": "string",
       "full_type": "string",
       "description": "Verifiable Credential document, signed with public key\ntied to caller of `IssueRequest`"
+    },
+    "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes": {
+      "name": "template_attributes",
+      "full_name": "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "A list of document attributes to reveal. If unset, all attributes will be returned."
     },
     "services.verifiablecredentials.v1.SendRequest.did_uri": {
       "name": "did_uri",
@@ -9182,10 +9357,27 @@
     "services.common.v1.SupportedDidMethod": {
       "name": "SupportedDidMethod",
       "full_name": "services.common.v1.SupportedDidMethod",
-      "description": "Enum of all supported DID Methods",
+      "description": "Enum of all supported DID Methods\nhttps://docs.godiddy.com/en/supported-methods",
       "values": [
         "services.common.v1.SupportedDidMethod.KEY",
-        "services.common.v1.SupportedDidMethod.ION"
+        "services.common.v1.SupportedDidMethod.ION",
+        "services.common.v1.SupportedDidMethod.INDY"
+      ]
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork": {
+      "name": "IndyNetwork",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork",
+      "description": "",
+      "values": [
+        "services.provider.v1.IndyOptions.IndyNetwork.Danube",
+        "services.provider.v1.IndyOptions.IndyNetwork.SovrinBuilder",
+        "services.provider.v1.IndyOptions.IndyNetwork.SovrinStaging",
+        "services.provider.v1.IndyOptions.IndyNetwork.Sovrin",
+        "services.provider.v1.IndyOptions.IndyNetwork.IdUnionTest",
+        "services.provider.v1.IndyOptions.IndyNetwork.IdUnion",
+        "services.provider.v1.IndyOptions.IndyNetwork.IndicioTest",
+        "services.provider.v1.IndyOptions.IndyNetwork.IndicioDemo",
+        "services.provider.v1.IndyOptions.IndyNetwork.Indicio"
       ]
     },
     "services.provider.v1.InvitationStatusResponse.Status": {
@@ -9326,10 +9518,16 @@
       "description": "",
       "value": 11
     },
+    "services.common.v1.SupportedDidMethod.INDY": {
+      "name": "INDY",
+      "full_name": "services.common.v1.SupportedDidMethod.INDY",
+      "description": "The did:sov method -- Hyperledger Indy based by Sovrin Foundation\n\nThe did:v1 method --Veres 1 Blockchain by Digital Bazaar\n   V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys.",
+      "value": 2
+    },
     "services.common.v1.SupportedDidMethod.ION": {
       "name": "ION",
       "full_name": "services.common.v1.SupportedDidMethod.ION",
-      "description": "The did:ion method",
+      "description": "The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft",
       "value": 1
     },
     "services.common.v1.SupportedDidMethod.KEY": {
@@ -9337,6 +9535,60 @@
       "full_name": "services.common.v1.SupportedDidMethod.KEY",
       "description": "The did:key method -- all wallets use this by default",
       "value": 0
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.Danube": {
+      "name": "Danube",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.Danube",
+      "description": "",
+      "value": 0
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IdUnion": {
+      "name": "IdUnion",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.IdUnion",
+      "description": "",
+      "value": 5
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IdUnionTest": {
+      "name": "IdUnionTest",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.IdUnionTest",
+      "description": "",
+      "value": 4
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.Indicio": {
+      "name": "Indicio",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.Indicio",
+      "description": "",
+      "value": 8
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IndicioDemo": {
+      "name": "IndicioDemo",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.IndicioDemo",
+      "description": "",
+      "value": 7
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.IndicioTest": {
+      "name": "IndicioTest",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.IndicioTest",
+      "description": "",
+      "value": 6
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.Sovrin": {
+      "name": "Sovrin",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.Sovrin",
+      "description": "",
+      "value": 3
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.SovrinBuilder": {
+      "name": "SovrinBuilder",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.SovrinBuilder",
+      "description": "",
+      "value": 1
+    },
+    "services.provider.v1.IndyOptions.IndyNetwork.SovrinStaging": {
+      "name": "SovrinStaging",
+      "full_name": "services.provider.v1.IndyOptions.IndyNetwork.SovrinStaging",
+      "description": "",
+      "value": 2
     },
     "services.provider.v1.InvitationStatusResponse.Status.Completed": {
       "name": "Completed",

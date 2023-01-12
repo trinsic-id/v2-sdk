@@ -2251,6 +2251,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#indyoptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IndyOptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#invitationstatusrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2475,6 +2486,17 @@
     <span class="md-ellipsis">
       
         WebhookConfig
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indyoptionsindynetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IndyOptions.IndyNetwork
       
     </span>
   </a>
@@ -3481,6 +3503,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#revealtemplateattributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RevealTemplateAttributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sendrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4245,7 +4278,8 @@
 </table>
 <p><a name="services-common-v1-SupportedDidMethod"></a></p>
 <h3 id="supporteddidmethod">SupportedDidMethod<a class="headerlink" href="#supporteddidmethod" title="Permanent link">&para;</a></h3>
-<p>Enum of all supported DID Methods</p>
+<p>Enum of all supported DID Methods
+https://docs.godiddy.com/en/supported-methods</p>
 <table>
 <thead>
 <tr>
@@ -4263,10 +4297,16 @@
 <tr>
 <td>ION</td>
 <td>1</td>
-<td>The did:ion method</td>
+<td>The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft</td>
+</tr>
+<tr>
+<td>INDY</td>
+<td>2</td>
+<td>The did:sov method -- Hyperledger Indy based by Sovrin Foundation</td>
 </tr>
 </tbody>
 </table>
+<p>The did:v1 method --Veres 1 Blockchain by Digital Bazaar V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys. |</p>
 <!-- end enums -->
 
 <!-- end HasExtensions -->
@@ -5192,6 +5232,25 @@ to verify authentication token validity</p>
 <p><a name="services-provider-v1-GrantAuthorizationResponse"></a></p>
 <h3 id="grantauthorizationresponse">GrantAuthorizationResponse<a class="headerlink" href="#grantauthorizationresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>GrantAuthorizationRequest</code></p>
+<p><a name="services-provider-v1-IndyOptions"></a></p>
+<h3 id="indyoptions">IndyOptions<a class="headerlink" href="#indyoptions" title="Permanent link">&para;</a></h3>
+<p>Options for creation of DID on the SOV network</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>network</td>
+<td><a href="/reference/proto#services-provider-v1-IndyOptions-IndyNetwork">IndyOptions.IndyNetwork</a></td>
+<td>SOV network on which DID should be published</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-InvitationStatusRequest"></a></p>
 <h3 id="invitationstatusrequest">InvitationStatusRequest<a class="headerlink" href="#invitationstatusrequest" title="Permanent link">&para;</a></h3>
 <p>Request details for the status of an invitation</p>
@@ -5572,6 +5631,11 @@ to verify authentication token validity</p>
 <td><a href="/reference/proto#services-provider-v1-IonOptions">IonOptions</a></td>
 <td>Configuration for creation of DID on ION network</td>
 </tr>
+<tr>
+<td>indy_options</td>
+<td><a href="/reference/proto#services-provider-v1-IndyOptions">IndyOptions</a></td>
+<td>Configuration for creation of DID on INDY network</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-UpgradeDidResponse"></a></p>
@@ -5673,6 +5737,64 @@ to verify authentication token validity</p>
 </table>
 <!-- end messages -->
 
+<p><a name="services-provider-v1-IndyOptions-IndyNetwork"></a></p>
+<h3 id="indyoptionsindynetwork">IndyOptions.IndyNetwork<a class="headerlink" href="#indyoptionsindynetwork" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Danube</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>SovrinBuilder</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SovrinStaging</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Sovrin</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>IdUnionTest</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>IdUnion</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>IndicioTest</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>IndicioDemo</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>Indicio</td>
+<td>8</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-InvitationStatusResponse-Status"></a></p>
 <h3 id="invitationstatusresponsestatus">InvitationStatusResponse.Status<a class="headerlink" href="#invitationstatusresponsestatus" title="Permanent link">&para;</a></h3>
 <table>
@@ -7660,6 +7782,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>A valid JSON-LD frame describing which fields should be revealed in the generated proof. If unspecified, all fields in the document will be revealed</td>
 </tr>
 <tr>
+<td>reveal_template</td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-RevealTemplateAttributes">RevealTemplateAttributes</a></td>
+<td>Information about what sections of the document to reveal</td>
+</tr>
+<tr>
 <td>item_id</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>ID of wallet item stored in a Trinsic cloud wallet</td>
@@ -7778,6 +7905,24 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>signed_document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Verifiable Credential document, signed with public key tied to caller of <code>IssueRequest</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-v1-RevealTemplateAttributes"></a></p>
+<h3 id="revealtemplateattributes">RevealTemplateAttributes<a class="headerlink" href="#revealtemplateattributes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>template_attributes</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>A list of document attributes to reveal. If unset, all attributes will be returned.</td>
 </tr>
 </tbody>
 </table>
@@ -8738,9 +8883,8 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
         <nav>
           
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:115157536+mewmba@users.noreply.github.com">Mewmba</a>, 
-            <a href="mailto:not.committed.yet">Not Committed Yet</a>
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>
         </nav>
       </span>
     
