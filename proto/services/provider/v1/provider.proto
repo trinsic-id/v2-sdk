@@ -430,6 +430,24 @@ message IonOptions {
     IonNetwork network = 1;
 }
 
+// Options for creation of DID on the SOV network
+message IndyOptions {
+    enum IndyNetwork {
+        Danube = 0;
+        SovrinBuilder = 1;
+        SovrinStaging = 2;
+        Sovrin = 3;
+        IdUnionTest = 4;
+        IdUnion = 5;
+        IndicioTest = 6;
+        IndicioDemo = 7;
+        Indicio = 8;
+    }
+
+    // SOV network on which DID should be published
+    IndyNetwork network = 1;
+}
+
 // Request to upgrade a wallet
 message UpgradeDidRequest {
     oneof account {
@@ -448,6 +466,8 @@ message UpgradeDidRequest {
     oneof options {
         // Configuration for creation of DID on ION network
         IonOptions ion_options = 4;
+        // Configuration for creation of DID on INDY network
+        IndyOptions indy_options = 5;
     }
 }
 

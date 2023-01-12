@@ -4060,9 +4060,79 @@ class IonOptions extends $pb.GeneratedMessage {
   void clearNetwork() => clearField(1);
 }
 
+class IndyOptions extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'IndyOptions',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..e<IndyOptions_IndyNetwork>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'network',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: IndyOptions_IndyNetwork.Danube,
+        valueOf: IndyOptions_IndyNetwork.valueOf,
+        enumValues: IndyOptions_IndyNetwork.values)
+    ..hasRequiredFields = false;
+
+  IndyOptions._() : super();
+  factory IndyOptions({
+    IndyOptions_IndyNetwork? network,
+  }) {
+    final _result = create();
+    if (network != null) {
+      _result.network = network;
+    }
+    return _result;
+  }
+  factory IndyOptions.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory IndyOptions.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  IndyOptions clone() => IndyOptions()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  IndyOptions copyWith(void Function(IndyOptions) updates) =>
+      super.copyWith((message) => updates(message as IndyOptions))
+          as IndyOptions; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static IndyOptions create() => IndyOptions._();
+  IndyOptions createEmptyInstance() => create();
+  static $pb.PbList<IndyOptions> createRepeated() => $pb.PbList<IndyOptions>();
+  @$core.pragma('dart2js:noInline')
+  static IndyOptions getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<IndyOptions>(create);
+  static IndyOptions? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  IndyOptions_IndyNetwork get network => $_getN(0);
+  @$pb.TagNumber(1)
+  set network(IndyOptions_IndyNetwork v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasNetwork() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNetwork() => clearField(1);
+}
+
 enum UpgradeDidRequest_Account { email, walletId, notSet }
 
-enum UpgradeDidRequest_Options { ionOptions, notSet }
+enum UpgradeDidRequest_Options { ionOptions, indyOptions, notSet }
 
 class UpgradeDidRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, UpgradeDidRequest_Account>
@@ -4074,6 +4144,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, UpgradeDidRequest_Options>
       _UpgradeDidRequest_OptionsByTag = {
     4: UpgradeDidRequest_Options.ionOptions,
+    5: UpgradeDidRequest_Options.indyOptions,
     0: UpgradeDidRequest_Options.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -4086,7 +4157,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
               : 'services.provider.v1'),
       createEmptyInstance: create)
     ..oo(0, [1, 2])
-    ..oo(1, [4])
+    ..oo(1, [4, 5])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -4112,6 +4183,12 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
             ? ''
             : 'ionOptions',
         subBuilder: IonOptions.create)
+    ..aOM<IndyOptions>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'indyOptions',
+        subBuilder: IndyOptions.create)
     ..hasRequiredFields = false;
 
   UpgradeDidRequest._() : super();
@@ -4120,6 +4197,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
     $core.String? walletId,
     $8.SupportedDidMethod? method,
     IonOptions? ionOptions,
+    IndyOptions? indyOptions,
   }) {
     final _result = create();
     if (email != null) {
@@ -4133,6 +4211,9 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
     }
     if (ionOptions != null) {
       _result.ionOptions = ionOptions;
+    }
+    if (indyOptions != null) {
+      _result.indyOptions = indyOptions;
     }
     return _result;
   }
@@ -4220,6 +4301,20 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   void clearIonOptions() => clearField(4);
   @$pb.TagNumber(4)
   IonOptions ensureIonOptions() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  IndyOptions get indyOptions => $_getN(4);
+  @$pb.TagNumber(5)
+  set indyOptions(IndyOptions v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasIndyOptions() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearIndyOptions() => clearField(5);
+  @$pb.TagNumber(5)
+  IndyOptions ensureIndyOptions() => $_ensure(4);
 }
 
 class UpgradeDidResponse extends $pb.GeneratedMessage {

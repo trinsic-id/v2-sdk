@@ -19,6 +19,20 @@ public interface CreateProofRequestOrBuilder
    *
    * <code>string reveal_document_json = 1;</code>
    *
+   * @return Whether the revealDocumentJson field is set.
+   */
+  boolean hasRevealDocumentJson();
+  /**
+   *
+   *
+   * <pre>
+   * A valid JSON-LD frame describing which fields should be
+   * revealed in the generated proof.
+   * If unspecified, all fields in the document will be revealed
+   * </pre>
+   *
+   * <code>string reveal_document_json = 1;</code>
+   *
    * @return The revealDocumentJson.
    */
   java.lang.String getRevealDocumentJson();
@@ -36,6 +50,42 @@ public interface CreateProofRequestOrBuilder
    * @return The bytes for revealDocumentJson.
    */
   com.google.protobuf.ByteString getRevealDocumentJsonBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Information about what sections of the document to reveal
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;</code>
+   *
+   * @return Whether the revealTemplate field is set.
+   */
+  boolean hasRevealTemplate();
+  /**
+   *
+   *
+   * <pre>
+   * Information about what sections of the document to reveal
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;</code>
+   *
+   * @return The revealTemplate.
+   */
+  trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes getRevealTemplate();
+  /**
+   *
+   *
+   * <pre>
+   * Information about what sections of the document to reveal
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;</code>
+   */
+  trinsic.services.verifiablecredentials.v1.RevealTemplateAttributesOrBuilder
+      getRevealTemplateOrBuilder();
 
   /**
    *
@@ -130,6 +180,9 @@ public interface CreateProofRequestOrBuilder
    * @return The nonce.
    */
   com.google.protobuf.ByteString getNonce();
+
+  public trinsic.services.verifiablecredentials.v1.CreateProofRequest.DisclosureCase
+      getDisclosureCase();
 
   public trinsic.services.verifiablecredentials.v1.CreateProofRequest.ProofCase getProofCase();
 }

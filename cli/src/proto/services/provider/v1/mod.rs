@@ -560,6 +560,50 @@ pub mod ion_options {
         }
     }
 }
+/// Options for creation of DID on the SOV network
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct IndyOptions {
+    /// SOV network on which DID should be published
+    #[prost(enumeration="indy_options::IndyNetwork", tag="1")]
+    pub network: i32,
+}
+/// Nested message and enum types in `IndyOptions`.
+pub mod indy_options {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[repr(i32)]
+    pub enum IndyNetwork {
+        Danube = 0,
+        SovrinBuilder = 1,
+        SovrinStaging = 2,
+        Sovrin = 3,
+        IdUnionTest = 4,
+        IdUnion = 5,
+        IndicioTest = 6,
+        IndicioDemo = 7,
+        Indicio = 8,
+    }
+    impl IndyNetwork {
+        /// String value of the enum field names used in the ProtoBuf definition.
+        ///
+        /// The values are not transformed in any way and thus are considered stable
+        /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+        pub fn as_str_name(&self) -> &'static str {
+            match self {
+                IndyNetwork::Danube => "Danube",
+                IndyNetwork::SovrinBuilder => "SovrinBuilder",
+                IndyNetwork::SovrinStaging => "SovrinStaging",
+                IndyNetwork::Sovrin => "Sovrin",
+                IndyNetwork::IdUnionTest => "IdUnionTest",
+                IndyNetwork::IdUnion => "IdUnion",
+                IndyNetwork::IndicioTest => "IndicioTest",
+                IndyNetwork::IndicioDemo => "IndicioDemo",
+                IndyNetwork::Indicio => "Indicio",
+            }
+        }
+    }
+}
 /// Request to upgrade a wallet
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -569,7 +613,7 @@ pub struct UpgradeDidRequest {
     pub method: i32,
     #[prost(oneof="upgrade_did_request::Account", tags="1, 2")]
     pub account: ::core::option::Option<upgrade_did_request::Account>,
-    #[prost(oneof="upgrade_did_request::Options", tags="4")]
+    #[prost(oneof="upgrade_did_request::Options", tags="4, 5")]
     pub options: ::core::option::Option<upgrade_did_request::Options>,
 }
 /// Nested message and enum types in `UpgradeDidRequest`.
@@ -592,6 +636,9 @@ pub mod upgrade_did_request {
         /// Configuration for creation of DID on ION network
         #[prost(message, tag="4")]
         IonOptions(super::IonOptions),
+        /// Configuration for creation of DID on INDY network
+        #[prost(message, tag="5")]
+        IndyOptions(super::IndyOptions),
     }
 }
 /// Response to `UpgradeDIDRequest`

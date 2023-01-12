@@ -101,3 +101,72 @@ class IonOptions_IonNetwork extends $pb.ProtobufEnum {
 
   const IonOptions_IonNetwork._($core.int v, $core.String n) : super(v, n);
 }
+
+class IndyOptions_IndyNetwork extends $pb.ProtobufEnum {
+  static const IndyOptions_IndyNetwork Danube = IndyOptions_IndyNetwork._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'Danube');
+  static const IndyOptions_IndyNetwork SovrinBuilder =
+      IndyOptions_IndyNetwork._(
+          1,
+          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+              ? ''
+              : 'SovrinBuilder');
+  static const IndyOptions_IndyNetwork SovrinStaging =
+      IndyOptions_IndyNetwork._(
+          2,
+          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+              ? ''
+              : 'SovrinStaging');
+  static const IndyOptions_IndyNetwork Sovrin = IndyOptions_IndyNetwork._(
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'Sovrin');
+  static const IndyOptions_IndyNetwork IdUnionTest = IndyOptions_IndyNetwork._(
+      4,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'IdUnionTest');
+  static const IndyOptions_IndyNetwork IdUnion = IndyOptions_IndyNetwork._(
+      5,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'IdUnion');
+  static const IndyOptions_IndyNetwork IndicioTest = IndyOptions_IndyNetwork._(
+      6,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'IndicioTest');
+  static const IndyOptions_IndyNetwork IndicioDemo = IndyOptions_IndyNetwork._(
+      7,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'IndicioDemo');
+  static const IndyOptions_IndyNetwork Indicio = IndyOptions_IndyNetwork._(
+      8,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'Indicio');
+
+  static const $core.List<IndyOptions_IndyNetwork> values =
+      <IndyOptions_IndyNetwork>[
+    Danube,
+    SovrinBuilder,
+    SovrinStaging,
+    Sovrin,
+    IdUnionTest,
+    IdUnion,
+    IndicioTest,
+    IndicioDemo,
+    Indicio,
+  ];
+
+  static final $core.Map<$core.int, IndyOptions_IndyNetwork> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static IndyOptions_IndyNetwork? valueOf($core.int value) => _byValue[value];
+
+  const IndyOptions_IndyNetwork._($core.int v, $core.String n) : super(v, n);
+}

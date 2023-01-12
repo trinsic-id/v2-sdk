@@ -148,6 +148,41 @@ public interface UpgradeDidRequestOrBuilder
    */
   trinsic.services.provider.v1.IonOptionsOrBuilder getIonOptionsOrBuilder();
 
+  /**
+   *
+   *
+   * <pre>
+   * Configuration for creation of DID on INDY network
+   * </pre>
+   *
+   * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+   *
+   * @return Whether the indyOptions field is set.
+   */
+  boolean hasIndyOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Configuration for creation of DID on INDY network
+   * </pre>
+   *
+   * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+   *
+   * @return The indyOptions.
+   */
+  trinsic.services.provider.v1.IndyOptions getIndyOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Configuration for creation of DID on INDY network
+   * </pre>
+   *
+   * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+   */
+  trinsic.services.provider.v1.IndyOptionsOrBuilder getIndyOptionsOrBuilder();
+
   public trinsic.services.provider.v1.UpgradeDidRequest.AccountCase getAccountCase();
 
   public trinsic.services.provider.v1.UpgradeDidRequest.OptionsCase getOptionsCase();

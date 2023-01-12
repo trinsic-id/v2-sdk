@@ -31,10 +31,10 @@ public final class Common {
           + "us\022\013\n\007SUCCESS\020\000\022\030\n\024WALLET_ACCESS_DENIED\020"
           + "\n\022\021\n\rWALLET_EXISTS\020\013\022\022\n\016ITEM_NOT_FOUND\020\024"
           + "\022\030\n\023SERIALIZATION_ERROR\020\310\001\022\021\n\rUNKNOWN_ER"
-          + "ROR\020d*&\n\022SupportedDidMethod\022\007\n\003KEY\020\000\022\007\n\003"
-          + "ION\020\001BV\n\032trinsic.services.common.v1P\001Z\031s"
-          + "ervices/common/v1/common\252\002\032Trinsic.Servi"
-          + "ces.Common.V1b\006proto3"
+          + "ROR\020d*0\n\022SupportedDidMethod\022\007\n\003KEY\020\000\022\007\n\003"
+          + "ION\020\001\022\010\n\004INDY\020\002BV\n\032trinsic.services.comm"
+          + "on.v1P\001Z\031services/common/v1/common\252\002\032Tri"
+          + "nsic.Services.Common.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(

@@ -5,7 +5,9 @@ pub struct SignInRequest {
     /// Account registration details
     #[prost(message, optional, tag="1")]
     pub details: ::core::option::Option<AccountDetails>,
+    /// DEPRECATED, will be removed April 1st 2023
     /// Invitation code associated with this registration
+    #[deprecated]
     #[prost(string, tag="2")]
     pub invitation_code: ::prost::alloc::string::String,
     /// ID of Ecosystem to use
@@ -150,7 +152,9 @@ pub struct LoginRequest {
     /// Email address of account. If unspecified, an anonymous account will be created.
     #[prost(string, tag="1")]
     pub email: ::prost::alloc::string::String,
+    /// DEPRECATED, will be removed April 1st 2023
     /// Invitation code associated with this registration
+    #[deprecated]
     #[prost(string, tag="2")]
     pub invitation_code: ::prost::alloc::string::String,
     /// ID of Ecosystem to sign into.

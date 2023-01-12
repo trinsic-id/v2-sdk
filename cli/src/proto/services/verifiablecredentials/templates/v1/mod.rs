@@ -169,6 +169,7 @@ pub struct TemplateData {
     #[prost(string, tag="6")]
     pub schema_uri: ::prost::alloc::string::String,
     /// URI pointing to template JSON-LD context document
+    #[deprecated]
     #[prost(string, tag="7")]
     pub context_uri: ::prost::alloc::string::String,
     /// ID of ecosystem in which template resides

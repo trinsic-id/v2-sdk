@@ -10,6 +10,8 @@ use crate::{
     *,
 };
 use tonic::transport::Channel;
+use crate::proto::services::verifiablecredentials::v1::create_proof_request::Disclosure;
+use crate::proto::services::verifiablecredentials::v1::RevealTemplateAttributes;
 
 pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error> {
     match args {
@@ -125,8 +127,13 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(CreateProofRequest {
-        reveal_document_json,
         nonce: vec![],
+        disclosure: Some(if reveal_document_json.is_empty() {
+            // TODO - Support sending the list of template attributes via the command line
+            Disclosure::RevealTemplate(RevealTemplateAttributes{ template_attributes: vec![] })
+        } else {
+            Disclosure::RevealDocumentJson(reveal_document_json)
+        }),
         proof: Some(if document_json.is_empty() {
             Proof::ItemId(args.item_id.as_ref().ok_or(Error::MissingArguments)?.clone())
         } else {

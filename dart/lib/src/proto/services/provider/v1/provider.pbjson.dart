@@ -878,6 +878,41 @@ const IonOptions_IonNetwork$json = const {
 /// Descriptor for `IonOptions`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List ionOptionsDescriptor = $convert.base64Decode(
     'CgpJb25PcHRpb25zEkUKB25ldHdvcmsYASABKA4yKy5zZXJ2aWNlcy5wcm92aWRlci52MS5Jb25PcHRpb25zLklvbk5ldHdvcmtSB25ldHdvcmsiJgoKSW9uTmV0d29yaxILCgdUZXN0TmV0EAASCwoHTWFpbk5ldBAB');
+@$core.Deprecated('Use indyOptionsDescriptor instead')
+const IndyOptions$json = const {
+  '1': 'IndyOptions',
+  '2': const [
+    const {
+      '1': 'network',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.services.provider.v1.IndyOptions.IndyNetwork',
+      '10': 'network'
+    },
+  ],
+  '4': const [IndyOptions_IndyNetwork$json],
+};
+
+@$core.Deprecated('Use indyOptionsDescriptor instead')
+const IndyOptions_IndyNetwork$json = const {
+  '1': 'IndyNetwork',
+  '2': const [
+    const {'1': 'Danube', '2': 0},
+    const {'1': 'SovrinBuilder', '2': 1},
+    const {'1': 'SovrinStaging', '2': 2},
+    const {'1': 'Sovrin', '2': 3},
+    const {'1': 'IdUnionTest', '2': 4},
+    const {'1': 'IdUnion', '2': 5},
+    const {'1': 'IndicioTest', '2': 6},
+    const {'1': 'IndicioDemo', '2': 7},
+    const {'1': 'Indicio', '2': 8},
+  ],
+};
+
+/// Descriptor for `IndyOptions`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List indyOptionsDescriptor = $convert.base64Decode(
+    'CgtJbmR5T3B0aW9ucxJHCgduZXR3b3JrGAEgASgOMi0uc2VydmljZXMucHJvdmlkZXIudjEuSW5keU9wdGlvbnMuSW5keU5ldHdvcmtSB25ldHdvcmsimAEKC0luZHlOZXR3b3JrEgoKBkRhbnViZRAAEhEKDVNvdnJpbkJ1aWxkZXIQARIRCg1Tb3ZyaW5TdGFnaW5nEAISCgoGU292cmluEAMSDwoLSWRVbmlvblRlc3QQBBILCgdJZFVuaW9uEAUSDwoLSW5kaWNpb1Rlc3QQBhIPCgtJbmRpY2lvRGVtbxAHEgsKB0luZGljaW8QCA==');
 @$core.Deprecated('Use upgradeDidRequestDescriptor instead')
 const UpgradeDidRequest$json = const {
   '1': 'UpgradeDidRequest',
@@ -901,6 +936,15 @@ const UpgradeDidRequest$json = const {
       '9': 1,
       '10': 'ionOptions'
     },
+    const {
+      '1': 'indy_options',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.IndyOptions',
+      '9': 1,
+      '10': 'indyOptions'
+    },
   ],
   '8': const [
     const {'1': 'account'},
@@ -910,7 +954,7 @@ const UpgradeDidRequest$json = const {
 
 /// Descriptor for `UpgradeDidRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List upgradeDidRequestDescriptor = $convert.base64Decode(
-    'ChFVcGdyYWRlRGlkUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAiABKAlIAFIId2FsbGV0SWQSPgoGbWV0aG9kGAMgASgOMiYuc2VydmljZXMuY29tbW9uLnYxLlN1cHBvcnRlZERpZE1ldGhvZFIGbWV0aG9kEkMKC2lvbl9vcHRpb25zGAQgASgLMiAuc2VydmljZXMucHJvdmlkZXIudjEuSW9uT3B0aW9uc0gBUgppb25PcHRpb25zQgkKB2FjY291bnRCCQoHb3B0aW9ucw==');
+    'ChFVcGdyYWRlRGlkUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAiABKAlIAFIId2FsbGV0SWQSPgoGbWV0aG9kGAMgASgOMiYuc2VydmljZXMuY29tbW9uLnYxLlN1cHBvcnRlZERpZE1ldGhvZFIGbWV0aG9kEkMKC2lvbl9vcHRpb25zGAQgASgLMiAuc2VydmljZXMucHJvdmlkZXIudjEuSW9uT3B0aW9uc0gBUgppb25PcHRpb25zEkYKDGluZHlfb3B0aW9ucxgFIAEoCzIhLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkluZHlPcHRpb25zSAFSC2luZHlPcHRpb25zQgkKB2FjY291bnRCCQoHb3B0aW9ucw==');
 @$core.Deprecated('Use upgradeDidResponseDescriptor instead')
 const UpgradeDidResponse$json = const {
   '1': 'UpgradeDidResponse',
