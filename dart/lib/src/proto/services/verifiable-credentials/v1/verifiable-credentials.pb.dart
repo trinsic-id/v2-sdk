@@ -323,9 +323,21 @@ class IssueFromTemplateResponse extends $pb.GeneratedMessage {
   void clearDocumentJson() => clearField(1);
 }
 
+enum CreateProofRequest_Disclosure {
+  revealDocumentJson,
+  revealTemplate,
+  notSet
+}
+
 enum CreateProofRequest_Proof { itemId, documentJson, notSet }
 
 class CreateProofRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, CreateProofRequest_Disclosure>
+      _CreateProofRequest_DisclosureByTag = {
+    1: CreateProofRequest_Disclosure.revealDocumentJson,
+    11: CreateProofRequest_Disclosure.revealTemplate,
+    0: CreateProofRequest_Disclosure.notSet
+  };
   static const $core.Map<$core.int, CreateProofRequest_Proof>
       _CreateProofRequest_ProofByTag = {
     2: CreateProofRequest_Proof.itemId,
@@ -341,7 +353,8 @@ class CreateProofRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
-    ..oo(0, [2, 3])
+    ..oo(0, [1, 11])
+    ..oo(1, [2, 3])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -363,6 +376,12 @@ class CreateProofRequest extends $pb.GeneratedMessage {
             ? ''
             : 'nonce',
         $pb.PbFieldType.OY)
+    ..aOM<RevealTemplateAttributes>(
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'revealTemplate',
+        subBuilder: RevealTemplateAttributes.create)
     ..hasRequiredFields = false;
 
   CreateProofRequest._() : super();
@@ -371,6 +390,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     $core.String? itemId,
     $core.String? documentJson,
     $core.List<$core.int>? nonce,
+    RevealTemplateAttributes? revealTemplate,
   }) {
     final _result = create();
     if (revealDocumentJson != null) {
@@ -384,6 +404,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     }
     if (nonce != null) {
       _result.nonce = nonce;
+    }
+    if (revealTemplate != null) {
+      _result.revealTemplate = revealTemplate;
     }
     return _result;
   }
@@ -414,9 +437,13 @@ class CreateProofRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateProofRequest>(create);
   static CreateProofRequest? _defaultInstance;
 
+  CreateProofRequest_Disclosure whichDisclosure() =>
+      _CreateProofRequest_DisclosureByTag[$_whichOneof(0)]!;
+  void clearDisclosure() => clearField($_whichOneof(0));
+
   CreateProofRequest_Proof whichProof() =>
-      _CreateProofRequest_ProofByTag[$_whichOneof(0)]!;
-  void clearProof() => clearField($_whichOneof(0));
+      _CreateProofRequest_ProofByTag[$_whichOneof(1)]!;
+  void clearProof() => clearField($_whichOneof(1));
 
   @$pb.TagNumber(1)
   $core.String get revealDocumentJson => $_getSZ(0);
@@ -465,6 +492,80 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   $core.bool hasNonce() => $_has(3);
   @$pb.TagNumber(10)
   void clearNonce() => clearField(10);
+
+  @$pb.TagNumber(11)
+  RevealTemplateAttributes get revealTemplate => $_getN(4);
+  @$pb.TagNumber(11)
+  set revealTemplate(RevealTemplateAttributes v) {
+    setField(11, v);
+  }
+
+  @$pb.TagNumber(11)
+  $core.bool hasRevealTemplate() => $_has(4);
+  @$pb.TagNumber(11)
+  void clearRevealTemplate() => clearField(11);
+  @$pb.TagNumber(11)
+  RevealTemplateAttributes ensureRevealTemplate() => $_ensure(4);
+}
+
+class RevealTemplateAttributes extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RevealTemplateAttributes',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.verifiablecredentials.v1'),
+      createEmptyInstance: create)
+    ..pPS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'templateAttributes')
+    ..hasRequiredFields = false;
+
+  RevealTemplateAttributes._() : super();
+  factory RevealTemplateAttributes({
+    $core.Iterable<$core.String>? templateAttributes,
+  }) {
+    final _result = create();
+    if (templateAttributes != null) {
+      _result.templateAttributes.addAll(templateAttributes);
+    }
+    return _result;
+  }
+  factory RevealTemplateAttributes.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RevealTemplateAttributes.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RevealTemplateAttributes clone() =>
+      RevealTemplateAttributes()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RevealTemplateAttributes copyWith(
+          void Function(RevealTemplateAttributes) updates) =>
+      super.copyWith((message) => updates(message as RevealTemplateAttributes))
+          as RevealTemplateAttributes; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RevealTemplateAttributes create() => RevealTemplateAttributes._();
+  RevealTemplateAttributes createEmptyInstance() => create();
+  static $pb.PbList<RevealTemplateAttributes> createRepeated() =>
+      $pb.PbList<RevealTemplateAttributes>();
+  @$core.pragma('dart2js:noInline')
+  static RevealTemplateAttributes getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RevealTemplateAttributes>(create);
+  static RevealTemplateAttributes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get templateAttributes => $_getList(0);
 }
 
 class CreateProofResponse extends $pb.GeneratedMessage {

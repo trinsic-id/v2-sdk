@@ -20,6 +20,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_enum "services.common.v1.SupportedDidMethod" do
       value :KEY, 0
       value :ION, 1
+      value :INDY, 2
     end
   end
 end

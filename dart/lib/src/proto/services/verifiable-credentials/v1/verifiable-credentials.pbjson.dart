@@ -79,15 +79,25 @@ const CreateProofRequest$json = const {
       '3': 1,
       '4': 1,
       '5': 9,
+      '9': 0,
       '10': 'revealDocumentJson'
     },
-    const {'1': 'item_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'itemId'},
+    const {
+      '1': 'reveal_template',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.v1.RevealTemplateAttributes',
+      '9': 0,
+      '10': 'revealTemplate'
+    },
+    const {'1': 'item_id', '3': 2, '4': 1, '5': 9, '9': 1, '10': 'itemId'},
     const {
       '1': 'document_json',
       '3': 3,
       '4': 1,
       '5': 9,
-      '9': 0,
+      '9': 1,
       '10': 'documentJson'
     },
     const {
@@ -100,13 +110,32 @@ const CreateProofRequest$json = const {
     },
   ],
   '8': const [
+    const {'1': 'disclosure'},
     const {'1': 'proof'},
   ],
 };
 
 /// Descriptor for `CreateProofRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createProofRequestDescriptor = $convert.base64Decode(
-    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMAoUcmV2ZWFsX2RvY3VtZW50X2pzb24YASABKAlSEnJldmVhbERvY3VtZW50SnNvbhIZCgdpdGVtX2lkGAIgASgJSABSBml0ZW1JZBIlCg1kb2N1bWVudF9qc29uGAMgASgJSABSDGRvY3VtZW50SnNvbhIaCgVub25jZRgKIAEoDEIEgKYdAVIFbm9uY2VCBwoFcHJvb2Y=');
+    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMgoUcmV2ZWFsX2RvY3VtZW50X2pzb24YASABKAlIAFIScmV2ZWFsRG9jdW1lbnRKc29uEmYKD3JldmVhbF90ZW1wbGF0ZRgLIAEoCzI7LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5SZXZlYWxUZW1wbGF0ZUF0dHJpYnV0ZXNIAFIOcmV2ZWFsVGVtcGxhdGUSGQoHaXRlbV9pZBgCIAEoCUgBUgZpdGVtSWQSJQoNZG9jdW1lbnRfanNvbhgDIAEoCUgBUgxkb2N1bWVudEpzb24SGgoFbm9uY2UYCiABKAxCBICmHQFSBW5vbmNlQgwKCmRpc2Nsb3N1cmVCBwoFcHJvb2Y=');
+@$core.Deprecated('Use revealTemplateAttributesDescriptor instead')
+const RevealTemplateAttributes$json = const {
+  '1': 'RevealTemplateAttributes',
+  '2': const [
+    const {
+      '1': 'template_attributes',
+      '3': 1,
+      '4': 3,
+      '5': 9,
+      '10': 'templateAttributes'
+    },
+  ],
+};
+
+/// Descriptor for `RevealTemplateAttributes`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List revealTemplateAttributesDescriptor =
+    $convert.base64Decode(
+        'ChhSZXZlYWxUZW1wbGF0ZUF0dHJpYnV0ZXMSLwoTdGVtcGxhdGVfYXR0cmlidXRlcxgBIAMoCVISdGVtcGxhdGVBdHRyaWJ1dGVz');
 @$core.Deprecated('Use createProofResponseDescriptor instead')
 const CreateProofResponse$json = const {
   '1': 'CreateProofResponse',

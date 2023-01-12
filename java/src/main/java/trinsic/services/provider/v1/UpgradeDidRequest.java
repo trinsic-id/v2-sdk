@@ -107,6 +107,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
           com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     ION_OPTIONS(4),
+    INDY_OPTIONS(5),
     OPTIONS_NOT_SET(0);
     private final int value;
 
@@ -127,6 +128,8 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       switch (value) {
         case 4:
           return ION_OPTIONS;
+        case 5:
+          return INDY_OPTIONS;
         case 0:
           return OPTIONS_NOT_SET;
         default:
@@ -376,6 +379,57 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
   }
 
+  public static final int INDY_OPTIONS_FIELD_NUMBER = 5;
+  /**
+   *
+   *
+   * <pre>
+   * Configuration for creation of DID on INDY network
+   * </pre>
+   *
+   * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+   *
+   * @return Whether the indyOptions field is set.
+   */
+  @java.lang.Override
+  public boolean hasIndyOptions() {
+    return optionsCase_ == 5;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Configuration for creation of DID on INDY network
+   * </pre>
+   *
+   * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+   *
+   * @return The indyOptions.
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.IndyOptions getIndyOptions() {
+    if (optionsCase_ == 5) {
+      return (trinsic.services.provider.v1.IndyOptions) options_;
+    }
+    return trinsic.services.provider.v1.IndyOptions.getDefaultInstance();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Configuration for creation of DID on INDY network
+   * </pre>
+   *
+   * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.IndyOptionsOrBuilder getIndyOptionsOrBuilder() {
+    if (optionsCase_ == 5) {
+      return (trinsic.services.provider.v1.IndyOptions) options_;
+    }
+    return trinsic.services.provider.v1.IndyOptions.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -402,6 +456,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     if (optionsCase_ == 4) {
       output.writeMessage(4, (trinsic.services.provider.v1.IonOptions) options_);
     }
+    if (optionsCase_ == 5) {
+      output.writeMessage(5, (trinsic.services.provider.v1.IndyOptions) options_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -424,6 +481,11 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       size +=
           com.google.protobuf.CodedOutputStream.computeMessageSize(
               4, (trinsic.services.provider.v1.IonOptions) options_);
+    }
+    if (optionsCase_ == 5) {
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              5, (trinsic.services.provider.v1.IndyOptions) options_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -458,6 +520,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       case 4:
         if (!getIonOptions().equals(other.getIonOptions())) return false;
         break;
+      case 5:
+        if (!getIndyOptions().equals(other.getIndyOptions())) return false;
+        break;
       case 0:
       default:
     }
@@ -490,6 +555,10 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       case 4:
         hash = (37 * hash) + ION_OPTIONS_FIELD_NUMBER;
         hash = (53 * hash) + getIonOptions().hashCode();
+        break;
+      case 5:
+        hash = (37 * hash) + INDY_OPTIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getIndyOptions().hashCode();
         break;
       case 0:
       default:
@@ -637,6 +706,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       if (ionOptionsBuilder_ != null) {
         ionOptionsBuilder_.clear();
       }
+      if (indyOptionsBuilder_ != null) {
+        indyOptionsBuilder_.clear();
+      }
       accountCase_ = 0;
       account_ = null;
       optionsCase_ = 0;
@@ -680,6 +752,13 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
           result.options_ = options_;
         } else {
           result.options_ = ionOptionsBuilder_.build();
+        }
+      }
+      if (optionsCase_ == 5) {
+        if (indyOptionsBuilder_ == null) {
+          result.options_ = options_;
+        } else {
+          result.options_ = indyOptionsBuilder_.build();
         }
       }
       result.accountCase_ = accountCase_;
@@ -762,6 +841,11 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
             mergeIonOptions(other.getIonOptions());
             break;
           }
+        case INDY_OPTIONS:
+          {
+            mergeIndyOptions(other.getIndyOptions());
+            break;
+          }
         case OPTIONS_NOT_SET:
           {
             break;
@@ -819,6 +903,12 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
                 optionsCase_ = 4;
                 break;
               } // case 34
+            case 42:
+              {
+                input.readMessage(getIndyOptionsFieldBuilder().getBuilder(), extensionRegistry);
+                optionsCase_ = 5;
+                break;
+              } // case 42
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1442,6 +1532,216 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       onChanged();
       ;
       return ionOptionsBuilder_;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.provider.v1.IndyOptions,
+            trinsic.services.provider.v1.IndyOptions.Builder,
+            trinsic.services.provider.v1.IndyOptionsOrBuilder>
+        indyOptionsBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     *
+     * @return Whether the indyOptions field is set.
+     */
+    @java.lang.Override
+    public boolean hasIndyOptions() {
+      return optionsCase_ == 5;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     *
+     * @return The indyOptions.
+     */
+    @java.lang.Override
+    public trinsic.services.provider.v1.IndyOptions getIndyOptions() {
+      if (indyOptionsBuilder_ == null) {
+        if (optionsCase_ == 5) {
+          return (trinsic.services.provider.v1.IndyOptions) options_;
+        }
+        return trinsic.services.provider.v1.IndyOptions.getDefaultInstance();
+      } else {
+        if (optionsCase_ == 5) {
+          return indyOptionsBuilder_.getMessage();
+        }
+        return trinsic.services.provider.v1.IndyOptions.getDefaultInstance();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     */
+    public Builder setIndyOptions(trinsic.services.provider.v1.IndyOptions value) {
+      if (indyOptionsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        options_ = value;
+        onChanged();
+      } else {
+        indyOptionsBuilder_.setMessage(value);
+      }
+      optionsCase_ = 5;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     */
+    public Builder setIndyOptions(
+        trinsic.services.provider.v1.IndyOptions.Builder builderForValue) {
+      if (indyOptionsBuilder_ == null) {
+        options_ = builderForValue.build();
+        onChanged();
+      } else {
+        indyOptionsBuilder_.setMessage(builderForValue.build());
+      }
+      optionsCase_ = 5;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     */
+    public Builder mergeIndyOptions(trinsic.services.provider.v1.IndyOptions value) {
+      if (indyOptionsBuilder_ == null) {
+        if (optionsCase_ == 5
+            && options_ != trinsic.services.provider.v1.IndyOptions.getDefaultInstance()) {
+          options_ =
+              trinsic.services.provider.v1.IndyOptions.newBuilder(
+                      (trinsic.services.provider.v1.IndyOptions) options_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          options_ = value;
+        }
+        onChanged();
+      } else {
+        if (optionsCase_ == 5) {
+          indyOptionsBuilder_.mergeFrom(value);
+        } else {
+          indyOptionsBuilder_.setMessage(value);
+        }
+      }
+      optionsCase_ = 5;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     */
+    public Builder clearIndyOptions() {
+      if (indyOptionsBuilder_ == null) {
+        if (optionsCase_ == 5) {
+          optionsCase_ = 0;
+          options_ = null;
+          onChanged();
+        }
+      } else {
+        if (optionsCase_ == 5) {
+          optionsCase_ = 0;
+          options_ = null;
+        }
+        indyOptionsBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     */
+    public trinsic.services.provider.v1.IndyOptions.Builder getIndyOptionsBuilder() {
+      return getIndyOptionsFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.provider.v1.IndyOptionsOrBuilder getIndyOptionsOrBuilder() {
+      if ((optionsCase_ == 5) && (indyOptionsBuilder_ != null)) {
+        return indyOptionsBuilder_.getMessageOrBuilder();
+      } else {
+        if (optionsCase_ == 5) {
+          return (trinsic.services.provider.v1.IndyOptions) options_;
+        }
+        return trinsic.services.provider.v1.IndyOptions.getDefaultInstance();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Configuration for creation of DID on INDY network
+     * </pre>
+     *
+     * <code>.services.provider.v1.IndyOptions indy_options = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.provider.v1.IndyOptions,
+            trinsic.services.provider.v1.IndyOptions.Builder,
+            trinsic.services.provider.v1.IndyOptionsOrBuilder>
+        getIndyOptionsFieldBuilder() {
+      if (indyOptionsBuilder_ == null) {
+        if (!(optionsCase_ == 5)) {
+          options_ = trinsic.services.provider.v1.IndyOptions.getDefaultInstance();
+        }
+        indyOptionsBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.provider.v1.IndyOptions,
+                trinsic.services.provider.v1.IndyOptions.Builder,
+                trinsic.services.provider.v1.IndyOptionsOrBuilder>(
+                (trinsic.services.provider.v1.IndyOptions) options_,
+                getParentForChildren(),
+                isClean());
+        options_ = null;
+      }
+      optionsCase_ = 5;
+      onChanged();
+      ;
+      return indyOptionsBuilder_;
     }
 
     @java.lang.Override

@@ -201,6 +201,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :TestNet, 0
       value :MainNet, 1
     end
+    add_message "services.provider.v1.IndyOptions" do
+      optional :network, :enum, 1, "services.provider.v1.IndyOptions.IndyNetwork"
+    end
+    add_enum "services.provider.v1.IndyOptions.IndyNetwork" do
+      value :Danube, 0
+      value :SovrinBuilder, 1
+      value :SovrinStaging, 2
+      value :Sovrin, 3
+      value :IdUnionTest, 4
+      value :IdUnion, 5
+      value :IndicioTest, 6
+      value :IndicioDemo, 7
+      value :Indicio, 8
+    end
     add_message "services.provider.v1.UpgradeDidRequest" do
       optional :method, :enum, 3, "services.common.v1.SupportedDidMethod"
       oneof :account do
@@ -209,6 +223,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
       oneof :options do
         optional :ion_options, :message, 4, "services.provider.v1.IonOptions"
+        optional :indy_options, :message, 5, "services.provider.v1.IndyOptions"
       end
     end
     add_message "services.provider.v1.UpgradeDidResponse" do
@@ -271,6 +286,8 @@ module Services
       WalletConfiguration = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.WalletConfiguration").msgclass
       IonOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IonOptions").msgclass
       IonOptions::IonNetwork = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IonOptions.IonNetwork").enummodule
+      IndyOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IndyOptions").msgclass
+      IndyOptions::IndyNetwork = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IndyOptions.IndyNetwork").enummodule
       UpgradeDidRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDidRequest").msgclass
       UpgradeDidResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDidResponse").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule

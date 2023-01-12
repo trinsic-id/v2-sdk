@@ -298,6 +298,7 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
   sig do
     params(
       reveal_document_json: T.nilable(String),
+      reveal_template: T.nilable(Services::Verifiablecredentials::V1::RevealTemplateAttributes),
       item_id: T.nilable(String),
       document_json: T.nilable(String),
       nonce: T.nilable(String)
@@ -305,6 +306,7 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
   end
   def initialize(
     reveal_document_json: "",
+    reveal_template: nil,
     item_id: "",
     document_json: "",
     nonce: ""
@@ -321,6 +323,18 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
 
   sig { void }
   def clear_reveal_document_json
+  end
+
+  sig { returns(T.nilable(Services::Verifiablecredentials::V1::RevealTemplateAttributes)) }
+  def reveal_template
+  end
+
+  sig { params(value: T.nilable(Services::Verifiablecredentials::V1::RevealTemplateAttributes)).void }
+  def reveal_template=(value)
+  end
+
+  sig { void }
+  def clear_reveal_template
   end
 
   sig { returns(String) }
@@ -360,7 +374,71 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
   end
 
   sig { returns(T.nilable(Symbol)) }
+  def disclosure
+  end
+
+  sig { returns(T.nilable(Symbol)) }
   def proof
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Verifiablecredentials::V1::RevealTemplateAttributes
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Verifiablecredentials::V1::RevealTemplateAttributes) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Verifiablecredentials::V1::RevealTemplateAttributes).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Verifiablecredentials::V1::RevealTemplateAttributes) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Verifiablecredentials::V1::RevealTemplateAttributes, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      template_attributes: T.nilable(T::Array[String])
+    ).void
+  end
+  def initialize(
+    template_attributes: []
+  )
+  end
+
+  sig { returns(T::Array[String]) }
+  def template_attributes
+  end
+
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
+  def template_attributes=(value)
+  end
+
+  sig { void }
+  def clear_template_attributes
   end
 
   sig { params(field: String).returns(T.untyped) }

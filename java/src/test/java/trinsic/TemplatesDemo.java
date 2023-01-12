@@ -1,17 +1,16 @@
 package trinsic;
 
 import com.google.gson.Gson;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.verifiablecredentials.templates.v1.*;
 import trinsic.services.verifiablecredentials.v1.CheckStatusRequest;
 import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest;
 import trinsic.services.verifiablecredentials.v1.UpdateStatusRequest;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 
 public class TemplatesDemo {
   private static String myEcosystemIdOrName = "default";

@@ -29,7 +29,7 @@ module Trinsic
       raise 'The token must be unprotected before use' if account_profile.protection.enabled
 
       request_hash = Google::Protobuf.encode(message)
-      unless request_hash.length.zero?
+      unless request_hash.empty?
         request_hash = Okapi::Hashing.blake3_hash(Okapi::Hashing::V1::Blake3HashRequest.new(data: request_hash)).digest
       end
       nonce = Trinsic::Common::Nonce.new(timestamp: (Time.now.to_f * 1000).to_int, request_hash: request_hash)

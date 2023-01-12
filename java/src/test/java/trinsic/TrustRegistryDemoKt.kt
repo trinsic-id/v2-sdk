@@ -1,11 +1,11 @@
+import java.io.IOException
+import java.util.*
+import java.util.concurrent.ExecutionException
 import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.trustregistry.v1.*
-import java.io.IOException
-import java.util.*
-import java.util.concurrent.ExecutionException
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
@@ -93,5 +93,5 @@ suspend fun runTrustRegistryDemo() {
               .setSchemaUri(typeUri)
               .build())
   // }
-    trinsic.shutdown()
+  trinsic.shutdown()
 }

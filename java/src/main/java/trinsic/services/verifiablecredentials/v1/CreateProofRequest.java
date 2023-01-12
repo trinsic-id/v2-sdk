@@ -24,7 +24,6 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
   }
 
   private CreateProofRequest() {
-    revealDocumentJson_ = "";
     nonce_ = com.google.protobuf.ByteString.EMPTY;
   }
 
@@ -52,6 +51,53 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
         .ensureFieldAccessorsInitialized(
             trinsic.services.verifiablecredentials.v1.CreateProofRequest.class,
             trinsic.services.verifiablecredentials.v1.CreateProofRequest.Builder.class);
+  }
+
+  private int disclosureCase_ = 0;
+  private java.lang.Object disclosure_;
+
+  public enum DisclosureCase
+      implements
+          com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+    REVEAL_DOCUMENT_JSON(1),
+    REVEAL_TEMPLATE(11),
+    DISCLOSURE_NOT_SET(0);
+    private final int value;
+
+    private DisclosureCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DisclosureCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DisclosureCase forNumber(int value) {
+      switch (value) {
+        case 1:
+          return REVEAL_DOCUMENT_JSON;
+        case 11:
+          return REVEAL_TEMPLATE;
+        case 0:
+          return DISCLOSURE_NOT_SET;
+        default:
+          return null;
+      }
+    }
+
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public DisclosureCase getDisclosureCase() {
+    return DisclosureCase.forNumber(disclosureCase_);
   }
 
   private int proofCase_ = 0;
@@ -102,7 +148,22 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
   }
 
   public static final int REVEAL_DOCUMENT_JSON_FIELD_NUMBER = 1;
-  private volatile java.lang.Object revealDocumentJson_;
+  /**
+   *
+   *
+   * <pre>
+   * A valid JSON-LD frame describing which fields should be
+   * revealed in the generated proof.
+   * If unspecified, all fields in the document will be revealed
+   * </pre>
+   *
+   * <code>string reveal_document_json = 1;</code>
+   *
+   * @return Whether the revealDocumentJson field is set.
+   */
+  public boolean hasRevealDocumentJson() {
+    return disclosureCase_ == 1;
+  }
   /**
    *
    *
@@ -116,15 +177,19 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
    *
    * @return The revealDocumentJson.
    */
-  @java.lang.Override
   public java.lang.String getRevealDocumentJson() {
-    java.lang.Object ref = revealDocumentJson_;
+    java.lang.Object ref = "";
+    if (disclosureCase_ == 1) {
+      ref = disclosure_;
+    }
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      revealDocumentJson_ = s;
+      if (disclosureCase_ == 1) {
+        disclosure_ = s;
+      }
       return s;
     }
   }
@@ -141,17 +206,73 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
    *
    * @return The bytes for revealDocumentJson.
    */
-  @java.lang.Override
   public com.google.protobuf.ByteString getRevealDocumentJsonBytes() {
-    java.lang.Object ref = revealDocumentJson_;
+    java.lang.Object ref = "";
+    if (disclosureCase_ == 1) {
+      ref = disclosure_;
+    }
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      revealDocumentJson_ = b;
+      if (disclosureCase_ == 1) {
+        disclosure_ = b;
+      }
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int REVEAL_TEMPLATE_FIELD_NUMBER = 11;
+  /**
+   *
+   *
+   * <pre>
+   * Information about what sections of the document to reveal
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;</code>
+   *
+   * @return Whether the revealTemplate field is set.
+   */
+  @java.lang.Override
+  public boolean hasRevealTemplate() {
+    return disclosureCase_ == 11;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Information about what sections of the document to reveal
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;</code>
+   *
+   * @return The revealTemplate.
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes getRevealTemplate() {
+    if (disclosureCase_ == 11) {
+      return (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_;
+    }
+    return trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.getDefaultInstance();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Information about what sections of the document to reveal
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.v1.RevealTemplateAttributesOrBuilder
+      getRevealTemplateOrBuilder() {
+    if (disclosureCase_ == 11) {
+      return (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_;
+    }
+    return trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.getDefaultInstance();
   }
 
   public static final int ITEM_ID_FIELD_NUMBER = 2;
@@ -333,8 +454,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(revealDocumentJson_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, revealDocumentJson_);
+    if (disclosureCase_ == 1) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, disclosure_);
     }
     if (proofCase_ == 2) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, proof_);
@@ -345,6 +466,10 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     if (!nonce_.isEmpty()) {
       output.writeBytes(10, nonce_);
     }
+    if (disclosureCase_ == 11) {
+      output.writeMessage(
+          11, (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -354,8 +479,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(revealDocumentJson_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, revealDocumentJson_);
+    if (disclosureCase_ == 1) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, disclosure_);
     }
     if (proofCase_ == 2) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, proof_);
@@ -365,6 +490,11 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     }
     if (!nonce_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream.computeBytesSize(10, nonce_);
+    }
+    if (disclosureCase_ == 11) {
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              11, (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -382,8 +512,18 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     trinsic.services.verifiablecredentials.v1.CreateProofRequest other =
         (trinsic.services.verifiablecredentials.v1.CreateProofRequest) obj;
 
-    if (!getRevealDocumentJson().equals(other.getRevealDocumentJson())) return false;
     if (!getNonce().equals(other.getNonce())) return false;
+    if (!getDisclosureCase().equals(other.getDisclosureCase())) return false;
+    switch (disclosureCase_) {
+      case 1:
+        if (!getRevealDocumentJson().equals(other.getRevealDocumentJson())) return false;
+        break;
+      case 11:
+        if (!getRevealTemplate().equals(other.getRevealTemplate())) return false;
+        break;
+      case 0:
+      default:
+    }
     if (!getProofCase().equals(other.getProofCase())) return false;
     switch (proofCase_) {
       case 2:
@@ -406,10 +546,20 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + REVEAL_DOCUMENT_JSON_FIELD_NUMBER;
-    hash = (53 * hash) + getRevealDocumentJson().hashCode();
     hash = (37 * hash) + NONCE_FIELD_NUMBER;
     hash = (53 * hash) + getNonce().hashCode();
+    switch (disclosureCase_) {
+      case 1:
+        hash = (37 * hash) + REVEAL_DOCUMENT_JSON_FIELD_NUMBER;
+        hash = (53 * hash) + getRevealDocumentJson().hashCode();
+        break;
+      case 11:
+        hash = (37 * hash) + REVEAL_TEMPLATE_FIELD_NUMBER;
+        hash = (53 * hash) + getRevealTemplate().hashCode();
+        break;
+      case 0:
+      default:
+    }
     switch (proofCase_) {
       case 2:
         hash = (37 * hash) + ITEM_ID_FIELD_NUMBER;
@@ -562,10 +712,13 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      revealDocumentJson_ = "";
-
+      if (revealTemplateBuilder_ != null) {
+        revealTemplateBuilder_.clear();
+      }
       nonce_ = com.google.protobuf.ByteString.EMPTY;
 
+      disclosureCase_ = 0;
+      disclosure_ = null;
       proofCase_ = 0;
       proof_ = null;
       return this;
@@ -596,7 +749,16 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     public trinsic.services.verifiablecredentials.v1.CreateProofRequest buildPartial() {
       trinsic.services.verifiablecredentials.v1.CreateProofRequest result =
           new trinsic.services.verifiablecredentials.v1.CreateProofRequest(this);
-      result.revealDocumentJson_ = revealDocumentJson_;
+      if (disclosureCase_ == 1) {
+        result.disclosure_ = disclosure_;
+      }
+      if (disclosureCase_ == 11) {
+        if (revealTemplateBuilder_ == null) {
+          result.disclosure_ = disclosure_;
+        } else {
+          result.disclosure_ = revealTemplateBuilder_.build();
+        }
+      }
       if (proofCase_ == 2) {
         result.proof_ = proof_;
       }
@@ -604,6 +766,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
         result.proof_ = proof_;
       }
       result.nonce_ = nonce_;
+      result.disclosureCase_ = disclosureCase_;
       result.proofCase_ = proofCase_;
       onBuilt();
       return result;
@@ -656,12 +819,26 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       if (other
           == trinsic.services.verifiablecredentials.v1.CreateProofRequest.getDefaultInstance())
         return this;
-      if (!other.getRevealDocumentJson().isEmpty()) {
-        revealDocumentJson_ = other.revealDocumentJson_;
-        onChanged();
-      }
       if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
         setNonce(other.getNonce());
+      }
+      switch (other.getDisclosureCase()) {
+        case REVEAL_DOCUMENT_JSON:
+          {
+            disclosureCase_ = 1;
+            disclosure_ = other.disclosure_;
+            onChanged();
+            break;
+          }
+        case REVEAL_TEMPLATE:
+          {
+            mergeRevealTemplate(other.getRevealTemplate());
+            break;
+          }
+        case DISCLOSURE_NOT_SET:
+          {
+            break;
+          }
       }
       switch (other.getProofCase()) {
         case ITEM_ID:
@@ -711,8 +888,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
               break;
             case 10:
               {
-                revealDocumentJson_ = input.readStringRequireUtf8();
-
+                java.lang.String s = input.readStringRequireUtf8();
+                disclosureCase_ = 1;
+                disclosure_ = s;
                 break;
               } // case 10
             case 18:
@@ -735,6 +913,12 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
 
                 break;
               } // case 82
+            case 90:
+              {
+                input.readMessage(getRevealTemplateFieldBuilder().getBuilder(), extensionRegistry);
+                disclosureCase_ = 11;
+                break;
+              } // case 90
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -752,6 +936,20 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       return this;
     }
 
+    private int disclosureCase_ = 0;
+    private java.lang.Object disclosure_;
+
+    public DisclosureCase getDisclosureCase() {
+      return DisclosureCase.forNumber(disclosureCase_);
+    }
+
+    public Builder clearDisclosure() {
+      disclosureCase_ = 0;
+      disclosure_ = null;
+      onChanged();
+      return this;
+    }
+
     private int proofCase_ = 0;
     private java.lang.Object proof_;
 
@@ -766,7 +964,23 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       return this;
     }
 
-    private java.lang.Object revealDocumentJson_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * A valid JSON-LD frame describing which fields should be
+     * revealed in the generated proof.
+     * If unspecified, all fields in the document will be revealed
+     * </pre>
+     *
+     * <code>string reveal_document_json = 1;</code>
+     *
+     * @return Whether the revealDocumentJson field is set.
+     */
+    @java.lang.Override
+    public boolean hasRevealDocumentJson() {
+      return disclosureCase_ == 1;
+    }
     /**
      *
      *
@@ -780,12 +994,18 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
      *
      * @return The revealDocumentJson.
      */
+    @java.lang.Override
     public java.lang.String getRevealDocumentJson() {
-      java.lang.Object ref = revealDocumentJson_;
+      java.lang.Object ref = "";
+      if (disclosureCase_ == 1) {
+        ref = disclosure_;
+      }
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        revealDocumentJson_ = s;
+        if (disclosureCase_ == 1) {
+          disclosure_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -804,12 +1024,18 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
      *
      * @return The bytes for revealDocumentJson.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString getRevealDocumentJsonBytes() {
-      java.lang.Object ref = revealDocumentJson_;
+      java.lang.Object ref = "";
+      if (disclosureCase_ == 1) {
+        ref = disclosure_;
+      }
       if (ref instanceof String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        revealDocumentJson_ = b;
+        if (disclosureCase_ == 1) {
+          disclosure_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -833,8 +1059,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       if (value == null) {
         throw new NullPointerException();
       }
-
-      revealDocumentJson_ = value;
+      disclosureCase_ = 1;
+      disclosure_ = value;
       onChanged();
       return this;
     }
@@ -852,9 +1078,11 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
      * @return This builder for chaining.
      */
     public Builder clearRevealDocumentJson() {
-
-      revealDocumentJson_ = getDefaultInstance().getRevealDocumentJson();
-      onChanged();
+      if (disclosureCase_ == 1) {
+        disclosureCase_ = 0;
+        disclosure_ = null;
+        onChanged();
+      }
       return this;
     }
     /**
@@ -876,10 +1104,242 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
-
-      revealDocumentJson_ = value;
+      disclosureCase_ = 1;
+      disclosure_ = value;
       onChanged();
       return this;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes,
+            trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.Builder,
+            trinsic.services.verifiablecredentials.v1.RevealTemplateAttributesOrBuilder>
+        revealTemplateBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     *
+     * @return Whether the revealTemplate field is set.
+     */
+    @java.lang.Override
+    public boolean hasRevealTemplate() {
+      return disclosureCase_ == 11;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     *
+     * @return The revealTemplate.
+     */
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes getRevealTemplate() {
+      if (revealTemplateBuilder_ == null) {
+        if (disclosureCase_ == 11) {
+          return (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_;
+        }
+        return trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes
+            .getDefaultInstance();
+      } else {
+        if (disclosureCase_ == 11) {
+          return revealTemplateBuilder_.getMessage();
+        }
+        return trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes
+            .getDefaultInstance();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     */
+    public Builder setRevealTemplate(
+        trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes value) {
+      if (revealTemplateBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        disclosure_ = value;
+        onChanged();
+      } else {
+        revealTemplateBuilder_.setMessage(value);
+      }
+      disclosureCase_ = 11;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     */
+    public Builder setRevealTemplate(
+        trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.Builder
+            builderForValue) {
+      if (revealTemplateBuilder_ == null) {
+        disclosure_ = builderForValue.build();
+        onChanged();
+      } else {
+        revealTemplateBuilder_.setMessage(builderForValue.build());
+      }
+      disclosureCase_ = 11;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     */
+    public Builder mergeRevealTemplate(
+        trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes value) {
+      if (revealTemplateBuilder_ == null) {
+        if (disclosureCase_ == 11
+            && disclosure_
+                != trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes
+                    .getDefaultInstance()) {
+          disclosure_ =
+              trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.newBuilder(
+                      (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes)
+                          disclosure_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          disclosure_ = value;
+        }
+        onChanged();
+      } else {
+        if (disclosureCase_ == 11) {
+          revealTemplateBuilder_.mergeFrom(value);
+        } else {
+          revealTemplateBuilder_.setMessage(value);
+        }
+      }
+      disclosureCase_ = 11;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     */
+    public Builder clearRevealTemplate() {
+      if (revealTemplateBuilder_ == null) {
+        if (disclosureCase_ == 11) {
+          disclosureCase_ = 0;
+          disclosure_ = null;
+          onChanged();
+        }
+      } else {
+        if (disclosureCase_ == 11) {
+          disclosureCase_ = 0;
+          disclosure_ = null;
+        }
+        revealTemplateBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     */
+    public trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.Builder
+        getRevealTemplateBuilder() {
+      return getRevealTemplateFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     */
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.v1.RevealTemplateAttributesOrBuilder
+        getRevealTemplateOrBuilder() {
+      if ((disclosureCase_ == 11) && (revealTemplateBuilder_ != null)) {
+        return revealTemplateBuilder_.getMessageOrBuilder();
+      } else {
+        if (disclosureCase_ == 11) {
+          return (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_;
+        }
+        return trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes
+            .getDefaultInstance();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about what sections of the document to reveal
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.RevealTemplateAttributes reveal_template = 11;
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes,
+            trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.Builder,
+            trinsic.services.verifiablecredentials.v1.RevealTemplateAttributesOrBuilder>
+        getRevealTemplateFieldBuilder() {
+      if (revealTemplateBuilder_ == null) {
+        if (!(disclosureCase_ == 11)) {
+          disclosure_ =
+              trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes
+                  .getDefaultInstance();
+        }
+        revealTemplateBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes,
+                trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.Builder,
+                trinsic.services.verifiablecredentials.v1.RevealTemplateAttributesOrBuilder>(
+                (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_,
+                getParentForChildren(),
+                isClean());
+        disclosure_ = null;
+      }
+      disclosureCase_ = 11;
+      onChanged();
+      ;
+      return revealTemplateBuilder_;
     }
 
     /**

@@ -100,6 +100,7 @@ end
 module Services::Common::V1::SupportedDidMethod
   self::KEY = T.let(0, Integer)
   self::ION = T.let(1, Integer)
+  self::INDY = T.let(2, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

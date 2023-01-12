@@ -48,6 +48,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
 
     async def test_lib_main(self):
         from trinsic import __main__
+
         await __main__.demo()
 
     async def test_credential_demo(self):
