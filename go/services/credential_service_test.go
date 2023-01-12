@@ -66,7 +66,7 @@ func TestIssueAndVerify(t *testing.T) {
 		Proof: &credential.CreateProofRequest_DocumentJson{
 			DocumentJson: credentialJson,
 		},
-		Disclosure: &credential.CreateProofRequest_RevealTemplate{RevealTemplate: &credential.RevealTemplateAttributes{TemplateAttributes: []string {"name"}}}
+		Disclosure: &credential.CreateProofRequest_RevealTemplate{RevealTemplate: &credential.RevealTemplateAttributes{TemplateAttributes: []string{"name"}}},
 	}
 
 	selectiveResponse, err2 := trinsic.Credential().CreateProof(context.Background(), selectiveRequest)
