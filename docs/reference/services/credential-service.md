@@ -231,9 +231,14 @@ Creates and signs a [proof](/) for a valid JSON-LD credential, using the BBS+ Si
 
 If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; otherwise, pass the raw JSON-LD credential via `document_json`.
 
-1. If `reveal_document_json` is passed, a proof will be generated for only the fields specified. This is a JSON-LD frame.
-2. Rather than formulating a complete JSON-LD frame, you can instead provide a list of proof attributes to reveal, and the service will construct the JSON-LD proof frame internally
-3. If neither is provided, the entire proof will be returned.
+!!! info "Selective Disclosure"
+BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.
+
+    This enables increased user privacy: fields which aren't included in `reveal_document_json` will not be present in the generated proof.
+
+    1. If `reveal_document_json` is passed, a proof will be generated for only the fields specified. This is a JSON-LD frame.
+    2. Rather than formulating a complete JSON-LD frame, you can instead provide a list of proof attributes to reveal, and the service will construct the JSON-LD proof frame internally
+    3. If neither is provided, the entire proof will be returned.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -277,13 +282,6 @@ If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; other
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CreateProof") }}
-
-!!! info "Selective Disclosure"
-    BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.
-
-    This enables increased user privacy: fields which aren't included in `reveal_document_json` will not be present in the generated proof.
-
-    We are working on documentation for the expected structure of `reveal_document_json` and will make it available soon.
 
 ---
 
