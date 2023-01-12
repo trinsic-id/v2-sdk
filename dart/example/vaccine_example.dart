@@ -93,6 +93,8 @@ Future runVaccineDemo() async {
   // createProof() {
   var proofResponse = await trinsic.credential().createProof(
       CreateProofRequest(revealDocumentJson: proofRequestJson, itemId: itemId));
+  var selectiveProofResponse = await trinsic.credential().createProof(
+      CreateProofRequest(revealTemplate: RevealTemplateAttributes(templateAttributes: {"batchNumber"} ), itemId: itemId));
   // }
   var credentialProof = proofResponse.proofDocumentJson;
   print("Proof: $credentialProof");
@@ -106,8 +108,15 @@ Future runVaccineDemo() async {
       .credential()
       .verifyProof(VerifyProofRequest(proofDocumentJson: credentialProof));
   // }
+
+  var selectiveVerifyResult = await trinsic
+      .credential()
+      .verifyProof(VerifyProofRequest(proofDocumentJson: selectiveProofResponse.proofDocumentJson));
+
   print("Verification result: $verifyResult");
   assert(verifyResult.validationResults["SignatureVerification"]?.isValid ??
+      false);
+  assert(selectiveVerifyResult.validationResults["SignatureVerification"]?.isValid ??
       false);
   // }
 

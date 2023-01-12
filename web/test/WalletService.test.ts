@@ -84,6 +84,14 @@ describe("WalletService Unit Tests", () => {
                 revealDocumentJson: getVaccineCertFrameJSON(),
             })
         );
+        let selectiveProof = await trinsic.credential().createProof(
+            CreateProofRequest.fromPartial({
+                itemId: insertItemResponse.itemId,
+                revealTemplate: {
+                    templateAttributes: ["firstName", "lastName"]
+                }
+            })
+        );
         // }
 
         trinsic.options = airline;
@@ -93,8 +101,16 @@ describe("WalletService Unit Tests", () => {
         });
         // }
 
+        let selectiveVerifyResponse = await trinsic.credential().verifyProof({
+            proofDocumentJson: selectiveProof.proofDocumentJson,
+        });
+
         expect(
             verifyResponse.validationResults!["SignatureVerification"].isValid
+        ).toBeTruthy();
+
+        expect(
+            selectiveVerifyResponse.validationResults!["SignatureVerification"].isValid
         ).toBeTruthy();
     });
 

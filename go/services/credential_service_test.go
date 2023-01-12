@@ -61,10 +61,21 @@ func TestIssueAndVerify(t *testing.T) {
 	}
 
 	proofResponse, err := trinsic.Credential().CreateProof(context.Background(), request)
+
+	selectiveRequest := &credential.CreateProofRequest{
+		Proof: &credential.CreateProofRequest_DocumentJson{
+			DocumentJson: credentialJson,
+		},
+		Disclosure: &credential.CreateProofRequest_RevealTemplate{RevealTemplate: &credential.RevealTemplateAttributes{TemplateAttributes: []string{"name"}}},
+	}
+
+	selectiveResponse, err2 := trinsic.Credential().CreateProof(context.Background(), selectiveRequest)
 	// }
 
 	assert2.NotNil(proofResponse)
 	assert2.Nil(err)
+	assert2.NotNil(selectiveResponse)
+	assert2.Nil(err2)
 
 	proofJson := proofResponse.ProofDocumentJson
 
@@ -75,7 +86,13 @@ func TestIssueAndVerify(t *testing.T) {
 	})
 	// }
 
+	verifySelective, err := trinsic.Credential().VerifyProof(context.Background(), &credential.VerifyProofRequest{
+		ProofDocumentJson: selectiveResponse.ProofDocumentJson,
+	})
+
 	assert2.NotNil(verifyResponse)
+	assert2.Nil(err)
+	assert2.NotNil(verifySelective)
 	assert2.Nil(err)
 
 	// Send credential

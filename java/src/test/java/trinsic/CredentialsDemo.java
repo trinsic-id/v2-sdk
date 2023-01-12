@@ -1,17 +1,15 @@
 package trinsic;
 
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
+import trinsic.services.verifiablecredentials.v1.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.provider.v1.CreateEcosystemRequest;
-import trinsic.services.verifiablecredentials.v1.CreateProofRequest;
-import trinsic.services.verifiablecredentials.v1.IssueRequest;
-import trinsic.services.verifiablecredentials.v1.SendRequest;
-import trinsic.services.verifiablecredentials.v1.VerifyProofRequest;
 
 public class CredentialsDemo {
   public static void main(String[] args)
@@ -67,6 +65,18 @@ public class CredentialsDemo {
             .get();
 
     var credentialProof = createProofResponse.getProofDocumentJson();
+
+  var selectiveProofResponse =
+      trinsic
+          .credential()
+          .createProof(
+              CreateProofRequest.newBuilder()
+                  .setDocumentJson(signedCredentialJson)
+                  .setRevealTemplate(RevealTemplateAttributes.newBuilder().addTemplateAttributes("batchNumber").build())
+                  .build())
+          .get();
+
+  var selectiveProof = selectiveProofResponse.getProofDocumentJson();
     // }
 
     System.out.println("Proof: " + credentialProof);
@@ -97,7 +107,15 @@ public class CredentialsDemo {
     boolean isValid = verifyProofResponse.getIsValid();
     // }
 
+    var verifySelectiveProofResponse =
+      trinsic
+        .credential()
+          .verifyProof(
+              VerifyProofRequest.newBuilder().setProofDocumentJson(selectiveProof).build())
+          .get();
+
     assert verifyProofResponse.getValidationResultsOrThrow("SignatureVerification").getIsValid();
+    assert verifySelectiveProofResponse.getValidationResultsOrThrow("SignatureVerification").getIsValid();
 
     trinsic.shutdown();
   }
