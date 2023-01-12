@@ -41,6 +41,7 @@ Configure your OIDC library with the following parameters:
 | `trinsic:schema`                | *(Optional)* Comma-separated listed of Schema URLs. Only credentials which match one of these schemas will be returned.                                                    |
 | `trinsic:issuer`                | *(Optional)* Comma-separated list of Issuer DIDs. Only credentials issued by one of these issuers will be returned.                                                        |
 | `trinsic:egf`                   | *(Optional)* Comma-separated list of [Entity Governance Framework](/learn/concepts/trust-registries) IDs. Only credentials bound to one of these EGF IDs will be returned. |
+| `trinsic:mode`                   | *(Optional)* Can be `redirect` (default), `popup`, or `silent`. |
 
 ### Presentation Replays and ID Tokens
 
