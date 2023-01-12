@@ -68,10 +68,16 @@ class SupportedDidMethod extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'ION');
+  static const SupportedDidMethod INDY = SupportedDidMethod._(
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'INDY');
 
   static const $core.List<SupportedDidMethod> values = <SupportedDidMethod>[
     KEY,
     ION,
+    INDY,
   ];
 
   static final $core.Map<$core.int, SupportedDidMethod> _byValue =

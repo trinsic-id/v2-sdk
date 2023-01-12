@@ -17,10 +17,22 @@ class ResponseStatus(betterproto.Enum):
 
 
 class SupportedDidMethod(betterproto.Enum):
-    """Enum of all supported DID Methods"""
+    """
+    Enum of all supported DID Methods https://docs.godiddy.com/en/supported-
+    methods
+    """
 
     KEY = 0
+    """The did:key method -- all wallets use this by default"""
+
     ION = 1
+    """
+    The did:ion method -- Sidetree implementation on top of Bitcoin by
+    Microsoft
+    """
+
+    INDY = 2
+    """The did:sov method -- Hyperledger Indy based by Sovrin Foundation"""
 
 
 @dataclass(eq=False, repr=False)

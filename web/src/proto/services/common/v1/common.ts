@@ -59,12 +59,17 @@ export function responseStatusToJSON(object: ResponseStatus): string {
   }
 }
 
-/** Enum of all supported DID Methods */
+/**
+ * Enum of all supported DID Methods
+ * https://docs.godiddy.com/en/supported-methods
+ */
 export enum SupportedDidMethod {
   /** KEY - The did:key method -- all wallets use this by default */
   KEY = 0,
-  /** ION - The did:ion method */
+  /** ION - The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft */
   ION = 1,
+  /** INDY - The did:sov method -- Hyperledger Indy based by Sovrin Foundation */
+  INDY = 2,
   UNRECOGNIZED = -1,
 }
 
@@ -76,6 +81,9 @@ export function supportedDidMethodFromJSON(object: any): SupportedDidMethod {
     case 1:
     case "ION":
       return SupportedDidMethod.ION;
+    case 2:
+    case "INDY":
+      return SupportedDidMethod.INDY;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -89,6 +97,8 @@ export function supportedDidMethodToJSON(object: SupportedDidMethod): string {
       return "KEY";
     case SupportedDidMethod.ION:
       return "ION";
+    case SupportedDidMethod.INDY:
+      return "INDY";
     case SupportedDidMethod.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";

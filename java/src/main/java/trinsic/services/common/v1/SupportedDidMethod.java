@@ -8,6 +8,7 @@ package trinsic.services.common.v1;
  *
  * <pre>
  * Enum of all supported DID Methods
+ * https://docs.godiddy.com/en/supported-methods
  * </pre>
  *
  * Protobuf enum {@code services.common.v1.SupportedDidMethod}
@@ -27,12 +28,22 @@ public enum SupportedDidMethod implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * The did:ion method
+   * The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft
    * </pre>
    *
    * <code>ION = 1;</code>
    */
   ION(1),
+  /**
+   *
+   *
+   * <pre>
+   * The did:sov method -- Hyperledger Indy based by Sovrin Foundation
+   * </pre>
+   *
+   * <code>INDY = 2;</code>
+   */
+  INDY(2),
   UNRECOGNIZED(-1),
   ;
 
@@ -50,12 +61,22 @@ public enum SupportedDidMethod implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * The did:ion method
+   * The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft
    * </pre>
    *
    * <code>ION = 1;</code>
    */
   public static final int ION_VALUE = 1;
+  /**
+   *
+   *
+   * <pre>
+   * The did:sov method -- Hyperledger Indy based by Sovrin Foundation
+   * </pre>
+   *
+   * <code>INDY = 2;</code>
+   */
+  public static final int INDY_VALUE = 2;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -85,6 +106,8 @@ public enum SupportedDidMethod implements com.google.protobuf.ProtocolMessageEnu
         return KEY;
       case 1:
         return ION;
+      case 2:
+        return INDY;
       default:
         return null;
     }

@@ -544,6 +544,91 @@ export function ionOptions_IonNetworkToJSON(
   }
 }
 
+/** Options for creation of DID on the SOV network */
+export interface IndyOptions {
+  /** SOV network on which DID should be published */
+  network?: IndyOptions_IndyNetwork;
+}
+
+export enum IndyOptions_IndyNetwork {
+  Danube = 0,
+  SovrinBuilder = 1,
+  SovrinStaging = 2,
+  Sovrin = 3,
+  IdUnionTest = 4,
+  IdUnion = 5,
+  IndicioTest = 6,
+  IndicioDemo = 7,
+  Indicio = 8,
+  UNRECOGNIZED = -1,
+}
+
+export function indyOptions_IndyNetworkFromJSON(
+  object: any
+): IndyOptions_IndyNetwork {
+  switch (object) {
+    case 0:
+    case "Danube":
+      return IndyOptions_IndyNetwork.Danube;
+    case 1:
+    case "SovrinBuilder":
+      return IndyOptions_IndyNetwork.SovrinBuilder;
+    case 2:
+    case "SovrinStaging":
+      return IndyOptions_IndyNetwork.SovrinStaging;
+    case 3:
+    case "Sovrin":
+      return IndyOptions_IndyNetwork.Sovrin;
+    case 4:
+    case "IdUnionTest":
+      return IndyOptions_IndyNetwork.IdUnionTest;
+    case 5:
+    case "IdUnion":
+      return IndyOptions_IndyNetwork.IdUnion;
+    case 6:
+    case "IndicioTest":
+      return IndyOptions_IndyNetwork.IndicioTest;
+    case 7:
+    case "IndicioDemo":
+      return IndyOptions_IndyNetwork.IndicioDemo;
+    case 8:
+    case "Indicio":
+      return IndyOptions_IndyNetwork.Indicio;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return IndyOptions_IndyNetwork.UNRECOGNIZED;
+  }
+}
+
+export function indyOptions_IndyNetworkToJSON(
+  object: IndyOptions_IndyNetwork
+): string {
+  switch (object) {
+    case IndyOptions_IndyNetwork.Danube:
+      return "Danube";
+    case IndyOptions_IndyNetwork.SovrinBuilder:
+      return "SovrinBuilder";
+    case IndyOptions_IndyNetwork.SovrinStaging:
+      return "SovrinStaging";
+    case IndyOptions_IndyNetwork.Sovrin:
+      return "Sovrin";
+    case IndyOptions_IndyNetwork.IdUnionTest:
+      return "IdUnionTest";
+    case IndyOptions_IndyNetwork.IdUnion:
+      return "IdUnion";
+    case IndyOptions_IndyNetwork.IndicioTest:
+      return "IndicioTest";
+    case IndyOptions_IndyNetwork.IndicioDemo:
+      return "IndicioDemo";
+    case IndyOptions_IndyNetwork.Indicio:
+      return "Indicio";
+    case IndyOptions_IndyNetwork.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** Request to upgrade a wallet */
 export interface UpgradeDidRequest {
   /**
@@ -560,6 +645,8 @@ export interface UpgradeDidRequest {
   method?: SupportedDidMethod;
   /** Configuration for creation of DID on ION network */
   ionOptions?: IonOptions | undefined;
+  /** Configuration for creation of DID on INDY network */
+  indyOptions?: IndyOptions | undefined;
 }
 
 /** Response to `UpgradeDIDRequest` */
@@ -3794,12 +3881,68 @@ export const IonOptions = {
   },
 };
 
+function createBaseIndyOptions(): IndyOptions {
+  return { network: 0 };
+}
+
+export const IndyOptions = {
+  encode(
+    message: IndyOptions,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.network !== undefined && message.network !== 0) {
+      writer.uint32(8).int32(message.network);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): IndyOptions {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseIndyOptions();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.network = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): IndyOptions {
+    return {
+      network: isSet(object.network)
+        ? indyOptions_IndyNetworkFromJSON(object.network)
+        : 0,
+    };
+  },
+
+  toJSON(message: IndyOptions): unknown {
+    const obj: any = {};
+    message.network !== undefined &&
+      (obj.network = indyOptions_IndyNetworkToJSON(message.network));
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<IndyOptions>): IndyOptions {
+    const message = createBaseIndyOptions();
+    message.network = object.network ?? 0;
+    return message;
+  },
+};
+
 function createBaseUpgradeDidRequest(): UpgradeDidRequest {
   return {
     email: undefined,
     walletId: undefined,
     method: 0,
     ionOptions: undefined,
+    indyOptions: undefined,
   };
 }
 
@@ -3819,6 +3962,12 @@ export const UpgradeDidRequest = {
     }
     if (message.ionOptions !== undefined) {
       IonOptions.encode(message.ionOptions, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.indyOptions !== undefined) {
+      IndyOptions.encode(
+        message.indyOptions,
+        writer.uint32(42).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -3842,6 +3991,9 @@ export const UpgradeDidRequest = {
         case 4:
           message.ionOptions = IonOptions.decode(reader, reader.uint32());
           break;
+        case 5:
+          message.indyOptions = IndyOptions.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -3860,6 +4012,9 @@ export const UpgradeDidRequest = {
       ionOptions: isSet(object.ionOptions)
         ? IonOptions.fromJSON(object.ionOptions)
         : undefined,
+      indyOptions: isSet(object.indyOptions)
+        ? IndyOptions.fromJSON(object.indyOptions)
+        : undefined,
     };
   },
 
@@ -3873,6 +4028,10 @@ export const UpgradeDidRequest = {
       (obj.ionOptions = message.ionOptions
         ? IonOptions.toJSON(message.ionOptions)
         : undefined);
+    message.indyOptions !== undefined &&
+      (obj.indyOptions = message.indyOptions
+        ? IndyOptions.toJSON(message.indyOptions)
+        : undefined);
     return obj;
   },
 
@@ -3884,6 +4043,10 @@ export const UpgradeDidRequest = {
     message.ionOptions =
       object.ionOptions !== undefined && object.ionOptions !== null
         ? IonOptions.fromPartial(object.ionOptions)
+        : undefined;
+    message.indyOptions =
+      object.indyOptions !== undefined && object.indyOptions !== null
+        ? IndyOptions.fromPartial(object.indyOptions)
         : undefined;
     return message;
   },

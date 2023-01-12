@@ -3225,6 +3225,66 @@ class Services::Provider::V1::IonOptions
   end
 end
 
+class Services::Provider::V1::IndyOptions
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::IndyOptions) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::IndyOptions).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::IndyOptions) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::IndyOptions, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      network: T.nilable(T.any(Symbol, String, Integer))
+    ).void
+  end
+  def initialize(
+    network: :Danube
+  )
+  end
+
+  sig { returns(Symbol) }
+  def network
+  end
+
+  sig { params(value: T.any(Symbol, String, Integer)).void }
+  def network=(value)
+  end
+
+  sig { void }
+  def clear_network
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
 class Services::Provider::V1::UpgradeDidRequest
   include ::Google::Protobuf
   include ::Google::Protobuf::MessageExts
@@ -3255,14 +3315,16 @@ class Services::Provider::V1::UpgradeDidRequest
       email: T.nilable(String),
       wallet_id: T.nilable(String),
       method: T.nilable(T.any(Symbol, String, Integer)),
-      ion_options: T.nilable(Services::Provider::V1::IonOptions)
+      ion_options: T.nilable(Services::Provider::V1::IonOptions),
+      indy_options: T.nilable(Services::Provider::V1::IndyOptions)
     ).void
   end
   def initialize(
     email: "",
     wallet_id: "",
     method: :KEY,
-    ion_options: nil
+    ion_options: nil,
+    indy_options: nil
   )
   end
 
@@ -3312,6 +3374,18 @@ class Services::Provider::V1::UpgradeDidRequest
 
   sig { void }
   def clear_ion_options
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::IndyOptions)) }
+  def indy_options
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::IndyOptions)).void }
+  def indy_options=(value)
+  end
+
+  sig { void }
+  def clear_indy_options
   end
 
   sig { returns(T.nilable(Symbol)) }
@@ -3475,6 +3549,30 @@ end
 module Services::Provider::V1::IonOptions::IonNetwork
   self::TestNet = T.let(0, Integer)
   self::MainNet = T.let(1, Integer)
+
+  sig { params(value: Integer).returns(T.nilable(Symbol)) }
+  def self.lookup(value)
+  end
+
+  sig { params(value: Symbol).returns(T.nilable(Integer)) }
+  def self.resolve(value)
+  end
+
+  sig { returns(::Google::Protobuf::EnumDescriptor) }
+  def self.descriptor
+  end
+end
+
+module Services::Provider::V1::IndyOptions::IndyNetwork
+  self::Danube = T.let(0, Integer)
+  self::SovrinBuilder = T.let(1, Integer)
+  self::SovrinStaging = T.let(2, Integer)
+  self::Sovrin = T.let(3, Integer)
+  self::IdUnionTest = T.let(4, Integer)
+  self::IdUnion = T.let(5, Integer)
+  self::IndicioTest = T.let(6, Integer)
+  self::IndicioDemo = T.let(7, Integer)
+  self::Indicio = T.let(8, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

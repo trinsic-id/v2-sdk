@@ -53,7 +53,9 @@ export interface CreateProofRequest {
    * revealed in the generated proof.
    * If unspecified, all fields in the document will be revealed
    */
-  revealDocumentJson?: string;
+  revealDocumentJson?: string | undefined;
+  /** Information about what sections of the document to reveal */
+  revealTemplate?: RevealTemplateAttributes | undefined;
   /** ID of wallet item stored in a Trinsic cloud wallet */
   itemId?: string | undefined;
   /**
@@ -67,6 +69,11 @@ export interface CreateProofRequest {
    * This value may be represented in base64 format in the proof model.
    */
   nonce?: Uint8Array;
+}
+
+export interface RevealTemplateAttributes {
+  /** A list of document attributes to reveal. If unset, all attributes will be returned. */
+  templateAttributes?: string[];
 }
 
 /** Response to `CreateProofRequest` */
@@ -411,7 +418,8 @@ export const IssueFromTemplateResponse = {
 
 function createBaseCreateProofRequest(): CreateProofRequest {
   return {
-    revealDocumentJson: "",
+    revealDocumentJson: undefined,
+    revealTemplate: undefined,
     itemId: undefined,
     documentJson: undefined,
     nonce: new Uint8Array(),
@@ -423,11 +431,14 @@ export const CreateProofRequest = {
     message: CreateProofRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (
-      message.revealDocumentJson !== undefined &&
-      message.revealDocumentJson !== ""
-    ) {
+    if (message.revealDocumentJson !== undefined) {
       writer.uint32(10).string(message.revealDocumentJson);
+    }
+    if (message.revealTemplate !== undefined) {
+      RevealTemplateAttributes.encode(
+        message.revealTemplate,
+        writer.uint32(90).fork()
+      ).ldelim();
     }
     if (message.itemId !== undefined) {
       writer.uint32(18).string(message.itemId);
@@ -451,6 +462,12 @@ export const CreateProofRequest = {
         case 1:
           message.revealDocumentJson = reader.string();
           break;
+        case 11:
+          message.revealTemplate = RevealTemplateAttributes.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
         case 2:
           message.itemId = reader.string();
           break;
@@ -472,7 +489,10 @@ export const CreateProofRequest = {
     return {
       revealDocumentJson: isSet(object.revealDocumentJson)
         ? String(object.revealDocumentJson)
-        : "",
+        : undefined,
+      revealTemplate: isSet(object.revealTemplate)
+        ? RevealTemplateAttributes.fromJSON(object.revealTemplate)
+        : undefined,
       itemId: isSet(object.itemId) ? String(object.itemId) : undefined,
       documentJson: isSet(object.documentJson)
         ? String(object.documentJson)
@@ -487,6 +507,10 @@ export const CreateProofRequest = {
     const obj: any = {};
     message.revealDocumentJson !== undefined &&
       (obj.revealDocumentJson = message.revealDocumentJson);
+    message.revealTemplate !== undefined &&
+      (obj.revealTemplate = message.revealTemplate
+        ? RevealTemplateAttributes.toJSON(message.revealTemplate)
+        : undefined);
     message.itemId !== undefined && (obj.itemId = message.itemId);
     message.documentJson !== undefined &&
       (obj.documentJson = message.documentJson);
@@ -499,10 +523,82 @@ export const CreateProofRequest = {
 
   fromPartial(object: DeepPartial<CreateProofRequest>): CreateProofRequest {
     const message = createBaseCreateProofRequest();
-    message.revealDocumentJson = object.revealDocumentJson ?? "";
+    message.revealDocumentJson = object.revealDocumentJson ?? undefined;
+    message.revealTemplate =
+      object.revealTemplate !== undefined && object.revealTemplate !== null
+        ? RevealTemplateAttributes.fromPartial(object.revealTemplate)
+        : undefined;
     message.itemId = object.itemId ?? undefined;
     message.documentJson = object.documentJson ?? undefined;
     message.nonce = object.nonce ?? new Uint8Array();
+    return message;
+  },
+};
+
+function createBaseRevealTemplateAttributes(): RevealTemplateAttributes {
+  return { templateAttributes: [] };
+}
+
+export const RevealTemplateAttributes = {
+  encode(
+    message: RevealTemplateAttributes,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (
+      message.templateAttributes !== undefined &&
+      message.templateAttributes.length !== 0
+    ) {
+      for (const v of message.templateAttributes) {
+        writer.uint32(10).string(v!);
+      }
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RevealTemplateAttributes {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRevealTemplateAttributes();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.templateAttributes!.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RevealTemplateAttributes {
+    return {
+      templateAttributes: Array.isArray(object?.templateAttributes)
+        ? object.templateAttributes.map((e: any) => String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: RevealTemplateAttributes): unknown {
+    const obj: any = {};
+    if (message.templateAttributes) {
+      obj.templateAttributes = message.templateAttributes.map((e) => e);
+    } else {
+      obj.templateAttributes = [];
+    }
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<RevealTemplateAttributes>
+  ): RevealTemplateAttributes {
+    const message = createBaseRevealTemplateAttributes();
+    message.templateAttributes = object.templateAttributes?.map((e) => e) || [];
     return message;
   },
 };

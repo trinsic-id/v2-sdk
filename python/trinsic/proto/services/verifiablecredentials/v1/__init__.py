@@ -82,12 +82,17 @@ class CreateProofRequest(betterproto.Message):
     to caller. Either `item_id` or `document_json` may be provided, not both.
     """
 
-    reveal_document_json: str = betterproto.string_field(1)
+    reveal_document_json: str = betterproto.string_field(1, group="disclosure")
     """
     A valid JSON-LD frame describing which fields should be revealed in the
     generated proof. If unspecified, all fields in the document will be
     revealed
     """
+
+    reveal_template: "RevealTemplateAttributes" = betterproto.message_field(
+        11, group="disclosure"
+    )
+    """Information about what sections of the document to reveal"""
 
     item_id: str = betterproto.string_field(2, group="proof")
     """ID of wallet item stored in a Trinsic cloud wallet"""
@@ -104,6 +109,15 @@ class CreateProofRequest(betterproto.Message):
     Nonce value used to derive the proof. If not specified, a random nonce will
     be generated. This value may be represented in base64 format in the proof
     model.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class RevealTemplateAttributes(betterproto.Message):
+    template_attributes: List[str] = betterproto.string_field(1)
+    """
+    A list of document attributes to reveal. If unset, all attributes will be
+    returned.
     """
 
 

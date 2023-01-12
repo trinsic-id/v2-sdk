@@ -93,7 +93,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
    * @return A list containing the validationMessages.
    */
   @java.lang.Deprecated
@@ -110,7 +110,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
    * @return The count of validationMessages.
    */
   @java.lang.Deprecated
@@ -127,7 +127,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
    * @param index The index of the element to return.
    * @return The validationMessages at the given index.
    */
@@ -145,7 +145,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
    * @param index The index of the value to return.
    * @return The bytes of the validationMessages at the given index.
    */
@@ -794,7 +794,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @return A list containing the validationMessages.
      */
     @java.lang.Deprecated
@@ -811,7 +811,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @return The count of validationMessages.
      */
     @java.lang.Deprecated
@@ -828,7 +828,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @param index The index of the element to return.
      * @return The validationMessages at the given index.
      */
@@ -846,7 +846,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @param index The index of the value to return.
      * @return The bytes of the validationMessages at the given index.
      */
@@ -864,7 +864,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @param index The index to set the value at.
      * @param value The validationMessages to set.
      * @return This builder for chaining.
@@ -889,7 +889,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @param value The validationMessages to add.
      * @return This builder for chaining.
      */
@@ -913,7 +913,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @param values The validationMessages to add.
      * @return This builder for chaining.
      */
@@ -934,7 +934,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -954,7 +954,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=89
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=101
      * @param value The bytes of the validationMessages to add.
      * @return This builder for chaining.
      */

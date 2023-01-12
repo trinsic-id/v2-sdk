@@ -55,7 +55,7 @@ public interface SendRequestOrBuilder
    * <code>string did_uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
-   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=124
    * @return Whether the didUri field is set.
    */
   @java.lang.Deprecated
@@ -70,7 +70,7 @@ public interface SendRequestOrBuilder
    * <code>string did_uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
-   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=124
    * @return The didUri.
    */
   @java.lang.Deprecated
@@ -85,7 +85,7 @@ public interface SendRequestOrBuilder
    * <code>string did_uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
-   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=124
    * @return The bytes for didUri.
    */
   @java.lang.Deprecated
@@ -101,7 +101,7 @@ public interface SendRequestOrBuilder
    * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=126
    * @return Whether the didcommInvitationJson field is set.
    */
   @java.lang.Deprecated
@@ -116,7 +116,7 @@ public interface SendRequestOrBuilder
    * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=126
    * @return The didcommInvitationJson.
    */
   @java.lang.Deprecated
@@ -131,7 +131,7 @@ public interface SendRequestOrBuilder
    * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=126
    * @return The bytes for didcommInvitationJson.
    */
   @java.lang.Deprecated
