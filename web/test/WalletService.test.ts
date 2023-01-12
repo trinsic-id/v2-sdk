@@ -101,8 +101,16 @@ describe("WalletService Unit Tests", () => {
         });
         // }
 
+        let selectiveVerifyResponse = await trinsic.credential().verifyProof({
+            proofDocumentJson: selectiveProof.proofDocumentJson,
+        });
+
         expect(
             verifyResponse.validationResults!["SignatureVerification"].isValid
+        ).toBeTruthy();
+
+        expect(
+            selectiveVerifyResponse.validationResults!["SignatureVerification"].isValid
         ).toBeTruthy();
     });
 

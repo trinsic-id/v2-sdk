@@ -464,6 +464,9 @@ public class Tests
         var valid = await trinsic.Credential.VerifyProofAsync(new() { ProofDocumentJson = proof.ProofDocumentJson });
         // }
         valid.IsValid.Should().BeTrue();
+        
+        var selectiveValid = await trinsic.Credential.VerifyProofAsync(new() { ProofDocumentJson = selectiveProof.ProofDocumentJson });
+        selectiveValid.IsValid.Should().BeTrue();
 
         // Create proof from item id
         var proof2 = await trinsic.Credential.CreateProofAsync(new() {
