@@ -6,6 +6,7 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     CreateProofRequest,
     VerifyProofRequest,
     SendRequest,
+    RevealTemplateAttributes,
 )
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
@@ -68,6 +69,14 @@ async def credential_demo():
             reveal_document_json=proof_request_json, document_json=credential_json
         )
     )
+    selective_proof_response = await trinsic_service.credential.create_proof(
+        request=CreateProofRequest(
+            document_json=credential_json,
+            reveal_template=RevealTemplateAttributes(
+                template_attributes=["firstName", "lastName"]
+            ),
+        )
+    )
     # }
     credential_proof = proof_response.proof_document_json
     print(f"Proof: {credential_proof}")
@@ -77,10 +86,15 @@ async def credential_demo():
     verify_result = await trinsic_service.credential.verify_proof(
         request=VerifyProofRequest(proof_document_json=credential_proof)
     )
+    selective_verify_result = await trinsic_service.credential.verify_proof(
+        request=VerifyProofRequest(
+            proof_document_json=selective_proof_response.proof_document_json
+        )
+    )
     # }
-    valid = verify_result.is_valid
     print(f"Verification result: {verify_result}")
     assert verify_result.validation_results["SignatureVerification"].is_valid
+    assert selective_verify_result.validation_results["SignatureVerification"].is_valid
 
 
 if __name__ == "__main__":
