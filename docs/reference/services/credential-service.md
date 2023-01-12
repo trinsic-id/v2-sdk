@@ -3,7 +3,7 @@
 The Credential Service exposes functionality for issuance, proof generation, verification, and revocation of [Verifiable Credentials](/learn/concepts/credentials){target=_blank}.
 
 
-!!! info "Signature Format" 
+!!! info "Signature Format"
     The Credential service currently supports [BBS+ Signatures <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}, which enable selective disclosure of credential fields during proof generation.
 
     Credentials are signed, and proofs are created, using a key pair unique to the signing / holding wallet. This key pair is created and managed by Trinsic upon account creation.
@@ -62,7 +62,7 @@ Issues a credential from a valid JSON-LD document. Issued credentials are not au
 
     When provided a valid credential, this endpoint creates and appends the `proof` object, using a key pair tied to the issuing Trinsic account.
 
-    You can learn more about how to create these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/). 
+    You can learn more about how to create these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/).
 
 ---
 
@@ -231,7 +231,9 @@ Creates and signs a [proof](/) for a valid JSON-LD credential, using the BBS+ Si
 
 If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; otherwise, pass the raw JSON-LD credential via `document_json`.
 
-If `reveal_document_json` is passed, a proof will be generated for only the fields specified.
+1. If `reveal_document_json` is passed, a proof will be generated for only the fields specified. This is a JSON-LD frame.
+2. Rather than formulating a complete JSON-LD frame, you can instead provide a list of proof attributes to reveal, and the service will construct the JSON-LD proof frame internally
+3. If neither is provided, the entire proof will be returned.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -242,7 +244,7 @@ If `reveal_document_json` is passed, a proof will be generated for only the fiel
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof 
+        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof
         ```
         <!--/codeinclude-->
 
@@ -406,7 +408,7 @@ The specified email address must be tied to an existing account in the same ecos
 !!! info "Alternative Exchange Protocols"
     Credentials may only be sent to a wallet via email address or with the [InsertItem](/reference/services/wallet-service#insert-item) call.
 
-    
+
     There are a number of ongoing industry efforts to standardize exchange protocols, such as:
 
     - [DIDComm Messaging <small>:material-open-in-new:</small>](https://identity.foundation/didcomm-messaging/spec/){target=_blank}

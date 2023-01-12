@@ -15,6 +15,7 @@ using Trinsic.Services.Common.V1;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
+using Trinsic.Services.VerifiableCredentials.V1;
 using Xunit;
 using Xunit.Abstractions;
 using JsonSerializer = System.Text.Json.JsonSerializer;
@@ -450,6 +451,13 @@ public class Tests
         var proof = await trinsic.Credential.CreateProofAsync(new() {
             DocumentJson = credentialJson.DocumentJson,
             RevealDocumentJson = frame.ToString(Formatting.None)
+        });
+        var selectiveProof = await trinsic.Credential.CreateProofAsync(new() {
+            DocumentJson = credentialJson.DocumentJson,
+            RevealTemplate = new() {
+                // The other field, not disclosed, is "age"
+                TemplateAttributes = { "firstName","lastName" }
+            }
         });
         // }
         // verifyProof() {

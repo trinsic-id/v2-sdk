@@ -319,17 +319,23 @@
         <member name="T:Trinsic.Services.Common.V1.SupportedDidMethod">
             <summary>
             Enum of all supported DID Methods
+            https://docs.godiddy.com/en/supported-methods
             </summary>
         </member>
         <member name="F:Trinsic.Services.Common.V1.SupportedDidMethod.Key">
-             <summary>
+            <summary>
             The did:key method -- all wallets use this by default
-             </summary>
+            </summary>
         </member>
         <member name="F:Trinsic.Services.Common.V1.SupportedDidMethod.Ion">
-             <summary>
-            The did:ion method
-             </summary>
+            <summary>
+            The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Common.V1.SupportedDidMethod.Indy">
+            <summary>
+            The did:sov method -- Hyperledger Indy based by Sovrin Foundation
+            </summary>
         </member>
         <member name="T:Trinsic.Services.Common.V1.Nonce">
             <summary>
@@ -3073,6 +3079,22 @@
         <member name="T:Trinsic.Services.Provider.V1.IonOptions.Types">
             <summary>Container for nested types declared in the IonOptions message type.</summary>
         </member>
+        <member name="T:Trinsic.Services.Provider.V1.IndyOptions">
+            <summary>
+            Options for creation of DID on the SOV network
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.IndyOptions.NetworkFieldNumber">
+            <summary>Field number for the "network" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.IndyOptions.Network">
+            <summary>
+            SOV network on which DID should be published
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.IndyOptions.Types">
+            <summary>Container for nested types declared in the IndyOptions message type.</summary>
+        </member>
         <member name="T:Trinsic.Services.Provider.V1.UpgradeDidRequest">
             <summary>
             Request to upgrade a wallet
@@ -3110,6 +3132,14 @@
         <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.IonOptions">
             <summary>
             Configuration for creation of DID on ION network
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.IndyOptionsFieldNumber">
+            <summary>Field number for the "indy_options" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.IndyOptions">
+            <summary>
+            Configuration for creation of DID on INDY network
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.UpgradeDidRequest.AccountOneofCase">
@@ -5821,6 +5851,14 @@
             If unspecified, all fields in the document will be revealed
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealTemplateFieldNumber">
+            <summary>Field number for the "reveal_template" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealTemplate">
+            <summary>
+            Information about what sections of the document to reveal
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemIdFieldNumber">
             <summary>Field number for the "item_id" field.</summary>
         </member>
@@ -5848,8 +5886,19 @@
             This value may be represented in base64 format in the proof model.
             </summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DisclosureOneofCase">
+            <summary>Enum of possible cases for the "disclosure" oneof.</summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ProofOneofCase">
             <summary>Enum of possible cases for the "proof" oneof.</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.RevealTemplateAttributes.TemplateAttributesFieldNumber">
+            <summary>Field number for the "template_attributes" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.RevealTemplateAttributes.TemplateAttributes">
+            <summary>
+            A list of document attributes to reveal. If unset, all attributes will be returned.
+            </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse">
             <summary>
