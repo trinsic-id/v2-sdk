@@ -11,20 +11,17 @@ on:
 jobs:
   prod-test-golang:
     name: Golang - samples - prod test
-    runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows] ] # , macos-latest ] disabled due to macos not allowing us to set the LD_LIBRARY_PATH as a github action
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
     steps:
       - uses: actions/checkout@v3
-      - name: Download ${{ matrix.os-artifact[0] }} binaries
-        uses: dawidd6/action-download-artifact@v2.22.0
+      - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
+        id: install_okapi_binaries
         with:
-          workflow: "build-libs.yml"
-          path: ./samples/go
-          repo: trinsic-id/okapi
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ matrix.os-artifact[1] }}
+          apiGithubToken: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Download C header
         uses: dawidd6/action-download-artifact@v2.22.0
         with:
@@ -36,7 +33,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: ^1.17
+          go-version: 1.18
       - name: Build, Test, Pack
         run: |
           go run sample.go
