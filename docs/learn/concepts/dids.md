@@ -38,12 +38,12 @@ Issuance and verification of credentials against these DIDs will still function 
 
 We plan to grow the list of supported DID methods as we move towards general availability of this feature.
 
-| Method   | Type               | Notes                                                                                                                                                  |
-|----------|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| did:key  | Static             | The default DID method for all wallets. Encodes key information directly in the DID; as a result, key rotation requires a new DID.                     |
-| did:ion  | Distributed Ledger | ION is a sidetree/Layer-2 protocol on top of the Bitcoin blockchain. Registering a DID will incur charges if on the mainnet network.                   |
-| did:indy | Distributed Ledger | INDY is a Hyperledger Indy based protocol. Registering a DID will incur charges if on the main (non test) networks                                     |
-| did:sov  | Distributed Ledger | SOV is the Sovrin Foundation implementation of Hyperledger Indy. Registering a DID will incur charges if on the main (non test / non builder) networks |
+| Method   | Type               | Notes                                                                                                                                                                                                                       |
+|----------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| did:key  | Static             | The default DID method for all wallets. Encodes key information directly in the DID; as a result, key rotation requires a new DID.                                                                                          |
+| did:ion  | Distributed Ledger | ION is a sidetree/Layer-2 protocol on top of the Bitcoin blockchain. Registering a DID will incur charges if on the mainnet network. [IonOptions](/reference/proto#services-provider-v1-IonOptions)                         |
+| did:indy | Distributed Ledger | INDY is a Hyperledger Indy based protocol. Registering a DID will incur charges if on the main (non test) networks [IndyOptions](/reference/proto#services-provider-v1-IndyOptions)                                         |
+| did:sov  | Distributed Ledger | SOV is the Sovrin Foundation implementation of Hyperledger Indy. It is available via `did:indy:sov` prefix Under *IndyOptions* above. Registering a DID will incur charges if on the main (non test / non builder) networks |
 
 ## How DIDs work
 
