@@ -411,8 +411,7 @@ Details of an ecosystem
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| dark | [EcosystemDisplayDetails](/reference/proto#services-provider-v1-EcosystemDisplayDetails) |  |
-| light | [EcosystemDisplayDetails](/reference/proto#services-provider-v1-EcosystemDisplayDetails) |  |
+| light | [EcosystemDisplayDetails](/reference/proto#services-provider-v1-EcosystemDisplayDetails) | Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform. EcosystemDisplayDetails dark = 1; |
 
 
 

@@ -996,12 +996,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.EcosystemDisplay.dark": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.EcosystemDisplay"
-    },
     "services.provider.v1.EcosystemDisplay.light": {
       "type": "field",
       "collection": "fields",
@@ -4010,7 +4004,6 @@
         "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data",
         "services.provider.v1.EcosystemDisplayDetailsRequest.logo_format",
         "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
-        "services.provider.v1.EcosystemDisplay.dark",
         "services.provider.v1.EcosystemDisplay.light",
         "services.provider.v1.EcosystemDisplayDetails.logo_url",
         "services.provider.v1.EcosystemDisplayDetails.color",
@@ -5405,7 +5398,6 @@
       "full_name": "services.provider.v1.EcosystemDisplay",
       "description": "",
       "fields": [
-        "services.provider.v1.EcosystemDisplay.dark",
         "services.provider.v1.EcosystemDisplay.light"
       ],
       "messages": [],
@@ -7430,21 +7422,13 @@
       "full_type": "services.provider.v1.WebhookConfig",
       "description": "Configured webhooks, if any"
     },
-    "services.provider.v1.EcosystemDisplay.dark": {
-      "name": "dark",
-      "full_name": "services.provider.v1.EcosystemDisplay.dark",
-      "label": "LABEL_OPTIONAL",
-      "type": "EcosystemDisplayDetails",
-      "full_type": "services.provider.v1.EcosystemDisplayDetails",
-      "description": ""
-    },
     "services.provider.v1.EcosystemDisplay.light": {
       "name": "light",
       "full_name": "services.provider.v1.EcosystemDisplay.light",
       "label": "LABEL_OPTIONAL",
       "type": "EcosystemDisplayDetails",
       "full_type": "services.provider.v1.EcosystemDisplayDetails",
-      "description": ""
+      "description": "Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.\n   EcosystemDisplayDetails dark = 1;"
     },
     "services.provider.v1.EcosystemDisplayDetails.color": {
       "name": "color",

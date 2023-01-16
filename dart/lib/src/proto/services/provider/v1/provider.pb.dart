@@ -1554,12 +1554,6 @@ class EcosystemDisplay extends $pb.GeneratedMessage {
               : 'services.provider.v1'),
       createEmptyInstance: create)
     ..aOM<EcosystemDisplayDetails>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'dark',
-        subBuilder: EcosystemDisplayDetails.create)
-    ..aOM<EcosystemDisplayDetails>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -1569,13 +1563,9 @@ class EcosystemDisplay extends $pb.GeneratedMessage {
 
   EcosystemDisplay._() : super();
   factory EcosystemDisplay({
-    EcosystemDisplayDetails? dark,
     EcosystemDisplayDetails? light,
   }) {
     final _result = create();
-    if (dark != null) {
-      _result.dark = dark;
-    }
     if (light != null) {
       _result.light = light;
     }
@@ -1608,33 +1598,19 @@ class EcosystemDisplay extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<EcosystemDisplay>(create);
   static EcosystemDisplay? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  EcosystemDisplayDetails get dark => $_getN(0);
-  @$pb.TagNumber(1)
-  set dark(EcosystemDisplayDetails v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasDark() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearDark() => clearField(1);
-  @$pb.TagNumber(1)
-  EcosystemDisplayDetails ensureDark() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  EcosystemDisplayDetails get light => $_getN(1);
+  EcosystemDisplayDetails get light => $_getN(0);
   @$pb.TagNumber(2)
   set light(EcosystemDisplayDetails v) {
     setField(2, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasLight() => $_has(1);
+  $core.bool hasLight() => $_has(0);
   @$pb.TagNumber(2)
   void clearLight() => clearField(2);
   @$pb.TagNumber(2)
-  EcosystemDisplayDetails ensureLight() => $_ensure(1);
+  EcosystemDisplayDetails ensureLight() => $_ensure(0);
 }
 
 class EcosystemDisplayDetails extends $pb.GeneratedMessage {
