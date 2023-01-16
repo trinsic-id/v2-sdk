@@ -378,14 +378,6 @@ const EcosystemDisplay$json = const {
   '1': 'EcosystemDisplay',
   '2': const [
     const {
-      '1': 'dark',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.services.provider.v1.EcosystemDisplayDetails',
-      '10': 'dark'
-    },
-    const {
       '1': 'light',
       '3': 2,
       '4': 1,
@@ -398,7 +390,7 @@ const EcosystemDisplay$json = const {
 
 /// Descriptor for `EcosystemDisplay`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List ecosystemDisplayDescriptor = $convert.base64Decode(
-    'ChBFY29zeXN0ZW1EaXNwbGF5EkEKBGRhcmsYASABKAsyLS5zZXJ2aWNlcy5wcm92aWRlci52MS5FY29zeXN0ZW1EaXNwbGF5RGV0YWlsc1IEZGFyaxJDCgVsaWdodBgCIAEoCzItLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlEZXRhaWxzUgVsaWdodA==');
+    'ChBFY29zeXN0ZW1EaXNwbGF5EkMKBWxpZ2h0GAIgASgLMi0uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtRGlzcGxheURldGFpbHNSBWxpZ2h0');
 @$core.Deprecated('Use ecosystemDisplayDetailsDescriptor instead')
 const EcosystemDisplayDetails$json = const {
   '1': 'EcosystemDisplayDetails',
