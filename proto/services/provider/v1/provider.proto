@@ -195,7 +195,8 @@ message UpdateEcosystemResponse {
 }
 
 message EcosystemDisplay {
-    EcosystemDisplayDetails dark = 1;
+//    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+//    EcosystemDisplayDetails dark = 1;
     EcosystemDisplayDetails light = 2;
 }
 
