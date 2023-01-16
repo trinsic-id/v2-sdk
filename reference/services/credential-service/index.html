@@ -2492,17 +2492,17 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span>
-<span class="w">      </span><span class="n">trinsic</span>
-<span class="w">          </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
-<span class="w">          </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span>
-<span class="w">              </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                  </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
-<span class="w">                  </span><span class="p">.</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">)</span>
-<span class="w">                  </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">          </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span>
+<span class="w">            </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="n">selectiveProofResponse</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">trinsic</span>
@@ -2510,7 +2510,10 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span>
 <span class="w">            </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setRevealTemplate</span><span class="p">(</span><span class="n">RevealTemplateAttributes</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">addTemplateAttributes</span><span class="p">(</span><span class="s">&quot;batchNumber&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setRevealTemplate</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">RevealTemplateAttributes</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">addTemplateAttributes</span><span class="p">(</span><span class="s">&quot;batchNumber&quot;</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
 <span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 
