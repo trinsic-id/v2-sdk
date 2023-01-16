@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4+insiders-4.27.1">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.5+insiders-4.28.0">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a608ba1f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c97aee8c.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
@@ -179,7 +179,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -202,15 +202,14 @@
   </nav>
   
     
-      <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
-
-
-
-
+  
+  
   
     <li class="md-tabs__item">
       <a href="../../.." class="md-tabs__link">
@@ -226,12 +225,10 @@
 
       
         
-
   
-
-
-
-
+  
+    
+  
   
     
     
@@ -250,10 +247,8 @@
 
       
         
-
-
-
-
+  
+  
   
     
     
@@ -272,10 +267,8 @@
 
       
         
-
-
-
-
+  
+  
   
     
     
@@ -294,10 +287,8 @@
 
       
         
-
-
-
-
+  
+  
   
     
     
@@ -2111,6 +2102,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
   
@@ -2133,7 +2125,7 @@
 <p>Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:</p>
 <p><strong>Data Protection &amp; Compliance</strong></p>
 <p>When writing an identifier to a public, permanent resource like a blockchain, it’s important to be extremely sure that you want that data to remain there forever. Permanence is hard to reconcile with “right to be forgotten”, and the jury is out on whether a person’s identifiers are considered personal data (literally).</p>
-<p>For these reasons, it is <strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>not advisable</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong> to upgrade DIDs controlled by wallets whose holders are natural persons (in other words, DIDs whose subjects are persons). If doing so is important for your use case, we strongly recommend you work with legal counsel to understand all of the implications before doing so. </p>
+<p>For these reasons, it is <strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>not advisable</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong> to upgrade DIDs controlled by wallets whose holders are natural persons (in other words, DIDs whose subjects are persons). If doing so is important for your use case, we strongly recommend you work with legal counsel to understand all of the implications before doing so.</p>
 <p><strong>Fees</strong></p>
 <p>Depending on the DID method chosen, registering a DID may incur a transaction fee, which is different for each ledger. <strong>You are responsible for these fees.</strong></p>
 <p>Documentation of these fees will be visible through our Dashboard and on our pricing page. You should keep this in mind before you programmatically upgrade DIDs through the API.</p>
@@ -2160,7 +2152,17 @@
 <tr>
 <td>did:ion</td>
 <td>Distributed Ledger</td>
-<td>ION is a sidetree/Layer-2 protocol on top of the Bitcoin blockchain. Registering a DID will incur charges if on the mainnet network.</td>
+<td>ION is a sidetree/Layer-2 protocol on top of the Bitcoin blockchain. Registering a DID will incur charges if on the mainnet network. <a href="/reference/proto#services-provider-v1-IonOptions">IonOptions</a></td>
+</tr>
+<tr>
+<td>did:indy</td>
+<td>Distributed Ledger</td>
+<td>INDY is a Hyperledger Indy based protocol. Registering a DID will incur charges if on the main (non test) networks <a href="/reference/proto#services-provider-v1-IndyOptions">IndyOptions</a></td>
+</tr>
+<tr>
+<td>did:sov</td>
+<td>Distributed Ledger</td>
+<td>SOV is the Sovrin Foundation implementation of Hyperledger Indy. It is available via <code>did:indy:sov</code> prefix Under <em>IndyOptions</em> above. Registering a DID will incur charges if on the main (non test / non builder) networks</td>
 </tr>
 </tbody>
 </table>
@@ -2189,11 +2191,12 @@
       <span class="md-source-file__fact">
         <span class="md-icon" title="Contributors">
           
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
           
         </span>
         <nav>
           
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
         </nav>
       </span>
@@ -2272,7 +2275,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.f236eb64.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.abfe3e55.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b5a861c9.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
