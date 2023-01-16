@@ -292,8 +292,11 @@ class UpdateEcosystemResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class EcosystemDisplay(betterproto.Message):
-    dark: "EcosystemDisplayDetails" = betterproto.message_field(1)
     light: "EcosystemDisplayDetails" = betterproto.message_field(2)
+    """
+    Removed the Dark after discussion with team, as we don't provide a dark UI
+    anywhere (yet) in our platform.    EcosystemDisplayDetails dark = 1;
+    """
 
 
 @dataclass(eq=False, repr=False)

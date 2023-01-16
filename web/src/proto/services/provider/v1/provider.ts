@@ -273,7 +273,10 @@ export interface UpdateEcosystemResponse {
 }
 
 export interface EcosystemDisplay {
-  dark?: EcosystemDisplayDetails;
+  /**
+   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+   *    EcosystemDisplayDetails dark = 1;
+   */
   light?: EcosystemDisplayDetails;
 }
 
@@ -1836,7 +1839,7 @@ export const UpdateEcosystemResponse = {
 };
 
 function createBaseEcosystemDisplay(): EcosystemDisplay {
-  return { dark: undefined, light: undefined };
+  return { light: undefined };
 }
 
 export const EcosystemDisplay = {
@@ -1844,12 +1847,6 @@ export const EcosystemDisplay = {
     message: EcosystemDisplay,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.dark !== undefined) {
-      EcosystemDisplayDetails.encode(
-        message.dark,
-        writer.uint32(10).fork()
-      ).ldelim();
-    }
     if (message.light !== undefined) {
       EcosystemDisplayDetails.encode(
         message.light,
@@ -1866,12 +1863,6 @@ export const EcosystemDisplay = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.dark = EcosystemDisplayDetails.decode(
-            reader,
-            reader.uint32()
-          );
-          break;
         case 2:
           message.light = EcosystemDisplayDetails.decode(
             reader,
@@ -1888,9 +1879,6 @@ export const EcosystemDisplay = {
 
   fromJSON(object: any): EcosystemDisplay {
     return {
-      dark: isSet(object.dark)
-        ? EcosystemDisplayDetails.fromJSON(object.dark)
-        : undefined,
       light: isSet(object.light)
         ? EcosystemDisplayDetails.fromJSON(object.light)
         : undefined,
@@ -1899,10 +1887,6 @@ export const EcosystemDisplay = {
 
   toJSON(message: EcosystemDisplay): unknown {
     const obj: any = {};
-    message.dark !== undefined &&
-      (obj.dark = message.dark
-        ? EcosystemDisplayDetails.toJSON(message.dark)
-        : undefined);
     message.light !== undefined &&
       (obj.light = message.light
         ? EcosystemDisplayDetails.toJSON(message.light)
@@ -1912,10 +1896,6 @@ export const EcosystemDisplay = {
 
   fromPartial(object: DeepPartial<EcosystemDisplay>): EcosystemDisplay {
     const message = createBaseEcosystemDisplay();
-    message.dark =
-      object.dark !== undefined && object.dark !== null
-        ? EcosystemDisplayDetails.fromPartial(object.dark)
-        : undefined;
     message.light =
       object.light !== undefined && object.light !== null
         ? EcosystemDisplayDetails.fromPartial(object.light)
