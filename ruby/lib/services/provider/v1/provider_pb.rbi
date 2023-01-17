@@ -965,26 +965,12 @@ class Services::Provider::V1::EcosystemDisplayRequest
 
   sig do
     params(
-      dark: T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest),
       light: T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)
     ).void
   end
   def initialize(
-    dark: nil,
     light: nil
   )
-  end
-
-  sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)) }
-  def dark
-  end
-
-  sig { params(value: T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)).void }
-  def dark=(value)
-  end
-
-  sig { void }
-  def clear_dark
   end
 
   sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)) }

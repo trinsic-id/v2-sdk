@@ -9,32 +9,40 @@ public interface EcosystemDisplayRequestOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
    *
-   * @return Whether the dark field is set.
-   */
-  boolean hasDark();
-  /**
-   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
    *
-   * @return The dark.
-   */
-  trinsic.services.provider.v1.EcosystemDisplayDetailsRequest getDark();
-  /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-  trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder getDarkOrBuilder();
-
-  /**
+   * <pre>
+   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+   * EcosystemDisplayDetailsRequest dark = 1;
+   * </pre>
+   *
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
    *
    * @return Whether the light field is set.
    */
   boolean hasLight();
   /**
+   *
+   *
+   * <pre>
+   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+   * EcosystemDisplayDetailsRequest dark = 1;
+   * </pre>
+   *
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
    *
    * @return The light.
    */
   trinsic.services.provider.v1.EcosystemDisplayDetailsRequest getLight();
-  /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+   * EcosystemDisplayDetailsRequest dark = 1;
+   * </pre>
+   *
+   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+   */
   trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder getLightOrBuilder();
 }
