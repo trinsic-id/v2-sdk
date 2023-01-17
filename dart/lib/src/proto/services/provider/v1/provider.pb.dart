@@ -1271,12 +1271,6 @@ class EcosystemDisplayRequest extends $pb.GeneratedMessage {
               : 'services.provider.v1'),
       createEmptyInstance: create)
     ..aOM<EcosystemDisplayDetailsRequest>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'dark',
-        subBuilder: EcosystemDisplayDetailsRequest.create)
-    ..aOM<EcosystemDisplayDetailsRequest>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -1286,13 +1280,9 @@ class EcosystemDisplayRequest extends $pb.GeneratedMessage {
 
   EcosystemDisplayRequest._() : super();
   factory EcosystemDisplayRequest({
-    EcosystemDisplayDetailsRequest? dark,
     EcosystemDisplayDetailsRequest? light,
   }) {
     final _result = create();
-    if (dark != null) {
-      _result.dark = dark;
-    }
     if (light != null) {
       _result.light = light;
     }
@@ -1327,33 +1317,19 @@ class EcosystemDisplayRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<EcosystemDisplayRequest>(create);
   static EcosystemDisplayRequest? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  EcosystemDisplayDetailsRequest get dark => $_getN(0);
-  @$pb.TagNumber(1)
-  set dark(EcosystemDisplayDetailsRequest v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasDark() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearDark() => clearField(1);
-  @$pb.TagNumber(1)
-  EcosystemDisplayDetailsRequest ensureDark() => $_ensure(0);
-
   @$pb.TagNumber(2)
-  EcosystemDisplayDetailsRequest get light => $_getN(1);
+  EcosystemDisplayDetailsRequest get light => $_getN(0);
   @$pb.TagNumber(2)
   set light(EcosystemDisplayDetailsRequest v) {
     setField(2, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasLight() => $_has(1);
+  $core.bool hasLight() => $_has(0);
   @$pb.TagNumber(2)
   void clearLight() => clearField(2);
   @$pb.TagNumber(2)
-  EcosystemDisplayDetailsRequest ensureLight() => $_ensure(1);
+  EcosystemDisplayDetailsRequest ensureLight() => $_ensure(0);
 }
 
 class EcosystemDisplayDetailsRequest extends $pb.GeneratedMessage {

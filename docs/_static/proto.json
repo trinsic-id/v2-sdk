@@ -1050,12 +1050,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.EcosystemDisplayRequest.dark": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.EcosystemDisplayRequest"
-    },
     "services.provider.v1.EcosystemDisplayRequest.light": {
       "type": "field",
       "collection": "fields",
@@ -3998,7 +3992,6 @@
         "services.provider.v1.UpdateEcosystemRequest.uri",
         "services.provider.v1.UpdateEcosystemRequest.domain",
         "services.provider.v1.UpdateEcosystemRequest.display",
-        "services.provider.v1.EcosystemDisplayRequest.dark",
         "services.provider.v1.EcosystemDisplayRequest.light",
         "services.provider.v1.EcosystemDisplayDetailsRequest.color",
         "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data",
@@ -5431,7 +5424,6 @@
       "full_name": "services.provider.v1.EcosystemDisplayRequest",
       "description": "",
       "fields": [
-        "services.provider.v1.EcosystemDisplayRequest.dark",
         "services.provider.v1.EcosystemDisplayRequest.light"
       ],
       "messages": [],
@@ -7470,21 +7462,13 @@
       "full_type": "string",
       "description": "MIME type of the file"
     },
-    "services.provider.v1.EcosystemDisplayRequest.dark": {
-      "name": "dark",
-      "full_name": "services.provider.v1.EcosystemDisplayRequest.dark",
-      "label": "LABEL_OPTIONAL",
-      "type": "EcosystemDisplayDetailsRequest",
-      "full_type": "services.provider.v1.EcosystemDisplayDetailsRequest",
-      "description": ""
-    },
     "services.provider.v1.EcosystemDisplayRequest.light": {
       "name": "light",
       "full_name": "services.provider.v1.EcosystemDisplayRequest.light",
       "label": "LABEL_OPTIONAL",
       "type": "EcosystemDisplayDetailsRequest",
       "full_type": "services.provider.v1.EcosystemDisplayDetailsRequest",
-      "description": ""
+      "description": "Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.\nEcosystemDisplayDetailsRequest dark = 1;"
     },
     "services.provider.v1.EcosystemInfoResponse.ecosystem": {
       "name": "ecosystem",
