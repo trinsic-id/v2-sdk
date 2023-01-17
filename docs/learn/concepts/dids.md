@@ -16,7 +16,7 @@ Many DID methods are based on distributed ledgers (commonly known as "blockchain
 
 **Data Protection & Compliance**
 
-When writing an identifier to a public, permanent resource like a blockchain, it’s important to be extremely sure that you want that data to remain there forever. Permanence is hard to reconcile with “right to be forgotten”, and the jury is out on whether a person’s identifiers are considered personal data (literally). For these reasons, we advise considering the legal and personal implications of upgrading DIDs controlled by wallets whose holders are natural persons (in other words, DIDs whose subjects are persons).
+When writing an identifier to a public, permanent resource like a blockchain, it’s important to be extremely sure that you want that data to remain there forever. Permanence is hard to reconcile with “right to be forgotten”, and the jury is out on whether a person’s identifiers are considered personal data (literally). For these reasons, we advise you to consider the legal and personal implications of upgrading DIDs controlled by wallets whose holders are natural persons (in other words, DIDs whose subjects are persons).
 
 **Fees**
 
