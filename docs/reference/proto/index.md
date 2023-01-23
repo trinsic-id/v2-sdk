@@ -63,8 +63,6 @@ https://docs.godiddy.com/en/supported-methods
 | ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
 | INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation
 
-The did:v1 method --Veres 1 Blockchain by Digital Bazaar V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys. |
-
 
  <!-- end enums -->
 
