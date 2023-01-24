@@ -183,26 +183,19 @@ class SendRequest(betterproto.Message):
     email: str = betterproto.string_field(1, group="delivery_method")
     """Email address of user to send item to"""
 
-    did_uri: str = betterproto.string_field(2, group="delivery_method")
-    """DID of recipient (presently unsupported)"""
-
-    didcomm_invitation_json: str = betterproto.string_field(3, group="delivery_method")
-    """DIDComm out-of-band invitation JSON (presently unsupported)"""
+    wallet_id: str = betterproto.string_field(5, group="delivery_method")
+    """
+    DID of recipient (presently unsupported) string did_uri = 2
+    [deprecated=true]; DIDComm out-of-band invitation JSON (presently
+    unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet
+    ID of the recipient within the ecosystem
+    """
 
     send_notification: bool = betterproto.bool_field(4)
     """Send email notification that credential has been sent to a wallet"""
 
     document_json: str = betterproto.string_field(100)
     """JSON document to send to recipient"""
-
-    def __post_init__(self) -> None:
-        super().__post_init__()
-        if self.is_set("did_uri"):
-            warnings.warn("SendRequest.did_uri is deprecated", DeprecationWarning)
-        if self.is_set("didcomm_invitation_json"):
-            warnings.warn(
-                "SendRequest.didcomm_invitation_json is deprecated", DeprecationWarning
-            )
 
 
 @dataclass(eq=False, repr=False)

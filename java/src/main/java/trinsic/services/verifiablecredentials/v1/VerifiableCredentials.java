@@ -129,11 +129,10 @@ public final class VerifiableCredentials {
           + "\01324.services.verifiablecredentials.v1.ValidationMessage:\0028\001\"7\n"
           + "\021ValidationMessage\022\020\n"
           + "\010is_valid\030\001 \001(\010\022\020\n"
-          + "\010messages\030\002 \003(\t\"\241\001\n"
+          + "\010messages\030\002 \003(\t\"x\n"
           + "\013SendRequest\022\017\n"
-          + "\005email\030\001 \001(\tH\000\022\025\n"
-          + "\007did_uri\030\002 \001(\tB\002\030\001H\000\022%\n"
-          + "\027didcomm_invitation_json\030\003 \001(\tB\002\030\001H\000\022\031\n"
+          + "\005email\030\001 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\005 \001(\tH\000\022\031\n"
           + "\021send_notification\030\004 \001(\010\022\025\n\r"
           + "document_json\030d \001(\tB\021\n"
           + "\017delivery_method\"\016\n"
@@ -147,24 +146,25 @@ public final class VerifiableCredentials {
           + "\023CheckStatusResponse\022\017\n"
           + "\007revoked\030\001 \001(\0102\367\006\n"
           + "\024VerifiableCredential\022j\n"
-          + "\005Issue\022/.services.verifiablecredentials.v1.IssueRe"
-          + "quest\0320.services.verifiablecredentials.v1.IssueResponse\022\216\001\n"
-          + "\021IssueFromTemplate\022;.services.verifiablecredentials.v1.IssueF"
-          + "romTemplateRequest\032<.services.verifiable"
-          + "credentials.v1.IssueFromTemplateResponse\022|\n"
-          + "\013CheckStatus\0225.services.verifiablecredentials.v1.CheckStatusRequest\0326.service"
-          + "s.verifiablecredentials.v1.CheckStatusResponse\022\177\n"
-          + "\014UpdateStatus\0226.services.verifiablecredentials.v1.UpdateStatusRequest\0327"
-          + ".services.verifiablecredentials.v1.UpdateStatusResponse\022|\n"
-          + "\013CreateProof\0225.services.verifiablecredentials.v1.CreateProofRe"
-          + "quest\0326.services.verifiablecredentials.v1.CreateProofResponse\022|\n"
-          + "\013VerifyProof\0225.services.verifiablecredentials.v1.VerifyP"
-          + "roofRequest\0326.services.verifiablecredentials.v1.VerifyProofResponse\022g\n"
-          + "\004Send\022..services.verifiablecredentials.v1.SendRequ"
-          + "est\032/.services.verifiablecredentials.v1.SendResponseB\231\001\n"
-          + ")trinsic.services.verifiablecredentials.v1P\001Z,services/verifiabl"
-          + "ecredentials/v1/credential\242\002\017TrinsicServ"
-          + "ices\252\002)Trinsic.Services.VerifiableCredentials.V1b\006proto3"
+          + "\005Issue\022/.services.verifiablecredentials.v1.IssueRequ"
+          + "est\0320.services.verifiablecredentials.v1.IssueResponse\022\216\001\n"
+          + "\021IssueFromTemplate\022;.services.verifiablecredentials.v1.IssueFro"
+          + "mTemplateRequest\032<.services.verifiablecr"
+          + "edentials.v1.IssueFromTemplateResponse\022|\n"
+          + "\013CheckStatus\0225.services.verifiablecrede"
+          + "ntials.v1.CheckStatusRequest\0326.services."
+          + "verifiablecredentials.v1.CheckStatusResponse\022\177\n"
+          + "\014UpdateStatus\0226.services.verifiablecredentials.v1.UpdateStatusRequest\0327.s"
+          + "ervices.verifiablecredentials.v1.UpdateStatusResponse\022|\n"
+          + "\013CreateProof\0225.services.verifiablecredentials.v1.CreateProofRequ"
+          + "est\0326.services.verifiablecredentials.v1.CreateProofResponse\022|\n"
+          + "\013VerifyProof\0225.services.verifiablecredentials.v1.VerifyPro"
+          + "ofRequest\0326.services.verifiablecredentials.v1.VerifyProofResponse\022g\n"
+          + "\004Send\022..services.verifiablecredentials.v1.SendReques"
+          + "t\032/.services.verifiablecredentials.v1.SendResponseB\231\001\n"
+          + ")trinsic.services.verifiablecredentials.v1P\001Z,services/verifiablec"
+          + "redentials/v1/credential\242\002\017TrinsicServic"
+          + "es\252\002)Trinsic.Services.VerifiableCredentials.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -274,12 +274,7 @@ public final class VerifiableCredentials {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_verifiablecredentials_v1_SendRequest_descriptor,
             new java.lang.String[] {
-              "Email",
-              "DidUri",
-              "DidcommInvitationJson",
-              "SendNotification",
-              "DocumentJson",
-              "DeliveryMethod",
+              "Email", "WalletId", "SendNotification", "DocumentJson", "DeliveryMethod",
             });
     internal_static_services_verifiablecredentials_v1_SendResponse_descriptor =
         getDescriptor().getMessageTypes().get(11);

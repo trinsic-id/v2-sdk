@@ -3144,18 +3144,6 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
-    "services.verifiablecredentials.v1.SendRequest.did_uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": "services.verifiablecredentials.v1.SendRequest"
-    },
-    "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": "services.verifiablecredentials.v1.SendRequest"
-    },
     "services.verifiablecredentials.v1.SendRequest.document_json": {
       "type": "field",
       "collection": "fields",
@@ -3169,6 +3157,12 @@
       "parent": "services.verifiablecredentials.v1.SendRequest"
     },
     "services.verifiablecredentials.v1.SendRequest.send_notification": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SendRequest"
+    },
+    "services.verifiablecredentials.v1.SendRequest.wallet_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -4353,8 +4347,7 @@
         "services.verifiablecredentials.v1.ValidationMessage.is_valid",
         "services.verifiablecredentials.v1.ValidationMessage.messages",
         "services.verifiablecredentials.v1.SendRequest.email",
-        "services.verifiablecredentials.v1.SendRequest.did_uri",
-        "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json",
+        "services.verifiablecredentials.v1.SendRequest.wallet_id",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json",
         "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id",
@@ -6490,8 +6483,7 @@
       "description": "Request to send a document to another user's wallet",
       "fields": [
         "services.verifiablecredentials.v1.SendRequest.email",
-        "services.verifiablecredentials.v1.SendRequest.did_uri",
-        "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json",
+        "services.verifiablecredentials.v1.SendRequest.wallet_id",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json"
       ],
@@ -8950,28 +8942,6 @@
       "full_type": "string",
       "description": "A list of document attributes to reveal. If unset, all attributes will be returned."
     },
-    "services.verifiablecredentials.v1.SendRequest.did_uri": {
-      "name": "did_uri",
-      "full_name": "services.verifiablecredentials.v1.SendRequest.did_uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DID of recipient (presently unsupported)",
-      "options": {
-        "deprecated": true
-      }
-    },
-    "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json": {
-      "name": "didcomm_invitation_json",
-      "full_name": "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DIDComm out-of-band invitation JSON (presently unsupported)",
-      "options": {
-        "deprecated": true
-      }
-    },
     "services.verifiablecredentials.v1.SendRequest.document_json": {
       "name": "document_json",
       "full_name": "services.verifiablecredentials.v1.SendRequest.document_json",
@@ -8995,6 +8965,14 @@
       "type": "bool",
       "full_type": "bool",
       "description": "Send email notification that credential has been sent to a wallet"
+    },
+    "services.verifiablecredentials.v1.SendRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.verifiablecredentials.v1.SendRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID of recipient (presently unsupported)\nstring did_uri = 2 [deprecated=true];\nDIDComm out-of-band invitation JSON (presently unsupported)\nstring didcomm_invitation_json = 3 [deprecated=true];\nWallet ID of the recipient within the ecosystem"
     },
     "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id": {
       "name": "credential_status_id",
@@ -9489,7 +9467,7 @@
     "services.common.v1.SupportedDidMethod.INDY": {
       "name": "INDY",
       "full_name": "services.common.v1.SupportedDidMethod.INDY",
-      "description": "The did:sov method -- Hyperledger Indy based by Sovrin Foundation\n\nThe did:v1 method --Veres 1 Blockchain by Digital Bazaar\n   V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys.",
+      "description": "The did:sov method -- Hyperledger Indy based by Sovrin Foundation",
       "value": 2
     },
     "services.common.v1.SupportedDidMethod.ION": {
