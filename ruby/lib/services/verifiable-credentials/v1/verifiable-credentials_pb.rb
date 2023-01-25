@@ -55,8 +55,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :document_json, :string, 100
       oneof :delivery_method do
         optional :email, :string, 1
-        optional :did_uri, :string, 2
-        optional :didcomm_invitation_json, :string, 3
+        optional :wallet_id, :string, 5
       end
     end
     add_message "services.verifiablecredentials.v1.SendResponse" do
