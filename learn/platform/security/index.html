@@ -838,17 +838,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#zero-knowledge-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Zero-knowledge Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#oberon-auth-scheme" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2115,8 +2104,6 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>Our cloud services are secured using a novel method of authentication based on <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">zero-knowledge proofs <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>. This approach allows us to introduce passwordless client authentication with improved security and user experience.</p>
 <p>Compared to traditional security methods that store users' credentials on the server, our approach relies on a one-time client/server negotiation without storing any user secrets on our servers. All secrets are stored with the user client and are entirely in their control. During authentication, users present proof of knowledge of these secret tokens, instead of the actual tokens. This proof is generated with each request and is unique for that request only.</p>
-<h2 id="zero-knowledge-architecture">Zero-knowledge Architecture<a class="headerlink" href="#zero-knowledge-architecture" title="Permanent link">&para;</a></h2>
-<p>TODO: Comparison to traditional security models</p>
 <h2 id="oberon-auth-scheme">Oberon Auth Scheme<a class="headerlink" href="#oberon-auth-scheme" title="Permanent link">&para;</a></h2>
 <p>A succinct ZKP protocol for authentication. It works by using techniques similar to Identity-Based/Attribute-Based signatures.</p>
 <p>Oberon allows endpoints to issue multi-factor capable tokens to consumers who can prove their validity without disclosing the tokens themselves and without requiring email, SMS, or authenticator apps. Endpoints only need to store a single public key and not any tokens. An attacker that breaks into the server doesn't have any password/token files to steal and only would see a public key. The proof of token validity is only 256 bytes while the token itself is only 48 bytes. The issuing party and verifying servers can be separate entities.</p>
