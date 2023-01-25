@@ -376,9 +376,11 @@ public class Tests
 
     [Fact]
     public async Task TestGovernanceFrameworkUriParse() {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
-        var myProfile = await trinsic.Account.SignInAsync(new());
-
+        var myEcosystemId = "default";
+        var trinsic = new TrinsicService(_options);
+        var myProfile = await trinsic.Account.LoginAnonymousAsync(myEcosystemId);
+        Assert.NotNull(myProfile);
+        
         trinsic.SetAuthToken(myProfile);
 
         await Assert.ThrowsAsync<RpcException>(async () => await trinsic.TrustRegistry.AddFrameworkAsync(new() {
