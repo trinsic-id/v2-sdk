@@ -53,7 +53,6 @@ Request to create a new template
 ### CreateCredentialTemplateRequest.FieldsEntry
 
 
-
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | key | [string](/reference/proto#string) |  |

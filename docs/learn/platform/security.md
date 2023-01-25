@@ -6,10 +6,6 @@ Our cloud services are secured using a novel method of authentication based on [
 
 Compared to traditional security methods that store users' credentials on the server, our approach relies on a one-time client/server negotiation without storing any user secrets on our servers. All secrets are stored with the user client and are entirely in their control. During authentication, users present proof of knowledge of these secret tokens, instead of the actual tokens. This proof is generated with each request and is unique for that request only.
 
-## Zero-knowledge Architecture
-
-TODO: Comparison to traditional security models
-
 ## Oberon Auth Scheme
 
 A succinct ZKP protocol for authentication. It works by using techniques similar to Identity-Based/Attribute-Based signatures.
