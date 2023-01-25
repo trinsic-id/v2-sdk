@@ -344,7 +344,7 @@ Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at
     | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
     | `SignatureVerification`{: style="word-break:keep-all"}   | The cryptographic proof over the entire Verifiable Credential, specifically using BBS+ Proof of Signature            |
     | `CredentialStatus`{: style="word-break:keep-all"}        | *(if supported by credential)* Checks if credential has been revoked                                                 |
-    | `SchemaConformance`{: style="word-break:keep-all"}       | Ensures credential conforms with its schema. It is possible to issue credential omitting a required field (as captured in the credential template). If your use case allows this kind of omission, you can ignore this validation entry. |
+    | `SchemaConformance`{: style="word-break:keep-all"}       | Ensures credential conforms with its schema. It is possible to issue a credential omitting a required field (as captured in the credential template). If your use case allows this kind of omission, you can ignore this validation entry. |
     | `TrustRegistryMembership`{: style="word-break:keep-all"} | *(if relevant)* Verifies that credential issuer is an authorized member of the credential's governing Trust Registry |
     | `IssuerIsSigner`{: style="word-break:keep-all"}          | Document `issuer` is same DID as document signer. *If false, it is not safe to assume that the claimed `issuer` actually issued the credential.*                                                                     |
 
