@@ -5015,14 +5015,9 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>Email address of user to send item to</td>
 </tr>
 <tr>
-<td>did_uri</td>
+<td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td><strong>Deprecated.</strong> DID of recipient (presently unsupported)</td>
-</tr>
-<tr>
-<td>didcomm_invitation_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td><strong>Deprecated.</strong> DIDComm out-of-band invitation JSON (presently unsupported)</td>
+<td>DID of recipient (presently unsupported) string did_uri = 2 [deprecated=true]; DIDComm out-of-band invitation JSON (presently unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet ID of the recipient within the ecosystem</td>
 </tr>
 <tr>
 <td>send_notification</td>
@@ -5755,14 +5750,9 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>dark</td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest">EcosystemDisplayDetailsRequest</a></td>
-<td></td>
-</tr>
-<tr>
 <td>light</td>
 <td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest">EcosystemDisplayDetailsRequest</a></td>
-<td></td>
+<td>Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform. EcosystemDisplayDetailsRequest dark = 1;</td>
 </tr>
 </tbody>
 </table>
@@ -6767,7 +6757,6 @@ https://docs.godiddy.com/en/supported-methods</p>
 </tr>
 </tbody>
 </table>
-<p>The did:v1 method --Veres 1 Blockchain by Digital Bazaar V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys. |</p>
 <!-- end enums -->
 
 <!-- end HasExtensions -->
@@ -8870,8 +8859,8 @@ like email, SMS, etc.</p>
         <nav>
           
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
-            <a href="mailto:not.committed.yet">Not Committed Yet</a>
+            <a href="mailto:115157536+mewmba@users.noreply.github.com">Mewmba</a>, 
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>
         </nav>
       </span>
     
