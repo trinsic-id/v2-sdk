@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.5+insiders-4.28.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6+insiders-4.29.0">
     
     
       
@@ -2613,7 +2613,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>issuer<span class="w"> 
 <tbody>
 <tr>
 <td><code style="word-break:keep-all">SignatureVerification</code></td>
-<td>Cryptographic signature validity of proof</td>
+<td>The cryptographic proof over the entire Verifiable Credential, specifically using BBS+ Proof of Signature</td>
 </tr>
 <tr>
 <td><code style="word-break:keep-all">CredentialStatus</code></td>
@@ -2621,7 +2621,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>issuer<span class="w"> 
 </tr>
 <tr>
 <td><code style="word-break:keep-all">SchemaConformance</code></td>
-<td>Ensures credential conforms with its schema</td>
+<td>Ensures credential conforms with its schema. It is possible to issue a credential omitting a required field (as captured in the credential template). If your use case allows this kind of omission, you can ignore this validation entry.</td>
 </tr>
 <tr>
 <td><code style="word-break:keep-all">TrustRegistryMembership</code></td>
