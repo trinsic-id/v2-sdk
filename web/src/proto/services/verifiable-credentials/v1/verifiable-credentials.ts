@@ -125,16 +125,12 @@ export interface SendRequest {
   email?: string | undefined;
   /**
    * DID of recipient (presently unsupported)
-   *
-   * @deprecated
-   */
-  didUri?: string | undefined;
-  /**
+   * string did_uri = 2 [deprecated=true];
    * DIDComm out-of-band invitation JSON (presently unsupported)
-   *
-   * @deprecated
+   * string didcomm_invitation_json = 3 [deprecated=true];
+   * Wallet ID of the recipient within the ecosystem
    */
-  didcommInvitationJson?: string | undefined;
+  walletId?: string | undefined;
   /** Send email notification that credential has been sent to a wallet */
   sendNotification?: boolean;
   /** JSON document to send to recipient */
@@ -977,8 +973,7 @@ export const ValidationMessage = {
 function createBaseSendRequest(): SendRequest {
   return {
     email: undefined,
-    didUri: undefined,
-    didcommInvitationJson: undefined,
+    walletId: undefined,
     sendNotification: false,
     documentJson: "",
   };
@@ -992,11 +987,8 @@ export const SendRequest = {
     if (message.email !== undefined) {
       writer.uint32(10).string(message.email);
     }
-    if (message.didUri !== undefined) {
-      writer.uint32(18).string(message.didUri);
-    }
-    if (message.didcommInvitationJson !== undefined) {
-      writer.uint32(26).string(message.didcommInvitationJson);
+    if (message.walletId !== undefined) {
+      writer.uint32(42).string(message.walletId);
     }
     if (message.sendNotification === true) {
       writer.uint32(32).bool(message.sendNotification);
@@ -1017,11 +1009,8 @@ export const SendRequest = {
         case 1:
           message.email = reader.string();
           break;
-        case 2:
-          message.didUri = reader.string();
-          break;
-        case 3:
-          message.didcommInvitationJson = reader.string();
+        case 5:
+          message.walletId = reader.string();
           break;
         case 4:
           message.sendNotification = reader.bool();
@@ -1040,10 +1029,7 @@ export const SendRequest = {
   fromJSON(object: any): SendRequest {
     return {
       email: isSet(object.email) ? String(object.email) : undefined,
-      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
-      didcommInvitationJson: isSet(object.didcommInvitationJson)
-        ? String(object.didcommInvitationJson)
-        : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
       sendNotification: isSet(object.sendNotification)
         ? Boolean(object.sendNotification)
         : false,
@@ -1056,9 +1042,7 @@ export const SendRequest = {
   toJSON(message: SendRequest): unknown {
     const obj: any = {};
     message.email !== undefined && (obj.email = message.email);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.didcommInvitationJson !== undefined &&
-      (obj.didcommInvitationJson = message.didcommInvitationJson);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
     message.sendNotification !== undefined &&
       (obj.sendNotification = message.sendNotification);
     message.documentJson !== undefined &&
@@ -1069,8 +1053,7 @@ export const SendRequest = {
   fromPartial(object: DeepPartial<SendRequest>): SendRequest {
     const message = createBaseSendRequest();
     message.email = object.email ?? undefined;
-    message.didUri = object.didUri ?? undefined;
-    message.didcommInvitationJson = object.didcommInvitationJson ?? undefined;
+    message.walletId = object.walletId ?? undefined;
     message.sendNotification = object.sendNotification ?? false;
     message.documentJson = object.documentJson ?? "";
     return message;

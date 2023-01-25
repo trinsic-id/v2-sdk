@@ -24,8 +24,6 @@ enum SupportedDidMethod {
     ION = 1;
     // The did:sov method -- Hyperledger Indy based by Sovrin Foundation
     INDY = 2;
-    // The did:v1 method --Veres 1 Blockchain by Digital Bazaar
-    //    V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys.
 }
 
 // Nonce used to generate an oberon proof

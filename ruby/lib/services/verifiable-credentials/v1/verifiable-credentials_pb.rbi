@@ -764,16 +764,14 @@ class Services::Verifiablecredentials::V1::SendRequest
   sig do
     params(
       email: T.nilable(String),
-      did_uri: T.nilable(String),
-      didcomm_invitation_json: T.nilable(String),
+      wallet_id: T.nilable(String),
       send_notification: T.nilable(T::Boolean),
       document_json: T.nilable(String)
     ).void
   end
   def initialize(
     email: "",
-    did_uri: "",
-    didcomm_invitation_json: "",
+    wallet_id: "",
     send_notification: false,
     document_json: ""
   )
@@ -792,27 +790,15 @@ class Services::Verifiablecredentials::V1::SendRequest
   end
 
   sig { returns(String) }
-  def did_uri
+  def wallet_id
   end
 
   sig { params(value: String).void }
-  def did_uri=(value)
+  def wallet_id=(value)
   end
 
   sig { void }
-  def clear_did_uri
-  end
-
-  sig { returns(String) }
-  def didcomm_invitation_json
-  end
-
-  sig { params(value: String).void }
-  def didcomm_invitation_json=(value)
-  end
-
-  sig { void }
-  def clear_didcomm_invitation_json
+  def clear_wallet_id
   end
 
   sig { returns(T::Boolean) }

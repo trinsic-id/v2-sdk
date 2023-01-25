@@ -881,14 +881,13 @@ class ValidationMessage extends $pb.GeneratedMessage {
   $core.List<$core.String> get messages => $_getList(1);
 }
 
-enum SendRequest_DeliveryMethod { email, didUri, didcommInvitationJson, notSet }
+enum SendRequest_DeliveryMethod { email, walletId, notSet }
 
 class SendRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, SendRequest_DeliveryMethod>
       _SendRequest_DeliveryMethodByTag = {
     1: SendRequest_DeliveryMethod.email,
-    2: SendRequest_DeliveryMethod.didUri,
-    3: SendRequest_DeliveryMethod.didcommInvitationJson,
+    5: SendRequest_DeliveryMethod.walletId,
     0: SendRequest_DeliveryMethod.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -900,27 +899,22 @@ class SendRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3])
+    ..oo(0, [1, 5])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'email')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didcommInvitationJson')
     ..aOB(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'sendNotification')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'walletId')
     ..aOS(
         100,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -931,26 +925,19 @@ class SendRequest extends $pb.GeneratedMessage {
   SendRequest._() : super();
   factory SendRequest({
     $core.String? email,
-    @$core.Deprecated('This field is deprecated.') $core.String? didUri,
-    @$core.Deprecated('This field is deprecated.')
-        $core.String? didcommInvitationJson,
     $core.bool? sendNotification,
+    $core.String? walletId,
     $core.String? documentJson,
   }) {
     final _result = create();
     if (email != null) {
       _result.email = email;
     }
-    if (didUri != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.didUri = didUri;
-    }
-    if (didcommInvitationJson != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.didcommInvitationJson = didcommInvitationJson;
-    }
     if (sendNotification != null) {
       _result.sendNotification = sendNotification;
+    }
+    if (walletId != null) {
+      _result.walletId = walletId;
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
@@ -999,59 +986,39 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.String get didUri => $_getSZ(1);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  set didUri($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.bool hasDidUri() => $_has(1);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  void clearDidUri() => clearField(2);
-
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(3)
-  $core.String get didcommInvitationJson => $_getSZ(2);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(3)
-  set didcommInvitationJson($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(3)
-  $core.bool hasDidcommInvitationJson() => $_has(2);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(3)
-  void clearDidcommInvitationJson() => clearField(3);
-
   @$pb.TagNumber(4)
-  $core.bool get sendNotification => $_getBF(3);
+  $core.bool get sendNotification => $_getBF(1);
   @$pb.TagNumber(4)
   set sendNotification($core.bool v) {
-    $_setBool(3, v);
+    $_setBool(1, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasSendNotification() => $_has(3);
+  $core.bool hasSendNotification() => $_has(1);
   @$pb.TagNumber(4)
   void clearSendNotification() => clearField(4);
 
+  @$pb.TagNumber(5)
+  $core.String get walletId => $_getSZ(2);
+  @$pb.TagNumber(5)
+  set walletId($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasWalletId() => $_has(2);
+  @$pb.TagNumber(5)
+  void clearWalletId() => clearField(5);
+
   @$pb.TagNumber(100)
-  $core.String get documentJson => $_getSZ(4);
+  $core.String get documentJson => $_getSZ(3);
   @$pb.TagNumber(100)
   set documentJson($core.String v) {
-    $_setString(4, v);
+    $_setString(3, v);
   }
 
   @$pb.TagNumber(100)
-  $core.bool hasDocumentJson() => $_has(4);
+  $core.bool hasDocumentJson() => $_has(3);
   @$pb.TagNumber(100)
   void clearDocumentJson() => clearField(100);
 }

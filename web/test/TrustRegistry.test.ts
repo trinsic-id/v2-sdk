@@ -7,7 +7,7 @@ import {
     TrinsicService,
 } from "../node";
 import { v4 as uuid } from "uuid";
-import { getTestServerOptions, setTestTimeout } from "./env";
+import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 
 const options = getTestServerOptions();
 let trinsic: TrinsicService;
@@ -16,9 +16,7 @@ describe("TrustRegistryService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        options.authToken = await trinsic
-            .account()
-            .signIn(SignInRequest.fromPartial({}));
+        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
     });
 
     it("add governance framework", async () => {
