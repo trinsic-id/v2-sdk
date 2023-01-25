@@ -42,37 +42,16 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
             trinsic.services.provider.v1.EcosystemDisplayRequest.Builder.class);
   }
 
-  public static final int DARK_FIELD_NUMBER = 1;
-  private trinsic.services.provider.v1.EcosystemDisplayDetailsRequest dark_;
-  /**
-   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
-   *
-   * @return Whether the dark field is set.
-   */
-  @java.lang.Override
-  public boolean hasDark() {
-    return dark_ != null;
-  }
-  /**
-   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
-   *
-   * @return The dark.
-   */
-  @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemDisplayDetailsRequest getDark() {
-    return dark_ == null
-        ? trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.getDefaultInstance()
-        : dark_;
-  }
-  /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-  @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder getDarkOrBuilder() {
-    return getDark();
-  }
-
   public static final int LIGHT_FIELD_NUMBER = 2;
   private trinsic.services.provider.v1.EcosystemDisplayDetailsRequest light_;
   /**
+   *
+   *
+   * <pre>
+   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+   * EcosystemDisplayDetailsRequest dark = 1;
+   * </pre>
+   *
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
    *
    * @return Whether the light field is set.
@@ -82,6 +61,13 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
     return light_ != null;
   }
   /**
+   *
+   *
+   * <pre>
+   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+   * EcosystemDisplayDetailsRequest dark = 1;
+   * </pre>
+   *
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
    *
    * @return The light.
@@ -92,7 +78,16 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
         ? trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.getDefaultInstance()
         : light_;
   }
-  /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+   * EcosystemDisplayDetailsRequest dark = 1;
+   * </pre>
+   *
+   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+   */
   @java.lang.Override
   public trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder getLightOrBuilder() {
     return getLight();
@@ -112,9 +107,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (dark_ != null) {
-      output.writeMessage(1, getDark());
-    }
     if (light_ != null) {
       output.writeMessage(2, getLight());
     }
@@ -127,9 +119,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
     if (size != -1) return size;
 
     size = 0;
-    if (dark_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getDark());
-    }
     if (light_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getLight());
     }
@@ -149,10 +138,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
     trinsic.services.provider.v1.EcosystemDisplayRequest other =
         (trinsic.services.provider.v1.EcosystemDisplayRequest) obj;
 
-    if (hasDark() != other.hasDark()) return false;
-    if (hasDark()) {
-      if (!getDark().equals(other.getDark())) return false;
-    }
     if (hasLight() != other.hasLight()) return false;
     if (hasLight()) {
       if (!getLight().equals(other.getLight())) return false;
@@ -168,10 +153,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasDark()) {
-      hash = (37 * hash) + DARK_FIELD_NUMBER;
-      hash = (53 * hash) + getDark().hashCode();
-    }
     if (hasLight()) {
       hash = (37 * hash) + LIGHT_FIELD_NUMBER;
       hash = (53 * hash) + getLight().hashCode();
@@ -306,12 +287,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (darkBuilder_ == null) {
-        dark_ = null;
-      } else {
-        dark_ = null;
-        darkBuilder_ = null;
-      }
       if (lightBuilder_ == null) {
         light_ = null;
       } else {
@@ -345,11 +320,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
     public trinsic.services.provider.v1.EcosystemDisplayRequest buildPartial() {
       trinsic.services.provider.v1.EcosystemDisplayRequest result =
           new trinsic.services.provider.v1.EcosystemDisplayRequest(this);
-      if (darkBuilder_ == null) {
-        result.dark_ = dark_;
-      } else {
-        result.dark_ = darkBuilder_.build();
-      }
       if (lightBuilder_ == null) {
         result.light_ = light_;
       } else {
@@ -405,9 +375,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
     public Builder mergeFrom(trinsic.services.provider.v1.EcosystemDisplayRequest other) {
       if (other == trinsic.services.provider.v1.EcosystemDisplayRequest.getDefaultInstance())
         return this;
-      if (other.hasDark()) {
-        mergeDark(other.getDark());
-      }
       if (other.hasLight()) {
         mergeLight(other.getLight());
       }
@@ -437,12 +404,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                input.readMessage(getDarkFieldBuilder().getBuilder(), extensionRegistry);
-
-                break;
-              } // case 10
             case 18:
               {
                 input.readMessage(getLightFieldBuilder().getBuilder(), extensionRegistry);
@@ -466,124 +427,6 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
       return this;
     }
 
-    private trinsic.services.provider.v1.EcosystemDisplayDetailsRequest dark_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplayDetailsRequest,
-            trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder>
-        darkBuilder_;
-    /**
-     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
-     *
-     * @return Whether the dark field is set.
-     */
-    public boolean hasDark() {
-      return darkBuilder_ != null || dark_ != null;
-    }
-    /**
-     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
-     *
-     * @return The dark.
-     */
-    public trinsic.services.provider.v1.EcosystemDisplayDetailsRequest getDark() {
-      if (darkBuilder_ == null) {
-        return dark_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.getDefaultInstance()
-            : dark_;
-      } else {
-        return darkBuilder_.getMessage();
-      }
-    }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-    public Builder setDark(trinsic.services.provider.v1.EcosystemDisplayDetailsRequest value) {
-      if (darkBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        dark_ = value;
-        onChanged();
-      } else {
-        darkBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-    public Builder setDark(
-        trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder builderForValue) {
-      if (darkBuilder_ == null) {
-        dark_ = builderForValue.build();
-        onChanged();
-      } else {
-        darkBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-    public Builder mergeDark(trinsic.services.provider.v1.EcosystemDisplayDetailsRequest value) {
-      if (darkBuilder_ == null) {
-        if (dark_ != null) {
-          dark_ =
-              trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.newBuilder(dark_)
-                  .mergeFrom(value)
-                  .buildPartial();
-        } else {
-          dark_ = value;
-        }
-        onChanged();
-      } else {
-        darkBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-    public Builder clearDark() {
-      if (darkBuilder_ == null) {
-        dark_ = null;
-        onChanged();
-      } else {
-        dark_ = null;
-        darkBuilder_ = null;
-      }
-
-      return this;
-    }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-    public trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder getDarkBuilder() {
-
-      onChanged();
-      return getDarkFieldBuilder().getBuilder();
-    }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-    public trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder getDarkOrBuilder() {
-      if (darkBuilder_ != null) {
-        return darkBuilder_.getMessageOrBuilder();
-      } else {
-        return dark_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.getDefaultInstance()
-            : dark_;
-      }
-    }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplayDetailsRequest,
-            trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder>
-        getDarkFieldBuilder() {
-      if (darkBuilder_ == null) {
-        darkBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.provider.v1.EcosystemDisplayDetailsRequest,
-                trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder,
-                trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder>(
-                getDark(), getParentForChildren(), isClean());
-        dark_ = null;
-      }
-      return darkBuilder_;
-    }
-
     private trinsic.services.provider.v1.EcosystemDisplayDetailsRequest light_;
     private com.google.protobuf.SingleFieldBuilderV3<
             trinsic.services.provider.v1.EcosystemDisplayDetailsRequest,
@@ -591,6 +434,13 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
             trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder>
         lightBuilder_;
     /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
      * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
      *
      * @return Whether the light field is set.
@@ -599,6 +449,13 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
       return lightBuilder_ != null || light_ != null;
     }
     /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
      * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
      *
      * @return The light.
@@ -612,7 +469,16 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
         return lightBuilder_.getMessage();
       }
     }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+     */
     public Builder setLight(trinsic.services.provider.v1.EcosystemDisplayDetailsRequest value) {
       if (lightBuilder_ == null) {
         if (value == null) {
@@ -626,7 +492,16 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+     */
     public Builder setLight(
         trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder builderForValue) {
       if (lightBuilder_ == null) {
@@ -638,7 +513,16 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+     */
     public Builder mergeLight(trinsic.services.provider.v1.EcosystemDisplayDetailsRequest value) {
       if (lightBuilder_ == null) {
         if (light_ != null) {
@@ -656,7 +540,16 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+     */
     public Builder clearLight() {
       if (lightBuilder_ == null) {
         light_ = null;
@@ -668,13 +561,31 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+     */
     public trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder getLightBuilder() {
 
       onChanged();
       return getLightFieldBuilder().getBuilder();
     }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+     */
     public trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder
         getLightOrBuilder() {
       if (lightBuilder_ != null) {
@@ -685,7 +596,16 @@ public final class EcosystemDisplayRequest extends com.google.protobuf.Generated
             : light_;
       }
     }
-    /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+     * EcosystemDisplayDetailsRequest dark = 1;
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+     */
     private com.google.protobuf.SingleFieldBuilderV3<
             trinsic.services.provider.v1.EcosystemDisplayDetailsRequest,
             trinsic.services.provider.v1.EcosystemDisplayDetailsRequest.Builder,
