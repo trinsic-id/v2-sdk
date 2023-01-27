@@ -3,8 +3,8 @@ syntax = "proto3";
 package services.filemanagement.v1;
 
 option csharp_namespace = "Trinsic.Services.FileManagement.V1";
-option go_package = "services/provider/v1/provider";
-option java_package = "trinsic.services.provider.v1";
+option go_package = "services/filemanagement/v1/filemanagement";
+option java_package = "trinsic.services.filemanagement.v1";
 option java_multiple_files = true;
 
 import "services/options/field-options.proto";
@@ -61,12 +61,12 @@ message DeleteFileResponse { }
 message ListFilesRequest {
     // Query to search with. If not specified, will return the most recent 100 files.
     string query = 1;
-  
+
     // Token provided by previous `ListFilesRequest`
     // if more data is available for query
     string continuation_token = 2 [(options.optional)=true];
   }
-  
+
 // Response to `ListFilesRequest`
 message ListFilesResponse {
   // Files found by query
@@ -91,7 +91,7 @@ message GetStorageStatsResponse {
 service FileManagement {
     // Upload a file to Trinsic's CDN
     rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
-    
+
 	// Fetch information about a file by its ID
     rpc GetFile(GetFileRequest) returns (GetFileResponse);
 
@@ -100,7 +100,7 @@ service FileManagement {
 
     // List files the calling account has uploaded
     rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
-    
+
     // Get statistics about files uploaded by the calling account
     rpc GetStorageStats(GetStorageStatsRequest) returns (GetStorageStatsResponse);
 }
