@@ -30,7 +30,6 @@ require 'memoist'
 # Module for all Trinsic servers
 module Trinsic
   Common = Services::Common::V1
-  AccessManagement = Services::AccessManagement::V1
   Account = Services::Account::V1
   Credentials = Services::Verifiablecredentials::V1
   FileManagement = Services::FileManagement::V1
