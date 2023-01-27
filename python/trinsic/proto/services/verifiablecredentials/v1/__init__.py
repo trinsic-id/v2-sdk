@@ -62,6 +62,13 @@ class IssueFromTemplateRequest(betterproto.Message):
     membership info for the given ecosystem governance framework (EGF)
     """
 
+    save_copy: bool = betterproto.bool_field(4)
+    """
+    Save a copy of the issued credential to this user's wallet. This copy will
+    only contain the credential data, but not the secret proof value. Issuers
+    may use this data to keep track of the details for revocation status.
+    """
+
 
 @dataclass(eq=False, repr=False)
 class IssueFromTemplateResponse(betterproto.Message):

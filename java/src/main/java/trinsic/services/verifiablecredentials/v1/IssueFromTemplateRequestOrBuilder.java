@@ -88,4 +88,19 @@ public interface IssueFromTemplateRequestOrBuilder
    * @return The bytes for frameworkId.
    */
   com.google.protobuf.ByteString getFrameworkIdBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Save a copy of the issued credential to this user's wallet. This copy will only contain
+   * the credential data, but not the secret proof value. Issuers may use this data to
+   * keep track of the details for revocation status.
+   * </pre>
+   *
+   * <code>bool save_copy = 4;</code>
+   *
+   * @return The saveCopy.
+   */
+  boolean getSaveCopy();
 }
