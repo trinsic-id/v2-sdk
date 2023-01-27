@@ -17,6 +17,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :template_id, :string, 1
       optional :values_json, :string, 2
       optional :framework_id, :string, 3
+      optional :save_copy, :bool, 4
     end
     add_message "services.verifiablecredentials.v1.IssueFromTemplateResponse" do
       optional :document_json, :string, 1

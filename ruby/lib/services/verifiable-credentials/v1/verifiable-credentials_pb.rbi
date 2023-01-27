@@ -151,13 +151,15 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateRequest
     params(
       template_id: T.nilable(String),
       values_json: T.nilable(String),
-      framework_id: T.nilable(String)
+      framework_id: T.nilable(String),
+      save_copy: T.nilable(T::Boolean)
     ).void
   end
   def initialize(
     template_id: "",
     values_json: "",
-    framework_id: ""
+    framework_id: "",
+    save_copy: false
   )
   end
 
@@ -195,6 +197,18 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateRequest
 
   sig { void }
   def clear_framework_id
+  end
+
+  sig { returns(T::Boolean) }
+  def save_copy
+  end
+
+  sig { params(value: T::Boolean).void }
+  def save_copy=(value)
+  end
+
+  sig { void }
+  def clear_save_copy
   end
 
   sig { params(field: String).returns(T.untyped) }

@@ -3078,6 +3078,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.IssueFromTemplateRequest"
     },
+    "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.IssueFromTemplateRequest"
+    },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id": {
       "type": "field",
       "collection": "fields",
@@ -4330,6 +4336,7 @@
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.values_json",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id",
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy",
         "services.verifiablecredentials.v1.IssueFromTemplateResponse.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
@@ -6432,7 +6439,8 @@
       "fields": [
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.values_json",
-        "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id"
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id",
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy"
       ],
       "messages": [],
       "enums": []
@@ -8893,6 +8901,14 @@
       "options": {
         "services.options.optional": true
       }
+    },
+    "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy": {
+      "name": "save_copy",
+      "full_name": "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Save a copy of the issued credential to this user's wallet. This copy will only contain\nthe credential data, but not the secret proof value. Issuers may use this data to\nkeep track of the details for revocation status."
     },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id": {
       "name": "template_id",
