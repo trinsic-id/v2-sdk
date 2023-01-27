@@ -1,4 +1,4 @@
-package trinsic.services.provider.v1;
+package trinsic.services.filemanagement.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -15,22 +15,22 @@ public final class FileManagementGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.UploadFileRequest,
-          trinsic.services.provider.v1.UploadFileResponse>
+          trinsic.services.filemanagement.v1.UploadFileRequest,
+          trinsic.services.filemanagement.v1.UploadFileResponse>
       getUploadFileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UploadFile",
-      requestType = trinsic.services.provider.v1.UploadFileRequest.class,
-      responseType = trinsic.services.provider.v1.UploadFileResponse.class,
+      requestType = trinsic.services.filemanagement.v1.UploadFileRequest.class,
+      responseType = trinsic.services.filemanagement.v1.UploadFileResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.UploadFileRequest,
-          trinsic.services.provider.v1.UploadFileResponse>
+          trinsic.services.filemanagement.v1.UploadFileRequest,
+          trinsic.services.filemanagement.v1.UploadFileResponse>
       getUploadFileMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.UploadFileRequest,
-            trinsic.services.provider.v1.UploadFileResponse>
+            trinsic.services.filemanagement.v1.UploadFileRequest,
+            trinsic.services.filemanagement.v1.UploadFileResponse>
         getUploadFileMethod;
     if ((getUploadFileMethod = FileManagementGrpc.getUploadFileMethod) == null) {
       synchronized (FileManagementGrpc.class) {
@@ -38,18 +38,20 @@ public final class FileManagementGrpc {
           FileManagementGrpc.getUploadFileMethod =
               getUploadFileMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.UploadFileRequest,
-                          trinsic.services.provider.v1.UploadFileResponse>
+                      .<trinsic.services.filemanagement.v1.UploadFileRequest,
+                          trinsic.services.filemanagement.v1.UploadFileResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UploadFile"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.UploadFileRequest.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.UploadFileRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.UploadFileResponse.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.UploadFileResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(new FileManagementMethodDescriptorSupplier("UploadFile"))
                       .build();
         }
@@ -59,20 +61,22 @@ public final class FileManagementGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.GetFileRequest, trinsic.services.provider.v1.GetFileResponse>
+          trinsic.services.filemanagement.v1.GetFileRequest,
+          trinsic.services.filemanagement.v1.GetFileResponse>
       getGetFileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetFile",
-      requestType = trinsic.services.provider.v1.GetFileRequest.class,
-      responseType = trinsic.services.provider.v1.GetFileResponse.class,
+      requestType = trinsic.services.filemanagement.v1.GetFileRequest.class,
+      responseType = trinsic.services.filemanagement.v1.GetFileResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.GetFileRequest, trinsic.services.provider.v1.GetFileResponse>
+          trinsic.services.filemanagement.v1.GetFileRequest,
+          trinsic.services.filemanagement.v1.GetFileResponse>
       getGetFileMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.GetFileRequest,
-            trinsic.services.provider.v1.GetFileResponse>
+            trinsic.services.filemanagement.v1.GetFileRequest,
+            trinsic.services.filemanagement.v1.GetFileResponse>
         getGetFileMethod;
     if ((getGetFileMethod = FileManagementGrpc.getGetFileMethod) == null) {
       synchronized (FileManagementGrpc.class) {
@@ -80,18 +84,20 @@ public final class FileManagementGrpc {
           FileManagementGrpc.getGetFileMethod =
               getGetFileMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.GetFileRequest,
-                          trinsic.services.provider.v1.GetFileResponse>
+                      .<trinsic.services.filemanagement.v1.GetFileRequest,
+                          trinsic.services.filemanagement.v1.GetFileResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetFile"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.GetFileRequest.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.GetFileRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.GetFileResponse.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.GetFileResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(new FileManagementMethodDescriptorSupplier("GetFile"))
                       .build();
         }
@@ -101,22 +107,22 @@ public final class FileManagementGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.DeleteFileRequest,
-          trinsic.services.provider.v1.DeleteFileResponse>
+          trinsic.services.filemanagement.v1.DeleteFileRequest,
+          trinsic.services.filemanagement.v1.DeleteFileResponse>
       getDeleteFileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "DeleteFile",
-      requestType = trinsic.services.provider.v1.DeleteFileRequest.class,
-      responseType = trinsic.services.provider.v1.DeleteFileResponse.class,
+      requestType = trinsic.services.filemanagement.v1.DeleteFileRequest.class,
+      responseType = trinsic.services.filemanagement.v1.DeleteFileResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.DeleteFileRequest,
-          trinsic.services.provider.v1.DeleteFileResponse>
+          trinsic.services.filemanagement.v1.DeleteFileRequest,
+          trinsic.services.filemanagement.v1.DeleteFileResponse>
       getDeleteFileMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.DeleteFileRequest,
-            trinsic.services.provider.v1.DeleteFileResponse>
+            trinsic.services.filemanagement.v1.DeleteFileRequest,
+            trinsic.services.filemanagement.v1.DeleteFileResponse>
         getDeleteFileMethod;
     if ((getDeleteFileMethod = FileManagementGrpc.getDeleteFileMethod) == null) {
       synchronized (FileManagementGrpc.class) {
@@ -124,18 +130,20 @@ public final class FileManagementGrpc {
           FileManagementGrpc.getDeleteFileMethod =
               getDeleteFileMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.DeleteFileRequest,
-                          trinsic.services.provider.v1.DeleteFileResponse>
+                      .<trinsic.services.filemanagement.v1.DeleteFileRequest,
+                          trinsic.services.filemanagement.v1.DeleteFileResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteFile"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.DeleteFileRequest.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.DeleteFileRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.DeleteFileResponse.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.DeleteFileResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(new FileManagementMethodDescriptorSupplier("DeleteFile"))
                       .build();
         }
@@ -145,22 +153,22 @@ public final class FileManagementGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.ListFilesRequest,
-          trinsic.services.provider.v1.ListFilesResponse>
+          trinsic.services.filemanagement.v1.ListFilesRequest,
+          trinsic.services.filemanagement.v1.ListFilesResponse>
       getListFilesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListFiles",
-      requestType = trinsic.services.provider.v1.ListFilesRequest.class,
-      responseType = trinsic.services.provider.v1.ListFilesResponse.class,
+      requestType = trinsic.services.filemanagement.v1.ListFilesRequest.class,
+      responseType = trinsic.services.filemanagement.v1.ListFilesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.ListFilesRequest,
-          trinsic.services.provider.v1.ListFilesResponse>
+          trinsic.services.filemanagement.v1.ListFilesRequest,
+          trinsic.services.filemanagement.v1.ListFilesResponse>
       getListFilesMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.ListFilesRequest,
-            trinsic.services.provider.v1.ListFilesResponse>
+            trinsic.services.filemanagement.v1.ListFilesRequest,
+            trinsic.services.filemanagement.v1.ListFilesResponse>
         getListFilesMethod;
     if ((getListFilesMethod = FileManagementGrpc.getListFilesMethod) == null) {
       synchronized (FileManagementGrpc.class) {
@@ -168,18 +176,20 @@ public final class FileManagementGrpc {
           FileManagementGrpc.getListFilesMethod =
               getListFilesMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.ListFilesRequest,
-                          trinsic.services.provider.v1.ListFilesResponse>
+                      .<trinsic.services.filemanagement.v1.ListFilesRequest,
+                          trinsic.services.filemanagement.v1.ListFilesResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListFiles"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.ListFilesRequest.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.ListFilesRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.ListFilesResponse.getDefaultInstance()))
+                              trinsic.services.filemanagement.v1.ListFilesResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(new FileManagementMethodDescriptorSupplier("ListFiles"))
                       .build();
         }
@@ -189,22 +199,22 @@ public final class FileManagementGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.GetStorageStatsRequest,
-          trinsic.services.provider.v1.GetStorageStatsResponse>
+          trinsic.services.filemanagement.v1.GetStorageStatsRequest,
+          trinsic.services.filemanagement.v1.GetStorageStatsResponse>
       getGetStorageStatsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetStorageStats",
-      requestType = trinsic.services.provider.v1.GetStorageStatsRequest.class,
-      responseType = trinsic.services.provider.v1.GetStorageStatsResponse.class,
+      requestType = trinsic.services.filemanagement.v1.GetStorageStatsRequest.class,
+      responseType = trinsic.services.filemanagement.v1.GetStorageStatsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.GetStorageStatsRequest,
-          trinsic.services.provider.v1.GetStorageStatsResponse>
+          trinsic.services.filemanagement.v1.GetStorageStatsRequest,
+          trinsic.services.filemanagement.v1.GetStorageStatsResponse>
       getGetStorageStatsMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.GetStorageStatsRequest,
-            trinsic.services.provider.v1.GetStorageStatsResponse>
+            trinsic.services.filemanagement.v1.GetStorageStatsRequest,
+            trinsic.services.filemanagement.v1.GetStorageStatsResponse>
         getGetStorageStatsMethod;
     if ((getGetStorageStatsMethod = FileManagementGrpc.getGetStorageStatsMethod) == null) {
       synchronized (FileManagementGrpc.class) {
@@ -212,19 +222,19 @@ public final class FileManagementGrpc {
           FileManagementGrpc.getGetStorageStatsMethod =
               getGetStorageStatsMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.GetStorageStatsRequest,
-                          trinsic.services.provider.v1.GetStorageStatsResponse>
+                      .<trinsic.services.filemanagement.v1.GetStorageStatsRequest,
+                          trinsic.services.filemanagement.v1.GetStorageStatsResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetStorageStats"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.GetStorageStatsRequest
+                              trinsic.services.filemanagement.v1.GetStorageStatsRequest
                                   .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.GetStorageStatsResponse
+                              trinsic.services.filemanagement.v1.GetStorageStatsResponse
                                   .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new FileManagementMethodDescriptorSupplier("GetStorageStats"))
@@ -287,8 +297,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void uploadFile(
-        trinsic.services.provider.v1.UploadFileRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UploadFileResponse>
+        trinsic.services.filemanagement.v1.UploadFileRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.UploadFileResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUploadFileMethod(), responseObserver);
     }
@@ -301,8 +311,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void getFile(
-        trinsic.services.provider.v1.GetFileRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetFileResponse>
+        trinsic.services.filemanagement.v1.GetFileRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.GetFileResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetFileMethod(), responseObserver);
     }
@@ -315,8 +325,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void deleteFile(
-        trinsic.services.provider.v1.DeleteFileRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.DeleteFileResponse>
+        trinsic.services.filemanagement.v1.DeleteFileRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.DeleteFileResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteFileMethod(), responseObserver);
     }
@@ -329,8 +339,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void listFiles(
-        trinsic.services.provider.v1.ListFilesRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.ListFilesResponse>
+        trinsic.services.filemanagement.v1.ListFilesRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.ListFilesResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListFilesMethod(), responseObserver);
     }
@@ -343,8 +353,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void getStorageStats(
-        trinsic.services.provider.v1.GetStorageStatsRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetStorageStatsResponse>
+        trinsic.services.filemanagement.v1.GetStorageStatsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.GetStorageStatsResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getGetStorageStatsMethod(), responseObserver);
@@ -357,32 +367,35 @@ public final class FileManagementGrpc {
               getUploadFileMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.provider.v1.UploadFileRequest,
-                      trinsic.services.provider.v1.UploadFileResponse>(this, METHODID_UPLOAD_FILE)))
+                      trinsic.services.filemanagement.v1.UploadFileRequest,
+                      trinsic.services.filemanagement.v1.UploadFileResponse>(
+                      this, METHODID_UPLOAD_FILE)))
           .addMethod(
               getGetFileMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.provider.v1.GetFileRequest,
-                      trinsic.services.provider.v1.GetFileResponse>(this, METHODID_GET_FILE)))
+                      trinsic.services.filemanagement.v1.GetFileRequest,
+                      trinsic.services.filemanagement.v1.GetFileResponse>(this, METHODID_GET_FILE)))
           .addMethod(
               getDeleteFileMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.provider.v1.DeleteFileRequest,
-                      trinsic.services.provider.v1.DeleteFileResponse>(this, METHODID_DELETE_FILE)))
+                      trinsic.services.filemanagement.v1.DeleteFileRequest,
+                      trinsic.services.filemanagement.v1.DeleteFileResponse>(
+                      this, METHODID_DELETE_FILE)))
           .addMethod(
               getListFilesMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.provider.v1.ListFilesRequest,
-                      trinsic.services.provider.v1.ListFilesResponse>(this, METHODID_LIST_FILES)))
+                      trinsic.services.filemanagement.v1.ListFilesRequest,
+                      trinsic.services.filemanagement.v1.ListFilesResponse>(
+                      this, METHODID_LIST_FILES)))
           .addMethod(
               getGetStorageStatsMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.provider.v1.GetStorageStatsRequest,
-                      trinsic.services.provider.v1.GetStorageStatsResponse>(
+                      trinsic.services.filemanagement.v1.GetStorageStatsRequest,
+                      trinsic.services.filemanagement.v1.GetStorageStatsResponse>(
                       this, METHODID_GET_STORAGE_STATS)))
           .build();
     }
@@ -408,8 +421,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void uploadFile(
-        trinsic.services.provider.v1.UploadFileRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UploadFileResponse>
+        trinsic.services.filemanagement.v1.UploadFileRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.UploadFileResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUploadFileMethod(), getCallOptions()), request, responseObserver);
@@ -423,8 +436,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void getFile(
-        trinsic.services.provider.v1.GetFileRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetFileResponse>
+        trinsic.services.filemanagement.v1.GetFileRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.GetFileResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetFileMethod(), getCallOptions()), request, responseObserver);
@@ -438,8 +451,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void deleteFile(
-        trinsic.services.provider.v1.DeleteFileRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.DeleteFileResponse>
+        trinsic.services.filemanagement.v1.DeleteFileRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.DeleteFileResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteFileMethod(), getCallOptions()), request, responseObserver);
@@ -453,8 +466,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void listFiles(
-        trinsic.services.provider.v1.ListFilesRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.ListFilesResponse>
+        trinsic.services.filemanagement.v1.ListFilesRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.ListFilesResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListFilesMethod(), getCallOptions()), request, responseObserver);
@@ -468,8 +481,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public void getStorageStats(
-        trinsic.services.provider.v1.GetStorageStatsRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetStorageStatsResponse>
+        trinsic.services.filemanagement.v1.GetStorageStatsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.GetStorageStatsResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetStorageStatsMethod(), getCallOptions()),
@@ -498,8 +511,8 @@ public final class FileManagementGrpc {
      * Upload a file to Trinsic's CDN
      * </pre>
      */
-    public trinsic.services.provider.v1.UploadFileResponse uploadFile(
-        trinsic.services.provider.v1.UploadFileRequest request) {
+    public trinsic.services.filemanagement.v1.UploadFileResponse uploadFile(
+        trinsic.services.filemanagement.v1.UploadFileRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUploadFileMethod(), getCallOptions(), request);
     }
@@ -511,8 +524,8 @@ public final class FileManagementGrpc {
      * Fetch information about a file by its ID
      * </pre>
      */
-    public trinsic.services.provider.v1.GetFileResponse getFile(
-        trinsic.services.provider.v1.GetFileRequest request) {
+    public trinsic.services.filemanagement.v1.GetFileResponse getFile(
+        trinsic.services.filemanagement.v1.GetFileRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetFileMethod(), getCallOptions(), request);
     }
@@ -524,8 +537,8 @@ public final class FileManagementGrpc {
      * Delete a file by its ID
      * </pre>
      */
-    public trinsic.services.provider.v1.DeleteFileResponse deleteFile(
-        trinsic.services.provider.v1.DeleteFileRequest request) {
+    public trinsic.services.filemanagement.v1.DeleteFileResponse deleteFile(
+        trinsic.services.filemanagement.v1.DeleteFileRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteFileMethod(), getCallOptions(), request);
     }
@@ -537,8 +550,8 @@ public final class FileManagementGrpc {
      * List files the calling account has uploaded
      * </pre>
      */
-    public trinsic.services.provider.v1.ListFilesResponse listFiles(
-        trinsic.services.provider.v1.ListFilesRequest request) {
+    public trinsic.services.filemanagement.v1.ListFilesResponse listFiles(
+        trinsic.services.filemanagement.v1.ListFilesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListFilesMethod(), getCallOptions(), request);
     }
@@ -550,8 +563,8 @@ public final class FileManagementGrpc {
      * Get statistics about files uploaded by the calling account
      * </pre>
      */
-    public trinsic.services.provider.v1.GetStorageStatsResponse getStorageStats(
-        trinsic.services.provider.v1.GetStorageStatsRequest request) {
+    public trinsic.services.filemanagement.v1.GetStorageStatsResponse getStorageStats(
+        trinsic.services.filemanagement.v1.GetStorageStatsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetStorageStatsMethod(), getCallOptions(), request);
     }
@@ -578,8 +591,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.UploadFileResponse>
-        uploadFile(trinsic.services.provider.v1.UploadFileRequest request) {
+            trinsic.services.filemanagement.v1.UploadFileResponse>
+        uploadFile(trinsic.services.filemanagement.v1.UploadFileRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUploadFileMethod(), getCallOptions()), request);
     }
@@ -592,8 +605,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.GetFileResponse>
-        getFile(trinsic.services.provider.v1.GetFileRequest request) {
+            trinsic.services.filemanagement.v1.GetFileResponse>
+        getFile(trinsic.services.filemanagement.v1.GetFileRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetFileMethod(), getCallOptions()), request);
     }
@@ -606,8 +619,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.DeleteFileResponse>
-        deleteFile(trinsic.services.provider.v1.DeleteFileRequest request) {
+            trinsic.services.filemanagement.v1.DeleteFileResponse>
+        deleteFile(trinsic.services.filemanagement.v1.DeleteFileRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteFileMethod(), getCallOptions()), request);
     }
@@ -620,8 +633,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.ListFilesResponse>
-        listFiles(trinsic.services.provider.v1.ListFilesRequest request) {
+            trinsic.services.filemanagement.v1.ListFilesResponse>
+        listFiles(trinsic.services.filemanagement.v1.ListFilesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListFilesMethod(), getCallOptions()), request);
     }
@@ -634,8 +647,8 @@ public final class FileManagementGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.GetStorageStatsResponse>
-        getStorageStats(trinsic.services.provider.v1.GetStorageStatsRequest request) {
+            trinsic.services.filemanagement.v1.GetStorageStatsResponse>
+        getStorageStats(trinsic.services.filemanagement.v1.GetStorageStatsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetStorageStatsMethod(), getCallOptions()), request);
     }
@@ -666,32 +679,33 @@ public final class FileManagementGrpc {
       switch (methodId) {
         case METHODID_UPLOAD_FILE:
           serviceImpl.uploadFile(
-              (trinsic.services.provider.v1.UploadFileRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UploadFileResponse>)
+              (trinsic.services.filemanagement.v1.UploadFileRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.UploadFileResponse>)
                   responseObserver);
           break;
         case METHODID_GET_FILE:
           serviceImpl.getFile(
-              (trinsic.services.provider.v1.GetFileRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetFileResponse>)
+              (trinsic.services.filemanagement.v1.GetFileRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.GetFileResponse>)
                   responseObserver);
           break;
         case METHODID_DELETE_FILE:
           serviceImpl.deleteFile(
-              (trinsic.services.provider.v1.DeleteFileRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.DeleteFileResponse>)
+              (trinsic.services.filemanagement.v1.DeleteFileRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.DeleteFileResponse>)
                   responseObserver);
           break;
         case METHODID_LIST_FILES:
           serviceImpl.listFiles(
-              (trinsic.services.provider.v1.ListFilesRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.ListFilesResponse>)
+              (trinsic.services.filemanagement.v1.ListFilesRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.filemanagement.v1.ListFilesResponse>)
                   responseObserver);
           break;
         case METHODID_GET_STORAGE_STATS:
           serviceImpl.getStorageStats(
-              (trinsic.services.provider.v1.GetStorageStatsRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetStorageStatsResponse>)
+              (trinsic.services.filemanagement.v1.GetStorageStatsRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.filemanagement.v1.GetStorageStatsResponse>)
                   responseObserver);
           break;
         default:
@@ -717,7 +731,7 @@ public final class FileManagementGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return trinsic.services.provider.v1.FileManagementOuterClass.getDescriptor();
+      return trinsic.services.filemanagement.v1.FileManagementOuterClass.getDescriptor();
     }
 
     @java.lang.Override

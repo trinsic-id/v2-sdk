@@ -4,7 +4,7 @@
 // - protoc             v3.20.3
 // source: services/file-management/v1/file-management.proto
 
-package provider
+package filemanagement
 
 import (
 	context "context"
