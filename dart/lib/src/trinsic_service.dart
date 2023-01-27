@@ -34,7 +34,7 @@ class TrinsicService extends ServiceBase {
   FileManagementService fileManagement() {
     _fileManagementService ??=
         FileManagementService(serviceOptions, tokenProvider);
-    return _fileManagementService;
+    return _fileManagementService!;
   }
 
   ProviderService provider() {
