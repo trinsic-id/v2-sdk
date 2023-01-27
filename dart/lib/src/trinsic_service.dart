@@ -7,6 +7,7 @@ class TrinsicService extends ServiceBase {
   AccessManagementService? _accessManagementService;
   AccountService? _accountService;
   CredentialService? _credentialService;
+  FileManagementService? _fileManagementService;
   ProviderService? _providerService;
   TemplateService? _templateService;
   TrustRegistryService? _trustRegistryService;
@@ -28,6 +29,12 @@ class TrinsicService extends ServiceBase {
   CredentialService credential() {
     _credentialService ??= CredentialService(serviceOptions, tokenProvider);
     return _credentialService!;
+  }
+
+  FileManagementService fileManagement() {
+    _fileManagementService ??=
+        FileManagementService(serviceOptions, tokenProvider);
+    return _fileManagementService;
   }
 
   ProviderService provider() {

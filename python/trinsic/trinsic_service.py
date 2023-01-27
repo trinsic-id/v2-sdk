@@ -3,6 +3,7 @@ from functools import cached_property
 from trinsic.access_management_service import AccessManagementService
 from trinsic.account_service import AccountService
 from trinsic.credential_service import CredentialService
+from trinsic.file_management_service import FileManagementService
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.provider_service import ProviderService
 from trinsic.security_providers import ITokenProvider
@@ -25,6 +26,7 @@ class TrinsicService(ServiceBase):
         # TODO - Channel management
         self.account.close()
         self.credential.close()
+        self.file_management.close()
         self.template.close()
         self.provider.close()
         self.trust_registry.close()
@@ -45,6 +47,12 @@ class TrinsicService(ServiceBase):
     @cached_property
     def credential(self) -> CredentialService:
         return CredentialService(
+            server_config=self.service_options, token_provider=self.token_provider
+        )
+
+    @cached_property
+    def file_management(self) -> FileManagementService:
+        return FileManagementService(
             server_config=self.service_options, token_provider=self.token_provider
         )
 

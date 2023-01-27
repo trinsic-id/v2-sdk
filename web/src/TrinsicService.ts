@@ -7,11 +7,13 @@ import { ProviderService } from "./ProviderService";
 import { TrustRegistryService } from "./TrustRegistryService";
 import { WalletService } from "./WalletService";
 import { AccessManagementService } from "./AccessManagementService";
+import { FileManagementService } from "./FileManagementService";
 
 export class TrinsicService extends ServiceBase {
     private _access: AccessManagementService | undefined;
     private _account: AccountService | undefined;
     private _credential: CredentialService | undefined;
+    private _fileManagement: FileManagementService | undefined;
     private _provider: ProviderService | undefined;
     private _template: TemplateService | undefined;
     private _trustRegistry: TrustRegistryService | undefined;
@@ -39,6 +41,13 @@ export class TrinsicService extends ServiceBase {
             this._credential || new CredentialService(this.options);
         this._credential.options = this.options;
         return this._credential!;
+    }
+
+    public fileManagement(): FileManagementService {
+        this._fileManagement = 
+            this._fileManagement || new FileManagementService(this.options);
+        this._fileManagement.options = this.options;
+        return this._fileManagement!;
     }
 
     public provider(): ProviderService {
