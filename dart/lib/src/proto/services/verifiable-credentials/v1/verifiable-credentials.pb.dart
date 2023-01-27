@@ -168,6 +168,11 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'frameworkId')
+    ..aOB(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'saveCopy')
     ..hasRequiredFields = false;
 
   IssueFromTemplateRequest._() : super();
@@ -175,6 +180,7 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
     $core.String? templateId,
     $core.String? valuesJson,
     $core.String? frameworkId,
+    $core.bool? saveCopy,
   }) {
     final _result = create();
     if (templateId != null) {
@@ -185,6 +191,9 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
     }
     if (frameworkId != null) {
       _result.frameworkId = frameworkId;
+    }
+    if (saveCopy != null) {
+      _result.saveCopy = saveCopy;
     }
     return _result;
   }
@@ -252,6 +261,18 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   $core.bool hasFrameworkId() => $_has(2);
   @$pb.TagNumber(3)
   void clearFrameworkId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.bool get saveCopy => $_getBF(3);
+  @$pb.TagNumber(4)
+  set saveCopy($core.bool v) {
+    $_setBool(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasSaveCopy() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSaveCopy() => clearField(4);
 }
 
 class IssueFromTemplateResponse extends $pb.GeneratedMessage {

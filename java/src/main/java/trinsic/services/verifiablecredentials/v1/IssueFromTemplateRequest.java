@@ -207,6 +207,26 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     }
   }
 
+  public static final int SAVE_COPY_FIELD_NUMBER = 4;
+  private boolean saveCopy_;
+  /**
+   *
+   *
+   * <pre>
+   * Save a copy of the issued credential to this user's wallet. This copy will only contain
+   * the credential data, but not the secret proof value. Issuers may use this data to
+   * keep track of the details for revocation status.
+   * </pre>
+   *
+   * <code>bool save_copy = 4;</code>
+   *
+   * @return The saveCopy.
+   */
+  @java.lang.Override
+  public boolean getSaveCopy() {
+    return saveCopy_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -230,6 +250,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, frameworkId_);
     }
+    if (saveCopy_ != false) {
+      output.writeBool(4, saveCopy_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -247,6 +270,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, frameworkId_);
+    }
+    if (saveCopy_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, saveCopy_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -267,6 +293,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (!getTemplateId().equals(other.getTemplateId())) return false;
     if (!getValuesJson().equals(other.getValuesJson())) return false;
     if (!getFrameworkId().equals(other.getFrameworkId())) return false;
+    if (getSaveCopy() != other.getSaveCopy()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -284,6 +311,8 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     hash = (53 * hash) + getValuesJson().hashCode();
     hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
     hash = (53 * hash) + getFrameworkId().hashCode();
+    hash = (37 * hash) + SAVE_COPY_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getSaveCopy());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -431,6 +460,8 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
       frameworkId_ = "";
 
+      saveCopy_ = false;
+
       return this;
     }
 
@@ -463,6 +494,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       result.templateId_ = templateId_;
       result.valuesJson_ = valuesJson_;
       result.frameworkId_ = frameworkId_;
+      result.saveCopy_ = saveCopy_;
       onBuilt();
       return result;
     }
@@ -528,6 +560,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
         frameworkId_ = other.frameworkId_;
         onChanged();
       }
+      if (other.getSaveCopy() != false) {
+        setSaveCopy(other.getSaveCopy());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -572,6 +607,12 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
                 break;
               } // case 26
+            case 32:
+              {
+                saveCopy_ = input.readBool();
+
+                break;
+              } // case 32
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -918,6 +959,64 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       checkByteStringIsUtf8(value);
 
       frameworkId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean saveCopy_;
+    /**
+     *
+     *
+     * <pre>
+     * Save a copy of the issued credential to this user's wallet. This copy will only contain
+     * the credential data, but not the secret proof value. Issuers may use this data to
+     * keep track of the details for revocation status.
+     * </pre>
+     *
+     * <code>bool save_copy = 4;</code>
+     *
+     * @return The saveCopy.
+     */
+    @java.lang.Override
+    public boolean getSaveCopy() {
+      return saveCopy_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Save a copy of the issued credential to this user's wallet. This copy will only contain
+     * the credential data, but not the secret proof value. Issuers may use this data to
+     * keep track of the details for revocation status.
+     * </pre>
+     *
+     * <code>bool save_copy = 4;</code>
+     *
+     * @param value The saveCopy to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSaveCopy(boolean value) {
+
+      saveCopy_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Save a copy of the issued credential to this user's wallet. This copy will only contain
+     * the credential data, but not the secret proof value. Issuers may use this data to
+     * keep track of the details for revocation status.
+     * </pre>
+     *
+     * <code>bool save_copy = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearSaveCopy() {
+
+      saveCopy_ = false;
       onChanged();
       return this;
     }
