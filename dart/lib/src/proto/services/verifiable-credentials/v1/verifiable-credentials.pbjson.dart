@@ -51,13 +51,14 @@ const IssueFromTemplateRequest$json = const {
       '8': const {},
       '10': 'frameworkId'
     },
+    const {'1': 'save_copy', '3': 4, '4': 1, '5': 8, '10': 'saveCopy'},
   ],
 };
 
 /// Descriptor for `IssueFromTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List issueFromTemplateRequestDescriptor =
     $convert.base64Decode(
-        'ChhJc3N1ZUZyb21UZW1wbGF0ZVJlcXVlc3QSHwoLdGVtcGxhdGVfaWQYASABKAlSCnRlbXBsYXRlSWQSHwoLdmFsdWVzX2pzb24YAiABKAlSCnZhbHVlc0pzb24SJwoMZnJhbWV3b3JrX2lkGAMgASgJQgSAph0BUgtmcmFtZXdvcmtJZA==');
+        'ChhJc3N1ZUZyb21UZW1wbGF0ZVJlcXVlc3QSHwoLdGVtcGxhdGVfaWQYASABKAlSCnRlbXBsYXRlSWQSHwoLdmFsdWVzX2pzb24YAiABKAlSCnZhbHVlc0pzb24SJwoMZnJhbWV3b3JrX2lkGAMgASgJQgSAph0BUgtmcmFtZXdvcmtJZBIbCglzYXZlX2NvcHkYBCABKAhSCHNhdmVDb3B5');
 @$core.Deprecated('Use issueFromTemplateResponseDescriptor instead')
 const IssueFromTemplateResponse$json = const {
   '1': 'IssueFromTemplateResponse',

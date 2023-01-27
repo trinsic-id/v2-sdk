@@ -31,6 +31,12 @@ export interface IssueFromTemplateRequest {
    * metadata with membership info for the given ecosystem governance framework (EGF)
    */
   frameworkId?: string;
+  /**
+   * Save a copy of the issued credential to this user's wallet. This copy will only contain
+   * the credential data, but not the secret proof value. Issuers may use this data to
+   * keep track of the details for revocation status.
+   */
+  saveCopy?: boolean;
 }
 
 /** Response to `IssueFromTemplateRequest` */
@@ -277,7 +283,7 @@ export const IssueResponse = {
 };
 
 function createBaseIssueFromTemplateRequest(): IssueFromTemplateRequest {
-  return { templateId: "", valuesJson: "", frameworkId: "" };
+  return { templateId: "", valuesJson: "", frameworkId: "", saveCopy: false };
 }
 
 export const IssueFromTemplateRequest = {
@@ -293,6 +299,9 @@ export const IssueFromTemplateRequest = {
     }
     if (message.frameworkId !== undefined && message.frameworkId !== "") {
       writer.uint32(26).string(message.frameworkId);
+    }
+    if (message.saveCopy === true) {
+      writer.uint32(32).bool(message.saveCopy);
     }
     return writer;
   },
@@ -316,6 +325,9 @@ export const IssueFromTemplateRequest = {
         case 3:
           message.frameworkId = reader.string();
           break;
+        case 4:
+          message.saveCopy = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -329,6 +341,7 @@ export const IssueFromTemplateRequest = {
       templateId: isSet(object.templateId) ? String(object.templateId) : "",
       valuesJson: isSet(object.valuesJson) ? String(object.valuesJson) : "",
       frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
+      saveCopy: isSet(object.saveCopy) ? Boolean(object.saveCopy) : false,
     };
   },
 
@@ -338,6 +351,7 @@ export const IssueFromTemplateRequest = {
     message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
     message.frameworkId !== undefined &&
       (obj.frameworkId = message.frameworkId);
+    message.saveCopy !== undefined && (obj.saveCopy = message.saveCopy);
     return obj;
   },
 
@@ -348,6 +362,7 @@ export const IssueFromTemplateRequest = {
     message.templateId = object.templateId ?? "";
     message.valuesJson = object.valuesJson ?? "";
     message.frameworkId = object.frameworkId ?? "";
+    message.saveCopy = object.saveCopy ?? false;
     return message;
   },
 };

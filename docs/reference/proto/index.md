@@ -53,6 +53,7 @@ Request to create a new template
 ### CreateCredentialTemplateRequest.FieldsEntry
 
 
+
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | key | [string](/reference/proto#string) |  |
@@ -452,6 +453,7 @@ Request to create and sign a JSON-LD Verifiable Credential from a template using
 | template_id | [string](/reference/proto#string) | ID of template to use |
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | framework_id | [string](/reference/proto#string) | Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF) |
+| save_copy | [bool](/reference/proto#bool) | Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status. |
 
 
 
