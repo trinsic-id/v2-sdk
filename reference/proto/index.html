@@ -4920,6 +4920,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td><a href="/reference/proto#string">string</a></td>
 <td>Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF)</td>
 </tr>
+<tr>
+<td>save_copy</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-verifiablecredentials-v1-IssueFromTemplateResponse"></a></p>
