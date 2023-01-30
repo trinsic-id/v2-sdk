@@ -28,3 +28,12 @@ class SdkTemplateOption(betterproto.Message):
     arguments, eg ProviderService.GetEcosystemInfo() where the request object
     is empty
     """
+
+    experimental: bool = betterproto.bool_field(4)
+    """
+    This endpoint is experimental. Consider it in beta, so documentation may be
+    incomplete or incorrect.
+    """
+
+    deprecated: bool = betterproto.bool_field(5)
+    """This endpoint is deprecated. It will be removed in the future."""

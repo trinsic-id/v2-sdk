@@ -750,6 +750,18 @@
       "file": "services/options/field-options.proto",
       "parent": "services.options.SdkTemplateOption"
     },
+    "services.options.SdkTemplateOption.deprecated": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.SdkTemplateOption"
+    },
+    "services.options.SdkTemplateOption.experimental": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.SdkTemplateOption"
+    },
     "services.options.SdkTemplateOption.ignore": {
       "type": "field",
       "collection": "fields",
@@ -3837,7 +3849,9 @@
       "fields": [
         "services.options.SdkTemplateOption.anonymous",
         "services.options.SdkTemplateOption.ignore",
-        "services.options.SdkTemplateOption.no_arguments"
+        "services.options.SdkTemplateOption.no_arguments",
+        "services.options.SdkTemplateOption.experimental",
+        "services.options.SdkTemplateOption.deprecated"
       ],
       "enums": [],
       "enum_values": []
@@ -4602,14 +4616,20 @@
       "full_name": "services.provider.v1.AccessManagement.ListRoleAssignments",
       "input_type": "services.provider.v1.ListRoleAssignmentsRequest",
       "output_type": "services.provider.v1.ListRoleAssignmentsResponse",
-      "description": "List the role assignments for the given account"
+      "description": "List the role assignments for the given account",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.AccessManagement.RemoveRoleAssignment": {
       "name": "RemoveRoleAssignment",
       "full_name": "services.provider.v1.AccessManagement.RemoveRoleAssignment",
       "input_type": "services.provider.v1.RemoveRoleAssignmentRequest",
       "output_type": "services.provider.v1.RemoveRoleAssignmentResponse",
-      "description": "Removes a role assignment from the account"
+      "description": "Removes a role assignment from the account",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.AddWebhook": {
       "name": "AddWebhook",
@@ -5277,7 +5297,9 @@
       "fields": [
         "services.options.SdkTemplateOption.anonymous",
         "services.options.SdkTemplateOption.ignore",
-        "services.options.SdkTemplateOption.no_arguments"
+        "services.options.SdkTemplateOption.no_arguments",
+        "services.options.SdkTemplateOption.experimental",
+        "services.options.SdkTemplateOption.deprecated"
       ],
       "messages": [],
       "enums": []
@@ -7192,6 +7214,22 @@
       "type": "bool",
       "full_type": "bool",
       "description": "Whether the service endpoint allows anonymous (no auth token necessary) authentication\nThis is used by the `protoc-gen-trinsic-sdk` plugin for metadata."
+    },
+    "services.options.SdkTemplateOption.deprecated": {
+      "name": "deprecated",
+      "full_name": "services.options.SdkTemplateOption.deprecated",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "This endpoint is deprecated. It will be removed in the future."
+    },
+    "services.options.SdkTemplateOption.experimental": {
+      "name": "experimental",
+      "full_name": "services.options.SdkTemplateOption.experimental",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect."
     },
     "services.options.SdkTemplateOption.ignore": {
       "name": "ignore",

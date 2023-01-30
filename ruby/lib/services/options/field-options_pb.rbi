@@ -31,13 +31,17 @@ class Services::Options::SdkTemplateOption
     params(
       anonymous: T.nilable(T::Boolean),
       ignore: T.nilable(T::Boolean),
-      no_arguments: T.nilable(T::Boolean)
+      no_arguments: T.nilable(T::Boolean),
+      experimental: T.nilable(T::Boolean),
+      deprecated: T.nilable(T::Boolean)
     ).void
   end
   def initialize(
     anonymous: false,
     ignore: false,
-    no_arguments: false
+    no_arguments: false,
+    experimental: false,
+    deprecated: false
   )
   end
 
@@ -75,6 +79,30 @@ class Services::Options::SdkTemplateOption
 
   sig { void }
   def clear_no_arguments
+  end
+
+  sig { returns(T::Boolean) }
+  def experimental
+  end
+
+  sig { params(value: T::Boolean).void }
+  def experimental=(value)
+  end
+
+  sig { void }
+  def clear_experimental
+  end
+
+  sig { returns(T::Boolean) }
+  def deprecated
+  end
+
+  sig { params(value: T::Boolean).void }
+  def deprecated=(value)
+  end
+
+  sig { void }
+  def clear_deprecated
   end
 
   sig { params(field: String).returns(T.untyped) }

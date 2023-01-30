@@ -17,10 +17,20 @@ export interface SdkTemplateOption {
    * ProviderService.GetEcosystemInfo() where the request object is empty
    */
   noArguments?: boolean;
+  /** This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. */
+  experimental?: boolean;
+  /** This endpoint is deprecated. It will be removed in the future. */
+  deprecated?: boolean;
 }
 
 function createBaseSdkTemplateOption(): SdkTemplateOption {
-  return { anonymous: false, ignore: false, noArguments: false };
+  return {
+    anonymous: false,
+    ignore: false,
+    noArguments: false,
+    experimental: false,
+    deprecated: false,
+  };
 }
 
 export const SdkTemplateOption = {
@@ -36,6 +46,12 @@ export const SdkTemplateOption = {
     }
     if (message.noArguments === true) {
       writer.uint32(24).bool(message.noArguments);
+    }
+    if (message.experimental === true) {
+      writer.uint32(32).bool(message.experimental);
+    }
+    if (message.deprecated === true) {
+      writer.uint32(40).bool(message.deprecated);
     }
     return writer;
   },
@@ -56,6 +72,12 @@ export const SdkTemplateOption = {
         case 3:
           message.noArguments = reader.bool();
           break;
+        case 4:
+          message.experimental = reader.bool();
+          break;
+        case 5:
+          message.deprecated = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -71,6 +93,10 @@ export const SdkTemplateOption = {
       noArguments: isSet(object.noArguments)
         ? Boolean(object.noArguments)
         : false,
+      experimental: isSet(object.experimental)
+        ? Boolean(object.experimental)
+        : false,
+      deprecated: isSet(object.deprecated) ? Boolean(object.deprecated) : false,
     };
   },
 
@@ -80,6 +106,9 @@ export const SdkTemplateOption = {
     message.ignore !== undefined && (obj.ignore = message.ignore);
     message.noArguments !== undefined &&
       (obj.noArguments = message.noArguments);
+    message.experimental !== undefined &&
+      (obj.experimental = message.experimental);
+    message.deprecated !== undefined && (obj.deprecated = message.deprecated);
     return obj;
   },
 
@@ -88,6 +117,8 @@ export const SdkTemplateOption = {
     message.anonymous = object.anonymous ?? false;
     message.ignore = object.ignore ?? false;
     message.noArguments = object.noArguments ?? false;
+    message.experimental = object.experimental ?? false;
+    message.deprecated = object.deprecated ?? false;
     return message;
   },
 };

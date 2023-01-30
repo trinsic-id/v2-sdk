@@ -38,9 +38,9 @@ public class TrinsicService extends ServiceBase {
   }
 
   public FileManagementService fileManagement() {
-      if(_fileManagementService == null)
-          _fileManagementService = new FileManagementService(this.getOptionsBuilder());
-      return _fileManagementService;
+    if (_fileManagementService == null)
+      _fileManagementService = new FileManagementService(this.getOptionsBuilder());
+    return _fileManagementService;
   }
 
   public TemplateService template() {

@@ -16,9 +16,11 @@ const SdkTemplateOption$json = const {
     const {'1': 'anonymous', '3': 1, '4': 1, '5': 8, '10': 'anonymous'},
     const {'1': 'ignore', '3': 2, '4': 1, '5': 8, '10': 'ignore'},
     const {'1': 'no_arguments', '3': 3, '4': 1, '5': 8, '10': 'noArguments'},
+    const {'1': 'experimental', '3': 4, '4': 1, '5': 8, '10': 'experimental'},
+    const {'1': 'deprecated', '3': 5, '4': 1, '5': 8, '10': 'deprecated'},
   ],
 };
 
 /// Descriptor for `SdkTemplateOption`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sdkTemplateOptionDescriptor = $convert.base64Decode(
-    'ChFTZGtUZW1wbGF0ZU9wdGlvbhIcCglhbm9ueW1vdXMYASABKAhSCWFub255bW91cxIWCgZpZ25vcmUYAiABKAhSBmlnbm9yZRIhCgxub19hcmd1bWVudHMYAyABKAhSC25vQXJndW1lbnRz');
+    'ChFTZGtUZW1wbGF0ZU9wdGlvbhIcCglhbm9ueW1vdXMYASABKAhSCWFub255bW91cxIWCgZpZ25vcmUYAiABKAhSBmlnbm9yZRIhCgxub19hcmd1bWVudHMYAyABKAhSC25vQXJndW1lbnRzEiIKDGV4cGVyaW1lbnRhbBgEIAEoCFIMZXhwZXJpbWVudGFsEh4KCmRlcHJlY2F0ZWQYBSABKAhSCmRlcHJlY2F0ZWQ=');

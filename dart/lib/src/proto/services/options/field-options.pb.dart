@@ -34,6 +34,16 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'noArguments')
+    ..aOB(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'experimental')
+    ..aOB(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'deprecated')
     ..hasRequiredFields = false;
 
   SdkTemplateOption._() : super();
@@ -41,6 +51,8 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
     $core.bool? anonymous,
     $core.bool? ignore,
     $core.bool? noArguments,
+    $core.bool? experimental,
+    $core.bool? deprecated,
   }) {
     final _result = create();
     if (anonymous != null) {
@@ -51,6 +63,12 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
     }
     if (noArguments != null) {
       _result.noArguments = noArguments;
+    }
+    if (experimental != null) {
+      _result.experimental = experimental;
+    }
+    if (deprecated != null) {
+      _result.deprecated = deprecated;
     }
     return _result;
   }
@@ -116,6 +134,30 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
   $core.bool hasNoArguments() => $_has(2);
   @$pb.TagNumber(3)
   void clearNoArguments() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.bool get experimental => $_getBF(3);
+  @$pb.TagNumber(4)
+  set experimental($core.bool v) {
+    $_setBool(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasExperimental() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearExperimental() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.bool get deprecated => $_getBF(4);
+  @$pb.TagNumber(5)
+  set deprecated($core.bool v) {
+    $_setBool(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasDeprecated() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDeprecated() => clearField(5);
 }
 
 class Field_options {

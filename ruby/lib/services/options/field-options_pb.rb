@@ -11,6 +11,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :anonymous, :bool, 1
       optional :ignore, :bool, 2
       optional :no_arguments, :bool, 3
+      optional :experimental, :bool, 4
+      optional :deprecated, :bool, 5
     end
   end
 end

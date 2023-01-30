@@ -49,4 +49,30 @@ public interface SdkTemplateOptionOrBuilder
    * @return The noArguments.
    */
   boolean getNoArguments();
+
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>bool experimental = 4;</code>
+   *
+   * @return The experimental.
+   */
+  boolean getExperimental();
+
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>bool deprecated = 5;</code>
+   *
+   * @return The deprecated.
+   */
+  boolean getDeprecated();
 }

@@ -99,6 +99,42 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     return noArguments_;
   }
 
+  public static final int EXPERIMENTAL_FIELD_NUMBER = 4;
+  private boolean experimental_;
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>bool experimental = 4;</code>
+   *
+   * @return The experimental.
+   */
+  @java.lang.Override
+  public boolean getExperimental() {
+    return experimental_;
+  }
+
+  public static final int DEPRECATED_FIELD_NUMBER = 5;
+  private boolean deprecated_;
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>bool deprecated = 5;</code>
+   *
+   * @return The deprecated.
+   */
+  @java.lang.Override
+  public boolean getDeprecated() {
+    return deprecated_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -122,6 +158,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (noArguments_ != false) {
       output.writeBool(3, noArguments_);
     }
+    if (experimental_ != false) {
+      output.writeBool(4, experimental_);
+    }
+    if (deprecated_ != false) {
+      output.writeBool(5, deprecated_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -139,6 +181,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     }
     if (noArguments_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, noArguments_);
+    }
+    if (experimental_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, experimental_);
+    }
+    if (deprecated_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(5, deprecated_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -159,6 +207,8 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (getAnonymous() != other.getAnonymous()) return false;
     if (getIgnore() != other.getIgnore()) return false;
     if (getNoArguments() != other.getNoArguments()) return false;
+    if (getExperimental() != other.getExperimental()) return false;
+    if (getDeprecated() != other.getDeprecated()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -176,6 +226,10 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIgnore());
     hash = (37 * hash) + NO_ARGUMENTS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getNoArguments());
+    hash = (37 * hash) + EXPERIMENTAL_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getExperimental());
+    hash = (37 * hash) + DEPRECATED_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getDeprecated());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -312,6 +366,10 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
       noArguments_ = false;
 
+      experimental_ = false;
+
+      deprecated_ = false;
+
       return this;
     }
 
@@ -342,6 +400,8 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       result.anonymous_ = anonymous_;
       result.ignore_ = ignore_;
       result.noArguments_ = noArguments_;
+      result.experimental_ = experimental_;
+      result.deprecated_ = deprecated_;
       onBuilt();
       return result;
     }
@@ -401,6 +461,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       if (other.getNoArguments() != false) {
         setNoArguments(other.getNoArguments());
       }
+      if (other.getExperimental() != false) {
+        setExperimental(other.getExperimental());
+      }
+      if (other.getDeprecated() != false) {
+        setDeprecated(other.getDeprecated());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -445,6 +511,18 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
                 break;
               } // case 24
+            case 32:
+              {
+                experimental_ = input.readBool();
+
+                break;
+              } // case 32
+            case 40:
+              {
+                deprecated_ = input.readBool();
+
+                break;
+              } // case 40
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -623,6 +701,110 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     public Builder clearNoArguments() {
 
       noArguments_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean experimental_;
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>bool experimental = 4;</code>
+     *
+     * @return The experimental.
+     */
+    @java.lang.Override
+    public boolean getExperimental() {
+      return experimental_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>bool experimental = 4;</code>
+     *
+     * @param value The experimental to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExperimental(boolean value) {
+
+      experimental_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>bool experimental = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearExperimental() {
+
+      experimental_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean deprecated_;
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>bool deprecated = 5;</code>
+     *
+     * @return The deprecated.
+     */
+    @java.lang.Override
+    public boolean getDeprecated() {
+      return deprecated_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>bool deprecated = 5;</code>
+     *
+     * @param value The deprecated to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDeprecated(boolean value) {
+
+      deprecated_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>bool deprecated = 5;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDeprecated() {
+
+      deprecated_ = false;
       onChanged();
       return this;
     }
