@@ -12,6 +12,7 @@ public class TrinsicService : ServiceBase
     private AccessManagementService? _accessManagement;
     private AccountService? _account;
     private CredentialService? _credential;
+    private FileManagementService? _fileManagement;
     private TemplateService? _template;
     private ProviderService? _provider;
     private TrustRegistryService? _trustRegistry;
@@ -19,27 +20,33 @@ public class TrinsicService : ServiceBase
 
 
     public TrinsicService(ServiceOptions options)
-        : base(options) {
+        : base(options)
+    {
     }
 
-    public TrinsicService() {
+    public TrinsicService()
+    {
     }
 
-    internal TrinsicService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+    internal TrinsicService(ITokenProvider tokenProvider) : base(new(), tokenProvider)
+    {
     }
 
     public TrinsicService(ITokenProvider tokenProvider, ServiceOptions options)
-        : base(options, tokenProvider) {
+        : base(options, tokenProvider)
+    {
     }
 
     internal TrinsicService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
+        : base(options.Value, tokenProvider)
+    {
     }
 
     /// <summary>
     /// Exposes Account Service functionality
     /// </summary>
-    public AccessManagementService AccessManagement => _accessManagement ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public AccessManagementService AccessManagement =>
+        _accessManagement ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Account Service functionality
@@ -50,6 +57,9 @@ public class TrinsicService : ServiceBase
     /// Exposes Credential Service functionality
     /// </summary>
     public CredentialService Credential => _credential ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+
+    public FileManagementService FileManagement =>
+        _fileManagement ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Template Service functionality
@@ -64,7 +74,8 @@ public class TrinsicService : ServiceBase
     /// <summary>
     /// Exposes Trust Registry Service functionality
     /// </summary>
-    public TrustRegistryService TrustRegistry => _trustRegistry ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public TrustRegistryService TrustRegistry =>
+        _trustRegistry ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Wallet Service functionality
@@ -76,7 +87,8 @@ public class TrinsicService : ServiceBase
     /// </summary>
     /// <param name="authToken">The new auth token to use</param>
     /// <returns></returns>
-    public TrinsicService SetAuthToken(string authToken) {
+    public TrinsicService SetAuthToken(string authToken)
+    {
         this.Options.AuthToken = authToken;
         return this;
     }

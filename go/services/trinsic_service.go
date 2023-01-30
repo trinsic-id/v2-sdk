@@ -2,6 +2,7 @@ package services
 
 import (
 	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+	"github.com/trinsic-id/sdk/go/proto/services/filemanagement/v1/filemanagement"
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 	"github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry"
 	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
@@ -12,12 +13,14 @@ import (
 type Trinsic struct {
 	Service
 
-	as *accountBase
-	cs *verifiableCredentialBase
-	ts *credentialTemplatesBase
-	ps *providerBase
-	tr *trustRegistryBase
-	ws *universalWalletBase
+	as  *accountBase
+	ams *accessManagementBase
+	cs  *verifiableCredentialBase
+	fms *fileManagementBase
+	ts  *credentialTemplatesBase
+	ps  *providerBase
+	tr  *trustRegistryBase
+	ws  *universalWalletBase
 }
 
 func NewTrinsic(options ...Option) (*Trinsic, error) {
@@ -32,6 +35,17 @@ func NewTrinsic(options ...Option) (*Trinsic, error) {
 	}
 
 	return &Trinsic{Service: base}, nil
+}
+
+func (t *Trinsic) AccessManagement() AccessManagementService {
+	if t.ams == nil {
+		t.ams = &accessManagementBase{
+			Service: t.Service,
+			client:  provider.NewAccessManagementClient(t.Service.GetChannel()),
+		}
+	}
+
+	return t.ams
 }
 
 func (t *Trinsic) Account() AccountService {
@@ -54,6 +68,17 @@ func (t *Trinsic) Credential() CredentialService {
 	}
 
 	return t.cs
+}
+
+func (t *Trinsic) FileManagement() FileManagementService {
+	if t.fms == nil {
+		t.fms = &fileManagementBase{
+			Service: t.Service,
+			client:  filemanagement.NewFileManagementClient(t.Service.GetChannel()),
+		}
+	}
+
+	return t.fms
 }
 
 func (t *Trinsic) Template() TemplateService {

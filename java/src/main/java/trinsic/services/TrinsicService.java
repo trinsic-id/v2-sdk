@@ -6,6 +6,7 @@ public class TrinsicService extends ServiceBase {
   private AccessManagementService _accessManagementService;
   private AccountService _accountService;
   private CredentialService _credentialService;
+  private FileManagementService _fileManagementService;
   private TemplateService _TemplateService;
   private ProviderService _providerService;
   private TrustRegistryService _trustRegistryService;
@@ -34,6 +35,12 @@ public class TrinsicService extends ServiceBase {
     if (_credentialService == null)
       _credentialService = new CredentialService(this.getOptionsBuilder());
     return _credentialService;
+  }
+
+  public FileManagementService fileManagement() {
+      if(_fileManagementService == null)
+          _fileManagementService = new FileManagementService(this.getOptionsBuilder());
+      return _fileManagementService;
   }
 
   public TemplateService template() {

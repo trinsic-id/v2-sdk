@@ -9,6 +9,7 @@ require 'uri'
 require 'google/protobuf/well_known_types'
 require 'services/account/v1/account_services_pb'
 require 'services/universal-wallet/v1/universal-wallet_services_pb'
+require 'services/file-management/v1/file-management_services_pb'
 require 'services/provider/v1/provider_services_pb'
 require 'services/verifiable-credentials/v1/verifiable-credentials_services_pb'
 require 'services/verifiable-credentials/templates/v1/templates_services_pb'
@@ -17,8 +18,10 @@ require 'services/common/v1/common_pb'
 require 'sdk/options/v1/options_pb'
 require 'security'
 require 'services/service_base'
+require 'services/access_management_service'
 require 'services/account_service'
 require 'services/credential_service'
+require 'services/file_management_service'
 require 'services/provider_service'
 require 'services/template_service'
 require 'services/trustregistry_service'
@@ -30,6 +33,7 @@ module Trinsic
   Common = Services::Common::V1
   Account = Services::Account::V1
   Credentials = Services::Verifiablecredentials::V1
+  FileManagement = Services::Filemanagement::V1
   Options = Sdk::Options::V1
   Provider = Services::Provider::V1
   Template = Services::Verifiablecredentials::Templates::V1
@@ -67,6 +71,10 @@ module Trinsic
       CredentialService.new(@service_options)
     end
 
+    def file_management_service
+      FileManagementService.new(@service_options)
+    end
+
     def provider_service
       ProviderService.new(@service_options)
     end
@@ -83,7 +91,7 @@ module Trinsic
       WalletService.new(@service_options)
     end
 
-    memoize :access_management_service, :account_service, :credential_service, :provider_service, :template_service,
-            :trust_registry_service, :wallet_service
+    memoize :access_management_service, :account_service, :credential_service, :file_management_service,
+            :provider_service, :template_service, :trust_registry_service, :wallet_service
   end
 end
