@@ -29,6 +29,10 @@ message SdkTemplateOption {
     // Whether the SDK template generator should generate this method without arguments, eg
     // ProviderService.GetEcosystemInfo() where the request object is empty
     bool no_arguments = 3;
+    // This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+    bool experimental = 4;
+    // This endpoint is deprecated. It will be removed in the future.
+    bool deprecated = 5;
 }
 
 extend google.protobuf.MethodOptions {
