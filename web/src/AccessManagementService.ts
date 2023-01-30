@@ -22,16 +22,16 @@ export class AccessManagementService extends ServiceBase {
       metadata: await this.buildMetadata(proto.AddRoleAssignmentRequest.encode(request).finish())
     });
   }
-  /**This method is DEPRECATED
-* Removes a role assignment from the account */
+  /** Removes a role assignment from the account
+*@deprecated This method is deprecated */
   public async removeRoleAssignment(request: proto.RemoveRoleAssignmentRequest): Promise<proto.RemoveRoleAssignmentResponse> {
     
     return this.client.removeRoleAssignment(request, {
       metadata: await this.buildMetadata(proto.RemoveRoleAssignmentRequest.encode(request).finish())
     });
   }
-  /**This method is EXPERIMENTAL
-* List the role assignments for the given account */
+  /** List the role assignments for the given account
+*@deprecated This method is experimental */
   public async listRoleAssignments(request: proto.ListRoleAssignmentsRequest): Promise<proto.ListRoleAssignmentsResponse> {
     
     return this.client.listRoleAssignments(request, {

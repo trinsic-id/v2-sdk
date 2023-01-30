@@ -22,6 +22,7 @@ public class AccessManagementService extends ServiceBase {
 // target: C:\work\sdk\java\src\main\java\trinsic\services\AccessManagementService.java
 
   /** Adds a role assignment to an account */
+  
   public ListenableFuture<AddRoleAssignmentResponse> addRoleAssignment(AddRoleAssignmentRequest request)
       throws InvalidProtocolBufferException, DidException {
     
@@ -29,6 +30,7 @@ public class AccessManagementService extends ServiceBase {
   }
   /**This method is DEPRECATED
 * Removes a role assignment from the account */
+  @Deprecated
   public ListenableFuture<RemoveRoleAssignmentResponse> removeRoleAssignment(RemoveRoleAssignmentRequest request)
       throws InvalidProtocolBufferException, DidException {
     
@@ -36,6 +38,7 @@ public class AccessManagementService extends ServiceBase {
   }
   /**This method is EXPERIMENTAL
 * List the role assignments for the given account */
+  
   public ListenableFuture<ListRoleAssignmentsResponse> listRoleAssignments(ListRoleAssignmentsRequest request)
       throws InvalidProtocolBufferException, DidException {
     

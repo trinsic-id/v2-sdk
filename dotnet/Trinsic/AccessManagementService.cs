@@ -35,7 +35,8 @@ public class AccessManagementService : ServiceBase
 
 	/// <summary>
     /// Adds a role assignment to an account
-    /// </summary>	
+    /// </summary>
+    
     public AddRoleAssignmentResponse AddRoleAssignment(AddRoleAssignmentRequest request) {
         
         return Client.AddRoleAssignment(request, BuildMetadata(request));
@@ -43,7 +44,8 @@ public class AccessManagementService : ServiceBase
 	
 	/// <summary>
     /// Adds a role assignment to an account
-    /// </summary>	
+    /// </summary>
+    
     public async Task<AddRoleAssignmentResponse> AddRoleAssignmentAsync(AddRoleAssignmentRequest request) {
         
         return await Client.AddRoleAssignmentAsync(request, await BuildMetadataAsync(request));
@@ -52,7 +54,8 @@ public class AccessManagementService : ServiceBase
 	/// <summary>
     ///This method is DEPRECATED
     ///  Removes a role assignment from the account
-    /// </summary>	
+    /// </summary>
+    [Obsolete("This method is deprecated")]
     public RemoveRoleAssignmentResponse RemoveRoleAssignment(RemoveRoleAssignmentRequest request) {
         
         return Client.RemoveRoleAssignment(request, BuildMetadata(request));
@@ -61,7 +64,8 @@ public class AccessManagementService : ServiceBase
 	/// <summary>
     ///This method is DEPRECATED
     ///  Removes a role assignment from the account
-    /// </summary>	
+    /// </summary>
+    [Obsolete("This method is deprecated")]
     public async Task<RemoveRoleAssignmentResponse> RemoveRoleAssignmentAsync(RemoveRoleAssignmentRequest request) {
         
         return await Client.RemoveRoleAssignmentAsync(request, await BuildMetadataAsync(request));
@@ -70,7 +74,8 @@ public class AccessManagementService : ServiceBase
 	/// <summary>
     ///This method is EXPERIMENTAL
     ///  List the role assignments for the given account
-    /// </summary>	
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public ListRoleAssignmentsResponse ListRoleAssignments(ListRoleAssignmentsRequest request) {
         
         return Client.ListRoleAssignments(request, BuildMetadata(request));
@@ -79,7 +84,8 @@ public class AccessManagementService : ServiceBase
 	/// <summary>
     ///This method is EXPERIMENTAL
     ///  List the role assignments for the given account
-    /// </summary>	
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public async Task<ListRoleAssignmentsResponse> ListRoleAssignmentsAsync(ListRoleAssignmentsRequest request) {
         
         return await Client.ListRoleAssignmentsAsync(request, await BuildMetadataAsync(request));

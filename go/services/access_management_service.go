@@ -28,10 +28,10 @@ type AccessManagementService interface {
 
     // AddRoleAssignment  Adds a role assignment to an account 
     AddRoleAssignment(userContext context.Context, request *provider.AddRoleAssignmentRequest) (*provider.AddRoleAssignmentResponse, error)
-    // RemoveRoleAssignment This method is DEPRECATED
+    // RemoveRoleAssignment Deprecated: This method is deprecated
 // Removes a role assignment from the account 
     RemoveRoleAssignment(userContext context.Context, request *provider.RemoveRoleAssignmentRequest) (*provider.RemoveRoleAssignmentResponse, error)
-    // ListRoleAssignments This method is EXPERIMENTAL
+    // ListRoleAssignments Deprecated: This method is experimental
 // List the role assignments for the given account 
     ListRoleAssignments(userContext context.Context, request *provider.ListRoleAssignmentsRequest) (*provider.ListRoleAssignmentsResponse, error)
 
@@ -58,7 +58,7 @@ func (p *accessManagementBase) AddRoleAssignment(userContext context.Context, re
 	}
 	return response, nil
 }
-// RemoveRoleAssignment This method is DEPRECATED
+// RemoveRoleAssignment Deprecated: This method is deprecated
 // Removes a role assignment from the account
 func (p *accessManagementBase) RemoveRoleAssignment(userContext context.Context, request *provider.RemoveRoleAssignmentRequest) (*provider.RemoveRoleAssignmentResponse, error) {
     md, err := p.GetMetadataContext(userContext, request)
@@ -71,7 +71,7 @@ func (p *accessManagementBase) RemoveRoleAssignment(userContext context.Context,
 	}
 	return response, nil
 }
-// ListRoleAssignments This method is EXPERIMENTAL
+// ListRoleAssignments Deprecated: This method is experimental
 // List the role assignments for the given account
 func (p *accessManagementBase) ListRoleAssignments(userContext context.Context, request *provider.ListRoleAssignmentsRequest) (*provider.ListRoleAssignmentsResponse, error) {
     md, err := p.GetMetadataContext(userContext, request)

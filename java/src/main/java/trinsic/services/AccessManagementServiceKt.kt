@@ -12,12 +12,14 @@ class AccessManagementServiceKt(options: Options.ServiceOptions.Builder?) : Serv
 // target: C:\work\sdk\java\src\main\java\trinsic\services\AccessManagementServiceKt.kt
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
+  
   suspend fun addRoleAssignment(request: AddRoleAssignmentRequest): AddRoleAssignmentResponse {
 	/** Adds a role assignment to an account */
     
     return withMetadata(stub, request).addRoleAssignment(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
+  @Deprecated
   suspend fun removeRoleAssignment(request: RemoveRoleAssignmentRequest): RemoveRoleAssignmentResponse {
 	 /** This method is DEPRECATED
 *  Removes a role assignment from the account
@@ -26,6 +28,7 @@ class AccessManagementServiceKt(options: Options.ServiceOptions.Builder?) : Serv
     return withMetadata(stub, request).removeRoleAssignment(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
+  
   suspend fun listRoleAssignments(request: ListRoleAssignmentsRequest): ListRoleAssignmentsResponse {
 	 /** This method is EXPERIMENTAL
 *  List the role assignments for the given account
