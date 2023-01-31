@@ -90,17 +90,27 @@ message GetStorageStatsResponse {
 
 service FileManagement {
     // Upload a file to Trinsic's CDN
-    rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+    rpc UploadFile(UploadFileRequest) returns (UploadFileResponse) {
+      option (options.sdk_template_option).experimental = { active: true };
+    }
 
 	// Fetch information about a file by its ID
-    rpc GetFile(GetFileRequest) returns (GetFileResponse);
+    rpc GetFile(GetFileRequest) returns (GetFileResponse) {
+      option (options.sdk_template_option).experimental = { active: true };
+    }
 
     // Delete a file by its ID
-    rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
+    rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse) {
+      option (options.sdk_template_option).experimental = { active: true };
+    }
 
     // List files the calling account has uploaded
-    rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+    rpc ListFiles(ListFilesRequest) returns (ListFilesResponse) {
+      option (options.sdk_template_option).experimental = { active: true };
+    }
 
     // Get statistics about files uploaded by the calling account
-    rpc GetStorageStats(GetStorageStatsRequest) returns (GetStorageStatsResponse);
+    rpc GetStorageStats(GetStorageStatsRequest) returns (GetStorageStatsResponse) {
+      option (options.sdk_template_option).experimental = { active: true };
+    }
 }

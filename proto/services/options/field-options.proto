@@ -19,6 +19,13 @@ extend google.protobuf.FieldOptions {
     bool optional = 60000;
 }
 
+message AnnotationOption {
+  // Is this annotation active
+  bool active = 1;
+  // Custom annotation message to provide
+  string message = 2;
+}
+
 message SdkTemplateOption {
     // Whether the service endpoint allows anonymous (no auth token necessary) authentication
     // This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
@@ -29,6 +36,10 @@ message SdkTemplateOption {
     // Whether the SDK template generator should generate this method without arguments, eg
     // ProviderService.GetEcosystemInfo() where the request object is empty
     bool no_arguments = 3;
+    // This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+    AnnotationOption experimental = 4;
+    // This endpoint is deprecated. It will be removed in the future.
+    AnnotationOption deprecated = 5;
 }
 
 extend google.protobuf.MethodOptions {
