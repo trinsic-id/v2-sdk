@@ -106,21 +106,22 @@ public final class FileManagementOuterClass {
           + "\022continuation_token\030\003 \001(\t\"\030\n"
           + "\026GetStorageStatsRequest\"R\n"
           + "\027GetStorageStatsResponse\0227\n"
-          + "\005stats\030\001 \001(\0132(.services.filemanagement.v1.StorageStats2\264\004\n"
-          + "\016FileManagement\022k\n\n"
-          + "UploadFile\022-.services.filema"
-          + "nagement.v1.UploadFileRequest\032..services.filemanagement.v1.UploadFileResponse\022b\n"
-          + "\007GetFile\022*.services.filemanagement.v1.Ge"
-          + "tFileRequest\032+.services.filemanagement.v1.GetFileResponse\022k\n\n"
-          + "DeleteFile\022-.services.filemanagement.v1.DeleteFileRequest\032."
-          + ".services.filemanagement.v1.DeleteFileResponse\022h\n"
-          + "\tListFiles\022,.services.filemanag"
-          + "ement.v1.ListFilesRequest\032-.services.filemanagement.v1.ListFilesResponse\022z\n"
-          + "\017GetStorageStats\0222.services.filemanagement.v1"
-          + ".GetStorageStatsRequest\0323.services.filemanagement.v1.GetStorageStatsResponseBv\n"
-          + "\"trinsic.services.filemanagement.v1P\001Z)se"
-          + "rvices/filemanagement/v1/filemanagement\252"
-          + "\002\"Trinsic.Services.FileManagement.V1b\006proto3"
+          + "\005stats\030\001 \001(\0132(.services.filemanagement.v1.StorageStats2\347\004\n"
+          + "\016FileManagement\022u\n\n"
+          + "UploadFile\022-.services.filemanagement.v1.UploadFileRequest\032..services"
+          + ".filemanagement.v1.UploadFileResponse\"\010\212\246\035\004\"\002\010\001\022l\n"
+          + "\007GetFile\022*.services.filemanage"
+          + "ment.v1.GetFileRequest\032+.services.filemanagement.v1.GetFileResponse\"\010\212\246\035\004\"\002\010\001\022u\n"
+          + "\n"
+          + "DeleteFile\022-.services.filemanagement.v1"
+          + ".DeleteFileRequest\032..services.filemanagement.v1.DeleteFileResponse\"\010\212\246\035\004\"\002\010\001\022r\n"
+          + "\tListFiles\022,.services.filemanagement.v1.L"
+          + "istFilesRequest\032-.services.filemanagement.v1.ListFilesResponse\"\010\212\246\035\004\"\002\010\001\022\204\001\n"
+          + "\017GetStorageStats\0222.services.filemanagement.v"
+          + "1.GetStorageStatsRequest\0323.services.file"
+          + "management.v1.GetStorageStatsResponse\"\010\212\246\035\004\"\002\010\001Bv\n"
+          + "\"trinsic.services.filemanagement.v1P\001Z)services/filemanagement/v1/file"
+          + "management\252\002\"Trinsic.Services.FileManagement.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -223,6 +224,7 @@ public final class FileManagementOuterClass {
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();

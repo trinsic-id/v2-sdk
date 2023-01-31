@@ -44,6 +44,10 @@ public final class FieldOptions {
               trinsic.services.protobuf.options.SdkTemplateOption.getDefaultInstance());
 
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_options_AnnotationOption_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_options_AnnotationOption_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_options_SdkTemplateOption_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_options_SdkTemplateOption_fieldAccessorTable;
@@ -58,15 +62,19 @@ public final class FieldOptions {
     java.lang.String[] descriptorData = {
       "\n$services/options/field-options.proto\022\020"
           + "services.options\032 google/protobuf/descri"
-          + "ptor.proto\"L\n\021SdkTemplateOption\022\021\n\tanony"
-          + "mous\030\001 \001(\010\022\016\n\006ignore\030\002 \001(\010\022\024\n\014no_argumen"
-          + "ts\030\003 \001(\010:1\n\010optional\022\035.google.protobuf.F"
-          + "ieldOptions\030\340\324\003 \001(\010:b\n\023sdk_template_opti"
-          + "on\022\036.google.protobuf.MethodOptions\030\341\324\003 \001"
-          + "(\0132#.services.options.SdkTemplateOptionB"
-          + "[\n!trinsic.services.protobuf.optionsP\001Z\020"
-          + "services/options\252\002!Trinsic.Services.Prot"
-          + "obuf.Optionsb\006proto3"
+          + "ptor.proto\"3\n\020AnnotationOption\022\016\n\006active"
+          + "\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\276\001\n\021SdkTemplateO"
+          + "ption\022\021\n\tanonymous\030\001 \001(\010\022\016\n\006ignore\030\002 \001(\010"
+          + "\022\024\n\014no_arguments\030\003 \001(\010\0228\n\014experimental\030\004"
+          + " \001(\0132\".services.options.AnnotationOption"
+          + "\0226\n\ndeprecated\030\005 \001(\0132\".services.options."
+          + "AnnotationOption:1\n\010optional\022\035.google.pr"
+          + "otobuf.FieldOptions\030\340\324\003 \001(\010:b\n\023sdk_templ"
+          + "ate_option\022\036.google.protobuf.MethodOptio"
+          + "ns\030\341\324\003 \001(\0132#.services.options.SdkTemplat"
+          + "eOptionB[\n!trinsic.services.protobuf.opt"
+          + "ionsP\001Z\020services/options\252\002!Trinsic.Servi"
+          + "ces.Protobuf.Optionsb\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -74,13 +82,21 @@ public final class FieldOptions {
             new com.google.protobuf.Descriptors.FileDescriptor[] {
               com.google.protobuf.DescriptorProtos.getDescriptor(),
             });
-    internal_static_services_options_SdkTemplateOption_descriptor =
+    internal_static_services_options_AnnotationOption_descriptor =
         getDescriptor().getMessageTypes().get(0);
+    internal_static_services_options_AnnotationOption_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_options_AnnotationOption_descriptor,
+            new java.lang.String[] {
+              "Active", "Message",
+            });
+    internal_static_services_options_SdkTemplateOption_descriptor =
+        getDescriptor().getMessageTypes().get(1);
     internal_static_services_options_SdkTemplateOption_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_options_SdkTemplateOption_descriptor,
             new java.lang.String[] {
-              "Anonymous", "Ignore", "NoArguments",
+              "Anonymous", "Ignore", "NoArguments", "Experimental", "Deprecated",
             });
     optional.internalInit(descriptor.getExtensions().get(0));
     sdkTemplateOption.internalInit(descriptor.getExtensions().get(1));

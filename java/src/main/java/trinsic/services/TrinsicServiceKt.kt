@@ -28,8 +28,9 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
   }
 
   fun fileManagement(): FileManagementServiceKt {
-      if(_fileManagementService == null) _fileManagementService = FileManagementServiceKt(optionsBuilder)
-      return _fileManagementService!!
+    if (_fileManagementService == null)
+        _fileManagementService = FileManagementServiceKt(optionsBuilder)
+    return _fileManagementService!!
   }
 
   fun template(): TemplateServiceKt {

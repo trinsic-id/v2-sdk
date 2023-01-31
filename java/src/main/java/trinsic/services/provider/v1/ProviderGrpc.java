@@ -921,6 +921,7 @@ public final class ProviderGrpc {
      * Update an existing ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public void updateEcosystem(
         trinsic.services.provider.v1.UpdateEcosystemRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpdateEcosystemResponse>
@@ -1335,6 +1336,7 @@ public final class ProviderGrpc {
      * Update an existing ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public void updateEcosystem(
         trinsic.services.provider.v1.UpdateEcosystemRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpdateEcosystemResponse>
@@ -1648,6 +1650,7 @@ public final class ProviderGrpc {
      * Update an existing ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public trinsic.services.provider.v1.UpdateEcosystemResponse updateEcosystem(
         trinsic.services.provider.v1.UpdateEcosystemRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -1902,6 +1905,7 @@ public final class ProviderGrpc {
      * Update an existing ecosystem
      * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.provider.v1.UpdateEcosystemResponse>
         updateEcosystem(trinsic.services.provider.v1.UpdateEcosystemRequest request) {

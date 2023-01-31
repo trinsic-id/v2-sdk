@@ -99,6 +99,102 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     return noArguments_;
   }
 
+  public static final int EXPERIMENTAL_FIELD_NUMBER = 4;
+  private trinsic.services.protobuf.options.AnnotationOption experimental_;
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption experimental = 4;</code>
+   *
+   * @return Whether the experimental field is set.
+   */
+  @java.lang.Override
+  public boolean hasExperimental() {
+    return experimental_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption experimental = 4;</code>
+   *
+   * @return The experimental.
+   */
+  @java.lang.Override
+  public trinsic.services.protobuf.options.AnnotationOption getExperimental() {
+    return experimental_ == null
+        ? trinsic.services.protobuf.options.AnnotationOption.getDefaultInstance()
+        : experimental_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption experimental = 4;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.protobuf.options.AnnotationOptionOrBuilder getExperimentalOrBuilder() {
+    return getExperimental();
+  }
+
+  public static final int DEPRECATED_FIELD_NUMBER = 5;
+  private trinsic.services.protobuf.options.AnnotationOption deprecated_;
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption deprecated = 5;</code>
+   *
+   * @return Whether the deprecated field is set.
+   */
+  @java.lang.Override
+  public boolean hasDeprecated() {
+    return deprecated_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption deprecated = 5;</code>
+   *
+   * @return The deprecated.
+   */
+  @java.lang.Override
+  public trinsic.services.protobuf.options.AnnotationOption getDeprecated() {
+    return deprecated_ == null
+        ? trinsic.services.protobuf.options.AnnotationOption.getDefaultInstance()
+        : deprecated_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption deprecated = 5;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.protobuf.options.AnnotationOptionOrBuilder getDeprecatedOrBuilder() {
+    return getDeprecated();
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -122,6 +218,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (noArguments_ != false) {
       output.writeBool(3, noArguments_);
     }
+    if (experimental_ != null) {
+      output.writeMessage(4, getExperimental());
+    }
+    if (deprecated_ != null) {
+      output.writeMessage(5, getDeprecated());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -139,6 +241,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     }
     if (noArguments_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, noArguments_);
+    }
+    if (experimental_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getExperimental());
+    }
+    if (deprecated_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getDeprecated());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -159,6 +267,14 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (getAnonymous() != other.getAnonymous()) return false;
     if (getIgnore() != other.getIgnore()) return false;
     if (getNoArguments() != other.getNoArguments()) return false;
+    if (hasExperimental() != other.hasExperimental()) return false;
+    if (hasExperimental()) {
+      if (!getExperimental().equals(other.getExperimental())) return false;
+    }
+    if (hasDeprecated() != other.hasDeprecated()) return false;
+    if (hasDeprecated()) {
+      if (!getDeprecated().equals(other.getDeprecated())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -176,6 +292,14 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIgnore());
     hash = (37 * hash) + NO_ARGUMENTS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getNoArguments());
+    if (hasExperimental()) {
+      hash = (37 * hash) + EXPERIMENTAL_FIELD_NUMBER;
+      hash = (53 * hash) + getExperimental().hashCode();
+    }
+    if (hasDeprecated()) {
+      hash = (37 * hash) + DEPRECATED_FIELD_NUMBER;
+      hash = (53 * hash) + getDeprecated().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -312,6 +436,18 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
       noArguments_ = false;
 
+      if (experimentalBuilder_ == null) {
+        experimental_ = null;
+      } else {
+        experimental_ = null;
+        experimentalBuilder_ = null;
+      }
+      if (deprecatedBuilder_ == null) {
+        deprecated_ = null;
+      } else {
+        deprecated_ = null;
+        deprecatedBuilder_ = null;
+      }
       return this;
     }
 
@@ -342,6 +478,16 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       result.anonymous_ = anonymous_;
       result.ignore_ = ignore_;
       result.noArguments_ = noArguments_;
+      if (experimentalBuilder_ == null) {
+        result.experimental_ = experimental_;
+      } else {
+        result.experimental_ = experimentalBuilder_.build();
+      }
+      if (deprecatedBuilder_ == null) {
+        result.deprecated_ = deprecated_;
+      } else {
+        result.deprecated_ = deprecatedBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -401,6 +547,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       if (other.getNoArguments() != false) {
         setNoArguments(other.getNoArguments());
       }
+      if (other.hasExperimental()) {
+        mergeExperimental(other.getExperimental());
+      }
+      if (other.hasDeprecated()) {
+        mergeDeprecated(other.getDeprecated());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -445,6 +597,18 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
                 break;
               } // case 24
+            case 34:
+              {
+                input.readMessage(getExperimentalFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 34
+            case 42:
+              {
+                input.readMessage(getDeprecatedFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 42
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -625,6 +789,378 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       noArguments_ = false;
       onChanged();
       return this;
+    }
+
+    private trinsic.services.protobuf.options.AnnotationOption experimental_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.protobuf.options.AnnotationOption,
+            trinsic.services.protobuf.options.AnnotationOption.Builder,
+            trinsic.services.protobuf.options.AnnotationOptionOrBuilder>
+        experimentalBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     *
+     * @return Whether the experimental field is set.
+     */
+    public boolean hasExperimental() {
+      return experimentalBuilder_ != null || experimental_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     *
+     * @return The experimental.
+     */
+    public trinsic.services.protobuf.options.AnnotationOption getExperimental() {
+      if (experimentalBuilder_ == null) {
+        return experimental_ == null
+            ? trinsic.services.protobuf.options.AnnotationOption.getDefaultInstance()
+            : experimental_;
+      } else {
+        return experimentalBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     */
+    public Builder setExperimental(trinsic.services.protobuf.options.AnnotationOption value) {
+      if (experimentalBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        experimental_ = value;
+        onChanged();
+      } else {
+        experimentalBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     */
+    public Builder setExperimental(
+        trinsic.services.protobuf.options.AnnotationOption.Builder builderForValue) {
+      if (experimentalBuilder_ == null) {
+        experimental_ = builderForValue.build();
+        onChanged();
+      } else {
+        experimentalBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     */
+    public Builder mergeExperimental(trinsic.services.protobuf.options.AnnotationOption value) {
+      if (experimentalBuilder_ == null) {
+        if (experimental_ != null) {
+          experimental_ =
+              trinsic.services.protobuf.options.AnnotationOption.newBuilder(experimental_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          experimental_ = value;
+        }
+        onChanged();
+      } else {
+        experimentalBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     */
+    public Builder clearExperimental() {
+      if (experimentalBuilder_ == null) {
+        experimental_ = null;
+        onChanged();
+      } else {
+        experimental_ = null;
+        experimentalBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     */
+    public trinsic.services.protobuf.options.AnnotationOption.Builder getExperimentalBuilder() {
+
+      onChanged();
+      return getExperimentalFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     */
+    public trinsic.services.protobuf.options.AnnotationOptionOrBuilder getExperimentalOrBuilder() {
+      if (experimentalBuilder_ != null) {
+        return experimentalBuilder_.getMessageOrBuilder();
+      } else {
+        return experimental_ == null
+            ? trinsic.services.protobuf.options.AnnotationOption.getDefaultInstance()
+            : experimental_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption experimental = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.protobuf.options.AnnotationOption,
+            trinsic.services.protobuf.options.AnnotationOption.Builder,
+            trinsic.services.protobuf.options.AnnotationOptionOrBuilder>
+        getExperimentalFieldBuilder() {
+      if (experimentalBuilder_ == null) {
+        experimentalBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.protobuf.options.AnnotationOption,
+                trinsic.services.protobuf.options.AnnotationOption.Builder,
+                trinsic.services.protobuf.options.AnnotationOptionOrBuilder>(
+                getExperimental(), getParentForChildren(), isClean());
+        experimental_ = null;
+      }
+      return experimentalBuilder_;
+    }
+
+    private trinsic.services.protobuf.options.AnnotationOption deprecated_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.protobuf.options.AnnotationOption,
+            trinsic.services.protobuf.options.AnnotationOption.Builder,
+            trinsic.services.protobuf.options.AnnotationOptionOrBuilder>
+        deprecatedBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     *
+     * @return Whether the deprecated field is set.
+     */
+    public boolean hasDeprecated() {
+      return deprecatedBuilder_ != null || deprecated_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     *
+     * @return The deprecated.
+     */
+    public trinsic.services.protobuf.options.AnnotationOption getDeprecated() {
+      if (deprecatedBuilder_ == null) {
+        return deprecated_ == null
+            ? trinsic.services.protobuf.options.AnnotationOption.getDefaultInstance()
+            : deprecated_;
+      } else {
+        return deprecatedBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     */
+    public Builder setDeprecated(trinsic.services.protobuf.options.AnnotationOption value) {
+      if (deprecatedBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        deprecated_ = value;
+        onChanged();
+      } else {
+        deprecatedBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     */
+    public Builder setDeprecated(
+        trinsic.services.protobuf.options.AnnotationOption.Builder builderForValue) {
+      if (deprecatedBuilder_ == null) {
+        deprecated_ = builderForValue.build();
+        onChanged();
+      } else {
+        deprecatedBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     */
+    public Builder mergeDeprecated(trinsic.services.protobuf.options.AnnotationOption value) {
+      if (deprecatedBuilder_ == null) {
+        if (deprecated_ != null) {
+          deprecated_ =
+              trinsic.services.protobuf.options.AnnotationOption.newBuilder(deprecated_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          deprecated_ = value;
+        }
+        onChanged();
+      } else {
+        deprecatedBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     */
+    public Builder clearDeprecated() {
+      if (deprecatedBuilder_ == null) {
+        deprecated_ = null;
+        onChanged();
+      } else {
+        deprecated_ = null;
+        deprecatedBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     */
+    public trinsic.services.protobuf.options.AnnotationOption.Builder getDeprecatedBuilder() {
+
+      onChanged();
+      return getDeprecatedFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     */
+    public trinsic.services.protobuf.options.AnnotationOptionOrBuilder getDeprecatedOrBuilder() {
+      if (deprecatedBuilder_ != null) {
+        return deprecatedBuilder_.getMessageOrBuilder();
+      } else {
+        return deprecated_ == null
+            ? trinsic.services.protobuf.options.AnnotationOption.getDefaultInstance()
+            : deprecated_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This endpoint is deprecated. It will be removed in the future.
+     * </pre>
+     *
+     * <code>.services.options.AnnotationOption deprecated = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.protobuf.options.AnnotationOption,
+            trinsic.services.protobuf.options.AnnotationOption.Builder,
+            trinsic.services.protobuf.options.AnnotationOptionOrBuilder>
+        getDeprecatedFieldBuilder() {
+      if (deprecatedBuilder_ == null) {
+        deprecatedBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.protobuf.options.AnnotationOption,
+                trinsic.services.protobuf.options.AnnotationOption.Builder,
+                trinsic.services.protobuf.options.AnnotationOptionOrBuilder>(
+                getDeprecated(), getParentForChildren(), isClean());
+        deprecated_ = null;
+      }
+      return deprecatedBuilder_;
     }
 
     @java.lang.Override

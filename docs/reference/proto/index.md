@@ -1463,7 +1463,7 @@ Request to update an ecosystem's metadata
 | description | [string](/reference/proto#string) | New description of the ecosystem |
 | uri | [string](/reference/proto#string) | **Deprecated.** New external URL associated with the organization or ecosystem entity |
 | domain | [string](/reference/proto#string) | New domain URL |
-| display | [EcosystemDisplayRequest](/reference/proto#services-provider-v1-EcosystemDisplayRequest) | New name string name = 4; Display details |
+| display | [EcosystemDisplayRequest](/reference/proto#services-provider-v1-EcosystemDisplayRequest) | **Deprecated.** New name string name = 4; Display details |
 
 
 
@@ -2153,6 +2153,22 @@ Response to `UnregisterMemberRequest`
  <!-- end services -->
 
 
+<a name="services-options-AnnotationOption"></a>
+
+### AnnotationOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| active | [bool](/reference/proto#bool) | Is this annotation active |
+| message | [string](/reference/proto#string) | Custom annotation message to provide |
+
+
+
+
+
+
 <a name="services-options-SdkTemplateOption"></a>
 
 ### SdkTemplateOption
@@ -2164,6 +2180,8 @@ Response to `UnregisterMemberRequest`
 | anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
 | ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
 | no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
+| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
+| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
 
 
 

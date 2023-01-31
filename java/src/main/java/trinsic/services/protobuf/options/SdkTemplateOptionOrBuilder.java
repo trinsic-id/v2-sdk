@@ -49,4 +49,74 @@ public interface SdkTemplateOptionOrBuilder
    * @return The noArguments.
    */
   boolean getNoArguments();
+
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption experimental = 4;</code>
+   *
+   * @return Whether the experimental field is set.
+   */
+  boolean hasExperimental();
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption experimental = 4;</code>
+   *
+   * @return The experimental.
+   */
+  trinsic.services.protobuf.options.AnnotationOption getExperimental();
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption experimental = 4;</code>
+   */
+  trinsic.services.protobuf.options.AnnotationOptionOrBuilder getExperimentalOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption deprecated = 5;</code>
+   *
+   * @return Whether the deprecated field is set.
+   */
+  boolean hasDeprecated();
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption deprecated = 5;</code>
+   *
+   * @return The deprecated.
+   */
+  trinsic.services.protobuf.options.AnnotationOption getDeprecated();
+  /**
+   *
+   *
+   * <pre>
+   * This endpoint is deprecated. It will be removed in the future.
+   * </pre>
+   *
+   * <code>.services.options.AnnotationOption deprecated = 5;</code>
+   */
+  trinsic.services.protobuf.options.AnnotationOptionOrBuilder getDeprecatedOrBuilder();
 }

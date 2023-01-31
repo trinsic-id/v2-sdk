@@ -8,6 +8,15 @@ from betterproto.grpc.grpclib_server import ServiceBase
 
 
 @dataclass(eq=False, repr=False)
+class AnnotationOption(betterproto.Message):
+    active: bool = betterproto.bool_field(1)
+    """Is this annotation active"""
+
+    message: str = betterproto.string_field(2)
+    """Custom annotation message to provide"""
+
+
+@dataclass(eq=False, repr=False)
 class SdkTemplateOption(betterproto.Message):
     anonymous: bool = betterproto.bool_field(1)
     """
@@ -28,3 +37,12 @@ class SdkTemplateOption(betterproto.Message):
     arguments, eg ProviderService.GetEcosystemInfo() where the request object
     is empty
     """
+
+    experimental: "AnnotationOption" = betterproto.message_field(4)
+    """
+    This endpoint is experimental. Consider it in beta, so documentation may be
+    incomplete or incorrect.
+    """
+
+    deprecated: "AnnotationOption" = betterproto.message_field(5)
+    """This endpoint is deprecated. It will be removed in the future."""
