@@ -52,7 +52,8 @@ public class TrustRegistryService : ServiceBase
 
 	/// <summary>
     /// Add a governance framework to the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public AddFrameworkResponse AddFramework(AddFrameworkRequest request) {
         
         return Client.AddFramework(request, BuildMetadata(request));
@@ -60,7 +61,8 @@ public class TrustRegistryService : ServiceBase
 	
 	/// <summary>
     /// Add a governance framework to the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public async Task<AddFrameworkResponse> AddFrameworkAsync(AddFrameworkRequest request) {
         
         return await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
@@ -68,7 +70,8 @@ public class TrustRegistryService : ServiceBase
 
 	/// <summary>
     /// Remove a governance framework from the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public RemoveFrameworkResponse RemoveFramework(RemoveFrameworkRequest request) {
         
         return Client.RemoveFramework(request, BuildMetadata(request));
@@ -76,7 +79,8 @@ public class TrustRegistryService : ServiceBase
 	
 	/// <summary>
     /// Remove a governance framework from the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public async Task<RemoveFrameworkResponse> RemoveFrameworkAsync(RemoveFrameworkRequest request) {
         
         return await Client.RemoveFrameworkAsync(request, await BuildMetadataAsync(request));
@@ -84,7 +88,8 @@ public class TrustRegistryService : ServiceBase
 
 	/// <summary>
     /// Search the ecosystem's governance frameworks
-    /// </summary>	
+    /// </summary>
+    
     public SearchRegistryResponse SearchRegistry(SearchRegistryRequest request) {
         
         return Client.SearchRegistry(request, BuildMetadata(request));
@@ -92,7 +97,8 @@ public class TrustRegistryService : ServiceBase
 	
 	/// <summary>
     /// Search the ecosystem's governance frameworks
-    /// </summary>	
+    /// </summary>
+    
     public async Task<SearchRegistryResponse> SearchRegistryAsync(SearchRegistryRequest request) {
         
         return await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
@@ -100,7 +106,8 @@ public class TrustRegistryService : ServiceBase
 
 	/// <summary>
     /// Register an authoritative issuer for a credential schema
-    /// </summary>	
+    /// </summary>
+    
     public RegisterMemberResponse RegisterMember(RegisterMemberRequest request) {
         
         return Client.RegisterMember(request, BuildMetadata(request));
@@ -108,7 +115,8 @@ public class TrustRegistryService : ServiceBase
 	
 	/// <summary>
     /// Register an authoritative issuer for a credential schema
-    /// </summary>	
+    /// </summary>
+    
     public async Task<RegisterMemberResponse> RegisterMemberAsync(RegisterMemberRequest request) {
         
         return await Client.RegisterMemberAsync(request, await BuildMetadataAsync(request));
@@ -116,7 +124,8 @@ public class TrustRegistryService : ServiceBase
 
 	/// <summary>
     /// Removes an authoritative issuer for a credential schema from the trust registry
-    /// </summary>	
+    /// </summary>
+    
     public UnregisterMemberResponse UnregisterMember(UnregisterMemberRequest request) {
         
         return Client.UnregisterMember(request, BuildMetadata(request));
@@ -124,7 +133,8 @@ public class TrustRegistryService : ServiceBase
 	
 	/// <summary>
     /// Removes an authoritative issuer for a credential schema from the trust registry
-    /// </summary>	
+    /// </summary>
+    
     public async Task<UnregisterMemberResponse> UnregisterMemberAsync(UnregisterMemberRequest request) {
         
         return await Client.UnregisterMemberAsync(request, await BuildMetadataAsync(request));
@@ -132,7 +142,8 @@ public class TrustRegistryService : ServiceBase
 
 	/// <summary>
     /// Fetch the membership status of an issuer for a given credential schema in a trust registry
-    /// </summary>	
+    /// </summary>
+    
     public GetMembershipStatusResponse GetMembershipStatus(GetMembershipStatusRequest request) {
         
         return Client.GetMembershipStatus(request, BuildMetadata(request));
@@ -140,7 +151,8 @@ public class TrustRegistryService : ServiceBase
 	
 	/// <summary>
     /// Fetch the membership status of an issuer for a given credential schema in a trust registry
-    /// </summary>	
+    /// </summary>
+    
     public async Task<GetMembershipStatusResponse> GetMembershipStatusAsync(GetMembershipStatusRequest request) {
         
         return await Client.GetMembershipStatusAsync(request, await BuildMetadataAsync(request));

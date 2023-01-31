@@ -61,7 +61,8 @@ public class WalletService : ServiceBase
 
 	/// <summary>
     /// Retrieve an item from the wallet with a given item identifier
-    /// </summary>	
+    /// </summary>
+    
     public GetItemResponse GetItem(GetItemRequest request) {
         
         return Client.GetItem(request, BuildMetadata(request));
@@ -69,7 +70,8 @@ public class WalletService : ServiceBase
 	
 	/// <summary>
     /// Retrieve an item from the wallet with a given item identifier
-    /// </summary>	
+    /// </summary>
+    
     public async Task<GetItemResponse> GetItemAsync(GetItemRequest request) {
         
         return await Client.GetItemAsync(request, await BuildMetadataAsync(request));
@@ -77,7 +79,8 @@ public class WalletService : ServiceBase
 
 	/// <summary>
     /// Search the wallet using a SQL syntax
-    /// </summary>	
+    /// </summary>
+    
     public SearchResponse Search(SearchRequest request) {
         
         return Client.Search(request, BuildMetadata(request));
@@ -85,7 +88,8 @@ public class WalletService : ServiceBase
 	
 	/// <summary>
     /// Search the wallet using a SQL syntax
-    /// </summary>	
+    /// </summary>
+    
     public async Task<SearchResponse> SearchAsync(SearchRequest request) {
         
         return await Client.SearchAsync(request, await BuildMetadataAsync(request));
@@ -93,7 +97,8 @@ public class WalletService : ServiceBase
 
 	/// <summary>
     /// Insert an item into the wallet
-    /// </summary>	
+    /// </summary>
+    
     public InsertItemResponse InsertItem(InsertItemRequest request) {
         
         return Client.InsertItem(request, BuildMetadata(request));
@@ -101,7 +106,8 @@ public class WalletService : ServiceBase
 	
 	/// <summary>
     /// Insert an item into the wallet
-    /// </summary>	
+    /// </summary>
+    
     public async Task<InsertItemResponse> InsertItemAsync(InsertItemRequest request) {
         
         return await Client.InsertItemAsync(request, await BuildMetadataAsync(request));
@@ -109,7 +115,8 @@ public class WalletService : ServiceBase
 
 	/// <summary>
     /// Update an item in the wallet
-    /// </summary>	
+    /// </summary>
+    
     public UpdateItemResponse UpdateItem(UpdateItemRequest request) {
         
         return Client.UpdateItem(request, BuildMetadata(request));
@@ -117,7 +124,8 @@ public class WalletService : ServiceBase
 	
 	/// <summary>
     /// Update an item in the wallet
-    /// </summary>	
+    /// </summary>
+    
     public async Task<UpdateItemResponse> UpdateItemAsync(UpdateItemRequest request) {
         
         return await Client.UpdateItemAsync(request, await BuildMetadataAsync(request));
@@ -125,7 +133,8 @@ public class WalletService : ServiceBase
 
 	/// <summary>
     /// Delete an item from the wallet permanently
-    /// </summary>	
+    /// </summary>
+    
     public DeleteItemResponse DeleteItem(DeleteItemRequest request) {
         
         return Client.DeleteItem(request, BuildMetadata(request));
@@ -133,7 +142,8 @@ public class WalletService : ServiceBase
 	
 	/// <summary>
     /// Delete an item from the wallet permanently
-    /// </summary>	
+    /// </summary>
+    
     public async Task<DeleteItemResponse> DeleteItemAsync(DeleteItemRequest request) {
         
         return await Client.DeleteItemAsync(request, await BuildMetadataAsync(request));

@@ -27,8 +27,9 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/ProviderServiceKt.kt
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
+  @Deprecated("This will be removed May 1, 2023")
   suspend fun updateEcosystem(request: UpdateEcosystemRequest): UpdateEcosystemResponse {
-    /** Update an existing ecosystem */
+    /** This will be removed May 1, 2023 Update an existing ecosystem */
     return withMetadata(stub, request).updateEcosystem(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -64,10 +65,11 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).ecosystemInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
+  @Deprecated("This will be removed May 1, 2023")
   suspend fun getPublicEcosystemInfo(
       request: GetPublicEcosystemInfoRequest
   ): GetPublicEcosystemInfoResponse {
-    /** Get public ecosystem information about *any* ecosystem */
+    /** This will be removed May 1, 2023 Get public ecosystem information about *any* ecosystem */
     return withMetadata(stub, request).getPublicEcosystemInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
