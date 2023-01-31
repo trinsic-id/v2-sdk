@@ -77,17 +77,17 @@ jobs:
         with:
           author_name: Mewmba
           author_email: mewmba@trinsic.id
-          message: 'Generated code from proto files on branch ${{ steps.new-branch-name.oldbranchname }}'
-          new_branch: ${{ steps.new-branch-name.newbranchname }}
-          push: '--force --set-upstream origin ${{ steps.new-branch-name.newbranchname  }}'
+          message: 'Generated code from proto files on branch ${{ steps.new-branch-name.outputs.oldbranchname }}'
+          new_branch: ${{ steps.new-branch-name.outputs.newbranchname }}
+          push: '--force --set-upstream origin ${{ steps.new-branch-name.outputs.newbranchname  }}'
 
       - name: pull-request
         uses: repo-sync/pull-request@v2
         if: ${{ steps.commit_changes.outputs.committed == 'true' }}
         with:
-          source_branch: ${{ steps.new-branch-name.newbranchname }}
-          destination_branch: ${{ steps.new-branch-name.oldbranchname }}
-          pr_title: "Generated Protos for ${{ steps.new-branch-name.oldbranchname }}"
+          source_branch: ${{ steps.new-branch-name.outputs.newbranchname }}
+          destination_branch: ${{ steps.new-branch-name.outputs.oldbranchname }}
+          pr_title: "Generated Protos for ${{ steps.new-branch-name.outputs.oldbranchname }}"
           pr_body: ":rocket: Generated protos"
           pr_allow_empty: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
