@@ -5,6 +5,7 @@ import unittest
 from samples.account_demo import account_demo
 from samples.credential_demo import credential_demo
 from samples.ecosystem_demo import ecosystem_demo
+from samples.file_management_demo import file_management_demo
 from samples.provider_demo import provider_demo
 from samples.templates_demo import templates_demo
 from samples.trustregistry_demo import trustregistry_demo
@@ -56,6 +57,9 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
 
     async def test_ecosystem_demo(self):
         await ecosystem_demo()
+
+    async def test_file_management_demo(self):
+        await file_management_demo()
 
     async def test_providerservice_demo(self):
         await provider_demo()

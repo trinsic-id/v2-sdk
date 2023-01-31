@@ -2563,11 +2563,14 @@
             Display details
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayRequest.DarkFieldNumber">
-            <summary>Field number for the "dark" field.</summary>
-        </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayRequest.LightFieldNumber">
             <summary>Field number for the "light" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplayRequest.Light">
+             <summary>
+            Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+             EcosystemDisplayDetailsRequest dark = 1;
+             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.ColorFieldNumber">
             <summary>Field number for the "color" field.</summary>
@@ -2603,11 +2606,14 @@
             Current ecosystem metadata, post-update
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplay.DarkFieldNumber">
-            <summary>Field number for the "dark" field.</summary>
-        </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplay.LightFieldNumber">
             <summary>Field number for the "light" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplay.Light">
+            <summary>
+               Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+               EcosystemDisplayDetails dark = 1;
+            </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetails.LogoUrlFieldNumber">
             <summary>Field number for the "logo_url" field.</summary>
@@ -5820,6 +5826,16 @@
             metadata with membership info for the given ecosystem governance framework (EGF)
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.SaveCopyFieldNumber">
+            <summary>Field number for the "save_copy" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.SaveCopy">
+            <summary>
+            Save a copy of the issued credential to this user's wallet. This copy will only contain
+            the credential data, but not the secret proof value. Issuers may use this data to
+            keep track of the details for revocation status.
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse">
             <summary>
             Response to `IssueFromTemplateRequest`
@@ -5991,20 +6007,16 @@
             Email address of user to send item to
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidUriFieldNumber">
-            <summary>Field number for the "did_uri" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidUri">
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.WalletId">
             <summary>
             DID of recipient (presently unsupported)
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidcommInvitationJsonFieldNumber">
-            <summary>Field number for the "didcomm_invitation_json" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidcommInvitationJson">
-            <summary>
+            string did_uri = 2 [deprecated=true];
             DIDComm out-of-band invitation JSON (presently unsupported)
+            string didcomm_invitation_json = 3 [deprecated=true];
+            Wallet ID of the recipient within the ecosystem
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.SendNotificationFieldNumber">
@@ -6452,6 +6464,61 @@
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="P:Trinsic.FileManagementService.Client">
+            <summary>
+            Gets the underlying grpc client
+            </summary>
+        </member>
+        <member name="M:Trinsic.FileManagementService.UploadFile(Trinsic.Services.FileManagement.V1.UploadFileRequest)">
+            <summary>
+            Upload a file to Trinsic's CDN
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.UploadFileAsync(Trinsic.Services.FileManagement.V1.UploadFileRequest)">
+            <summary>
+            Upload a file to Trinsic's CDN
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.GetFile(Trinsic.Services.FileManagement.V1.GetFileRequest)">
+            <summary>
+            Fetch information about a file by its ID
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.GetFileAsync(Trinsic.Services.FileManagement.V1.GetFileRequest)">
+            <summary>
+            Fetch information about a file by its ID
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.DeleteFile(Trinsic.Services.FileManagement.V1.DeleteFileRequest)">
+            <summary>
+            Delete a file by its ID
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.DeleteFileAsync(Trinsic.Services.FileManagement.V1.DeleteFileRequest)">
+            <summary>
+            Delete a file by its ID
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.ListFiles(Trinsic.Services.FileManagement.V1.ListFilesRequest)">
+            <summary>
+            List files the calling account has uploaded
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.ListFilesAsync(Trinsic.Services.FileManagement.V1.ListFilesRequest)">
+            <summary>
+            List files the calling account has uploaded
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.GetStorageStats(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest)">
+            <summary>
+            Get statistics about files uploaded by the calling account
+            </summary>	
+        </member>
+        <member name="M:Trinsic.FileManagementService.GetStorageStatsAsync(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest)">
+            <summary>
+            Get statistics about files uploaded by the calling account
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
