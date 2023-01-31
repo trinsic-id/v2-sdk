@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.8+insiders-4.29.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.9+insiders-4.29.0">
     
     
       
@@ -3328,6 +3328,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotationoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AnnotationOption
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sdktemplateoption" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6354,7 +6365,7 @@ to verify authentication token validity</p>
 <tr>
 <td>display</td>
 <td><a href="/reference/proto#services-provider-v1-EcosystemDisplayRequest">EcosystemDisplayRequest</a></td>
-<td>New name string name = 4; Display details</td>
+<td><strong>Deprecated.</strong> New name string name = 4; Display details</td>
 </tr>
 </tbody>
 </table>
@@ -7487,6 +7498,29 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
 <h2 id="servicesoptionsfield-optionsproto">services/options/field-options.proto<a class="headerlink" href="#servicesoptionsfield-optionsproto" title="Permanent link">&para;</a></h2>
 <!-- end services -->
 
+<p><a name="services-options-AnnotationOption"></a></p>
+<h3 id="annotationoption">AnnotationOption<a class="headerlink" href="#annotationoption" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Is this annotation active</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Custom annotation message to provide</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-options-SdkTemplateOption"></a></p>
 <h3 id="sdktemplateoption">SdkTemplateOption<a class="headerlink" href="#sdktemplateoption" title="Permanent link">&para;</a></h3>
 <table>
@@ -7512,6 +7546,16 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
 <td>no_arguments</td>
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty</td>
+</tr>
+<tr>
+<td>experimental</td>
+<td><a href="/reference/proto#services-options-AnnotationOption">AnnotationOption</a></td>
+<td>This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.</td>
+</tr>
+<tr>
+<td>deprecated</td>
+<td><a href="/reference/proto#services-options-AnnotationOption">AnnotationOption</a></td>
+<td>This endpoint is deprecated. It will be removed in the future.</td>
 </tr>
 </tbody>
 </table>
