@@ -2062,16 +2062,16 @@
 
 
 <h1 id="wallets">Wallets<a class="headerlink" href="#wallets" title="Permanent link">&para;</a></h1>
-<p>In Trinsic’s platform, identity wallets are secure, partitioned data stores scoped to a single holder, capable of storing and sharing credentials and proofs. Endless configurations of wallets exist (custodial, non-custodial, etc.) each with different trade-offs; Trinsic has designed a hybrid-cloud wallet system intended to strike the ideal balance between security and usability: </p>
+<p>In Trinsic’s platform, identity wallets are secure, partitioned data stores scoped to a single holder, capable of storing and sharing credentials and proofs. Endless configurations of wallets exist (custodial, non-custodial, etc.) each with different trade-offs; Trinsic has designed a hybrid-cloud wallet system intended to strike the ideal balance between security and usability:</p>
 <ul>
 <li>Cloud-based data store</li>
 <li>Edge-based authentication keys</li>
 </ul>
-<p>For a deeper-dive into how hybrid-cloud wallets work, see our <a href="/learn/platform/security">security overview</a>. </p>
+<p>For a deeper-dive into how hybrid-cloud wallets work, see our <a href="/learn/platform/security">security overview</a>.</p>
 <h3 id="how-to-use-wallets-in-your-app">How to use wallets in your app<a class="headerlink" href="#how-to-use-wallets-in-your-app" title="Permanent link">&para;</a></h3>
-<p>When a user creates an account in your product, you will create a wallet for them. This wallet is tied to the user’s identity using either their email or phone number (for now) - after the user enters the code to prove control of their identifier and claim their wallet, you’ll be off to the races. </p>
+<p>When a user creates an account in your product, you will create a wallet for them. This wallet is tied to the user’s identity using either their email or phone number (for now) - after the user enters the code to prove control of their identifier and claim their wallet, you’ll be off to the races.</p>
 <p>The user will interact with and control their wallet through your application. From your application’s perspective, wallet storage should be treated in parallel with the database you use to manage user data. When users obtain credentials from inside or outside your ecosystem, those credentials will be inserted in the wallet. When users want to share credentials with verifiers, your product will need to obtain user consent before the data is shared.</p>
-<p>All the participants in an ecosystem, not just holders, will technically have wallets behind them. Therefore any participant can issue, verify, and hold credentials to establish trust.</p>
+<p>All the participants in an ecosystem, not just holders, will technically have wallets behind them. Therefore, any participant can issue from a template, verify, and hold credentials to establish trust.</p>
 
 
   <aside class="md-source-file">
@@ -2082,11 +2082,12 @@
       <span class="md-source-file__fact">
         <span class="md-icon" title="Contributors">
           
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
           
         </span>
         <nav>
           
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
         </nav>
       </span>
