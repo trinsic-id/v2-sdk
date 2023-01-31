@@ -245,6 +245,8 @@ export interface UpdateEcosystemRequest {
    * New name
    * string name = 4;
    * Display details
+   *
+   * @deprecated
    */
   display?: EcosystemDisplayRequest;
 }
@@ -335,17 +337,26 @@ export interface EcosystemInfoResponse {
   ecosystem?: Ecosystem;
 }
 
-/** Request to fetch information about an ecosystem */
+/**
+ * Request to fetch information about an ecosystem
+ *
+ * @deprecated
+ */
 export interface GetPublicEcosystemInfoRequest {
   ecosystemId?: string;
 }
 
-/** Response to `InfoRequest` */
+/**
+ * Response to `InfoRequest`
+ *
+ * @deprecated
+ */
 export interface GetPublicEcosystemInfoResponse {
   /** Ecosystem corresponding to requested `ecosystem_id` */
   ecosystem?: PublicEcosystemInformation;
 }
 
+/** @deprecated */
 export interface PublicEcosystemInformation {
   /** Public name of this ecosystem */
   name?: string;
@@ -4078,7 +4089,11 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Update an existing ecosystem */
+    /**
+     * Update an existing ecosystem
+     *
+     * @deprecated
+     */
     updateEcosystem: {
       name: "UpdateEcosystem",
       requestType: UpdateEcosystemRequest,

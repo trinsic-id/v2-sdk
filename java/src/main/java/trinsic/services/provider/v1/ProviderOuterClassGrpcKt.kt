@@ -134,6 +134,7 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     suspend fun updateEcosystem(
         request: UpdateEcosystemRequest,
         headers: Metadata = Metadata()
@@ -461,6 +462,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     open suspend fun updateEcosystem(request: UpdateEcosystemRequest): UpdateEcosystemResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(

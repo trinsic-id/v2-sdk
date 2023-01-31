@@ -304,7 +304,8 @@ const UpdateEcosystemRequest$json = const {
       '4': 1,
       '5': 11,
       '6': '.services.provider.v1.EcosystemDisplayRequest',
-      '10': 'display'
+      '8': const {'3': true},
+      '10': 'display',
     },
   ],
 };
@@ -312,7 +313,7 @@ const UpdateEcosystemRequest$json = const {
 /// Descriptor for `UpdateEcosystemRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateEcosystemRequestDescriptor =
     $convert.base64Decode(
-        'ChZVcGRhdGVFY29zeXN0ZW1SZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbhIUCgN1cmkYAiABKAlCAhgBUgN1cmkSFgoGZG9tYWluGAMgASgJUgZkb21haW4SRwoHZGlzcGxheRgFIAEoCzItLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSZXF1ZXN0UgdkaXNwbGF5');
+        'ChZVcGRhdGVFY29zeXN0ZW1SZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbhIUCgN1cmkYAiABKAlCAhgBUgN1cmkSFgoGZG9tYWluGAMgASgJUgZkb21haW4SSwoHZGlzcGxheRgFIAEoCzItLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSZXF1ZXN0QgIYAVIHZGlzcGxheQ==');
 @$core.Deprecated('Use ecosystemDisplayRequestDescriptor instead')
 const EcosystemDisplayRequest$json = const {
   '1': 'EcosystemDisplayRequest',
@@ -494,12 +495,13 @@ const GetPublicEcosystemInfoRequest$json = const {
   '2': const [
     const {'1': 'ecosystem_id', '3': 1, '4': 1, '5': 9, '10': 'ecosystemId'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `GetPublicEcosystemInfoRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getPublicEcosystemInfoRequestDescriptor =
     $convert.base64Decode(
-        'Ch1HZXRQdWJsaWNFY29zeXN0ZW1JbmZvUmVxdWVzdBIhCgxlY29zeXN0ZW1faWQYASABKAlSC2Vjb3N5c3RlbUlk');
+        'Ch1HZXRQdWJsaWNFY29zeXN0ZW1JbmZvUmVxdWVzdBIhCgxlY29zeXN0ZW1faWQYASABKAlSC2Vjb3N5c3RlbUlkOgIYAQ==');
 @$core.Deprecated('Use getPublicEcosystemInfoResponseDescriptor instead')
 const GetPublicEcosystemInfoResponse$json = const {
   '1': 'GetPublicEcosystemInfoResponse',
@@ -513,12 +515,13 @@ const GetPublicEcosystemInfoResponse$json = const {
       '10': 'ecosystem'
     },
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `GetPublicEcosystemInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getPublicEcosystemInfoResponseDescriptor =
     $convert.base64Decode(
-        'Ch5HZXRQdWJsaWNFY29zeXN0ZW1JbmZvUmVzcG9uc2USTgoJZWNvc3lzdGVtGAEgASgLMjAuc2VydmljZXMucHJvdmlkZXIudjEuUHVibGljRWNvc3lzdGVtSW5mb3JtYXRpb25SCWVjb3N5c3RlbQ==');
+        'Ch5HZXRQdWJsaWNFY29zeXN0ZW1JbmZvUmVzcG9uc2USTgoJZWNvc3lzdGVtGAEgASgLMjAuc2VydmljZXMucHJvdmlkZXIudjEuUHVibGljRWNvc3lzdGVtSW5mb3JtYXRpb25SCWVjb3N5c3RlbToCGAE=');
 @$core.Deprecated('Use publicEcosystemInformationDescriptor instead')
 const PublicEcosystemInformation$json = const {
   '1': 'PublicEcosystemInformation',
@@ -542,12 +545,13 @@ const PublicEcosystemInformation$json = const {
     },
     const {'1': 'description', '3': 5, '4': 1, '5': 9, '10': 'description'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `PublicEcosystemInformation`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List publicEcosystemInformationDescriptor =
     $convert.base64Decode(
-        'ChpQdWJsaWNFY29zeXN0ZW1JbmZvcm1hdGlvbhISCgRuYW1lGAEgASgJUgRuYW1lEhYKBmRvbWFpbhgCIAEoCVIGZG9tYWluEicKD2RvbWFpbl92ZXJpZmllZBgDIAEoCFIOZG9tYWluVmVyaWZpZWQSSwoNc3R5bGVfZGlzcGxheRgEIAEoCzImLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSDHN0eWxlRGlzcGxheRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb24=');
+        'ChpQdWJsaWNFY29zeXN0ZW1JbmZvcm1hdGlvbhISCgRuYW1lGAEgASgJUgRuYW1lEhYKBmRvbWFpbhgCIAEoCVIGZG9tYWluEicKD2RvbWFpbl92ZXJpZmllZBgDIAEoCFIOZG9tYWluVmVyaWZpZWQSSwoNc3R5bGVfZGlzcGxheRgEIAEoCzImLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSDHN0eWxlRGlzcGxheRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb246AhgB');
 @$core.Deprecated('Use generateTokenRequestDescriptor instead')
 const GenerateTokenRequest$json = const {
   '1': 'GenerateTokenRequest',

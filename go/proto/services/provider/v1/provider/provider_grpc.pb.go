@@ -24,6 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type ProviderClient interface {
 	// Create new ecosystem and assign the authenticated user as owner
 	CreateEcosystem(ctx context.Context, in *CreateEcosystemRequest, opts ...grpc.CallOption) (*CreateEcosystemResponse, error)
+	// Deprecated: Do not use.
 	// Update an existing ecosystem
 	UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error)
 	// Grant user authorization to ecosystem resources
@@ -80,6 +81,7 @@ func (c *providerClient) CreateEcosystem(ctx context.Context, in *CreateEcosyste
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *providerClient) UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error) {
 	out := new(UpdateEcosystemResponse)
 	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/UpdateEcosystem", in, out, opts...)
@@ -241,6 +243,7 @@ func (c *providerClient) SearchWalletConfigurations(ctx context.Context, in *Sea
 type ProviderServer interface {
 	// Create new ecosystem and assign the authenticated user as owner
 	CreateEcosystem(context.Context, *CreateEcosystemRequest) (*CreateEcosystemResponse, error)
+	// Deprecated: Do not use.
 	// Update an existing ecosystem
 	UpdateEcosystem(context.Context, *UpdateEcosystemRequest) (*UpdateEcosystemResponse, error)
 	// Grant user authorization to ecosystem resources
