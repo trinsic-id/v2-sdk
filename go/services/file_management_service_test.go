@@ -53,8 +53,8 @@ func TestEndToEndUpload(t *testing.T) {
 	//}
 
 	assert.Nil(err)
-	assert.Equal(1, getStatsResponse.Stats.NumFiles)
-	assert.Equal(getFileResponse.String(), getStatsResponse.Stats.TotalSize)
+	assert.Equal(uint32(1), getStatsResponse.Stats.NumFiles)
+	assert.Equal(uint64(getFileResponse.File.Size), getStatsResponse.Stats.TotalSize)
 
 	// deleteFile() {
 	deleteResponse, err := trinsic.FileManagement().DeleteFile(context.Background(),
