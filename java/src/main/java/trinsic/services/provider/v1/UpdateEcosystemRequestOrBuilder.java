@@ -98,10 +98,13 @@ public interface UpdateEcosystemRequestOrBuilder
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
+   *     services/provider/v1/provider.proto;l=172
    * @return Whether the display field is set.
    */
+  @java.lang.Deprecated
   boolean hasDisplay();
   /**
    *
@@ -112,10 +115,13 @@ public interface UpdateEcosystemRequestOrBuilder
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
+   *     services/provider/v1/provider.proto;l=172
    * @return The display.
    */
+  @java.lang.Deprecated
   trinsic.services.provider.v1.EcosystemDisplayRequest getDisplay();
   /**
    *
@@ -126,7 +132,8 @@ public interface UpdateEcosystemRequestOrBuilder
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    */
+  @java.lang.Deprecated
   trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder getDisplayOrBuilder();
 }

@@ -738,6 +738,24 @@
       "file": "services/file-management/v1/file-management.proto",
       "parent": "services.filemanagement.v1.UploadFileResponse"
     },
+    "services.options.AnnotationOption": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/options/field-options.proto",
+      "parent": ""
+    },
+    "services.options.AnnotationOption.active": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.AnnotationOption"
+    },
+    "services.options.AnnotationOption.message": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.AnnotationOption"
+    },
     "services.options.SdkTemplateOption": {
       "type": "message",
       "collection": "messages",
@@ -745,6 +763,18 @@
       "parent": ""
     },
     "services.options.SdkTemplateOption.anonymous": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.SdkTemplateOption"
+    },
+    "services.options.SdkTemplateOption.deprecated": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.SdkTemplateOption"
+    },
+    "services.options.SdkTemplateOption.experimental": {
       "type": "field",
       "collection": "fields",
       "file": "services/options/field-options.proto",
@@ -3832,12 +3862,17 @@
       "services": [],
       "methods": [],
       "messages": [
+        "services.options.AnnotationOption",
         "services.options.SdkTemplateOption"
       ],
       "fields": [
+        "services.options.AnnotationOption.active",
+        "services.options.AnnotationOption.message",
         "services.options.SdkTemplateOption.anonymous",
         "services.options.SdkTemplateOption.ignore",
-        "services.options.SdkTemplateOption.no_arguments"
+        "services.options.SdkTemplateOption.no_arguments",
+        "services.options.SdkTemplateOption.experimental",
+        "services.options.SdkTemplateOption.deprecated"
       ],
       "enums": [],
       "enum_values": []
@@ -4550,42 +4585,60 @@
       "full_name": "services.filemanagement.v1.FileManagement.DeleteFile",
       "input_type": "services.filemanagement.v1.DeleteFileRequest",
       "output_type": "services.filemanagement.v1.DeleteFileResponse",
-      "description": "Delete a file by its ID"
+      "description": "Delete a file by its ID",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.filemanagement.v1.FileManagement.GetFile": {
       "name": "GetFile",
       "full_name": "services.filemanagement.v1.FileManagement.GetFile",
       "input_type": "services.filemanagement.v1.GetFileRequest",
       "output_type": "services.filemanagement.v1.GetFileResponse",
-      "description": "Fetch information about a file by its ID"
+      "description": "Fetch information about a file by its ID",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.filemanagement.v1.FileManagement.GetStorageStats": {
       "name": "GetStorageStats",
       "full_name": "services.filemanagement.v1.FileManagement.GetStorageStats",
       "input_type": "services.filemanagement.v1.GetStorageStatsRequest",
       "output_type": "services.filemanagement.v1.GetStorageStatsResponse",
-      "description": "Get statistics about files uploaded by the calling account"
+      "description": "Get statistics about files uploaded by the calling account",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.filemanagement.v1.FileManagement.ListFiles": {
       "name": "ListFiles",
       "full_name": "services.filemanagement.v1.FileManagement.ListFiles",
       "input_type": "services.filemanagement.v1.ListFilesRequest",
       "output_type": "services.filemanagement.v1.ListFilesResponse",
-      "description": "List files the calling account has uploaded"
+      "description": "List files the calling account has uploaded",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.filemanagement.v1.FileManagement.UploadFile": {
       "name": "UploadFile",
       "full_name": "services.filemanagement.v1.FileManagement.UploadFile",
       "input_type": "services.filemanagement.v1.UploadFileRequest",
       "output_type": "services.filemanagement.v1.UploadFileResponse",
-      "description": "Upload a file to Trinsic's CDN"
+      "description": "Upload a file to Trinsic's CDN",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.AccessManagement.AddRoleAssignment": {
       "name": "AddRoleAssignment",
       "full_name": "services.provider.v1.AccessManagement.AddRoleAssignment",
       "input_type": "services.provider.v1.AddRoleAssignmentRequest",
       "output_type": "services.provider.v1.AddRoleAssignmentResponse",
-      "description": "Adds a role assignment to an account"
+      "description": "Adds a role assignment to an account",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.AccessManagement.ListAvailableRoles": {
       "name": "ListAvailableRoles",
@@ -4602,14 +4655,20 @@
       "full_name": "services.provider.v1.AccessManagement.ListRoleAssignments",
       "input_type": "services.provider.v1.ListRoleAssignmentsRequest",
       "output_type": "services.provider.v1.ListRoleAssignmentsResponse",
-      "description": "List the role assignments for the given account"
+      "description": "List the role assignments for the given account",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.AccessManagement.RemoveRoleAssignment": {
       "name": "RemoveRoleAssignment",
       "full_name": "services.provider.v1.AccessManagement.RemoveRoleAssignment",
       "input_type": "services.provider.v1.RemoveRoleAssignmentRequest",
       "output_type": "services.provider.v1.RemoveRoleAssignmentResponse",
-      "description": "Removes a role assignment from the account"
+      "description": "Removes a role assignment from the account",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.AddWebhook": {
       "name": "AddWebhook",
@@ -4748,7 +4807,11 @@
       "full_name": "services.provider.v1.Provider.UpdateEcosystem",
       "input_type": "services.provider.v1.UpdateEcosystemRequest",
       "output_type": "services.provider.v1.UpdateEcosystemResponse",
-      "description": "Update an existing ecosystem"
+      "description": "Update an existing ecosystem",
+      "options": {
+        "deprecated": true,
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.UpgradeDID": {
       "name": "UpgradeDID",
@@ -4898,7 +4961,10 @@
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.Issue",
       "input_type": "services.verifiablecredentials.v1.IssueRequest",
       "output_type": "services.verifiablecredentials.v1.IssueResponse",
-      "description": "Sign and issue a verifiable credential from a submitted document.\nThe document must be a valid JSON-LD document."
+      "description": "Sign and issue a verifiable credential from a submitted document.\nThe document must be a valid JSON-LD document.",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate": {
       "name": "IssueFromTemplate",
@@ -5270,6 +5336,17 @@
       "messages": [],
       "enums": []
     },
+    "services.options.AnnotationOption": {
+      "name": "AnnotationOption",
+      "full_name": "services.options.AnnotationOption",
+      "description": "",
+      "fields": [
+        "services.options.AnnotationOption.active",
+        "services.options.AnnotationOption.message"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.options.SdkTemplateOption": {
       "name": "SdkTemplateOption",
       "full_name": "services.options.SdkTemplateOption",
@@ -5277,7 +5354,9 @@
       "fields": [
         "services.options.SdkTemplateOption.anonymous",
         "services.options.SdkTemplateOption.ignore",
-        "services.options.SdkTemplateOption.no_arguments"
+        "services.options.SdkTemplateOption.no_arguments",
+        "services.options.SdkTemplateOption.experimental",
+        "services.options.SdkTemplateOption.deprecated"
       ],
       "messages": [],
       "enums": []
@@ -5527,6 +5606,9 @@
       "name": "GetPublicEcosystemInfoRequest",
       "full_name": "services.provider.v1.GetPublicEcosystemInfoRequest",
       "description": "Request to fetch information about an ecosystem",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id"
       ],
@@ -5537,6 +5619,9 @@
       "name": "GetPublicEcosystemInfoResponse",
       "full_name": "services.provider.v1.GetPublicEcosystemInfoResponse",
       "description": "Response to `InfoRequest`",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem"
       ],
@@ -5711,6 +5796,9 @@
       "name": "PublicEcosystemInformation",
       "full_name": "services.provider.v1.PublicEcosystemInformation",
       "description": "",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.PublicEcosystemInformation.name",
         "services.provider.v1.PublicEcosystemInformation.domain",
@@ -7185,6 +7273,22 @@
       "full_type": "services.filemanagement.v1.File",
       "description": "Information about newly-uploaded file"
     },
+    "services.options.AnnotationOption.active": {
+      "name": "active",
+      "full_name": "services.options.AnnotationOption.active",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Is this annotation active"
+    },
+    "services.options.AnnotationOption.message": {
+      "name": "message",
+      "full_name": "services.options.AnnotationOption.message",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Custom annotation message to provide"
+    },
     "services.options.SdkTemplateOption.anonymous": {
       "name": "anonymous",
       "full_name": "services.options.SdkTemplateOption.anonymous",
@@ -7192,6 +7296,22 @@
       "type": "bool",
       "full_type": "bool",
       "description": "Whether the service endpoint allows anonymous (no auth token necessary) authentication\nThis is used by the `protoc-gen-trinsic-sdk` plugin for metadata."
+    },
+    "services.options.SdkTemplateOption.deprecated": {
+      "name": "deprecated",
+      "full_name": "services.options.SdkTemplateOption.deprecated",
+      "label": "LABEL_OPTIONAL",
+      "type": "AnnotationOption",
+      "full_type": "services.options.AnnotationOption",
+      "description": "This endpoint is deprecated. It will be removed in the future."
+    },
+    "services.options.SdkTemplateOption.experimental": {
+      "name": "experimental",
+      "full_name": "services.options.SdkTemplateOption.experimental",
+      "label": "LABEL_OPTIONAL",
+      "type": "AnnotationOption",
+      "full_type": "services.options.AnnotationOption",
+      "description": "This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect."
     },
     "services.options.SdkTemplateOption.ignore": {
       "name": "ignore",
@@ -7904,7 +8024,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "EcosystemDisplayRequest",
       "full_type": "services.provider.v1.EcosystemDisplayRequest",
-      "description": "New name\nstring name = 4;\nDisplay details"
+      "description": "New name\nstring name = 4;\nDisplay details",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.provider.v1.UpdateEcosystemRequest.domain": {
       "name": "domain",

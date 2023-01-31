@@ -7,16 +7,23 @@ require 'google/protobuf/descriptor_pb'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/options/field-options.proto", :syntax => :proto3) do
+    add_message "services.options.AnnotationOption" do
+      optional :active, :bool, 1
+      optional :message, :string, 2
+    end
     add_message "services.options.SdkTemplateOption" do
       optional :anonymous, :bool, 1
       optional :ignore, :bool, 2
       optional :no_arguments, :bool, 3
+      optional :experimental, :message, 4, "services.options.AnnotationOption"
+      optional :deprecated, :message, 5, "services.options.AnnotationOption"
     end
   end
 end
 
 module Services
   module Options
+    AnnotationOption = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.options.AnnotationOption").msgclass
     SdkTemplateOption = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.options.SdkTemplateOption").msgclass
   end
 end

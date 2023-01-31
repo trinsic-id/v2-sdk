@@ -347,6 +347,10 @@ class UpdateEcosystemRequest(betterproto.Message):
             warnings.warn(
                 "UpdateEcosystemRequest.uri is deprecated", DeprecationWarning
             )
+        if self.is_set("display"):
+            warnings.warn(
+                "UpdateEcosystemRequest.display is deprecated", DeprecationWarning
+            )
 
 
 @dataclass(eq=False, repr=False)
@@ -455,6 +459,10 @@ class GetPublicEcosystemInfoRequest(betterproto.Message):
 
     ecosystem_id: str = betterproto.string_field(1)
 
+    def __post_init__(self) -> None:
+        warnings.warn("GetPublicEcosystemInfoRequest is deprecated", DeprecationWarning)
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class GetPublicEcosystemInfoResponse(betterproto.Message):
@@ -462,6 +470,12 @@ class GetPublicEcosystemInfoResponse(betterproto.Message):
 
     ecosystem: "PublicEcosystemInformation" = betterproto.message_field(1)
     """Ecosystem corresponding to requested `ecosystem_id`"""
+
+    def __post_init__(self) -> None:
+        warnings.warn(
+            "GetPublicEcosystemInfoResponse is deprecated", DeprecationWarning
+        )
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
@@ -480,6 +494,10 @@ class PublicEcosystemInformation(betterproto.Message):
 
     description: str = betterproto.string_field(5)
     """Description of the ecosystem"""
+
+    def __post_init__(self) -> None:
+        warnings.warn("PublicEcosystemInformation is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)

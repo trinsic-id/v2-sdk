@@ -1158,7 +1158,8 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
     $core.String? description,
     @$core.Deprecated('This field is deprecated.') $core.String? uri,
     $core.String? domain,
-    EcosystemDisplayRequest? display,
+    @$core.Deprecated('This field is deprecated.')
+        EcosystemDisplayRequest? display,
   }) {
     final _result = create();
     if (description != null) {
@@ -1172,6 +1173,7 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
       _result.domain = domain;
     }
     if (display != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.display = display;
     }
     return _result;
@@ -1245,17 +1247,22 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDomain() => clearField(3);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(5)
   EcosystemDisplayRequest get display => $_getN(3);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(5)
   set display(EcosystemDisplayRequest v) {
     setField(5, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(5)
   $core.bool hasDisplay() => $_has(3);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(5)
   void clearDisplay() => clearField(5);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(5)
   EcosystemDisplayRequest ensureDisplay() => $_ensure(3);
 }
