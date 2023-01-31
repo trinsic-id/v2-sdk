@@ -1,5 +1,5 @@
 import asyncio
-from python.trinsic.proto.services.filemanagement.v1 import DeleteFileRequest, GetFileRequest, GetStorageStatsRequest, ListFilesRequest, UploadFileRequest, UploadFileResponse
+from trinsic.proto.services.filemanagement.v1 import DeleteFileRequest, GetFileRequest, GetStorageStatsRequest, ListFilesRequest, UploadFileRequest
 
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
