@@ -65,6 +65,9 @@ If `name` is left empty, an anonymous ecosystem will be created.
 
 ## Update Ecosystem
 
+!!! warning "Deprecation Notice"
+    This endpoint is deprecated, and will be removed May 1, 2023. Please use the [dashboard to update](https://dashboard.trinsic.id/).
+
 Updates the active ecosystem's `description` or `uri`.
 
 {{proto_sample_start()}}
