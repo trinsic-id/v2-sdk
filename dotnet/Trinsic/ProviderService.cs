@@ -66,16 +66,20 @@ public class ProviderService : ServiceBase
 // target: /home/runner/work/sdk/sdk/dotnet/Trinsic/ProviderService.cs
 
 	/// <summary>
-    /// Update an existing ecosystem
-    /// </summary>	
+    ///This will be removed May 1, 2023
+    ///  Update an existing ecosystem
+    /// </summary>
+    [Obsolete("This will be removed May 1, 2023")]
     public UpdateEcosystemResponse UpdateEcosystem(UpdateEcosystemRequest request) {
         
         return Client.UpdateEcosystem(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Update an existing ecosystem
-    /// </summary>	
+    ///This will be removed May 1, 2023
+    ///  Update an existing ecosystem
+    /// </summary>
+    [Obsolete("This will be removed May 1, 2023")]
     public async Task<UpdateEcosystemResponse> UpdateEcosystemAsync(UpdateEcosystemRequest request) {
         
         return await Client.UpdateEcosystemAsync(request, await BuildMetadataAsync(request));
@@ -83,7 +87,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Grant user authorization to ecosystem resources
-    /// </summary>	
+    /// </summary>
+    
     public GrantAuthorizationResponse GrantAuthorization(GrantAuthorizationRequest request) {
         
         return Client.GrantAuthorization(request, BuildMetadata(request));
@@ -91,7 +96,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Grant user authorization to ecosystem resources
-    /// </summary>	
+    /// </summary>
+    
     public async Task<GrantAuthorizationResponse> GrantAuthorizationAsync(GrantAuthorizationRequest request) {
         
         return await Client.GrantAuthorizationAsync(request, await BuildMetadataAsync(request));
@@ -99,7 +105,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Revoke user authorization to ecosystem resources
-    /// </summary>	
+    /// </summary>
+    
     public RevokeAuthorizationResponse RevokeAuthorization(RevokeAuthorizationRequest request) {
         
         return Client.RevokeAuthorization(request, BuildMetadata(request));
@@ -107,7 +114,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Revoke user authorization to ecosystem resources
-    /// </summary>	
+    /// </summary>
+    
     public async Task<RevokeAuthorizationResponse> RevokeAuthorizationAsync(RevokeAuthorizationRequest request) {
         
         return await Client.RevokeAuthorizationAsync(request, await BuildMetadataAsync(request));
@@ -115,7 +123,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Retrieve the list of permissions for this particular account/ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public GetAuthorizationsResponse GetAuthorizations(GetAuthorizationsRequest request) {
         
         return Client.GetAuthorizations(request, BuildMetadata(request));
@@ -123,7 +132,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Retrieve the list of permissions for this particular account/ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public async Task<GetAuthorizationsResponse> GetAuthorizationsAsync(GetAuthorizationsRequest request) {
         
         return await Client.GetAuthorizationsAsync(request, await BuildMetadataAsync(request));
@@ -131,7 +141,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Add a webhook endpoint to the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public AddWebhookResponse AddWebhook(AddWebhookRequest request) {
         
         return Client.AddWebhook(request, BuildMetadata(request));
@@ -139,7 +150,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Add a webhook endpoint to the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public async Task<AddWebhookResponse> AddWebhookAsync(AddWebhookRequest request) {
         
         return await Client.AddWebhookAsync(request, await BuildMetadataAsync(request));
@@ -147,7 +159,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Delete a webhook endpoint from the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public DeleteWebhookResponse DeleteWebhook(DeleteWebhookRequest request) {
         
         return Client.DeleteWebhook(request, BuildMetadata(request));
@@ -155,7 +168,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Delete a webhook endpoint from the ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public async Task<DeleteWebhookResponse> DeleteWebhookAsync(DeleteWebhookRequest request) {
         
         return await Client.DeleteWebhookAsync(request, await BuildMetadataAsync(request));
@@ -163,7 +177,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Get ecosystem information
-    /// </summary>	
+    /// </summary>
+    
     public EcosystemInfoResponse EcosystemInfo(EcosystemInfoRequest request) {
         
         return Client.EcosystemInfo(request, BuildMetadata(request));
@@ -171,23 +186,28 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Get ecosystem information
-    /// </summary>	
+    /// </summary>
+    
     public async Task<EcosystemInfoResponse> EcosystemInfoAsync(EcosystemInfoRequest request) {
         
         return await Client.EcosystemInfoAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// Get public ecosystem information about *any* ecosystem
-    /// </summary>	
+    ///This will be removed May 1, 2023
+    ///  Get public ecosystem information about *any* ecosystem
+    /// </summary>
+    [Obsolete("This will be removed May 1, 2023")]
     public GetPublicEcosystemInfoResponse GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest request) {
         
         return Client.GetPublicEcosystemInfo(request, BuildMetadata());
     }
 	
 	/// <summary>
-    /// Get public ecosystem information about *any* ecosystem
-    /// </summary>	
+    ///This will be removed May 1, 2023
+    ///  Get public ecosystem information about *any* ecosystem
+    /// </summary>
+    [Obsolete("This will be removed May 1, 2023")]
     public async Task<GetPublicEcosystemInfoResponse> GetPublicEcosystemInfoAsync(GetPublicEcosystemInfoRequest request) {
         
         return await Client.GetPublicEcosystemInfoAsync(request, await BuildMetadataAsync());
@@ -196,7 +216,8 @@ public class ProviderService : ServiceBase
 	/// <summary>
     /// Generates an unprotected authentication token that can be used to
     ///  configure server side applications
-    /// </summary>	
+    /// </summary>
+    
     public GenerateTokenResponse GenerateToken(GenerateTokenRequest request) {
         
         return Client.GenerateToken(request, BuildMetadata(request));
@@ -205,7 +226,8 @@ public class ProviderService : ServiceBase
 	/// <summary>
     /// Generates an unprotected authentication token that can be used to
     ///  configure server side applications
-    /// </summary>	
+    /// </summary>
+    
     public async Task<GenerateTokenResponse> GenerateTokenAsync(GenerateTokenRequest request) {
         
         return await Client.GenerateTokenAsync(request, await BuildMetadataAsync(request));
@@ -213,7 +235,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Returns the public key being used to create/verify oberon tokens
-    /// </summary>	
+    /// </summary>
+    
     public GetOberonKeyResponse GetOberonKey(GetOberonKeyRequest request) {
         
         return Client.GetOberonKey(request, BuildMetadata());
@@ -221,7 +244,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Returns the public key being used to create/verify oberon tokens
-    /// </summary>	
+    /// </summary>
+    
     public async Task<GetOberonKeyResponse> GetOberonKeyAsync(GetOberonKeyRequest request) {
         
         return await Client.GetOberonKeyAsync(request, await BuildMetadataAsync());
@@ -229,7 +253,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Generate a signed token (JWT) that can be used to connect to the message bus
-    /// </summary>	
+    /// </summary>
+    
     public GetEventTokenResponse GetEventToken(GetEventTokenRequest request) {
         
         return Client.GetEventToken(request, BuildMetadata(request));
@@ -237,7 +262,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Generate a signed token (JWT) that can be used to connect to the message bus
-    /// </summary>	
+    /// </summary>
+    
     public async Task<GetEventTokenResponse> GetEventTokenAsync(GetEventTokenRequest request) {
         
         return await Client.GetEventTokenAsync(request, await BuildMetadataAsync(request));
@@ -245,7 +271,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Upgrade a wallet's DID from `did:key` to another method
-    /// </summary>	
+    /// </summary>
+    
     public UpgradeDidResponse UpgradeDID(UpgradeDidRequest request) {
         
         return Client.UpgradeDID(request, BuildMetadata(request));
@@ -253,7 +280,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Upgrade a wallet's DID from `did:key` to another method
-    /// </summary>	
+    /// </summary>
+    
     public async Task<UpgradeDidResponse> UpgradeDIDAsync(UpgradeDidRequest request) {
         
         return await Client.UpgradeDIDAsync(request, await BuildMetadataAsync(request));
@@ -261,7 +289,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Retrieve a random hash TXT that can be used to verify domain ownership
-    /// </summary>	
+    /// </summary>
+    
     public RetrieveDomainVerificationRecordResponse RetrieveDomainVerificationRecord() {
         var request = new RetrieveDomainVerificationRecordRequest();
         return Client.RetrieveDomainVerificationRecord(request, BuildMetadata(request));
@@ -269,7 +298,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Retrieve a random hash TXT that can be used to verify domain ownership
-    /// </summary>	
+    /// </summary>
+    
     public async Task<RetrieveDomainVerificationRecordResponse> RetrieveDomainVerificationRecordAsync() {
         var request = new RetrieveDomainVerificationRecordRequest();
         return await Client.RetrieveDomainVerificationRecordAsync(request, await BuildMetadataAsync(request));
@@ -277,7 +307,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Call to verify domain
-    /// </summary>	
+    /// </summary>
+    
     public RefreshDomainVerificationStatusResponse RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest request) {
         
         return Client.RefreshDomainVerificationStatus(request, BuildMetadata(request));
@@ -285,7 +316,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Call to verify domain
-    /// </summary>	
+    /// </summary>
+    
     public async Task<RefreshDomainVerificationStatusResponse> RefreshDomainVerificationStatusAsync(RefreshDomainVerificationStatusRequest request) {
         
         return await Client.RefreshDomainVerificationStatusAsync(request, await BuildMetadataAsync(request));
@@ -293,7 +325,8 @@ public class ProviderService : ServiceBase
 
 	/// <summary>
     /// Search for issuers/providers/verifiers in the current ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public SearchWalletConfigurationResponse SearchWalletConfigurations(SearchWalletConfigurationsRequest request) {
         
         return Client.SearchWalletConfigurations(request, BuildMetadata(request));
@@ -301,7 +334,8 @@ public class ProviderService : ServiceBase
 	
 	/// <summary>
     /// Search for issuers/providers/verifiers in the current ecosystem
-    /// </summary>	
+    /// </summary>
+    
     public async Task<SearchWalletConfigurationResponse> SearchWalletConfigurationsAsync(SearchWalletConfigurationsRequest request) {
         
         return await Client.SearchWalletConfigurationsAsync(request, await BuildMetadataAsync(request));
