@@ -22,9 +22,10 @@ public class CredentialService extends ServiceBase {
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/CredentialService.java
 
   /**
-   * Sign and issue a verifiable credential from a submitted document. The document must be a valid
-   * JSON-LD document.
+   * This endpoint will be removed around May 1, 2023 Sign and issue a verifiable credential from a
+   * submitted document. The document must be a valid JSON-LD document.
    */
+  @Deprecated(since = "This endpoint will be removed around May 1, 2023")
   public ListenableFuture<IssueResponse> issue(IssueRequest request)
       throws InvalidProtocolBufferException, DidException {
 

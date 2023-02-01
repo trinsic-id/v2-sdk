@@ -16,7 +16,8 @@ export class CredentialService extends ServiceBase {
 // target: /home/runner/work/sdk/sdk/web/src/CredentialService.ts
 
   /** Sign and issue a verifiable credential from a submitted document.
-* The document must be a valid JSON-LD document. */
+* The document must be a valid JSON-LD document.
+*@deprecated This endpoint will be removed around May 1, 2023 */
   public async issue(request: proto.IssueRequest): Promise<proto.IssueResponse> {
     
     return this.client.issue(request, {
