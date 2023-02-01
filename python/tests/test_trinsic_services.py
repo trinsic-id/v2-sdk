@@ -1,8 +1,6 @@
-import asyncio
 import platform
 import unittest
 
-from samples.account_demo import account_demo
 from samples.credential_demo import credential_demo
 from samples.ecosystem_demo import ecosystem_demo
 from samples.provider_demo import provider_demo
@@ -12,14 +10,8 @@ from samples.vaccine_demo import vaccine_demo
 from samples.wallet_demo import wallet_demo
 from trinsic.account_service import AccountService
 from trinsic.proto.services.common.v1 import ResponseStatus
-from trinsic.proto.services.provider.v1 import InviteRequest, InvitationStatusRequest
-from trinsic.proto.services.trustregistry.v1 import (
-    AddFrameworkRequest,
-)
-from trinsic.provider_service import ProviderService
 from trinsic.service_base import ResponseStatusException
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
-from trinsic.trustregistry_service import TrustRegistryService
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):

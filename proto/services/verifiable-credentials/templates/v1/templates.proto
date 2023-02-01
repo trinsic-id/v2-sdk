@@ -28,7 +28,7 @@ message SearchCredentialTemplatesRequest {
 
   // Token provided by previous `SearchCredentialTemplatesResponse`
   // if more data is available for query
-  string continuation_token = 2 [(options.optional)=true];
+  string continuation_token = 2 [(options.optional) = true];
 }
 
 // Response to `SearchCredentialTemplatesRequest`
@@ -50,7 +50,7 @@ message ListCredentialTemplatesRequest {
 
   // Token provided by previous `ListCredentialTemplatesResponse`
   // if more data is available for query
-  string continuation_token = 2 [(options.optional)=true];
+  string continuation_token = 2 [(options.optional) = true];
 }
 
 // Response to `ListCredentialTemplatesRequest`
@@ -135,7 +135,7 @@ message ListTemplatesResponse {
 // Credential Template
 message TemplateData {
   // Template ID
-  string id = 1           [json_name="id"];
+  string id = 1           [json_name = "id"];
   // Template name
   string name = 2;
   // Template version number
@@ -148,15 +148,15 @@ message TemplateData {
   // URI pointing to template JSON schema document
   string schema_uri = 6;
   // URI pointing to template JSON-LD context document
-  string context_uri = 7 [deprecated=true];
+  string context_uri = 7 [deprecated = true];
   // ID of ecosystem in which template resides
-  string ecosystem_id = 8 [json_name="ecosystemId"];
+  string ecosystem_id = 8 [json_name = "ecosystemId"];
   // Template type (`VerifiableCredential`)
-  string type = 9         [json_name="type"];
+  string type = 9         [json_name = "type"];
   // ID of template creator
-  string created_by = 10  [json_name="createdBy"];
+  string created_by = 10  [json_name = "createdBy"];
   // Date when template was created as ISO 8601 utc string
-  string date_created = 11 [json_name="dateCreated"];
+  string date_created = 11 [json_name = "dateCreated"];
 }
 
 service CredentialTemplates {

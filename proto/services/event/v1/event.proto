@@ -10,125 +10,125 @@ option java_multiple_files = true;
 import "google/protobuf/descriptor.proto";
 
 extend google.protobuf.MessageOptions {
-    // Event type associated with this Event message.
-    optional EventType event_type = 60002;
+  // Event type associated with this Event message.
+  optional EventType event_type = 60002;
 }
 
 
 // All event types
 enum EventType {
-    PING = 0;
-    LOG = 1;
+  PING = 0;
+  LOG = 1;
 
-    GOVERNANCE_FRAMEWORK_CREATED = 5;
-    GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = 6;
-    GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = 7;
+  GOVERNANCE_FRAMEWORK_CREATED = 5;
+  GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED = 6;
+  GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED = 7;
 
-    TEMPLATE_CREATED = 10;
-    TEMPLATE_DELETED = 11;
+  TEMPLATE_CREATED = 10;
+  TEMPLATE_DELETED = 11;
 
-    WALLET_CREATED = 15;
-    ITEM_RECEIVED = 16;
-    CREDENTIAL_ISSUED = 17;
+  WALLET_CREATED = 15;
+  ITEM_RECEIVED = 16;
+  CREDENTIAL_ISSUED = 17;
 }
 
 message APICall {
-    string source = 1;
-    bytes request = 2;
-    bytes response = 3;
+  string source = 1;
+  bytes request = 2;
+  bytes response = 3;
 }
 
 // Webhook test event
 message PingV1 {
-    option (event_type) = PING;
+  option (event_type) = PING;
 
-    // UUID of this ping
-    string id = 1;
+  // UUID of this ping
+  string id = 1;
 
-    // UUID of the webhook receiving the ping
-    string webhook_id = 2;
+  // UUID of the webhook receiving the ping
+  string webhook_id = 2;
 
-    // Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
-    string timestamp = 3;
+  // Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+  string timestamp = 3;
 
-    // Arbitrary message specified when ping was requested
-    string message = 4;
+  // Arbitrary message specified when ping was requested
+  string message = 4;
 
-    // Ecosystem where this event originated, if any.
-    string ecosystem_id = 5;
+  // Ecosystem where this event originated, if any.
+  string ecosystem_id = 5;
 }
 
 
 // Entity Governance Framework created and attached to ecosystem
 message GovernanceFrameworkCreatedV1 {
-    option (event_type) = GOVERNANCE_FRAMEWORK_CREATED;
+  option (event_type) = GOVERNANCE_FRAMEWORK_CREATED;
 
-    // UUID of the governance framework
-    string id = 1;
+  // UUID of the governance framework
+  string id = 1;
 
-    // UUID of the ecosystem that owns this EGF
-    string ecosystem_id = 2;
+  // UUID of the ecosystem that owns this EGF
+  string ecosystem_id = 2;
 
-    // Trust registry associated with this EGF
-    string trust_registry  = 3;
+  // Trust registry associated with this EGF
+  string trust_registry = 3;
 
-    // Wallet ID of the authority for this EGF
-    string governing_authority = 4;
+  // Wallet ID of the authority for this EGF
+  string governing_authority = 4;
 
-    // Type of EGF
-    string type = 5;
+  // Type of EGF
+  string type = 5;
 
-    // User-friendly name for the EGF
-    string name = 6;
+  // User-friendly name for the EGF
+  string name = 6;
 
-    // Description of the EGF
-    string description = 7;
+  // Description of the EGF
+  string description = 7;
 
-    // URI for the EGF
-    string governance_framework = 8;
+  // URI for the EGF
+  string governance_framework = 8;
 
-    // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
-    string timestamp = 9;
+  // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+  string timestamp = 9;
 }
 
 // Template created in ecosystem
 message TemplateCreatedV1 {
-    option (event_type) = TEMPLATE_CREATED;
+  option (event_type) = TEMPLATE_CREATED;
 
-    // UUID of the template
-    string id = 1;
+  // UUID of the template
+  string id = 1;
 
-    // UUID of the ecosystem that owns this template
-    string ecosystem_id = 2;
+  // UUID of the ecosystem that owns this template
+  string ecosystem_id = 2;
 
-    // Template name
-    string name = 3;
+  // Template name
+  string name = 3;
 
-    // Template type
-    string type = 4;
+  // Template type
+  string type = 4;
 
-    // WalletID that created the template
-    string created_by = 5;
+  // WalletID that created the template
+  string created_by = 5;
 
-    // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
-    string timestamp = 6;
+  // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+  string timestamp = 6;
 }
 
 // Item inserted into wallet
 message ItemReceivedV1 {
-    option (event_type) = ITEM_RECEIVED;
+  option (event_type) = ITEM_RECEIVED;
 
-    // UUID of the new item
-    string id = 1;
+  // UUID of the new item
+  string id = 1;
 
-    // Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
-    string received = 2;
+  // Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
+  string received = 2;
 
-    // ID of wallet
-    string wallet_id = 3;
+  // ID of wallet
+  string wallet_id = 3;
 
-    // Ecosystem where this event originated, if any.
-    string ecosystem_id = 4;
+  // Ecosystem where this event originated, if any.
+  string ecosystem_id = 4;
 }
 
 

@@ -12,51 +12,51 @@ import "services/options/field-options.proto";
 
 // Request to search items in wallet
 message SearchRequest {
-    // SQL Query to execute against items in wallet
-    string query = 1;
-    // Token provided by previous `SearchResponse`
-    // if more data is available for query
-    string continuation_token = 2 [(options.optional)=true];
+  // SQL Query to execute against items in wallet
+  string query = 1;
+  // Token provided by previous `SearchResponse`
+  // if more data is available for query
+  string continuation_token = 2 [(options.optional) = true];
 }
 
 // Response to `SearchRequest`
 message SearchResponse {
-    // Array of query results, as JSON strings
-    repeated string items = 1;
+  // Array of query results, as JSON strings
+  repeated string items = 1;
 
-    // Whether more results are available for this query via `continuation_token`
-    bool has_more = 2;
+  // Whether more results are available for this query via `continuation_token`
+  bool has_more = 2;
 
-    // Token to fetch next set of results via `SearchRequest`
-    string continuation_token = 4;
+  // Token to fetch next set of results via `SearchRequest`
+  string continuation_token = 4;
 }
 
 // Get Item
 
 // Request to fetch an item from wallet
 message GetItemRequest {
-    // ID of item in wallet
-    string item_id = 1;
+  // ID of item in wallet
+  string item_id = 1;
 }
 
 // Response to `GetItemRequest`
 message GetItemResponse {
-    // Item data as a JSON string
-    string item_json = 1;
+  // Item data as a JSON string
+  string item_json = 1;
 
-    // Type of item specified when item was inserted into wallet
-    string item_type = 2;
+  // Type of item specified when item was inserted into wallet
+  string item_type = 2;
 }
 
 // Update Item
 
 // Request to update item in wallet
 message UpdateItemRequest {
-    // ID of item in wallet
-    string item_id = 1;
+  // ID of item in wallet
+  string item_id = 1;
 
-    // Item type (ex. "VerifiableCredential")
-    string item_type = 2 [(options.optional)=true];
+  // Item type (ex. "VerifiableCredential")
+  string item_type = 2 [(options.optional) = true];
 }
 
 // Response to `UpdateItemRequest`
@@ -67,23 +67,23 @@ message UpdateItemResponse {
 
 // Request to insert a JSON document into a wallet
 message InsertItemRequest {
-    // Document to insert; must be stringified JSON
-    string item_json = 1;
+  // Document to insert; must be stringified JSON
+  string item_json = 1;
 
-    // Item type (ex. "VerifiableCredential")
-    string item_type = 2 [(options.optional)=true];
+  // Item type (ex. "VerifiableCredential")
+  string item_type = 2 [(options.optional) = true];
 }
 
 // Response to `InsertItemRequest`
 message InsertItemResponse {
-    // ID of item inserted into wallet
-    string item_id = 2;
+  // ID of item inserted into wallet
+  string item_id = 2;
 }
 
 // Request to delete an item in a wallet
 message DeleteItemRequest {
-    // ID of item to delete
-    string item_id = 1;
+  // ID of item to delete
+  string item_id = 1;
 }
 
 // Response to `DeleteItemRequest`
@@ -91,15 +91,15 @@ message DeleteItemResponse {
 }
 
 service UniversalWallet {
-    // Retrieve an item from the wallet with a given item identifier
-    rpc GetItem(GetItemRequest) returns (GetItemResponse);
-    // Search the wallet using a SQL syntax
-    rpc Search(SearchRequest) returns (SearchResponse);
-    // Insert an item into the wallet
-    rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
-    // Update an item in the wallet
-    rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
-    // Delete an item from the wallet permanently
-    rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
+  // Retrieve an item from the wallet with a given item identifier
+  rpc GetItem(GetItemRequest) returns (GetItemResponse);
+  // Search the wallet using a SQL syntax
+  rpc Search(SearchRequest) returns (SearchResponse);
+  // Insert an item into the wallet
+  rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
+  // Update an item in the wallet
+  rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
+  // Delete an item from the wallet permanently
+  rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
 }
 

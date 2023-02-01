@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
@@ -34,48 +35,60 @@ public class AccessManagementService : ServiceBase
 // target: /home/runner/work/sdk/sdk/dotnet/Trinsic/AccessManagementService.cs
 
 	/// <summary>
-    /// Adds a role assignment to an account
-    /// </summary>	
+    ///This method is experimental
+    ///  Adds a role assignment to an account
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public AddRoleAssignmentResponse AddRoleAssignment(AddRoleAssignmentRequest request) {
         
         return Client.AddRoleAssignment(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Adds a role assignment to an account
-    /// </summary>	
+    ///This method is experimental
+    ///  Adds a role assignment to an account
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public async Task<AddRoleAssignmentResponse> AddRoleAssignmentAsync(AddRoleAssignmentRequest request) {
         
         return await Client.AddRoleAssignmentAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// Removes a role assignment from the account
-    /// </summary>	
+    ///This method is experimental
+    ///  Removes a role assignment from the account
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public RemoveRoleAssignmentResponse RemoveRoleAssignment(RemoveRoleAssignmentRequest request) {
         
         return Client.RemoveRoleAssignment(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Removes a role assignment from the account
-    /// </summary>	
+    ///This method is experimental
+    ///  Removes a role assignment from the account
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public async Task<RemoveRoleAssignmentResponse> RemoveRoleAssignmentAsync(RemoveRoleAssignmentRequest request) {
         
         return await Client.RemoveRoleAssignmentAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// List the role assignments for the given account
-    /// </summary>	
+    ///This method is experimental
+    ///  List the role assignments for the given account
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public ListRoleAssignmentsResponse ListRoleAssignments(ListRoleAssignmentsRequest request) {
         
         return Client.ListRoleAssignments(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// List the role assignments for the given account
-    /// </summary>	
+    ///This method is experimental
+    ///  List the role assignments for the given account
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public async Task<ListRoleAssignmentsResponse> ListRoleAssignmentsAsync(ListRoleAssignmentsRequest request) {
         
         return await Client.ListRoleAssignmentsAsync(request, await BuildMetadataAsync(request));
