@@ -43,14 +43,18 @@ public class Tests
 
     public Tests(ITestOutputHelper testOutputHelper) {
         _testOutputHelper = testOutputHelper;
+        _options = GetTestServiceOptions();
 
-        _options = new() {
+        _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
+    }
+
+    public static ServiceOptions GetTestServiceOptions()
+    {
+        return new() {
             ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? DefaultEndpoint,
             ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : DefaultPort,
             ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls
         };
-
-        _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
     }
 
     private const string VaccinationCertificateUnsigned = "TestData/vaccination-certificate-unsigned.jsonld";
