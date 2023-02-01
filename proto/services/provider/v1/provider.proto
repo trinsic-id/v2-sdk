@@ -13,231 +13,231 @@ import "services/common/v1/common.proto";
 
 // Request to invite a participant to an ecosystem
 message InviteRequest {
-    option deprecated = true;
-    // Type of participant being invited (individual/organization)
-    ParticipantType participant = 1;
+  option deprecated = true;
+  // Type of participant being invited (individual/organization)
+  ParticipantType participant = 1;
 
-    // Description of invitation
-    string description = 2 [(options.optional)=true];
+  // Description of invitation
+  string description = 2 [(options.optional) = true];
 
-    // Account details of invitee
-    services.account.v1.AccountDetails details = 3 [(options.optional)=true];
+  // Account details of invitee
+  services.account.v1.AccountDetails details = 3 [(options.optional) = true];
 
-    message DidCommInvitation {}
+  message DidCommInvitation {}
 }
 
 // Type of participant being invited to ecosystem
 enum ParticipantType {
-    // Participant is an individual
-    participant_type_individual = 0;
+  // Participant is an individual
+  participant_type_individual = 0;
 
-    // Participant is an organization
-    participant_type_organization = 1;
+  // Participant is an organization
+  participant_type_organization = 1;
 }
 
 // Response to `InviteRequest`
 message InviteResponse {
-    option deprecated = true;
+  option deprecated = true;
 
-    // ID of created invitation
-    string invitation_id = 10;
+  // ID of created invitation
+  string invitation_id = 10;
 
-    // Invitation code -- must be passed back in `LoginRequest`
-    string invitation_code = 11;
+  // Invitation code -- must be passed back in `LoginRequest`
+  string invitation_code = 11;
 }
 
 // Request details for the status of an invitation
 message InvitationStatusRequest {
-    option deprecated = true;
-    // ID of invitation, received from `InviteResponse`
-    string invitation_id = 1;
+  option deprecated = true;
+  // ID of invitation, received from `InviteResponse`
+  string invitation_id = 1;
 }
 
 // Response to `InvitationStatusRequest`
 message InvitationStatusResponse {
-    option deprecated = true;
-    enum Status {
-        // Onboarding resulted in error
-        Error = 0;
+  option deprecated = true;
+  enum Status {
+    // Onboarding resulted in error
+    Error = 0;
 
-        // The participant has been invited
-        InvitationSent = 1;
+    // The participant has been invited
+    InvitationSent = 1;
 
-        // The participant has been onboarded
-        Completed = 2;
+    // The participant has been onboarded
+    Completed = 2;
 
-        // The invite has expired
-        Expired = 3;
-    }
+    // The invite has expired
+    Expired = 3;
+  }
 
-    // Status of invitation
-    Status status = 1;
+  // Status of invitation
+  Status status = 1;
 
-    // Human-readable string with details about invitation status
-    string status_details = 2;
+  // Human-readable string with details about invitation status
+  string status_details = 2;
 }
 
 // Details of an ecosystem
 message Ecosystem {
-    // URN of the ecosystem
-    string id = 1;
+  // URN of the ecosystem
+  string id = 1;
 
-    // Globally unique name for the ecosystem
-    string name = 2;
+  // Globally unique name for the ecosystem
+  string name = 2;
 
-    // Ecosystem description
-    string description = 3;
+  // Ecosystem description
+  string description = 3;
 
-    // External URL associated with the organization or ecosystem entity
-    string uri = 4 [deprecated = true];
+  // External URL associated with the organization or ecosystem entity
+  string uri = 4 [deprecated = true];
 
-    // Configured webhooks, if any
-    repeated WebhookConfig webhooks = 5;
+  // Configured webhooks, if any
+  repeated WebhookConfig webhooks = 5;
 
-    // Display details
-    EcosystemDisplay display = 6;
+  // Display details
+  EcosystemDisplay display = 6;
 
-    // Domain
-    string domain = 7;
+  // Domain
+  string domain = 7;
 }
 
 // Webhook configured on an ecosystem
 message WebhookConfig {
-    // UUID of the webhook
-    string id = 1;
+  // UUID of the webhook
+  string id = 1;
 
-    // HTTPS URL to POST webhook calls to
-    string destination_url = 2;
+  // HTTPS URL to POST webhook calls to
+  string destination_url = 2;
 
-    // Events the webhook is subscribed to
-    repeated string events = 4;
+  // Events the webhook is subscribed to
+  repeated string events = 4;
 
-    // Last known status of webhook (whether or not Trinsic can successfully reach destination)
-    string status = 5;
+  // Last known status of webhook (whether or not Trinsic can successfully reach destination)
+  string status = 5;
 }
 
 // A grant authorizing `actions` on a `resourceId`
 message Grant {
-    // the urn of the resource
-    string resourceId = 1;
+  // the urn of the resource
+  string resourceId = 1;
 
-     // list of actions that are allowed
-    repeated string actions = 2;
+  // list of actions that are allowed
+  repeated string actions = 2;
 
-    // any child grants
-    repeated Grant child_grants = 3;
+  // any child grants
+  repeated Grant child_grants = 3;
 }
 
 // Request to create an ecosystem
 message CreateEcosystemRequest {
-    // Globally unique name for the Ecosystem. This name will be
-    // part of the ecosystem-specific URLs and namespaces.
-    // Allowed characters are lowercase letters, numbers, underscore and hyphen.
-    // If not passed, ecosystem name will be auto-generated.
-    string name = 1 [(options.optional)=true];
+  // Globally unique name for the Ecosystem. This name will be
+  // part of the ecosystem-specific URLs and namespaces.
+  // Allowed characters are lowercase letters, numbers, underscore and hyphen.
+  // If not passed, ecosystem name will be auto-generated.
+  string name = 1 [(options.optional) = true];
 
-    // Ecosystem description
-    string description = 2 [(options.optional)=true];
+  // Ecosystem description
+  string description = 2 [(options.optional) = true];
 
-    // External URL associated with your organization or ecosystem entity
-    string uri = 3 [(options.optional)=true, deprecated = true];
+  // External URL associated with your organization or ecosystem entity
+  string uri = 3 [(options.optional) = true, deprecated = true];
 
-    // The account details of the owner of the ecosystem
-    services.account.v1.AccountDetails details = 4;
+  // The account details of the owner of the ecosystem
+  services.account.v1.AccountDetails details = 4;
 
-    // New domain URL
-    string domain = 5;
+  // New domain URL
+  string domain = 5;
 }
 
 // Response to `CreateEcosystemRequest`
 message CreateEcosystemResponse {
-    // Details of the created ecosystem
-    Ecosystem ecosystem = 1;
-    // Account profile for auth of the owner of the ecosystem
-    services.account.v1.AccountProfile profile = 2;
-    // Indicates if confirmation of account is required.
-    services.account.v1.ConfirmationMethod confirmation_method = 3;
+  // Details of the created ecosystem
+  Ecosystem ecosystem = 1;
+  // Account profile for auth of the owner of the ecosystem
+  services.account.v1.AccountProfile profile = 2;
+  // Indicates if confirmation of account is required.
+  services.account.v1.ConfirmationMethod confirmation_method = 3;
 }
 
 // Request to update an ecosystem's metadata
 message UpdateEcosystemRequest {
-    // New description of the ecosystem
-    string description = 1;
-    // New external URL associated with the organization or ecosystem entity
-   string uri = 2 [deprecated = true];
-    // New domain URL
-    string domain = 3;
-    // New name
-    // string name = 4;
-    // Display details
-    EcosystemDisplayRequest display = 5 [deprecated = true];
+  // New description of the ecosystem
+  string description = 1;
+  // New external URL associated with the organization or ecosystem entity
+  string uri = 2 [deprecated = true];
+  // New domain URL
+  string domain = 3;
+  // New name
+  // string name = 4;
+  // Display details
+  EcosystemDisplayRequest display = 5 [deprecated = true];
 }
 
 message EcosystemDisplayRequest {
-    //Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-    // EcosystemDisplayDetailsRequest dark = 1;
-    EcosystemDisplayDetailsRequest light = 2;
+  //Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+  // EcosystemDisplayDetailsRequest dark = 1;
+  EcosystemDisplayDetailsRequest light = 2;
 }
 
 message EcosystemDisplayDetailsRequest {
-    // string id = 1;
-    // string name = 2;
-//    string logo_url = 3;
-    string color = 4;
-    bytes logo_data = 5;
-    // MIME type of the file
-    string logo_format = 6;
+  // string id = 1;
+  // string name = 2;
+  //    string logo_url = 3;
+  string color = 4;
+  bytes logo_data = 5;
+  // MIME type of the file
+  string logo_format = 6;
 }
 
 // Response to `UpdateEcosystemRequest`
 message UpdateEcosystemResponse {
-    // Current ecosystem metadata, post-update
-    Ecosystem Ecosystem = 1;
+  // Current ecosystem metadata, post-update
+  Ecosystem Ecosystem = 1;
 }
 
 message EcosystemDisplay {
-//    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-//    EcosystemDisplayDetails dark = 1;
-    EcosystemDisplayDetails light = 2;
+  //    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+  //    EcosystemDisplayDetails dark = 1;
+  EcosystemDisplayDetails light = 2;
 }
 
 message EcosystemDisplayDetails {
-    // string id = 1;
-    // string name = 2;
-    string logo_url = 3;
-    string color = 4;
+  // string id = 1;
+  // string name = 2;
+  string logo_url = 3;
+  string color = 4;
 }
 
 // Request to add a webhook to an ecosystem
 message AddWebhookRequest {
-    // Destination to post webhook calls to.
-    // Must be a reachable HTTPS URL.
-    string destination_url = 1;
+  // Destination to post webhook calls to.
+  // Must be a reachable HTTPS URL.
+  string destination_url = 1;
 
-    // Secret string used for HMAC-SHA256 signing of webhook payloads
-    // to verify that a webhook comes from Trinsic
-    string secret = 2;
+  // Secret string used for HMAC-SHA256 signing of webhook payloads
+  // to verify that a webhook comes from Trinsic
+  string secret = 2;
 
-    // Events to subscribe to. Default is "*" (all events)
-    repeated string events = 3;
+  // Events to subscribe to. Default is "*" (all events)
+  repeated string events = 3;
 }
 
 // Response to `AddWebhookRequest`
 message AddWebhookResponse {
-    // Ecosystem data with new webhook
-    Ecosystem ecosystem = 1;
+  // Ecosystem data with new webhook
+  Ecosystem ecosystem = 1;
 }
 
 // Request to delete a webhook from an ecosystem
 message DeleteWebhookRequest {
-    // ID of webhook to delete
-    string webhook_id = 1;
+  // ID of webhook to delete
+  string webhook_id = 1;
 }
 
 // Response to `DeleteWebhookRequest`
 message DeleteWebhookResponse {
-    // Ecosystem data after removal of webhook
-    Ecosystem ecosystem = 1;
+  // Ecosystem data after removal of webhook
+  Ecosystem ecosystem = 1;
 }
 
 // Request to fetch information about an ecosystem
@@ -246,48 +246,48 @@ message EcosystemInfoRequest {
 
 // Response to `InfoRequest`
 message EcosystemInfoResponse {
-    // Ecosystem corresponding to current ecosystem in the account token
-    Ecosystem ecosystem = 1;
+  // Ecosystem corresponding to current ecosystem in the account token
+  Ecosystem ecosystem = 1;
 }
 
 // Request to fetch information about an ecosystem
 message GetPublicEcosystemInfoRequest {
-    option deprecated = true;
-    string ecosystem_id = 1;
+  option deprecated = true;
+  string ecosystem_id = 1;
 }
 
 // Response to `InfoRequest`
 message GetPublicEcosystemInfoResponse {
-    option deprecated = true;
-    // Ecosystem corresponding to requested `ecosystem_id`
-    PublicEcosystemInformation ecosystem = 1;
+  option deprecated = true;
+  // Ecosystem corresponding to requested `ecosystem_id`
+  PublicEcosystemInformation ecosystem = 1;
 }
 
 message PublicEcosystemInformation {
-    option deprecated = true;
-    // Public name of this ecosystem
-    string name = 1;
-    // Public domain for the owner of this ecosystem
-    string domain = 2;
-    // Trinsic verified the domain is owned by the owner of this ecosystem
-    bool domain_verified = 3;
-    // Style display information
-    EcosystemDisplay style_display = 4;
-    // Description of the ecosystem
-    string description = 5;
+  option deprecated = true;
+  // Public name of this ecosystem
+  string name = 1;
+  // Public domain for the owner of this ecosystem
+  string domain = 2;
+  // Trinsic verified the domain is owned by the owner of this ecosystem
+  bool domain_verified = 3;
+  // Style display information
+  EcosystemDisplay style_display = 4;
+  // Description of the ecosystem
+  string description = 5;
 }
 
 
 // Request to generate an authentication token for the current account
 message GenerateTokenRequest {
-    // Description to identify this token
-    string description = 1 [(options.optional)=true];
+  // Description to identify this token
+  string description = 1 [(options.optional) = true];
 }
 
 // Response to `GenerateTokenRequest`
 message GenerateTokenResponse {
-    // Account authentication profile that contains unprotected token
-    services.account.v1.AccountProfile profile = 1;
+  // Account authentication profile that contains unprotected token
+  services.account.v1.AccountProfile profile = 1;
 }
 
 
@@ -298,21 +298,21 @@ message GetOberonKeyRequest {
 
 // Response to `GetOberonKeyRequest`
 message GetOberonKeyResponse {
-    // Oberon Public Key as RAW base64-url encoded string
-    string key = 1;
+  // Oberon Public Key as RAW base64-url encoded string
+  string key = 1;
 }
 
 // Generates an events token bound to the provided ed25519 public key.
 message GetEventTokenRequest {
-    // Raw public key to generate event token for
-    bytes pk = 1;
+  // Raw public key to generate event token for
+  bytes pk = 1;
 }
 
 // Response message containing a token (JWT) that can be used
 // to connect directly to the message streaming architecture
 message GetEventTokenResponse {
-    // JWT bound to the public key provided in `GetEventTokenRequest`
-    string token = 1;
+  // JWT bound to the public key provided in `GetEventTokenRequest`
+  string token = 1;
 }
 
 message RetrieveDomainVerificationRecordRequest {
@@ -320,40 +320,40 @@ message RetrieveDomainVerificationRecordRequest {
 
 // Response message containing a TXT record content for domain url verification
 message RetrieveDomainVerificationRecordResponse {
-    // TXT record name to use for domain verification
-    string verification_record_name = 1;
-    // TXT code for domain verification
-    string verification_record_Value = 2;
+  // TXT record name to use for domain verification
+  string verification_record_name = 1;
+  // TXT code for domain verification
+  string verification_record_Value = 2;
 }
 
 message RefreshDomainVerificationStatusRequest {
 }
 
 message RefreshDomainVerificationStatusResponse {
-    // Domain URL verified
-    string domain = 1;
-    // Specifies if the above `domain` was successfully verified
-    bool domain_verified = 2;
+  // Domain URL verified
+  string domain = 1;
+  // Specifies if the above `domain` was successfully verified
+  bool domain_verified = 2;
 }
 
 // Grant permissions to a resource or path in the ecosystem
 message GrantAuthorizationRequest {
-    oneof account {
-        // Email address of account being granted permission.
-        // Mutually exclusive with `walletId`.
-        string email = 1;
+  oneof account {
+    // Email address of account being granted permission.
+    // Mutually exclusive with `walletId`.
+    string email = 1;
 
-        // Wallet ID of account being granted permission.
-        // Mutually exclusive with `email`.
-        string walletId = 2;
-    }
+    // Wallet ID of account being granted permission.
+    // Mutually exclusive with `email`.
+    string walletId = 2;
+  }
 
-    // Resource string that account is receiving permissions for.
-    // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-    string resource = 3;
+  // Resource string that account is receiving permissions for.
+  // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
+  string resource = 3;
 
-    // Action to authorize. Default is "*" (all)
-    string action = 4;
+  // Action to authorize. Default is "*" (all)
+  string action = 4;
 }
 
 
@@ -363,22 +363,22 @@ message GrantAuthorizationResponse {
 
 // Revoke permissions to a resource or path in the ecosystem
 message RevokeAuthorizationRequest {
-    oneof account {
-        // Email address of account having permission revoked.
-        // Mutually exclusive with `walletId`.
-        string email = 1;
+  oneof account {
+    // Email address of account having permission revoked.
+    // Mutually exclusive with `walletId`.
+    string email = 1;
 
-        // Wallet ID of account having permission revoked.
-        // Mutually exclusive with `email`.
-        string walletId = 2;
-    }
+    // Wallet ID of account having permission revoked.
+    // Mutually exclusive with `email`.
+    string walletId = 2;
+  }
 
-     // Resource string that account is losing permissions for.
-    // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-    string resource = 3;
+  // Resource string that account is losing permissions for.
+  // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
+  string resource = 3;
 
-    // Action to revoke. Default is "*" (all)
-    string action = 4;
+  // Action to revoke. Default is "*" (all)
+  string action = 4;
 }
 
 // Response to `RevokeAuthorizationRequest`
@@ -392,169 +392,169 @@ message GetAuthorizationsRequest {
 
 // Response to `GetAuthorizationsRequest`
 message GetAuthorizationsResponse {
-    // Grants attached to account
-    repeated Grant grants = 1;
+  // Grants attached to account
+  repeated Grant grants = 1;
 }
 
 // Search for issuers/holders/verifiers
 message SearchWalletConfigurationsRequest {
-    // SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
-    string query_filter = 1;
-    // Token provided by previous `SearchResponse`
-    // if more data is available for query
-    string continuation_token = 2 [(options.optional)=true];
+  // SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
+  string query_filter = 1;
+  // Token provided by previous `SearchResponse`
+  // if more data is available for query
+  string continuation_token = 2 [(options.optional) = true];
 }
 
 message SearchWalletConfigurationResponse {
-    // Results matching the search query
-    repeated WalletConfiguration results = 1;
-    // Whether more results are available for this query via `continuation_token`
-    bool has_more = 2;
-    // Token to fetch next set of results via `SearchRequest`
-    string continuation_token = 4;
+  // Results matching the search query
+  repeated WalletConfiguration results = 1;
+  // Whether more results are available for this query via `continuation_token`
+  bool has_more = 2;
+  // Token to fetch next set of results via `SearchRequest`
+  string continuation_token = 4;
 }
 
 // Strongly typed information about wallet configurations
 message WalletConfiguration {
-    string name = 1;
-    string email = 2  [(options.optional)=true];
-    string sms = 3  [(options.optional)=true];
-    string wallet_id = 4;
-    string public_did = 5;
-    string config_type = 6;
+  string name = 1;
+  string email = 2  [(options.optional) = true];
+  string sms = 3  [(options.optional) = true];
+  string wallet_id = 4;
+  string public_did = 5;
+  string config_type = 6;
 }
 
 // Options for creation of DID on the ION network
 message IonOptions {
-    enum IonNetwork {
-        TestNet = 0;
-        MainNet = 1;
-    }
+  enum IonNetwork {
+    TestNet = 0;
+    MainNet = 1;
+  }
 
-    // ION network on which DID should be published
-    IonNetwork network = 1;
+  // ION network on which DID should be published
+  IonNetwork network = 1;
 }
 
 // Options for creation of DID on the SOV network
 message IndyOptions {
-    enum IndyNetwork {
-        Danube = 0;
-        SovrinBuilder = 1;
-        SovrinStaging = 2;
-        Sovrin = 3;
-        IdUnionTest = 4;
-        IdUnion = 5;
-        IndicioTest = 6;
-        IndicioDemo = 7;
-        Indicio = 8;
-    }
+  enum IndyNetwork {
+    Danube = 0;
+    SovrinBuilder = 1;
+    SovrinStaging = 2;
+    Sovrin = 3;
+    IdUnionTest = 4;
+    IdUnion = 5;
+    IndicioTest = 6;
+    IndicioDemo = 7;
+    Indicio = 8;
+  }
 
-    // SOV network on which DID should be published
-    IndyNetwork network = 1;
+  // SOV network on which DID should be published
+  IndyNetwork network = 1;
 }
 
 // Request to upgrade a wallet
 message UpgradeDidRequest {
-    oneof account {
-        // Email address of account to upgrade.
-        // Mutually exclusive with `walletId`.
-        string email = 1;
+  oneof account {
+    // Email address of account to upgrade.
+    // Mutually exclusive with `walletId`.
+    string email = 1;
 
-        // Wallet ID of account to upgrade.
-        // Mutually exclusive with `email`.
-        string wallet_id = 2;
-    }
+    // Wallet ID of account to upgrade.
+    // Mutually exclusive with `email`.
+    string wallet_id = 2;
+  }
 
-    // DID Method to which wallet should be upgraded
-    services.common.v1.SupportedDidMethod method = 3;
+  // DID Method to which wallet should be upgraded
+  services.common.v1.SupportedDidMethod method = 3;
 
-    oneof options {
-        // Configuration for creation of DID on ION network
-        IonOptions ion_options = 4;
-        // Configuration for creation of DID on INDY network
-        IndyOptions indy_options = 5;
-    }
+  oneof options {
+    // Configuration for creation of DID on ION network
+    IonOptions ion_options = 4;
+    // Configuration for creation of DID on INDY network
+    IndyOptions indy_options = 5;
+  }
 }
 
 // Response to `UpgradeDIDRequest`
 message UpgradeDidResponse {
-    // New DID of wallet
-    string did = 1;
+  // New DID of wallet
+  string did = 1;
 }
 
 service Provider {
-    // Create new ecosystem and assign the authenticated user as owner
-    rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse) {
-        option (options.sdk_template_option).ignore = true;
-    }
+  // Create new ecosystem and assign the authenticated user as owner
+  rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse) {
+    option (options.sdk_template_option).ignore = true;
+  }
 
-    // Update an existing ecosystem
-    rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse) {
-      option deprecated = true;
-      option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
-    }
+  // Update an existing ecosystem
+  rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse) {
+    option deprecated = true;
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+  }
 
-    // Grant user authorization to ecosystem resources
-    rpc GrantAuthorization(GrantAuthorizationRequest) returns (GrantAuthorizationResponse);
+  // Grant user authorization to ecosystem resources
+  rpc GrantAuthorization(GrantAuthorizationRequest) returns (GrantAuthorizationResponse);
 
-    // Revoke user authorization to ecosystem resources
-    rpc RevokeAuthorization(RevokeAuthorizationRequest) returns (RevokeAuthorizationResponse);
+  // Revoke user authorization to ecosystem resources
+  rpc RevokeAuthorization(RevokeAuthorizationRequest) returns (RevokeAuthorizationResponse);
 
-    // Retrieve the list of permissions for this particular account/ecosystem
-    rpc GetAuthorizations(GetAuthorizationsRequest) returns (GetAuthorizationsResponse);
+  // Retrieve the list of permissions for this particular account/ecosystem
+  rpc GetAuthorizations(GetAuthorizationsRequest) returns (GetAuthorizationsResponse);
 
-    // Add a webhook endpoint to the ecosystem
-    rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse);
+  // Add a webhook endpoint to the ecosystem
+  rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse);
 
-    // Delete a webhook endpoint from the ecosystem
-    rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
+  // Delete a webhook endpoint from the ecosystem
+  rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
 
-    // Get ecosystem information
-    rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse);
+  // Get ecosystem information
+  rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse);
 
-    // Get public ecosystem information about *any* ecosystem
-    rpc GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest) returns (GetPublicEcosystemInfoResponse) {
-        option (options.sdk_template_option).anonymous = true;
-        option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
-    }
+  // Get public ecosystem information about *any* ecosystem
+  rpc GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest) returns (GetPublicEcosystemInfoResponse) {
+    option (options.sdk_template_option).anonymous = true;
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+  }
 
-    // Generates an unprotected authentication token that can be used to
-    // configure server side applications
-    rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse);
+  // Generates an unprotected authentication token that can be used to
+  // configure server side applications
+  rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse);
 
-    // Invite a user to the ecosystem
-    rpc Invite(InviteRequest) returns (InviteResponse) {
-        option deprecated = true;
-        option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
-        option (options.sdk_template_option).ignore = true;
-    }
+  // Invite a user to the ecosystem
+  rpc Invite(InviteRequest) returns (InviteResponse) {
+    option deprecated = true;
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+    option (options.sdk_template_option).ignore = true;
+  }
 
-    // Check the status of an invitation
-    rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse) {
-        option deprecated = true;
-        option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
-        option (options.sdk_template_option).ignore = true;
-    }
+  // Check the status of an invitation
+  rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse) {
+    option deprecated = true;
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+    option (options.sdk_template_option).ignore = true;
+  }
 
-    // Returns the public key being used to create/verify oberon tokens
-    rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse) {
-        option (options.sdk_template_option).anonymous = true;
-    }
+  // Returns the public key being used to create/verify oberon tokens
+  rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse) {
+    option (options.sdk_template_option).anonymous = true;
+  }
 
-    // Generate a signed token (JWT) that can be used to connect to the message bus
-    rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
+  // Generate a signed token (JWT) that can be used to connect to the message bus
+  rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 
-    // Upgrade a wallet's DID from `did:key` to another method
-    rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse);
+  // Upgrade a wallet's DID from `did:key` to another method
+  rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse);
 
-    // Retrieve a random hash TXT that can be used to verify domain ownership
-    rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
-        option (options.sdk_template_option).no_arguments = true;
-    }
+  // Retrieve a random hash TXT that can be used to verify domain ownership
+  rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
+    option (options.sdk_template_option).no_arguments = true;
+  }
 
-    // Call to verify domain
-    rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse);
+  // Call to verify domain
+  rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse);
 
-    // Search for issuers/providers/verifiers in the current ecosystem
-    rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse);
+  // Search for issuers/providers/verifiers in the current ecosystem
+  rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse);
 }

@@ -7,27 +7,27 @@ option java_package = "trinsic.services.common.v1";
 option java_multiple_files = true;
 
 enum ResponseStatus {
-    SUCCESS = 0;
-    WALLET_ACCESS_DENIED = 10;
-    WALLET_EXISTS = 11;
-    ITEM_NOT_FOUND = 20;
-    SERIALIZATION_ERROR = 200;
-    UNKNOWN_ERROR = 100;
+  SUCCESS = 0;
+  WALLET_ACCESS_DENIED = 10;
+  WALLET_EXISTS = 11;
+  ITEM_NOT_FOUND = 20;
+  SERIALIZATION_ERROR = 200;
+  UNKNOWN_ERROR = 100;
 }
 
 // Enum of all supported DID Methods
 // https://docs.godiddy.com/en/supported-methods
 enum SupportedDidMethod {
-    // The did:key method -- all wallets use this by default
-    KEY = 0;
-    // The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft
-    ION = 1;
-    // The did:sov method -- Hyperledger Indy based by Sovrin Foundation
-    INDY = 2;
+  // The did:key method -- all wallets use this by default
+  KEY = 0;
+  // The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft
+  ION = 1;
+  // The did:sov method -- Hyperledger Indy based by Sovrin Foundation
+  INDY = 2;
 }
 
 // Nonce used to generate an oberon proof
 message Nonce {
-    int64 timestamp = 1; // UTC unix millisecond timestamp the request was made
-    bytes request_hash = 2; // blake3256 hash of the request body
+  int64 timestamp = 1; // UTC unix millisecond timestamp the request was made
+  bytes request_hash = 2; // blake3256 hash of the request body
 }

@@ -10,27 +10,27 @@ import "services/options/field-options.proto";
 
 // Request for creating or signing into an account
 message SignInRequest {
-    // Account registration details
-    AccountDetails details = 1 [(options.optional)=true];
+  // Account registration details
+  AccountDetails details = 1 [(options.optional) = true];
 
-    // DEPRECATED, will be removed April 1st 2023
-    // Invitation code associated with this registration
-     string invitation_code = 2 [(options.optional)=true, deprecated=true];
+  // DEPRECATED, will be removed April 1st 2023
+  // Invitation code associated with this registration
+  string invitation_code = 2 [(options.optional) = true, deprecated = true];
 
-    // ID of Ecosystem to use
-    // Ignored if `invitation_code` is passed
-    string ecosystem_id = 3 [(options.optional)=true];
+  // ID of Ecosystem to use
+  // Ignored if `invitation_code` is passed
+  string ecosystem_id = 3 [(options.optional) = true];
 }
 
 // Account registration details
 message AccountDetails
 {
-    // Account name
-    string name = 1 [(options.optional)=true];
-    // Email address of account
-    string email = 2 [(options.optional)=true];
-    // SMS number including country code
-    string sms = 3 [(options.optional)=true];
+  // Account name
+  string name = 1 [(options.optional) = true];
+  // Email address of account
+  string email = 2 [(options.optional) = true];
+  // SMS number including country code
+  string sms = 3 [(options.optional) = true];
 }
 
 // Response for creating new account
@@ -38,55 +38,55 @@ message AccountDetails
 // was sent to one of the users two-factor methods
 // like email, SMS, etc.
 message SignInResponse {
-    // Indicates if confirmation of account is required.
-    ConfirmationMethod confirmation_method = 3;
+  // Indicates if confirmation of account is required.
+  ConfirmationMethod confirmation_method = 3;
 
-    // Contains authentication data for use with the current device.
-    // This object must be stored in a secure place. It can also be
-    // protected with a PIN, but this is optional.
-    // See the docs at https://docs.trinsic.id for more information
-    // on working with authentication data.
-    AccountProfile profile = 4;
+  // Contains authentication data for use with the current device.
+  // This object must be stored in a secure place. It can also be
+  // protected with a PIN, but this is optional.
+  // See the docs at https://docs.trinsic.id for more information
+  // on working with authentication data.
+  AccountProfile profile = 4;
 }
 
 // Confirmation method type for two-factor workflows
 enum ConfirmationMethod {
-    // No confirmation required
-    None = 0;
-    // Email confirmation required
-    Email = 1;
-    // SMS confirmation required
-    Sms = 2;
-    // Confirmation from a connected device is required
-    ConnectedDevice = 3;
-    // Third-party method of confirmation is required
-    Other = 10;
+  // No confirmation required
+  None = 0;
+  // Email confirmation required
+  Email = 1;
+  // SMS confirmation required
+  Sms = 2;
+  // Confirmation from a connected device is required
+  ConnectedDevice = 3;
+  // Third-party method of confirmation is required
+  Other = 10;
 }
 
 // Device profile containing sensitive authentication data.
 // This information should be stored securely
 message AccountProfile {
-    // The type of profile, used to differentiate between
-    // protocol schemes or versions
-    string profile_type = 1;
-    // Auth data containg information about the current device access
-    bytes auth_data = 2;
-    // Secure token issued by server used to generate zero-knowledge proofs
-    bytes auth_token = 3;
-    // Token security information about the token.
-    // If token protection is enabled, implementations must supply
-    // protection secret before using the token for authentication.
-    TokenProtection protection = 4;
+  // The type of profile, used to differentiate between
+  // protocol schemes or versions
+  string profile_type = 1;
+  // Auth data containg information about the current device access
+  bytes auth_data = 2;
+  // Secure token issued by server used to generate zero-knowledge proofs
+  bytes auth_token = 3;
+  // Token security information about the token.
+  // If token protection is enabled, implementations must supply
+  // protection secret before using the token for authentication.
+  TokenProtection protection = 4;
 
 }
 
 // Token protection info
 message TokenProtection {
-    // Indicates if token is protected using a PIN,
-    // security code, HSM secret, etc.
-    bool enabled = 1;
-    // The method used to protect the token
-    ConfirmationMethod method = 2;
+  // Indicates if token is protected using a PIN,
+  // security code, HSM secret, etc.
+  bool enabled = 1;
+  // The method used to protect the token
+  ConfirmationMethod method = 2;
 }
 
 // Request for information about the account used to make the request
@@ -94,23 +94,23 @@ message AccountInfoRequest {}
 
 // Information about the account used to make the request
 message AccountInfoResponse {
-    // The account details associated with
-    // the calling request context
-    AccountDetails details = 1;
-    // Use `ecosystem_id` instead
-    repeated AccountEcosystem ecosystems = 2 [deprecated = true];
-    // The wallet ID associated with this account
-    string wallet_id = 3;
-    // The device ID associated with this account session
-    string device_id = 4;
-    // The ecosystem ID within which this account resides
-    string ecosystem_id = 5;
-    // The public DID associated with this account.
-    // This DID is used as the `issuer` when signing verifiable credentials
-    string public_did = 6;
+  // The account details associated with
+  // the calling request context
+  AccountDetails details = 1;
+  // Use `ecosystem_id` instead
+  repeated AccountEcosystem ecosystems = 2 [deprecated = true];
+  // The wallet ID associated with this account
+  string wallet_id = 3;
+  // The device ID associated with this account session
+  string device_id = 4;
+  // The ecosystem ID within which this account resides
+  string ecosystem_id = 5;
+  // The public DID associated with this account.
+  // This DID is used as the `issuer` when signing verifiable credentials
+  string public_did = 6;
 
-    // Webhook events, if any, this wallet has authorized
-    repeated string authorized_webhooks = 7;
+  // Webhook events, if any, this wallet has authorized
+  repeated string authorized_webhooks = 7;
 }
 
 message ListDevicesRequest {}
@@ -121,63 +121,63 @@ message RevokeDeviceResponse {}
 
 // Deprecated
 message AccountEcosystem {
-    string id = 1;
-    string name = 2;
-    string description = 3;
-    string uri = 4;
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string uri = 4;
 }
 
 // Login
 
 // Request to begin login flow
 message LoginRequest {
-    // Email address of account. If unspecified, an anonymous account will be created.
-    string email = 1  [(options.optional) = true];
+  // Email address of account. If unspecified, an anonymous account will be created.
+  string email = 1  [(options.optional) = true];
 
-    // DEPRECATED, will be removed April 1st 2023
-    // Invitation code associated with this registration
-    string invitation_code = 2 [(options.optional)=true, deprecated = true];
+  // DEPRECATED, will be removed April 1st 2023
+  // Invitation code associated with this registration
+  string invitation_code = 2 [(options.optional) = true, deprecated = true];
 
-    // ID of Ecosystem to sign into.
-    // Ignored if `invitation_code` is passed.
-    string ecosystem_id = 3 [(options.optional) = true];
+  // ID of Ecosystem to sign into.
+  // Ignored if `invitation_code` is passed.
+  string ecosystem_id = 3 [(options.optional) = true];
 }
 
 // Response to `LoginRequest`
 message LoginResponse{
-    oneof response {
-        // Random byte sequence unique to this login request.
-        // If present, two-factor confirmation of login is required.
-        // Must be sent back, unaltered, in `LoginConfirm`.
-        bytes challenge = 1;
+  oneof response {
+    // Random byte sequence unique to this login request.
+    // If present, two-factor confirmation of login is required.
+    // Must be sent back, unaltered, in `LoginConfirm`.
+    bytes challenge = 1;
 
-        // Account profile response. If present, no confirmation of login is required.
-        AccountProfile profile = 2;
-    }
+    // Account profile response. If present, no confirmation of login is required.
+    AccountProfile profile = 2;
+  }
 }
 
 // Request to finalize login flow
 message LoginConfirmRequest {
-    // Challenge received from `Login`
-    bytes challenge = 1;
+  // Challenge received from `Login`
+  bytes challenge = 1;
 
-    // Two-factor confirmation code sent to account email or phone,
-    // hashed using Blake3. Our SDKs will handle this hashing process for you.
-    bytes confirmation_code_hashed = 2;
+  // Two-factor confirmation code sent to account email or phone,
+  // hashed using Blake3. Our SDKs will handle this hashing process for you.
+  bytes confirmation_code_hashed = 2;
 }
 
 // Response to `LoginConfirmRequest`
 message LoginConfirmResponse {
-    // Profile response; must be unprotected using unhashed confirmation code.
-    // Our SDKs will handle this process for you, and return to you an authentication token string.
-    AccountProfile profile = 1;
+  // Profile response; must be unprotected using unhashed confirmation code.
+  // Our SDKs will handle this process for you, and return to you an authentication token string.
+  AccountProfile profile = 1;
 }
 
 // Request to authorize Ecosystem provider to receive webhooks for events
 // which occur on this wallet.
 message AuthorizeWebhookRequest {
-    // Events to authorize access to. Default is "*" (all events)
-    repeated string events = 1;
+  // Events to authorize access to. Default is "*" (all events)
+  repeated string events = 1;
 }
 
 // Response to `AuthorizeWebhookRequest`
@@ -185,36 +185,36 @@ message AuthorizeWebhookResponse {
 }
 
 service Account {
-    // Sign in to an already existing account
-    rpc SignIn              (SignInRequest)             returns (SignInResponse) {
-        option deprecated = true;
-        option (options.sdk_template_option).ignore = true;
-        option (options.sdk_template_option).anonymous = true;
-    }
+  // Sign in to an already existing account
+  rpc SignIn              (SignInRequest)             returns (SignInResponse) {
+    option deprecated = true;
+    option (options.sdk_template_option).ignore = true;
+    option (options.sdk_template_option).anonymous = true;
+  }
 
-    // Begin login flow for specified account, creating one if it does not already exist
-    rpc Login               (LoginRequest)              returns (LoginResponse) {
-        option (options.sdk_template_option).ignore = true;
-        option (options.sdk_template_option).anonymous = true;
-    }
+  // Begin login flow for specified account, creating one if it does not already exist
+  rpc Login               (LoginRequest)              returns (LoginResponse) {
+    option (options.sdk_template_option).ignore = true;
+    option (options.sdk_template_option).anonymous = true;
+  }
 
-    // Finalize login flow with two-factor confirmation code
-    rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse) {
-        option (options.sdk_template_option).anonymous = true;
-        option (options.sdk_template_option).ignore = true;
-    }
+  // Finalize login flow with two-factor confirmation code
+  rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse) {
+    option (options.sdk_template_option).anonymous = true;
+    option (options.sdk_template_option).ignore = true;
+  }
 
-    // Get account information
-    rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
-        option (options.sdk_template_option).no_arguments = true;
-    }
+  // Get account information
+  rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
+    option (options.sdk_template_option).no_arguments = true;
+  }
 
-    // List all connected devices
-    rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
+  // List all connected devices
+  rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
 
-    // Revoke device access to the account's cloud wallet
-    rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
+  // Revoke device access to the account's cloud wallet
+  rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
 
-    // Authorize Ecosystem to receive webhook events
-    rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
+  // Authorize Ecosystem to receive webhook events
+  rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
 }
