@@ -22,19 +22,22 @@ public class AccessManagementService extends ServiceBase {
   // target:
   // /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/AccessManagementService.java
 
-  /** Adds a role assignment to an account */
+  /** This method is experimental Adds a role assignment to an account */
+  @Deprecated(since = "This method is experimental")
   public ListenableFuture<AddRoleAssignmentResponse> addRoleAssignment(
       AddRoleAssignmentRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).addRoleAssignment(request);
   }
-  /** Removes a role assignment from the account */
+  /** This method is experimental Removes a role assignment from the account */
+  @Deprecated(since = "This method is experimental")
   public ListenableFuture<RemoveRoleAssignmentResponse> removeRoleAssignment(
       RemoveRoleAssignmentRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).removeRoleAssignment(request);
   }
-  /** List the role assignments for the given account */
+  /** This method is experimental List the role assignments for the given account */
+  @Deprecated(since = "This method is experimental")
   public ListenableFuture<ListRoleAssignmentsResponse> listRoleAssignments(
       ListRoleAssignmentsRequest request) throws InvalidProtocolBufferException, DidException {
 
