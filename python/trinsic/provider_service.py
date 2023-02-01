@@ -1,5 +1,7 @@
 import base64
 
+import deprecation
+
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.provider.v1 import *
 from trinsic.security_providers import ITokenProvider
