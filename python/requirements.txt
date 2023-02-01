@@ -2,3 +2,4 @@ git+https://github.com/danielgtaylor/python-betterproto.git@3ca092a72494f9225bcb
 grpclib==0.4.3
 grpcio-tools
 trinsic-okapi==1.6.0
+deprecation==2.1.0
