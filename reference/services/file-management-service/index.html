@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.trinsic.id/reference/services/trust-registry-service/">
+        <link rel="canonical" href="https://docs.trinsic.id/reference/services/file-management-service/">
       
       
-        <link rel="prev" href="../template-service/">
+        <link rel="prev" href="../credential-service/">
       
       
-        <link rel="next" href="../wallet-service/">
+        <link rel="next" href="../provider-service/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Trust Registry Service - Documentation</title>
+        <title>File Management Service - Documentation</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#trust-registry-service" class="md-skip">
+        <a href="#file-management-service" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Trust Registry Service
+              File Management Service
             
           </span>
         </div>
@@ -1581,9 +1581,35 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../file-management-service/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    File Management Service
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1598,6 +1624,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#upload-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-storage-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Storage Statistics
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1659,35 +1760,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    
-  
-    Trust Registry Service
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../trust-registry-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1702,92 +1777,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-governance-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Governance Framework
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#register-issuer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Register Issuer
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unregister-issuer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unregister Issuer
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-issuer-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Check Issuer Status
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#search" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Search
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cache-offline-registry-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cache Offline Registry File
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2142,327 +2131,313 @@
 
 
 
-<h1 id="trust-registry-service">Trust Registry Service<a class="headerlink" href="#trust-registry-service" title="Permanent link">&para;</a></h1>
-<p>The Trust Registry Service exposes functionality for managing <a href="/learn/concepts/trust-registries">Trust Registries</a> -- lists of authorized issuers for the various credential types within an ecosystem.</p>
+<h1 id="file-management-service">File Management Service<a class="headerlink" href="#file-management-service" title="Permanent link">&para;</a></h1>
+<p>The File Management Service allows files to be uploaded and thereafter managed by Issuers.</p>
+<div class="admonition tip">
+<p class="admonition-title">Restricted Experimental Service</p>
+<p>This service exists as an experiment to enable rapid prototyping of certain use-cases, such as linking to files / binary data
+within Credentials.</p>
+<p>Ecosystems must be on a paid plan in order to make use of this service.</p>
+</div>
 <div class="admonition warning">
-<p class="admonition-title">Under Construction</p>
-<p>This section -- and the underlying API -- is under active development.</p>
-<p>We are working to define exactly how Trust Registries will be implemented within our platform; this page and API may change as we do so.</p>
+<p class="admonition-title">Data Security Precautions</p>
+<p>Any file uploaded through this service is accessible over the internet to anyone who has the URL.</p>
+<p>Although the URLs are extremely long and securely generated (thus are extremely costly to brute force), we do not recommend
+storing highly-sensitive files or documents via the File Management Service.</p>
+<p>For example, government-issued IDs, social security cards, birth certificates, passports, etc. should <strong>not</strong> be uploaded to this service.</p>
 </div>
 <hr />
-<h2 id="create-governance-framework">Create Governance Framework<a class="headerlink" href="#create-governance-framework" title="Permanent link">&para;</a></h2>
-<p>Creates a Governance Framework and attaches it to the current ecosystem.</p>
+<h2 id="upload-file">Upload File<a class="headerlink" href="#upload-file" title="Permanent link">&para;</a></h2>
+<p>Uploads a file to Trinsic's CDN.</p>
+<p><code>contents</code> must be the raw contents of the file, with a current maximum of 4 megabytes (<code>4,194,304</code> bytes).</p>
+<p><code>mime_type</code> must be the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types" target="_blank">MIME Type <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> of the file you are uploading. This determines the file's resulting extension, as well as how it is treated when opened by a browser (displayed as an image, downloaded directly, etc.).</p>
+<p>If you do not know the MIME Type of the file being uploaded, or otherwise cannot provide it, use <code>application/octet-stream</code> as a safe default.</p>
+<p>The URL returned by this endpoint will contain a <a href="https://w3c-ccg.github.io/hashlink/" target="_blank">Hashlink <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> query parameter, in the form of <code>?hl={hash}</code>. The value of <code>hash</code> is a <a href="https://multiformats.io/multihash/" target="_blank">Multihash <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> string, encoding the hash of the uploaded file contents.</p>
+<p>The <code>hl</code> parameter is expected to be included with the URL whenever it is issued in a credential. This allows the cryptographic signature to cover the contents of the file (through its hash), without having to include the entire raw file contents in the credential itself.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>register-efg
+<div class="highlight"><pre><span></span><code><span class="c1">// Get raw bytes of string</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fileBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fileMimeType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;application/text&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">uploadResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">uploadFile</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">UploadFileRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">contents</span><span class="o">:</span><span class="w"> </span><span class="kt">fileBytes</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">mimeType</span><span class="o">:</span><span class="w"> </span><span class="kt">fileMimeType</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">schemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="p">;</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">frameworkUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">;</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">AddFrameworkAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Demo framework&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My governance framework&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frameworkUri</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Get raw bytes of string</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">fileBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">fileMimeType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;application/text&quot;</span><span class="p">;</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">uploadResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">FileManagement</span><span class="p">.</span><span class="n">UploadFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">UploadFileRequest</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ByteString</span><span class="p">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">fileBytes</span><span class="p">),</span>
+<span class="w">    </span><span class="n">MimeType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fileMimeType</span>
 <span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">register_framework_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">add_framework</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">AddFrameworkRequest</span><span class="p">(</span>
-        <span class="n">governance_framework_uri</span><span class="o">=</span><span class="n">https_example_com</span><span class="p">,</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Demo framework&quot;</span><span class="p">,</span>
-        <span class="n">name</span><span class="o">=</span><span class="n">framework_name</span><span class="p">,</span>
-    <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get raw bytes of string</span>
+<span class="n">file_bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="n">file_mime_type</span> <span class="o">=</span> <span class="s2">&quot;application/text&quot;</span>
+
+<span class="n">upload_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">UploadFileRequest</span><span class="p">(</span><span class="n">file_bytes</span><span class="p">,</span> <span class="n">file_mime_type</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">newFramework</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">AddFramework</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">AddFrameworkRequest</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">Name</span><span class="p">:</span><span class="w">                   </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Example Framework - %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">New</span><span class="p">()),</span>
-<span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="nx">uploadResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">FileManagement</span><span class="p">().</span><span class="nx">UploadFile</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">filemanagement</span><span class="p">.</span><span class="nx">UploadFileRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Contents</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/text&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">frameworkResponse</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span>
-<span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">addFramework</span><span class="p">(</span>
-<span class="w">            </span><span class="n">AddFrameworkRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Example Framework&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">())</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Get raw bytes of string</span>
+<span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">fileBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, world!&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">fileMimeType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;application/text&quot;</span><span class="p">;</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">uploadResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">uploadFile</span><span class="p">(</span>
+<span class="w">    </span><span class="n">UploadFileRequest</span>
+<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setContents</span><span class="p">(</span><span class="n">ByteString</span><span class="p">.</span><span class="na">copyFrom</span><span class="p">(</span><span class="n">fileBytes</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setMimeType</span><span class="p">(</span><span class="n">fileMimeType</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.AddFrameworkRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.AddFrameworkRequest' href='/reference/proto#services.trustregistry.v1.AddFrameworkRequest'>AddFrameworkRequest</a></div><div class='proto-obj-description'>Request to register a new ecosystem governance framework in the current ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>governance_framework_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of governance framework organization</div></div><div class='proto-field'><div class='proto-field-name'>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Name of governance framework organization</div></div><div class='proto-field'><div class='proto-field-name'>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Description of governance framework</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.UploadFileRequest'><div class='proto-obj-name'><a name='services.filemanagement.v1.UploadFileRequest' href='/reference/proto#services.filemanagement.v1.UploadFileRequest'>UploadFileRequest</a></div><div class='proto-obj-description'>Request to upload a file to Trinsic's CDN</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>contents</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Raw content of file</div></div><div class='proto-field'><div class='proto-field-name'>mime_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>MIME type describing file contents</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.AddFrameworkResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.AddFrameworkResponse' href='/reference/proto#services.trustregistry.v1.AddFrameworkResponse'>AddFrameworkResponse</a></div><div class='proto-obj-description'>Response to <code>AddFrameworkRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Unique framework identifier</div></div><div class='proto-field'><div class='proto-field-name'>governing_authority</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of Trinsic account which created the governance framework</div></div><div class='proto-field'><div class='proto-field-name'>trust_registry</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of trust registry for governance framework</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.UploadFileResponse'><div class='proto-obj-name'><a name='services.filemanagement.v1.UploadFileResponse' href='/reference/proto#services.filemanagement.v1.UploadFileResponse'>UploadFileResponse</a></div><div class='proto-obj-description'>Response to <code>UploadFileRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>uploaded_file</div> <div class='proto-field-type'><a href='/reference/proto#services.filemanagement.v1.File'>File</a></div><div class='proto-field-description'>Information about newly-uploaded file</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>uploaded_file.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of file, generated randomly by Trinsic on upload</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>uploaded_file.</span>uploader_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Wallet ID of uploader</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>uploaded_file.</span>size</div> <div class='proto-field-type'>uint32</div><div class='proto-field-description'>Size, in bytes, of file</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>uploaded_file.</span>mime_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Uploader-provided MIME type of file</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>uploaded_file.</span>uploaded</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ISO 8601 timestamp of when file was uploaded to Trinsic</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>uploaded_file.</span>url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>CDN URL of file</div></div></div></div></div></div></div></p>
 </div>
 </div>
 </div>
-<hr />
-<h2 id="register-issuer">Register Issuer<a class="headerlink" href="#register-issuer" title="Permanent link">&para;</a></h2>
-<p>Registers an authorized issuer for a specific credential type (identified by its <code>schema_uri</code>).</p>
+<h2 id="get-file">Get File<a class="headerlink" href="#get-file" title="Permanent link">&para;</a></h2>
+<p>Fetches information about a file via its ID.</p>
+<p>Only files uploaded by the calling account will be returned.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">TypeScript</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>register-issuer<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--egf<span class="w"> </span>http://hl7.org/fhir<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--credential-type<span class="w"> </span>https://w3id.org/vaccination#VaccinationCertificate<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--did<span class="w"> </span>did:example:fabre
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getFileResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">getFile</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">GetFileRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">fileId</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">didUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">;</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">registerMemberResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">RegisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FrameworkId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
-<span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getFileResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">FileManagement</span><span class="p">.</span><span class="n">GetFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">GetFileRequest</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fileId</span>
 <span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">register_member</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">RegisterMemberRequest</span><span class="p">(</span>
-        <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">,</span>
-        <span class="n">framework_id</span><span class="o">=</span><span class="n">register_framework_response</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-        <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">,</span>
-    <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">get_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">GetFileRequest</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">registerMemberResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">RegisterMember</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">RegisterMemberRequest</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">FrameworkId</span><span class="p">:</span><span class="w"> </span><span class="nx">newFramework</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w">   </span><span class="nx">schemaURI</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">Member</span><span class="p">:</span><span class="w">      </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">RegisterMemberRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span>
-<span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="nx">getFileResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">FileManagement</span><span class="p">().</span><span class="nx">GetFile</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">filemanagement</span><span class="p">.</span><span class="nx">GetFileRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="nx">fileId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">memberResponse</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span>
-<span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">registerMember</span><span class="p">(</span>
-<span class="w">            </span><span class="n">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getFileResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">getFile</span><span class="p">(</span>
+<span class="w">    </span><span class="n">GetFileRequest</span>
+<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberRequest' href='/reference/proto#services.trustregistry.v1.RegisterMemberRequest'>RegisterMemberRequest</a></div><div class='proto-obj-description'>Request to register a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to register</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to register</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to register. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to register member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>valid_from_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>valid_until_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the governance framework that member is being added to</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.GetFileRequest'><div class='proto-obj-name'><a name='services.filemanagement.v1.GetFileRequest' href='/reference/proto#services.filemanagement.v1.GetFileRequest'>GetFileRequest</a></div><div class='proto-obj-description'>Request to fetch information about a stored file</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of file to fetch</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberResponse' href='/reference/proto#services.trustregistry.v1.RegisterMemberResponse'>RegisterMemberResponse</a></div><div class='proto-obj-description'>Response to <code>RegisterMemberRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.GetFileResponse'><div class='proto-obj-name'><a name='services.filemanagement.v1.GetFileResponse' href='/reference/proto#services.filemanagement.v1.GetFileResponse'>GetFileResponse</a></div><div class='proto-obj-description'>Response to <code>GetFileRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>file</div> <div class='proto-field-type'><a href='/reference/proto#services.filemanagement.v1.File'>File</a></div><div class='proto-field-description'>File specified by <code>id</code> parameter of <code>GetFileRequest</code>.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>file.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of file, generated randomly by Trinsic on upload</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>file.</span>uploader_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Wallet ID of uploader</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>file.</span>size</div> <div class='proto-field-type'>uint32</div><div class='proto-field-description'>Size, in bytes, of file</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>file.</span>mime_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Uploader-provided MIME type of file</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>file.</span>uploaded</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ISO 8601 timestamp of when file was uploaded to Trinsic</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>file.</span>url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>CDN URL of file</div></div></div></div></div></div></div></p>
 </div>
 </div>
 </div>
-<hr />
-<h2 id="unregister-issuer">Unregister Issuer<a class="headerlink" href="#unregister-issuer" title="Permanent link">&para;</a></h2>
-<p>Unregisters an issuer for a specific credential type (identified by its <code>schema_uri</code>).</p>
+<h2 id="delete-file">Delete File<a class="headerlink" href="#delete-file" title="Permanent link">&para;</a></h2>
+<p>Deletes a file from Trinsic's CDN.</p>
+<p>Only files uploaded by the calling account may be deleted.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">TypeScript</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>unregister-issuer<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--egf<span class="w"> </span>http://hl7.org/fhir<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--credential-type<span class="w"> </span>https://w3id.org/vaccination#VaccinationCertificate<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--did<span class="w"> </span>did:example:fabre
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">deleteFile</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">DeleteFileRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">fileId</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">unregisterResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">UnregisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FrameworkId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
-<span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="n">FileManagement</span><span class="p">.</span><span class="n">DeleteFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeleteFileRequest</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fileId</span>
 <span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">unregister_issuer_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">unregister_member</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">UnregisterMemberRequest</span><span class="p">(</span>
-        <span class="n">framework_id</span><span class="o">=</span><span class="n">register_framework_response</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-        <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">,</span>
-        <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">,</span>
-    <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">DeleteFileRequest</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">unregisterMemberResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">UnregisterMember</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">UnregisterMemberRequest</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w">   </span><span class="nx">schemaURI</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">FrameworkId</span><span class="p">:</span><span class="w"> </span><span class="nx">newFramework</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="nx">deleteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">FileManagement</span><span class="p">().</span><span class="nx">DeleteFile</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">filemanagement</span><span class="p">.</span><span class="nx">DeleteFileRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="nx">fileId</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
-
-<span class="w"> </span><span class="err">⋯</span>
-
-<span class="w">        </span><span class="c1">// Do absolutely nothing</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span>
-<span class="w">    </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">unregisterMember</span><span class="p">(</span>
-<span class="w">        </span><span class="n">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">deleteFile</span><span class="p">(</span>
+<span class="w">    </span><span class="n">DeleteFileRequest</span>
+<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.UnregisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.UnregisterMemberRequest' href='/reference/proto#services.trustregistry.v1.UnregisterMemberRequest'>UnregisterMemberRequest</a></div><div class='proto-obj-description'>Request to unregister a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to unregister. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to unregister member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the governance framework that member is being removed from</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.DeleteFileRequest'><div class='proto-obj-name'><a name='services.filemanagement.v1.DeleteFileRequest' href='/reference/proto#services.filemanagement.v1.DeleteFileRequest'>DeleteFileRequest</a></div><div class='proto-obj-description'>Request to delete a file from Trinsic's CDN by ID</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of file to delete</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.UnregisterMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.UnregisterMemberResponse' href='/reference/proto#services.trustregistry.v1.UnregisterMemberResponse'>UnregisterMemberResponse</a></div><div class='proto-obj-description'>Response to <code>UnregisterMemberRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.DeleteFileResponse'><div class='proto-obj-name'><a name='services.filemanagement.v1.DeleteFileResponse' href='/reference/proto#services.filemanagement.v1.DeleteFileResponse'>DeleteFileResponse</a></div><div class='proto-obj-description'>Response to <code>DeleteFileRequest</code>. Empty payload.</div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
 </div>
 </div>
 </div>
-<hr />
-<h2 id="check-issuer-status">Check Issuer Status<a class="headerlink" href="#check-issuer-status" title="Permanent link">&para;</a></h2>
-<p>Check the status of an issuer for a specific credential type.</p>
+<h2 id="list-files">List Files<a class="headerlink" href="#list-files" title="Permanent link">&para;</a></h2>
+<p>Queries the files uploaded by the calling account.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">C#</label><label for="__tabbed_8_3">Python</label><label for="__tabbed_8_4">Go</label><label for="__tabbed_8_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">TypeScript</label><label for="__tabbed_8_2">C#</label><label for="__tabbed_8_3">Python</label><label for="__tabbed_8_4">Go</label><label for="__tabbed_8_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>check-issuer<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--egf<span class="w"> </span>http://hl7.org/fhir<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--credential-type<span class="w"> </span>https://w3id.org/vaccination#VaccinationCertificate<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--did<span class="w"> </span>did:example:fabre
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">listFilesResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">listFiles</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">ListFilesRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMembershipStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frameworkUri</span><span class="p">,</span>
-<span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">listFilesResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">FileManagement</span><span class="p">.</span><span class="n">ListFiles</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ListFilesRequest</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span>
 <span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">check_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">get_membership_status</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">GetMembershipStatusRequest</span><span class="p">(</span>
-        <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">,</span>
-        <span class="n">governance_framework_uri</span><span class="o">=</span><span class="n">https_example_com</span><span class="p">,</span>
-        <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">,</span>
-    <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">list_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">list_files</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">ListFilesRequest</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">getMembershipStatusResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">GetMembershipStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMembershipStatusRequest</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">Member</span><span class="p">:</span><span class="w">                 </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMembershipStatusRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span>
-<span class="w">        </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w">              </span><span class="nx">schemaURI</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="nx">listFilesResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">FileManagement</span><span class="p">().</span><span class="nx">ListFiles</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">filemanagement</span><span class="p">.</span><span class="nx">ListFilesRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Query</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
-
-<span class="w"> </span><span class="err">⋯</span>
-
-<span class="w">        </span><span class="c1">// Do absolutely nothing</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span>
-<span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">getMembershipStatus</span><span class="p">(</span>
-<span class="w">            </span><span class="n">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">listFilesResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">listFiles</span><span class="p">(</span>
+<span class="w">    </span><span class="n">ListFilesRequest</span>
+<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMembershipStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMembershipStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMembershipStatusRequest'>GetMembershipStatusRequest</a></div><div class='proto-obj-description'>Request to fetch membership status in governance framework for a specific credential schema. Only one of <code>did_uri</code>, <code>x509_cert</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>governance_framework_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of governance framework</div></div><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>x509_cert</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>X.509 certificate of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with membership</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.ListFilesRequest'><div class='proto-obj-name'><a name='services.filemanagement.v1.ListFilesRequest' href='/reference/proto#services.filemanagement.v1.ListFilesRequest'>ListFilesRequest</a></div><div class='proto-obj-description'>Request to list files</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>query</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Query to search with. If not specified, will return the most recent 100 files.</div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Token provided by previous <code>ListFilesRequest</code> if more data is available for query</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMembershipStatusResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMembershipStatusResponse' href='/reference/proto#services.trustregistry.v1.GetMembershipStatusResponse'>GetMembershipStatusResponse</a></div><div class='proto-obj-description'>Response to <code>GetMembershipStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>status</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.RegistrationStatus'>RegistrationStatus</a></div><div class='proto-field-description'>Status of member for given credential schema</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>CURRENT</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>Member is currently authorized, as of the time of the query</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>EXPIRED</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Member's authorization has expired</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>TERMINATED</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>Member has voluntarily ceased Issuer role under the specific EGF</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>REVOKED</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Member authority under specific EGF was terminated by the governing authority</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>NOT_FOUND</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Member is not associated with given credential schema in the EGF</div></div></div></div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.ListFilesResponse'><div class='proto-obj-name'><a name='services.filemanagement.v1.ListFilesResponse' href='/reference/proto#services.filemanagement.v1.ListFilesResponse'>ListFilesResponse</a></div><div class='proto-obj-description'>Response to <code>ListFilesRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>files</div> <div class='proto-field-type'><a href='/reference/proto#services.filemanagement.v1.File'>File</a>[]</div><div class='proto-field-description'>Files found by query</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>files[<span class='proto-context-array-key'>i</span>].</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of file, generated randomly by Trinsic on upload</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>files[<span class='proto-context-array-key'>i</span>].</span>uploader_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Wallet ID of uploader</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>files[<span class='proto-context-array-key'>i</span>].</span>size</div> <div class='proto-field-type'>uint32</div><div class='proto-field-description'>Size, in bytes, of file</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>files[<span class='proto-context-array-key'>i</span>].</span>mime_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Uploader-provided MIME type of file</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>files[<span class='proto-context-array-key'>i</span>].</span>uploaded</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ISO 8601 timestamp of when file was uploaded to Trinsic</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>files[<span class='proto-context-array-key'>i</span>].</span>url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>CDN URL of file</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>has_more_results</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether more results are available for this query via <code>continuation_token</code></div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Token to fetch next set of resuts via <code>ListFilesRequest</code></div></div></div></div></p>
 </div>
 </div>
 </div>
-<hr />
-<h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h2>
-<p>Search the registry for registered issuers using a SQL query.</p>
+<h2 id="get-storage-statistics">Get Storage Statistics<a class="headerlink" href="#get-storage-statistics" title="Permanent link">&para;</a></h2>
+<p>Returns aggregate statistics regarding the files uploaded by the calling account.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_9_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_9_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="10:5"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">C#</label><label for="__tabbed_10_3">Python</label><label for="__tabbed_10_4">Go</label><label for="__tabbed_10_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:5"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">TypeScript</label><label for="__tabbed_10_2">C#</label><label for="__tabbed_10_3">Python</label><label for="__tabbed_10_4">Go</label><label for="__tabbed_10_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>search<span class="w"> </span>--query<span class="w"> </span>&lt;SQL<span class="w"> </span>query&gt;
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getStorageStatsResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">getStorageStats</span><span class="p">({});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getStorageStatsResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">FileManagement</span><span class="p">.</span><span class="n">GetStorageStats</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">GetStorageStatsRequest</span><span class="p">());</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">search_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">get_stats_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">get_storage_stats</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">GetStorageStatsRequest</span><span class="p">()</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">getStatsResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">FileManagement</span><span class="p">().</span><span class="nx">GetStorageStats</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">filemanagement</span><span class="p">.</span><span class="nx">GetStorageStatsRequest</span><span class="p">{})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">().</span><span class="na">search</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getStatsResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">getStorageStats</span><span class="p">(</span>
+<span class="w">    </span><span class="n">GetStorageStatsRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.SearchRegistryRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.SearchRegistryRequest' href='/reference/proto#services.trustregistry.v1.SearchRegistryRequest'>SearchRegistryRequest</a></div><div class='proto-obj-description'>Request to search all governance frameworks within ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>query</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>SQL query to execute against frameworks. Example: <code>SELECT c from c where c.type == 'GovernanceFramework'</code></div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Token to fetch next set of results, from previous <code>SearchRegistryResponse</code></div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.GetStorageStatsRequest'><div class='proto-obj-name'><a name='services.filemanagement.v1.GetStorageStatsRequest' href='/reference/proto#services.filemanagement.v1.GetStorageStatsRequest'>GetStorageStatsRequest</a></div><div class='proto-obj-description'>Request to get statistics about files uploaded by this account</div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.SearchRegistryResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.SearchRegistryResponse' href='/reference/proto#services.trustregistry.v1.SearchRegistryResponse'>SearchRegistryResponse</a></div><div class='proto-obj-description'>Response to <code>SearchRegistryRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>items_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>JSON string containing array of resultant objects</div></div><div class='proto-field'><div class='proto-field-name'>has_more</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether more data is available to fetch for query</div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Token to fetch next set of results via <code>SearchRegistryRequest</code></div></div></div></div></p>
-</div>
-</div>
-</div>
-<hr />
-<h2 id="cache-offline-registry-file">Cache Offline Registry File<a class="headerlink" href="#cache-offline-registry-file" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>download<span class="w"> </span>
-</code></pre></div>
+<p><div class='proto-obj-container' data-proto-name='services.filemanagement.v1.GetStorageStatsResponse'><div class='proto-obj-name'><a name='services.filemanagement.v1.GetStorageStatsResponse' href='/reference/proto#services.filemanagement.v1.GetStorageStatsResponse'>GetStorageStatsResponse</a></div><div class='proto-obj-description'>Response to <code>GetStorageStatsRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>stats</div> <div class='proto-field-type'><a href='/reference/proto#services.filemanagement.v1.StorageStats'>StorageStats</a></div><div class='proto-field-description'>Statistics about files uploaded by the calling account</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>stats.</span>num_files</div> <div class='proto-field-type'>uint32</div><div class='proto-field-description'>Number of files uploaded by this account</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>stats.</span>total_size</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Sum total size of all files, in bytes</div></div></div></div></div></div></div></p>
 </div>
 </div>
 </div>
@@ -2476,14 +2451,12 @@
       <span class="md-source-file__fact">
         <span class="md-icon" title="Contributors">
           
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
           
         </span>
         <nav>
           
-            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
-            <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
+            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>
         </nav>
       </span>
     
