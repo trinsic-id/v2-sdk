@@ -48,12 +48,6 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
-    "services.account.v1.Account.ListDevices": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.Account.Login": {
       "type": "method",
       "collection": "methods",
@@ -61,12 +55,6 @@
       "parent": ""
     },
     "services.account.v1.Account.LoginConfirm": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.Account.RevokeDevice": {
       "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
@@ -270,18 +258,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.ConfirmationMethod"
     },
-    "services.account.v1.ListDevicesRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.ListDevicesResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.LoginConfirmRequest": {
       "type": "message",
       "collection": "messages",
@@ -353,18 +329,6 @@
       "collection": "fields",
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.LoginResponse"
-    },
-    "services.account.v1.RevokeDeviceRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.RevokeDeviceResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
     },
     "services.account.v1.SignInRequest": {
       "type": "message",
@@ -1104,72 +1068,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.EcosystemInfoResponse"
     },
-    "services.provider.v1.GenerateTokenRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GenerateTokenRequest.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GenerateTokenRequest"
-    },
-    "services.provider.v1.GenerateTokenResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GenerateTokenResponse.profile": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GenerateTokenResponse"
-    },
-    "services.provider.v1.GetAuthorizationsRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetAuthorizationsResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetAuthorizationsResponse.grants": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetAuthorizationsResponse"
-    },
-    "services.provider.v1.GetEventTokenRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetEventTokenRequest.pk": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetEventTokenRequest"
-    },
-    "services.provider.v1.GetEventTokenResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetEventTokenResponse.token": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetEventTokenResponse"
-    },
     "services.provider.v1.GetOberonKeyRequest": {
       "type": "message",
       "collection": "messages",
@@ -1235,42 +1133,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.Grant"
-    },
-    "services.provider.v1.GrantAuthorizationRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GrantAuthorizationRequest.action": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.email": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.resource": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.walletId": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
     },
     "services.provider.v1.IndyOptions": {
       "type": "message",
@@ -1578,24 +1440,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.Provider.GenerateToken": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.GetAuthorizations": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.GetEventToken": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
     "services.provider.v1.Provider.GetOberonKey": {
       "type": "method",
       "collection": "methods",
@@ -1603,12 +1447,6 @@
       "parent": ""
     },
     "services.provider.v1.Provider.GetPublicEcosystemInfo": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.GrantAuthorization": {
       "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -1633,12 +1471,6 @@
       "parent": ""
     },
     "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.RevokeAuthorization": {
       "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -1775,42 +1607,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.RetrieveDomainVerificationRecordResponse"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.action": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.email": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.resource": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.walletId": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
     },
     "services.provider.v1.SearchWalletConfigurationResponse": {
       "type": "message",
@@ -3644,8 +3440,6 @@
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info",
-        "services.account.v1.Account.ListDevices",
-        "services.account.v1.Account.RevokeDevice",
         "services.account.v1.Account.AuthorizeWebhook"
       ],
       "messages": [
@@ -3656,10 +3450,6 @@
         "services.account.v1.TokenProtection",
         "services.account.v1.AccountInfoRequest",
         "services.account.v1.AccountInfoResponse",
-        "services.account.v1.ListDevicesRequest",
-        "services.account.v1.ListDevicesResponse",
-        "services.account.v1.RevokeDeviceRequest",
-        "services.account.v1.RevokeDeviceResponse",
         "services.account.v1.AccountEcosystem",
         "services.account.v1.LoginRequest",
         "services.account.v1.LoginResponse",
@@ -3925,18 +3715,13 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
-        "services.provider.v1.Provider.GrantAuthorization",
-        "services.provider.v1.Provider.RevokeAuthorization",
-        "services.provider.v1.Provider.GetAuthorizations",
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
         "services.provider.v1.Provider.GetPublicEcosystemInfo",
-        "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
-        "services.provider.v1.Provider.GetEventToken",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
         "services.provider.v1.Provider.RefreshDomainVerificationStatus",
@@ -3968,22 +3753,12 @@
         "services.provider.v1.GetPublicEcosystemInfoRequest",
         "services.provider.v1.GetPublicEcosystemInfoResponse",
         "services.provider.v1.PublicEcosystemInformation",
-        "services.provider.v1.GenerateTokenRequest",
-        "services.provider.v1.GenerateTokenResponse",
         "services.provider.v1.GetOberonKeyRequest",
         "services.provider.v1.GetOberonKeyResponse",
-        "services.provider.v1.GetEventTokenRequest",
-        "services.provider.v1.GetEventTokenResponse",
         "services.provider.v1.RetrieveDomainVerificationRecordRequest",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse",
         "services.provider.v1.RefreshDomainVerificationStatusRequest",
         "services.provider.v1.RefreshDomainVerificationStatusResponse",
-        "services.provider.v1.GrantAuthorizationRequest",
-        "services.provider.v1.GrantAuthorizationResponse",
-        "services.provider.v1.RevokeAuthorizationRequest",
-        "services.provider.v1.RevokeAuthorizationResponse",
-        "services.provider.v1.GetAuthorizationsRequest",
-        "services.provider.v1.GetAuthorizationsResponse",
         "services.provider.v1.SearchWalletConfigurationsRequest",
         "services.provider.v1.SearchWalletConfigurationResponse",
         "services.provider.v1.WalletConfiguration",
@@ -4049,24 +3824,11 @@
         "services.provider.v1.PublicEcosystemInformation.domain_verified",
         "services.provider.v1.PublicEcosystemInformation.style_display",
         "services.provider.v1.PublicEcosystemInformation.description",
-        "services.provider.v1.GenerateTokenRequest.description",
-        "services.provider.v1.GenerateTokenResponse.profile",
         "services.provider.v1.GetOberonKeyResponse.key",
-        "services.provider.v1.GetEventTokenRequest.pk",
-        "services.provider.v1.GetEventTokenResponse.token",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified",
-        "services.provider.v1.GrantAuthorizationRequest.email",
-        "services.provider.v1.GrantAuthorizationRequest.walletId",
-        "services.provider.v1.GrantAuthorizationRequest.resource",
-        "services.provider.v1.GrantAuthorizationRequest.action",
-        "services.provider.v1.RevokeAuthorizationRequest.email",
-        "services.provider.v1.RevokeAuthorizationRequest.walletId",
-        "services.provider.v1.RevokeAuthorizationRequest.resource",
-        "services.provider.v1.RevokeAuthorizationRequest.action",
-        "services.provider.v1.GetAuthorizationsResponse.grants",
         "services.provider.v1.SearchWalletConfigurationsRequest.query_filter",
         "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token",
         "services.provider.v1.SearchWalletConfigurationResponse.results",
@@ -4411,8 +4173,6 @@
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info",
-        "services.account.v1.Account.ListDevices",
-        "services.account.v1.Account.RevokeDevice",
         "services.account.v1.Account.AuthorizeWebhook"
       ]
     },
@@ -4446,18 +4206,13 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
-        "services.provider.v1.Provider.GrantAuthorization",
-        "services.provider.v1.Provider.RevokeAuthorization",
-        "services.provider.v1.Provider.GetAuthorizations",
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
         "services.provider.v1.Provider.GetPublicEcosystemInfo",
-        "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
-        "services.provider.v1.Provider.GetEventToken",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
         "services.provider.v1.Provider.RefreshDomainVerificationStatus",
@@ -4535,13 +4290,6 @@
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
-    "services.account.v1.Account.ListDevices": {
-      "name": "ListDevices",
-      "full_name": "services.account.v1.Account.ListDevices",
-      "input_type": "services.account.v1.ListDevicesRequest",
-      "output_type": "services.account.v1.ListDevicesResponse",
-      "description": "List all connected devices"
-    },
     "services.account.v1.Account.Login": {
       "name": "Login",
       "full_name": "services.account.v1.Account.Login",
@@ -4561,13 +4309,6 @@
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
-    },
-    "services.account.v1.Account.RevokeDevice": {
-      "name": "RevokeDevice",
-      "full_name": "services.account.v1.Account.RevokeDevice",
-      "input_type": "services.account.v1.RevokeDeviceRequest",
-      "output_type": "services.account.v1.RevokeDeviceResponse",
-      "description": "Revoke device access to the account's cloud wallet"
     },
     "services.account.v1.Account.SignIn": {
       "name": "SignIn",
@@ -4701,27 +4442,6 @@
       "output_type": "services.provider.v1.EcosystemInfoResponse",
       "description": "Get ecosystem information"
     },
-    "services.provider.v1.Provider.GenerateToken": {
-      "name": "GenerateToken",
-      "full_name": "services.provider.v1.Provider.GenerateToken",
-      "input_type": "services.provider.v1.GenerateTokenRequest",
-      "output_type": "services.provider.v1.GenerateTokenResponse",
-      "description": "Generates an unprotected authentication token that can be used to\nconfigure server side applications"
-    },
-    "services.provider.v1.Provider.GetAuthorizations": {
-      "name": "GetAuthorizations",
-      "full_name": "services.provider.v1.Provider.GetAuthorizations",
-      "input_type": "services.provider.v1.GetAuthorizationsRequest",
-      "output_type": "services.provider.v1.GetAuthorizationsResponse",
-      "description": "Retrieve the list of permissions for this particular account/ecosystem"
-    },
-    "services.provider.v1.Provider.GetEventToken": {
-      "name": "GetEventToken",
-      "full_name": "services.provider.v1.Provider.GetEventToken",
-      "input_type": "services.provider.v1.GetEventTokenRequest",
-      "output_type": "services.provider.v1.GetEventTokenResponse",
-      "description": "Generate a signed token (JWT) that can be used to connect to the message bus"
-    },
     "services.provider.v1.Provider.GetOberonKey": {
       "name": "GetOberonKey",
       "full_name": "services.provider.v1.Provider.GetOberonKey",
@@ -4741,13 +4461,6 @@
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
-    },
-    "services.provider.v1.Provider.GrantAuthorization": {
-      "name": "GrantAuthorization",
-      "full_name": "services.provider.v1.Provider.GrantAuthorization",
-      "input_type": "services.provider.v1.GrantAuthorizationRequest",
-      "output_type": "services.provider.v1.GrantAuthorizationResponse",
-      "description": "Grant user authorization to ecosystem resources"
     },
     "services.provider.v1.Provider.InvitationStatus": {
       "name": "InvitationStatus",
@@ -4787,13 +4500,6 @@
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
-    },
-    "services.provider.v1.Provider.RevokeAuthorization": {
-      "name": "RevokeAuthorization",
-      "full_name": "services.provider.v1.Provider.RevokeAuthorization",
-      "input_type": "services.provider.v1.RevokeAuthorizationRequest",
-      "output_type": "services.provider.v1.RevokeAuthorizationResponse",
-      "description": "Revoke user authorization to ecosystem resources"
     },
     "services.provider.v1.Provider.SearchWalletConfigurations": {
       "name": "SearchWalletConfigurations",
@@ -5089,22 +4795,6 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.ListDevicesRequest": {
-      "name": "ListDevicesRequest",
-      "full_name": "services.account.v1.ListDevicesRequest",
-      "description": "",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.ListDevicesResponse": {
-      "name": "ListDevicesResponse",
-      "full_name": "services.account.v1.ListDevicesResponse",
-      "description": "",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
     "services.account.v1.LoginConfirmRequest": {
       "name": "LoginConfirmRequest",
       "full_name": "services.account.v1.LoginConfirmRequest",
@@ -5146,22 +4836,6 @@
         "services.account.v1.LoginResponse.challenge",
         "services.account.v1.LoginResponse.profile"
       ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.RevokeDeviceRequest": {
-      "name": "RevokeDeviceRequest",
-      "full_name": "services.account.v1.RevokeDeviceRequest",
-      "description": "",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.RevokeDeviceResponse": {
-      "name": "RevokeDeviceResponse",
-      "full_name": "services.account.v1.RevokeDeviceResponse",
-      "description": "",
-      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -5526,64 +5200,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.GenerateTokenRequest": {
-      "name": "GenerateTokenRequest",
-      "full_name": "services.provider.v1.GenerateTokenRequest",
-      "description": "Request to generate an authentication token for the current account",
-      "fields": [
-        "services.provider.v1.GenerateTokenRequest.description"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GenerateTokenResponse": {
-      "name": "GenerateTokenResponse",
-      "full_name": "services.provider.v1.GenerateTokenResponse",
-      "description": "Response to `GenerateTokenRequest`",
-      "fields": [
-        "services.provider.v1.GenerateTokenResponse.profile"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetAuthorizationsRequest": {
-      "name": "GetAuthorizationsRequest",
-      "full_name": "services.provider.v1.GetAuthorizationsRequest",
-      "description": "Fetch list of grants that the current account has access to\nin its ecosystem",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetAuthorizationsResponse": {
-      "name": "GetAuthorizationsResponse",
-      "full_name": "services.provider.v1.GetAuthorizationsResponse",
-      "description": "Response to `GetAuthorizationsRequest`",
-      "fields": [
-        "services.provider.v1.GetAuthorizationsResponse.grants"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetEventTokenRequest": {
-      "name": "GetEventTokenRequest",
-      "full_name": "services.provider.v1.GetEventTokenRequest",
-      "description": "Generates an events token bound to the provided ed25519 public key.",
-      "fields": [
-        "services.provider.v1.GetEventTokenRequest.pk"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetEventTokenResponse": {
-      "name": "GetEventTokenResponse",
-      "full_name": "services.provider.v1.GetEventTokenResponse",
-      "description": "Response message containing a token (JWT) that can be used\nto connect directly to the message streaming architecture",
-      "fields": [
-        "services.provider.v1.GetEventTokenResponse.token"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.GetOberonKeyRequest": {
       "name": "GetOberonKeyRequest",
       "full_name": "services.provider.v1.GetOberonKeyRequest",
@@ -5637,27 +5253,6 @@
         "services.provider.v1.Grant.actions",
         "services.provider.v1.Grant.child_grants"
       ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GrantAuthorizationRequest": {
-      "name": "GrantAuthorizationRequest",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest",
-      "description": "Grant permissions to a resource or path in the ecosystem",
-      "fields": [
-        "services.provider.v1.GrantAuthorizationRequest.email",
-        "services.provider.v1.GrantAuthorizationRequest.walletId",
-        "services.provider.v1.GrantAuthorizationRequest.resource",
-        "services.provider.v1.GrantAuthorizationRequest.action"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GrantAuthorizationResponse": {
-      "name": "GrantAuthorizationResponse",
-      "full_name": "services.provider.v1.GrantAuthorizationResponse",
-      "description": "Response to `GrantAuthorizationRequest`",
-      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -5864,27 +5459,6 @@
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value"
       ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.RevokeAuthorizationRequest": {
-      "name": "RevokeAuthorizationRequest",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest",
-      "description": "Revoke permissions to a resource or path in the ecosystem",
-      "fields": [
-        "services.provider.v1.RevokeAuthorizationRequest.email",
-        "services.provider.v1.RevokeAuthorizationRequest.walletId",
-        "services.provider.v1.RevokeAuthorizationRequest.resource",
-        "services.provider.v1.RevokeAuthorizationRequest.action"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.RevokeAuthorizationResponse": {
-      "name": "RevokeAuthorizationResponse",
-      "full_name": "services.provider.v1.RevokeAuthorizationResponse",
-      "description": "Response to `RevokeAuthorizationRequest`",
-      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -7598,49 +7172,6 @@
       "full_type": "services.provider.v1.Ecosystem",
       "description": "Ecosystem corresponding to current ecosystem in the account token"
     },
-    "services.provider.v1.GenerateTokenRequest.description": {
-      "name": "description",
-      "full_name": "services.provider.v1.GenerateTokenRequest.description",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Description to identify this token",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.provider.v1.GenerateTokenResponse.profile": {
-      "name": "profile",
-      "full_name": "services.provider.v1.GenerateTokenResponse.profile",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountProfile",
-      "full_type": "services.account.v1.AccountProfile",
-      "description": "Account authentication profile that contains unprotected token"
-    },
-    "services.provider.v1.GetAuthorizationsResponse.grants": {
-      "name": "grants",
-      "full_name": "services.provider.v1.GetAuthorizationsResponse.grants",
-      "label": "LABEL_REPEATED",
-      "type": "Grant",
-      "full_type": "services.provider.v1.Grant",
-      "description": "Grants attached to account"
-    },
-    "services.provider.v1.GetEventTokenRequest.pk": {
-      "name": "pk",
-      "full_name": "services.provider.v1.GetEventTokenRequest.pk",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": "Raw public key to generate event token for"
-    },
-    "services.provider.v1.GetEventTokenResponse.token": {
-      "name": "token",
-      "full_name": "services.provider.v1.GetEventTokenResponse.token",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "JWT bound to the public key provided in `GetEventTokenRequest`"
-    },
     "services.provider.v1.GetOberonKeyResponse.key": {
       "name": "key",
       "full_name": "services.provider.v1.GetOberonKeyResponse.key",
@@ -7688,38 +7219,6 @@
       "type": "string",
       "full_type": "string",
       "description": "the urn of the resource"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.action": {
-      "name": "action",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.action",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Action to authorize. Default is \"*\" (all)"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.email": {
-      "name": "email",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.email",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Email address of account being granted permission.\nMutually exclusive with `walletId`."
-    },
-    "services.provider.v1.GrantAuthorizationRequest.resource": {
-      "name": "resource",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.resource",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Resource string that account is receiving permissions for.\nResources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted."
-    },
-    "services.provider.v1.GrantAuthorizationRequest.walletId": {
-      "name": "walletId",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.walletId",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Wallet ID of account being granted permission.\nMutually exclusive with `email`."
     },
     "services.provider.v1.IndyOptions.network": {
       "name": "network",
@@ -7934,38 +7433,6 @@
       "type": "string",
       "full_type": "string",
       "description": "TXT record name to use for domain verification"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.action": {
-      "name": "action",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.action",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Action to revoke. Default is \"*\" (all)"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.email": {
-      "name": "email",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.email",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Email address of account having permission revoked.\nMutually exclusive with `walletId`."
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.resource": {
-      "name": "resource",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.resource",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Resource string that account is losing permissions for.\nResources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted."
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.walletId": {
-      "name": "walletId",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.walletId",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Wallet ID of account having permission revoked.\nMutually exclusive with `email`."
     },
     "services.provider.v1.SearchWalletConfigurationResponse.continuation_token": {
       "name": "continuation_token",

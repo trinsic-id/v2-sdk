@@ -2208,13 +2208,15 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 <span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">fileBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, world!&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">);</span>
 <span class="n">String</span><span class="w"> </span><span class="n">fileMimeType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;application/text&quot;</span><span class="p">;</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="n">uploadResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">uploadFile</span><span class="p">(</span>
-<span class="w">    </span><span class="n">UploadFileRequest</span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setContents</span><span class="p">(</span><span class="n">ByteString</span><span class="p">.</span><span class="na">copyFrom</span><span class="p">(</span><span class="n">fileBytes</span><span class="p">))</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setMimeType</span><span class="p">(</span><span class="n">fileMimeType</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">uploadResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">fileManagement</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">uploadFile</span><span class="p">(</span>
+<span class="w">            </span><span class="n">UploadFileRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setContents</span><span class="p">(</span><span class="n">ByteString</span><span class="p">.</span><span class="na">copyFrom</span><span class="p">(</span><span class="n">fileBytes</span><span class="p">))</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setMimeType</span><span class="p">(</span><span class="n">fileMimeType</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2266,12 +2268,8 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getFileResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">getFile</span><span class="p">(</span>
-<span class="w">    </span><span class="n">GetFileRequest</span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getFileResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">getFile</span><span class="p">(</span><span class="n">GetFileRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">fileId</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2310,9 +2308,7 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">DeleteFileRequest</span><span class="p">(</span><span class="n">file_id</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">DeleteFileRequest</span><span class="p">(</span><span class="n">file_id</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2323,12 +2319,7 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">deleteFile</span><span class="p">(</span>
-<span class="w">    </span><span class="n">DeleteFileRequest</span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">fileId</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">deleteFile</span><span class="p">(</span><span class="n">DeleteFileRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">fileId</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2367,7 +2358,9 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">list_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">file_management</span><span class="o">.</span><span class="n">list_files</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">ListFilesRequest</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">ListFilesRequest</span><span class="p">(</span>
+        <span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
@@ -2379,12 +2372,14 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">listFilesResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">listFiles</span><span class="p">(</span>
-<span class="w">    </span><span class="n">ListFilesRequest</span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">listFilesResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">fileManagement</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">listFiles</span><span class="p">(</span>
+<span class="w">            </span><span class="n">ListFilesRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2425,9 +2420,8 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getStatsResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">getStorageStats</span><span class="p">(</span>
-<span class="w">    </span><span class="n">GetStorageStatsRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getStatsResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">fileManagement</span><span class="p">().</span><span class="na">getStorageStats</span><span class="p">(</span><span class="n">GetStorageStatsRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
