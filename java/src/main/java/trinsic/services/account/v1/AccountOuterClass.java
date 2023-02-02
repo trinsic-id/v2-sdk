@@ -41,22 +41,6 @@ public final class AccountOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_account_v1_AccountInfoResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_account_v1_ListDevicesRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_account_v1_ListDevicesResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_account_v1_ListDevicesResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_account_v1_RevokeDeviceRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_account_v1_RevokeDeviceRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_account_v1_RevokeDeviceResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_account_v1_RevokeDeviceResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_account_v1_AccountEcosystem_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_account_v1_AccountEcosystem_fieldAccessorTable;
@@ -126,11 +110,7 @@ public final class AccountOuterClass {
           + "\tdevice_id\030\004 \001(\t\022\024\n"
           + "\014ecosystem_id\030\005 \001(\t\022\022\n\n"
           + "public_did\030\006 \001(\t\022\033\n"
-          + "\023authorized_webhooks\030\007 \003(\t\"\024\n"
-          + "\022ListDevicesRequest\"\025\n"
-          + "\023ListDevicesResponse\"\025\n"
-          + "\023RevokeDeviceRequest\"\026\n"
-          + "\024RevokeDeviceResponse\"N\n"
+          + "\023authorized_webhooks\030\007 \003(\t\"N\n"
           + "\020AccountEcosystem\022\n\n"
           + "\002id\030\001 \001(\t\022\014\n"
           + "\004name\030\002 \001(\t\022\023\n"
@@ -158,24 +138,20 @@ public final class AccountOuterClass {
           + "\003Sms\020\002\022\023\n"
           + "\017ConnectedDevice\020\003\022\t\n"
           + "\005Other\020\n"
-          + "2\331\005\n"
+          + "2\222\004\n"
           + "\007Account\022b\n"
-          + "\006SignIn\022\".services.acco"
-          + "unt.v1.SignInRequest\032#.services.account.v1.SignInResponse\"\017\210\002\001\212\246\035\002\020\001\212\246\035\002\010\001\022\\\n"
-          + "\005Login\022!.services.account.v1.LoginRequest\032\""
-          + ".services.account.v1.LoginResponse\"\014\212\246\035\002\020\001\212\246\035\002\010\001\022q\n"
-          + "\014LoginConfirm\022(.services.account.v1.LoginConfirmRequest\032).services.ac"
-          + "count.v1.LoginConfirmResponse\"\014\212\246\035\002\010\001\212\246\035\002\020\001\022a\n"
-          + "\004Info\022\'.services.account.v1.Accoun"
-          + "tInfoRequest\032(.services.account.v1.AccountInfoResponse\"\006\212\246\035\002\030\001\022`\n"
-          + "\013ListDevices\022\'.services.account.v1.ListDevicesRequest\032("
-          + ".services.account.v1.ListDevicesResponse\022c\n"
-          + "\014RevokeDevice\022(.services.account.v1.R"
-          + "evokeDeviceRequest\032).services.account.v1.RevokeDeviceResponse\022o\n"
-          + "\020AuthorizeWebhook\022,.services.account.v1.AuthorizeWebhook"
-          + "Request\032-.services.account.v1.AuthorizeWebhookResponseBZ\n"
-          + "\033trinsic.services.account.v1P\001Z\033services/account/v1/account\252\002\033T"
-          + "rinsic.Services.Account.V1b\006proto3"
+          + "\006SignIn\022\".services.account.v1.SignI"
+          + "nRequest\032#.services.account.v1.SignInResponse\"\017\210\002\001\212\246\035\002\020\001\212\246\035\002\010\001\022\\\n"
+          + "\005Login\022!.servic"
+          + "es.account.v1.LoginRequest\032\".services.account.v1.LoginResponse\"\014\212\246\035\002\020\001\212\246\035\002\010\001\022q\n"
+          + "\014LoginConfirm\022(.services.account.v1.Login"
+          + "ConfirmRequest\032).services.account.v1.LoginConfirmResponse\"\014\212\246\035\002\010\001\212\246\035\002\020\001\022a\n"
+          + "\004Info\022\'.services.account.v1.AccountInfoRequest"
+          + "\032(.services.account.v1.AccountInfoResponse\"\006\212\246\035\002\030\001\022o\n"
+          + "\020AuthorizeWebhook\022,.services.account.v1.AuthorizeWebhookRequest\032-.s"
+          + "ervices.account.v1.AuthorizeWebhookResponseBZ\n"
+          + "\033trinsic.services.account.v1P\001Z\033se"
+          + "rvices/account/v1/account\252\002\033Trinsic.Services.Account.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -243,32 +219,8 @@ public final class AccountOuterClass {
               "PublicDid",
               "AuthorizedWebhooks",
             });
-    internal_static_services_account_v1_ListDevicesRequest_descriptor =
-        getDescriptor().getMessageTypes().get(7);
-    internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_account_v1_ListDevicesRequest_descriptor,
-            new java.lang.String[] {});
-    internal_static_services_account_v1_ListDevicesResponse_descriptor =
-        getDescriptor().getMessageTypes().get(8);
-    internal_static_services_account_v1_ListDevicesResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_account_v1_ListDevicesResponse_descriptor,
-            new java.lang.String[] {});
-    internal_static_services_account_v1_RevokeDeviceRequest_descriptor =
-        getDescriptor().getMessageTypes().get(9);
-    internal_static_services_account_v1_RevokeDeviceRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_account_v1_RevokeDeviceRequest_descriptor,
-            new java.lang.String[] {});
-    internal_static_services_account_v1_RevokeDeviceResponse_descriptor =
-        getDescriptor().getMessageTypes().get(10);
-    internal_static_services_account_v1_RevokeDeviceResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_account_v1_RevokeDeviceResponse_descriptor,
-            new java.lang.String[] {});
     internal_static_services_account_v1_AccountEcosystem_descriptor =
-        getDescriptor().getMessageTypes().get(11);
+        getDescriptor().getMessageTypes().get(7);
     internal_static_services_account_v1_AccountEcosystem_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_AccountEcosystem_descriptor,
@@ -276,7 +228,7 @@ public final class AccountOuterClass {
               "Id", "Name", "Description", "Uri",
             });
     internal_static_services_account_v1_LoginRequest_descriptor =
-        getDescriptor().getMessageTypes().get(12);
+        getDescriptor().getMessageTypes().get(8);
     internal_static_services_account_v1_LoginRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginRequest_descriptor,
@@ -284,7 +236,7 @@ public final class AccountOuterClass {
               "Email", "InvitationCode", "EcosystemId",
             });
     internal_static_services_account_v1_LoginResponse_descriptor =
-        getDescriptor().getMessageTypes().get(13);
+        getDescriptor().getMessageTypes().get(9);
     internal_static_services_account_v1_LoginResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginResponse_descriptor,
@@ -292,7 +244,7 @@ public final class AccountOuterClass {
               "Challenge", "Profile", "Response",
             });
     internal_static_services_account_v1_LoginConfirmRequest_descriptor =
-        getDescriptor().getMessageTypes().get(14);
+        getDescriptor().getMessageTypes().get(10);
     internal_static_services_account_v1_LoginConfirmRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginConfirmRequest_descriptor,
@@ -300,7 +252,7 @@ public final class AccountOuterClass {
               "Challenge", "ConfirmationCodeHashed",
             });
     internal_static_services_account_v1_LoginConfirmResponse_descriptor =
-        getDescriptor().getMessageTypes().get(15);
+        getDescriptor().getMessageTypes().get(11);
     internal_static_services_account_v1_LoginConfirmResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginConfirmResponse_descriptor,
@@ -308,7 +260,7 @@ public final class AccountOuterClass {
               "Profile",
             });
     internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor =
-        getDescriptor().getMessageTypes().get(16);
+        getDescriptor().getMessageTypes().get(12);
     internal_static_services_account_v1_AuthorizeWebhookRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor,
@@ -316,7 +268,7 @@ public final class AccountOuterClass {
               "Events",
             });
     internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor =
-        getDescriptor().getMessageTypes().get(17);
+        getDescriptor().getMessageTypes().get(13);
     internal_static_services_account_v1_AuthorizeWebhookResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor,

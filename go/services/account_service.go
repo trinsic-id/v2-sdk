@@ -60,10 +60,6 @@ type AccountService interface {
 
 	// Info  Get account information
 	Info(userContext context.Context) (*account.AccountInfoResponse, error)
-	// ListDevices  List all connected devices
-	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
-	// RevokeDevice  Revoke device access to the account's cloud wallet
-	RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error)
 	// AuthorizeWebhook  Authorize Ecosystem to receive webhook events
 	AuthorizeWebhook(userContext context.Context, request *account.AuthorizeWebhookRequest) (*account.AuthorizeWebhookResponse, error)
 
@@ -298,32 +294,6 @@ func (a *accountBase) Info(userContext context.Context) (*account.AccountInfoRes
 		return nil, err
 	}
 	response, err := a.client.Info(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// ListDevices  List all connected devices
-func (a *accountBase) ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error) {
-	md, err := a.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := a.client.ListDevices(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// RevokeDevice  Revoke device access to the account's cloud wallet
-func (a *accountBase) RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error) {
-	md, err := a.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := a.client.RevokeDevice(md, request)
 	if err != nil {
 		return nil, err
 	}

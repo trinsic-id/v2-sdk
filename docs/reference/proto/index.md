@@ -801,18 +801,13 @@ Request to fetch the list of roles assigned to the current account
 | ----------- | ------------ | ------------- | ------------|
 | CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
 | UpdateEcosystem | [UpdateEcosystemRequest](/reference/proto#services-provider-v1-UpdateEcosystemRequest) | [UpdateEcosystemResponse](/reference/proto#services-provider-v1-UpdateEcosystemResponse) | Update an existing ecosystem |
-| GrantAuthorization | [GrantAuthorizationRequest](/reference/proto#services-provider-v1-GrantAuthorizationRequest) | [GrantAuthorizationResponse](/reference/proto#services-provider-v1-GrantAuthorizationResponse) | Grant user authorization to ecosystem resources |
-| RevokeAuthorization | [RevokeAuthorizationRequest](/reference/proto#services-provider-v1-RevokeAuthorizationRequest) | [RevokeAuthorizationResponse](/reference/proto#services-provider-v1-RevokeAuthorizationResponse) | Revoke user authorization to ecosystem resources |
-| GetAuthorizations | [GetAuthorizationsRequest](/reference/proto#services-provider-v1-GetAuthorizationsRequest) | [GetAuthorizationsResponse](/reference/proto#services-provider-v1-GetAuthorizationsResponse) | Retrieve the list of permissions for this particular account/ecosystem |
 | AddWebhook | [AddWebhookRequest](/reference/proto#services-provider-v1-AddWebhookRequest) | [AddWebhookResponse](/reference/proto#services-provider-v1-AddWebhookResponse) | Add a webhook endpoint to the ecosystem |
 | DeleteWebhook | [DeleteWebhookRequest](/reference/proto#services-provider-v1-DeleteWebhookRequest) | [DeleteWebhookResponse](/reference/proto#services-provider-v1-DeleteWebhookResponse) | Delete a webhook endpoint from the ecosystem |
 | EcosystemInfo | [EcosystemInfoRequest](/reference/proto#services-provider-v1-EcosystemInfoRequest) | [EcosystemInfoResponse](/reference/proto#services-provider-v1-EcosystemInfoResponse) | Get ecosystem information |
 | GetPublicEcosystemInfo | [GetPublicEcosystemInfoRequest](/reference/proto#services-provider-v1-GetPublicEcosystemInfoRequest) | [GetPublicEcosystemInfoResponse](/reference/proto#services-provider-v1-GetPublicEcosystemInfoResponse) | Get public ecosystem information about *any* ecosystem |
-| GenerateToken | [GenerateTokenRequest](/reference/proto#services-provider-v1-GenerateTokenRequest) | [GenerateTokenResponse](/reference/proto#services-provider-v1-GenerateTokenResponse) | Generates an unprotected authentication token that can be used to configure server side applications |
 | Invite | [InviteRequest](/reference/proto#services-provider-v1-InviteRequest) | [InviteResponse](/reference/proto#services-provider-v1-InviteResponse) | Invite a user to the ecosystem |
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the status of an invitation |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
-| GetEventToken | [GetEventTokenRequest](/reference/proto#services-provider-v1-GetEventTokenRequest) | [GetEventTokenResponse](/reference/proto#services-provider-v1-GetEventTokenResponse) | Generate a signed token (JWT) that can be used to connect to the message bus |
 | UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
 | RetrieveDomainVerificationRecord | [RetrieveDomainVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest) | [RetrieveDomainVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
 | RefreshDomainVerificationStatus | [RefreshDomainVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest) | [RefreshDomainVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse) | Call to verify domain |
@@ -1028,93 +1023,6 @@ Response to `InfoRequest`
 
 
 
-<a name="services-provider-v1-GenerateTokenRequest"></a>
-
-### GenerateTokenRequest
-Request to generate an authentication token for the current account
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| description | [string](/reference/proto#string) | Description to identify this token |
-
-
-
-
-
-
-<a name="services-provider-v1-GenerateTokenResponse"></a>
-
-### GenerateTokenResponse
-Response to `GenerateTokenRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account authentication profile that contains unprotected token |
-
-
-
-
-
-
-<a name="services-provider-v1-GetAuthorizationsRequest"></a>
-
-### GetAuthorizationsRequest
-Fetch list of grants that the current account has access to
-in its ecosystem
-
-
-
-
-
-
-<a name="services-provider-v1-GetAuthorizationsResponse"></a>
-
-### GetAuthorizationsResponse
-Response to `GetAuthorizationsRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| grants | [Grant](/reference/proto#services-provider-v1-Grant)[] | Grants attached to account |
-
-
-
-
-
-
-<a name="services-provider-v1-GetEventTokenRequest"></a>
-
-### GetEventTokenRequest
-Generates an events token bound to the provided ed25519 public key.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| pk | [bytes](/reference/proto#bytes) | Raw public key to generate event token for |
-
-
-
-
-
-
-<a name="services-provider-v1-GetEventTokenResponse"></a>
-
-### GetEventTokenResponse
-Response message containing a token (JWT) that can be used
-to connect directly to the message streaming architecture
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| token | [string](/reference/proto#string) | JWT bound to the public key provided in `GetEventTokenRequest` |
-
-
-
-
-
-
 <a name="services-provider-v1-GetOberonKeyRequest"></a>
 
 ### GetOberonKeyRequest
@@ -1182,34 +1090,6 @@ A grant authorizing `actions` on a `resourceId`
 | resourceId | [string](/reference/proto#string) | the urn of the resource |
 | actions | [string](/reference/proto#string)[] | list of actions that are allowed |
 | child_grants | [Grant](/reference/proto#services-provider-v1-Grant)[] | any child grants |
-
-
-
-
-
-
-<a name="services-provider-v1-GrantAuthorizationRequest"></a>
-
-### GrantAuthorizationRequest
-Grant permissions to a resource or path in the ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account being granted permission. Mutually exclusive with `walletId`. |
-| walletId | [string](/reference/proto#string) | Wallet ID of account being granted permission. Mutually exclusive with `email`. |
-| resource | [string](/reference/proto#string) | Resource string that account is receiving permissions for. Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted. |
-| action | [string](/reference/proto#string) | Action to authorize. Default is "*" (all) |
-
-
-
-
-
-
-<a name="services-provider-v1-GrantAuthorizationResponse"></a>
-
-### GrantAuthorizationResponse
-Response to `GrantAuthorizationRequest`
 
 
 
@@ -1385,34 +1265,6 @@ Response message containing a TXT record content for domain url verification
 | ----- | ---- | ----------- |
 | verification_record_name | [string](/reference/proto#string) | TXT record name to use for domain verification |
 | verification_record_Value | [string](/reference/proto#string) | TXT code for domain verification |
-
-
-
-
-
-
-<a name="services-provider-v1-RevokeAuthorizationRequest"></a>
-
-### RevokeAuthorizationRequest
-Revoke permissions to a resource or path in the ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account having permission revoked. Mutually exclusive with `walletId`. |
-| walletId | [string](/reference/proto#string) | Wallet ID of account having permission revoked. Mutually exclusive with `email`. |
-| resource | [string](/reference/proto#string) | Resource string that account is losing permissions for. Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted. |
-| action | [string](/reference/proto#string) | Action to revoke. Default is "*" (all) |
-
-
-
-
-
-
-<a name="services-provider-v1-RevokeAuthorizationResponse"></a>
-
-### RevokeAuthorizationResponse
-Response to `RevokeAuthorizationRequest`
 
 
 
@@ -2573,8 +2425,6 @@ Response to `UploadFileRequest`
 | Login | [LoginRequest](/reference/proto#services-account-v1-LoginRequest) | [LoginResponse](/reference/proto#services-account-v1-LoginResponse) | Begin login flow for specified account, creating one if it does not already exist |
 | LoginConfirm | [LoginConfirmRequest](/reference/proto#services-account-v1-LoginConfirmRequest) | [LoginConfirmResponse](/reference/proto#services-account-v1-LoginConfirmResponse) | Finalize login flow with two-factor confirmation code |
 | Info | [AccountInfoRequest](/reference/proto#services-account-v1-AccountInfoRequest) | [AccountInfoResponse](/reference/proto#services-account-v1-AccountInfoResponse) | Get account information |
-| ListDevices | [ListDevicesRequest](/reference/proto#services-account-v1-ListDevicesRequest) | [ListDevicesResponse](/reference/proto#services-account-v1-ListDevicesResponse) | List all connected devices |
-| RevokeDevice | [RevokeDeviceRequest](/reference/proto#services-account-v1-RevokeDeviceRequest) | [RevokeDeviceResponse](/reference/proto#services-account-v1-RevokeDeviceResponse) | Revoke device access to the account's cloud wallet |
 | AuthorizeWebhook | [AuthorizeWebhookRequest](/reference/proto#services-account-v1-AuthorizeWebhookRequest) | [AuthorizeWebhookResponse](/reference/proto#services-account-v1-AuthorizeWebhookResponse) | Authorize Ecosystem to receive webhook events |
 
  <!-- end services -->
@@ -2691,26 +2541,6 @@ Response to `AuthorizeWebhookRequest`
 
 
 
-<a name="services-account-v1-ListDevicesRequest"></a>
-
-### ListDevicesRequest
-
-
-
-
-
-
-
-<a name="services-account-v1-ListDevicesResponse"></a>
-
-### ListDevicesResponse
-
-
-
-
-
-
-
 <a name="services-account-v1-LoginConfirmRequest"></a>
 
 ### LoginConfirmRequest
@@ -2769,26 +2599,6 @@ Response to `LoginRequest`
 | ----- | ---- | ----------- |
 | challenge | [bytes](/reference/proto#bytes) | Random byte sequence unique to this login request. If present, two-factor confirmation of login is required. Must be sent back, unaltered, in `LoginConfirm`. |
 | profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile response. If present, no confirmation of login is required. |
-
-
-
-
-
-
-<a name="services-account-v1-RevokeDeviceRequest"></a>
-
-### RevokeDeviceRequest
-
-
-
-
-
-
-
-<a name="services-account-v1-RevokeDeviceResponse"></a>
-
-### RevokeDeviceResponse
-
 
 
 

@@ -86,60 +86,6 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
-    /// Grant user authorization to ecosystem resources
-    /// </summary>
-    
-    public GrantAuthorizationResponse GrantAuthorization(GrantAuthorizationRequest request) {
-        
-        return Client.GrantAuthorization(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Grant user authorization to ecosystem resources
-    /// </summary>
-    
-    public async Task<GrantAuthorizationResponse> GrantAuthorizationAsync(GrantAuthorizationRequest request) {
-        
-        return await Client.GrantAuthorizationAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
-    /// Revoke user authorization to ecosystem resources
-    /// </summary>
-    
-    public RevokeAuthorizationResponse RevokeAuthorization(RevokeAuthorizationRequest request) {
-        
-        return Client.RevokeAuthorization(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Revoke user authorization to ecosystem resources
-    /// </summary>
-    
-    public async Task<RevokeAuthorizationResponse> RevokeAuthorizationAsync(RevokeAuthorizationRequest request) {
-        
-        return await Client.RevokeAuthorizationAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
-    /// Retrieve the list of permissions for this particular account/ecosystem
-    /// </summary>
-    
-    public GetAuthorizationsResponse GetAuthorizations(GetAuthorizationsRequest request) {
-        
-        return Client.GetAuthorizations(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Retrieve the list of permissions for this particular account/ecosystem
-    /// </summary>
-    
-    public async Task<GetAuthorizationsResponse> GetAuthorizationsAsync(GetAuthorizationsRequest request) {
-        
-        return await Client.GetAuthorizationsAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Add a webhook endpoint to the ecosystem
     /// </summary>
     
@@ -214,26 +160,6 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
-    /// Generates an unprotected authentication token that can be used to
-    ///  configure server side applications
-    /// </summary>
-    
-    public GenerateTokenResponse GenerateToken(GenerateTokenRequest request) {
-        
-        return Client.GenerateToken(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Generates an unprotected authentication token that can be used to
-    ///  configure server side applications
-    /// </summary>
-    
-    public async Task<GenerateTokenResponse> GenerateTokenAsync(GenerateTokenRequest request) {
-        
-        return await Client.GenerateTokenAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Returns the public key being used to create/verify oberon tokens
     /// </summary>
     
@@ -249,24 +175,6 @@ public class ProviderService : ServiceBase
     public async Task<GetOberonKeyResponse> GetOberonKeyAsync(GetOberonKeyRequest request) {
         
         return await Client.GetOberonKeyAsync(request, await BuildMetadataAsync());
-    }
-
-	/// <summary>
-    /// Generate a signed token (JWT) that can be used to connect to the message bus
-    /// </summary>
-    
-    public GetEventTokenResponse GetEventToken(GetEventTokenRequest request) {
-        
-        return Client.GetEventToken(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Generate a signed token (JWT) that can be used to connect to the message bus
-    /// </summary>
-    
-    public async Task<GetEventTokenResponse> GetEventTokenAsync(GetEventTokenRequest request) {
-        
-        return await Client.GetEventTokenAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>

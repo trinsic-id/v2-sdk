@@ -117,7 +117,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    * </code>
    *
    * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=138
+   *     services/account/v1/account.proto;l=132
    * @return The invitationCode.
    */
   @java.lang.Override
@@ -145,7 +145,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    * </code>
    *
    * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=138
+   *     services/account/v1/account.proto;l=132
    * @return The bytes for invitationCode.
    */
   @java.lang.Override
@@ -704,7 +704,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      * </code>
      *
      * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=138
+     *     services/account/v1/account.proto;l=132
      * @return The invitationCode.
      */
     @java.lang.Deprecated
@@ -731,7 +731,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      * </code>
      *
      * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=138
+     *     services/account/v1/account.proto;l=132
      * @return The bytes for invitationCode.
      */
     @java.lang.Deprecated
@@ -758,7 +758,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      * </code>
      *
      * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=138
+     *     services/account/v1/account.proto;l=132
      * @param value The invitationCode to set.
      * @return This builder for chaining.
      */
@@ -784,7 +784,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      * </code>
      *
      * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=138
+     *     services/account/v1/account.proto;l=132
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -806,7 +806,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      * </code>
      *
      * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=138
+     *     services/account/v1/account.proto;l=132
      * @param value The bytes for invitationCode to set.
      * @return This builder for chaining.
      */

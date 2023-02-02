@@ -308,42 +308,6 @@ public class AccountService : ServiceBase
     }
 
 	/// <summary>
-    /// List all connected devices
-    /// </summary>
-    
-    public ListDevicesResponse ListDevices(ListDevicesRequest request) {
-        
-        return Client.ListDevices(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// List all connected devices
-    /// </summary>
-    
-    public async Task<ListDevicesResponse> ListDevicesAsync(ListDevicesRequest request) {
-        
-        return await Client.ListDevicesAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
-    /// Revoke device access to the account's cloud wallet
-    /// </summary>
-    
-    public RevokeDeviceResponse RevokeDevice(RevokeDeviceRequest request) {
-        
-        return Client.RevokeDevice(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Revoke device access to the account's cloud wallet
-    /// </summary>
-    
-    public async Task<RevokeDeviceResponse> RevokeDeviceAsync(RevokeDeviceRequest request) {
-        
-        return await Client.RevokeDeviceAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Authorize Ecosystem to receive webhook events
     /// </summary>
     

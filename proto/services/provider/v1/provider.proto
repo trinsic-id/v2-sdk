@@ -278,19 +278,6 @@ message PublicEcosystemInformation {
 }
 
 
-// Request to generate an authentication token for the current account
-message GenerateTokenRequest {
-  // Description to identify this token
-  string description = 1 [(options.optional) = true];
-}
-
-// Response to `GenerateTokenRequest`
-message GenerateTokenResponse {
-  // Account authentication profile that contains unprotected token
-  services.account.v1.AccountProfile profile = 1;
-}
-
-
 // Request to fetch the Trinsic public key used
 // to verify authentication token validity
 message GetOberonKeyRequest {
@@ -300,19 +287,6 @@ message GetOberonKeyRequest {
 message GetOberonKeyResponse {
   // Oberon Public Key as RAW base64-url encoded string
   string key = 1;
-}
-
-// Generates an events token bound to the provided ed25519 public key.
-message GetEventTokenRequest {
-  // Raw public key to generate event token for
-  bytes pk = 1;
-}
-
-// Response message containing a token (JWT) that can be used
-// to connect directly to the message streaming architecture
-message GetEventTokenResponse {
-  // JWT bound to the public key provided in `GetEventTokenRequest`
-  string token = 1;
 }
 
 message RetrieveDomainVerificationRecordRequest {
@@ -334,66 +308,6 @@ message RefreshDomainVerificationStatusResponse {
   string domain = 1;
   // Specifies if the above `domain` was successfully verified
   bool domain_verified = 2;
-}
-
-// Grant permissions to a resource or path in the ecosystem
-message GrantAuthorizationRequest {
-  oneof account {
-    // Email address of account being granted permission.
-    // Mutually exclusive with `walletId`.
-    string email = 1;
-
-    // Wallet ID of account being granted permission.
-    // Mutually exclusive with `email`.
-    string walletId = 2;
-  }
-
-  // Resource string that account is receiving permissions for.
-  // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-  string resource = 3;
-
-  // Action to authorize. Default is "*" (all)
-  string action = 4;
-}
-
-
-// Response to `GrantAuthorizationRequest`
-message GrantAuthorizationResponse {
-}
-
-// Revoke permissions to a resource or path in the ecosystem
-message RevokeAuthorizationRequest {
-  oneof account {
-    // Email address of account having permission revoked.
-    // Mutually exclusive with `walletId`.
-    string email = 1;
-
-    // Wallet ID of account having permission revoked.
-    // Mutually exclusive with `email`.
-    string walletId = 2;
-  }
-
-  // Resource string that account is losing permissions for.
-  // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-  string resource = 3;
-
-  // Action to revoke. Default is "*" (all)
-  string action = 4;
-}
-
-// Response to `RevokeAuthorizationRequest`
-message RevokeAuthorizationResponse {
-}
-
-// Fetch list of grants that the current account has access to
-// in its ecosystem
-message GetAuthorizationsRequest {
-}
-
-// Response to `GetAuthorizationsRequest`
-message GetAuthorizationsResponse {
-  // Grants attached to account
-  repeated Grant grants = 1;
 }
 
 // Search for issuers/holders/verifiers
@@ -494,15 +408,6 @@ service Provider {
     option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
   }
 
-  // Grant user authorization to ecosystem resources
-  rpc GrantAuthorization(GrantAuthorizationRequest) returns (GrantAuthorizationResponse);
-
-  // Revoke user authorization to ecosystem resources
-  rpc RevokeAuthorization(RevokeAuthorizationRequest) returns (RevokeAuthorizationResponse);
-
-  // Retrieve the list of permissions for this particular account/ecosystem
-  rpc GetAuthorizations(GetAuthorizationsRequest) returns (GetAuthorizationsResponse);
-
   // Add a webhook endpoint to the ecosystem
   rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse);
 
@@ -517,10 +422,6 @@ service Provider {
     option (options.sdk_template_option).anonymous = true;
     option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
   }
-
-  // Generates an unprotected authentication token that can be used to
-  // configure server side applications
-  rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse);
 
   // Invite a user to the ecosystem
   rpc Invite(InviteRequest) returns (InviteResponse) {
@@ -540,9 +441,6 @@ service Provider {
   rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse) {
     option (options.sdk_template_option).anonymous = true;
   }
-
-  // Generate a signed token (JWT) that can be used to connect to the message bus
-  rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 
   // Upgrade a wallet's DID from `did:key` to another method
   rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse);

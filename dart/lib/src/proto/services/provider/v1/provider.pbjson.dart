@@ -552,42 +552,6 @@ const PublicEcosystemInformation$json = const {
 final $typed_data.Uint8List publicEcosystemInformationDescriptor =
     $convert.base64Decode(
         'ChpQdWJsaWNFY29zeXN0ZW1JbmZvcm1hdGlvbhISCgRuYW1lGAEgASgJUgRuYW1lEhYKBmRvbWFpbhgCIAEoCVIGZG9tYWluEicKD2RvbWFpbl92ZXJpZmllZBgDIAEoCFIOZG9tYWluVmVyaWZpZWQSSwoNc3R5bGVfZGlzcGxheRgEIAEoCzImLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSDHN0eWxlRGlzcGxheRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb246AhgB');
-@$core.Deprecated('Use generateTokenRequestDescriptor instead')
-const GenerateTokenRequest$json = const {
-  '1': 'GenerateTokenRequest',
-  '2': const [
-    const {
-      '1': 'description',
-      '3': 1,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'description'
-    },
-  ],
-};
-
-/// Descriptor for `GenerateTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List generateTokenRequestDescriptor = $convert.base64Decode(
-    'ChRHZW5lcmF0ZVRva2VuUmVxdWVzdBImCgtkZXNjcmlwdGlvbhgBIAEoCUIEgKYdAVILZGVzY3JpcHRpb24=');
-@$core.Deprecated('Use generateTokenResponseDescriptor instead')
-const GenerateTokenResponse$json = const {
-  '1': 'GenerateTokenResponse',
-  '2': const [
-    const {
-      '1': 'profile',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.services.account.v1.AccountProfile',
-      '10': 'profile'
-    },
-  ],
-};
-
-/// Descriptor for `GenerateTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List generateTokenResponseDescriptor = $convert.base64Decode(
-    'ChVHZW5lcmF0ZVRva2VuUmVzcG9uc2USPQoHcHJvZmlsZRgBIAEoCzIjLnNlcnZpY2VzLmFjY291bnQudjEuQWNjb3VudFByb2ZpbGVSB3Byb2ZpbGU=');
 @$core.Deprecated('Use getOberonKeyRequestDescriptor instead')
 const GetOberonKeyRequest$json = const {
   '1': 'GetOberonKeyRequest',
@@ -607,29 +571,6 @@ const GetOberonKeyResponse$json = const {
 /// Descriptor for `GetOberonKeyResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getOberonKeyResponseDescriptor = $convert
     .base64Decode('ChRHZXRPYmVyb25LZXlSZXNwb25zZRIQCgNrZXkYASABKAlSA2tleQ==');
-@$core.Deprecated('Use getEventTokenRequestDescriptor instead')
-const GetEventTokenRequest$json = const {
-  '1': 'GetEventTokenRequest',
-  '2': const [
-    const {'1': 'pk', '3': 1, '4': 1, '5': 12, '10': 'pk'},
-  ],
-};
-
-/// Descriptor for `GetEventTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getEventTokenRequestDescriptor = $convert
-    .base64Decode('ChRHZXRFdmVudFRva2VuUmVxdWVzdBIOCgJwaxgBIAEoDFICcGs=');
-@$core.Deprecated('Use getEventTokenResponseDescriptor instead')
-const GetEventTokenResponse$json = const {
-  '1': 'GetEventTokenResponse',
-  '2': const [
-    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
-  ],
-};
-
-/// Descriptor for `GetEventTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getEventTokenResponseDescriptor =
-    $convert.base64Decode(
-        'ChVHZXRFdmVudFRva2VuUmVzcG9uc2USFAoFdG9rZW4YASABKAlSBXRva2Vu');
 @$core
     .Deprecated('Use retrieveDomainVerificationRecordRequestDescriptor instead')
 const RetrieveDomainVerificationRecordRequest$json = const {
@@ -696,85 +637,6 @@ const RefreshDomainVerificationStatusResponse$json = const {
 final $typed_data.Uint8List refreshDomainVerificationStatusResponseDescriptor =
     $convert.base64Decode(
         'CidSZWZyZXNoRG9tYWluVmVyaWZpY2F0aW9uU3RhdHVzUmVzcG9uc2USFgoGZG9tYWluGAEgASgJUgZkb21haW4SJwoPZG9tYWluX3ZlcmlmaWVkGAIgASgIUg5kb21haW5WZXJpZmllZA==');
-@$core.Deprecated('Use grantAuthorizationRequestDescriptor instead')
-const GrantAuthorizationRequest$json = const {
-  '1': 'GrantAuthorizationRequest',
-  '2': const [
-    const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
-    const {'1': 'walletId', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
-    const {'1': 'resource', '3': 3, '4': 1, '5': 9, '10': 'resource'},
-    const {'1': 'action', '3': 4, '4': 1, '5': 9, '10': 'action'},
-  ],
-  '8': const [
-    const {'1': 'account'},
-  ],
-};
-
-/// Descriptor for `GrantAuthorizationRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List grantAuthorizationRequestDescriptor =
-    $convert.base64Decode(
-        'ChlHcmFudEF1dGhvcml6YXRpb25SZXF1ZXN0EhYKBWVtYWlsGAEgASgJSABSBWVtYWlsEhwKCHdhbGxldElkGAIgASgJSABSCHdhbGxldElkEhoKCHJlc291cmNlGAMgASgJUghyZXNvdXJjZRIWCgZhY3Rpb24YBCABKAlSBmFjdGlvbkIJCgdhY2NvdW50');
-@$core.Deprecated('Use grantAuthorizationResponseDescriptor instead')
-const GrantAuthorizationResponse$json = const {
-  '1': 'GrantAuthorizationResponse',
-};
-
-/// Descriptor for `GrantAuthorizationResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List grantAuthorizationResponseDescriptor =
-    $convert.base64Decode('ChpHcmFudEF1dGhvcml6YXRpb25SZXNwb25zZQ==');
-@$core.Deprecated('Use revokeAuthorizationRequestDescriptor instead')
-const RevokeAuthorizationRequest$json = const {
-  '1': 'RevokeAuthorizationRequest',
-  '2': const [
-    const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
-    const {'1': 'walletId', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
-    const {'1': 'resource', '3': 3, '4': 1, '5': 9, '10': 'resource'},
-    const {'1': 'action', '3': 4, '4': 1, '5': 9, '10': 'action'},
-  ],
-  '8': const [
-    const {'1': 'account'},
-  ],
-};
-
-/// Descriptor for `RevokeAuthorizationRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List revokeAuthorizationRequestDescriptor =
-    $convert.base64Decode(
-        'ChpSZXZva2VBdXRob3JpemF0aW9uUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIcCgh3YWxsZXRJZBgCIAEoCUgAUgh3YWxsZXRJZBIaCghyZXNvdXJjZRgDIAEoCVIIcmVzb3VyY2USFgoGYWN0aW9uGAQgASgJUgZhY3Rpb25CCQoHYWNjb3VudA==');
-@$core.Deprecated('Use revokeAuthorizationResponseDescriptor instead')
-const RevokeAuthorizationResponse$json = const {
-  '1': 'RevokeAuthorizationResponse',
-};
-
-/// Descriptor for `RevokeAuthorizationResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List revokeAuthorizationResponseDescriptor =
-    $convert.base64Decode('ChtSZXZva2VBdXRob3JpemF0aW9uUmVzcG9uc2U=');
-@$core.Deprecated('Use getAuthorizationsRequestDescriptor instead')
-const GetAuthorizationsRequest$json = const {
-  '1': 'GetAuthorizationsRequest',
-};
-
-/// Descriptor for `GetAuthorizationsRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getAuthorizationsRequestDescriptor =
-    $convert.base64Decode('ChhHZXRBdXRob3JpemF0aW9uc1JlcXVlc3Q=');
-@$core.Deprecated('Use getAuthorizationsResponseDescriptor instead')
-const GetAuthorizationsResponse$json = const {
-  '1': 'GetAuthorizationsResponse',
-  '2': const [
-    const {
-      '1': 'grants',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.services.provider.v1.Grant',
-      '10': 'grants'
-    },
-  ],
-};
-
-/// Descriptor for `GetAuthorizationsResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getAuthorizationsResponseDescriptor =
-    $convert.base64Decode(
-        'ChlHZXRBdXRob3JpemF0aW9uc1Jlc3BvbnNlEjMKBmdyYW50cxgBIAMoCzIbLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkdyYW50UgZncmFudHM=');
 @$core.Deprecated('Use searchWalletConfigurationsRequestDescriptor instead')
 const SearchWalletConfigurationsRequest$json = const {
   '1': 'SearchWalletConfigurationsRequest',

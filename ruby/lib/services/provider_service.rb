@@ -45,27 +45,6 @@ module Trinsic
       @client.update_ecosystem(request, metadata: metadata(request))
     end
 
-    #  Grant user authorization to ecosystem resources
-    # @param [GrantAuthorizationRequest] request
-    # @return [Services::Provider::V1::GrantAuthorizationResponse]
-    def grant_authorization(request)
-      @client.grant_authorization(request, metadata: metadata(request))
-    end
-
-    #  Revoke user authorization to ecosystem resources
-    # @param [RevokeAuthorizationRequest] request
-    # @return [Services::Provider::V1::RevokeAuthorizationResponse]
-    def revoke_authorization(request)
-      @client.revoke_authorization(request, metadata: metadata(request))
-    end
-
-    #  Retrieve the list of permissions for this particular account/ecosystem
-    # @param [GetAuthorizationsRequest] request
-    # @return [Services::Provider::V1::GetAuthorizationsResponse]
-    def get_authorizations(request)
-      @client.get_authorizations(request, metadata: metadata(request))
-    end
-
     #  Add a webhook endpoint to the ecosystem
     # @param [AddWebhookRequest] request
     # @return [Services::Provider::V1::AddWebhookResponse]
@@ -95,26 +74,11 @@ module Trinsic
       @client.get_public_ecosystem_info(request, metadata: metadata(request))
     end
 
-    #  Generates an unprotected authentication token that can be used to
-    # configure server side applications
-    # @param [GenerateTokenRequest] request
-    # @return [Services::Provider::V1::GenerateTokenResponse]
-    def generate_token(request)
-      @client.generate_token(request, metadata: metadata(request))
-    end
-
     #  Returns the public key being used to create/verify oberon tokens
     # @param [GetOberonKeyRequest] request
     # @return [Services::Provider::V1::GetOberonKeyResponse]
     def get_oberon_key(request)
       @client.get_oberon_key(request, metadata: metadata(request))
-    end
-
-    #  Generate a signed token (JWT) that can be used to connect to the message bus
-    # @param [GetEventTokenRequest] request
-    # @return [Services::Provider::V1::GetEventTokenResponse]
-    def get_event_token(request)
-      @client.get_event_token(request, metadata: metadata(request))
     end
 
     #  Upgrade a wallet's DID from `did:key` to another method

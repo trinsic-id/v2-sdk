@@ -31,12 +31,6 @@ type ProviderService interface {
 	// UpdateEcosystem Deprecated: This will be removed May 1, 2023
 	// Update an existing ecosystem
 	UpdateEcosystem(userContext context.Context, request *provider.UpdateEcosystemRequest) (*provider.UpdateEcosystemResponse, error)
-	// GrantAuthorization  Grant user authorization to ecosystem resources
-	GrantAuthorization(userContext context.Context, request *provider.GrantAuthorizationRequest) (*provider.GrantAuthorizationResponse, error)
-	// RevokeAuthorization  Revoke user authorization to ecosystem resources
-	RevokeAuthorization(userContext context.Context, request *provider.RevokeAuthorizationRequest) (*provider.RevokeAuthorizationResponse, error)
-	// GetAuthorizations  Retrieve the list of permissions for this particular account/ecosystem
-	GetAuthorizations(userContext context.Context, request *provider.GetAuthorizationsRequest) (*provider.GetAuthorizationsResponse, error)
 	// AddWebhook  Add a webhook endpoint to the ecosystem
 	AddWebhook(userContext context.Context, request *provider.AddWebhookRequest) (*provider.AddWebhookResponse, error)
 	// DeleteWebhook  Delete a webhook endpoint from the ecosystem
@@ -46,13 +40,8 @@ type ProviderService interface {
 	// GetPublicEcosystemInfo Deprecated: This will be removed May 1, 2023
 	// Get public ecosystem information about *any* ecosystem
 	GetPublicEcosystemInfo(userContext context.Context, request *provider.GetPublicEcosystemInfoRequest) (*provider.GetPublicEcosystemInfoResponse, error)
-	// GenerateToken  Generates an unprotected authentication token that can be used to
-	// configure server side applications
-	GenerateToken(userContext context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error)
 	// GetOberonKey  Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error)
-	// GetEventToken  Generate a signed token (JWT) that can be used to connect to the message bus
-	GetEventToken(userContext context.Context, request *provider.GetEventTokenRequest) (*provider.GetEventTokenResponse, error)
 	// UpgradeDID  Upgrade a wallet's DID from `did:key` to another method
 	UpgradeDID(userContext context.Context, request *provider.UpgradeDidRequest) (*provider.UpgradeDidResponse, error)
 	// RetrieveDomainVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
@@ -116,45 +105,6 @@ func (p *providerBase) UpdateEcosystem(userContext context.Context, request *pro
 	return response, nil
 }
 
-// GrantAuthorization  Grant user authorization to ecosystem resources
-func (p *providerBase) GrantAuthorization(userContext context.Context, request *provider.GrantAuthorizationRequest) (*provider.GrantAuthorizationResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.GrantAuthorization(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// RevokeAuthorization  Revoke user authorization to ecosystem resources
-func (p *providerBase) RevokeAuthorization(userContext context.Context, request *provider.RevokeAuthorizationRequest) (*provider.RevokeAuthorizationResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.RevokeAuthorization(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// GetAuthorizations  Retrieve the list of permissions for this particular account/ecosystem
-func (p *providerBase) GetAuthorizations(userContext context.Context, request *provider.GetAuthorizationsRequest) (*provider.GetAuthorizationsResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.GetAuthorizations(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
 // AddWebhook  Add a webhook endpoint to the ecosystem
 func (p *providerBase) AddWebhook(userContext context.Context, request *provider.AddWebhookRequest) (*provider.AddWebhookResponse, error) {
 	md, err := p.GetMetadataContext(userContext, request)
@@ -208,20 +158,6 @@ func (p *providerBase) GetPublicEcosystemInfo(userContext context.Context, reque
 	return response, nil
 }
 
-// GenerateToken  Generates an unprotected authentication token that can be used to
-// configure server side applications
-func (p *providerBase) GenerateToken(userContext context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.GenerateToken(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
 // GetOberonKey  Returns the public key being used to create/verify oberon tokens
 func (p *providerBase) GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error) {
 	md, err := p.GetMetadataContext(userContext, nil)
@@ -229,19 +165,6 @@ func (p *providerBase) GetOberonKey(userContext context.Context, request *provid
 		return nil, err
 	}
 	response, err := p.client.GetOberonKey(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// GetEventToken  Generate a signed token (JWT) that can be used to connect to the message bus
-func (p *providerBase) GetEventToken(userContext context.Context, request *provider.GetEventTokenRequest) (*provider.GetEventTokenResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.GetEventToken(md, request)
 	if err != nil {
 		return nil, err
 	}

@@ -188,18 +188,6 @@ public class AccountService extends ServiceBase {
     var request = AccountInfoRequest.newBuilder().build();
     return withMetadata(stub, request).info(request);
   }
-  /** List all connected devices */
-  public ListenableFuture<ListDevicesResponse> listDevices(ListDevicesRequest request)
-      throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).listDevices(request);
-  }
-  /** Revoke device access to the account's cloud wallet */
-  public ListenableFuture<RevokeDeviceResponse> revokeDevice(RevokeDeviceRequest request)
-      throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).revokeDevice(request);
-  }
   /** Authorize Ecosystem to receive webhook events */
   public ListenableFuture<AuthorizeWebhookResponse> authorizeWebhook(
       AuthorizeWebhookRequest request) throws InvalidProtocolBufferException, DidException {
