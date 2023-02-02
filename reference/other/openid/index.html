@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.9+insiders-4.29.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.10+insiders-4.29.0">
     
     
       
@@ -1934,6 +1934,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#displaying-linked-data-in-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying Linked Data in Credentials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sample" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2188,7 +2199,7 @@
 <div class="admonition info">
 <p class="admonition-title">Credential Issuance</p>
 <p>Currently, Trinsic's OpenID Connect service only enables the sharing of a credential between holder and verifier. We plan to support issuance through this service at a later date.</p>
-<p>In the meantime, use the <a href="../../services/wallet-service/#insert-item">InsertItem</a> SDK call to store credentials in a holder's wallet.</p>
+<p>In the meantime, use the <a href="../../services/wallet-service/#insert-item">InsertItem</a> or <a href="../../services/credential-service/#send-via-email">Send</a> methods to store credentials in a holder's wallet.</p>
 </div>
 <h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
 <h3 id="openid-connect-protocol">OpenID Connect Protocol<a class="headerlink" href="#openid-connect-protocol" title="Permanent link">&para;</a></h3>
@@ -2314,6 +2325,26 @@
 <p><strong>Always verify the proof</strong> before making use of its data.</p>
 <p>Without verification, the received proof is of no more value than an unsubstantiated claim made by your user.</p>
 </div>
+<h2 id="displaying-linked-data-in-credentials">Displaying Linked Data in Credentials<a class="headerlink" href="#displaying-linked-data-in-credentials" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">SDK Only</p>
+<p>The following section presently only applies when using our SDK to create a Template; our Dashboard does not yet support the ability to specify field annotations.</p>
+</div>
+<p>Some credential template fields may be intended for URLs which resolve to images or any other data which cannot be directly embedded in a credential. For example, you may wish to include a URL to an image of a physical credential in its digital representation.</p>
+<p>By default, these will display to the holders in the OIDC flow as simple text fields containing the raw URL. However, the template can be configured to display these URLs as either inline embedded images, or convenient links to download the linked data.</p>
+<p>When creating a Template:</p>
+<ul>
+<li>Choose the <code>Uri</code> type for any Fields which are intended to contain URIs.</li>
+<li>Set the <code>trinsic/web.display_method</code> annotation on the Field</li>
+<li>If the field is intended to contain an image, use the value <code>inline</code>.</li>
+<li>Otherwise, use the value <code>download</code>.</li>
+<li>Set the <code>trinsic/file.content_type</code> annotation on the Field</li>
+<li>Use the value <code>image</code> if the field is intended to contain a link to an image</li>
+<li>Otherwise, the value should be the expected MIME Type of the data<ul>
+<li>If you are unsure, use <code>application/octet-stream</code> as a catch-all</li>
+</ul>
+</li>
+</ul>
 <h2 id="sample">Sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h2>
 <p>We've prepared a sample demonstrating client-side OIDC Verification.</p>
 <div class="grid cards">
@@ -2431,7 +2462,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.125978b2.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7ce0e818.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
