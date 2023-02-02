@@ -52,24 +52,6 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).updateEcosystem(request);
   }
-  /** Grant user authorization to ecosystem resources */
-  public ListenableFuture<GrantAuthorizationResponse> grantAuthorization(
-      GrantAuthorizationRequest request) throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).grantAuthorization(request);
-  }
-  /** Revoke user authorization to ecosystem resources */
-  public ListenableFuture<RevokeAuthorizationResponse> revokeAuthorization(
-      RevokeAuthorizationRequest request) throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).revokeAuthorization(request);
-  }
-  /** Retrieve the list of permissions for this particular account/ecosystem */
-  public ListenableFuture<GetAuthorizationsResponse> getAuthorizations(
-      GetAuthorizationsRequest request) throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).getAuthorizations(request);
-  }
   /** Add a webhook endpoint to the ecosystem */
   public ListenableFuture<AddWebhookResponse> addWebhook(AddWebhookRequest request)
       throws InvalidProtocolBufferException, DidException {
@@ -95,26 +77,11 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).getPublicEcosystemInfo(request);
   }
-  /**
-   * Generates an unprotected authentication token that can be used to configure server side
-   * applications
-   */
-  public ListenableFuture<GenerateTokenResponse> generateToken(GenerateTokenRequest request)
-      throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).generateToken(request);
-  }
   /** Returns the public key being used to create/verify oberon tokens */
   public ListenableFuture<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request)
       throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).getOberonKey(request);
-  }
-  /** Generate a signed token (JWT) that can be used to connect to the message bus */
-  public ListenableFuture<GetEventTokenResponse> getEventToken(GetEventTokenRequest request)
-      throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).getEventToken(request);
   }
   /** Upgrade a wallet's DID from `did:key` to another method */
   public ListenableFuture<UpgradeDidResponse> upgradeDID(UpgradeDidRequest request)

@@ -42,30 +42,6 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
-  Future<GrantAuthorizationResponse> grantAuthorization(
-      GrantAuthorizationRequest request) async {
-    ///  Grant user authorization to ecosystem resources
-
-    return client.grantAuthorization(request,
-        options: await buildMetadata(request: request));
-  }
-
-  Future<RevokeAuthorizationResponse> revokeAuthorization(
-      RevokeAuthorizationRequest request) async {
-    ///  Revoke user authorization to ecosystem resources
-
-    return client.revokeAuthorization(request,
-        options: await buildMetadata(request: request));
-  }
-
-  Future<GetAuthorizationsResponse> getAuthorizations(
-      GetAuthorizationsRequest request) async {
-    ///  Retrieve the list of permissions for this particular account/ecosystem
-
-    return client.getAuthorizations(request,
-        options: await buildMetadata(request: request));
-  }
-
   Future<AddWebhookResponse> addWebhook(AddWebhookRequest request) async {
     ///  Add a webhook endpoint to the ecosystem
 
@@ -99,27 +75,10 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata());
   }
 
-  Future<GenerateTokenResponse> generateToken(
-      GenerateTokenRequest request) async {
-    ///  Generates an unprotected authentication token that can be used to
-    /// configure server side applications
-
-    return client.generateToken(request,
-        options: await buildMetadata(request: request));
-  }
-
   Future<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request) async {
     ///  Returns the public key being used to create/verify oberon tokens
 
     return client.getOberonKey(request, options: await buildMetadata());
-  }
-
-  Future<GetEventTokenResponse> getEventToken(
-      GetEventTokenRequest request) async {
-    ///  Generate a signed token (JWT) that can be used to connect to the message bus
-
-    return client.getEventToken(request,
-        options: await buildMetadata(request: request));
   }
 
   Future<UpgradeDidResponse> upgradeDID(UpgradeDidRequest request) async {

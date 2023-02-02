@@ -175,22 +175,6 @@ class AccountService(ServiceBase):
         request = AccountInfoRequest()
         return await self.client.info(request, metadata=self.build_metadata(request))
 
-    async def list_devices(self, *, request: ListDevicesRequest) -> ListDevicesResponse:
-        """List all connected devices"""
-
-        return await self.client.list_devices(
-            request, metadata=self.build_metadata(request)
-        )
-
-    async def revoke_device(
-        self, *, request: RevokeDeviceRequest
-    ) -> RevokeDeviceResponse:
-        """Revoke device access to the account's cloud wallet"""
-
-        return await self.client.revoke_device(
-            request, metadata=self.build_metadata(request)
-        )
-
     async def authorize_webhook(
         self, *, request: AuthorizeWebhookRequest
     ) -> AuthorizeWebhookResponse:

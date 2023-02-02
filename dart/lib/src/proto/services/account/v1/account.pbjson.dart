@@ -184,38 +184,6 @@ const AccountInfoResponse$json = const {
 /// Descriptor for `AccountInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountInfoResponseDescriptor = $convert.base64Decode(
     'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEkkKCmVjb3N5c3RlbXMYAiADKAsyJS5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnRFY29zeXN0ZW1CAhgBUgplY29zeXN0ZW1zEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZBIvChNhdXRob3JpemVkX3dlYmhvb2tzGAcgAygJUhJhdXRob3JpemVkV2ViaG9va3M=');
-@$core.Deprecated('Use listDevicesRequestDescriptor instead')
-const ListDevicesRequest$json = const {
-  '1': 'ListDevicesRequest',
-};
-
-/// Descriptor for `ListDevicesRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listDevicesRequestDescriptor =
-    $convert.base64Decode('ChJMaXN0RGV2aWNlc1JlcXVlc3Q=');
-@$core.Deprecated('Use listDevicesResponseDescriptor instead')
-const ListDevicesResponse$json = const {
-  '1': 'ListDevicesResponse',
-};
-
-/// Descriptor for `ListDevicesResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listDevicesResponseDescriptor =
-    $convert.base64Decode('ChNMaXN0RGV2aWNlc1Jlc3BvbnNl');
-@$core.Deprecated('Use revokeDeviceRequestDescriptor instead')
-const RevokeDeviceRequest$json = const {
-  '1': 'RevokeDeviceRequest',
-};
-
-/// Descriptor for `RevokeDeviceRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List revokeDeviceRequestDescriptor =
-    $convert.base64Decode('ChNSZXZva2VEZXZpY2VSZXF1ZXN0');
-@$core.Deprecated('Use revokeDeviceResponseDescriptor instead')
-const RevokeDeviceResponse$json = const {
-  '1': 'RevokeDeviceResponse',
-};
-
-/// Descriptor for `RevokeDeviceResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List revokeDeviceResponseDescriptor =
-    $convert.base64Decode('ChRSZXZva2VEZXZpY2VSZXNwb25zZQ==');
 @$core.Deprecated('Use accountEcosystemDescriptor instead')
 const AccountEcosystem$json = const {
   '1': 'AccountEcosystem',

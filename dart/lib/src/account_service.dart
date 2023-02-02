@@ -123,20 +123,6 @@ class AccountService extends ServiceBase {
     return client.info(request, options: await buildMetadata(request: request));
   }
 
-  Future<ListDevicesResponse> listDevices(ListDevicesRequest request) async {
-    ///  List all connected devices
-
-    return client.listDevices(request,
-        options: await buildMetadata(request: request));
-  }
-
-  Future<RevokeDeviceResponse> revokeDevice(RevokeDeviceRequest request) async {
-    ///  Revoke device access to the account's cloud wallet
-
-    return client.revokeDevice(request,
-        options: await buildMetadata(request: request));
-  }
-
   Future<AuthorizeWebhookResponse> authorizeWebhook(
       AuthorizeWebhookRequest request) async {
     ///  Authorize Ecosystem to receive webhook events

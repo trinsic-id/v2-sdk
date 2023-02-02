@@ -184,20 +184,6 @@ export class AccountService extends ServiceBase {
       metadata: await this.buildMetadata(proto.AccountInfoRequest.encode(request).finish())
     });
   }
-  /** List all connected devices */
-  public async listDevices(request: proto.ListDevicesRequest): Promise<proto.ListDevicesResponse> {
-    
-    return this.client.listDevices(request, {
-      metadata: await this.buildMetadata(proto.ListDevicesRequest.encode(request).finish())
-    });
-  }
-  /** Revoke device access to the account's cloud wallet */
-  public async revokeDevice(request: proto.RevokeDeviceRequest): Promise<proto.RevokeDeviceResponse> {
-    
-    return this.client.revokeDevice(request, {
-      metadata: await this.buildMetadata(proto.RevokeDeviceRequest.encode(request).finish())
-    });
-  }
   /** Authorize Ecosystem to receive webhook events */
   public async authorizeWebhook(request: proto.AuthorizeWebhookRequest): Promise<proto.AuthorizeWebhookResponse> {
     

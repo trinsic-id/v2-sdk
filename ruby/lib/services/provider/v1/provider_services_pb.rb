@@ -20,12 +20,6 @@ module Services
           rpc :CreateEcosystem, ::Services::Provider::V1::CreateEcosystemRequest, ::Services::Provider::V1::CreateEcosystemResponse
           # Update an existing ecosystem
           rpc :UpdateEcosystem, ::Services::Provider::V1::UpdateEcosystemRequest, ::Services::Provider::V1::UpdateEcosystemResponse
-          # Grant user authorization to ecosystem resources
-          rpc :GrantAuthorization, ::Services::Provider::V1::GrantAuthorizationRequest, ::Services::Provider::V1::GrantAuthorizationResponse
-          # Revoke user authorization to ecosystem resources
-          rpc :RevokeAuthorization, ::Services::Provider::V1::RevokeAuthorizationRequest, ::Services::Provider::V1::RevokeAuthorizationResponse
-          # Retrieve the list of permissions for this particular account/ecosystem
-          rpc :GetAuthorizations, ::Services::Provider::V1::GetAuthorizationsRequest, ::Services::Provider::V1::GetAuthorizationsResponse
           # Add a webhook endpoint to the ecosystem
           rpc :AddWebhook, ::Services::Provider::V1::AddWebhookRequest, ::Services::Provider::V1::AddWebhookResponse
           # Delete a webhook endpoint from the ecosystem
@@ -34,17 +28,12 @@ module Services
           rpc :EcosystemInfo, ::Services::Provider::V1::EcosystemInfoRequest, ::Services::Provider::V1::EcosystemInfoResponse
           # Get public ecosystem information about *any* ecosystem
           rpc :GetPublicEcosystemInfo, ::Services::Provider::V1::GetPublicEcosystemInfoRequest, ::Services::Provider::V1::GetPublicEcosystemInfoResponse
-          # Generates an unprotected authentication token that can be used to
-          # configure server side applications
-          rpc :GenerateToken, ::Services::Provider::V1::GenerateTokenRequest, ::Services::Provider::V1::GenerateTokenResponse
           # Invite a user to the ecosystem
           rpc :Invite, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
           # Check the status of an invitation
           rpc :InvitationStatus, ::Services::Provider::V1::InvitationStatusRequest, ::Services::Provider::V1::InvitationStatusResponse
           # Returns the public key being used to create/verify oberon tokens
           rpc :GetOberonKey, ::Services::Provider::V1::GetOberonKeyRequest, ::Services::Provider::V1::GetOberonKeyResponse
-          # Generate a signed token (JWT) that can be used to connect to the message bus
-          rpc :GetEventToken, ::Services::Provider::V1::GetEventTokenRequest, ::Services::Provider::V1::GetEventTokenResponse
           # Upgrade a wallet's DID from `did:key` to another method
           rpc :UpgradeDID, ::Services::Provider::V1::UpgradeDidRequest, ::Services::Provider::V1::UpgradeDidResponse
           # Retrieve a random hash TXT that can be used to verify domain ownership

@@ -26,24 +26,6 @@ class ProviderClient extends $grpc.Client {
           ($4.UpdateEcosystemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $4.UpdateEcosystemResponse.fromBuffer(value));
-  static final _$grantAuthorization = $grpc.ClientMethod<
-          $4.GrantAuthorizationRequest, $4.GrantAuthorizationResponse>(
-      '/services.provider.v1.Provider/GrantAuthorization',
-      ($4.GrantAuthorizationRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) =>
-          $4.GrantAuthorizationResponse.fromBuffer(value));
-  static final _$revokeAuthorization = $grpc.ClientMethod<
-          $4.RevokeAuthorizationRequest, $4.RevokeAuthorizationResponse>(
-      '/services.provider.v1.Provider/RevokeAuthorization',
-      ($4.RevokeAuthorizationRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) =>
-          $4.RevokeAuthorizationResponse.fromBuffer(value));
-  static final _$getAuthorizations = $grpc.ClientMethod<
-          $4.GetAuthorizationsRequest, $4.GetAuthorizationsResponse>(
-      '/services.provider.v1.Provider/GetAuthorizations',
-      ($4.GetAuthorizationsRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) =>
-          $4.GetAuthorizationsResponse.fromBuffer(value));
   static final _$addWebhook =
       $grpc.ClientMethod<$4.AddWebhookRequest, $4.AddWebhookResponse>(
           '/services.provider.v1.Provider/AddWebhook',
@@ -68,12 +50,6 @@ class ProviderClient extends $grpc.Client {
       ($4.GetPublicEcosystemInfoRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $4.GetPublicEcosystemInfoResponse.fromBuffer(value));
-  static final _$generateToken =
-      $grpc.ClientMethod<$4.GenerateTokenRequest, $4.GenerateTokenResponse>(
-          '/services.provider.v1.Provider/GenerateToken',
-          ($4.GenerateTokenRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $4.GenerateTokenResponse.fromBuffer(value));
   static final _$invite =
       $grpc.ClientMethod<$4.InviteRequest, $4.InviteResponse>(
           '/services.provider.v1.Provider/Invite',
@@ -91,12 +67,6 @@ class ProviderClient extends $grpc.Client {
           ($4.GetOberonKeyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $4.GetOberonKeyResponse.fromBuffer(value));
-  static final _$getEventToken =
-      $grpc.ClientMethod<$4.GetEventTokenRequest, $4.GetEventTokenResponse>(
-          '/services.provider.v1.Provider/GetEventToken',
-          ($4.GetEventTokenRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $4.GetEventTokenResponse.fromBuffer(value));
   static final _$upgradeDID =
       $grpc.ClientMethod<$4.UpgradeDidRequest, $4.UpgradeDidResponse>(
           '/services.provider.v1.Provider/UpgradeDID',
@@ -144,24 +114,6 @@ class ProviderClient extends $grpc.Client {
     return $createUnaryCall(_$updateEcosystem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.GrantAuthorizationResponse> grantAuthorization(
-      $4.GrantAuthorizationRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$grantAuthorization, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$4.RevokeAuthorizationResponse> revokeAuthorization(
-      $4.RevokeAuthorizationRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$revokeAuthorization, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$4.GetAuthorizationsResponse> getAuthorizations(
-      $4.GetAuthorizationsRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getAuthorizations, request, options: options);
-  }
-
   $grpc.ResponseFuture<$4.AddWebhookResponse> addWebhook(
       $4.AddWebhookRequest request,
       {$grpc.CallOptions? options}) {
@@ -187,12 +139,6 @@ class ProviderClient extends $grpc.Client {
         options: options);
   }
 
-  $grpc.ResponseFuture<$4.GenerateTokenResponse> generateToken(
-      $4.GenerateTokenRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$generateToken, request, options: options);
-  }
-
   $grpc.ResponseFuture<$4.InviteResponse> invite($4.InviteRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$invite, request, options: options);
@@ -208,12 +154,6 @@ class ProviderClient extends $grpc.Client {
       $4.GetOberonKeyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOberonKey, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$4.GetEventTokenResponse> getEventToken(
-      $4.GetEventTokenRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getEventToken, request, options: options);
   }
 
   $grpc.ResponseFuture<$4.UpgradeDidResponse> upgradeDID(
@@ -268,33 +208,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $4.UpdateEcosystemRequest.fromBuffer(value),
         ($4.UpdateEcosystemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.GrantAuthorizationRequest,
-            $4.GrantAuthorizationResponse>(
-        'GrantAuthorization',
-        grantAuthorization_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $4.GrantAuthorizationRequest.fromBuffer(value),
-        ($4.GrantAuthorizationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.RevokeAuthorizationRequest,
-            $4.RevokeAuthorizationResponse>(
-        'RevokeAuthorization',
-        revokeAuthorization_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $4.RevokeAuthorizationRequest.fromBuffer(value),
-        ($4.RevokeAuthorizationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.GetAuthorizationsRequest,
-            $4.GetAuthorizationsResponse>(
-        'GetAuthorizations',
-        getAuthorizations_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $4.GetAuthorizationsRequest.fromBuffer(value),
-        ($4.GetAuthorizationsResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.AddWebhookRequest, $4.AddWebhookResponse>(
         'AddWebhook',
         addWebhook_Pre,
@@ -329,15 +242,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $4.GetPublicEcosystemInfoRequest.fromBuffer(value),
         ($4.GetPublicEcosystemInfoResponse value) => value.writeToBuffer()));
-    $addMethod(
-        $grpc.ServiceMethod<$4.GenerateTokenRequest, $4.GenerateTokenResponse>(
-            'GenerateToken',
-            generateToken_Pre,
-            false,
-            false,
-            ($core.List<$core.int> value) =>
-                $4.GenerateTokenRequest.fromBuffer(value),
-            ($4.GenerateTokenResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.InviteRequest, $4.InviteResponse>(
         'Invite',
         invite_Pre,
@@ -363,15 +267,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $4.GetOberonKeyRequest.fromBuffer(value),
             ($4.GetOberonKeyResponse value) => value.writeToBuffer()));
-    $addMethod(
-        $grpc.ServiceMethod<$4.GetEventTokenRequest, $4.GetEventTokenResponse>(
-            'GetEventToken',
-            getEventToken_Pre,
-            false,
-            false,
-            ($core.List<$core.int> value) =>
-                $4.GetEventTokenRequest.fromBuffer(value),
-            ($4.GetEventTokenResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.UpgradeDidRequest, $4.UpgradeDidResponse>(
         'UpgradeDID',
         upgradeDID_Pre,
@@ -422,24 +317,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return updateEcosystem(call, await request);
   }
 
-  $async.Future<$4.GrantAuthorizationResponse> grantAuthorization_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.GrantAuthorizationRequest> request) async {
-    return grantAuthorization(call, await request);
-  }
-
-  $async.Future<$4.RevokeAuthorizationResponse> revokeAuthorization_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.RevokeAuthorizationRequest> request) async {
-    return revokeAuthorization(call, await request);
-  }
-
-  $async.Future<$4.GetAuthorizationsResponse> getAuthorizations_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.GetAuthorizationsRequest> request) async {
-    return getAuthorizations(call, await request);
-  }
-
   $async.Future<$4.AddWebhookResponse> addWebhook_Pre($grpc.ServiceCall call,
       $async.Future<$4.AddWebhookRequest> request) async {
     return addWebhook(call, await request);
@@ -463,12 +340,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return getPublicEcosystemInfo(call, await request);
   }
 
-  $async.Future<$4.GenerateTokenResponse> generateToken_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.GenerateTokenRequest> request) async {
-    return generateToken(call, await request);
-  }
-
   $async.Future<$4.InviteResponse> invite_Pre(
       $grpc.ServiceCall call, $async.Future<$4.InviteRequest> request) async {
     return invite(call, await request);
@@ -484,12 +355,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call,
       $async.Future<$4.GetOberonKeyRequest> request) async {
     return getOberonKey(call, await request);
-  }
-
-  $async.Future<$4.GetEventTokenResponse> getEventToken_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.GetEventTokenRequest> request) async {
-    return getEventToken(call, await request);
   }
 
   $async.Future<$4.UpgradeDidResponse> upgradeDID_Pre($grpc.ServiceCall call,
@@ -523,12 +388,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.CreateEcosystemRequest request);
   $async.Future<$4.UpdateEcosystemResponse> updateEcosystem(
       $grpc.ServiceCall call, $4.UpdateEcosystemRequest request);
-  $async.Future<$4.GrantAuthorizationResponse> grantAuthorization(
-      $grpc.ServiceCall call, $4.GrantAuthorizationRequest request);
-  $async.Future<$4.RevokeAuthorizationResponse> revokeAuthorization(
-      $grpc.ServiceCall call, $4.RevokeAuthorizationRequest request);
-  $async.Future<$4.GetAuthorizationsResponse> getAuthorizations(
-      $grpc.ServiceCall call, $4.GetAuthorizationsRequest request);
   $async.Future<$4.AddWebhookResponse> addWebhook(
       $grpc.ServiceCall call, $4.AddWebhookRequest request);
   $async.Future<$4.DeleteWebhookResponse> deleteWebhook(
@@ -537,16 +396,12 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.EcosystemInfoRequest request);
   $async.Future<$4.GetPublicEcosystemInfoResponse> getPublicEcosystemInfo(
       $grpc.ServiceCall call, $4.GetPublicEcosystemInfoRequest request);
-  $async.Future<$4.GenerateTokenResponse> generateToken(
-      $grpc.ServiceCall call, $4.GenerateTokenRequest request);
   $async.Future<$4.InviteResponse> invite(
       $grpc.ServiceCall call, $4.InviteRequest request);
   $async.Future<$4.InvitationStatusResponse> invitationStatus(
       $grpc.ServiceCall call, $4.InvitationStatusRequest request);
   $async.Future<$4.GetOberonKeyResponse> getOberonKey(
       $grpc.ServiceCall call, $4.GetOberonKeyRequest request);
-  $async.Future<$4.GetEventTokenResponse> getEventToken(
-      $grpc.ServiceCall call, $4.GetEventTokenRequest request);
   $async.Future<$4.UpgradeDidResponse> upgradeDID(
       $grpc.ServiceCall call, $4.UpgradeDidRequest request);
   $async.Future<$4.RetrieveDomainVerificationRecordResponse>
