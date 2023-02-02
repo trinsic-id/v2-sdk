@@ -113,12 +113,6 @@ message AccountInfoResponse {
   repeated string authorized_webhooks = 7;
 }
 
-message ListDevicesRequest {}
-message ListDevicesResponse {}
-
-message RevokeDeviceRequest {}
-message RevokeDeviceResponse {}
-
 // Deprecated
 message AccountEcosystem {
   string id = 1;
@@ -208,12 +202,6 @@ service Account {
   rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
     option (options.sdk_template_option).no_arguments = true;
   }
-
-  // List all connected devices
-  rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
-
-  // Revoke device access to the account's cloud wallet
-  rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
 
   // Authorize Ecosystem to receive webhook events
   rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
