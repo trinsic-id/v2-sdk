@@ -38,17 +38,6 @@ object ProviderGrpcKt {
   val updateEcosystemMethod: MethodDescriptor<UpdateEcosystemRequest, UpdateEcosystemResponse>
     @JvmStatic get() = ProviderGrpc.getUpdateEcosystemMethod()
 
-  val grantAuthorizationMethod:
-      MethodDescriptor<GrantAuthorizationRequest, GrantAuthorizationResponse>
-    @JvmStatic get() = ProviderGrpc.getGrantAuthorizationMethod()
-
-  val revokeAuthorizationMethod:
-      MethodDescriptor<RevokeAuthorizationRequest, RevokeAuthorizationResponse>
-    @JvmStatic get() = ProviderGrpc.getRevokeAuthorizationMethod()
-
-  val getAuthorizationsMethod: MethodDescriptor<GetAuthorizationsRequest, GetAuthorizationsResponse>
-    @JvmStatic get() = ProviderGrpc.getGetAuthorizationsMethod()
-
   val addWebhookMethod: MethodDescriptor<AddWebhookRequest, AddWebhookResponse>
     @JvmStatic get() = ProviderGrpc.getAddWebhookMethod()
 
@@ -62,9 +51,6 @@ object ProviderGrpcKt {
       MethodDescriptor<GetPublicEcosystemInfoRequest, GetPublicEcosystemInfoResponse>
     @JvmStatic get() = ProviderGrpc.getGetPublicEcosystemInfoMethod()
 
-  val generateTokenMethod: MethodDescriptor<GenerateTokenRequest, GenerateTokenResponse>
-    @JvmStatic get() = ProviderGrpc.getGenerateTokenMethod()
-
   val inviteMethod: MethodDescriptor<InviteRequest, InviteResponse>
     @JvmStatic get() = ProviderGrpc.getInviteMethod()
 
@@ -73,9 +59,6 @@ object ProviderGrpcKt {
 
   val getOberonKeyMethod: MethodDescriptor<GetOberonKeyRequest, GetOberonKeyResponse>
     @JvmStatic get() = ProviderGrpc.getGetOberonKeyMethod()
-
-  val getEventTokenMethod: MethodDescriptor<GetEventTokenRequest, GetEventTokenResponse>
-    @JvmStatic get() = ProviderGrpc.getGetEventTokenMethod()
 
   val upgradeDIDMethod: MethodDescriptor<UpgradeDidRequest, UpgradeDidResponse>
     @JvmStatic get() = ProviderGrpc.getUpgradeDIDMethod()
@@ -140,58 +123,6 @@ object ProviderGrpcKt {
         headers: Metadata = Metadata()
     ): UpdateEcosystemResponse =
         unaryRpc(channel, ProviderGrpc.getUpdateEcosystemMethod(), request, callOptions, headers)
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun grantAuthorization(
-        request: GrantAuthorizationRequest,
-        headers: Metadata = Metadata()
-    ): GrantAuthorizationResponse =
-        unaryRpc(channel, ProviderGrpc.getGrantAuthorizationMethod(), request, callOptions, headers)
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun revokeAuthorization(
-        request: RevokeAuthorizationRequest,
-        headers: Metadata = Metadata()
-    ): RevokeAuthorizationResponse =
-        unaryRpc(
-            channel, ProviderGrpc.getRevokeAuthorizationMethod(), request, callOptions, headers)
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun getAuthorizations(
-        request: GetAuthorizationsRequest,
-        headers: Metadata = Metadata()
-    ): GetAuthorizationsResponse =
-        unaryRpc(channel, ProviderGrpc.getGetAuthorizationsMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
      * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
@@ -273,23 +204,6 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun generateToken(
-        request: GenerateTokenRequest,
-        headers: Metadata = Metadata()
-    ): GenerateTokenResponse =
-        unaryRpc(channel, ProviderGrpc.getGenerateTokenMethod(), request, callOptions, headers)
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
     @Deprecated("The underlying service method is marked deprecated.")
     suspend fun invite(request: InviteRequest, headers: Metadata = Metadata()): InviteResponse =
         unaryRpc(channel, ProviderGrpc.getInviteMethod(), request, callOptions, headers)
@@ -328,23 +242,6 @@ object ProviderGrpcKt {
         headers: Metadata = Metadata()
     ): GetOberonKeyResponse =
         unaryRpc(channel, ProviderGrpc.getGetOberonKeyMethod(), request, callOptions, headers)
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun getEventToken(
-        request: GetEventTokenRequest,
-        headers: Metadata = Metadata()
-    ): GetEventTokenResponse =
-        unaryRpc(channel, ProviderGrpc.getGetEventTokenMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
      * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
@@ -469,57 +366,6 @@ object ProviderGrpcKt {
                 "Method services.provider.v1.Provider.UpdateEcosystem is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.provider.v1.Provider.GrantAuthorization.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun grantAuthorization(
-        request: GrantAuthorizationRequest
-    ): GrantAuthorizationResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.GrantAuthorization is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for services.provider.v1.Provider.RevokeAuthorization.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun revokeAuthorization(
-        request: RevokeAuthorizationRequest
-    ): RevokeAuthorizationResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.RevokeAuthorization is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for services.provider.v1.Provider.GetAuthorizations.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun getAuthorizations(
-        request: GetAuthorizationsRequest
-    ): GetAuthorizationsResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.GetAuthorizations is unimplemented"))
-
-    /**
      * Returns the response to an RPC for services.provider.v1.Provider.AddWebhook.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -582,21 +428,6 @@ object ProviderGrpcKt {
                 "Method services.provider.v1.Provider.GetPublicEcosystemInfo is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.provider.v1.Provider.GenerateToken.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun generateToken(request: GenerateTokenRequest): GenerateTokenResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.GenerateToken is unimplemented"))
-
-    /**
      * Returns the response to an RPC for services.provider.v1.Provider.Invite.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -642,21 +473,6 @@ object ProviderGrpcKt {
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.GetOberonKey is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for services.provider.v1.Provider.GetEventToken.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun getEventToken(request: GetEventTokenRequest): GetEventTokenResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.GetEventToken is unimplemented"))
 
     /**
      * Returns the response to an RPC for services.provider.v1.Provider.UpgradeDID.
@@ -741,21 +557,6 @@ object ProviderGrpcKt {
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
-                    descriptor = ProviderGrpc.getGrantAuthorizationMethod(),
-                    implementation = ::grantAuthorization))
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
-                    descriptor = ProviderGrpc.getRevokeAuthorizationMethod(),
-                    implementation = ::revokeAuthorization))
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
-                    descriptor = ProviderGrpc.getGetAuthorizationsMethod(),
-                    implementation = ::getAuthorizations))
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
                     descriptor = ProviderGrpc.getAddWebhookMethod(),
                     implementation = ::addWebhook))
             .addMethod(
@@ -776,11 +577,6 @@ object ProviderGrpcKt {
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
-                    descriptor = ProviderGrpc.getGenerateTokenMethod(),
-                    implementation = ::generateToken))
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
                     descriptor = ProviderGrpc.getInviteMethod(),
                     implementation = ::invite))
             .addMethod(
@@ -793,11 +589,6 @@ object ProviderGrpcKt {
                     context = this.context,
                     descriptor = ProviderGrpc.getGetOberonKeyMethod(),
                     implementation = ::getOberonKey))
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
-                    descriptor = ProviderGrpc.getGetEventTokenMethod(),
-                    implementation = ::getEventToken))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,

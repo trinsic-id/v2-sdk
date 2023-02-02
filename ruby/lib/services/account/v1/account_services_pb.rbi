@@ -52,22 +52,6 @@ module Services::Account::V1::Account
 
     sig do
       params(
-        request: Services::Account::V1::ListDevicesRequest
-      ).returns(Services::Account::V1::ListDevicesResponse)
-    end
-    def list_devices(request)
-    end
-
-    sig do
-      params(
-        request: Services::Account::V1::RevokeDeviceRequest
-      ).returns(Services::Account::V1::RevokeDeviceResponse)
-    end
-    def revoke_device(request)
-    end
-
-    sig do
-      params(
         request: Services::Account::V1::AuthorizeWebhookRequest
       ).returns(Services::Account::V1::AuthorizeWebhookResponse)
     end

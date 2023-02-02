@@ -501,22 +501,6 @@ class PublicEcosystemInformation(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class GenerateTokenRequest(betterproto.Message):
-    """Request to generate an authentication token for the current account"""
-
-    description: str = betterproto.string_field(1)
-    """Description to identify this token"""
-
-
-@dataclass(eq=False, repr=False)
-class GenerateTokenResponse(betterproto.Message):
-    """Response to `GenerateTokenRequest`"""
-
-    profile: "__account_v1__.AccountProfile" = betterproto.message_field(1)
-    """Account authentication profile that contains unprotected token"""
-
-
-@dataclass(eq=False, repr=False)
 class GetOberonKeyRequest(betterproto.Message):
     """
     Request to fetch the Trinsic public key used to verify authentication token
@@ -532,25 +516,6 @@ class GetOberonKeyResponse(betterproto.Message):
 
     key: str = betterproto.string_field(1)
     """Oberon Public Key as RAW base64-url encoded string"""
-
-
-@dataclass(eq=False, repr=False)
-class GetEventTokenRequest(betterproto.Message):
-    """Generates an events token bound to the provided ed25519 public key."""
-
-    pk: bytes = betterproto.bytes_field(1)
-    """Raw public key to generate event token for"""
-
-
-@dataclass(eq=False, repr=False)
-class GetEventTokenResponse(betterproto.Message):
-    """
-    Response message containing a token (JWT) that can be used to connect
-    directly to the message streaming architecture
-    """
-
-    token: str = betterproto.string_field(1)
-    """JWT bound to the public key provided in `GetEventTokenRequest`"""
 
 
 @dataclass(eq=False, repr=False)
@@ -584,92 +549,6 @@ class RefreshDomainVerificationStatusResponse(betterproto.Message):
 
     domain_verified: bool = betterproto.bool_field(2)
     """Specifies if the above `domain` was successfully verified"""
-
-
-@dataclass(eq=False, repr=False)
-class GrantAuthorizationRequest(betterproto.Message):
-    """Grant permissions to a resource or path in the ecosystem"""
-
-    email: str = betterproto.string_field(1, group="account")
-    """
-    Email address of account being granted permission. Mutually exclusive with
-    `walletId`.
-    """
-
-    wallet_id: str = betterproto.string_field(2, group="account")
-    """
-    Wallet ID of account being granted permission. Mutually exclusive with
-    `email`.
-    """
-
-    resource: str = betterproto.string_field(3)
-    """
-    Resource string that account is receiving permissions for. Resources are
-    specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
-    `ecoId` may be omitted.
-    """
-
-    action: str = betterproto.string_field(4)
-    """Action to authorize. Default is "*" (all)"""
-
-
-@dataclass(eq=False, repr=False)
-class GrantAuthorizationResponse(betterproto.Message):
-    """Response to `GrantAuthorizationRequest`"""
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class RevokeAuthorizationRequest(betterproto.Message):
-    """Revoke permissions to a resource or path in the ecosystem"""
-
-    email: str = betterproto.string_field(1, group="account")
-    """
-    Email address of account having permission revoked. Mutually exclusive with
-    `walletId`.
-    """
-
-    wallet_id: str = betterproto.string_field(2, group="account")
-    """
-    Wallet ID of account having permission revoked. Mutually exclusive with
-    `email`.
-    """
-
-    resource: str = betterproto.string_field(3)
-    """
-    Resource string that account is losing permissions for. Resources are
-    specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
-    `ecoId` may be omitted.
-    """
-
-    action: str = betterproto.string_field(4)
-    """Action to revoke. Default is "*" (all)"""
-
-
-@dataclass(eq=False, repr=False)
-class RevokeAuthorizationResponse(betterproto.Message):
-    """Response to `RevokeAuthorizationRequest`"""
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class GetAuthorizationsRequest(betterproto.Message):
-    """
-    Fetch list of grants that the current account has access to in its
-    ecosystem
-    """
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class GetAuthorizationsResponse(betterproto.Message):
-    """Response to `GetAuthorizationsRequest`"""
-
-    grants: List["Grant"] = betterproto.message_field(1)
-    """Grants attached to account"""
 
 
 @dataclass(eq=False, repr=False)
@@ -857,54 +736,6 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def grant_authorization(
-        self,
-        grant_authorization_request: "GrantAuthorizationRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "GrantAuthorizationResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/GrantAuthorization",
-            grant_authorization_request,
-            GrantAuthorizationResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def revoke_authorization(
-        self,
-        revoke_authorization_request: "RevokeAuthorizationRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "RevokeAuthorizationResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/RevokeAuthorization",
-            revoke_authorization_request,
-            RevokeAuthorizationResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def get_authorizations(
-        self,
-        get_authorizations_request: "GetAuthorizationsRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "GetAuthorizationsResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/GetAuthorizations",
-            get_authorizations_request,
-            GetAuthorizationsResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def add_webhook(
         self,
         add_webhook_request: "AddWebhookRequest",
@@ -969,22 +800,6 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def generate_token(
-        self,
-        generate_token_request: "GenerateTokenRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "GenerateTokenResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/GenerateToken",
-            generate_token_request,
-            GenerateTokenResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def invite(
         self,
         invite_request: "InviteRequest",
@@ -1028,22 +843,6 @@ class ProviderStub(betterproto.ServiceStub):
             "/services.provider.v1.Provider/GetOberonKey",
             get_oberon_key_request,
             GetOberonKeyResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def get_event_token(
-        self,
-        get_event_token_request: "GetEventTokenRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "GetEventTokenResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/GetEventToken",
-            get_event_token_request,
-            GetEventTokenResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -1195,21 +994,6 @@ class ProviderBase(ServiceBase):
     ) -> "UpdateEcosystemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def grant_authorization(
-        self, grant_authorization_request: "GrantAuthorizationRequest"
-    ) -> "GrantAuthorizationResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def revoke_authorization(
-        self, revoke_authorization_request: "RevokeAuthorizationRequest"
-    ) -> "RevokeAuthorizationResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def get_authorizations(
-        self, get_authorizations_request: "GetAuthorizationsRequest"
-    ) -> "GetAuthorizationsResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def add_webhook(
         self, add_webhook_request: "AddWebhookRequest"
     ) -> "AddWebhookResponse":
@@ -1230,11 +1014,6 @@ class ProviderBase(ServiceBase):
     ) -> "GetPublicEcosystemInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def generate_token(
-        self, generate_token_request: "GenerateTokenRequest"
-    ) -> "GenerateTokenResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def invite(self, invite_request: "InviteRequest") -> "InviteResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
@@ -1246,11 +1025,6 @@ class ProviderBase(ServiceBase):
     async def get_oberon_key(
         self, get_oberon_key_request: "GetOberonKeyRequest"
     ) -> "GetOberonKeyResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def get_event_token(
-        self, get_event_token_request: "GetEventTokenRequest"
-    ) -> "GetEventTokenResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def upgrade_did(
@@ -1285,21 +1059,6 @@ class ProviderBase(ServiceBase):
         response = await self.update_ecosystem(request)
         await stream.send_message(response)
 
-    async def __rpc_grant_authorization(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.grant_authorization(request)
-        await stream.send_message(response)
-
-    async def __rpc_revoke_authorization(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.revoke_authorization(request)
-        await stream.send_message(response)
-
-    async def __rpc_get_authorizations(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.get_authorizations(request)
-        await stream.send_message(response)
-
     async def __rpc_add_webhook(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.add_webhook(request)
@@ -1322,11 +1081,6 @@ class ProviderBase(ServiceBase):
         response = await self.get_public_ecosystem_info(request)
         await stream.send_message(response)
 
-    async def __rpc_generate_token(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.generate_token(request)
-        await stream.send_message(response)
-
     async def __rpc_invite(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.invite(request)
@@ -1340,11 +1094,6 @@ class ProviderBase(ServiceBase):
     async def __rpc_get_oberon_key(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.get_oberon_key(request)
-        await stream.send_message(response)
-
-    async def __rpc_get_event_token(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.get_event_token(request)
         await stream.send_message(response)
 
     async def __rpc_upgrade_did(self, stream: grpclib.server.Stream) -> None:
@@ -1387,24 +1136,6 @@ class ProviderBase(ServiceBase):
                 UpdateEcosystemRequest,
                 UpdateEcosystemResponse,
             ),
-            "/services.provider.v1.Provider/GrantAuthorization": grpclib.const.Handler(
-                self.__rpc_grant_authorization,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GrantAuthorizationRequest,
-                GrantAuthorizationResponse,
-            ),
-            "/services.provider.v1.Provider/RevokeAuthorization": grpclib.const.Handler(
-                self.__rpc_revoke_authorization,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RevokeAuthorizationRequest,
-                RevokeAuthorizationResponse,
-            ),
-            "/services.provider.v1.Provider/GetAuthorizations": grpclib.const.Handler(
-                self.__rpc_get_authorizations,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GetAuthorizationsRequest,
-                GetAuthorizationsResponse,
-            ),
             "/services.provider.v1.Provider/AddWebhook": grpclib.const.Handler(
                 self.__rpc_add_webhook,
                 grpclib.const.Cardinality.UNARY_UNARY,
@@ -1429,12 +1160,6 @@ class ProviderBase(ServiceBase):
                 GetPublicEcosystemInfoRequest,
                 GetPublicEcosystemInfoResponse,
             ),
-            "/services.provider.v1.Provider/GenerateToken": grpclib.const.Handler(
-                self.__rpc_generate_token,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GenerateTokenRequest,
-                GenerateTokenResponse,
-            ),
             "/services.provider.v1.Provider/Invite": grpclib.const.Handler(
                 self.__rpc_invite,
                 grpclib.const.Cardinality.UNARY_UNARY,
@@ -1452,12 +1177,6 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetOberonKeyRequest,
                 GetOberonKeyResponse,
-            ),
-            "/services.provider.v1.Provider/GetEventToken": grpclib.const.Handler(
-                self.__rpc_get_event_token,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GetEventTokenRequest,
-                GetEventTokenResponse,
             ),
             "/services.provider.v1.Provider/UpgradeDID": grpclib.const.Handler(
                 self.__rpc_upgrade_did,

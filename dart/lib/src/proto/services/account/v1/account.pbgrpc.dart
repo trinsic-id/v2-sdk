@@ -35,18 +35,6 @@ class AccountClient extends $grpc.Client {
           ($3.AccountInfoRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $3.AccountInfoResponse.fromBuffer(value));
-  static final _$listDevices =
-      $grpc.ClientMethod<$3.ListDevicesRequest, $3.ListDevicesResponse>(
-          '/services.account.v1.Account/ListDevices',
-          ($3.ListDevicesRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $3.ListDevicesResponse.fromBuffer(value));
-  static final _$revokeDevice =
-      $grpc.ClientMethod<$3.RevokeDeviceRequest, $3.RevokeDeviceResponse>(
-          '/services.account.v1.Account/RevokeDevice',
-          ($3.RevokeDeviceRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $3.RevokeDeviceResponse.fromBuffer(value));
   static final _$authorizeWebhook = $grpc.ClientMethod<
           $3.AuthorizeWebhookRequest, $3.AuthorizeWebhookResponse>(
       '/services.account.v1.Account/AuthorizeWebhook',
@@ -79,18 +67,6 @@ class AccountClient extends $grpc.Client {
       $3.AccountInfoRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$info, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$3.ListDevicesResponse> listDevices(
-      $3.ListDevicesRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$listDevices, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$3.RevokeDeviceResponse> revokeDevice(
-      $3.RevokeDeviceRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$revokeDevice, request, options: options);
   }
 
   $grpc.ResponseFuture<$3.AuthorizeWebhookResponse> authorizeWebhook(
@@ -136,24 +112,6 @@ abstract class AccountServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $3.AccountInfoRequest.fromBuffer(value),
             ($3.AccountInfoResponse value) => value.writeToBuffer()));
-    $addMethod(
-        $grpc.ServiceMethod<$3.ListDevicesRequest, $3.ListDevicesResponse>(
-            'ListDevices',
-            listDevices_Pre,
-            false,
-            false,
-            ($core.List<$core.int> value) =>
-                $3.ListDevicesRequest.fromBuffer(value),
-            ($3.ListDevicesResponse value) => value.writeToBuffer()));
-    $addMethod(
-        $grpc.ServiceMethod<$3.RevokeDeviceRequest, $3.RevokeDeviceResponse>(
-            'RevokeDevice',
-            revokeDevice_Pre,
-            false,
-            false,
-            ($core.List<$core.int> value) =>
-                $3.RevokeDeviceRequest.fromBuffer(value),
-            ($3.RevokeDeviceResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$3.AuthorizeWebhookRequest,
             $3.AuthorizeWebhookResponse>(
         'AuthorizeWebhook',
@@ -186,17 +144,6 @@ abstract class AccountServiceBase extends $grpc.Service {
     return info(call, await request);
   }
 
-  $async.Future<$3.ListDevicesResponse> listDevices_Pre($grpc.ServiceCall call,
-      $async.Future<$3.ListDevicesRequest> request) async {
-    return listDevices(call, await request);
-  }
-
-  $async.Future<$3.RevokeDeviceResponse> revokeDevice_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$3.RevokeDeviceRequest> request) async {
-    return revokeDevice(call, await request);
-  }
-
   $async.Future<$3.AuthorizeWebhookResponse> authorizeWebhook_Pre(
       $grpc.ServiceCall call,
       $async.Future<$3.AuthorizeWebhookRequest> request) async {
@@ -211,10 +158,6 @@ abstract class AccountServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $3.LoginConfirmRequest request);
   $async.Future<$3.AccountInfoResponse> info(
       $grpc.ServiceCall call, $3.AccountInfoRequest request);
-  $async.Future<$3.ListDevicesResponse> listDevices(
-      $grpc.ServiceCall call, $3.ListDevicesRequest request);
-  $async.Future<$3.RevokeDeviceResponse> revokeDevice(
-      $grpc.ServiceCall call, $3.RevokeDeviceRequest request);
   $async.Future<$3.AuthorizeWebhookResponse> authorizeWebhook(
       $grpc.ServiceCall call, $3.AuthorizeWebhookRequest request);
 }

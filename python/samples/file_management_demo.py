@@ -1,5 +1,11 @@
 import asyncio
-from trinsic.proto.services.filemanagement.v1 import DeleteFileRequest, GetFileRequest, GetStorageStatsRequest, ListFilesRequest, UploadFileRequest
+from trinsic.proto.services.filemanagement.v1 import (
+    DeleteFileRequest,
+    GetFileRequest,
+    GetStorageStatsRequest,
+    ListFilesRequest,
+    UploadFileRequest,
+)
 
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
@@ -18,7 +24,7 @@ async def file_management_demo():
     upload_response = await trinsic.file_management.upload_file(
         request=UploadFileRequest(file_bytes, file_mime_type)
     )
-    #}
+    # }
 
     file_id = upload_response.uploaded_file.id
 
@@ -26,11 +32,13 @@ async def file_management_demo():
     get_response = await trinsic.file_management.get_file(
         request=GetFileRequest(file_id)
     )
-    #}
+    # }
 
     # listFiles() {
     list_response = await trinsic.file_management.list_files(
-        request=ListFilesRequest(query="SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100")
+        request=ListFilesRequest(
+            query="SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100"
+        )
     )
     # }
 
@@ -40,14 +48,11 @@ async def file_management_demo():
     get_stats_response = await trinsic.file_management.get_storage_stats(
         request=GetStorageStatsRequest()
     )
-    #}
-
+    # }
 
     # deleteFile() {
-    await trinsic.file_management.delete_file(
-        request=DeleteFileRequest(file_id)
-    )
-    #}
+    await trinsic.file_management.delete_file(request=DeleteFileRequest(file_id))
+    # }
 
     trinsic.close()
 

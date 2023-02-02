@@ -36,30 +36,6 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
-        request: Services::Provider::V1::GrantAuthorizationRequest
-      ).returns(Services::Provider::V1::GrantAuthorizationResponse)
-    end
-    def grant_authorization(request)
-    end
-
-    sig do
-      params(
-        request: Services::Provider::V1::RevokeAuthorizationRequest
-      ).returns(Services::Provider::V1::RevokeAuthorizationResponse)
-    end
-    def revoke_authorization(request)
-    end
-
-    sig do
-      params(
-        request: Services::Provider::V1::GetAuthorizationsRequest
-      ).returns(Services::Provider::V1::GetAuthorizationsResponse)
-    end
-    def get_authorizations(request)
-    end
-
-    sig do
-      params(
         request: Services::Provider::V1::AddWebhookRequest
       ).returns(Services::Provider::V1::AddWebhookResponse)
     end
@@ -92,14 +68,6 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
-        request: Services::Provider::V1::GenerateTokenRequest
-      ).returns(Services::Provider::V1::GenerateTokenResponse)
-    end
-    def generate_token(request)
-    end
-
-    sig do
-      params(
         request: Services::Provider::V1::InviteRequest
       ).returns(Services::Provider::V1::InviteResponse)
     end
@@ -120,14 +88,6 @@ module Services::Provider::V1::Provider
       ).returns(Services::Provider::V1::GetOberonKeyResponse)
     end
     def get_oberon_key(request)
-    end
-
-    sig do
-      params(
-        request: Services::Provider::V1::GetEventTokenRequest
-      ).returns(Services::Provider::V1::GetEventTokenResponse)
-    end
-    def get_event_token(request)
     end
 
     sig do

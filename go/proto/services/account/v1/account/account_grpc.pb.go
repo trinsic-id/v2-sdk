@@ -31,10 +31,6 @@ type AccountClient interface {
 	LoginConfirm(ctx context.Context, in *LoginConfirmRequest, opts ...grpc.CallOption) (*LoginConfirmResponse, error)
 	// Get account information
 	Info(ctx context.Context, in *AccountInfoRequest, opts ...grpc.CallOption) (*AccountInfoResponse, error)
-	// List all connected devices
-	ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error)
-	// Revoke device access to the account's cloud wallet
-	RevokeDevice(ctx context.Context, in *RevokeDeviceRequest, opts ...grpc.CallOption) (*RevokeDeviceResponse, error)
 	// Authorize Ecosystem to receive webhook events
 	AuthorizeWebhook(ctx context.Context, in *AuthorizeWebhookRequest, opts ...grpc.CallOption) (*AuthorizeWebhookResponse, error)
 }
@@ -84,24 +80,6 @@ func (c *accountClient) Info(ctx context.Context, in *AccountInfoRequest, opts .
 	return out, nil
 }
 
-func (c *accountClient) ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error) {
-	out := new(ListDevicesResponse)
-	err := c.cc.Invoke(ctx, "/services.account.v1.Account/ListDevices", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountClient) RevokeDevice(ctx context.Context, in *RevokeDeviceRequest, opts ...grpc.CallOption) (*RevokeDeviceResponse, error) {
-	out := new(RevokeDeviceResponse)
-	err := c.cc.Invoke(ctx, "/services.account.v1.Account/RevokeDevice", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *accountClient) AuthorizeWebhook(ctx context.Context, in *AuthorizeWebhookRequest, opts ...grpc.CallOption) (*AuthorizeWebhookResponse, error) {
 	out := new(AuthorizeWebhookResponse)
 	err := c.cc.Invoke(ctx, "/services.account.v1.Account/AuthorizeWebhook", in, out, opts...)
@@ -124,10 +102,6 @@ type AccountServer interface {
 	LoginConfirm(context.Context, *LoginConfirmRequest) (*LoginConfirmResponse, error)
 	// Get account information
 	Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error)
-	// List all connected devices
-	ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error)
-	// Revoke device access to the account's cloud wallet
-	RevokeDevice(context.Context, *RevokeDeviceRequest) (*RevokeDeviceResponse, error)
 	// Authorize Ecosystem to receive webhook events
 	AuthorizeWebhook(context.Context, *AuthorizeWebhookRequest) (*AuthorizeWebhookResponse, error)
 	mustEmbedUnimplementedAccountServer()
@@ -148,12 +122,6 @@ func (UnimplementedAccountServer) LoginConfirm(context.Context, *LoginConfirmReq
 }
 func (UnimplementedAccountServer) Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
-}
-func (UnimplementedAccountServer) ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListDevices not implemented")
-}
-func (UnimplementedAccountServer) RevokeDevice(context.Context, *RevokeDeviceRequest) (*RevokeDeviceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RevokeDevice not implemented")
 }
 func (UnimplementedAccountServer) AuthorizeWebhook(context.Context, *AuthorizeWebhookRequest) (*AuthorizeWebhookResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthorizeWebhook not implemented")
@@ -243,42 +211,6 @@ func _Account_Info_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Account_ListDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListDevicesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServer).ListDevices(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.account.v1.Account/ListDevices",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServer).ListDevices(ctx, req.(*ListDevicesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Account_RevokeDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RevokeDeviceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServer).RevokeDevice(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.account.v1.Account/RevokeDevice",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServer).RevokeDevice(ctx, req.(*RevokeDeviceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Account_AuthorizeWebhook_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AuthorizeWebhookRequest)
 	if err := dec(in); err != nil {
@@ -319,14 +251,6 @@ var Account_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Info",
 			Handler:    _Account_Info_Handler,
-		},
-		{
-			MethodName: "ListDevices",
-			Handler:    _Account_ListDevices_Handler,
-		},
-		{
-			MethodName: "RevokeDevice",
-			Handler:    _Account_RevokeDevice_Handler,
 		},
 		{
 			MethodName: "AuthorizeWebhook",

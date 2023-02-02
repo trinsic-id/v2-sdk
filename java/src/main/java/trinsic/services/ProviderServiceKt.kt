@@ -33,23 +33,6 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).updateEcosystem(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun grantAuthorization(request: GrantAuthorizationRequest): GrantAuthorizationResponse {
-    /** Grant user authorization to ecosystem resources */
-    return withMetadata(stub, request).grantAuthorization(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun revokeAuthorization(
-      request: RevokeAuthorizationRequest
-  ): RevokeAuthorizationResponse {
-    /** Revoke user authorization to ecosystem resources */
-    return withMetadata(stub, request).revokeAuthorization(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun getAuthorizations(request: GetAuthorizationsRequest): GetAuthorizationsResponse {
-    /** Retrieve the list of permissions for this particular account/ecosystem */
-    return withMetadata(stub, request).getAuthorizations(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun addWebhook(request: AddWebhookRequest): AddWebhookResponse {
     /** Add a webhook endpoint to the ecosystem */
     return withMetadata(stub, request).addWebhook(request)
@@ -73,22 +56,9 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).getPublicEcosystemInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun generateToken(request: GenerateTokenRequest): GenerateTokenResponse {
-    /**
-     * Generates an unprotected authentication token that can be used to configure server side
-     * applications
-     */
-    return withMetadata(stub, request).generateToken(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse {
     /** Returns the public key being used to create/verify oberon tokens */
     return withMetadata(stub, request).getOberonKey(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun getEventToken(request: GetEventTokenRequest): GetEventTokenResponse {
-    /** Generate a signed token (JWT) that can be used to connect to the message bus */
-    return withMetadata(stub, request).getEventToken(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun upgradeDID(request: UpgradeDidRequest): UpgradeDidResponse {
