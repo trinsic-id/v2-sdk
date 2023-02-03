@@ -2935,6 +2935,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#deletewalletrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeleteWalletRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletewalletresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeleteWalletResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#getitemrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4908,6 +4930,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>DID of recipient (presently unsupported) string did_uri = 2 [deprecated=true]; DIDComm out-of-band invitation JSON (presently unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet ID of the recipient within the ecosystem</td>
 </tr>
 <tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>DID URI of the recipient</td>
+</tr>
+<tr>
 <td>send_notification</td>
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>Send email notification that credential has been sent to a wallet</td>
@@ -5116,12 +5143,17 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email address of account to assign role to. Mutually exclusive with <code>walletId</code>.</td>
+<td>Email address of account to assign role. Mutually exclusive with <code>walletId</code> and <code>didUri</code>.</td>
 </tr>
 <tr>
 <td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Wallet ID of account to assign role to. Mutually exclusive with <code>email</code>.</td>
+<td>Wallet ID of account to assign role to. Mutually exclusive with <code>email</code> and <code>didUri</code>.</td>
+</tr>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>DID URI of the account to assign role. Mutually exclusive with <code>email</code> and <code>walletId</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -5163,12 +5195,17 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email address of account to unassign role from. Mutually exclusive with <code>walletId</code>.</td>
+<td>Email address of account to list roles. Mutually exclusive with <code>walletId</code> and <code>didUri</code>.</td>
 </tr>
 <tr>
 <td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Wallet ID of account to unassign role from. Mutually exclusive with <code>email</code>.</td>
+<td>Wallet ID of account to list roles. Mutually exclusive with <code>email</code> and <code>didUri</code>.</td>
+</tr>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>DID URI of the account to list roles. Mutually exclusive with <code>email</code> and <code>walletId</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -5209,12 +5246,17 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email address of account to unassign role from. Mutually exclusive with <code>walletId</code>.</td>
+<td>Email address of account to unassign role. Mutually exclusive with <code>walletId</code> and <code>didUri</code>.</td>
 </tr>
 <tr>
 <td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Wallet ID of account to unassign role from. Mutually exclusive with <code>email</code>.</td>
+<td>Wallet ID of account to unassign role. Mutually exclusive with <code>email</code> and <code>didUri</code>.</td>
+</tr>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>DID URI of the account to unassign role. Mutually exclusive with <code>email</code> and <code>walletId</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -6071,12 +6113,17 @@ to verify authentication token validity</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email address of account to upgrade. Mutually exclusive with <code>walletId</code>.</td>
+<td>Email address of account to upgrade. Mutually exclusive with <code>walletId</code> and <code>didUri</code>.</td>
 </tr>
 <tr>
 <td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Wallet ID of account to upgrade. Mutually exclusive with <code>email</code>.</td>
+<td>Wallet ID of account to upgrade. Mutually exclusive with <code>email</code> and <code>didUri</code>.</td>
+</tr>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>DID URI of the account to upgrade. Mutually exclusive with <code>email</code> and <code>walletId</code>.</td>
 </tr>
 <tr>
 <td>method</td>
@@ -6491,6 +6538,12 @@ https://docs.godiddy.com/en/supported-methods</p>
 <td><a href="/reference/proto#services-universalwallet-v1-DeleteItemResponse">DeleteItemResponse</a></td>
 <td>Delete an item from the wallet permanently</td>
 </tr>
+<tr>
+<td>DeleteWallet</td>
+<td><a href="/reference/proto#services-universalwallet-v1-DeleteWalletRequest">DeleteWalletRequest</a></td>
+<td><a href="/reference/proto#services-universalwallet-v1-DeleteWalletResponse">DeleteWalletResponse</a></td>
+<td>Delete a wallet and its credentials</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
@@ -6517,6 +6570,38 @@ https://docs.godiddy.com/en/supported-methods</p>
 <p><a name="services-universalwallet-v1-DeleteItemResponse"></a></p>
 <h3 id="deleteitemresponse">DeleteItemResponse<a class="headerlink" href="#deleteitemresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>DeleteItemRequest</code></p>
+<p><a name="services-universalwallet-v1-DeleteWalletRequest"></a></p>
+<h3 id="deletewalletrequest">DeleteWalletRequest<a class="headerlink" href="#deletewalletrequest" title="Permanent link">&para;</a></h3>
+<p>Request to delete a wallet</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Email address of account to delete. Mutually exclusive with <code>walletId</code> and <code>didUri</code>.</td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Wallet ID of account to delete. Mutually exclusive with <code>email</code> and <code>didUri</code>.</td>
+</tr>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>DID URI of the account to delete. Mutually exclusive with <code>email</code> and <code>walletId</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-DeleteWalletResponse"></a></p>
+<h3 id="deletewalletresponse">DeleteWalletResponse<a class="headerlink" href="#deletewalletresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>DeleteWalletRequest</code>. Empty payload.</p>
 <p><a name="services-universalwallet-v1-GetItemRequest"></a></p>
 <h3 id="getitemrequest">GetItemRequest<a class="headerlink" href="#getitemrequest" title="Permanent link">&para;</a></h3>
 <p>Request to fetch an item from wallet</p>

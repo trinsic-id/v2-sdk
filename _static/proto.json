@@ -792,6 +792,12 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
     },
+    "services.provider.v1.AddRoleAssignmentRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.AddRoleAssignmentRequest"
+    },
     "services.provider.v1.AddRoleAssignmentRequest.email": {
       "type": "field",
       "collection": "fields",
@@ -1368,6 +1374,12 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
     },
+    "services.provider.v1.ListRoleAssignmentsRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.ListRoleAssignmentsRequest"
+    },
     "services.provider.v1.ListRoleAssignmentsRequest.email": {
       "type": "field",
       "collection": "fields",
@@ -1560,6 +1572,12 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
     },
+    "services.provider.v1.RemoveRoleAssignmentRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.RemoveRoleAssignmentRequest"
+    },
     "services.provider.v1.RemoveRoleAssignmentRequest.email": {
       "type": "field",
       "collection": "fields",
@@ -1697,6 +1715,12 @@
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
+    },
+    "services.provider.v1.UpgradeDidRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.UpgradeDidRequest"
     },
     "services.provider.v1.UpgradeDidRequest.email": {
       "type": "field",
@@ -2226,6 +2250,36 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.DeleteWalletRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.DeleteWalletRequest"
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.DeleteWalletRequest"
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.DeleteWalletRequest"
+    },
+    "services.universalwallet.v1.DeleteWalletResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.GetItemRequest": {
       "type": "message",
       "collection": "messages",
@@ -2335,6 +2389,12 @@
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.DeleteItem": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.DeleteWallet": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -2975,6 +3035,12 @@
       "collection": "messages",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
+    },
+    "services.verifiablecredentials.v1.SendRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SendRequest"
     },
     "services.verifiablecredentials.v1.SendRequest.document_json": {
       "type": "field",
@@ -3694,11 +3760,14 @@
         "services.provider.v1.AddRoleAssignmentRequest.role",
         "services.provider.v1.AddRoleAssignmentRequest.email",
         "services.provider.v1.AddRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.AddRoleAssignmentRequest.did_uri",
         "services.provider.v1.RemoveRoleAssignmentRequest.role",
         "services.provider.v1.RemoveRoleAssignmentRequest.email",
         "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.RemoveRoleAssignmentRequest.did_uri",
         "services.provider.v1.ListRoleAssignmentsRequest.email",
         "services.provider.v1.ListRoleAssignmentsRequest.wallet_id",
+        "services.provider.v1.ListRoleAssignmentsRequest.did_uri",
         "services.provider.v1.ListRoleAssignmentsResponse.roles",
         "services.provider.v1.ListAvailableRolesResponse.roles"
       ],
@@ -3844,6 +3913,7 @@
         "services.provider.v1.IndyOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
         "services.provider.v1.UpgradeDidRequest.wallet_id",
+        "services.provider.v1.UpgradeDidRequest.did_uri",
         "services.provider.v1.UpgradeDidRequest.method",
         "services.provider.v1.UpgradeDidRequest.ion_options",
         "services.provider.v1.UpgradeDidRequest.indy_options",
@@ -3970,7 +4040,8 @@
         "services.universalwallet.v1.UniversalWallet.Search",
         "services.universalwallet.v1.UniversalWallet.InsertItem",
         "services.universalwallet.v1.UniversalWallet.UpdateItem",
-        "services.universalwallet.v1.UniversalWallet.DeleteItem"
+        "services.universalwallet.v1.UniversalWallet.DeleteItem",
+        "services.universalwallet.v1.UniversalWallet.DeleteWallet"
       ],
       "messages": [
         "services.universalwallet.v1.SearchRequest",
@@ -3982,7 +4053,9 @@
         "services.universalwallet.v1.InsertItemRequest",
         "services.universalwallet.v1.InsertItemResponse",
         "services.universalwallet.v1.DeleteItemRequest",
-        "services.universalwallet.v1.DeleteItemResponse"
+        "services.universalwallet.v1.DeleteItemResponse",
+        "services.universalwallet.v1.DeleteWalletRequest",
+        "services.universalwallet.v1.DeleteWalletResponse"
       ],
       "fields": [
         "services.universalwallet.v1.SearchRequest.query",
@@ -3998,7 +4071,10 @@
         "services.universalwallet.v1.InsertItemRequest.item_json",
         "services.universalwallet.v1.InsertItemRequest.item_type",
         "services.universalwallet.v1.InsertItemResponse.item_id",
-        "services.universalwallet.v1.DeleteItemRequest.item_id"
+        "services.universalwallet.v1.DeleteItemRequest.item_id",
+        "services.universalwallet.v1.DeleteWalletRequest.email",
+        "services.universalwallet.v1.DeleteWalletRequest.wallet_id",
+        "services.universalwallet.v1.DeleteWalletRequest.did_uri"
       ],
       "enums": [],
       "enum_values": []
@@ -4152,6 +4228,7 @@
         "services.verifiablecredentials.v1.ValidationMessage.messages",
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.wallet_id",
+        "services.verifiablecredentials.v1.SendRequest.did_uri",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json",
         "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id",
@@ -4242,7 +4319,8 @@
         "services.universalwallet.v1.UniversalWallet.Search",
         "services.universalwallet.v1.UniversalWallet.InsertItem",
         "services.universalwallet.v1.UniversalWallet.UpdateItem",
-        "services.universalwallet.v1.UniversalWallet.DeleteItem"
+        "services.universalwallet.v1.UniversalWallet.DeleteItem",
+        "services.universalwallet.v1.UniversalWallet.DeleteWallet"
       ]
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates": {
@@ -4584,6 +4662,13 @@
       "input_type": "services.universalwallet.v1.DeleteItemRequest",
       "output_type": "services.universalwallet.v1.DeleteItemResponse",
       "description": "Delete an item from the wallet permanently"
+    },
+    "services.universalwallet.v1.UniversalWallet.DeleteWallet": {
+      "name": "DeleteWallet",
+      "full_name": "services.universalwallet.v1.UniversalWallet.DeleteWallet",
+      "input_type": "services.universalwallet.v1.DeleteWalletRequest",
+      "output_type": "services.universalwallet.v1.DeleteWalletResponse",
+      "description": "Delete a wallet and its credentials"
     },
     "services.universalwallet.v1.UniversalWallet.GetItem": {
       "name": "GetItem",
@@ -5042,7 +5127,8 @@
       "fields": [
         "services.provider.v1.AddRoleAssignmentRequest.role",
         "services.provider.v1.AddRoleAssignmentRequest.email",
-        "services.provider.v1.AddRoleAssignmentRequest.wallet_id"
+        "services.provider.v1.AddRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.AddRoleAssignmentRequest.did_uri"
       ],
       "messages": [],
       "enums": []
@@ -5372,7 +5458,8 @@
       "description": "Request to fetch the list of roles assigned to the current account",
       "fields": [
         "services.provider.v1.ListRoleAssignmentsRequest.email",
-        "services.provider.v1.ListRoleAssignmentsRequest.wallet_id"
+        "services.provider.v1.ListRoleAssignmentsRequest.wallet_id",
+        "services.provider.v1.ListRoleAssignmentsRequest.did_uri"
       ],
       "messages": [],
       "enums": []
@@ -5430,7 +5517,8 @@
       "fields": [
         "services.provider.v1.RemoveRoleAssignmentRequest.role",
         "services.provider.v1.RemoveRoleAssignmentRequest.email",
-        "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id"
+        "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.RemoveRoleAssignmentRequest.did_uri"
       ],
       "messages": [],
       "enums": []
@@ -5515,6 +5603,7 @@
       "fields": [
         "services.provider.v1.UpgradeDidRequest.email",
         "services.provider.v1.UpgradeDidRequest.wallet_id",
+        "services.provider.v1.UpgradeDidRequest.did_uri",
         "services.provider.v1.UpgradeDidRequest.method",
         "services.provider.v1.UpgradeDidRequest.ion_options",
         "services.provider.v1.UpgradeDidRequest.indy_options"
@@ -5743,6 +5832,26 @@
       "name": "DeleteItemResponse",
       "full_name": "services.universalwallet.v1.DeleteItemResponse",
       "description": "Response to `DeleteItemRequest`",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.DeleteWalletRequest": {
+      "name": "DeleteWalletRequest",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest",
+      "description": "Request to delete a wallet",
+      "fields": [
+        "services.universalwallet.v1.DeleteWalletRequest.email",
+        "services.universalwallet.v1.DeleteWalletRequest.wallet_id",
+        "services.universalwallet.v1.DeleteWalletRequest.did_uri"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.DeleteWalletResponse": {
+      "name": "DeleteWalletResponse",
+      "full_name": "services.universalwallet.v1.DeleteWalletResponse",
+      "description": "Response to `DeleteWalletRequest`. Empty payload.",
       "fields": [],
       "messages": [],
       "enums": []
@@ -6154,6 +6263,7 @@
       "fields": [
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.wallet_id",
+        "services.verifiablecredentials.v1.SendRequest.did_uri",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json"
       ],
@@ -6903,13 +7013,21 @@
       "full_type": "bool",
       "description": "Whether the SDK template generator should generate this method without arguments, eg\nProviderService.GetEcosystemInfo() where the request object is empty"
     },
+    "services.provider.v1.AddRoleAssignmentRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.AddRoleAssignmentRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to assign role.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.AddRoleAssignmentRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.AddRoleAssignmentRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to assign role to.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to assign role.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.AddRoleAssignmentRequest.role": {
       "name": "role",
@@ -6925,7 +7043,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to assign role to.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to assign role to.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.AddWebhookRequest.destination_url": {
       "name": "destination_url",
@@ -7314,13 +7432,21 @@
       "full_type": "string",
       "description": "List of roles"
     },
+    "services.provider.v1.ListRoleAssignmentsRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.ListRoleAssignmentsRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to list roles.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.ListRoleAssignmentsRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.ListRoleAssignmentsRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to unassign role from.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to list roles.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.ListRoleAssignmentsRequest.wallet_id": {
       "name": "wallet_id",
@@ -7328,7 +7454,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to unassign role from.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to list roles.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.ListRoleAssignmentsResponse.roles": {
       "name": "roles",
@@ -7394,13 +7520,21 @@
       "full_type": "bool",
       "description": "Specifies if the above `domain` was successfully verified"
     },
+    "services.provider.v1.RemoveRoleAssignmentRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to unassign role.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.RemoveRoleAssignmentRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to unassign role from.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to unassign role.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.RemoveRoleAssignmentRequest.role": {
       "name": "role",
@@ -7416,7 +7550,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to unassign role from.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to unassign role.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value": {
       "name": "verification_record_Value",
@@ -7523,13 +7657,21 @@
       "full_type": "services.provider.v1.Ecosystem",
       "description": "Current ecosystem metadata, post-update"
     },
+    "services.provider.v1.UpgradeDidRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.UpgradeDidRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to upgrade.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.UpgradeDidRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.UpgradeDidRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to upgrade.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to upgrade.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.UpgradeDidRequest.indy_options": {
       "name": "indy_options",
@@ -7561,7 +7703,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to upgrade.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to upgrade.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.UpgradeDidResponse.did": {
       "name": "did",
@@ -7963,6 +8105,30 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of item to delete"
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to delete.\nMutually exclusive with `email` and `walletId`."
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.email": {
+      "name": "email",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Email address of account to delete.\nMutually exclusive with `walletId` and `didUri`."
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of account to delete.\nMutually exclusive with `email` and `didUri`."
     },
     "services.universalwallet.v1.GetItemRequest.item_id": {
       "name": "item_id",
@@ -8547,6 +8713,14 @@
       "type": "string",
       "full_type": "string",
       "description": "A list of document attributes to reveal. If unset, all attributes will be returned."
+    },
+    "services.verifiablecredentials.v1.SendRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.verifiablecredentials.v1.SendRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the recipient"
     },
     "services.verifiablecredentials.v1.SendRequest.document_json": {
       "name": "document_json",
