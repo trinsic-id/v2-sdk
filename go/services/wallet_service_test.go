@@ -80,5 +80,5 @@ func TestWalletService(t *testing.T) {
 	//}
 
 	assert2.Nil(err)
-	assert2.Nil(deleteWalletResponse)
+	assert2.NotNil(deleteWalletResponse)
 }
