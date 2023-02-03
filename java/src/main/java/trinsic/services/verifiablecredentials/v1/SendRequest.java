@@ -61,6 +61,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(1),
     WALLET_ID(5),
+    DID_URI(6),
     DELIVERYMETHOD_NOT_SET(0);
     private final int value;
 
@@ -83,6 +84,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
           return EMAIL;
         case 5:
           return WALLET_ID;
+        case 6:
+          return DID_URI;
         case 0:
           return DELIVERYMETHOD_NOT_SET;
         default:
@@ -251,6 +254,76 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
+  public static final int DID_URI_FIELD_NUMBER = 6;
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the recipient
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return Whether the didUri field is set.
+   */
+  public boolean hasDidUri() {
+    return deliveryMethodCase_ == 6;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the recipient
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The didUri.
+   */
+  public java.lang.String getDidUri() {
+    java.lang.Object ref = "";
+    if (deliveryMethodCase_ == 6) {
+      ref = deliveryMethod_;
+    }
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (deliveryMethodCase_ == 6) {
+        deliveryMethod_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the recipient
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The bytes for didUri.
+   */
+  public com.google.protobuf.ByteString getDidUriBytes() {
+    java.lang.Object ref = "";
+    if (deliveryMethodCase_ == 6) {
+      ref = deliveryMethod_;
+    }
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      if (deliveryMethodCase_ == 6) {
+        deliveryMethod_ = b;
+      }
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   public static final int SEND_NOTIFICATION_FIELD_NUMBER = 4;
   private boolean sendNotification_;
   /**
@@ -341,6 +414,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (deliveryMethodCase_ == 5) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, deliveryMethod_);
     }
+    if (deliveryMethodCase_ == 6) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, deliveryMethod_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 100, documentJson_);
     }
@@ -361,6 +437,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
     if (deliveryMethodCase_ == 5) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, deliveryMethod_);
+    }
+    if (deliveryMethodCase_ == 6) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, deliveryMethod_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(100, documentJson_);
@@ -391,6 +470,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       case 5:
         if (!getWalletId().equals(other.getWalletId())) return false;
         break;
+      case 6:
+        if (!getDidUri().equals(other.getDidUri())) return false;
+        break;
       case 0:
       default:
     }
@@ -417,6 +499,10 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       case 5:
         hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
         hash = (53 * hash) + getWalletId().hashCode();
+        break;
+      case 6:
+        hash = (37 * hash) + DID_URI_FIELD_NUMBER;
+        hash = (53 * hash) + getDidUri().hashCode();
         break;
       case 0:
       default:
@@ -599,6 +685,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       if (deliveryMethodCase_ == 5) {
         result.deliveryMethod_ = deliveryMethod_;
       }
+      if (deliveryMethodCase_ == 6) {
+        result.deliveryMethod_ = deliveryMethod_;
+      }
       result.sendNotification_ = sendNotification_;
       result.documentJson_ = documentJson_;
       result.deliveryMethodCase_ = deliveryMethodCase_;
@@ -674,6 +763,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
             onChanged();
             break;
           }
+        case DID_URI:
+          {
+            deliveryMethodCase_ = 6;
+            deliveryMethod_ = other.deliveryMethod_;
+            onChanged();
+            break;
+          }
         case DELIVERYMETHOD_NOT_SET:
           {
             break;
@@ -725,6 +821,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
                 deliveryMethod_ = s;
                 break;
               } // case 42
+            case 50:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                deliveryMethodCase_ = 6;
+                deliveryMethod_ = s;
+                break;
+              } // case 50
             case 802:
               {
                 documentJson_ = input.readStringRequireUtf8();
@@ -1049,6 +1152,140 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
       checkByteStringIsUtf8(value);
       deliveryMethodCase_ = 5;
+      deliveryMethod_ = value;
+      onChanged();
+      return this;
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the recipient
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return Whether the didUri field is set.
+     */
+    @java.lang.Override
+    public boolean hasDidUri() {
+      return deliveryMethodCase_ == 6;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the recipient
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return The didUri.
+     */
+    @java.lang.Override
+    public java.lang.String getDidUri() {
+      java.lang.Object ref = "";
+      if (deliveryMethodCase_ == 6) {
+        ref = deliveryMethod_;
+      }
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (deliveryMethodCase_ == 6) {
+          deliveryMethod_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the recipient
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return The bytes for didUri.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getDidUriBytes() {
+      java.lang.Object ref = "";
+      if (deliveryMethodCase_ == 6) {
+        ref = deliveryMethod_;
+      }
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        if (deliveryMethodCase_ == 6) {
+          deliveryMethod_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the recipient
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @param value The didUri to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDidUri(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      deliveryMethodCase_ = 6;
+      deliveryMethod_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the recipient
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDidUri() {
+      if (deliveryMethodCase_ == 6) {
+        deliveryMethodCase_ = 0;
+        deliveryMethod_ = null;
+        onChanged();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the recipient
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @param value The bytes for didUri to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDidUriBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      deliveryMethodCase_ = 6;
       deliveryMethod_ = value;
       onChanged();
       return this;

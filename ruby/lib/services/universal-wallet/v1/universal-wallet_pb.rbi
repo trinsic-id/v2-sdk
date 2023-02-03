@@ -647,3 +647,136 @@ class Services::Universalwallet::V1::DeleteItemResponse
   def to_h
   end
 end
+
+class Services::Universalwallet::V1::DeleteWalletRequest
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Universalwallet::V1::DeleteWalletRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Universalwallet::V1::DeleteWalletRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Universalwallet::V1::DeleteWalletRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Universalwallet::V1::DeleteWalletRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      email: T.nilable(String),
+      wallet_id: T.nilable(String),
+      did_uri: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    email: "",
+    wallet_id: "",
+    did_uri: ""
+  )
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def did_uri
+  end
+
+  sig { params(value: String).void }
+  def did_uri=(value)
+  end
+
+  sig { void }
+  def clear_did_uri
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def account
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Universalwallet::V1::DeleteWalletResponse
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Universalwallet::V1::DeleteWalletResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Universalwallet::V1::DeleteWalletResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Universalwallet::V1::DeleteWalletResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Universalwallet::V1::DeleteWalletResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(::Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end

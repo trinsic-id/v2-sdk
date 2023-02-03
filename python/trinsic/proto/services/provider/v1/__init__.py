@@ -73,13 +73,20 @@ class AddRoleAssignmentRequest(betterproto.Message):
 
     email: str = betterproto.string_field(2, group="account")
     """
-    Email address of account to assign role to. Mutually exclusive with
-    `walletId`.
+    Email address of account to assign role. Mutually exclusive with `walletId`
+    and `didUri`.
     """
 
     wallet_id: str = betterproto.string_field(3, group="account")
     """
-    Wallet ID of account to assign role to. Mutually exclusive with `email`.
+    Wallet ID of account to assign role to. Mutually exclusive with `email` and
+    `didUri`.
+    """
+
+    did_uri: str = betterproto.string_field(4, group="account")
+    """
+    DID URI of the account to assign role. Mutually exclusive with `email` and
+    `walletId`.
     """
 
 
@@ -95,14 +102,20 @@ class RemoveRoleAssignmentRequest(betterproto.Message):
 
     email: str = betterproto.string_field(2, group="account")
     """
-    Email address of account to unassign role from. Mutually exclusive with
-    `walletId`.
+    Email address of account to unassign role. Mutually exclusive with
+    `walletId` and `didUri`.
     """
 
     wallet_id: str = betterproto.string_field(3, group="account")
     """
-    Wallet ID of account to unassign role from. Mutually exclusive with
-    `email`.
+    Wallet ID of account to unassign role. Mutually exclusive with `email` and
+    `didUri`.
+    """
+
+    did_uri: str = betterproto.string_field(4, group="account")
+    """
+    DID URI of the account to unassign role. Mutually exclusive with `email`
+    and `walletId`.
     """
 
 
@@ -117,14 +130,20 @@ class ListRoleAssignmentsRequest(betterproto.Message):
 
     email: str = betterproto.string_field(2, group="account")
     """
-    Email address of account to unassign role from. Mutually exclusive with
-    `walletId`.
+    Email address of account to list roles. Mutually exclusive with `walletId`
+    and `didUri`.
     """
 
     wallet_id: str = betterproto.string_field(3, group="account")
     """
-    Wallet ID of account to unassign role from. Mutually exclusive with
-    `email`.
+    Wallet ID of account to list roles. Mutually exclusive with `email` and
+    `didUri`.
+    """
+
+    did_uri: str = betterproto.string_field(4, group="account")
+    """
+    DID URI of the account to list roles. Mutually exclusive with `email` and
+    `walletId`.
     """
 
 
@@ -613,11 +632,21 @@ class UpgradeDidRequest(betterproto.Message):
 
     email: str = betterproto.string_field(1, group="account")
     """
-    Email address of account to upgrade. Mutually exclusive with `walletId`.
+    Email address of account to upgrade. Mutually exclusive with `walletId` and
+    `didUri`.
     """
 
     wallet_id: str = betterproto.string_field(2, group="account")
-    """Wallet ID of account to upgrade. Mutually exclusive with `email`."""
+    """
+    Wallet ID of account to upgrade. Mutually exclusive with `email` and
+    `didUri`.
+    """
+
+    did_uri: str = betterproto.string_field(6, group="account")
+    """
+    DID URI of the account to upgrade. Mutually exclusive with `email` and
+    `walletId`.
+    """
 
     method: "__common_v1__.SupportedDidMethod" = betterproto.enum_field(3)
     """DID Method to which wallet should be upgraded"""

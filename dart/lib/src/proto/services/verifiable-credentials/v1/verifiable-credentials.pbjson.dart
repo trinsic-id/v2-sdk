@@ -235,6 +235,7 @@ const SendRequest$json = const {
   '2': const [
     const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
     const {'1': 'wallet_id', '3': 5, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 6, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
     const {
       '1': 'send_notification',
       '3': 4,
@@ -257,7 +258,7 @@ const SendRequest$json = const {
 
 /// Descriptor for `SendRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendRequestDescriptor = $convert.base64Decode(
-    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYBSABKAlIAFIId2FsbGV0SWQSKwoRc2VuZF9ub3RpZmljYXRpb24YBCABKAhSEHNlbmROb3RpZmljYXRpb24SIwoNZG9jdW1lbnRfanNvbhhkIAEoCVIMZG9jdW1lbnRKc29uQhEKD2RlbGl2ZXJ5X21ldGhvZA==');
+    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYBSABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgGIAEoCUgAUgZkaWRVcmkSKwoRc2VuZF9ub3RpZmljYXRpb24YBCABKAhSEHNlbmROb3RpZmljYXRpb24SIwoNZG9jdW1lbnRfanNvbhhkIAEoCVIMZG9jdW1lbnRKc29uQhEKD2RlbGl2ZXJ5X21ldGhvZA==');
 @$core.Deprecated('Use sendResponseDescriptor instead')
 const SendResponse$json = const {
   '1': 'SendResponse',

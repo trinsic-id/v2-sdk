@@ -9,13 +9,14 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-enum AddRoleAssignmentRequest_Account { email, walletId, notSet }
+enum AddRoleAssignmentRequest_Account { email, walletId, didUri, notSet }
 
 class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, AddRoleAssignmentRequest_Account>
       _AddRoleAssignmentRequest_AccountByTag = {
     2: AddRoleAssignmentRequest_Account.email,
     3: AddRoleAssignmentRequest_Account.walletId,
+    4: AddRoleAssignmentRequest_Account.didUri,
     0: AddRoleAssignmentRequest_Account.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -27,7 +28,7 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..oo(0, [2, 3])
+    ..oo(0, [2, 3, 4])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -43,6 +44,11 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'walletId')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didUri')
     ..hasRequiredFields = false;
 
   AddRoleAssignmentRequest._() : super();
@@ -50,6 +56,7 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
     $core.String? role,
     $core.String? email,
     $core.String? walletId,
+    $core.String? didUri,
   }) {
     final _result = create();
     if (role != null) {
@@ -60,6 +67,9 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
     }
     if (walletId != null) {
       _result.walletId = walletId;
+    }
+    if (didUri != null) {
+      _result.didUri = didUri;
     }
     return _result;
   }
@@ -131,6 +141,18 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
   $core.bool hasWalletId() => $_has(2);
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get didUri => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set didUri($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasDidUri() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearDidUri() => clearField(4);
 }
 
 class AddRoleAssignmentResponse extends $pb.GeneratedMessage {
@@ -177,13 +199,14 @@ class AddRoleAssignmentResponse extends $pb.GeneratedMessage {
   static AddRoleAssignmentResponse? _defaultInstance;
 }
 
-enum RemoveRoleAssignmentRequest_Account { email, walletId, notSet }
+enum RemoveRoleAssignmentRequest_Account { email, walletId, didUri, notSet }
 
 class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, RemoveRoleAssignmentRequest_Account>
       _RemoveRoleAssignmentRequest_AccountByTag = {
     2: RemoveRoleAssignmentRequest_Account.email,
     3: RemoveRoleAssignmentRequest_Account.walletId,
+    4: RemoveRoleAssignmentRequest_Account.didUri,
     0: RemoveRoleAssignmentRequest_Account.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -195,7 +218,7 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..oo(0, [2, 3])
+    ..oo(0, [2, 3, 4])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -211,6 +234,11 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'walletId')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didUri')
     ..hasRequiredFields = false;
 
   RemoveRoleAssignmentRequest._() : super();
@@ -218,6 +246,7 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
     $core.String? role,
     $core.String? email,
     $core.String? walletId,
+    $core.String? didUri,
   }) {
     final _result = create();
     if (role != null) {
@@ -228,6 +257,9 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
     }
     if (walletId != null) {
       _result.walletId = walletId;
+    }
+    if (didUri != null) {
+      _result.didUri = didUri;
     }
     return _result;
   }
@@ -301,6 +333,18 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
   $core.bool hasWalletId() => $_has(2);
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get didUri => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set didUri($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasDidUri() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearDidUri() => clearField(4);
 }
 
 class RemoveRoleAssignmentResponse extends $pb.GeneratedMessage {
@@ -349,13 +393,14 @@ class RemoveRoleAssignmentResponse extends $pb.GeneratedMessage {
   static RemoveRoleAssignmentResponse? _defaultInstance;
 }
 
-enum ListRoleAssignmentsRequest_Account { email, walletId, notSet }
+enum ListRoleAssignmentsRequest_Account { email, walletId, didUri, notSet }
 
 class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, ListRoleAssignmentsRequest_Account>
       _ListRoleAssignmentsRequest_AccountByTag = {
     2: ListRoleAssignmentsRequest_Account.email,
     3: ListRoleAssignmentsRequest_Account.walletId,
+    4: ListRoleAssignmentsRequest_Account.didUri,
     0: ListRoleAssignmentsRequest_Account.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -367,7 +412,7 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..oo(0, [2, 3])
+    ..oo(0, [2, 3, 4])
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -378,12 +423,18 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'walletId')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didUri')
     ..hasRequiredFields = false;
 
   ListRoleAssignmentsRequest._() : super();
   factory ListRoleAssignmentsRequest({
     $core.String? email,
     $core.String? walletId,
+    $core.String? didUri,
   }) {
     final _result = create();
     if (email != null) {
@@ -391,6 +442,9 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
     }
     if (walletId != null) {
       _result.walletId = walletId;
+    }
+    if (didUri != null) {
+      _result.didUri = didUri;
     }
     return _result;
   }
@@ -451,6 +505,18 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
   $core.bool hasWalletId() => $_has(1);
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get didUri => $_getSZ(2);
+  @$pb.TagNumber(4)
+  set didUri($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasDidUri() => $_has(2);
+  @$pb.TagNumber(4)
+  void clearDidUri() => clearField(4);
 }
 
 class ListRoleAssignmentsResponse extends $pb.GeneratedMessage {

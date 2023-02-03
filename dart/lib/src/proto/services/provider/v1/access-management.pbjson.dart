@@ -16,6 +16,7 @@ const AddRoleAssignmentRequest$json = const {
     const {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
     const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
     const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
   ],
   '8': const [
     const {'1': 'account'},
@@ -25,7 +26,7 @@ const AddRoleAssignmentRequest$json = const {
 /// Descriptor for `AddRoleAssignmentRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List addRoleAssignmentRequestDescriptor =
     $convert.base64Decode(
-        'ChhBZGRSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWRCCQoHYWNjb3VudA==');
+        'ChhBZGRSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgEIAEoCUgAUgZkaWRVcmlCCQoHYWNjb3VudA==');
 @$core.Deprecated('Use addRoleAssignmentResponseDescriptor instead')
 const AddRoleAssignmentResponse$json = const {
   '1': 'AddRoleAssignmentResponse',
@@ -41,6 +42,7 @@ const RemoveRoleAssignmentRequest$json = const {
     const {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
     const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
     const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
   ],
   '8': const [
     const {'1': 'account'},
@@ -50,7 +52,7 @@ const RemoveRoleAssignmentRequest$json = const {
 /// Descriptor for `RemoveRoleAssignmentRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List removeRoleAssignmentRequestDescriptor =
     $convert.base64Decode(
-        'ChtSZW1vdmVSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWRCCQoHYWNjb3VudA==');
+        'ChtSZW1vdmVSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgEIAEoCUgAUgZkaWRVcmlCCQoHYWNjb3VudA==');
 @$core.Deprecated('Use removeRoleAssignmentResponseDescriptor instead')
 const RemoveRoleAssignmentResponse$json = const {
   '1': 'RemoveRoleAssignmentResponse',
@@ -65,6 +67,7 @@ const ListRoleAssignmentsRequest$json = const {
   '2': const [
     const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
     const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
   ],
   '8': const [
     const {'1': 'account'},
@@ -74,7 +77,7 @@ const ListRoleAssignmentsRequest$json = const {
 /// Descriptor for `ListRoleAssignmentsRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List listRoleAssignmentsRequestDescriptor =
     $convert.base64Decode(
-        'ChpMaXN0Um9sZUFzc2lnbm1lbnRzUmVxdWVzdBIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWRCCQoHYWNjb3VudA==');
+        'ChpMaXN0Um9sZUFzc2lnbm1lbnRzUmVxdWVzdBIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgEIAEoCUgAUgZkaWRVcmlCCQoHYWNjb3VudA==');
 @$core.Deprecated('Use listRoleAssignmentsResponseDescriptor instead')
 const ListRoleAssignmentsResponse$json = const {
   '1': 'ListRoleAssignmentsResponse',

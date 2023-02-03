@@ -70,6 +70,28 @@ export interface DeleteItemRequest {
 /** Response to `DeleteItemRequest` */
 export interface DeleteItemResponse {}
 
+/** Request to delete a wallet */
+export interface DeleteWalletRequest {
+  /**
+   * Email address of account to delete.
+   * Mutually exclusive with `walletId` and `didUri`.
+   */
+  email?: string | undefined;
+  /**
+   * Wallet ID of account to delete.
+   * Mutually exclusive with `email` and `didUri`.
+   */
+  walletId?: string | undefined;
+  /**
+   * DID URI of the account to delete.
+   * Mutually exclusive with `email` and `walletId`.
+   */
+  didUri?: string | undefined;
+}
+
+/** Response to `DeleteWalletRequest`. Empty payload. */
+export interface DeleteWalletResponse {}
+
 function createBaseSearchRequest(): SearchRequest {
   return { query: "", continuationToken: "" };
 }
@@ -644,6 +666,121 @@ export const DeleteItemResponse = {
   },
 };
 
+function createBaseDeleteWalletRequest(): DeleteWalletRequest {
+  return { email: undefined, walletId: undefined, didUri: undefined };
+}
+
+export const DeleteWalletRequest = {
+  encode(
+    message: DeleteWalletRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.email !== undefined) {
+      writer.uint32(10).string(message.email);
+    }
+    if (message.walletId !== undefined) {
+      writer.uint32(18).string(message.walletId);
+    }
+    if (message.didUri !== undefined) {
+      writer.uint32(34).string(message.didUri);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DeleteWalletRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeleteWalletRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.email = reader.string();
+          break;
+        case 2:
+          message.walletId = reader.string();
+          break;
+        case 4:
+          message.didUri = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): DeleteWalletRequest {
+    return {
+      email: isSet(object.email) ? String(object.email) : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+    };
+  },
+
+  toJSON(message: DeleteWalletRequest): unknown {
+    const obj: any = {};
+    message.email !== undefined && (obj.email = message.email);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<DeleteWalletRequest>): DeleteWalletRequest {
+    const message = createBaseDeleteWalletRequest();
+    message.email = object.email ?? undefined;
+    message.walletId = object.walletId ?? undefined;
+    message.didUri = object.didUri ?? undefined;
+    return message;
+  },
+};
+
+function createBaseDeleteWalletResponse(): DeleteWalletResponse {
+  return {};
+}
+
+export const DeleteWalletResponse = {
+  encode(
+    _: DeleteWalletResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): DeleteWalletResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeleteWalletResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): DeleteWalletResponse {
+    return {};
+  },
+
+  toJSON(_: DeleteWalletResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: DeepPartial<DeleteWalletResponse>): DeleteWalletResponse {
+    const message = createBaseDeleteWalletResponse();
+    return message;
+  },
+};
+
 export type UniversalWalletDefinition = typeof UniversalWalletDefinition;
 export const UniversalWalletDefinition = {
   name: "UniversalWallet",
@@ -691,6 +828,15 @@ export const UniversalWalletDefinition = {
       requestType: DeleteItemRequest,
       requestStream: false,
       responseType: DeleteItemResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Delete a wallet and its credentials */
+    deleteWallet: {
+      name: "DeleteWallet",
+      requestType: DeleteWalletRequest,
+      requestStream: false,
+      responseType: DeleteWalletResponse,
       responseStream: false,
       options: {},
     },
