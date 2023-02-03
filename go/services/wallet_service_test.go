@@ -20,7 +20,7 @@ func TestWalletService(t *testing.T) {
 	assert2.Nil(err)
 
 	// Create a new account in the ecosystem
-	_, err = trinsic.Account().LoginAnonymous(context.Background(), accountInfo.WalletId)
+	_, err = trinsic.Account().LoginAnonymous(context.Background(), accountInfo.EcosystemId)
 	assert2.Nil(err)
 
 	// Get account info again to get new wallet ID
