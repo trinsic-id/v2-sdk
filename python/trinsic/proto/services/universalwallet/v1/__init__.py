@@ -120,6 +120,36 @@ class DeleteItemResponse(betterproto.Message):
     pass
 
 
+@dataclass(eq=False, repr=False)
+class DeleteWalletRequest(betterproto.Message):
+    """Request to delete a wallet"""
+
+    email: str = betterproto.string_field(1, group="account")
+    """
+    Email address of account to delete. Mutually exclusive with `walletId` and
+    `didUri`.
+    """
+
+    wallet_id: str = betterproto.string_field(2, group="account")
+    """
+    Wallet ID of account to delete. Mutually exclusive with `email` and
+    `didUri`.
+    """
+
+    did_uri: str = betterproto.string_field(4, group="account")
+    """
+    DID URI of the account to delete. Mutually exclusive with `email` and
+    `walletId`.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class DeleteWalletResponse(betterproto.Message):
+    """Response to `DeleteWalletRequest`. Empty payload."""
+
+    pass
+
+
 class UniversalWalletStub(betterproto.ServiceStub):
     async def get_item(
         self,
@@ -201,6 +231,22 @@ class UniversalWalletStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def delete_wallet(
+        self,
+        delete_wallet_request: "DeleteWalletRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "DeleteWalletResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/DeleteWallet",
+            delete_wallet_request,
+            DeleteWalletResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class UniversalWalletBase(ServiceBase):
     async def get_item(self, get_item_request: "GetItemRequest") -> "GetItemResponse":
@@ -222,6 +268,11 @@ class UniversalWalletBase(ServiceBase):
     async def delete_item(
         self, delete_item_request: "DeleteItemRequest"
     ) -> "DeleteItemResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def delete_wallet(
+        self, delete_wallet_request: "DeleteWalletRequest"
+    ) -> "DeleteWalletResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_get_item(self, stream: grpclib.server.Stream) -> None:
@@ -247,6 +298,11 @@ class UniversalWalletBase(ServiceBase):
     async def __rpc_delete_item(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.delete_item(request)
+        await stream.send_message(response)
+
+    async def __rpc_delete_wallet(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.delete_wallet(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -280,5 +336,11 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 DeleteItemRequest,
                 DeleteItemResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/DeleteWallet": grpclib.const.Handler(
+                self.__rpc_delete_wallet,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                DeleteWalletRequest,
+                DeleteWalletResponse,
             ),
         }

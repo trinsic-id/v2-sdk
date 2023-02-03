@@ -31,13 +31,15 @@ class Services::Provider::V1::AddRoleAssignmentRequest
     params(
       role: T.nilable(String),
       email: T.nilable(String),
-      wallet_id: T.nilable(String)
+      wallet_id: T.nilable(String),
+      did_uri: T.nilable(String)
     ).void
   end
   def initialize(
     role: "",
     email: "",
-    wallet_id: ""
+    wallet_id: "",
+    did_uri: ""
   )
   end
 
@@ -75,6 +77,18 @@ class Services::Provider::V1::AddRoleAssignmentRequest
 
   sig { void }
   def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def did_uri
+  end
+
+  sig { params(value: String).void }
+  def did_uri=(value)
+  end
+
+  sig { void }
+  def clear_did_uri
   end
 
   sig { returns(T.nilable(Symbol)) }
@@ -164,13 +178,15 @@ class Services::Provider::V1::RemoveRoleAssignmentRequest
     params(
       role: T.nilable(String),
       email: T.nilable(String),
-      wallet_id: T.nilable(String)
+      wallet_id: T.nilable(String),
+      did_uri: T.nilable(String)
     ).void
   end
   def initialize(
     role: "",
     email: "",
-    wallet_id: ""
+    wallet_id: "",
+    did_uri: ""
   )
   end
 
@@ -208,6 +224,18 @@ class Services::Provider::V1::RemoveRoleAssignmentRequest
 
   sig { void }
   def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def did_uri
+  end
+
+  sig { params(value: String).void }
+  def did_uri=(value)
+  end
+
+  sig { void }
+  def clear_did_uri
   end
 
   sig { returns(T.nilable(Symbol)) }
@@ -296,12 +324,14 @@ class Services::Provider::V1::ListRoleAssignmentsRequest
   sig do
     params(
       email: T.nilable(String),
-      wallet_id: T.nilable(String)
+      wallet_id: T.nilable(String),
+      did_uri: T.nilable(String)
     ).void
   end
   def initialize(
     email: "",
-    wallet_id: ""
+    wallet_id: "",
+    did_uri: ""
   )
   end
 
@@ -327,6 +357,18 @@ class Services::Provider::V1::ListRoleAssignmentsRequest
 
   sig { void }
   def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def did_uri
+  end
+
+  sig { params(value: String).void }
+  def did_uri=(value)
+  end
+
+  sig { void }
+  def clear_did_uri
   end
 
   sig { returns(T.nilable(Symbol)) }

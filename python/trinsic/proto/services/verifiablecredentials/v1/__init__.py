@@ -198,6 +198,9 @@ class SendRequest(betterproto.Message):
     ID of the recipient within the ecosystem
     """
 
+    did_uri: str = betterproto.string_field(6, group="delivery_method")
+    """DID URI of the recipient"""
+
     send_notification: bool = betterproto.bool_field(4)
     """Send email notification that credential has been sent to a wallet"""
 

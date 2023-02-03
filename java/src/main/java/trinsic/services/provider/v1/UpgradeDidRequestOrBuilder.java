@@ -13,7 +13,7 @@ public interface UpgradeDidRequestOrBuilder
    *
    * <pre>
    * Email address of account to upgrade.
-   * Mutually exclusive with `walletId`.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -26,7 +26,7 @@ public interface UpgradeDidRequestOrBuilder
    *
    * <pre>
    * Email address of account to upgrade.
-   * Mutually exclusive with `walletId`.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -39,7 +39,7 @@ public interface UpgradeDidRequestOrBuilder
    *
    * <pre>
    * Email address of account to upgrade.
-   * Mutually exclusive with `walletId`.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -53,7 +53,7 @@ public interface UpgradeDidRequestOrBuilder
    *
    * <pre>
    * Wallet ID of account to upgrade.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
@@ -66,7 +66,7 @@ public interface UpgradeDidRequestOrBuilder
    *
    * <pre>
    * Wallet ID of account to upgrade.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
@@ -79,7 +79,7 @@ public interface UpgradeDidRequestOrBuilder
    *
    * <pre>
    * Wallet ID of account to upgrade.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
@@ -87,6 +87,46 @@ public interface UpgradeDidRequestOrBuilder
    * @return The bytes for walletId.
    */
   com.google.protobuf.ByteString getWalletIdBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to upgrade.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return Whether the didUri field is set.
+   */
+  boolean hasDidUri();
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to upgrade.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The didUri.
+   */
+  java.lang.String getDidUri();
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to upgrade.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The bytes for didUri.
+   */
+  com.google.protobuf.ByteString getDidUriBytes();
 
   /**
    *

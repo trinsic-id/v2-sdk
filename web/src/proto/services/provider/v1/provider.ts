@@ -563,14 +563,19 @@ export function indyOptions_IndyNetworkToJSON(
 export interface UpgradeDidRequest {
   /**
    * Email address of account to upgrade.
-   * Mutually exclusive with `walletId`.
+   * Mutually exclusive with `walletId` and `didUri`.
    */
   email?: string | undefined;
   /**
    * Wallet ID of account to upgrade.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    */
   walletId?: string | undefined;
+  /**
+   * DID URI of the account to upgrade.
+   * Mutually exclusive with `email` and `walletId`.
+   */
+  didUri?: string | undefined;
   /** DID Method to which wallet should be upgraded */
   method?: SupportedDidMethod;
   /** Configuration for creation of DID on ION network */
@@ -3214,6 +3219,7 @@ function createBaseUpgradeDidRequest(): UpgradeDidRequest {
   return {
     email: undefined,
     walletId: undefined,
+    didUri: undefined,
     method: 0,
     ionOptions: undefined,
     indyOptions: undefined,
@@ -3230,6 +3236,9 @@ export const UpgradeDidRequest = {
     }
     if (message.walletId !== undefined) {
       writer.uint32(18).string(message.walletId);
+    }
+    if (message.didUri !== undefined) {
+      writer.uint32(50).string(message.didUri);
     }
     if (message.method !== undefined && message.method !== 0) {
       writer.uint32(24).int32(message.method);
@@ -3259,6 +3268,9 @@ export const UpgradeDidRequest = {
         case 2:
           message.walletId = reader.string();
           break;
+        case 6:
+          message.didUri = reader.string();
+          break;
         case 3:
           message.method = reader.int32() as any;
           break;
@@ -3280,6 +3292,7 @@ export const UpgradeDidRequest = {
     return {
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
       method: isSet(object.method)
         ? supportedDidMethodFromJSON(object.method)
         : 0,
@@ -3296,6 +3309,7 @@ export const UpgradeDidRequest = {
     const obj: any = {};
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
     message.method !== undefined &&
       (obj.method = supportedDidMethodToJSON(message.method));
     message.ionOptions !== undefined &&
@@ -3313,6 +3327,7 @@ export const UpgradeDidRequest = {
     const message = createBaseUpgradeDidRequest();
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
+    message.didUri = object.didUri ?? undefined;
     message.method = object.method ?? 0;
     message.ionOptions =
       object.ionOptions !== undefined && object.ionOptions !== null

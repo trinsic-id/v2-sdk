@@ -52,6 +52,14 @@ public final class UniversalWalletOuterClass {
       internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_universalwallet_v1_DeleteItemResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_universalwallet_v1_DeleteWalletRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_universalwallet_v1_DeleteWalletRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_universalwallet_v1_DeleteWalletResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_universalwallet_v1_DeleteWalletResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -87,21 +95,28 @@ public final class UniversalWalletOuterClass {
           + "\007item_id\030\002 \001(\t\"$\n"
           + "\021DeleteItemRequest\022\017\n"
           + "\007item_id\030\001 \001(\t\"\024\n"
-          + "\022DeleteItemResponse2\247\004\n"
+          + "\022DeleteItemResponse\"Y\n"
+          + "\023DeleteWalletRequest\022\017\n"
+          + "\005email\030\001 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\002 \001(\tH\000\022\021\n"
+          + "\007did_uri\030\004 \001(\tH\000B\t\n"
+          + "\007account\"\026\n"
+          + "\024DeleteWalletResponse2\234\005\n"
           + "\017UniversalWallet\022d\n"
-          + "\007GetItem\022+.services.universalwallet.v1.GetItemReque"
-          + "st\032,.services.universalwallet.v1.GetItemResponse\022a\n"
-          + "\006Search\022*.services.universalw"
-          + "allet.v1.SearchRequest\032+.services.universalwallet.v1.SearchResponse\022m\n\n"
-          + "InsertItem\022..services.universalwallet.v1.InsertIt"
-          + "emRequest\032/.services.universalwallet.v1.InsertItemResponse\022m\n\n"
-          + "UpdateItem\022..services.universalwallet.v1.UpdateItemRequest"
-          + "\032/.services.universalwallet.v1.UpdateItemResponse\022m\n\n"
-          + "DeleteItem\022..services.universalwallet.v1.DeleteItemRequest\032/.servic"
-          + "es.universalwallet.v1.DeleteItemResponseBq\n"
-          + "#trinsic.services.universalwallet.v1P"
-          + "\001Z\"services/universalwallet/v1/wallet\252\002#"
-          + "Trinsic.Services.UniversalWallet.V1b\006proto3"
+          + "\007GetItem\022+.services.universalwallet.v1.GetItemRequest\032,."
+          + "services.universalwallet.v1.GetItemResponse\022a\n"
+          + "\006Search\022*.services.universalwallet"
+          + ".v1.SearchRequest\032+.services.universalwallet.v1.SearchResponse\022m\n\n"
+          + "InsertItem\022..services.universalwallet.v1.InsertItemReq"
+          + "uest\032/.services.universalwallet.v1.InsertItemResponse\022m\n\n"
+          + "UpdateItem\022..services.universalwallet.v1.UpdateItemRequest\032/.se"
+          + "rvices.universalwallet.v1.UpdateItemResponse\022m\n\n"
+          + "DeleteItem\022..services.universalw"
+          + "allet.v1.DeleteItemRequest\032/.services.universalwallet.v1.DeleteItemResponse\022s\n"
+          + "\014DeleteWallet\0220.services.universalwallet.v"
+          + "1.DeleteWalletRequest\0321.services.universalwallet.v1.DeleteWalletResponseBq\n"
+          + "#trinsic.services.universalwallet.v1P\001Z\"servi"
+          + "ces/universalwallet/v1/wallet\252\002#Trinsic.Services.UniversalWallet.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -184,6 +199,20 @@ public final class UniversalWalletOuterClass {
     internal_static_services_universalwallet_v1_DeleteItemResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor,
+            new java.lang.String[] {});
+    internal_static_services_universalwallet_v1_DeleteWalletRequest_descriptor =
+        getDescriptor().getMessageTypes().get(10);
+    internal_static_services_universalwallet_v1_DeleteWalletRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_universalwallet_v1_DeleteWalletRequest_descriptor,
+            new java.lang.String[] {
+              "Email", "WalletId", "DidUri", "Account",
+            });
+    internal_static_services_universalwallet_v1_DeleteWalletResponse_descriptor =
+        getDescriptor().getMessageTypes().get(11);
+    internal_static_services_universalwallet_v1_DeleteWalletResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_universalwallet_v1_DeleteWalletResponse_descriptor,
             new java.lang.String[] {});
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();

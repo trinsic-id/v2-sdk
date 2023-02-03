@@ -43,6 +43,12 @@ class UniversalWalletClient extends $grpc.Client {
           ($5.DeleteItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $5.DeleteItemResponse.fromBuffer(value));
+  static final _$deleteWallet =
+      $grpc.ClientMethod<$5.DeleteWalletRequest, $5.DeleteWalletResponse>(
+          '/services.universalwallet.v1.UniversalWallet/DeleteWallet',
+          ($5.DeleteWalletRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $5.DeleteWalletResponse.fromBuffer(value));
 
   UniversalWalletClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -75,6 +81,12 @@ class UniversalWalletClient extends $grpc.Client {
       $5.DeleteItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteItem, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$5.DeleteWalletResponse> deleteWallet(
+      $5.DeleteWalletRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteWallet, request, options: options);
   }
 }
 
@@ -117,6 +129,15 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $5.DeleteItemRequest.fromBuffer(value),
         ($5.DeleteItemResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$5.DeleteWalletRequest, $5.DeleteWalletResponse>(
+            'DeleteWallet',
+            deleteWallet_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $5.DeleteWalletRequest.fromBuffer(value),
+            ($5.DeleteWalletResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$5.GetItemResponse> getItem_Pre(
@@ -144,6 +165,12 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
     return deleteItem(call, await request);
   }
 
+  $async.Future<$5.DeleteWalletResponse> deleteWallet_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$5.DeleteWalletRequest> request) async {
+    return deleteWallet(call, await request);
+  }
+
   $async.Future<$5.GetItemResponse> getItem(
       $grpc.ServiceCall call, $5.GetItemRequest request);
   $async.Future<$5.SearchResponse> search(
@@ -154,4 +181,6 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $5.UpdateItemRequest request);
   $async.Future<$5.DeleteItemResponse> deleteItem(
       $grpc.ServiceCall call, $5.DeleteItemRequest request);
+  $async.Future<$5.DeleteWalletResponse> deleteWallet(
+      $grpc.ServiceCall call, $5.DeleteWalletRequest request);
 }

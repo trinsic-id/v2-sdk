@@ -137,6 +137,8 @@ export interface SendRequest {
    * Wallet ID of the recipient within the ecosystem
    */
   walletId?: string | undefined;
+  /** DID URI of the recipient */
+  didUri?: string | undefined;
   /** Send email notification that credential has been sent to a wallet */
   sendNotification?: boolean;
   /** JSON document to send to recipient */
@@ -989,6 +991,7 @@ function createBaseSendRequest(): SendRequest {
   return {
     email: undefined,
     walletId: undefined,
+    didUri: undefined,
     sendNotification: false,
     documentJson: "",
   };
@@ -1004,6 +1007,9 @@ export const SendRequest = {
     }
     if (message.walletId !== undefined) {
       writer.uint32(42).string(message.walletId);
+    }
+    if (message.didUri !== undefined) {
+      writer.uint32(50).string(message.didUri);
     }
     if (message.sendNotification === true) {
       writer.uint32(32).bool(message.sendNotification);
@@ -1027,6 +1033,9 @@ export const SendRequest = {
         case 5:
           message.walletId = reader.string();
           break;
+        case 6:
+          message.didUri = reader.string();
+          break;
         case 4:
           message.sendNotification = reader.bool();
           break;
@@ -1045,6 +1054,7 @@ export const SendRequest = {
     return {
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
       sendNotification: isSet(object.sendNotification)
         ? Boolean(object.sendNotification)
         : false,
@@ -1058,6 +1068,7 @@ export const SendRequest = {
     const obj: any = {};
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
     message.sendNotification !== undefined &&
       (obj.sendNotification = message.sendNotification);
     message.documentJson !== undefined &&
@@ -1069,6 +1080,7 @@ export const SendRequest = {
     const message = createBaseSendRequest();
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
+    message.didUri = object.didUri ?? undefined;
     message.sendNotification = object.sendNotification ?? false;
     message.documentJson = object.documentJson ?? "";
     return message;

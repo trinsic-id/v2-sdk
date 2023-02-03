@@ -98,6 +98,43 @@ public interface SendRequestOrBuilder
    *
    *
    * <pre>
+   * DID URI of the recipient
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return Whether the didUri field is set.
+   */
+  boolean hasDidUri();
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the recipient
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The didUri.
+   */
+  java.lang.String getDidUri();
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the recipient
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The bytes for didUri.
+   */
+  com.google.protobuf.ByteString getDidUriBytes();
+
+  /**
+   *
+   *
+   * <pre>
    * Send email notification that credential has been sent to a wallet
    * </pre>
    *

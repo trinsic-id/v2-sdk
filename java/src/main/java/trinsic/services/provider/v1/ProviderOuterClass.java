@@ -311,10 +311,11 @@ public final class ProviderOuterClass {
           + "\007IdUnion\020\005\022\017\n"
           + "\013IndicioTest\020\006\022\017\n"
           + "\013IndicioDemo\020\007\022\013\n"
-          + "\007Indicio\020\010\"\373\001\n"
+          + "\007Indicio\020\010\"\216\002\n"
           + "\021UpgradeDidRequest\022\017\n"
           + "\005email\030\001 \001(\tH\000\022\023\n"
-          + "\twallet_id\030\002 \001(\tH\000\0226\n"
+          + "\twallet_id\030\002 \001(\tH\000\022\021\n"
+          + "\007did_uri\030\006 \001(\tH\000\0226\n"
           + "\006method\030\003 \001(\0162&.services.common.v1.SupportedDidMethod\0227\n"
           + "\013ion_options\030\004 \001(\0132 .services.provider.v1.IonOptionsH\001\0229\n"
           + "\014indy_options\030\005 \001(\0132!.services.provider.v1.IndyOptionsH\001B\t\n"
@@ -326,44 +327,40 @@ public final class ProviderOuterClass {
           + "\033participant_type_individual\020\000\022!\n"
           + "\035participant_type_organization\020\0012\361\r\n"
           + "\010Provider\022v\n"
-          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemRequest\032-.services.pro"
-          + "vider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022\235\001\n"
-          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosystemRequest\032-.services.pr"
-          + "ovider.v1.UpdateEcosystemResponse\"-\210\002\001\212\246\035&*$\010\001\022 This will"
-          + " be removed May 1, 2023\022_\n\n"
-          + "AddWebhook\022\'.services.provider.v1.Ad"
-          + "dWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
-          + "DeleteWebhook\022*.services.provider.v1.DeleteWebhookRequest\032+"
-          + ".services.provider.v1.DeleteWebhookResponse\022h\n\r"
-          + "EcosystemInfo\022*.services.provider"
-          + ".v1.EcosystemInfoRequest\032+.services.provider.v1.EcosystemInfoResponse\022\265\001\n"
-          + "\026GetPublicEcosystemInfo\0223.services.provider.v1."
-          + "GetPublicEcosystemInfoRequest\0324.services"
-          + ".provider.v1.GetPublicEcosystemInfoResponse\"0\212\246\035\002\010\001\212\246\035&*$\010\001\022"
+          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemReq"
+          + "uest\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022\235\001\n"
+          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosystemRe"
+          + "quest\032-.services.provider.v1.UpdateEcosystemResponse\"-\210\002\001\212\246\035&*$\010\001\022"
+          + " This will be removed May 1, 2023\022_\n\n"
+          + "AddWebhook\022\'.serv"
+          + "ices.provider.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
+          + "DeleteWebhook\022*.services.provider.v1.Del"
+          + "eteWebhookRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
+          + "EcosystemInfo\022*.services.provider.v1.EcosystemInfoRequ"
+          + "est\032+.services.provider.v1.EcosystemInfoResponse\022\265\001\n"
+          + "\026GetPublicEcosystemInfo\0223.services.provider.v1.GetPublicEcosystemInf"
+          + "oRequest\0324.services.provider.v1.GetPublicEcosystemInfoResponse\"0\212\246\035\002\010\001\212\246\035&*$\010\001\022"
           + " This will be removed May 1, 2023\022\210\001\n"
-          + "\006Invite\022#.services.prov"
-          + "ider.v1.InviteRequest\032$.services.provider.v1.InviteResponse\"3\210\002\001\212\246\035&*$\010\001\022"
+          + "\006Invite\022#.services.provider.v1.InviteRequest"
+          + "\032$.services.provider.v1.InviteResponse\"3\210\002\001\212\246\035&*$\010\001\022"
           + " This will be removed May 1, 2023\212\246\035\002\020\001\022\246\001\n"
-          + "\020InvitationStatus\022-.services.provider.v1.Inv"
-          + "itationStatusRequest\032..services.provider"
-          + ".v1.InvitationStatusResponse\"3\210\002\001\212\246\035&*$\010\001\022 This will be"
-          + " removed May 1, 2023\212\246\035\002\020\001\022m\n"
-          + "\014GetOberonKey\022).services.provider.v1"
-          + ".GetOberonKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022_\n\n"
-          + "UpgradeDID\022\'.services.provider.v1.UpgradeDid"
-          + "Request\032(.services.provider.v1.UpgradeDidResponse\022\251\001\n"
-          + " RetrieveDomainVerificationRecord\022=.services.provider.v1.RetrieveDo"
-          + "mainVerificationRecordRequest\032>.services"
-          + ".provider.v1.RetrieveDomainVerificationRecordResponse\"\006\212\246\035\002\030\001\022\236\001\n"
-          + "\037RefreshDomainVerificationStatus\022<.services.provider.v1"
-          + ".RefreshDomainVerificationStatusRequest\032"
-          + "=.services.provider.v1.RefreshDomainVerificationStatusResponse\022\216\001\n"
-          + "\032SearchWalletConfigurations\0227.services.provider.v1.Sea"
-          + "rchWalletConfigurationsRequest\0327.service"
-          + "s.provider.v1.SearchWalletConfigurationResponseB^\n"
-          + "\034trinsic.services.provider.v1P"
-          + "\001Z\035services/provider/v1/provider\252\002\034Trins"
-          + "ic.Services.Provider.V1b\006proto3"
+          + "\020InvitationStatus\022-.services.provider.v1.InvitationStatusRequest\032"
+          + "..services.provider.v1.InvitationStatusResponse\"3\210\002\001\212\246\035&*$\010\001\022"
+          + " This will be removed May 1, 2023\212\246\035\002\020\001\022m\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyRequest\032"
+          + "*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022_\n\n"
+          + "UpgradeDID\022\'.services.pro"
+          + "vider.v1.UpgradeDidRequest\032(.services.provider.v1.UpgradeDidResponse\022\251\001\n"
+          + " RetrieveDomainVerificationRecord\022=.services.pro"
+          + "vider.v1.RetrieveDomainVerificationRecordRequest\032>.services.provider.v1.Retrieve"
+          + "DomainVerificationRecordResponse\"\006\212\246\035\002\030\001\022\236\001\n"
+          + "\037RefreshDomainVerificationStatus\022<.services.provider.v1.RefreshDomainVerific"
+          + "ationStatusRequest\032=.services.provider.v"
+          + "1.RefreshDomainVerificationStatusResponse\022\216\001\n"
+          + "\032SearchWalletConfigurations\0227.services.provider.v1.SearchWalletConfiguratio"
+          + "nsRequest\0327.services.provider.v1.SearchWalletConfigurationResponseB^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/provider/"
+          + "v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -657,7 +654,14 @@ public final class ProviderOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpgradeDidRequest_descriptor,
             new java.lang.String[] {
-              "Email", "WalletId", "Method", "IonOptions", "IndyOptions", "Account", "Options",
+              "Email",
+              "WalletId",
+              "DidUri",
+              "Method",
+              "IonOptions",
+              "IndyOptions",
+              "Account",
+              "Options",
             });
     internal_static_services_provider_v1_UpgradeDidResponse_descriptor =
         getDescriptor().getMessageTypes().get(36);

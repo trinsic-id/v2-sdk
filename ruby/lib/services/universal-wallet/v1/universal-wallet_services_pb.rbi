@@ -57,5 +57,13 @@ module Services::Universalwallet::V1::UniversalWallet
     end
     def delete_item(request)
     end
+
+    sig do
+      params(
+        request: Services::Universalwallet::V1::DeleteWalletRequest
+      ).returns(Services::Universalwallet::V1::DeleteWalletResponse)
+    end
+    def delete_wallet(request)
+    end
   end
 end

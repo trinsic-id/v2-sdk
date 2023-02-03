@@ -53,6 +53,7 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(2),
     WALLET_ID(3),
+    DID_URI(4),
     ACCOUNT_NOT_SET(0);
     private final int value;
 
@@ -75,6 +76,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
           return EMAIL;
         case 3:
           return WALLET_ID;
+        case 4:
+          return DID_URI;
         case 0:
           return ACCOUNT_NOT_SET;
         default:
@@ -145,8 +148,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Email address of account to unassign role from.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to unassign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 2;</code>
@@ -160,8 +163,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Email address of account to unassign role from.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to unassign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 2;</code>
@@ -188,8 +191,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Email address of account to unassign role from.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to unassign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 2;</code>
@@ -218,8 +221,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Wallet ID of account to unassign role from.
-   * Mutually exclusive with `email`.
+   * Wallet ID of account to unassign role.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -233,8 +236,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Wallet ID of account to unassign role from.
-   * Mutually exclusive with `email`.
+   * Wallet ID of account to unassign role.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -261,8 +264,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Wallet ID of account to unassign role from.
-   * Mutually exclusive with `email`.
+   * Wallet ID of account to unassign role.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -278,6 +281,79 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (accountCase_ == 3) {
+        account_ = b;
+      }
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DID_URI_FIELD_NUMBER = 4;
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to unassign role.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 4;</code>
+   *
+   * @return Whether the didUri field is set.
+   */
+  public boolean hasDidUri() {
+    return accountCase_ == 4;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to unassign role.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 4;</code>
+   *
+   * @return The didUri.
+   */
+  public java.lang.String getDidUri() {
+    java.lang.Object ref = "";
+    if (accountCase_ == 4) {
+      ref = account_;
+    }
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (accountCase_ == 4) {
+        account_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to unassign role.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 4;</code>
+   *
+   * @return The bytes for didUri.
+   */
+  public com.google.protobuf.ByteString getDidUriBytes() {
+    java.lang.Object ref = "";
+    if (accountCase_ == 4) {
+      ref = account_;
+    }
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      if (accountCase_ == 4) {
         account_ = b;
       }
       return b;
@@ -309,6 +385,9 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
     if (accountCase_ == 3) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, account_);
     }
+    if (accountCase_ == 4) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, account_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -326,6 +405,9 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
     }
     if (accountCase_ == 3) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, account_);
+    }
+    if (accountCase_ == 4) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, account_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -352,6 +434,9 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
       case 3:
         if (!getWalletId().equals(other.getWalletId())) return false;
         break;
+      case 4:
+        if (!getDidUri().equals(other.getDidUri())) return false;
+        break;
       case 0:
       default:
     }
@@ -376,6 +461,10 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
       case 3:
         hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
         hash = (53 * hash) + getWalletId().hashCode();
+        break;
+      case 4:
+        hash = (37 * hash) + DID_URI_FIELD_NUMBER;
+        hash = (53 * hash) + getDidUri().hashCode();
         break;
       case 0:
       default:
@@ -549,6 +638,9 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
       if (accountCase_ == 3) {
         result.account_ = account_;
       }
+      if (accountCase_ == 4) {
+        result.account_ = account_;
+      }
       result.accountCase_ = accountCase_;
       onBuilt();
       return result;
@@ -619,6 +711,13 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
             onChanged();
             break;
           }
+        case DID_URI:
+          {
+            accountCase_ = 4;
+            account_ = other.account_;
+            onChanged();
+            break;
+          }
         case ACCOUNT_NOT_SET:
           {
             break;
@@ -670,6 +769,13 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
                 account_ = s;
                 break;
               } // case 26
+            case 34:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                accountCase_ = 4;
+                account_ = s;
+                break;
+              } // case 34
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -811,8 +917,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Email address of account to unassign role from.
-     * Mutually exclusive with `walletId`.
+     * Email address of account to unassign role.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -827,8 +933,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Email address of account to unassign role from.
-     * Mutually exclusive with `walletId`.
+     * Email address of account to unassign role.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -856,8 +962,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Email address of account to unassign role from.
-     * Mutually exclusive with `walletId`.
+     * Email address of account to unassign role.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -885,8 +991,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Email address of account to unassign role from.
-     * Mutually exclusive with `walletId`.
+     * Email address of account to unassign role.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -907,8 +1013,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Email address of account to unassign role from.
-     * Mutually exclusive with `walletId`.
+     * Email address of account to unassign role.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -927,8 +1033,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Email address of account to unassign role from.
-     * Mutually exclusive with `walletId`.
+     * Email address of account to unassign role.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -951,8 +1057,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Wallet ID of account to unassign role from.
-     * Mutually exclusive with `email`.
+     * Wallet ID of account to unassign role.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -967,8 +1073,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Wallet ID of account to unassign role from.
-     * Mutually exclusive with `email`.
+     * Wallet ID of account to unassign role.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -996,8 +1102,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Wallet ID of account to unassign role from.
-     * Mutually exclusive with `email`.
+     * Wallet ID of account to unassign role.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1025,8 +1131,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Wallet ID of account to unassign role from.
-     * Mutually exclusive with `email`.
+     * Wallet ID of account to unassign role.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1047,8 +1153,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Wallet ID of account to unassign role from.
-     * Mutually exclusive with `email`.
+     * Wallet ID of account to unassign role.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1067,8 +1173,8 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Wallet ID of account to unassign role from.
-     * Mutually exclusive with `email`.
+     * Wallet ID of account to unassign role.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1082,6 +1188,146 @@ public final class RemoveRoleAssignmentRequest extends com.google.protobuf.Gener
       }
       checkByteStringIsUtf8(value);
       accountCase_ = 3;
+      account_ = value;
+      onChanged();
+      return this;
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to unassign role.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 4;</code>
+     *
+     * @return Whether the didUri field is set.
+     */
+    @java.lang.Override
+    public boolean hasDidUri() {
+      return accountCase_ == 4;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to unassign role.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 4;</code>
+     *
+     * @return The didUri.
+     */
+    @java.lang.Override
+    public java.lang.String getDidUri() {
+      java.lang.Object ref = "";
+      if (accountCase_ == 4) {
+        ref = account_;
+      }
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (accountCase_ == 4) {
+          account_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to unassign role.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 4;</code>
+     *
+     * @return The bytes for didUri.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getDidUriBytes() {
+      java.lang.Object ref = "";
+      if (accountCase_ == 4) {
+        ref = account_;
+      }
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        if (accountCase_ == 4) {
+          account_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to unassign role.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 4;</code>
+     *
+     * @param value The didUri to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDidUri(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      accountCase_ = 4;
+      account_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to unassign role.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDidUri() {
+      if (accountCase_ == 4) {
+        accountCase_ = 0;
+        account_ = null;
+        onChanged();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to unassign role.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 4;</code>
+     *
+     * @param value The bytes for didUri to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDidUriBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      accountCase_ = 4;
       account_ = value;
       onChanged();
       return this;

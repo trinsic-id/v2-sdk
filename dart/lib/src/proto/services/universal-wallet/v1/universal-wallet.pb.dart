@@ -745,3 +745,169 @@ class DeleteItemResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<DeleteItemResponse>(create);
   static DeleteItemResponse? _defaultInstance;
 }
+
+enum DeleteWalletRequest_Account { email, walletId, didUri, notSet }
+
+class DeleteWalletRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, DeleteWalletRequest_Account>
+      _DeleteWalletRequest_AccountByTag = {
+    1: DeleteWalletRequest_Account.email,
+    2: DeleteWalletRequest_Account.walletId,
+    4: DeleteWalletRequest_Account.didUri,
+    0: DeleteWalletRequest_Account.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'DeleteWalletRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.universalwallet.v1'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2, 4])
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'email')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'walletId')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didUri')
+    ..hasRequiredFields = false;
+
+  DeleteWalletRequest._() : super();
+  factory DeleteWalletRequest({
+    $core.String? email,
+    $core.String? walletId,
+    $core.String? didUri,
+  }) {
+    final _result = create();
+    if (email != null) {
+      _result.email = email;
+    }
+    if (walletId != null) {
+      _result.walletId = walletId;
+    }
+    if (didUri != null) {
+      _result.didUri = didUri;
+    }
+    return _result;
+  }
+  factory DeleteWalletRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DeleteWalletRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DeleteWalletRequest clone() => DeleteWalletRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DeleteWalletRequest copyWith(void Function(DeleteWalletRequest) updates) =>
+      super.copyWith((message) => updates(message as DeleteWalletRequest))
+          as DeleteWalletRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DeleteWalletRequest create() => DeleteWalletRequest._();
+  DeleteWalletRequest createEmptyInstance() => create();
+  static $pb.PbList<DeleteWalletRequest> createRepeated() =>
+      $pb.PbList<DeleteWalletRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteWalletRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteWalletRequest>(create);
+  static DeleteWalletRequest? _defaultInstance;
+
+  DeleteWalletRequest_Account whichAccount() =>
+      _DeleteWalletRequest_AccountByTag[$_whichOneof(0)]!;
+  void clearAccount() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  $core.String get email => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set email($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEmail() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEmail() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get walletId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set walletId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasWalletId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWalletId() => clearField(2);
+
+  @$pb.TagNumber(4)
+  $core.String get didUri => $_getSZ(2);
+  @$pb.TagNumber(4)
+  set didUri($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasDidUri() => $_has(2);
+  @$pb.TagNumber(4)
+  void clearDidUri() => clearField(4);
+}
+
+class DeleteWalletResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'DeleteWalletResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.universalwallet.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  DeleteWalletResponse._() : super();
+  factory DeleteWalletResponse() => create();
+  factory DeleteWalletResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DeleteWalletResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DeleteWalletResponse clone() =>
+      DeleteWalletResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DeleteWalletResponse copyWith(void Function(DeleteWalletResponse) updates) =>
+      super.copyWith((message) => updates(message as DeleteWalletResponse))
+          as DeleteWalletResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DeleteWalletResponse create() => DeleteWalletResponse._();
+  DeleteWalletResponse createEmptyInstance() => create();
+  static $pb.PbList<DeleteWalletResponse> createRepeated() =>
+      $pb.PbList<DeleteWalletResponse>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteWalletResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteWalletResponse>(create);
+  static DeleteWalletResponse? _defaultInstance;
+}

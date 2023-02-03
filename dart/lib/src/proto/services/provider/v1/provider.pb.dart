@@ -3321,7 +3321,7 @@ class IndyOptions extends $pb.GeneratedMessage {
   void clearNetwork() => clearField(1);
 }
 
-enum UpgradeDidRequest_Account { email, walletId, notSet }
+enum UpgradeDidRequest_Account { email, walletId, didUri, notSet }
 
 enum UpgradeDidRequest_Options { ionOptions, indyOptions, notSet }
 
@@ -3330,6 +3330,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
       _UpgradeDidRequest_AccountByTag = {
     1: UpgradeDidRequest_Account.email,
     2: UpgradeDidRequest_Account.walletId,
+    6: UpgradeDidRequest_Account.didUri,
     0: UpgradeDidRequest_Account.notSet
   };
   static const $core.Map<$core.int, UpgradeDidRequest_Options>
@@ -3347,7 +3348,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2])
+    ..oo(0, [1, 2, 6])
     ..oo(1, [4, 5])
     ..aOS(
         1,
@@ -3380,6 +3381,11 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
             ? ''
             : 'indyOptions',
         subBuilder: IndyOptions.create)
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didUri')
     ..hasRequiredFields = false;
 
   UpgradeDidRequest._() : super();
@@ -3389,6 +3395,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
     $8.SupportedDidMethod? method,
     IonOptions? ionOptions,
     IndyOptions? indyOptions,
+    $core.String? didUri,
   }) {
     final _result = create();
     if (email != null) {
@@ -3405,6 +3412,9 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
     }
     if (indyOptions != null) {
       _result.indyOptions = indyOptions;
+    }
+    if (didUri != null) {
+      _result.didUri = didUri;
     }
     return _result;
   }
@@ -3506,6 +3516,18 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   void clearIndyOptions() => clearField(5);
   @$pb.TagNumber(5)
   IndyOptions ensureIndyOptions() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $core.String get didUri => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set didUri($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasDidUri() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearDidUri() => clearField(6);
 }
 
 class UpgradeDidResponse extends $pb.GeneratedMessage {

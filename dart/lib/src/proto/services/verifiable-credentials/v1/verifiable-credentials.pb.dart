@@ -902,13 +902,14 @@ class ValidationMessage extends $pb.GeneratedMessage {
   $core.List<$core.String> get messages => $_getList(1);
 }
 
-enum SendRequest_DeliveryMethod { email, walletId, notSet }
+enum SendRequest_DeliveryMethod { email, walletId, didUri, notSet }
 
 class SendRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, SendRequest_DeliveryMethod>
       _SendRequest_DeliveryMethodByTag = {
     1: SendRequest_DeliveryMethod.email,
     5: SendRequest_DeliveryMethod.walletId,
+    6: SendRequest_DeliveryMethod.didUri,
     0: SendRequest_DeliveryMethod.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -920,7 +921,7 @@ class SendRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
-    ..oo(0, [1, 5])
+    ..oo(0, [1, 5, 6])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -937,6 +938,11 @@ class SendRequest extends $pb.GeneratedMessage {
             ? ''
             : 'walletId')
     ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didUri')
+    ..aOS(
         100,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -948,6 +954,7 @@ class SendRequest extends $pb.GeneratedMessage {
     $core.String? email,
     $core.bool? sendNotification,
     $core.String? walletId,
+    $core.String? didUri,
     $core.String? documentJson,
   }) {
     final _result = create();
@@ -959,6 +966,9 @@ class SendRequest extends $pb.GeneratedMessage {
     }
     if (walletId != null) {
       _result.walletId = walletId;
+    }
+    if (didUri != null) {
+      _result.didUri = didUri;
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
@@ -1031,15 +1041,27 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearWalletId() => clearField(5);
 
-  @$pb.TagNumber(100)
-  $core.String get documentJson => $_getSZ(3);
-  @$pb.TagNumber(100)
-  set documentJson($core.String v) {
+  @$pb.TagNumber(6)
+  $core.String get didUri => $_getSZ(3);
+  @$pb.TagNumber(6)
+  set didUri($core.String v) {
     $_setString(3, v);
   }
 
+  @$pb.TagNumber(6)
+  $core.bool hasDidUri() => $_has(3);
+  @$pb.TagNumber(6)
+  void clearDidUri() => clearField(6);
+
   @$pb.TagNumber(100)
-  $core.bool hasDocumentJson() => $_has(3);
+  $core.String get documentJson => $_getSZ(4);
+  @$pb.TagNumber(100)
+  set documentJson($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(100)
+  $core.bool hasDocumentJson() => $_has(4);
   @$pb.TagNumber(100)
   void clearDocumentJson() => clearField(100);
 }

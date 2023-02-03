@@ -530,6 +530,7 @@ Request to send a document to another user's wallet
 | ----- | ---- | ----------- |
 | email | [string](/reference/proto#string) | Email address of user to send item to |
 | wallet_id | [string](/reference/proto#string) | DID of recipient (presently unsupported) string did_uri = 2 [deprecated=true]; DIDComm out-of-band invitation JSON (presently unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet ID of the recipient within the ecosystem |
+| did_uri | [string](/reference/proto#string) | DID URI of the recipient |
 | send_notification | [bool](/reference/proto#bool) | Send email notification that credential has been sent to a wallet |
 | document_json | [string](/reference/proto#string) | JSON document to send to recipient |
 
@@ -677,8 +678,9 @@ Role management
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | role | [string](/reference/proto#string) | Role to assign |
-| email | [string](/reference/proto#string) | Email address of account to assign role to. Mutually exclusive with `walletId`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email`. |
+| email | [string](/reference/proto#string) | Email address of account to assign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to assign role. Mutually exclusive with `email` and `walletId`. |
 
 
 
@@ -728,8 +730,9 @@ Request to fetch the list of roles assigned to the current account
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to unassign role from. Mutually exclusive with `walletId`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role from. Mutually exclusive with `email`. |
+| email | [string](/reference/proto#string) | Email address of account to list roles. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to list roles. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to list roles. Mutually exclusive with `email` and `walletId`. |
 
 
 
@@ -760,8 +763,9 @@ Request to fetch the list of roles assigned to the current account
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | role | [string](/reference/proto#string) | Role to unassign |
-| email | [string](/reference/proto#string) | Email address of account to unassign role from. Mutually exclusive with `walletId`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role from. Mutually exclusive with `email`. |
+| email | [string](/reference/proto#string) | Email address of account to unassign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to unassign role. Mutually exclusive with `email` and `walletId`. |
 
 
 
@@ -1345,8 +1349,9 @@ Request to upgrade a wallet
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email`. |
+| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to upgrade. Mutually exclusive with `email` and `walletId`. |
 | method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
 | ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
 | indy_options | [IndyOptions](/reference/proto#services-provider-v1-IndyOptions) | Configuration for creation of DID on INDY network |
@@ -1554,6 +1559,7 @@ https://docs.godiddy.com/en/supported-methods
 | InsertItem | [InsertItemRequest](/reference/proto#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](/reference/proto#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
 | UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
 | DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
+| DeleteWallet | [DeleteWalletRequest](/reference/proto#services-universalwallet-v1-DeleteWalletRequest) | [DeleteWalletResponse](/reference/proto#services-universalwallet-v1-DeleteWalletResponse) | Delete a wallet and its credentials |
 
  <!-- end services -->
 
@@ -1577,6 +1583,33 @@ Request to delete an item in a wallet
 
 ### DeleteItemResponse
 Response to `DeleteItemRequest`
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteWalletRequest"></a>
+
+### DeleteWalletRequest
+Request to delete a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to delete. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to delete. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to delete. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteWalletResponse"></a>
+
+### DeleteWalletResponse
+Response to `DeleteWalletRequest`. Empty payload.
 
 
 
