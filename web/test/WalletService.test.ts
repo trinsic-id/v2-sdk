@@ -1,7 +1,7 @@
 import {
     CreateCredentialTemplateRequest,
-    CreateProofRequest,
-    FieldType,
+    CreateProofRequest, DeleteItemRequest,
+    FieldType, GetItemRequest,
     InsertItemRequest,
     IssueFromTemplateRequest,
     SearchRequest,
@@ -14,7 +14,8 @@ import {
 } from "./TestData";
 
 import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
-import { v4 as uuid } from "uuid";
+import {v4 as uuid} from "uuid";
+import exp from "constants";
 
 const options = getTestServerOptions();
 const allison = getTestServerOptions();
@@ -62,8 +63,18 @@ describe("WalletService Unit Tests", () => {
         expect(insertItemResponse.itemId).not.toBe("");
         // console.log("Item id=", insertItemResponse.itemId);
 
-        // Delay half a second for race condition fixes?
+        const itemId = insertItemResponse.itemId;
+
+        // Delay a second for race condition fixes?
         await new Promise((res) => setTimeout(res, 1000));
+
+        // getItem() {
+        let getItemResponse = await trinsic.wallet().getItem({
+            itemId: itemId
+        });
+        //}
+
+        expect(getItemResponse.itemJson?.length ?? 0).toBeGreaterThan(0);
 
         // searchWalletBasic() {
         let items = await trinsic.wallet().searchWallet();
@@ -112,6 +123,14 @@ describe("WalletService Unit Tests", () => {
         expect(
             selectiveVerifyResponse.validationResults!["SignatureVerification"].isValid
         ).toBeTruthy();
+
+        // Switch to Allison, who holds the credential
+        trinsic.options = allison;
+        // deleteItem() {
+        await trinsic.wallet().deleteItem({
+            itemId: itemId
+        });
+        //}
     });
 
     it("Demo: template management and credential issuance from template", async () => {
@@ -157,5 +176,18 @@ describe("WalletService Unit Tests", () => {
         expect(jsonDocument).not.toBeNull();
         expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
         expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
+    });
+
+    it("Delete wallet functions", async ()=> {
+        let response = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        let accountInfo = await trinsic.account().getInfo();
+
+        let walletId = accountInfo.walletId;
+
+        // deleteWallet() {
+        await trinsic.wallet().deleteWallet({
+            walletId: walletId
+        });
+        // }
     });
 });
