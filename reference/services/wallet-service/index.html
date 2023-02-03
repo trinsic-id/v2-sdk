@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.10+insiders-4.29.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11+insiders-4.29.0">
     
     
       
@@ -1767,6 +1767,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#get-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Item
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete Item
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-wallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete Wallet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#search-wallet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2223,14 +2256,190 @@ store any JSON blob.</p>
 <p>Otherwise, ensure its <code>item_type</code> is <em>not</em> <code>VerifiableCredential</code>.</p>
 </div>
 <hr />
-<h2 id="search-wallet">Search Wallet<a class="headerlink" href="#search-wallet" title="Permanent link">&para;</a></h2>
-<p>Searches a wallet, returning all matching items, and a <code>continuation_token</code> to paginate large result sets.</p>
-<p>If no <code>query</code> is specified, this call by default returns the first 100 items in the wallet.</p>
+<h2 id="get-item">Get Item<a class="headerlink" href="#get-item" title="Permanent link">&para;</a></h2>
+<p>Retrieves an item by its ID.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>wallet<span class="w"> </span>search<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;SELECT * FROM _ WHERE _.id = &#39;{id}&#39;&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">getItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">getItem</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">itemId</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetItemAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">GetItemRequest</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemId</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">item</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">GetItemRequest</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">getResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">().</span><span class="nx">GetItem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">GetItemRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ItemId</span><span class="p">:</span><span class="w"> </span><span class="nx">itemId</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">getItem</span><span class="p">(</span>
+<span class="w">    </span><span class="n">GetItemRequest</span>
+<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.GetItemRequest'><div class='proto-obj-name'><a name='services.universalwallet.v1.GetItemRequest' href='/reference/proto#services.universalwallet.v1.GetItemRequest'>GetItemRequest</a></div><div class='proto-obj-description'>Request to fetch an item from wallet</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>item_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of item in wallet</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.GetItemResponse'><div class='proto-obj-name'><a name='services.universalwallet.v1.GetItemResponse' href='/reference/proto#services.universalwallet.v1.GetItemResponse'>GetItemResponse</a></div><div class='proto-obj-description'>Response to <code>GetItemRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>item_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Item data as a JSON string</div></div><div class='proto-field'><div class='proto-field-name'>item_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Type of item specified when item was inserted into wallet</div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="delete-item">Delete Item<a class="headerlink" href="#delete-item" title="Permanent link">&para;</a></h2>
+<p>Deletes an item.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>wallet<span class="w"> </span>delete-item<span class="w"> </span>--item-id<span class="w"> </span><span class="o">{</span>id<span class="o">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">deleteItem</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">itemId</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">DeleteItemAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeleteItemRequest</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemId</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">delete_item</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">DeleteItemRequest</span><span class="p">(</span><span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">deleteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">().</span><span class="nx">DeleteItem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">DeleteItemRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ItemId</span><span class="p">:</span><span class="w"> </span><span class="nx">itemId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">deleteItem</span><span class="p">(</span>
+<span class="w">    </span><span class="n">DeleteItemRequest</span>
+<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.DeleteItemRequest'><div class='proto-obj-name'><a name='services.universalwallet.v1.DeleteItemRequest' href='/reference/proto#services.universalwallet.v1.DeleteItemRequest'>DeleteItemRequest</a></div><div class='proto-obj-description'>Request to delete an item in a wallet</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>item_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of item to delete</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.DeleteItemResponse'><div class='proto-obj-name'><a name='services.universalwallet.v1.DeleteItemResponse' href='/reference/proto#services.universalwallet.v1.DeleteItemResponse'>DeleteItemResponse</a></div><div class='proto-obj-description'>Response to <code>DeleteItemRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="delete-wallet">Delete Wallet<a class="headerlink" href="#delete-wallet" title="Permanent link">&para;</a></h2>
+<p>Deletes a wallet, and all its credentials, permanently.</p>
+<p>Any wallet may delete itself by passing its own ID to this call. Only Provider wallets may delete wallets other than themselves.</p>
+<p>Wallet deletion is <strong>permanent</strong> and cannot be undone.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">TypeScript</label><label for="__tabbed_8_2">C#</label><label for="__tabbed_8_3">Python</label><label for="__tabbed_8_4">Go</label><label for="__tabbed_8_5">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">deleteWallet</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">walletId</span><span class="o">:</span><span class="w"> </span><span class="kt">walletId</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">DeleteWalletAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeleteWalletRequest</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">WalletId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletId</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">delete_wallet</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">DeleteWalletRequest</span><span class="p">(</span><span class="n">wallet_id</span><span class="o">=</span><span class="n">wallet_id</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">deleteWalletResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">().</span><span class="nx">DeleteWallet</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">DeleteWalletRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Account</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">DeleteWalletRequest_WalletId</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">WalletId</span><span class="p">:</span><span class="w"> </span><span class="nx">walletId</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">})</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">deleteWallet</span><span class="p">(</span>
+<span class="w">    </span><span class="n">DeleteWalletRequest</span>
+<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.DeleteWalletRequest'><div class='proto-obj-name'><a name='services.universalwallet.v1.DeleteWalletRequest' href='/reference/proto#services.universalwallet.v1.DeleteWalletRequest'>DeleteWalletRequest</a></div><div class='proto-obj-description'>Request to delete a wallet</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of account to delete. Mutually exclusive with <code>walletId</code> and <code>didUri</code>.</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Wallet ID of account to delete. Mutually exclusive with <code>email</code> and <code>didUri</code>.</div></div><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of the account to delete. Mutually exclusive with <code>email</code> and <code>walletId</code>.</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.DeleteWalletResponse'><div class='proto-obj-name'><a name='services.universalwallet.v1.DeleteWalletResponse' href='/reference/proto#services.universalwallet.v1.DeleteWalletResponse'>DeleteWalletResponse</a></div><div class='proto-obj-description'>Response to <code>DeleteWalletRequest</code>. Empty payload.</div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="search-wallet">Search Wallet<a class="headerlink" href="#search-wallet" title="Permanent link">&para;</a></h2>
+<p>Searches a wallet, returning all matching items, and a <code>continuation_token</code> to paginate large result sets.</p>
+<p>If no <code>query</code> is specified, this call by default returns the first 100 items in the wallet.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_9_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_9_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label><label for="__tabbed_10_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>wallet<span class="w"> </span>search
