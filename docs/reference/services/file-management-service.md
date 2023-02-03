@@ -72,6 +72,8 @@ The `hl` parameter is expected to be included with the URL whenever it is issued
 
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.UploadFile") }}
 
+---
+
 ## Get File
 
 Fetches information about a file via its ID.
@@ -115,6 +117,8 @@ Only files uploaded by the calling account will be returned.
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.GetFile") }}
+
+---
 
 ## Delete File
 
@@ -160,6 +164,8 @@ Only files uploaded by the calling account may be deleted.
 
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.DeleteFile") }}
 
+---
+
 ## List Files
 
 Queries the files uploaded by the calling account.
@@ -201,6 +207,8 @@ Queries the files uploaded by the calling account.
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.ListFiles") }}
+
+---
 
 ## Get Storage Statistics
 
