@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
-import trinsic.services.universalwallet.v1.DeleteItemRequest;
-import trinsic.services.universalwallet.v1.InsertItemRequest;
-import trinsic.services.universalwallet.v1.SearchRequest;
+import trinsic.services.universalwallet.v1.*;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -23,11 +21,13 @@ public class WalletsDemo {
     var ecosystemResponse =
         trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
-
     var account = trinsic.account().loginAnonymous(ecosystemId).get();
 
     // Insert wallet item into wallet
     trinsic.setAuthToken(account);
+
+    var accountInfo = trinsic.account().getInfo().get();
+    var walletId = accountInfo.getWalletId();
 
     var credentialJson =
         "{\"foo\":\"bar\"}"; // Doesn't need to actually be a credential for this test
@@ -46,6 +46,15 @@ public class WalletsDemo {
 
     var itemId = insertResponse.getItemId();
 
+    // getItem() {
+    var getResponse = trinsic.wallet().getItem(
+        GetItemRequest
+            .newBuilder()
+            .setItemId(itemId)
+            .build()
+    ).get();
+    //}
+
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {
@@ -56,10 +65,15 @@ public class WalletsDemo {
     }
 
     // Delete item in-between searches
-    var deleteResponse =
-        trinsic.wallet().deleteItem(DeleteItemRequest.newBuilder().setItemId(itemId).build()).get();
+    // deleteItem() {
+    trinsic.wallet().deleteItem(
+        DeleteItemRequest
+            .newBuilder()
+            .setItemId(itemId)
+            .build()
+    ).get();
+    //}
 
-    Assertions.assertNotNull(deleteResponse);
 
     {
       // searchWalletSQL() {
@@ -78,6 +92,15 @@ public class WalletsDemo {
       Assertions.assertNotNull(walletItems);
       Assertions.assertEquals(0, walletItems.getItemsCount());
     }
+
+    // deleteWallet() {
+    trinsic.wallet().deleteWallet(
+        DeleteWalletRequest
+            .newBuilder()
+            .setWalletId(walletId)
+            .build()
+    ).get();
+    //}
 
     System.out.println("Wallets demo successful");
     trinsic.shutdown();
