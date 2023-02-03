@@ -78,6 +78,153 @@ Stores a credential (or any other JSON object) in a wallet.
 
 ---
 
+## Get Item
+
+Retrieves an item by its ID.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet search --query "SELECT * FROM _ WHERE _.id = '{id}'"
+        ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [GetItem](../../../web/test/WalletService.test.ts) inside_block:getItem
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [GetItem](../../../dotnet/Tests/Tests.cs) inside_block:getItem
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [GetItem](../../../python/samples/wallet_demo.py) inside_block:getItem
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [GetItem](../../../go/services/wallet_service_test.go) inside_block:getItem
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [GetItem](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getItem
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.GetItem") }}
+
+---
+
+## Delete Item
+
+Deletes an item.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet delete-item --item-id {id}
+        ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [DeleteItem](../../../web/test/WalletService.test.ts) inside_block:deleteItem
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [DeleteItem](../../../dotnet/Tests/Tests.cs) inside_block:deleteItem
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [DeleteItem](../../../python/samples/wallet_demo.py) inside_block:deleteItem
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [DeleteItem](../../../go/services/wallet_service_test.go) inside_block:deleteItem
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [DeleteItem](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:deleteItem
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.DeleteItem") }}
+
+---
+
+
+## Delete Wallet
+
+Deletes a wallet, and all its credentials, permanently.
+
+Any wallet may delete itself by passing its own ID to this call. Only Provider wallets may delete wallets other than themselves.
+
+Wallet deletion is **permanent** and cannot be undone.
+
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [DeleteWallet](../../../web/test/WalletService.test.ts) inside_block:deleteWallet
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [DeleteWallet](../../../dotnet/Tests/Tests.cs) inside_block:deleteWallet
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [DeleteWallet](../../../python/samples/wallet_demo.py) inside_block:deleteWallet
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [DeleteWallet](../../../go/services/wallet_service_test.go) inside_block:deleteWallet
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [DeleteWallet](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:deleteWallet
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.DeleteWallet") }}
+
+---
+
 ## Search Wallet
 
 Searches a wallet, returning all matching items, and a `continuation_token` to paginate large result sets.
