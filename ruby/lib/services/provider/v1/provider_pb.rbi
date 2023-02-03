@@ -2651,6 +2651,7 @@ class Services::Provider::V1::UpgradeDidRequest
     params(
       email: T.nilable(String),
       wallet_id: T.nilable(String),
+      did_uri: T.nilable(String),
       method: T.nilable(T.any(Symbol, String, Integer)),
       ion_options: T.nilable(Services::Provider::V1::IonOptions),
       indy_options: T.nilable(Services::Provider::V1::IndyOptions)
@@ -2659,6 +2660,7 @@ class Services::Provider::V1::UpgradeDidRequest
   def initialize(
     email: "",
     wallet_id: "",
+    did_uri: "",
     method: :KEY,
     ion_options: nil,
     indy_options: nil
@@ -2687,6 +2689,18 @@ class Services::Provider::V1::UpgradeDidRequest
 
   sig { void }
   def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def did_uri
+  end
+
+  sig { params(value: String).void }
+  def did_uri=(value)
+  end
+
+  sig { void }
+  def clear_did_uri
   end
 
   sig { returns(Symbol) }

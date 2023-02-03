@@ -32,6 +32,8 @@ type UniversalWalletClient interface {
 	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
 	// Delete an item from the wallet permanently
 	DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
+	// Delete a wallet and its credentials
+	DeleteWallet(ctx context.Context, in *DeleteWalletRequest, opts ...grpc.CallOption) (*DeleteWalletResponse, error)
 }
 
 type universalWalletClient struct {
@@ -87,6 +89,15 @@ func (c *universalWalletClient) DeleteItem(ctx context.Context, in *DeleteItemRe
 	return out, nil
 }
 
+func (c *universalWalletClient) DeleteWallet(ctx context.Context, in *DeleteWalletRequest, opts ...grpc.CallOption) (*DeleteWalletResponse, error) {
+	out := new(DeleteWalletResponse)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.UniversalWallet/DeleteWallet", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UniversalWalletServer is the server API for UniversalWallet service.
 // All implementations must embed UnimplementedUniversalWalletServer
 // for forward compatibility
@@ -101,6 +112,8 @@ type UniversalWalletServer interface {
 	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
 	// Delete an item from the wallet permanently
 	DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)
+	// Delete a wallet and its credentials
+	DeleteWallet(context.Context, *DeleteWalletRequest) (*DeleteWalletResponse, error)
 	mustEmbedUnimplementedUniversalWalletServer()
 }
 
@@ -122,6 +135,9 @@ func (UnimplementedUniversalWalletServer) UpdateItem(context.Context, *UpdateIte
 }
 func (UnimplementedUniversalWalletServer) DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteItem not implemented")
+}
+func (UnimplementedUniversalWalletServer) DeleteWallet(context.Context, *DeleteWalletRequest) (*DeleteWalletResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteWallet not implemented")
 }
 func (UnimplementedUniversalWalletServer) mustEmbedUnimplementedUniversalWalletServer() {}
 
@@ -226,6 +242,24 @@ func _UniversalWallet_DeleteItem_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UniversalWallet_DeleteWallet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteWalletRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversalWalletServer).DeleteWallet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.universalwallet.v1.UniversalWallet/DeleteWallet",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversalWalletServer).DeleteWallet(ctx, req.(*DeleteWalletRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UniversalWallet_ServiceDesc is the grpc.ServiceDesc for UniversalWallet service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -252,6 +286,10 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteItem",
 			Handler:    _UniversalWallet_DeleteItem_Handler,
+		},
+		{
+			MethodName: "DeleteWallet",
+			Handler:    _UniversalWallet_DeleteWallet_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

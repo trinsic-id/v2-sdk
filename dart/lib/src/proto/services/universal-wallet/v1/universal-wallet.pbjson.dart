@@ -147,3 +147,27 @@ const DeleteItemResponse$json = const {
 /// Descriptor for `DeleteItemResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteItemResponseDescriptor =
     $convert.base64Decode('ChJEZWxldGVJdGVtUmVzcG9uc2U=');
+@$core.Deprecated('Use deleteWalletRequestDescriptor instead')
+const DeleteWalletRequest$json = const {
+  '1': 'DeleteWalletRequest',
+  '2': const [
+    const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
+  ],
+  '8': const [
+    const {'1': 'account'},
+  ],
+};
+
+/// Descriptor for `DeleteWalletRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteWalletRequestDescriptor = $convert.base64Decode(
+    'ChNEZWxldGVXYWxsZXRSZXF1ZXN0EhYKBWVtYWlsGAEgASgJSABSBWVtYWlsEh0KCXdhbGxldF9pZBgCIAEoCUgAUgh3YWxsZXRJZBIZCgdkaWRfdXJpGAQgASgJSABSBmRpZFVyaUIJCgdhY2NvdW50');
+@$core.Deprecated('Use deleteWalletResponseDescriptor instead')
+const DeleteWalletResponse$json = const {
+  '1': 'DeleteWalletResponse',
+};
+
+/// Descriptor for `DeleteWalletResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteWalletResponseDescriptor =
+    $convert.base64Decode('ChREZWxldGVXYWxsZXRSZXNwb25zZQ==');

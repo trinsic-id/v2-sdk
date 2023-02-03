@@ -371,12 +371,16 @@ message IndyOptions {
 message UpgradeDidRequest {
   oneof account {
     // Email address of account to upgrade.
-    // Mutually exclusive with `walletId`.
+    // Mutually exclusive with `walletId` and `didUri`.
     string email = 1;
 
     // Wallet ID of account to upgrade.
-    // Mutually exclusive with `email`.
+    // Mutually exclusive with `email` and `didUri`.
     string wallet_id = 2;
+
+    // DID URI of the account to upgrade.
+    // Mutually exclusive with `email` and `walletId`.
+    string did_uri = 6;
   }
 
   // DID Method to which wallet should be upgraded

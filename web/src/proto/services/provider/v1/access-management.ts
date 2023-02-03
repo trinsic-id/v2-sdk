@@ -6,15 +6,20 @@ export interface AddRoleAssignmentRequest {
   /** Role to assign */
   role?: string;
   /**
-   * Email address of account to assign role to.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to assign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    */
   email?: string | undefined;
   /**
    * Wallet ID of account to assign role to.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    */
   walletId?: string | undefined;
+  /**
+   * DID URI of the account to assign role.
+   * Mutually exclusive with `email` and `walletId`.
+   */
+  didUri?: string | undefined;
 }
 
 export interface AddRoleAssignmentResponse {}
@@ -23,15 +28,20 @@ export interface RemoveRoleAssignmentRequest {
   /** Role to unassign */
   role?: string;
   /**
-   * Email address of account to unassign role from.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to unassign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    */
   email?: string | undefined;
   /**
-   * Wallet ID of account to unassign role from.
-   * Mutually exclusive with `email`.
+   * Wallet ID of account to unassign role.
+   * Mutually exclusive with `email` and `didUri`.
    */
   walletId?: string | undefined;
+  /**
+   * DID URI of the account to unassign role.
+   * Mutually exclusive with `email` and `walletId`.
+   */
+  didUri?: string | undefined;
 }
 
 export interface RemoveRoleAssignmentResponse {}
@@ -39,15 +49,20 @@ export interface RemoveRoleAssignmentResponse {}
 /** Request to fetch the list of roles assigned to the current account */
 export interface ListRoleAssignmentsRequest {
   /**
-   * Email address of account to unassign role from.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to list roles.
+   * Mutually exclusive with `walletId` and `didUri`.
    */
   email?: string | undefined;
   /**
-   * Wallet ID of account to unassign role from.
-   * Mutually exclusive with `email`.
+   * Wallet ID of account to list roles.
+   * Mutually exclusive with `email` and `didUri`.
    */
   walletId?: string | undefined;
+  /**
+   * DID URI of the account to list roles.
+   * Mutually exclusive with `email` and `walletId`.
+   */
+  didUri?: string | undefined;
 }
 
 export interface ListRoleAssignmentsResponse {
@@ -64,7 +79,7 @@ export interface ListAvailableRolesResponse {
 }
 
 function createBaseAddRoleAssignmentRequest(): AddRoleAssignmentRequest {
-  return { role: "", email: undefined, walletId: undefined };
+  return { role: "", email: undefined, walletId: undefined, didUri: undefined };
 }
 
 export const AddRoleAssignmentRequest = {
@@ -80,6 +95,9 @@ export const AddRoleAssignmentRequest = {
     }
     if (message.walletId !== undefined) {
       writer.uint32(26).string(message.walletId);
+    }
+    if (message.didUri !== undefined) {
+      writer.uint32(34).string(message.didUri);
     }
     return writer;
   },
@@ -103,6 +121,9 @@ export const AddRoleAssignmentRequest = {
         case 3:
           message.walletId = reader.string();
           break;
+        case 4:
+          message.didUri = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -116,6 +137,7 @@ export const AddRoleAssignmentRequest = {
       role: isSet(object.role) ? String(object.role) : "",
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
     };
   },
 
@@ -124,6 +146,7 @@ export const AddRoleAssignmentRequest = {
     message.role !== undefined && (obj.role = message.role);
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
     return obj;
   },
 
@@ -134,6 +157,7 @@ export const AddRoleAssignmentRequest = {
     message.role = object.role ?? "";
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
+    message.didUri = object.didUri ?? undefined;
     return message;
   },
 };
@@ -186,7 +210,7 @@ export const AddRoleAssignmentResponse = {
 };
 
 function createBaseRemoveRoleAssignmentRequest(): RemoveRoleAssignmentRequest {
-  return { role: "", email: undefined, walletId: undefined };
+  return { role: "", email: undefined, walletId: undefined, didUri: undefined };
 }
 
 export const RemoveRoleAssignmentRequest = {
@@ -202,6 +226,9 @@ export const RemoveRoleAssignmentRequest = {
     }
     if (message.walletId !== undefined) {
       writer.uint32(26).string(message.walletId);
+    }
+    if (message.didUri !== undefined) {
+      writer.uint32(34).string(message.didUri);
     }
     return writer;
   },
@@ -225,6 +252,9 @@ export const RemoveRoleAssignmentRequest = {
         case 3:
           message.walletId = reader.string();
           break;
+        case 4:
+          message.didUri = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -238,6 +268,7 @@ export const RemoveRoleAssignmentRequest = {
       role: isSet(object.role) ? String(object.role) : "",
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
     };
   },
 
@@ -246,6 +277,7 @@ export const RemoveRoleAssignmentRequest = {
     message.role !== undefined && (obj.role = message.role);
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
     return obj;
   },
 
@@ -256,6 +288,7 @@ export const RemoveRoleAssignmentRequest = {
     message.role = object.role ?? "";
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
+    message.didUri = object.didUri ?? undefined;
     return message;
   },
 };
@@ -308,7 +341,7 @@ export const RemoveRoleAssignmentResponse = {
 };
 
 function createBaseListRoleAssignmentsRequest(): ListRoleAssignmentsRequest {
-  return { email: undefined, walletId: undefined };
+  return { email: undefined, walletId: undefined, didUri: undefined };
 }
 
 export const ListRoleAssignmentsRequest = {
@@ -321,6 +354,9 @@ export const ListRoleAssignmentsRequest = {
     }
     if (message.walletId !== undefined) {
       writer.uint32(26).string(message.walletId);
+    }
+    if (message.didUri !== undefined) {
+      writer.uint32(34).string(message.didUri);
     }
     return writer;
   },
@@ -341,6 +377,9 @@ export const ListRoleAssignmentsRequest = {
         case 3:
           message.walletId = reader.string();
           break;
+        case 4:
+          message.didUri = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -353,6 +392,7 @@ export const ListRoleAssignmentsRequest = {
     return {
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
     };
   },
 
@@ -360,6 +400,7 @@ export const ListRoleAssignmentsRequest = {
     const obj: any = {};
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
     return obj;
   },
 
@@ -369,6 +410,7 @@ export const ListRoleAssignmentsRequest = {
     const message = createBaseListRoleAssignmentsRequest();
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
+    message.didUri = object.didUri ?? undefined;
     return message;
   },
 };

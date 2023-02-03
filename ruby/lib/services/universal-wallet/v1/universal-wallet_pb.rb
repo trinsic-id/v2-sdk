@@ -41,6 +41,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.universalwallet.v1.DeleteItemResponse" do
     end
+    add_message "services.universalwallet.v1.DeleteWalletRequest" do
+      oneof :account do
+        optional :email, :string, 1
+        optional :wallet_id, :string, 2
+        optional :did_uri, :string, 4
+      end
+    end
+    add_message "services.universalwallet.v1.DeleteWalletResponse" do
+    end
   end
 end
 
@@ -57,6 +66,8 @@ module Services
       InsertItemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.universalwallet.v1.InsertItemResponse").msgclass
       DeleteItemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.universalwallet.v1.DeleteItemRequest").msgclass
       DeleteItemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.universalwallet.v1.DeleteItemResponse").msgclass
+      DeleteWalletRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.universalwallet.v1.DeleteWalletRequest").msgclass
+      DeleteWalletResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.universalwallet.v1.DeleteWalletResponse").msgclass
     end
   end
 end

@@ -90,6 +90,28 @@ message DeleteItemRequest {
 message DeleteItemResponse {
 }
 
+
+// Request to delete a wallet
+message DeleteWalletRequest {
+  oneof account {
+    // Email address of account to delete.
+    // Mutually exclusive with `walletId` and `didUri`.
+    string email = 1;
+
+    // Wallet ID of account to delete.
+    // Mutually exclusive with `email` and `didUri`.
+    string wallet_id = 2;
+
+    // DID URI of the account to delete.
+    // Mutually exclusive with `email` and `walletId`.
+    string did_uri = 4;
+  }
+}
+
+// Response to `DeleteWalletRequest`. Empty payload.
+message DeleteWalletResponse {
+}
+
 service UniversalWallet {
   // Retrieve an item from the wallet with a given item identifier
   rpc GetItem(GetItemRequest) returns (GetItemResponse);
@@ -101,5 +123,7 @@ service UniversalWallet {
   rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
   // Delete an item from the wallet permanently
   rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
+  // Delete a wallet and its credentials
+  rpc DeleteWallet(DeleteWalletRequest) returns (DeleteWalletResponse);
 }
 

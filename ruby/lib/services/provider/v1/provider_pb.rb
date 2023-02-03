@@ -181,6 +181,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :account do
         optional :email, :string, 1
         optional :wallet_id, :string, 2
+        optional :did_uri, :string, 6
       end
       oneof :options do
         optional :ion_options, :message, 4, "services.provider.v1.IonOptions"

@@ -779,6 +779,7 @@ class Services::Verifiablecredentials::V1::SendRequest
     params(
       email: T.nilable(String),
       wallet_id: T.nilable(String),
+      did_uri: T.nilable(String),
       send_notification: T.nilable(T::Boolean),
       document_json: T.nilable(String)
     ).void
@@ -786,6 +787,7 @@ class Services::Verifiablecredentials::V1::SendRequest
   def initialize(
     email: "",
     wallet_id: "",
+    did_uri: "",
     send_notification: false,
     document_json: ""
   )
@@ -813,6 +815,18 @@ class Services::Verifiablecredentials::V1::SendRequest
 
   sig { void }
   def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def did_uri
+  end
+
+  sig { params(value: String).void }
+  def did_uri=(value)
+  end
+
+  sig { void }
+  def clear_did_uri
   end
 
   sig { returns(T::Boolean) }
