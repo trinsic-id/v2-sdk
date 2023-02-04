@@ -1,4 +1,10 @@
+## 1.9.0
+**Release Notes:** https://github.com/trinsic-id/sdk/releases/tag/v1.9.0
+
+**Full Changelog:** https://github.com/trinsic-id/sdk/compare/v1.8.0...v1.9.0
+
 ## 1.8.0
+**Release Notes:** https://github.com/trinsic-id/sdk/releases/tag/v1.8.0
 
 **Full Changelog**: https://github.com/trinsic-id/sdk/compare/v1.7.0...v1.8.0
 

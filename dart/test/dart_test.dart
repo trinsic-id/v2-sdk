@@ -6,7 +6,6 @@ import 'package:trinsic_dart/trinsic.dart';
 
 import '../example/ecosystem_example.dart';
 import '../example/templates_demo.dart';
-import '../example/trustregistry_demo.dart';
 import '../example/vaccine_example.dart';
 
 void main() {

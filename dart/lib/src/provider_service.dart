@@ -23,7 +23,7 @@ class ProviderService extends ServiceBase {
     var response =
         await client.createEcosystem(request, options: await metadata);
     if (!response.profile.protection.enabled) {
-      tokenProvider.Save(
+      tokenProvider.save(
           Base64Encoder.urlSafe().convert(response.profile.writeToBuffer()));
     }
     return response;
