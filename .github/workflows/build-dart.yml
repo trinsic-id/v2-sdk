@@ -39,6 +39,17 @@ jobs:
         with:
           python-version: 3.9
           cache: pip
+      - name: Dart analyze
+        run: |
+          dart pub get
+          python ../devops/build_sdks.py --language=dart
+          dart pub global activate coverage
+          dart run coverage:test_with_coverage
+        shell: pwsh
+        working-directory: dart
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
       - name: Build, Test, Pack
         run: |
           dart pub get

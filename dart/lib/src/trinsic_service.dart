@@ -13,7 +13,7 @@ class TrinsicService extends ServiceBase {
   TrustRegistryService? _trustRegistryService;
   WalletService? _walletService;
   TrinsicService(ServiceOptions? serverOptions, ITokenProvider? provider)
-      : super(serverOptions, provider) {}
+      : super(serverOptions, provider) ;
 
   AccessManagementService accessManagement() {
     _accessManagementService ??=

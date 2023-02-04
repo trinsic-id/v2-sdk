@@ -1,4 +1,3 @@
-import 'package:trinsic_dart/src/proto/services/account/v1/account.pbgrpc.dart';
 import 'package:trinsic_dart/src/proto/services/provider/v1/provider.pbgrpc.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';

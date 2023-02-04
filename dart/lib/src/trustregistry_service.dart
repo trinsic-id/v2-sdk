@@ -1,4 +1,3 @@
-import 'package:grpc/service_api.dart' as $grpc;
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/trust-registry/v1/trust-registry.pbgrpc.dart';
 import 'package:trinsic_dart/src/service_base.dart';

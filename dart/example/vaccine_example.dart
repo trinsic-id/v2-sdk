@@ -6,7 +6,6 @@ import 'package:trinsic_dart/src/proto/services/universal-wallet/v1/universal-wa
 import 'package:trinsic_dart/src/proto/services/verifiable-credentials/v1/verifiable-credentials.pbgrpc.dart';
 import 'package:trinsic_dart/src/trinsic_service.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
-import 'package:trinsic_dart/trinsic.dart';
 
 String baseDataPath() {
   return path.join(path.current, "..", "devops", "testdata");

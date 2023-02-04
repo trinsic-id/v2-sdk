@@ -43,7 +43,7 @@ class ServiceBase {
     if (request != null) {
       var authToken = serviceOptions.authToken;
       if (authToken == "") {
-        authToken = await tokenProvider.Get();
+        authToken = await tokenProvider.get();
       }
       metadata['authorization'] = _securityProvider.getAuthHeader(
           AccountProfile.fromBuffer(Base64Decoder().convert(authToken)),

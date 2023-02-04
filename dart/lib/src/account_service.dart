@@ -23,7 +23,7 @@ class AccountService extends ServiceBase {
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
     if (!response.profile.protection.enabled) {
-      tokenProvider.Save(authToken);
+      tokenProvider.save(authToken);
     }
     return authToken;
   }
@@ -72,7 +72,7 @@ class AccountService extends ServiceBase {
     request ??= LoginRequest();
     var response = await client.login(request);
     if (response.hasProfile()) {
-      tokenProvider.Save(
+      tokenProvider.save(
           Base64Encoder.urlSafe().convert(response.profile.writeToBuffer()));
     }
     return response;
@@ -91,7 +91,7 @@ class AccountService extends ServiceBase {
     if (response.profile.protection.enabled) {
       token = unprotect(token, authCode);
     }
-    tokenProvider.Save(token);
+    tokenProvider.save(token);
     return token;
   }
 
@@ -106,7 +106,7 @@ class AccountService extends ServiceBase {
     // Tokenize and return
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
-    tokenProvider.Save(authToken);
+    tokenProvider.save(authToken);
     return authToken;
   }
 
