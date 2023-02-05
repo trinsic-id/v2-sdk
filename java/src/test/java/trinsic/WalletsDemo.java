@@ -47,13 +47,9 @@ public class WalletsDemo {
     var itemId = insertResponse.getItemId();
 
     // getItem() {
-    var getResponse = trinsic.wallet().getItem(
-        GetItemRequest
-            .newBuilder()
-            .setItemId(itemId)
-            .build()
-    ).get();
-    //}
+    var getResponse =
+        trinsic.wallet().getItem(GetItemRequest.newBuilder().setItemId(itemId).build()).get();
+    // }
 
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
@@ -66,14 +62,8 @@ public class WalletsDemo {
 
     // Delete item in-between searches
     // deleteItem() {
-    trinsic.wallet().deleteItem(
-        DeleteItemRequest
-            .newBuilder()
-            .setItemId(itemId)
-            .build()
-    ).get();
-    //}
-
+    trinsic.wallet().deleteItem(DeleteItemRequest.newBuilder().setItemId(itemId).build()).get();
+    // }
 
     {
       // searchWalletSQL() {
@@ -94,13 +84,11 @@ public class WalletsDemo {
     }
 
     // deleteWallet() {
-    trinsic.wallet().deleteWallet(
-        DeleteWalletRequest
-            .newBuilder()
-            .setWalletId(walletId)
-            .build()
-    ).get();
-    //}
+    trinsic
+        .wallet()
+        .deleteWallet(DeleteWalletRequest.newBuilder().setWalletId(walletId).build())
+        .get();
+    // }
 
     System.out.println("Wallets demo successful");
     trinsic.shutdown();
