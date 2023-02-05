@@ -63,7 +63,7 @@ jobs:
           javaKotlinPath: ${{ github.workspace }}/java
           pythonPath: ${{ github.workspace }}/python
           rubyPath: ${{ github.workspace }}/ruby
-          typescriptPath: ${{ github.workspace }}/typescript
+          typescriptPath: ${{ github.workspace }}/web
       - name: Install protobuf plugins
         run: |
           pip install -r ./devops/requirements.txt
