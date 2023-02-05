@@ -2,7 +2,13 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
-from trinsic.proto.services.universalwallet.v1 import DeleteItemRequest, DeleteWalletRequest, GetItemRequest, InsertItemRequest, SearchRequest
+from trinsic.proto.services.universalwallet.v1 import (
+    DeleteItemRequest,
+    DeleteWalletRequest,
+    GetItemRequest,
+    InsertItemRequest,
+    SearchRequest,
+)
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
@@ -21,7 +27,9 @@ async def wallet_demo():
     trinsic = TrinsicService(server_config=config)
 
     ecosystem = await trinsic.provider.create_ecosystem()
-    auth_token = await trinsic.account.login_anonymous(ecosystem_id=ecosystem.ecosystem.id)
+    auth_token = await trinsic.account.login_anonymous(
+        ecosystem_id=ecosystem.ecosystem.id
+    )
     trinsic.set_auth_token(auth_token)
 
     account_info = await trinsic.account.info()
@@ -49,9 +57,7 @@ async def wallet_demo():
     print(f"item id = {item_id}")
 
     # getItem() {
-    item = await trinsic.wallet.get_item(
-        request=GetItemRequest(item_id)
-    )
+    item = await trinsic.wallet.get_item(request=GetItemRequest(item_id))
     # }
 
     # searchWalletBasic() {
@@ -74,15 +80,11 @@ async def wallet_demo():
     assert item["id"] == item_id
 
     # deleteItem() {
-    await trinsic.wallet.delete_item(
-        request=DeleteItemRequest(item_id=item_id)
-    )
+    await trinsic.wallet.delete_item(request=DeleteItemRequest(item_id=item_id))
     # }
 
     # deleteWallet() {
-    await trinsic.wallet.delete_wallet(
-        request=DeleteWalletRequest(wallet_id=wallet_id)
-    )
+    await trinsic.wallet.delete_wallet(request=DeleteWalletRequest(wallet_id=wallet_id))
     # }
 
 
