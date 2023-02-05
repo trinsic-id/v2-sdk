@@ -2282,9 +2282,7 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">item</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">GetItemRequest</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">item</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">GetItemRequest</span><span class="p">(</span><span class="n">item_id</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2294,12 +2292,8 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">getItem</span><span class="p">(</span>
-<span class="w">    </span><span class="n">GetItemRequest</span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">getItem</span><span class="p">(</span><span class="n">GetItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2340,9 +2334,7 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">delete_item</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">DeleteItemRequest</span><span class="p">(</span><span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">delete_item</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">DeleteItemRequest</span><span class="p">(</span><span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2353,12 +2345,7 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">deleteItem</span><span class="p">(</span>
-<span class="w">    </span><span class="n">DeleteItemRequest</span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">deleteItem</span><span class="p">(</span><span class="n">DeleteItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -2397,9 +2384,7 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">delete_wallet</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">DeleteWalletRequest</span><span class="p">(</span><span class="n">wallet_id</span><span class="o">=</span><span class="n">wallet_id</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">delete_wallet</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">DeleteWalletRequest</span><span class="p">(</span><span class="n">wallet_id</span><span class="o">=</span><span class="n">wallet_id</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2412,12 +2397,10 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">deleteWallet</span><span class="p">(</span>
-<span class="w">    </span><span class="n">DeleteWalletRequest</span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="na">wallet</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">deleteWallet</span><span class="p">(</span><span class="n">DeleteWalletRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
