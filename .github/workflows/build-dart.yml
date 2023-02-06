@@ -42,6 +42,7 @@ jobs:
       - name: Dart analyze
         run: |
           dart pub get
+          dart analyze
           python ../devops/build_sdks.py --language=dart
           dart pub global activate coverage
           dart run coverage:test_with_coverage
