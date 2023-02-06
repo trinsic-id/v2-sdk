@@ -6,7 +6,7 @@ edition = "2021"
 license = "Apache-2.0"
 description = "Command-line tool for Trinsic APIs"
 default-run = "trinsic"
-# build = "build.rs"
+build = "build.rs"
 
 [dependencies]
 tonic = { version = "0.8", features = ["tls", "tls-roots"] }
@@ -14,12 +14,12 @@ prost = "0.11"
 prost-types = "0.11"
 tokio = { version = "1.20", features = ["macros", "rt-multi-thread"] }
 okapi = { git ="https://github.com/trinsic-id/okapi", rev = "17dc90a92981197051b3e28495e5f7a2680e385e" }
-clap = { version = "~3", features = ["yaml"] }
+clap = { version = "3.2.23", features = ["yaml"] }
 serde = "1.0"
 serde_json = "1.0"
 chrono = "0.4"
-base64 = "0.13"
-toml = "0.5"
+base64 = "0.13.1"
+toml = "0.5.11"
 dirs = "4.0"
 yaml-rust = "0.4"
 colored = "2"

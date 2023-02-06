@@ -99,6 +99,37 @@ pub struct DeleteItemRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemResponse {
 }
+/// Request to delete a wallet
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteWalletRequest {
+    #[prost(oneof="delete_wallet_request::Account", tags="1, 2, 4")]
+    pub account: ::core::option::Option<delete_wallet_request::Account>,
+}
+/// Nested message and enum types in `DeleteWalletRequest`.
+pub mod delete_wallet_request {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Account {
+        /// Email address of account to delete.
+        /// Mutually exclusive with `walletId` and `didUri`.
+        #[prost(string, tag="1")]
+        Email(::prost::alloc::string::String),
+        /// Wallet ID of account to delete.
+        /// Mutually exclusive with `email` and `didUri`.
+        #[prost(string, tag="2")]
+        WalletId(::prost::alloc::string::String),
+        /// DID URI of the account to delete.
+        /// Mutually exclusive with `email` and `walletId`.
+        #[prost(string, tag="4")]
+        DidUri(::prost::alloc::string::String),
+    }
+}
+/// Response to `DeleteWalletRequest`. Empty payload.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteWalletResponse {
+}
 /// Generated client implementations.
 pub mod universal_wallet_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
@@ -265,6 +296,26 @@ pub mod universal_wallet_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.universalwallet.v1.UniversalWallet/DeleteItem",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Delete a wallet and its credentials
+        pub async fn delete_wallet(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteWalletRequest>,
+        ) -> Result<tonic::Response<super::DeleteWalletResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.universalwallet.v1.UniversalWallet/DeleteWallet",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }

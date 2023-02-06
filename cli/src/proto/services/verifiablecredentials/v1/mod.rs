@@ -31,6 +31,11 @@ pub struct IssueFromTemplateRequest {
     /// metadata with membership info for the given ecosystem governance framework (EGF)
     #[prost(string, tag="3")]
     pub framework_id: ::prost::alloc::string::String,
+    /// Save a copy of the issued credential to this user's wallet. This copy will only contain
+    /// the credential data, but not the secret proof value. Issuers may use this data to
+    /// keep track of the details for revocation status.
+    #[prost(bool, tag="4")]
+    pub save_copy: bool,
 }
 /// Response to `IssueFromTemplateRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -152,7 +157,7 @@ pub struct SendRequest {
     /// JSON document to send to recipient
     #[prost(string, tag="100")]
     pub document_json: ::prost::alloc::string::String,
-    #[prost(oneof="send_request::DeliveryMethod", tags="1, 2, 3")]
+    #[prost(oneof="send_request::DeliveryMethod", tags="1, 5, 6")]
     pub delivery_method: ::core::option::Option<send_request::DeliveryMethod>,
 }
 /// Nested message and enum types in `SendRequest`.
@@ -164,11 +169,15 @@ pub mod send_request {
         #[prost(string, tag="1")]
         Email(::prost::alloc::string::String),
         /// DID of recipient (presently unsupported)
-        #[prost(string, tag="2")]
-        DidUri(::prost::alloc::string::String),
+        /// string did_uri = 2 \[deprecated=true\];
         /// DIDComm out-of-band invitation JSON (presently unsupported)
-        #[prost(string, tag="3")]
-        DidcommInvitationJson(::prost::alloc::string::String),
+        /// string didcomm_invitation_json = 3 \[deprecated=true\];
+        /// Wallet ID of the recipient within the ecosystem
+        #[prost(string, tag="5")]
+        WalletId(::prost::alloc::string::String),
+        /// DID URI of the recipient
+        #[prost(string, tag="6")]
+        DidUri(::prost::alloc::string::String),
     }
 }
 /// Response to `SendRequest`

@@ -47,9 +47,6 @@ pub enum SupportedDidMethod {
     /// The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft
     Ion = 1,
     /// The did:sov method -- Hyperledger Indy based by Sovrin Foundation
-    ///
-    /// The did:v1 method --Veres 1 Blockchain by Digital Bazaar
-    ///     V1 = 3; - TODO, enable this once GoDiddy can resolve the Bls12381G keys.
     Indy = 2,
 }
 impl SupportedDidMethod {

@@ -192,14 +192,15 @@ pub struct UpdateEcosystemRequest {
     /// New name
     /// string name = 4;
     /// Display details
+    #[deprecated]
     #[prost(message, optional, tag="5")]
     pub display: ::core::option::Option<EcosystemDisplayRequest>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EcosystemDisplayRequest {
-    #[prost(message, optional, tag="1")]
-    pub dark: ::core::option::Option<EcosystemDisplayDetailsRequest>,
+    /// Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+    /// EcosystemDisplayDetailsRequest dark = 1;
     #[prost(message, optional, tag="2")]
     pub light: ::core::option::Option<EcosystemDisplayDetailsRequest>,
 }
@@ -228,8 +229,8 @@ pub struct UpdateEcosystemResponse {
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EcosystemDisplay {
-    #[prost(message, optional, tag="1")]
-    pub dark: ::core::option::Option<EcosystemDisplayDetails>,
+    ///     Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
+    ///     EcosystemDisplayDetails dark = 1;
     #[prost(message, optional, tag="2")]
     pub light: ::core::option::Option<EcosystemDisplayDetails>,
 }
@@ -330,22 +331,6 @@ pub struct PublicEcosystemInformation {
     #[prost(string, tag="5")]
     pub description: ::prost::alloc::string::String,
 }
-/// Request to generate an authentication token for the current account
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GenerateTokenRequest {
-    /// Description to identify this token
-    #[prost(string, tag="1")]
-    pub description: ::prost::alloc::string::String,
-}
-/// Response to `GenerateTokenRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GenerateTokenResponse {
-    /// Account authentication profile that contains unprotected token
-    #[prost(message, optional, tag="1")]
-    pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
-}
 /// Request to fetch the Trinsic public key used
 /// to verify authentication token validity
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -359,23 +344,6 @@ pub struct GetOberonKeyResponse {
     /// Oberon Public Key as RAW base64-url encoded string
     #[prost(string, tag="1")]
     pub key: ::prost::alloc::string::String,
-}
-/// Generates an events token bound to the provided ed25519 public key.
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetEventTokenRequest {
-    /// Raw public key to generate event token for
-    #[prost(bytes="vec", tag="1")]
-    pub pk: ::prost::alloc::vec::Vec<u8>,
-}
-/// Response message containing a token (JWT) that can be used
-/// to connect directly to the message streaming architecture
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetEventTokenResponse {
-    /// JWT bound to the public key provided in `GetEventTokenRequest`
-    #[prost(string, tag="1")]
-    pub token: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -405,88 +373,6 @@ pub struct RefreshDomainVerificationStatusResponse {
     /// Specifies if the above `domain` was successfully verified
     #[prost(bool, tag="2")]
     pub domain_verified: bool,
-}
-/// Grant permissions to a resource or path in the ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GrantAuthorizationRequest {
-    /// Resource string that account is receiving permissions for.
-    /// Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-    #[prost(string, tag="3")]
-    pub resource: ::prost::alloc::string::String,
-    /// Action to authorize. Default is "*" (all)
-    #[prost(string, tag="4")]
-    pub action: ::prost::alloc::string::String,
-    #[prost(oneof="grant_authorization_request::Account", tags="1, 2")]
-    pub account: ::core::option::Option<grant_authorization_request::Account>,
-}
-/// Nested message and enum types in `GrantAuthorizationRequest`.
-pub mod grant_authorization_request {
-    #[derive(::serde::Serialize, ::serde::Deserialize)]
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Account {
-        /// Email address of account being granted permission.
-        /// Mutually exclusive with `walletId`.
-        #[prost(string, tag="1")]
-        Email(::prost::alloc::string::String),
-        /// Wallet ID of account being granted permission.
-        /// Mutually exclusive with `email`.
-        #[prost(string, tag="2")]
-        WalletId(::prost::alloc::string::String),
-    }
-}
-/// Response to `GrantAuthorizationRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GrantAuthorizationResponse {
-}
-/// Revoke permissions to a resource or path in the ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RevokeAuthorizationRequest {
-    /// Resource string that account is losing permissions for.
-    /// Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-    #[prost(string, tag="3")]
-    pub resource: ::prost::alloc::string::String,
-    /// Action to revoke. Default is "*" (all)
-    #[prost(string, tag="4")]
-    pub action: ::prost::alloc::string::String,
-    #[prost(oneof="revoke_authorization_request::Account", tags="1, 2")]
-    pub account: ::core::option::Option<revoke_authorization_request::Account>,
-}
-/// Nested message and enum types in `RevokeAuthorizationRequest`.
-pub mod revoke_authorization_request {
-    #[derive(::serde::Serialize, ::serde::Deserialize)]
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Account {
-        /// Email address of account having permission revoked.
-        /// Mutually exclusive with `walletId`.
-        #[prost(string, tag="1")]
-        Email(::prost::alloc::string::String),
-        /// Wallet ID of account having permission revoked.
-        /// Mutually exclusive with `email`.
-        #[prost(string, tag="2")]
-        WalletId(::prost::alloc::string::String),
-    }
-}
-/// Response to `RevokeAuthorizationRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RevokeAuthorizationResponse {
-}
-/// Fetch list of grants that the current account has access to
-/// in its ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetAuthorizationsRequest {
-}
-/// Response to `GetAuthorizationsRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetAuthorizationsResponse {
-    /// Grants attached to account
-    #[prost(message, repeated, tag="1")]
-    pub grants: ::prost::alloc::vec::Vec<Grant>,
 }
 /// Search for issuers/holders/verifiers
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -611,7 +497,7 @@ pub struct UpgradeDidRequest {
     /// DID Method to which wallet should be upgraded
     #[prost(enumeration="super::super::common::v1::SupportedDidMethod", tag="3")]
     pub method: i32,
-    #[prost(oneof="upgrade_did_request::Account", tags="1, 2")]
+    #[prost(oneof="upgrade_did_request::Account", tags="1, 2, 6")]
     pub account: ::core::option::Option<upgrade_did_request::Account>,
     #[prost(oneof="upgrade_did_request::Options", tags="4, 5")]
     pub options: ::core::option::Option<upgrade_did_request::Options>,
@@ -622,13 +508,17 @@ pub mod upgrade_did_request {
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Account {
         /// Email address of account to upgrade.
-        /// Mutually exclusive with `walletId`.
+        /// Mutually exclusive with `walletId` and `didUri`.
         #[prost(string, tag="1")]
         Email(::prost::alloc::string::String),
         /// Wallet ID of account to upgrade.
-        /// Mutually exclusive with `email`.
+        /// Mutually exclusive with `email` and `didUri`.
         #[prost(string, tag="2")]
         WalletId(::prost::alloc::string::String),
+        /// DID URI of the account to upgrade.
+        /// Mutually exclusive with `email` and `walletId`.
+        #[prost(string, tag="6")]
+        DidUri(::prost::alloc::string::String),
     }
     #[derive(::serde::Serialize, ::serde::Deserialize)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
@@ -780,66 +670,6 @@ pub mod provider_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
-        /// Grant user authorization to ecosystem resources
-        pub async fn grant_authorization(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GrantAuthorizationRequest>,
-        ) -> Result<tonic::Response<super::GrantAuthorizationResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/GrantAuthorization",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// Revoke user authorization to ecosystem resources
-        pub async fn revoke_authorization(
-            &mut self,
-            request: impl tonic::IntoRequest<super::RevokeAuthorizationRequest>,
-        ) -> Result<tonic::Response<super::RevokeAuthorizationResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/RevokeAuthorization",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// Retrieve the list of permissions for this particular account/ecosystem
-        pub async fn get_authorizations(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GetAuthorizationsRequest>,
-        ) -> Result<tonic::Response<super::GetAuthorizationsResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/GetAuthorizations",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
         /// Add a webhook endpoint to the ecosystem
         pub async fn add_webhook(
             &mut self,
@@ -923,27 +753,6 @@ pub mod provider_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
-        /// Generates an unprotected authentication token that can be used to
-        /// configure server side applications
-        pub async fn generate_token(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GenerateTokenRequest>,
-        ) -> Result<tonic::Response<super::GenerateTokenResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/GenerateToken",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
         /// Invite a user to the ecosystem
         pub async fn invite(
             &mut self,
@@ -1001,26 +810,6 @@ pub mod provider_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.provider.v1.Provider/GetOberonKey",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// Generate a signed token (JWT) that can be used to connect to the message bus
-        pub async fn get_event_token(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GetEventTokenRequest>,
-        ) -> Result<tonic::Response<super::GetEventTokenResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/GetEventToken",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
