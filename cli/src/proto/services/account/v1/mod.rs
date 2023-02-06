@@ -114,22 +114,6 @@ pub struct AccountInfoResponse {
     #[prost(string, repeated, tag="7")]
     pub authorized_webhooks: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ListDevicesRequest {
-}
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ListDevicesResponse {
-}
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RevokeDeviceRequest {
-}
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RevokeDeviceResponse {
-}
 /// Deprecated
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -396,46 +380,6 @@ pub mod account_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.account.v1.Account/Info",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// List all connected devices
-        pub async fn list_devices(
-            &mut self,
-            request: impl tonic::IntoRequest<super::ListDevicesRequest>,
-        ) -> Result<tonic::Response<super::ListDevicesResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.Account/ListDevices",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// Revoke device access to the account's cloud wallet
-        pub async fn revoke_device(
-            &mut self,
-            request: impl tonic::IntoRequest<super::RevokeDeviceRequest>,
-        ) -> Result<tonic::Response<super::RevokeDeviceResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.Account/RevokeDevice",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
