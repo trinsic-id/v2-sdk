@@ -6,7 +6,8 @@ edition = "2021"
 license = "Apache-2.0"
 description = "Command-line tool for Trinsic APIs"
 default-run = "trinsic"
-build = "build.rs"
+# Don't commit the following line to the CI pipeline!
+#build = "build.rs"
 
 [dependencies]
 tonic = { version = "0.8", features = ["tls", "tls-roots"] }
