@@ -628,6 +628,114 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 
 --- 
 
+## Governance Setup
+
+Before we begin, you'll need an [trust registry](/learn/concepts/trust-registries) -- somewhere for the governance to be defined (which issuer is allowed to issue a vaccine credential).
+
+
+### Create New Governance
+
+You can create a governance framework through the [Trinsic dashboard](https://dashboard.trinsic.id/ecosystem/governance){target:_blank} by clicking on the 'Governance' tab in the nav bar.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry add-framework --name "Vaccine Governance" --uri "https://vaccines.trinsic.id"
+        ```
+
+        The response should look like:
+        ```js
+        {
+            "governing_authority":"did:key:xxxxxxxxxxx........",
+            "id": "xxxxxx.....", // This is our framework_id
+            "trust_registry": "urn:egf:<ecosystem-name>:<framework_id>" 
+        }
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.AddFramework") }}
+
+The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
+
+\
+
+---
+
+### Register Issuer
+
+First lets grab our public_did
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic account info
+        ```
+
+        The response should look like:
+        ```js
+        {
+          "authorized_webhooks": [],
+          "details": {
+            "email": "<email>",
+            "name": "",
+            "sms": ""
+          },
+          "device_id": "",
+          "ecosystem_id": "urn:trinsic:ecosystems:<ecosystem-name>",
+          "ecosystems": [],
+          "public_did": "did:key:xxxxxxxx......",
+          "wallet_id": "urn:trinsic:wallets:xxxxxx....>"
+        }
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.RegisterMember") }}
+
+---
+
+Registers an authorized issuer for a specific credential type (identified by its `schema_uri`), using the public_did, framework_id and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry register-issuer \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.RegisterMember") }}
+
+---
+
+
+### Check Issuer Status
+Check the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry check-issuer \
+            --framework "https://vaccines.trinsic.id" \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+        The response should be:
+        ```bash
+        status → "Current"
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
+
+
+
+!!! info "Further Reading: Trust Registries"
+
+    - Learn more about [Governance](/learn/concepts/trust-registries){target=_blank}
+    - Browse the [Provider API reference](reference/services/trust-registry-service/){target=_blank}
+
+
+
+
+
 ## Next Steps
 
 Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. 
