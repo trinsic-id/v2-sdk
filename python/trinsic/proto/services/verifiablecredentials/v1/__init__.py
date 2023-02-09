@@ -111,6 +111,9 @@ class CreateProofRequest(betterproto.Message):
     document will not be stored in the wallet.
     """
 
+    use_verifiable_presentation: bool = betterproto.bool_field(4)
+    """Wrap the output in a verifiable presentation"""
+
     nonce: bytes = betterproto.bytes_field(10)
     """
     Nonce value used to derive the proof. If not specified, a random nonce will

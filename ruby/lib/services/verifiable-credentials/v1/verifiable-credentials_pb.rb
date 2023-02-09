@@ -23,6 +23,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :document_json, :string, 1
     end
     add_message "services.verifiablecredentials.v1.CreateProofRequest" do
+      optional :use_verifiable_presentation, :bool, 4
       optional :nonce, :bytes, 10
       oneof :disclosure do
         optional :reveal_document_json, :string, 1
