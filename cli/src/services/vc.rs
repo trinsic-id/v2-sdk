@@ -1,4 +1,6 @@
 use super::{super::parser::vc::*, config::CliConfig, Item, Output};
+use crate::proto::services::verifiablecredentials::v1::create_proof_request::Disclosure;
+use crate::proto::services::verifiablecredentials::v1::RevealTemplateAttributes;
 use crate::{
     grpc_client_with_auth,
     parser::vc::{IssueFromTemplateArgs, UpdateStatusArgs},
@@ -10,8 +12,6 @@ use crate::{
     *,
 };
 use tonic::transport::Channel;
-use crate::proto::services::verifiablecredentials::v1::create_proof_request::Disclosure;
-use crate::proto::services::verifiablecredentials::v1::RevealTemplateAttributes;
 
 pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error> {
     match args {
@@ -130,7 +130,7 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
         nonce: vec![],
         disclosure: Some(if reveal_document_json.is_empty() {
             // TODO - Support sending the list of template attributes via the command line
-            Disclosure::RevealTemplate(RevealTemplateAttributes{ template_attributes: vec![] })
+            Disclosure::RevealTemplate(RevealTemplateAttributes { template_attributes: vec![] })
         } else {
             Disclosure::RevealDocumentJson(reveal_document_json)
         }),
@@ -139,6 +139,7 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
         } else {
             Proof::DocumentJson(document_json)
         }),
+        ..Default::default()
     });
 
     let response = client.create_proof(request).await?.into_inner();
