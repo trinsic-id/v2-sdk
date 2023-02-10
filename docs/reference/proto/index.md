@@ -1841,14 +1841,12 @@ Not implemented.
 
 ### GetMembershipStatusRequest
 Request to fetch membership status in governance framework for a specific credential schema.
-Only one of `did_uri`, `x509_cert` may be specified.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework |
+| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
 | did_uri | [string](/reference/proto#string) | DID URI of member |
-| x509_cert | [string](/reference/proto#string) | X.509 certificate of member |
 | schema_uri | [string](/reference/proto#string) | URI of credential schema associated with membership |
 
 
