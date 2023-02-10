@@ -70,6 +70,8 @@ export interface CreateProofRequest {
    * document directly. The document will not be stored in the wallet.
    */
   documentJson?: string | undefined;
+  /** Wrap the output in a verifiable presentation */
+  useVerifiablePresentation?: boolean;
   /**
    * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
    * This value may be represented in base64 format in the proof model.
@@ -435,6 +437,7 @@ function createBaseCreateProofRequest(): CreateProofRequest {
     revealTemplate: undefined,
     itemId: undefined,
     documentJson: undefined,
+    useVerifiablePresentation: false,
     nonce: new Uint8Array(),
   };
 }
@@ -458,6 +461,9 @@ export const CreateProofRequest = {
     }
     if (message.documentJson !== undefined) {
       writer.uint32(26).string(message.documentJson);
+    }
+    if (message.useVerifiablePresentation === true) {
+      writer.uint32(32).bool(message.useVerifiablePresentation);
     }
     if (message.nonce !== undefined && message.nonce.length !== 0) {
       writer.uint32(82).bytes(message.nonce);
@@ -487,6 +493,9 @@ export const CreateProofRequest = {
         case 3:
           message.documentJson = reader.string();
           break;
+        case 4:
+          message.useVerifiablePresentation = reader.bool();
+          break;
         case 10:
           message.nonce = reader.bytes();
           break;
@@ -510,6 +519,9 @@ export const CreateProofRequest = {
       documentJson: isSet(object.documentJson)
         ? String(object.documentJson)
         : undefined,
+      useVerifiablePresentation: isSet(object.useVerifiablePresentation)
+        ? Boolean(object.useVerifiablePresentation)
+        : false,
       nonce: isSet(object.nonce)
         ? bytesFromBase64(object.nonce)
         : new Uint8Array(),
@@ -527,6 +539,8 @@ export const CreateProofRequest = {
     message.itemId !== undefined && (obj.itemId = message.itemId);
     message.documentJson !== undefined &&
       (obj.documentJson = message.documentJson);
+    message.useVerifiablePresentation !== undefined &&
+      (obj.useVerifiablePresentation = message.useVerifiablePresentation);
     message.nonce !== undefined &&
       (obj.nonce = base64FromBytes(
         message.nonce !== undefined ? message.nonce : new Uint8Array()
@@ -543,6 +557,8 @@ export const CreateProofRequest = {
         : undefined;
     message.itemId = object.itemId ?? undefined;
     message.documentJson = object.documentJson ?? undefined;
+    message.useVerifiablePresentation =
+      object.useVerifiablePresentation ?? false;
     message.nonce = object.nonce ?? new Uint8Array();
     return message;
   },

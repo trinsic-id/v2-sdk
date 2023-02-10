@@ -2940,6 +2940,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.CreateProofRequest"
     },
+    "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateProofRequest"
+    },
     "services.verifiablecredentials.v1.CreateProofResponse": {
       "type": "message",
       "collection": "messages",
@@ -4215,6 +4221,7 @@
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce",
         "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes",
         "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json",
@@ -6188,6 +6195,7 @@
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce"
       ],
       "messages": [],
@@ -8638,6 +8646,14 @@
       "type": "RevealTemplateAttributes",
       "full_type": "services.verifiablecredentials.v1.RevealTemplateAttributes",
       "description": "Information about what sections of the document to reveal"
+    },
+    "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation": {
+      "name": "use_verifiable_presentation",
+      "full_name": "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Wrap the output in a verifiable presentation"
     },
     "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json": {
       "name": "proof_document_json",
