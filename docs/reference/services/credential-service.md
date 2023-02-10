@@ -121,6 +121,17 @@ Issues a credential from a [previously-defined template](/reference/services/tem
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
 
+### Add governance information to issued credential
+
+In order to attach governance information to the credential, issuers must request this explicitly by specifying the parameter
+`frameworkId` in the above request. The framework identifier references the ecosystem governance framework that the issuer is authorized
+to issue credentials of the designated type (schema). This identifier has the format `urn:egf:<ecosystem>:<type>`.
+
+When this parameter is specified, the issued credential will contain extended information in the `issuer` field to assert authorization in
+the given governance framework. The framework identifier will be in the `issuer.trustRegistry` field.
+
+See [Trust Registry Service](/reference/services/trust-registry-service.md) for more information on using governance in your ecosystem.
+
 ---
 
 ## Check Revocation Status
