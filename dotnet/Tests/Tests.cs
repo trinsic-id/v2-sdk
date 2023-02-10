@@ -206,7 +206,7 @@ public class Tests
         // checkIssuerStatus() {
         var issuerStatus = await trinsic.TrustRegistry.GetMembershipStatusAsync(new() {
             DidUri = didUri,
-            GovernanceFrameworkUri = frameworkUri,
+            FrameworkId = frameworkUri,
             SchemaUri = schemaUri
         });
         // }
