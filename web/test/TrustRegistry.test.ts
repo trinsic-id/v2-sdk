@@ -74,7 +74,7 @@ describe("TrustRegistryService Unit Tests", () => {
         let issuerStatus = await trinsic.trustRegistry().getMembershipStatus(
             GetMembershipStatusRequest.fromPartial({
                 didUri: didUri,
-                governanceFrameworkUri: frameworkUri,
+                frameworkId: frameworkUri,
                 schemaUri: schemaUri,
             })
         );
@@ -84,7 +84,7 @@ describe("TrustRegistryService Unit Tests", () => {
         let verifierStatus = await trinsic.trustRegistry().getMembershipStatus(
             GetMembershipStatusRequest.fromPartial({
                 didUri: didUri,
-                governanceFrameworkUri: frameworkUri,
+                frameworkId: frameworkUri,
                 schemaUri: schemaUri,
             })
         );
