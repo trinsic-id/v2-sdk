@@ -171,6 +171,19 @@ public interface CreateProofRequestOrBuilder
    *
    *
    * <pre>
+   * Wrap the output in a verifiable presentation
+   * </pre>
+   *
+   * <code>bool use_verifiable_presentation = 4;</code>
+   *
+   * @return The useVerifiablePresentation.
+   */
+  boolean getUseVerifiablePresentation();
+
+  /**
+   *
+   *
+   * <pre>
    * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
    * This value may be represented in base64 format in the proof model.
    * </pre>

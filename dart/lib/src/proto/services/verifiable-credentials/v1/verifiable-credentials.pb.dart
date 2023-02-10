@@ -391,6 +391,11 @@ class CreateProofRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'documentJson')
+    ..aOB(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'useVerifiablePresentation')
     ..a<$core.List<$core.int>>(
         10,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -410,6 +415,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     $core.String? revealDocumentJson,
     $core.String? itemId,
     $core.String? documentJson,
+    $core.bool? useVerifiablePresentation,
     $core.List<$core.int>? nonce,
     RevealTemplateAttributes? revealTemplate,
   }) {
@@ -422,6 +428,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
+    }
+    if (useVerifiablePresentation != null) {
+      _result.useVerifiablePresentation = useVerifiablePresentation;
     }
     if (nonce != null) {
       _result.nonce = nonce;
@@ -502,31 +511,43 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDocumentJson() => clearField(3);
 
+  @$pb.TagNumber(4)
+  $core.bool get useVerifiablePresentation => $_getBF(3);
+  @$pb.TagNumber(4)
+  set useVerifiablePresentation($core.bool v) {
+    $_setBool(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasUseVerifiablePresentation() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUseVerifiablePresentation() => clearField(4);
+
   @$pb.TagNumber(10)
-  $core.List<$core.int> get nonce => $_getN(3);
+  $core.List<$core.int> get nonce => $_getN(4);
   @$pb.TagNumber(10)
   set nonce($core.List<$core.int> v) {
-    $_setBytes(3, v);
+    $_setBytes(4, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasNonce() => $_has(3);
+  $core.bool hasNonce() => $_has(4);
   @$pb.TagNumber(10)
   void clearNonce() => clearField(10);
 
   @$pb.TagNumber(11)
-  RevealTemplateAttributes get revealTemplate => $_getN(4);
+  RevealTemplateAttributes get revealTemplate => $_getN(5);
   @$pb.TagNumber(11)
   set revealTemplate(RevealTemplateAttributes v) {
     setField(11, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasRevealTemplate() => $_has(4);
+  $core.bool hasRevealTemplate() => $_has(5);
   @$pb.TagNumber(11)
   void clearRevealTemplate() => clearField(11);
   @$pb.TagNumber(11)
-  RevealTemplateAttributes ensureRevealTemplate() => $_ensure(4);
+  RevealTemplateAttributes ensureRevealTemplate() => $_ensure(5);
 }
 
 class RevealTemplateAttributes extends $pb.GeneratedMessage {
