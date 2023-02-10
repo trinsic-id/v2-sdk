@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11+insiders-4.29.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11+insiders-4.30.0">
     
     
       
@@ -1634,6 +1634,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Issue Credential from Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-governance-information-to-issued-credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add governance information to issued credential
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2328,6 +2345,21 @@
 </div>
 </div>
 </div>
+<h3 id="add-governance-information-to-issued-credential">Add governance information to issued credential<a class="headerlink" href="#add-governance-information-to-issued-credential" title="Permanent link">&para;</a></h3>
+<p>In order to attach governance information to the credential, issuers must request this explicitly by specifying the parameter
+<code>framework_id</code> in the above request. The framework identifier references the ecosystem governance framework that the issuer is authorized
+to issue credentials of the designated type (schema). This identifier has the format <code>urn:egf:&lt;ecosystem&gt;:&lt;type&gt;</code>.</p>
+<p>When this parameter is specified, the issued credential will contain extended information in the <code>issuer</code> field to assert authorization in
+the given governance framework. The framework identifier will be in the <code>issuer.trustRegistry</code> field.
+Here's an example of a VC with extended issuer information:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;did:key:z5TcEFAQPu7RkrBCMCJDGgVziV&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;AuthoritativeMember&quot;</span>
+<span class="w">    </span><span class="nt">&quot;governanceFramework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://acme.org/authorized-issuers&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trustRegistry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:egf:acme:92f21b4cb3bc48dd8bb19a872f03afca&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+<p>See <a href="/reference/services/trust-registry-service.md">Trust Registry Service</a> for more information on using governance in your ecosystem.</p>
 <hr />
 <h2 id="check-revocation-status">Check Revocation Status<a class="headerlink" href="#check-revocation-status" title="Permanent link">&para;</a></h2>
 <p>Checks a credential's revocation status by its <code>credential_status_id</code>.</p>
@@ -2554,7 +2586,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.CreateProofRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.CreateProofRequest' href='/reference/proto#services.verifiablecredentials.v1.CreateProofRequest'>CreateProofRequest</a></div><div class='proto-obj-description'>Request to create a proof for a Verifiable Credential using public key tied to caller. Either <code>item_id</code> or <code>document_json</code> may be provided, not both.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>reveal_document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>A valid JSON-LD frame describing which fields should be revealed in the generated proof. If unspecified, all fields in the document will be revealed</div></div><div class='proto-field'><div class='proto-field-name'>reveal_template</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.v1.RevealTemplateAttributes'>RevealTemplateAttributes</a></div><div class='proto-field-description'>Information about what sections of the document to reveal</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>reveal_template.</span>template_attributes</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>A list of document attributes to reveal. If unset, all attributes will be returned.</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>item_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of wallet item stored in a Trinsic cloud wallet</div></div><div class='proto-field'><div class='proto-field-name'>document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</div></div><div class='proto-field'><div class='proto-field-name'>nonce</div> <div class='proto-field-type'>optional bytes</div><div class='proto-field-description'>Nonce value used to derive the proof. If not specified, a random nonce will be generated. This value may be represented in base64 format in the proof model.</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.CreateProofRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.CreateProofRequest' href='/reference/proto#services.verifiablecredentials.v1.CreateProofRequest'>CreateProofRequest</a></div><div class='proto-obj-description'>Request to create a proof for a Verifiable Credential using public key tied to caller. Either <code>item_id</code> or <code>document_json</code> may be provided, not both.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>reveal_document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>A valid JSON-LD frame describing which fields should be revealed in the generated proof. If unspecified, all fields in the document will be revealed</div></div><div class='proto-field'><div class='proto-field-name'>reveal_template</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.v1.RevealTemplateAttributes'>RevealTemplateAttributes</a></div><div class='proto-field-description'>Information about what sections of the document to reveal</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>reveal_template.</span>template_attributes</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>A list of document attributes to reveal. If unset, all attributes will be returned.</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>item_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of wallet item stored in a Trinsic cloud wallet</div></div><div class='proto-field'><div class='proto-field-name'>document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</div></div><div class='proto-field'><div class='proto-field-name'>use_verifiable_presentation</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Wrap the output in a verifiable presentation</div></div><div class='proto-field'><div class='proto-field-name'>nonce</div> <div class='proto-field-type'>optional bytes</div><div class='proto-field-description'>Nonce value used to derive the proof. If not specified, a random nonce will be generated. This value may be represented in base64 format in the proof model.</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.CreateProofResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.CreateProofResponse' href='/reference/proto#services.verifiablecredentials.v1.CreateProofResponse'>CreateProofResponse</a></div><div class='proto-obj-description'>Response to <code>CreateProofRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>proof_document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Valid JSON-LD proof for the specified credential</div></div></div></div></p>

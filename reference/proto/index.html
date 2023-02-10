@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11+insiders-4.29.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11+insiders-4.30.0">
     
     
       
@@ -4771,6 +4771,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</td>
+</tr>
+<tr>
+<td>use_verifiable_presentation</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Wrap the output in a verifiable presentation</td>
 </tr>
 <tr>
 <td>nonce</td>
