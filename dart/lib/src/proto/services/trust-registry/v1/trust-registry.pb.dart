@@ -1124,15 +1124,7 @@ class UnregisterMemberResponse extends $pb.GeneratedMessage {
   static UnregisterMemberResponse? _defaultInstance;
 }
 
-enum GetMembershipStatusRequest_Member { didUri, x509Cert, notSet }
-
 class GetMembershipStatusRequest extends $pb.GeneratedMessage {
-  static const $core.Map<$core.int, GetMembershipStatusRequest_Member>
-      _GetMembershipStatusRequest_MemberByTag = {
-    2: GetMembershipStatusRequest_Member.didUri,
-    3: GetMembershipStatusRequest_Member.x509Cert,
-    0: GetMembershipStatusRequest_Member.notSet
-  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
@@ -1142,22 +1134,16 @@ class GetMembershipStatusRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
-    ..oo(0, [2, 3])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'governanceFrameworkUri')
+            : 'frameworkId')
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'didUri')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'x509Cert')
     ..aOS(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1167,20 +1153,16 @@ class GetMembershipStatusRequest extends $pb.GeneratedMessage {
 
   GetMembershipStatusRequest._() : super();
   factory GetMembershipStatusRequest({
-    $core.String? governanceFrameworkUri,
+    $core.String? frameworkId,
     $core.String? didUri,
-    $core.String? x509Cert,
     $core.String? schemaUri,
   }) {
     final _result = create();
-    if (governanceFrameworkUri != null) {
-      _result.governanceFrameworkUri = governanceFrameworkUri;
+    if (frameworkId != null) {
+      _result.frameworkId = frameworkId;
     }
     if (didUri != null) {
       _result.didUri = didUri;
-    }
-    if (x509Cert != null) {
-      _result.x509Cert = x509Cert;
     }
     if (schemaUri != null) {
       _result.schemaUri = schemaUri;
@@ -1217,21 +1199,17 @@ class GetMembershipStatusRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetMembershipStatusRequest>(create);
   static GetMembershipStatusRequest? _defaultInstance;
 
-  GetMembershipStatusRequest_Member whichMember() =>
-      _GetMembershipStatusRequest_MemberByTag[$_whichOneof(0)]!;
-  void clearMember() => clearField($_whichOneof(0));
-
   @$pb.TagNumber(1)
-  $core.String get governanceFrameworkUri => $_getSZ(0);
+  $core.String get frameworkId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set governanceFrameworkUri($core.String v) {
+  set frameworkId($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasGovernanceFrameworkUri() => $_has(0);
+  $core.bool hasFrameworkId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearGovernanceFrameworkUri() => clearField(1);
+  void clearFrameworkId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get didUri => $_getSZ(1);
@@ -1245,27 +1223,15 @@ class GetMembershipStatusRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDidUri() => clearField(2);
 
-  @$pb.TagNumber(3)
-  $core.String get x509Cert => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set x509Cert($core.String v) {
+  @$pb.TagNumber(4)
+  $core.String get schemaUri => $_getSZ(2);
+  @$pb.TagNumber(4)
+  set schemaUri($core.String v) {
     $_setString(2, v);
   }
 
-  @$pb.TagNumber(3)
-  $core.bool hasX509Cert() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearX509Cert() => clearField(3);
-
   @$pb.TagNumber(4)
-  $core.String get schemaUri => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set schemaUri($core.String v) {
-    $_setString(3, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasSchemaUri() => $_has(3);
+  $core.bool hasSchemaUri() => $_has(2);
   @$pb.TagNumber(4)
   void clearSchemaUri() => clearField(4);
 }
