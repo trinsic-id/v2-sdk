@@ -906,30 +906,28 @@ class Services::Trustregistry::V1::GetMembershipStatusRequest
 
   sig do
     params(
-      governance_framework_uri: T.nilable(String),
+      framework_id: T.nilable(String),
       did_uri: T.nilable(String),
-      x509_cert: T.nilable(String),
       schema_uri: T.nilable(String)
     ).void
   end
   def initialize(
-    governance_framework_uri: "",
+    framework_id: "",
     did_uri: "",
-    x509_cert: "",
     schema_uri: ""
   )
   end
 
   sig { returns(String) }
-  def governance_framework_uri
+  def framework_id
   end
 
   sig { params(value: String).void }
-  def governance_framework_uri=(value)
+  def framework_id=(value)
   end
 
   sig { void }
-  def clear_governance_framework_uri
+  def clear_framework_id
   end
 
   sig { returns(String) }
@@ -945,18 +943,6 @@ class Services::Trustregistry::V1::GetMembershipStatusRequest
   end
 
   sig { returns(String) }
-  def x509_cert
-  end
-
-  sig { params(value: String).void }
-  def x509_cert=(value)
-  end
-
-  sig { void }
-  def clear_x509_cert
-  end
-
-  sig { returns(String) }
   def schema_uri
   end
 
@@ -966,10 +952,6 @@ class Services::Trustregistry::V1::GetMembershipStatusRequest
 
   sig { void }
   def clear_schema_uri
-  end
-
-  sig { returns(T.nilable(Symbol)) }
-  def member
   end
 
   sig { params(field: String).returns(T.untyped) }

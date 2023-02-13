@@ -131,19 +131,13 @@ message UnregisterMemberRequest {
 message UnregisterMemberResponse {}
 
 // Request to fetch membership status in governance framework for a specific credential schema.
-// Only one of `did_uri`, `x509_cert` may be specified.
 message GetMembershipStatusRequest {
-  // URI of governance framework
-  string governance_framework_uri = 1;
-
-  oneof member {
-    // DID URI of member
-    string did_uri = 2;
-
-    //X.509 certificate of member
-    string x509_cert = 3;
-  }
-
+  // The ID of the ecosystem governance framework.
+  // This ID may be found in the 'trustRegistry' field in the
+  // verifiable credential model
+  string framework_id = 1;
+  // DID URI of member
+  string did_uri = 2;
   // URI of credential schema associated with membership
   string schema_uri = 4;
 }

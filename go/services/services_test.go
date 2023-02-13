@@ -111,9 +111,9 @@ func TestTrustRegistryDemo(t *testing.T) {
 
 	// getMembershipStatus() {
 	getMembershipStatusResponse, err := trinsic.TrustRegistry().GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
-		GovernanceFrameworkUri: frameworkURI,
-		Member:                 &trustregistry.GetMembershipStatusRequest_DidUri{DidUri: didURI},
-		SchemaUri:              schemaURI,
+		FrameworkId: frameworkURI,
+		DidUri:      didURI,
+		SchemaUri:   schemaURI,
 	})
 	// }
 	if !assert2.Nil(err) {

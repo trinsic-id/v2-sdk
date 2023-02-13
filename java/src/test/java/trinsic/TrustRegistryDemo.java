@@ -57,7 +57,7 @@ public class TrustRegistryDemo {
             .getMembershipStatus(
                 GetMembershipStatusRequest.newBuilder()
                     .setDidUri(didUri)
-                    .setGovernanceFrameworkUri(frameworkUri)
+                    .setFrameworkId(frameworkResponse.getId())
                     .setSchemaUri(typeUri)
                     .build())
             .get();

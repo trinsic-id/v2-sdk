@@ -1938,19 +1938,13 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri": {
+    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
-    },
-    "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -4012,9 +4006,8 @@
         "services.trustregistry.v1.UnregisterMemberRequest.email",
         "services.trustregistry.v1.UnregisterMemberRequest.schema_uri",
         "services.trustregistry.v1.UnregisterMemberRequest.framework_id",
-        "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri",
         "services.trustregistry.v1.GetMembershipStatusResponse.status",
         "services.trustregistry.v1.FetchDataRequest.governance_framework_uri",
@@ -5706,11 +5699,10 @@
     "services.trustregistry.v1.GetMembershipStatusRequest": {
       "name": "GetMembershipStatusRequest",
       "full_name": "services.trustregistry.v1.GetMembershipStatusRequest",
-      "description": "Request to fetch membership status in governance framework for a specific credential schema.\nOnly one of `did_uri`, `x509_cert` may be specified.",
+      "description": "Request to fetch membership status in governance framework for a specific credential schema.",
       "fields": [
-        "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri"
       ],
       "messages": [],
@@ -7903,13 +7895,13 @@
       "full_type": "string",
       "description": "DID URI of member"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri": {
-      "name": "governance_framework_uri",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
+      "name": "framework_id",
+      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "URI of governance framework"
+      "description": "The ID of the ecosystem governance framework.\nThis ID may be found in the 'trustRegistry' field in the\nverifiable credential model"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
       "name": "schema_uri",
@@ -7918,14 +7910,6 @@
       "type": "string",
       "full_type": "string",
       "description": "URI of credential schema associated with membership"
-    },
-    "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert": {
-      "name": "x509_cert",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "X.509 certificate of member"
     },
     "services.trustregistry.v1.GetMembershipStatusResponse.status": {
       "name": "status",
