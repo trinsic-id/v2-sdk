@@ -24,7 +24,7 @@ def trust_registry_demo_run
 
   # check issuer status
   issuer_status = trinsic.trust_registry_service.get_membership_status(Trinsic::TrustRegistry::GetMembershipStatusRequest.new(
-                                                  did_uri: did_uri, governance_framework_uri: framework_uri, schema_uri: type_uri
+                                                  did_uri: did_uri, framework_id: governance_framework_response.id, schema_uri: type_uri
                                                 ))
   raise "Issuer status #{issuer_status.status} should be current" unless issuer_status.status == :CURRENT
 

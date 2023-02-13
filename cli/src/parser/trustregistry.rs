@@ -71,7 +71,7 @@ pub struct RemoveFrameworkArgs {
 pub struct GetMembershipStatusArgs {
     pub did_uri: String,
     pub schema_uri: String,
-    pub governance_framework_uri: String,
+    pub framework_id: String,
 }
 
 #[derive(Debug, PartialEq, Default)]
@@ -151,7 +151,7 @@ fn get_status(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
     Ok(TrustRegistryCommand::GetMembershipStatus(GetMembershipStatusArgs {
         did_uri: args.value_of("did").map(|q| q.into()).ok_or(Error::MissingArguments)?,
         schema_uri: args.value_of("schema").map(|q| q.into()).ok_or(Error::MissingArguments)?,
-        governance_framework_uri: args.value_of("framework").map(|q| q.into()).ok_or(Error::MissingArguments)?,
+        framework_id: args.value_of("framework-id").map(|q| q.into()).ok_or(Error::MissingArguments)?,
     }))
 }
 
@@ -223,6 +223,6 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a> {
             .about("Get the membership status of a given DID in a given EGF")
             .arg(Arg::from_usage("-d --did <DID> 'The DID of the member'"))
             .arg(Arg::from_usage("-s --schema <SCHEMA_URI> 'The schema URI'"))
-            .arg(Arg::from_usage("-f --framework <EGF_URI> 'The EGF URI'"))
+            .arg(Arg::from_usage("-f --framework-id <FRAMEWORK_ID> 'The ecosystem governance framework ID, in the `urn:egf:` format'"))
         )
 }

@@ -139,6 +139,7 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
         } else {
             Proof::DocumentJson(document_json)
         }),
+        ..Default::default()
     });
 
     let response = client.create_proof(request).await?.into_inner();

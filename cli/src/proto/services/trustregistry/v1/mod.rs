@@ -139,29 +139,19 @@ pub mod unregister_member_request {
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterMemberResponse {}
 /// Request to fetch membership status in governance framework for a specific credential schema.
-/// Only one of `did_uri`, `x509_cert` may be specified.
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetMembershipStatusRequest {
-    /// URI of governance framework
+    /// The ID of the ecosystem governance framework.
+    /// This ID may be found in the 'trustRegistry' field in the
+    /// verifiable credential model
     #[prost(string, tag = "1")]
-    pub governance_framework_uri: ::prost::alloc::string::String,
+    pub framework_id: ::prost::alloc::string::String,
+    /// DID URI of member
+    #[prost(string, tag = "2")]
+    pub did_uri: ::prost::alloc::string::String,
     /// URI of credential schema associated with membership
     #[prost(string, tag = "4")]
     pub schema_uri: ::prost::alloc::string::String,
-    #[prost(oneof = "get_membership_status_request::Member", tags = "2, 3")]
-    pub member: ::core::option::Option<get_membership_status_request::Member>,
-}
-/// Nested message and enum types in `GetMembershipStatusRequest`.
-pub mod get_membership_status_request {
-    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
-    pub enum Member {
-        /// DID URI of member
-        #[prost(string, tag = "2")]
-        DidUri(::prost::alloc::string::String),
-        /// X.509 certificate of member
-        #[prost(string, tag = "3")]
-        X509Cert(::prost::alloc::string::String),
-    }
 }
 /// Response to `GetMembershipStatusRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]

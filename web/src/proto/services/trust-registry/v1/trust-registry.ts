@@ -159,17 +159,16 @@ export interface UnregisterMemberRequest {
 /** Response to `UnregisterMemberRequest` */
 export interface UnregisterMemberResponse {}
 
-/**
- * Request to fetch membership status in governance framework for a specific credential schema.
- * Only one of `did_uri`, `x509_cert` may be specified.
- */
+/** Request to fetch membership status in governance framework for a specific credential schema. */
 export interface GetMembershipStatusRequest {
-  /** URI of governance framework */
-  governanceFrameworkUri?: string;
+  /**
+   * The ID of the ecosystem governance framework.
+   * This ID may be found in the 'trustRegistry' field in the
+   * verifiable credential model
+   */
+  frameworkId?: string;
   /** DID URI of member */
-  didUri?: string | undefined;
-  /** X.509 certificate of member */
-  x509Cert?: string | undefined;
+  didUri?: string;
   /** URI of credential schema associated with membership */
   schemaUri?: string;
 }
@@ -1011,12 +1010,7 @@ export const UnregisterMemberResponse = {
 };
 
 function createBaseGetMembershipStatusRequest(): GetMembershipStatusRequest {
-  return {
-    governanceFrameworkUri: "",
-    didUri: undefined,
-    x509Cert: undefined,
-    schemaUri: "",
-  };
+  return { frameworkId: "", didUri: "", schemaUri: "" };
 }
 
 export const GetMembershipStatusRequest = {
@@ -1024,17 +1018,11 @@ export const GetMembershipStatusRequest = {
     message: GetMembershipStatusRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (
-      message.governanceFrameworkUri !== undefined &&
-      message.governanceFrameworkUri !== ""
-    ) {
-      writer.uint32(10).string(message.governanceFrameworkUri);
+    if (message.frameworkId !== undefined && message.frameworkId !== "") {
+      writer.uint32(10).string(message.frameworkId);
     }
-    if (message.didUri !== undefined) {
+    if (message.didUri !== undefined && message.didUri !== "") {
       writer.uint32(18).string(message.didUri);
-    }
-    if (message.x509Cert !== undefined) {
-      writer.uint32(26).string(message.x509Cert);
     }
     if (message.schemaUri !== undefined && message.schemaUri !== "") {
       writer.uint32(34).string(message.schemaUri);
@@ -1053,13 +1041,10 @@ export const GetMembershipStatusRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.governanceFrameworkUri = reader.string();
+          message.frameworkId = reader.string();
           break;
         case 2:
           message.didUri = reader.string();
-          break;
-        case 3:
-          message.x509Cert = reader.string();
           break;
         case 4:
           message.schemaUri = reader.string();
@@ -1074,21 +1059,17 @@ export const GetMembershipStatusRequest = {
 
   fromJSON(object: any): GetMembershipStatusRequest {
     return {
-      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
-        ? String(object.governanceFrameworkUri)
-        : "",
-      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
-      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
+      frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
+      didUri: isSet(object.didUri) ? String(object.didUri) : "",
       schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
     };
   },
 
   toJSON(message: GetMembershipStatusRequest): unknown {
     const obj: any = {};
-    message.governanceFrameworkUri !== undefined &&
-      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.frameworkId !== undefined &&
+      (obj.frameworkId = message.frameworkId);
     message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
     message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
     return obj;
   },
@@ -1097,9 +1078,8 @@ export const GetMembershipStatusRequest = {
     object: DeepPartial<GetMembershipStatusRequest>
   ): GetMembershipStatusRequest {
     const message = createBaseGetMembershipStatusRequest();
-    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
-    message.didUri = object.didUri ?? undefined;
-    message.x509Cert = object.x509Cert ?? undefined;
+    message.frameworkId = object.frameworkId ?? "";
+    message.didUri = object.didUri ?? "";
     message.schemaUri = object.schemaUri ?? "";
     return message;
   },

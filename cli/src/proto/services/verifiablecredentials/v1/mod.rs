@@ -47,6 +47,9 @@ pub struct IssueFromTemplateResponse {
 /// Either `item_id` or `document_json` may be provided, not both.
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
+    /// Wrap the output in a verifiable presentation
+    #[prost(bool, tag = "4")]
+    pub use_verifiable_presentation: bool,
     /// Nonce value used to derive the proof. If not specified, a random nonce will be generated.
     /// This value may be represented in base64 format in the proof model.
     #[prost(bytes = "vec", tag = "10")]

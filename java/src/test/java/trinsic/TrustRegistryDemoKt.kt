@@ -63,7 +63,7 @@ suspend fun runTrustRegistryDemo() {
           .getMembershipStatus(
               GetMembershipStatusRequest.newBuilder()
                   .setDidUri(didUri)
-                  .setGovernanceFrameworkUri(frameworkUri)
+                  .setFrameworkId(frameworkResponse.id)
                   .setSchemaUri(typeUri)
                   .build())
 

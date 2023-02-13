@@ -1938,19 +1938,13 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri": {
+    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
-    },
-    "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -2935,6 +2929,12 @@
       "parent": "services.verifiablecredentials.v1.CreateProofRequest"
     },
     "services.verifiablecredentials.v1.CreateProofRequest.reveal_template": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateProofRequest"
+    },
+    "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation": {
       "type": "field",
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -4006,9 +4006,8 @@
         "services.trustregistry.v1.UnregisterMemberRequest.email",
         "services.trustregistry.v1.UnregisterMemberRequest.schema_uri",
         "services.trustregistry.v1.UnregisterMemberRequest.framework_id",
-        "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri",
         "services.trustregistry.v1.GetMembershipStatusResponse.status",
         "services.trustregistry.v1.FetchDataRequest.governance_framework_uri",
@@ -4215,6 +4214,7 @@
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce",
         "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes",
         "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json",
@@ -5699,11 +5699,10 @@
     "services.trustregistry.v1.GetMembershipStatusRequest": {
       "name": "GetMembershipStatusRequest",
       "full_name": "services.trustregistry.v1.GetMembershipStatusRequest",
-      "description": "Request to fetch membership status in governance framework for a specific credential schema.\nOnly one of `did_uri`, `x509_cert` may be specified.",
+      "description": "Request to fetch membership status in governance framework for a specific credential schema.",
       "fields": [
-        "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri"
       ],
       "messages": [],
@@ -6188,6 +6187,7 @@
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce"
       ],
       "messages": [],
@@ -7895,13 +7895,13 @@
       "full_type": "string",
       "description": "DID URI of member"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri": {
-      "name": "governance_framework_uri",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
+      "name": "framework_id",
+      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "URI of governance framework"
+      "description": "The ID of the ecosystem governance framework.\nThis ID may be found in the 'trustRegistry' field in the\nverifiable credential model"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
       "name": "schema_uri",
@@ -7910,14 +7910,6 @@
       "type": "string",
       "full_type": "string",
       "description": "URI of credential schema associated with membership"
-    },
-    "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert": {
-      "name": "x509_cert",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "X.509 certificate of member"
     },
     "services.trustregistry.v1.GetMembershipStatusResponse.status": {
       "name": "status",
@@ -8638,6 +8630,14 @@
       "type": "RevealTemplateAttributes",
       "full_type": "services.verifiablecredentials.v1.RevealTemplateAttributes",
       "description": "Information about what sections of the document to reveal"
+    },
+    "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation": {
+      "name": "use_verifiable_presentation",
+      "full_name": "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Wrap the output in a verifiable presentation"
     },
     "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json": {
       "name": "proof_document_json",

@@ -421,6 +421,24 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     }
   }
 
+  public static final int USE_VERIFIABLE_PRESENTATION_FIELD_NUMBER = 4;
+  private boolean useVerifiablePresentation_;
+  /**
+   *
+   *
+   * <pre>
+   * Wrap the output in a verifiable presentation
+   * </pre>
+   *
+   * <code>bool use_verifiable_presentation = 4;</code>
+   *
+   * @return The useVerifiablePresentation.
+   */
+  @java.lang.Override
+  public boolean getUseVerifiablePresentation() {
+    return useVerifiablePresentation_;
+  }
+
   public static final int NONCE_FIELD_NUMBER = 10;
   private com.google.protobuf.ByteString nonce_;
   /**
@@ -463,6 +481,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     if (proofCase_ == 3) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, proof_);
     }
+    if (useVerifiablePresentation_ != false) {
+      output.writeBool(4, useVerifiablePresentation_);
+    }
     if (!nonce_.isEmpty()) {
       output.writeBytes(10, nonce_);
     }
@@ -488,6 +509,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     if (proofCase_ == 3) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, proof_);
     }
+    if (useVerifiablePresentation_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, useVerifiablePresentation_);
+    }
     if (!nonce_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream.computeBytesSize(10, nonce_);
     }
@@ -512,6 +536,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     trinsic.services.verifiablecredentials.v1.CreateProofRequest other =
         (trinsic.services.verifiablecredentials.v1.CreateProofRequest) obj;
 
+    if (getUseVerifiablePresentation() != other.getUseVerifiablePresentation()) return false;
     if (!getNonce().equals(other.getNonce())) return false;
     if (!getDisclosureCase().equals(other.getDisclosureCase())) return false;
     switch (disclosureCase_) {
@@ -546,6 +571,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + USE_VERIFIABLE_PRESENTATION_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getUseVerifiablePresentation());
     hash = (37 * hash) + NONCE_FIELD_NUMBER;
     hash = (53 * hash) + getNonce().hashCode();
     switch (disclosureCase_) {
@@ -715,6 +742,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       if (revealTemplateBuilder_ != null) {
         revealTemplateBuilder_.clear();
       }
+      useVerifiablePresentation_ = false;
+
       nonce_ = com.google.protobuf.ByteString.EMPTY;
 
       disclosureCase_ = 0;
@@ -765,6 +794,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       if (proofCase_ == 3) {
         result.proof_ = proof_;
       }
+      result.useVerifiablePresentation_ = useVerifiablePresentation_;
       result.nonce_ = nonce_;
       result.disclosureCase_ = disclosureCase_;
       result.proofCase_ = proofCase_;
@@ -819,6 +849,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       if (other
           == trinsic.services.verifiablecredentials.v1.CreateProofRequest.getDefaultInstance())
         return this;
+      if (other.getUseVerifiablePresentation() != false) {
+        setUseVerifiablePresentation(other.getUseVerifiablePresentation());
+      }
       if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
         setNonce(other.getNonce());
       }
@@ -907,6 +940,12 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
                 proof_ = s;
                 break;
               } // case 26
+            case 32:
+              {
+                useVerifiablePresentation_ = input.readBool();
+
+                break;
+              } // case 32
             case 82:
               {
                 nonce_ = input.readBytes();
@@ -1618,6 +1657,58 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       checkByteStringIsUtf8(value);
       proofCase_ = 3;
       proof_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean useVerifiablePresentation_;
+    /**
+     *
+     *
+     * <pre>
+     * Wrap the output in a verifiable presentation
+     * </pre>
+     *
+     * <code>bool use_verifiable_presentation = 4;</code>
+     *
+     * @return The useVerifiablePresentation.
+     */
+    @java.lang.Override
+    public boolean getUseVerifiablePresentation() {
+      return useVerifiablePresentation_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wrap the output in a verifiable presentation
+     * </pre>
+     *
+     * <code>bool use_verifiable_presentation = 4;</code>
+     *
+     * @param value The useVerifiablePresentation to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUseVerifiablePresentation(boolean value) {
+
+      useVerifiablePresentation_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wrap the output in a verifiable presentation
+     * </pre>
+     *
+     * <code>bool use_verifiable_presentation = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearUseVerifiablePresentation() {
+
+      useVerifiablePresentation_ = false;
       onChanged();
       return this;
     }

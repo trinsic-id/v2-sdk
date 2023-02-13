@@ -420,6 +420,7 @@ Either `item_id` or `document_json` may be provided, not both.
 | reveal_template | [RevealTemplateAttributes](/reference/proto#services-verifiablecredentials-v1-RevealTemplateAttributes) | Information about what sections of the document to reveal |
 | item_id | [string](/reference/proto#string) | ID of wallet item stored in a Trinsic cloud wallet |
 | document_json | [string](/reference/proto#string) | A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
+| use_verifiable_presentation | [bool](/reference/proto#bool) | Wrap the output in a verifiable presentation |
 | nonce | [bytes](/reference/proto#bytes) | Nonce value used to derive the proof. If not specified, a random nonce will be generated. This value may be represented in base64 format in the proof model. |
 
 
@@ -1840,14 +1841,12 @@ Not implemented.
 
 ### GetMembershipStatusRequest
 Request to fetch membership status in governance framework for a specific credential schema.
-Only one of `did_uri`, `x509_cert` may be specified.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework |
+| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
 | did_uri | [string](/reference/proto#string) | DID URI of member |
-| x509_cert | [string](/reference/proto#string) | X.509 certificate of member |
 | schema_uri | [string](/reference/proto#string) | URI of credential schema associated with membership |
 
 

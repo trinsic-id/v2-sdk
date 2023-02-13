@@ -61,12 +61,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.trustregistry.v1.UnregisterMemberResponse" do
     end
     add_message "services.trustregistry.v1.GetMembershipStatusRequest" do
-      optional :governance_framework_uri, :string, 1
+      optional :framework_id, :string, 1
+      optional :did_uri, :string, 2
       optional :schema_uri, :string, 4
-      oneof :member do
-        optional :did_uri, :string, 2
-        optional :x509_cert, :string, 3
-      end
     end
     add_message "services.trustregistry.v1.GetMembershipStatusResponse" do
       optional :status, :enum, 1, "services.trustregistry.v1.RegistrationStatus"
