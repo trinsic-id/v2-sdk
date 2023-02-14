@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os: [ windows-latest ]
     defaults:
       run:
         working-directory: ./cli
@@ -45,6 +45,10 @@ jobs:
         with:
             toolchain: stable
             profile: minimal
+      - name: cargo wix
+        run: |
+          cargo install cargo-wix
+          cargo wix --nocapture
       - name: cargo build
         uses: actions-rs/cargo@v1
         with:
