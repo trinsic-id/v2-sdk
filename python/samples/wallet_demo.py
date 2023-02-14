@@ -2,7 +2,13 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
+from trinsic.proto.services.universalwallet.v1 import (
+    DeleteItemRequest,
+    DeleteWalletRequest,
+    GetItemRequest,
+    InsertItemRequest,
+    SearchRequest,
+)
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
@@ -20,16 +26,14 @@ async def wallet_demo():
     config = trinsic_config()
     trinsic = TrinsicService(server_config=config)
 
-    account = await trinsic.account.sign_in()
-
-    config.auth_token = account
-
     ecosystem = await trinsic.provider.create_ecosystem()
-    ecosystem_id = ecosystem.ecosystem.id
+    auth_token = await trinsic.account.login_anonymous(
+        ecosystem_id=ecosystem.ecosystem.id
+    )
+    trinsic.set_auth_token(auth_token)
 
-    # Set service default ecosystem
-    trinsic.service_options.default_ecosystem = ecosystem_id
-    config.default_ecosystem = ecosystem_id
+    account_info = await trinsic.account.info()
+    wallet_id = account_info.wallet_id
 
     # Sign a credential as the clinic and send it to Allison
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
@@ -52,6 +56,10 @@ async def wallet_demo():
     item_id = insert_response.item_id
     print(f"item id = {item_id}")
 
+    # getItem() {
+    item = await trinsic.wallet.get_item(request=GetItemRequest(item_id))
+    # }
+
     # searchWalletBasic() {
     wallet_items = await trinsic.wallet.search_wallet()
     # }
@@ -70,6 +78,14 @@ async def wallet_demo():
 
     assert len(wallet_items.items) == 1
     assert item["id"] == item_id
+
+    # deleteItem() {
+    await trinsic.wallet.delete_item(request=DeleteItemRequest(item_id=item_id))
+    # }
+
+    # deleteWallet() {
+    await trinsic.wallet.delete_wallet(request=DeleteWalletRequest(wallet_id=wallet_id))
+    # }
 
 
 if __name__ == "__main__":

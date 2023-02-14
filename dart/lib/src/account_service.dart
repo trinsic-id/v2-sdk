@@ -23,7 +23,7 @@ class AccountService extends ServiceBase {
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
     if (!response.profile.protection.enabled) {
-      tokenProvider.Save(authToken);
+      tokenProvider.save(authToken);
     }
     return authToken;
   }
@@ -72,7 +72,7 @@ class AccountService extends ServiceBase {
     request ??= LoginRequest();
     var response = await client.login(request);
     if (response.hasProfile()) {
-      tokenProvider.Save(
+      tokenProvider.save(
           Base64Encoder.urlSafe().convert(response.profile.writeToBuffer()));
     }
     return response;
@@ -91,7 +91,7 @@ class AccountService extends ServiceBase {
     if (response.profile.protection.enabled) {
       token = unprotect(token, authCode);
     }
-    tokenProvider.Save(token);
+    tokenProvider.save(token);
     return token;
   }
 
@@ -106,7 +106,7 @@ class AccountService extends ServiceBase {
     // Tokenize and return
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
-    tokenProvider.Save(authToken);
+    tokenProvider.save(authToken);
     return authToken;
   }
 
@@ -121,20 +121,6 @@ class AccountService extends ServiceBase {
     ///  Get account information
     var request = AccountInfoRequest();
     return client.info(request, options: await buildMetadata(request: request));
-  }
-
-  Future<ListDevicesResponse> listDevices(ListDevicesRequest request) async {
-    ///  List all connected devices
-
-    return client.listDevices(request,
-        options: await buildMetadata(request: request));
-  }
-
-  Future<RevokeDeviceResponse> revokeDevice(RevokeDeviceRequest request) async {
-    ///  Revoke device access to the account's cloud wallet
-
-    return client.revokeDevice(request,
-        options: await buildMetadata(request: request));
   }
 
   Future<AuthorizeWebhookResponse> authorizeWebhook(

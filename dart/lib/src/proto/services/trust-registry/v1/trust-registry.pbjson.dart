@@ -222,26 +222,16 @@ final $typed_data.Uint8List unregisterMemberResponseDescriptor =
 const GetMembershipStatusRequest$json = const {
   '1': 'GetMembershipStatusRequest',
   '2': const [
-    const {
-      '1': 'governance_framework_uri',
-      '3': 1,
-      '4': 1,
-      '5': 9,
-      '10': 'governanceFrameworkUri'
-    },
-    const {'1': 'did_uri', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
-    const {'1': 'x509_cert', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'x509Cert'},
+    const {'1': 'framework_id', '3': 1, '4': 1, '5': 9, '10': 'frameworkId'},
+    const {'1': 'did_uri', '3': 2, '4': 1, '5': 9, '10': 'didUri'},
     const {'1': 'schema_uri', '3': 4, '4': 1, '5': 9, '10': 'schemaUri'},
-  ],
-  '8': const [
-    const {'1': 'member'},
   ],
 };
 
 /// Descriptor for `GetMembershipStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getMembershipStatusRequestDescriptor =
     $convert.base64Decode(
-        'ChpHZXRNZW1iZXJzaGlwU3RhdHVzUmVxdWVzdBI4Chhnb3Zlcm5hbmNlX2ZyYW1ld29ya191cmkYASABKAlSFmdvdmVybmFuY2VGcmFtZXdvcmtVcmkSGQoHZGlkX3VyaRgCIAEoCUgAUgZkaWRVcmkSHQoJeDUwOV9jZXJ0GAMgASgJSABSCHg1MDlDZXJ0Eh0KCnNjaGVtYV91cmkYBCABKAlSCXNjaGVtYVVyaUIICgZtZW1iZXI=');
+        'ChpHZXRNZW1iZXJzaGlwU3RhdHVzUmVxdWVzdBIhCgxmcmFtZXdvcmtfaWQYASABKAlSC2ZyYW1ld29ya0lkEhcKB2RpZF91cmkYAiABKAlSBmRpZFVyaRIdCgpzY2hlbWFfdXJpGAQgASgJUglzY2hlbWFVcmk=');
 @$core.Deprecated('Use getMembershipStatusResponseDescriptor instead')
 const GetMembershipStatusResponse$json = const {
   '1': 'GetMembershipStatusResponse',

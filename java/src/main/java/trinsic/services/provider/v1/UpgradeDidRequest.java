@@ -61,6 +61,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(1),
     WALLET_ID(2),
+    DID_URI(6),
     ACCOUNT_NOT_SET(0);
     private final int value;
 
@@ -83,6 +84,8 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
           return EMAIL;
         case 2:
           return WALLET_ID;
+        case 6:
+          return DID_URI;
         case 0:
           return ACCOUNT_NOT_SET;
         default:
@@ -152,7 +155,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * Email address of account to upgrade.
-   * Mutually exclusive with `walletId`.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -167,7 +170,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * Email address of account to upgrade.
-   * Mutually exclusive with `walletId`.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -195,7 +198,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * Email address of account to upgrade.
-   * Mutually exclusive with `walletId`.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -225,7 +228,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * Wallet ID of account to upgrade.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
@@ -240,7 +243,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * Wallet ID of account to upgrade.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
@@ -268,7 +271,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * Wallet ID of account to upgrade.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
@@ -284,6 +287,79 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (accountCase_ == 2) {
+        account_ = b;
+      }
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DID_URI_FIELD_NUMBER = 6;
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to upgrade.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return Whether the didUri field is set.
+   */
+  public boolean hasDidUri() {
+    return accountCase_ == 6;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to upgrade.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The didUri.
+   */
+  public java.lang.String getDidUri() {
+    java.lang.Object ref = "";
+    if (accountCase_ == 6) {
+      ref = account_;
+    }
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (accountCase_ == 6) {
+        account_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to upgrade.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 6;</code>
+   *
+   * @return The bytes for didUri.
+   */
+  public com.google.protobuf.ByteString getDidUriBytes() {
+    java.lang.Object ref = "";
+    if (accountCase_ == 6) {
+      ref = account_;
+    }
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      if (accountCase_ == 6) {
         account_ = b;
       }
       return b;
@@ -459,6 +535,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     if (optionsCase_ == 5) {
       output.writeMessage(5, (trinsic.services.provider.v1.IndyOptions) options_);
     }
+    if (accountCase_ == 6) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, account_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -487,6 +566,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
           com.google.protobuf.CodedOutputStream.computeMessageSize(
               5, (trinsic.services.provider.v1.IndyOptions) options_);
     }
+    if (accountCase_ == 6) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, account_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -511,6 +593,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
         break;
       case 2:
         if (!getWalletId().equals(other.getWalletId())) return false;
+        break;
+      case 6:
+        if (!getDidUri().equals(other.getDidUri())) return false;
         break;
       case 0:
       default:
@@ -547,6 +632,10 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       case 2:
         hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
         hash = (53 * hash) + getWalletId().hashCode();
+        break;
+      case 6:
+        hash = (37 * hash) + DID_URI_FIELD_NUMBER;
+        hash = (53 * hash) + getDidUri().hashCode();
         break;
       case 0:
       default:
@@ -746,6 +835,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       if (accountCase_ == 2) {
         result.account_ = account_;
       }
+      if (accountCase_ == 6) {
+        result.account_ = account_;
+      }
       result.method_ = method_;
       if (optionsCase_ == 4) {
         if (ionOptionsBuilder_ == null) {
@@ -830,6 +922,13 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
             onChanged();
             break;
           }
+        case DID_URI:
+          {
+            accountCase_ = 6;
+            account_ = other.account_;
+            onChanged();
+            break;
+          }
         case ACCOUNT_NOT_SET:
           {
             break;
@@ -909,6 +1008,13 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
                 optionsCase_ = 5;
                 break;
               } // case 42
+            case 50:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                accountCase_ = 6;
+                account_ = s;
+                break;
+              } // case 50
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -959,7 +1065,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Email address of account to upgrade.
-     * Mutually exclusive with `walletId`.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -975,7 +1081,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Email address of account to upgrade.
-     * Mutually exclusive with `walletId`.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -1004,7 +1110,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Email address of account to upgrade.
-     * Mutually exclusive with `walletId`.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -1033,7 +1139,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Email address of account to upgrade.
-     * Mutually exclusive with `walletId`.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -1055,7 +1161,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Email address of account to upgrade.
-     * Mutually exclusive with `walletId`.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -1075,7 +1181,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Email address of account to upgrade.
-     * Mutually exclusive with `walletId`.
+     * Mutually exclusive with `walletId` and `didUri`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -1099,7 +1205,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Wallet ID of account to upgrade.
-     * Mutually exclusive with `email`.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
@@ -1115,7 +1221,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Wallet ID of account to upgrade.
-     * Mutually exclusive with `email`.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
@@ -1144,7 +1250,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Wallet ID of account to upgrade.
-     * Mutually exclusive with `email`.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
@@ -1173,7 +1279,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Wallet ID of account to upgrade.
-     * Mutually exclusive with `email`.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
@@ -1195,7 +1301,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Wallet ID of account to upgrade.
-     * Mutually exclusive with `email`.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
@@ -1215,7 +1321,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * Wallet ID of account to upgrade.
-     * Mutually exclusive with `email`.
+     * Mutually exclusive with `email` and `didUri`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
@@ -1229,6 +1335,146 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       }
       checkByteStringIsUtf8(value);
       accountCase_ = 2;
+      account_ = value;
+      onChanged();
+      return this;
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to upgrade.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return Whether the didUri field is set.
+     */
+    @java.lang.Override
+    public boolean hasDidUri() {
+      return accountCase_ == 6;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to upgrade.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return The didUri.
+     */
+    @java.lang.Override
+    public java.lang.String getDidUri() {
+      java.lang.Object ref = "";
+      if (accountCase_ == 6) {
+        ref = account_;
+      }
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (accountCase_ == 6) {
+          account_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to upgrade.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return The bytes for didUri.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getDidUriBytes() {
+      java.lang.Object ref = "";
+      if (accountCase_ == 6) {
+        ref = account_;
+      }
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        if (accountCase_ == 6) {
+          account_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to upgrade.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @param value The didUri to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDidUri(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      accountCase_ = 6;
+      account_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to upgrade.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDidUri() {
+      if (accountCase_ == 6) {
+        accountCase_ = 0;
+        account_ = null;
+        onChanged();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * DID URI of the account to upgrade.
+     * Mutually exclusive with `email` and `walletId`.
+     * </pre>
+     *
+     * <code>string did_uri = 6;</code>
+     *
+     * @param value The bytes for didUri to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDidUriBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      accountCase_ = 6;
       account_ = value;
       onChanged();
       return this;

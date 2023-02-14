@@ -182,26 +182,6 @@ class AccountInfoResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class ListDevicesRequest(betterproto.Message):
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class ListDevicesResponse(betterproto.Message):
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class RevokeDeviceRequest(betterproto.Message):
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class RevokeDeviceResponse(betterproto.Message):
-    pass
-
-
-@dataclass(eq=False, repr=False)
 class AccountEcosystem(betterproto.Message):
     """Deprecated"""
 
@@ -366,38 +346,6 @@ class AccountStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def list_devices(
-        self,
-        list_devices_request: "ListDevicesRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "ListDevicesResponse":
-        return await self._unary_unary(
-            "/services.account.v1.Account/ListDevices",
-            list_devices_request,
-            ListDevicesResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def revoke_device(
-        self,
-        revoke_device_request: "RevokeDeviceRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "RevokeDeviceResponse":
-        return await self._unary_unary(
-            "/services.account.v1.Account/RevokeDevice",
-            revoke_device_request,
-            RevokeDeviceResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def authorize_webhook(
         self,
         authorize_webhook_request: "AuthorizeWebhookRequest",
@@ -432,16 +380,6 @@ class AccountBase(ServiceBase):
     ) -> "AccountInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def list_devices(
-        self, list_devices_request: "ListDevicesRequest"
-    ) -> "ListDevicesResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def revoke_device(
-        self, revoke_device_request: "RevokeDeviceRequest"
-    ) -> "RevokeDeviceResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def authorize_webhook(
         self, authorize_webhook_request: "AuthorizeWebhookRequest"
     ) -> "AuthorizeWebhookResponse":
@@ -465,16 +403,6 @@ class AccountBase(ServiceBase):
     async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.info(request)
-        await stream.send_message(response)
-
-    async def __rpc_list_devices(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.list_devices(request)
-        await stream.send_message(response)
-
-    async def __rpc_revoke_device(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.revoke_device(request)
         await stream.send_message(response)
 
     async def __rpc_authorize_webhook(self, stream: grpclib.server.Stream) -> None:
@@ -507,18 +435,6 @@ class AccountBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 AccountInfoRequest,
                 AccountInfoResponse,
-            ),
-            "/services.account.v1.Account/ListDevices": grpclib.const.Handler(
-                self.__rpc_list_devices,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ListDevicesRequest,
-                ListDevicesResponse,
-            ),
-            "/services.account.v1.Account/RevokeDevice": grpclib.const.Handler(
-                self.__rpc_revoke_device,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RevokeDeviceRequest,
-                RevokeDeviceResponse,
             ),
             "/services.account.v1.Account/AuthorizeWebhook": grpclib.const.Handler(
                 self.__rpc_authorize_webhook,

@@ -125,13 +125,11 @@ public final class TrustRegistryOuterClass {
           + " \001(\t\022\024\n"
           + "\014framework_id\030\024 \001(\tB\010\n"
           + "\006member\"\032\n"
-          + "\030UnregisterMemberResponse\"\204\001\n"
-          + "\032GetMembershipStatusRequest\022 \n"
-          + "\030governance_framework_uri\030\001 \001(\t\022\021\n"
-          + "\007did_uri\030\002 \001(\tH\000\022\023\n"
-          + "\tx509_cert\030\003 \001(\tH\000\022\022\n\n"
-          + "schema_uri\030\004 \001(\tB\010\n"
-          + "\006member\"\\\n"
+          + "\030UnregisterMemberResponse\"W\n"
+          + "\032GetMembershipStatusRequest\022\024\n"
+          + "\014framework_id\030\001 \001(\t\022\017\n"
+          + "\007did_uri\030\002 \001(\t\022\022\n\n"
+          + "schema_uri\030\004 \001(\t\"\\\n"
           + "\033GetMembershipStatusResponse\022=\n"
           + "\006status\030\001 \001(\0162-.services.trustregistry.v1.RegistrationStatus\"C\n"
           + "\020FetchDataRequest\022 \n"
@@ -149,23 +147,24 @@ public final class TrustRegistryOuterClass {
           + "\tNOT_FOUND\020\n"
           + "2\336\006\n\r"
           + "TrustRegistry\022o\n"
-          + "\014AddFramework\022..services.trustregistry.v1.Ad"
-          + "dFrameworkRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
-          + "\017RemoveFramework\0221.services.trustregistry.v1.Remove"
-          + "FrameworkRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
-          + "\016SearchRegistry\0220.services.trustregistry.v1.Searc"
-          + "hRegistryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
-          + "\016RegisterMember\0220.services.trustregistry.v1.Regist"
-          + "erMemberRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
-          + "\020UnregisterMember\0222.services.trustregistry.v1.Unreg"
-          + "isterMemberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
-          + "\023GetMembershipStatus\0225.services.trustregistry"
-          + ".v1.GetMembershipStatusRequest\0326.service"
-          + "s.trustregistry.v1.GetMembershipStatusResponse\022p\n"
-          + "\tFetchData\022+.services.trustregistry.v1.FetchDataRequest\032,.services.trus"
-          + "tregistry.v1.FetchDataResponse\"\006\212\246\035\002\020\0010\001Br\n"
-          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustregistry/v1/trustregistry"
-          + "\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
+          + "\014AddFramework\022..services.trustregistry.v1.AddFrame"
+          + "workRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
+          + "\017RemoveFramework\0221.services.trustregistry.v1.RemoveFramew"
+          + "orkRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
+          + "\016SearchRegistry\0220.services.trustregistry.v1.SearchRegis"
+          + "tryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
+          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMemb"
+          + "erRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
+          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterM"
+          + "emberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
+          + "\023GetMembershipStatus\0225.services.trustregistry.v1.Ge"
+          + "tMembershipStatusRequest\0326.services.trus"
+          + "tregistry.v1.GetMembershipStatusResponse\022p\n"
+          + "\tFetchData\022+.services.trustregistry.v"
+          + "1.FetchDataRequest\032,.services.trustregistry.v1.FetchDataResponse\"\006\212\246\035\002\020\0010\001Br\n"
+          + "!trinsic.services.trustregistry.v1P\001Z\'servi"
+          + "ces/trustregistry/v1/trustregistry\252\002!Tri"
+          + "nsic.Services.TrustRegistry.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -268,7 +267,7 @@ public final class TrustRegistryOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor,
             new java.lang.String[] {
-              "GovernanceFrameworkUri", "DidUri", "X509Cert", "SchemaUri", "Member",
+              "FrameworkId", "DidUri", "SchemaUri",
             });
     internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor =
         getDescriptor().getMessageTypes().get(12);

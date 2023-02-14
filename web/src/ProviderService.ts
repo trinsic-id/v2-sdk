@@ -43,27 +43,6 @@ export class ProviderService extends ServiceBase {
       metadata: await this.buildMetadata(proto.UpdateEcosystemRequest.encode(request).finish())
     });
   }
-  /** Grant user authorization to ecosystem resources */
-  public async grantAuthorization(request: proto.GrantAuthorizationRequest): Promise<proto.GrantAuthorizationResponse> {
-    
-    return this.client.grantAuthorization(request, {
-      metadata: await this.buildMetadata(proto.GrantAuthorizationRequest.encode(request).finish())
-    });
-  }
-  /** Revoke user authorization to ecosystem resources */
-  public async revokeAuthorization(request: proto.RevokeAuthorizationRequest): Promise<proto.RevokeAuthorizationResponse> {
-    
-    return this.client.revokeAuthorization(request, {
-      metadata: await this.buildMetadata(proto.RevokeAuthorizationRequest.encode(request).finish())
-    });
-  }
-  /** Retrieve the list of permissions for this particular account/ecosystem */
-  public async getAuthorizations(request: proto.GetAuthorizationsRequest): Promise<proto.GetAuthorizationsResponse> {
-    
-    return this.client.getAuthorizations(request, {
-      metadata: await this.buildMetadata(proto.GetAuthorizationsRequest.encode(request).finish())
-    });
-  }
   /** Add a webhook endpoint to the ecosystem */
   public async addWebhook(request: proto.AddWebhookRequest): Promise<proto.AddWebhookResponse> {
     
@@ -93,26 +72,11 @@ export class ProviderService extends ServiceBase {
       metadata: await this.buildMetadata()
     });
   }
-  /** Generates an unprotected authentication token that can be used to
-* configure server side applications */
-  public async generateToken(request: proto.GenerateTokenRequest): Promise<proto.GenerateTokenResponse> {
-    
-    return this.client.generateToken(request, {
-      metadata: await this.buildMetadata(proto.GenerateTokenRequest.encode(request).finish())
-    });
-  }
   /** Returns the public key being used to create/verify oberon tokens */
   public async getOberonKey(request: proto.GetOberonKeyRequest): Promise<proto.GetOberonKeyResponse> {
     
     return this.client.getOberonKey(request, {
       metadata: await this.buildMetadata()
-    });
-  }
-  /** Generate a signed token (JWT) that can be used to connect to the message bus */
-  public async getEventToken(request: proto.GetEventTokenRequest): Promise<proto.GetEventTokenResponse> {
-    
-    return this.client.getEventToken(request, {
-      metadata: await this.buildMetadata(proto.GetEventTokenRequest.encode(request).finish())
     });
   }
   /** Upgrade a wallet's DID from `did:key` to another method */

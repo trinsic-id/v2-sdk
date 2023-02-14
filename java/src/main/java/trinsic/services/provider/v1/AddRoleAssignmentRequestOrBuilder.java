@@ -37,8 +37,8 @@ public interface AddRoleAssignmentRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of account to assign role to.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to assign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 2;</code>
@@ -50,8 +50,8 @@ public interface AddRoleAssignmentRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of account to assign role to.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to assign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 2;</code>
@@ -63,8 +63,8 @@ public interface AddRoleAssignmentRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of account to assign role to.
-   * Mutually exclusive with `walletId`.
+   * Email address of account to assign role.
+   * Mutually exclusive with `walletId` and `didUri`.
    * </pre>
    *
    * <code>string email = 2;</code>
@@ -78,7 +78,7 @@ public interface AddRoleAssignmentRequestOrBuilder
    *
    * <pre>
    * Wallet ID of account to assign role to.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -91,7 +91,7 @@ public interface AddRoleAssignmentRequestOrBuilder
    *
    * <pre>
    * Wallet ID of account to assign role to.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -104,7 +104,7 @@ public interface AddRoleAssignmentRequestOrBuilder
    *
    * <pre>
    * Wallet ID of account to assign role to.
-   * Mutually exclusive with `email`.
+   * Mutually exclusive with `email` and `didUri`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -112,6 +112,46 @@ public interface AddRoleAssignmentRequestOrBuilder
    * @return The bytes for walletId.
    */
   com.google.protobuf.ByteString getWalletIdBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to assign role.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 4;</code>
+   *
+   * @return Whether the didUri field is set.
+   */
+  boolean hasDidUri();
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to assign role.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 4;</code>
+   *
+   * @return The didUri.
+   */
+  java.lang.String getDidUri();
+  /**
+   *
+   *
+   * <pre>
+   * DID URI of the account to assign role.
+   * Mutually exclusive with `email` and `walletId`.
+   * </pre>
+   *
+   * <code>string did_uri = 4;</code>
+   *
+   * @return The bytes for didUri.
+   */
+  com.google.protobuf.ByteString getDidUriBytes();
 
   public trinsic.services.provider.v1.AddRoleAssignmentRequest.AccountCase getAccountCase();
 }

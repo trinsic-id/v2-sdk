@@ -27,6 +27,12 @@ class TrinsicServicesTest {
   }
 
   @Test
+  public void testFileManagementServiceDemo()
+      throws IOException, ExecutionException, InterruptedException, DidException {
+    FileManagementDemo.run();
+  }
+
+  @Test
   public void testTrustRegistryDemo()
       throws IOException, DidException, ExecutionException, InterruptedException {
     TrustRegistryDemo.run();

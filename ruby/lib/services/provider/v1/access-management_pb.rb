@@ -12,6 +12,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :account do
         optional :email, :string, 2
         optional :wallet_id, :string, 3
+        optional :did_uri, :string, 4
       end
     end
     add_message "services.provider.v1.AddRoleAssignmentResponse" do
@@ -21,6 +22,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :account do
         optional :email, :string, 2
         optional :wallet_id, :string, 3
+        optional :did_uri, :string, 4
       end
     end
     add_message "services.provider.v1.RemoveRoleAssignmentResponse" do
@@ -29,6 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :account do
         optional :email, :string, 2
         optional :wallet_id, :string, 3
+        optional :did_uri, :string, 4
       end
     end
     add_message "services.provider.v1.ListRoleAssignmentsResponse" do

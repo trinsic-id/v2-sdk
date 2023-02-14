@@ -48,12 +48,6 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
-    "services.account.v1.Account.ListDevices": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.Account.Login": {
       "type": "method",
       "collection": "methods",
@@ -61,12 +55,6 @@
       "parent": ""
     },
     "services.account.v1.Account.LoginConfirm": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.Account.RevokeDevice": {
       "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
@@ -270,18 +258,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.ConfirmationMethod"
     },
-    "services.account.v1.ListDevicesRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.ListDevicesResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.LoginConfirmRequest": {
       "type": "message",
       "collection": "messages",
@@ -353,18 +329,6 @@
       "collection": "fields",
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.LoginResponse"
-    },
-    "services.account.v1.RevokeDeviceRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.RevokeDeviceResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
     },
     "services.account.v1.SignInRequest": {
       "type": "message",
@@ -828,6 +792,12 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
     },
+    "services.provider.v1.AddRoleAssignmentRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.AddRoleAssignmentRequest"
+    },
     "services.provider.v1.AddRoleAssignmentRequest.email": {
       "type": "field",
       "collection": "fields",
@@ -1104,72 +1074,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.EcosystemInfoResponse"
     },
-    "services.provider.v1.GenerateTokenRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GenerateTokenRequest.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GenerateTokenRequest"
-    },
-    "services.provider.v1.GenerateTokenResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GenerateTokenResponse.profile": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GenerateTokenResponse"
-    },
-    "services.provider.v1.GetAuthorizationsRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetAuthorizationsResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetAuthorizationsResponse.grants": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetAuthorizationsResponse"
-    },
-    "services.provider.v1.GetEventTokenRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetEventTokenRequest.pk": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetEventTokenRequest"
-    },
-    "services.provider.v1.GetEventTokenResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetEventTokenResponse.token": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetEventTokenResponse"
-    },
     "services.provider.v1.GetOberonKeyRequest": {
       "type": "message",
       "collection": "messages",
@@ -1235,42 +1139,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.Grant"
-    },
-    "services.provider.v1.GrantAuthorizationRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GrantAuthorizationRequest.action": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.email": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.resource": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.walletId": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GrantAuthorizationRequest"
-    },
-    "services.provider.v1.GrantAuthorizationResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
     },
     "services.provider.v1.IndyOptions": {
       "type": "message",
@@ -1506,6 +1374,12 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
     },
+    "services.provider.v1.ListRoleAssignmentsRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.ListRoleAssignmentsRequest"
+    },
     "services.provider.v1.ListRoleAssignmentsRequest.email": {
       "type": "field",
       "collection": "fields",
@@ -1578,24 +1452,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.Provider.GenerateToken": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.GetAuthorizations": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.GetEventToken": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
     "services.provider.v1.Provider.GetOberonKey": {
       "type": "method",
       "collection": "methods",
@@ -1603,12 +1459,6 @@
       "parent": ""
     },
     "services.provider.v1.Provider.GetPublicEcosystemInfo": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.GrantAuthorization": {
       "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -1633,12 +1483,6 @@
       "parent": ""
     },
     "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.RevokeAuthorization": {
       "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -1728,6 +1572,12 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
     },
+    "services.provider.v1.RemoveRoleAssignmentRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.RemoveRoleAssignmentRequest"
+    },
     "services.provider.v1.RemoveRoleAssignmentRequest.email": {
       "type": "field",
       "collection": "fields",
@@ -1775,42 +1625,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.RetrieveDomainVerificationRecordResponse"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.action": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.email": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.resource": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.walletId": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RevokeAuthorizationRequest"
-    },
-    "services.provider.v1.RevokeAuthorizationResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
     },
     "services.provider.v1.SearchWalletConfigurationResponse": {
       "type": "message",
@@ -1901,6 +1715,12 @@
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
+    },
+    "services.provider.v1.UpgradeDidRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.UpgradeDidRequest"
     },
     "services.provider.v1.UpgradeDidRequest.email": {
       "type": "field",
@@ -2118,19 +1938,13 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri": {
+    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
-    },
-    "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -2430,6 +2244,36 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.DeleteWalletRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.DeleteWalletRequest"
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.DeleteWalletRequest"
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.DeleteWalletRequest"
+    },
+    "services.universalwallet.v1.DeleteWalletResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.GetItemRequest": {
       "type": "message",
       "collection": "messages",
@@ -2539,6 +2383,12 @@
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.DeleteItem": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.DeleteWallet": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -3084,6 +2934,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.CreateProofRequest"
     },
+    "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateProofRequest"
+    },
     "services.verifiablecredentials.v1.CreateProofResponse": {
       "type": "message",
       "collection": "messages",
@@ -3179,6 +3035,12 @@
       "collection": "messages",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
+    },
+    "services.verifiablecredentials.v1.SendRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SendRequest"
     },
     "services.verifiablecredentials.v1.SendRequest.document_json": {
       "type": "field",
@@ -3644,8 +3506,6 @@
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info",
-        "services.account.v1.Account.ListDevices",
-        "services.account.v1.Account.RevokeDevice",
         "services.account.v1.Account.AuthorizeWebhook"
       ],
       "messages": [
@@ -3656,10 +3516,6 @@
         "services.account.v1.TokenProtection",
         "services.account.v1.AccountInfoRequest",
         "services.account.v1.AccountInfoResponse",
-        "services.account.v1.ListDevicesRequest",
-        "services.account.v1.ListDevicesResponse",
-        "services.account.v1.RevokeDeviceRequest",
-        "services.account.v1.RevokeDeviceResponse",
         "services.account.v1.AccountEcosystem",
         "services.account.v1.LoginRequest",
         "services.account.v1.LoginResponse",
@@ -3904,11 +3760,14 @@
         "services.provider.v1.AddRoleAssignmentRequest.role",
         "services.provider.v1.AddRoleAssignmentRequest.email",
         "services.provider.v1.AddRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.AddRoleAssignmentRequest.did_uri",
         "services.provider.v1.RemoveRoleAssignmentRequest.role",
         "services.provider.v1.RemoveRoleAssignmentRequest.email",
         "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.RemoveRoleAssignmentRequest.did_uri",
         "services.provider.v1.ListRoleAssignmentsRequest.email",
         "services.provider.v1.ListRoleAssignmentsRequest.wallet_id",
+        "services.provider.v1.ListRoleAssignmentsRequest.did_uri",
         "services.provider.v1.ListRoleAssignmentsResponse.roles",
         "services.provider.v1.ListAvailableRolesResponse.roles"
       ],
@@ -3925,18 +3784,13 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
-        "services.provider.v1.Provider.GrantAuthorization",
-        "services.provider.v1.Provider.RevokeAuthorization",
-        "services.provider.v1.Provider.GetAuthorizations",
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
         "services.provider.v1.Provider.GetPublicEcosystemInfo",
-        "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
-        "services.provider.v1.Provider.GetEventToken",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
         "services.provider.v1.Provider.RefreshDomainVerificationStatus",
@@ -3968,22 +3822,12 @@
         "services.provider.v1.GetPublicEcosystemInfoRequest",
         "services.provider.v1.GetPublicEcosystemInfoResponse",
         "services.provider.v1.PublicEcosystemInformation",
-        "services.provider.v1.GenerateTokenRequest",
-        "services.provider.v1.GenerateTokenResponse",
         "services.provider.v1.GetOberonKeyRequest",
         "services.provider.v1.GetOberonKeyResponse",
-        "services.provider.v1.GetEventTokenRequest",
-        "services.provider.v1.GetEventTokenResponse",
         "services.provider.v1.RetrieveDomainVerificationRecordRequest",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse",
         "services.provider.v1.RefreshDomainVerificationStatusRequest",
         "services.provider.v1.RefreshDomainVerificationStatusResponse",
-        "services.provider.v1.GrantAuthorizationRequest",
-        "services.provider.v1.GrantAuthorizationResponse",
-        "services.provider.v1.RevokeAuthorizationRequest",
-        "services.provider.v1.RevokeAuthorizationResponse",
-        "services.provider.v1.GetAuthorizationsRequest",
-        "services.provider.v1.GetAuthorizationsResponse",
         "services.provider.v1.SearchWalletConfigurationsRequest",
         "services.provider.v1.SearchWalletConfigurationResponse",
         "services.provider.v1.WalletConfiguration",
@@ -4049,24 +3893,11 @@
         "services.provider.v1.PublicEcosystemInformation.domain_verified",
         "services.provider.v1.PublicEcosystemInformation.style_display",
         "services.provider.v1.PublicEcosystemInformation.description",
-        "services.provider.v1.GenerateTokenRequest.description",
-        "services.provider.v1.GenerateTokenResponse.profile",
         "services.provider.v1.GetOberonKeyResponse.key",
-        "services.provider.v1.GetEventTokenRequest.pk",
-        "services.provider.v1.GetEventTokenResponse.token",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified",
-        "services.provider.v1.GrantAuthorizationRequest.email",
-        "services.provider.v1.GrantAuthorizationRequest.walletId",
-        "services.provider.v1.GrantAuthorizationRequest.resource",
-        "services.provider.v1.GrantAuthorizationRequest.action",
-        "services.provider.v1.RevokeAuthorizationRequest.email",
-        "services.provider.v1.RevokeAuthorizationRequest.walletId",
-        "services.provider.v1.RevokeAuthorizationRequest.resource",
-        "services.provider.v1.RevokeAuthorizationRequest.action",
-        "services.provider.v1.GetAuthorizationsResponse.grants",
         "services.provider.v1.SearchWalletConfigurationsRequest.query_filter",
         "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token",
         "services.provider.v1.SearchWalletConfigurationResponse.results",
@@ -4082,6 +3913,7 @@
         "services.provider.v1.IndyOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
         "services.provider.v1.UpgradeDidRequest.wallet_id",
+        "services.provider.v1.UpgradeDidRequest.did_uri",
         "services.provider.v1.UpgradeDidRequest.method",
         "services.provider.v1.UpgradeDidRequest.ion_options",
         "services.provider.v1.UpgradeDidRequest.indy_options",
@@ -4174,9 +4006,8 @@
         "services.trustregistry.v1.UnregisterMemberRequest.email",
         "services.trustregistry.v1.UnregisterMemberRequest.schema_uri",
         "services.trustregistry.v1.UnregisterMemberRequest.framework_id",
-        "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri",
         "services.trustregistry.v1.GetMembershipStatusResponse.status",
         "services.trustregistry.v1.FetchDataRequest.governance_framework_uri",
@@ -4208,7 +4039,8 @@
         "services.universalwallet.v1.UniversalWallet.Search",
         "services.universalwallet.v1.UniversalWallet.InsertItem",
         "services.universalwallet.v1.UniversalWallet.UpdateItem",
-        "services.universalwallet.v1.UniversalWallet.DeleteItem"
+        "services.universalwallet.v1.UniversalWallet.DeleteItem",
+        "services.universalwallet.v1.UniversalWallet.DeleteWallet"
       ],
       "messages": [
         "services.universalwallet.v1.SearchRequest",
@@ -4220,7 +4052,9 @@
         "services.universalwallet.v1.InsertItemRequest",
         "services.universalwallet.v1.InsertItemResponse",
         "services.universalwallet.v1.DeleteItemRequest",
-        "services.universalwallet.v1.DeleteItemResponse"
+        "services.universalwallet.v1.DeleteItemResponse",
+        "services.universalwallet.v1.DeleteWalletRequest",
+        "services.universalwallet.v1.DeleteWalletResponse"
       ],
       "fields": [
         "services.universalwallet.v1.SearchRequest.query",
@@ -4236,7 +4070,10 @@
         "services.universalwallet.v1.InsertItemRequest.item_json",
         "services.universalwallet.v1.InsertItemRequest.item_type",
         "services.universalwallet.v1.InsertItemResponse.item_id",
-        "services.universalwallet.v1.DeleteItemRequest.item_id"
+        "services.universalwallet.v1.DeleteItemRequest.item_id",
+        "services.universalwallet.v1.DeleteWalletRequest.email",
+        "services.universalwallet.v1.DeleteWalletRequest.wallet_id",
+        "services.universalwallet.v1.DeleteWalletRequest.did_uri"
       ],
       "enums": [],
       "enum_values": []
@@ -4377,6 +4214,7 @@
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce",
         "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes",
         "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json",
@@ -4390,6 +4228,7 @@
         "services.verifiablecredentials.v1.ValidationMessage.messages",
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.wallet_id",
+        "services.verifiablecredentials.v1.SendRequest.did_uri",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json",
         "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id",
@@ -4411,8 +4250,6 @@
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info",
-        "services.account.v1.Account.ListDevices",
-        "services.account.v1.Account.RevokeDevice",
         "services.account.v1.Account.AuthorizeWebhook"
       ]
     },
@@ -4446,18 +4283,13 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
-        "services.provider.v1.Provider.GrantAuthorization",
-        "services.provider.v1.Provider.RevokeAuthorization",
-        "services.provider.v1.Provider.GetAuthorizations",
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
         "services.provider.v1.Provider.GetPublicEcosystemInfo",
-        "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
-        "services.provider.v1.Provider.GetEventToken",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
         "services.provider.v1.Provider.RefreshDomainVerificationStatus",
@@ -4487,7 +4319,8 @@
         "services.universalwallet.v1.UniversalWallet.Search",
         "services.universalwallet.v1.UniversalWallet.InsertItem",
         "services.universalwallet.v1.UniversalWallet.UpdateItem",
-        "services.universalwallet.v1.UniversalWallet.DeleteItem"
+        "services.universalwallet.v1.UniversalWallet.DeleteItem",
+        "services.universalwallet.v1.UniversalWallet.DeleteWallet"
       ]
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates": {
@@ -4535,13 +4368,6 @@
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
-    "services.account.v1.Account.ListDevices": {
-      "name": "ListDevices",
-      "full_name": "services.account.v1.Account.ListDevices",
-      "input_type": "services.account.v1.ListDevicesRequest",
-      "output_type": "services.account.v1.ListDevicesResponse",
-      "description": "List all connected devices"
-    },
     "services.account.v1.Account.Login": {
       "name": "Login",
       "full_name": "services.account.v1.Account.Login",
@@ -4561,13 +4387,6 @@
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
-    },
-    "services.account.v1.Account.RevokeDevice": {
-      "name": "RevokeDevice",
-      "full_name": "services.account.v1.Account.RevokeDevice",
-      "input_type": "services.account.v1.RevokeDeviceRequest",
-      "output_type": "services.account.v1.RevokeDeviceResponse",
-      "description": "Revoke device access to the account's cloud wallet"
     },
     "services.account.v1.Account.SignIn": {
       "name": "SignIn",
@@ -4701,27 +4520,6 @@
       "output_type": "services.provider.v1.EcosystemInfoResponse",
       "description": "Get ecosystem information"
     },
-    "services.provider.v1.Provider.GenerateToken": {
-      "name": "GenerateToken",
-      "full_name": "services.provider.v1.Provider.GenerateToken",
-      "input_type": "services.provider.v1.GenerateTokenRequest",
-      "output_type": "services.provider.v1.GenerateTokenResponse",
-      "description": "Generates an unprotected authentication token that can be used to\nconfigure server side applications"
-    },
-    "services.provider.v1.Provider.GetAuthorizations": {
-      "name": "GetAuthorizations",
-      "full_name": "services.provider.v1.Provider.GetAuthorizations",
-      "input_type": "services.provider.v1.GetAuthorizationsRequest",
-      "output_type": "services.provider.v1.GetAuthorizationsResponse",
-      "description": "Retrieve the list of permissions for this particular account/ecosystem"
-    },
-    "services.provider.v1.Provider.GetEventToken": {
-      "name": "GetEventToken",
-      "full_name": "services.provider.v1.Provider.GetEventToken",
-      "input_type": "services.provider.v1.GetEventTokenRequest",
-      "output_type": "services.provider.v1.GetEventTokenResponse",
-      "description": "Generate a signed token (JWT) that can be used to connect to the message bus"
-    },
     "services.provider.v1.Provider.GetOberonKey": {
       "name": "GetOberonKey",
       "full_name": "services.provider.v1.Provider.GetOberonKey",
@@ -4741,13 +4539,6 @@
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
-    },
-    "services.provider.v1.Provider.GrantAuthorization": {
-      "name": "GrantAuthorization",
-      "full_name": "services.provider.v1.Provider.GrantAuthorization",
-      "input_type": "services.provider.v1.GrantAuthorizationRequest",
-      "output_type": "services.provider.v1.GrantAuthorizationResponse",
-      "description": "Grant user authorization to ecosystem resources"
     },
     "services.provider.v1.Provider.InvitationStatus": {
       "name": "InvitationStatus",
@@ -4787,13 +4578,6 @@
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
-    },
-    "services.provider.v1.Provider.RevokeAuthorization": {
-      "name": "RevokeAuthorization",
-      "full_name": "services.provider.v1.Provider.RevokeAuthorization",
-      "input_type": "services.provider.v1.RevokeAuthorizationRequest",
-      "output_type": "services.provider.v1.RevokeAuthorizationResponse",
-      "description": "Revoke user authorization to ecosystem resources"
     },
     "services.provider.v1.Provider.SearchWalletConfigurations": {
       "name": "SearchWalletConfigurations",
@@ -4878,6 +4662,13 @@
       "input_type": "services.universalwallet.v1.DeleteItemRequest",
       "output_type": "services.universalwallet.v1.DeleteItemResponse",
       "description": "Delete an item from the wallet permanently"
+    },
+    "services.universalwallet.v1.UniversalWallet.DeleteWallet": {
+      "name": "DeleteWallet",
+      "full_name": "services.universalwallet.v1.UniversalWallet.DeleteWallet",
+      "input_type": "services.universalwallet.v1.DeleteWalletRequest",
+      "output_type": "services.universalwallet.v1.DeleteWalletResponse",
+      "description": "Delete a wallet and its credentials"
     },
     "services.universalwallet.v1.UniversalWallet.GetItem": {
       "name": "GetItem",
@@ -5089,22 +4880,6 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.ListDevicesRequest": {
-      "name": "ListDevicesRequest",
-      "full_name": "services.account.v1.ListDevicesRequest",
-      "description": "",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.ListDevicesResponse": {
-      "name": "ListDevicesResponse",
-      "full_name": "services.account.v1.ListDevicesResponse",
-      "description": "",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
     "services.account.v1.LoginConfirmRequest": {
       "name": "LoginConfirmRequest",
       "full_name": "services.account.v1.LoginConfirmRequest",
@@ -5146,22 +4921,6 @@
         "services.account.v1.LoginResponse.challenge",
         "services.account.v1.LoginResponse.profile"
       ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.RevokeDeviceRequest": {
-      "name": "RevokeDeviceRequest",
-      "full_name": "services.account.v1.RevokeDeviceRequest",
-      "description": "",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.RevokeDeviceResponse": {
-      "name": "RevokeDeviceResponse",
-      "full_name": "services.account.v1.RevokeDeviceResponse",
-      "description": "",
-      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -5368,7 +5127,8 @@
       "fields": [
         "services.provider.v1.AddRoleAssignmentRequest.role",
         "services.provider.v1.AddRoleAssignmentRequest.email",
-        "services.provider.v1.AddRoleAssignmentRequest.wallet_id"
+        "services.provider.v1.AddRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.AddRoleAssignmentRequest.did_uri"
       ],
       "messages": [],
       "enums": []
@@ -5526,64 +5286,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.GenerateTokenRequest": {
-      "name": "GenerateTokenRequest",
-      "full_name": "services.provider.v1.GenerateTokenRequest",
-      "description": "Request to generate an authentication token for the current account",
-      "fields": [
-        "services.provider.v1.GenerateTokenRequest.description"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GenerateTokenResponse": {
-      "name": "GenerateTokenResponse",
-      "full_name": "services.provider.v1.GenerateTokenResponse",
-      "description": "Response to `GenerateTokenRequest`",
-      "fields": [
-        "services.provider.v1.GenerateTokenResponse.profile"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetAuthorizationsRequest": {
-      "name": "GetAuthorizationsRequest",
-      "full_name": "services.provider.v1.GetAuthorizationsRequest",
-      "description": "Fetch list of grants that the current account has access to\nin its ecosystem",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetAuthorizationsResponse": {
-      "name": "GetAuthorizationsResponse",
-      "full_name": "services.provider.v1.GetAuthorizationsResponse",
-      "description": "Response to `GetAuthorizationsRequest`",
-      "fields": [
-        "services.provider.v1.GetAuthorizationsResponse.grants"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetEventTokenRequest": {
-      "name": "GetEventTokenRequest",
-      "full_name": "services.provider.v1.GetEventTokenRequest",
-      "description": "Generates an events token bound to the provided ed25519 public key.",
-      "fields": [
-        "services.provider.v1.GetEventTokenRequest.pk"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetEventTokenResponse": {
-      "name": "GetEventTokenResponse",
-      "full_name": "services.provider.v1.GetEventTokenResponse",
-      "description": "Response message containing a token (JWT) that can be used\nto connect directly to the message streaming architecture",
-      "fields": [
-        "services.provider.v1.GetEventTokenResponse.token"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.GetOberonKeyRequest": {
       "name": "GetOberonKeyRequest",
       "full_name": "services.provider.v1.GetOberonKeyRequest",
@@ -5637,27 +5339,6 @@
         "services.provider.v1.Grant.actions",
         "services.provider.v1.Grant.child_grants"
       ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GrantAuthorizationRequest": {
-      "name": "GrantAuthorizationRequest",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest",
-      "description": "Grant permissions to a resource or path in the ecosystem",
-      "fields": [
-        "services.provider.v1.GrantAuthorizationRequest.email",
-        "services.provider.v1.GrantAuthorizationRequest.walletId",
-        "services.provider.v1.GrantAuthorizationRequest.resource",
-        "services.provider.v1.GrantAuthorizationRequest.action"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GrantAuthorizationResponse": {
-      "name": "GrantAuthorizationResponse",
-      "full_name": "services.provider.v1.GrantAuthorizationResponse",
-      "description": "Response to `GrantAuthorizationRequest`",
-      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -5777,7 +5458,8 @@
       "description": "Request to fetch the list of roles assigned to the current account",
       "fields": [
         "services.provider.v1.ListRoleAssignmentsRequest.email",
-        "services.provider.v1.ListRoleAssignmentsRequest.wallet_id"
+        "services.provider.v1.ListRoleAssignmentsRequest.wallet_id",
+        "services.provider.v1.ListRoleAssignmentsRequest.did_uri"
       ],
       "messages": [],
       "enums": []
@@ -5835,7 +5517,8 @@
       "fields": [
         "services.provider.v1.RemoveRoleAssignmentRequest.role",
         "services.provider.v1.RemoveRoleAssignmentRequest.email",
-        "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id"
+        "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.RemoveRoleAssignmentRequest.did_uri"
       ],
       "messages": [],
       "enums": []
@@ -5864,27 +5547,6 @@
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value"
       ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.RevokeAuthorizationRequest": {
-      "name": "RevokeAuthorizationRequest",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest",
-      "description": "Revoke permissions to a resource or path in the ecosystem",
-      "fields": [
-        "services.provider.v1.RevokeAuthorizationRequest.email",
-        "services.provider.v1.RevokeAuthorizationRequest.walletId",
-        "services.provider.v1.RevokeAuthorizationRequest.resource",
-        "services.provider.v1.RevokeAuthorizationRequest.action"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.RevokeAuthorizationResponse": {
-      "name": "RevokeAuthorizationResponse",
-      "full_name": "services.provider.v1.RevokeAuthorizationResponse",
-      "description": "Response to `RevokeAuthorizationRequest`",
-      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -5941,6 +5603,7 @@
       "fields": [
         "services.provider.v1.UpgradeDidRequest.email",
         "services.provider.v1.UpgradeDidRequest.wallet_id",
+        "services.provider.v1.UpgradeDidRequest.did_uri",
         "services.provider.v1.UpgradeDidRequest.method",
         "services.provider.v1.UpgradeDidRequest.ion_options",
         "services.provider.v1.UpgradeDidRequest.indy_options"
@@ -6036,11 +5699,10 @@
     "services.trustregistry.v1.GetMembershipStatusRequest": {
       "name": "GetMembershipStatusRequest",
       "full_name": "services.trustregistry.v1.GetMembershipStatusRequest",
-      "description": "Request to fetch membership status in governance framework for a specific credential schema.\nOnly one of `did_uri`, `x509_cert` may be specified.",
+      "description": "Request to fetch membership status in governance framework for a specific credential schema.",
       "fields": [
-        "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri"
       ],
       "messages": [],
@@ -6169,6 +5831,26 @@
       "name": "DeleteItemResponse",
       "full_name": "services.universalwallet.v1.DeleteItemResponse",
       "description": "Response to `DeleteItemRequest`",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.DeleteWalletRequest": {
+      "name": "DeleteWalletRequest",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest",
+      "description": "Request to delete a wallet",
+      "fields": [
+        "services.universalwallet.v1.DeleteWalletRequest.email",
+        "services.universalwallet.v1.DeleteWalletRequest.wallet_id",
+        "services.universalwallet.v1.DeleteWalletRequest.did_uri"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.DeleteWalletResponse": {
+      "name": "DeleteWalletResponse",
+      "full_name": "services.universalwallet.v1.DeleteWalletResponse",
+      "description": "Response to `DeleteWalletRequest`. Empty payload.",
       "fields": [],
       "messages": [],
       "enums": []
@@ -6505,6 +6187,7 @@
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
+        "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
         "services.verifiablecredentials.v1.CreateProofRequest.nonce"
       ],
       "messages": [],
@@ -6580,6 +6263,7 @@
       "fields": [
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.wallet_id",
+        "services.verifiablecredentials.v1.SendRequest.did_uri",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json"
       ],
@@ -7329,13 +7013,21 @@
       "full_type": "bool",
       "description": "Whether the SDK template generator should generate this method without arguments, eg\nProviderService.GetEcosystemInfo() where the request object is empty"
     },
+    "services.provider.v1.AddRoleAssignmentRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.AddRoleAssignmentRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to assign role.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.AddRoleAssignmentRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.AddRoleAssignmentRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to assign role to.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to assign role.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.AddRoleAssignmentRequest.role": {
       "name": "role",
@@ -7351,7 +7043,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to assign role to.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to assign role to.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.AddWebhookRequest.destination_url": {
       "name": "destination_url",
@@ -7598,49 +7290,6 @@
       "full_type": "services.provider.v1.Ecosystem",
       "description": "Ecosystem corresponding to current ecosystem in the account token"
     },
-    "services.provider.v1.GenerateTokenRequest.description": {
-      "name": "description",
-      "full_name": "services.provider.v1.GenerateTokenRequest.description",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Description to identify this token",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.provider.v1.GenerateTokenResponse.profile": {
-      "name": "profile",
-      "full_name": "services.provider.v1.GenerateTokenResponse.profile",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountProfile",
-      "full_type": "services.account.v1.AccountProfile",
-      "description": "Account authentication profile that contains unprotected token"
-    },
-    "services.provider.v1.GetAuthorizationsResponse.grants": {
-      "name": "grants",
-      "full_name": "services.provider.v1.GetAuthorizationsResponse.grants",
-      "label": "LABEL_REPEATED",
-      "type": "Grant",
-      "full_type": "services.provider.v1.Grant",
-      "description": "Grants attached to account"
-    },
-    "services.provider.v1.GetEventTokenRequest.pk": {
-      "name": "pk",
-      "full_name": "services.provider.v1.GetEventTokenRequest.pk",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": "Raw public key to generate event token for"
-    },
-    "services.provider.v1.GetEventTokenResponse.token": {
-      "name": "token",
-      "full_name": "services.provider.v1.GetEventTokenResponse.token",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "JWT bound to the public key provided in `GetEventTokenRequest`"
-    },
     "services.provider.v1.GetOberonKeyResponse.key": {
       "name": "key",
       "full_name": "services.provider.v1.GetOberonKeyResponse.key",
@@ -7688,38 +7337,6 @@
       "type": "string",
       "full_type": "string",
       "description": "the urn of the resource"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.action": {
-      "name": "action",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.action",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Action to authorize. Default is \"*\" (all)"
-    },
-    "services.provider.v1.GrantAuthorizationRequest.email": {
-      "name": "email",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.email",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Email address of account being granted permission.\nMutually exclusive with `walletId`."
-    },
-    "services.provider.v1.GrantAuthorizationRequest.resource": {
-      "name": "resource",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.resource",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Resource string that account is receiving permissions for.\nResources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted."
-    },
-    "services.provider.v1.GrantAuthorizationRequest.walletId": {
-      "name": "walletId",
-      "full_name": "services.provider.v1.GrantAuthorizationRequest.walletId",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Wallet ID of account being granted permission.\nMutually exclusive with `email`."
     },
     "services.provider.v1.IndyOptions.network": {
       "name": "network",
@@ -7815,13 +7432,21 @@
       "full_type": "string",
       "description": "List of roles"
     },
+    "services.provider.v1.ListRoleAssignmentsRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.ListRoleAssignmentsRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to list roles.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.ListRoleAssignmentsRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.ListRoleAssignmentsRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to unassign role from.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to list roles.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.ListRoleAssignmentsRequest.wallet_id": {
       "name": "wallet_id",
@@ -7829,7 +7454,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to unassign role from.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to list roles.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.ListRoleAssignmentsResponse.roles": {
       "name": "roles",
@@ -7895,13 +7520,21 @@
       "full_type": "bool",
       "description": "Specifies if the above `domain` was successfully verified"
     },
+    "services.provider.v1.RemoveRoleAssignmentRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to unassign role.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.RemoveRoleAssignmentRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to unassign role from.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to unassign role.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.RemoveRoleAssignmentRequest.role": {
       "name": "role",
@@ -7917,7 +7550,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to unassign role from.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to unassign role.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value": {
       "name": "verification_record_Value",
@@ -7934,38 +7567,6 @@
       "type": "string",
       "full_type": "string",
       "description": "TXT record name to use for domain verification"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.action": {
-      "name": "action",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.action",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Action to revoke. Default is \"*\" (all)"
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.email": {
-      "name": "email",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.email",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Email address of account having permission revoked.\nMutually exclusive with `walletId`."
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.resource": {
-      "name": "resource",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.resource",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Resource string that account is losing permissions for.\nResources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted."
-    },
-    "services.provider.v1.RevokeAuthorizationRequest.walletId": {
-      "name": "walletId",
-      "full_name": "services.provider.v1.RevokeAuthorizationRequest.walletId",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Wallet ID of account having permission revoked.\nMutually exclusive with `email`."
     },
     "services.provider.v1.SearchWalletConfigurationResponse.continuation_token": {
       "name": "continuation_token",
@@ -8056,13 +7657,21 @@
       "full_type": "services.provider.v1.Ecosystem",
       "description": "Current ecosystem metadata, post-update"
     },
+    "services.provider.v1.UpgradeDidRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.provider.v1.UpgradeDidRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to upgrade.\nMutually exclusive with `email` and `walletId`."
+    },
     "services.provider.v1.UpgradeDidRequest.email": {
       "name": "email",
       "full_name": "services.provider.v1.UpgradeDidRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account to upgrade.\nMutually exclusive with `walletId`."
+      "description": "Email address of account to upgrade.\nMutually exclusive with `walletId` and `didUri`."
     },
     "services.provider.v1.UpgradeDidRequest.indy_options": {
       "name": "indy_options",
@@ -8094,7 +7703,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of account to upgrade.\nMutually exclusive with `email`."
+      "description": "Wallet ID of account to upgrade.\nMutually exclusive with `email` and `didUri`."
     },
     "services.provider.v1.UpgradeDidResponse.did": {
       "name": "did",
@@ -8286,13 +7895,13 @@
       "full_type": "string",
       "description": "DID URI of member"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri": {
-      "name": "governance_framework_uri",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
+    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
+      "name": "framework_id",
+      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "URI of governance framework"
+      "description": "The ID of the ecosystem governance framework.\nThis ID may be found in the 'trustRegistry' field in the\nverifiable credential model"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
       "name": "schema_uri",
@@ -8301,14 +7910,6 @@
       "type": "string",
       "full_type": "string",
       "description": "URI of credential schema associated with membership"
-    },
-    "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert": {
-      "name": "x509_cert",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "X.509 certificate of member"
     },
     "services.trustregistry.v1.GetMembershipStatusResponse.status": {
       "name": "status",
@@ -8496,6 +8097,30 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of item to delete"
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the account to delete.\nMutually exclusive with `email` and `walletId`."
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.email": {
+      "name": "email",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Email address of account to delete.\nMutually exclusive with `walletId` and `didUri`."
+    },
+    "services.universalwallet.v1.DeleteWalletRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.universalwallet.v1.DeleteWalletRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of account to delete.\nMutually exclusive with `email` and `didUri`."
     },
     "services.universalwallet.v1.GetItemRequest.item_id": {
       "name": "item_id",
@@ -9006,6 +8631,14 @@
       "full_type": "services.verifiablecredentials.v1.RevealTemplateAttributes",
       "description": "Information about what sections of the document to reveal"
     },
+    "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation": {
+      "name": "use_verifiable_presentation",
+      "full_name": "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Wrap the output in a verifiable presentation"
+    },
     "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json": {
       "name": "proof_document_json",
       "full_name": "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json",
@@ -9080,6 +8713,14 @@
       "type": "string",
       "full_type": "string",
       "description": "A list of document attributes to reveal. If unset, all attributes will be returned."
+    },
+    "services.verifiablecredentials.v1.SendRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.verifiablecredentials.v1.SendRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of the recipient"
     },
     "services.verifiablecredentials.v1.SendRequest.document_json": {
       "name": "document_json",

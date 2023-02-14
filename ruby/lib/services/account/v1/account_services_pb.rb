@@ -24,10 +24,6 @@ module Services
           rpc :LoginConfirm, ::Services::Account::V1::LoginConfirmRequest, ::Services::Account::V1::LoginConfirmResponse
           # Get account information
           rpc :Info, ::Services::Account::V1::AccountInfoRequest, ::Services::Account::V1::AccountInfoResponse
-          # List all connected devices
-          rpc :ListDevices, ::Services::Account::V1::ListDevicesRequest, ::Services::Account::V1::ListDevicesResponse
-          # Revoke device access to the account's cloud wallet
-          rpc :RevokeDevice, ::Services::Account::V1::RevokeDeviceRequest, ::Services::Account::V1::RevokeDeviceResponse
           # Authorize Ecosystem to receive webhook events
           rpc :AuthorizeWebhook, ::Services::Account::V1::AuthorizeWebhookRequest, ::Services::Account::V1::AuthorizeWebhookResponse
         end

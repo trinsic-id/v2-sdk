@@ -1,5 +1,7 @@
 import base64
 
+import deprecation
+
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.provider.v1 import *
 from trinsic.security_providers import ITokenProvider
@@ -69,33 +71,6 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def grant_authorization(
-        self, *, request: GrantAuthorizationRequest
-    ) -> GrantAuthorizationResponse:
-        """Grant user authorization to ecosystem resources"""
-
-        return await self.client.grant_authorization(
-            request, metadata=self.build_metadata(request)
-        )
-
-    async def revoke_authorization(
-        self, *, request: RevokeAuthorizationRequest
-    ) -> RevokeAuthorizationResponse:
-        """Revoke user authorization to ecosystem resources"""
-
-        return await self.client.revoke_authorization(
-            request, metadata=self.build_metadata(request)
-        )
-
-    async def get_authorizations(
-        self, *, request: GetAuthorizationsRequest
-    ) -> GetAuthorizationsResponse:
-        """Retrieve the list of permissions for this particular account/ecosystem"""
-
-        return await self.client.get_authorizations(
-            request, metadata=self.build_metadata(request)
-        )
-
     async def add_webhook(self, *, request: AddWebhookRequest) -> AddWebhookResponse:
         """Add a webhook endpoint to the ecosystem"""
 
@@ -134,33 +109,12 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata()
         )
 
-    async def generate_token(
-        self, *, request: GenerateTokenRequest
-    ) -> GenerateTokenResponse:
-        """
-        Generates an unprotected authentication token that can be used to
-         configure server side applications
-        """
-
-        return await self.client.generate_token(
-            request, metadata=self.build_metadata(request)
-        )
-
     async def get_oberon_key(
         self, *, request: GetOberonKeyRequest
     ) -> GetOberonKeyResponse:
         """Returns the public key being used to create/verify oberon tokens"""
 
         return await self.client.get_oberon_key(request, metadata=self.build_metadata())
-
-    async def get_event_token(
-        self, *, request: GetEventTokenRequest
-    ) -> GetEventTokenResponse:
-        """Generate a signed token (JWT) that can be used to connect to the message bus"""
-
-        return await self.client.get_event_token(
-            request, metadata=self.build_metadata(request)
-        )
 
     async def upgrade_did(self, *, request: UpgradeDidRequest) -> UpgradeDidResponse:
         """Upgrade a wallet's DID from `did:key` to another method"""

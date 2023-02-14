@@ -315,6 +315,7 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
       reveal_template: T.nilable(Services::Verifiablecredentials::V1::RevealTemplateAttributes),
       item_id: T.nilable(String),
       document_json: T.nilable(String),
+      use_verifiable_presentation: T.nilable(T::Boolean),
       nonce: T.nilable(String)
     ).void
   end
@@ -323,6 +324,7 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
     reveal_template: nil,
     item_id: "",
     document_json: "",
+    use_verifiable_presentation: false,
     nonce: ""
   )
   end
@@ -373,6 +375,18 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
 
   sig { void }
   def clear_document_json
+  end
+
+  sig { returns(T::Boolean) }
+  def use_verifiable_presentation
+  end
+
+  sig { params(value: T::Boolean).void }
+  def use_verifiable_presentation=(value)
+  end
+
+  sig { void }
+  def clear_use_verifiable_presentation
   end
 
   sig { returns(String) }
@@ -779,6 +793,7 @@ class Services::Verifiablecredentials::V1::SendRequest
     params(
       email: T.nilable(String),
       wallet_id: T.nilable(String),
+      did_uri: T.nilable(String),
       send_notification: T.nilable(T::Boolean),
       document_json: T.nilable(String)
     ).void
@@ -786,6 +801,7 @@ class Services::Verifiablecredentials::V1::SendRequest
   def initialize(
     email: "",
     wallet_id: "",
+    did_uri: "",
     send_notification: false,
     document_json: ""
   )
@@ -813,6 +829,18 @@ class Services::Verifiablecredentials::V1::SendRequest
 
   sig { void }
   def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def did_uri
+  end
+
+  sig { params(value: String).void }
+  def did_uri=(value)
+  end
+
+  sig { void }
+  def clear_did_uri
   end
 
   sig { returns(T::Boolean) }

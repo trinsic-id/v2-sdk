@@ -49,6 +49,9 @@ object UniversalWalletGrpcKt {
   val deleteItemMethod: MethodDescriptor<DeleteItemRequest, DeleteItemResponse>
     @JvmStatic get() = UniversalWalletGrpc.getDeleteItemMethod()
 
+  val deleteWalletMethod: MethodDescriptor<DeleteWalletRequest, DeleteWalletResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getDeleteWalletMethod()
+
   /**
    * A stub for issuing RPCs to a(n) services.universalwallet.v1.UniversalWallet service as
    * suspending coroutines.
@@ -140,6 +143,24 @@ object UniversalWalletGrpcKt {
         headers: Metadata = Metadata()
     ): DeleteItemResponse =
         unaryRpc(channel, UniversalWalletGrpc.getDeleteItemMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun deleteWallet(
+        request: DeleteWalletRequest,
+        headers: Metadata = Metadata()
+    ): DeleteWalletResponse =
+        unaryRpc(
+            channel, UniversalWalletGrpc.getDeleteWalletMethod(), request, callOptions, headers)
   }
 
   /**
@@ -224,6 +245,21 @@ object UniversalWalletGrpcKt {
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.DeleteItem is unimplemented"))
 
+    /**
+     * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.DeleteWallet.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun deleteWallet(request: DeleteWalletRequest): DeleteWalletResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.DeleteWallet is unimplemented"))
+
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
             .addMethod(
@@ -251,6 +287,11 @@ object UniversalWalletGrpcKt {
                     context = this.context,
                     descriptor = UniversalWalletGrpc.getDeleteItemMethod(),
                     implementation = ::deleteItem))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getDeleteWalletMethod(),
+                    implementation = ::deleteWallet))
             .build()
   }
 }

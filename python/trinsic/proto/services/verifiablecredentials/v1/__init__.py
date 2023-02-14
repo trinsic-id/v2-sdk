@@ -111,6 +111,9 @@ class CreateProofRequest(betterproto.Message):
     document will not be stored in the wallet.
     """
 
+    use_verifiable_presentation: bool = betterproto.bool_field(4)
+    """Wrap the output in a verifiable presentation"""
+
     nonce: bytes = betterproto.bytes_field(10)
     """
     Nonce value used to derive the proof. If not specified, a random nonce will
@@ -197,6 +200,9 @@ class SendRequest(betterproto.Message):
     unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet
     ID of the recipient within the ecosystem
     """
+
+    did_uri: str = betterproto.string_field(6, group="delivery_method")
+    """DID URI of the recipient"""
 
     send_notification: bool = betterproto.bool_field(4)
     """Send email notification that credential has been sent to a wallet"""

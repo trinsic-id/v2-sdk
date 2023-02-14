@@ -121,22 +121,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :style_display, :message, 4, "services.provider.v1.EcosystemDisplay"
       optional :description, :string, 5
     end
-    add_message "services.provider.v1.GenerateTokenRequest" do
-      optional :description, :string, 1
-    end
-    add_message "services.provider.v1.GenerateTokenResponse" do
-      optional :profile, :message, 1, "services.account.v1.AccountProfile"
-    end
     add_message "services.provider.v1.GetOberonKeyRequest" do
     end
     add_message "services.provider.v1.GetOberonKeyResponse" do
       optional :key, :string, 1
-    end
-    add_message "services.provider.v1.GetEventTokenRequest" do
-      optional :pk, :bytes, 1
-    end
-    add_message "services.provider.v1.GetEventTokenResponse" do
-      optional :token, :string, 1
     end
     add_message "services.provider.v1.RetrieveDomainVerificationRecordRequest" do
     end
@@ -149,31 +137,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.RefreshDomainVerificationStatusResponse" do
       optional :domain, :string, 1
       optional :domain_verified, :bool, 2
-    end
-    add_message "services.provider.v1.GrantAuthorizationRequest" do
-      optional :resource, :string, 3
-      optional :action, :string, 4
-      oneof :account do
-        optional :email, :string, 1
-        optional :walletId, :string, 2
-      end
-    end
-    add_message "services.provider.v1.GrantAuthorizationResponse" do
-    end
-    add_message "services.provider.v1.RevokeAuthorizationRequest" do
-      optional :resource, :string, 3
-      optional :action, :string, 4
-      oneof :account do
-        optional :email, :string, 1
-        optional :walletId, :string, 2
-      end
-    end
-    add_message "services.provider.v1.RevokeAuthorizationResponse" do
-    end
-    add_message "services.provider.v1.GetAuthorizationsRequest" do
-    end
-    add_message "services.provider.v1.GetAuthorizationsResponse" do
-      repeated :grants, :message, 1, "services.provider.v1.Grant"
     end
     add_message "services.provider.v1.SearchWalletConfigurationsRequest" do
       optional :query_filter, :string, 1
@@ -218,6 +181,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :account do
         optional :email, :string, 1
         optional :wallet_id, :string, 2
+        optional :did_uri, :string, 6
       end
       oneof :options do
         optional :ion_options, :message, 4, "services.provider.v1.IonOptions"
@@ -263,22 +227,12 @@ module Services
       GetPublicEcosystemInfoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetPublicEcosystemInfoRequest").msgclass
       GetPublicEcosystemInfoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetPublicEcosystemInfoResponse").msgclass
       PublicEcosystemInformation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.PublicEcosystemInformation").msgclass
-      GenerateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenRequest").msgclass
-      GenerateTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenResponse").msgclass
       GetOberonKeyRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyRequest").msgclass
       GetOberonKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyResponse").msgclass
-      GetEventTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenRequest").msgclass
-      GetEventTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenResponse").msgclass
       RetrieveDomainVerificationRecordRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveDomainVerificationRecordRequest").msgclass
       RetrieveDomainVerificationRecordResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveDomainVerificationRecordResponse").msgclass
       RefreshDomainVerificationStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshDomainVerificationStatusRequest").msgclass
       RefreshDomainVerificationStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshDomainVerificationStatusResponse").msgclass
-      GrantAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationRequest").msgclass
-      GrantAuthorizationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationResponse").msgclass
-      RevokeAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RevokeAuthorizationRequest").msgclass
-      RevokeAuthorizationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RevokeAuthorizationResponse").msgclass
-      GetAuthorizationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetAuthorizationsRequest").msgclass
-      GetAuthorizationsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetAuthorizationsResponse").msgclass
       SearchWalletConfigurationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.SearchWalletConfigurationsRequest").msgclass
       SearchWalletConfigurationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.SearchWalletConfigurationResponse").msgclass
       WalletConfiguration = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.WalletConfiguration").msgclass

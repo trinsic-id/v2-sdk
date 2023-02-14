@@ -11,77 +11,86 @@ import "services/options/field-options.proto";
 
 // Role management
 message AddRoleAssignmentRequest {
-    // Role to assign
-    string role = 1;
-    oneof account {
-        // Email address of account to assign role to.
-        // Mutually exclusive with `walletId`.
-        string email = 2;
-        // Wallet ID of account to assign role to.
-        // Mutually exclusive with `email`.
-        string wallet_id = 3;
-    }
+  // Role to assign
+  string role = 1;
+  oneof account {
+    // Email address of account to assign role.
+    // Mutually exclusive with `walletId` and `didUri`.
+    string email = 2;
+    // Wallet ID of account to assign role to.
+    // Mutually exclusive with `email` and `didUri`.
+    string wallet_id = 3;
+    // DID URI of the account to assign role.
+    // Mutually exclusive with `email` and `walletId`.
+    string did_uri = 4;
+  }
 }
 message AddRoleAssignmentResponse {}
 
 message RemoveRoleAssignmentRequest {
-    // Role to unassign
-    string role = 1;
-    oneof account {
-        // Email address of account to unassign role from.
-        // Mutually exclusive with `walletId`.
-        string email = 2;
-        // Wallet ID of account to unassign role from.
-        // Mutually exclusive with `email`.
-        string wallet_id = 3;
-    }
+  // Role to unassign
+  string role = 1;
+  oneof account {
+    // Email address of account to unassign role.
+    // Mutually exclusive with `walletId` and `didUri`.
+    string email = 2;
+    // Wallet ID of account to unassign role.
+    // Mutually exclusive with `email` and `didUri`.
+    string wallet_id = 3;
+    // DID URI of the account to unassign role.
+    // Mutually exclusive with `email` and `walletId`.
+    string did_uri = 4;
+  }
 }
 message RemoveRoleAssignmentResponse {}
 
 // Request to fetch the list of roles assigned to the current account
 message ListRoleAssignmentsRequest {
-    oneof account {
-        // Email address of account to unassign role from.
-        // Mutually exclusive with `walletId`.
-        string email = 2;
-        // Wallet ID of account to unassign role from.
-        // Mutually exclusive with `email`.
-        string wallet_id = 3;
-    }
+  oneof account {
+    // Email address of account to list roles.
+    // Mutually exclusive with `walletId` and `didUri`.
+    string email = 2;
+    // Wallet ID of account to list roles.
+    // Mutually exclusive with `email` and `didUri`.
+    string wallet_id = 3;
+    // DID URI of the account to list roles.
+    // Mutually exclusive with `email` and `walletId`.
+    string did_uri = 4;
+  }
 }
 message ListRoleAssignmentsResponse {
-    // List of roles
-    repeated string roles = 1;
+  // List of roles
+  repeated string roles = 1;
 }
 
 // Request to fetch the available roles in the current ecosystem
 message ListAvailableRolesRequest {}
 message ListAvailableRolesResponse {
-    // List of roles
-    repeated string roles = 1;
+  // List of roles
+  repeated string roles = 1;
 }
 
 // Access Management service provides methods to manage access to ecosystem resources
 // such by assigning roles and permissions to wallet accounts
 service AccessManagement {
-    // Adds a role assignment to an account
-    rpc AddRoleAssignment(AddRoleAssignmentRequest) returns (AddRoleAssignmentResponse) {
-      option (options.sdk_template_option).experimental = { active: true };
-    }
+  // Adds a role assignment to an account
+  rpc AddRoleAssignment(AddRoleAssignmentRequest) returns (AddRoleAssignmentResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
 
-    // Removes a role assignment from the account
-    rpc RemoveRoleAssignment(RemoveRoleAssignmentRequest) returns (RemoveRoleAssignmentResponse) {
-      option (options.sdk_template_option).experimental = { active: true };
-    }
+  // Removes a role assignment from the account
+  rpc RemoveRoleAssignment(RemoveRoleAssignmentRequest) returns (RemoveRoleAssignmentResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
 
-    // List the role assignments for the given account
-    rpc ListRoleAssignments(ListRoleAssignmentsRequest) returns (ListRoleAssignmentsResponse) {
-      option (options.sdk_template_option).experimental = { active: true };
-    }
+  // List the role assignments for the given account
+  rpc ListRoleAssignments(ListRoleAssignmentsRequest) returns (ListRoleAssignmentsResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
 
-    // List the roles available in the ecosystem
-    rpc ListAvailableRoles(ListAvailableRolesRequest) returns (ListAvailableRolesResponse) {
-        option (options.sdk_template_option).experimental = { active: true };
-        option (options.sdk_template_option).ignore = true;
-    }
+  // List the roles available in the ecosystem
+  rpc ListAvailableRoles(ListAvailableRolesRequest) returns (ListAvailableRolesResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+    option (options.sdk_template_option).ignore = true;
+  }
 }

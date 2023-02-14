@@ -391,6 +391,11 @@ class CreateProofRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'documentJson')
+    ..aOB(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'useVerifiablePresentation')
     ..a<$core.List<$core.int>>(
         10,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -410,6 +415,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     $core.String? revealDocumentJson,
     $core.String? itemId,
     $core.String? documentJson,
+    $core.bool? useVerifiablePresentation,
     $core.List<$core.int>? nonce,
     RevealTemplateAttributes? revealTemplate,
   }) {
@@ -422,6 +428,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
+    }
+    if (useVerifiablePresentation != null) {
+      _result.useVerifiablePresentation = useVerifiablePresentation;
     }
     if (nonce != null) {
       _result.nonce = nonce;
@@ -502,31 +511,43 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDocumentJson() => clearField(3);
 
+  @$pb.TagNumber(4)
+  $core.bool get useVerifiablePresentation => $_getBF(3);
+  @$pb.TagNumber(4)
+  set useVerifiablePresentation($core.bool v) {
+    $_setBool(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasUseVerifiablePresentation() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUseVerifiablePresentation() => clearField(4);
+
   @$pb.TagNumber(10)
-  $core.List<$core.int> get nonce => $_getN(3);
+  $core.List<$core.int> get nonce => $_getN(4);
   @$pb.TagNumber(10)
   set nonce($core.List<$core.int> v) {
-    $_setBytes(3, v);
+    $_setBytes(4, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasNonce() => $_has(3);
+  $core.bool hasNonce() => $_has(4);
   @$pb.TagNumber(10)
   void clearNonce() => clearField(10);
 
   @$pb.TagNumber(11)
-  RevealTemplateAttributes get revealTemplate => $_getN(4);
+  RevealTemplateAttributes get revealTemplate => $_getN(5);
   @$pb.TagNumber(11)
   set revealTemplate(RevealTemplateAttributes v) {
     setField(11, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasRevealTemplate() => $_has(4);
+  $core.bool hasRevealTemplate() => $_has(5);
   @$pb.TagNumber(11)
   void clearRevealTemplate() => clearField(11);
   @$pb.TagNumber(11)
-  RevealTemplateAttributes ensureRevealTemplate() => $_ensure(4);
+  RevealTemplateAttributes ensureRevealTemplate() => $_ensure(5);
 }
 
 class RevealTemplateAttributes extends $pb.GeneratedMessage {
@@ -902,13 +923,14 @@ class ValidationMessage extends $pb.GeneratedMessage {
   $core.List<$core.String> get messages => $_getList(1);
 }
 
-enum SendRequest_DeliveryMethod { email, walletId, notSet }
+enum SendRequest_DeliveryMethod { email, walletId, didUri, notSet }
 
 class SendRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, SendRequest_DeliveryMethod>
       _SendRequest_DeliveryMethodByTag = {
     1: SendRequest_DeliveryMethod.email,
     5: SendRequest_DeliveryMethod.walletId,
+    6: SendRequest_DeliveryMethod.didUri,
     0: SendRequest_DeliveryMethod.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -920,7 +942,7 @@ class SendRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
-    ..oo(0, [1, 5])
+    ..oo(0, [1, 5, 6])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -937,6 +959,11 @@ class SendRequest extends $pb.GeneratedMessage {
             ? ''
             : 'walletId')
     ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didUri')
+    ..aOS(
         100,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -948,6 +975,7 @@ class SendRequest extends $pb.GeneratedMessage {
     $core.String? email,
     $core.bool? sendNotification,
     $core.String? walletId,
+    $core.String? didUri,
     $core.String? documentJson,
   }) {
     final _result = create();
@@ -959,6 +987,9 @@ class SendRequest extends $pb.GeneratedMessage {
     }
     if (walletId != null) {
       _result.walletId = walletId;
+    }
+    if (didUri != null) {
+      _result.didUri = didUri;
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
@@ -1031,15 +1062,27 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearWalletId() => clearField(5);
 
-  @$pb.TagNumber(100)
-  $core.String get documentJson => $_getSZ(3);
-  @$pb.TagNumber(100)
-  set documentJson($core.String v) {
+  @$pb.TagNumber(6)
+  $core.String get didUri => $_getSZ(3);
+  @$pb.TagNumber(6)
+  set didUri($core.String v) {
     $_setString(3, v);
   }
 
+  @$pb.TagNumber(6)
+  $core.bool hasDidUri() => $_has(3);
+  @$pb.TagNumber(6)
+  void clearDidUri() => clearField(6);
+
   @$pb.TagNumber(100)
-  $core.bool hasDocumentJson() => $_has(3);
+  $core.String get documentJson => $_getSZ(4);
+  @$pb.TagNumber(100)
+  set documentJson($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(100)
+  $core.bool hasDocumentJson() => $_has(4);
   @$pb.TagNumber(100)
   void clearDocumentJson() => clearField(100);
 }

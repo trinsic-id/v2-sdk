@@ -8,7 +8,7 @@ This service does not require the use of Trinsic's SDKs in the user's browser, a
 !!! info "Credential Issuance"
     Currently, Trinsic's OpenID Connect service only enables the sharing of a credential between holder and verifier. We plan to support issuance through this service at a later date.
 
-    In the meantime, use the [InsertItem](../services/wallet-service.md#insert-item) SDK call to store credentials in a holder's wallet.
+    In the meantime, use the [InsertItem](../services/wallet-service.md#insert-item) or [Send](../services/credential-service.md#send-via-email) methods to store credentials in a holder's wallet.
 
 
 ## Integration
@@ -108,6 +108,26 @@ If you specified a `nonce` in the authorization request, always verify that the 
     **Always verify the proof** before making use of its data.
 
     Without verification, the received proof is of no more value than an unsubstantiated claim made by your user.
+
+## Displaying Linked Data in Credentials
+
+!!! info "SDK Only"
+    The following section presently only applies when using our SDK to create a Template; our Dashboard does not yet support the ability to specify field annotations.
+
+Some credential template fields may be intended for URLs which resolve to images or any other data which cannot be directly embedded in a credential. For example, you may wish to include a URL to an image of a physical credential in its digital representation.
+
+By default, these will display to the holders in the OIDC flow as simple text fields containing the raw URL. However, the template can be configured to display these URLs as either inline embedded images, or convenient links to download the linked data.
+
+When creating a Template:
+
+- Choose the `Uri` type for any Fields which are intended to contain URIs.
+- Set the `trinsic/web.display_method` annotation on the Field
+  - If the field is intended to contain an image, use the value `inline`.
+  - Otherwise, use the value `download`.
+- Set the `trinsic/file.content_type` annotation on the Field
+  - Use the value `image` if the field is intended to contain a link to an image
+  - Otherwise, the value should be the expected MIME Type of the data
+    - If you are unsure, use `application/octet-stream` as a catch-all
 
 ## Sample
 

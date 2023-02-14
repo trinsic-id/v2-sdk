@@ -12,39 +12,31 @@ public interface GetMembershipStatusRequestOrBuilder
    *
    *
    * <pre>
-   * URI of governance framework
+   * The ID of the ecosystem governance framework.
+   * This ID may be found in the 'trustRegistry' field in the
+   * verifiable credential model
    * </pre>
    *
-   * <code>string governance_framework_uri = 1;</code>
+   * <code>string framework_id = 1;</code>
    *
-   * @return The governanceFrameworkUri.
+   * @return The frameworkId.
    */
-  java.lang.String getGovernanceFrameworkUri();
+  java.lang.String getFrameworkId();
   /**
    *
    *
    * <pre>
-   * URI of governance framework
+   * The ID of the ecosystem governance framework.
+   * This ID may be found in the 'trustRegistry' field in the
+   * verifiable credential model
    * </pre>
    *
-   * <code>string governance_framework_uri = 1;</code>
+   * <code>string framework_id = 1;</code>
    *
-   * @return The bytes for governanceFrameworkUri.
+   * @return The bytes for frameworkId.
    */
-  com.google.protobuf.ByteString getGovernanceFrameworkUriBytes();
+  com.google.protobuf.ByteString getFrameworkIdBytes();
 
-  /**
-   *
-   *
-   * <pre>
-   * DID URI of member
-   * </pre>
-   *
-   * <code>string did_uri = 2;</code>
-   *
-   * @return Whether the didUri field is set.
-   */
-  boolean hasDidUri();
   /**
    *
    *
@@ -74,43 +66,6 @@ public interface GetMembershipStatusRequestOrBuilder
    *
    *
    * <pre>
-   * X.509 certificate of member
-   * </pre>
-   *
-   * <code>string x509_cert = 3;</code>
-   *
-   * @return Whether the x509Cert field is set.
-   */
-  boolean hasX509Cert();
-  /**
-   *
-   *
-   * <pre>
-   * X.509 certificate of member
-   * </pre>
-   *
-   * <code>string x509_cert = 3;</code>
-   *
-   * @return The x509Cert.
-   */
-  java.lang.String getX509Cert();
-  /**
-   *
-   *
-   * <pre>
-   * X.509 certificate of member
-   * </pre>
-   *
-   * <code>string x509_cert = 3;</code>
-   *
-   * @return The bytes for x509Cert.
-   */
-  com.google.protobuf.ByteString getX509CertBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * URI of credential schema associated with membership
    * </pre>
    *
@@ -131,6 +86,4 @@ public interface GetMembershipStatusRequestOrBuilder
    * @return The bytes for schemaUri.
    */
   com.google.protobuf.ByteString getSchemaUriBytes();
-
-  public trinsic.services.trustregistry.v1.GetMembershipStatusRequest.MemberCase getMemberCase();
 }

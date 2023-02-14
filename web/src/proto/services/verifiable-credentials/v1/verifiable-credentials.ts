@@ -70,6 +70,8 @@ export interface CreateProofRequest {
    * document directly. The document will not be stored in the wallet.
    */
   documentJson?: string | undefined;
+  /** Wrap the output in a verifiable presentation */
+  useVerifiablePresentation?: boolean;
   /**
    * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
    * This value may be represented in base64 format in the proof model.
@@ -137,6 +139,8 @@ export interface SendRequest {
    * Wallet ID of the recipient within the ecosystem
    */
   walletId?: string | undefined;
+  /** DID URI of the recipient */
+  didUri?: string | undefined;
   /** Send email notification that credential has been sent to a wallet */
   sendNotification?: boolean;
   /** JSON document to send to recipient */
@@ -433,6 +437,7 @@ function createBaseCreateProofRequest(): CreateProofRequest {
     revealTemplate: undefined,
     itemId: undefined,
     documentJson: undefined,
+    useVerifiablePresentation: false,
     nonce: new Uint8Array(),
   };
 }
@@ -456,6 +461,9 @@ export const CreateProofRequest = {
     }
     if (message.documentJson !== undefined) {
       writer.uint32(26).string(message.documentJson);
+    }
+    if (message.useVerifiablePresentation === true) {
+      writer.uint32(32).bool(message.useVerifiablePresentation);
     }
     if (message.nonce !== undefined && message.nonce.length !== 0) {
       writer.uint32(82).bytes(message.nonce);
@@ -485,6 +493,9 @@ export const CreateProofRequest = {
         case 3:
           message.documentJson = reader.string();
           break;
+        case 4:
+          message.useVerifiablePresentation = reader.bool();
+          break;
         case 10:
           message.nonce = reader.bytes();
           break;
@@ -508,6 +519,9 @@ export const CreateProofRequest = {
       documentJson: isSet(object.documentJson)
         ? String(object.documentJson)
         : undefined,
+      useVerifiablePresentation: isSet(object.useVerifiablePresentation)
+        ? Boolean(object.useVerifiablePresentation)
+        : false,
       nonce: isSet(object.nonce)
         ? bytesFromBase64(object.nonce)
         : new Uint8Array(),
@@ -525,6 +539,8 @@ export const CreateProofRequest = {
     message.itemId !== undefined && (obj.itemId = message.itemId);
     message.documentJson !== undefined &&
       (obj.documentJson = message.documentJson);
+    message.useVerifiablePresentation !== undefined &&
+      (obj.useVerifiablePresentation = message.useVerifiablePresentation);
     message.nonce !== undefined &&
       (obj.nonce = base64FromBytes(
         message.nonce !== undefined ? message.nonce : new Uint8Array()
@@ -541,6 +557,8 @@ export const CreateProofRequest = {
         : undefined;
     message.itemId = object.itemId ?? undefined;
     message.documentJson = object.documentJson ?? undefined;
+    message.useVerifiablePresentation =
+      object.useVerifiablePresentation ?? false;
     message.nonce = object.nonce ?? new Uint8Array();
     return message;
   },
@@ -989,6 +1007,7 @@ function createBaseSendRequest(): SendRequest {
   return {
     email: undefined,
     walletId: undefined,
+    didUri: undefined,
     sendNotification: false,
     documentJson: "",
   };
@@ -1004,6 +1023,9 @@ export const SendRequest = {
     }
     if (message.walletId !== undefined) {
       writer.uint32(42).string(message.walletId);
+    }
+    if (message.didUri !== undefined) {
+      writer.uint32(50).string(message.didUri);
     }
     if (message.sendNotification === true) {
       writer.uint32(32).bool(message.sendNotification);
@@ -1027,6 +1049,9 @@ export const SendRequest = {
         case 5:
           message.walletId = reader.string();
           break;
+        case 6:
+          message.didUri = reader.string();
+          break;
         case 4:
           message.sendNotification = reader.bool();
           break;
@@ -1045,6 +1070,7 @@ export const SendRequest = {
     return {
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
       sendNotification: isSet(object.sendNotification)
         ? Boolean(object.sendNotification)
         : false,
@@ -1058,6 +1084,7 @@ export const SendRequest = {
     const obj: any = {};
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
     message.sendNotification !== undefined &&
       (obj.sendNotification = message.sendNotification);
     message.documentJson !== undefined &&
@@ -1069,6 +1096,7 @@ export const SendRequest = {
     const message = createBaseSendRequest();
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
+    message.didUri = object.didUri ?? undefined;
     message.sendNotification = object.sendNotification ?? false;
     message.documentJson = object.documentJson ?? "";
     return message;

@@ -201,17 +201,17 @@ class UnregisterMemberResponse(betterproto.Message):
 class GetMembershipStatusRequest(betterproto.Message):
     """
     Request to fetch membership status in governance framework for a specific
-    credential schema. Only one of `did_uri`, `x509_cert` may be specified.
+    credential schema.
     """
 
-    governance_framework_uri: str = betterproto.string_field(1)
-    """URI of governance framework"""
+    framework_id: str = betterproto.string_field(1)
+    """
+    The ID of the ecosystem governance framework. This ID may be found in the
+    'trustRegistry' field in the verifiable credential model
+    """
 
-    did_uri: str = betterproto.string_field(2, group="member")
+    did_uri: str = betterproto.string_field(2)
     """DID URI of member"""
-
-    x509_cert: str = betterproto.string_field(3, group="member")
-    """X.509 certificate of member"""
 
     schema_uri: str = betterproto.string_field(4)
     """URI of credential schema associated with membership"""

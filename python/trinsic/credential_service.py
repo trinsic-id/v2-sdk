@@ -1,3 +1,5 @@
+import deprecation
+
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.verifiablecredentials.v1 import *
 from trinsic.security_providers import ITokenProvider

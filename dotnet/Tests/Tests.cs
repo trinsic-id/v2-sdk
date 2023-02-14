@@ -14,6 +14,7 @@ using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
+using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 using Xunit;
@@ -43,14 +44,18 @@ public class Tests
 
     public Tests(ITestOutputHelper testOutputHelper) {
         _testOutputHelper = testOutputHelper;
+        _options = GetTestServiceOptions();
 
-        _options = new() {
+        _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
+    }
+
+    public static ServiceOptions GetTestServiceOptions()
+    {
+        return new() {
             ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? DefaultEndpoint,
             ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : DefaultPort,
             ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls
         };
-
-        _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
     }
 
     private const string VaccinationCertificateUnsigned = "TestData/vaccination-certificate-unsigned.jsonld";
@@ -97,6 +102,15 @@ public class Tests
 
         var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() { ItemJson = credential.SignedDocumentJson });
         var itemId = insertItemResponse.ItemId;
+        
+        // getItem() {
+        var getItemResponse = await trinsic.Wallet.GetItemAsync(new GetItemRequest()
+        {
+            ItemId = itemId
+        });
+        //}
+
+        getItemResponse.ItemJson.Should().NotBeEmpty();
 
         // searchWalletBasic() {
         var walletItems = await trinsic.Wallet.SearchWalletAsync(new());
@@ -129,6 +143,32 @@ public class Tests
 
         _testOutputHelper.WriteLine($"Verification result: {valid.ValidationResults}");
         Assert.True(valid.ValidationResults["SignatureVerification"].IsValid);
+        
+        // DELETE CREDENTIAL
+        trinsic.SetAuthToken(allison);
+        // deleteItem() {
+        await trinsic.Wallet.DeleteItemAsync(new DeleteItemRequest()
+        {
+            ItemId = itemId
+        });
+        //}
+    }
+
+    [Fact(DisplayName = "Demo: Wallet deletion")]
+    public async Task TestWalletDeletion()
+    {
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
+        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
+        await trinsic.Account.LoginAnonymousAsync(ecosystem.Id);
+        var newWalletInfo = await trinsic.Account.InfoAsync();
+        var walletId = newWalletInfo.WalletId;
+
+        // deleteWallet() {
+        await trinsic.Wallet.DeleteWalletAsync(new DeleteWalletRequest()
+        {
+            WalletId = walletId
+        });
+        //}
     }
 
     [Fact(DisplayName = "Demo: trust registries")]
@@ -166,7 +206,7 @@ public class Tests
         // checkIssuerStatus() {
         var issuerStatus = await trinsic.TrustRegistry.GetMembershipStatusAsync(new() {
             DidUri = didUri,
-            GovernanceFrameworkUri = frameworkUri,
+            FrameworkId = frameworkUri,
             SchemaUri = schemaUri
         });
         // }

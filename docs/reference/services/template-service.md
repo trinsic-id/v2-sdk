@@ -13,9 +13,14 @@ The Template Service allows you to manage and search [Credential Templates](/lea
 
 ## Create Template
 
-Creates a new credential template.
+!!! info "Field Annotations"
+    When defining the Fields of a Template, the `annotations` object can be used to set arbitrary key-value metadata on a Field.
 
-In the background, Trinsic will also generate and save a valid JSON-LD Context and schema for your template.
+    Trinsic defines certain annotations that dictate how a credential field containing a URI will render during the verification flow.
+
+    [Click here](../../reference/other/openid.md) for more information on this use case.
+
+Creates a new credential template.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"

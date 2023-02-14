@@ -139,16 +139,6 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     return withMetadata(stub, request).info(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun listDevices(request: ListDevicesRequest): ListDevicesResponse {
-    /** List all connected devices */
-    return withMetadata(stub, request).listDevices(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun revokeDevice(request: RevokeDeviceRequest): RevokeDeviceResponse {
-    /** Revoke device access to the account's cloud wallet */
-    return withMetadata(stub, request).revokeDevice(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun authorizeWebhook(request: AuthorizeWebhookRequest): AuthorizeWebhookResponse {
     /** Authorize Ecosystem to receive webhook events */
     return withMetadata(stub, request).authorizeWebhook(request)
