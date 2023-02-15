@@ -45,11 +45,6 @@ jobs:
         with:
             toolchain: stable
             profile: minimal
-      - uses: trinsic-id/set-version@v0.1
-        id: setversion
-        with:
-          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
-          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: cargo build
         uses: actions-rs/cargo@v1
         with:
