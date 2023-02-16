@@ -156,26 +156,6 @@
             Get account information
             </summary>
         </member>
-        <member name="M:Trinsic.AccountService.ListDevices(Trinsic.Services.Account.V1.ListDevicesRequest)">
-            <summary>
-            List all connected devices
-            </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.ListDevicesAsync(Trinsic.Services.Account.V1.ListDevicesRequest)">
-            <summary>
-            List all connected devices
-            </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest)">
-            <summary>
-            Revoke device access to the account's cloud wallet
-            </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.RevokeDeviceAsync(Trinsic.Services.Account.V1.RevokeDeviceRequest)">
-            <summary>
-            Revoke device access to the account's cloud wallet
-            </summary>
-        </member>
         <member name="M:Trinsic.AccountService.AuthorizeWebhook(Trinsic.Services.Account.V1.AuthorizeWebhookRequest)">
             <summary>
             Authorize Ecosystem to receive webhook events
@@ -788,22 +768,6 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountBase.ListDevices(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            List all connected devices
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountBase.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Revoke device access to the account's cloud wallet
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
         <member name="M:Trinsic.Services.Account.V1.Account.AccountBase.AuthorizeWebhook(Trinsic.Services.Account.V1.AuthorizeWebhookRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Authorize Ecosystem to receive webhook events
@@ -969,78 +933,6 @@
         <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.InfoAsync(Trinsic.Services.Account.V1.AccountInfoRequest,Grpc.Core.CallOptions)">
             <summary>
             Get account information
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.ListDevices(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            List all connected devices
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.ListDevices(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.CallOptions)">
-            <summary>
-            List all connected devices
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.ListDevicesAsync(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            List all connected devices
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.ListDevicesAsync(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.CallOptions)">
-            <summary>
-            List all connected devices
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Revoke device access to the account's cloud wallet
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Revoke device access to the account's cloud wallet
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.RevokeDeviceAsync(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Revoke device access to the account's cloud wallet
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.RevokeDeviceAsync(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Revoke device access to the account's cloud wallet
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1918,8 +1810,8 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.Email">
             <summary>
-            Email address of account to assign role to.
-            Mutually exclusive with `walletId`.
+            Email address of account to assign role.
+            Mutually exclusive with `walletId` and `didUri`.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.WalletIdFieldNumber">
@@ -1928,7 +1820,16 @@
         <member name="P:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.WalletId">
             <summary>
             Wallet ID of account to assign role to.
-            Mutually exclusive with `email`.
+            Mutually exclusive with `email` and `didUri`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.DidUriFieldNumber">
+            <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.DidUri">
+            <summary>
+            DID URI of the account to assign role.
+            Mutually exclusive with `email` and `walletId`.
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.AccountOneofCase">
@@ -1947,8 +1848,8 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.Email">
             <summary>
-            Email address of account to unassign role from.
-            Mutually exclusive with `walletId`.
+            Email address of account to unassign role.
+            Mutually exclusive with `walletId` and `didUri`.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.WalletIdFieldNumber">
@@ -1956,8 +1857,17 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.WalletId">
             <summary>
-            Wallet ID of account to unassign role from.
-            Mutually exclusive with `email`.
+            Wallet ID of account to unassign role.
+            Mutually exclusive with `email` and `didUri`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.DidUriFieldNumber">
+            <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.DidUri">
+            <summary>
+            DID URI of the account to unassign role.
+            Mutually exclusive with `email` and `walletId`.
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.AccountOneofCase">
@@ -1973,8 +1883,8 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.Email">
             <summary>
-            Email address of account to unassign role from.
-            Mutually exclusive with `walletId`.
+            Email address of account to list roles.
+            Mutually exclusive with `walletId` and `didUri`.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.WalletIdFieldNumber">
@@ -1982,8 +1892,17 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.WalletId">
             <summary>
-            Wallet ID of account to unassign role from.
-            Mutually exclusive with `email`.
+            Wallet ID of account to list roles.
+            Mutually exclusive with `email` and `didUri`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.DidUriFieldNumber">
+            <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.DidUri">
+            <summary>
+            DID URI of the account to list roles.
+            Mutually exclusive with `email` and `walletId`.
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.AccountOneofCase">
@@ -2816,32 +2735,6 @@
             Description of the ecosystem
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Provider.V1.GenerateTokenRequest">
-            <summary>
-            Request to generate an authentication token for the current account
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GenerateTokenRequest.DescriptionFieldNumber">
-            <summary>Field number for the "description" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GenerateTokenRequest.Description">
-            <summary>
-            Description to identify this token
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GenerateTokenResponse">
-            <summary>
-            Response to `GenerateTokenRequest`
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GenerateTokenResponse.ProfileFieldNumber">
-            <summary>Field number for the "profile" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GenerateTokenResponse.Profile">
-            <summary>
-            Account authentication profile that contains unprotected token
-            </summary>
-        </member>
         <member name="T:Trinsic.Services.Provider.V1.GetOberonKeyRequest">
             <summary>
             Request to fetch the Trinsic public key used
@@ -2859,33 +2752,6 @@
         <member name="P:Trinsic.Services.Provider.V1.GetOberonKeyResponse.Key">
             <summary>
             Oberon Public Key as RAW base64-url encoded string
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GetEventTokenRequest">
-            <summary>
-            Generates an events token bound to the provided ed25519 public key.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GetEventTokenRequest.PkFieldNumber">
-            <summary>Field number for the "pk" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GetEventTokenRequest.Pk">
-            <summary>
-            Raw public key to generate event token for
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GetEventTokenResponse">
-            <summary>
-            Response message containing a token (JWT) that can be used
-            to connect directly to the message streaming architecture
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GetEventTokenResponse.TokenFieldNumber">
-            <summary>Field number for the "token" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GetEventTokenResponse.Token">
-            <summary>
-            JWT bound to the public key provided in `GetEventTokenRequest`
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse">
@@ -2923,121 +2789,6 @@
         <member name="P:Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusResponse.DomainVerified">
             <summary>
             Specifies if the above `domain` was successfully verified
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GrantAuthorizationRequest">
-            <summary>
-            Grant permissions to a resource or path in the ecosystem
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.EmailFieldNumber">
-            <summary>Field number for the "email" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.Email">
-            <summary>
-            Email address of account being granted permission.
-            Mutually exclusive with `walletId`.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.WalletIdFieldNumber">
-            <summary>Field number for the "walletId" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.WalletId">
-            <summary>
-            Wallet ID of account being granted permission.
-            Mutually exclusive with `email`.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.ResourceFieldNumber">
-            <summary>Field number for the "resource" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.Resource">
-            <summary>
-            Resource string that account is receiving permissions for.
-            Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.ActionFieldNumber">
-            <summary>Field number for the "action" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.Action">
-            <summary>
-            Action to authorize. Default is "*" (all)
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.AccountOneofCase">
-            <summary>Enum of possible cases for the "account" oneof.</summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GrantAuthorizationResponse">
-            <summary>
-            Response to `GrantAuthorizationRequest`
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest">
-            <summary>
-            Revoke permissions to a resource or path in the ecosystem
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.EmailFieldNumber">
-            <summary>Field number for the "email" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.Email">
-            <summary>
-            Email address of account having permission revoked.
-            Mutually exclusive with `walletId`.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.WalletIdFieldNumber">
-            <summary>Field number for the "walletId" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.WalletId">
-            <summary>
-            Wallet ID of account having permission revoked.
-            Mutually exclusive with `email`.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.ResourceFieldNumber">
-            <summary>Field number for the "resource" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.Resource">
-            <summary>
-            Resource string that account is losing permissions for.
-            Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.ActionFieldNumber">
-            <summary>Field number for the "action" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.Action">
-            <summary>
-            Action to revoke. Default is "*" (all)
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.AccountOneofCase">
-            <summary>Enum of possible cases for the "account" oneof.</summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.RevokeAuthorizationResponse">
-            <summary>
-            Response to `RevokeAuthorizationRequest`
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GetAuthorizationsRequest">
-            <summary>
-            Fetch list of grants that the current account has access to
-            in its ecosystem
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.GetAuthorizationsResponse">
-            <summary>
-            Response to `GetAuthorizationsRequest`
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.GetAuthorizationsResponse.GrantsFieldNumber">
-            <summary>Field number for the "grants" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.GetAuthorizationsResponse.Grants">
-            <summary>
-            Grants attached to account
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest">
@@ -3152,7 +2903,7 @@
         <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.Email">
             <summary>
             Email address of account to upgrade.
-            Mutually exclusive with `walletId`.
+            Mutually exclusive with `walletId` and `didUri`.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.WalletIdFieldNumber">
@@ -3161,7 +2912,16 @@
         <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.WalletId">
             <summary>
             Wallet ID of account to upgrade.
-            Mutually exclusive with `email`.
+            Mutually exclusive with `email` and `didUri`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.DidUriFieldNumber">
+            <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.DidUri">
+            <summary>
+            DID URI of the account to upgrade.
+            Mutually exclusive with `email` and `walletId`.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.MethodFieldNumber">
@@ -3229,30 +2989,6 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Grant user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Revoke user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Retrieve the list of permissions for this particular account/ecosystem
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.AddWebhook(Trinsic.Services.Provider.V1.AddWebhookRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Add a webhook endpoint to the ecosystem
@@ -3285,15 +3021,6 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Generates an unprotected authentication token that can be used to
-            configure server side applications
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.Invite(Trinsic.Services.Provider.V1.InviteRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Invite a user to the ecosystem
@@ -3313,14 +3040,6 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetOberonKey(Trinsic.Services.Provider.V1.GetOberonKeyRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Returns the public key being used to create/verify oberon tokens
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -3443,114 +3162,6 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.CallOptions)">
             <summary>
             Update an existing ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Grant user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Grant user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorizationAsync(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Grant user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorizationAsync(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Grant user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Revoke user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Revoke user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorizationAsync(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Revoke user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorizationAsync(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Revoke user authorization to ecosystem resources
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Retrieve the list of permissions for this particular account/ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Retrieve the list of permissions for this particular account/ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Retrieve the list of permissions for this particular account/ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Retrieve the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -3700,46 +3311,6 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Generates an unprotected authentication token that can be used to
-            configure server side applications
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Generates an unprotected authentication token that can be used to
-            configure server side applications
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Generates an unprotected authentication token that can be used to
-            configure server side applications
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Generates an unprotected authentication token that can be used to
-            configure server side applications
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.Invite(Trinsic.Services.Provider.V1.InviteRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Invite a user to the ecosystem
@@ -3843,42 +3414,6 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetOberonKeyAsync(Trinsic.Services.Provider.V1.GetOberonKeyRequest,Grpc.Core.CallOptions)">
             <summary>
             Returns the public key being used to create/verify oberon tokens
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -4354,15 +3889,16 @@
         <member name="T:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest">
             <summary>
             Request to fetch membership status in governance framework for a specific credential schema.
-            Only one of `did_uri`, `x509_cert` may be specified.
             </summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.FrameworkIdFieldNumber">
+            <summary>Field number for the "framework_id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.GovernanceFrameworkUri">
+        <member name="P:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.FrameworkId">
             <summary>
-            URI of governance framework
+            The ID of the ecosystem governance framework.
+            This ID may be found in the 'trustRegistry' field in the
+            verifiable credential model
             </summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.DidUriFieldNumber">
@@ -4373,14 +3909,6 @@
             DID URI of member
             </summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.X509CertFieldNumber">
-            <summary>Field number for the "x509_cert" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.X509Cert">
-             <summary>
-            X.509 certificate of member
-             </summary>
-        </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.SchemaUriFieldNumber">
             <summary>Field number for the "schema_uri" field.</summary>
         </member>
@@ -4388,9 +3916,6 @@
             <summary>
             URI of credential schema associated with membership
             </summary>
-        </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.MemberOneofCase">
-            <summary>Enum of possible cases for the "member" oneof.</summary>
         </member>
         <member name="T:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusResponse">
             <summary>
@@ -4927,6 +4452,46 @@
             Response to `DeleteItemRequest`
             </summary>
         </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest">
+            <summary>
+            Request to delete a wallet
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest.Email">
+            <summary>
+            Email address of account to delete.
+            Mutually exclusive with `walletId` and `didUri`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest.WalletId">
+            <summary>
+            Wallet ID of account to delete.
+            Mutually exclusive with `email` and `didUri`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest.DidUriFieldNumber">
+            <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest.DidUri">
+            <summary>
+            DID URI of the account to delete.
+            Mutually exclusive with `email` and `walletId`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest.AccountOneofCase">
+            <summary>Enum of possible cases for the "account" oneof.</summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.DeleteWalletResponse">
+            <summary>
+            Response to `DeleteWalletRequest`. Empty payload.
+            </summary>
+        </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UniversalWallet.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -4968,6 +4533,14 @@
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.DeleteItem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Delete an item from the wallet permanently
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.DeleteWallet(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Delete a wallet and its credentials
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -5166,6 +4739,42 @@
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteItemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.CallOptions)">
             <summary>
             Delete an item from the wallet permanently
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteWallet(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Delete a wallet and its credentials
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteWallet(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Delete a wallet and its credentials
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteWalletAsync(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Delete a wallet and its credentials
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteWalletAsync(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Delete a wallet and its credentials
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -5933,6 +5542,14 @@
             document directly. The document will not be stored in the wallet.
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.UseVerifiablePresentationFieldNumber">
+            <summary>Field number for the "use_verifiable_presentation" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.UseVerifiablePresentation">
+            <summary>
+            Wrap the output in a verifiable presentation
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.NonceFieldNumber">
             <summary>Field number for the "nonce" field.</summary>
         </member>
@@ -6057,6 +5674,14 @@
             DIDComm out-of-band invitation JSON (presently unsupported)
             string didcomm_invitation_json = 3 [deprecated=true];
             Wallet ID of the recipient within the ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidUriFieldNumber">
+            <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidUri">
+            <summary>
+            DID URI of the recipient
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.SendNotificationFieldNumber">
@@ -6511,54 +6136,64 @@
             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.UploadFile(Trinsic.Services.FileManagement.V1.UploadFileRequest)">
-            <summary>
-            Upload a file to Trinsic's CDN
-            </summary>	
+             <summary>
+            This method is experimental
+              Upload a file to Trinsic's CDN
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.UploadFileAsync(Trinsic.Services.FileManagement.V1.UploadFileRequest)">
-            <summary>
-            Upload a file to Trinsic's CDN
-            </summary>	
+             <summary>
+            This method is experimental
+              Upload a file to Trinsic's CDN
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.GetFile(Trinsic.Services.FileManagement.V1.GetFileRequest)">
-            <summary>
-            Fetch information about a file by its ID
-            </summary>	
+             <summary>
+            This method is experimental
+              Fetch information about a file by its ID
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.GetFileAsync(Trinsic.Services.FileManagement.V1.GetFileRequest)">
-            <summary>
-            Fetch information about a file by its ID
-            </summary>	
+             <summary>
+            This method is experimental
+              Fetch information about a file by its ID
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.DeleteFile(Trinsic.Services.FileManagement.V1.DeleteFileRequest)">
-            <summary>
-            Delete a file by its ID
-            </summary>	
+             <summary>
+            This method is experimental
+              Delete a file by its ID
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.DeleteFileAsync(Trinsic.Services.FileManagement.V1.DeleteFileRequest)">
-            <summary>
-            Delete a file by its ID
-            </summary>	
+             <summary>
+            This method is experimental
+              Delete a file by its ID
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.ListFiles(Trinsic.Services.FileManagement.V1.ListFilesRequest)">
-            <summary>
-            List files the calling account has uploaded
-            </summary>	
+             <summary>
+            This method is experimental
+              List files the calling account has uploaded
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.ListFilesAsync(Trinsic.Services.FileManagement.V1.ListFilesRequest)">
-            <summary>
-            List files the calling account has uploaded
-            </summary>	
+             <summary>
+            This method is experimental
+              List files the calling account has uploaded
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.GetStorageStats(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest)">
-            <summary>
-            Get statistics about files uploaded by the calling account
-            </summary>	
+             <summary>
+            This method is experimental
+              Get statistics about files uploaded by the calling account
+             </summary>
         </member>
         <member name="M:Trinsic.FileManagementService.GetStorageStatsAsync(Trinsic.Services.FileManagement.V1.GetStorageStatsRequest)">
-            <summary>
-            Get statistics about files uploaded by the calling account
-            </summary>	
+             <summary>
+            This method is experimental
+              Get statistics about files uploaded by the calling account
+             </summary>
         </member>
         <member name="M:Trinsic.ProviderService.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
@@ -6585,36 +6220,6 @@
             This will be removed May 1, 2023
               Update an existing ecosystem
              </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest)">
-            <summary>
-            Grant user authorization to ecosystem resources
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.GrantAuthorizationAsync(Trinsic.Services.Provider.V1.GrantAuthorizationRequest)">
-            <summary>
-            Grant user authorization to ecosystem resources
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest)">
-            <summary>
-            Revoke user authorization to ecosystem resources
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.RevokeAuthorizationAsync(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest)">
-            <summary>
-            Revoke user authorization to ecosystem resources
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
-            <summary>
-            Retrieve the list of permissions for this particular account/ecosystem
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
-            <summary>
-            Retrieve the list of permissions for this particular account/ecosystem
-            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.AddWebhook(Trinsic.Services.Provider.V1.AddWebhookRequest)">
             <summary>
@@ -6658,18 +6263,6 @@
               Get public ecosystem information about *any* ecosystem
              </summary>
         </member>
-        <member name="M:Trinsic.ProviderService.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
-            <summary>
-            Generates an unprotected authentication token that can be used to
-             configure server side applications
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
-            <summary>
-            Generates an unprotected authentication token that can be used to
-             configure server side applications
-            </summary>
-        </member>
         <member name="M:Trinsic.ProviderService.GetOberonKey(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
             <summary>
             Returns the public key being used to create/verify oberon tokens
@@ -6678,16 +6271,6 @@
         <member name="M:Trinsic.ProviderService.GetOberonKeyAsync(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
             <summary>
             Returns the public key being used to create/verify oberon tokens
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
-            <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
-            <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
             </summary>
         </member>
         <member name="M:Trinsic.ProviderService.UpgradeDID(Trinsic.Services.Provider.V1.UpgradeDidRequest)">
@@ -7007,6 +6590,16 @@
         <member name="M:Trinsic.WalletService.DeleteItemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest)">
             <summary>
             Delete an item from the wallet permanently
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.DeleteWallet(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest)">
+            <summary>
+            Delete a wallet and its credentials
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.DeleteWalletAsync(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest)">
+            <summary>
+            Delete a wallet and its credentials
             </summary>
         </member>
         <member name="T:Trinsic.Sdk.Options.V1.OptionsReflection">
