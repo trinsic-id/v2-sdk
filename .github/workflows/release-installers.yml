@@ -24,12 +24,12 @@ jobs:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
 
-  instruqt:
-    name: Update Instruqt Demo
-    needs: [ set_version ]
-    uses: trinsic-id/tutorials/.github/workflows/update-samples.yml@main
-    with:
-      callerVersion: ${{ needs.set_version.outputs.packageVersion }}
+#  instruqt:
+#    name: Update Instruqt Demo
+#    needs: [ set_version ]
+#    uses: trinsic-id/tutorials/.github/workflows/update-samples.yml@main
+#    with:
+#      callerVersion: ${{ needs.set_version.outputs.packageVersion }}
 
   homebrew:
     name: Update Homebrew Formula
