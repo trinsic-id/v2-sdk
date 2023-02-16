@@ -8752,7 +8752,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "DID of recipient (presently unsupported)\nstring did_uri = 2 [deprecated=true];\nDIDComm out-of-band invitation JSON (presently unsupported)\nstring didcomm_invitation_json = 3 [deprecated=true];\nWallet ID of the recipient within the ecosystem"
+      "description": "Wallet ID of the recipient within the ecosystem"
     },
     "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id": {
       "name": "credential_status_id",
