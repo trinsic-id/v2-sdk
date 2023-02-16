@@ -6,6 +6,9 @@ on:
       packageVersion:
         description: 'Package Version (leave empty for latest release)'
         required: false
+  pull_request:
+    paths:
+      - ".github/workflows/release-installers.yml"
 
 env:
   packageId: trinsic.cli
