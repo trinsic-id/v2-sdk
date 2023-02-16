@@ -15,7 +15,7 @@ In most credential exchange scenarios, there are three primary roles: Issuer, Ho
 **Verifier**: Verifies credentials presented by holders.
 
 
-In this case, Allison will be the *holder*, a vaccination clinic will be the *issuer*, and an airline will be the *verifier*. 
+In this case, Allison will be the *holder*, a vaccination clinic will be the *issuer*, and an airline will be the *verifier*.
 
 
 ## Our SDKs
@@ -23,12 +23,12 @@ In this case, Allison will be the *holder*, a vaccination clinic will be the *is
 You can follow along using one of our SDKs, or use the Trinsic CLI, which implements full platform functionality.
 
 === "Trinsic CLI"
-    
+
     [Click here](/cli/){target=_blank} for installation instructions for the Trinsic CLI.
 
     <!-- If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our [demo environment](./demo.md) to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser. -->
 
-   
+
 
 === "Typescript"
     [Click here](/web/){target=_blank} for installation instructions for the Node/Browser SDK.
@@ -62,7 +62,7 @@ Copy this ecosystem ID down, and [skip to the next step](#create-accounts).
 
 ### Create New Ecosystem
 
-If you don't already have an ecosystem provisioned for you, you'll need to create one first. 
+If you don't already have an ecosystem provisioned for you, you'll need to create one first.
 
 This will be a *sandbox* ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, [sign up](https://dashboard.trinsic.id/){target:_blank}.
 
@@ -70,7 +70,7 @@ This will be a *sandbox* ecosystem; suitable for prototyping and testing, but no
     ```
     trinsic provider create-ecosystem
     ```
-    
+
 === "Typescript"
     <!--codeinclude-->
     ```javascript
@@ -133,7 +133,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 === "Trinsic CLI"
     The CLI makes it easy to create wallets. For demo purposes, we'll create all three on the same machine.
-    
+
     When using the CLI, the authentication token of the most recently used account is saved in `~/.trinsic`. In a real-world scenario, you should back this token up securely.
 
     ```bash
@@ -183,7 +183,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     <!--/codeinclude-->
 
     If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
-    
+
 === "Go"
     <!--codeinclude-->
     ```go
@@ -216,7 +216,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 ## Define a Template
 
-Before we can issue a credential, we need to create a [Template](/learn/concepts/templates/){target=_blank} for it. 
+Before we can issue a credential, we need to create a [Template](/learn/concepts/templates/){target=_blank} for it.
 
 Templates are simply a list of the fields that a credential can have.
 
@@ -248,7 +248,7 @@ Templates are simply a list of the fields that a credential can have.
     Then create the template:
 
     ```bash
-    trinsic template create -n "VaccinationCertificate" --fields-file templateData.json 
+    trinsic template create -n "VaccinationCertificate" --fields-file templateData.json
     ```
 
     The output of this command will include a template ID; copy this down for later use.
@@ -338,8 +338,8 @@ To issue a vaccine certificate, we'll use the template we created in the last st
     ```
 
     The output of this command will contain a signed JSON document, which has been saved to `credential.json`.
-    
-    Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate". 
+
+    Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate".
     More specifically, it's the property 'schema_uri' in the JSON returned by the `trinsic template create...` command.
 
 
@@ -400,10 +400,10 @@ Now that the clinic has a signed credential, it must be securely transmitted to 
 Because it's just a JSON string, it could be delivered in many ways -- for example, in the response to an HTTPS request which triggered the issuance process.
 
 !!! info "Send via Trinsic"
-    In the future, we will offer the ability to send a credential directly to a Trinsic user's wallet.
+    Trinsic also offers the ability to send a credential directly to a Trinsic user's wallet.
 
     [Click here](../reference/services/credential-service.md#exchange-credentials) to learn more about this feature.
-    
+
 
 ---
 
@@ -539,7 +539,7 @@ Allison sends this proof to the airline for them to verify.
 
     Trinsic offers an [OpenID Connect service](/reference/other/openid/){target=_blank} as an alternative flow for the exchange of a credential between a holder and a verifier.
 
-    In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share. 
+    In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share.
 
 
 ---
@@ -574,7 +574,7 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
     [Verify Credential](../../python/samples/vaccine_demo.py) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
-   
+
 
 === "Java"
     <!--codeinclude-->
@@ -626,11 +626,11 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 === "Ruby"
     This sample is available as [`vaccine_demo.rb`](https://github.com/trinsic-id/sdk/blob/main/ruby/test/vaccine_demo.rb) in our SDK repository.
 
---- 
+---
 
 ## Next Steps
 
-Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. 
+Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take.
 
 
 - Try out a [sample app](https://github.com/trinsic-id/sdk-examples){target=_blank}
