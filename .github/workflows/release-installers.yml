@@ -1,0 +1,41 @@
+name: "Release Installers"
+
+on:
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Package Version (leave empty for latest release)'
+        required: false
+
+env:
+  packageId: trinsic.cli
+
+jobs:
+  set_version:
+    name: Set Version
+    runs-on: ubuntu-latest
+    outputs:
+      packageVersion: ${{ steps.setversion.outputs.packageVersion }}
+      releaseVersion: ${{ steps.setversion.outputs.releaseVersion }}
+    steps:
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
+
+  homebrew:
+    name: Update Homebrew Formula
+    needs: [ set_version ]
+    uses: trinsic-id/homebrew-tap/.github/workflows/update-bottle.yml@main
+    with:
+      callerVersion: ${{ needs.set_version.outputs.packageVersion }}
+
+  windows:
+    name: Update WIX Package
+    # https://github.com/TechWatching/winget-package-submission/blob/main/.github/workflows/winget-submission.yml
+    runs-on: windows-latest
+    steps:
+      - name: Submit package to Windows Package Manager Community Repository
+        run: ./.github/workflows/update-wix.ps1 -ReleaseVersion ${{ needs.set_version.outputs.releaseVersion }} -Version ${{ needs.set_version.outputs.packageVersion }} -GithubPAT ${{ secrets.API_GITHUB_TOKEN }}
+        shell: pwsh
