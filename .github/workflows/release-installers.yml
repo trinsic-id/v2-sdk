@@ -52,5 +52,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Submit package to Windows Package Manager Community Repository
         # Uses the REPO PUSH token to ensure we have the proper permissions.
-        run: ./.github/workflows/update-wix.ps1 -ReleaseVersion ${{ needs.set_version.outputs.releaseVersion }} -Version ${{ needs.set_version.outputs.packageVersion }} -GithubPAT ${{ secrets.SDK_REPO_PUSH_TOKEN }}
+        run: ./.github/workflows/update-wix.ps1 -ReleaseVersion ${{ needs.set_version.outputs.releaseVersion }} -Version ${{ needs.set_version.outputs.packageVersion }} -GithubPAT ${{ secrets.WINGET_PUSH_TOKEN }}
         shell: pwsh
