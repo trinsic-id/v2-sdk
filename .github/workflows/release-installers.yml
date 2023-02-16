@@ -45,5 +45,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Submit package to Windows Package Manager Community Repository
-        run: ./.github/workflows/update-wix.ps1 -ReleaseVersion ${{ needs.set_version.outputs.releaseVersion }} -Version ${{ needs.set_version.outputs.packageVersion }} -GithubPAT ${{ secrets.API_GITHUB_TOKEN }}
+        # Uses the REPO PUSH token to ensure we have the proper permissions.
+        run: ./.github/workflows/update-wix.ps1 -ReleaseVersion ${{ needs.set_version.outputs.releaseVersion }} -Version ${{ needs.set_version.outputs.packageVersion }} -GithubPAT ${{ secrets.SDK_REPO_PUSH_TOKEN }}
         shell: pwsh
