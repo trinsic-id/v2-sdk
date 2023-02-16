@@ -530,7 +530,7 @@ Request to send a document to another user's wallet
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | email | [string](/reference/proto#string) | Email address of user to send item to |
-| wallet_id | [string](/reference/proto#string) | DID of recipient (presently unsupported) string did_uri = 2 [deprecated=true]; DIDComm out-of-band invitation JSON (presently unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet ID of the recipient within the ecosystem |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the recipient within the ecosystem |
 | did_uri | [string](/reference/proto#string) | DID URI of the recipient |
 | send_notification | [bool](/reference/proto#bool) | Send email notification that credential has been sent to a wallet |
 | document_json | [string](/reference/proto#string) | JSON document to send to recipient |

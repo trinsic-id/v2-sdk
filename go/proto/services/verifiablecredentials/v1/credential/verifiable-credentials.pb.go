@@ -788,10 +788,6 @@ type SendRequest_Email struct {
 }
 
 type SendRequest_WalletId struct {
-	// DID of recipient (presently unsupported)
-	// string did_uri = 2 [deprecated=true];
-	// DIDComm out-of-band invitation JSON (presently unsupported)
-	// string didcomm_invitation_json = 3 [deprecated=true];
 	// Wallet ID of the recipient within the ecosystem
 	WalletId string `protobuf:"bytes,5,opt,name=wallet_id,json=walletId,proto3,oneof"`
 }

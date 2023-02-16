@@ -194,12 +194,7 @@ class SendRequest(betterproto.Message):
     """Email address of user to send item to"""
 
     wallet_id: str = betterproto.string_field(5, group="delivery_method")
-    """
-    DID of recipient (presently unsupported) string did_uri = 2
-    [deprecated=true]; DIDComm out-of-band invitation JSON (presently
-    unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet
-    ID of the recipient within the ecosystem
-    """
+    """Wallet ID of the recipient within the ecosystem"""
 
     did_uri: str = betterproto.string_field(6, group="delivery_method")
     """DID URI of the recipient"""
