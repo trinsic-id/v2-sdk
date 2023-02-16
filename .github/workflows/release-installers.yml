@@ -18,7 +18,7 @@ jobs:
       packageVersion: ${{ steps.setversion.outputs.packageVersion }}
       releaseVersion: ${{ steps.setversion.outputs.releaseVersion }}
     steps:
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@main
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
