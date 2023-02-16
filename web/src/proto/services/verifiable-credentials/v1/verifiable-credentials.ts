@@ -131,13 +131,7 @@ export interface ValidationMessage {
 export interface SendRequest {
   /** Email address of user to send item to */
   email?: string | undefined;
-  /**
-   * DID of recipient (presently unsupported)
-   * string did_uri = 2 [deprecated=true];
-   * DIDComm out-of-band invitation JSON (presently unsupported)
-   * string didcomm_invitation_json = 3 [deprecated=true];
-   * Wallet ID of the recipient within the ecosystem
-   */
+  /** Wallet ID of the recipient within the ecosystem */
   walletId?: string | undefined;
   /** DID URI of the recipient */
   didUri?: string | undefined;

@@ -177,10 +177,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * DID of recipient (presently unsupported)
-   * string did_uri = 2 [deprecated=true];
-   * DIDComm out-of-band invitation JSON (presently unsupported)
-   * string didcomm_invitation_json = 3 [deprecated=true];
    * Wallet ID of the recipient within the ecosystem
    * </pre>
    *
@@ -195,10 +191,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * DID of recipient (presently unsupported)
-   * string did_uri = 2 [deprecated=true];
-   * DIDComm out-of-band invitation JSON (presently unsupported)
-   * string didcomm_invitation_json = 3 [deprecated=true];
    * Wallet ID of the recipient within the ecosystem
    * </pre>
    *
@@ -226,10 +218,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * DID of recipient (presently unsupported)
-   * string did_uri = 2 [deprecated=true];
-   * DIDComm out-of-band invitation JSON (presently unsupported)
-   * string didcomm_invitation_json = 3 [deprecated=true];
    * Wallet ID of the recipient within the ecosystem
    * </pre>
    *
@@ -1003,10 +991,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * DID of recipient (presently unsupported)
-     * string did_uri = 2 [deprecated=true];
-     * DIDComm out-of-band invitation JSON (presently unsupported)
-     * string didcomm_invitation_json = 3 [deprecated=true];
      * Wallet ID of the recipient within the ecosystem
      * </pre>
      *
@@ -1022,10 +1006,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * DID of recipient (presently unsupported)
-     * string did_uri = 2 [deprecated=true];
-     * DIDComm out-of-band invitation JSON (presently unsupported)
-     * string didcomm_invitation_json = 3 [deprecated=true];
      * Wallet ID of the recipient within the ecosystem
      * </pre>
      *
@@ -1054,10 +1034,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * DID of recipient (presently unsupported)
-     * string did_uri = 2 [deprecated=true];
-     * DIDComm out-of-band invitation JSON (presently unsupported)
-     * string didcomm_invitation_json = 3 [deprecated=true];
      * Wallet ID of the recipient within the ecosystem
      * </pre>
      *
@@ -1086,10 +1062,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * DID of recipient (presently unsupported)
-     * string did_uri = 2 [deprecated=true];
-     * DIDComm out-of-band invitation JSON (presently unsupported)
-     * string didcomm_invitation_json = 3 [deprecated=true];
      * Wallet ID of the recipient within the ecosystem
      * </pre>
      *
@@ -1111,10 +1083,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * DID of recipient (presently unsupported)
-     * string did_uri = 2 [deprecated=true];
-     * DIDComm out-of-band invitation JSON (presently unsupported)
-     * string didcomm_invitation_json = 3 [deprecated=true];
      * Wallet ID of the recipient within the ecosystem
      * </pre>
      *
@@ -1134,10 +1102,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * DID of recipient (presently unsupported)
-     * string did_uri = 2 [deprecated=true];
-     * DIDComm out-of-band invitation JSON (presently unsupported)
-     * string didcomm_invitation_json = 3 [deprecated=true];
      * Wallet ID of the recipient within the ecosystem
      * </pre>
      *
