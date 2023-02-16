@@ -24,15 +24,23 @@ jobs:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
 
+  instruqt:
+    name: Update Instruqt Demo
+    needs: [ set_version ]
+    uses: trinsic-id/tutorials/.github/workflows/update-samples.yml@main
+    with:
+      callerVersion: ${{ needs.set_version.outputs.packageVersion }}
+
   homebrew:
     name: Update Homebrew Formula
     needs: [ set_version ]
-    uses: trinsic-id/homebrew-tap/.github/workflows/update-bottle.yml@main
+    uses: trinsic-id/homebrew-tap/.github/workflows/update-formula.yml@main
     with:
       callerVersion: ${{ needs.set_version.outputs.packageVersion }}
 
   windows:
     name: Update WIX Package
+    needs: [ set_version ]
     # https://github.com/TechWatching/winget-package-submission/blob/main/.github/workflows/winget-submission.yml
     runs-on: windows-latest
     steps:
