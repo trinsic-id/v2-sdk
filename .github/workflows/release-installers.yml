@@ -30,6 +30,7 @@ jobs:
 #    uses: trinsic-id/tutorials/.github/workflows/update-samples.yml@main
 #    with:
 #      callerVersion: ${{ needs.set_version.outputs.packageVersion }}
+#    secrets: inherit
 
   homebrew:
     name: Update Homebrew Formula
@@ -37,6 +38,7 @@ jobs:
     uses: trinsic-id/homebrew-tap/.github/workflows/update-formula.yml@main
     with:
       callerVersion: ${{ needs.set_version.outputs.packageVersion }}
+    secrets: inherit
 
   windows:
     name: Update WIX Package
