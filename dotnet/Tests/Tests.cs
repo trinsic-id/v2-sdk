@@ -59,7 +59,7 @@ public class Tests
         };
     }
 
-    [Fact]
+    [Fact(DisplayName = "SDK Version has 3 decimal places")]
     public void TestGetVersion() {
         Assert.Equal("1.0.0",(new TrinsicService()).GetSdkVersion());
     }
