@@ -49,8 +49,19 @@ jobs:
     # https://github.com/TechWatching/winget-package-submission/blob/main/.github/workflows/winget-submission.yml
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Submit package to Windows Package Manager Community Repository
         # Uses the REPO PUSH token to ensure we have the proper permissions.
-        run: ./.github/workflows/update-wix.ps1 -ReleaseVersion ${{ needs.set_version.outputs.releaseVersion }} -Version ${{ needs.set_version.outputs.packageVersion }} -GithubPAT ${{ secrets.WINGET_PUSH_TOKEN }}
+        run:  |
+          $Version = ${{ needs.set_version.outputs.packageVersion }}
+          $ReleaseVersion = ${{ needs.set_version.outputs.releaseVersion }}
+          $Version = $Version.Replace("v","")
+          $ReleaseVersion = $ReleaseVersion.Replace("v","")
+          Write-Host "Updating winget msi to $Version"
+
+          $DownloadUrl = "https://github.com/trinsic-id/sdk/releases/download/v$ReleaseVersion/trinsic-$Version-x86_64.msi"
+          $WingetCreate = "wingetcreate.exe"
+          iwr https://aka.ms/wingetcreate/latest -OutFile $WingetCreate
+
+          .\wingetcreate.exe update "trinsic.cli" -s -v $Version -u $DownloadUrl -t ${{ secrets.WINGET_PUSH_TOKEN }}
+          Remove-Item $WingetCreate
         shell: pwsh
