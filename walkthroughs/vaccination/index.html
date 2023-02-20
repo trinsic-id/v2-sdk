@@ -2243,7 +2243,7 @@
 <p><strong>Holder</strong>: Stores credentials received from issuers, and presents them to verifiers. <em>(Said credentials are often, but not always, attesting information about the holder)</em></p>
 <p><strong>Issuer</strong>: Signs and issues credentials which attest information about a credential subject.</p>
 <p><strong>Verifier</strong>: Verifies credentials presented by holders.</p>
-<p>In this case, Allison will be the <em>holder</em>, a vaccination clinic will be the <em>issuer</em>, and an airline will be the <em>verifier</em>. </p>
+<p>In this case, Allison will be the <em>holder</em>, a vaccination clinic will be the <em>issuer</em>, and an airline will be the <em>verifier</em>.</p>
 <h2 id="our-sdks">Our SDKs<a class="headerlink" href="#our-sdks" title="Permanent link">&para;</a></h2>
 <p>You can follow along using one of our SDKs, or use the Trinsic CLI, which implements full platform functionality.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">Typescript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Go</label><label for="__tabbed_1_7">Ruby</label></div>
@@ -2279,7 +2279,7 @@
 <p>If you've already <a href="https://dashboard.trinsic.id/" target:_blank="target:_blank">signed up as a customer</a>, you'll have received an email with an ecosystem ID and authentication token.</p>
 <p>Copy this ecosystem ID down, and <a href="#create-accounts">skip to the next step</a>.</p>
 <h3 id="create-new-ecosystem">Create New Ecosystem<a class="headerlink" href="#create-new-ecosystem" title="Permanent link">&para;</a></h3>
-<p>If you don't already have an ecosystem provisioned for you, you'll need to create one first. </p>
+<p>If you don't already have an ecosystem provisioned for you, you'll need to create one first.</p>
 <p>This will be a <em>sandbox</em> ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, <a href="https://dashboard.trinsic.id/" target:_blank="target:_blank">sign up</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">Typescript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Java</label><label for="__tabbed_2_6">Go</label><label for="__tabbed_2_7">Ruby</label></div>
 <div class="tabbed-content">
@@ -2417,7 +2417,7 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 </div>
 <hr />
 <h2 id="define-a-template">Define a Template<a class="headerlink" href="#define-a-template" title="Permanent link">&para;</a></h2>
-<p>Before we can issue a credential, we need to create a <a href="/learn/concepts/templates/" target="_blank">Template</a> for it. </p>
+<p>Before we can issue a credential, we need to create a <a href="/learn/concepts/templates/" target="_blank">Template</a> for it.</p>
 <p>Templates are simply a list of the fields that a credential can have.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">Typescript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Go</label><label for="__tabbed_4_7">Ruby</label></div>
 <div class="tabbed-content">
@@ -2448,7 +2448,7 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 <span class="p">}</span>
 </code></pre></div>
 <p>Then create the template:</p>
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>template<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;VaccinationCertificate&quot;</span><span class="w"> </span>--fields-file<span class="w"> </span>templateData.json<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>template<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;VaccinationCertificate&quot;</span><span class="w"> </span>--fields-file<span class="w"> </span>templateData.json
 </code></pre></div>
 <p>The output of this command will include a template ID; copy this down for later use.</p>
 </div>
@@ -2638,7 +2638,7 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 trinsic<span class="w"> </span>vc<span class="w"> </span>issue-from-template<span class="w"> </span>--template-id<span class="w"> </span><span class="o">{</span>TEMPLATE_ID<span class="o">}</span><span class="w"> </span>--values-file<span class="w"> </span>values.json<span class="w"> </span>--out<span class="w"> </span>credential.json
 </code></pre></div>
 <p>The output of this command will contain a signed JSON document, which has been saved to <code>credential.json</code>.</p>
-<p>Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate". 
+<p>Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate".
 More specifically, it's the property 'schema_uri' in the JSON returned by the <code>trinsic template create...</code> command.</p>
 </div>
 <div class="tabbed-block">
@@ -2777,7 +2777,7 @@ More specifically, it's the property 'schema_uri' in the JSON returned by the <c
 <p>Because it's just a JSON string, it could be delivered in many ways -- for example, in the response to an HTTPS request which triggered the issuance process.</p>
 <div class="admonition info">
 <p class="admonition-title">Send via Trinsic</p>
-<p>In the future, we will offer the ability to send a credential directly to a Trinsic user's wallet.</p>
+<p>Trinsic also offers the ability to send a credential directly to a Trinsic user's wallet.</p>
 <p><a href="../../reference/services/credential-service/#exchange-credentials">Click here</a> to learn more about this feature.</p>
 </div>
 <hr />
@@ -2946,7 +2946,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>create-proof<span class
 <div class="admonition note">
 <p class="admonition-title">OpenID Connect for Presentation</p>
 <p>Trinsic offers an <a href="/reference/other/openid/" target="_blank">OpenID Connect service</a> as an alternative flow for the exchange of a credential between a holder and a verifier.</p>
-<p>In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share. </p>
+<p>In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share.</p>
 </div>
 <hr />
 <h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
@@ -3056,7 +3056,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 </div>
 <hr />
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. </p>
+<p>Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take.</p>
 <ul>
 <li>Try out a <a href="https://github.com/trinsic-id/sdk-examples" target="_blank">sample app</a></li>
 <li>Browse the <a href="/reference/" target="_blank">Service Reference</a></li>
