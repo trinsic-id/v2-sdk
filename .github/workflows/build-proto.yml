@@ -73,23 +73,30 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
 
+      - name: Create new branch name
+        id: new-branch-name
+        run: |
+          echo "newbranchname=mewmba-${{ github.head_ref || github.ref_name }}-generated-protos" >> $env:GITHUB_OUTPUT
+          echo "oldbranchname=${{ github.head_ref || github.ref_name }}" >> $env:GITHUB_OUTPUT
+        shell: pwsh
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         id: commit_changes
         with:
           author_name: Mewmba
           author_email: mewmba@trinsic.id
-          message: 'Generated code from proto files on branch ${{ github.head_ref }}'
-          new_branch: 'mewmba-${{ github.head_ref }}-generated-protos'
-          push: '--force --set-upstream origin mewmba-${{ github.head_ref }}-generated-protos'
+          message: 'Generated code from proto files on branch ${{ steps.new-branch-name.outputs.oldbranchname }}'
+          new_branch: ${{ steps.new-branch-name.outputs.newbranchname }}
+          push: '--force --set-upstream origin ${{ steps.new-branch-name.outputs.newbranchname  }}'
 
       - name: pull-request
         uses: repo-sync/pull-request@v2
         if: ${{ steps.commit_changes.outputs.committed == 'true' }}
         with:
-          source_branch: "mewmba-${{ github.head_ref }}-generated-protos"  # From previous step
-          destination_branch: ${{ github.head_ref }}
-          pr_title: "Generated Protos for ${{ github.head_ref }}"
+          source_branch: ${{ steps.new-branch-name.outputs.newbranchname }}
+          destination_branch: ${{ steps.new-branch-name.outputs.oldbranchname }}
+          pr_title: "Generated Protos for ${{ steps.new-branch-name.outputs.oldbranchname }}"
           pr_body: ":rocket: Generated protos"
           pr_allow_empty: false
           github_token: ${{ secrets.GITHUB_TOKEN }}

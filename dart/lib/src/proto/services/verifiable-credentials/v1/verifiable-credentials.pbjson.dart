@@ -102,6 +102,13 @@ const CreateProofRequest$json = const {
       '10': 'documentJson'
     },
     const {
+      '1': 'use_verifiable_presentation',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '10': 'useVerifiablePresentation'
+    },
+    const {
       '1': 'nonce',
       '3': 10,
       '4': 1,
@@ -118,7 +125,7 @@ const CreateProofRequest$json = const {
 
 /// Descriptor for `CreateProofRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createProofRequestDescriptor = $convert.base64Decode(
-    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMgoUcmV2ZWFsX2RvY3VtZW50X2pzb24YASABKAlIAFIScmV2ZWFsRG9jdW1lbnRKc29uEmYKD3JldmVhbF90ZW1wbGF0ZRgLIAEoCzI7LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5SZXZlYWxUZW1wbGF0ZUF0dHJpYnV0ZXNIAFIOcmV2ZWFsVGVtcGxhdGUSGQoHaXRlbV9pZBgCIAEoCUgBUgZpdGVtSWQSJQoNZG9jdW1lbnRfanNvbhgDIAEoCUgBUgxkb2N1bWVudEpzb24SGgoFbm9uY2UYCiABKAxCBICmHQFSBW5vbmNlQgwKCmRpc2Nsb3N1cmVCBwoFcHJvb2Y=');
+    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMgoUcmV2ZWFsX2RvY3VtZW50X2pzb24YASABKAlIAFIScmV2ZWFsRG9jdW1lbnRKc29uEmYKD3JldmVhbF90ZW1wbGF0ZRgLIAEoCzI7LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5SZXZlYWxUZW1wbGF0ZUF0dHJpYnV0ZXNIAFIOcmV2ZWFsVGVtcGxhdGUSGQoHaXRlbV9pZBgCIAEoCUgBUgZpdGVtSWQSJQoNZG9jdW1lbnRfanNvbhgDIAEoCUgBUgxkb2N1bWVudEpzb24SPgobdXNlX3ZlcmlmaWFibGVfcHJlc2VudGF0aW9uGAQgASgIUhl1c2VWZXJpZmlhYmxlUHJlc2VudGF0aW9uEhoKBW5vbmNlGAogASgMQgSAph0BUgVub25jZUIMCgpkaXNjbG9zdXJlQgcKBXByb29m');
 @$core.Deprecated('Use revealTemplateAttributesDescriptor instead')
 const RevealTemplateAttributes$json = const {
   '1': 'RevealTemplateAttributes',

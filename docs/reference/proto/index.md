@@ -420,6 +420,7 @@ Either `item_id` or `document_json` may be provided, not both.
 | reveal_template | [RevealTemplateAttributes](/reference/proto#services-verifiablecredentials-v1-RevealTemplateAttributes) | Information about what sections of the document to reveal |
 | item_id | [string](/reference/proto#string) | ID of wallet item stored in a Trinsic cloud wallet |
 | document_json | [string](/reference/proto#string) | A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
+| use_verifiable_presentation | [bool](/reference/proto#bool) | Wrap the output in a verifiable presentation |
 | nonce | [bytes](/reference/proto#bytes) | Nonce value used to derive the proof. If not specified, a random nonce will be generated. This value may be represented in base64 format in the proof model. |
 
 
@@ -529,7 +530,7 @@ Request to send a document to another user's wallet
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | email | [string](/reference/proto#string) | Email address of user to send item to |
-| wallet_id | [string](/reference/proto#string) | DID of recipient (presently unsupported) string did_uri = 2 [deprecated=true]; DIDComm out-of-band invitation JSON (presently unsupported) string didcomm_invitation_json = 3 [deprecated=true]; Wallet ID of the recipient within the ecosystem |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the recipient within the ecosystem |
 | did_uri | [string](/reference/proto#string) | DID URI of the recipient |
 | send_notification | [bool](/reference/proto#bool) | Send email notification that credential has been sent to a wallet |
 | document_json | [string](/reference/proto#string) | JSON document to send to recipient |
@@ -1840,14 +1841,12 @@ Not implemented.
 
 ### GetMembershipStatusRequest
 Request to fetch membership status in governance framework for a specific credential schema.
-Only one of `did_uri`, `x509_cert` may be specified.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework |
+| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
 | did_uri | [string](/reference/proto#string) | DID URI of member |
-| x509_cert | [string](/reference/proto#string) | X.509 certificate of member |
 | schema_uri | [string](/reference/proto#string) | URI of credential schema associated with membership |
 
 

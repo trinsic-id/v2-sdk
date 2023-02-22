@@ -111,9 +111,9 @@ async fn get_status(args: &GetMembershipStatusArgs, config: &CliConfig) -> Resul
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(GetMembershipStatusRequest {
-        member: Some(get_membership_status_request::Member::DidUri(args.did_uri.clone())),
+        did_uri: args.did_uri.clone(),
         schema_uri: args.schema_uri.clone(),
-        governance_framework_uri: args.governance_framework_uri.clone(),
+        framework_id: args.framework_id.clone(),
         ..Default::default()
     });
 

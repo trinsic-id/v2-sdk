@@ -21,11 +21,11 @@ on:
 jobs:
   build-and-test-dart:
     name: Test Dart code
-    runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows]]  # , [macos-latest, macos] ] - as usual, macos blocks DLL execution lol
+        os: [ ubuntu-latest, windows-latest ]  # ,macos-latest ] - as usual, macos blocks DLL execution lol
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir

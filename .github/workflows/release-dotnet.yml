@@ -30,8 +30,8 @@ jobs:
       - run: |
           dotnet workload install ios
           dotnet restore
-          dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }}
-          dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }} -p:IsBrowser=true -p:PackageId=Trinsic.Web ./Trinsic
+          dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }} -p:Version=${{ steps.setversion.outputs.packageVersion }}
+          dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }} -p:Version=${{ steps.setversion.outputs.packageVersion }} -p:IsBrowser=true -p:PackageId=Trinsic.Web ./Trinsic
         working-directory: ./dotnet
         shell: pwsh
       - uses: actions/upload-artifact@v3

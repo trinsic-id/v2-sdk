@@ -1,6 +1,6 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Grpc.Core;
 using Google.Protobuf;
 using Trinsic.Services.Common.V1;
@@ -149,8 +149,8 @@ public abstract class ServiceBase
     /// Fetches the current version of the SDK
     /// </summary>
     /// <returns></returns>
-    private string GetSdkVersion() {
-        // This will always be 1.0.0.0 on local builds, since the version number is set on the github action during publish.
-        return Assembly.GetAssembly(typeof(ServiceBase))?.GetName().Version?.ToString() ?? "unknown";
+    protected internal string GetSdkVersion() {
+        // This will always be 1.0.0 on local builds, since the version number is set on the github action during publish.
+        return Assembly.GetAssembly(typeof(ServiceBase))?.GetName().Version?.ToString(3) ?? "unknown";
     }
 }

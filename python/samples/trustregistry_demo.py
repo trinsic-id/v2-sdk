@@ -47,7 +47,7 @@ async def trustregistry_demo():
     check_response = await trinsic_service.trust_registry.get_membership_status(
         request=GetMembershipStatusRequest(
             did_uri=did_example_test,
-            governance_framework_uri=https_example_com,
+            framework_id=register_framework_response.id,
             schema_uri=https_schema_org,
         )
     )

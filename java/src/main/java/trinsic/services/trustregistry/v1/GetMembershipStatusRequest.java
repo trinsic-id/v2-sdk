@@ -8,7 +8,6 @@ package trinsic.services.trustregistry.v1;
  *
  * <pre>
  * Request to fetch membership status in governance framework for a specific credential schema.
- * Only one of `did_uri`, `x509_cert` may be specified.
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
@@ -24,7 +23,8 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
   }
 
   private GetMembershipStatusRequest() {
-    governanceFrameworkUri_ = "";
+    frameworkId_ = "";
+    didUri_ = "";
     schemaUri_ = "";
   }
 
@@ -54,75 +54,30 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
             trinsic.services.trustregistry.v1.GetMembershipStatusRequest.Builder.class);
   }
 
-  private int memberCase_ = 0;
-  private java.lang.Object member_;
-
-  public enum MemberCase
-      implements
-          com.google.protobuf.Internal.EnumLite,
-          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-    DID_URI(2),
-    X509_CERT(3),
-    MEMBER_NOT_SET(0);
-    private final int value;
-
-    private MemberCase(int value) {
-      this.value = value;
-    }
-    /**
-     * @param value The number of the enum to look for.
-     * @return The enum associated with the given number.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static MemberCase valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static MemberCase forNumber(int value) {
-      switch (value) {
-        case 2:
-          return DID_URI;
-        case 3:
-          return X509_CERT;
-        case 0:
-          return MEMBER_NOT_SET;
-        default:
-          return null;
-      }
-    }
-
-    public int getNumber() {
-      return this.value;
-    }
-  };
-
-  public MemberCase getMemberCase() {
-    return MemberCase.forNumber(memberCase_);
-  }
-
-  public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 1;
-  private volatile java.lang.Object governanceFrameworkUri_;
+  public static final int FRAMEWORK_ID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object frameworkId_;
   /**
    *
    *
    * <pre>
-   * URI of governance framework
+   * The ID of the ecosystem governance framework.
+   * This ID may be found in the 'trustRegistry' field in the
+   * verifiable credential model
    * </pre>
    *
-   * <code>string governance_framework_uri = 1;</code>
+   * <code>string framework_id = 1;</code>
    *
-   * @return The governanceFrameworkUri.
+   * @return The frameworkId.
    */
   @java.lang.Override
-  public java.lang.String getGovernanceFrameworkUri() {
-    java.lang.Object ref = governanceFrameworkUri_;
+  public java.lang.String getFrameworkId() {
+    java.lang.Object ref = frameworkId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      governanceFrameworkUri_ = s;
+      frameworkId_ = s;
       return s;
     }
   }
@@ -130,20 +85,22 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * URI of governance framework
+   * The ID of the ecosystem governance framework.
+   * This ID may be found in the 'trustRegistry' field in the
+   * verifiable credential model
    * </pre>
    *
-   * <code>string governance_framework_uri = 1;</code>
+   * <code>string framework_id = 1;</code>
    *
-   * @return The bytes for governanceFrameworkUri.
+   * @return The bytes for frameworkId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getGovernanceFrameworkUriBytes() {
-    java.lang.Object ref = governanceFrameworkUri_;
+  public com.google.protobuf.ByteString getFrameworkIdBytes() {
+    java.lang.Object ref = frameworkId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      governanceFrameworkUri_ = b;
+      frameworkId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -151,20 +108,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
   }
 
   public static final int DID_URI_FIELD_NUMBER = 2;
-  /**
-   *
-   *
-   * <pre>
-   * DID URI of member
-   * </pre>
-   *
-   * <code>string did_uri = 2;</code>
-   *
-   * @return Whether the didUri field is set.
-   */
-  public boolean hasDidUri() {
-    return memberCase_ == 2;
-  }
+  private volatile java.lang.Object didUri_;
   /**
    *
    *
@@ -176,19 +120,15 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
    *
    * @return The didUri.
    */
+  @java.lang.Override
   public java.lang.String getDidUri() {
-    java.lang.Object ref = "";
-    if (memberCase_ == 2) {
-      ref = member_;
-    }
+    java.lang.Object ref = didUri_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      if (memberCase_ == 2) {
-        member_ = s;
-      }
+      didUri_ = s;
       return s;
     }
   }
@@ -203,87 +143,13 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
    *
    * @return The bytes for didUri.
    */
+  @java.lang.Override
   public com.google.protobuf.ByteString getDidUriBytes() {
-    java.lang.Object ref = "";
-    if (memberCase_ == 2) {
-      ref = member_;
-    }
+    java.lang.Object ref = didUri_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      if (memberCase_ == 2) {
-        member_ = b;
-      }
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int X509_CERT_FIELD_NUMBER = 3;
-  /**
-   *
-   *
-   * <pre>
-   * X.509 certificate of member
-   * </pre>
-   *
-   * <code>string x509_cert = 3;</code>
-   *
-   * @return Whether the x509Cert field is set.
-   */
-  public boolean hasX509Cert() {
-    return memberCase_ == 3;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * X.509 certificate of member
-   * </pre>
-   *
-   * <code>string x509_cert = 3;</code>
-   *
-   * @return The x509Cert.
-   */
-  public java.lang.String getX509Cert() {
-    java.lang.Object ref = "";
-    if (memberCase_ == 3) {
-      ref = member_;
-    }
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (memberCase_ == 3) {
-        member_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * X.509 certificate of member
-   * </pre>
-   *
-   * <code>string x509_cert = 3;</code>
-   *
-   * @return The bytes for x509Cert.
-   */
-  public com.google.protobuf.ByteString getX509CertBytes() {
-    java.lang.Object ref = "";
-    if (memberCase_ == 3) {
-      ref = member_;
-    }
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      if (memberCase_ == 3) {
-        member_ = b;
-      }
+      didUri_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -353,14 +219,11 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, frameworkId_);
     }
-    if (memberCase_ == 2) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, member_);
-    }
-    if (memberCase_ == 3) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, member_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(didUri_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, didUri_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, schemaUri_);
@@ -374,14 +237,11 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, frameworkId_);
     }
-    if (memberCase_ == 2) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, member_);
-    }
-    if (memberCase_ == 3) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, member_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(didUri_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, didUri_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, schemaUri_);
@@ -402,19 +262,9 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     trinsic.services.trustregistry.v1.GetMembershipStatusRequest other =
         (trinsic.services.trustregistry.v1.GetMembershipStatusRequest) obj;
 
-    if (!getGovernanceFrameworkUri().equals(other.getGovernanceFrameworkUri())) return false;
+    if (!getFrameworkId().equals(other.getFrameworkId())) return false;
+    if (!getDidUri().equals(other.getDidUri())) return false;
     if (!getSchemaUri().equals(other.getSchemaUri())) return false;
-    if (!getMemberCase().equals(other.getMemberCase())) return false;
-    switch (memberCase_) {
-      case 2:
-        if (!getDidUri().equals(other.getDidUri())) return false;
-        break;
-      case 3:
-        if (!getX509Cert().equals(other.getX509Cert())) return false;
-        break;
-      case 0:
-      default:
-    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -426,22 +276,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
-    hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
+    hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getFrameworkId().hashCode();
+    hash = (37 * hash) + DID_URI_FIELD_NUMBER;
+    hash = (53 * hash) + getDidUri().hashCode();
     hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
     hash = (53 * hash) + getSchemaUri().hashCode();
-    switch (memberCase_) {
-      case 2:
-        hash = (37 * hash) + DID_URI_FIELD_NUMBER;
-        hash = (53 * hash) + getDidUri().hashCode();
-        break;
-      case 3:
-        hash = (37 * hash) + X509_CERT_FIELD_NUMBER;
-        hash = (53 * hash) + getX509Cert().hashCode();
-        break;
-      case 0:
-      default:
-    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -548,7 +388,6 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
    *
    * <pre>
    * Request to fetch membership status in governance framework for a specific credential schema.
-   * Only one of `did_uri`, `x509_cert` may be specified.
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
@@ -582,12 +421,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      governanceFrameworkUri_ = "";
+      frameworkId_ = "";
+
+      didUri_ = "";
 
       schemaUri_ = "";
 
-      memberCase_ = 0;
-      member_ = null;
       return this;
     }
 
@@ -616,15 +455,9 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     public trinsic.services.trustregistry.v1.GetMembershipStatusRequest buildPartial() {
       trinsic.services.trustregistry.v1.GetMembershipStatusRequest result =
           new trinsic.services.trustregistry.v1.GetMembershipStatusRequest(this);
-      result.governanceFrameworkUri_ = governanceFrameworkUri_;
-      if (memberCase_ == 2) {
-        result.member_ = member_;
-      }
-      if (memberCase_ == 3) {
-        result.member_ = member_;
-      }
+      result.frameworkId_ = frameworkId_;
+      result.didUri_ = didUri_;
       result.schemaUri_ = schemaUri_;
-      result.memberCase_ = memberCase_;
       onBuilt();
       return result;
     }
@@ -676,33 +509,17 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       if (other
           == trinsic.services.trustregistry.v1.GetMembershipStatusRequest.getDefaultInstance())
         return this;
-      if (!other.getGovernanceFrameworkUri().isEmpty()) {
-        governanceFrameworkUri_ = other.governanceFrameworkUri_;
+      if (!other.getFrameworkId().isEmpty()) {
+        frameworkId_ = other.frameworkId_;
+        onChanged();
+      }
+      if (!other.getDidUri().isEmpty()) {
+        didUri_ = other.didUri_;
         onChanged();
       }
       if (!other.getSchemaUri().isEmpty()) {
         schemaUri_ = other.schemaUri_;
         onChanged();
-      }
-      switch (other.getMemberCase()) {
-        case DID_URI:
-          {
-            memberCase_ = 2;
-            member_ = other.member_;
-            onChanged();
-            break;
-          }
-        case X509_CERT:
-          {
-            memberCase_ = 3;
-            member_ = other.member_;
-            onChanged();
-            break;
-          }
-        case MEMBER_NOT_SET:
-          {
-            break;
-          }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -732,24 +549,16 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
               break;
             case 10:
               {
-                governanceFrameworkUri_ = input.readStringRequireUtf8();
+                frameworkId_ = input.readStringRequireUtf8();
 
                 break;
               } // case 10
             case 18:
               {
-                java.lang.String s = input.readStringRequireUtf8();
-                memberCase_ = 2;
-                member_ = s;
+                didUri_ = input.readStringRequireUtf8();
+
                 break;
               } // case 18
-            case 26:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                memberCase_ = 3;
-                member_ = s;
-                break;
-              } // case 26
             case 34:
               {
                 schemaUri_ = input.readStringRequireUtf8();
@@ -773,38 +582,26 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
 
-    private int memberCase_ = 0;
-    private java.lang.Object member_;
-
-    public MemberCase getMemberCase() {
-      return MemberCase.forNumber(memberCase_);
-    }
-
-    public Builder clearMember() {
-      memberCase_ = 0;
-      member_ = null;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object governanceFrameworkUri_ = "";
+    private java.lang.Object frameworkId_ = "";
     /**
      *
      *
      * <pre>
-     * URI of governance framework
+     * The ID of the ecosystem governance framework.
+     * This ID may be found in the 'trustRegistry' field in the
+     * verifiable credential model
      * </pre>
      *
-     * <code>string governance_framework_uri = 1;</code>
+     * <code>string framework_id = 1;</code>
      *
-     * @return The governanceFrameworkUri.
+     * @return The frameworkId.
      */
-    public java.lang.String getGovernanceFrameworkUri() {
-      java.lang.Object ref = governanceFrameworkUri_;
+    public java.lang.String getFrameworkId() {
+      java.lang.Object ref = frameworkId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        governanceFrameworkUri_ = s;
+        frameworkId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -814,19 +611,21 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of governance framework
+     * The ID of the ecosystem governance framework.
+     * This ID may be found in the 'trustRegistry' field in the
+     * verifiable credential model
      * </pre>
      *
-     * <code>string governance_framework_uri = 1;</code>
+     * <code>string framework_id = 1;</code>
      *
-     * @return The bytes for governanceFrameworkUri.
+     * @return The bytes for frameworkId.
      */
-    public com.google.protobuf.ByteString getGovernanceFrameworkUriBytes() {
-      java.lang.Object ref = governanceFrameworkUri_;
+    public com.google.protobuf.ByteString getFrameworkIdBytes() {
+      java.lang.Object ref = frameworkId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        governanceFrameworkUri_ = b;
+        frameworkId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -836,20 +635,22 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of governance framework
+     * The ID of the ecosystem governance framework.
+     * This ID may be found in the 'trustRegistry' field in the
+     * verifiable credential model
      * </pre>
      *
-     * <code>string governance_framework_uri = 1;</code>
+     * <code>string framework_id = 1;</code>
      *
-     * @param value The governanceFrameworkUri to set.
+     * @param value The frameworkId to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFrameworkUri(java.lang.String value) {
+    public Builder setFrameworkId(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
       }
 
-      governanceFrameworkUri_ = value;
+      frameworkId_ = value;
       onChanged();
       return this;
     }
@@ -857,16 +658,18 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of governance framework
+     * The ID of the ecosystem governance framework.
+     * This ID may be found in the 'trustRegistry' field in the
+     * verifiable credential model
      * </pre>
      *
-     * <code>string governance_framework_uri = 1;</code>
+     * <code>string framework_id = 1;</code>
      *
      * @return This builder for chaining.
      */
-    public Builder clearGovernanceFrameworkUri() {
+    public Builder clearFrameworkId() {
 
-      governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
+      frameworkId_ = getDefaultInstance().getFrameworkId();
       onChanged();
       return this;
     }
@@ -874,40 +677,28 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of governance framework
+     * The ID of the ecosystem governance framework.
+     * This ID may be found in the 'trustRegistry' field in the
+     * verifiable credential model
      * </pre>
      *
-     * <code>string governance_framework_uri = 1;</code>
+     * <code>string framework_id = 1;</code>
      *
-     * @param value The bytes for governanceFrameworkUri to set.
+     * @param value The bytes for frameworkId to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFrameworkUriBytes(com.google.protobuf.ByteString value) {
+    public Builder setFrameworkIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
 
-      governanceFrameworkUri_ = value;
+      frameworkId_ = value;
       onChanged();
       return this;
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * DID URI of member
-     * </pre>
-     *
-     * <code>string did_uri = 2;</code>
-     *
-     * @return Whether the didUri field is set.
-     */
-    @java.lang.Override
-    public boolean hasDidUri() {
-      return memberCase_ == 2;
-    }
+    private java.lang.Object didUri_ = "";
     /**
      *
      *
@@ -919,18 +710,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      * @return The didUri.
      */
-    @java.lang.Override
     public java.lang.String getDidUri() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 2) {
-        ref = member_;
-      }
+      java.lang.Object ref = didUri_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (memberCase_ == 2) {
-          member_ = s;
-        }
+        didUri_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -947,18 +732,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      * @return The bytes for didUri.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString getDidUriBytes() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 2) {
-        ref = member_;
-      }
+      java.lang.Object ref = didUri_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        if (memberCase_ == 2) {
-          member_ = b;
-        }
+        didUri_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -980,8 +759,8 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       if (value == null) {
         throw new NullPointerException();
       }
-      memberCase_ = 2;
-      member_ = value;
+
+      didUri_ = value;
       onChanged();
       return this;
     }
@@ -997,11 +776,9 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      * @return This builder for chaining.
      */
     public Builder clearDidUri() {
-      if (memberCase_ == 2) {
-        memberCase_ = 0;
-        member_ = null;
-        onChanged();
-      }
+
+      didUri_ = getDefaultInstance().getDidUri();
+      onChanged();
       return this;
     }
     /**
@@ -1021,142 +798,8 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
-      memberCase_ = 2;
-      member_ = value;
-      onChanged();
-      return this;
-    }
 
-    /**
-     *
-     *
-     * <pre>
-     * X.509 certificate of member
-     * </pre>
-     *
-     * <code>string x509_cert = 3;</code>
-     *
-     * @return Whether the x509Cert field is set.
-     */
-    @java.lang.Override
-    public boolean hasX509Cert() {
-      return memberCase_ == 3;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * X.509 certificate of member
-     * </pre>
-     *
-     * <code>string x509_cert = 3;</code>
-     *
-     * @return The x509Cert.
-     */
-    @java.lang.Override
-    public java.lang.String getX509Cert() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 3) {
-        ref = member_;
-      }
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (memberCase_ == 3) {
-          member_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * X.509 certificate of member
-     * </pre>
-     *
-     * <code>string x509_cert = 3;</code>
-     *
-     * @return The bytes for x509Cert.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getX509CertBytes() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 3) {
-        ref = member_;
-      }
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        if (memberCase_ == 3) {
-          member_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * X.509 certificate of member
-     * </pre>
-     *
-     * <code>string x509_cert = 3;</code>
-     *
-     * @param value The x509Cert to set.
-     * @return This builder for chaining.
-     */
-    public Builder setX509Cert(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      memberCase_ = 3;
-      member_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * X.509 certificate of member
-     * </pre>
-     *
-     * <code>string x509_cert = 3;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearX509Cert() {
-      if (memberCase_ == 3) {
-        memberCase_ = 0;
-        member_ = null;
-        onChanged();
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * X.509 certificate of member
-     * </pre>
-     *
-     * <code>string x509_cert = 3;</code>
-     *
-     * @param value The bytes for x509Cert to set.
-     * @return This builder for chaining.
-     */
-    public Builder setX509CertBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-      memberCase_ = 3;
-      member_ = value;
+      didUri_ = value;
       onChanged();
       return this;
     }

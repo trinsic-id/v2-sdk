@@ -22,7 +22,7 @@ describe("TrustRegistryService Unit Tests", () => {
     it("add governance framework", async () => {
         let response = await trinsic.trustRegistry().addFramework(
             AddFrameworkRequest.fromPartial({
-                governanceFrameworkUri: `urn:egf:${uuid()}`,
+                governanceFrameworkUri: `https://example.com/${uuid()}`,
                 name: `Test Governance Framework - ${uuid()}`,
             })
         );
@@ -43,7 +43,7 @@ describe("TrustRegistryService Unit Tests", () => {
 
     it("Demo: Trust Registry", async () => {
         const didUri = "did:example:test";
-        const frameworkUri = `urn:egf:${uuid()}`;
+        const frameworkUri = `https://example.com/${uuid()}`;
         const schemaUri = "https://schema.org/Card";
 
         let frameworkResponse = await trinsic.trustRegistry().addFramework(
@@ -74,7 +74,7 @@ describe("TrustRegistryService Unit Tests", () => {
         let issuerStatus = await trinsic.trustRegistry().getMembershipStatus(
             GetMembershipStatusRequest.fromPartial({
                 didUri: didUri,
-                governanceFrameworkUri: frameworkUri,
+                frameworkId: frameworkResponse.id,
                 schemaUri: schemaUri,
             })
         );
@@ -84,7 +84,7 @@ describe("TrustRegistryService Unit Tests", () => {
         let verifierStatus = await trinsic.trustRegistry().getMembershipStatus(
             GetMembershipStatusRequest.fromPartial({
                 didUri: didUri,
-                governanceFrameworkUri: frameworkUri,
+                frameworkId: frameworkResponse.id,
                 schemaUri: schemaUri,
             })
         );
