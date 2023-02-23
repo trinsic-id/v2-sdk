@@ -701,22 +701,39 @@ Registers an authorized issuer for a specific credential type (identified by its
 
 
 ### Check Issuer Status
+
 Check the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:
+
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
-        trinsic trust-registry check-issuer \
-            --framework "https://vaccines.trinsic.id" \
+        trinsic trust-registry get-membership-status \
+            --framework-id <framework_id> \
             --schema <template_uri> \
             --did <public_did>
         ```
 
-        The response should be:
-        ```bash
-        status → "Current"
-        ```
 
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
+
+
+---
+
+
+### Revoke Issuer
+Revoke the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry unregister-member \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.UnregisterMember") }}
+
 
 
 
