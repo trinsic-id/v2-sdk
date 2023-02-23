@@ -662,7 +662,7 @@ The response to this call contains the name and ID of your newly-created ecosyst
 
 ### Register Issuer
 
-First lets grab our public_did
+First lets grab our account info. You can use an email address, walletId or PublicDID as identifiers for a wallet. We will use email.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -673,15 +673,8 @@ First lets grab our public_did
         The response should look like:
         ```js
         {
-          "authorized_webhooks": [],
-          "details": {
-            "email": "<email>",
-            "name": "",
-            "sms": ""
-          },
-          "device_id": "",
+          ...
           "ecosystem_id": "urn:trinsic:ecosystems:<ecosystem-name>",
-          "ecosystems": [],
           "public_did": "did:key:xxxxxxxx......",
           "wallet_id": "urn:trinsic:wallets:xxxxxx....>"
         }
@@ -696,7 +689,7 @@ Registers an authorized issuer for a specific credential type (identified by its
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
-        trinsic trust-registry register-issuer \
+        trinsic trust-registry register-member \
             --framework-id <framework_id> \
             --schema <template_uri> \
             --did <public_did>
