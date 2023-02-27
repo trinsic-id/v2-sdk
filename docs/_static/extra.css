@@ -194,7 +194,7 @@ input {
 /* For sub-tabs of the Sample/Request/Response tabs (ie, the language tabs),
    make their font smaller. */
 .proto-method-tabs-marker+.tabbed-set .tabbed-set .tabbed-labels label{
-    font-size: 0.5rem;
+    /* font-size: 0.5rem; */
 }
 
 /* Make the Sample / Request / Response tab labels larger */
