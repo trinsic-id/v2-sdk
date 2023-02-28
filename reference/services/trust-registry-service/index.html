@@ -2158,7 +2158,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>register-efg
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>add-framework<span class="w"> </span>--name<span class="w"> </span><span class="s1">&#39;Example EGF&#39;</span><span class="w"> </span>--uri<span class="w"> </span><span class="s1">&#39;https://example.com/governance&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2221,10 +2221,10 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>register-issuer<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>register-member<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--egf<span class="w"> </span>http://hl7.org/fhir<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--credential-type<span class="w"> </span>https://w3id.org/vaccination#VaccinationCertificate<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--did<span class="w"> </span>did:example:fabre
+<span class="w">    </span>--schema<span class="w"> </span>https://w3id.org/vaccination#VaccinationCertificate<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--did<span class="w"> </span>did:key:xxxxx.....
 </code></pre></div>
 </div>
 <div class="tabbed-block">

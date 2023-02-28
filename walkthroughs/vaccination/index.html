@@ -1082,6 +1082,100 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#governance-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Governance Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-new-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create New Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-issuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register Issuer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-issuer-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Issuer Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-a-credential-with-governance-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue a Credential with Governance framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-a-proof-with-governance-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify a proof with governance status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revoke-issuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revoke Issuer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-a-proof-with-governance-status-after-revocation-of-issuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify a proof with governance status after revocation of issuer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3055,6 +3149,275 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 </div>
 </div>
 <hr />
+<h2 id="governance-setup">Governance Setup<a class="headerlink" href="#governance-setup" title="Permanent link">&para;</a></h2>
+<p>Before we begin, you'll need an <a href="/learn/concepts/trust-registries">trust registry</a> -- somewhere for the governance to be defined (which issuer is allowed to issue a vaccine credential).</p>
+<h3 id="create-new-governance">Create New Governance<a class="headerlink" href="#create-new-governance" title="Permanent link">&para;</a></h3>
+<p>You can create a governance framework through the <a href="https://dashboard.trinsic.id/ecosystem/governance" target:_blank="target:_blank">Trinsic dashboard</a> by clicking on the 'Governance' tab in the nav bar.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_12_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_12_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>add-framework<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;Vaccine Governance&quot;</span><span class="w"> </span>--uri<span class="w"> </span><span class="s2">&quot;https://vaccines.trinsic.id&quot;</span>
+</code></pre></div>
+<p>The response should look like:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;governing_authority&quot;</span><span class="o">:</span><span class="s2">&quot;did:key:xxxxxxxxxxx........&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xxxxxx.....&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// &lt;framework_id&gt;</span>
+<span class="w">    </span><span class="s2">&quot;trust_registry&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;urn:egf:...&quot;</span><span class="w"> </span>
+<span class="p">}</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.AddFrameworkRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.AddFrameworkRequest' href='/reference/proto#services.trustregistry.v1.AddFrameworkRequest'>AddFrameworkRequest</a></div><div class='proto-obj-description'>Request to register a new ecosystem governance framework in the current ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>governance_framework_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of governance framework organization</div></div><div class='proto-field'><div class='proto-field-name'>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Name of governance framework organization</div></div><div class='proto-field'><div class='proto-field-name'>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Description of governance framework</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.AddFrameworkResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.AddFrameworkResponse' href='/reference/proto#services.trustregistry.v1.AddFrameworkResponse'>AddFrameworkResponse</a></div><div class='proto-obj-description'>Response to <code>AddFrameworkRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Unique framework identifier</div></div><div class='proto-field'><div class='proto-field-name'>governing_authority</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of Trinsic account which created the governance framework</div></div><div class='proto-field'><div class='proto-field-name'>trust_registry</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of trust registry for governance framework</div></div></div></div></p>
+</div>
+</div>
+</div>
+<p>The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.</p>
+<p>\</p>
+<hr />
+<h3 id="register-issuer">Register Issuer<a class="headerlink" href="#register-issuer" title="Permanent link">&para;</a></h3>
+<p>First lets grab our account info. You can use an email address, walletId or PublicDID as identifiers for a wallet. We will use publicDID.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:3"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_14_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_14_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>account<span class="w"> </span>info
+</code></pre></div>
+<p>The response should look like:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="s2">&quot;ecosystem_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;urn:trinsic:ecosystems:&lt;ecosystem-name&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;public_did&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;did:key:xxxxxxxx......&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// &lt;public_did&gt;</span>
+<span class="w">  </span><span class="s2">&quot;wallet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;urn:trinsic:wallets:xxxxxx....&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberRequest' href='/reference/proto#services.trustregistry.v1.RegisterMemberRequest'>RegisterMemberRequest</a></div><div class='proto-obj-description'>Request to register a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to register</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to register</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to register. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to register member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>valid_from_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>valid_until_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the governance framework that member is being added to</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberResponse' href='/reference/proto#services.trustregistry.v1.RegisterMemberResponse'>RegisterMemberResponse</a></div><div class='proto-obj-description'>Response to <code>RegisterMemberRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+</div>
+</div>
+</div>
+<hr />
+<p>Registers an authorized issuer for a specific credential type (identified by its <code>schema_uri</code>), using the public_did, framework_id and template_uri from above:</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_16_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_16_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>register-member<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--framework-id<span class="w"> </span>&lt;framework_id&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--schema<span class="w"> </span>&lt;template_uri&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--did<span class="w"> </span>&lt;public_did&gt;
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberRequest' href='/reference/proto#services.trustregistry.v1.RegisterMemberRequest'>RegisterMemberRequest</a></div><div class='proto-obj-description'>Request to register a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to register</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to register</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to register. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to register member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>valid_from_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>valid_until_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the governance framework that member is being added to</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberResponse' href='/reference/proto#services.trustregistry.v1.RegisterMemberResponse'>RegisterMemberResponse</a></div><div class='proto-obj-description'>Response to <code>RegisterMemberRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h3 id="check-issuer-status">Check Issuer Status<a class="headerlink" href="#check-issuer-status" title="Permanent link">&para;</a></h3>
+<p>Check the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:3"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><input id="__tabbed_18_3" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_18_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_18_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>get-membership-status<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--framework-id<span class="w"> </span>&lt;framework_id&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--schema<span class="w"> </span>&lt;template_uri&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--did<span class="w"> </span>&lt;public_did&gt;
+</code></pre></div>
+<p>The response should look like:
+<div class="highlight"><pre><span></span><code>ok
+</code></pre></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMembershipStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMembershipStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMembershipStatusRequest'>GetMembershipStatusRequest</a></div><div class='proto-obj-description'>Request to fetch membership status in governance framework for a specific credential schema.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model</div></div><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with membership</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMembershipStatusResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMembershipStatusResponse' href='/reference/proto#services.trustregistry.v1.GetMembershipStatusResponse'>GetMembershipStatusResponse</a></div><div class='proto-obj-description'>Response to <code>GetMembershipStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>status</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.RegistrationStatus'>RegistrationStatus</a></div><div class='proto-field-description'>Status of member for given credential schema</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>CURRENT</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>Member is currently authorized, as of the time of the query</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>EXPIRED</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Member's authorization has expired</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>TERMINATED</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>Member has voluntarily ceased Issuer role under the specific EGF</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>REVOKED</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Member authority under specific EGF was terminated by the governing authority</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>NOT_FOUND</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Member is not associated with given credential schema in the EGF</div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h3 id="issue-a-credential-with-governance-framework">Issue a Credential with Governance framework<a class="headerlink" href="#issue-a-credential-with-governance-framework" title="Permanent link">&para;</a></h3>
+<p>We need to prepare a credential with a governance framework specified. This will consist of:</p>
+<ol>
+<li>Issuing the credential with framework-id specified</li>
+<li>Inserting the credential into your wallet</li>
+<li>Deriving a proof of the credential</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>First, prepare a file named <code>values.json</code> with the following content:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">values.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;firstName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allison&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;lastName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allisonne&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;batchNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123454321&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;countryOfVaccination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Then issue the credential:</p>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>issue-from-template<span class="w"> </span>--framework-id<span class="w"> </span>&lt;framework_id&gt;<span class="w"> </span>--template-id<span class="w"> </span>&lt;template_id&gt;<span class="w"> </span>--values-file<span class="w"> </span>values.json<span class="w"> </span>--out<span class="w"> </span>credential.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>wallet<span class="w"> </span>insert-item<span class="w"> </span>--item<span class="w"> </span>credential.json
+</code></pre></div>
+<p>The response should look like:
+<div class="highlight"><pre><span></span><code>ok
+item<span class="w"> </span>id<span class="w"> </span>→<span class="w"> </span><span class="s2">&quot;urn:uuid:...&quot;</span><span class="w"> </span>//<span class="w"> </span>&lt;item_id&gt;
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>create-proof<span class="w"> </span>--item-id<span class="w"> </span>&lt;item_id&gt;<span class="w"> </span>--out<span class="w"> </span>proof.json
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h3 id="verify-a-proof-with-governance-status">Verify a proof with governance status<a class="headerlink" href="#verify-a-proof-with-governance-status" title="Permanent link">&para;</a></h3>
+<p>Now we can verify the proof from the previous step, and get the governance status.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class="w"> </span>--proof-document<span class="w"> </span>proof.json
+</code></pre></div>
+<p>The response should look like:
+<div class="highlight"><pre><span></span><code>is<span class="w"> </span>valid<span class="w"> </span>→<span class="w"> </span><span class="s2">&quot;true&quot;</span>
+validation<span class="w"> </span>results<span class="w"> </span>→<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;CredentialStatus&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;IssuerIsSigner&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;SchemaConformance&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;SignatureVerification&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;TrustRegistryMembership&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h3 id="revoke-issuer">Revoke Issuer<a class="headerlink" href="#revoke-issuer" title="Permanent link">&para;</a></h3>
+<p>Revoke the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:3"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><input id="__tabbed_23_3" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_23_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_23_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>unregister-member<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--framework-id<span class="w"> </span>&lt;framework_id&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--schema<span class="w"> </span>&lt;template_uri&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--did<span class="w"> </span>&lt;public_did&gt;
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.UnregisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.UnregisterMemberRequest' href='/reference/proto#services.trustregistry.v1.UnregisterMemberRequest'>UnregisterMemberRequest</a></div><div class='proto-obj-description'>Request to unregister a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to unregister. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to unregister member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the governance framework that member is being removed from</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.UnregisterMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.UnregisterMemberResponse' href='/reference/proto#services.trustregistry.v1.UnregisterMemberResponse'>UnregisterMemberResponse</a></div><div class='proto-obj-description'>Response to <code>UnregisterMemberRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+</div>
+</div>
+</div>
+<h3 id="verify-a-proof-with-governance-status-after-revocation-of-issuer">Verify a proof with governance status after revocation of issuer<a class="headerlink" href="#verify-a-proof-with-governance-status-after-revocation-of-issuer" title="Permanent link">&para;</a></h3>
+<p>Now we can verify the proof from the previous step, and get the governance status.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:1"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class="w"> </span>--proof-document<span class="w"> </span>proof.json
+</code></pre></div>
+<p>The response should look like:
+<div class="highlight"><pre><span></span><code>is<span class="w"> </span>valid<span class="w"> </span>→<span class="w"> </span><span class="s2">&quot;false&quot;</span>
+validation<span class="w"> </span>results<span class="w"> </span>→<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;CredentialStatus&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;IssuerIsSigner&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;SchemaConformance&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;SignatureVerification&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;TrustRegistryMembership&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;is_valid&quot;</span>:<span class="w"> </span>false,
+<span class="w">    </span><span class="s2">&quot;messages&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">      </span><span class="s2">&quot;issuer is not authorized in the specified registry&quot;</span>
+<span class="w">    </span><span class="o">]</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+<hr />
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Further Reading: Trust Registries</p>
+<ul>
+<li>Learn more about <a href="/learn/concepts/trust-registries" target="_blank">Governance</a></li>
+<li>Browse the <a href="reference/services/trust-registry-service/" target="_blank">Provider API reference</a></li>
+</ul>
+</div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take.</p>
 <ul>

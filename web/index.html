@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-trinsic-javascript-web-sdk" class="md-skip">
+        <a href="#the-trinsic-javascript-typescript-web-sdk" class="md-skip">
           Skip to content
         </a>
       
@@ -2108,8 +2108,8 @@
   
 
 
-<h1 id="the-trinsic-javascript-web-sdk">The Trinsic Javascript / Web SDK<a class="headerlink" href="#the-trinsic-javascript-web-sdk" title="Permanent link">&para;</a></h1>
-<p>The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. You can find the SDKs source on <a href="https://github.com/trinsic-id/sdk/tree/main/web">Github</a>.</p>
+<h1 id="the-trinsic-javascript-typescript-web-sdk">The Trinsic Javascript/ Typescript / Web SDK<a class="headerlink" href="#the-trinsic-javascript-typescript-web-sdk" title="Permanent link">&para;</a></h1>
+<p>The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. You can find the SDKs source on <a href="https://github.com/trinsic-id/sdk/tree/main/web">Github</a>. The @trinsic/trinsic package comes with Typescript bindings.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>Install the package for Node or Browser from <a href="https://www.npmjs.com/package/@trinsic/trinsic" target="_blank">npmjs.com <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Install</label></div>
@@ -2119,6 +2119,29 @@
 </div>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@trinsic/trinsic
 </code></pre></div>
+<p>To import the Trinsic SDK in ES6:
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@trinsic/trinsic/browser&quot;</span><span class="p">;</span>
+</code></pre></div></p>
+<p>To import the Trinsic SDK in CommonJS:
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@trinsic/trinsic/browser&quot;</span><span class="p">);</span>
+</code></pre></div></p>
+<p>You must instantiate the trinsic service first:
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">({</span>
+<span class="w">    </span><span class="cm">/** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */</span>
+<span class="w">    </span><span class="nx">serverEndpoint</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;prod.trinsic.cloud&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/** Trinsic API port; defaults to `443` */</span>
+<span class="w">    </span><span class="nx">serverPort</span><span class="o">:</span><span class="w"> </span><span class="mf">443</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */</span>
+<span class="w">    </span><span class="nx">serverUseTls</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/** Authentication token for SDK calls; defaults to empty string (unauthenticated) */</span>
+<span class="w">    </span><span class="nx">authToken</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;Your auth token&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div></p>
+<p>Now you can use the SDK:
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">accountInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">getInfo</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">accountInfo</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span>
+</code></pre></div></p>
+<p>You can find all of the SDK methods documented <a href="/reference/">here</a></p>
 <!-- prettier-ignore-start -->
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <!-- prettier-ignore -->
