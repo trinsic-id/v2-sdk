@@ -628,6 +628,254 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 
 ---
 
+## Governance Setup
+
+Before we begin, you'll need an [trust registry](/learn/concepts/trust-registries) -- somewhere for the governance to be defined (which issuer is allowed to issue a vaccine credential).
+
+
+### Create New Governance
+
+You can create a governance framework through the [Trinsic dashboard](https://dashboard.trinsic.id/ecosystem/governance){target:_blank} by clicking on the 'Governance' tab in the nav bar.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry add-framework --name "Vaccine Governance" --uri "https://vaccines.trinsic.id"
+        ```
+
+        The response should look like:
+        ```js
+        {
+            "governing_authority":"did:key:xxxxxxxxxxx........",
+            "id": "xxxxxx.....", // <framework_id>
+            "trust_registry": "urn:egf:..." 
+        }
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.AddFramework") }}
+
+The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
+
+\
+
+---
+
+### Register Issuer
+
+First lets grab our account info. You can use an email address, walletId or PublicDID as identifiers for a wallet. We will use publicDID.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic account info
+        ```
+
+        The response should look like:
+        ```js
+        {
+          ...
+          "ecosystem_id": "urn:trinsic:ecosystems:<ecosystem-name>",
+          "public_did": "did:key:xxxxxxxx......", // <public_did>
+          "wallet_id": "urn:trinsic:wallets:xxxxxx....>"
+        }
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.RegisterMember") }}
+
+---
+
+Registers an authorized issuer for a specific credential type (identified by its `schema_uri`), using the public_did, framework_id and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry register-member \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.RegisterMember") }}
+
+---
+
+
+### Check Issuer Status
+
+Check the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry get-membership-status \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+        The response should look like:
+        ```bash
+        ok
+        ```
+
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
+
+
+---
+
+
+### Issue a Credential with Governance framework
+
+We need to prepare a credential with a governance framework specified. This will consist of:
+
+1. Issuing the credential with framework-id specified
+2. Inserting the credential into your wallet
+3. Deriving a proof of the credential
+
+=== "Trinsic CLI"
+
+    First, prepare a file named `values.json` with the following content:
+    === "values.json"
+    ```json
+    {
+        "firstName": "Allison",
+        "lastName": "Allisonne",
+        "batchNumber": "123454321",
+        "countryOfVaccination": "US"
+    }
+    ```
+
+    Then issue the credential:
+
+    ```bash
+    trinsic vc issue-from-template --framework-id <framework_id> --template-id <template_id> --values-file values.json --out credential.json
+    ```
+
+    ```bash
+    trinsic wallet insert-item --item credential.json
+    ```
+
+    The response should look like:
+    ```bash
+    ok
+    item id → "urn:uuid:..." // <item_id>
+    ```
+
+    ```bash
+    trinsic vc create-proof --item-id <item_id> --out proof.json
+    ```
+
+---
+
+### Verify a proof with governance status
+
+Now we can verify the proof from the previous step, and get the governance status.
+
+=== "Trinsic CLI"
+
+    ```bash
+    trinsic vc verify-proof --proof-document proof.json
+    ```
+
+    The response should look like:
+    ```bash
+    is valid → "true"
+    validation results → {
+      "CredentialStatus": {
+        "is_valid": true,
+        "messages": []
+      },
+      "IssuerIsSigner": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SchemaConformance": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SignatureVerification": {
+        "is_valid": true,
+        "messages": []
+      },
+      "TrustRegistryMembership": {
+        "is_valid": true,
+        "messages": []
+      }
+    }
+    ```
+
+---
+
+
+### Revoke Issuer
+Revoke the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry unregister-member \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.UnregisterMember") }}
+
+
+### Verify a proof with governance status after revocation of issuer
+
+Now we can verify the proof from the previous step, and get the governance status.
+
+=== "Trinsic CLI"
+
+    ```bash
+    trinsic vc verify-proof --proof-document proof.json
+    ```
+
+    The response should look like:
+    ```bash
+    is valid → "false"
+    validation results → {
+      "CredentialStatus": {
+        "is_valid": true,
+        "messages": []
+      },
+      "IssuerIsSigner": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SchemaConformance": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SignatureVerification": {
+        "is_valid": true,
+        "messages": []
+      },
+      "TrustRegistryMembership": {
+        "is_valid": false,
+        "messages": [
+          "issuer is not authorized in the specified registry"
+        ]
+      }
+    }
+    ```
+
+---
+
+
+---
+
+!!! info "Further Reading: Trust Registries"
+
+    - Learn more about [Governance](/learn/concepts/trust-registries){target=_blank}
+    - Browse the [Provider API reference](reference/services/trust-registry-service/){target=_blank}
+
+
+
+
+
 ## Next Steps
 
 Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take.
