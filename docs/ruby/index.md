@@ -1,6 +1,6 @@
 # The Trinsic Ruby SDK
 
-The Trinsic Ruby SDK makes it easy to interact with the Trinsic API from any Ruby application. The most recent version of the library can be found on [RubyGems](https://rubygems.org/gems/trinsic-services). You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/ruby).
+The Trinsic Ruby SDK makes it easy to interact with the Trinsic API from any Ruby application. The most recent version of the library can be found on [RubyGems](https://rubygems.org/gems/trinsic-services). You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/ruby).
 
 ## Installation and Configuration
 * Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the [readme.md here](https://github.com/trinsic-id/okapi/)
