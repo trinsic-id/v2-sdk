@@ -8,18 +8,21 @@ The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go ap
 
 You have to go to the [other downloads](https://go.dev/dl/) page to get the `arm64` version for sure.
 
-* NOTE: Windows installation is possible, but requires jumping through a few hoops. More details to come later.
-* Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the [readme.md here](https://github.com/trinsic-id/okapi/)
-* You need to have [CGO configured](https://pkg.go.dev/cmd/cgo) for the okapi native binary link
-* Issue the following command:
+!!! info "Notes: Installing the SDK for Go"
+
+    - Windows installation is possible, but requires jumping through a few hoops. More details to come later.
+    - Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the [trinsic-id/okapi](https://github.com/trinsic-id/okapi/) GitHub repository.
+    - You need to have [CGO configured](https://pkg.go.dev/cmd/cgo) for the okapi native binary link.
+
+1. Run the following command:
 ```bash
 go install github.com/trinsic-id/sdk/go@latest
 ```
-* To test the installation, try the following go code:
-<!--codeinclude-->
-```golang
-[GoSample](../../samples/go/sample.go) inside_block:main
-```
+2. Test the installation by running the following go code:
+    <!--codeinclude-->
+    ```golang
+    [GoSample](../../samples/go/sample.go) inside_block:main
+    ```
 <!--/codeinclude-->
 
 ## Next Steps
