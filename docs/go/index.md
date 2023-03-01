@@ -18,7 +18,7 @@ You have to go to the [other downloads](https://go.dev/dl/) page to get the `arm
 ```bash
 go install github.com/trinsic-id/sdk/go@latest
 ```
-2. The the installation by running the following go code:
+2. Test the installation by running the following go code:
     <!--codeinclude-->
     ```golang
     [GoSample](../../samples/go/sample.go) inside_block:main
