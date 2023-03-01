@@ -256,7 +256,7 @@ Creates and signs a [proof](/) for a valid JSON-LD credential, using the BBS+ Si
 If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; otherwise, pass the raw JSON-LD credential via `document_json`.
 
 !!! info "Selective Disclosure"
-BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.
+    BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.
 
     This enables increased user privacy: fields which aren't included in `reveal_document_json` will not be present in the generated proof.
 
