@@ -165,8 +165,6 @@ export interface AccountInfoResponse {
    * This DID is used as the `issuer` when signing verifiable credentials
    */
   publicDid?: string;
-  /** Webhook events, if any, this wallet has authorized */
-  authorizedWebhooks?: string[];
 }
 
 /** Deprecated */
@@ -230,13 +228,19 @@ export interface LoginConfirmResponse {
 /**
  * Request to authorize Ecosystem provider to receive webhooks for events
  * which occur on this wallet.
+ *
+ * @deprecated
  */
 export interface AuthorizeWebhookRequest {
   /** Events to authorize access to. Default is "*" (all events) */
   events?: string[];
 }
 
-/** Response to `AuthorizeWebhookRequest` */
+/**
+ * Response to `AuthorizeWebhookRequest`
+ *
+ * @deprecated
+ */
 export interface AuthorizeWebhookResponse {}
 
 function createBaseSignInRequest(): SignInRequest {
@@ -688,7 +692,6 @@ function createBaseAccountInfoResponse(): AccountInfoResponse {
     deviceId: "",
     ecosystemId: "",
     publicDid: "",
-    authorizedWebhooks: [],
   };
 }
 
@@ -716,14 +719,6 @@ export const AccountInfoResponse = {
     }
     if (message.publicDid !== undefined && message.publicDid !== "") {
       writer.uint32(50).string(message.publicDid);
-    }
-    if (
-      message.authorizedWebhooks !== undefined &&
-      message.authorizedWebhooks.length !== 0
-    ) {
-      for (const v of message.authorizedWebhooks) {
-        writer.uint32(58).string(v!);
-      }
     }
     return writer;
   },
@@ -755,9 +750,6 @@ export const AccountInfoResponse = {
         case 6:
           message.publicDid = reader.string();
           break;
-        case 7:
-          message.authorizedWebhooks!.push(reader.string());
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -778,9 +770,6 @@ export const AccountInfoResponse = {
       deviceId: isSet(object.deviceId) ? String(object.deviceId) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
-      authorizedWebhooks: Array.isArray(object?.authorizedWebhooks)
-        ? object.authorizedWebhooks.map((e: any) => String(e))
-        : [],
     };
   },
 
@@ -802,11 +791,6 @@ export const AccountInfoResponse = {
     message.ecosystemId !== undefined &&
       (obj.ecosystemId = message.ecosystemId);
     message.publicDid !== undefined && (obj.publicDid = message.publicDid);
-    if (message.authorizedWebhooks) {
-      obj.authorizedWebhooks = message.authorizedWebhooks.map((e) => e);
-    } else {
-      obj.authorizedWebhooks = [];
-    }
     return obj;
   },
 
@@ -822,7 +806,6 @@ export const AccountInfoResponse = {
     message.deviceId = object.deviceId ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.publicDid = object.publicDid ?? "";
-    message.authorizedWebhooks = object.authorizedWebhooks?.map((e) => e) || [];
     return message;
   },
 };

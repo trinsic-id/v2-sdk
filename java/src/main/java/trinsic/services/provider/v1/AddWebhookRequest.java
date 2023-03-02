@@ -12,6 +12,7 @@ package trinsic.services.provider.v1;
  *
  * Protobuf type {@code services.provider.v1.AddWebhookRequest}
  */
+@java.lang.Deprecated
 public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.AddWebhookRequest)

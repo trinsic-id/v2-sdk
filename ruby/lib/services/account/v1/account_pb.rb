@@ -40,7 +40,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :device_id, :string, 4
       optional :ecosystem_id, :string, 5
       optional :public_did, :string, 6
-      repeated :authorized_webhooks, :string, 7
     end
     add_message "services.account.v1.AccountEcosystem" do
       optional :id, :string, 1

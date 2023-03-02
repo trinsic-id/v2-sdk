@@ -50,14 +50,6 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
   public static final int COLOR_FIELD_NUMBER = 4;
   private volatile java.lang.Object color_;
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   *    string logo_url = 3;
-   * </pre>
-   *
    * <code>string color = 4;</code>
    *
    * @return The color.
@@ -75,14 +67,6 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
     }
   }
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   *    string logo_url = 3;
-   * </pre>
-   *
    * <code>string color = 4;</code>
    *
    * @return The bytes for color.
@@ -529,14 +513,6 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
 
     private java.lang.Object color_ = "";
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     *    string logo_url = 3;
-     * </pre>
-     *
      * <code>string color = 4;</code>
      *
      * @return The color.
@@ -553,14 +529,6 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
       }
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     *    string logo_url = 3;
-     * </pre>
-     *
      * <code>string color = 4;</code>
      *
      * @return The bytes for color.
@@ -577,14 +545,6 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
       }
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     *    string logo_url = 3;
-     * </pre>
-     *
      * <code>string color = 4;</code>
      *
      * @param value The color to set.
@@ -600,14 +560,6 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
       return this;
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     *    string logo_url = 3;
-     * </pre>
-     *
      * <code>string color = 4;</code>
      *
      * @return This builder for chaining.
@@ -619,14 +571,6 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
       return this;
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     *    string logo_url = 3;
-     * </pre>
-     *
      * <code>string color = 4;</code>
      *
      * @param value The bytes for color to set.

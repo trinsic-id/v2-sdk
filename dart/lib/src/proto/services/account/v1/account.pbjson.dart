@@ -171,19 +171,16 @@ const AccountInfoResponse$json = const {
     const {'1': 'device_id', '3': 4, '4': 1, '5': 9, '10': 'deviceId'},
     const {'1': 'ecosystem_id', '3': 5, '4': 1, '5': 9, '10': 'ecosystemId'},
     const {'1': 'public_did', '3': 6, '4': 1, '5': 9, '10': 'publicDid'},
-    const {
-      '1': 'authorized_webhooks',
-      '3': 7,
-      '4': 3,
-      '5': 9,
-      '10': 'authorizedWebhooks'
-    },
   ],
+  '9': const [
+    const {'1': 7, '2': 8},
+  ],
+  '10': const ['authorized_webhooks'],
 };
 
 /// Descriptor for `AccountInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountInfoResponseDescriptor = $convert.base64Decode(
-    'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEkkKCmVjb3N5c3RlbXMYAiADKAsyJS5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnRFY29zeXN0ZW1CAhgBUgplY29zeXN0ZW1zEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZBIvChNhdXRob3JpemVkX3dlYmhvb2tzGAcgAygJUhJhdXRob3JpemVkV2ViaG9va3M=');
+    'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEkkKCmVjb3N5c3RlbXMYAiADKAsyJS5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnRFY29zeXN0ZW1CAhgBUgplY29zeXN0ZW1zEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZEoECAcQCFITYXV0aG9yaXplZF93ZWJob29rcw==');
 @$core.Deprecated('Use accountEcosystemDescriptor instead')
 const AccountEcosystem$json = const {
   '1': 'AccountEcosystem',
@@ -297,17 +294,19 @@ const AuthorizeWebhookRequest$json = const {
   '2': const [
     const {'1': 'events', '3': 1, '4': 3, '5': 9, '10': 'events'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `AuthorizeWebhookRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authorizeWebhookRequestDescriptor =
     $convert.base64Decode(
-        'ChdBdXRob3JpemVXZWJob29rUmVxdWVzdBIWCgZldmVudHMYASADKAlSBmV2ZW50cw==');
+        'ChdBdXRob3JpemVXZWJob29rUmVxdWVzdBIWCgZldmVudHMYASADKAlSBmV2ZW50czoCGAE=');
 @$core.Deprecated('Use authorizeWebhookResponseDescriptor instead')
 const AuthorizeWebhookResponse$json = const {
   '1': 'AuthorizeWebhookResponse',
+  '7': const {'3': true},
 };
 
 /// Descriptor for `AuthorizeWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authorizeWebhookResponseDescriptor =
-    $convert.base64Decode('ChhBdXRob3JpemVXZWJob29rUmVzcG9uc2U=');
+    $convert.base64Decode('ChhBdXRob3JpemVXZWJob29rUmVzcG9uc2U6AhgB');
