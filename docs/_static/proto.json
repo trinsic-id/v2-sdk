@@ -132,12 +132,6 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
-    "services.account.v1.AccountInfoResponse.authorized_webhooks": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
-    },
     "services.account.v1.AccountInfoResponse.details": {
       "type": "field",
       "collection": "fields",
@@ -984,12 +978,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.Ecosystem"
     },
-    "services.provider.v1.Ecosystem.webhooks": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Ecosystem"
-    },
     "services.provider.v1.EcosystemDisplay": {
       "type": "message",
       "collection": "messages",
@@ -1115,30 +1103,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.GetPublicEcosystemInfoResponse"
-    },
-    "services.provider.v1.Grant": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Grant.actions": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Grant"
-    },
-    "services.provider.v1.Grant.child_grants": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Grant"
-    },
-    "services.provider.v1.Grant.resourceId": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Grant"
     },
     "services.provider.v1.IndyOptions": {
       "type": "message",
@@ -3545,7 +3509,6 @@
         "services.account.v1.AccountInfoResponse.device_id",
         "services.account.v1.AccountInfoResponse.ecosystem_id",
         "services.account.v1.AccountInfoResponse.public_did",
-        "services.account.v1.AccountInfoResponse.authorized_webhooks",
         "services.account.v1.AccountEcosystem.id",
         "services.account.v1.AccountEcosystem.name",
         "services.account.v1.AccountEcosystem.description",
@@ -3804,7 +3767,6 @@
         "services.provider.v1.InvitationStatusResponse",
         "services.provider.v1.Ecosystem",
         "services.provider.v1.WebhookConfig",
-        "services.provider.v1.Grant",
         "services.provider.v1.CreateEcosystemRequest",
         "services.provider.v1.CreateEcosystemResponse",
         "services.provider.v1.UpdateEcosystemRequest",
@@ -3849,16 +3811,12 @@
         "services.provider.v1.Ecosystem.name",
         "services.provider.v1.Ecosystem.description",
         "services.provider.v1.Ecosystem.uri",
-        "services.provider.v1.Ecosystem.webhooks",
         "services.provider.v1.Ecosystem.display",
         "services.provider.v1.Ecosystem.domain",
         "services.provider.v1.WebhookConfig.id",
         "services.provider.v1.WebhookConfig.destination_url",
         "services.provider.v1.WebhookConfig.events",
         "services.provider.v1.WebhookConfig.status",
-        "services.provider.v1.Grant.resourceId",
-        "services.provider.v1.Grant.actions",
-        "services.provider.v1.Grant.child_grants",
         "services.provider.v1.CreateEcosystemRequest.name",
         "services.provider.v1.CreateEcosystemRequest.description",
         "services.provider.v1.CreateEcosystemRequest.uri",
@@ -4356,7 +4314,10 @@
       "full_name": "services.account.v1.Account.AuthorizeWebhook",
       "input_type": "services.account.v1.AuthorizeWebhookRequest",
       "output_type": "services.account.v1.AuthorizeWebhookResponse",
-      "description": "Authorize Ecosystem to receive webhook events"
+      "description": "Authorize Ecosystem to receive webhook events",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.account.v1.Account.Info": {
       "name": "Info",
@@ -4494,7 +4455,10 @@
       "full_name": "services.provider.v1.Provider.AddWebhook",
       "input_type": "services.provider.v1.AddWebhookRequest",
       "output_type": "services.provider.v1.AddWebhookResponse",
-      "description": "Add a webhook endpoint to the ecosystem"
+      "description": "Add a webhook endpoint to the ecosystem",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.CreateEcosystem": {
       "name": "CreateEcosystem",
@@ -4511,7 +4475,10 @@
       "full_name": "services.provider.v1.Provider.DeleteWebhook",
       "input_type": "services.provider.v1.DeleteWebhookRequest",
       "output_type": "services.provider.v1.DeleteWebhookResponse",
-      "description": "Delete a webhook endpoint from the ecosystem"
+      "description": "Delete a webhook endpoint from the ecosystem",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.EcosystemInfo": {
       "name": "EcosystemInfo",
@@ -4843,8 +4810,7 @@
         "services.account.v1.AccountInfoResponse.wallet_id",
         "services.account.v1.AccountInfoResponse.device_id",
         "services.account.v1.AccountInfoResponse.ecosystem_id",
-        "services.account.v1.AccountInfoResponse.public_did",
-        "services.account.v1.AccountInfoResponse.authorized_webhooks"
+        "services.account.v1.AccountInfoResponse.public_did"
       ],
       "messages": [],
       "enums": []
@@ -4866,6 +4832,9 @@
       "name": "AuthorizeWebhookRequest",
       "full_name": "services.account.v1.AuthorizeWebhookRequest",
       "description": "Request to authorize Ecosystem provider to receive webhooks for events\nwhich occur on this wallet.",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.account.v1.AuthorizeWebhookRequest.events"
       ],
@@ -4876,6 +4845,9 @@
       "name": "AuthorizeWebhookResponse",
       "full_name": "services.account.v1.AuthorizeWebhookResponse",
       "description": "Response to `AuthorizeWebhookRequest`",
+      "options": {
+        "deprecated": true
+      },
       "fields": [],
       "messages": [],
       "enums": []
@@ -5145,6 +5117,9 @@
       "name": "AddWebhookRequest",
       "full_name": "services.provider.v1.AddWebhookRequest",
       "description": "Request to add a webhook to an ecosystem",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.AddWebhookRequest.destination_url",
         "services.provider.v1.AddWebhookRequest.secret",
@@ -5157,6 +5132,9 @@
       "name": "AddWebhookResponse",
       "full_name": "services.provider.v1.AddWebhookResponse",
       "description": "Response to `AddWebhookRequest`",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.AddWebhookResponse.ecosystem"
       ],
@@ -5193,6 +5171,9 @@
       "name": "DeleteWebhookRequest",
       "full_name": "services.provider.v1.DeleteWebhookRequest",
       "description": "Request to delete a webhook from an ecosystem",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.DeleteWebhookRequest.webhook_id"
       ],
@@ -5203,6 +5184,9 @@
       "name": "DeleteWebhookResponse",
       "full_name": "services.provider.v1.DeleteWebhookResponse",
       "description": "Response to `DeleteWebhookRequest`",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.DeleteWebhookResponse.ecosystem"
       ],
@@ -5218,7 +5202,6 @@
         "services.provider.v1.Ecosystem.name",
         "services.provider.v1.Ecosystem.description",
         "services.provider.v1.Ecosystem.uri",
-        "services.provider.v1.Ecosystem.webhooks",
         "services.provider.v1.Ecosystem.display",
         "services.provider.v1.Ecosystem.domain"
       ],
@@ -5326,18 +5309,6 @@
       },
       "fields": [
         "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.Grant": {
-      "name": "Grant",
-      "full_name": "services.provider.v1.Grant",
-      "description": "A grant authorizing `actions` on a `resourceId`",
-      "fields": [
-        "services.provider.v1.Grant.resourceId",
-        "services.provider.v1.Grant.actions",
-        "services.provider.v1.Grant.child_grants"
       ],
       "messages": [],
       "enums": []
@@ -5640,6 +5611,9 @@
       "name": "WebhookConfig",
       "full_name": "services.provider.v1.WebhookConfig",
       "description": "Webhook configured on an ecosystem",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.WebhookConfig.id",
         "services.provider.v1.WebhookConfig.destination_url",
@@ -6539,14 +6513,6 @@
       "full_type": "string",
       "description": ""
     },
-    "services.account.v1.AccountInfoResponse.authorized_webhooks": {
-      "name": "authorized_webhooks",
-      "full_name": "services.account.v1.AccountInfoResponse.authorized_webhooks",
-      "label": "LABEL_REPEATED",
-      "type": "string",
-      "full_type": "string",
-      "description": "Webhook events, if any, this wallet has authorized"
-    },
     "services.account.v1.AccountInfoResponse.details": {
       "name": "details",
       "full_name": "services.account.v1.AccountInfoResponse.details",
@@ -7218,14 +7184,6 @@
         "deprecated": true
       }
     },
-    "services.provider.v1.Ecosystem.webhooks": {
-      "name": "webhooks",
-      "full_name": "services.provider.v1.Ecosystem.webhooks",
-      "label": "LABEL_REPEATED",
-      "type": "WebhookConfig",
-      "full_type": "services.provider.v1.WebhookConfig",
-      "description": "Configured webhooks, if any"
-    },
     "services.provider.v1.EcosystemDisplay.light": {
       "name": "light",
       "full_name": "services.provider.v1.EcosystemDisplay.light",
@@ -7313,30 +7271,6 @@
       "type": "PublicEcosystemInformation",
       "full_type": "services.provider.v1.PublicEcosystemInformation",
       "description": "Ecosystem corresponding to requested `ecosystem_id`"
-    },
-    "services.provider.v1.Grant.actions": {
-      "name": "actions",
-      "full_name": "services.provider.v1.Grant.actions",
-      "label": "LABEL_REPEATED",
-      "type": "string",
-      "full_type": "string",
-      "description": "list of actions that are allowed"
-    },
-    "services.provider.v1.Grant.child_grants": {
-      "name": "child_grants",
-      "full_name": "services.provider.v1.Grant.child_grants",
-      "label": "LABEL_REPEATED",
-      "type": "Grant",
-      "full_type": "services.provider.v1.Grant",
-      "description": "any child grants"
-    },
-    "services.provider.v1.Grant.resourceId": {
-      "name": "resourceId",
-      "full_name": "services.provider.v1.Grant.resourceId",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "the urn of the resource"
     },
     "services.provider.v1.IndyOptions.network": {
       "name": "network",

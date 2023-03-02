@@ -501,8 +501,7 @@ class Services::Account::V1::AccountInfoResponse
       wallet_id: T.nilable(String),
       device_id: T.nilable(String),
       ecosystem_id: T.nilable(String),
-      public_did: T.nilable(String),
-      authorized_webhooks: T.nilable(T::Array[String])
+      public_did: T.nilable(String)
     ).void
   end
   def initialize(
@@ -511,8 +510,7 @@ class Services::Account::V1::AccountInfoResponse
     wallet_id: "",
     device_id: "",
     ecosystem_id: "",
-    public_did: "",
-    authorized_webhooks: []
+    public_did: ""
   )
   end
 
@@ -586,18 +584,6 @@ class Services::Account::V1::AccountInfoResponse
 
   sig { void }
   def clear_public_did
-  end
-
-  sig { returns(T::Array[String]) }
-  def authorized_webhooks
-  end
-
-  sig { params(value: ::Google::Protobuf::RepeatedField).void }
-  def authorized_webhooks=(value)
-  end
-
-  sig { void }
-  def clear_authorized_webhooks
   end
 
   sig { params(field: String).returns(T.untyped) }

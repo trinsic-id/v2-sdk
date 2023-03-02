@@ -170,9 +170,6 @@ class AccountInfoResponse(betterproto.Message):
     `issuer` when signing verifiable credentials
     """
 
-    authorized_webhooks: List[str] = betterproto.string_field(7)
-    """Webhook events, if any, this wallet has authorized"""
-
     def __post_init__(self) -> None:
         super().__post_init__()
         if self.is_set("ecosystems"):
@@ -273,12 +270,20 @@ class AuthorizeWebhookRequest(betterproto.Message):
     events: List[str] = betterproto.string_field(1)
     """Events to authorize access to. Default is "*" (all events)"""
 
+    def __post_init__(self) -> None:
+        warnings.warn("AuthorizeWebhookRequest is deprecated", DeprecationWarning)
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class AuthorizeWebhookResponse(betterproto.Message):
     """Response to `AuthorizeWebhookRequest`"""
 
     pass
+
+    def __post_init__(self) -> None:
+        warnings.warn("AuthorizeWebhookResponse is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 class AccountStub(betterproto.ServiceStub):

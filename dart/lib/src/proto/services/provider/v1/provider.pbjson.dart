@@ -150,14 +150,6 @@ const Ecosystem$json = const {
       '10': 'uri',
     },
     const {
-      '1': 'webhooks',
-      '3': 5,
-      '4': 3,
-      '5': 11,
-      '6': '.services.provider.v1.WebhookConfig',
-      '10': 'webhooks'
-    },
-    const {
       '1': 'display',
       '3': 6,
       '4': 1,
@@ -171,7 +163,7 @@ const Ecosystem$json = const {
 
 /// Descriptor for `Ecosystem`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List ecosystemDescriptor = $convert.base64Decode(
-    'CglFY29zeXN0ZW0SDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YAyABKAlSC2Rlc2NyaXB0aW9uEhQKA3VyaRgEIAEoCUICGAFSA3VyaRI/Cgh3ZWJob29rcxgFIAMoCzIjLnNlcnZpY2VzLnByb3ZpZGVyLnYxLldlYmhvb2tDb25maWdSCHdlYmhvb2tzEkAKB2Rpc3BsYXkYBiABKAsyJi5zZXJ2aWNlcy5wcm92aWRlci52MS5FY29zeXN0ZW1EaXNwbGF5UgdkaXNwbGF5EhYKBmRvbWFpbhgHIAEoCVIGZG9tYWlu');
+    'CglFY29zeXN0ZW0SDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YAyABKAlSC2Rlc2NyaXB0aW9uEhQKA3VyaRgEIAEoCUICGAFSA3VyaRJACgdkaXNwbGF5GAYgASgLMiYuc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtRGlzcGxheVIHZGlzcGxheRIWCgZkb21haW4YByABKAlSBmRvbWFpbg==');
 @$core.Deprecated('Use webhookConfigDescriptor instead')
 const WebhookConfig$json = const {
   '1': 'WebhookConfig',
@@ -187,31 +179,12 @@ const WebhookConfig$json = const {
     const {'1': 'events', '3': 4, '4': 3, '5': 9, '10': 'events'},
     const {'1': 'status', '3': 5, '4': 1, '5': 9, '10': 'status'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `WebhookConfig`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List webhookConfigDescriptor = $convert.base64Decode(
-    'Cg1XZWJob29rQ29uZmlnEg4KAmlkGAEgASgJUgJpZBInCg9kZXN0aW5hdGlvbl91cmwYAiABKAlSDmRlc3RpbmF0aW9uVXJsEhYKBmV2ZW50cxgEIAMoCVIGZXZlbnRzEhYKBnN0YXR1cxgFIAEoCVIGc3RhdHVz');
-@$core.Deprecated('Use grantDescriptor instead')
-const Grant$json = const {
-  '1': 'Grant',
-  '2': const [
-    const {'1': 'resourceId', '3': 1, '4': 1, '5': 9, '10': 'resourceId'},
-    const {'1': 'actions', '3': 2, '4': 3, '5': 9, '10': 'actions'},
-    const {
-      '1': 'child_grants',
-      '3': 3,
-      '4': 3,
-      '5': 11,
-      '6': '.services.provider.v1.Grant',
-      '10': 'childGrants'
-    },
-  ],
-};
-
-/// Descriptor for `Grant`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List grantDescriptor = $convert.base64Decode(
-    'CgVHcmFudBIeCgpyZXNvdXJjZUlkGAEgASgJUgpyZXNvdXJjZUlkEhgKB2FjdGlvbnMYAiADKAlSB2FjdGlvbnMSPgoMY2hpbGRfZ3JhbnRzGAMgAygLMhsuc2VydmljZXMucHJvdmlkZXIudjEuR3JhbnRSC2NoaWxkR3JhbnRz');
+    'Cg1XZWJob29rQ29uZmlnEg4KAmlkGAEgASgJUgJpZBInCg9kZXN0aW5hdGlvbl91cmwYAiABKAlSDmRlc3RpbmF0aW9uVXJsEhYKBmV2ZW50cxgEIAMoCVIGZXZlbnRzEhYKBnN0YXR1cxgFIAEoCVIGc3RhdHVzOgIYAQ==');
 @$core.Deprecated('Use createEcosystemRequestDescriptor instead')
 const CreateEcosystemRequest$json = const {
   '1': 'CreateEcosystemRequest',
@@ -411,11 +384,12 @@ const AddWebhookRequest$json = const {
     const {'1': 'secret', '3': 2, '4': 1, '5': 9, '10': 'secret'},
     const {'1': 'events', '3': 3, '4': 3, '5': 9, '10': 'events'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `AddWebhookRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List addWebhookRequestDescriptor = $convert.base64Decode(
-    'ChFBZGRXZWJob29rUmVxdWVzdBInCg9kZXN0aW5hdGlvbl91cmwYASABKAlSDmRlc3RpbmF0aW9uVXJsEhYKBnNlY3JldBgCIAEoCVIGc2VjcmV0EhYKBmV2ZW50cxgDIAMoCVIGZXZlbnRz');
+    'ChFBZGRXZWJob29rUmVxdWVzdBInCg9kZXN0aW5hdGlvbl91cmwYASABKAlSDmRlc3RpbmF0aW9uVXJsEhYKBnNlY3JldBgCIAEoCVIGc2VjcmV0EhYKBmV2ZW50cxgDIAMoCVIGZXZlbnRzOgIYAQ==');
 @$core.Deprecated('Use addWebhookResponseDescriptor instead')
 const AddWebhookResponse$json = const {
   '1': 'AddWebhookResponse',
@@ -429,22 +403,24 @@ const AddWebhookResponse$json = const {
       '10': 'ecosystem'
     },
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `AddWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List addWebhookResponseDescriptor = $convert.base64Decode(
-    'ChJBZGRXZWJob29rUmVzcG9uc2USPQoJZWNvc3lzdGVtGAEgASgLMh8uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtUgllY29zeXN0ZW0=');
+    'ChJBZGRXZWJob29rUmVzcG9uc2USPQoJZWNvc3lzdGVtGAEgASgLMh8uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtUgllY29zeXN0ZW06AhgB');
 @$core.Deprecated('Use deleteWebhookRequestDescriptor instead')
 const DeleteWebhookRequest$json = const {
   '1': 'DeleteWebhookRequest',
   '2': const [
     const {'1': 'webhook_id', '3': 1, '4': 1, '5': 9, '10': 'webhookId'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `DeleteWebhookRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteWebhookRequestDescriptor = $convert.base64Decode(
-    'ChREZWxldGVXZWJob29rUmVxdWVzdBIdCgp3ZWJob29rX2lkGAEgASgJUgl3ZWJob29rSWQ=');
+    'ChREZWxldGVXZWJob29rUmVxdWVzdBIdCgp3ZWJob29rX2lkGAEgASgJUgl3ZWJob29rSWQ6AhgB');
 @$core.Deprecated('Use deleteWebhookResponseDescriptor instead')
 const DeleteWebhookResponse$json = const {
   '1': 'DeleteWebhookResponse',
@@ -458,11 +434,12 @@ const DeleteWebhookResponse$json = const {
       '10': 'ecosystem'
     },
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `DeleteWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteWebhookResponseDescriptor = $convert.base64Decode(
-    'ChVEZWxldGVXZWJob29rUmVzcG9uc2USPQoJZWNvc3lzdGVtGAEgASgLMh8uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtUgllY29zeXN0ZW0=');
+    'ChVEZWxldGVXZWJob29rUmVzcG9uc2USPQoJZWNvc3lzdGVtGAEgASgLMh8uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtUgllY29zeXN0ZW06AhgB');
 @$core.Deprecated('Use ecosystemInfoRequestDescriptor instead')
 const EcosystemInfoRequest$json = const {
   '1': 'EcosystemInfoRequest',

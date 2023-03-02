@@ -247,9 +247,6 @@ class Ecosystem(betterproto.Message):
     uri: str = betterproto.string_field(4)
     """External URL associated with the organization or ecosystem entity"""
 
-    webhooks: List["WebhookConfig"] = betterproto.message_field(5)
-    """Configured webhooks, if any"""
-
     display: "EcosystemDisplay" = betterproto.message_field(6)
     """Display details"""
 
@@ -281,19 +278,9 @@ class WebhookConfig(betterproto.Message):
     destination)
     """
 
-
-@dataclass(eq=False, repr=False)
-class Grant(betterproto.Message):
-    """A grant authorizing `actions` on a `resourceId`"""
-
-    resource_id: str = betterproto.string_field(1)
-    """the urn of the resource"""
-
-    actions: List[str] = betterproto.string_field(2)
-    """list of actions that are allowed"""
-
-    child_grants: List["Grant"] = betterproto.message_field(3)
-    """any child grants"""
+    def __post_init__(self) -> None:
+        warnings.warn("WebhookConfig is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
@@ -432,6 +419,10 @@ class AddWebhookRequest(betterproto.Message):
     events: List[str] = betterproto.string_field(3)
     """Events to subscribe to. Default is "*" (all events)"""
 
+    def __post_init__(self) -> None:
+        warnings.warn("AddWebhookRequest is deprecated", DeprecationWarning)
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class AddWebhookResponse(betterproto.Message):
@@ -439,6 +430,10 @@ class AddWebhookResponse(betterproto.Message):
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
     """Ecosystem data with new webhook"""
+
+    def __post_init__(self) -> None:
+        warnings.warn("AddWebhookResponse is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
@@ -448,6 +443,10 @@ class DeleteWebhookRequest(betterproto.Message):
     webhook_id: str = betterproto.string_field(1)
     """ID of webhook to delete"""
 
+    def __post_init__(self) -> None:
+        warnings.warn("DeleteWebhookRequest is deprecated", DeprecationWarning)
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class DeleteWebhookResponse(betterproto.Message):
@@ -455,6 +454,10 @@ class DeleteWebhookResponse(betterproto.Message):
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
     """Ecosystem data after removal of webhook"""
+
+    def __post_init__(self) -> None:
+        warnings.warn("DeleteWebhookResponse is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)

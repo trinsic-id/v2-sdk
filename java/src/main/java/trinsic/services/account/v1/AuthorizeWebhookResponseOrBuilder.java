@@ -3,6 +3,7 @@
 
 package trinsic.services.account.v1;
 
+@java.lang.Deprecated
 public interface AuthorizeWebhookResponseOrBuilder
     extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.AuthorizeWebhookResponse)

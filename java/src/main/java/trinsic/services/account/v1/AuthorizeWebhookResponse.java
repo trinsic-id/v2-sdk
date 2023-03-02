@@ -12,6 +12,7 @@ package trinsic.services.account.v1;
  *
  * Protobuf type {@code services.account.v1.AuthorizeWebhookResponse}
  */
+@java.lang.Deprecated
 public final class AuthorizeWebhookResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.account.v1.AuthorizeWebhookResponse)

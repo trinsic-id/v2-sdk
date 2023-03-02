@@ -9,10 +9,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $3;
+import '../../account/v1/account.pb.dart' as $0;
 
 import 'provider.pbenum.dart';
-import '../../account/v1/account.pbenum.dart' as $3;
+import '../../account/v1/account.pbenum.dart' as $0;
 import '../../common/v1/common.pbenum.dart' as $8;
 
 export 'provider.pbenum.dart';
@@ -88,19 +88,19 @@ class InviteRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOM<$3.AccountDetails>(
+    ..aOM<$0.AccountDetails>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $3.AccountDetails.create)
+        subBuilder: $0.AccountDetails.create)
     ..hasRequiredFields = false;
 
   InviteRequest._() : super();
   factory InviteRequest({
     ParticipantType? participant,
     $core.String? description,
-    $3.AccountDetails? details,
+    $0.AccountDetails? details,
   }) {
     final _result = create();
     if (participant != null) {
@@ -166,9 +166,9 @@ class InviteRequest extends $pb.GeneratedMessage {
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.AccountDetails get details => $_getN(2);
+  $0.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(3)
-  set details($3.AccountDetails v) {
+  set details($0.AccountDetails v) {
     setField(3, v);
   }
 
@@ -177,7 +177,7 @@ class InviteRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDetails() => clearField(3);
   @$pb.TagNumber(3)
-  $3.AccountDetails ensureDetails() => $_ensure(2);
+  $0.AccountDetails ensureDetails() => $_ensure(2);
 }
 
 class InviteResponse extends $pb.GeneratedMessage {
@@ -461,13 +461,6 @@ class Ecosystem extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
-    ..pc<WebhookConfig>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'webhooks',
-        $pb.PbFieldType.PM,
-        subBuilder: WebhookConfig.create)
     ..aOM<EcosystemDisplay>(
         6,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -487,7 +480,6 @@ class Ecosystem extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     @$core.Deprecated('This field is deprecated.') $core.String? uri,
-    $core.Iterable<WebhookConfig>? webhooks,
     EcosystemDisplay? display,
     $core.String? domain,
   }) {
@@ -504,9 +496,6 @@ class Ecosystem extends $pb.GeneratedMessage {
     if (uri != null) {
       // ignore: deprecated_member_use_from_same_package
       _result.uri = uri;
-    }
-    if (webhooks != null) {
-      _result.webhooks.addAll(webhooks);
     }
     if (display != null) {
       _result.display = display;
@@ -594,32 +583,29 @@ class Ecosystem extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearUri() => clearField(4);
 
-  @$pb.TagNumber(5)
-  $core.List<WebhookConfig> get webhooks => $_getList(4);
-
   @$pb.TagNumber(6)
-  EcosystemDisplay get display => $_getN(5);
+  EcosystemDisplay get display => $_getN(4);
   @$pb.TagNumber(6)
   set display(EcosystemDisplay v) {
     setField(6, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasDisplay() => $_has(5);
+  $core.bool hasDisplay() => $_has(4);
   @$pb.TagNumber(6)
   void clearDisplay() => clearField(6);
   @$pb.TagNumber(6)
-  EcosystemDisplay ensureDisplay() => $_ensure(5);
+  EcosystemDisplay ensureDisplay() => $_ensure(4);
 
   @$pb.TagNumber(7)
-  $core.String get domain => $_getSZ(6);
+  $core.String get domain => $_getSZ(5);
   @$pb.TagNumber(7)
   set domain($core.String v) {
-    $_setString(6, v);
+    $_setString(5, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasDomain() => $_has(6);
+  $core.bool hasDomain() => $_has(5);
   @$pb.TagNumber(7)
   void clearDomain() => clearField(7);
 }
@@ -745,99 +731,6 @@ class WebhookConfig extends $pb.GeneratedMessage {
   void clearStatus() => clearField(5);
 }
 
-class Grant extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Grant',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'resourceId',
-        protoName: 'resourceId')
-    ..pPS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'actions')
-    ..pc<Grant>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'childGrants',
-        $pb.PbFieldType.PM,
-        subBuilder: Grant.create)
-    ..hasRequiredFields = false;
-
-  Grant._() : super();
-  factory Grant({
-    $core.String? resourceId,
-    $core.Iterable<$core.String>? actions,
-    $core.Iterable<Grant>? childGrants,
-  }) {
-    final _result = create();
-    if (resourceId != null) {
-      _result.resourceId = resourceId;
-    }
-    if (actions != null) {
-      _result.actions.addAll(actions);
-    }
-    if (childGrants != null) {
-      _result.childGrants.addAll(childGrants);
-    }
-    return _result;
-  }
-  factory Grant.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Grant.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  Grant clone() => Grant()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  Grant copyWith(void Function(Grant) updates) =>
-      super.copyWith((message) => updates(message as Grant))
-          as Grant; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static Grant create() => Grant._();
-  Grant createEmptyInstance() => create();
-  static $pb.PbList<Grant> createRepeated() => $pb.PbList<Grant>();
-  @$core.pragma('dart2js:noInline')
-  static Grant getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Grant>(create);
-  static Grant? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get resourceId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set resourceId($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasResourceId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearResourceId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<$core.String> get actions => $_getList(1);
-
-  @$pb.TagNumber(3)
-  $core.List<Grant> get childGrants => $_getList(2);
-}
-
 class CreateEcosystemRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -863,12 +756,12 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
-    ..aOM<$3.AccountDetails>(
+    ..aOM<$0.AccountDetails>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $3.AccountDetails.create)
+        subBuilder: $0.AccountDetails.create)
     ..aOS(
         5,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -881,7 +774,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     @$core.Deprecated('This field is deprecated.') $core.String? uri,
-    $3.AccountDetails? details,
+    $0.AccountDetails? details,
     $core.String? domain,
   }) {
     final _result = create();
@@ -973,9 +866,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearUri() => clearField(3);
 
   @$pb.TagNumber(4)
-  $3.AccountDetails get details => $_getN(3);
+  $0.AccountDetails get details => $_getN(3);
   @$pb.TagNumber(4)
-  set details($3.AccountDetails v) {
+  set details($0.AccountDetails v) {
     setField(4, v);
   }
 
@@ -984,7 +877,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $3.AccountDetails ensureDetails() => $_ensure(3);
+  $0.AccountDetails ensureDetails() => $_ensure(3);
 
   @$pb.TagNumber(5)
   $core.String get domain => $_getSZ(4);
@@ -1015,28 +908,28 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
             ? ''
             : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$3.AccountProfile>(
+    ..aOM<$0.AccountProfile>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $3.AccountProfile.create)
-    ..e<$3.ConfirmationMethod>(
+        subBuilder: $0.AccountProfile.create)
+    ..e<$0.ConfirmationMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'confirmationMethod',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $3.ConfirmationMethod.None,
-        valueOf: $3.ConfirmationMethod.valueOf,
-        enumValues: $3.ConfirmationMethod.values)
+        defaultOrMaker: $0.ConfirmationMethod.None,
+        valueOf: $0.ConfirmationMethod.valueOf,
+        enumValues: $0.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   CreateEcosystemResponse._() : super();
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $3.AccountProfile? profile,
-    $3.ConfirmationMethod? confirmationMethod,
+    $0.AccountProfile? profile,
+    $0.ConfirmationMethod? confirmationMethod,
   }) {
     final _result = create();
     if (ecosystem != null) {
@@ -1094,9 +987,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.AccountProfile get profile => $_getN(1);
+  $0.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($3.AccountProfile v) {
+  set profile($0.AccountProfile v) {
     setField(2, v);
   }
 
@@ -1105,12 +998,12 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $3.AccountProfile ensureProfile() => $_ensure(1);
+  $0.AccountProfile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $3.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $0.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($3.ConfirmationMethod v) {
+  set confirmationMethod($0.ConfirmationMethod v) {
     setField(3, v);
   }
 

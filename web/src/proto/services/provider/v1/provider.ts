@@ -166,15 +166,17 @@ export interface Ecosystem {
    * @deprecated
    */
   uri?: string;
-  /** Configured webhooks, if any */
-  webhooks?: WebhookConfig[];
   /** Display details */
   display?: EcosystemDisplay;
   /** Domain */
   domain?: string;
 }
 
-/** Webhook configured on an ecosystem */
+/**
+ * Webhook configured on an ecosystem
+ *
+ * @deprecated
+ */
 export interface WebhookConfig {
   /** UUID of the webhook */
   id?: string;
@@ -184,16 +186,6 @@ export interface WebhookConfig {
   events?: string[];
   /** Last known status of webhook (whether or not Trinsic can successfully reach destination) */
   status?: string;
-}
-
-/** A grant authorizing `actions` on a `resourceId` */
-export interface Grant {
-  /** the urn of the resource */
-  resourceId?: string;
-  /** list of actions that are allowed */
-  actions?: string[];
-  /** any child grants */
-  childGrants?: Grant[];
 }
 
 /** Request to create an ecosystem */
@@ -294,7 +286,11 @@ export interface EcosystemDisplayDetails {
   color?: string;
 }
 
-/** Request to add a webhook to an ecosystem */
+/**
+ * Request to add a webhook to an ecosystem
+ *
+ * @deprecated
+ */
 export interface AddWebhookRequest {
   /**
    * Destination to post webhook calls to.
@@ -310,19 +306,31 @@ export interface AddWebhookRequest {
   events?: string[];
 }
 
-/** Response to `AddWebhookRequest` */
+/**
+ * Response to `AddWebhookRequest`
+ *
+ * @deprecated
+ */
 export interface AddWebhookResponse {
   /** Ecosystem data with new webhook */
   ecosystem?: Ecosystem;
 }
 
-/** Request to delete a webhook from an ecosystem */
+/**
+ * Request to delete a webhook from an ecosystem
+ *
+ * @deprecated
+ */
 export interface DeleteWebhookRequest {
   /** ID of webhook to delete */
   webhookId?: string;
 }
 
-/** Response to `DeleteWebhookRequest` */
+/**
+ * Response to `DeleteWebhookRequest`
+ *
+ * @deprecated
+ */
 export interface DeleteWebhookResponse {
   /** Ecosystem data after removal of webhook */
   ecosystem?: Ecosystem;
@@ -924,7 +932,6 @@ function createBaseEcosystem(): Ecosystem {
     name: "",
     description: "",
     uri: "",
-    webhooks: [],
     display: undefined,
     domain: "",
   };
@@ -946,11 +953,6 @@ export const Ecosystem = {
     }
     if (message.uri !== undefined && message.uri !== "") {
       writer.uint32(34).string(message.uri);
-    }
-    if (message.webhooks !== undefined && message.webhooks.length !== 0) {
-      for (const v of message.webhooks) {
-        WebhookConfig.encode(v!, writer.uint32(42).fork()).ldelim();
-      }
     }
     if (message.display !== undefined) {
       EcosystemDisplay.encode(
@@ -983,9 +985,6 @@ export const Ecosystem = {
         case 4:
           message.uri = reader.string();
           break;
-        case 5:
-          message.webhooks!.push(WebhookConfig.decode(reader, reader.uint32()));
-          break;
         case 6:
           message.display = EcosystemDisplay.decode(reader, reader.uint32());
           break;
@@ -1006,9 +1005,6 @@ export const Ecosystem = {
       name: isSet(object.name) ? String(object.name) : "",
       description: isSet(object.description) ? String(object.description) : "",
       uri: isSet(object.uri) ? String(object.uri) : "",
-      webhooks: Array.isArray(object?.webhooks)
-        ? object.webhooks.map((e: any) => WebhookConfig.fromJSON(e))
-        : [],
       display: isSet(object.display)
         ? EcosystemDisplay.fromJSON(object.display)
         : undefined,
@@ -1023,13 +1019,6 @@ export const Ecosystem = {
     message.description !== undefined &&
       (obj.description = message.description);
     message.uri !== undefined && (obj.uri = message.uri);
-    if (message.webhooks) {
-      obj.webhooks = message.webhooks.map((e) =>
-        e ? WebhookConfig.toJSON(e) : undefined
-      );
-    } else {
-      obj.webhooks = [];
-    }
     message.display !== undefined &&
       (obj.display = message.display
         ? EcosystemDisplay.toJSON(message.display)
@@ -1044,8 +1033,6 @@ export const Ecosystem = {
     message.name = object.name ?? "";
     message.description = object.description ?? "";
     message.uri = object.uri ?? "";
-    message.webhooks =
-      object.webhooks?.map((e) => WebhookConfig.fromPartial(e)) || [];
     message.display =
       object.display !== undefined && object.display !== null
         ? EcosystemDisplay.fromPartial(object.display)
@@ -1141,92 +1128,6 @@ export const WebhookConfig = {
     message.destinationUrl = object.destinationUrl ?? "";
     message.events = object.events?.map((e) => e) || [];
     message.status = object.status ?? "";
-    return message;
-  },
-};
-
-function createBaseGrant(): Grant {
-  return { resourceId: "", actions: [], childGrants: [] };
-}
-
-export const Grant = {
-  encode(message: Grant, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.resourceId !== undefined && message.resourceId !== "") {
-      writer.uint32(10).string(message.resourceId);
-    }
-    if (message.actions !== undefined && message.actions.length !== 0) {
-      for (const v of message.actions) {
-        writer.uint32(18).string(v!);
-      }
-    }
-    if (message.childGrants !== undefined && message.childGrants.length !== 0) {
-      for (const v of message.childGrants) {
-        Grant.encode(v!, writer.uint32(26).fork()).ldelim();
-      }
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): Grant {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGrant();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.resourceId = reader.string();
-          break;
-        case 2:
-          message.actions!.push(reader.string());
-          break;
-        case 3:
-          message.childGrants!.push(Grant.decode(reader, reader.uint32()));
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): Grant {
-    return {
-      resourceId: isSet(object.resourceId) ? String(object.resourceId) : "",
-      actions: Array.isArray(object?.actions)
-        ? object.actions.map((e: any) => String(e))
-        : [],
-      childGrants: Array.isArray(object?.childGrants)
-        ? object.childGrants.map((e: any) => Grant.fromJSON(e))
-        : [],
-    };
-  },
-
-  toJSON(message: Grant): unknown {
-    const obj: any = {};
-    message.resourceId !== undefined && (obj.resourceId = message.resourceId);
-    if (message.actions) {
-      obj.actions = message.actions.map((e) => e);
-    } else {
-      obj.actions = [];
-    }
-    if (message.childGrants) {
-      obj.childGrants = message.childGrants.map((e) =>
-        e ? Grant.toJSON(e) : undefined
-      );
-    } else {
-      obj.childGrants = [];
-    }
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<Grant>): Grant {
-    const message = createBaseGrant();
-    message.resourceId = object.resourceId ?? "";
-    message.actions = object.actions?.map((e) => e) || [];
-    message.childGrants =
-      object.childGrants?.map((e) => Grant.fromPartial(e)) || [];
     return message;
   },
 };
