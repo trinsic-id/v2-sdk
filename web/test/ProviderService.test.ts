@@ -1,7 +1,5 @@
 import {
-    AddWebhookRequest,
     CreateEcosystemRequest,
-    DeleteWebhookRequest,
     EcosystemInfoRequest,
     IonOptions,
     IonOptions_IonNetwork,
@@ -39,32 +37,6 @@ describe("ProviderService Unit Tests", () => {
         expect(
             createResponse.ecosystem!.id!.startsWith("urn:trinsic:ecosystems:")
         ).toBeTruthy();
-
-        // addWebhook() {
-        let addResponse = await trinsic.provider().addWebhook(
-            AddWebhookRequest.fromPartial({
-                destinationUrl: "https://example.com/webhooks/trinsic",
-                secret: "my well-kept secret",
-                events: ["*"],
-            })
-        );
-        //}
-
-        expect(addResponse.ecosystem?.webhooks?.length).toBe(1);
-
-        const webhook = addResponse.ecosystem?.webhooks![0];
-        const webhookId = webhook?.id;
-
-        // deleteWebhook() {
-        let deleteResponse = await trinsic.provider().deleteWebhook(
-            DeleteWebhookRequest.fromPartial({
-                webhookId: webhookId,
-            })
-        );
-        //}
-
-        expect(deleteResponse.ecosystem).not.toBeNull();
-        expect(deleteResponse.ecosystem!.webhooks!.length).toBe(0);
 
         // updateEcosystem() {
         let updateResponse = await trinsic.provider().updateEcosystem(

@@ -1,5 +1,4 @@
 import {
-    AuthorizeWebhookRequest,
     UploadFileRequest,
     GetFileRequest,
     ListFilesRequest,

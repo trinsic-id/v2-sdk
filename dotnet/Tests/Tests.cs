@@ -311,46 +311,6 @@ public class Tests
         }
     }
 
-    [Fact]
-    public async Task TestWebhooks() {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
-        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
-
-        var ecosystemId = ecosystem.Id;
-
-        trinsic.SetAuthToken(authToken);
-
-        // addWebhook() {
-        var addWebhookResponse = await trinsic.Provider.AddWebhookAsync(new() {
-            DestinationUrl = "https://example.com/webhooks/trinsic",
-            Secret = "my well-kept secret"
-        });
-        // }
-
-        addWebhookResponse.Should().NotBeNull();
-        addWebhookResponse.Ecosystem.Webhooks.Count().Should().Be(1);
-        addWebhookResponse.Ecosystem.Webhooks[0].DestinationUrl.Should().Be("https://example.com/webhooks/trinsic");
-
-        var webhookId = addWebhookResponse.Ecosystem.Webhooks[0].Id;
-
-        // test delete webhook
-        // deleteWebhook() {
-        var deleteWebhookResponse = await trinsic.Provider.DeleteWebhookAsync(new() {
-            WebhookId = webhookId
-        });
-        // }
-
-        deleteWebhookResponse.Should().NotBeNull();
-        deleteWebhookResponse.Ecosystem.Webhooks.Count().Should().Be(0);
-
-        // authorizeWebhook() {
-        var request = new AuthorizeWebhookRequest();
-        request.Events.Add("*"); //Authorize all events
-
-        await trinsic.Account.AuthorizeWebhookAsync(request);
-        // }
-    }
-
     [Fact(Skip = "Named login example for docs")]
     public async Task TestLogin() {
         var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());

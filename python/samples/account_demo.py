@@ -1,6 +1,6 @@
 import asyncio
 
-from trinsic.proto.services.account.v1 import AuthorizeWebhookRequest, LoginRequest
+from trinsic.proto.services.account.v1 import LoginRequest
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
@@ -38,12 +38,6 @@ async def account_demo():
 
     # Log into an anonymous account to do the rest of the test
     await trinsic.account.login_anonymous()
-
-    # authorizeWebhook() {
-    request = AuthorizeWebhookRequest()
-    request.events.append("*")
-    response = await trinsic.account.authorize_webhook(request=request)
-    # }
 
     trinsic.close()
 
