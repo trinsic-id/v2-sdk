@@ -157,10 +157,11 @@ pub mod send_request {
         /// Email address of user to send item to
         #[prost(string, tag = "1")]
         Email(::prost::alloc::string::String),
-        /// DID of recipient (presently unsupported)
-        /// string did_uri = 2 \[deprecated=true\];
-        /// DIDComm out-of-band invitation JSON (presently unsupported)
-        /// string didcomm_invitation_json = 3 \[deprecated=true\];
+        // DID of recipient (presently unsupported)
+        // string did_uri = 2 \[deprecated=true\];
+
+        // DIDComm out-of-band invitation JSON (presently unsupported)
+        // string didcomm_invitation_json = 3 \[deprecated=true\];
         /// Wallet ID of the recipient within the ecosystem
         #[prost(string, tag = "5")]
         WalletId(::prost::alloc::string::String),

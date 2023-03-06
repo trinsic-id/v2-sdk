@@ -16,7 +16,7 @@ Creates a Governance Framework and attaches it to the current ecosystem.
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
-        trinsic trust-registry register-efg
+        trinsic trust-registry add-framework --name 'Example EGF' --uri 'https://example.com/governance'
         ```
 
     === "C#"
@@ -58,10 +58,10 @@ Registers an authorized issuer for a specific credential type (identified by its
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
-        trinsic trust-registry register-issuer \
+        trinsic trust-registry register-member \
             --egf http://hl7.org/fhir \
-            --credential-type https://w3id.org/vaccination#VaccinationCertificate \
-            --did did:example:fabre
+            --schema https://w3id.org/vaccination#VaccinationCertificate \
+            --did did:key:xxxxx.....
         ```
 
     === "C#"

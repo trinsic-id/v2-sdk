@@ -15,7 +15,7 @@ In most credential exchange scenarios, there are three primary roles: Issuer, Ho
 **Verifier**: Verifies credentials presented by holders.
 
 
-In this case, Allison will be the *holder*, a vaccination clinic will be the *issuer*, and an airline will be the *verifier*. 
+In this case, Allison will be the *holder*, a vaccination clinic will be the *issuer*, and an airline will be the *verifier*.
 
 
 ## Our SDKs
@@ -23,12 +23,12 @@ In this case, Allison will be the *holder*, a vaccination clinic will be the *is
 You can follow along using one of our SDKs, or use the Trinsic CLI, which implements full platform functionality.
 
 === "Trinsic CLI"
-    
+
     [Click here](/cli/){target=_blank} for installation instructions for the Trinsic CLI.
 
     <!-- If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our [demo environment](./demo.md) to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser. -->
 
-   
+
 
 === "Typescript"
     [Click here](/web/){target=_blank} for installation instructions for the Node/Browser SDK.
@@ -59,7 +59,7 @@ Copy this ecosystem ID down, and [skip to the next step](#create-accounts).
 
 ### Create New Ecosystem
 
-If you don't already have an ecosystem provisioned for you, you'll need to create one first. 
+If you don't already have an ecosystem provisioned for you, you'll need to create one first.
 
 This will be a *sandbox* ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, [sign up](https://dashboard.trinsic.id/){target:_blank}.
 
@@ -67,7 +67,7 @@ This will be a *sandbox* ecosystem; suitable for prototyping and testing, but no
     ```
     trinsic provider create-ecosystem
     ```
-    
+
 === "Typescript"
     <!--codeinclude-->
     ```javascript
@@ -123,7 +123,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 === "Trinsic CLI"
     The CLI makes it easy to create wallets. For demo purposes, we'll create all three on the same machine.
-    
+
     When using the CLI, the authentication token of the most recently used account is saved in `~/.trinsic`. In a real-world scenario, you should back this token up securely.
 
     ```bash
@@ -173,7 +173,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     <!--/codeinclude-->
 
     If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
-    
+
 === "Go"
     <!--codeinclude-->
     ```go
@@ -199,7 +199,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 ## Define a Template
 
-Before we can issue a credential, we need to create a [Template](/learn/concepts/templates/){target=_blank} for it. 
+Before we can issue a credential, we need to create a [Template](/learn/concepts/templates/){target=_blank} for it.
 
 Templates are simply a list of the fields that a credential can have.
 
@@ -231,7 +231,7 @@ Templates are simply a list of the fields that a credential can have.
     Then create the template:
 
     ```bash
-    trinsic template create -n "VaccinationCertificate" --fields-file templateData.json 
+    trinsic template create -n "VaccinationCertificate" --fields-file templateData.json
     ```
 
     The output of this command will include a template ID; copy this down for later use.
@@ -314,8 +314,8 @@ To issue a vaccine certificate, we'll use the template we created in the last st
     ```
 
     The output of this command will contain a signed JSON document, which has been saved to `credential.json`.
-    
-    Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate". 
+
+    Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate".
     More specifically, it's the property 'schema_uri' in the JSON returned by the `trinsic template create...` command.
 
 
@@ -369,10 +369,10 @@ Now that the clinic has a signed credential, it must be securely transmitted to 
 Because it's just a JSON string, it could be delivered in many ways -- for example, in the response to an HTTPS request which triggered the issuance process.
 
 !!! info "Send via Trinsic"
-    In the future, we will offer the ability to send a credential directly to a Trinsic user's wallet.
+    Trinsic also offers the ability to send a credential directly to a Trinsic user's wallet.
 
     [Click here](../reference/services/credential-service.md#exchange-credentials) to learn more about this feature.
-    
+
 
 ---
 
@@ -494,7 +494,7 @@ Allison sends this proof to the airline for them to verify.
 
     Trinsic offers an [OpenID Connect service](/reference/other/openid/){target=_blank} as an alternative flow for the exchange of a credential between a holder and a verifier.
 
-    In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share. 
+    In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share.
 
 
 ---
@@ -529,7 +529,7 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
     [Verify Credential](../../python/samples/vaccine_demo.py) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
-   
+
 
 === "Java"
     <!--codeinclude-->
@@ -571,11 +571,259 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 === "Go"
     This sample is available as [`vaccine_test.go`](https://github.com/trinsic-id/sdk/blob/main/go/examples/vaccine_test.go) in our SDK repository.
 
---- 
+---
+
+## Governance Setup
+
+Before we begin, you'll need an [trust registry](/learn/concepts/trust-registries) -- somewhere for the governance to be defined (which issuer is allowed to issue a vaccine credential).
+
+
+### Create New Governance
+
+You can create a governance framework through the [Trinsic dashboard](https://dashboard.trinsic.id/ecosystem/governance){target:_blank} by clicking on the 'Governance' tab in the nav bar.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry add-framework --name "Vaccine Governance" --uri "https://vaccines.trinsic.id"
+        ```
+
+        The response should look like:
+        ```js
+        {
+            "governing_authority":"did:key:xxxxxxxxxxx........",
+            "id": "xxxxxx.....", // <framework_id>
+            "trust_registry": "urn:egf:..." 
+        }
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.AddFramework") }}
+
+The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
+
+\
+
+---
+
+### Register Issuer
+
+First lets grab our account info. You can use an email address, walletId or PublicDID as identifiers for a wallet. We will use publicDID.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic account info
+        ```
+
+        The response should look like:
+        ```js
+        {
+          ...
+          "ecosystem_id": "urn:trinsic:ecosystems:<ecosystem-name>",
+          "public_did": "did:key:xxxxxxxx......", // <public_did>
+          "wallet_id": "urn:trinsic:wallets:xxxxxx....>"
+        }
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.RegisterMember") }}
+
+---
+
+Registers an authorized issuer for a specific credential type (identified by its `schema_uri`), using the public_did, framework_id and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry register-member \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.RegisterMember") }}
+
+---
+
+
+### Check Issuer Status
+
+Check the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry get-membership-status \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+        The response should look like:
+        ```bash
+        ok
+        ```
+
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
+
+
+---
+
+
+### Issue a Credential with Governance framework
+
+We need to prepare a credential with a governance framework specified. This will consist of:
+
+1. Issuing the credential with framework-id specified
+2. Inserting the credential into your wallet
+3. Deriving a proof of the credential
+
+=== "Trinsic CLI"
+
+    First, prepare a file named `values.json` with the following content:
+    === "values.json"
+    ```json
+    {
+        "firstName": "Allison",
+        "lastName": "Allisonne",
+        "batchNumber": "123454321",
+        "countryOfVaccination": "US"
+    }
+    ```
+
+    Then issue the credential:
+
+    ```bash
+    trinsic vc issue-from-template --framework-id <framework_id> --template-id <template_id> --values-file values.json --out credential.json
+    ```
+
+    ```bash
+    trinsic wallet insert-item --item credential.json
+    ```
+
+    The response should look like:
+    ```bash
+    ok
+    item id → "urn:uuid:..." // <item_id>
+    ```
+
+    ```bash
+    trinsic vc create-proof --item-id <item_id> --out proof.json
+    ```
+
+---
+
+### Verify a proof with governance status
+
+Now we can verify the proof from the previous step, and get the governance status.
+
+=== "Trinsic CLI"
+
+    ```bash
+    trinsic vc verify-proof --proof-document proof.json
+    ```
+
+    The response should look like:
+    ```bash
+    is valid → "true"
+    validation results → {
+      "CredentialStatus": {
+        "is_valid": true,
+        "messages": []
+      },
+      "IssuerIsSigner": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SchemaConformance": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SignatureVerification": {
+        "is_valid": true,
+        "messages": []
+      },
+      "TrustRegistryMembership": {
+        "is_valid": true,
+        "messages": []
+      }
+    }
+    ```
+
+---
+
+
+### Revoke Issuer
+Revoke the status of an issuer for a specific credential type using the public_did, framework_uri and template_uri from above:
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry unregister-member \
+            --framework-id <framework_id> \
+            --schema <template_uri> \
+            --did <public_did>
+        ```
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.UnregisterMember") }}
+
+
+### Verify a proof with governance status after revocation of issuer
+
+Now we can verify the proof from the previous step, and get the governance status.
+
+=== "Trinsic CLI"
+
+    ```bash
+    trinsic vc verify-proof --proof-document proof.json
+    ```
+
+    The response should look like:
+    ```bash
+    is valid → "false"
+    validation results → {
+      "CredentialStatus": {
+        "is_valid": true,
+        "messages": []
+      },
+      "IssuerIsSigner": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SchemaConformance": {
+        "is_valid": true,
+        "messages": []
+      },
+      "SignatureVerification": {
+        "is_valid": true,
+        "messages": []
+      },
+      "TrustRegistryMembership": {
+        "is_valid": false,
+        "messages": [
+          "issuer is not authorized in the specified registry"
+        ]
+      }
+    }
+    ```
+
+---
+
+
+---
+
+!!! info "Further Reading: Trust Registries"
+
+    - Learn more about [Governance](/learn/concepts/trust-registries){target=_blank}
+    - Browse the [Provider API reference](reference/services/trust-registry-service/){target=_blank}
+
+
+
+
 
 ## Next Steps
 
-Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. 
+Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take.
 
 
 - Try out a [sample app](https://github.com/trinsic-id/sdk-examples){target=_blank}

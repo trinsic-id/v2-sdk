@@ -1,6 +1,6 @@
-# The Trinsic Javascript / Web SDK
+# The Trinsic Javascript/ Typescript / Web SDK
 
-The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web).
+The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web). The @trinsic/trinsic package comes with Typescript bindings.
 
 ## Installation
 
@@ -11,6 +11,39 @@ Install the package for Node or Browser from [npmjs.com <small>:material-open-in
 ```bash
 npm install @trinsic/trinsic
 ```
+
+To import the Trinsic SDK in ES6:
+```js
+import { TrinsicService } from "@trinsic/trinsic/browser";
+```
+
+To import the Trinsic SDK in CommonJS:
+```js
+let { TrinsicService } = require("@trinsic/trinsic/browser");
+```
+
+You must instantiate the trinsic service first:
+```js
+const trinsicService = new TrinsicService({
+    /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
+    serverEndpoint: "prod.trinsic.cloud";
+    /** Trinsic API port; defaults to `443` */
+    serverPort: 443;
+    /** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */
+    serverUseTls: true;
+    /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
+    authToken: "<Your auth token>";
+});
+```
+
+Now you can use the SDK:
+```js
+const accountInfo = await trinsicService.account().getInfo();
+console.log(JSON.stringify(accountInfo, null, 4));
+```
+
+You can find all of the SDK methods documented [here](/reference/)
+
 
 <!-- prettier-ignore-start -->
 ## Configuration
