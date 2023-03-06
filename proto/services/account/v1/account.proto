@@ -110,7 +110,8 @@ message AccountInfoResponse {
   string public_did = 6;
 
   // Webhook events, if any, this wallet has authorized
-  repeated string authorized_webhooks = 7;
+  reserved 7;
+  reserved "authorized_webhooks";
 }
 
 // Deprecated
@@ -170,12 +171,14 @@ message LoginConfirmResponse {
 // Request to authorize Ecosystem provider to receive webhooks for events
 // which occur on this wallet.
 message AuthorizeWebhookRequest {
+  option deprecated = true;
   // Events to authorize access to. Default is "*" (all events)
   repeated string events = 1;
 }
 
 // Response to `AuthorizeWebhookRequest`
 message AuthorizeWebhookResponse {
+  option deprecated = true;
 }
 
 service Account {
@@ -204,5 +207,7 @@ service Account {
   }
 
   // Authorize Ecosystem to receive webhook events
-  rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
+  rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse){
+    option (options.sdk_template_option).ignore = true;
+  }
 }

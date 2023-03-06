@@ -261,11 +261,16 @@ const SendRequest$json = const {
   '8': const [
     const {'1': 'delivery_method'},
   ],
+  '9': const [
+    const {'1': 2, '2': 3},
+    const {'1': 3, '2': 4},
+  ],
+  '10': const ['didcomm_invitation_json'],
 };
 
 /// Descriptor for `SendRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendRequestDescriptor = $convert.base64Decode(
-    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYBSABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgGIAEoCUgAUgZkaWRVcmkSKwoRc2VuZF9ub3RpZmljYXRpb24YBCABKAhSEHNlbmROb3RpZmljYXRpb24SIwoNZG9jdW1lbnRfanNvbhhkIAEoCVIMZG9jdW1lbnRKc29uQhEKD2RlbGl2ZXJ5X21ldGhvZA==');
+    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYBSABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgGIAEoCUgAUgZkaWRVcmkSKwoRc2VuZF9ub3RpZmljYXRpb24YBCABKAhSEHNlbmROb3RpZmljYXRpb24SIwoNZG9jdW1lbnRfanNvbhhkIAEoCVIMZG9jdW1lbnRKc29uQhEKD2RlbGl2ZXJ5X21ldGhvZEoECAIQA0oECAMQBFIXZGlkY29tbV9pbnZpdGF0aW9uX2pzb24=');
 @$core.Deprecated('Use sendResponseDescriptor instead')
 const SendResponse$json = const {
   '1': 'SendResponse',
