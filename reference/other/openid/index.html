@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.24f010b1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.17be9af2.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.6932e648.min.css">
@@ -772,32 +772,6 @@
     
   
     Security Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../learn/platform/webhooks/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Webhooks
   
 
     
@@ -2308,13 +2282,17 @@
 <p>When creating a Template:</p>
 <ul>
 <li>Choose the <code>Uri</code> type for any Fields which are intended to contain URIs.</li>
-<li>Set the <code>trinsic/web.display_method</code> annotation on the Field</li>
+<li>Set the <code>trinsic/web.display_method</code> annotation on the Field<ul>
 <li>If the field is intended to contain an image, use the value <code>inline</code>.</li>
 <li>Otherwise, use the value <code>download</code>.</li>
-<li>Set the <code>trinsic/file.content_type</code> annotation on the Field</li>
+</ul>
+</li>
+<li>Set the <code>trinsic/file.content_type</code> annotation on the Field<ul>
 <li>Use the value <code>image</code> if the field is intended to contain a link to an image</li>
 <li>Otherwise, the value should be the expected MIME Type of the data<ul>
 <li>If you are unsure, use <code>application/octet-stream</code> as a catch-all</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

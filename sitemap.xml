@@ -111,11 +111,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.trinsic.id/learn/platform/webhooks/</loc>
-         <lastmod>2023-03-06</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.trinsic.id/node/</loc>
          <lastmod>2023-03-06</lastmod>
          <changefreq>daily</changefreq>
