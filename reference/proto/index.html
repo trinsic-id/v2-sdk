@@ -3329,17 +3329,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grant" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Grant
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#indyoptions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4275,11 +4264,6 @@
 <td>public_did</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>The public DID associated with this account. This DID is used as the <code>issuer</code> when signing verifiable credentials</td>
-</tr>
-<tr>
-<td>authorized_webhooks</td>
-<td><a href="/reference/proto#string">string</a>[]</td>
-<td>Webhook events, if any, this wallet has authorized</td>
 </tr>
 </tbody>
 </table>
@@ -7173,11 +7157,6 @@ such by assigning roles and permissions to wallet accounts</p>
 <td><strong>Deprecated.</strong> External URL associated with the organization or ecosystem entity</td>
 </tr>
 <tr>
-<td>webhooks</td>
-<td><a href="/reference/proto#services-provider-v1-WebhookConfig">WebhookConfig</a>[]</td>
-<td>Configured webhooks, if any</td>
-</tr>
-<tr>
 <td>display</td>
 <td><a href="/reference/proto#services-provider-v1-EcosystemDisplay">EcosystemDisplay</a></td>
 <td>Display details</td>
@@ -7221,7 +7200,7 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>logo_url</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>string id = 1; string name = 2;</td>
+<td></td>
 </tr>
 <tr>
 <td>color</td>
@@ -7244,7 +7223,7 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>color</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>string id = 1; string name = 2; string logo_url = 3;</td>
+<td></td>
 </tr>
 <tr>
 <td>logo_data</td>
@@ -7356,35 +7335,6 @@ to verify authentication token validity</p>
 <td>ecosystem</td>
 <td><a href="/reference/proto#services-provider-v1-PublicEcosystemInformation">PublicEcosystemInformation</a></td>
 <td>Ecosystem corresponding to requested <code>ecosystem_id</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-Grant"></a></p>
-<h3 id="grant">Grant<a class="headerlink" href="#grant" title="Permanent link">&para;</a></h3>
-<p>A grant authorizing <code>actions</code> on a <code>resourceId</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>resourceId</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>the urn of the resource</td>
-</tr>
-<tr>
-<td>actions</td>
-<td><a href="/reference/proto#string">string</a>[]</td>
-<td>list of actions that are allowed</td>
-</tr>
-<tr>
-<td>child_grants</td>
-<td><a href="/reference/proto#services-provider-v1-Grant">Grant</a>[]</td>
-<td>any child grants</td>
 </tr>
 </tbody>
 </table>
@@ -7695,7 +7645,7 @@ to verify authentication token validity</p>
 <tr>
 <td>display</td>
 <td><a href="/reference/proto#services-provider-v1-EcosystemDisplayRequest">EcosystemDisplayRequest</a></td>
-<td><strong>Deprecated.</strong> New name string name = 4; Display details</td>
+<td><strong>Deprecated.</strong> Display details</td>
 </tr>
 </tbody>
 </table>
