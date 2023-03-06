@@ -126,7 +126,6 @@ Information about the account used to make the request
 | device_id | [string](/reference/proto#string) | The device ID associated with this account session |
 | ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
 | public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as the `issuer` when signing verifiable credentials |
-| authorized_webhooks | [string](/reference/proto#string)[] | Webhook events, if any, this wallet has authorized |
 
 
 
@@ -2721,6 +2720,7 @@ https://docs.godiddy.com/en/supported-methods
 | KEY | 0 | The did:key method -- all wallets use this by default |
 | ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
 | INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
+
 
  <!-- end enums -->
 
