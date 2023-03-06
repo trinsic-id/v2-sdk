@@ -8,6 +8,5 @@
 - [:material-language-javascript: Web](web/index.md)
 - [:material-language-java: Java](java/index.md)
 - [:material-menu: Go](go/index.md)
-- [:material-language-ruby: Ruby](ruby/index.md)
 - [:material-android: Android](android/index.md)
 - [:material-apple: iOS](ios/index.md)

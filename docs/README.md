@@ -99,11 +99,6 @@ Immediately following `proto_sample_start()` should be a set of tabs, **indented
         ```
         <!--/codeinclude-->
 
-    === "Ruby"
-        ```ruby
-        allison = account_service.sign_in(nil).profile
-        ```
-
 {{ proto_method_tabs("services.account.v1.Account.SignIn") }}
 ```
 

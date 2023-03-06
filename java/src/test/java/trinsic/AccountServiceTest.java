@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.TrinsicService;
-import trinsic.services.account.v1.AuthorizeWebhookRequest;
 import trinsic.services.account.v1.LoginRequest;
 import trinsic.services.account.v1.LoginResponse;
 

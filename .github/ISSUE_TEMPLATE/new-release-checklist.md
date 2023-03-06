@@ -37,7 +37,6 @@ Manual steps are instructions that need to be taken in order to have a full rele
   - [ ] nuget.org
   - [ ] npmjs.com
   - [ ] pypi.org
-  - [ ] rubygems.org
   - [ ] pub.dev (Dart) - future work, this is not fully implemented
 
 ## Post-release Manual Steps

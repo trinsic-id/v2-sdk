@@ -133,19 +133,6 @@ def build_java(args) -> None:
     copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
 
-def build_ruby(args) -> None:
-    # Update version in setup.cfg
-    ruby_dir = get_language_dir("ruby")
-    update_line(
-        join(ruby_dir, "lib", "version.rb"),
-        {"  VERSION =": f"  VERSION = '{get_package_versions(args)}'"},
-    )
-    copy_okapi_libs(abspath(join(ruby_dir, "..", "libs")))
-    copy_okapi_libs(
-        ruby_dir
-    )  # Ruby FFI loads from current directory first, this enables macos
-
-
 def build_golang(args) -> None:
     # Update version in setup.cfg
     golang_dir = abspath(join(get_language_dir("go"), "services"))
@@ -316,7 +303,6 @@ def main():
     # Mapping of (language -> compilation function)
     lang_funcs = {
         "golang": build_golang,
-        "ruby": build_ruby,
         "python": build_python,
         "java": build_java,
         "dart": build_dart,
