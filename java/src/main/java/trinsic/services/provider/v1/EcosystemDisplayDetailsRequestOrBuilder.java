@@ -9,28 +9,12 @@ public interface EcosystemDisplayDetailsRequestOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   *    string logo_url = 3;
-   * </pre>
-   *
    * <code>string color = 4;</code>
    *
    * @return The color.
    */
   java.lang.String getColor();
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   *    string logo_url = 3;
-   * </pre>
-   *
    * <code>string color = 4;</code>
    *
    * @return The bytes for color.

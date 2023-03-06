@@ -45,7 +45,7 @@ public interface LoginRequestOrBuilder
    * </code>
    *
    * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=132
+   *     services/account/v1/account.proto;l=133
    * @return The invitationCode.
    */
   @java.lang.Deprecated
@@ -62,7 +62,7 @@ public interface LoginRequestOrBuilder
    * </code>
    *
    * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=132
+   *     services/account/v1/account.proto;l=133
    * @return The bytes for invitationCode.
    */
   @java.lang.Deprecated

@@ -118,58 +118,6 @@ public interface EcosystemOrBuilder
    *
    *
    * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  java.util.List<trinsic.services.provider.v1.WebhookConfig> getWebhooksList();
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  trinsic.services.provider.v1.WebhookConfig getWebhooks(int index);
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  int getWebhooksCount();
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  java.util.List<? extends trinsic.services.provider.v1.WebhookConfigOrBuilder>
-      getWebhooksOrBuilderList();
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  trinsic.services.provider.v1.WebhookConfigOrBuilder getWebhooksOrBuilder(int index);
-
-  /**
-   *
-   *
-   * <pre>
    * Display details
    * </pre>
    *

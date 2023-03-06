@@ -329,7 +329,6 @@ class Services::Provider::V1::Ecosystem
       name: T.nilable(String),
       description: T.nilable(String),
       uri: T.nilable(String),
-      webhooks: T.nilable(T::Array[T.nilable(Services::Provider::V1::WebhookConfig)]),
       display: T.nilable(Services::Provider::V1::EcosystemDisplay),
       domain: T.nilable(String)
     ).void
@@ -339,7 +338,6 @@ class Services::Provider::V1::Ecosystem
     name: "",
     description: "",
     uri: "",
-    webhooks: [],
     display: nil,
     domain: ""
   )
@@ -391,18 +389,6 @@ class Services::Provider::V1::Ecosystem
 
   sig { void }
   def clear_uri
-  end
-
-  sig { returns(T::Array[T.nilable(Services::Provider::V1::WebhookConfig)]) }
-  def webhooks
-  end
-
-  sig { params(value: ::Google::Protobuf::RepeatedField).void }
-  def webhooks=(value)
-  end
-
-  sig { void }
-  def clear_webhooks
   end
 
   sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplay)) }
@@ -529,94 +515,6 @@ class Services::Provider::V1::WebhookConfig
 
   sig { void }
   def clear_status
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-end
-
-class Services::Provider::V1::Grant
-  include ::Google::Protobuf
-  include ::Google::Protobuf::MessageExts
-  extend ::Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Services::Provider::V1::Grant) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Services::Provider::V1::Grant).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::Grant) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Services::Provider::V1::Grant, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(::Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
-  sig do
-    params(
-      resourceId: T.nilable(String),
-      actions: T.nilable(T::Array[String]),
-      child_grants: T.nilable(T::Array[T.nilable(Services::Provider::V1::Grant)])
-    ).void
-  end
-  def initialize(
-    resourceId: "",
-    actions: [],
-    child_grants: []
-  )
-  end
-
-  sig { returns(String) }
-  def resourceId
-  end
-
-  sig { params(value: String).void }
-  def resourceId=(value)
-  end
-
-  sig { void }
-  def clear_resourceId
-  end
-
-  sig { returns(T::Array[String]) }
-  def actions
-  end
-
-  sig { params(value: ::Google::Protobuf::RepeatedField).void }
-  def actions=(value)
-  end
-
-  sig { void }
-  def clear_actions
-  end
-
-  sig { returns(T::Array[T.nilable(Services::Provider::V1::Grant)]) }
-  def child_grants
-  end
-
-  sig { params(value: ::Google::Protobuf::RepeatedField).void }
-  def child_grants=(value)
-  end
-
-  sig { void }
-  def clear_child_grants
   end
 
   sig { params(field: String).returns(T.untyped) }

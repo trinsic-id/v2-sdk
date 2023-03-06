@@ -48,13 +48,6 @@ public final class EcosystemDisplayDetails extends com.google.protobuf.Generated
   public static final int LOGO_URL_FIELD_NUMBER = 3;
   private volatile java.lang.Object logoUrl_;
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   * </pre>
-   *
    * <code>string logo_url = 3;</code>
    *
    * @return The logoUrl.
@@ -72,13 +65,6 @@ public final class EcosystemDisplayDetails extends com.google.protobuf.Generated
     }
   }
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   * </pre>
-   *
    * <code>string logo_url = 3;</code>
    *
    * @return The bytes for logoUrl.
@@ -479,13 +465,6 @@ public final class EcosystemDisplayDetails extends com.google.protobuf.Generated
 
     private java.lang.Object logoUrl_ = "";
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     * </pre>
-     *
      * <code>string logo_url = 3;</code>
      *
      * @return The logoUrl.
@@ -502,13 +481,6 @@ public final class EcosystemDisplayDetails extends com.google.protobuf.Generated
       }
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     * </pre>
-     *
      * <code>string logo_url = 3;</code>
      *
      * @return The bytes for logoUrl.
@@ -525,13 +497,6 @@ public final class EcosystemDisplayDetails extends com.google.protobuf.Generated
       }
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     * </pre>
-     *
      * <code>string logo_url = 3;</code>
      *
      * @param value The logoUrl to set.
@@ -547,13 +512,6 @@ public final class EcosystemDisplayDetails extends com.google.protobuf.Generated
       return this;
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     * </pre>
-     *
      * <code>string logo_url = 3;</code>
      *
      * @return This builder for chaining.
@@ -565,13 +523,6 @@ public final class EcosystemDisplayDetails extends com.google.protobuf.Generated
       return this;
     }
     /**
-     *
-     *
-     * <pre>
-     * string id = 1;
-     * string name = 2;
-     * </pre>
-     *
      * <code>string logo_url = 3;</code>
      *
      * @param value The bytes for logoUrl to set.

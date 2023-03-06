@@ -38,7 +38,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :description, :string, 3
       optional :uri, :string, 4
-      repeated :webhooks, :message, 5, "services.provider.v1.WebhookConfig"
       optional :display, :message, 6, "services.provider.v1.EcosystemDisplay"
       optional :domain, :string, 7
     end
@@ -47,11 +46,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :destination_url, :string, 2
       repeated :events, :string, 4
       optional :status, :string, 5
-    end
-    add_message "services.provider.v1.Grant" do
-      optional :resourceId, :string, 1
-      repeated :actions, :string, 2
-      repeated :child_grants, :message, 3, "services.provider.v1.Grant"
     end
     add_message "services.provider.v1.CreateEcosystemRequest" do
       optional :name, :string, 1
@@ -209,7 +203,6 @@ module Services
       InvitationStatusResponse::Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InvitationStatusResponse.Status").enummodule
       Ecosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Ecosystem").msgclass
       WebhookConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.WebhookConfig").msgclass
-      Grant = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Grant").msgclass
       CreateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemRequest").msgclass
       CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemResponse").msgclass
       UpdateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpdateEcosystemRequest").msgclass
