@@ -49,28 +49,6 @@ class AccountServiceTest {
   }
 
   @Test
-  public void testAuthWebhook()
-      throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
-          DidException {
-    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-
-    var profile = trinsic.account().loginAnonymous(myEcosystemIdOrName).get();
-    trinsic.setAuthToken(profile);
-
-    // authorizeWebhook() {
-    var authorizeResponse =
-        trinsic
-            .account()
-            .authorizeWebhook(
-                AuthorizeWebhookRequest.newBuilder()
-                    .addEvents("*") // Authorize all events
-                    .build())
-            .get();
-    // }
-    trinsic.shutdown();
-  }
-
-  @Test
   public void testProtectUnprotectAccount()
       throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
           DidException {

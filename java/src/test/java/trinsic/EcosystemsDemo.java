@@ -58,36 +58,6 @@ public class EcosystemsDemo {
     Assertions.assertEquals(
         infoResponse.getEcosystem().getUri(), updateResponse.getEcosystem().getUri());
 
-    // addWebhook() {
-    var addWebhookResponse =
-        trinsic
-            .provider()
-            .addWebhook(
-                AddWebhookRequest.newBuilder()
-                    .setDestinationUrl("https://example.com/webhooks/trinsic")
-                    .setSecret("my well-kept secret")
-                    .addEvents("*") // All events
-                    .build())
-            .get();
-    // }
-
-    Assertions.assertNotNull(addWebhookResponse.getEcosystem());
-    Assertions.assertEquals(1, addWebhookResponse.getEcosystem().getWebhooksCount());
-
-    var webhook = addWebhookResponse.getEcosystem().getWebhooks(0);
-    var webhookId = webhook.getId();
-
-    // deleteWebhook() {
-    var deleteWebhookResponse =
-        trinsic
-            .provider()
-            .deleteWebhook(DeleteWebhookRequest.newBuilder().setWebhookId(webhookId).build())
-            .get();
-    // }
-
-    Assertions.assertNotNull(deleteWebhookResponse.getEcosystem());
-    Assertions.assertEquals(0, deleteWebhookResponse.getEcosystem().getWebhooksCount());
-
     // listEcosystems() {
     // }
 

@@ -41,37 +41,6 @@ func TestLogin(t *testing.T) {
 	// }
 }
 
-func TestAuthWebhook(t *testing.T) {
-	assert2 := assert.New(t)
-
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
-	if !assert2.Nil(err) {
-		return
-	}
-
-	authToken, err := trinsic.Account().LoginAnonymous(context.Background(), "default")
-
-	if !assert2.Nil(err) {
-		return
-	}
-
-	trinsic.GetServiceOptions().AuthToken = authToken
-
-	// authorizeWebhook() {
-	request := &account.AuthorizeWebhookRequest{
-		Events: []string{"*"}, //Authorize all events
-	}
-
-	authResponse, err := trinsic.Account().AuthorizeWebhook(context.Background(), request)
-	// }
-
-	if !assert2.Nil(err) {
-		return
-	}
-
-	assert2.NotNil(authResponse)
-}
-
 func TestProtectUnprotectProfile(t *testing.T) {
 	assert2 := assert.New(t)
 

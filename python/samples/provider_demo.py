@@ -4,8 +4,6 @@ from trinsic.proto.services.common.v1 import SupportedDidMethod
 
 from trinsic.proto.services.account.v1 import AccountDetails
 from trinsic.proto.services.provider.v1 import (
-    AddWebhookRequest,
-    DeleteWebhookRequest,
     EcosystemInfoRequest,
     IonOptions,
     IonOptionsIonNetwork,
@@ -30,25 +28,6 @@ async def provider_demo():
 
     trinsic.service_options.default_ecosystem = ecosystem
     trinsic.service_options.auth_token = auth_token
-
-    # addWebhook() {
-    request = AddWebhookRequest(
-        destination_url="https://example.com/webhooks/trinsic",
-        secret="my well-kept secret",
-    )
-    request.events.append("*")  # Enable all events
-
-    response = await trinsic.provider.add_webhook(request=request)
-    # }
-
-    webhook = response.ecosystem.webhooks[0]
-    webhook_id = webhook.id
-
-    # deleteWebhook() {
-    response = await trinsic.provider.delete_webhook(
-        request=DeleteWebhookRequest(webhook_id)
-    )
-    # }
 
     # updateEcosystem() {
     request = UpdateEcosystemRequest(
