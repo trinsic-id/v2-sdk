@@ -183,55 +183,6 @@ Returns the account information (name, email address, phone number, etc.) used t
 
 ---
 
-## Authorize Webhook
-
-Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic account authorize-webhook --events "*"
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [AuthorizeWebhook](../../../web/test/AccountService.test.ts) inside_block:authorizeWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [AuthorizeWebhook](../../../dotnet/Tests/Tests.cs) inside_block:authorizeWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [AuthorizeWebhook](../../../python/samples/account_demo.py) inside_block:authorizeWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [AuthorizeWebhook](../../../go/services/account_service_test.go) inside_block:authorizeWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [AuthorizeWebhook](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:authorizeWebhook
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}
-
----
-
 ## Protect Account Profile
 !!! danger "Deprecated Sign-in Flow"
     This section is related to the the deprecated [SignIn](#deprecated-sign-in) endpoint; the new [Login](#login) flow does not require

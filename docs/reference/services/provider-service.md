@@ -1,6 +1,6 @@
 # Provider Service
 
-The Provider Service enables the creation and management of ecosystems and webhooks.
+The Provider Service enables the creation and management of ecosystems.
 
 !!! warning "Named vs Anonymous ecosystems"
     There are two types of ecosystems: *named* and *anonymous*.
@@ -163,115 +163,6 @@ Fetches information about the active ecosystem.
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.provider.v1.Provider.EcosystemInfo") }}
-
----
-
-## Add Webhook
-
-Adds a webhook to an ecosystem.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic provider add-webhook \
-                        --url "https://example.com/webhooks/trinsic" \
-                        --secret "my well-kept secret" \
-                        --events "*"
-        ```
-
-    === "TypeScript"
-        <!--codeinclude--> 
-        ```typescript
-        [AddWebhook](../../../web/test/ProviderService.test.ts) inside_block:addWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [AddWebhook](../../../dotnet/Tests/Tests.cs) inside_block:addWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [AddWebhook](../../../python/samples/provider_demo.py) inside_block:addWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [AddWebhook](../../../go/services/provider_service_test.go) inside_block:addWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [AddWebhook](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:addWebhook
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.provider.v1.Provider.AddWebhook") }}
-
-!!! warning "Webhook Limits"
-    At present, an ecosystem can have no more than 10 webhooks.
-
-!!! tip "Wallet Webhook Events"
-    In order to receive webhooks for events which occur on a wallet, an additional authorization step must be performed.
-
-    See [AuthorizeWebhook](/reference/services/account-service#authorize-webhook) for more info.
-
----
-
-## Delete Webhook
-
-Deletes a webhook from an ecosystem.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic provider delete-webhook --webhook-id <WEBHOOK_ID>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude--> 
-        ```typescript
-        [DeleteWebhook](../../../web/test/ProviderService.test.ts) inside_block:deleteWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [DeleteWebhook](../../../dotnet/Tests/Tests.cs) inside_block:deleteWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [DeleteWebhook](../../../python/samples/provider_demo.py) inside_block:deleteWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [DeleteWebhook](../../../go/services/provider_service_test.go) inside_block:deleteWebhook
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [DeleteWebhook](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:deleteWebhook
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.provider.v1.Provider.DeleteWebhook") }}
 
 ---
 
