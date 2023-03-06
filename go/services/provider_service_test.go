@@ -9,49 +9,6 @@ import (
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 )
 
-func TestWebhookAddDelete(t *testing.T) {
-	assert2 := assert.New(t)
-
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
-	if !assert2.Nil(err) {
-		return
-	}
-
-	webhookId := ""
-
-	{
-		// addWebhook() {
-		request := &provider.AddWebhookRequest{
-			DestinationUrl: "https://example.com/webhooks/trinsic",
-			Secret:         "my well-kept secret",
-			Events:         []string{"*"}, // All events
-		}
-
-		response, err := trinsic.Provider().AddWebhook(context.Background(), request)
-		// }
-
-		if !assert2.Nil(err) || !assert2.NotNil(response) {
-			return
-		}
-
-		webhookId = response.Ecosystem.Webhooks[0].Id
-	}
-
-	{
-		// deleteWebhook() {
-		request := &provider.DeleteWebhookRequest{
-			WebhookId: webhookId,
-		}
-
-		deleteResponse, err := trinsic.Provider().DeleteWebhook(context.Background(), request)
-		// }
-
-		if !assert2.Nil(err) || !assert2.NotNil(deleteResponse) {
-			return
-		}
-	}
-}
-
 func TestEcosystemUpdateInfo(t *testing.T) {
 	assert2 := assert.New(t)
 

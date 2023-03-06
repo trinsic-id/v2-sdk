@@ -1,6 +1,5 @@
 import {
     AccountService,
-    AuthorizeWebhookRequest,
     LoginRequest,
     TrinsicService,
 } from "../node";
@@ -40,21 +39,6 @@ describe("AccountService Unit Tests", () => {
             trinsic.options.authToken = authToken;
             //}
         } catch {}
-    });
-
-    it("authorize webhook", async () => {
-        let trinsic = new TrinsicService(options);
-        let account = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
-
-        trinsic.options.authToken = account.toString(); //wat
-
-        // authorizeWebhook() {
-        const response = await trinsic.account().authorizeWebhook(
-            AuthorizeWebhookRequest.fromPartial({
-                events: ["*"], // Authorize all events
-            })
-        );
-        //}
     });
 
     it("protect/unprotect account profile", async () => {
