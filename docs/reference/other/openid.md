@@ -122,12 +122,12 @@ When creating a Template:
 
 - Choose the `Uri` type for any Fields which are intended to contain URIs.
 - Set the `trinsic/web.display_method` annotation on the Field
-  - If the field is intended to contain an image, use the value `inline`.
-  - Otherwise, use the value `download`.
+    - If the field is intended to contain an image, use the value `inline`.
+    - Otherwise, use the value `download`.
 - Set the `trinsic/file.content_type` annotation on the Field
-  - Use the value `image` if the field is intended to contain a link to an image
-  - Otherwise, the value should be the expected MIME Type of the data
-    - If you are unsure, use `application/octet-stream` as a catch-all
+    - Use the value `image` if the field is intended to contain a link to an image
+    - Otherwise, the value should be the expected MIME Type of the data
+        - If you are unsure, use `application/octet-stream` as a catch-all
 
 ## Sample
 
