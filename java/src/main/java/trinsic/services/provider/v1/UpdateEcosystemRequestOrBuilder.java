@@ -43,7 +43,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=166
+   *     services/provider/v1/provider.proto;l=157
    * @return The uri.
    */
   @java.lang.Deprecated
@@ -58,7 +58,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=166
+   *     services/provider/v1/provider.proto;l=157
    * @return The bytes for uri.
    */
   @java.lang.Deprecated
@@ -93,15 +93,13 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * New name
-   * string name = 4;
    * Display details
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=172
+   *     services/provider/v1/provider.proto;l=164
    * @return Whether the display field is set.
    */
   @java.lang.Deprecated
@@ -110,15 +108,13 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * New name
-   * string name = 4;
    * Display details
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=172
+   *     services/provider/v1/provider.proto;l=164
    * @return The display.
    */
   @java.lang.Deprecated
@@ -127,8 +123,6 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * New name
-   * string name = 4;
    * Display details
    * </pre>
    *

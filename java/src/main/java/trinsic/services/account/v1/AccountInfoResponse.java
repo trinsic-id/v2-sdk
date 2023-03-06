@@ -28,7 +28,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     deviceId_ = "";
     ecosystemId_ = "";
     publicDid_ = "";
-    authorizedWebhooks_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -380,67 +379,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     }
   }
 
-  public static final int AUTHORIZED_WEBHOOKS_FIELD_NUMBER = 7;
-  private com.google.protobuf.LazyStringList authorizedWebhooks_;
-  /**
-   *
-   *
-   * <pre>
-   * Webhook events, if any, this wallet has authorized
-   * </pre>
-   *
-   * <code>repeated string authorized_webhooks = 7;</code>
-   *
-   * @return A list containing the authorizedWebhooks.
-   */
-  public com.google.protobuf.ProtocolStringList getAuthorizedWebhooksList() {
-    return authorizedWebhooks_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Webhook events, if any, this wallet has authorized
-   * </pre>
-   *
-   * <code>repeated string authorized_webhooks = 7;</code>
-   *
-   * @return The count of authorizedWebhooks.
-   */
-  public int getAuthorizedWebhooksCount() {
-    return authorizedWebhooks_.size();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Webhook events, if any, this wallet has authorized
-   * </pre>
-   *
-   * <code>repeated string authorized_webhooks = 7;</code>
-   *
-   * @param index The index of the element to return.
-   * @return The authorizedWebhooks at the given index.
-   */
-  public java.lang.String getAuthorizedWebhooks(int index) {
-    return authorizedWebhooks_.get(index);
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Webhook events, if any, this wallet has authorized
-   * </pre>
-   *
-   * <code>repeated string authorized_webhooks = 7;</code>
-   *
-   * @param index The index of the value to return.
-   * @return The bytes of the authorizedWebhooks at the given index.
-   */
-  public com.google.protobuf.ByteString getAuthorizedWebhooksBytes(int index) {
-    return authorizedWebhooks_.getByteString(index);
-  }
-
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -473,9 +411,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, publicDid_);
     }
-    for (int i = 0; i < authorizedWebhooks_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, authorizedWebhooks_.getRaw(i));
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -503,14 +438,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, publicDid_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < authorizedWebhooks_.size(); i++) {
-        dataSize += computeStringSizeNoTag(authorizedWebhooks_.getRaw(i));
-      }
-      size += dataSize;
-      size += 1 * getAuthorizedWebhooksList().size();
-    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -536,7 +463,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     if (!getDeviceId().equals(other.getDeviceId())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getPublicDid().equals(other.getPublicDid())) return false;
-    if (!getAuthorizedWebhooksList().equals(other.getAuthorizedWebhooksList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -564,10 +490,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     hash = (53 * hash) + getEcosystemId().hashCode();
     hash = (37 * hash) + PUBLIC_DID_FIELD_NUMBER;
     hash = (53 * hash) + getPublicDid().hashCode();
-    if (getAuthorizedWebhooksCount() > 0) {
-      hash = (37 * hash) + AUTHORIZED_WEBHOOKS_FIELD_NUMBER;
-      hash = (53 * hash) + getAuthorizedWebhooksList().hashCode();
-    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -727,8 +649,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
 
       publicDid_ = "";
 
-      authorizedWebhooks_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -775,11 +695,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
       result.deviceId_ = deviceId_;
       result.ecosystemId_ = ecosystemId_;
       result.publicDid_ = publicDid_;
-      if (((bitField0_ & 0x00000002) != 0)) {
-        authorizedWebhooks_ = authorizedWebhooks_.getUnmodifiableView();
-        bitField0_ = (bitField0_ & ~0x00000002);
-      }
-      result.authorizedWebhooks_ = authorizedWebhooks_;
       onBuilt();
       return result;
     }
@@ -876,16 +791,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         publicDid_ = other.publicDid_;
         onChanged();
       }
-      if (!other.authorizedWebhooks_.isEmpty()) {
-        if (authorizedWebhooks_.isEmpty()) {
-          authorizedWebhooks_ = other.authorizedWebhooks_;
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          ensureAuthorizedWebhooksIsMutable();
-          authorizedWebhooks_.addAll(other.authorizedWebhooks_);
-        }
-        onChanged();
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -955,13 +860,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
 
                 break;
               } // case 50
-            case 58:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureAuthorizedWebhooksIsMutable();
-                authorizedWebhooks_.add(s);
-                break;
-              } // case 58
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1987,174 +1885,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
       checkByteStringIsUtf8(value);
 
       publicDid_ = value;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.LazyStringList authorizedWebhooks_ =
-        com.google.protobuf.LazyStringArrayList.EMPTY;
-
-    private void ensureAuthorizedWebhooksIsMutable() {
-      if (!((bitField0_ & 0x00000002) != 0)) {
-        authorizedWebhooks_ = new com.google.protobuf.LazyStringArrayList(authorizedWebhooks_);
-        bitField0_ |= 0x00000002;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @return A list containing the authorizedWebhooks.
-     */
-    public com.google.protobuf.ProtocolStringList getAuthorizedWebhooksList() {
-      return authorizedWebhooks_.getUnmodifiableView();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @return The count of authorizedWebhooks.
-     */
-    public int getAuthorizedWebhooksCount() {
-      return authorizedWebhooks_.size();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @param index The index of the element to return.
-     * @return The authorizedWebhooks at the given index.
-     */
-    public java.lang.String getAuthorizedWebhooks(int index) {
-      return authorizedWebhooks_.get(index);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @param index The index of the value to return.
-     * @return The bytes of the authorizedWebhooks at the given index.
-     */
-    public com.google.protobuf.ByteString getAuthorizedWebhooksBytes(int index) {
-      return authorizedWebhooks_.getByteString(index);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @param index The index to set the value at.
-     * @param value The authorizedWebhooks to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAuthorizedWebhooks(int index, java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureAuthorizedWebhooksIsMutable();
-      authorizedWebhooks_.set(index, value);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @param value The authorizedWebhooks to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAuthorizedWebhooks(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureAuthorizedWebhooksIsMutable();
-      authorizedWebhooks_.add(value);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @param values The authorizedWebhooks to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllAuthorizedWebhooks(java.lang.Iterable<java.lang.String> values) {
-      ensureAuthorizedWebhooksIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, authorizedWebhooks_);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearAuthorizedWebhooks() {
-      authorizedWebhooks_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000002);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Webhook events, if any, this wallet has authorized
-     * </pre>
-     *
-     * <code>repeated string authorized_webhooks = 7;</code>
-     *
-     * @param value The bytes of the authorizedWebhooks to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAuthorizedWebhooksBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-      ensureAuthorizedWebhooksIsMutable();
-      authorizedWebhooks_.add(value);
       onChanged();
       return this;
     }

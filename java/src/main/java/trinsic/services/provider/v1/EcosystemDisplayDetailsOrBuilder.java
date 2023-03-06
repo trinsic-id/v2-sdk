@@ -9,26 +9,12 @@ public interface EcosystemDisplayDetailsOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   * </pre>
-   *
    * <code>string logo_url = 3;</code>
    *
    * @return The logoUrl.
    */
   java.lang.String getLogoUrl();
   /**
-   *
-   *
-   * <pre>
-   * string id = 1;
-   * string name = 2;
-   * </pre>
-   *
    * <code>string logo_url = 3;</code>
    *
    * @return The bytes for logoUrl.

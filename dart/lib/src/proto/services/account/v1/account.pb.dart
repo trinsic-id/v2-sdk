@@ -646,11 +646,6 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'publicDid')
-    ..pPS(
-        7,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'authorizedWebhooks')
     ..hasRequiredFields = false;
 
   AccountInfoResponse._() : super();
@@ -662,7 +657,6 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
     $core.String? deviceId,
     $core.String? ecosystemId,
     $core.String? publicDid,
-    $core.Iterable<$core.String>? authorizedWebhooks,
   }) {
     final _result = create();
     if (details != null) {
@@ -683,9 +677,6 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
     }
     if (publicDid != null) {
       _result.publicDid = publicDid;
-    }
-    if (authorizedWebhooks != null) {
-      _result.authorizedWebhooks.addAll(authorizedWebhooks);
     }
     return _result;
   }
@@ -781,9 +772,6 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   $core.bool hasPublicDid() => $_has(5);
   @$pb.TagNumber(6)
   void clearPublicDid() => clearField(6);
-
-  @$pb.TagNumber(7)
-  $core.List<$core.String> get authorizedWebhooks => $_getList(6);
 }
 
 class AccountEcosystem extends $pb.GeneratedMessage {

@@ -126,7 +126,6 @@ Information about the account used to make the request
 | device_id | [string](/reference/proto#string) | The device ID associated with this account session |
 | ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
 | public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as the `issuer` when signing verifiable credentials |
-| authorized_webhooks | [string](/reference/proto#string)[] | Webhook events, if any, this wallet has authorized |
 
 
 
@@ -1996,7 +1995,6 @@ Details of an ecosystem
 | name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
 | description | [string](/reference/proto#string) | Ecosystem description |
 | uri | [string](/reference/proto#string) | **Deprecated.** External URL associated with the organization or ecosystem entity |
-| webhooks | [WebhookConfig](/reference/proto#services-provider-v1-WebhookConfig)[] | Configured webhooks, if any |
 | display | [EcosystemDisplay](/reference/proto#services-provider-v1-EcosystemDisplay) | Display details |
 | domain | [string](/reference/proto#string) | Domain |
 
@@ -2028,7 +2026,7 @@ Details of an ecosystem
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| logo_url | [string](/reference/proto#string) | string id = 1; string name = 2; |
+| logo_url | [string](/reference/proto#string) |  |
 | color | [string](/reference/proto#string) |  |
 
 
@@ -2044,7 +2042,7 @@ Details of an ecosystem
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| color | [string](/reference/proto#string) | string id = 1; string name = 2; string logo_url = 3; |
+| color | [string](/reference/proto#string) |  |
 | logo_data | [bytes](/reference/proto#bytes) |  |
 | logo_format | [string](/reference/proto#string) | MIME type of the file |
 
@@ -2143,23 +2141,6 @@ Response to `InfoRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | ecosystem | [PublicEcosystemInformation](/reference/proto#services-provider-v1-PublicEcosystemInformation) | Ecosystem corresponding to requested `ecosystem_id` |
-
-
-
-
-
-
-<a name="services-provider-v1-Grant"></a>
-
-### Grant
-A grant authorizing `actions` on a `resourceId`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| resourceId | [string](/reference/proto#string) | the urn of the resource |
-| actions | [string](/reference/proto#string)[] | list of actions that are allowed |
-| child_grants | [Grant](/reference/proto#services-provider-v1-Grant)[] | any child grants |
 
 
 
@@ -2385,7 +2366,7 @@ Request to update an ecosystem's metadata
 | description | [string](/reference/proto#string) | New description of the ecosystem |
 | uri | [string](/reference/proto#string) | **Deprecated.** New external URL associated with the organization or ecosystem entity |
 | domain | [string](/reference/proto#string) | New domain URL |
-| display | [EcosystemDisplayRequest](/reference/proto#services-provider-v1-EcosystemDisplayRequest) | **Deprecated.** New name string name = 4; Display details |
+| display | [EcosystemDisplayRequest](/reference/proto#services-provider-v1-EcosystemDisplayRequest) | **Deprecated.** Display details |
 
 
 

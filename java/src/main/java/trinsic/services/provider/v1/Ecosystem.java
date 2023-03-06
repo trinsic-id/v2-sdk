@@ -27,7 +27,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     name_ = "";
     description_ = "";
     uri_ = "";
-    webhooks_ = java.util.Collections.emptyList();
     domain_ = "";
   }
 
@@ -259,75 +258,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
-  public static final int WEBHOOKS_FIELD_NUMBER = 5;
-  private java.util.List<trinsic.services.provider.v1.WebhookConfig> webhooks_;
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  @java.lang.Override
-  public java.util.List<trinsic.services.provider.v1.WebhookConfig> getWebhooksList() {
-    return webhooks_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends trinsic.services.provider.v1.WebhookConfigOrBuilder>
-      getWebhooksOrBuilderList() {
-    return webhooks_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  @java.lang.Override
-  public int getWebhooksCount() {
-    return webhooks_.size();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  @java.lang.Override
-  public trinsic.services.provider.v1.WebhookConfig getWebhooks(int index) {
-    return webhooks_.get(index);
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Configured webhooks, if any
-   * </pre>
-   *
-   * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-   */
-  @java.lang.Override
-  public trinsic.services.provider.v1.WebhookConfigOrBuilder getWebhooksOrBuilder(int index) {
-    return webhooks_.get(index);
-  }
-
   public static final int DISPLAY_FIELD_NUMBER = 6;
   private trinsic.services.provider.v1.EcosystemDisplay display_;
   /**
@@ -451,9 +381,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, uri_);
     }
-    for (int i = 0; i < webhooks_.size(); i++) {
-      output.writeMessage(5, webhooks_.get(i));
-    }
     if (display_ != null) {
       output.writeMessage(6, getDisplay());
     }
@@ -481,9 +408,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, uri_);
     }
-    for (int i = 0; i < webhooks_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, webhooks_.get(i));
-    }
     if (display_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getDisplay());
     }
@@ -509,7 +433,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     if (!getName().equals(other.getName())) return false;
     if (!getDescription().equals(other.getDescription())) return false;
     if (!getUri().equals(other.getUri())) return false;
-    if (!getWebhooksList().equals(other.getWebhooksList())) return false;
     if (hasDisplay() != other.hasDisplay()) return false;
     if (hasDisplay()) {
       if (!getDisplay().equals(other.getDisplay())) return false;
@@ -534,10 +457,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + getDescription().hashCode();
     hash = (37 * hash) + URI_FIELD_NUMBER;
     hash = (53 * hash) + getUri().hashCode();
-    if (getWebhooksCount() > 0) {
-      hash = (37 * hash) + WEBHOOKS_FIELD_NUMBER;
-      hash = (53 * hash) + getWebhooksList().hashCode();
-    }
     if (hasDisplay()) {
       hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
       hash = (53 * hash) + getDisplay().hashCode();
@@ -690,13 +609,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
 
       uri_ = "";
 
-      if (webhooksBuilder_ == null) {
-        webhooks_ = java.util.Collections.emptyList();
-      } else {
-        webhooks_ = null;
-        webhooksBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       if (displayBuilder_ == null) {
         display_ = null;
       } else {
@@ -732,20 +644,10 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     public trinsic.services.provider.v1.Ecosystem buildPartial() {
       trinsic.services.provider.v1.Ecosystem result =
           new trinsic.services.provider.v1.Ecosystem(this);
-      int from_bitField0_ = bitField0_;
       result.id_ = id_;
       result.name_ = name_;
       result.description_ = description_;
       result.uri_ = uri_;
-      if (webhooksBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          webhooks_ = java.util.Collections.unmodifiableList(webhooks_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.webhooks_ = webhooks_;
-      } else {
-        result.webhooks_ = webhooksBuilder_.build();
-      }
       if (displayBuilder_ == null) {
         result.display_ = display_;
       } else {
@@ -817,33 +719,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
         uri_ = other.uri_;
         onChanged();
       }
-      if (webhooksBuilder_ == null) {
-        if (!other.webhooks_.isEmpty()) {
-          if (webhooks_.isEmpty()) {
-            webhooks_ = other.webhooks_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureWebhooksIsMutable();
-            webhooks_.addAll(other.webhooks_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.webhooks_.isEmpty()) {
-          if (webhooksBuilder_.isEmpty()) {
-            webhooksBuilder_.dispose();
-            webhooksBuilder_ = null;
-            webhooks_ = other.webhooks_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            webhooksBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getWebhooksFieldBuilder()
-                    : null;
-          } else {
-            webhooksBuilder_.addAllMessages(other.webhooks_);
-          }
-        }
-      }
       if (other.hasDisplay()) {
         mergeDisplay(other.getDisplay());
       }
@@ -901,19 +776,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 34
-            case 42:
-              {
-                trinsic.services.provider.v1.WebhookConfig m =
-                    input.readMessage(
-                        trinsic.services.provider.v1.WebhookConfig.parser(), extensionRegistry);
-                if (webhooksBuilder_ == null) {
-                  ensureWebhooksIsMutable();
-                  webhooks_.add(m);
-                } else {
-                  webhooksBuilder_.addMessage(m);
-                }
-                break;
-              } // case 42
             case 50:
               {
                 input.readMessage(getDisplayFieldBuilder().getBuilder(), extensionRegistry);
@@ -942,8 +804,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
-
-    private int bitField0_;
 
     private java.lang.Object id_ = "";
     /**
@@ -1382,355 +1242,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
       uri_ = value;
       onChanged();
       return this;
-    }
-
-    private java.util.List<trinsic.services.provider.v1.WebhookConfig> webhooks_ =
-        java.util.Collections.emptyList();
-
-    private void ensureWebhooksIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        webhooks_ = new java.util.ArrayList<trinsic.services.provider.v1.WebhookConfig>(webhooks_);
-        bitField0_ |= 0x00000001;
-      }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.provider.v1.WebhookConfig,
-            trinsic.services.provider.v1.WebhookConfig.Builder,
-            trinsic.services.provider.v1.WebhookConfigOrBuilder>
-        webhooksBuilder_;
-
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public java.util.List<trinsic.services.provider.v1.WebhookConfig> getWebhooksList() {
-      if (webhooksBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(webhooks_);
-      } else {
-        return webhooksBuilder_.getMessageList();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public int getWebhooksCount() {
-      if (webhooksBuilder_ == null) {
-        return webhooks_.size();
-      } else {
-        return webhooksBuilder_.getCount();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public trinsic.services.provider.v1.WebhookConfig getWebhooks(int index) {
-      if (webhooksBuilder_ == null) {
-        return webhooks_.get(index);
-      } else {
-        return webhooksBuilder_.getMessage(index);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder setWebhooks(int index, trinsic.services.provider.v1.WebhookConfig value) {
-      if (webhooksBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureWebhooksIsMutable();
-        webhooks_.set(index, value);
-        onChanged();
-      } else {
-        webhooksBuilder_.setMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder setWebhooks(
-        int index, trinsic.services.provider.v1.WebhookConfig.Builder builderForValue) {
-      if (webhooksBuilder_ == null) {
-        ensureWebhooksIsMutable();
-        webhooks_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        webhooksBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder addWebhooks(trinsic.services.provider.v1.WebhookConfig value) {
-      if (webhooksBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureWebhooksIsMutable();
-        webhooks_.add(value);
-        onChanged();
-      } else {
-        webhooksBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder addWebhooks(int index, trinsic.services.provider.v1.WebhookConfig value) {
-      if (webhooksBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureWebhooksIsMutable();
-        webhooks_.add(index, value);
-        onChanged();
-      } else {
-        webhooksBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder addWebhooks(trinsic.services.provider.v1.WebhookConfig.Builder builderForValue) {
-      if (webhooksBuilder_ == null) {
-        ensureWebhooksIsMutable();
-        webhooks_.add(builderForValue.build());
-        onChanged();
-      } else {
-        webhooksBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder addWebhooks(
-        int index, trinsic.services.provider.v1.WebhookConfig.Builder builderForValue) {
-      if (webhooksBuilder_ == null) {
-        ensureWebhooksIsMutable();
-        webhooks_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        webhooksBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder addAllWebhooks(
-        java.lang.Iterable<? extends trinsic.services.provider.v1.WebhookConfig> values) {
-      if (webhooksBuilder_ == null) {
-        ensureWebhooksIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, webhooks_);
-        onChanged();
-      } else {
-        webhooksBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder clearWebhooks() {
-      if (webhooksBuilder_ == null) {
-        webhooks_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        webhooksBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public Builder removeWebhooks(int index) {
-      if (webhooksBuilder_ == null) {
-        ensureWebhooksIsMutable();
-        webhooks_.remove(index);
-        onChanged();
-      } else {
-        webhooksBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public trinsic.services.provider.v1.WebhookConfig.Builder getWebhooksBuilder(int index) {
-      return getWebhooksFieldBuilder().getBuilder(index);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public trinsic.services.provider.v1.WebhookConfigOrBuilder getWebhooksOrBuilder(int index) {
-      if (webhooksBuilder_ == null) {
-        return webhooks_.get(index);
-      } else {
-        return webhooksBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public java.util.List<? extends trinsic.services.provider.v1.WebhookConfigOrBuilder>
-        getWebhooksOrBuilderList() {
-      if (webhooksBuilder_ != null) {
-        return webhooksBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(webhooks_);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public trinsic.services.provider.v1.WebhookConfig.Builder addWebhooksBuilder() {
-      return getWebhooksFieldBuilder()
-          .addBuilder(trinsic.services.provider.v1.WebhookConfig.getDefaultInstance());
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public trinsic.services.provider.v1.WebhookConfig.Builder addWebhooksBuilder(int index) {
-      return getWebhooksFieldBuilder()
-          .addBuilder(index, trinsic.services.provider.v1.WebhookConfig.getDefaultInstance());
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Configured webhooks, if any
-     * </pre>
-     *
-     * <code>repeated .services.provider.v1.WebhookConfig webhooks = 5;</code>
-     */
-    public java.util.List<trinsic.services.provider.v1.WebhookConfig.Builder>
-        getWebhooksBuilderList() {
-      return getWebhooksFieldBuilder().getBuilderList();
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.provider.v1.WebhookConfig,
-            trinsic.services.provider.v1.WebhookConfig.Builder,
-            trinsic.services.provider.v1.WebhookConfigOrBuilder>
-        getWebhooksFieldBuilder() {
-      if (webhooksBuilder_ == null) {
-        webhooksBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                trinsic.services.provider.v1.WebhookConfig,
-                trinsic.services.provider.v1.WebhookConfig.Builder,
-                trinsic.services.provider.v1.WebhookConfigOrBuilder>(
-                webhooks_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
-        webhooks_ = null;
-      }
-      return webhooksBuilder_;
     }
 
     private trinsic.services.provider.v1.EcosystemDisplay display_;

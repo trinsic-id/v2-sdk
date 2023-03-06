@@ -92,7 +92,8 @@ message Ecosystem {
   string uri = 4 [deprecated = true];
 
   // Configured webhooks, if any
-  repeated WebhookConfig webhooks = 5;
+  reserved 5;
+  reserved "webhooks";
 
   // Display details
   EcosystemDisplay display = 6;
@@ -103,6 +104,8 @@ message Ecosystem {
 
 // Webhook configured on an ecosystem
 message WebhookConfig {
+  option deprecated = true;
+
   // UUID of the webhook
   string id = 1;
 
@@ -114,18 +117,6 @@ message WebhookConfig {
 
   // Last known status of webhook (whether or not Trinsic can successfully reach destination)
   string status = 5;
-}
-
-// A grant authorizing `actions` on a `resourceId`
-message Grant {
-  // the urn of the resource
-  string resourceId = 1;
-
-  // list of actions that are allowed
-  repeated string actions = 2;
-
-  // any child grants
-  repeated Grant child_grants = 3;
 }
 
 // Request to create an ecosystem
@@ -168,7 +159,8 @@ message UpdateEcosystemRequest {
   // New domain URL
   string domain = 3;
   // New name
-  // string name = 4;
+  reserved 4;
+  reserved "name";
   // Display details
   EcosystemDisplayRequest display = 5 [deprecated = true];
 }
@@ -180,9 +172,8 @@ message EcosystemDisplayRequest {
 }
 
 message EcosystemDisplayDetailsRequest {
-  // string id = 1;
-  // string name = 2;
-  //    string logo_url = 3;
+  reserved 1,2,3;
+  reserved "id","name","logo_url";
   string color = 4;
   bytes logo_data = 5;
   // MIME type of the file
@@ -202,14 +193,16 @@ message EcosystemDisplay {
 }
 
 message EcosystemDisplayDetails {
-  // string id = 1;
-  // string name = 2;
+  reserved 1,2;
+  reserved "id","name";
   string logo_url = 3;
   string color = 4;
 }
 
 // Request to add a webhook to an ecosystem
 message AddWebhookRequest {
+  option deprecated = true;
+
   // Destination to post webhook calls to.
   // Must be a reachable HTTPS URL.
   string destination_url = 1;
@@ -224,18 +217,24 @@ message AddWebhookRequest {
 
 // Response to `AddWebhookRequest`
 message AddWebhookResponse {
+  option deprecated = true;
+
   // Ecosystem data with new webhook
   Ecosystem ecosystem = 1;
 }
 
 // Request to delete a webhook from an ecosystem
 message DeleteWebhookRequest {
+  option deprecated = true;
+
   // ID of webhook to delete
   string webhook_id = 1;
 }
 
 // Response to `DeleteWebhookRequest`
 message DeleteWebhookResponse {
+  option deprecated = true;
+
   // Ecosystem data after removal of webhook
   Ecosystem ecosystem = 1;
 }
@@ -413,10 +412,14 @@ service Provider {
   }
 
   // Add a webhook endpoint to the ecosystem
-  rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse);
+  rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse){
+    option (options.sdk_template_option).ignore = true;
+  }
 
   // Delete a webhook endpoint from the ecosystem
-  rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
+  rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse){
+    option (options.sdk_template_option).ignore = true;
+  }
 
   // Get ecosystem information
   rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse);

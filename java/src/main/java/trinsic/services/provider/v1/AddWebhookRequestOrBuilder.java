@@ -3,6 +3,7 @@
 
 package trinsic.services.provider.v1;
 
+@java.lang.Deprecated
 public interface AddWebhookRequestOrBuilder
     extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.AddWebhookRequest)
