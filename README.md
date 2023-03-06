@@ -7,7 +7,6 @@
 [![Go](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml)
 [![Java](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml)
 [![Python](https://github.com/trinsic-id/sdk/actions/workflows/test-python.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-python.yml)
-[![Ruby](https://github.com/trinsic-id/sdk/actions/workflows/test-ruby.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-ruby.yml)
 [![Rust](https://github.com/trinsic-id/sdk/actions/workflows/test-infrastructure.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-infrastructure.yml)
 [![TypeScript](https://github.com/trinsic-id/sdk/actions/workflows/test-typescript.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-typescript.yml)
 
@@ -17,13 +16,11 @@
 [![Go](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml)
 [![Java](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml)
 [![Python](https://github.com/trinsic-id/sdk/actions/workflows/build-python.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-python.yml)
-[![Ruby](https://github.com/trinsic-id/sdk/actions/workflows/build-ruby.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-ruby.yml)
 [![Rust](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml)
 [![TypeScript](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml)
 
 Library is available for use with different languages
 
-[![Gem](https://img.shields.io/gem/v/trinsic-services?color=e9563f)](https://rubygems.org/gems/trinsic-services)
 [![Go](https://img.shields.io/github/v/tag/trinsic-id/okapi?sort=semver)](https://github.com/trinsic-id/sdk/tree/main/go/)
 [![Java](https://img.shields.io/github/v/release/trinsic-id/sdk?color=green&label=java)](https://github.com/trinsic-id/sdk/)
 [![Nuget](https://img.shields.io/nuget/v/trinsic)](https://www.nuget.org/packages/Trinsic/)
@@ -55,7 +52,6 @@ Check out our [dedicated repository with various examples](https://github.com/tr
 - [TypeScript / Browser](https://docs.trinsic.id/node)
 - [Python](https://docs.trinsic.id/python)
 - [Go](https://docs.trinsic.id/go)
-- [Ruby](https://docs.trinsic.id/ruby)
 - [Command Line](https://docs.trinsic.id/cli)
 
 ## Updating Proto-Generated Files

@@ -28,11 +28,6 @@ jobs:
         with:
           python-version: 3.9
           cache: pip
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0
-          bundler-cache: true
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
@@ -62,7 +57,6 @@ jobs:
           golangPath: ${{ github.workspace }}/go
           javaKotlinPath: ${{ github.workspace }}/java
           pythonPath: ${{ github.workspace }}/python
-          rubyPath: ${{ github.workspace }}/ruby
           typescriptPath: ${{ github.workspace }}/web
       - name: Install protobuf plugins
         run: |

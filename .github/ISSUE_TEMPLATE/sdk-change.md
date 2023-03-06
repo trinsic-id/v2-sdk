@@ -17,6 +17,5 @@ Languages:
 - [ ] Go
 - [ ] Java
 - [ ] Python
-- [ ] Ruby
 - [ ] Swift
 - [ ] Typescript

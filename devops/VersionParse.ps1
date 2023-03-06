@@ -16,10 +16,6 @@ function Get-PythonVersion {
     }
 }
 
-function Get-RubyVersion {
-    param ([string]$tag)
-    return "$(Get-PythonVersion -tag $tag)"
-}
 function Get-GolangVersion {
     param ([string]$tag)
     return "$(Get-PythonVersion -tag $tag)"

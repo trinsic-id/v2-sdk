@@ -34,7 +34,6 @@ nav:
       - Node: node/index.md
       - C#: dotnet/index.md
       - Python: python/index.md
-      - Ruby: ruby/index.md
       - Go: go/index.md
       - Java: java/index.md
   - Reference:
