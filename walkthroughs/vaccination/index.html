@@ -1622,32 +1622,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ruby/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Ruby
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../go/" class="md-nav__link">
         
   
@@ -2340,7 +2314,7 @@
 <p>In this case, Allison will be the <em>holder</em>, a vaccination clinic will be the <em>issuer</em>, and an airline will be the <em>verifier</em>.</p>
 <h2 id="our-sdks">Our SDKs<a class="headerlink" href="#our-sdks" title="Permanent link">&para;</a></h2>
 <p>You can follow along using one of our SDKs, or use the Trinsic CLI, which implements full platform functionality.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">Typescript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Go</label><label for="__tabbed_1_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">Typescript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><a href="/cli/" target="_blank">Click here</a> for installation instructions for the Trinsic CLI.</p>
@@ -2361,9 +2335,6 @@
 <div class="tabbed-block">
 <p><a href="/go/" target="_blank">Click here</a> for installation instructions for the Go SDK.</p>
 </div>
-<div class="tabbed-block">
-<p><a href="/ruby/" target="_blank">Click here</a> for installation instructions for the Ruby SDK.</p>
-</div>
 </div>
 </div>
 <hr />
@@ -2375,7 +2346,7 @@
 <h3 id="create-new-ecosystem">Create New Ecosystem<a class="headerlink" href="#create-new-ecosystem" title="Permanent link">&para;</a></h3>
 <p>If you don't already have an ecosystem provisioned for you, you'll need to create one first.</p>
 <p>This will be a <em>sandbox</em> ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, <a href="https://dashboard.trinsic.id/" target:_blank="target:_blank">sign up</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">Typescript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Java</label><label for="__tabbed_2_6">Go</label><label for="__tabbed_2_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">Typescript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Java</label><label for="__tabbed_2_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider create-ecosystem
@@ -2412,11 +2383,6 @@
 <span class="nx">ecosystemId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ecosystem</span><span class="p">.</span><span class="nx">Ecosystem</span><span class="p">.</span><span class="nx">Id</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span>
-<span class="n">ecosystem_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ecosystem</span><span class="o">.</span><span class="n">ecosystem</span><span class="o">.</span><span class="n">id</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <p>The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.</p>
@@ -2432,7 +2398,7 @@
 <p>We need to create Trinsic accounts for the participants in this credential exchange. Accounts and wallets can be considered interchangeably; all accounts have exactly one associated wallet.</p>
 <p>Accounts can be created with a single call; they're designed to minimize onboarding friction for your users.</p>
 <p>The clinic's account will <strong>issue</strong> the credential, Allison's account will <strong>hold</strong> it, and the airline's account will <strong>verify</strong> its contents.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">Typescript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Java</label><label for="__tabbed_3_6">Go</label><label for="__tabbed_3_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">Typescript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Java</label><label for="__tabbed_3_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The CLI makes it easy to create wallets. For demo purposes, we'll create all three on the same machine.</p>
@@ -2486,13 +2452,6 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 </code></pre></div>
 <p>If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Create an account for each participant in the scenario</span>
-<span class="n">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">account_service</span><span class="o">.</span><span class="n">login_anonymous</span><span class="p">(</span><span class="n">ecosystem_id</span><span class="p">)</span>
-<span class="n">clinic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">account_service</span><span class="o">.</span><span class="n">login_anonymous</span><span class="p">(</span><span class="n">ecosystem_id</span><span class="p">)</span>
-<span class="n">airline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">account_service</span><span class="o">.</span><span class="n">login_anonymous</span><span class="p">(</span><span class="n">ecosystem_id</span><span class="p">)</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <div class="admonition info">
@@ -2513,7 +2472,7 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 <h2 id="define-a-template">Define a Template<a class="headerlink" href="#define-a-template" title="Permanent link">&para;</a></h2>
 <p>Before we can issue a credential, we need to create a <a href="/learn/concepts/templates/" target="_blank">Template</a> for it.</p>
 <p>Templates are simply a list of the fields that a credential can have.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">Typescript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Go</label><label for="__tabbed_4_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">Typescript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>First, prepare a JSON file which describes your template:</p>
@@ -2676,21 +2635,6 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 <span class="nx">templateId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">createdTemplate</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Template</span><span class="o">::</span><span class="no">CreateCredentialTemplateRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VaccinationCertificate-</span><span class="si">#{</span><span class="no">SecureRandom</span><span class="o">.</span><span class="n">uuid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="w">                                                                    </span><span class="ss">allow_additional_fields</span><span class="p">:</span><span class="w"> </span><span class="kp">false</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;firstName&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Template</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;First name of vaccine recipient&#39;</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;lastName&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Template</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Last name of vaccine recipient&#39;</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;batchNumber&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Template</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Batch number of vaccine&#39;</span><span class="p">,</span>
-<span class="w">                                          </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Template</span><span class="o">::</span><span class="no">FieldType</span><span class="o">::</span><span class="no">STRING</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;countryOfVaccination&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Template</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Country in which the subject was vaccinated&#39;</span><span class="p">)</span>
-
-<span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">template_service</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-<span class="n">template_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">template</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">id</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <div class="admonition info">
@@ -2711,7 +2655,7 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 <p>Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.</p>
 <p>A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.</p>
 <p>To issue a vaccine certificate, we'll use the template we created in the last step.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:7"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><input id="__tabbed_6_7" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">Typescript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Java</label><label for="__tabbed_6_6">Go</label><label for="__tabbed_6_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">Typescript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Java</label><label for="__tabbed_6_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>First, prepare a file named <code>values.json</code> with the following content:</p>
@@ -2844,18 +2788,6 @@ More specifically, it's the property 'schema_uri' in the JSON returned by the <c
 <span class="nx">issuedCredential</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">issueResponse</span><span class="p">.</span><span class="nx">DocumentJson</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Prepares values for credential</span>
-<span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">({</span><span class="w"> </span><span class="ss">firstName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allison&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">lastName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allisonne&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">batchNumber</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;123454321&#39;</span><span class="p">,</span>
-<span class="w">                         </span><span class="ss">countryOfVaccination</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;US&#39;</span><span class="w"> </span><span class="p">})</span>
-
-<span class="c1"># Issue credential</span>
-<span class="n">issue_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">credential_service</span><span class="o">.</span><span class="n">issue_from_template</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials</span><span class="o">::</span><span class="no">IssueFromTemplateRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="w">                                                          </span><span class="ss">template_id</span><span class="p">:</span><span class="w"> </span><span class="n">template</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="ss">values_json</span><span class="p">:</span><span class="w"> </span><span class="n">values</span>
-<span class="w">                                                        </span><span class="p">))</span>
-<span class="n">credential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">issue_response</span><span class="o">.</span><span class="n">document_json</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <div class="admonition abstract">
@@ -2877,7 +2809,7 @@ More specifically, it's the property 'schema_uri' in the JSON returned by the <c
 <hr />
 <h2 id="store-credential-in-wallet">Store Credential in Wallet<a class="headerlink" href="#store-credential-in-wallet" title="Permanent link">&para;</a></h2>
 <p>Once Allison receives the credential, it must be stored in her wallet.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:7"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><input id="__tabbed_8_7" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">Typescript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Java</label><label for="__tabbed_8_6">Go</label><label for="__tabbed_8_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">Typescript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Java</label><label for="__tabbed_8_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>config<span class="w"> </span>--auth-token<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>allison.txt<span class="k">)</span>
@@ -2939,13 +2871,6 @@ trinsic<span class="w"> </span>wallet<span class="w"> </span>insert-item<span cl
 <span class="nx">itemId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">insertResponse</span><span class="p">.</span><span class="nx">ItemId</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Allison stores the credential in her cloud wallet</span>
-<span class="n">trinsic</span><span class="o">.</span><span class="n">auth_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">allison</span>
-<span class="n">insert_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">wallet_service</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Wallet</span><span class="o">::</span><span class="no">InsertItemRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">item_json</span><span class="p">:</span><span class="w"> </span><span class="n">credential</span><span class="p">))</span>
-<span class="n">item_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">insert_response</span><span class="o">.</span><span class="n">item_id</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <p>The response to this call contains an Item ID; copy this down.</p>
@@ -2960,7 +2885,7 @@ trinsic<span class="w"> </span>wallet<span class="w"> </span>insert-item<span cl
 <h2 id="create-a-proof-of-vaccination">Create a Proof of Vaccination<a class="headerlink" href="#create-a-proof-of-vaccination" title="Permanent link">&para;</a></h2>
 <p>Before boarding, the airline requests proof of vaccination from Allison. Specifically, they want to see proof that she holds a <code>VaccinationCertificate</code> credential.</p>
 <p>Let's use the <a href="../../reference/services/credential-service/#create-proof">CreateProof</a> call to build a proof for Allison's held credential.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:7"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><input id="__tabbed_9_6" name="__tabbed_9" type="radio" /><input id="__tabbed_9_7" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Trinsic CLI</label><label for="__tabbed_9_2">Typescript</label><label for="__tabbed_9_3">C#</label><label for="__tabbed_9_4">Python</label><label for="__tabbed_9_5">Java</label><label for="__tabbed_9_6">Go</label><label for="__tabbed_9_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:6"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><input id="__tabbed_9_6" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Trinsic CLI</label><label for="__tabbed_9_2">Typescript</label><label for="__tabbed_9_3">C#</label><label for="__tabbed_9_4">Python</label><label for="__tabbed_9_5">Java</label><label for="__tabbed_9_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>config<span class="w"> </span>--auth-token<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>allison.txt<span class="k">)</span>
@@ -3021,13 +2946,6 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>create-proof<span class
 <span class="nx">credentialProof</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">proofResponse</span><span class="p">.</span><span class="nx">ProofDocumentJson</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Allison shares the credential with the airline</span>
-<span class="n">trinsic</span><span class="o">.</span><span class="n">auth_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">allison</span>
-<span class="n">proof_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">credential_service</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials</span><span class="o">::</span><span class="no">CreateProofRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">item_id</span><span class="p">:</span><span class="w"> </span><span class="n">item_id</span><span class="p">))</span>
-<span class="n">credential_proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proof_response</span><span class="o">.</span><span class="n">proof_document_json</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <p>Allison sends this proof to the airline for them to verify.</p>
@@ -3045,7 +2963,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>create-proof<span class
 <hr />
 <h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
 <p>Once the airline receives the proof, they can use the <a href="../../reference/services/credential-service/#verify-proof" target="_blank">VerifyProof</a> call to ensure its authenticity.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:7"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><input id="__tabbed_10_7" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">Typescript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Java</label><label for="__tabbed_10_6">Go</label><label for="__tabbed_10_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">Typescript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Java</label><label for="__tabbed_10_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>config<span class="w"> </span>--auth-token<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>airline.txt<span class="k">)</span>
@@ -3106,17 +3024,6 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 <span class="nx">valid</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">verifyResult</span><span class="p">.</span><span class="nx">IsValid</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># The airline verifies the credential</span>
-<span class="n">trinsic</span><span class="o">.</span><span class="n">auth_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">airline</span>
-
-<span class="n">verify_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="o">.</span><span class="n">credential_service</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span>
-<span class="w">  </span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials</span><span class="o">::</span><span class="no">VerifyProofRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">proof_document_json</span><span class="p">:</span><span class="w"> </span><span class="n">credential_proof</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verify_result</span><span class="o">.</span><span class="n">is_valid</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <div class="admonition info">
@@ -3126,7 +3033,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 </div>
 <hr />
 <h2 id="full-source-code">Full Source Code<a class="headerlink" href="#full-source-code" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:6"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><input id="__tabbed_11_6" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Typescript</label><label for="__tabbed_11_2">C#</label><label for="__tabbed_11_3">Python</label><label for="__tabbed_11_4">Java</label><label for="__tabbed_11_5">Go</label><label for="__tabbed_11_6">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:5"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Typescript</label><label for="__tabbed_11_2">C#</label><label for="__tabbed_11_3">Python</label><label for="__tabbed_11_4">Java</label><label for="__tabbed_11_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>This sample is available as <a href="https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts"><code>VaccineDemoShared.ts</code></a> in our SDK repository.</p>
@@ -3142,9 +3049,6 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 </div>
 <div class="tabbed-block">
 <p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/go/examples/vaccine_test.go"><code>vaccine_test.go</code></a> in our SDK repository.</p>
-</div>
-<div class="tabbed-block">
-<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/ruby/test/vaccine_demo.rb"><code>vaccine_demo.rb</code></a> in our SDK repository.</p>
 </div>
 </div>
 </div>
