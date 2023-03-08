@@ -18,7 +18,7 @@ suspend fun main() {
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
   val trinsic = TrinsicServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
-  val account = trinsic.account().signIn()
+  val account = trinsic.account().loginAnonymous("default")
   trinsic.setAuthToken(account)
 
   val didUri = "did:example:test"

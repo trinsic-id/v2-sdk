@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 Future runTrustRegistryDemo() async {
   var accountService = AccountService(trinsicConfig(), null);
-  var account = await accountService.signIn();
+  var account = await accountService.loginAnonymous("default");
   var trustRegistryService =
       TrustRegistryService(trinsicConfig(authToken: account), null);
 

@@ -46,8 +46,7 @@ void main() {
       // }
       var myEcosystemId = "default";
       // accountServiceSignIn() {
-      var myProfile = await accountService.signIn(
-          request: SignInRequest(ecosystemId: myEcosystemId));
+      var myProfile = await accountService.loginAnonymous(myEcosystemId);
       // }
       await printGetInfo(accountService, myProfile);
       // protectUnprotectProfile() {

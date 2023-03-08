@@ -76,11 +76,11 @@ public class Tests
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
-        var allison = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
-        var clinic = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
-        var airline = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
-
-        trinsic.SetAuthToken(clinic);
+        var allison = await trinsic.Account.LoginAnonymousAsync(ecosystemId);
+        var clinic = await trinsic.Account.LoginAnonymousAsync(ecosystemId);
+        var airline = await trinsic.Account.LoginAnonymousAsync(ecosystemId);
+        
+        trinsic.SetAuthToken(clinic!);
 
         var info = await trinsic.Account.GetInfoAsync();
         info.Should().NotBeNull();
@@ -104,7 +104,7 @@ public class Tests
         } catch { } // We expect this to fail
 
         // STORE CREDENTIAL
-        trinsic.SetAuthToken(allison);
+        trinsic.SetAuthToken(allison!);
 
         var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() { ItemJson = credential.SignedDocumentJson });
         var itemId = insertItemResponse.ItemId;
@@ -141,7 +141,7 @@ public class Tests
 
 
         // VERIFY CREDENTIAL
-        trinsic.SetAuthToken(airline);
+        trinsic.SetAuthToken(airline!);
 
         var valid = await trinsic.Credential.VerifyProofAsync(new() {
             ProofDocumentJson = credentialProof.ProofDocumentJson
@@ -151,7 +151,7 @@ public class Tests
         Assert.True(valid.ValidationResults["SignatureVerification"].IsValid);
         
         // DELETE CREDENTIAL
-        trinsic.SetAuthToken(allison);
+        trinsic.SetAuthToken(allison!);
         // deleteItem() {
         await trinsic.Wallet.DeleteItemAsync(new DeleteItemRequest()
         {
