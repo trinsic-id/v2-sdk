@@ -53,6 +53,49 @@ export function fieldTypeToJSON(object: FieldType): string {
   }
 }
 
+/** How to display a URI value when rendering a credential. */
+export enum UriRenderMethod {
+  /** TEXT - Display URI as text */
+  TEXT = 0,
+  /** LINK - Display URI as a clickable link */
+  LINK = 1,
+  /** INLINE_IMAGE - Display URI as an inline image. Only takes effect if the template field's MIME Type is an image type. */
+  INLINE_IMAGE = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function uriRenderMethodFromJSON(object: any): UriRenderMethod {
+  switch (object) {
+    case 0:
+    case "TEXT":
+      return UriRenderMethod.TEXT;
+    case 1:
+    case "LINK":
+      return UriRenderMethod.LINK;
+    case 2:
+    case "INLINE_IMAGE":
+      return UriRenderMethod.INLINE_IMAGE;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return UriRenderMethod.UNRECOGNIZED;
+  }
+}
+
+export function uriRenderMethodToJSON(object: UriRenderMethod): string {
+  switch (object) {
+    case UriRenderMethod.TEXT:
+      return "TEXT";
+    case UriRenderMethod.LINK:
+      return "LINK";
+    case UriRenderMethod.INLINE_IMAGE:
+      return "INLINE_IMAGE";
+    case UriRenderMethod.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** Request to fetch a template by ID */
 export interface GetCredentialTemplateRequest {
   /** ID of template to fetch */
@@ -118,7 +161,7 @@ export interface DeleteCredentialTemplateResponse {}
 
 /** Request to create a new template */
 export interface CreateCredentialTemplateRequest {
-  /** Name of new template */
+  /** Name of new template. Must be a unique identifier within its ecosystem. */
   name?: string;
   /** Fields which compose the template */
   fields?: { [key: string]: TemplateField };
@@ -127,11 +170,27 @@ export interface CreateCredentialTemplateRequest {
    * not specified in `fields`
    */
   allowAdditionalFields?: boolean;
+  /** Human-readable name of template */
+  title?: string;
+  /** Human-readable description of template */
+  description?: string;
+  /**
+   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * If not provided, this will be auto-generated.
+   */
+  fieldOrdering?: { [key: string]: FieldOrdering };
+  /** Options for rendering the template in Apple Wallet */
+  appleWalletOptions?: AppleWalletOptions | undefined;
 }
 
 export interface CreateCredentialTemplateRequest_FieldsEntry {
   key: string;
   value?: TemplateField;
+}
+
+export interface CreateCredentialTemplateRequest_FieldOrderingEntry {
+  key: string;
+  value?: FieldOrdering;
 }
 
 /** Response to `CreateCredentialTemplateRequest` */
@@ -140,39 +199,36 @@ export interface CreateCredentialTemplateResponse {
   data?: TemplateData;
 }
 
-/** A field defined in a template */
-export interface TemplateField {
-  /** Human-readable description of the field */
-  description?: string;
-  /** Whether this field may be omitted when a credential is issued against the template */
-  optional?: boolean;
-  /** The type of the field */
-  type?: FieldType;
-  /** Annotations for the field that may be used to add additional information */
-  annotations?: { [key: string]: string };
-}
-
-export interface TemplateField_AnnotationsEntry {
-  key: string;
-  value: string;
-}
-
-/** Unused */
-export interface GetTemplateRequest {
+/** Request to update display information for a template */
+export interface UpdateCredentialTemplateRequest {
+  /** ID of Template to update */
   id?: string;
+  /** New human-readable title of Template */
+  title?: string | undefined;
+  /** New human-readable description of Template */
+  description?: string | undefined;
+  /** Fields to update within the Template */
+  fields?: { [key: string]: TemplateFieldPatch };
+  /** New field ordering options. See documentation for template creation for usage information. */
+  fieldOrdering?: { [key: string]: FieldOrdering };
+  /** New Apple Wallet configuration */
+  appleWalletOptions?: AppleWalletOptions | undefined;
 }
 
-/** Unused */
-export interface GetTemplateResponse {
-  data?: TemplateData;
+export interface UpdateCredentialTemplateRequest_FieldsEntry {
+  key: string;
+  value?: TemplateFieldPatch;
 }
 
-/** Unused */
-export interface ListTemplatesRequest {}
+export interface UpdateCredentialTemplateRequest_FieldOrderingEntry {
+  key: string;
+  value?: FieldOrdering;
+}
 
-/** Unused */
-export interface ListTemplatesResponse {
-  templates?: TemplateData[];
+/** Response to `UpdateCredentialTemplateRequest` */
+export interface UpdateCredentialTemplateResponse {
+  /** The Template after the update has been applied */
+  updatedTemplate?: TemplateData;
 }
 
 /** Credential Template */
@@ -206,11 +262,111 @@ export interface TemplateData {
   createdBy?: string;
   /** Date when template was created as ISO 8601 utc string */
   dateCreated?: string;
+  /** Human-readable template title */
+  title?: string;
+  /** Human-readable template description */
+  description?: string;
+  /** Map describing how to order and categorize the fields within the template. The key of this map is the field `name`. */
+  fieldOrdering?: { [key: string]: FieldOrdering };
+  /** Options for rendering the template in Apple Wallet */
+  appleWalletOptions?: AppleWalletOptions;
 }
 
 export interface TemplateData_FieldsEntry {
   key: string;
   value?: TemplateField;
+}
+
+export interface TemplateData_FieldOrderingEntry {
+  key: string;
+  value?: FieldOrdering;
+}
+
+/** Configuration options for Apple Wallet when */
+export interface AppleWalletOptions {
+  /** Background color, in hex format, of credential when stored in an Apple Wallet. */
+  backgroundColor?: string;
+  /** Foreground color, in hex format, of credential when stored in an Apple Wallet. */
+  foregroundColor?: string;
+  /** Label color, in hex format, of credential when stored in an Apple Wallet. */
+  labelColor?: string;
+  /** The ID of the template field which should be used as the primary field of a credential. */
+  primaryField?: string;
+  /** The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name. */
+  secondaryFields?: { [key: number]: string };
+  /** The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name. */
+  auxiliaryFields?: { [key: number]: string };
+}
+
+export interface AppleWalletOptions_SecondaryFieldsEntry {
+  key: number;
+  value: string;
+}
+
+export interface AppleWalletOptions_AuxiliaryFieldsEntry {
+  key: number;
+  value: string;
+}
+
+/** Ordering information for a template field */
+export interface FieldOrdering {
+  /**
+   * The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+   * Field orders must be contiguous from `0` to the number of fields minus 1.
+   */
+  order?: number;
+  /**
+   * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+   * Sections must be contiguous with respect to `order`.
+   */
+  section?: string;
+}
+
+/** A field defined in a template */
+export interface TemplateField {
+  /** Human-readable name of the field */
+  title?: string;
+  /** Human-readable description of the field */
+  description?: string;
+  /** Whether this field may be omitted when a credential is issued against the template */
+  optional?: boolean;
+  /** The type of the field */
+  type?: FieldType;
+  /**
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
+   *
+   * @deprecated
+   */
+  annotations?: { [key: string]: string };
+  /** How to deal with this URI field when rendering credential. Only use if `type` is `URI`. */
+  uriData?: UriFieldData | undefined;
+}
+
+export interface TemplateField_AnnotationsEntry {
+  key: string;
+  value: string;
+}
+
+/** A patch to apply to an existing template field */
+export interface TemplateFieldPatch {
+  /** Human-readable name of the field */
+  title?: string | undefined;
+  /** Human-readable description of the field */
+  description?: string | undefined;
+  /** How to deal with this URI field when rendering credential. Only use if `type` is `URI`. */
+  uriData?: UriFieldData | undefined;
+}
+
+/** Data pertaining to a URI Field */
+export interface UriFieldData {
+  /**
+   * Expected MIME Type of content pointed to by URI. Can be generic (eg, "image/") or specific ("image/png").
+   * Defaults to "application/octet-stream".
+   */
+  mimeType?: string;
+  /** How to display the URI value when rendering a credential. */
+  renderMethod?: UriRenderMethod;
 }
 
 function createBaseGetCredentialTemplateRequest(): GetCredentialTemplateRequest {
@@ -760,7 +916,15 @@ export const DeleteCredentialTemplateResponse = {
 };
 
 function createBaseCreateCredentialTemplateRequest(): CreateCredentialTemplateRequest {
-  return { name: "", fields: {}, allowAdditionalFields: false };
+  return {
+    name: "",
+    fields: {},
+    allowAdditionalFields: false,
+    title: "",
+    description: "",
+    fieldOrdering: {},
+    appleWalletOptions: undefined,
+  };
 }
 
 export const CreateCredentialTemplateRequest = {
@@ -779,6 +943,24 @@ export const CreateCredentialTemplateRequest = {
     });
     if (message.allowAdditionalFields === true) {
       writer.uint32(24).bool(message.allowAdditionalFields);
+    }
+    if (message.title !== undefined && message.title !== "") {
+      writer.uint32(34).string(message.title);
+    }
+    if (message.description !== undefined && message.description !== "") {
+      writer.uint32(42).string(message.description);
+    }
+    Object.entries(message.fieldOrdering || {}).forEach(([key, value]) => {
+      CreateCredentialTemplateRequest_FieldOrderingEntry.encode(
+        { key: key as any, value },
+        writer.uint32(50).fork()
+      ).ldelim();
+    });
+    if (message.appleWalletOptions !== undefined) {
+      AppleWalletOptions.encode(
+        message.appleWalletOptions,
+        writer.uint32(58).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -808,6 +990,28 @@ export const CreateCredentialTemplateRequest = {
         case 3:
           message.allowAdditionalFields = reader.bool();
           break;
+        case 4:
+          message.title = reader.string();
+          break;
+        case 5:
+          message.description = reader.string();
+          break;
+        case 6:
+          const entry6 =
+            CreateCredentialTemplateRequest_FieldOrderingEntry.decode(
+              reader,
+              reader.uint32()
+            );
+          if (entry6.value !== undefined) {
+            message.fieldOrdering![entry6.key] = entry6.value;
+          }
+          break;
+        case 7:
+          message.appleWalletOptions = AppleWalletOptions.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -830,6 +1034,19 @@ export const CreateCredentialTemplateRequest = {
       allowAdditionalFields: isSet(object.allowAdditionalFields)
         ? Boolean(object.allowAdditionalFields)
         : false,
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      fieldOrdering: isObject(object.fieldOrdering)
+        ? Object.entries(object.fieldOrdering).reduce<{
+            [key: string]: FieldOrdering;
+          }>((acc, [key, value]) => {
+            acc[key] = FieldOrdering.fromJSON(value);
+            return acc;
+          }, {})
+        : {},
+      appleWalletOptions: isSet(object.appleWalletOptions)
+        ? AppleWalletOptions.fromJSON(object.appleWalletOptions)
+        : undefined,
     };
   },
 
@@ -844,6 +1061,19 @@ export const CreateCredentialTemplateRequest = {
     }
     message.allowAdditionalFields !== undefined &&
       (obj.allowAdditionalFields = message.allowAdditionalFields);
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    obj.fieldOrdering = {};
+    if (message.fieldOrdering) {
+      Object.entries(message.fieldOrdering).forEach(([k, v]) => {
+        obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
+      });
+    }
+    message.appleWalletOptions !== undefined &&
+      (obj.appleWalletOptions = message.appleWalletOptions
+        ? AppleWalletOptions.toJSON(message.appleWalletOptions)
+        : undefined);
     return obj;
   },
 
@@ -861,6 +1091,21 @@ export const CreateCredentialTemplateRequest = {
       return acc;
     }, {});
     message.allowAdditionalFields = object.allowAdditionalFields ?? false;
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.fieldOrdering = Object.entries(object.fieldOrdering ?? {}).reduce<{
+      [key: string]: FieldOrdering;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = FieldOrdering.fromPartial(value);
+      }
+      return acc;
+    }, {});
+    message.appleWalletOptions =
+      object.appleWalletOptions !== undefined &&
+      object.appleWalletOptions !== null
+        ? AppleWalletOptions.fromPartial(object.appleWalletOptions)
+        : undefined;
     return message;
   },
 };
@@ -939,6 +1184,82 @@ export const CreateCredentialTemplateRequest_FieldsEntry = {
   },
 };
 
+function createBaseCreateCredentialTemplateRequest_FieldOrderingEntry(): CreateCredentialTemplateRequest_FieldOrderingEntry {
+  return { key: "", value: undefined };
+}
+
+export const CreateCredentialTemplateRequest_FieldOrderingEntry = {
+  encode(
+    message: CreateCredentialTemplateRequest_FieldOrderingEntry,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== undefined) {
+      FieldOrdering.encode(message.value, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): CreateCredentialTemplateRequest_FieldOrderingEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message =
+      createBaseCreateCredentialTemplateRequest_FieldOrderingEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.string();
+          break;
+        case 2:
+          message.value = FieldOrdering.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateCredentialTemplateRequest_FieldOrderingEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value)
+        ? FieldOrdering.fromJSON(object.value)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CreateCredentialTemplateRequest_FieldOrderingEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? FieldOrdering.toJSON(message.value)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<CreateCredentialTemplateRequest_FieldOrderingEntry>
+  ): CreateCredentialTemplateRequest_FieldOrderingEntry {
+    const message =
+      createBaseCreateCredentialTemplateRequest_FieldOrderingEntry();
+    message.key = object.key ?? "";
+    message.value =
+      object.value !== undefined && object.value !== null
+        ? FieldOrdering.fromPartial(object.value)
+        : undefined;
+    return message;
+  },
+};
+
 function createBaseCreateCredentialTemplateResponse(): CreateCredentialTemplateResponse {
   return { data: undefined };
 }
@@ -1000,57 +1321,95 @@ export const CreateCredentialTemplateResponse = {
   },
 };
 
-function createBaseTemplateField(): TemplateField {
-  return { description: "", optional: false, type: 0, annotations: {} };
+function createBaseUpdateCredentialTemplateRequest(): UpdateCredentialTemplateRequest {
+  return {
+    id: "",
+    title: undefined,
+    description: undefined,
+    fields: {},
+    fieldOrdering: {},
+    appleWalletOptions: undefined,
+  };
 }
 
-export const TemplateField = {
+export const UpdateCredentialTemplateRequest = {
   encode(
-    message: TemplateField,
+    message: UpdateCredentialTemplateRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.description !== undefined && message.description !== "") {
-      writer.uint32(18).string(message.description);
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
-    if (message.optional === true) {
-      writer.uint32(24).bool(message.optional);
+    if (message.title !== undefined) {
+      writer.uint32(18).string(message.title);
     }
-    if (message.type !== undefined && message.type !== 0) {
-      writer.uint32(32).int32(message.type);
+    if (message.description !== undefined) {
+      writer.uint32(26).string(message.description);
     }
-    Object.entries(message.annotations || {}).forEach(([key, value]) => {
-      TemplateField_AnnotationsEntry.encode(
+    Object.entries(message.fields || {}).forEach(([key, value]) => {
+      UpdateCredentialTemplateRequest_FieldsEntry.encode(
+        { key: key as any, value },
+        writer.uint32(34).fork()
+      ).ldelim();
+    });
+    Object.entries(message.fieldOrdering || {}).forEach(([key, value]) => {
+      UpdateCredentialTemplateRequest_FieldOrderingEntry.encode(
         { key: key as any, value },
         writer.uint32(42).fork()
       ).ldelim();
     });
+    if (message.appleWalletOptions !== undefined) {
+      AppleWalletOptions.encode(
+        message.appleWalletOptions,
+        writer.uint32(50).fork()
+      ).ldelim();
+    }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): TemplateField {
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): UpdateCredentialTemplateRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTemplateField();
+    const message = createBaseUpdateCredentialTemplateRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.id = reader.string();
+          break;
         case 2:
-          message.description = reader.string();
+          message.title = reader.string();
           break;
         case 3:
-          message.optional = reader.bool();
+          message.description = reader.string();
           break;
         case 4:
-          message.type = reader.int32() as any;
-          break;
-        case 5:
-          const entry5 = TemplateField_AnnotationsEntry.decode(
+          const entry4 = UpdateCredentialTemplateRequest_FieldsEntry.decode(
             reader,
             reader.uint32()
           );
-          if (entry5.value !== undefined) {
-            message.annotations![entry5.key] = entry5.value;
+          if (entry4.value !== undefined) {
+            message.fields![entry4.key] = entry4.value;
           }
+          break;
+        case 5:
+          const entry5 =
+            UpdateCredentialTemplateRequest_FieldOrderingEntry.decode(
+              reader,
+              reader.uint32()
+            );
+          if (entry5.value !== undefined) {
+            message.fieldOrdering![entry5.key] = entry5.value;
+          }
+          break;
+        case 6:
+          message.appleWalletOptions = AppleWalletOptions.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -1060,69 +1419,109 @@ export const TemplateField = {
     return message;
   },
 
-  fromJSON(object: any): TemplateField {
+  fromJSON(object: any): UpdateCredentialTemplateRequest {
     return {
-      description: isSet(object.description) ? String(object.description) : "",
-      optional: isSet(object.optional) ? Boolean(object.optional) : false,
-      type: isSet(object.type) ? fieldTypeFromJSON(object.type) : 0,
-      annotations: isObject(object.annotations)
-        ? Object.entries(object.annotations).reduce<{ [key: string]: string }>(
-            (acc, [key, value]) => {
-              acc[key] = String(value);
-              return acc;
-            },
-            {}
-          )
+      id: isSet(object.id) ? String(object.id) : "",
+      title: isSet(object.title) ? String(object.title) : undefined,
+      description: isSet(object.description)
+        ? String(object.description)
+        : undefined,
+      fields: isObject(object.fields)
+        ? Object.entries(object.fields).reduce<{
+            [key: string]: TemplateFieldPatch;
+          }>((acc, [key, value]) => {
+            acc[key] = TemplateFieldPatch.fromJSON(value);
+            return acc;
+          }, {})
         : {},
+      fieldOrdering: isObject(object.fieldOrdering)
+        ? Object.entries(object.fieldOrdering).reduce<{
+            [key: string]: FieldOrdering;
+          }>((acc, [key, value]) => {
+            acc[key] = FieldOrdering.fromJSON(value);
+            return acc;
+          }, {})
+        : {},
+      appleWalletOptions: isSet(object.appleWalletOptions)
+        ? AppleWalletOptions.fromJSON(object.appleWalletOptions)
+        : undefined,
     };
   },
 
-  toJSON(message: TemplateField): unknown {
+  toJSON(message: UpdateCredentialTemplateRequest): unknown {
     const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.title !== undefined && (obj.title = message.title);
     message.description !== undefined &&
       (obj.description = message.description);
-    message.optional !== undefined && (obj.optional = message.optional);
-    message.type !== undefined && (obj.type = fieldTypeToJSON(message.type));
-    obj.annotations = {};
-    if (message.annotations) {
-      Object.entries(message.annotations).forEach(([k, v]) => {
-        obj.annotations[k] = v;
+    obj.fields = {};
+    if (message.fields) {
+      Object.entries(message.fields).forEach(([k, v]) => {
+        obj.fields[k] = TemplateFieldPatch.toJSON(v);
       });
     }
+    obj.fieldOrdering = {};
+    if (message.fieldOrdering) {
+      Object.entries(message.fieldOrdering).forEach(([k, v]) => {
+        obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
+      });
+    }
+    message.appleWalletOptions !== undefined &&
+      (obj.appleWalletOptions = message.appleWalletOptions
+        ? AppleWalletOptions.toJSON(message.appleWalletOptions)
+        : undefined);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<TemplateField>): TemplateField {
-    const message = createBaseTemplateField();
-    message.description = object.description ?? "";
-    message.optional = object.optional ?? false;
-    message.type = object.type ?? 0;
-    message.annotations = Object.entries(object.annotations ?? {}).reduce<{
-      [key: string]: string;
+  fromPartial(
+    object: DeepPartial<UpdateCredentialTemplateRequest>
+  ): UpdateCredentialTemplateRequest {
+    const message = createBaseUpdateCredentialTemplateRequest();
+    message.id = object.id ?? "";
+    message.title = object.title ?? undefined;
+    message.description = object.description ?? undefined;
+    message.fields = Object.entries(object.fields ?? {}).reduce<{
+      [key: string]: TemplateFieldPatch;
     }>((acc, [key, value]) => {
       if (value !== undefined) {
-        acc[key] = String(value);
+        acc[key] = TemplateFieldPatch.fromPartial(value);
       }
       return acc;
     }, {});
+    message.fieldOrdering = Object.entries(object.fieldOrdering ?? {}).reduce<{
+      [key: string]: FieldOrdering;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = FieldOrdering.fromPartial(value);
+      }
+      return acc;
+    }, {});
+    message.appleWalletOptions =
+      object.appleWalletOptions !== undefined &&
+      object.appleWalletOptions !== null
+        ? AppleWalletOptions.fromPartial(object.appleWalletOptions)
+        : undefined;
     return message;
   },
 };
 
-function createBaseTemplateField_AnnotationsEntry(): TemplateField_AnnotationsEntry {
-  return { key: "", value: "" };
+function createBaseUpdateCredentialTemplateRequest_FieldsEntry(): UpdateCredentialTemplateRequest_FieldsEntry {
+  return { key: "", value: undefined };
 }
 
-export const TemplateField_AnnotationsEntry = {
+export const UpdateCredentialTemplateRequest_FieldsEntry = {
   encode(
-    message: TemplateField_AnnotationsEntry,
+    message: UpdateCredentialTemplateRequest_FieldsEntry,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.key !== "") {
       writer.uint32(10).string(message.key);
     }
-    if (message.value !== "") {
-      writer.uint32(18).string(message.value);
+    if (message.value !== undefined) {
+      TemplateFieldPatch.encode(
+        message.value,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -1130,10 +1529,10 @@ export const TemplateField_AnnotationsEntry = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): TemplateField_AnnotationsEntry {
+  ): UpdateCredentialTemplateRequest_FieldsEntry {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTemplateField_AnnotationsEntry();
+    const message = createBaseUpdateCredentialTemplateRequest_FieldsEntry();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1141,7 +1540,7 @@ export const TemplateField_AnnotationsEntry = {
           message.key = reader.string();
           break;
         case 2:
-          message.value = reader.string();
+          message.value = TemplateFieldPatch.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1151,196 +1550,52 @@ export const TemplateField_AnnotationsEntry = {
     return message;
   },
 
-  fromJSON(object: any): TemplateField_AnnotationsEntry {
+  fromJSON(object: any): UpdateCredentialTemplateRequest_FieldsEntry {
     return {
       key: isSet(object.key) ? String(object.key) : "",
-      value: isSet(object.value) ? String(object.value) : "",
+      value: isSet(object.value)
+        ? TemplateFieldPatch.fromJSON(object.value)
+        : undefined,
     };
   },
 
-  toJSON(message: TemplateField_AnnotationsEntry): unknown {
+  toJSON(message: UpdateCredentialTemplateRequest_FieldsEntry): unknown {
     const obj: any = {};
     message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? TemplateFieldPatch.toJSON(message.value)
+        : undefined);
     return obj;
   },
 
   fromPartial(
-    object: DeepPartial<TemplateField_AnnotationsEntry>
-  ): TemplateField_AnnotationsEntry {
-    const message = createBaseTemplateField_AnnotationsEntry();
+    object: DeepPartial<UpdateCredentialTemplateRequest_FieldsEntry>
+  ): UpdateCredentialTemplateRequest_FieldsEntry {
+    const message = createBaseUpdateCredentialTemplateRequest_FieldsEntry();
     message.key = object.key ?? "";
-    message.value = object.value ?? "";
-    return message;
-  },
-};
-
-function createBaseGetTemplateRequest(): GetTemplateRequest {
-  return { id: "" };
-}
-
-export const GetTemplateRequest = {
-  encode(
-    message: GetTemplateRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.id !== undefined && message.id !== "") {
-      writer.uint32(10).string(message.id);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetTemplateRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetTemplateRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.id = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): GetTemplateRequest {
-    return {
-      id: isSet(object.id) ? String(object.id) : "",
-    };
-  },
-
-  toJSON(message: GetTemplateRequest): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<GetTemplateRequest>): GetTemplateRequest {
-    const message = createBaseGetTemplateRequest();
-    message.id = object.id ?? "";
-    return message;
-  },
-};
-
-function createBaseGetTemplateResponse(): GetTemplateResponse {
-  return { data: undefined };
-}
-
-export const GetTemplateResponse = {
-  encode(
-    message: GetTemplateResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.data !== undefined) {
-      TemplateData.encode(message.data, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetTemplateResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetTemplateResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.data = TemplateData.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): GetTemplateResponse {
-    return {
-      data: isSet(object.data) ? TemplateData.fromJSON(object.data) : undefined,
-    };
-  },
-
-  toJSON(message: GetTemplateResponse): unknown {
-    const obj: any = {};
-    message.data !== undefined &&
-      (obj.data = message.data ? TemplateData.toJSON(message.data) : undefined);
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<GetTemplateResponse>): GetTemplateResponse {
-    const message = createBaseGetTemplateResponse();
-    message.data =
-      object.data !== undefined && object.data !== null
-        ? TemplateData.fromPartial(object.data)
+    message.value =
+      object.value !== undefined && object.value !== null
+        ? TemplateFieldPatch.fromPartial(object.value)
         : undefined;
     return message;
   },
 };
 
-function createBaseListTemplatesRequest(): ListTemplatesRequest {
-  return {};
+function createBaseUpdateCredentialTemplateRequest_FieldOrderingEntry(): UpdateCredentialTemplateRequest_FieldOrderingEntry {
+  return { key: "", value: undefined };
 }
 
-export const ListTemplatesRequest = {
+export const UpdateCredentialTemplateRequest_FieldOrderingEntry = {
   encode(
-    _: ListTemplatesRequest,
+    message: UpdateCredentialTemplateRequest_FieldOrderingEntry,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): ListTemplatesRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseListTemplatesRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
     }
-    return message;
-  },
-
-  fromJSON(_: any): ListTemplatesRequest {
-    return {};
-  },
-
-  toJSON(_: ListTemplatesRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  fromPartial(_: DeepPartial<ListTemplatesRequest>): ListTemplatesRequest {
-    const message = createBaseListTemplatesRequest();
-    return message;
-  },
-};
-
-function createBaseListTemplatesResponse(): ListTemplatesResponse {
-  return { templates: [] };
-}
-
-export const ListTemplatesResponse = {
-  encode(
-    message: ListTemplatesResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.templates !== undefined && message.templates.length !== 0) {
-      for (const v of message.templates) {
-        TemplateData.encode(v!, writer.uint32(10).fork()).ldelim();
-      }
+    if (message.value !== undefined) {
+      FieldOrdering.encode(message.value, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -1348,15 +1603,19 @@ export const ListTemplatesResponse = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): ListTemplatesResponse {
+  ): UpdateCredentialTemplateRequest_FieldOrderingEntry {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseListTemplatesResponse();
+    const message =
+      createBaseUpdateCredentialTemplateRequest_FieldOrderingEntry();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.templates!.push(TemplateData.decode(reader, reader.uint32()));
+          message.key = reader.string();
+          break;
+        case 2:
+          message.value = FieldOrdering.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1366,32 +1625,106 @@ export const ListTemplatesResponse = {
     return message;
   },
 
-  fromJSON(object: any): ListTemplatesResponse {
+  fromJSON(object: any): UpdateCredentialTemplateRequest_FieldOrderingEntry {
     return {
-      templates: Array.isArray(object?.templates)
-        ? object.templates.map((e: any) => TemplateData.fromJSON(e))
-        : [],
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value)
+        ? FieldOrdering.fromJSON(object.value)
+        : undefined,
     };
   },
 
-  toJSON(message: ListTemplatesResponse): unknown {
+  toJSON(message: UpdateCredentialTemplateRequest_FieldOrderingEntry): unknown {
     const obj: any = {};
-    if (message.templates) {
-      obj.templates = message.templates.map((e) =>
-        e ? TemplateData.toJSON(e) : undefined
-      );
-    } else {
-      obj.templates = [];
-    }
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? FieldOrdering.toJSON(message.value)
+        : undefined);
     return obj;
   },
 
   fromPartial(
-    object: DeepPartial<ListTemplatesResponse>
-  ): ListTemplatesResponse {
-    const message = createBaseListTemplatesResponse();
-    message.templates =
-      object.templates?.map((e) => TemplateData.fromPartial(e)) || [];
+    object: DeepPartial<UpdateCredentialTemplateRequest_FieldOrderingEntry>
+  ): UpdateCredentialTemplateRequest_FieldOrderingEntry {
+    const message =
+      createBaseUpdateCredentialTemplateRequest_FieldOrderingEntry();
+    message.key = object.key ?? "";
+    message.value =
+      object.value !== undefined && object.value !== null
+        ? FieldOrdering.fromPartial(object.value)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseUpdateCredentialTemplateResponse(): UpdateCredentialTemplateResponse {
+  return { updatedTemplate: undefined };
+}
+
+export const UpdateCredentialTemplateResponse = {
+  encode(
+    message: UpdateCredentialTemplateResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.updatedTemplate !== undefined) {
+      TemplateData.encode(
+        message.updatedTemplate,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): UpdateCredentialTemplateResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateCredentialTemplateResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.updatedTemplate = TemplateData.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateCredentialTemplateResponse {
+    return {
+      updatedTemplate: isSet(object.updatedTemplate)
+        ? TemplateData.fromJSON(object.updatedTemplate)
+        : undefined,
+    };
+  },
+
+  toJSON(message: UpdateCredentialTemplateResponse): unknown {
+    const obj: any = {};
+    message.updatedTemplate !== undefined &&
+      (obj.updatedTemplate = message.updatedTemplate
+        ? TemplateData.toJSON(message.updatedTemplate)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<UpdateCredentialTemplateResponse>
+  ): UpdateCredentialTemplateResponse {
+    const message = createBaseUpdateCredentialTemplateResponse();
+    message.updatedTemplate =
+      object.updatedTemplate !== undefined && object.updatedTemplate !== null
+        ? TemplateData.fromPartial(object.updatedTemplate)
+        : undefined;
     return message;
   },
 };
@@ -1409,6 +1742,10 @@ function createBaseTemplateData(): TemplateData {
     type: "",
     createdBy: "",
     dateCreated: "",
+    title: "",
+    description: "",
+    fieldOrdering: {},
+    appleWalletOptions: undefined,
   };
 }
 
@@ -1452,6 +1789,24 @@ export const TemplateData = {
     }
     if (message.dateCreated !== undefined && message.dateCreated !== "") {
       writer.uint32(90).string(message.dateCreated);
+    }
+    if (message.title !== undefined && message.title !== "") {
+      writer.uint32(98).string(message.title);
+    }
+    if (message.description !== undefined && message.description !== "") {
+      writer.uint32(106).string(message.description);
+    }
+    Object.entries(message.fieldOrdering || {}).forEach(([key, value]) => {
+      TemplateData_FieldOrderingEntry.encode(
+        { key: key as any, value },
+        writer.uint32(114).fork()
+      ).ldelim();
+    });
+    if (message.appleWalletOptions !== undefined) {
+      AppleWalletOptions.encode(
+        message.appleWalletOptions,
+        writer.uint32(122).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -1502,6 +1857,27 @@ export const TemplateData = {
         case 11:
           message.dateCreated = reader.string();
           break;
+        case 12:
+          message.title = reader.string();
+          break;
+        case 13:
+          message.description = reader.string();
+          break;
+        case 14:
+          const entry14 = TemplateData_FieldOrderingEntry.decode(
+            reader,
+            reader.uint32()
+          );
+          if (entry14.value !== undefined) {
+            message.fieldOrdering![entry14.key] = entry14.value;
+          }
+          break;
+        case 15:
+          message.appleWalletOptions = AppleWalletOptions.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1532,6 +1908,19 @@ export const TemplateData = {
       type: isSet(object.type) ? String(object.type) : "",
       createdBy: isSet(object.createdBy) ? String(object.createdBy) : "",
       dateCreated: isSet(object.dateCreated) ? String(object.dateCreated) : "",
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      fieldOrdering: isObject(object.fieldOrdering)
+        ? Object.entries(object.fieldOrdering).reduce<{
+            [key: string]: FieldOrdering;
+          }>((acc, [key, value]) => {
+            acc[key] = FieldOrdering.fromJSON(value);
+            return acc;
+          }, {})
+        : {},
+      appleWalletOptions: isSet(object.appleWalletOptions)
+        ? AppleWalletOptions.fromJSON(object.appleWalletOptions)
+        : undefined,
     };
   },
 
@@ -1557,6 +1946,19 @@ export const TemplateData = {
     message.createdBy !== undefined && (obj.createdBy = message.createdBy);
     message.dateCreated !== undefined &&
       (obj.dateCreated = message.dateCreated);
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    obj.fieldOrdering = {};
+    if (message.fieldOrdering) {
+      Object.entries(message.fieldOrdering).forEach(([k, v]) => {
+        obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
+      });
+    }
+    message.appleWalletOptions !== undefined &&
+      (obj.appleWalletOptions = message.appleWalletOptions
+        ? AppleWalletOptions.toJSON(message.appleWalletOptions)
+        : undefined);
     return obj;
   },
 
@@ -1580,6 +1982,21 @@ export const TemplateData = {
     message.type = object.type ?? "";
     message.createdBy = object.createdBy ?? "";
     message.dateCreated = object.dateCreated ?? "";
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.fieldOrdering = Object.entries(object.fieldOrdering ?? {}).reduce<{
+      [key: string]: FieldOrdering;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = FieldOrdering.fromPartial(value);
+      }
+      return acc;
+    }, {});
+    message.appleWalletOptions =
+      object.appleWalletOptions !== undefined &&
+      object.appleWalletOptions !== null
+        ? AppleWalletOptions.fromPartial(object.appleWalletOptions)
+        : undefined;
     return message;
   },
 };
@@ -1658,6 +2075,801 @@ export const TemplateData_FieldsEntry = {
   },
 };
 
+function createBaseTemplateData_FieldOrderingEntry(): TemplateData_FieldOrderingEntry {
+  return { key: "", value: undefined };
+}
+
+export const TemplateData_FieldOrderingEntry = {
+  encode(
+    message: TemplateData_FieldOrderingEntry,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== undefined) {
+      FieldOrdering.encode(message.value, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): TemplateData_FieldOrderingEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTemplateData_FieldOrderingEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.string();
+          break;
+        case 2:
+          message.value = FieldOrdering.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TemplateData_FieldOrderingEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value)
+        ? FieldOrdering.fromJSON(object.value)
+        : undefined,
+    };
+  },
+
+  toJSON(message: TemplateData_FieldOrderingEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? FieldOrdering.toJSON(message.value)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<TemplateData_FieldOrderingEntry>
+  ): TemplateData_FieldOrderingEntry {
+    const message = createBaseTemplateData_FieldOrderingEntry();
+    message.key = object.key ?? "";
+    message.value =
+      object.value !== undefined && object.value !== null
+        ? FieldOrdering.fromPartial(object.value)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseAppleWalletOptions(): AppleWalletOptions {
+  return {
+    backgroundColor: "",
+    foregroundColor: "",
+    labelColor: "",
+    primaryField: "",
+    secondaryFields: {},
+    auxiliaryFields: {},
+  };
+}
+
+export const AppleWalletOptions = {
+  encode(
+    message: AppleWalletOptions,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (
+      message.backgroundColor !== undefined &&
+      message.backgroundColor !== ""
+    ) {
+      writer.uint32(10).string(message.backgroundColor);
+    }
+    if (
+      message.foregroundColor !== undefined &&
+      message.foregroundColor !== ""
+    ) {
+      writer.uint32(18).string(message.foregroundColor);
+    }
+    if (message.labelColor !== undefined && message.labelColor !== "") {
+      writer.uint32(26).string(message.labelColor);
+    }
+    if (message.primaryField !== undefined && message.primaryField !== "") {
+      writer.uint32(34).string(message.primaryField);
+    }
+    Object.entries(message.secondaryFields || {}).forEach(([key, value]) => {
+      AppleWalletOptions_SecondaryFieldsEntry.encode(
+        { key: key as any, value },
+        writer.uint32(42).fork()
+      ).ldelim();
+    });
+    Object.entries(message.auxiliaryFields || {}).forEach(([key, value]) => {
+      AppleWalletOptions_AuxiliaryFieldsEntry.encode(
+        { key: key as any, value },
+        writer.uint32(50).fork()
+      ).ldelim();
+    });
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AppleWalletOptions {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAppleWalletOptions();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.backgroundColor = reader.string();
+          break;
+        case 2:
+          message.foregroundColor = reader.string();
+          break;
+        case 3:
+          message.labelColor = reader.string();
+          break;
+        case 4:
+          message.primaryField = reader.string();
+          break;
+        case 5:
+          const entry5 = AppleWalletOptions_SecondaryFieldsEntry.decode(
+            reader,
+            reader.uint32()
+          );
+          if (entry5.value !== undefined) {
+            message.secondaryFields![entry5.key] = entry5.value;
+          }
+          break;
+        case 6:
+          const entry6 = AppleWalletOptions_AuxiliaryFieldsEntry.decode(
+            reader,
+            reader.uint32()
+          );
+          if (entry6.value !== undefined) {
+            message.auxiliaryFields![entry6.key] = entry6.value;
+          }
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AppleWalletOptions {
+    return {
+      backgroundColor: isSet(object.backgroundColor)
+        ? String(object.backgroundColor)
+        : "",
+      foregroundColor: isSet(object.foregroundColor)
+        ? String(object.foregroundColor)
+        : "",
+      labelColor: isSet(object.labelColor) ? String(object.labelColor) : "",
+      primaryField: isSet(object.primaryField)
+        ? String(object.primaryField)
+        : "",
+      secondaryFields: isObject(object.secondaryFields)
+        ? Object.entries(object.secondaryFields).reduce<{
+            [key: number]: string;
+          }>((acc, [key, value]) => {
+            acc[Number(key)] = String(value);
+            return acc;
+          }, {})
+        : {},
+      auxiliaryFields: isObject(object.auxiliaryFields)
+        ? Object.entries(object.auxiliaryFields).reduce<{
+            [key: number]: string;
+          }>((acc, [key, value]) => {
+            acc[Number(key)] = String(value);
+            return acc;
+          }, {})
+        : {},
+    };
+  },
+
+  toJSON(message: AppleWalletOptions): unknown {
+    const obj: any = {};
+    message.backgroundColor !== undefined &&
+      (obj.backgroundColor = message.backgroundColor);
+    message.foregroundColor !== undefined &&
+      (obj.foregroundColor = message.foregroundColor);
+    message.labelColor !== undefined && (obj.labelColor = message.labelColor);
+    message.primaryField !== undefined &&
+      (obj.primaryField = message.primaryField);
+    obj.secondaryFields = {};
+    if (message.secondaryFields) {
+      Object.entries(message.secondaryFields).forEach(([k, v]) => {
+        obj.secondaryFields[k] = v;
+      });
+    }
+    obj.auxiliaryFields = {};
+    if (message.auxiliaryFields) {
+      Object.entries(message.auxiliaryFields).forEach(([k, v]) => {
+        obj.auxiliaryFields[k] = v;
+      });
+    }
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<AppleWalletOptions>): AppleWalletOptions {
+    const message = createBaseAppleWalletOptions();
+    message.backgroundColor = object.backgroundColor ?? "";
+    message.foregroundColor = object.foregroundColor ?? "";
+    message.labelColor = object.labelColor ?? "";
+    message.primaryField = object.primaryField ?? "";
+    message.secondaryFields = Object.entries(
+      object.secondaryFields ?? {}
+    ).reduce<{ [key: number]: string }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[Number(key)] = String(value);
+      }
+      return acc;
+    }, {});
+    message.auxiliaryFields = Object.entries(
+      object.auxiliaryFields ?? {}
+    ).reduce<{ [key: number]: string }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[Number(key)] = String(value);
+      }
+      return acc;
+    }, {});
+    return message;
+  },
+};
+
+function createBaseAppleWalletOptions_SecondaryFieldsEntry(): AppleWalletOptions_SecondaryFieldsEntry {
+  return { key: 0, value: "" };
+}
+
+export const AppleWalletOptions_SecondaryFieldsEntry = {
+  encode(
+    message: AppleWalletOptions_SecondaryFieldsEntry,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.key !== 0) {
+      writer.uint32(8).int32(message.key);
+    }
+    if (message.value !== "") {
+      writer.uint32(18).string(message.value);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AppleWalletOptions_SecondaryFieldsEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAppleWalletOptions_SecondaryFieldsEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.int32();
+          break;
+        case 2:
+          message.value = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AppleWalletOptions_SecondaryFieldsEntry {
+    return {
+      key: isSet(object.key) ? Number(object.key) : 0,
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: AppleWalletOptions_SecondaryFieldsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = Math.round(message.key));
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AppleWalletOptions_SecondaryFieldsEntry>
+  ): AppleWalletOptions_SecondaryFieldsEntry {
+    const message = createBaseAppleWalletOptions_SecondaryFieldsEntry();
+    message.key = object.key ?? 0;
+    message.value = object.value ?? "";
+    return message;
+  },
+};
+
+function createBaseAppleWalletOptions_AuxiliaryFieldsEntry(): AppleWalletOptions_AuxiliaryFieldsEntry {
+  return { key: 0, value: "" };
+}
+
+export const AppleWalletOptions_AuxiliaryFieldsEntry = {
+  encode(
+    message: AppleWalletOptions_AuxiliaryFieldsEntry,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.key !== 0) {
+      writer.uint32(8).int32(message.key);
+    }
+    if (message.value !== "") {
+      writer.uint32(18).string(message.value);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AppleWalletOptions_AuxiliaryFieldsEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAppleWalletOptions_AuxiliaryFieldsEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.int32();
+          break;
+        case 2:
+          message.value = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AppleWalletOptions_AuxiliaryFieldsEntry {
+    return {
+      key: isSet(object.key) ? Number(object.key) : 0,
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: AppleWalletOptions_AuxiliaryFieldsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = Math.round(message.key));
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AppleWalletOptions_AuxiliaryFieldsEntry>
+  ): AppleWalletOptions_AuxiliaryFieldsEntry {
+    const message = createBaseAppleWalletOptions_AuxiliaryFieldsEntry();
+    message.key = object.key ?? 0;
+    message.value = object.value ?? "";
+    return message;
+  },
+};
+
+function createBaseFieldOrdering(): FieldOrdering {
+  return { order: 0, section: "" };
+}
+
+export const FieldOrdering = {
+  encode(
+    message: FieldOrdering,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.order !== undefined && message.order !== 0) {
+      writer.uint32(8).int32(message.order);
+    }
+    if (message.section !== undefined && message.section !== "") {
+      writer.uint32(18).string(message.section);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): FieldOrdering {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseFieldOrdering();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.order = reader.int32();
+          break;
+        case 2:
+          message.section = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): FieldOrdering {
+    return {
+      order: isSet(object.order) ? Number(object.order) : 0,
+      section: isSet(object.section) ? String(object.section) : "",
+    };
+  },
+
+  toJSON(message: FieldOrdering): unknown {
+    const obj: any = {};
+    message.order !== undefined && (obj.order = Math.round(message.order));
+    message.section !== undefined && (obj.section = message.section);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<FieldOrdering>): FieldOrdering {
+    const message = createBaseFieldOrdering();
+    message.order = object.order ?? 0;
+    message.section = object.section ?? "";
+    return message;
+  },
+};
+
+function createBaseTemplateField(): TemplateField {
+  return {
+    title: "",
+    description: "",
+    optional: false,
+    type: 0,
+    annotations: {},
+    uriData: undefined,
+  };
+}
+
+export const TemplateField = {
+  encode(
+    message: TemplateField,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.title !== undefined && message.title !== "") {
+      writer.uint32(10).string(message.title);
+    }
+    if (message.description !== undefined && message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+    if (message.optional === true) {
+      writer.uint32(24).bool(message.optional);
+    }
+    if (message.type !== undefined && message.type !== 0) {
+      writer.uint32(32).int32(message.type);
+    }
+    Object.entries(message.annotations || {}).forEach(([key, value]) => {
+      TemplateField_AnnotationsEntry.encode(
+        { key: key as any, value },
+        writer.uint32(42).fork()
+      ).ldelim();
+    });
+    if (message.uriData !== undefined) {
+      UriFieldData.encode(message.uriData, writer.uint32(50).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TemplateField {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTemplateField();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.title = reader.string();
+          break;
+        case 2:
+          message.description = reader.string();
+          break;
+        case 3:
+          message.optional = reader.bool();
+          break;
+        case 4:
+          message.type = reader.int32() as any;
+          break;
+        case 5:
+          const entry5 = TemplateField_AnnotationsEntry.decode(
+            reader,
+            reader.uint32()
+          );
+          if (entry5.value !== undefined) {
+            message.annotations![entry5.key] = entry5.value;
+          }
+          break;
+        case 6:
+          message.uriData = UriFieldData.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TemplateField {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      optional: isSet(object.optional) ? Boolean(object.optional) : false,
+      type: isSet(object.type) ? fieldTypeFromJSON(object.type) : 0,
+      annotations: isObject(object.annotations)
+        ? Object.entries(object.annotations).reduce<{ [key: string]: string }>(
+            (acc, [key, value]) => {
+              acc[key] = String(value);
+              return acc;
+            },
+            {}
+          )
+        : {},
+      uriData: isSet(object.uriData)
+        ? UriFieldData.fromJSON(object.uriData)
+        : undefined,
+    };
+  },
+
+  toJSON(message: TemplateField): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.optional !== undefined && (obj.optional = message.optional);
+    message.type !== undefined && (obj.type = fieldTypeToJSON(message.type));
+    obj.annotations = {};
+    if (message.annotations) {
+      Object.entries(message.annotations).forEach(([k, v]) => {
+        obj.annotations[k] = v;
+      });
+    }
+    message.uriData !== undefined &&
+      (obj.uriData = message.uriData
+        ? UriFieldData.toJSON(message.uriData)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<TemplateField>): TemplateField {
+    const message = createBaseTemplateField();
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.optional = object.optional ?? false;
+    message.type = object.type ?? 0;
+    message.annotations = Object.entries(object.annotations ?? {}).reduce<{
+      [key: string]: string;
+    }>((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = String(value);
+      }
+      return acc;
+    }, {});
+    message.uriData =
+      object.uriData !== undefined && object.uriData !== null
+        ? UriFieldData.fromPartial(object.uriData)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseTemplateField_AnnotationsEntry(): TemplateField_AnnotationsEntry {
+  return { key: "", value: "" };
+}
+
+export const TemplateField_AnnotationsEntry = {
+  encode(
+    message: TemplateField_AnnotationsEntry,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== "") {
+      writer.uint32(18).string(message.value);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): TemplateField_AnnotationsEntry {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTemplateField_AnnotationsEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.key = reader.string();
+          break;
+        case 2:
+          message.value = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TemplateField_AnnotationsEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: TemplateField_AnnotationsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<TemplateField_AnnotationsEntry>
+  ): TemplateField_AnnotationsEntry {
+    const message = createBaseTemplateField_AnnotationsEntry();
+    message.key = object.key ?? "";
+    message.value = object.value ?? "";
+    return message;
+  },
+};
+
+function createBaseTemplateFieldPatch(): TemplateFieldPatch {
+  return { title: undefined, description: undefined, uriData: undefined };
+}
+
+export const TemplateFieldPatch = {
+  encode(
+    message: TemplateFieldPatch,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.title !== undefined) {
+      writer.uint32(10).string(message.title);
+    }
+    if (message.description !== undefined) {
+      writer.uint32(18).string(message.description);
+    }
+    if (message.uriData !== undefined) {
+      UriFieldData.encode(message.uriData, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TemplateFieldPatch {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTemplateFieldPatch();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.title = reader.string();
+          break;
+        case 2:
+          message.description = reader.string();
+          break;
+        case 3:
+          message.uriData = UriFieldData.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TemplateFieldPatch {
+    return {
+      title: isSet(object.title) ? String(object.title) : undefined,
+      description: isSet(object.description)
+        ? String(object.description)
+        : undefined,
+      uriData: isSet(object.uriData)
+        ? UriFieldData.fromJSON(object.uriData)
+        : undefined,
+    };
+  },
+
+  toJSON(message: TemplateFieldPatch): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.uriData !== undefined &&
+      (obj.uriData = message.uriData
+        ? UriFieldData.toJSON(message.uriData)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<TemplateFieldPatch>): TemplateFieldPatch {
+    const message = createBaseTemplateFieldPatch();
+    message.title = object.title ?? undefined;
+    message.description = object.description ?? undefined;
+    message.uriData =
+      object.uriData !== undefined && object.uriData !== null
+        ? UriFieldData.fromPartial(object.uriData)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseUriFieldData(): UriFieldData {
+  return { mimeType: "", renderMethod: 0 };
+}
+
+export const UriFieldData = {
+  encode(
+    message: UriFieldData,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      writer.uint32(10).string(message.mimeType);
+    }
+    if (message.renderMethod !== undefined && message.renderMethod !== 0) {
+      writer.uint32(16).int32(message.renderMethod);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UriFieldData {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUriFieldData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.mimeType = reader.string();
+          break;
+        case 2:
+          message.renderMethod = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UriFieldData {
+    return {
+      mimeType: isSet(object.mimeType) ? String(object.mimeType) : "",
+      renderMethod: isSet(object.renderMethod)
+        ? uriRenderMethodFromJSON(object.renderMethod)
+        : 0,
+    };
+  },
+
+  toJSON(message: UriFieldData): unknown {
+    const obj: any = {};
+    message.mimeType !== undefined && (obj.mimeType = message.mimeType);
+    message.renderMethod !== undefined &&
+      (obj.renderMethod = uriRenderMethodToJSON(message.renderMethod));
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<UriFieldData>): UriFieldData {
+    const message = createBaseUriFieldData();
+    message.mimeType = object.mimeType ?? "";
+    message.renderMethod = object.renderMethod ?? 0;
+    return message;
+  },
+};
+
 export type CredentialTemplatesDefinition =
   typeof CredentialTemplatesDefinition;
 export const CredentialTemplatesDefinition = {
@@ -1679,6 +2891,15 @@ export const CredentialTemplatesDefinition = {
       requestType: GetCredentialTemplateRequest,
       requestStream: false,
       responseType: GetCredentialTemplateResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Update metadata of a template */
+    update: {
+      name: "Update",
+      requestType: UpdateCredentialTemplateRequest,
+      requestStream: false,
+      responseType: UpdateCredentialTemplateResponse,
       responseStream: false,
       options: {},
     },

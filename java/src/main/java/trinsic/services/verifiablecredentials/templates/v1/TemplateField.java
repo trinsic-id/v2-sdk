@@ -23,6 +23,7 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
   }
 
   private TemplateField() {
+    title_ = "";
     description_ = "";
     type_ = 0;
   }
@@ -62,6 +63,56 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
         .ensureFieldAccessorsInitialized(
             trinsic.services.verifiablecredentials.templates.v1.TemplateField.class,
             trinsic.services.verifiablecredentials.templates.v1.TemplateField.Builder.class);
+  }
+
+  private int bitField0_;
+  public static final int TITLE_FIELD_NUMBER = 1;
+  private volatile java.lang.Object title_;
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable name of the field
+   * </pre>
+   *
+   * <code>string title = 1;</code>
+   *
+   * @return The title.
+   */
+  @java.lang.Override
+  public java.lang.String getTitle() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      title_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable name of the field
+   * </pre>
+   *
+   * <code>string title = 1;</code>
+   *
+   * @return The bytes for title.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getTitleBytes() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      title_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int DESCRIPTION_FIELD_NUMBER = 2;
@@ -192,6 +243,7 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     return annotations_;
   }
 
+  @java.lang.Deprecated
   public int getAnnotationsCount() {
     return internalGetAnnotations().getMap().size();
   }
@@ -199,11 +251,13 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
+  @java.lang.Deprecated
   @java.lang.Override
   public boolean containsAnnotations(java.lang.String key) {
     if (key == null) {
@@ -221,12 +275,14 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.util.Map<java.lang.String, java.lang.String> getAnnotationsMap() {
     return internalGetAnnotations().getMap();
   }
@@ -234,12 +290,14 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getAnnotationsOrDefault(
       java.lang.String key, java.lang.String defaultValue) {
     if (key == null) {
@@ -252,12 +310,14 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getAnnotationsOrThrow(java.lang.String key) {
     if (key == null) {
       throw new NullPointerException("map key");
@@ -267,6 +327,57 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       throw new java.lang.IllegalArgumentException();
     }
     return map.get(key);
+  }
+
+  public static final int URI_DATA_FIELD_NUMBER = 6;
+  private trinsic.services.verifiablecredentials.templates.v1.UriFieldData uriData_;
+  /**
+   *
+   *
+   * <pre>
+   * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+   * </pre>
+   *
+   * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+   *
+   * @return Whether the uriData field is set.
+   */
+  @java.lang.Override
+  public boolean hasUriData() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+   * </pre>
+   *
+   * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+   *
+   * @return The uriData.
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.UriFieldData getUriData() {
+    return uriData_ == null
+        ? trinsic.services.verifiablecredentials.templates.v1.UriFieldData.getDefaultInstance()
+        : uriData_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+   * </pre>
+   *
+   * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.UriFieldDataOrBuilder
+      getUriDataOrBuilder() {
+    return uriData_ == null
+        ? trinsic.services.verifiablecredentials.templates.v1.UriFieldData.getDefaultInstance()
+        : uriData_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -283,6 +394,9 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, title_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
     }
@@ -294,6 +408,9 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     }
     com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
         output, internalGetAnnotations(), AnnotationsDefaultEntryHolder.defaultEntry, 5);
+    if (((bitField0_ & 0x00000001) != 0)) {
+      output.writeMessage(6, getUriData());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -303,6 +420,9 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, title_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
     }
@@ -322,6 +442,9 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
               .build();
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, annotations__);
     }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getUriData());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -338,10 +461,15 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     trinsic.services.verifiablecredentials.templates.v1.TemplateField other =
         (trinsic.services.verifiablecredentials.templates.v1.TemplateField) obj;
 
+    if (!getTitle().equals(other.getTitle())) return false;
     if (!getDescription().equals(other.getDescription())) return false;
     if (getOptional() != other.getOptional()) return false;
     if (type_ != other.type_) return false;
     if (!internalGetAnnotations().equals(other.internalGetAnnotations())) return false;
+    if (hasUriData() != other.hasUriData()) return false;
+    if (hasUriData()) {
+      if (!getUriData().equals(other.getUriData())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -353,6 +481,8 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + TITLE_FIELD_NUMBER;
+    hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
     hash = (37 * hash) + OPTIONAL_FIELD_NUMBER;
@@ -362,6 +492,10 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     if (!internalGetAnnotations().getMap().isEmpty()) {
       hash = (37 * hash) + ANNOTATIONS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetAnnotations().hashCode();
+    }
+    if (hasUriData()) {
+      hash = (37 * hash) + URI_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getUriData().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -515,15 +649,26 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
 
     // Construct using
     // trinsic.services.verifiablecredentials.templates.v1.TemplateField.newBuilder()
-    private Builder() {}
+    private Builder() {
+      maybeForceBuilderInitialization();
+    }
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
+      maybeForceBuilderInitialization();
+    }
+
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+        getUriDataFieldBuilder();
+      }
     }
 
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      title_ = "";
+
       description_ = "";
 
       optional_ = false;
@@ -531,6 +676,12 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       type_ = 0;
 
       internalGetMutableAnnotations().clear();
+      if (uriDataBuilder_ == null) {
+        uriData_ = null;
+      } else {
+        uriDataBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -560,11 +711,22 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       trinsic.services.verifiablecredentials.templates.v1.TemplateField result =
           new trinsic.services.verifiablecredentials.templates.v1.TemplateField(this);
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
+      result.title_ = title_;
       result.description_ = description_;
       result.optional_ = optional_;
       result.type_ = type_;
       result.annotations_ = internalGetAnnotations();
       result.annotations_.makeImmutable();
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        if (uriDataBuilder_ == null) {
+          result.uriData_ = uriData_;
+        } else {
+          result.uriData_ = uriDataBuilder_.build();
+        }
+        to_bitField0_ |= 0x00000001;
+      }
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -617,6 +779,10 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       if (other
           == trinsic.services.verifiablecredentials.templates.v1.TemplateField.getDefaultInstance())
         return this;
+      if (!other.getTitle().isEmpty()) {
+        title_ = other.title_;
+        onChanged();
+      }
       if (!other.getDescription().isEmpty()) {
         description_ = other.description_;
         onChanged();
@@ -628,6 +794,9 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
         setTypeValue(other.getTypeValue());
       }
       internalGetMutableAnnotations().mergeFrom(other.internalGetAnnotations());
+      if (other.hasUriData()) {
+        mergeUriData(other.getUriData());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -654,6 +823,12 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
             case 0:
               done = true;
               break;
+            case 10:
+              {
+                title_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
             case 18:
               {
                 description_ = input.readStringRequireUtf8();
@@ -683,6 +858,12 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
                     .put(annotations__.getKey(), annotations__.getValue());
                 break;
               } // case 42
+            case 50:
+              {
+                input.readMessage(getUriDataFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 50
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -701,6 +882,112 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
     }
 
     private int bitField0_;
+
+    private java.lang.Object title_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>string title = 1;</code>
+     *
+     * @return The title.
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>string title = 1;</code>
+     *
+     * @return The bytes for title.
+     */
+    public com.google.protobuf.ByteString getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>string title = 1;</code>
+     *
+     * @param value The title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitle(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      title_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>string title = 1;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearTitle() {
+
+      title_ = getDefaultInstance().getTitle();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>string title = 1;</code>
+     *
+     * @param value The bytes for title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitleBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      title_ = value;
+      onChanged();
+      return this;
+    }
 
     private java.lang.Object description_ = "";
     /**
@@ -978,6 +1265,7 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       return annotations_;
     }
 
+    @java.lang.Deprecated
     public int getAnnotationsCount() {
       return internalGetAnnotations().getMap().size();
     }
@@ -985,11 +1273,13 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Annotations for the field that may be used to add additional information
+     * Do not use.
+     * Annotations for the field that may be used to add additional information.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
      */
+    @java.lang.Deprecated
     @java.lang.Override
     public boolean containsAnnotations(java.lang.String key) {
       if (key == null) {
@@ -1007,12 +1297,14 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Annotations for the field that may be used to add additional information
+     * Do not use.
+     * Annotations for the field that may be used to add additional information.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String> getAnnotationsMap() {
       return internalGetAnnotations().getMap();
     }
@@ -1020,12 +1312,14 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Annotations for the field that may be used to add additional information
+     * Do not use.
+     * Annotations for the field that may be used to add additional information.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public java.lang.String getAnnotationsOrDefault(
         java.lang.String key, java.lang.String defaultValue) {
       if (key == null) {
@@ -1038,12 +1332,14 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Annotations for the field that may be used to add additional information
+     * Do not use.
+     * Annotations for the field that may be used to add additional information.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public java.lang.String getAnnotationsOrThrow(java.lang.String key) {
       if (key == null) {
         throw new NullPointerException("map key");
@@ -1055,6 +1351,7 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
       return map.get(key);
     }
 
+    @java.lang.Deprecated
     public Builder clearAnnotations() {
       internalGetMutableAnnotations().getMutableMap().clear();
       return this;
@@ -1063,11 +1360,13 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Annotations for the field that may be used to add additional information
+     * Do not use.
+     * Annotations for the field that may be used to add additional information.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
      */
+    @java.lang.Deprecated
     public Builder removeAnnotations(java.lang.String key) {
       if (key == null) {
         throw new NullPointerException("map key");
@@ -1084,11 +1383,13 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Annotations for the field that may be used to add additional information
+     * Do not use.
+     * Annotations for the field that may be used to add additional information.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
      */
+    @java.lang.Deprecated
     public Builder putAnnotations(java.lang.String key, java.lang.String value) {
       if (key == null) {
         throw new NullPointerException("map key");
@@ -1104,14 +1405,209 @@ public final class TemplateField extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Annotations for the field that may be used to add additional information
+     * Do not use.
+     * Annotations for the field that may be used to add additional information.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; annotations = 5;</code>
+     * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
      */
+    @java.lang.Deprecated
     public Builder putAllAnnotations(java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableAnnotations().getMutableMap().putAll(values);
       return this;
+    }
+
+    private trinsic.services.verifiablecredentials.templates.v1.UriFieldData uriData_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.verifiablecredentials.templates.v1.UriFieldData,
+            trinsic.services.verifiablecredentials.templates.v1.UriFieldData.Builder,
+            trinsic.services.verifiablecredentials.templates.v1.UriFieldDataOrBuilder>
+        uriDataBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     *
+     * @return Whether the uriData field is set.
+     */
+    public boolean hasUriData() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     *
+     * @return The uriData.
+     */
+    public trinsic.services.verifiablecredentials.templates.v1.UriFieldData getUriData() {
+      if (uriDataBuilder_ == null) {
+        return uriData_ == null
+            ? trinsic.services.verifiablecredentials.templates.v1.UriFieldData.getDefaultInstance()
+            : uriData_;
+      } else {
+        return uriDataBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     */
+    public Builder setUriData(
+        trinsic.services.verifiablecredentials.templates.v1.UriFieldData value) {
+      if (uriDataBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        uriData_ = value;
+        onChanged();
+      } else {
+        uriDataBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     */
+    public Builder setUriData(
+        trinsic.services.verifiablecredentials.templates.v1.UriFieldData.Builder builderForValue) {
+      if (uriDataBuilder_ == null) {
+        uriData_ = builderForValue.build();
+        onChanged();
+      } else {
+        uriDataBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     */
+    public Builder mergeUriData(
+        trinsic.services.verifiablecredentials.templates.v1.UriFieldData value) {
+      if (uriDataBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) != 0)
+            && uriData_ != null
+            && uriData_
+                != trinsic.services.verifiablecredentials.templates.v1.UriFieldData
+                    .getDefaultInstance()) {
+          uriData_ =
+              trinsic.services.verifiablecredentials.templates.v1.UriFieldData.newBuilder(uriData_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          uriData_ = value;
+        }
+        onChanged();
+      } else {
+        uriDataBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     */
+    public Builder clearUriData() {
+      if (uriDataBuilder_ == null) {
+        uriData_ = null;
+        onChanged();
+      } else {
+        uriDataBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     */
+    public trinsic.services.verifiablecredentials.templates.v1.UriFieldData.Builder
+        getUriDataBuilder() {
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return getUriDataFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     */
+    public trinsic.services.verifiablecredentials.templates.v1.UriFieldDataOrBuilder
+        getUriDataOrBuilder() {
+      if (uriDataBuilder_ != null) {
+        return uriDataBuilder_.getMessageOrBuilder();
+      } else {
+        return uriData_ == null
+            ? trinsic.services.verifiablecredentials.templates.v1.UriFieldData.getDefaultInstance()
+            : uriData_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+     * </pre>
+     *
+     * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.verifiablecredentials.templates.v1.UriFieldData,
+            trinsic.services.verifiablecredentials.templates.v1.UriFieldData.Builder,
+            trinsic.services.verifiablecredentials.templates.v1.UriFieldDataOrBuilder>
+        getUriDataFieldBuilder() {
+      if (uriDataBuilder_ == null) {
+        uriDataBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.verifiablecredentials.templates.v1.UriFieldData,
+                trinsic.services.verifiablecredentials.templates.v1.UriFieldData.Builder,
+                trinsic.services.verifiablecredentials.templates.v1.UriFieldDataOrBuilder>(
+                getUriData(), getParentForChildren(), isClean());
+        uriData_ = null;
+      }
+      return uriDataBuilder_;
     }
 
     @java.lang.Override

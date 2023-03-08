@@ -7,24 +7,24 @@ package trinsic.services.verifiablecredentials.templates.v1;
  *
  *
  * <pre>
- * Request to create a new template
+ * Request to update display information for a template
  * </pre>
  *
- * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
+ * Protobuf type {@code services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest}
  */
-public final class CreateCredentialTemplateRequest extends com.google.protobuf.GeneratedMessageV3
+public final class UpdateCredentialTemplateRequest extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
-    CreateCredentialTemplateRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)
+    UpdateCredentialTemplateRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use CreateCredentialTemplateRequest.newBuilder() to construct.
-  private CreateCredentialTemplateRequest(
+  // Use UpdateCredentialTemplateRequest.newBuilder() to construct.
+  private UpdateCredentialTemplateRequest(
       com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private CreateCredentialTemplateRequest() {
-    name_ = "";
+  private UpdateCredentialTemplateRequest() {
+    id_ = "";
     title_ = "";
     description_ = "";
   }
@@ -32,7 +32,7 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new CreateCredentialTemplateRequest();
+    return new UpdateCredentialTemplateRequest();
   }
 
   @java.lang.Override
@@ -42,16 +42,16 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.verifiablecredentials.templates.v1.Templates
-        .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
+        .internal_static_services_verifiablecredentials_templates_v1_UpdateCredentialTemplateRequest_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
   @java.lang.Override
   protected com.google.protobuf.MapField internalGetMapField(int number) {
     switch (number) {
-      case 2:
+      case 4:
         return internalGetFields();
-      case 6:
+      case 5:
         return internalGetFieldOrdering();
       default:
         throw new RuntimeException("Invalid map field number: " + number);
@@ -62,37 +62,37 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.verifiablecredentials.templates.v1.Templates
-        .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable
+        .internal_static_services_verifiablecredentials_templates_v1_UpdateCredentialTemplateRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+            trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
                 .class,
-            trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+            trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
                 .Builder.class);
   }
 
   private int bitField0_;
-  public static final int NAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object name_;
+  public static final int ID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object id_;
   /**
    *
    *
    * <pre>
-   * Name of new template. Must be a unique identifier within its ecosystem.
+   * ID of Template to update
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string id = 1;</code>
    *
-   * @return The name.
+   * @return The id.
    */
   @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      name_ = s;
+      id_ = s;
       return s;
     }
   }
@@ -100,178 +100,51 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Name of new template. Must be a unique identifier within its ecosystem.
+   * ID of Template to update
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string id = 1;</code>
    *
-   * @return The bytes for name.
+   * @return The bytes for id.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getNameBytes() {
-    java.lang.Object ref = name_;
+  public com.google.protobuf.ByteString getIdBytes() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      name_ = b;
+      id_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int FIELDS_FIELD_NUMBER = 2;
-
-  private static final class FieldsDefaultEntryHolder {
-    static final com.google.protobuf.MapEntry<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-        defaultEntry =
-            com.google.protobuf.MapEntry
-                .<java.lang.String,
-                    trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-                    newDefaultInstance(
-                        trinsic.services.verifiablecredentials.templates.v1.Templates
-                            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor,
-                        com.google.protobuf.WireFormat.FieldType.STRING,
-                        "",
-                        com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                        trinsic.services.verifiablecredentials.templates.v1.TemplateField
-                            .getDefaultInstance());
-  }
-
-  private com.google.protobuf.MapField<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-      fields_;
-
-  private com.google.protobuf.MapField<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-      internalGetFields() {
-    if (fields_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
-    }
-    return fields_;
-  }
-
-  public int getFieldsCount() {
-    return internalGetFields().getMap().size();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Fields which compose the template
-   * </pre>
-   *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
-   */
-  @java.lang.Override
-  public boolean containsFields(java.lang.String key) {
-    if (key == null) {
-      throw new NullPointerException("map key");
-    }
-    return internalGetFields().getMap().containsKey(key);
-  }
-  /** Use {@link #getFieldsMap()} instead. */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.util.Map<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-      getFields() {
-    return getFieldsMap();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Fields which compose the template
-   * </pre>
-   *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
-   */
-  @java.lang.Override
-  public java.util.Map<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-      getFieldsMap() {
-    return internalGetFields().getMap();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Fields which compose the template
-   * </pre>
-   *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
-   */
-  @java.lang.Override
-  public trinsic.services.verifiablecredentials.templates.v1.TemplateField getFieldsOrDefault(
-      java.lang.String key,
-      trinsic.services.verifiablecredentials.templates.v1.TemplateField defaultValue) {
-    if (key == null) {
-      throw new NullPointerException("map key");
-    }
-    java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-        map = internalGetFields().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Fields which compose the template
-   * </pre>
-   *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
-   */
-  @java.lang.Override
-  public trinsic.services.verifiablecredentials.templates.v1.TemplateField getFieldsOrThrow(
-      java.lang.String key) {
-    if (key == null) {
-      throw new NullPointerException("map key");
-    }
-    java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-        map = internalGetFields().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
-    }
-    return map.get(key);
-  }
-
-  public static final int ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER = 3;
-  private boolean allowAdditionalFields_;
-  /**
-   *
-   *
-   * <pre>
-   * Whether credentials may be issued against this template which have fields
-   * not specified in `fields`
-   * </pre>
-   *
-   * <code>bool allow_additional_fields = 3;</code>
-   *
-   * @return The allowAdditionalFields.
-   */
-  @java.lang.Override
-  public boolean getAllowAdditionalFields() {
-    return allowAdditionalFields_;
-  }
-
-  public static final int TITLE_FIELD_NUMBER = 4;
+  public static final int TITLE_FIELD_NUMBER = 2;
   private volatile java.lang.Object title_;
   /**
    *
    *
    * <pre>
-   * Human-readable name of template
+   * New human-readable title of Template
    * </pre>
    *
-   * <code>string title = 4;</code>
+   * <code>optional string title = 2;</code>
+   *
+   * @return Whether the title field is set.
+   */
+  @java.lang.Override
+  public boolean hasTitle() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * New human-readable title of Template
+   * </pre>
+   *
+   * <code>optional string title = 2;</code>
    *
    * @return The title.
    */
@@ -291,10 +164,10 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Human-readable name of template
+   * New human-readable title of Template
    * </pre>
    *
-   * <code>string title = 4;</code>
+   * <code>optional string title = 2;</code>
    *
    * @return The bytes for title.
    */
@@ -311,16 +184,31 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     }
   }
 
-  public static final int DESCRIPTION_FIELD_NUMBER = 5;
+  public static final int DESCRIPTION_FIELD_NUMBER = 3;
   private volatile java.lang.Object description_;
   /**
    *
    *
    * <pre>
-   * Human-readable description of template
+   * New human-readable description of Template
    * </pre>
    *
-   * <code>string description = 5;</code>
+   * <code>optional string description = 3;</code>
+   *
+   * @return Whether the description field is set.
+   */
+  @java.lang.Override
+  public boolean hasDescription() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * New human-readable description of Template
+   * </pre>
+   *
+   * <code>optional string description = 3;</code>
    *
    * @return The description.
    */
@@ -340,10 +228,10 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Human-readable description of template
+   * New human-readable description of Template
    * </pre>
    *
-   * <code>string description = 5;</code>
+   * <code>optional string description = 3;</code>
    *
    * @return The bytes for description.
    */
@@ -360,7 +248,137 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     }
   }
 
-  public static final int FIELD_ORDERING_FIELD_NUMBER = 6;
+  public static final int FIELDS_FIELD_NUMBER = 4;
+
+  private static final class FieldsDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+        defaultEntry =
+            com.google.protobuf.MapEntry
+                .<java.lang.String,
+                    trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+                    newDefaultInstance(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates
+                            .internal_static_services_verifiablecredentials_templates_v1_UpdateCredentialTemplateRequest_FieldsEntry_descriptor,
+                        com.google.protobuf.WireFormat.FieldType.STRING,
+                        "",
+                        com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                        trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch
+                            .getDefaultInstance());
+  }
+
+  private com.google.protobuf.MapField<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+      fields_;
+
+  private com.google.protobuf.MapField<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+      internalGetFields() {
+    if (fields_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
+    }
+    return fields_;
+  }
+
+  public int getFieldsCount() {
+    return internalGetFields().getMap().size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Fields to update within the Template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
+   * </code>
+   */
+  @java.lang.Override
+  public boolean containsFields(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    return internalGetFields().getMap().containsKey(key);
+  }
+  /** Use {@link #getFieldsMap()} instead. */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+      getFields() {
+    return getFieldsMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Fields to update within the Template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
+   * </code>
+   */
+  @java.lang.Override
+  public java.util.Map<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+      getFieldsMap() {
+    return internalGetFields().getMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Fields to update within the Template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch getFieldsOrDefault(
+      java.lang.String key,
+      trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch defaultValue) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+        map = internalGetFields().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Fields to update within the Template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch getFieldsOrThrow(
+      java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
+        map = internalGetFields().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
+  public static final int FIELD_ORDERING_FIELD_NUMBER = 5;
 
   private static final class FieldOrderingDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -371,7 +389,7 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
                     trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
                     newDefaultInstance(
                         trinsic.services.verifiablecredentials.templates.v1.Templates
-                            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldOrderingEntry_descriptor,
+                            .internal_static_services_verifiablecredentials_templates_v1_UpdateCredentialTemplateRequest_FieldOrderingEntry_descriptor,
                         com.google.protobuf.WireFormat.FieldType.STRING,
                         "",
                         com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -400,12 +418,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-   * If not provided, this will be auto-generated.
+   * New field ordering options. See documentation for template creation for usage information.
    * </pre>
    *
    * <code>
-   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
    * </code>
    */
   @java.lang.Override
@@ -427,12 +444,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-   * If not provided, this will be auto-generated.
+   * New field ordering options. See documentation for template creation for usage information.
    * </pre>
    *
    * <code>
-   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
    * </code>
    */
   @java.lang.Override
@@ -445,12 +461,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-   * If not provided, this will be auto-generated.
+   * New field ordering options. See documentation for template creation for usage information.
    * </pre>
    *
    * <code>
-   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
    * </code>
    */
   @java.lang.Override
@@ -470,12 +485,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-   * If not provided, this will be auto-generated.
+   * New field ordering options. See documentation for template creation for usage information.
    * </pre>
    *
    * <code>
-   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
    * </code>
    */
   @java.lang.Override
@@ -493,35 +507,35 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     return map.get(key);
   }
 
-  public static final int APPLE_WALLET_OPTIONS_FIELD_NUMBER = 7;
+  public static final int APPLE_WALLET_OPTIONS_FIELD_NUMBER = 6;
   private trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
       appleWalletOptions_;
   /**
    *
    *
    * <pre>
-   * Options for rendering the template in Apple Wallet
+   * New Apple Wallet configuration
    * </pre>
    *
    * <code>
-   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
    * </code>
    *
    * @return Whether the appleWalletOptions field is set.
    */
   @java.lang.Override
   public boolean hasAppleWalletOptions() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ((bitField0_ & 0x00000004) != 0);
   }
   /**
    *
    *
    * <pre>
-   * Options for rendering the template in Apple Wallet
+   * New Apple Wallet configuration
    * </pre>
    *
    * <code>
-   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
    * </code>
    *
    * @return The appleWalletOptions.
@@ -538,11 +552,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Options for rendering the template in Apple Wallet
+   * New Apple Wallet configuration
    * </pre>
    *
    * <code>
-   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
    * </code>
    */
   @java.lang.Override
@@ -568,24 +582,21 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
-    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
-        output, internalGetFields(), FieldsDefaultEntryHolder.defaultEntry, 2);
-    if (allowAdditionalFields_ != false) {
-      output.writeBool(3, allowAdditionalFields_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, title_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, description_);
-    }
-    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
-        output, internalGetFieldOrdering(), FieldOrderingDefaultEntryHolder.defaultEntry, 6);
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(7, getAppleWalletOptions());
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+    }
+    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+        output, internalGetFields(), FieldsDefaultEntryHolder.defaultEntry, 4);
+    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+        output, internalGetFieldOrdering(), FieldOrderingDefaultEntryHolder.defaultEntry, 5);
+    if (((bitField0_ & 0x00000004) != 0)) {
+      output.writeMessage(6, getAppleWalletOptions());
     }
     getUnknownFields().writeTo(output);
   }
@@ -596,30 +607,29 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+    }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
     }
     for (java.util.Map.Entry<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
         entry : internalGetFields().getMap().entrySet()) {
       com.google.protobuf.MapEntry<
-              java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
           fields__ =
               FieldsDefaultEntryHolder.defaultEntry
                   .newBuilderForType()
                   .setKey(entry.getKey())
                   .setValue(entry.getValue())
                   .build();
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, fields__);
-    }
-    if (allowAdditionalFields_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, allowAdditionalFields_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, title_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, description_);
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, fields__);
     }
     for (java.util.Map.Entry<
             java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
@@ -632,10 +642,10 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
                   .setKey(entry.getKey())
                   .setValue(entry.getValue())
                   .build();
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, fieldOrdering__);
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, fieldOrdering__);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, getAppleWalletOptions());
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getAppleWalletOptions());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -649,17 +659,22 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     }
     if (!(obj
         instanceof
-        trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)) {
+        trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest other =
-        (trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest) obj;
+    trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest other =
+        (trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest) obj;
 
-    if (!getName().equals(other.getName())) return false;
+    if (!getId().equals(other.getId())) return false;
+    if (hasTitle() != other.hasTitle()) return false;
+    if (hasTitle()) {
+      if (!getTitle().equals(other.getTitle())) return false;
+    }
+    if (hasDescription() != other.hasDescription()) return false;
+    if (hasDescription()) {
+      if (!getDescription().equals(other.getDescription())) return false;
+    }
     if (!internalGetFields().equals(other.internalGetFields())) return false;
-    if (getAllowAdditionalFields() != other.getAllowAdditionalFields()) return false;
-    if (!getTitle().equals(other.getTitle())) return false;
-    if (!getDescription().equals(other.getDescription())) return false;
     if (!internalGetFieldOrdering().equals(other.internalGetFieldOrdering())) return false;
     if (hasAppleWalletOptions() != other.hasAppleWalletOptions()) return false;
     if (hasAppleWalletOptions()) {
@@ -676,18 +691,20 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId().hashCode();
+    if (hasTitle()) {
+      hash = (37 * hash) + TITLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTitle().hashCode();
+    }
+    if (hasDescription()) {
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+    }
     if (!internalGetFields().getMap().isEmpty()) {
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
     }
-    hash = (37 * hash) + ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAllowAdditionalFields());
-    hash = (37 * hash) + TITLE_FIELD_NUMBER;
-    hash = (53 * hash) + getTitle().hashCode();
-    hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-    hash = (53 * hash) + getDescription().hashCode();
     if (!internalGetFieldOrdering().getMap().isEmpty()) {
       hash = (37 * hash) + FIELD_ORDERING_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFieldOrdering().hashCode();
@@ -701,26 +718,26 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     return hash;
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(
           java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -728,23 +745,23 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(
           java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -752,12 +769,12 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseDelimitedFrom(
           java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -765,12 +782,12 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -789,7 +806,7 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
   }
 
   public static Builder newBuilder(
-      trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+      trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
           prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
@@ -808,27 +825,27 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Request to create a new template
+   * Request to update display information for a template
    * </pre>
    *
    * Protobuf type {@code
-   * services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
+   * services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
-      trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)
+      trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.verifiablecredentials.templates.v1.Templates
-          .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
+          .internal_static_services_verifiablecredentials_templates_v1_UpdateCredentialTemplateRequest_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
     protected com.google.protobuf.MapField internalGetMapField(int number) {
       switch (number) {
-        case 2:
+        case 4:
           return internalGetFields();
-        case 6:
+        case 5:
           return internalGetFieldOrdering();
         default:
           throw new RuntimeException("Invalid map field number: " + number);
@@ -838,9 +855,9 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     @SuppressWarnings({"rawtypes"})
     protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
       switch (number) {
-        case 2:
+        case 4:
           return internalGetMutableFields();
-        case 6:
+        case 5:
           return internalGetMutableFieldOrdering();
         default:
           throw new RuntimeException("Invalid map field number: " + number);
@@ -851,16 +868,16 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.verifiablecredentials.templates.v1.Templates
-          .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable
+          .internal_static_services_verifiablecredentials_templates_v1_UpdateCredentialTemplateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+              trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
                   .class,
-              trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+              trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
                   .Builder.class);
     }
 
     // Construct using
-    // trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.newBuilder()
+    // trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -879,42 +896,40 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      name_ = "";
-
-      internalGetMutableFields().clear();
-      allowAdditionalFields_ = false;
+      id_ = "";
 
       title_ = "";
-
+      bitField0_ = (bitField0_ & ~0x00000001);
       description_ = "";
-
+      bitField0_ = (bitField0_ & ~0x00000002);
+      internalGetMutableFields().clear();
       internalGetMutableFieldOrdering().clear();
       if (appleWalletOptionsBuilder_ == null) {
         appleWalletOptions_ = null;
       } else {
         appleWalletOptionsBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.verifiablecredentials.templates.v1.Templates
-          .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
+          .internal_static_services_verifiablecredentials_templates_v1_UpdateCredentialTemplateRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+    public trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
         getDefaultInstanceForType() {
-      return trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+      return trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
           .getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+    public trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
         build() {
-      trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest result =
+      trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest result =
           buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
@@ -923,28 +938,33 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+    public trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
         buildPartial() {
-      trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest result =
-          new trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest(
+      trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest result =
+          new trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest(
               this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
-      result.name_ = name_;
+      result.id_ = id_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        to_bitField0_ |= 0x00000001;
+      }
+      result.title_ = title_;
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        to_bitField0_ |= 0x00000002;
+      }
+      result.description_ = description_;
       result.fields_ = internalGetFields();
       result.fields_.makeImmutable();
-      result.allowAdditionalFields_ = allowAdditionalFields_;
-      result.title_ = title_;
-      result.description_ = description_;
       result.fieldOrdering_ = internalGetFieldOrdering();
       result.fieldOrdering_.makeImmutable();
-      if (((from_bitField0_ & 0x00000004) != 0)) {
+      if (((from_bitField0_ & 0x00000010) != 0)) {
         if (appleWalletOptionsBuilder_ == null) {
           result.appleWalletOptions_ = appleWalletOptions_;
         } else {
           result.appleWalletOptions_ = appleWalletOptionsBuilder_.build();
         }
-        to_bitField0_ |= 0x00000001;
+        to_bitField0_ |= 0x00000004;
       }
       result.bitField0_ = to_bitField0_;
       onBuilt();
@@ -988,9 +1008,9 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other
           instanceof
-          trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest) {
+          trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest) {
         return mergeFrom(
-            (trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
+            (trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)
                 other);
       } else {
         super.mergeFrom(other);
@@ -999,26 +1019,25 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     }
 
     public Builder mergeFrom(
-        trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest other) {
+        trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest other) {
       if (other
-          == trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+          == trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
               .getDefaultInstance()) return this;
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
         onChanged();
       }
-      internalGetMutableFields().mergeFrom(other.internalGetFields());
-      if (other.getAllowAdditionalFields() != false) {
-        setAllowAdditionalFields(other.getAllowAdditionalFields());
-      }
-      if (!other.getTitle().isEmpty()) {
+      if (other.hasTitle()) {
+        bitField0_ |= 0x00000001;
         title_ = other.title_;
         onChanged();
       }
-      if (!other.getDescription().isEmpty()) {
+      if (other.hasDescription()) {
+        bitField0_ |= 0x00000002;
         description_ = other.description_;
         onChanged();
       }
+      internalGetMutableFields().mergeFrom(other.internalGetFields());
       internalGetMutableFieldOrdering().mergeFrom(other.internalGetFieldOrdering());
       if (other.hasAppleWalletOptions()) {
         mergeAppleWalletOptions(other.getAppleWalletOptions());
@@ -1051,15 +1070,27 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
               break;
             case 10:
               {
-                name_ = input.readStringRequireUtf8();
+                id_ = input.readStringRequireUtf8();
 
                 break;
               } // case 10
             case 18:
               {
+                title_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 18
+            case 26:
+              {
+                description_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 26
+            case 34:
+              {
                 com.google.protobuf.MapEntry<
                         java.lang.String,
-                        trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+                        trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
                     fields__ =
                         input.readMessage(
                             FieldsDefaultEntryHolder.defaultEntry.getParserForType(),
@@ -1068,26 +1099,8 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
                     .getMutableMap()
                     .put(fields__.getKey(), fields__.getValue());
                 break;
-              } // case 18
-            case 24:
-              {
-                allowAdditionalFields_ = input.readBool();
-
-                break;
-              } // case 24
-            case 34:
-              {
-                title_ = input.readStringRequireUtf8();
-
-                break;
               } // case 34
             case 42:
-              {
-                description_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 42
-            case 50:
               {
                 com.google.protobuf.MapEntry<
                         java.lang.String,
@@ -1100,14 +1113,14 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
                     .getMutableMap()
                     .put(fieldOrdering__.getKey(), fieldOrdering__.getValue());
                 break;
-              } // case 50
-            case 58:
+              } // case 42
+            case 50:
               {
                 input.readMessage(
                     getAppleWalletOptionsFieldBuilder().getBuilder(), extensionRegistry);
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000010;
                 break;
-              } // case 58
+              } // case 50
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1127,24 +1140,24 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
 
     private int bitField0_;
 
-    private java.lang.Object name_ = "";
+    private java.lang.Object id_ = "";
     /**
      *
      *
      * <pre>
-     * Name of new template. Must be a unique identifier within its ecosystem.
+     * ID of Template to update
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string id = 1;</code>
      *
-     * @return The name.
+     * @return The id.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        id_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1154,19 +1167,19 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Name of new template. Must be a unique identifier within its ecosystem.
+     * ID of Template to update
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string id = 1;</code>
      *
-     * @return The bytes for name.
+     * @return The bytes for id.
      */
-    public com.google.protobuf.ByteString getNameBytes() {
-      java.lang.Object ref = name_;
+    public com.google.protobuf.ByteString getIdBytes() {
+      java.lang.Object ref = id_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        name_ = b;
+        id_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1176,20 +1189,20 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Name of new template. Must be a unique identifier within its ecosystem.
+     * ID of Template to update
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string id = 1;</code>
      *
-     * @param value The name to set.
+     * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setName(java.lang.String value) {
+    public Builder setId(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
       }
 
-      name_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
@@ -1197,16 +1210,16 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Name of new template. Must be a unique identifier within its ecosystem.
+     * ID of Template to update
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string id = 1;</code>
      *
      * @return This builder for chaining.
      */
-    public Builder clearName() {
+    public Builder clearId() {
 
-      name_ = getDefaultInstance().getName();
+      id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
@@ -1214,31 +1227,273 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Name of new template. Must be a unique identifier within its ecosystem.
+     * ID of Template to update
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string id = 1;</code>
      *
-     * @param value The bytes for name to set.
+     * @param value The bytes for id to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(com.google.protobuf.ByteString value) {
+    public Builder setIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
 
-      name_ = value;
+      id_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object title_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable title of Template
+     * </pre>
+     *
+     * <code>optional string title = 2;</code>
+     *
+     * @return Whether the title field is set.
+     */
+    public boolean hasTitle() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable title of Template
+     * </pre>
+     *
+     * <code>optional string title = 2;</code>
+     *
+     * @return The title.
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable title of Template
+     * </pre>
+     *
+     * <code>optional string title = 2;</code>
+     *
+     * @return The bytes for title.
+     */
+    public com.google.protobuf.ByteString getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable title of Template
+     * </pre>
+     *
+     * <code>optional string title = 2;</code>
+     *
+     * @param value The title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitle(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      bitField0_ |= 0x00000001;
+      title_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable title of Template
+     * </pre>
+     *
+     * <code>optional string title = 2;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearTitle() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      title_ = getDefaultInstance().getTitle();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable title of Template
+     * </pre>
+     *
+     * <code>optional string title = 2;</code>
+     *
+     * @param value The bytes for title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitleBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000001;
+      title_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object description_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable description of Template
+     * </pre>
+     *
+     * <code>optional string description = 3;</code>
+     *
+     * @return Whether the description field is set.
+     */
+    public boolean hasDescription() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable description of Template
+     * </pre>
+     *
+     * <code>optional string description = 3;</code>
+     *
+     * @return The description.
+     */
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable description of Template
+     * </pre>
+     *
+     * <code>optional string description = 3;</code>
+     *
+     * @return The bytes for description.
+     */
+    public com.google.protobuf.ByteString getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable description of Template
+     * </pre>
+     *
+     * <code>optional string description = 3;</code>
+     *
+     * @param value The description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescription(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      bitField0_ |= 0x00000002;
+      description_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable description of Template
+     * </pre>
+     *
+     * <code>optional string description = 3;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDescription() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      description_ = getDefaultInstance().getDescription();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New human-readable description of Template
+     * </pre>
+     *
+     * <code>optional string description = 3;</code>
+     *
+     * @param value The bytes for description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000002;
+      description_ = value;
       onChanged();
       return this;
     }
 
     private com.google.protobuf.MapField<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
         fields_;
 
     private com.google.protobuf.MapField<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
         internalGetFields() {
       if (fields_ == null) {
         return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
@@ -1247,7 +1502,8 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     }
 
     private com.google.protobuf.MapField<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
         internalGetMutableFields() {
       onChanged();
       ;
@@ -1267,11 +1523,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Fields which compose the template
+     * Fields to update within the Template
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
      * </code>
      */
     @java.lang.Override
@@ -1285,7 +1541,8 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
         getFields() {
       return getFieldsMap();
     }
@@ -1293,16 +1550,17 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Fields which compose the template
+     * Fields to update within the Template
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
      * </code>
      */
     @java.lang.Override
     public java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
         getFieldsMap() {
       return internalGetFields().getMap();
     }
@@ -1310,22 +1568,24 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Fields which compose the template
+     * Fields to update within the Template
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
      * </code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.TemplateField getFieldsOrDefault(
-        java.lang.String key,
-        trinsic.services.verifiablecredentials.templates.v1.TemplateField defaultValue) {
+    public trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch
+        getFieldsOrDefault(
+            java.lang.String key,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch defaultValue) {
       if (key == null) {
         throw new NullPointerException("map key");
       }
       java.util.Map<
-              java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
           map = internalGetFields().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
@@ -1333,21 +1593,22 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Fields which compose the template
+     * Fields to update within the Template
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
      * </code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.TemplateField getFieldsOrThrow(
+    public trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch getFieldsOrThrow(
         java.lang.String key) {
       if (key == null) {
         throw new NullPointerException("map key");
       }
       java.util.Map<
-              java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
           map = internalGetFields().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -1363,11 +1624,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Fields which compose the template
+     * Fields to update within the Template
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
      * </code>
      */
     public Builder removeFields(java.lang.String key) {
@@ -1380,7 +1641,8 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
     /** Use alternate mutation accessors instead. */
     @java.lang.Deprecated
     public java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
         getMutableFields() {
       return internalGetMutableFields().getMutableMap();
     }
@@ -1388,16 +1650,16 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Fields which compose the template
+     * Fields to update within the Template
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
      * </code>
      */
     public Builder putFields(
         java.lang.String key,
-        trinsic.services.verifiablecredentials.templates.v1.TemplateField value) {
+        trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch value) {
       if (key == null) {
         throw new NullPointerException("map key");
       }
@@ -1412,285 +1674,19 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Fields which compose the template
+     * Fields to update within the Template
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateFieldPatch&gt; fields = 4;
      * </code>
      */
     public Builder putAllFields(
         java.util.Map<
-                java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.TemplateFieldPatch>
             values) {
       internalGetMutableFields().getMutableMap().putAll(values);
-      return this;
-    }
-
-    private boolean allowAdditionalFields_;
-    /**
-     *
-     *
-     * <pre>
-     * Whether credentials may be issued against this template which have fields
-     * not specified in `fields`
-     * </pre>
-     *
-     * <code>bool allow_additional_fields = 3;</code>
-     *
-     * @return The allowAdditionalFields.
-     */
-    @java.lang.Override
-    public boolean getAllowAdditionalFields() {
-      return allowAdditionalFields_;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Whether credentials may be issued against this template which have fields
-     * not specified in `fields`
-     * </pre>
-     *
-     * <code>bool allow_additional_fields = 3;</code>
-     *
-     * @param value The allowAdditionalFields to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAllowAdditionalFields(boolean value) {
-
-      allowAdditionalFields_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Whether credentials may be issued against this template which have fields
-     * not specified in `fields`
-     * </pre>
-     *
-     * <code>bool allow_additional_fields = 3;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearAllowAdditionalFields() {
-
-      allowAdditionalFields_ = false;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object title_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of template
-     * </pre>
-     *
-     * <code>string title = 4;</code>
-     *
-     * @return The title.
-     */
-    public java.lang.String getTitle() {
-      java.lang.Object ref = title_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        title_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of template
-     * </pre>
-     *
-     * <code>string title = 4;</code>
-     *
-     * @return The bytes for title.
-     */
-    public com.google.protobuf.ByteString getTitleBytes() {
-      java.lang.Object ref = title_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        title_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of template
-     * </pre>
-     *
-     * <code>string title = 4;</code>
-     *
-     * @param value The title to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTitle(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      title_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of template
-     * </pre>
-     *
-     * <code>string title = 4;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearTitle() {
-
-      title_ = getDefaultInstance().getTitle();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of template
-     * </pre>
-     *
-     * <code>string title = 4;</code>
-     *
-     * @param value The bytes for title to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTitleBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      title_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object description_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable description of template
-     * </pre>
-     *
-     * <code>string description = 5;</code>
-     *
-     * @return The description.
-     */
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        description_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable description of template
-     * </pre>
-     *
-     * <code>string description = 5;</code>
-     *
-     * @return The bytes for description.
-     */
-    public com.google.protobuf.ByteString getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable description of template
-     * </pre>
-     *
-     * <code>string description = 5;</code>
-     *
-     * @param value The description to set.
-     * @return This builder for chaining.
-     */
-    public Builder setDescription(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      description_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable description of template
-     * </pre>
-     *
-     * <code>string description = 5;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearDescription() {
-
-      description_ = getDefaultInstance().getDescription();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable description of template
-     * </pre>
-     *
-     * <code>string description = 5;</code>
-     *
-     * @param value The bytes for description to set.
-     * @return This builder for chaining.
-     */
-    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      description_ = value;
-      onChanged();
       return this;
     }
 
@@ -1730,12 +1726,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-     * If not provided, this will be auto-generated.
+     * New field ordering options. See documentation for template creation for usage information.
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
      * </code>
      */
     @java.lang.Override
@@ -1757,12 +1752,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-     * If not provided, this will be auto-generated.
+     * New field ordering options. See documentation for template creation for usage information.
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
      * </code>
      */
     @java.lang.Override
@@ -1775,12 +1769,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-     * If not provided, this will be auto-generated.
+     * New field ordering options. See documentation for template creation for usage information.
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
      * </code>
      */
     @java.lang.Override
@@ -1800,12 +1793,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-     * If not provided, this will be auto-generated.
+     * New field ordering options. See documentation for template creation for usage information.
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
      * </code>
      */
     @java.lang.Override
@@ -1831,12 +1823,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-     * If not provided, this will be auto-generated.
+     * New field ordering options. See documentation for template creation for usage information.
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
      * </code>
      */
     public Builder removeFieldOrdering(java.lang.String key) {
@@ -1857,12 +1848,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-     * If not provided, this will be auto-generated.
+     * New field ordering options. See documentation for template creation for usage information.
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
      * </code>
      */
     public Builder putFieldOrdering(
@@ -1882,12 +1872,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
-     * If not provided, this will be auto-generated.
+     * New field ordering options. See documentation for template creation for usage information.
      * </pre>
      *
      * <code>
-     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 5;
      * </code>
      */
     public Builder putAllFieldOrdering(
@@ -1909,27 +1898,27 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      *
      * @return Whether the appleWalletOptions field is set.
      */
     public boolean hasAppleWalletOptions() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      *
      * @return The appleWalletOptions.
@@ -1949,11 +1938,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      */
     public Builder setAppleWalletOptions(
@@ -1967,18 +1956,18 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
       } else {
         appleWalletOptionsBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000010;
       return this;
     }
     /**
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      */
     public Builder setAppleWalletOptions(
@@ -1990,24 +1979,24 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
       } else {
         appleWalletOptionsBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000010;
       return this;
     }
     /**
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      */
     public Builder mergeAppleWalletOptions(
         trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions value) {
       if (appleWalletOptionsBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0)
+        if (((bitField0_ & 0x00000010) != 0)
             && appleWalletOptions_ != null
             && appleWalletOptions_
                 != trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
@@ -2024,18 +2013,18 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
       } else {
         appleWalletOptionsBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000010;
       return this;
     }
     /**
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      */
     public Builder clearAppleWalletOptions() {
@@ -2045,23 +2034,23 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
       } else {
         appleWalletOptionsBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
     /**
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      */
     public trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions.Builder
         getAppleWalletOptionsBuilder() {
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000010;
       onChanged();
       return getAppleWalletOptionsFieldBuilder().getBuilder();
     }
@@ -2069,11 +2058,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      */
     public trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder
@@ -2091,11 +2080,11 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Options for rendering the template in Apple Wallet
+     * New Apple Wallet configuration
      * </pre>
      *
      * <code>
-     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+     * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 6;
      * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -2126,28 +2115,28 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
+    // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
+  // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)
   private static final trinsic.services.verifiablecredentials.templates.v1
-          .CreateCredentialTemplateRequest
+          .UpdateCredentialTemplateRequest
       DEFAULT_INSTANCE;
 
   static {
     DEFAULT_INSTANCE =
-        new trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest();
+        new trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest();
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateCredentialTemplateRequest> PARSER =
-      new com.google.protobuf.AbstractParser<CreateCredentialTemplateRequest>() {
+  private static final com.google.protobuf.Parser<UpdateCredentialTemplateRequest> PARSER =
+      new com.google.protobuf.AbstractParser<UpdateCredentialTemplateRequest>() {
         @java.lang.Override
-        public CreateCredentialTemplateRequest parsePartialFrom(
+        public UpdateCredentialTemplateRequest parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2166,17 +2155,17 @@ public final class CreateCredentialTemplateRequest extends com.google.protobuf.G
         }
       };
 
-  public static com.google.protobuf.Parser<CreateCredentialTemplateRequest> parser() {
+  public static com.google.protobuf.Parser<UpdateCredentialTemplateRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<CreateCredentialTemplateRequest> getParserForType() {
+  public com.google.protobuf.Parser<UpdateCredentialTemplateRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+  public trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
       getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
