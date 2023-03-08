@@ -71,22 +71,6 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def add_webhook(self, *, request: AddWebhookRequest) -> AddWebhookResponse:
-        """Add a webhook endpoint to the ecosystem"""
-
-        return await self.client.add_webhook(
-            request, metadata=self.build_metadata(request)
-        )
-
-    async def delete_webhook(
-        self, *, request: DeleteWebhookRequest
-    ) -> DeleteWebhookResponse:
-        """Delete a webhook endpoint from the ecosystem"""
-
-        return await self.client.delete_webhook(
-            request, metadata=self.build_metadata(request)
-        )
-
     async def ecosystem_info(
         self, *, request: EcosystemInfoRequest
     ) -> EcosystemInfoResponse:

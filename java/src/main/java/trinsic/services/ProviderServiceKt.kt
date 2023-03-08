@@ -33,16 +33,6 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).updateEcosystem(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun addWebhook(request: AddWebhookRequest): AddWebhookResponse {
-    /** Add a webhook endpoint to the ecosystem */
-    return withMetadata(stub, request).addWebhook(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun deleteWebhook(request: DeleteWebhookRequest): DeleteWebhookResponse {
-    /** Delete a webhook endpoint from the ecosystem */
-    return withMetadata(stub, request).deleteWebhook(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun ecosystemInfo(request: EcosystemInfoRequest): EcosystemInfoResponse {
     /** Get ecosystem information */
     return withMetadata(stub, request).ecosystemInfo(request)

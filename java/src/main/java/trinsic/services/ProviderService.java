@@ -52,18 +52,6 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).updateEcosystem(request);
   }
-  /** Add a webhook endpoint to the ecosystem */
-  public ListenableFuture<AddWebhookResponse> addWebhook(AddWebhookRequest request)
-      throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).addWebhook(request);
-  }
-  /** Delete a webhook endpoint from the ecosystem */
-  public ListenableFuture<DeleteWebhookResponse> deleteWebhook(DeleteWebhookRequest request)
-      throws InvalidProtocolBufferException, DidException {
-
-    return withMetadata(stub, request).deleteWebhook(request);
-  }
   /** Get ecosystem information */
   public ListenableFuture<EcosystemInfoResponse> ecosystemInfo(EcosystemInfoRequest request)
       throws InvalidProtocolBufferException, DidException {

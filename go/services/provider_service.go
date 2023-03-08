@@ -31,10 +31,6 @@ type ProviderService interface {
 	// UpdateEcosystem Deprecated: This will be removed May 1, 2023
 	// Update an existing ecosystem
 	UpdateEcosystem(userContext context.Context, request *provider.UpdateEcosystemRequest) (*provider.UpdateEcosystemResponse, error)
-	// AddWebhook  Add a webhook endpoint to the ecosystem
-	AddWebhook(userContext context.Context, request *provider.AddWebhookRequest) (*provider.AddWebhookResponse, error)
-	// DeleteWebhook  Delete a webhook endpoint from the ecosystem
-	DeleteWebhook(userContext context.Context, request *provider.DeleteWebhookRequest) (*provider.DeleteWebhookResponse, error)
 	// EcosystemInfo  Get ecosystem information
 	EcosystemInfo(userContext context.Context, request *provider.EcosystemInfoRequest) (*provider.EcosystemInfoResponse, error)
 	// GetPublicEcosystemInfo Deprecated: This will be removed May 1, 2023
@@ -99,32 +95,6 @@ func (p *providerBase) UpdateEcosystem(userContext context.Context, request *pro
 		return nil, err
 	}
 	response, err := p.client.UpdateEcosystem(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// AddWebhook  Add a webhook endpoint to the ecosystem
-func (p *providerBase) AddWebhook(userContext context.Context, request *provider.AddWebhookRequest) (*provider.AddWebhookResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.AddWebhook(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// DeleteWebhook  Delete a webhook endpoint from the ecosystem
-func (p *providerBase) DeleteWebhook(userContext context.Context, request *provider.DeleteWebhookRequest) (*provider.DeleteWebhookResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.DeleteWebhook(md, request)
 	if err != nil {
 		return nil, err
 	}

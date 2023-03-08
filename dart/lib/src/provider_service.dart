@@ -42,21 +42,6 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
-  Future<AddWebhookResponse> addWebhook(AddWebhookRequest request) async {
-    ///  Add a webhook endpoint to the ecosystem
-
-    return client.addWebhook(request,
-        options: await buildMetadata(request: request));
-  }
-
-  Future<DeleteWebhookResponse> deleteWebhook(
-      DeleteWebhookRequest request) async {
-    ///  Delete a webhook endpoint from the ecosystem
-
-    return client.deleteWebhook(request,
-        options: await buildMetadata(request: request));
-  }
-
   Future<EcosystemInfoResponse> ecosystemInfo(
       EcosystemInfoRequest request) async {
     ///  Get ecosystem information

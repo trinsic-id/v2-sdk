@@ -43,20 +43,6 @@ export class ProviderService extends ServiceBase {
       metadata: await this.buildMetadata(proto.UpdateEcosystemRequest.encode(request).finish())
     });
   }
-  /** Add a webhook endpoint to the ecosystem */
-  public async addWebhook(request: proto.AddWebhookRequest): Promise<proto.AddWebhookResponse> {
-    
-    return this.client.addWebhook(request, {
-      metadata: await this.buildMetadata(proto.AddWebhookRequest.encode(request).finish())
-    });
-  }
-  /** Delete a webhook endpoint from the ecosystem */
-  public async deleteWebhook(request: proto.DeleteWebhookRequest): Promise<proto.DeleteWebhookResponse> {
-    
-    return this.client.deleteWebhook(request, {
-      metadata: await this.buildMetadata(proto.DeleteWebhookRequest.encode(request).finish())
-    });
-  }
   /** Get ecosystem information */
   public async ecosystemInfo(request: proto.EcosystemInfoRequest): Promise<proto.EcosystemInfoResponse> {
     

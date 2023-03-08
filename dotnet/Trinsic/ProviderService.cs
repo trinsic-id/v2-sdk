@@ -86,42 +86,6 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
-    /// Add a webhook endpoint to the ecosystem
-    /// </summary>
-    
-    public AddWebhookResponse AddWebhook(AddWebhookRequest request) {
-        
-        return Client.AddWebhook(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Add a webhook endpoint to the ecosystem
-    /// </summary>
-    
-    public async Task<AddWebhookResponse> AddWebhookAsync(AddWebhookRequest request) {
-        
-        return await Client.AddWebhookAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
-    /// Delete a webhook endpoint from the ecosystem
-    /// </summary>
-    
-    public DeleteWebhookResponse DeleteWebhook(DeleteWebhookRequest request) {
-        
-        return Client.DeleteWebhook(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Delete a webhook endpoint from the ecosystem
-    /// </summary>
-    
-    public async Task<DeleteWebhookResponse> DeleteWebhookAsync(DeleteWebhookRequest request) {
-        
-        return await Client.DeleteWebhookAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Get ecosystem information
     /// </summary>
     
