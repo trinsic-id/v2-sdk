@@ -55,7 +55,7 @@ class AccountServiceTest {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     // }
     // accountServiceSignIn() {
-    var myProfile = trinsic.account().signIn(myEcosystemIdOrName).get();
+    var myProfile = trinsic.account().loginAnonymous(myEcosystemIdOrName).get();
     // }
 
     // protectUnprotectProfile() {

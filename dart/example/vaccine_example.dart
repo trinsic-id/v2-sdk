@@ -35,13 +35,13 @@ Future runVaccineDemo() async {
   // Create 3 different profiles for each participant in the scenario
   var allison = await trinsic
       .account()
-      .signIn(request: SignInRequest(ecosystemId: ecosystemId));
+      .loginAnonymous(ecosystemId);
   var clinic = await trinsic
       .account()
-      .signIn(request: SignInRequest(ecosystemId: ecosystemId));
+      .loginAnonymous(ecosystemId);
   var airline = await trinsic
       .account()
-      .signIn(request: SignInRequest(ecosystemId: ecosystemId));
+      .loginAnonymous(ecosystemId);
   // }
 
   trinsic.serviceOptions.authToken = clinic;
