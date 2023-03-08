@@ -9,7 +9,7 @@ ServiceOptions trinsicConfig({String authToken = ""}) {
   String useTls = Platform.environment["TEST_SERVER_USE_TLS"] ?? "true";
 
   return ServiceOptions(
-      authToken: authToken,
+      authToken: authToken.replaceAll("[YOURAUTHTOKEN]", ""),
       serverEndpoint: endpoint,
       serverPort: int.parse(port),
       serverUseTls: useTls.toLowerCase() != "false");

@@ -14,6 +14,55 @@ The Account Service allows you to create and sign in to accounts.
 
     These are effectively API keys; they should be kept safe and never published.
 
+{{ proto_sample_start() }}
+    === "Dart"
+        <!--codeinclude-->
+        ```dart
+        [ServiceCreate](../../../dart/example/account_service_example.dart)
+        ```
+        <!--/codeinclude-->
+    === "Trinsic CLI"
+        ```bash
+        trinsic account login --email "bob@example.com" --ecosystem "<ecosystem id or name>"
+        ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:serviceCreate
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:serviceCreate
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [LoginRequest](../../../python/samples/account_demo.py) inside_block:serviceCreate
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [LoginRequest](../../../go/services/account_service_test.go) inside_block:serviceCreate
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:serviceCreate
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.account.v1.Account") }}
+
 ---
 
 ## Login

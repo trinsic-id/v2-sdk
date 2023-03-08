@@ -84,7 +84,7 @@ class AccountService extends ServiceBase {
     return token;
   }
 
-  Future<String> loginAnonymous(String ecosystemId) async {
+  Future<String> loginAnonymous({required String ecosystemId}) async {
     var loginRequest = LoginRequest();
     loginRequest.ecosystemId = ecosystemId;
     var response = await login(request: loginRequest);

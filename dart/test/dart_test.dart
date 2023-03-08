@@ -3,6 +3,7 @@ import 'package:trinsic_dart/src/proto/services/trust-registry/v1/trust-registry
 import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
+import '../example/account_service_example.dart';
 import '../example/ecosystem_example.dart';
 import '../example/templates_demo.dart';
 import '../example/vaccine_example.dart';
@@ -21,6 +22,9 @@ void main() {
     });
     test('Templates Demo', () async {
       await runTemplatesDemo();
+    });
+    test('Account Service Demo', () async {
+      await runAccountServiceDemo();
     });
     test('Trust Registry Demo', () async {
       // Runs locally, fails on github actions for unknown reasons
@@ -45,7 +49,7 @@ void main() {
       // }
       var myEcosystemId = "default";
       // accountServiceSignIn() {
-      var myProfile = await accountService.loginAnonymous(myEcosystemId);
+      var myProfile = await accountService.loginAnonymous(ecosystemId: myEcosystemId);
       // }
       await printGetInfo(accountService, myProfile);
       // protectUnprotectProfile() {
