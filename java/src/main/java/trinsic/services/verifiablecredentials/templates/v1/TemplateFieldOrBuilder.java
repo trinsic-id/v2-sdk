@@ -12,6 +12,31 @@ public interface TemplateFieldOrBuilder
    *
    *
    * <pre>
+   * Human-readable name of the field
+   * </pre>
+   *
+   * <code>string title = 1;</code>
+   *
+   * @return The title.
+   */
+  java.lang.String getTitle();
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable name of the field
+   * </pre>
+   *
+   * <code>string title = 1;</code>
+   *
+   * @return The bytes for title.
+   */
+  com.google.protobuf.ByteString getTitleBytes();
+
+  /**
+   *
+   *
+   * <pre>
    * Human-readable description of the field
    * </pre>
    *
@@ -75,21 +100,25 @@ public interface TemplateFieldOrBuilder
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
+  @java.lang.Deprecated
   int getAnnotationsCount();
   /**
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
+  @java.lang.Deprecated
   boolean containsAnnotations(java.lang.String key);
   /** Use {@link #getAnnotationsMap()} instead. */
   @java.lang.Deprecated
@@ -98,22 +127,25 @@ public interface TemplateFieldOrBuilder
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
+  @java.lang.Deprecated
   java.util.Map<java.lang.String, java.lang.String> getAnnotationsMap();
   /**
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
-
+  @java.lang.Deprecated
   /* nullable */
   java.lang.String getAnnotationsOrDefault(
       java.lang.String key,
@@ -123,10 +155,47 @@ public interface TemplateFieldOrBuilder
    *
    *
    * <pre>
-   * Annotations for the field that may be used to add additional information
+   * Do not use.
+   * Annotations for the field that may be used to add additional information.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; annotations = 5;</code>
+   * <code>map&lt;string, string&gt; annotations = 5 [deprecated = true];</code>
    */
+  @java.lang.Deprecated
   java.lang.String getAnnotationsOrThrow(java.lang.String key);
+
+  /**
+   *
+   *
+   * <pre>
+   * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+   * </pre>
+   *
+   * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+   *
+   * @return Whether the uriData field is set.
+   */
+  boolean hasUriData();
+  /**
+   *
+   *
+   * <pre>
+   * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+   * </pre>
+   *
+   * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+   *
+   * @return The uriData.
+   */
+  trinsic.services.verifiablecredentials.templates.v1.UriFieldData getUriData();
+  /**
+   *
+   *
+   * <pre>
+   * How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+   * </pre>
+   *
+   * <code>optional .services.verifiablecredentials.templates.v1.UriFieldData uri_data = 6;</code>
+   */
+  trinsic.services.verifiablecredentials.templates.v1.UriFieldDataOrBuilder getUriDataOrBuilder();
 }

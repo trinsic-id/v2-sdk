@@ -7,29 +7,29 @@ package trinsic.services.verifiablecredentials.templates.v1;
  *
  *
  * <pre>
- * Unused
+ * Ordering information for a template field
  * </pre>
  *
- * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateRequest}
+ * Protobuf type {@code services.verifiablecredentials.templates.v1.FieldOrdering}
  */
-public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessageV3
+public final class FieldOrdering extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.GetTemplateRequest)
-    GetTemplateRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.FieldOrdering)
+    FieldOrderingOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use GetTemplateRequest.newBuilder() to construct.
-  private GetTemplateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use FieldOrdering.newBuilder() to construct.
+  private FieldOrdering(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private GetTemplateRequest() {
-    id_ = "";
+  private FieldOrdering() {
+    section_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new GetTemplateRequest();
+    return new FieldOrdering();
   }
 
   @java.lang.Override
@@ -39,50 +39,83 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.verifiablecredentials.templates.v1.Templates
-        .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
+        .internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.verifiablecredentials.templates.v1.Templates
-        .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable
+        .internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest.class,
-            trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest.Builder.class);
+            trinsic.services.verifiablecredentials.templates.v1.FieldOrdering.class,
+            trinsic.services.verifiablecredentials.templates.v1.FieldOrdering.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object id_;
+  public static final int ORDER_FIELD_NUMBER = 1;
+  private int order_;
   /**
-   * <code>string id = 1;</code>
    *
-   * @return The id.
+   *
+   * <pre>
+   * The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+   * Field orders must be contiguous from `0` to the number of fields minus 1.
+   * </pre>
+   *
+   * <code>int32 order = 1;</code>
+   *
+   * @return The order.
    */
   @java.lang.Override
-  public java.lang.String getId() {
-    java.lang.Object ref = id_;
+  public int getOrder() {
+    return order_;
+  }
+
+  public static final int SECTION_FIELD_NUMBER = 2;
+  private volatile java.lang.Object section_;
+  /**
+   *
+   *
+   * <pre>
+   * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+   * Sections must be contiguous with respect to `order`.
+   * </pre>
+   *
+   * <code>string section = 2;</code>
+   *
+   * @return The section.
+   */
+  @java.lang.Override
+  public java.lang.String getSection() {
+    java.lang.Object ref = section_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      id_ = s;
+      section_ = s;
       return s;
     }
   }
   /**
-   * <code>string id = 1;</code>
    *
-   * @return The bytes for id.
+   *
+   * <pre>
+   * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+   * Sections must be contiguous with respect to `order`.
+   * </pre>
+   *
+   * <code>string section = 2;</code>
+   *
+   * @return The bytes for section.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getIdBytes() {
-    java.lang.Object ref = id_;
+  public com.google.protobuf.ByteString getSectionBytes() {
+    java.lang.Object ref = section_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      id_ = b;
+      section_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -103,8 +136,11 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+    if (order_ != 0) {
+      output.writeInt32(1, order_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(section_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, section_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -115,8 +151,11 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+    if (order_ != 0) {
+      size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, order_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(section_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, section_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -128,13 +167,14 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest)) {
+    if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.FieldOrdering)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest other =
-        (trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest) obj;
+    trinsic.services.verifiablecredentials.templates.v1.FieldOrdering other =
+        (trinsic.services.verifiablecredentials.templates.v1.FieldOrdering) obj;
 
-    if (!getId().equals(other.getId())) return false;
+    if (getOrder() != other.getOrder()) return false;
+    if (!getSection().equals(other.getSection())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -146,66 +186,68 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId().hashCode();
+    hash = (37 * hash) + ORDER_FIELD_NUMBER;
+    hash = (53 * hash) + getOrder();
+    hash = (37 * hash) + SECTION_FIELD_NUMBER;
+    hash = (53 * hash) + getSection().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
       parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
       parseDelimitedFrom(
           java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -213,12 +255,12 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest parseFrom(
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -236,7 +278,7 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
   }
 
   public static Builder newBuilder(
-      trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest prototype) {
+      trinsic.services.verifiablecredentials.templates.v1.FieldOrdering prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -254,32 +296,32 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Unused
+   * Ordering information for a template field
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateRequest}
+   * Protobuf type {@code services.verifiablecredentials.templates.v1.FieldOrdering}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.GetTemplateRequest)
-      trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.FieldOrdering)
+      trinsic.services.verifiablecredentials.templates.v1.FieldOrderingOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.verifiablecredentials.templates.v1.Templates
-          .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
+          .internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.verifiablecredentials.templates.v1.Templates
-          .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable
+          .internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest.class,
-              trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.FieldOrdering.class,
+              trinsic.services.verifiablecredentials.templates.v1.FieldOrdering.Builder.class);
     }
 
     // Construct using
-    // trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest.newBuilder()
+    // trinsic.services.verifiablecredentials.templates.v1.FieldOrdering.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -289,7 +331,9 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = "";
+      order_ = 0;
+
+      section_ = "";
 
       return this;
     }
@@ -297,20 +341,18 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.verifiablecredentials.templates.v1.Templates
-          .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
+          .internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
+    public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
         getDefaultInstanceForType() {
-      return trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
-          .getDefaultInstance();
+      return trinsic.services.verifiablecredentials.templates.v1.FieldOrdering.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest build() {
-      trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest result =
-          buildPartial();
+    public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering build() {
+      trinsic.services.verifiablecredentials.templates.v1.FieldOrdering result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -318,10 +360,11 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest buildPartial() {
-      trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest result =
-          new trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest(this);
-      result.id_ = id_;
+    public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering buildPartial() {
+      trinsic.services.verifiablecredentials.templates.v1.FieldOrdering result =
+          new trinsic.services.verifiablecredentials.templates.v1.FieldOrdering(this);
+      result.order_ = order_;
+      result.section_ = section_;
       onBuilt();
       return result;
     }
@@ -361,9 +404,8 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest) {
-        return mergeFrom(
-            (trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest) other);
+      if (other instanceof trinsic.services.verifiablecredentials.templates.v1.FieldOrdering) {
+        return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.FieldOrdering) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -371,12 +413,15 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
     }
 
     public Builder mergeFrom(
-        trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest other) {
+        trinsic.services.verifiablecredentials.templates.v1.FieldOrdering other) {
       if (other
-          == trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
-              .getDefaultInstance()) return this;
-      if (!other.getId().isEmpty()) {
-        id_ = other.id_;
+          == trinsic.services.verifiablecredentials.templates.v1.FieldOrdering.getDefaultInstance())
+        return this;
+      if (other.getOrder() != 0) {
+        setOrder(other.getOrder());
+      }
+      if (!other.getSection().isEmpty()) {
+        section_ = other.section_;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -405,12 +450,18 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
             case 0:
               done = true;
               break;
-            case 10:
+            case 8:
               {
-                id_ = input.readStringRequireUtf8();
+                order_ = input.readInt32();
 
                 break;
-              } // case 10
+              } // case 8
+            case 18:
+              {
+                section_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -428,78 +479,168 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
       return this;
     }
 
-    private java.lang.Object id_ = "";
+    private int order_;
     /**
-     * <code>string id = 1;</code>
      *
-     * @return The id.
+     *
+     * <pre>
+     * The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+     * Field orders must be contiguous from `0` to the number of fields minus 1.
+     * </pre>
+     *
+     * <code>int32 order = 1;</code>
+     *
+     * @return The order.
      */
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
+    @java.lang.Override
+    public int getOrder() {
+      return order_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+     * Field orders must be contiguous from `0` to the number of fields minus 1.
+     * </pre>
+     *
+     * <code>int32 order = 1;</code>
+     *
+     * @param value The order to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOrder(int value) {
+
+      order_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+     * Field orders must be contiguous from `0` to the number of fields minus 1.
+     * </pre>
+     *
+     * <code>int32 order = 1;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearOrder() {
+
+      order_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object section_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+     * Sections must be contiguous with respect to `order`.
+     * </pre>
+     *
+     * <code>string section = 2;</code>
+     *
+     * @return The section.
+     */
+    public java.lang.String getSection() {
+      java.lang.Object ref = section_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        section_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string id = 1;</code>
      *
-     * @return The bytes for id.
+     *
+     * <pre>
+     * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+     * Sections must be contiguous with respect to `order`.
+     * </pre>
+     *
+     * <code>string section = 2;</code>
+     *
+     * @return The bytes for section.
      */
-    public com.google.protobuf.ByteString getIdBytes() {
-      java.lang.Object ref = id_;
+    public com.google.protobuf.ByteString getSectionBytes() {
+      java.lang.Object ref = section_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        id_ = b;
+        section_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string id = 1;</code>
      *
-     * @param value The id to set.
+     *
+     * <pre>
+     * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+     * Sections must be contiguous with respect to `order`.
+     * </pre>
+     *
+     * <code>string section = 2;</code>
+     *
+     * @param value The section to set.
      * @return This builder for chaining.
      */
-    public Builder setId(java.lang.String value) {
+    public Builder setSection(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
       }
 
-      id_ = value;
+      section_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string id = 1;</code>
+     *
+     *
+     * <pre>
+     * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+     * Sections must be contiguous with respect to `order`.
+     * </pre>
+     *
+     * <code>string section = 2;</code>
      *
      * @return This builder for chaining.
      */
-    public Builder clearId() {
+    public Builder clearSection() {
 
-      id_ = getDefaultInstance().getId();
+      section_ = getDefaultInstance().getSection();
       onChanged();
       return this;
     }
     /**
-     * <code>string id = 1;</code>
      *
-     * @param value The bytes for id to set.
+     *
+     * <pre>
+     * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+     * Sections must be contiguous with respect to `order`.
+     * </pre>
+     *
+     * <code>string section = 2;</code>
+     *
+     * @param value The bytes for section to set.
      * @return This builder for chaining.
      */
-    public Builder setIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setSectionBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
 
-      id_ = value;
+      section_ = value;
       onChanged();
       return this;
     }
@@ -515,26 +656,26 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.GetTemplateRequest)
+    // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.FieldOrdering)
   }
 
-  // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.GetTemplateRequest)
-  private static final trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
+  // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.FieldOrdering)
+  private static final trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
       DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest();
+    DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.FieldOrdering();
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
+  public static trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
       getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetTemplateRequest> PARSER =
-      new com.google.protobuf.AbstractParser<GetTemplateRequest>() {
+  private static final com.google.protobuf.Parser<FieldOrdering> PARSER =
+      new com.google.protobuf.AbstractParser<FieldOrdering>() {
         @java.lang.Override
-        public GetTemplateRequest parsePartialFrom(
+        public FieldOrdering parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -553,17 +694,17 @@ public final class GetTemplateRequest extends com.google.protobuf.GeneratedMessa
         }
       };
 
-  public static com.google.protobuf.Parser<GetTemplateRequest> parser() {
+  public static com.google.protobuf.Parser<FieldOrdering> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetTemplateRequest> getParserForType() {
+  public com.google.protobuf.Parser<FieldOrdering> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.verifiablecredentials.templates.v1.GetTemplateRequest
+  public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
       getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }

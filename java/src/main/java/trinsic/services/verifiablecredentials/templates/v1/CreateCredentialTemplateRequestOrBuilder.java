@@ -12,7 +12,7 @@ public interface CreateCredentialTemplateRequestOrBuilder
    *
    *
    * <pre>
-   * Name of new template
+   * Name of new template. Must be a unique identifier within its ecosystem.
    * </pre>
    *
    * <code>string name = 1;</code>
@@ -24,7 +24,7 @@ public interface CreateCredentialTemplateRequestOrBuilder
    *
    *
    * <pre>
-   * Name of new template
+   * Name of new template. Must be a unique identifier within its ecosystem.
    * </pre>
    *
    * <code>string name = 1;</code>
@@ -113,4 +113,173 @@ public interface CreateCredentialTemplateRequestOrBuilder
    * @return The allowAdditionalFields.
    */
   boolean getAllowAdditionalFields();
+
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable name of template
+   * </pre>
+   *
+   * <code>string title = 4;</code>
+   *
+   * @return The title.
+   */
+  java.lang.String getTitle();
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable name of template
+   * </pre>
+   *
+   * <code>string title = 4;</code>
+   *
+   * @return The bytes for title.
+   */
+  com.google.protobuf.ByteString getTitleBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable description of template
+   * </pre>
+   *
+   * <code>string description = 5;</code>
+   *
+   * @return The description.
+   */
+  java.lang.String getDescription();
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable description of template
+   * </pre>
+   *
+   * <code>string description = 5;</code>
+   *
+   * @return The bytes for description.
+   */
+  com.google.protobuf.ByteString getDescriptionBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * If not provided, this will be auto-generated.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * </code>
+   */
+  int getFieldOrderingCount();
+  /**
+   *
+   *
+   * <pre>
+   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * If not provided, this will be auto-generated.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * </code>
+   */
+  boolean containsFieldOrdering(java.lang.String key);
+  /** Use {@link #getFieldOrderingMap()} instead. */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      getFieldOrdering();
+  /**
+   *
+   *
+   * <pre>
+   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * If not provided, this will be auto-generated.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * </code>
+   */
+  java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      getFieldOrderingMap();
+  /**
+   *
+   *
+   * <pre>
+   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * If not provided, this will be auto-generated.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * </code>
+   */
+
+  /* nullable */
+  trinsic.services.verifiablecredentials.templates.v1.FieldOrdering getFieldOrderingOrDefault(
+      java.lang.String key,
+      /* nullable */
+      trinsic.services.verifiablecredentials.templates.v1.FieldOrdering defaultValue);
+  /**
+   *
+   *
+   * <pre>
+   * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * If not provided, this will be auto-generated.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 6;
+   * </code>
+   */
+  trinsic.services.verifiablecredentials.templates.v1.FieldOrdering getFieldOrderingOrThrow(
+      java.lang.String key);
+
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+   * </code>
+   *
+   * @return Whether the appleWalletOptions field is set.
+   */
+  boolean hasAppleWalletOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+   * </code>
+   *
+   * @return The appleWalletOptions.
+   */
+  trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions getAppleWalletOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * optional .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 7;
+   * </code>
+   */
+  trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder
+      getAppleWalletOptionsOrBuilder();
 }

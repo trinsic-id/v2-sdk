@@ -24,6 +24,19 @@ const FieldType$json = const {
 /// Descriptor for `FieldType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List fieldTypeDescriptor = $convert.base64Decode(
     'CglGaWVsZFR5cGUSCgoGU1RSSU5HEAASCgoGTlVNQkVSEAESCAoEQk9PTBACEgwKCERBVEVUSU1FEAQSBwoDVVJJEAU=');
+@$core.Deprecated('Use uriRenderMethodDescriptor instead')
+const UriRenderMethod$json = const {
+  '1': 'UriRenderMethod',
+  '2': const [
+    const {'1': 'TEXT', '2': 0},
+    const {'1': 'LINK', '2': 1},
+    const {'1': 'INLINE_IMAGE', '2': 2},
+  ],
+};
+
+/// Descriptor for `UriRenderMethod`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List uriRenderMethodDescriptor = $convert.base64Decode(
+    'Cg9VcmlSZW5kZXJNZXRob2QSCAoEVEVYVBAAEggKBExJTksQARIQCgxJTkxJTkVfSU1BR0UQAg==');
 @$core.Deprecated('Use getCredentialTemplateRequestDescriptor instead')
 const GetCredentialTemplateRequest$json = const {
   '1': 'GetCredentialTemplateRequest',
@@ -189,8 +202,35 @@ const CreateCredentialTemplateRequest$json = const {
       '5': 8,
       '10': 'allowAdditionalFields'
     },
+    const {'1': 'title', '3': 4, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'description', '3': 5, '4': 1, '5': 9, '10': 'description'},
+    const {
+      '1': 'field_ordering',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldOrderingEntry',
+      '10': 'fieldOrdering'
+    },
+    const {
+      '1': 'apple_wallet_options',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.AppleWalletOptions',
+      '9': 0,
+      '10': 'appleWalletOptions',
+      '17': true
+    },
   ],
-  '3': const [CreateCredentialTemplateRequest_FieldsEntry$json],
+  '3': const [
+    CreateCredentialTemplateRequest_FieldsEntry$json,
+    CreateCredentialTemplateRequest_FieldOrderingEntry$json
+  ],
+  '8': const [
+    const {'1': '_apple_wallet_options'},
+  ],
 };
 
 @$core.Deprecated('Use createCredentialTemplateRequestDescriptor instead')
@@ -210,10 +250,27 @@ const CreateCredentialTemplateRequest_FieldsEntry$json = const {
   '7': const {'7': true},
 };
 
+@$core.Deprecated('Use createCredentialTemplateRequestDescriptor instead')
+const CreateCredentialTemplateRequest_FieldOrderingEntry$json = const {
+  '1': 'FieldOrderingEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.FieldOrdering',
+      '10': 'value'
+    },
+  ],
+  '7': const {'7': true},
+};
+
 /// Descriptor for `CreateCredentialTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createCredentialTemplateRequestDescriptor =
     $convert.base64Decode(
-        'Ch9DcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUScAoGZmllbGRzGAIgAygLMlguc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5DcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0LkZpZWxkc0VudHJ5UgZmaWVsZHMSNgoXYWxsb3dfYWRkaXRpb25hbF9maWVsZHMYAyABKAhSFWFsbG93QWRkaXRpb25hbEZpZWxkcxp1CgtGaWVsZHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRJQCgV2YWx1ZRgCIAEoCzI6LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVGVtcGxhdGVGaWVsZFIFdmFsdWU6AjgB');
+        'Ch9DcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUScAoGZmllbGRzGAIgAygLMlguc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5DcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0LkZpZWxkc0VudHJ5UgZmaWVsZHMSNgoXYWxsb3dfYWRkaXRpb25hbF9maWVsZHMYAyABKAhSFWFsbG93QWRkaXRpb25hbEZpZWxkcxIUCgV0aXRsZRgEIAEoCVIFdGl0bGUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW9uEoYBCg5maWVsZF9vcmRlcmluZxgGIAMoCzJfLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuQ3JlYXRlQ3JlZGVudGlhbFRlbXBsYXRlUmVxdWVzdC5GaWVsZE9yZGVyaW5nRW50cnlSDWZpZWxkT3JkZXJpbmcSdgoUYXBwbGVfd2FsbGV0X29wdGlvbnMYByABKAsyPy5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkFwcGxlV2FsbGV0T3B0aW9uc0gAUhJhcHBsZVdhbGxldE9wdGlvbnOIAQEadQoLRmllbGRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRmllbGRSBXZhbHVlOgI4ARp8ChJGaWVsZE9yZGVyaW5nRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkZpZWxkT3JkZXJpbmdSBXZhbHVlOgI4AUIXChVfYXBwbGVfd2FsbGV0X29wdGlvbnM=');
 @$core.Deprecated('Use createCredentialTemplateResponseDescriptor instead')
 const CreateCredentialTemplateResponse$json = const {
   '1': 'CreateCredentialTemplateResponse',
@@ -233,101 +290,126 @@ const CreateCredentialTemplateResponse$json = const {
 final $typed_data.Uint8List createCredentialTemplateResponseDescriptor =
     $convert.base64Decode(
         'CiBDcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXNwb25zZRJNCgRkYXRhGAEgASgLMjkuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZURhdGFSBGRhdGE=');
-@$core.Deprecated('Use templateFieldDescriptor instead')
-const TemplateField$json = const {
-  '1': 'TemplateField',
+@$core.Deprecated('Use updateCredentialTemplateRequestDescriptor instead')
+const UpdateCredentialTemplateRequest$json = const {
+  '1': 'UpdateCredentialTemplateRequest',
   '2': const [
-    const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
-    const {'1': 'optional', '3': 3, '4': 1, '5': 8, '10': 'optional'},
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {
-      '1': 'type',
-      '3': 4,
+      '1': 'title',
+      '3': 2,
       '4': 1,
-      '5': 14,
-      '6': '.services.verifiablecredentials.templates.v1.FieldType',
-      '10': 'type'
+      '5': 9,
+      '9': 0,
+      '10': 'title',
+      '17': true
     },
     const {
-      '1': 'annotations',
+      '1': 'description',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '9': 1,
+      '10': 'description',
+      '17': true
+    },
+    const {
+      '1': 'fields',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest.FieldsEntry',
+      '10': 'fields'
+    },
+    const {
+      '1': 'field_ordering',
       '3': 5,
       '4': 3,
       '5': 11,
       '6':
-          '.services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry',
-      '10': 'annotations'
+          '.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest.FieldOrderingEntry',
+      '10': 'fieldOrdering'
+    },
+    const {
+      '1': 'apple_wallet_options',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.AppleWalletOptions',
+      '9': 2,
+      '10': 'appleWalletOptions',
+      '17': true
     },
   ],
-  '3': const [TemplateField_AnnotationsEntry$json],
+  '3': const [
+    UpdateCredentialTemplateRequest_FieldsEntry$json,
+    UpdateCredentialTemplateRequest_FieldOrderingEntry$json
+  ],
+  '8': const [
+    const {'1': '_title'},
+    const {'1': '_description'},
+    const {'1': '_apple_wallet_options'},
+  ],
 };
 
-@$core.Deprecated('Use templateFieldDescriptor instead')
-const TemplateField_AnnotationsEntry$json = const {
-  '1': 'AnnotationsEntry',
+@$core.Deprecated('Use updateCredentialTemplateRequestDescriptor instead')
+const UpdateCredentialTemplateRequest_FieldsEntry$json = const {
+  '1': 'FieldsEntry',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+    const {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.TemplateFieldPatch',
+      '10': 'value'
+    },
   ],
   '7': const {'7': true},
 };
 
-/// Descriptor for `TemplateField`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List templateFieldDescriptor = $convert.base64Decode(
-    'Cg1UZW1wbGF0ZUZpZWxkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIaCghvcHRpb25hbBgDIAEoCFIIb3B0aW9uYWwSSgoEdHlwZRgEIAEoDjI2LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuRmllbGRUeXBlUgR0eXBlEm0KC2Fubm90YXRpb25zGAUgAygLMksuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZUZpZWxkLkFubm90YXRpb25zRW50cnlSC2Fubm90YXRpb25zGj4KEEFubm90YXRpb25zRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
-@$core.Deprecated('Use getTemplateRequestDescriptor instead')
-const GetTemplateRequest$json = const {
-  '1': 'GetTemplateRequest',
+@$core.Deprecated('Use updateCredentialTemplateRequestDescriptor instead')
+const UpdateCredentialTemplateRequest_FieldOrderingEntry$json = const {
+  '1': 'FieldOrderingEntry',
   '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.FieldOrdering',
+      '10': 'value'
+    },
   ],
+  '7': const {'7': true},
 };
 
-/// Descriptor for `GetTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getTemplateRequestDescriptor =
-    $convert.base64Decode('ChJHZXRUZW1wbGF0ZVJlcXVlc3QSDgoCaWQYASABKAlSAmlk');
-@$core.Deprecated('Use getTemplateResponseDescriptor instead')
-const GetTemplateResponse$json = const {
-  '1': 'GetTemplateResponse',
+/// Descriptor for `UpdateCredentialTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateCredentialTemplateRequestDescriptor =
+    $convert.base64Decode(
+        'Ch9VcGRhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0Eg4KAmlkGAEgASgJUgJpZBIZCgV0aXRsZRgCIAEoCUgAUgV0aXRsZYgBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUgBUgtkZXNjcmlwdGlvbogBARJwCgZmaWVsZHMYBCADKAsyWC5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlVwZGF0ZUNyZWRlbnRpYWxUZW1wbGF0ZVJlcXVlc3QuRmllbGRzRW50cnlSBmZpZWxkcxKGAQoOZmllbGRfb3JkZXJpbmcYBSADKAsyXy5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlVwZGF0ZUNyZWRlbnRpYWxUZW1wbGF0ZVJlcXVlc3QuRmllbGRPcmRlcmluZ0VudHJ5Ug1maWVsZE9yZGVyaW5nEnYKFGFwcGxlX3dhbGxldF9vcHRpb25zGAYgASgLMj8uc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5BcHBsZVdhbGxldE9wdGlvbnNIAlISYXBwbGVXYWxsZXRPcHRpb25ziAEBGnoKC0ZpZWxkc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5ElUKBXZhbHVlGAIgASgLMj8uc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZUZpZWxkUGF0Y2hSBXZhbHVlOgI4ARp8ChJGaWVsZE9yZGVyaW5nRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkZpZWxkT3JkZXJpbmdSBXZhbHVlOgI4AUIICgZfdGl0bGVCDgoMX2Rlc2NyaXB0aW9uQhcKFV9hcHBsZV93YWxsZXRfb3B0aW9ucw==');
+@$core.Deprecated('Use updateCredentialTemplateResponseDescriptor instead')
+const UpdateCredentialTemplateResponse$json = const {
+  '1': 'UpdateCredentialTemplateResponse',
   '2': const [
     const {
-      '1': 'data',
+      '1': 'updated_template',
       '3': 1,
       '4': 1,
       '5': 11,
       '6': '.services.verifiablecredentials.templates.v1.TemplateData',
-      '10': 'data'
+      '10': 'updatedTemplate'
     },
   ],
 };
 
-/// Descriptor for `GetTemplateResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getTemplateResponseDescriptor = $convert.base64Decode(
-    'ChNHZXRUZW1wbGF0ZVJlc3BvbnNlEk0KBGRhdGEYASABKAsyOS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRGF0YVIEZGF0YQ==');
-@$core.Deprecated('Use listTemplatesRequestDescriptor instead')
-const ListTemplatesRequest$json = const {
-  '1': 'ListTemplatesRequest',
-};
-
-/// Descriptor for `ListTemplatesRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listTemplatesRequestDescriptor =
-    $convert.base64Decode('ChRMaXN0VGVtcGxhdGVzUmVxdWVzdA==');
-@$core.Deprecated('Use listTemplatesResponseDescriptor instead')
-const ListTemplatesResponse$json = const {
-  '1': 'ListTemplatesResponse',
-  '2': const [
-    const {
-      '1': 'templates',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.services.verifiablecredentials.templates.v1.TemplateData',
-      '10': 'templates'
-    },
-  ],
-};
-
-/// Descriptor for `ListTemplatesResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listTemplatesResponseDescriptor = $convert.base64Decode(
-    'ChVMaXN0VGVtcGxhdGVzUmVzcG9uc2USVwoJdGVtcGxhdGVzGAEgAygLMjkuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZURhdGFSCXRlbXBsYXRlcw==');
+/// Descriptor for `UpdateCredentialTemplateResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateCredentialTemplateResponseDescriptor =
+    $convert.base64Decode(
+        'CiBVcGRhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXNwb25zZRJkChB1cGRhdGVkX3RlbXBsYXRlGAEgASgLMjkuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZURhdGFSD3VwZGF0ZWRUZW1wbGF0ZQ==');
 @$core.Deprecated('Use templateDataDescriptor instead')
 const TemplateData$json = const {
   '1': 'TemplateData',
@@ -364,8 +446,30 @@ const TemplateData$json = const {
     const {'1': 'type', '3': 9, '4': 1, '5': 9, '10': 'type'},
     const {'1': 'created_by', '3': 10, '4': 1, '5': 9, '10': 'createdBy'},
     const {'1': 'date_created', '3': 11, '4': 1, '5': 9, '10': 'dateCreated'},
+    const {'1': 'title', '3': 12, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'description', '3': 13, '4': 1, '5': 9, '10': 'description'},
+    const {
+      '1': 'field_ordering',
+      '3': 14,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.TemplateData.FieldOrderingEntry',
+      '10': 'fieldOrdering'
+    },
+    const {
+      '1': 'apple_wallet_options',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.AppleWalletOptions',
+      '10': 'appleWalletOptions'
+    },
   ],
-  '3': const [TemplateData_FieldsEntry$json],
+  '3': const [
+    TemplateData_FieldsEntry$json,
+    TemplateData_FieldOrderingEntry$json
+  ],
 };
 
 @$core.Deprecated('Use templateDataDescriptor instead')
@@ -385,6 +489,220 @@ const TemplateData_FieldsEntry$json = const {
   '7': const {'7': true},
 };
 
+@$core.Deprecated('Use templateDataDescriptor instead')
+const TemplateData_FieldOrderingEntry$json = const {
+  '1': 'FieldOrderingEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.FieldOrdering',
+      '10': 'value'
+    },
+  ],
+  '7': const {'7': true},
+};
+
 /// Descriptor for `TemplateData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List templateDataDescriptor = $convert.base64Decode(
-    'CgxUZW1wbGF0ZURhdGESDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJdCgZmaWVsZHMYBCADKAsyRS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRGF0YS5GaWVsZHNFbnRyeVIGZmllbGRzEjYKF2FsbG93X2FkZGl0aW9uYWxfZmllbGRzGAUgASgIUhVhbGxvd0FkZGl0aW9uYWxGaWVsZHMSHQoKc2NoZW1hX3VyaRgGIAEoCVIJc2NoZW1hVXJpEiMKC2NvbnRleHRfdXJpGAcgASgJQgIYAVIKY29udGV4dFVyaRIhCgxlY29zeXN0ZW1faWQYCCABKAlSC2Vjb3N5c3RlbUlkEhIKBHR5cGUYCSABKAlSBHR5cGUSHQoKY3JlYXRlZF9ieRgKIAEoCVIJY3JlYXRlZEJ5EiEKDGRhdGVfY3JlYXRlZBgLIAEoCVILZGF0ZUNyZWF0ZWQadQoLRmllbGRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRmllbGRSBXZhbHVlOgI4AQ==');
+    'CgxUZW1wbGF0ZURhdGESDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJdCgZmaWVsZHMYBCADKAsyRS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRGF0YS5GaWVsZHNFbnRyeVIGZmllbGRzEjYKF2FsbG93X2FkZGl0aW9uYWxfZmllbGRzGAUgASgIUhVhbGxvd0FkZGl0aW9uYWxGaWVsZHMSHQoKc2NoZW1hX3VyaRgGIAEoCVIJc2NoZW1hVXJpEiMKC2NvbnRleHRfdXJpGAcgASgJQgIYAVIKY29udGV4dFVyaRIhCgxlY29zeXN0ZW1faWQYCCABKAlSC2Vjb3N5c3RlbUlkEhIKBHR5cGUYCSABKAlSBHR5cGUSHQoKY3JlYXRlZF9ieRgKIAEoCVIJY3JlYXRlZEJ5EiEKDGRhdGVfY3JlYXRlZBgLIAEoCVILZGF0ZUNyZWF0ZWQSFAoFdGl0bGUYDCABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGA0gASgJUgtkZXNjcmlwdGlvbhJzCg5maWVsZF9vcmRlcmluZxgOIAMoCzJMLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVGVtcGxhdGVEYXRhLkZpZWxkT3JkZXJpbmdFbnRyeVINZmllbGRPcmRlcmluZxJxChRhcHBsZV93YWxsZXRfb3B0aW9ucxgPIAEoCzI/LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuQXBwbGVXYWxsZXRPcHRpb25zUhJhcHBsZVdhbGxldE9wdGlvbnMadQoLRmllbGRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRmllbGRSBXZhbHVlOgI4ARp8ChJGaWVsZE9yZGVyaW5nRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkZpZWxkT3JkZXJpbmdSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use appleWalletOptionsDescriptor instead')
+const AppleWalletOptions$json = const {
+  '1': 'AppleWalletOptions',
+  '2': const [
+    const {
+      '1': 'background_color',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'backgroundColor'
+    },
+    const {
+      '1': 'foreground_color',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'foregroundColor'
+    },
+    const {'1': 'label_color', '3': 3, '4': 1, '5': 9, '10': 'labelColor'},
+    const {'1': 'primary_field', '3': 4, '4': 1, '5': 9, '10': 'primaryField'},
+    const {
+      '1': 'secondary_fields',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry',
+      '10': 'secondaryFields'
+    },
+    const {
+      '1': 'auxiliary_fields',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry',
+      '10': 'auxiliaryFields'
+    },
+  ],
+  '3': const [
+    AppleWalletOptions_SecondaryFieldsEntry$json,
+    AppleWalletOptions_AuxiliaryFieldsEntry$json
+  ],
+};
+
+@$core.Deprecated('Use appleWalletOptionsDescriptor instead')
+const AppleWalletOptions_SecondaryFieldsEntry$json = const {
+  '1': 'SecondaryFieldsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 5, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+@$core.Deprecated('Use appleWalletOptionsDescriptor instead')
+const AppleWalletOptions_AuxiliaryFieldsEntry$json = const {
+  '1': 'AuxiliaryFieldsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 5, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `AppleWalletOptions`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List appleWalletOptionsDescriptor = $convert.base64Decode(
+    'ChJBcHBsZVdhbGxldE9wdGlvbnMSKQoQYmFja2dyb3VuZF9jb2xvchgBIAEoCVIPYmFja2dyb3VuZENvbG9yEikKEGZvcmVncm91bmRfY29sb3IYAiABKAlSD2ZvcmVncm91bmRDb2xvchIfCgtsYWJlbF9jb2xvchgDIAEoCVIKbGFiZWxDb2xvchIjCg1wcmltYXJ5X2ZpZWxkGAQgASgJUgxwcmltYXJ5RmllbGQSfwoQc2Vjb25kYXJ5X2ZpZWxkcxgFIAMoCzJULnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuQXBwbGVXYWxsZXRPcHRpb25zLlNlY29uZGFyeUZpZWxkc0VudHJ5Ug9zZWNvbmRhcnlGaWVsZHMSfwoQYXV4aWxpYXJ5X2ZpZWxkcxgGIAMoCzJULnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuQXBwbGVXYWxsZXRPcHRpb25zLkF1eGlsaWFyeUZpZWxkc0VudHJ5Ug9hdXhpbGlhcnlGaWVsZHMaQgoUU2Vjb25kYXJ5RmllbGRzRW50cnkSEAoDa2V5GAEgASgFUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4ARpCChRBdXhpbGlhcnlGaWVsZHNFbnRyeRIQCgNrZXkYASABKAVSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
+@$core.Deprecated('Use fieldOrderingDescriptor instead')
+const FieldOrdering$json = const {
+  '1': 'FieldOrdering',
+  '2': const [
+    const {'1': 'order', '3': 1, '4': 1, '5': 5, '10': 'order'},
+    const {'1': 'section', '3': 2, '4': 1, '5': 9, '10': 'section'},
+  ],
+};
+
+/// Descriptor for `FieldOrdering`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List fieldOrderingDescriptor = $convert.base64Decode(
+    'Cg1GaWVsZE9yZGVyaW5nEhQKBW9yZGVyGAEgASgFUgVvcmRlchIYCgdzZWN0aW9uGAIgASgJUgdzZWN0aW9u');
+@$core.Deprecated('Use templateFieldDescriptor instead')
+const TemplateField$json = const {
+  '1': 'TemplateField',
+  '2': const [
+    const {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
+    const {'1': 'optional', '3': 3, '4': 1, '5': 8, '10': 'optional'},
+    const {
+      '1': 'type',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.services.verifiablecredentials.templates.v1.FieldType',
+      '10': 'type'
+    },
+    const {
+      '1': 'annotations',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry',
+      '8': const {'3': true},
+      '10': 'annotations',
+    },
+    const {
+      '1': 'uri_data',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.UriFieldData',
+      '9': 0,
+      '10': 'uriData',
+      '17': true
+    },
+  ],
+  '3': const [TemplateField_AnnotationsEntry$json],
+  '8': const [
+    const {'1': '_uri_data'},
+  ],
+};
+
+@$core.Deprecated('Use templateFieldDescriptor instead')
+const TemplateField_AnnotationsEntry$json = const {
+  '1': 'AnnotationsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `TemplateField`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List templateFieldDescriptor = $convert.base64Decode(
+    'Cg1UZW1wbGF0ZUZpZWxkEhQKBXRpdGxlGAEgASgJUgV0aXRsZRIgCgtkZXNjcmlwdGlvbhgCIAEoCVILZGVzY3JpcHRpb24SGgoIb3B0aW9uYWwYAyABKAhSCG9wdGlvbmFsEkoKBHR5cGUYBCABKA4yNi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkZpZWxkVHlwZVIEdHlwZRJxCgthbm5vdGF0aW9ucxgFIAMoCzJLLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVGVtcGxhdGVGaWVsZC5Bbm5vdGF0aW9uc0VudHJ5QgIYAVILYW5ub3RhdGlvbnMSWQoIdXJpX2RhdGEYBiABKAsyOS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlVyaUZpZWxkRGF0YUgAUgd1cmlEYXRhiAEBGj4KEEFubm90YXRpb25zRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AUILCglfdXJpX2RhdGE=');
+@$core.Deprecated('Use templateFieldPatchDescriptor instead')
+const TemplateFieldPatch$json = const {
+  '1': 'TemplateFieldPatch',
+  '2': const [
+    const {
+      '1': 'title',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'title',
+      '17': true
+    },
+    const {
+      '1': 'description',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '9': 1,
+      '10': 'description',
+      '17': true
+    },
+    const {
+      '1': 'uri_data',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.services.verifiablecredentials.templates.v1.UriFieldData',
+      '9': 2,
+      '10': 'uriData',
+      '17': true
+    },
+  ],
+  '8': const [
+    const {'1': '_title'},
+    const {'1': '_description'},
+    const {'1': '_uri_data'},
+  ],
+};
+
+/// Descriptor for `TemplateFieldPatch`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List templateFieldPatchDescriptor = $convert.base64Decode(
+    'ChJUZW1wbGF0ZUZpZWxkUGF0Y2gSGQoFdGl0bGUYASABKAlIAFIFdGl0bGWIAQESJQoLZGVzY3JpcHRpb24YAiABKAlIAVILZGVzY3JpcHRpb26IAQESWQoIdXJpX2RhdGEYAyABKAsyOS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlVyaUZpZWxkRGF0YUgCUgd1cmlEYXRhiAEBQggKBl90aXRsZUIOCgxfZGVzY3JpcHRpb25CCwoJX3VyaV9kYXRh');
+@$core.Deprecated('Use uriFieldDataDescriptor instead')
+const UriFieldData$json = const {
+  '1': 'UriFieldData',
+  '2': const [
+    const {'1': 'mime_type', '3': 1, '4': 1, '5': 9, '10': 'mimeType'},
+    const {
+      '1': 'render_method',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.services.verifiablecredentials.templates.v1.UriRenderMethod',
+      '10': 'renderMethod'
+    },
+  ],
+};
+
+/// Descriptor for `UriFieldData`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List uriFieldDataDescriptor = $convert.base64Decode(
+    'CgxVcmlGaWVsZERhdGESGwoJbWltZV90eXBlGAEgASgJUghtaW1lVHlwZRJhCg1yZW5kZXJfbWV0aG9kGAIgASgOMjwuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5VcmlSZW5kZXJNZXRob2RSDHJlbmRlck1ldGhvZA==');

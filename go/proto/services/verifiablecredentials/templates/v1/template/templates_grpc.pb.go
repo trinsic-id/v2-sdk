@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	CredentialTemplates_Create_FullMethodName = "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create"
 	CredentialTemplates_Get_FullMethodName    = "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get"
+	CredentialTemplates_Update_FullMethodName = "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update"
 	CredentialTemplates_List_FullMethodName   = "/services.verifiablecredentials.templates.v1.CredentialTemplates/List"
 	CredentialTemplates_Search_FullMethodName = "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search"
 	CredentialTemplates_Delete_FullMethodName = "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete"
@@ -34,6 +35,8 @@ type CredentialTemplatesClient interface {
 	Create(ctx context.Context, in *CreateCredentialTemplateRequest, opts ...grpc.CallOption) (*CreateCredentialTemplateResponse, error)
 	// Fetch a credential template by ID
 	Get(ctx context.Context, in *GetCredentialTemplateRequest, opts ...grpc.CallOption) (*GetCredentialTemplateResponse, error)
+	// Update metadata of a template
+	Update(ctx context.Context, in *UpdateCredentialTemplateRequest, opts ...grpc.CallOption) (*UpdateCredentialTemplateResponse, error)
 	// Search credential templates using SQL, returning strongly-typed template data
 	List(ctx context.Context, in *ListCredentialTemplatesRequest, opts ...grpc.CallOption) (*ListCredentialTemplatesResponse, error)
 	// Search credential templates using SQL, returning raw JSON data
@@ -62,6 +65,15 @@ func (c *credentialTemplatesClient) Create(ctx context.Context, in *CreateCreden
 func (c *credentialTemplatesClient) Get(ctx context.Context, in *GetCredentialTemplateRequest, opts ...grpc.CallOption) (*GetCredentialTemplateResponse, error) {
 	out := new(GetCredentialTemplateResponse)
 	err := c.cc.Invoke(ctx, CredentialTemplates_Get_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *credentialTemplatesClient) Update(ctx context.Context, in *UpdateCredentialTemplateRequest, opts ...grpc.CallOption) (*UpdateCredentialTemplateResponse, error) {
+	out := new(UpdateCredentialTemplateResponse)
+	err := c.cc.Invoke(ctx, CredentialTemplates_Update_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,6 +115,8 @@ type CredentialTemplatesServer interface {
 	Create(context.Context, *CreateCredentialTemplateRequest) (*CreateCredentialTemplateResponse, error)
 	// Fetch a credential template by ID
 	Get(context.Context, *GetCredentialTemplateRequest) (*GetCredentialTemplateResponse, error)
+	// Update metadata of a template
+	Update(context.Context, *UpdateCredentialTemplateRequest) (*UpdateCredentialTemplateResponse, error)
 	// Search credential templates using SQL, returning strongly-typed template data
 	List(context.Context, *ListCredentialTemplatesRequest) (*ListCredentialTemplatesResponse, error)
 	// Search credential templates using SQL, returning raw JSON data
@@ -121,6 +135,9 @@ func (UnimplementedCredentialTemplatesServer) Create(context.Context, *CreateCre
 }
 func (UnimplementedCredentialTemplatesServer) Get(context.Context, *GetCredentialTemplateRequest) (*GetCredentialTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+}
+func (UnimplementedCredentialTemplatesServer) Update(context.Context, *UpdateCredentialTemplateRequest) (*UpdateCredentialTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
 func (UnimplementedCredentialTemplatesServer) List(context.Context, *ListCredentialTemplatesRequest) (*ListCredentialTemplatesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
@@ -176,6 +193,24 @@ func _CredentialTemplates_Get_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CredentialTemplatesServer).Get(ctx, req.(*GetCredentialTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CredentialTemplates_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCredentialTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CredentialTemplatesServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CredentialTemplates_Update_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CredentialTemplatesServer).Update(ctx, req.(*UpdateCredentialTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -248,6 +283,10 @@ var CredentialTemplates_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Get",
 			Handler:    _CredentialTemplates_Get_Handler,
+		},
+		{
+			MethodName: "Update",
+			Handler:    _CredentialTemplates_Update_Handler,
 		},
 		{
 			MethodName: "List",

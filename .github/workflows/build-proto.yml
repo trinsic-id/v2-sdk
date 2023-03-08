@@ -52,12 +52,12 @@ jobs:
         id: buildsdkwrappers
         with:
           protoPath: ${{ github.workspace }}/proto
-          dartPath: ${{ github.workspace }}/dart
-          dotnetPath: ${{ github.workspace }}/dotnet
-          golangPath: ${{ github.workspace }}/go
-          javaKotlinPath: ${{ github.workspace }}/java
-          pythonPath: ${{ github.workspace }}/python
-          typescriptPath: ${{ github.workspace }}/web
+          dartPath: ${{ github.workspace }}/dart/lib/src
+          dotnetPath: ${{ github.workspace }}/dotnet/Trinsic
+          golangPath: ${{ github.workspace }}/go/services
+          javaKotlinPath: ${{ github.workspace }}/java/src/main/java/trinsic/services
+          pythonPath: ${{ github.workspace }}/python/trinsic
+          typescriptPath: ${{ github.workspace }}/web/src
       - name: Install protobuf plugins
         run: |
           pip install -r ./devops/requirements.txt

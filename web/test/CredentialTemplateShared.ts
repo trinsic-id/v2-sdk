@@ -19,24 +19,28 @@ export function createRequiredTestObjects() {
     // defineTemplate() {
     const credentialTemplateName = `My First Credential Template-${uuid()}`;
     const nameField = TemplateField.fromPartial({
+        title: "name",
         description: "The name of the person",
         type: FieldType.STRING,
         optional: false,
     });
 
     const numberOfBags = TemplateField.fromPartial({
+        title: "numberOfBags",
         type: FieldType.NUMBER,
         description: "The number of bags the person is taking on the trip",
         optional: false,
     });
 
     const dateOfBirth = TemplateField.fromPartial({
+        title: "dateOfBirth",
         type: FieldType.DATETIME,
         description: "The date of birth of the person",
         optional: false,
     });
 
     const isVaccinated = TemplateField.fromPartial({
+        title: "vaccinated",
         type: FieldType.BOOL,
         description: "Whether or not the person has been vaccinated",
         optional: false,
