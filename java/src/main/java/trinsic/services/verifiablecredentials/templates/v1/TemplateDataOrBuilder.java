@@ -187,7 +187,7 @@ public interface TemplateDataOrBuilder
    * <code>string context_uri = 7 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
    * @return The contextUri.
    */
   @java.lang.Deprecated
@@ -202,7 +202,7 @@ public interface TemplateDataOrBuilder
    * <code>string context_uri = 7 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
    * @return The bytes for contextUri.
    */
   @java.lang.Deprecated
@@ -307,4 +307,168 @@ public interface TemplateDataOrBuilder
    * @return The bytes for dateCreated.
    */
   com.google.protobuf.ByteString getDateCreatedBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template title
+   * </pre>
+   *
+   * <code>string title = 12;</code>
+   *
+   * @return The title.
+   */
+  java.lang.String getTitle();
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template title
+   * </pre>
+   *
+   * <code>string title = 12;</code>
+   *
+   * @return The bytes for title.
+   */
+  com.google.protobuf.ByteString getTitleBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template description
+   * </pre>
+   *
+   * <code>string description = 13;</code>
+   *
+   * @return The description.
+   */
+  java.lang.String getDescription();
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template description
+   * </pre>
+   *
+   * <code>string description = 13;</code>
+   *
+   * @return The bytes for description.
+   */
+  com.google.protobuf.ByteString getDescriptionBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  int getFieldOrderingCount();
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  boolean containsFieldOrdering(java.lang.String key);
+  /** Use {@link #getFieldOrderingMap()} instead. */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      getFieldOrdering();
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      getFieldOrderingMap();
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+
+  /* nullable */
+  trinsic.services.verifiablecredentials.templates.v1.FieldOrdering getFieldOrderingOrDefault(
+      java.lang.String key,
+      /* nullable */
+      trinsic.services.verifiablecredentials.templates.v1.FieldOrdering defaultValue);
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  trinsic.services.verifiablecredentials.templates.v1.FieldOrdering getFieldOrderingOrThrow(
+      java.lang.String key);
+
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+   * </code>
+   *
+   * @return Whether the appleWalletOptions field is set.
+   */
+  boolean hasAppleWalletOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+   * </code>
+   *
+   * @return The appleWalletOptions.
+   */
+  trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions getAppleWalletOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+   * </code>
+   */
+  trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder
+      getAppleWalletOptionsOrBuilder();
 }

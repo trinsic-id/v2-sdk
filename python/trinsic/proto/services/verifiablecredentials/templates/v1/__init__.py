@@ -30,6 +30,22 @@ class FieldType(betterproto.Enum):
     URI = 5
 
 
+class UriRenderMethod(betterproto.Enum):
+    """How to display a URI value when rendering a credential."""
+
+    TEXT = 0
+    """Display URI as text"""
+
+    LINK = 1
+    """Display URI as a clickable link"""
+
+    INLINE_IMAGE = 2
+    """
+    Display URI as an inline image. Only takes effect if the template field's
+    MIME Type is an image type.
+    """
+
+
 @dataclass(eq=False, repr=False)
 class GetCredentialTemplateRequest(betterproto.Message):
     """Request to fetch a template by ID"""
@@ -134,7 +150,9 @@ class CreateCredentialTemplateRequest(betterproto.Message):
     """Request to create a new template"""
 
     name: str = betterproto.string_field(1)
-    """Name of new template"""
+    """
+    Name of new template. Must be a unique identifier within its ecosystem.
+    """
 
     fields: Dict[str, "TemplateField"] = betterproto.map_field(
         2, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
@@ -147,6 +165,26 @@ class CreateCredentialTemplateRequest(betterproto.Message):
     not specified in `fields`
     """
 
+    title: str = betterproto.string_field(4)
+    """Human-readable name of template"""
+
+    description: str = betterproto.string_field(5)
+    """Human-readable description of template"""
+
+    field_ordering: Dict[str, "FieldOrdering"] = betterproto.map_field(
+        6, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    """
+    Optional map describing how to order and categorize the fields within the
+    template. The key of this map is the field `name`. If not provided, this
+    will be auto-generated.
+    """
+
+    apple_wallet_options: Optional["AppleWalletOptions"] = betterproto.message_field(
+        7, optional=True, group="_apple_wallet_options"
+    )
+    """Options for rendering the template in Apple Wallet"""
+
 
 @dataclass(eq=False, repr=False)
 class CreateCredentialTemplateResponse(betterproto.Message):
@@ -157,55 +195,45 @@ class CreateCredentialTemplateResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class TemplateField(betterproto.Message):
-    """A field defined in a template"""
-
-    description: str = betterproto.string_field(2)
-    """Human-readable description of the field"""
-
-    optional: bool = betterproto.bool_field(3)
-    """
-    Whether this field may be omitted when a credential is issued against the
-    template
-    """
-
-    type: "FieldType" = betterproto.enum_field(4)
-    """The type of the field"""
-
-    annotations: Dict[str, str] = betterproto.map_field(
-        5, betterproto.TYPE_STRING, betterproto.TYPE_STRING
-    )
-    """
-    Annotations for the field that may be used to add additional information
-    """
-
-
-@dataclass(eq=False, repr=False)
-class GetTemplateRequest(betterproto.Message):
-    """Unused"""
+class UpdateCredentialTemplateRequest(betterproto.Message):
+    """Request to update display information for a template"""
 
     id: str = betterproto.string_field(1)
+    """ID of Template to update"""
+
+    title: Optional[str] = betterproto.string_field(2, optional=True, group="_title")
+    """New human-readable title of Template"""
+
+    description: Optional[str] = betterproto.string_field(
+        3, optional=True, group="_description"
+    )
+    """New human-readable description of Template"""
+
+    fields: Dict[str, "TemplateFieldPatch"] = betterproto.map_field(
+        4, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    """Fields to update within the Template"""
+
+    field_ordering: Dict[str, "FieldOrdering"] = betterproto.map_field(
+        5, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    """
+    New field ordering options. See documentation for template creation for
+    usage information.
+    """
+
+    apple_wallet_options: Optional["AppleWalletOptions"] = betterproto.message_field(
+        6, optional=True, group="_apple_wallet_options"
+    )
+    """New Apple Wallet configuration"""
 
 
 @dataclass(eq=False, repr=False)
-class GetTemplateResponse(betterproto.Message):
-    """Unused"""
+class UpdateCredentialTemplateResponse(betterproto.Message):
+    """Response to `UpdateCredentialTemplateRequest`"""
 
-    data: "TemplateData" = betterproto.message_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class ListTemplatesRequest(betterproto.Message):
-    """Unused"""
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class ListTemplatesResponse(betterproto.Message):
-    """Unused"""
-
-    templates: List["TemplateData"] = betterproto.message_field(1)
+    updated_template: "TemplateData" = betterproto.message_field(1)
+    """The Template after the update has been applied"""
 
 
 @dataclass(eq=False, repr=False)
@@ -250,10 +278,167 @@ class TemplateData(betterproto.Message):
     date_created: str = betterproto.string_field(11)
     """Date when template was created as ISO 8601 utc string"""
 
+    title: str = betterproto.string_field(12)
+    """Human-readable template title"""
+
+    description: str = betterproto.string_field(13)
+    """Human-readable template description"""
+
+    field_ordering: Dict[str, "FieldOrdering"] = betterproto.map_field(
+        14, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    """
+    Map describing how to order and categorize the fields within the template.
+    The key of this map is the field `name`.
+    """
+
+    apple_wallet_options: "AppleWalletOptions" = betterproto.message_field(15)
+    """Options for rendering the template in Apple Wallet"""
+
     def __post_init__(self) -> None:
         super().__post_init__()
         if self.is_set("context_uri"):
             warnings.warn("TemplateData.context_uri is deprecated", DeprecationWarning)
+
+
+@dataclass(eq=False, repr=False)
+class AppleWalletOptions(betterproto.Message):
+    """Configuration options for Apple Wallet when"""
+
+    background_color: str = betterproto.string_field(1)
+    """
+    Background color, in hex format, of credential when stored in an Apple
+    Wallet.
+    """
+
+    foreground_color: str = betterproto.string_field(2)
+    """
+    Foreground color, in hex format, of credential when stored in an Apple
+    Wallet.
+    """
+
+    label_color: str = betterproto.string_field(3)
+    """
+    Label color, in hex format, of credential when stored in an Apple Wallet.
+    """
+
+    primary_field: str = betterproto.string_field(4)
+    """
+    The ID of the template field which should be used as the primary field of a
+    credential.
+    """
+
+    secondary_fields: Dict[int, str] = betterproto.map_field(
+        5, betterproto.TYPE_INT32, betterproto.TYPE_STRING
+    )
+    """
+    The secondary fields of the credential. This is a mapping between the order
+    of a secondary field (0 or 1) and the field name.
+    """
+
+    auxiliary_fields: Dict[int, str] = betterproto.map_field(
+        6, betterproto.TYPE_INT32, betterproto.TYPE_STRING
+    )
+    """
+    The auxiliary fields of the credential. This is a mapping between the order
+    of an auxiliary field (0 or 1) and the field name.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class FieldOrdering(betterproto.Message):
+    """Ordering information for a template field"""
+
+    order: int = betterproto.int32_field(1)
+    """
+    The order of the field; must be unique within the Template. Fields are
+    sorted by order ascending when displaying a credential. Field orders must
+    be contiguous from `0` to the number of fields minus 1.
+    """
+
+    section: str = betterproto.string_field(2)
+    """
+    The human-readable name of the section this field appears in; used to group
+    together fields when displaying a credential. Sections must be contiguous
+    with respect to `order`.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class TemplateField(betterproto.Message):
+    """A field defined in a template"""
+
+    title: str = betterproto.string_field(1)
+    """Human-readable name of the field"""
+
+    description: str = betterproto.string_field(2)
+    """Human-readable description of the field"""
+
+    optional: bool = betterproto.bool_field(3)
+    """
+    Whether this field may be omitted when a credential is issued against the
+    template
+    """
+
+    type: "FieldType" = betterproto.enum_field(4)
+    """The type of the field"""
+
+    annotations: Dict[str, str] = betterproto.map_field(
+        5, betterproto.TYPE_STRING, betterproto.TYPE_STRING
+    )
+    """
+    Do not use. Annotations for the field that may be used to add additional
+    information.
+    """
+
+    uri_data: Optional["UriFieldData"] = betterproto.message_field(
+        6, optional=True, group="_uri_data"
+    )
+    """
+    How to deal with this URI field when rendering credential. Only use if
+    `type` is `URI`.
+    """
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if self.is_set("annotations"):
+            warnings.warn("TemplateField.annotations is deprecated", DeprecationWarning)
+
+
+@dataclass(eq=False, repr=False)
+class TemplateFieldPatch(betterproto.Message):
+    """A patch to apply to an existing template field"""
+
+    title: Optional[str] = betterproto.string_field(1, optional=True, group="_title")
+    """Human-readable name of the field"""
+
+    description: Optional[str] = betterproto.string_field(
+        2, optional=True, group="_description"
+    )
+    """Human-readable description of the field"""
+
+    uri_data: Optional["UriFieldData"] = betterproto.message_field(
+        3, optional=True, group="_uri_data"
+    )
+    """
+    How to deal with this URI field when rendering credential. Only use if
+    `type` is `URI`.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class UriFieldData(betterproto.Message):
+    """Data pertaining to a URI Field"""
+
+    mime_type: str = betterproto.string_field(1)
+    """
+    Expected MIME Type of content pointed to by URI. Can be generic (eg,
+    "image/") or specific ("image/png"). Defaults to "application/octet-
+    stream".
+    """
+
+    render_method: "UriRenderMethod" = betterproto.enum_field(2)
+    """How to display the URI value when rendering a credential."""
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):
@@ -284,6 +469,22 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get",
             get_credential_template_request,
             GetCredentialTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def update(
+        self,
+        update_credential_template_request: "UpdateCredentialTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "UpdateCredentialTemplateResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update",
+            update_credential_template_request,
+            UpdateCredentialTemplateResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -349,6 +550,11 @@ class CredentialTemplatesBase(ServiceBase):
     ) -> "GetCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def update(
+        self, update_credential_template_request: "UpdateCredentialTemplateRequest"
+    ) -> "UpdateCredentialTemplateResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def list(
         self, list_credential_templates_request: "ListCredentialTemplatesRequest"
     ) -> "ListCredentialTemplatesResponse":
@@ -372,6 +578,11 @@ class CredentialTemplatesBase(ServiceBase):
     async def __rpc_get(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.get(request)
+        await stream.send_message(response)
+
+    async def __rpc_update(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.update(request)
         await stream.send_message(response)
 
     async def __rpc_list(self, stream: grpclib.server.Stream) -> None:
@@ -402,6 +613,12 @@ class CredentialTemplatesBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetCredentialTemplateRequest,
                 GetCredentialTemplateResponse,
+            ),
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update": grpclib.const.Handler(
+                self.__rpc_update,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                UpdateCredentialTemplateRequest,
+                UpdateCredentialTemplateResponse,
             ),
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/List": grpclib.const.Handler(
                 self.__rpc_list,

@@ -26,6 +26,12 @@ class CredentialTemplatesClient extends $grpc.Client {
       ($3.GetCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $3.GetCredentialTemplateResponse.fromBuffer(value));
+  static final _$update = $grpc.ClientMethod<$3.UpdateCredentialTemplateRequest,
+          $3.UpdateCredentialTemplateResponse>(
+      '/services.verifiablecredentials.templates.v1.CredentialTemplates/Update',
+      ($3.UpdateCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $3.UpdateCredentialTemplateResponse.fromBuffer(value));
   static final _$list = $grpc.ClientMethod<$3.ListCredentialTemplatesRequest,
           $3.ListCredentialTemplatesResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/List',
@@ -61,6 +67,12 @@ class CredentialTemplatesClient extends $grpc.Client {
       $3.GetCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$get, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.UpdateCredentialTemplateResponse> update(
+      $3.UpdateCredentialTemplateRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$update, request, options: options);
   }
 
   $grpc.ResponseFuture<$3.ListCredentialTemplatesResponse> list(
@@ -105,6 +117,15 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $3.GetCredentialTemplateRequest.fromBuffer(value),
         ($3.GetCredentialTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.UpdateCredentialTemplateRequest,
+            $3.UpdateCredentialTemplateResponse>(
+        'Update',
+        update_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $3.UpdateCredentialTemplateRequest.fromBuffer(value),
+        ($3.UpdateCredentialTemplateResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$3.ListCredentialTemplatesRequest,
             $3.ListCredentialTemplatesResponse>(
         'List',
@@ -146,6 +167,12 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
     return get(call, await request);
   }
 
+  $async.Future<$3.UpdateCredentialTemplateResponse> update_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$3.UpdateCredentialTemplateRequest> request) async {
+    return update(call, await request);
+  }
+
   $async.Future<$3.ListCredentialTemplatesResponse> list_Pre(
       $grpc.ServiceCall call,
       $async.Future<$3.ListCredentialTemplatesRequest> request) async {
@@ -168,6 +195,8 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $3.CreateCredentialTemplateRequest request);
   $async.Future<$3.GetCredentialTemplateResponse> get(
       $grpc.ServiceCall call, $3.GetCredentialTemplateRequest request);
+  $async.Future<$3.UpdateCredentialTemplateResponse> update(
+      $grpc.ServiceCall call, $3.UpdateCredentialTemplateRequest request);
   $async.Future<$3.ListCredentialTemplatesResponse> list(
       $grpc.ServiceCall call, $3.ListCredentialTemplatesRequest request);
   $async.Future<$3.SearchCredentialTemplatesResponse> search(

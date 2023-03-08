@@ -50,3 +50,33 @@ class FieldType extends $pb.ProtobufEnum {
 
   const FieldType._($core.int v, $core.String n) : super(v, n);
 }
+
+class UriRenderMethod extends $pb.ProtobufEnum {
+  static const UriRenderMethod TEXT = UriRenderMethod._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'TEXT');
+  static const UriRenderMethod LINK = UriRenderMethod._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'LINK');
+  static const UriRenderMethod INLINE_IMAGE = UriRenderMethod._(
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'INLINE_IMAGE');
+
+  static const $core.List<UriRenderMethod> values = <UriRenderMethod>[
+    TEXT,
+    LINK,
+    INLINE_IMAGE,
+  ];
+
+  static final $core.Map<$core.int, UriRenderMethod> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static UriRenderMethod? valueOf($core.int value) => _byValue[value];
+
+  const UriRenderMethod._($core.int v, $core.String n) : super(v, n);
+}

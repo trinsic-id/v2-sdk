@@ -15,6 +15,8 @@ pub enum TemplateCommand {
 #[derive(Debug, PartialEq)]
 pub struct CreateTemplateArgs {
     pub name: String,
+    pub title: String,
+    pub description: String,
     pub fields_file: Option<String>,
     pub fields_data: Option<String>,
     pub allow_additional: bool,
@@ -123,6 +125,8 @@ pub(crate) fn parse(args: &ArgMatches) -> Result<TemplateCommand, Error> {
 fn create(args: &ArgMatches) -> Result<TemplateCommand, Error> {
     Ok(TemplateCommand::Create(CreateTemplateArgs {
         name: args.value_of("name").map_or(String::default(), |x| x.to_string()),
+        description: args.value_of("description").map_or(String::default(), |x| x.to_string()),
+        title: args.value_of("title").map_or(String::default(), |x| x.to_string()),
         fields_file: args.value_of("fields-file").map(|x| x.to_string()),
         fields_data: args.value_of("fields-data").map(|x| x.to_string()),
         allow_additional: args.is_present("allow-additional"),
@@ -169,6 +173,8 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a> {
                 .about("Create new template")
                 .after_help("EXAMPLES:\r\n\ttrinsic template create --name 'My Credential' --fields-data '{\"firstName\":{}}'")
                 .arg(Arg::from_usage("-n --name <TEMPLATE_NAME> 'Sets the name of the template'").required(true))
+                .arg(Arg::from_usage("-d --description <DESCRIPTION> 'Sets the description of the template'").required(false))
+                .arg(Arg::from_usage("-t --title <TITLE> 'Sets the title of the template'").required(false))
                 .arg(Arg::from_usage("--fields-data <JSON> 'Sets the fields of the template formatted as JSON'").required(false))
                 .arg(Arg::from_usage("--fields-file <FILE> 'Sets the file containing fields JSON data'").required(false))
                 .arg(

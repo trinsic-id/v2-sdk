@@ -118,6 +118,58 @@ public final class CredentialTemplatesGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse>
+      getUpdateMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Update",
+      requestType =
+          trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest.class,
+      responseType =
+          trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse
+              .class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse>
+      getUpdateMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest,
+            trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse>
+        getUpdateMethod;
+    if ((getUpdateMethod = CredentialTemplatesGrpc.getUpdateMethod) == null) {
+      synchronized (CredentialTemplatesGrpc.class) {
+        if ((getUpdateMethod = CredentialTemplatesGrpc.getUpdateMethod) == null) {
+          CredentialTemplatesGrpc.getUpdateMethod =
+              getUpdateMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.verifiablecredentials.templates.v1
+                              .UpdateCredentialTemplateRequest,
+                          trinsic.services.verifiablecredentials.templates.v1
+                              .UpdateCredentialTemplateResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Update"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .UpdateCredentialTemplateRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .UpdateCredentialTemplateResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new CredentialTemplatesMethodDescriptorSupplier("Update"))
+                      .build();
+        }
+      }
+    }
+    return getUpdateMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest,
           trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
       getListMethod;
@@ -351,6 +403,22 @@ public final class CredentialTemplatesGrpc {
      *
      *
      * <pre>
+     * Update metadata of a template
+     * </pre>
+     */
+    public void update(
+        trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .UpdateCredentialTemplateResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Search credential templates using SQL, returning strongly-typed template data
      * </pre>
      */
@@ -414,6 +482,14 @@ public final class CredentialTemplatesGrpc {
                           .GetCredentialTemplateRequest,
                       trinsic.services.verifiablecredentials.templates.v1
                           .GetCredentialTemplateResponse>(this, METHODID_GET)))
+          .addMethod(
+              getUpdateMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .UpdateCredentialTemplateRequest,
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .UpdateCredentialTemplateResponse>(this, METHODID_UPDATE)))
           .addMethod(
               getListMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -486,6 +562,23 @@ public final class CredentialTemplatesGrpc {
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Update metadata of a template
+     * </pre>
+     */
+    public void update(
+        trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .UpdateCredentialTemplateResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -586,6 +679,21 @@ public final class CredentialTemplatesGrpc {
      *
      *
      * <pre>
+     * Update metadata of a template
+     * </pre>
+     */
+    public trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse
+        update(
+            trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
+                request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Search credential templates using SQL, returning strongly-typed template data
      * </pre>
      */
@@ -677,6 +785,22 @@ public final class CredentialTemplatesGrpc {
      *
      *
      * <pre>
+     * Update metadata of a template
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse>
+        update(
+            trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest
+                request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Search credential templates using SQL, returning strongly-typed template data
      * </pre>
      */
@@ -724,9 +848,10 @@ public final class CredentialTemplatesGrpc {
 
   private static final int METHODID_CREATE = 0;
   private static final int METHODID_GET = 1;
-  private static final int METHODID_LIST = 2;
-  private static final int METHODID_SEARCH = 3;
-  private static final int METHODID_DELETE = 4;
+  private static final int METHODID_UPDATE = 2;
+  private static final int METHODID_LIST = 3;
+  private static final int METHODID_SEARCH = 4;
+  private static final int METHODID_DELETE = 5;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -761,6 +886,15 @@ public final class CredentialTemplatesGrpc {
               (io.grpc.stub.StreamObserver<
                       trinsic.services.verifiablecredentials.templates.v1
                           .GetCredentialTemplateResponse>)
+                  responseObserver);
+          break;
+        case METHODID_UPDATE:
+          serviceImpl.update(
+              (trinsic.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)
+                  request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .UpdateCredentialTemplateResponse>)
                   responseObserver);
           break;
         case METHODID_LIST:
@@ -856,6 +990,7 @@ public final class CredentialTemplatesGrpc {
                       .setSchemaDescriptor(new CredentialTemplatesFileDescriptorSupplier())
                       .addMethod(getCreateMethod())
                       .addMethod(getGetMethod())
+                      .addMethod(getUpdateMethod())
                       .addMethod(getListMethod())
                       .addMethod(getSearchMethod())
                       .addMethod(getDeleteMethod())

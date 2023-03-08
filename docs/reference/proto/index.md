@@ -830,11 +830,64 @@ Response to `VerifyProofRequest`
 | ----------- | ------------ | ------------- | ------------|
 | Create | [CreateCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse) | Create a credential template in the current ecosystem |
 | Get | [GetCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse) | Fetch a credential template by ID |
+| Update | [UpdateCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest) | [UpdateCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateResponse) | Update metadata of a template |
 | List | [ListCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse) | Search credential templates using SQL, returning strongly-typed template data |
 | Search | [SearchCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse) | Search credential templates using SQL, returning raw JSON data |
 | Delete | [DeleteCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse) | Delete a credential template from the current ecosystem by ID |
 
  <!-- end services -->
+
+
+<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions"></a>
+
+### AppleWalletOptions
+Configuration options for Apple Wallet when
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| background_color | [string](/reference/proto#string) | Background color, in hex format, of credential when stored in an Apple Wallet. |
+| foreground_color | [string](/reference/proto#string) | Foreground color, in hex format, of credential when stored in an Apple Wallet. |
+| label_color | [string](/reference/proto#string) | Label color, in hex format, of credential when stored in an Apple Wallet. |
+| primary_field | [string](/reference/proto#string) | The ID of the template field which should be used as the primary field of a credential. |
+| secondary_fields | [AppleWalletOptions.SecondaryFieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions-SecondaryFieldsEntry)[] | The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name. |
+| auxiliary_fields | [AppleWalletOptions.AuxiliaryFieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions-AuxiliaryFieldsEntry)[] | The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions-AuxiliaryFieldsEntry"></a>
+
+### AppleWalletOptions.AuxiliaryFieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [int32](/reference/proto#int32) |  |
+| value | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions-SecondaryFieldsEntry"></a>
+
+### AppleWalletOptions.SecondaryFieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [int32](/reference/proto#int32) |  |
+| value | [string](/reference/proto#string) |  |
+
+
+
+
 
 
 <a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest"></a>
@@ -845,9 +898,29 @@ Request to create a new template
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Name of new template |
+| name | [string](/reference/proto#string) | Name of new template. Must be a unique identifier within its ecosystem. |
 | fields | [CreateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)[] | Fields which compose the template |
 | allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials may be issued against this template which have fields not specified in `fields` |
+| title | [string](/reference/proto#string) | Human-readable name of template |
+| description | [string](/reference/proto#string) | Human-readable description of template |
+| field_ordering | [CreateCredentialTemplateRequest.FieldOrderingEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldOrderingEntry)[] | Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`. If not provided, this will be auto-generated. |
+| apple_wallet_options | [AppleWalletOptions](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions) | Options for rendering the template in Apple Wallet |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldOrderingEntry"></a>
+
+### CreateCredentialTemplateRequest.FieldOrderingEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [FieldOrdering](/reference/proto#services-verifiablecredentials-templates-v1-FieldOrdering) |  |
 
 
 
@@ -910,6 +983,22 @@ Response to `DeleteCredentialTemplateRequest`
 
 
 
+<a name="services-verifiablecredentials-templates-v1-FieldOrdering"></a>
+
+### FieldOrdering
+Ordering information for a template field
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| order | [int32](/reference/proto#int32) | The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential. Field orders must be contiguous from `0` to the number of fields minus 1. |
+| section | [string](/reference/proto#string) | The human-readable name of the section this field appears in; used to group together fields when displaying a credential. Sections must be contiguous with respect to `order`. |
+
+
+
+
+
+
 <a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest"></a>
 
 ### GetCredentialTemplateRequest
@@ -934,36 +1023,6 @@ Response to `GetCredentialTemplateRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Template fetched by ID |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetTemplateRequest"></a>
-
-### GetTemplateRequest
-Unused
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetTemplateResponse"></a>
-
-### GetTemplateResponse
-Unused
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) |  |
 
 
 
@@ -997,31 +1056,6 @@ Response to `ListCredentialTemplatesRequest`
 | templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] | Templates found by query |
 | has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
 | continuation_token | [string](/reference/proto#string) | Token to fetch next set of resuts via `ListCredentialTemplatesRequest` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesRequest"></a>
-
-### ListTemplatesRequest
-Unused
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesResponse"></a>
-
-### ListTemplatesResponse
-Unused
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
 
 
 
@@ -1080,6 +1114,26 @@ Credential Template
 | type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
 | created_by | [string](/reference/proto#string) | ID of template creator |
 | date_created | [string](/reference/proto#string) | Date when template was created as ISO 8601 utc string |
+| title | [string](/reference/proto#string) | Human-readable template title |
+| description | [string](/reference/proto#string) | Human-readable template description |
+| field_ordering | [TemplateData.FieldOrderingEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldOrderingEntry)[] | Map describing how to order and categorize the fields within the template. The key of this map is the field `name`. |
+| apple_wallet_options | [AppleWalletOptions](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions) | Options for rendering the template in Apple Wallet |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldOrderingEntry"></a>
+
+### TemplateData.FieldOrderingEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [FieldOrdering](/reference/proto#services-verifiablecredentials-templates-v1-FieldOrdering) |  |
 
 
 
@@ -1110,10 +1164,12 @@ A field defined in a template
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
+| title | [string](/reference/proto#string) | Human-readable name of the field |
 | description | [string](/reference/proto#string) | Human-readable description of the field |
 | optional | [bool](/reference/proto#bool) | Whether this field may be omitted when a credential is issued against the template |
 | type | [FieldType](/reference/proto#services-verifiablecredentials-templates-v1-FieldType) | The type of the field |
-| annotations | [TemplateField.AnnotationsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField-AnnotationsEntry)[] | Annotations for the field that may be used to add additional information |
+| annotations | [TemplateField.AnnotationsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField-AnnotationsEntry)[] | **Deprecated.** Do not use. Annotations for the field that may be used to add additional information. |
+| uri_data | [UriFieldData](/reference/proto#services-verifiablecredentials-templates-v1-UriFieldData) | How to deal with this URI field when rendering credential. Only use if `type` is `URI`. |
 
 
 
@@ -1135,6 +1191,106 @@ A field defined in a template
 
 
 
+
+<a name="services-verifiablecredentials-templates-v1-TemplateFieldPatch"></a>
+
+### TemplateFieldPatch
+A patch to apply to an existing template field
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| title | [string](/reference/proto#string) | Human-readable name of the field |
+| description | [string](/reference/proto#string) | Human-readable description of the field |
+| uri_data | [UriFieldData](/reference/proto#services-verifiablecredentials-templates-v1-UriFieldData) | How to deal with this URI field when rendering credential. Only use if `type` is `URI`. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest"></a>
+
+### UpdateCredentialTemplateRequest
+Request to update display information for a template
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of Template to update |
+| title | [string](/reference/proto#string) | New human-readable title of Template |
+| description | [string](/reference/proto#string) | New human-readable description of Template |
+| fields | [UpdateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldsEntry)[] | Fields to update within the Template |
+| field_ordering | [UpdateCredentialTemplateRequest.FieldOrderingEntry](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldOrderingEntry)[] | New field ordering options. See documentation for template creation for usage information. |
+| apple_wallet_options | [AppleWalletOptions](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions) | New Apple Wallet configuration |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldOrderingEntry"></a>
+
+### UpdateCredentialTemplateRequest.FieldOrderingEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [FieldOrdering](/reference/proto#services-verifiablecredentials-templates-v1-FieldOrdering) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldsEntry"></a>
+
+### UpdateCredentialTemplateRequest.FieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [TemplateFieldPatch](/reference/proto#services-verifiablecredentials-templates-v1-TemplateFieldPatch) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateResponse"></a>
+
+### UpdateCredentialTemplateResponse
+Response to `UpdateCredentialTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| updated_template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | The Template after the update has been applied |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UriFieldData"></a>
+
+### UriFieldData
+Data pertaining to a URI Field
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| mime_type | [string](/reference/proto#string) | Expected MIME Type of content pointed to by URI. Can be generic (eg, "image/") or specific ("image/png"). Defaults to "application/octet-stream". |
+| render_method | [UriRenderMethod](/reference/proto#services-verifiablecredentials-templates-v1-UriRenderMethod) | How to display the URI value when rendering a credential. |
+
+
+
+
+
  <!-- end messages -->
 
 
@@ -1150,6 +1306,19 @@ Valid types for credential fields
 | BOOL | 2 |  |
 | DATETIME | 4 |  |
 | URI | 5 |  |
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UriRenderMethod"></a>
+
+### UriRenderMethod
+How to display a URI value when rendering a credential.
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TEXT | 0 | Display URI as text |
+| LINK | 1 | Display URI as a clickable link |
+| INLINE_IMAGE | 2 | Display URI as an inline image. Only takes effect if the template field's MIME Type is an image type. |
 
 
  <!-- end enums -->
