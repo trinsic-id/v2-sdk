@@ -14,64 +14,66 @@ The Account Service allows you to create and sign in to accounts.
 
     These are effectively API keys; they should be kept safe and never published.
 
-{{ proto_sample_start() }}
-    === "Dart"
-        <!--codeinclude-->
-        ```dart
-        [ServiceCreate](../../../dart/example/account_service_example.dart)
-        ```
-        <!--/codeinclude-->
-    === "Trinsic CLI"
-        ```bash
-        trinsic account login --email "bob@example.com" --ecosystem "<ecosystem id or name>"
-        ```
+---
 
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:serviceCreate
-        ```
-        <!--/codeinclude-->
+## Service Creation
 
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:serviceCreate
-        ```
-        <!--/codeinclude-->
+=== "Trinsic CLI"
+    ```bash
+    trinsic account login --email "bob@example.com" --ecosystem "<ecosystem id or name>"
+    ```
 
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [LoginRequest](../../../python/samples/account_demo.py) inside_block:serviceCreate
-        ```
-        <!--/codeinclude-->
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:serviceCreate
+    ```
+    <!--/codeinclude-->
 
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [LoginRequest](../../../go/services/account_service_test.go) inside_block:serviceCreate
-        ```
-        <!--/codeinclude-->
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:serviceCreate
+    ```
+    <!--/codeinclude-->
 
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:serviceCreate
-        ```
-        <!--/codeinclude-->
+=== "Dart"
+    <!--codeinclude-->
+    ```dart
+    [ServiceCreate](../../../dart/example/account_service_examples.dart) inside_block:createAccountService
+    ```
+    <!--/codeinclude-->
 
-{{ proto_method_tabs("services.account.v1.Account") }}
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    [LoginRequest](../../../python/samples/account_demo.py) inside_block:serviceCreate
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    [LoginRequest](../../../go/services/account_service_test.go) inside_block:serviceCreate
+    ```
+    <!--/codeinclude-->
+
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:serviceCreate
+    ```
+    <!--/codeinclude-->
+
 
 ---
 
-## Login
+## Login / LoginConfirm
 
 Attempts the first step of the login process for the specified account, creating it if it does not already exist.
-
-Trinsic will response with a `challenge`, and send an authentication code to the account's email address.
-
-The authentication code must be passed along with `challenge` to [LoginConfirm](#login-confirm) to finalize the login.
+Trinsic will respond with a `challenge`, and send an authentication code to the account's email address.
+The authentication code must be passed along with `challenge` to `LoginConfirm` to finalize the login.
+Our SDK will take care of hashing the confirmation code for you.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -90,6 +92,13 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         <!--codeinclude-->
         ```csharp
         [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
+
+    === "Dart"
+        <!--codeinclude-->
+        ```dart
+        [ServiceCreate](../../../dart/example/account_service_examples.dart) inside_block:accountServiceLoginLoginConfirm
         ```
         <!--/codeinclude-->
 
@@ -125,59 +134,6 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
 
 ---
 
-## Login Confirm
-
-Finalizes the login process.
-
-You must pass `challenge` as it was received in response to [Login](#login), along with the confirmation code that was sent in an email.
-
-Our SDK will take care of hashing the confirmation code for you.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic account login --email "bob@example.com"
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [LoginConfirm](../../../web/test/AccountService.test.ts) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [LoginConfirm](../../../dotnet/Tests/Tests.cs) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [LoginConfirm](../../../python/samples/account_demo.py) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [LoginConfirm](../../../go/services/account_service_test.go) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [LoginConfirm](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.account.v1.Account.LoginConfirm") }}
-
----
-
 ## Get Account Info
 
 Returns the account information (name, email address, phone number, etc.) used to create the currently-active account profile.
@@ -197,6 +153,13 @@ Returns the account information (name, email address, phone number, etc.) used t
         <!--codeinclude-->
         ```csharp
         [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceGetInfo
+        ```
+        <!--/codeinclude-->
+
+    === "Dart"
+        <!--codeinclude-->
+        ```dart
+        [ServiceCreate](../../../dart/example/account_service_examples.dart) inside_block:accountServiceGetInfo
         ```
         <!--/codeinclude-->
 

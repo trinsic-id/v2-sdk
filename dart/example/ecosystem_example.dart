@@ -4,7 +4,7 @@ import 'package:trinsic_dart/trinsic.dart';
 
 Future runEcosystemDemo() async {
   var trinsic = TrinsicService(trinsicConfig(), null);
-  var account = await trinsic.account().loginAnonymous("default");
+  var account = await trinsic.account().loginAnonymous(ecosystemId: "default");
   assert(account.isNotEmpty);
   // createEcosystem() {
   var actualCreate = await trinsic.provider().createEcosystem(

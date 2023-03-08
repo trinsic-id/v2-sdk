@@ -86,7 +86,7 @@ class AccountService extends ServiceBase {
 
   Future<String> loginAnonymous({required String ecosystemId}) async {
     var loginRequest = LoginRequest();
-    loginRequest.ecosystemId = ecosystemId;
+    loginRequest.ecosystemId = ecosystemId.replaceAll("your-ecosystem-id", "");
     var response = await login(request: loginRequest);
 
     if (response.profile.protection.enabled) {
