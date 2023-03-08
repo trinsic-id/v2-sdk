@@ -24,6 +24,54 @@ export class AccountService extends ServiceBase {
         this.client = this.createClient(AccountDefinition);
     }
 
+    /**
+     * protect the given profile
+     * @param profile The profile to protect with oberon blinding
+     * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
+     */
+    public static async protect(
+        profile: string | AccountProfile,
+        securityCode: string | Uint8Array
+    ): Promise<string> {
+        securityCode = AccountService.convertToUtf8(securityCode);
+        profile = AccountService.convertToProfile(profile);
+        let cloned = AccountProfile.fromPartial(profile);
+        const result = await ServiceBase.trinsicProvider.blindOberon(
+            cloned,
+            securityCode
+        );
+        cloned.authToken = result;
+        cloned.protection = TokenProtection.fromPartial({
+            enabled: true,
+            method: ConfirmationMethod.Other,
+        });
+        return AccountService.convertToToken(cloned);
+    }
+
+    /**
+     * unprotect the given profile
+     * @param profile The profile to unprotect with oberon blinding
+     * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
+     */
+    public static async unprotect(
+        profile: string | AccountProfile,
+        securityCode: string | Uint8Array
+    ): Promise<string> {
+        securityCode = AccountService.convertToUtf8(securityCode);
+        profile = AccountService.convertToProfile(profile);
+        let cloned = AccountProfile.fromPartial(profile);
+        const result = await ServiceBase.trinsicProvider.unblindOberon(
+            cloned,
+            securityCode
+        );
+        cloned.authToken = result;
+        cloned.protection = TokenProtection.fromPartial({
+            enabled: false,
+            method: ConfirmationMethod.None,
+        });
+        return AccountService.convertToToken(cloned);
+    }
+
     public static convertToProfile(
         profile: string | AccountProfile
     ): AccountProfile {
@@ -127,7 +175,7 @@ export class AccountService extends ServiceBase {
   }
   /** Authorize Ecosystem to receive webhook events */
   public async authorizeWebhook(request: proto.AuthorizeWebhookRequest): Promise<proto.AuthorizeWebhookResponse> {
-    
+
     return this.client.authorizeWebhook(request, {
       metadata: await this.buildMetadata(proto.AuthorizeWebhookRequest.encode(request).finish())
     });
