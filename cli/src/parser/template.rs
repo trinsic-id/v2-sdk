@@ -15,6 +15,8 @@ pub enum TemplateCommand {
 #[derive(Debug, PartialEq)]
 pub struct CreateTemplateArgs {
     pub name: String,
+    pub title: String,
+    pub description: String,
     pub fields_file: Option<String>,
     pub fields_data: Option<String>,
     pub allow_additional: bool,
@@ -123,6 +125,8 @@ pub(crate) fn parse(args: &ArgMatches) -> Result<TemplateCommand, Error> {
 fn create(args: &ArgMatches) -> Result<TemplateCommand, Error> {
     Ok(TemplateCommand::Create(CreateTemplateArgs {
         name: args.value_of("name").map_or(String::default(), |x| x.to_string()),
+        description: args.value_of("description").map_or(String::default(), |x| x.to_string()),
+        title: args.value_of("title").map_or(String::default(), |x| x.to_string()),
         fields_file: args.value_of("fields-file").map(|x| x.to_string()),
         fields_data: args.value_of("fields-data").map(|x| x.to_string()),
         allow_additional: args.is_present("allow-additional"),

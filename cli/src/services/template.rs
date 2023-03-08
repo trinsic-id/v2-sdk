@@ -40,7 +40,11 @@ async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<Output,
     let req = CreateCredentialTemplateRequest {
         name: args.name.clone(),
         fields: to_map(fields?),
+        apple_wallet_options: Option::None,
+        description: args.description.clone(),
         allow_additional_fields: args.allow_additional,
+        title: args.title.clone(),
+        field_ordering: Default::default(),
     };
     let request = tonic::Request::new(req);
 
