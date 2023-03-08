@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -76,11 +77,15 @@ public class Tests
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
-        var allison = await trinsic.Account.LoginAnonymousAsync(ecosystemId);
-        var clinic = await trinsic.Account.LoginAnonymousAsync(ecosystemId);
-        var airline = await trinsic.Account.LoginAnonymousAsync(ecosystemId);
+        var allison = await trinsic.Account.LoginAnonymousAsync(ecosystemId) ?? "";
+        var clinic = await trinsic.Account.LoginAnonymousAsync(ecosystemId) ?? "";
+        var airline = await trinsic.Account.LoginAnonymousAsync(ecosystemId) ?? "";
+
+        allison.Should().NotBeNullOrWhiteSpace();
+        clinic.Should().NotBeNullOrWhiteSpace();
+        airline.Should().NotBeNullOrWhiteSpace();
         
-        trinsic.SetAuthToken(clinic!);
+        trinsic.SetAuthToken(clinic);
 
         var info = await trinsic.Account.GetInfoAsync();
         info.Should().NotBeNull();

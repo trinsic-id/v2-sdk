@@ -31,6 +31,51 @@ public class AccountService : ServiceBase
         : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
+    
+    /// <summary>
+    /// Unprotects the account profile using a security code.
+    /// The confirmation method field will specify how this code was
+    /// communicated with the account owner.
+    /// </summary>
+    /// <param name="authToken"></param>
+    /// <param name="securityCode"></param>
+    public static string Unprotect(string authToken, string securityCode) {
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
+
+        UnBlindOberonTokenRequest request = new() { Token = profile.AuthToken };
+        request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
+        var result = Oberon.UnblindToken(request);
+
+        profile.AuthToken = result.Token;
+        profile.Protection = new() {
+            Enabled = false,
+            Method = ConfirmationMethod.None
+        };
+
+        return Base64Url.Encode(profile.ToByteArray());
+    }
+
+    /// <summary>
+    /// Protects the account profile with a security code.
+    /// The code can be a PIN, password, keychain secret, etc.
+    /// </summary>
+    /// <param name="authToken"></param>
+    /// <param name="securityCode"></param>
+    public static string Protect(string authToken, string securityCode) {
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
+
+        BlindOberonTokenRequest request = new() { Token = profile.AuthToken };
+        request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
+        var result = Oberon.BlindToken(request);
+
+        profile.AuthToken = result.Token;
+        profile.Protection = new() {
+            Enabled = true,
+            Method = ConfirmationMethod.Other
+        };
+
+        return Base64Url.Encode(profile.ToByteArray());
+    }
 
     /// <summary>
     /// Gets the underlying grpc client
