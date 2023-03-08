@@ -23,7 +23,7 @@ public class TemplatesDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsic.account().signIn(myEcosystemIdOrName).get();
+    var account = trinsic.account().loginAnonymous(myEcosystemIdOrName).get();
     trinsic.setAuthToken(account);
 
     // create example template
