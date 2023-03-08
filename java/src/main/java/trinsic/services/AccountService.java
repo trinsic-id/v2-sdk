@@ -29,69 +29,6 @@ public class AccountService extends ServiceBase {
     this.stub = AccountGrpc.newFutureStub(this.getChannel());
   }
 
-  public static String unprotect(String base64Profile, String securityCode)
-      throws InvalidProtocolBufferException, DidException {
-    var profile =
-        AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
-    var request =
-        Security.UnBlindOberonTokenRequest.newBuilder()
-            .setToken(profile.getAuthToken())
-            .addBlinding(ByteString.copyFromUtf8(securityCode))
-            .build();
-    var result = Oberon.unBlindToken(request);
-
-    profile =
-        AccountProfile.newBuilder(profile)
-            .setAuthToken(result.getToken())
-            .setProtection(
-                TokenProtection.newBuilder()
-                    .setMethod(ConfirmationMethod.None)
-                    .setEnabled(false)
-                    .build())
-            .build();
-    return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
-  }
-
-  public static String protect(String base64Profile, String securityCode)
-      throws InvalidProtocolBufferException, DidException {
-    var profile =
-        AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
-    var request =
-        Security.BlindOberonTokenRequest.newBuilder()
-            .setToken(profile.getAuthToken())
-            .addBlinding(ByteString.copyFromUtf8(securityCode))
-            .build();
-    var result = Oberon.blindToken(request);
-
-    profile =
-        AccountProfile.newBuilder(profile)
-            .setAuthToken(result.getToken())
-            .setProtection(
-                TokenProtection.newBuilder()
-                    .setMethod(ConfirmationMethod.Other)
-                    .setEnabled(true)
-                    .build())
-            .build();
-    return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
-  }
-
-  public ListenableFuture<String> signIn(String ecosystemId) {
-    return signIn(SignInRequest.newBuilder().setEcosystemId(ecosystemId).build());
-  }
-
-  public ListenableFuture<String> signIn(@NotNull SignInRequest request) {
-    if (request.getEcosystemId().isBlank()) request = SignInRequest.newBuilder(request).build();
-    var response = this.stub.signIn(request);
-    return Futures.transform(
-        response,
-        input -> {
-          var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-          if (!input.getProfile().getProtection().getEnabled()) this.tokenProvider.save(token);
-          return token;
-        },
-        Executors.newSingleThreadExecutor());
-  }
-
   public ListenableFuture<LoginResponse> login(LoginRequest request)
       throws InvalidProtocolBufferException, DidException {
     var response = stub.login(request);
