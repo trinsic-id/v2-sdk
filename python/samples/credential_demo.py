@@ -28,7 +28,7 @@ async def credential_demo():
     config = trinsic_config()
     trinsic_service = TrinsicService(server_config=config)
 
-    account = await trinsic_service.account.sign_in()
+    account = await trinsic_service.account.login_anonymous(ecosystem_id="default")
 
     config.auth_token = account
 

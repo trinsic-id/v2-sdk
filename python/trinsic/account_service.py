@@ -31,6 +31,56 @@ class AccountService(ServiceBase):
         super().__init__(server_config, token_provider)
         self.client = AccountStub(super().channel)
 
+    @staticmethod
+    def unprotect(
+        *,
+        profile: Union[AccountProfile, str],
+        security_code: Union[SupportsBytes, bytes, str],
+    ) -> str:
+        """
+        Unprotect the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
+        Args:
+            profile:
+            security_code:
+        Returns:
+            The in-place unprotected `AccountProfile`
+        """
+        if isinstance(profile, str):
+            profile = AccountProfile().parse(base64.urlsafe_b64decode(profile))
+        request = UnBlindOberonTokenRequest(token=profile.auth_token)
+        if isinstance(security_code, str):
+            security_code = bytes(security_code, "utf8")
+        request.blinding.append(bytes(security_code))
+        result = oberon.unblind_token(request)
+        profile.auth_token = result.token
+        profile.protection.enabled = False
+        profile.protection.method = ConfirmationMethod.None_
+        return base64.urlsafe_b64encode(bytes(profile)).decode("utf-8")
+
+    @staticmethod
+    def protect(
+        *,
+        profile: Union[AccountProfile, str],
+        security_code: Union[SupportsBytes, bytes, str],
+    ) -> str:
+        """
+        Protect the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
+        Args:
+            profile:
+            security_code:
+        Returns:
+            A protected `AccountProfile`
+        """
+        if isinstance(profile, str):
+            profile = AccountProfile().parse(base64.urlsafe_b64decode(profile))
+        request = BlindOberonTokenRequest(token=profile.auth_token)
+        request.blinding.append(bytes(security_code))
+        result = oberon.blind_token(request)
+        profile.auth_token = result.token
+        profile.protection.enabled = True
+        profile.protection.method = ConfirmationMethod.Other
+        return base64.urlsafe_b64encode(bytes(profile)).decode("utf-8")
+
     async def login(self, *, request: LoginRequest) -> LoginResponse:
         """
         Begins the login process for the specified user; returning a challenge which must be passed

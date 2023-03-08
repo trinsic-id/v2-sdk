@@ -13,7 +13,7 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 async def ecosystem_demo():
     trinsic_service = TrinsicService(server_config=trinsic_config())
-    account = await trinsic_service.account.sign_in()
+    account = await trinsic_service.account.login_anonymous(ecosystem_id="default")
     # createEcosystem() {
     actual_create = await trinsic_service.provider.create_ecosystem(
         request=CreateEcosystemRequest(
@@ -28,29 +28,6 @@ async def ecosystem_demo():
 
     # listEcosystems() {
     # }
-
-    try:
-        # inviteParticipant() {
-        invite_response = await trinsic_service.provider.invite_participant(
-            request=InviteRequest(
-                participant=ParticipantType.participant_type_individual,
-                description="Doc sample",
-                details=AccountDetails(email="example@trinsic.id"),
-            )
-        )
-        # }
-    except:
-        pass
-
-    invite_id = "NA"
-    try:
-        # invitationStatus() {
-        invite_status = await trinsic_service.provider.invitation_status(
-            request=InvitationStatusRequest(invitation_id=invite_id)
-        )
-        # }
-    except:
-        pass
 
 
 if __name__ == "__main__":
