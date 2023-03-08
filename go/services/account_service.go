@@ -68,6 +68,64 @@ type accountBase struct {
 	client account.AccountClient
 }
 
+// Unprotect an authtoken using the given security code
+//
+// This method can be called multiple times on an individual token
+// to "unwrap" the blindings that have been applied
+func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) {
+	profile, err := ProfileFromToken(authtoken)
+	if err != nil {
+		return "", err
+	}
+
+	request := &security.UnBlindOberonTokenRequest{
+		Token:    profile.AuthToken,
+		Blinding: append([][]byte{}, []byte(securityCode)),
+	}
+
+	response, err := okapi.Oberon().UnBlindToken(request)
+	if err != nil {
+		return "", err
+	}
+
+	profile.AuthToken = response.Token
+	profile.Protection = &account.TokenProtection{
+		Enabled: false,
+		Method:  account.ConfirmationMethod_None,
+	}
+
+	return ProfileToToken(profile)
+}
+
+// Protect an authtoken with the given security code. Must be unprotected before use
+//
+// This method can be called as many times as you want, but each code must be "unwrapped"
+// by calling Unprotect in the reverse order before use
+func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
+	profile, err := ProfileFromToken(authtoken)
+	if err != nil {
+		return "", err
+	}
+
+	request := &security.BlindOberonTokenRequest{
+		Token:    profile.AuthToken,
+		Blinding: append([][]byte{}, []byte(securityCode)),
+	}
+
+	response, err := okapi.Oberon().BlindToken(request)
+	if err != nil {
+		return "", err
+	}
+
+	profile.AuthToken = response.Token
+	profile.Protection = &account.TokenProtection{
+		Enabled: true,
+		Method:  account.ConfirmationMethod_Other,
+	}
+
+	return ProfileToToken(profile)
+}
+
 func (a *accountBase) Login(userContext context.Context, request *account.LoginRequest) (*account.LoginResponse, error) {
 	response, err := a.client.Login(userContext, request)
 	if err != nil {
