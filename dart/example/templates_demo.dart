@@ -7,23 +7,21 @@ import 'package:trinsic_dart/trinsic.dart';
 import 'package:uuid/uuid.dart';
 
 Future runTemplatesDemo() async {
-  var accountService = AccountService(trinsicConfig(), null);
-  var profile = await accountService.loginAnonymous("default");
-  var templateService =
-      TemplateService(trinsicConfig(authToken: profile), null);
-  var credentialService =
-      CredentialService(trinsicConfig(authToken: profile), null);
+  var trinsic = TrinsicService(trinsicConfig(), null);
+  var profile = await trinsic.account().loginAnonymous("default");
+  assert(profile.isNotEmpty);
 
   var uuid = Uuid();
   // createTemplate() {
-  var template = await templateService.create(CreateCredentialTemplateRequest(
-      name: "An Example Credential: ${uuid.v4()}",
-      allowAdditionalFields: false,
-      fields: {
-        "firstName": TemplateField(description: "Given name"),
-        "lastName": TemplateField(),
-        "age": TemplateField(optional: true, type: FieldType.NUMBER)
-      }));
+  var template = await trinsic.template().create(
+          CreateCredentialTemplateRequest(
+              name: "An Example Credential: ${uuid.v4()}",
+              allowAdditionalFields: false,
+              fields: {
+            "firstName": TemplateField(description: "Given name"),
+            "lastName": TemplateField(),
+            "age": TemplateField(optional: true, type: FieldType.NUMBER)
+          }));
   // }
   assert(template.data.id != "");
   assert(template.data.schemaUri != "");
@@ -31,7 +29,7 @@ Future runTemplatesDemo() async {
   // issueFromTemplate() {
   var values =
       jsonEncode({"firstName": "Jane", "lastName": "Doe", "age": "42"});
-  var issueResponse = await credentialService.issueFromTemplate(
+  var issueResponse = await trinsic.credential().issueFromTemplate(
       IssueFromTemplateRequest(
           templateId: template.data.id, valuesJson: values));
   // }

@@ -9,5 +9,6 @@ export 'src/credential_service.dart';
 export 'src/file_management_service.dart';
 export 'src/provider_service.dart';
 export 'src/template_service.dart';
+export 'src/trinsic_service.dart';
 export 'src/trustregistry_service.dart';
 export 'src/wallet_service.dart';

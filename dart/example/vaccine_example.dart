@@ -33,15 +33,9 @@ Future runVaccineDemo() async {
 
   // setupActors() {
   // Create 3 different profiles for each participant in the scenario
-  var allison = await trinsic
-      .account()
-      .loginAnonymous(ecosystemId);
-  var clinic = await trinsic
-      .account()
-      .loginAnonymous(ecosystemId);
-  var airline = await trinsic
-      .account()
-      .loginAnonymous(ecosystemId);
+  var allison = await trinsic.account().loginAnonymous(ecosystemId);
+  var clinic = await trinsic.account().loginAnonymous(ecosystemId);
+  var airline = await trinsic.account().loginAnonymous(ecosystemId);
   // }
 
   trinsic.serviceOptions.authToken = clinic;
@@ -69,8 +63,6 @@ Future runVaccineDemo() async {
   var credential = issueResponse.signedDocumentJson;
   print("Credential: $credential");
 
-  // TODO - Send example
-
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
   trinsic.serviceOptions.authToken = allison;
@@ -82,7 +74,6 @@ Future runVaccineDemo() async {
   var itemId = insertResponse.itemId;
   // }
   print("item id = $itemId");
-  // TODO - Search examples
 
   // shareCredential() {
   // Allison shares the credential with the venue.
