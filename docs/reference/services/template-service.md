@@ -4,11 +4,6 @@
 The Template Service allows you to manage and search [Credential Templates](/learn/concepts/templates).
 
 
-!!! info "Templates are optional"
-    Templates are designed to be a helpful abstraction over the complexities of producing valid [JSON-LD Verifiable Credentials](https://www.w3.org/TR/vc-data-model/).
-
-    You aren't required to use templates; if you produce valid JSON-LD VCs yourself, they can be issued through Trinsic.
-
 ---
 
 ## Create Template

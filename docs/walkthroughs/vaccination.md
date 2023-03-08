@@ -271,14 +271,6 @@ Templates are simply a list of the fields that a credential can have.
     ```
     <!--/codeinclude-->
 
-!!! info "Templates are Optional"
-
-    Templates are an optional helpful abstraction which removes the need to work directly with complex data formats such as JSON-LD.
-
-    When a template is used to issue a credential, the result is a valid, interoperable JSON-LD Verifiable Credential.
-
-    Trinsic's SDKs support issuing JSON-LD credentials that you create yourself, should you choose not to use templates.
-
 !!! abstract "Further Reading: Templates"
 
     - Learn more about [Templates](/learn/concepts/templates){target=_blank}
