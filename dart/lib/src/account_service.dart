@@ -17,17 +17,6 @@ class AccountService extends ServiceBase {
     client = AccountClient(super.channel);
   }
 
-  Future<String> signIn({SignInRequest? request}) async {
-    request ??= SignInRequest();
-    SignInResponse response = await client.signIn(request);
-    var authToken =
-        Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
-    if (!response.profile.protection.enabled) {
-      tokenProvider.save(authToken);
-    }
-    return authToken;
-  }
-
   static AccountProfile unprotectProfile(
       AccountProfile profile, String securityCode) {
     var utf8code = Uint8List.fromList(utf8.encode(securityCode));

@@ -33,9 +33,6 @@ func NewAccountService(options *Options) (AccountService, error) {
 type AccountService interface {
 	Service
 
-	// SignIn (DEPRECATED, USE Login) attempts to log in and returns an authentication token
-	SignIn(userContext context.Context, request *account.SignInRequest) (string, account.ConfirmationMethod, error)
-
 	// Unprotect takes an authtoken that has been protected using a pin code
 	// and returns an unlocked token
 	Unprotect(authtoken, securityCode string) (string, error)
@@ -67,31 +64,6 @@ type AccountService interface {
 type accountBase struct {
 	Service
 	client account.AccountClient
-}
-
-// SignIn to a given account
-func (a *accountBase) SignIn(userContext context.Context, request *account.SignInRequest) (string, account.ConfirmationMethod, error) {
-	if request == nil {
-		request = &account.SignInRequest{}
-	}
-	if request.Details == nil {
-		request.Details = &account.AccountDetails{}
-	}
-
-	resp, err := a.client.SignIn(userContext, request)
-	if err != nil {
-		return "", account.ConfirmationMethod_None, err
-	}
-
-	authToken, err := ProfileToToken(resp.Profile)
-	if err != nil {
-		return "", account.ConfirmationMethod_None, err
-	}
-
-	a.SetAuthToken(authToken)
-	a.GetTokenProvider().SaveDefault(authToken)
-
-	return authToken, resp.ConfirmationMethod, nil
 }
 
 // Unprotect an authtoken using the given security code

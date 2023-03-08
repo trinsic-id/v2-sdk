@@ -101,17 +101,6 @@ export class AccountService extends ServiceBase {
         }
     }
 
-    public async signIn(
-        request: SignInRequest = SignInRequest.fromPartial({})
-    ): Promise<string> {
-        let response = await this.client.signIn(request);
-        const authToken = AccountService.convertToToken(response.profile!);
-
-        // set the auth token as active for the current service instance
-        await this.tokenProvider.saveDefault(authToken);
-        return authToken;
-    }
-
     public async login(
         request: LoginRequest = LoginRequest.fromPartial({})
     ): Promise<LoginResponse> {

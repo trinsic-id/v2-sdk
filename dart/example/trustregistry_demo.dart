@@ -4,10 +4,8 @@ import 'package:trinsic_dart/trinsic.dart';
 import 'package:uuid/uuid.dart';
 
 Future runTrustRegistryDemo() async {
-  var accountService = AccountService(trinsicConfig(), null);
-  var account = await accountService.loginAnonymous("default");
-  var trustRegistryService =
-      TrustRegistryService(trinsicConfig(authToken: account), null);
+  var trinsic = TrinsicService(trinsicConfig(), null);
+  var account = await trinsic.account().loginAnonymous("default");
 
   var uuid = Uuid();
 
@@ -19,7 +17,7 @@ Future runTrustRegistryDemo() async {
   print("services created: $frameworkName  $httpsExampleCom");
 
   // registerGovernanceFramework() {
-  var registerFrameworkResponse = await trustRegistryService.addFramework(
+  var registerFrameworkResponse = await trinsic.trustRegistry().addFramework(
       AddFrameworkRequest(
           description: "Demo framework",
           name: frameworkName,
@@ -29,7 +27,7 @@ Future runTrustRegistryDemo() async {
   print("Framework registered: $registerFrameworkResponse");
 
   // registerIssuerSample() {
-  var registerMemberResponse = await trustRegistryService.registerMember(
+  var registerMemberResponse = await trinsic.trustRegistry().registerMember(
       RegisterMemberRequest(
           didUri: didExampleTest,
           frameworkId: registerFrameworkResponse.id,
@@ -39,10 +37,10 @@ Future runTrustRegistryDemo() async {
   print("Member registered: $registerMemberResponse");
 
   // checkIssuerStatus() {
-  var checkResponse = await trustRegistryService.getMembershipStatus(
+  var checkResponse = await trinsic.trustRegistry().getMembershipStatus(
       GetMembershipStatusRequest(
           didUri: didExampleTest,
-          governanceFrameworkUri: httpsExampleCom,
+          frameworkId: httpsExampleCom,
           schemaUri: httpsSchemaOrg));
   // }
 
@@ -51,12 +49,12 @@ Future runTrustRegistryDemo() async {
   assert(checkResponse.status == RegistrationStatus.CURRENT);
 
   // searchTrustRegistry() {
-  var searchResult = await trustRegistryService.search();
+  var searchResult = await trinsic.trustRegistry().search();
   // }
   assert(searchResult.itemsJson != "");
 
   // unregisterIssuer() {
-  var unregisterIssuerResponse = await trustRegistryService.unregisterMember(
+  var unregisterIssuerResponse = await trinsic.trustRegistry().unregisterMember(
       UnregisterMemberRequest(
           frameworkId: registerFrameworkResponse.id,
           schemaUri: httpsSchemaOrg,

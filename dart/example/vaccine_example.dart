@@ -63,8 +63,6 @@ Future runVaccineDemo() async {
   var credential = issueResponse.signedDocumentJson;
   print("Credential: $credential");
 
-  // TODO - Send example
-
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
   trinsic.serviceOptions.authToken = allison;
@@ -76,7 +74,6 @@ Future runVaccineDemo() async {
   var itemId = insertResponse.itemId;
   // }
   print("item id = $itemId");
-  // TODO - Search examples
 
   // shareCredential() {
   // Allison shares the credential with the venue.

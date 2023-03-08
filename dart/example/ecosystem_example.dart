@@ -3,12 +3,11 @@ import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
 Future runEcosystemDemo() async {
-  var accountService = AccountService(trinsicConfig(), null);
-  var account = await accountService.loginAnonymous("default");
-  var providerService =
-      ProviderService(trinsicConfig(authToken: account), null);
+  var trinsic = TrinsicService(trinsicConfig(), null);
+  var account = await trinsic.account().loginAnonymous("default");
+  assert(account.isNotEmpty);
   // createEcosystem() {
-  var actualCreate = await providerService.createEcosystem(
+  var actualCreate = await trinsic.provider().createEcosystem(
       request: CreateEcosystemRequest(
           description: "My ecosystem", uri: "https://example.com"));
   // }

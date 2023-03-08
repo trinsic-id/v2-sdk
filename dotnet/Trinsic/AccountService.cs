@@ -31,48 +31,7 @@ public class AccountService : ServiceBase
         : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
-
-    /// <summary>
-    /// Gets the underlying grpc client
-    /// </summary>
-    private Account.AccountClient Client { get; }
-
-    /// <summary>
-    /// Deprecated. Use LoginAsync instead.
-    /// 
-    /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
-    /// specified, they will be used to associate
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
-    public async Task<string> SignInAsync(SignInRequest request) {
-        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = DefaultEcosystem;
-        var response = await Client.SignInAsync(request, await BuildMetadataAsync());
-
-        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
-
-        if (!response.Profile.Protection?.Enabled ?? true) await TokenProvider.SaveAsync(authToken);
-        return authToken;
-    }
-
-    /// <summary>
-    /// Deprecated. Use Login instead.
-    /// 
-    /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
-    /// specified, they will be used to associate
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
-    public string SignIn(SignInRequest request) {
-        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = DefaultEcosystem;
-        var response = Client.SignIn(request, BuildMetadata());
-
-        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
-
-        if (!response.Profile.Protection?.Enabled ?? true) TokenProvider.Save(authToken);
-        return authToken;
-    }
-
+    
     /// <summary>
     /// Unprotects the account profile using a security code.
     /// The confirmation method field will specify how this code was
@@ -117,6 +76,11 @@ public class AccountService : ServiceBase
 
         return Base64Url.Encode(profile.ToByteArray());
     }
+
+    /// <summary>
+    /// Gets the underlying grpc client
+    /// </summary>
+    private Account.AccountClient Client { get; }
 
     /// <summary>
     /// Logs in to the specified account; a new account will be created if it does not exist.

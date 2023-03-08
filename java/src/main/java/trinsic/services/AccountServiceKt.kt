@@ -15,73 +15,58 @@ import trinsic.services.account.v1.*
 
 class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)
+    companion object {
+        @JvmStatic
+        @Throws(InvalidProtocolBufferException::class, DidException::class)
+        fun unprotect(base64Profile: String?, securityCode: String?): String {
+            var profile =
+                AccountProfile.newBuilder()
+                    .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
+                    .build()
+            val request =
+                UnBlindOberonTokenRequest.newBuilder()
+                    .setToken(profile.authToken)
+                    .addBlinding(ByteString.copyFromUtf8(securityCode))
+                    .build()
+            val result = Oberon.unBlindToken(request)
+            profile =
+                AccountProfile.newBuilder(profile)
+                    .setAuthToken(result.token)
+                    .setProtection(
+                        TokenProtection.newBuilder()
+                            .setMethod(ConfirmationMethod.None)
+                            .setEnabled(false)
+                            .build())
+                    .build()
+            return Base64.getUrlEncoder().encodeToString(profile.toByteArray())
+        }
 
-  suspend fun signIn(): String {
-    return signIn(SignInRequest.newBuilder().build())
-  }
-
-  suspend fun signIn(request: SignInRequest): String {
-    var request2 = request
-    if (request.ecosystemId.isBlank())
-        request2 = SignInRequest.newBuilder(request).setEcosystemId("default").build()
-    val authToken =
-        Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
-    withContext(Dispatchers.IO) { tokenProvider.save(authToken).get() }
-    return authToken
-  }
-
-  companion object {
-    @JvmStatic
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    fun unprotect(base64Profile: String?, securityCode: String?): String {
-      var profile =
-          AccountProfile.newBuilder()
-              .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
-              .build()
-      val request =
-          UnBlindOberonTokenRequest.newBuilder()
-              .setToken(profile.authToken)
-              .addBlinding(ByteString.copyFromUtf8(securityCode))
-              .build()
-      val result = Oberon.unBlindToken(request)
-      profile =
-          AccountProfile.newBuilder(profile)
-              .setAuthToken(result.token)
-              .setProtection(
-                  TokenProtection.newBuilder()
-                      .setMethod(ConfirmationMethod.None)
-                      .setEnabled(false)
-                      .build())
-              .build()
-      return Base64.getUrlEncoder().encodeToString(profile.toByteArray())
+        @JvmStatic
+        @Throws(InvalidProtocolBufferException::class, DidException::class)
+        fun protect(base64Profile: String?, securityCode: String?): String {
+            var profile =
+                AccountProfile.newBuilder()
+                    .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
+                    .build()
+            val request =
+                BlindOberonTokenRequest.newBuilder()
+                    .setToken(profile.authToken)
+                    .addBlinding(ByteString.copyFromUtf8(securityCode))
+                    .build()
+            val result = Oberon.blindToken(request)
+            profile =
+                AccountProfile.newBuilder(profile)
+                    .setAuthToken(result.token)
+                    .setProtection(
+                        TokenProtection.newBuilder()
+                            .setMethod(ConfirmationMethod.Other)
+                            .setEnabled(true)
+                            .build())
+                    .build()
+            return Base64.getUrlEncoder().encodeToString(profile.toByteArray())
+        }
     }
-
-    @JvmStatic
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    fun protect(base64Profile: String?, securityCode: String?): String {
-      var profile =
-          AccountProfile.newBuilder()
-              .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
-              .build()
-      val request =
-          BlindOberonTokenRequest.newBuilder()
-              .setToken(profile.authToken)
-              .addBlinding(ByteString.copyFromUtf8(securityCode))
-              .build()
-      val result = Oberon.blindToken(request)
-      profile =
-          AccountProfile.newBuilder(profile)
-              .setAuthToken(result.token)
-              .setProtection(
-                  TokenProtection.newBuilder()
-                      .setMethod(ConfirmationMethod.Other)
-                      .setEnabled(true)
-                      .build())
-              .build()
-      return Base64.getUrlEncoder().encodeToString(profile.toByteArray())
-    }
-  }
-
+    
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun login(request: LoginRequest): LoginResponse {
     val response = stub.login(request)

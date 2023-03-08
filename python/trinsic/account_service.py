@@ -31,19 +31,6 @@ class AccountService(ServiceBase):
         super().__init__(server_config, token_provider)
         self.client = AccountStub(super().channel)
 
-    async def sign_in(self, *, request: SignInRequest = None) -> str:
-        """
-        Deprecated - use `AccountService.login` and `AccountService.login_confirm` instead
-        """
-        request = request or SignInRequest()
-        request.ecosystem_id = request.ecosystem_id or "default"
-        response = await self.client.sign_in(
-            sign_in_request=request, metadata=self.build_metadata()
-        )
-        auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
-        self.token_provider.save(auth_token)
-        return auth_token
-
     @staticmethod
     def unprotect(
         *,

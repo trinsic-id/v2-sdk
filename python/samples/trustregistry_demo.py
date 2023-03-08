@@ -15,7 +15,7 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 async def trustregistry_demo():
     # setup
     trinsic_service = TrinsicService(server_config=trinsic_config())
-    account = await trinsic_service.account.sign_in()
+    account = await trinsic_service.account.login_anonymous(ecosystem_id="default")
 
     # data
     https_schema_org = "https://schema.org/Card"

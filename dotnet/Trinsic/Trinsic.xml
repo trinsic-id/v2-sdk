@@ -50,31 +50,6 @@
             Account Service
             </summary>
         </member>
-        <member name="P:Trinsic.AccountService.Client">
-            <summary>
-            Gets the underlying grpc client
-            </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.SignInAsync(Trinsic.Services.Account.V1.SignInRequest)">
-            <summary>
-            Deprecated. Use LoginAsync instead.
-            
-            Perform a sign-in to obtain an account profile. If the <see cref="T:Trinsic.Services.Account.V1.AccountDetails" /> are
-            specified, they will be used to associate
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.AccountService.SignIn(Trinsic.Services.Account.V1.SignInRequest)">
-            <summary>
-            Deprecated. Use Login instead.
-            
-            Perform a sign-in to obtain an account profile. If the <see cref="T:Trinsic.Services.Account.V1.AccountDetails" /> are
-            specified, they will be used to associate
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
         <member name="M:Trinsic.AccountService.Unprotect(System.String,System.String)">
             <summary>
             Unprotects the account profile using a security code.
@@ -91,6 +66,11 @@
             </summary>
             <param name="authToken"></param>
             <param name="securityCode"></param>
+        </member>
+        <member name="P:Trinsic.AccountService.Client">
+            <summary>
+            Gets the underlying grpc client
+            </summary>
         </member>
         <member name="M:Trinsic.AccountService.LoginAsync(Trinsic.Services.Account.V1.LoginRequest)">
             <summary>
@@ -591,14 +571,6 @@
             <summary>
             The public DID associated with this account.
             This DID is used as the `issuer` when signing verifiable credentials
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Account.V1.AccountInfoResponse.AuthorizedWebhooksFieldNumber">
-            <summary>Field number for the "authorized_webhooks" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Account.V1.AccountInfoResponse.AuthorizedWebhooks">
-            <summary>
-            Webhook events, if any, this wallet has authorized
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.AccountEcosystem">
@@ -2316,14 +2288,6 @@
             External URL associated with the organization or ecosystem entity
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.Ecosystem.WebhooksFieldNumber">
-            <summary>Field number for the "webhooks" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.Ecosystem.Webhooks">
-            <summary>
-            Configured webhooks, if any
-            </summary>
-        </member>
         <member name="F:Trinsic.Services.Provider.V1.Ecosystem.DisplayFieldNumber">
             <summary>Field number for the "display" field.</summary>
         </member>
@@ -2375,35 +2339,6 @@
         <member name="P:Trinsic.Services.Provider.V1.WebhookConfig.Status">
             <summary>
             Last known status of webhook (whether or not Trinsic can successfully reach destination)
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.Grant">
-            <summary>
-            A grant authorizing `actions` on a `resourceId`
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.Grant.ResourceIdFieldNumber">
-            <summary>Field number for the "resourceId" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.Grant.ResourceId">
-            <summary>
-            the urn of the resource
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.Grant.ActionsFieldNumber">
-            <summary>Field number for the "actions" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.Grant.Actions">
-            <summary>
-            list of actions that are allowed
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.Grant.ChildGrantsFieldNumber">
-            <summary>Field number for the "child_grants" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.Grant.ChildGrants">
-            <summary>
-            any child grants
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.CreateEcosystemRequest">
@@ -2517,8 +2452,6 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.Display">
             <summary>
-            New name
-            string name = 4;
             Display details
             </summary>
         </member>
@@ -2533,13 +2466,6 @@
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.ColorFieldNumber">
             <summary>Field number for the "color" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.Color">
-            <summary>
-            string id = 1;
-            string name = 2;
-               string logo_url = 3;
-            </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.LogoDataFieldNumber">
             <summary>Field number for the "logo_data" field.</summary>
@@ -2576,12 +2502,6 @@
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetails.LogoUrlFieldNumber">
             <summary>Field number for the "logo_url" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplayDetails.LogoUrl">
-            <summary>
-            string id = 1;
-            string name = 2;
-            </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetails.ColorFieldNumber">
             <summary>Field number for the "color" field.</summary>
@@ -5669,10 +5589,6 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.WalletId">
             <summary>
-            DID of recipient (presently unsupported)
-            string did_uri = 2 [deprecated=true];
-            DIDComm out-of-band invitation JSON (presently unsupported)
-            string didcomm_invitation_json = 3 [deprecated=true];
             Wallet ID of the recipient within the ecosystem
             </summary>
         </member>

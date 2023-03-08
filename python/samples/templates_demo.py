@@ -19,7 +19,7 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 async def templates_demo():
     trinsic_service = TrinsicService(server_config=trinsic_config())
-    profile = await trinsic_service.account.sign_in()
+    profile = await trinsic_service.account.login_anonymous(ecosystem_id="default")
 
     # create example template
     # createTemplate() {
