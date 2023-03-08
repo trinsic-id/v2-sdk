@@ -31,6 +31,8 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     type_ = "";
     createdBy_ = "";
     dateCreated_ = "";
+    title_ = "";
+    description_ = "";
   }
 
   @java.lang.Override
@@ -55,6 +57,8 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     switch (number) {
       case 4:
         return internalGetFields();
+      case 14:
+        return internalGetFieldOrdering();
       default:
         throw new RuntimeException("Invalid map field number: " + number);
     }
@@ -389,7 +393,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
    * <code>string context_uri = 7 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
    * @return The contextUri.
    */
   @java.lang.Override
@@ -415,7 +419,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
    * <code>string context_uri = 7 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=150
+   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
    * @return The bytes for contextUri.
    */
   @java.lang.Override
@@ -628,6 +632,291 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
+  public static final int TITLE_FIELD_NUMBER = 12;
+  private volatile java.lang.Object title_;
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template title
+   * </pre>
+   *
+   * <code>string title = 12;</code>
+   *
+   * @return The title.
+   */
+  @java.lang.Override
+  public java.lang.String getTitle() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      title_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template title
+   * </pre>
+   *
+   * <code>string title = 12;</code>
+   *
+   * @return The bytes for title.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getTitleBytes() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      title_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DESCRIPTION_FIELD_NUMBER = 13;
+  private volatile java.lang.Object description_;
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template description
+   * </pre>
+   *
+   * <code>string description = 13;</code>
+   *
+   * @return The description.
+   */
+  @java.lang.Override
+  public java.lang.String getDescription() {
+    java.lang.Object ref = description_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      description_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Human-readable template description
+   * </pre>
+   *
+   * <code>string description = 13;</code>
+   *
+   * @return The bytes for description.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getDescriptionBytes() {
+    java.lang.Object ref = description_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      description_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int FIELD_ORDERING_FIELD_NUMBER = 14;
+
+  private static final class FieldOrderingDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        defaultEntry =
+            com.google.protobuf.MapEntry
+                .<java.lang.String,
+                    trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+                    newDefaultInstance(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates
+                            .internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldOrderingEntry_descriptor,
+                        com.google.protobuf.WireFormat.FieldType.STRING,
+                        "",
+                        com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                        trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
+                            .getDefaultInstance());
+  }
+
+  private com.google.protobuf.MapField<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      fieldOrdering_;
+
+  private com.google.protobuf.MapField<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      internalGetFieldOrdering() {
+    if (fieldOrdering_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          FieldOrderingDefaultEntryHolder.defaultEntry);
+    }
+    return fieldOrdering_;
+  }
+
+  public int getFieldOrderingCount() {
+    return internalGetFieldOrdering().getMap().size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  @java.lang.Override
+  public boolean containsFieldOrdering(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    return internalGetFieldOrdering().getMap().containsKey(key);
+  }
+  /** Use {@link #getFieldOrderingMap()} instead. */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      getFieldOrdering() {
+    return getFieldOrderingMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  @java.lang.Override
+  public java.util.Map<
+          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+      getFieldOrderingMap() {
+    return internalGetFieldOrdering().getMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
+      getFieldOrderingOrDefault(
+          java.lang.String key,
+          trinsic.services.verifiablecredentials.templates.v1.FieldOrdering defaultValue) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        map = internalGetFieldOrdering().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering getFieldOrderingOrThrow(
+      java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        map = internalGetFieldOrdering().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
+  public static final int APPLE_WALLET_OPTIONS_FIELD_NUMBER = 15;
+  private trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
+      appleWalletOptions_;
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+   * </code>
+   *
+   * @return Whether the appleWalletOptions field is set.
+   */
+  @java.lang.Override
+  public boolean hasAppleWalletOptions() {
+    return appleWalletOptions_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+   * </code>
+   *
+   * @return The appleWalletOptions.
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
+      getAppleWalletOptions() {
+    return appleWalletOptions_ == null
+        ? trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
+            .getDefaultInstance()
+        : appleWalletOptions_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Options for rendering the template in Apple Wallet
+   * </pre>
+   *
+   * <code>
+   * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder
+      getAppleWalletOptionsOrBuilder() {
+    return getAppleWalletOptions();
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -673,6 +962,17 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dateCreated_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 11, dateCreated_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, title_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, description_);
+    }
+    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+        output, internalGetFieldOrdering(), FieldOrderingDefaultEntryHolder.defaultEntry, 14);
+    if (appleWalletOptions_ != null) {
+      output.writeMessage(15, getAppleWalletOptions());
     }
     getUnknownFields().writeTo(output);
   }
@@ -726,6 +1026,28 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dateCreated_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, dateCreated_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, title_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, description_);
+    }
+    for (java.util.Map.Entry<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        entry : internalGetFieldOrdering().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<
+              java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+          fieldOrdering__ =
+              FieldOrderingDefaultEntryHolder.defaultEntry
+                  .newBuilderForType()
+                  .setKey(entry.getKey())
+                  .setValue(entry.getValue())
+                  .build();
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(14, fieldOrdering__);
+    }
+    if (appleWalletOptions_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(15, getAppleWalletOptions());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -753,6 +1075,13 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     if (!getType().equals(other.getType())) return false;
     if (!getCreatedBy().equals(other.getCreatedBy())) return false;
     if (!getDateCreated().equals(other.getDateCreated())) return false;
+    if (!getTitle().equals(other.getTitle())) return false;
+    if (!getDescription().equals(other.getDescription())) return false;
+    if (!internalGetFieldOrdering().equals(other.internalGetFieldOrdering())) return false;
+    if (hasAppleWalletOptions() != other.hasAppleWalletOptions()) return false;
+    if (hasAppleWalletOptions()) {
+      if (!getAppleWalletOptions().equals(other.getAppleWalletOptions())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -788,6 +1117,18 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + getCreatedBy().hashCode();
     hash = (37 * hash) + DATE_CREATED_FIELD_NUMBER;
     hash = (53 * hash) + getDateCreated().hashCode();
+    hash = (37 * hash) + TITLE_FIELD_NUMBER;
+    hash = (53 * hash) + getTitle().hashCode();
+    hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+    hash = (53 * hash) + getDescription().hashCode();
+    if (!internalGetFieldOrdering().getMap().isEmpty()) {
+      hash = (37 * hash) + FIELD_ORDERING_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetFieldOrdering().hashCode();
+    }
+    if (hasAppleWalletOptions()) {
+      hash = (37 * hash) + APPLE_WALLET_OPTIONS_FIELD_NUMBER;
+      hash = (53 * hash) + getAppleWalletOptions().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -912,6 +1253,8 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       switch (number) {
         case 4:
           return internalGetFields();
+        case 14:
+          return internalGetFieldOrdering();
         default:
           throw new RuntimeException("Invalid map field number: " + number);
       }
@@ -922,6 +1265,8 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       switch (number) {
         case 4:
           return internalGetMutableFields();
+        case 14:
+          return internalGetMutableFieldOrdering();
         default:
           throw new RuntimeException("Invalid map field number: " + number);
       }
@@ -968,6 +1313,17 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
 
       dateCreated_ = "";
 
+      title_ = "";
+
+      description_ = "";
+
+      internalGetMutableFieldOrdering().clear();
+      if (appleWalletOptionsBuilder_ == null) {
+        appleWalletOptions_ = null;
+      } else {
+        appleWalletOptions_ = null;
+        appleWalletOptionsBuilder_ = null;
+      }
       return this;
     }
 
@@ -1009,6 +1365,15 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       result.type_ = type_;
       result.createdBy_ = createdBy_;
       result.dateCreated_ = dateCreated_;
+      result.title_ = title_;
+      result.description_ = description_;
+      result.fieldOrdering_ = internalGetFieldOrdering();
+      result.fieldOrdering_.makeImmutable();
+      if (appleWalletOptionsBuilder_ == null) {
+        result.appleWalletOptions_ = appleWalletOptions_;
+      } else {
+        result.appleWalletOptions_ = appleWalletOptionsBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -1099,6 +1464,18 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       if (!other.getDateCreated().isEmpty()) {
         dateCreated_ = other.dateCreated_;
         onChanged();
+      }
+      if (!other.getTitle().isEmpty()) {
+        title_ = other.title_;
+        onChanged();
+      }
+      if (!other.getDescription().isEmpty()) {
+        description_ = other.description_;
+        onChanged();
+      }
+      internalGetMutableFieldOrdering().mergeFrom(other.internalGetFieldOrdering());
+      if (other.hasAppleWalletOptions()) {
+        mergeAppleWalletOptions(other.getAppleWalletOptions());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -1200,6 +1577,39 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 90
+            case 98:
+              {
+                title_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 98
+            case 106:
+              {
+                description_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 106
+            case 114:
+              {
+                com.google.protobuf.MapEntry<
+                        java.lang.String,
+                        trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+                    fieldOrdering__ =
+                        input.readMessage(
+                            FieldOrderingDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                internalGetMutableFieldOrdering()
+                    .getMutableMap()
+                    .put(fieldOrdering__.getKey(), fieldOrdering__.getValue());
+                break;
+              } // case 114
+            case 122:
+              {
+                input.readMessage(
+                    getAppleWalletOptionsFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 122
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1849,7 +2259,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * <code>string context_uri = 7 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
      * @return The contextUri.
      */
     @java.lang.Deprecated
@@ -1874,7 +2284,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * <code>string context_uri = 7 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
      * @return The bytes for contextUri.
      */
     @java.lang.Deprecated
@@ -1899,7 +2309,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * <code>string context_uri = 7 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
      * @param value The contextUri to set.
      * @return This builder for chaining.
      */
@@ -1923,7 +2333,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * <code>string context_uri = 7 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -1943,7 +2353,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      * <code>string context_uri = 7 [deprecated = true];</code>
      *
      * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=150
+     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
      * @param value The bytes for contextUri to set.
      * @return This builder for chaining.
      */
@@ -2381,6 +2791,629 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       dateCreated_ = value;
       onChanged();
       return this;
+    }
+
+    private java.lang.Object title_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template title
+     * </pre>
+     *
+     * <code>string title = 12;</code>
+     *
+     * @return The title.
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template title
+     * </pre>
+     *
+     * <code>string title = 12;</code>
+     *
+     * @return The bytes for title.
+     */
+    public com.google.protobuf.ByteString getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template title
+     * </pre>
+     *
+     * <code>string title = 12;</code>
+     *
+     * @param value The title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitle(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      title_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template title
+     * </pre>
+     *
+     * <code>string title = 12;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearTitle() {
+
+      title_ = getDefaultInstance().getTitle();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template title
+     * </pre>
+     *
+     * <code>string title = 12;</code>
+     *
+     * @param value The bytes for title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitleBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      title_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object description_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template description
+     * </pre>
+     *
+     * <code>string description = 13;</code>
+     *
+     * @return The description.
+     */
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template description
+     * </pre>
+     *
+     * <code>string description = 13;</code>
+     *
+     * @return The bytes for description.
+     */
+    public com.google.protobuf.ByteString getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template description
+     * </pre>
+     *
+     * <code>string description = 13;</code>
+     *
+     * @param value The description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescription(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      description_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template description
+     * </pre>
+     *
+     * <code>string description = 13;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDescription() {
+
+      description_ = getDefaultInstance().getDescription();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable template description
+     * </pre>
+     *
+     * <code>string description = 13;</code>
+     *
+     * @param value The bytes for description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      description_ = value;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        fieldOrdering_;
+
+    private com.google.protobuf.MapField<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        internalGetFieldOrdering() {
+      if (fieldOrdering_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            FieldOrderingDefaultEntryHolder.defaultEntry);
+      }
+      return fieldOrdering_;
+    }
+
+    private com.google.protobuf.MapField<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        internalGetMutableFieldOrdering() {
+      onChanged();
+      ;
+      if (fieldOrdering_ == null) {
+        fieldOrdering_ =
+            com.google.protobuf.MapField.newMapField(FieldOrderingDefaultEntryHolder.defaultEntry);
+      }
+      if (!fieldOrdering_.isMutable()) {
+        fieldOrdering_ = fieldOrdering_.copy();
+      }
+      return fieldOrdering_;
+    }
+
+    public int getFieldOrderingCount() {
+      return internalGetFieldOrdering().getMap().size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+     * </code>
+     */
+    @java.lang.Override
+    public boolean containsFieldOrdering(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      return internalGetFieldOrdering().getMap().containsKey(key);
+    }
+    /** Use {@link #getFieldOrderingMap()} instead. */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        getFieldOrdering() {
+      return getFieldOrderingMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+     * </code>
+     */
+    @java.lang.Override
+    public java.util.Map<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        getFieldOrderingMap() {
+      return internalGetFieldOrdering().getMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+     * </code>
+     */
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
+        getFieldOrderingOrDefault(
+            java.lang.String key,
+            trinsic.services.verifiablecredentials.templates.v1.FieldOrdering defaultValue) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<
+              java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+          map = internalGetFieldOrdering().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+     * </code>
+     */
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.templates.v1.FieldOrdering
+        getFieldOrderingOrThrow(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<
+              java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+          map = internalGetFieldOrdering().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearFieldOrdering() {
+      internalGetMutableFieldOrdering().getMutableMap().clear();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+     * </code>
+     */
+    public Builder removeFieldOrdering(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      internalGetMutableFieldOrdering().getMutableMap().remove(key);
+      return this;
+    }
+    /** Use alternate mutation accessors instead. */
+    @java.lang.Deprecated
+    public java.util.Map<
+            java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+        getMutableFieldOrdering() {
+      return internalGetMutableFieldOrdering().getMutableMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+     * </code>
+     */
+    public Builder putFieldOrdering(
+        java.lang.String key,
+        trinsic.services.verifiablecredentials.templates.v1.FieldOrdering value) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      if (value == null) {
+        throw new NullPointerException("map value");
+      }
+
+      internalGetMutableFieldOrdering().getMutableMap().put(key, value);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.FieldOrdering&gt; field_ordering = 14 [json_name = "fieldOrdering"];
+     * </code>
+     */
+    public Builder putAllFieldOrdering(
+        java.util.Map<
+                java.lang.String, trinsic.services.verifiablecredentials.templates.v1.FieldOrdering>
+            values) {
+      internalGetMutableFieldOrdering().getMutableMap().putAll(values);
+      return this;
+    }
+
+    private trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
+        appleWalletOptions_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions,
+            trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions.Builder,
+            trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder>
+        appleWalletOptionsBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     *
+     * @return Whether the appleWalletOptions field is set.
+     */
+    public boolean hasAppleWalletOptions() {
+      return appleWalletOptionsBuilder_ != null || appleWalletOptions_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     *
+     * @return The appleWalletOptions.
+     */
+    public trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
+        getAppleWalletOptions() {
+      if (appleWalletOptionsBuilder_ == null) {
+        return appleWalletOptions_ == null
+            ? trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
+                .getDefaultInstance()
+            : appleWalletOptions_;
+      } else {
+        return appleWalletOptionsBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     */
+    public Builder setAppleWalletOptions(
+        trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions value) {
+      if (appleWalletOptionsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        appleWalletOptions_ = value;
+        onChanged();
+      } else {
+        appleWalletOptionsBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     */
+    public Builder setAppleWalletOptions(
+        trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions.Builder
+            builderForValue) {
+      if (appleWalletOptionsBuilder_ == null) {
+        appleWalletOptions_ = builderForValue.build();
+        onChanged();
+      } else {
+        appleWalletOptionsBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     */
+    public Builder mergeAppleWalletOptions(
+        trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions value) {
+      if (appleWalletOptionsBuilder_ == null) {
+        if (appleWalletOptions_ != null) {
+          appleWalletOptions_ =
+              trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions.newBuilder(
+                      appleWalletOptions_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          appleWalletOptions_ = value;
+        }
+        onChanged();
+      } else {
+        appleWalletOptionsBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     */
+    public Builder clearAppleWalletOptions() {
+      if (appleWalletOptionsBuilder_ == null) {
+        appleWalletOptions_ = null;
+        onChanged();
+      } else {
+        appleWalletOptions_ = null;
+        appleWalletOptionsBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     */
+    public trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions.Builder
+        getAppleWalletOptionsBuilder() {
+
+      onChanged();
+      return getAppleWalletOptionsFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     */
+    public trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder
+        getAppleWalletOptionsOrBuilder() {
+      if (appleWalletOptionsBuilder_ != null) {
+        return appleWalletOptionsBuilder_.getMessageOrBuilder();
+      } else {
+        return appleWalletOptions_ == null
+            ? trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions
+                .getDefaultInstance()
+            : appleWalletOptions_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for rendering the template in Apple Wallet
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.AppleWalletOptions apple_wallet_options = 15 [json_name = "appleWalletOptions"];
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions,
+            trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions.Builder,
+            trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder>
+        getAppleWalletOptionsFieldBuilder() {
+      if (appleWalletOptionsBuilder_ == null) {
+        appleWalletOptionsBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions,
+                trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptions.Builder,
+                trinsic.services.verifiablecredentials.templates.v1.AppleWalletOptionsOrBuilder>(
+                getAppleWalletOptions(), getParentForChildren(), isClean());
+        appleWalletOptions_ = null;
+      }
+      return appleWalletOptionsBuilder_;
     }
 
     @java.lang.Override

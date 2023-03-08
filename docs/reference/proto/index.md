@@ -315,203 +315,512 @@ Confirmation method type for two-factor workflows
 
 
 
-<a name="services_universal-wallet_v1_universal-wallet-proto"></a>
+<a name="services_verifiable-credentials_templates_v1_templates-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/universal-wallet/v1/universal-wallet.proto
+## services/verifiable-credentials/templates/v1/templates.proto
 
 
 
-<a name="services-universalwallet-v1-UniversalWallet"></a>
+<a name="services-verifiablecredentials-templates-v1-CredentialTemplates"></a>
 
-### Service - UniversalWallet
+### Service - CredentialTemplates
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetItem | [GetItemRequest](/reference/proto#services-universalwallet-v1-GetItemRequest) | [GetItemResponse](/reference/proto#services-universalwallet-v1-GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
-| Search | [SearchRequest](/reference/proto#services-universalwallet-v1-SearchRequest) | [SearchResponse](/reference/proto#services-universalwallet-v1-SearchResponse) | Search the wallet using a SQL syntax |
-| InsertItem | [InsertItemRequest](/reference/proto#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](/reference/proto#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
-| UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
-| DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
-| DeleteWallet | [DeleteWalletRequest](/reference/proto#services-universalwallet-v1-DeleteWalletRequest) | [DeleteWalletResponse](/reference/proto#services-universalwallet-v1-DeleteWalletResponse) | Delete a wallet and its credentials |
+| Create | [CreateCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse) | Create a credential template in the current ecosystem |
+| Get | [GetCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse) | Fetch a credential template by ID |
+| Update | [UpdateCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest) | [UpdateCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateResponse) | Update metadata of a template |
+| List | [ListCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse) | Search credential templates using SQL, returning strongly-typed template data |
+| Search | [SearchCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse) | Search credential templates using SQL, returning raw JSON data |
+| Delete | [DeleteCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse) | Delete a credential template from the current ecosystem by ID |
 
  <!-- end services -->
 
 
-<a name="services-universalwallet-v1-DeleteItemRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions"></a>
 
-### DeleteItemRequest
-Request to delete an item in a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item to delete |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteItemResponse"></a>
-
-### DeleteItemResponse
-Response to `DeleteItemRequest`
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteWalletRequest"></a>
-
-### DeleteWalletRequest
-Request to delete a wallet
+### AppleWalletOptions
+Configuration options for Apple Wallet when
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to delete. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to delete. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to delete. Mutually exclusive with `email` and `walletId`. |
+| background_color | [string](/reference/proto#string) | Background color, in hex format, of credential when stored in an Apple Wallet. |
+| foreground_color | [string](/reference/proto#string) | Foreground color, in hex format, of credential when stored in an Apple Wallet. |
+| label_color | [string](/reference/proto#string) | Label color, in hex format, of credential when stored in an Apple Wallet. |
+| primary_field | [string](/reference/proto#string) | The ID of the template field which should be used as the primary field of a credential. |
+| secondary_fields | [AppleWalletOptions.SecondaryFieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions-SecondaryFieldsEntry)[] | The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name. |
+| auxiliary_fields | [AppleWalletOptions.AuxiliaryFieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions-AuxiliaryFieldsEntry)[] | The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name. |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-DeleteWalletResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions-AuxiliaryFieldsEntry"></a>
 
-### DeleteWalletResponse
-Response to `DeleteWalletRequest`. Empty payload.
+### AppleWalletOptions.AuxiliaryFieldsEntry
 
-
-
-
-
-
-<a name="services-universalwallet-v1-GetItemRequest"></a>
-
-### GetItemRequest
-Request to fetch an item from wallet
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item in wallet |
+| key | [int32](/reference/proto#int32) |  |
+| value | [string](/reference/proto#string) |  |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-GetItemResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions-SecondaryFieldsEntry"></a>
 
-### GetItemResponse
-Response to `GetItemRequest`
+### AppleWalletOptions.SecondaryFieldsEntry
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | Item data as a JSON string |
-| item_type | [string](/reference/proto#string) | Type of item specified when item was inserted into wallet |
+| key | [int32](/reference/proto#int32) |  |
+| value | [string](/reference/proto#string) |  |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-InsertItemRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest"></a>
 
-### InsertItemRequest
-Request to insert a JSON document into a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | Document to insert; must be stringified JSON |
-| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-InsertItemResponse"></a>
-
-### InsertItemResponse
-Response to `InsertItemRequest`
+### CreateCredentialTemplateRequest
+Request to create a new template
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item inserted into wallet |
+| name | [string](/reference/proto#string) | Name of new template. Must be a unique identifier within its ecosystem. |
+| fields | [CreateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)[] | Fields which compose the template |
+| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials may be issued against this template which have fields not specified in `fields` |
+| title | [string](/reference/proto#string) | Human-readable name of template |
+| description | [string](/reference/proto#string) | Human-readable description of template |
+| field_ordering | [CreateCredentialTemplateRequest.FieldOrderingEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldOrderingEntry)[] | Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`. If not provided, this will be auto-generated. |
+| apple_wallet_options | [AppleWalletOptions](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions) | Options for rendering the template in Apple Wallet |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-SearchRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldOrderingEntry"></a>
 
-### SearchRequest
-Request to search items in wallet
+### CreateCredentialTemplateRequest.FieldOrderingEntry
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL Query to execute against items in wallet |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+| key | [string](/reference/proto#string) |  |
+| value | [FieldOrdering](/reference/proto#services-verifiablecredentials-templates-v1-FieldOrdering) |  |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-SearchResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry"></a>
 
-### SearchResponse
-Response to `SearchRequest`
+### CreateCredentialTemplateRequest.FieldsEntry
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| items | [string](/reference/proto#string)[] | Array of query results, as JSON strings |
+| key | [string](/reference/proto#string) |  |
+| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse"></a>
+
+### CreateCredentialTemplateResponse
+Response to `CreateCredentialTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Created template |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest"></a>
+
+### DeleteCredentialTemplateRequest
+Request to delete a template by ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of template to delete |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse"></a>
+
+### DeleteCredentialTemplateResponse
+Response to `DeleteCredentialTemplateRequest`
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-FieldOrdering"></a>
+
+### FieldOrdering
+Ordering information for a template field
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| order | [int32](/reference/proto#int32) | The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential. Field orders must be contiguous from `0` to the number of fields minus 1. |
+| section | [string](/reference/proto#string) | The human-readable name of the section this field appears in; used to group together fields when displaying a credential. Sections must be contiguous with respect to `order`. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest"></a>
+
+### GetCredentialTemplateRequest
+Request to fetch a template by ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of template to fetch |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse"></a>
+
+### GetCredentialTemplateResponse
+Response to `GetCredentialTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Template fetched by ID |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest"></a>
+
+### ListCredentialTemplatesRequest
+Request to list templates using a SQL query
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListCredentialTemplatesResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse"></a>
+
+### ListCredentialTemplatesResponse
+Response to `ListCredentialTemplatesRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] | Templates found by query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of resuts via `ListCredentialTemplatesRequest` |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest"></a>
+
+### SearchCredentialTemplatesRequest
+Request to search templates using a SQL query
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchCredentialTemplatesResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse"></a>
+
+### SearchCredentialTemplatesResponse
+Response to `SearchCredentialTemplatesRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items_json | [string](/reference/proto#string) | Raw JSON data returned from query |
 | has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchCredentialTemplatesRequest` |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-UpdateItemRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-TemplateData"></a>
 
-### UpdateItemRequest
-Request to update item in wallet
+### TemplateData
+Credential Template
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item in wallet |
-| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
+| id | [string](/reference/proto#string) | Template ID |
+| name | [string](/reference/proto#string) | Template name |
+| version | [int32](/reference/proto#int32) | Template version number |
+| fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] | Fields defined for the template |
+| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials issued against this template may contain fields not defined by template |
+| schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
+| context_uri | [string](/reference/proto#string) | **Deprecated.** URI pointing to template JSON-LD context document |
+| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
+| type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
+| created_by | [string](/reference/proto#string) | ID of template creator |
+| date_created | [string](/reference/proto#string) | Date when template was created as ISO 8601 utc string |
+| title | [string](/reference/proto#string) | Human-readable template title |
+| description | [string](/reference/proto#string) | Human-readable template description |
+| field_ordering | [TemplateData.FieldOrderingEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldOrderingEntry)[] | Map describing how to order and categorize the fields within the template. The key of this map is the field `name`. |
+| apple_wallet_options | [AppleWalletOptions](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions) | Options for rendering the template in Apple Wallet |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-UpdateItemResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldOrderingEntry"></a>
 
-### UpdateItemResponse
-Response to `UpdateItemRequest`
+### TemplateData.FieldOrderingEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [FieldOrdering](/reference/proto#services-verifiablecredentials-templates-v1-FieldOrdering) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry"></a>
+
+### TemplateData.FieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateField"></a>
+
+### TemplateField
+A field defined in a template
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| title | [string](/reference/proto#string) | Human-readable name of the field |
+| description | [string](/reference/proto#string) | Human-readable description of the field |
+| optional | [bool](/reference/proto#bool) | Whether this field may be omitted when a credential is issued against the template |
+| type | [FieldType](/reference/proto#services-verifiablecredentials-templates-v1-FieldType) | The type of the field |
+| annotations | [TemplateField.AnnotationsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField-AnnotationsEntry)[] | **Deprecated.** Do not use. Annotations for the field that may be used to add additional information. |
+| uri_data | [UriFieldData](/reference/proto#services-verifiablecredentials-templates-v1-UriFieldData) | How to deal with this URI field when rendering credential. Only use if `type` is `URI`. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateField-AnnotationsEntry"></a>
+
+### TemplateField.AnnotationsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateFieldPatch"></a>
+
+### TemplateFieldPatch
+A patch to apply to an existing template field
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| title | [string](/reference/proto#string) | Human-readable name of the field |
+| description | [string](/reference/proto#string) | Human-readable description of the field |
+| uri_data | [UriFieldData](/reference/proto#services-verifiablecredentials-templates-v1-UriFieldData) | How to deal with this URI field when rendering credential. Only use if `type` is `URI`. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest"></a>
+
+### UpdateCredentialTemplateRequest
+Request to update display information for a template
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of Template to update |
+| title | [string](/reference/proto#string) | New human-readable title of Template |
+| description | [string](/reference/proto#string) | New human-readable description of Template |
+| fields | [UpdateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldsEntry)[] | Fields to update within the Template |
+| field_ordering | [UpdateCredentialTemplateRequest.FieldOrderingEntry](/reference/proto#services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldOrderingEntry)[] | New field ordering options. See documentation for template creation for usage information. |
+| apple_wallet_options | [AppleWalletOptions](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions) | New Apple Wallet configuration |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldOrderingEntry"></a>
+
+### UpdateCredentialTemplateRequest.FieldOrderingEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [FieldOrdering](/reference/proto#services-verifiablecredentials-templates-v1-FieldOrdering) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateRequest-FieldsEntry"></a>
+
+### UpdateCredentialTemplateRequest.FieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [TemplateFieldPatch](/reference/proto#services-verifiablecredentials-templates-v1-TemplateFieldPatch) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UpdateCredentialTemplateResponse"></a>
+
+### UpdateCredentialTemplateResponse
+Response to `UpdateCredentialTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| updated_template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | The Template after the update has been applied |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UriFieldData"></a>
+
+### UriFieldData
+Data pertaining to a URI Field
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| mime_type | [string](/reference/proto#string) | Expected MIME Type of content pointed to by URI. Can be generic (eg, "image/") or specific ("image/png"). Defaults to "application/octet-stream". |
+| render_method | [UriRenderMethod](/reference/proto#services-verifiablecredentials-templates-v1-UriRenderMethod) | How to display the URI value when rendering a credential. |
 
 
 
 
 
  <!-- end messages -->
+
+
+<a name="services-verifiablecredentials-templates-v1-FieldType"></a>
+
+### FieldType
+Valid types for credential fields
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| STRING | 0 |  |
+| NUMBER | 1 |  |
+| BOOL | 2 |  |
+| DATETIME | 4 |  |
+| URI | 5 |  |
+
+
+
+<a name="services-verifiablecredentials-templates-v1-UriRenderMethod"></a>
+
+### UriRenderMethod
+How to display a URI value when rendering a credential.
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TEXT | 0 | Display URI as text |
+| LINK | 1 | Display URI as a clickable link |
+| INLINE_IMAGE | 2 | Display URI as an inline image. Only takes effect if the template field's MIME Type is an image type. |
+
 
  <!-- end enums -->
 
@@ -814,350 +1123,6 @@ Response to `VerifyProofRequest`
 
 
 
-<a name="services_verifiable-credentials_templates_v1_templates-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/verifiable-credentials/templates/v1/templates.proto
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CredentialTemplates"></a>
-
-### Service - CredentialTemplates
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Create | [CreateCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse) | Create a credential template in the current ecosystem |
-| Get | [GetCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse) | Fetch a credential template by ID |
-| List | [ListCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse) | Search credential templates using SQL, returning strongly-typed template data |
-| Search | [SearchCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse) | Search credential templates using SQL, returning raw JSON data |
-| Delete | [DeleteCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse) | Delete a credential template from the current ecosystem by ID |
-
- <!-- end services -->
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest"></a>
-
-### CreateCredentialTemplateRequest
-Request to create a new template
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Name of new template |
-| fields | [CreateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)[] | Fields which compose the template |
-| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials may be issued against this template which have fields not specified in `fields` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry"></a>
-
-### CreateCredentialTemplateRequest.FieldsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse"></a>
-
-### CreateCredentialTemplateResponse
-Response to `CreateCredentialTemplateRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Created template |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest"></a>
-
-### DeleteCredentialTemplateRequest
-Request to delete a template by ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of template to delete |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse"></a>
-
-### DeleteCredentialTemplateResponse
-Response to `DeleteCredentialTemplateRequest`
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest"></a>
-
-### GetCredentialTemplateRequest
-Request to fetch a template by ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of template to fetch |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse"></a>
-
-### GetCredentialTemplateResponse
-Response to `GetCredentialTemplateRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Template fetched by ID |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetTemplateRequest"></a>
-
-### GetTemplateRequest
-Unused
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetTemplateResponse"></a>
-
-### GetTemplateResponse
-Unused
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest"></a>
-
-### ListCredentialTemplatesRequest
-Request to list templates using a SQL query
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListCredentialTemplatesResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse"></a>
-
-### ListCredentialTemplatesResponse
-Response to `ListCredentialTemplatesRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] | Templates found by query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of resuts via `ListCredentialTemplatesRequest` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesRequest"></a>
-
-### ListTemplatesRequest
-Unused
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesResponse"></a>
-
-### ListTemplatesResponse
-Unused
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest"></a>
-
-### SearchCredentialTemplatesRequest
-Request to search templates using a SQL query
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchCredentialTemplatesResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse"></a>
-
-### SearchCredentialTemplatesResponse
-Response to `SearchCredentialTemplatesRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| items_json | [string](/reference/proto#string) | Raw JSON data returned from query |
-| has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchCredentialTemplatesRequest` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-TemplateData"></a>
-
-### TemplateData
-Credential Template
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | Template ID |
-| name | [string](/reference/proto#string) | Template name |
-| version | [int32](/reference/proto#int32) | Template version number |
-| fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] | Fields defined for the template |
-| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials issued against this template may contain fields not defined by template |
-| schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
-| context_uri | [string](/reference/proto#string) | **Deprecated.** URI pointing to template JSON-LD context document |
-| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
-| type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
-| created_by | [string](/reference/proto#string) | ID of template creator |
-| date_created | [string](/reference/proto#string) | Date when template was created as ISO 8601 utc string |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry"></a>
-
-### TemplateData.FieldsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-TemplateField"></a>
-
-### TemplateField
-A field defined in a template
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| description | [string](/reference/proto#string) | Human-readable description of the field |
-| optional | [bool](/reference/proto#bool) | Whether this field may be omitted when a credential is issued against the template |
-| type | [FieldType](/reference/proto#services-verifiablecredentials-templates-v1-FieldType) | The type of the field |
-| annotations | [TemplateField.AnnotationsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField-AnnotationsEntry)[] | Annotations for the field that may be used to add additional information |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-TemplateField-AnnotationsEntry"></a>
-
-### TemplateField.AnnotationsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [string](/reference/proto#string) |  |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-verifiablecredentials-templates-v1-FieldType"></a>
-
-### FieldType
-Valid types for credential fields
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| STRING | 0 |  |
-| NUMBER | 1 |  |
-| BOOL | 2 |  |
-| DATETIME | 4 |  |
-| URI | 5 |  |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
 <a name="services_trust-registry_v1_trust-registry-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -1441,6 +1406,413 @@ Response to `UnregisterMemberRequest`
 
 
 
+<a name="services_common_v1_common-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/common/v1/common.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-common-v1-Nonce"></a>
+
+### Nonce
+Nonce used to generate an oberon proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
+| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-common-v1-ResponseStatus"></a>
+
+### ResponseStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SUCCESS | 0 |  |
+| WALLET_ACCESS_DENIED | 10 |  |
+| WALLET_EXISTS | 11 |  |
+| ITEM_NOT_FOUND | 20 |  |
+| SERIALIZATION_ERROR | 200 |  |
+| UNKNOWN_ERROR | 100 |  |
+
+
+
+<a name="services-common-v1-SupportedDidMethod"></a>
+
+### SupportedDidMethod
+Enum of all supported DID Methods
+https://docs.godiddy.com/en/supported-methods
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| KEY | 0 | The did:key method -- all wallets use this by default |
+| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
+| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_event_v1_event-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/event/v1/event.proto
+
+
+ <!-- end services -->
+
+
+<a name="trinsic-services-event-APICall"></a>
+
+### APICall
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| source | [string](/reference/proto#string) |  |
+| request | [bytes](/reference/proto#bytes) |  |
+| response | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="trinsic-services-event-GovernanceFrameworkCreatedV1"></a>
+
+### GovernanceFrameworkCreatedV1
+Entity Governance Framework created and attached to ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of the governance framework |
+| ecosystem_id | [string](/reference/proto#string) | UUID of the ecosystem that owns this EGF |
+| trust_registry | [string](/reference/proto#string) | Trust registry associated with this EGF |
+| governing_authority | [string](/reference/proto#string) | Wallet ID of the authority for this EGF |
+| type | [string](/reference/proto#string) | Type of EGF |
+| name | [string](/reference/proto#string) | User-friendly name for the EGF |
+| description | [string](/reference/proto#string) | Description of the EGF |
+| governance_framework | [string](/reference/proto#string) | URI for the EGF |
+| timestamp | [string](/reference/proto#string) | Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
+
+
+
+
+
+
+<a name="trinsic-services-event-ItemReceivedV1"></a>
+
+### ItemReceivedV1
+Item inserted into wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of the new item |
+| received | [string](/reference/proto#string) | Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
+| wallet_id | [string](/reference/proto#string) | ID of wallet |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem where this event originated, if any. |
+
+
+
+
+
+
+<a name="trinsic-services-event-PingV1"></a>
+
+### PingV1
+Webhook test event
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of this ping |
+| webhook_id | [string](/reference/proto#string) | UUID of the webhook receiving the ping |
+| timestamp | [string](/reference/proto#string) | Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
+| message | [string](/reference/proto#string) | Arbitrary message specified when ping was requested |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem where this event originated, if any. |
+
+
+
+
+
+
+<a name="trinsic-services-event-TemplateCreatedV1"></a>
+
+### TemplateCreatedV1
+Template created in ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of the template |
+| ecosystem_id | [string](/reference/proto#string) | UUID of the ecosystem that owns this template |
+| name | [string](/reference/proto#string) | Template name |
+| type | [string](/reference/proto#string) | Template type |
+| created_by | [string](/reference/proto#string) | WalletID that created the template |
+| timestamp | [string](/reference/proto#string) | Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="trinsic-services-event-EventType"></a>
+
+### EventType
+All event types
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| PING | 0 |  |
+| LOG | 1 |  |
+| GOVERNANCE_FRAMEWORK_CREATED | 5 |  |
+| GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED | 6 |  |
+| GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED | 7 |  |
+| TEMPLATE_CREATED | 10 |  |
+| TEMPLATE_DELETED | 11 |  |
+| WALLET_CREATED | 15 |  |
+| ITEM_RECEIVED | 16 |  |
+| CREDENTIAL_ISSUED | 17 |  |
+
+
+ <!-- end enums -->
+
+
+<a name="services_event_v1_event-proto-extensions"></a>
+
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| event_type | EventType | .google.protobuf.MessageOptions | 60002 | Event type associated with this Event message. |
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_universal-wallet_v1_universal-wallet-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/universal-wallet/v1/universal-wallet.proto
+
+
+
+<a name="services-universalwallet-v1-UniversalWallet"></a>
+
+### Service - UniversalWallet
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetItem | [GetItemRequest](/reference/proto#services-universalwallet-v1-GetItemRequest) | [GetItemResponse](/reference/proto#services-universalwallet-v1-GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
+| Search | [SearchRequest](/reference/proto#services-universalwallet-v1-SearchRequest) | [SearchResponse](/reference/proto#services-universalwallet-v1-SearchResponse) | Search the wallet using a SQL syntax |
+| InsertItem | [InsertItemRequest](/reference/proto#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](/reference/proto#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
+| UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
+| DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
+| DeleteWallet | [DeleteWalletRequest](/reference/proto#services-universalwallet-v1-DeleteWalletRequest) | [DeleteWalletResponse](/reference/proto#services-universalwallet-v1-DeleteWalletResponse) | Delete a wallet and its credentials |
+
+ <!-- end services -->
+
+
+<a name="services-universalwallet-v1-DeleteItemRequest"></a>
+
+### DeleteItemRequest
+Request to delete an item in a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item to delete |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteItemResponse"></a>
+
+### DeleteItemResponse
+Response to `DeleteItemRequest`
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteWalletRequest"></a>
+
+### DeleteWalletRequest
+Request to delete a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to delete. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to delete. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to delete. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteWalletResponse"></a>
+
+### DeleteWalletResponse
+Response to `DeleteWalletRequest`. Empty payload.
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetItemRequest"></a>
+
+### GetItemRequest
+Request to fetch an item from wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item in wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetItemResponse"></a>
+
+### GetItemResponse
+Response to `GetItemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](/reference/proto#string) | Item data as a JSON string |
+| item_type | [string](/reference/proto#string) | Type of item specified when item was inserted into wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-InsertItemRequest"></a>
+
+### InsertItemRequest
+Request to insert a JSON document into a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](/reference/proto#string) | Document to insert; must be stringified JSON |
+| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-InsertItemResponse"></a>
+
+### InsertItemResponse
+Response to `InsertItemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item inserted into wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-SearchRequest"></a>
+
+### SearchRequest
+Request to search items in wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL Query to execute against items in wallet |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-SearchResponse"></a>
+
+### SearchResponse
+Response to `SearchRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items | [string](/reference/proto#string)[] | Array of query results, as JSON strings |
+| has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-UpdateItemRequest"></a>
+
+### UpdateItemRequest
+Request to update item in wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item in wallet |
+| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-UpdateItemResponse"></a>
+
+### UpdateItemResponse
+Response to `UpdateItemRequest`
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="services_file-management_v1_file-management-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -1646,66 +2018,6 @@ Response to `UploadFileRequest`
  <!-- end messages -->
 
  <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_options_field-options-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/options/field-options.proto
-
-
- <!-- end services -->
-
-
-<a name="services-options-AnnotationOption"></a>
-
-### AnnotationOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| active | [bool](/reference/proto#bool) | Is this annotation active |
-| message | [string](/reference/proto#string) | Custom annotation message to provide |
-
-
-
-
-
-
-<a name="services-options-SdkTemplateOption"></a>
-
-### SdkTemplateOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
-| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
-| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
-| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
-| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
-
-<a name="services_options_field-options-proto-extensions"></a>
-
-### File-level Extensions
-| Extension | Type | Base | Number | Description |
-| --------- | ---- | ---- | ------ | ----------- |
-| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
-| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
 
  <!-- end HasExtensions -->
 
@@ -2525,106 +2837,44 @@ Type of participant being invited to ecosystem
 
 
 
-<a name="services_event_v1_event-proto"></a>
+<a name="services_options_field-options-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/event/v1/event.proto
+## services/options/field-options.proto
 
 
  <!-- end services -->
 
 
-<a name="trinsic-services-event-APICall"></a>
+<a name="services-options-AnnotationOption"></a>
 
-### APICall
+### AnnotationOption
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| source | [string](/reference/proto#string) |  |
-| request | [bytes](/reference/proto#bytes) |  |
-| response | [bytes](/reference/proto#bytes) |  |
+| active | [bool](/reference/proto#bool) | Is this annotation active |
+| message | [string](/reference/proto#string) | Custom annotation message to provide |
 
 
 
 
 
 
-<a name="trinsic-services-event-GovernanceFrameworkCreatedV1"></a>
+<a name="services-options-SdkTemplateOption"></a>
 
-### GovernanceFrameworkCreatedV1
-Entity Governance Framework created and attached to ecosystem
+### SdkTemplateOption
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | UUID of the governance framework |
-| ecosystem_id | [string](/reference/proto#string) | UUID of the ecosystem that owns this EGF |
-| trust_registry | [string](/reference/proto#string) | Trust registry associated with this EGF |
-| governing_authority | [string](/reference/proto#string) | Wallet ID of the authority for this EGF |
-| type | [string](/reference/proto#string) | Type of EGF |
-| name | [string](/reference/proto#string) | User-friendly name for the EGF |
-| description | [string](/reference/proto#string) | Description of the EGF |
-| governance_framework | [string](/reference/proto#string) | URI for the EGF |
-| timestamp | [string](/reference/proto#string) | Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
-
-
-
-
-
-
-<a name="trinsic-services-event-ItemReceivedV1"></a>
-
-### ItemReceivedV1
-Item inserted into wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | UUID of the new item |
-| received | [string](/reference/proto#string) | Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
-| wallet_id | [string](/reference/proto#string) | ID of wallet |
-| ecosystem_id | [string](/reference/proto#string) | Ecosystem where this event originated, if any. |
-
-
-
-
-
-
-<a name="trinsic-services-event-PingV1"></a>
-
-### PingV1
-Webhook test event
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | UUID of this ping |
-| webhook_id | [string](/reference/proto#string) | UUID of the webhook receiving the ping |
-| timestamp | [string](/reference/proto#string) | Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
-| message | [string](/reference/proto#string) | Arbitrary message specified when ping was requested |
-| ecosystem_id | [string](/reference/proto#string) | Ecosystem where this event originated, if any. |
-
-
-
-
-
-
-<a name="trinsic-services-event-TemplateCreatedV1"></a>
-
-### TemplateCreatedV1
-Template created in ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | UUID of the template |
-| ecosystem_id | [string](/reference/proto#string) | UUID of the ecosystem that owns this template |
-| name | [string](/reference/proto#string) | Template name |
-| type | [string](/reference/proto#string) | Template type |
-| created_by | [string](/reference/proto#string) | WalletID that created the template |
-| timestamp | [string](/reference/proto#string) | Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) |
+| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
+| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
+| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
+| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
+| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
 
 
 
@@ -2632,97 +2882,16 @@ Template created in ecosystem
 
  <!-- end messages -->
 
-
-<a name="trinsic-services-event-EventType"></a>
-
-### EventType
-All event types
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| PING | 0 |  |
-| LOG | 1 |  |
-| GOVERNANCE_FRAMEWORK_CREATED | 5 |  |
-| GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED | 6 |  |
-| GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED | 7 |  |
-| TEMPLATE_CREATED | 10 |  |
-| TEMPLATE_DELETED | 11 |  |
-| WALLET_CREATED | 15 |  |
-| ITEM_RECEIVED | 16 |  |
-| CREDENTIAL_ISSUED | 17 |  |
-
-
  <!-- end enums -->
 
 
-<a name="services_event_v1_event-proto-extensions"></a>
+<a name="services_options_field-options-proto-extensions"></a>
 
 ### File-level Extensions
 | Extension | Type | Base | Number | Description |
 | --------- | ---- | ---- | ------ | ----------- |
-| event_type | EventType | .google.protobuf.MessageOptions | 60002 | Event type associated with this Event message. |
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_common_v1_common-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/common/v1/common.proto
-
-
- <!-- end services -->
-
-
-<a name="services-common-v1-Nonce"></a>
-
-### Nonce
-Nonce used to generate an oberon proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-common-v1-ResponseStatus"></a>
-
-### ResponseStatus
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| SUCCESS | 0 |  |
-| WALLET_ACCESS_DENIED | 10 |  |
-| WALLET_EXISTS | 11 |  |
-| ITEM_NOT_FOUND | 20 |  |
-| SERIALIZATION_ERROR | 200 |  |
-| UNKNOWN_ERROR | 100 |  |
-
-
-
-<a name="services-common-v1-SupportedDidMethod"></a>
-
-### SupportedDidMethod
-Enum of all supported DID Methods
-https://docs.godiddy.com/en/supported-methods
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| KEY | 0 | The did:key method -- all wallets use this by default |
-| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
-| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
-
-
- <!-- end enums -->
+| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
 
  <!-- end HasExtensions -->
 
