@@ -76,7 +76,7 @@ message DeleteCredentialTemplateResponse {}
 
 // Request to create a new template
 message CreateCredentialTemplateRequest {
-  // Name of new template
+  // Name of new template. Must be a unique identifier within its ecosystem.
   string name = 1;
 
   // Fields which compose the template
@@ -85,6 +85,19 @@ message CreateCredentialTemplateRequest {
   // Whether credentials may be issued against this template which have fields
   // not specified in `fields`
   bool allow_additional_fields = 3;
+
+  // Human-readable name of template
+  string title = 4;
+
+  // Human-readable description of template
+  string description = 5;
+
+  // Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+  // If not provided, this will be auto-generated.
+  map<string, FieldOrdering> field_ordering = 6;
+
+  // Options for rendering the template in Apple Wallet
+  optional AppleWalletOptions apple_wallet_options = 7;
 }
 
 // Response to `CreateCredentialTemplateRequest`
@@ -93,43 +106,26 @@ message CreateCredentialTemplateResponse {
   TemplateData data = 1;
 }
 
-// A field defined in a template
-message TemplateField {
-  // Human-readable description of the field
-  string description = 2;
-
-  // Whether this field may be omitted when a credential is issued against the template
-  bool optional = 3;
-
-  // The type of the field
-  FieldType type = 4;
-
-  // Annotations for the field that may be used to add additional information
-  map<string, string> annotations = 5;
-}
-
-// Valid types for credential fields
-enum FieldType {
-  STRING = 0;
-  NUMBER = 1;
-  BOOL = 2;
-  DATETIME = 4;
-  URI = 5;
-}
-
-// Unused
-message GetTemplateRequest {
+// Request to update display information for a template
+message UpdateCredentialTemplateRequest {
+  // ID of Template to update
   string id = 1;
+  // New human-readable title of Template
+  optional string title = 2;
+  // New human-readable description of Template
+  optional string description = 3;
+  // Fields to update within the Template
+  map<string, TemplateFieldPatch> fields = 4;
+  // New field ordering options. See documentation for template creation for usage information.
+  map<string, FieldOrdering> field_ordering = 5;
+  // New Apple Wallet configuration
+  optional AppleWalletOptions apple_wallet_options = 6;
 }
-// Unused
-message GetTemplateResponse {
-  TemplateData data = 1;
-}
-// Unused
-message ListTemplatesRequest {}
-// Unused
-message ListTemplatesResponse {
-  repeated TemplateData templates = 1;
+
+// Response to `UpdateCredentialTemplateRequest`
+message UpdateCredentialTemplateResponse {
+  // The Template after the update has been applied
+  TemplateData updated_template = 1;
 }
 
 // Credential Template
@@ -157,6 +153,111 @@ message TemplateData {
   string created_by = 10  [json_name = "createdBy"];
   // Date when template was created as ISO 8601 utc string
   string date_created = 11 [json_name = "dateCreated"];
+  // Human-readable template title
+  string title = 12;
+  // Human-readable template description
+  string description = 13;
+  // Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+  map<string, FieldOrdering> field_ordering = 14 [json_name="fieldOrdering"];
+  // Options for rendering the template in Apple Wallet
+  AppleWalletOptions apple_wallet_options = 15 [json_name="appleWalletOptions"];
+}
+
+// Configuration options for Apple Wallet when
+message AppleWalletOptions {
+  // Background color, in hex format, of credential when stored in an Apple Wallet.
+  string background_color = 1;
+
+  // Foreground color, in hex format, of credential when stored in an Apple Wallet.
+  string foreground_color = 2;
+
+  // Label color, in hex format, of credential when stored in an Apple Wallet.
+  string label_color = 3;
+
+  // The ID of the template field which should be used as the primary field of a credential.
+  string primary_field = 4;
+
+  // The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+  map<int32, string> secondary_fields = 5;
+
+  // The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+  map<int32, string> auxiliary_fields = 6;
+}
+
+// Ordering information for a template field
+message FieldOrdering {
+  // The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+  // Field orders must be contiguous from `0` to the number of fields minus 1.
+  int32 order = 1;
+
+  // The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+  // Sections must be contiguous with respect to `order`.
+  string section = 2;
+}
+
+// A field defined in a template
+message TemplateField {
+  // Human-readable name of the field
+  string title = 1;
+
+  // Human-readable description of the field
+  string description = 2;
+
+  // Whether this field may be omitted when a credential is issued against the template
+  bool optional = 3;
+
+  // The type of the field
+  FieldType type = 4;
+
+  // Do not use.
+  // Annotations for the field that may be used to add additional information.
+  map<string, string> annotations = 5 [deprecated=true];
+
+  // How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+  optional UriFieldData uri_data = 6;
+}
+
+// A patch to apply to an existing template field
+message TemplateFieldPatch {
+  // Human-readable name of the field
+  optional string title = 1;
+
+  // Human-readable description of the field
+  optional string description = 2;
+
+  // How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+  optional UriFieldData uri_data = 3;
+}
+
+// Valid types for credential fields
+enum FieldType {
+  STRING = 0;
+  NUMBER = 1;
+  BOOL = 2;
+  DATETIME = 4;
+  URI = 5;
+}
+
+// Data pertaining to a URI Field
+message UriFieldData {
+  // Expected MIME Type of content pointed to by URI. Can be generic (eg, "image/") or specific ("image/png").
+  // Defaults to "application/octet-stream".
+  string mime_type = 1;
+
+  // How to display the URI value when rendering a credential.
+  UriRenderMethod render_method = 2;
+}
+
+// How to display a URI value when rendering a credential.
+enum UriRenderMethod {
+  // Display URI as text
+  TEXT = 0;
+
+  // Display URI as a clickable link
+  LINK = 1;
+
+  // Display URI as an inline image. Only takes effect if the template field's MIME Type is an image type.
+  INLINE_IMAGE = 2;
 }
 
 service CredentialTemplates {
@@ -165,6 +266,9 @@ service CredentialTemplates {
 
   // Fetch a credential template by ID
   rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse);
+
+  // Update metadata of a template
+  rpc Update(UpdateCredentialTemplateRequest) returns (UpdateCredentialTemplateResponse);
 
   // Search credential templates using SQL, returning strongly-typed template data
   rpc List(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
