@@ -93,14 +93,6 @@ public final class Templates {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_SecondaryFieldsEntry_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_SecondaryFieldsEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_AuxiliaryFieldsEntry_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_AuxiliaryFieldsEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_fieldAccessorTable;
@@ -231,35 +223,28 @@ public final class Templates {
           + "\022FieldOrderingEntry\022\013\n"
           + "\003key\030\001 \001(\t\022I\n"
           + "\005value\030\002 \001(\0132:.services.verifiablecr"
-          + "edentials.templates.v1.FieldOrdering:\0028\001\"\304\003\n"
+          + "edentials.templates.v1.FieldOrdering:\0028\001\"\250\001\n"
           + "\022AppleWalletOptions\022\030\n"
           + "\020background_color\030\001 \001(\t\022\030\n"
           + "\020foreground_color\030\002 \001(\t\022\023\n"
           + "\013label_color\030\003 \001(\t\022\025\n\r"
-          + "primary_field\030\004 \001(\t\022n\n"
-          + "\020secondary_fields\030\005 \003(\0132T.services.ver"
-          + "ifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry\022n\n"
-          + "\020auxiliary_fields\030\006 \003(\0132T.services.verifiablec"
-          + "redentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry\0326\n"
-          + "\024SecondaryFieldsEntry\022\013\n"
-          + "\003key\030\001 \001(\005\022\r\n"
-          + "\005value\030\002 \001(\t:\0028\001\0326\n"
-          + "\024AuxiliaryFieldsEntry\022\013\n"
-          + "\003key\030\001 \001(\005\022\r\n"
-          + "\005value\030\002 \001(\t:\0028\001\"/\n\r"
+          + "primary_field\030\004 \001(\t\022\030\n"
+          + "\020secondary_fields\030\005 \003(\t\022\030\n"
+          + "\020auxiliary_fields\030\006 \003(\t\"/\n\r"
           + "FieldOrdering\022\r\n"
           + "\005order\030\001 \001(\005\022\017\n"
           + "\007section\030\002 \001(\t\"\204\003\n\r"
-          + "TemplateField\022\r\n"
+          + "TemplateField\022\r"
+          + "\n"
           + "\005title\030\001 \001(\t\022\023\n"
           + "\013description\030\002 \001(\t\022\020\n"
           + "\010optional\030\003 \001(\010\022D\n"
-          + "\004type\030\004 \001(\01626.service"
-          + "s.verifiablecredentials.templates.v1.FieldType\022d\n"
-          + "\013annotations\030\005 \003(\0132K.services.v"
-          + "erifiablecredentials.templates.v1.TemplateField.AnnotationsEntryB\002\030\001\022P\n"
-          + "\010uri_data\030\006"
-          + " \001(\01329.services.verifiablecredentials.templates.v1.UriFieldDataH\000\210\001\001\0322\n"
+          + "\004type\030\004 \001(\01626.services.ve"
+          + "rifiablecredentials.templates.v1.FieldType\022d\n"
+          + "\013annotations\030\005 \003(\0132K.services.verif"
+          + "iablecredentials.templates.v1.TemplateField.AnnotationsEntryB\002\030\001\022P\n"
+          + "\010uri_data\030\006 \001"
+          + "(\01329.services.verifiablecredentials.templates.v1.UriFieldDataH\000\210\001\001\0322\n"
           + "\020AnnotationsEntry\022\013\n"
           + "\003key\030\001 \001(\t\022\r\n"
           + "\005value\030\002 \001(\t:\0028\001B\013\n"
@@ -267,15 +252,15 @@ public final class Templates {
           + "\022TemplateFieldPatch\022\022\n"
           + "\005title\030\001 \001(\tH\000\210\001\001\022\030\n"
           + "\013description\030\002 \001(\tH\001\210\001\001\022P\n"
-          + "\010uri_data\030\003 \001(\01329.services.verifi"
-          + "ablecredentials.templates.v1.UriFieldDataH\002\210\001\001B\010\n"
+          + "\010uri_data\030\003 \001(\01329.services.verifiable"
+          + "credentials.templates.v1.UriFieldDataH\002\210\001\001B\010\n"
           + "\006_titleB\016\n"
           + "\014_descriptionB\013\n"
           + "\t_uri_data\"v\n"
           + "\014UriFieldData\022\021\n"
           + "\tmime_type\030\001 \001(\t\022S\n\r"
-          + "render_method\030\002 \001(\0162<.services.verif"
-          + "iablecredentials.templates.v1.UriRenderMethod*D\n"
+          + "render_method\030\002 \001(\0162<.services.verifiabl"
+          + "ecredentials.templates.v1.UriRenderMethod*D\n"
           + "\tFieldType\022\n\n"
           + "\006STRING\020\000\022\n\n"
           + "\006NUMBER\020\001\022\010\n"
@@ -287,27 +272,28 @@ public final class Templates {
           + "\004LINK\020\001\022\020\n"
           + "\014INLINE_IMAGE\020\0022\372\007\n"
           + "\023CredentialTemplates\022\245\001\n"
-          + "\006Create\022L.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRe"
-          + "quest\032M.services.verifiablecredentials.t"
-          + "emplates.v1.CreateCredentialTemplateResponse\022\234\001\n"
-          + "\003Get\022I.services.verifiablecredentials.templates.v1.GetCredentialTemplate"
-          + "Request\032J.services.verifiablecredentials"
-          + ".templates.v1.GetCredentialTemplateResponse\022\245\001\n"
-          + "\006Update\022L.services.verifiablecredentials.templates.v1.UpdateCredentialTem"
-          + "plateRequest\032M.services.verifiablecreden"
-          + "tials.templates.v1.UpdateCredentialTemplateResponse\022\241\001\n"
-          + "\004List\022K.services.verifiablecredentials.templates.v1.ListCredentia"
-          + "lTemplatesRequest\032L.services.verifiablec"
-          + "redentials.templates.v1.ListCredentialTemplatesResponse\022\247\001\n"
-          + "\006Search\022M.services.verifiablecredentials.templates.v1.SearchC"
-          + "redentialTemplatesRequest\032N.services.ver"
-          + "ifiablecredentials.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
-          + "\006Delete\022L.services.verifiablecredentials.templates."
-          + "v1.DeleteCredentialTemplateRequest\032M.ser"
-          + "vices.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponseB\243\001\n"
-          + "3trinsic.services.verifiablecredentials.templates.v1P\001Z4services/verifiablecredenti"
-          + "als/templates/v1/template\252\0023Trinsic.Services.VerifiableCredentials.Templates.V1b"
-          + "\006proto3"
+          + "\006Create\022L.services.verifiablecredentials.tem"
+          + "plates.v1.CreateCredentialTemplateRequest\032M.services.verifiablecredentials.templ"
+          + "ates.v1.CreateCredentialTemplateResponse\022\234\001\n"
+          + "\003Get\022I.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequ"
+          + "est\032J.services.verifiablecredentials.tem"
+          + "plates.v1.GetCredentialTemplateResponse\022\245\001\n"
+          + "\006Update\022L.services.verifiablecredentials.templates.v1.UpdateCredentialTemplat"
+          + "eRequest\032M.services.verifiablecredential"
+          + "s.templates.v1.UpdateCredentialTemplateResponse\022\241\001\n"
+          + "\004List\022K.services.verifiablecredentials.templates.v1.ListCredentialTem"
+          + "platesRequest\032L.services.verifiablecrede"
+          + "ntials.templates.v1.ListCredentialTemplatesResponse\022\247\001\n"
+          + "\006Search\022M.services.verifiablecredentials.templates.v1.SearchCrede"
+          + "ntialTemplatesRequest\032N.services.verifia"
+          + "blecredentials.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
+          + "\006Delete\022L.services.verifiablecredentials.templates.v1.D"
+          + "eleteCredentialTemplateRequest\032M.service"
+          + "s.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponseB\243\001\n"
+          + "3trinsic.services.verifiablecredentials.templat"
+          + "es.v1P\001Z4services/verifiablecredentials/"
+          + "templates/v1/template\252\0023Trinsic.Services"
+          + ".VerifiableCredentials.Templates.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -518,26 +504,6 @@ public final class Templates {
               "PrimaryField",
               "SecondaryFields",
               "AuxiliaryFields",
-            });
-    internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_SecondaryFieldsEntry_descriptor =
-        internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_descriptor
-            .getNestedTypes()
-            .get(0);
-    internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_SecondaryFieldsEntry_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_SecondaryFieldsEntry_descriptor,
-            new java.lang.String[] {
-              "Key", "Value",
-            });
-    internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_AuxiliaryFieldsEntry_descriptor =
-        internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_descriptor
-            .getNestedTypes()
-            .get(1);
-    internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_AuxiliaryFieldsEntry_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_AuxiliaryFieldsEntry_descriptor,
-            new java.lang.String[] {
-              "Key", "Value",
             });
     internal_static_services_verifiablecredentials_templates_v1_FieldOrdering_descriptor =
         getDescriptor().getMessageTypes().get(14);
