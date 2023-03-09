@@ -14,16 +14,14 @@ Future runTemplatesDemo() async {
   var uuid = Uuid();
   // createTemplate() {
   var template = await trinsic.template().create(
-    CreateCredentialTemplateRequest(
-      name: "An Example Credential ${uuid.v4()}",
-      allowAdditionalFields: false,
-      fields: {
-        "firstName": TemplateField(description: "Given name"),
-        "lastName": TemplateField(),
-        "age": TemplateField(optional: true, type: FieldType.NUMBER)
-      }
-    )
-  );
+          CreateCredentialTemplateRequest(
+              name: "An Example Credential ${uuid.v4()}",
+              allowAdditionalFields: false,
+              fields: {
+            "firstName": TemplateField(description: "Given name"),
+            "lastName": TemplateField(),
+            "age": TemplateField(optional: true, type: FieldType.NUMBER)
+          }));
   // }
   assert(template.data.id != "");
   assert(template.data.schemaUri != "");
