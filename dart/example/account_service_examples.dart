@@ -17,7 +17,7 @@ Future runAccountServiceExamples() async {
 
   // TODO - Handle this code reliably?
   try {
-    // accountServiceLoginLoginConfirm() {
+    // accountServiceLogin() {
     var loginResponse = await accountService.login(request: LoginRequest(
         ecosystemId: "your-ecosystem-id", email: "email@example.com"));
     var profile = await accountService.loginConfirm(
@@ -27,7 +27,11 @@ Future runAccountServiceExamples() async {
     // This is expected error due to invalid codes
   }
 
-  // accountServiceGetInfo() {
+  // accountServiceLoginAnonymous() {
+  var anonymousProfile = await accountService.loginAnonymous(ecosystemId: "your-ecosystem-id");
+  // }
+
+  // accountServiceInfo() {
   var info = await accountService.info();
   print('Account info: EcosystemId=${info.ecosystemId} Email=${info.details.email}');
   // }

@@ -18,53 +18,7 @@ The Account Service allows you to create and sign in to accounts.
 
 ## Service Creation
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic account login --email "bob@example.com" --ecosystem "<ecosystem id or name>"
-    ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:serviceCreate
-    ```
-    <!--/codeinclude-->
-
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:serviceCreate
-    ```
-    <!--/codeinclude-->
-
-=== "Dart"
-    <!--codeinclude-->
-    ```dart
-    [ServiceCreate](../../../dart/example/account_service_examples.dart) inside_block:createAccountService
-    ```
-    <!--/codeinclude-->
-
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [LoginRequest](../../../python/samples/account_demo.py) inside_block:serviceCreate
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [LoginRequest](../../../go/services/account_service_test.go) inside_block:serviceCreate
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:serviceCreate
-    ```
-    <!--/codeinclude-->
-
+{{ proto_sample_create_service("services.account.v1.Account") }}
 
 ---
 
@@ -75,54 +29,8 @@ Trinsic will respond with a `challenge`, and send an authentication code to the 
 The authentication code must be passed along with `challenge` to `LoginConfirm` to finalize the login.
 Our SDK will take care of hashing the confirmation code for you.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic account login --email "bob@example.com" --ecosystem "<ecosystem id or name>"
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
-    === "Dart"
-        <!--codeinclude-->
-        ```dart
-        [ServiceCreate](../../../dart/example/account_service_examples.dart) inside_block:accountServiceLoginLoginConfirm
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [LoginRequest](../../../python/samples/account_demo.py) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [LoginRequest](../../../go/services/account_service_test.go) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.account.v1.Account.Login") }}
+{{ proto_sample_code("services.account.v1.Account.Login") }}
 {{ proto_method_tabs("services.account.v1.Account.Login") }}
 
 !!! tip "Anonymous Login"
@@ -138,52 +46,8 @@ Our SDK will take care of hashing the confirmation code for you.
 
 Returns the account information (name, email address, phone number, etc.) used to create the currently-active account profile.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic account info
-        ```
-
-    === "TypeScript"
-        ```typescript
-        const info = await accountService.info();
-        ```
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceGetInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Dart"
-        <!--codeinclude-->
-        ```dart
-        [ServiceCreate](../../../dart/example/account_service_examples.dart) inside_block:accountServiceGetInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceGetInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:getInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:getInfo
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.account.v1.Account.Info") }}
+{{ proto_sample_code("services.account.v1.Account.Info") }}
 {{ proto_method_tabs("services.account.v1.Account.Info") }}
 
 !!! note

@@ -45,10 +45,124 @@ def define_env(env):
         return f"TODO: Include {file_name}#{section_name} {'with' if include_heading else 'without'} heading"
 
     @env.macro
-    def proto_sample_start():
+    def proto_sample_create_service(service_name: str = ""):
+        # Get method
+        service_base_name = service_name[service_name.rindex(".")+1:]
+        service_file_name = f"{service_base_name.lower()}_service_examples"
+        block_name = f"create{service_base_name}Service"
+        # TODO - Handle a folder for the Trinsic CLI examples
+        return f"""
+=== "Trinsic CLI"
+    ```bash
+    trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
+    ```
+
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    [{block_name}](../../../web/test/{service_file_name}.spec.ts) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    [{block_name}](../../../dotnet/Tests/{service_file_name}.cs) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Dart"
+    <!--codeinclude-->
+    ```dart
+    [{block_name}](../../../dart/example/{service_file_name}.dart) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    [{block_name}](../../../python/samples/{service_file_name}.py) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    [{block_name}](../../../go/examples/{service_file_name}_test.go) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [{block_name}](../../../java/src/test/java/trinsic/{service_file_name}.java) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+"""
+
+    @env.macro
+    def proto_sample_code(method_name: str = ""):
+        # Get method
+        method_bits = method_name.split(".")
+        method_base_name = method_bits[-1]
+        service_base_name = method_bits[-2].lower()
+        service_file_name = f"{service_base_name}_service_examples"
+        block_name = f"{service_base_name}Service{method_base_name}"
+        return f"""
+=== "Trinsic CLI"
+    ```bash
+    trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
+    ```
+
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    [{block_name}](../../../web/test/{service_file_name}.spec.ts) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    [{block_name}](../../../dotnet/Tests/{service_file_name}.cs) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Dart"
+    <!--codeinclude-->
+    ```dart
+    [{block_name}](../../../dart/example/{service_file_name}.dart) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    [{block_name}](../../../python/samples/{service_file_name}.py) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    [{block_name}](../../../go/examples/{service_file_name}_test.go) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [{block_name}](../../../java/src/test/java/trinsic/{service_file_name}.java) inside_block:{block_name}
+    ```
+    <!--/codeinclude-->
+"""
+
+    @env.macro
+    def proto_sample_start(method_name: str = ""):
         """
         Generates the "Sample" tab header, along with its prefix centering div.
         """
+        # The `method_name` parameter isn't used by us, but by protoc-gen-sdk to find all the headers
         ret = "<div class='proto-method-tabs-marker'></div>\n"
         ret += '=== ":material-code-tags: Sample"'
 
