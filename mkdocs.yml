@@ -38,6 +38,7 @@ nav:
   - Reference:
     - Overview: reference/index.md
     - SDK Services:
+      - Access Management Service: reference/services/accessmanagement-service.md
       - Account Service: reference/services/account-service.md
       - Credential Service: reference/services/credential-service.md
       - File Management Service: reference/services/file-management-service.md
