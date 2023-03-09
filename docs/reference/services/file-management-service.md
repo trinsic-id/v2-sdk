@@ -18,6 +18,12 @@ The File Management Service allows files to be uploaded and thereafter managed b
 
 ---
 
+## Service Creation
+
+{{ proto_sample_create_service("services.filemanagement.v1.FileManagement") }}
+
+---
+
 ## Upload File
 
 Uploads a file to Trinsic's CDN.
