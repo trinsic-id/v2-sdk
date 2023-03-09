@@ -25,7 +25,7 @@ async def templates_demo():
     # createTemplate() {
     template = await trinsic_service.template.create(
         request=CreateCredentialTemplateRequest(
-            name=f"An Example Credential: {uuid.uuid4()}",
+            name=f"An Example Credential {uuid.uuid4()}",
             allow_additional_fields=False,
             fields={
                 "firstName": TemplateField(description="Given name"),
