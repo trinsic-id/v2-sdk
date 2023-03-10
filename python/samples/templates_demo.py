@@ -8,60 +8,15 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
     GetCredentialTemplateRequest,
     DeleteCredentialTemplateRequest,
-    SearchCredentialTemplatesRequest, CreateCredentialTemplateResponse,
-)
+    SearchCredentialTemplatesRequest, )
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
 )
-from trinsic.template_service import TemplateService
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
-async def create_template(template_service: TemplateService) -> CreateCredentialTemplateResponse:
-    # createTemplate() {
-    template = await template_service.create(
-        request=CreateCredentialTemplateRequest(
-            name=f"An Example Credential {uuid.uuid4()}",
-            allow_additional_fields=False,
-            fields={
-                "firstName": TemplateField(description="Given name"),
-                "lastName": TemplateField(),
-                "age": TemplateField(optional=True, type=FieldType.NUMBER),
-            },
-        )
-    )
-    # }
-    assert template is not None
-    assert template.data is not None
-    assert template.data.id is not None
-    assert template.data.schema_uri is not None
-
-    return template
-
 async def templates_demo():
-    trinsic_service = TrinsicService(server_config=trinsic_config())
-    profile = await trinsic_service.account.login_anonymous(ecosystem_id="default")
-
-    # create example template
-    # createTemplate() {
-    template = await trinsic_service.template.create(
-        request=CreateCredentialTemplateRequest(
-            name=f"An Example Credential {uuid.uuid4()}",
-            allow_additional_fields=False,
-            fields={
-                "firstName": TemplateField(description="Given name"),
-                "lastName": TemplateField(),
-                "age": TemplateField(optional=True, type=FieldType.NUMBER),
-            },
-        )
-    )
-    # }
-    assert template is not None
-    assert template.data is not None
-    assert template.data.id is not None
-    assert template.data.schema_uri is not None
-
     # issue credential from this template
     # issueFromTemplate() {
     values = json.dumps({"firstName": "Jane", "lastName": "Doe", "age": "42"})

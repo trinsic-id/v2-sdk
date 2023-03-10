@@ -1,6 +1,5 @@
 import asyncio
 import json
-from os.path import abspath, join, dirname
 
 from samples.templates_demo import create_template
 from trinsic.trinsic_util import set_eventloop_policy
