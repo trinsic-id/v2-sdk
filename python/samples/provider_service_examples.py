@@ -24,14 +24,6 @@ trinsic = TrinsicService(server_config=trinsic_config(auth_token="[YOURAUTHTOKEN
 provider_service = trinsic.provider
 # }
 
-# ProviderServiceInvite() {
-# TODO - Fill this out
-# }
-
-# ProviderServiceInvitationStatus() {
-# TODO - Fill this out
-# }
-
 # ProviderServiceGetOberonKey() {
 # TODO - Fill this out
 # }
@@ -51,7 +43,7 @@ provider_service = trinsic.provider
 
 async def create_ecosystem(provider_service: ProviderService) -> Ecosystem:
     # ProviderServiceCreateEcosystem() {
-    ecosystem_response = await trinsic.provider.create_ecosystem(
+    ecosystem_response = await provider_service.create_ecosystem(
         request=CreateEcosystemRequest(
             description="My demo ecosystem description",
 
@@ -68,26 +60,14 @@ async def provider_demo():
     request = UpdateEcosystemRequest(
         description="My new description", uri="https://example.com"
     )
-    response = await trinsic.provider.update_ecosystem(request=request)
+    response = await provider_service.update_ecosystem(request=request)
     print(response.ecosystem.description)
     # }
 
     # ProviderServiceEcosystemInfo() {
-    response = await trinsic.provider.ecosystem_info(request=EcosystemInfoRequest())
+    response = await provider_service.ecosystem_info(request=EcosystemInfoRequest())
     ecosystem = response.ecosystem
     # }
-
-    try:
-        invite_response = await trinsic.provider.invite_participant(
-            request=InviteRequest(
-                details=AccountDetails(email="nothing@trinsic.id"),
-                participant=ParticipantType.participant_type_individual,
-                description="I dunno",
-            )
-        )
-        assert invite_response
-    except:
-        pass
 
     info_response = await trinsic.account.info()
     wallet_id = info_response.wallet_id
@@ -95,7 +75,7 @@ async def provider_demo():
     # Try/catch this as ecosystems currently can't upgrade DIDs by default
     try:
         # ProviderServiceUpgradeDID() {
-        upgrade_response = await trinsic.provider.upgrade_did(
+        upgrade_response = await provider_service.upgrade_did(
             request=UpgradeDidRequest(
                 wallet_id=wallet_id,
                 method=SupportedDidMethod.ION,
