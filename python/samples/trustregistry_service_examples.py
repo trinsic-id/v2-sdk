@@ -1,3 +1,6 @@
+# createTrustRegistryService() {
+# TODO - Fill this out
+# }
 
 # TrustRegistryServiceAddFramework() {
 # TODO - Fill this out

@@ -1,3 +1,6 @@
+# createVerifiableCredentialService() {
+# TODO - Fill this out
+# }
 
 # VerifiableCredentialServiceIssue() {
 # TODO - Fill this out
