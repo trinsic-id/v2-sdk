@@ -7,6 +7,7 @@ from trinsic.proto.services.provider.v1 import (
     IonOptionsIonNetwork,
     UpdateEcosystemRequest,
     UpgradeDidRequest, CreateEcosystemRequest, Ecosystem, GetOberonKeyRequest, RefreshDomainVerificationStatusRequest,
+    SearchWalletConfigurationsRequest,
 )
 from trinsic.provider_service import ProviderService
 # createProviderService() {
@@ -24,12 +25,14 @@ async def create_ecosystem(provider_service: ProviderService) -> Ecosystem:
     ecosystem_response = await provider_service.create_ecosystem(
         request=CreateEcosystemRequest(
             description="My demo ecosystem description",
-
+            uri="https://example.com",
+            domain="https://example.com"
         )
     )
     ecosystem = ecosystem_response.ecosystem
     # }
     return ecosystem
+
 
 async def provider_demo():
     ecosystem = await create_ecosystem(provider_service)
@@ -85,7 +88,12 @@ async def provider_demo():
     # }
 
     # ProviderServiceSearchWalletConfigurations() {
-    # TODO - Fill this out
+    wallet_configurations = await provider_service.search_wallet_configurations(
+        request=SearchWalletConfigurationsRequest(
+            query_filter="_.name = 'test'"
+        )
+    )
+    print(f"Count of matching wallets={len(wallet_configurations.results)}")
     # }
 
 
