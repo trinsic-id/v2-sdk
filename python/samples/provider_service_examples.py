@@ -1,43 +1,21 @@
 import asyncio
-import base64
-from trinsic.proto.services.common.v1 import SupportedDidMethod
 
-from trinsic.proto.services.account.v1 import AccountDetails
+from trinsic.proto.services.common.v1 import SupportedDidMethod
 from trinsic.proto.services.provider.v1 import (
     EcosystemInfoRequest,
     IonOptions,
     IonOptionsIonNetwork,
-    ParticipantType,
-    InviteRequest,
     UpdateEcosystemRequest,
-    UpgradeDidRequest, CreateEcosystemRequest, CreateEcosystemResponse, Ecosystem,
+    UpgradeDidRequest, CreateEcosystemRequest, Ecosystem, GetOberonKeyRequest, RefreshDomainVerificationStatusRequest,
 )
 from trinsic.provider_service import ProviderService
-
-from trinsic.trinsic_util import set_eventloop_policy
-
 # createProviderService() {
 from trinsic.trinsic_service import TrinsicService
+from trinsic.trinsic_util import set_eventloop_policy
 from trinsic.trinsic_util import trinsic_config
 
 trinsic = TrinsicService(server_config=trinsic_config(auth_token="[YOURAUTHTOKEN]"))
 provider_service = trinsic.provider
-# }
-
-# ProviderServiceGetOberonKey() {
-# TODO - Fill this out
-# }
-
-# ProviderServiceRetrieveDomainVerificationRecord() {
-# TODO - Fill this out
-# }
-
-# ProviderServiceRefreshDomainVerificationStatus() {
-# TODO - Fill this out
-# }
-
-# ProviderServiceSearchWalletConfigurations() {
-# TODO - Fill this out
 # }
 
 
@@ -85,6 +63,30 @@ async def provider_demo():
         # }
     except:
         pass
+
+    # ProviderServiceGetOberonKey() {
+    # No arguments needed
+    oberon_key = await provider_service.get_oberon_key(request=GetOberonKeyRequest())
+    print(f"Generated key={oberon_key.key}")
+    # }
+
+    # ProviderServiceRetrieveDomainVerificationRecord() {
+    verify_record = await provider_service.retrieve_domain_verification_record()
+    print(f"Add this record to your DNS:\n"
+          f"{verify_record.verification_record_name}={verify_record.verification_record_value}")
+    # }
+
+    # ProviderServiceRefreshDomainVerificationStatus() {
+    print("Call this after updating your DNS record")
+    verify_status = await provider_service.refresh_domain_verification_status(
+        request=RefreshDomainVerificationStatusRequest()
+    )
+    print(f"DNS({verify_status.domain}) Verification:{verify_status.domain_verified}")
+    # }
+
+    # ProviderServiceSearchWalletConfigurations() {
+    # TODO - Fill this out
+    # }
 
 
 if __name__ == "__main__":
