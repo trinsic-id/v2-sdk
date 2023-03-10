@@ -1,6 +1,7 @@
 import platform
 import unittest
 
+from samples.account_service_examples import account_service_examples
 from samples.credential_demo import credential_demo
 from samples.ecosystem_demo import ecosystem_demo
 from samples.file_management_demo import file_management_demo
@@ -37,12 +38,15 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         )
 
     def test_default_constructor(self):
-        AccountService()
+        print(AccountService())
 
     async def test_lib_main(self):
         from trinsic import __main__
 
         await __main__.demo()
+
+    async def test_account_service_examples(self):
+        await account_service_demo()
 
     async def test_credential_demo(self):
         await credential_demo()

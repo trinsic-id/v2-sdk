@@ -40,7 +40,7 @@ You can also manually set the auth token used by the SDK (such as when loading a
 === "Python"
     <!--codeinclude-->
     ```python
-    [SetAuthTokenSample](../../python/samples/account_demo.py) inside_block:setAuthTokenSample
+    [SetAuthTokenSample](../../python/samples/account_service_examples.py) inside_block:setAuthTokenSample
     ```
     <!--/codeinclude-->
 

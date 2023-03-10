@@ -33,7 +33,7 @@ Future runAccountServiceExamples() async {
 
   // accountServiceInfo() {
   var info = await accountService.info();
-  print('Account info: EcosystemId=${info.ecosystemId} Email=${info.details.email}');
+  print('Account info: EcosystemId=${info.ecosystemId} WalletId=${info.walletId}');
   // }
 }
 
