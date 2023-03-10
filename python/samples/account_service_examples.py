@@ -29,7 +29,7 @@ async def account_service_examples():
 
     # Log into an anonymous account to do the rest of the tests
     # AccountServiceLoginAnonymous() {
-    anonymous_profile = await trinsic.account.login_anonymous()
+    anonymous_profile = await trinsic.account.login_anonymous(ecosystem_id="[YOUR-ECOSYSTEM-ID]")
     # }
 
     # AccountServiceInfo() {

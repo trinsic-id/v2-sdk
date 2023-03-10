@@ -22,6 +22,7 @@ def trinsic_config(auth_token: str = None) -> ServiceOptions:
     Returns:
         [ServiceOptions](/reference/proto/#serviceoptions)
     """
+    auth_token = auth_token.replace("[YOURAUTHTOKEN]", "")
     endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
     port = int(getenv("TEST_SERVER_PORT", 443))
     use_tls = bool(strtobool(getenv("TEST_SERVER_USE_TLS", "true")))

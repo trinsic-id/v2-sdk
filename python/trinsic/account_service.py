@@ -137,7 +137,7 @@ class AccountService(ServiceBase):
             Authentication token for newly-created account
         """
 
-        ecosystem_id = ecosystem_id or ""
+        ecosystem_id = ecosystem_id.replace("[YOUR-ECOSYSTEM-ID]", "") or ""
 
         response = await self.login(request=LoginRequest(ecosystem_id=ecosystem_id))
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
