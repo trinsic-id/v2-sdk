@@ -105,8 +105,8 @@ def define_env(env):
         # Get method
         method_bits = method_name.split(".")
         method_base_name = method_bits[-1]
-        service_base_name = method_bits[-2].lower()
-        service_file_name = f"{service_base_name}_service_examples"
+        service_base_name = method_bits[-2]
+        service_file_name = f"{service_base_name.lower()}_service_examples"
         block_name = f"{service_base_name}Service{method_base_name}"
         return f"""
 === "Trinsic CLI"
@@ -136,6 +136,8 @@ def define_env(env):
     <!--/codeinclude-->
 
 === "Python"
+    service_file_name=`{service_file_name}`
+    block_name=`{block_name}`
     <!--codeinclude-->
     ```python
     [{block_name}](../../../python/samples/{service_file_name}.py) inside_block:{block_name}

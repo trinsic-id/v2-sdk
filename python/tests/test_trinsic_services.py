@@ -1,6 +1,7 @@
 import platform
 import unittest
 
+from samples.accessmanagement_service_examples import accessmanagement_service_examples
 from samples.account_service_examples import account_service_examples
 from samples.credential_demo import credential_demo
 from samples.ecosystem_demo import ecosystem_demo
@@ -45,8 +46,11 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
 
         await __main__.demo()
 
+    async def test_accessmanagement_service_examples(self):
+        await accessmanagement_service_examples()
+
     async def test_account_service_examples(self):
-        await account_service_demo()
+        await account_service_examples()
 
     async def test_credential_demo(self):
         await credential_demo()
