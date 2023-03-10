@@ -14,7 +14,6 @@ access_management = trinsic.access_management
 async def access_management_service_examples():
     # TODO - Fill this in
     # AccessManagementServiceAddRoleAssignment() {
-    # We expect this to fail because this is a fake auth code
     await access_management.add_role_assignment(request=AddRoleAssignmentRequest())
     # }
 

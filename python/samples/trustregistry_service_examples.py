@@ -1,5 +1,9 @@
 # createTrustRegistryService() {
-# TODO - Fill this out
+from trinsic.trinsic_service import TrinsicService
+from trinsic.trinsic_util import trinsic_config
+
+trinsic = TrinsicService(server_config=trinsic_config(auth_token="[YOURAUTHTOKEN]"))
+trust_registry_service = trinsic.trust_registry
 # }
 
 # TrustRegistryServiceAddFramework() {
