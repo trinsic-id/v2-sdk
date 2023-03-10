@@ -27,6 +27,8 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
     foregroundColor_ = "";
     labelColor_ = "";
     primaryField_ = "";
+    secondaryFields_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    auxiliaryFields_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -43,19 +45,6 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.verifiablecredentials.templates.v1.Templates
         .internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_descriptor;
-  }
-
-  @SuppressWarnings({"rawtypes"})
-  @java.lang.Override
-  protected com.google.protobuf.MapField internalGetMapField(int number) {
-    switch (number) {
-      case 5:
-        return internalGetSecondaryFields();
-      case 6:
-        return internalGetAuxiliaryFields();
-      default:
-        throw new RuntimeException("Invalid map field number: " + number);
-    }
   }
 
   @java.lang.Override
@@ -265,31 +254,34 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
   }
 
   public static final int SECONDARY_FIELDS_FIELD_NUMBER = 5;
-
-  private static final class SecondaryFieldsDefaultEntryHolder {
-    static final com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String> defaultEntry =
-        com.google.protobuf.MapEntry.<java.lang.Integer, java.lang.String>newDefaultInstance(
-            trinsic.services.verifiablecredentials.templates.v1.Templates
-                .internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_SecondaryFieldsEntry_descriptor,
-            com.google.protobuf.WireFormat.FieldType.INT32,
-            0,
-            com.google.protobuf.WireFormat.FieldType.STRING,
-            "");
-  }
-
-  private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> secondaryFields_;
-
-  private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-      internalGetSecondaryFields() {
-    if (secondaryFields_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(
-          SecondaryFieldsDefaultEntryHolder.defaultEntry);
-    }
+  private com.google.protobuf.LazyStringList secondaryFields_;
+  /**
+   *
+   *
+   * <pre>
+   * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+   * </pre>
+   *
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @return A list containing the secondaryFields.
+   */
+  public com.google.protobuf.ProtocolStringList getSecondaryFieldsList() {
     return secondaryFields_;
   }
-
+  /**
+   *
+   *
+   * <pre>
+   * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+   * </pre>
+   *
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @return The count of secondaryFields.
+   */
   public int getSecondaryFieldsCount() {
-    return internalGetSecondaryFields().getMap().size();
+    return secondaryFields_.size();
   }
   /**
    *
@@ -298,18 +290,13 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
    * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @param index The index of the element to return.
+   * @return The secondaryFields at the given index.
    */
-  @java.lang.Override
-  public boolean containsSecondaryFields(int key) {
-
-    return internalGetSecondaryFields().getMap().containsKey(key);
-  }
-  /** Use {@link #getSecondaryFieldsMap()} instead. */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.util.Map<java.lang.Integer, java.lang.String> getSecondaryFields() {
-    return getSecondaryFieldsMap();
+  public java.lang.String getSecondaryFields(int index) {
+    return secondaryFields_.get(index);
   }
   /**
    *
@@ -318,72 +305,44 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
    * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @param index The index of the value to return.
+   * @return The bytes of the secondaryFields at the given index.
    */
-  @java.lang.Override
-  public java.util.Map<java.lang.Integer, java.lang.String> getSecondaryFieldsMap() {
-    return internalGetSecondaryFields().getMap();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-   */
-  @java.lang.Override
-  public java.lang.String getSecondaryFieldsOrDefault(int key, java.lang.String defaultValue) {
-
-    java.util.Map<java.lang.Integer, java.lang.String> map = internalGetSecondaryFields().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-   */
-  @java.lang.Override
-  public java.lang.String getSecondaryFieldsOrThrow(int key) {
-
-    java.util.Map<java.lang.Integer, java.lang.String> map = internalGetSecondaryFields().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
-    }
-    return map.get(key);
+  public com.google.protobuf.ByteString getSecondaryFieldsBytes(int index) {
+    return secondaryFields_.getByteString(index);
   }
 
   public static final int AUXILIARY_FIELDS_FIELD_NUMBER = 6;
-
-  private static final class AuxiliaryFieldsDefaultEntryHolder {
-    static final com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String> defaultEntry =
-        com.google.protobuf.MapEntry.<java.lang.Integer, java.lang.String>newDefaultInstance(
-            trinsic.services.verifiablecredentials.templates.v1.Templates
-                .internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_AuxiliaryFieldsEntry_descriptor,
-            com.google.protobuf.WireFormat.FieldType.INT32,
-            0,
-            com.google.protobuf.WireFormat.FieldType.STRING,
-            "");
-  }
-
-  private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> auxiliaryFields_;
-
-  private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-      internalGetAuxiliaryFields() {
-    if (auxiliaryFields_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(
-          AuxiliaryFieldsDefaultEntryHolder.defaultEntry);
-    }
+  private com.google.protobuf.LazyStringList auxiliaryFields_;
+  /**
+   *
+   *
+   * <pre>
+   * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+   * </pre>
+   *
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @return A list containing the auxiliaryFields.
+   */
+  public com.google.protobuf.ProtocolStringList getAuxiliaryFieldsList() {
     return auxiliaryFields_;
   }
-
+  /**
+   *
+   *
+   * <pre>
+   * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+   * </pre>
+   *
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @return The count of auxiliaryFields.
+   */
   public int getAuxiliaryFieldsCount() {
-    return internalGetAuxiliaryFields().getMap().size();
+    return auxiliaryFields_.size();
   }
   /**
    *
@@ -392,18 +351,13 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
    * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @param index The index of the element to return.
+   * @return The auxiliaryFields at the given index.
    */
-  @java.lang.Override
-  public boolean containsAuxiliaryFields(int key) {
-
-    return internalGetAuxiliaryFields().getMap().containsKey(key);
-  }
-  /** Use {@link #getAuxiliaryFieldsMap()} instead. */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.util.Map<java.lang.Integer, java.lang.String> getAuxiliaryFields() {
-    return getAuxiliaryFieldsMap();
+  public java.lang.String getAuxiliaryFields(int index) {
+    return auxiliaryFields_.get(index);
   }
   /**
    *
@@ -412,44 +366,13 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
    * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @param index The index of the value to return.
+   * @return The bytes of the auxiliaryFields at the given index.
    */
-  @java.lang.Override
-  public java.util.Map<java.lang.Integer, java.lang.String> getAuxiliaryFieldsMap() {
-    return internalGetAuxiliaryFields().getMap();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-   */
-  @java.lang.Override
-  public java.lang.String getAuxiliaryFieldsOrDefault(int key, java.lang.String defaultValue) {
-
-    java.util.Map<java.lang.Integer, java.lang.String> map = internalGetAuxiliaryFields().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-   */
-  @java.lang.Override
-  public java.lang.String getAuxiliaryFieldsOrThrow(int key) {
-
-    java.util.Map<java.lang.Integer, java.lang.String> map = internalGetAuxiliaryFields().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
-    }
-    return map.get(key);
+  public com.google.protobuf.ByteString getAuxiliaryFieldsBytes(int index) {
+    return auxiliaryFields_.getByteString(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -478,10 +401,12 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(primaryField_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, primaryField_);
     }
-    com.google.protobuf.GeneratedMessageV3.serializeIntegerMapTo(
-        output, internalGetSecondaryFields(), SecondaryFieldsDefaultEntryHolder.defaultEntry, 5);
-    com.google.protobuf.GeneratedMessageV3.serializeIntegerMapTo(
-        output, internalGetAuxiliaryFields(), AuxiliaryFieldsDefaultEntryHolder.defaultEntry, 6);
+    for (int i = 0; i < secondaryFields_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, secondaryFields_.getRaw(i));
+    }
+    for (int i = 0; i < auxiliaryFields_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, auxiliaryFields_.getRaw(i));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -503,25 +428,21 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(primaryField_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, primaryField_);
     }
-    for (java.util.Map.Entry<java.lang.Integer, java.lang.String> entry :
-        internalGetSecondaryFields().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String> secondaryFields__ =
-          SecondaryFieldsDefaultEntryHolder.defaultEntry
-              .newBuilderForType()
-              .setKey(entry.getKey())
-              .setValue(entry.getValue())
-              .build();
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, secondaryFields__);
+    {
+      int dataSize = 0;
+      for (int i = 0; i < secondaryFields_.size(); i++) {
+        dataSize += computeStringSizeNoTag(secondaryFields_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getSecondaryFieldsList().size();
     }
-    for (java.util.Map.Entry<java.lang.Integer, java.lang.String> entry :
-        internalGetAuxiliaryFields().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String> auxiliaryFields__ =
-          AuxiliaryFieldsDefaultEntryHolder.defaultEntry
-              .newBuilderForType()
-              .setKey(entry.getKey())
-              .setValue(entry.getValue())
-              .build();
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, auxiliaryFields__);
+    {
+      int dataSize = 0;
+      for (int i = 0; i < auxiliaryFields_.size(); i++) {
+        dataSize += computeStringSizeNoTag(auxiliaryFields_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getAuxiliaryFieldsList().size();
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -543,8 +464,8 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
     if (!getForegroundColor().equals(other.getForegroundColor())) return false;
     if (!getLabelColor().equals(other.getLabelColor())) return false;
     if (!getPrimaryField().equals(other.getPrimaryField())) return false;
-    if (!internalGetSecondaryFields().equals(other.internalGetSecondaryFields())) return false;
-    if (!internalGetAuxiliaryFields().equals(other.internalGetAuxiliaryFields())) return false;
+    if (!getSecondaryFieldsList().equals(other.getSecondaryFieldsList())) return false;
+    if (!getAuxiliaryFieldsList().equals(other.getAuxiliaryFieldsList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -564,13 +485,13 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
     hash = (53 * hash) + getLabelColor().hashCode();
     hash = (37 * hash) + PRIMARY_FIELD_FIELD_NUMBER;
     hash = (53 * hash) + getPrimaryField().hashCode();
-    if (!internalGetSecondaryFields().getMap().isEmpty()) {
+    if (getSecondaryFieldsCount() > 0) {
       hash = (37 * hash) + SECONDARY_FIELDS_FIELD_NUMBER;
-      hash = (53 * hash) + internalGetSecondaryFields().hashCode();
+      hash = (53 * hash) + getSecondaryFieldsList().hashCode();
     }
-    if (!internalGetAuxiliaryFields().getMap().isEmpty()) {
+    if (getAuxiliaryFieldsCount() > 0) {
       hash = (37 * hash) + AUXILIARY_FIELDS_FIELD_NUMBER;
-      hash = (53 * hash) + internalGetAuxiliaryFields().hashCode();
+      hash = (53 * hash) + getAuxiliaryFieldsList().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -692,30 +613,6 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
           .internal_static_services_verifiablecredentials_templates_v1_AppleWalletOptions_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(int number) {
-      switch (number) {
-        case 5:
-          return internalGetSecondaryFields();
-        case 6:
-          return internalGetAuxiliaryFields();
-        default:
-          throw new RuntimeException("Invalid map field number: " + number);
-      }
-    }
-
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
-      switch (number) {
-        case 5:
-          return internalGetMutableSecondaryFields();
-        case 6:
-          return internalGetMutableAuxiliaryFields();
-        default:
-          throw new RuntimeException("Invalid map field number: " + number);
-      }
-    }
-
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -745,8 +642,10 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
 
       primaryField_ = "";
 
-      internalGetMutableSecondaryFields().clear();
-      internalGetMutableAuxiliaryFields().clear();
+      secondaryFields_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      auxiliaryFields_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -782,10 +681,16 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
       result.foregroundColor_ = foregroundColor_;
       result.labelColor_ = labelColor_;
       result.primaryField_ = primaryField_;
-      result.secondaryFields_ = internalGetSecondaryFields();
-      result.secondaryFields_.makeImmutable();
-      result.auxiliaryFields_ = internalGetAuxiliaryFields();
-      result.auxiliaryFields_.makeImmutable();
+      if (((bitField0_ & 0x00000001) != 0)) {
+        secondaryFields_ = secondaryFields_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.secondaryFields_ = secondaryFields_;
+      if (((bitField0_ & 0x00000002) != 0)) {
+        auxiliaryFields_ = auxiliaryFields_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000002);
+      }
+      result.auxiliaryFields_ = auxiliaryFields_;
       onBuilt();
       return result;
     }
@@ -855,8 +760,26 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
         primaryField_ = other.primaryField_;
         onChanged();
       }
-      internalGetMutableSecondaryFields().mergeFrom(other.internalGetSecondaryFields());
-      internalGetMutableAuxiliaryFields().mergeFrom(other.internalGetAuxiliaryFields());
+      if (!other.secondaryFields_.isEmpty()) {
+        if (secondaryFields_.isEmpty()) {
+          secondaryFields_ = other.secondaryFields_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureSecondaryFieldsIsMutable();
+          secondaryFields_.addAll(other.secondaryFields_);
+        }
+        onChanged();
+      }
+      if (!other.auxiliaryFields_.isEmpty()) {
+        if (auxiliaryFields_.isEmpty()) {
+          auxiliaryFields_ = other.auxiliaryFields_;
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          ensureAuxiliaryFieldsIsMutable();
+          auxiliaryFields_.addAll(other.auxiliaryFields_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -909,26 +832,16 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
               } // case 34
             case 42:
               {
-                com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
-                    secondaryFields__ =
-                        input.readMessage(
-                            SecondaryFieldsDefaultEntryHolder.defaultEntry.getParserForType(),
-                            extensionRegistry);
-                internalGetMutableSecondaryFields()
-                    .getMutableMap()
-                    .put(secondaryFields__.getKey(), secondaryFields__.getValue());
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureSecondaryFieldsIsMutable();
+                secondaryFields_.add(s);
                 break;
               } // case 42
             case 50:
               {
-                com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
-                    auxiliaryFields__ =
-                        input.readMessage(
-                            AuxiliaryFieldsDefaultEntryHolder.defaultEntry.getParserForType(),
-                            extensionRegistry);
-                internalGetMutableAuxiliaryFields()
-                    .getMutableMap()
-                    .put(auxiliaryFields__.getKey(), auxiliaryFields__.getValue());
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureAuxiliaryFieldsIsMutable();
+                auxiliaryFields_.add(s);
                 break;
               } // case 50
             default:
@@ -1374,34 +1287,42 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
       return this;
     }
 
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> secondaryFields_;
+    private com.google.protobuf.LazyStringList secondaryFields_ =
+        com.google.protobuf.LazyStringArrayList.EMPTY;
 
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-        internalGetSecondaryFields() {
-      if (secondaryFields_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            SecondaryFieldsDefaultEntryHolder.defaultEntry);
+    private void ensureSecondaryFieldsIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        secondaryFields_ = new com.google.protobuf.LazyStringArrayList(secondaryFields_);
+        bitField0_ |= 0x00000001;
       }
-      return secondaryFields_;
     }
-
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-        internalGetMutableSecondaryFields() {
-      onChanged();
-      ;
-      if (secondaryFields_ == null) {
-        secondaryFields_ =
-            com.google.protobuf.MapField.newMapField(
-                SecondaryFieldsDefaultEntryHolder.defaultEntry);
-      }
-      if (!secondaryFields_.isMutable()) {
-        secondaryFields_ = secondaryFields_.copy();
-      }
-      return secondaryFields_;
+    /**
+     *
+     *
+     * <pre>
+     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @return A list containing the secondaryFields.
+     */
+    public com.google.protobuf.ProtocolStringList getSecondaryFieldsList() {
+      return secondaryFields_.getUnmodifiableView();
     }
-
+    /**
+     *
+     *
+     * <pre>
+     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @return The count of secondaryFields.
+     */
     public int getSecondaryFieldsCount() {
-      return internalGetSecondaryFields().getMap().size();
+      return secondaryFields_.size();
     }
     /**
      *
@@ -1410,18 +1331,13 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
      * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
      * </pre>
      *
-     * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @param index The index of the element to return.
+     * @return The secondaryFields at the given index.
      */
-    @java.lang.Override
-    public boolean containsSecondaryFields(int key) {
-
-      return internalGetSecondaryFields().getMap().containsKey(key);
-    }
-    /** Use {@link #getSecondaryFieldsMap()} instead. */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.String> getSecondaryFields() {
-      return getSecondaryFieldsMap();
+    public java.lang.String getSecondaryFields(int index) {
+      return secondaryFields_.get(index);
     }
     /**
      *
@@ -1430,11 +1346,13 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
      * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
      * </pre>
      *
-     * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @param index The index of the value to return.
+     * @return The bytes of the secondaryFields at the given index.
      */
-    @java.lang.Override
-    public java.util.Map<java.lang.Integer, java.lang.String> getSecondaryFieldsMap() {
-      return internalGetSecondaryFields().getMap();
+    public com.google.protobuf.ByteString getSecondaryFieldsBytes(int index) {
+      return secondaryFields_.getByteString(index);
     }
     /**
      *
@@ -1443,228 +1361,187 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
      * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
      * </pre>
      *
-     * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @param index The index to set the value at.
+     * @param value The secondaryFields to set.
+     * @return This builder for chaining.
      */
-    @java.lang.Override
-    public java.lang.String getSecondaryFieldsOrDefault(int key, java.lang.String defaultValue) {
-
-      java.util.Map<java.lang.Integer, java.lang.String> map =
-          internalGetSecondaryFields().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getSecondaryFieldsOrThrow(int key) {
-
-      java.util.Map<java.lang.Integer, java.lang.String> map =
-          internalGetSecondaryFields().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public Builder clearSecondaryFields() {
-      internalGetMutableSecondaryFields().getMutableMap().clear();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-     */
-    public Builder removeSecondaryFields(int key) {
-
-      internalGetMutableSecondaryFields().getMutableMap().remove(key);
-      return this;
-    }
-    /** Use alternate mutation accessors instead. */
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.String> getMutableSecondaryFields() {
-      return internalGetMutableSecondaryFields().getMutableMap();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-     */
-    public Builder putSecondaryFields(int key, java.lang.String value) {
-
+    public Builder setSecondaryFields(int index, java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException("map value");
+        throw new NullPointerException();
       }
-
-      internalGetMutableSecondaryFields().getMutableMap().put(key, value);
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-     */
-    public Builder putAllSecondaryFields(
-        java.util.Map<java.lang.Integer, java.lang.String> values) {
-      internalGetMutableSecondaryFields().getMutableMap().putAll(values);
-      return this;
-    }
-
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String> auxiliaryFields_;
-
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-        internalGetAuxiliaryFields() {
-      if (auxiliaryFields_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            AuxiliaryFieldsDefaultEntryHolder.defaultEntry);
-      }
-      return auxiliaryFields_;
-    }
-
-    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-        internalGetMutableAuxiliaryFields() {
+      ensureSecondaryFieldsIsMutable();
+      secondaryFields_.set(index, value);
       onChanged();
-      ;
-      if (auxiliaryFields_ == null) {
-        auxiliaryFields_ =
-            com.google.protobuf.MapField.newMapField(
-                AuxiliaryFieldsDefaultEntryHolder.defaultEntry);
-      }
-      if (!auxiliaryFields_.isMutable()) {
-        auxiliaryFields_ = auxiliaryFields_.copy();
-      }
-      return auxiliaryFields_;
-    }
-
-    public int getAuxiliaryFieldsCount() {
-      return internalGetAuxiliaryFields().getMap().size();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-     */
-    @java.lang.Override
-    public boolean containsAuxiliaryFields(int key) {
-
-      return internalGetAuxiliaryFields().getMap().containsKey(key);
-    }
-    /** Use {@link #getAuxiliaryFieldsMap()} instead. */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.String> getAuxiliaryFields() {
-      return getAuxiliaryFieldsMap();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-     */
-    @java.lang.Override
-    public java.util.Map<java.lang.Integer, java.lang.String> getAuxiliaryFieldsMap() {
-      return internalGetAuxiliaryFields().getMap();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getAuxiliaryFieldsOrDefault(int key, java.lang.String defaultValue) {
-
-      java.util.Map<java.lang.Integer, java.lang.String> map =
-          internalGetAuxiliaryFields().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-     */
-    @java.lang.Override
-    public java.lang.String getAuxiliaryFieldsOrThrow(int key) {
-
-      java.util.Map<java.lang.Integer, java.lang.String> map =
-          internalGetAuxiliaryFields().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public Builder clearAuxiliaryFields() {
-      internalGetMutableAuxiliaryFields().getMutableMap().clear();
       return this;
     }
     /**
      *
      *
      * <pre>
-     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
      * </pre>
      *
-     * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @param value The secondaryFields to add.
+     * @return This builder for chaining.
      */
-    public Builder removeAuxiliaryFields(int key) {
-
-      internalGetMutableAuxiliaryFields().getMutableMap().remove(key);
-      return this;
-    }
-    /** Use alternate mutation accessors instead. */
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, java.lang.String> getMutableAuxiliaryFields() {
-      return internalGetMutableAuxiliaryFields().getMutableMap();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-     * </pre>
-     *
-     * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-     */
-    public Builder putAuxiliaryFields(int key, java.lang.String value) {
-
+    public Builder addSecondaryFields(java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException("map value");
+        throw new NullPointerException();
       }
+      ensureSecondaryFieldsIsMutable();
+      secondaryFields_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @param values The secondaryFields to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllSecondaryFields(java.lang.Iterable<java.lang.String> values) {
+      ensureSecondaryFieldsIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, secondaryFields_);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearSecondaryFields() {
+      secondaryFields_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string secondary_fields = 5;</code>
+     *
+     * @param value The bytes of the secondaryFields to add.
+     * @return This builder for chaining.
+     */
+    public Builder addSecondaryFieldsBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      ensureSecondaryFieldsIsMutable();
+      secondaryFields_.add(value);
+      onChanged();
+      return this;
+    }
 
-      internalGetMutableAuxiliaryFields().getMutableMap().put(key, value);
+    private com.google.protobuf.LazyStringList auxiliaryFields_ =
+        com.google.protobuf.LazyStringArrayList.EMPTY;
+
+    private void ensureAuxiliaryFieldsIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        auxiliaryFields_ = new com.google.protobuf.LazyStringArrayList(auxiliaryFields_);
+        bitField0_ |= 0x00000002;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @return A list containing the auxiliaryFields.
+     */
+    public com.google.protobuf.ProtocolStringList getAuxiliaryFieldsList() {
+      return auxiliaryFields_.getUnmodifiableView();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @return The count of auxiliaryFields.
+     */
+    public int getAuxiliaryFieldsCount() {
+      return auxiliaryFields_.size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @param index The index of the element to return.
+     * @return The auxiliaryFields at the given index.
+     */
+    public java.lang.String getAuxiliaryFields(int index) {
+      return auxiliaryFields_.get(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @param index The index of the value to return.
+     * @return The bytes of the auxiliaryFields at the given index.
+     */
+    public com.google.protobuf.ByteString getAuxiliaryFieldsBytes(int index) {
+      return auxiliaryFields_.getByteString(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @param index The index to set the value at.
+     * @param value The auxiliaryFields to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAuxiliaryFields(int index, java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureAuxiliaryFieldsIsMutable();
+      auxiliaryFields_.set(index, value);
+      onChanged();
       return this;
     }
     /**
@@ -1674,11 +1551,75 @@ public final class AppleWalletOptions extends com.google.protobuf.GeneratedMessa
      * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
      * </pre>
      *
-     * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @param value The auxiliaryFields to add.
+     * @return This builder for chaining.
      */
-    public Builder putAllAuxiliaryFields(
-        java.util.Map<java.lang.Integer, java.lang.String> values) {
-      internalGetMutableAuxiliaryFields().getMutableMap().putAll(values);
+    public Builder addAuxiliaryFields(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureAuxiliaryFieldsIsMutable();
+      auxiliaryFields_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @param values The auxiliaryFields to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllAuxiliaryFields(java.lang.Iterable<java.lang.String> values) {
+      ensureAuxiliaryFieldsIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, auxiliaryFields_);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearAuxiliaryFields() {
+      auxiliaryFields_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+     * </pre>
+     *
+     * <code>repeated string auxiliary_fields = 6;</code>
+     *
+     * @param value The bytes of the auxiliaryFields to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAuxiliaryFieldsBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      ensureAuxiliaryFieldsIsMutable();
+      auxiliaryFields_.add(value);
+      onChanged();
       return this;
     }
 

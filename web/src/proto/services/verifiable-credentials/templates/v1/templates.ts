@@ -293,19 +293,9 @@ export interface AppleWalletOptions {
   /** The ID of the template field which should be used as the primary field of a credential. */
   primaryField?: string;
   /** The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name. */
-  secondaryFields?: { [key: number]: string };
+  secondaryFields?: string[];
   /** The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name. */
-  auxiliaryFields?: { [key: number]: string };
-}
-
-export interface AppleWalletOptions_SecondaryFieldsEntry {
-  key: number;
-  value: string;
-}
-
-export interface AppleWalletOptions_AuxiliaryFieldsEntry {
-  key: number;
-  value: string;
+  auxiliaryFields?: string[];
 }
 
 /** Ordering information for a template field */
@@ -2155,8 +2145,8 @@ function createBaseAppleWalletOptions(): AppleWalletOptions {
     foregroundColor: "",
     labelColor: "",
     primaryField: "",
-    secondaryFields: {},
-    auxiliaryFields: {},
+    secondaryFields: [],
+    auxiliaryFields: [],
   };
 }
 
@@ -2183,18 +2173,22 @@ export const AppleWalletOptions = {
     if (message.primaryField !== undefined && message.primaryField !== "") {
       writer.uint32(34).string(message.primaryField);
     }
-    Object.entries(message.secondaryFields || {}).forEach(([key, value]) => {
-      AppleWalletOptions_SecondaryFieldsEntry.encode(
-        { key: key as any, value },
-        writer.uint32(42).fork()
-      ).ldelim();
-    });
-    Object.entries(message.auxiliaryFields || {}).forEach(([key, value]) => {
-      AppleWalletOptions_AuxiliaryFieldsEntry.encode(
-        { key: key as any, value },
-        writer.uint32(50).fork()
-      ).ldelim();
-    });
+    if (
+      message.secondaryFields !== undefined &&
+      message.secondaryFields.length !== 0
+    ) {
+      for (const v of message.secondaryFields) {
+        writer.uint32(42).string(v!);
+      }
+    }
+    if (
+      message.auxiliaryFields !== undefined &&
+      message.auxiliaryFields.length !== 0
+    ) {
+      for (const v of message.auxiliaryFields) {
+        writer.uint32(50).string(v!);
+      }
+    }
     return writer;
   },
 
@@ -2218,22 +2212,10 @@ export const AppleWalletOptions = {
           message.primaryField = reader.string();
           break;
         case 5:
-          const entry5 = AppleWalletOptions_SecondaryFieldsEntry.decode(
-            reader,
-            reader.uint32()
-          );
-          if (entry5.value !== undefined) {
-            message.secondaryFields![entry5.key] = entry5.value;
-          }
+          message.secondaryFields!.push(reader.string());
           break;
         case 6:
-          const entry6 = AppleWalletOptions_AuxiliaryFieldsEntry.decode(
-            reader,
-            reader.uint32()
-          );
-          if (entry6.value !== undefined) {
-            message.auxiliaryFields![entry6.key] = entry6.value;
-          }
+          message.auxiliaryFields!.push(reader.string());
           break;
         default:
           reader.skipType(tag & 7);
@@ -2255,22 +2237,12 @@ export const AppleWalletOptions = {
       primaryField: isSet(object.primaryField)
         ? String(object.primaryField)
         : "",
-      secondaryFields: isObject(object.secondaryFields)
-        ? Object.entries(object.secondaryFields).reduce<{
-            [key: number]: string;
-          }>((acc, [key, value]) => {
-            acc[Number(key)] = String(value);
-            return acc;
-          }, {})
-        : {},
-      auxiliaryFields: isObject(object.auxiliaryFields)
-        ? Object.entries(object.auxiliaryFields).reduce<{
-            [key: number]: string;
-          }>((acc, [key, value]) => {
-            acc[Number(key)] = String(value);
-            return acc;
-          }, {})
-        : {},
+      secondaryFields: Array.isArray(object?.secondaryFields)
+        ? object.secondaryFields.map((e: any) => String(e))
+        : [],
+      auxiliaryFields: Array.isArray(object?.auxiliaryFields)
+        ? object.auxiliaryFields.map((e: any) => String(e))
+        : [],
     };
   },
 
@@ -2283,17 +2255,15 @@ export const AppleWalletOptions = {
     message.labelColor !== undefined && (obj.labelColor = message.labelColor);
     message.primaryField !== undefined &&
       (obj.primaryField = message.primaryField);
-    obj.secondaryFields = {};
     if (message.secondaryFields) {
-      Object.entries(message.secondaryFields).forEach(([k, v]) => {
-        obj.secondaryFields[k] = v;
-      });
+      obj.secondaryFields = message.secondaryFields.map((e) => e);
+    } else {
+      obj.secondaryFields = [];
     }
-    obj.auxiliaryFields = {};
     if (message.auxiliaryFields) {
-      Object.entries(message.auxiliaryFields).forEach(([k, v]) => {
-        obj.auxiliaryFields[k] = v;
-      });
+      obj.auxiliaryFields = message.auxiliaryFields.map((e) => e);
+    } else {
+      obj.auxiliaryFields = [];
     }
     return obj;
   },
@@ -2304,154 +2274,8 @@ export const AppleWalletOptions = {
     message.foregroundColor = object.foregroundColor ?? "";
     message.labelColor = object.labelColor ?? "";
     message.primaryField = object.primaryField ?? "";
-    message.secondaryFields = Object.entries(
-      object.secondaryFields ?? {}
-    ).reduce<{ [key: number]: string }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[Number(key)] = String(value);
-      }
-      return acc;
-    }, {});
-    message.auxiliaryFields = Object.entries(
-      object.auxiliaryFields ?? {}
-    ).reduce<{ [key: number]: string }>((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[Number(key)] = String(value);
-      }
-      return acc;
-    }, {});
-    return message;
-  },
-};
-
-function createBaseAppleWalletOptions_SecondaryFieldsEntry(): AppleWalletOptions_SecondaryFieldsEntry {
-  return { key: 0, value: "" };
-}
-
-export const AppleWalletOptions_SecondaryFieldsEntry = {
-  encode(
-    message: AppleWalletOptions_SecondaryFieldsEntry,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.key !== 0) {
-      writer.uint32(8).int32(message.key);
-    }
-    if (message.value !== "") {
-      writer.uint32(18).string(message.value);
-    }
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): AppleWalletOptions_SecondaryFieldsEntry {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAppleWalletOptions_SecondaryFieldsEntry();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.key = reader.int32();
-          break;
-        case 2:
-          message.value = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AppleWalletOptions_SecondaryFieldsEntry {
-    return {
-      key: isSet(object.key) ? Number(object.key) : 0,
-      value: isSet(object.value) ? String(object.value) : "",
-    };
-  },
-
-  toJSON(message: AppleWalletOptions_SecondaryFieldsEntry): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = Math.round(message.key));
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
-  },
-
-  fromPartial(
-    object: DeepPartial<AppleWalletOptions_SecondaryFieldsEntry>
-  ): AppleWalletOptions_SecondaryFieldsEntry {
-    const message = createBaseAppleWalletOptions_SecondaryFieldsEntry();
-    message.key = object.key ?? 0;
-    message.value = object.value ?? "";
-    return message;
-  },
-};
-
-function createBaseAppleWalletOptions_AuxiliaryFieldsEntry(): AppleWalletOptions_AuxiliaryFieldsEntry {
-  return { key: 0, value: "" };
-}
-
-export const AppleWalletOptions_AuxiliaryFieldsEntry = {
-  encode(
-    message: AppleWalletOptions_AuxiliaryFieldsEntry,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.key !== 0) {
-      writer.uint32(8).int32(message.key);
-    }
-    if (message.value !== "") {
-      writer.uint32(18).string(message.value);
-    }
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): AppleWalletOptions_AuxiliaryFieldsEntry {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAppleWalletOptions_AuxiliaryFieldsEntry();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.key = reader.int32();
-          break;
-        case 2:
-          message.value = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AppleWalletOptions_AuxiliaryFieldsEntry {
-    return {
-      key: isSet(object.key) ? Number(object.key) : 0,
-      value: isSet(object.value) ? String(object.value) : "",
-    };
-  },
-
-  toJSON(message: AppleWalletOptions_AuxiliaryFieldsEntry): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = Math.round(message.key));
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
-  },
-
-  fromPartial(
-    object: DeepPartial<AppleWalletOptions_AuxiliaryFieldsEntry>
-  ): AppleWalletOptions_AuxiliaryFieldsEntry {
-    const message = createBaseAppleWalletOptions_AuxiliaryFieldsEntry();
-    message.key = object.key ?? 0;
-    message.value = object.value ?? "";
+    message.secondaryFields = object.secondaryFields?.map((e) => e) || [];
+    message.auxiliaryFields = object.auxiliaryFields?.map((e) => e) || [];
     return message;
   },
 };

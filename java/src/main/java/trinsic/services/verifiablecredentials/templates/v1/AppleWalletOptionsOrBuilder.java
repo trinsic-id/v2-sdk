@@ -115,7 +115,21 @@ public interface AppleWalletOptionsOrBuilder
    * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @return A list containing the secondaryFields.
+   */
+  java.util.List<java.lang.String> getSecondaryFieldsList();
+  /**
+   *
+   *
+   * <pre>
+   * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+   * </pre>
+   *
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @return The count of secondaryFields.
    */
   int getSecondaryFieldsCount();
   /**
@@ -125,12 +139,12 @@ public interface AppleWalletOptionsOrBuilder
    * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @param index The index of the element to return.
+   * @return The secondaryFields at the given index.
    */
-  boolean containsSecondaryFields(int key);
-  /** Use {@link #getSecondaryFieldsMap()} instead. */
-  @java.lang.Deprecated
-  java.util.Map<java.lang.Integer, java.lang.String> getSecondaryFields();
+  java.lang.String getSecondaryFields(int index);
   /**
    *
    *
@@ -138,34 +152,12 @@ public interface AppleWalletOptionsOrBuilder
    * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
+   * <code>repeated string secondary_fields = 5;</code>
+   *
+   * @param index The index of the value to return.
+   * @return The bytes of the secondaryFields at the given index.
    */
-  java.util.Map<java.lang.Integer, java.lang.String> getSecondaryFieldsMap();
-  /**
-   *
-   *
-   * <pre>
-   * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-   */
-
-  /* nullable */
-  java.lang.String getSecondaryFieldsOrDefault(
-      int key,
-      /* nullable */
-      java.lang.String defaultValue);
-  /**
-   *
-   *
-   * <pre>
-   * The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; secondary_fields = 5;</code>
-   */
-  java.lang.String getSecondaryFieldsOrThrow(int key);
+  com.google.protobuf.ByteString getSecondaryFieldsBytes(int index);
 
   /**
    *
@@ -174,7 +166,21 @@ public interface AppleWalletOptionsOrBuilder
    * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @return A list containing the auxiliaryFields.
+   */
+  java.util.List<java.lang.String> getAuxiliaryFieldsList();
+  /**
+   *
+   *
+   * <pre>
+   * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+   * </pre>
+   *
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @return The count of auxiliaryFields.
    */
   int getAuxiliaryFieldsCount();
   /**
@@ -184,12 +190,12 @@ public interface AppleWalletOptionsOrBuilder
    * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @param index The index of the element to return.
+   * @return The auxiliaryFields at the given index.
    */
-  boolean containsAuxiliaryFields(int key);
-  /** Use {@link #getAuxiliaryFieldsMap()} instead. */
-  @java.lang.Deprecated
-  java.util.Map<java.lang.Integer, java.lang.String> getAuxiliaryFields();
+  java.lang.String getAuxiliaryFields(int index);
   /**
    *
    *
@@ -197,32 +203,10 @@ public interface AppleWalletOptionsOrBuilder
    * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
    * </pre>
    *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
+   * <code>repeated string auxiliary_fields = 6;</code>
+   *
+   * @param index The index of the value to return.
+   * @return The bytes of the auxiliaryFields at the given index.
    */
-  java.util.Map<java.lang.Integer, java.lang.String> getAuxiliaryFieldsMap();
-  /**
-   *
-   *
-   * <pre>
-   * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-   */
-
-  /* nullable */
-  java.lang.String getAuxiliaryFieldsOrDefault(
-      int key,
-      /* nullable */
-      java.lang.String defaultValue);
-  /**
-   *
-   *
-   * <pre>
-   * The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-   * </pre>
-   *
-   * <code>map&lt;int32, string&gt; auxiliary_fields = 6;</code>
-   */
-  java.lang.String getAuxiliaryFieldsOrThrow(int key);
+  com.google.protobuf.ByteString getAuxiliaryFieldsBytes(int index);
 }

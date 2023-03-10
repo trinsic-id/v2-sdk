@@ -351,40 +351,8 @@ Configuration options for Apple Wallet when
 | foreground_color | [string](/reference/proto#string) | Foreground color, in hex format, of credential when stored in an Apple Wallet. |
 | label_color | [string](/reference/proto#string) | Label color, in hex format, of credential when stored in an Apple Wallet. |
 | primary_field | [string](/reference/proto#string) | The ID of the template field which should be used as the primary field of a credential. |
-| secondary_fields | [AppleWalletOptions.SecondaryFieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions-SecondaryFieldsEntry)[] | The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name. |
-| auxiliary_fields | [AppleWalletOptions.AuxiliaryFieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-AppleWalletOptions-AuxiliaryFieldsEntry)[] | The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name. |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions-AuxiliaryFieldsEntry"></a>
-
-### AppleWalletOptions.AuxiliaryFieldsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [int32](/reference/proto#int32) |  |
-| value | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-AppleWalletOptions-SecondaryFieldsEntry"></a>
-
-### AppleWalletOptions.SecondaryFieldsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [int32](/reference/proto#int32) |  |
-| value | [string](/reference/proto#string) |  |
+| secondary_fields | [string](/reference/proto#string)[] | The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name. |
+| auxiliary_fields | [string](/reference/proto#string)[] | The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name. |
 
 
 

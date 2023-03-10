@@ -178,10 +178,10 @@ message AppleWalletOptions {
   string primary_field = 4;
 
   // The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-  map<int32, string> secondary_fields = 5;
+  repeated string secondary_fields = 5;
 
   // The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-  map<int32, string> auxiliary_fields = 6;
+  repeated string auxiliary_fields = 6;
 }
 
 // Ordering information for a template field
