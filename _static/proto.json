@@ -4857,7 +4857,10 @@
       "full_name": "services.provider.v1.Provider.RefreshDomainVerificationStatus",
       "input_type": "services.provider.v1.RefreshDomainVerificationStatusRequest",
       "output_type": "services.provider.v1.RefreshDomainVerificationStatusResponse",
-      "description": "Call to verify domain"
+      "description": "Call to verify domain",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
       "name": "RetrieveDomainVerificationRecord",
