@@ -127,8 +127,8 @@ public class ProviderService : ServiceBase
     /// Returns the public key being used to create/verify oberon tokens
     /// </summary>
     
-    public GetOberonKeyResponse GetOberonKey(GetOberonKeyRequest request) {
-        
+    public GetOberonKeyResponse GetOberonKey() {
+        var request = new GetOberonKeyRequest();
         return Client.GetOberonKey(request, BuildMetadata());
     }
 	
@@ -136,8 +136,8 @@ public class ProviderService : ServiceBase
     /// Returns the public key being used to create/verify oberon tokens
     /// </summary>
     
-    public async Task<GetOberonKeyResponse> GetOberonKeyAsync(GetOberonKeyRequest request) {
-        
+    public async Task<GetOberonKeyResponse> GetOberonKeyAsync() {
+        var request = new GetOberonKeyRequest();
         return await Client.GetOberonKeyAsync(request, await BuildMetadataAsync());
     }
 
@@ -181,8 +181,8 @@ public class ProviderService : ServiceBase
     /// Call to verify domain
     /// </summary>
     
-    public RefreshDomainVerificationStatusResponse RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest request) {
-        
+    public RefreshDomainVerificationStatusResponse RefreshDomainVerificationStatus() {
+        var request = new RefreshDomainVerificationStatusRequest();
         return Client.RefreshDomainVerificationStatus(request, BuildMetadata(request));
     }
 	
@@ -190,8 +190,8 @@ public class ProviderService : ServiceBase
     /// Call to verify domain
     /// </summary>
     
-    public async Task<RefreshDomainVerificationStatusResponse> RefreshDomainVerificationStatusAsync(RefreshDomainVerificationStatusRequest request) {
-        
+    public async Task<RefreshDomainVerificationStatusResponse> RefreshDomainVerificationStatusAsync() {
+        var request = new RefreshDomainVerificationStatusRequest();
         return await Client.RefreshDomainVerificationStatusAsync(request, await BuildMetadataAsync(request));
     }
 

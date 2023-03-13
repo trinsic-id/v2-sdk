@@ -37,13 +37,13 @@ type ProviderService interface {
 	// Get public ecosystem information about *any* ecosystem
 	GetPublicEcosystemInfo(userContext context.Context, request *provider.GetPublicEcosystemInfoRequest) (*provider.GetPublicEcosystemInfoResponse, error)
 	// GetOberonKey  Returns the public key being used to create/verify oberon tokens
-	GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error)
+	GetOberonKey(userContext context.Context) (*provider.GetOberonKeyResponse, error)
 	// UpgradeDID  Upgrade a wallet's DID from `did:key` to another method
 	UpgradeDID(userContext context.Context, request *provider.UpgradeDidRequest) (*provider.UpgradeDidResponse, error)
 	// RetrieveDomainVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
 	RetrieveDomainVerificationRecord(userContext context.Context) (*provider.RetrieveDomainVerificationRecordResponse, error)
 	// RefreshDomainVerificationStatus  Call to verify domain
-	RefreshDomainVerificationStatus(userContext context.Context, request *provider.RefreshDomainVerificationStatusRequest) (*provider.RefreshDomainVerificationStatusResponse, error)
+	RefreshDomainVerificationStatus(userContext context.Context) (*provider.RefreshDomainVerificationStatusResponse, error)
 	// SearchWalletConfigurations  Search for issuers/providers/verifiers in the current ecosystem
 	SearchWalletConfigurations(userContext context.Context, request *provider.SearchWalletConfigurationsRequest) (*provider.SearchWalletConfigurationResponse, error)
 
@@ -129,7 +129,8 @@ func (p *providerBase) GetPublicEcosystemInfo(userContext context.Context, reque
 }
 
 // GetOberonKey  Returns the public key being used to create/verify oberon tokens
-func (p *providerBase) GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error) {
+func (p *providerBase) GetOberonKey(userContext context.Context) (*provider.GetOberonKeyResponse, error) {
+	request := &provider.GetOberonKeyRequest{}
 	md, err := p.GetMetadataContext(userContext, nil)
 	if err != nil {
 		return nil, err
@@ -169,7 +170,8 @@ func (p *providerBase) RetrieveDomainVerificationRecord(userContext context.Cont
 }
 
 // RefreshDomainVerificationStatus  Call to verify domain
-func (p *providerBase) RefreshDomainVerificationStatus(userContext context.Context, request *provider.RefreshDomainVerificationStatusRequest) (*provider.RefreshDomainVerificationStatusResponse, error) {
+func (p *providerBase) RefreshDomainVerificationStatus(userContext context.Context) (*provider.RefreshDomainVerificationStatusResponse, error) {
+	request := &provider.RefreshDomainVerificationStatusRequest{}
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
