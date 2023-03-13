@@ -1596,26 +1596,16 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'primaryField')
-    ..m<$core.int, $core.String>(
+    ..pPS(
         5,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'secondaryFields',
-        entryClassName: 'AppleWalletOptions.SecondaryFieldsEntry',
-        keyFieldType: $pb.PbFieldType.O3,
-        valueFieldType: $pb.PbFieldType.OS,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
-    ..m<$core.int, $core.String>(
+            : 'secondaryFields')
+    ..pPS(
         6,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'auxiliaryFields',
-        entryClassName: 'AppleWalletOptions.AuxiliaryFieldsEntry',
-        keyFieldType: $pb.PbFieldType.O3,
-        valueFieldType: $pb.PbFieldType.OS,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
+            : 'auxiliaryFields')
     ..hasRequiredFields = false;
 
   AppleWalletOptions._() : super();
@@ -1624,8 +1614,8 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
     $core.String? foregroundColor,
     $core.String? labelColor,
     $core.String? primaryField,
-    $core.Map<$core.int, $core.String>? secondaryFields,
-    $core.Map<$core.int, $core.String>? auxiliaryFields,
+    $core.Iterable<$core.String>? secondaryFields,
+    $core.Iterable<$core.String>? auxiliaryFields,
   }) {
     final _result = create();
     if (backgroundColor != null) {
@@ -1724,10 +1714,10 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
   void clearPrimaryField() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.Map<$core.int, $core.String> get secondaryFields => $_getMap(4);
+  $core.List<$core.String> get secondaryFields => $_getList(4);
 
   @$pb.TagNumber(6)
-  $core.Map<$core.int, $core.String> get auxiliaryFields => $_getMap(5);
+  $core.List<$core.String> get auxiliaryFields => $_getList(5);
 }
 
 class FieldOrdering extends $pb.GeneratedMessage {

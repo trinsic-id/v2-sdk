@@ -533,50 +533,22 @@ const AppleWalletOptions$json = const {
       '1': 'secondary_fields',
       '3': 5,
       '4': 3,
-      '5': 11,
-      '6':
-          '.services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry',
+      '5': 9,
       '10': 'secondaryFields'
     },
     const {
       '1': 'auxiliary_fields',
       '3': 6,
       '4': 3,
-      '5': 11,
-      '6':
-          '.services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry',
+      '5': 9,
       '10': 'auxiliaryFields'
     },
   ],
-  '3': const [
-    AppleWalletOptions_SecondaryFieldsEntry$json,
-    AppleWalletOptions_AuxiliaryFieldsEntry$json
-  ],
-};
-
-@$core.Deprecated('Use appleWalletOptionsDescriptor instead')
-const AppleWalletOptions_SecondaryFieldsEntry$json = const {
-  '1': 'SecondaryFieldsEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 5, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
-  ],
-  '7': const {'7': true},
-};
-
-@$core.Deprecated('Use appleWalletOptionsDescriptor instead')
-const AppleWalletOptions_AuxiliaryFieldsEntry$json = const {
-  '1': 'AuxiliaryFieldsEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 5, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
-  ],
-  '7': const {'7': true},
 };
 
 /// Descriptor for `AppleWalletOptions`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List appleWalletOptionsDescriptor = $convert.base64Decode(
-    'ChJBcHBsZVdhbGxldE9wdGlvbnMSKQoQYmFja2dyb3VuZF9jb2xvchgBIAEoCVIPYmFja2dyb3VuZENvbG9yEikKEGZvcmVncm91bmRfY29sb3IYAiABKAlSD2ZvcmVncm91bmRDb2xvchIfCgtsYWJlbF9jb2xvchgDIAEoCVIKbGFiZWxDb2xvchIjCg1wcmltYXJ5X2ZpZWxkGAQgASgJUgxwcmltYXJ5RmllbGQSfwoQc2Vjb25kYXJ5X2ZpZWxkcxgFIAMoCzJULnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuQXBwbGVXYWxsZXRPcHRpb25zLlNlY29uZGFyeUZpZWxkc0VudHJ5Ug9zZWNvbmRhcnlGaWVsZHMSfwoQYXV4aWxpYXJ5X2ZpZWxkcxgGIAMoCzJULnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuQXBwbGVXYWxsZXRPcHRpb25zLkF1eGlsaWFyeUZpZWxkc0VudHJ5Ug9hdXhpbGlhcnlGaWVsZHMaQgoUU2Vjb25kYXJ5RmllbGRzRW50cnkSEAoDa2V5GAEgASgFUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4ARpCChRBdXhpbGlhcnlGaWVsZHNFbnRyeRIQCgNrZXkYASABKAVSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
+    'ChJBcHBsZVdhbGxldE9wdGlvbnMSKQoQYmFja2dyb3VuZF9jb2xvchgBIAEoCVIPYmFja2dyb3VuZENvbG9yEikKEGZvcmVncm91bmRfY29sb3IYAiABKAlSD2ZvcmVncm91bmRDb2xvchIfCgtsYWJlbF9jb2xvchgDIAEoCVIKbGFiZWxDb2xvchIjCg1wcmltYXJ5X2ZpZWxkGAQgASgJUgxwcmltYXJ5RmllbGQSKQoQc2Vjb25kYXJ5X2ZpZWxkcxgFIAMoCVIPc2Vjb25kYXJ5RmllbGRzEikKEGF1eGlsaWFyeV9maWVsZHMYBiADKAlSD2F1eGlsaWFyeUZpZWxkcw==');
 @$core.Deprecated('Use fieldOrderingDescriptor instead')
 const FieldOrdering$json = const {
   '1': 'FieldOrdering',

@@ -328,17 +328,13 @@ class AppleWalletOptions(betterproto.Message):
     credential.
     """
 
-    secondary_fields: Dict[int, str] = betterproto.map_field(
-        5, betterproto.TYPE_INT32, betterproto.TYPE_STRING
-    )
+    secondary_fields: List[str] = betterproto.string_field(5)
     """
     The secondary fields of the credential. This is a mapping between the order
     of a secondary field (0 or 1) and the field name.
     """
 
-    auxiliary_fields: Dict[int, str] = betterproto.map_field(
-        6, betterproto.TYPE_INT32, betterproto.TYPE_STRING
-    )
+    auxiliary_fields: List[str] = betterproto.string_field(6)
     """
     The auxiliary fields of the credential. This is a mapping between the order
     of an auxiliary field (0 or 1) and the field name.

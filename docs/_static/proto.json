@@ -2412,42 +2412,6 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.AppleWalletOptions"
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.key": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry"
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.value": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry"
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.AppleWalletOptions"
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.key": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry"
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.value": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry"
-    },
     "services.verifiablecredentials.templates.v1.AppleWalletOptions.auxiliary_fields": {
       "type": "field",
       "collection": "fields",
@@ -4384,8 +4348,6 @@
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry",
         "services.verifiablecredentials.templates.v1.TemplateData.FieldOrderingEntry",
         "services.verifiablecredentials.templates.v1.AppleWalletOptions",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry",
         "services.verifiablecredentials.templates.v1.FieldOrdering",
         "services.verifiablecredentials.templates.v1.TemplateField",
         "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry",
@@ -4454,10 +4416,6 @@
         "services.verifiablecredentials.templates.v1.AppleWalletOptions.primary_field",
         "services.verifiablecredentials.templates.v1.AppleWalletOptions.secondary_fields",
         "services.verifiablecredentials.templates.v1.AppleWalletOptions.auxiliary_fields",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.key",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.value",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.key",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.value",
         "services.verifiablecredentials.templates.v1.FieldOrdering.order",
         "services.verifiablecredentials.templates.v1.FieldOrdering.section",
         "services.verifiablecredentials.templates.v1.TemplateField.title",
@@ -4899,7 +4857,10 @@
       "full_name": "services.provider.v1.Provider.RefreshDomainVerificationStatus",
       "input_type": "services.provider.v1.RefreshDomainVerificationStatusRequest",
       "output_type": "services.provider.v1.RefreshDomainVerificationStatusResponse",
-      "description": "Call to verify domain"
+      "description": "Call to verify domain",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
       "name": "RetrieveDomainVerificationRecord",
@@ -6296,33 +6257,6 @@
         "services.verifiablecredentials.templates.v1.AppleWalletOptions.primary_field",
         "services.verifiablecredentials.templates.v1.AppleWalletOptions.secondary_fields",
         "services.verifiablecredentials.templates.v1.AppleWalletOptions.auxiliary_fields"
-      ],
-      "messages": [
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry"
-      ],
-      "enums": []
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry": {
-      "name": "AuxiliaryFieldsEntry",
-      "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry",
-      "description": "",
-      "is_map_entry": true,
-      "fields": [
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.key",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.value"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry": {
-      "name": "SecondaryFieldsEntry",
-      "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry",
-      "description": "",
-      "is_map_entry": true,
-      "fields": [
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.key",
-        "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.value"
       ],
       "messages": [],
       "enums": []
@@ -8667,44 +8601,12 @@
         "services.options.optional": true
       }
     },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.key": {
-      "name": "key",
-      "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.key",
-      "label": "LABEL_OPTIONAL",
-      "type": "int32",
-      "full_type": "int32",
-      "description": ""
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.value": {
-      "name": "value",
-      "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry.value",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.key": {
-      "name": "key",
-      "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.key",
-      "label": "LABEL_OPTIONAL",
-      "type": "int32",
-      "full_type": "int32",
-      "description": ""
-    },
-    "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.value": {
-      "name": "value",
-      "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry.value",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
     "services.verifiablecredentials.templates.v1.AppleWalletOptions.auxiliary_fields": {
       "name": "auxiliary_fields",
       "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.auxiliary_fields",
       "label": "LABEL_REPEATED",
-      "type": "AuxiliaryFieldsEntry",
-      "full_type": "services.verifiablecredentials.templates.v1.AppleWalletOptions.AuxiliaryFieldsEntry",
+      "type": "string",
+      "full_type": "string",
       "description": "The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name."
     },
     "services.verifiablecredentials.templates.v1.AppleWalletOptions.background_color": {
@@ -8743,8 +8645,8 @@
       "name": "secondary_fields",
       "full_name": "services.verifiablecredentials.templates.v1.AppleWalletOptions.secondary_fields",
       "label": "LABEL_REPEATED",
-      "type": "SecondaryFieldsEntry",
-      "full_type": "services.verifiablecredentials.templates.v1.AppleWalletOptions.SecondaryFieldsEntry",
+      "type": "string",
+      "full_type": "string",
       "description": "The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name."
     },
     "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldOrderingEntry.key": {

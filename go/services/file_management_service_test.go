@@ -49,7 +49,7 @@ func TestEndToEndUpload(t *testing.T) {
 	assert.Equal(listFilesResponse.Files[0], getFileResponse.File)
 
 	// getStorageStats() {
-	getStatsResponse, err := trinsic.FileManagement().GetStorageStats(context.Background(), &filemanagement.GetStorageStatsRequest{})
+	getStatsResponse, err := trinsic.FileManagement().GetStorageStats(context.Background())
 	//}
 
 	assert.Nil(err)

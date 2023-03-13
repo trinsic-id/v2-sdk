@@ -57,7 +57,7 @@ describe("FileManagementService Unit Tests", () => {
         expect(listFilesResponse.files[0].id).toBe(fileId);
 
         // getStorageStats() {
-        const getStorageStatsResponse = await trinsic.fileManagement().getStorageStats({});
+        const getStorageStatsResponse = await trinsic.fileManagement().getStorageStats();
         //}
 
         expect(getStorageStatsResponse.stats?.numFiles).toBe(1);
@@ -71,7 +71,7 @@ describe("FileManagementService Unit Tests", () => {
         );
         //}
 
-        const afterDeleteStorageStatsResponse = await trinsic.fileManagement().getStorageStats({});
+        const afterDeleteStorageStatsResponse = await trinsic.fileManagement().getStorageStats();
         expect(afterDeleteStorageStatsResponse.stats?.numFiles).toBe(0);
     });
 

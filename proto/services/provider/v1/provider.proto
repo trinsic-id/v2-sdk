@@ -447,6 +447,7 @@ service Provider {
   // Returns the public key being used to create/verify oberon tokens
   rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse) {
     option (options.sdk_template_option).anonymous = true;
+    option (options.sdk_template_option).no_arguments = true;
   }
 
   // Upgrade a wallet's DID from `did:key` to another method
@@ -458,7 +459,9 @@ service Provider {
   }
 
   // Call to verify domain
-  rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse);
+  rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse) {
+    option (options.sdk_template_option).no_arguments = true;
+  }
 
   // Search for issuers/providers/verifiers in the current ecosystem
   rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse);

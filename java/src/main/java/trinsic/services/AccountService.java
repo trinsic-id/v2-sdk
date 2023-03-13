@@ -5,17 +5,16 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.*;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -29,51 +28,51 @@ public class AccountService extends ServiceBase {
     this.stub = AccountGrpc.newFutureStub(this.getChannel());
   }
 
-    public static String unprotect(String base64Profile, String securityCode)
-        throws InvalidProtocolBufferException, DidException {
-        var profile =
-            AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
-        var request =
-            Security.UnBlindOberonTokenRequest.newBuilder()
-                .setToken(profile.getAuthToken())
-                .addBlinding(ByteString.copyFromUtf8(securityCode))
-                .build();
-        var result = Oberon.unBlindToken(request);
+  public static String unprotect(String base64Profile, String securityCode)
+      throws InvalidProtocolBufferException, DidException {
+    var profile =
+        AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
+    var request =
+        Security.UnBlindOberonTokenRequest.newBuilder()
+            .setToken(profile.getAuthToken())
+            .addBlinding(ByteString.copyFromUtf8(securityCode))
+            .build();
+    var result = Oberon.unBlindToken(request);
 
-        profile =
-            AccountProfile.newBuilder(profile)
-                .setAuthToken(result.getToken())
-                .setProtection(
-                    TokenProtection.newBuilder()
-                        .setMethod(ConfirmationMethod.None)
-                        .setEnabled(false)
-                        .build())
-                .build();
-        return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
-    }
+    profile =
+        AccountProfile.newBuilder(profile)
+            .setAuthToken(result.getToken())
+            .setProtection(
+                TokenProtection.newBuilder()
+                    .setMethod(ConfirmationMethod.None)
+                    .setEnabled(false)
+                    .build())
+            .build();
+    return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
+  }
 
-    public static String protect(String base64Profile, String securityCode)
-        throws InvalidProtocolBufferException, DidException {
-        var profile =
-            AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
-        var request =
-            Security.BlindOberonTokenRequest.newBuilder()
-                .setToken(profile.getAuthToken())
-                .addBlinding(ByteString.copyFromUtf8(securityCode))
-                .build();
-        var result = Oberon.blindToken(request);
+  public static String protect(String base64Profile, String securityCode)
+      throws InvalidProtocolBufferException, DidException {
+    var profile =
+        AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
+    var request =
+        Security.BlindOberonTokenRequest.newBuilder()
+            .setToken(profile.getAuthToken())
+            .addBlinding(ByteString.copyFromUtf8(securityCode))
+            .build();
+    var result = Oberon.blindToken(request);
 
-        profile =
-            AccountProfile.newBuilder(profile)
-                .setAuthToken(result.getToken())
-                .setProtection(
-                    TokenProtection.newBuilder()
-                        .setMethod(ConfirmationMethod.Other)
-                        .setEnabled(true)
-                        .build())
-                .build();
-        return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
-    }
+    profile =
+        AccountProfile.newBuilder(profile)
+            .setAuthToken(result.getToken())
+            .setProtection(
+                TokenProtection.newBuilder()
+                    .setMethod(ConfirmationMethod.Other)
+                    .setEnabled(true)
+                    .build())
+            .build();
+    return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
+  }
 
   public ListenableFuture<LoginResponse> login(LoginRequest request)
       throws InvalidProtocolBufferException, DidException {
@@ -163,7 +162,7 @@ public class AccountService extends ServiceBase {
   }
 
   // BEGIN Code generated by protoc-gen-trinsic. DO NOT EDIT.
-  // target: D:\trinsic\sdk\java\src\main\java\trinsic\services\AccountService.java
+  // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/AccountService.java
 
   /** Get account information */
   public ListenableFuture<AccountInfoResponse> info()
