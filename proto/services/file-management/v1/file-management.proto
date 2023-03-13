@@ -112,5 +112,6 @@ service FileManagement {
   // Get statistics about files uploaded by the calling account
   rpc GetStorageStats(GetStorageStatsRequest) returns (GetStorageStatsResponse) {
     option (options.sdk_template_option).experimental = {active: true};
+    option (options.sdk_template_option).no_arguments = true;
   }
 }
