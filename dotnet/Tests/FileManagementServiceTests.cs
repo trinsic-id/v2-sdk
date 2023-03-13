@@ -70,7 +70,7 @@ public class FileManagementServiceTests
         listFilesResponse.Files[0].Should().Be(getFileResponse.File);
 
         // getStorageStats() {
-        var getStorageStatsResponse = trinsic.FileManagement.GetStorageStats(new GetStorageStatsRequest());
+        var getStorageStatsResponse = trinsic.FileManagement.GetStorageStats();
         //}
 
         getStorageStatsResponse.Stats.NumFiles.Should().Be(1);
@@ -83,7 +83,7 @@ public class FileManagementServiceTests
         });
         //}
         
-        getStorageStatsResponse = trinsic.FileManagement.GetStorageStats(new GetStorageStatsRequest());
+        getStorageStatsResponse = trinsic.FileManagement.GetStorageStats();
         getStorageStatsResponse.Stats.NumFiles.Should().Be(0);
         getStorageStatsResponse.Stats.TotalSize.Should().Be(0);
     }

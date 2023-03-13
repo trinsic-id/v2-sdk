@@ -60,9 +60,9 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata());
   }
 
-  Future<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request) async {
+  Future<GetOberonKeyResponse> getOberonKey() async {
     ///  Returns the public key being used to create/verify oberon tokens
-
+    var request = GetOberonKeyRequest();
     return client.getOberonKey(request, options: await buildMetadata());
   }
 
@@ -82,10 +82,9 @@ class ProviderService extends ServiceBase {
   }
 
   Future<RefreshDomainVerificationStatusResponse>
-      refreshDomainVerificationStatus(
-          RefreshDomainVerificationStatusRequest request) async {
+      refreshDomainVerificationStatus() async {
     ///  Call to verify domain
-
+    var request = RefreshDomainVerificationStatusRequest();
     return client.refreshDomainVerificationStatus(request,
         options: await buildMetadata(request: request));
   }

@@ -49,8 +49,8 @@ export class FileManagementService extends ServiceBase {
   }
   /** Get statistics about files uploaded by the calling account
 *@deprecated This method is experimental */
-  public async getStorageStats(request: proto.GetStorageStatsRequest): Promise<proto.GetStorageStatsResponse> {
-    
+  public async getStorageStats(): Promise<proto.GetStorageStatsResponse> {
+    let request = proto.GetStorageStatsRequest.fromPartial({});
     return this.client.getStorageStats(request, {
       metadata: await this.buildMetadata(proto.GetStorageStatsRequest.encode(request).finish())
     });

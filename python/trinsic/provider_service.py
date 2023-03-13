@@ -93,11 +93,9 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata()
         )
 
-    async def get_oberon_key(
-        self, *, request: GetOberonKeyRequest
-    ) -> GetOberonKeyResponse:
+    async def get_oberon_key(self) -> GetOberonKeyResponse:
         """Returns the public key being used to create/verify oberon tokens"""
-
+        request = GetOberonKeyRequest()
         return await self.client.get_oberon_key(request, metadata=self.build_metadata())
 
     async def upgrade_did(self, *, request: UpgradeDidRequest) -> UpgradeDidResponse:
@@ -117,10 +115,10 @@ class ProviderService(ServiceBase):
         )
 
     async def refresh_domain_verification_status(
-        self, *, request: RefreshDomainVerificationStatusRequest
+        self,
     ) -> RefreshDomainVerificationStatusResponse:
         """Call to verify domain"""
-
+        request = RefreshDomainVerificationStatusRequest()
         return await self.client.refresh_domain_verification_status(
             request, metadata=self.build_metadata(request)
         )

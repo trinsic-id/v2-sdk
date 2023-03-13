@@ -51,11 +51,10 @@ class FileManagementService extends ServiceBase {
   }
 
   @Deprecated('This method is experimental')
-  Future<GetStorageStatsResponse> getStorageStats(
-      GetStorageStatsRequest request) async {
+  Future<GetStorageStatsResponse> getStorageStats() async {
     /// This method is experimental
     /// Get statistics about files uploaded by the calling account
-
+    var request = GetStorageStatsRequest();
     return client.getStorageStats(request,
         options: await buildMetadata(request: request));
   }
