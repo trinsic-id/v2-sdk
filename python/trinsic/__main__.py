@@ -7,7 +7,7 @@ from trinsic.provider_service import ProviderService
 
 async def demo():
     service = ProviderService()
-    response = await service.get_oberon_key(request=GetOberonKeyRequest())
+    response = await service.get_oberon_key()
     assert response is not None
     print("Package successfully installed. Sample Oberon Key below")
     print(response)

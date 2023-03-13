@@ -45,9 +45,7 @@ async def file_management_demo():
     assert list_response.files[0].id == file_id
 
     # getStorageStats() {
-    get_stats_response = await trinsic.file_management.get_storage_stats(
-        request=GetStorageStatsRequest()
-    )
+    get_stats_response = await trinsic.file_management.get_storage_stats()
     # }
 
     # deleteFile() {
