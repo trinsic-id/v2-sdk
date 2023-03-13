@@ -119,8 +119,8 @@ public class FileManagementService : ServiceBase
     ///  Get statistics about files uploaded by the calling account
     /// </summary>
     [Obsolete("This method is experimental")]
-    public GetStorageStatsResponse GetStorageStats(GetStorageStatsRequest request) {
-        
+    public GetStorageStatsResponse GetStorageStats() {
+        var request = new GetStorageStatsRequest();
         return Client.GetStorageStats(request, BuildMetadata(request));
     }
 	
@@ -129,8 +129,8 @@ public class FileManagementService : ServiceBase
     ///  Get statistics about files uploaded by the calling account
     /// </summary>
     [Obsolete("This method is experimental")]
-    public async Task<GetStorageStatsResponse> GetStorageStatsAsync(GetStorageStatsRequest request) {
-        
+    public async Task<GetStorageStatsResponse> GetStorageStatsAsync() {
+        var request = new GetStorageStatsRequest();
         return await Client.GetStorageStatsAsync(request, await BuildMetadataAsync(request));
     }
 

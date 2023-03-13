@@ -46,8 +46,9 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).getPublicEcosystemInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse {
+  suspend fun getOberonKey(): GetOberonKeyResponse {
     /** Returns the public key being used to create/verify oberon tokens */
+    val request = GetOberonKeyRequest.newBuilder().build()
     return withMetadata(stub, request).getOberonKey(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -62,10 +63,9 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).retrieveDomainVerificationRecord(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun refreshDomainVerificationStatus(
-      request: RefreshDomainVerificationStatusRequest
-  ): RefreshDomainVerificationStatusResponse {
+  suspend fun refreshDomainVerificationStatus(): RefreshDomainVerificationStatusResponse {
     /** Call to verify domain */
+    val request = RefreshDomainVerificationStatusRequest.newBuilder().build()
     return withMetadata(stub, request).refreshDomainVerificationStatus(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)

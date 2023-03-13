@@ -66,9 +66,9 @@ public class ProviderService extends ServiceBase {
     return withMetadata(stub, request).getPublicEcosystemInfo(request);
   }
   /** Returns the public key being used to create/verify oberon tokens */
-  public ListenableFuture<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request)
+  public ListenableFuture<GetOberonKeyResponse> getOberonKey()
       throws InvalidProtocolBufferException, DidException {
-
+    var request = GetOberonKeyRequest.newBuilder().build();
     return withMetadata(stub, request).getOberonKey(request);
   }
   /** Upgrade a wallet's DID from `did:key` to another method */
@@ -84,10 +84,9 @@ public class ProviderService extends ServiceBase {
     return withMetadata(stub, request).retrieveDomainVerificationRecord(request);
   }
   /** Call to verify domain */
-  public ListenableFuture<RefreshDomainVerificationStatusResponse> refreshDomainVerificationStatus(
-      RefreshDomainVerificationStatusRequest request)
+  public ListenableFuture<RefreshDomainVerificationStatusResponse> refreshDomainVerificationStatus()
       throws InvalidProtocolBufferException, DidException {
-
+    var request = RefreshDomainVerificationStatusRequest.newBuilder().build();
     return withMetadata(stub, request).refreshDomainVerificationStatus(request);
   }
   /** Search for issuers/providers/verifiers in the current ecosystem */

@@ -71,14 +71,12 @@ class FileManagementService(ServiceBase):
         )
 
     @deprecation.deprecated(details="This method is experimental")
-    async def get_storage_stats(
-        self, *, request: GetStorageStatsRequest
-    ) -> GetStorageStatsResponse:
+    async def get_storage_stats(self) -> GetStorageStatsResponse:
         """
         This method is experimental
           Get statistics about files uploaded by the calling account
         """
-
+        request = GetStorageStatsRequest()
         return await self.client.get_storage_stats(
             request, metadata=self.build_metadata(request)
         )
