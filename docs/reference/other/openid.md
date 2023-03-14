@@ -118,16 +118,17 @@ Some credential template fields may be intended for URLs which resolve to images
 
 By default, these will display to the holders in the OIDC flow as simple text fields containing the raw URL. However, the template can be configured to display these URLs as either inline embedded images, or convenient links to download the linked data.
 
-When creating a Template:
+When creating or updating a Template:
 
-- Choose the `Uri` type for any Fields which are intended to contain URIs.
-- Set the `trinsic/web.display_method` annotation on the Field
-    - If the field is intended to contain an image, use the value `inline`.
-    - Otherwise, use the value `download`.
-- Set the `trinsic/file.content_type` annotation on the Field
-    - Use the value `image` if the field is intended to contain a link to an image
-    - Otherwise, the value should be the expected MIME Type of the data
-        - If you are unsure, use `application/octet-stream` as a catch-all
+- Choose the `URI` type for any Fields which are intended to contain URIs.
+- Configure the `UriData` object on the Field
+  - Set the `RenderMethod` property
+      - If the field is intended to contain an image, use the value `INLINE_IMAGE`.
+      - Otherwise, use `LINK` for a clickable link, or `TEXT` to display the URI in raw form.
+  - Set the `MimeType` property
+      - Use the value `image` if the field is intended to contain a link to an image
+      - Otherwise, the value should be the expected MIME Type of the data
+          - If you are unsure, use `application/octet-stream` as a catch-all
 
 ## Sample
 

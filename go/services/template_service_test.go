@@ -3,12 +3,9 @@ package services
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
 	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
-
 	"testing"
 )
 
@@ -21,10 +18,38 @@ func TestTemplatesDemo(t *testing.T) {
 
 	// create example template
 	// createTemplate() {
-	templateRequest := &template.CreateCredentialTemplateRequest{Name: fmt.Sprintf("Example Template - %s", uuid.New()), AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
-	templateRequest.Fields["firstName"] = &template.TemplateField{Description: "Given name"}
-	templateRequest.Fields["lastName"] = &template.TemplateField{}
-	templateRequest.Fields["age"] = &template.TemplateField{Type: template.FieldType_NUMBER, Optional: true}
+	templateRequest := &template.CreateCredentialTemplateRequest{
+		Name:                  "An Example Credential",
+		Title:                 "Example Credential",
+		Description:           "A credential for Trinsic's SDK samples",
+		AllowAdditionalFields: false,
+		Fields: map[string]*template.TemplateField{
+			"firstName": {
+				Title:       "First Name",
+				Description: "Given name of holder",
+			},
+			"lastName": {
+				Title:       "Last Name",
+				Description: "Surname of holder",
+				Optional:    true,
+			},
+			"age": {
+				Title:       "Age",
+				Description: "Age in years of holder",
+				Type:        template.FieldType_NUMBER,
+			},
+		},
+		FieldOrdering: map[string]*template.FieldOrdering{
+			"firstName": {Order: 0, Section: "Name"},
+			"lastName":  {Order: 1, Section: "Name"},
+			"age":       {Order: 2, Section: "Miscellaneous"},
+		},
+		AppleWalletOptions: &template.AppleWalletOptions{
+			PrimaryField:    "firstName",
+			SecondaryFields: []string{"lastName"},
+			AuxiliaryFields: []string{"age"},
+		},
+	}
 
 	templateResponse, err := trinsic.Template().Create(context.Background(), templateRequest)
 	// }
@@ -34,6 +59,40 @@ func TestTemplatesDemo(t *testing.T) {
 	assert2.NotNil(templateResponse.Data)
 	assert2.NotNil(templateResponse.Data.Id)
 	assert2.NotNil(templateResponse.Data.SchemaUri)
+
+	templateId := templateResponse.Data.Id
+
+	// updateTemplate() {
+	var newTemplateTitle = "New Title"
+	var newTemplateDescription = "New Description"
+	var newFirstNameTitle = "New title for firstName"
+	var newLastNameDescription = "New description for lastName"
+
+	updateRequest := &template.UpdateCredentialTemplateRequest{
+		Id:          templateId,
+		Title:       &newTemplateTitle,
+		Description: &newTemplateDescription,
+		Fields: map[string]*template.TemplateFieldPatch{
+			"firstName": {Title: &newFirstNameTitle},
+			"lastName":  {Description: &newLastNameDescription},
+		},
+		FieldOrdering: map[string]*template.FieldOrdering{
+			"age":       {Order: 0, Section: "Misc"},
+			"firstName": {Order: 1, Section: "Full Name"},
+			"lastName":  {Order: 2, Section: "Full Name"},
+		},
+		AppleWalletOptions: &template.AppleWalletOptions{
+			PrimaryField:    "age",
+			SecondaryFields: []string{"firstName", "lastName"},
+		},
+	}
+
+	updateResponse, err := trinsic.Template().Update(context.Background(), updateRequest)
+	// }
+
+	if !assert2.Nil(err) && !assert2.NotNil(updateResponse) {
+		return
+	}
 
 	// issue credential from this template
 	values := struct {

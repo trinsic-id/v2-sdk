@@ -8,7 +8,8 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
     GetCredentialTemplateRequest,
     DeleteCredentialTemplateRequest,
-    SearchCredentialTemplatesRequest,
+    SearchCredentialTemplatesRequest, FieldOrdering, AppleWalletOptions, UpdateCredentialTemplateRequest,
+    TemplateFieldPatch,
 )
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
@@ -19,26 +20,63 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 async def templates_demo():
     trinsic_service = TrinsicService(server_config=trinsic_config())
-    profile = await trinsic_service.account.login_anonymous(ecosystem_id="default")
+    ecosystem = await trinsic_service.provider.create_ecosystem()
 
     # create example template
     # createTemplate() {
-    template = await trinsic_service.template.create(
-        request=CreateCredentialTemplateRequest(
-            name=f"An Example Credential {uuid.uuid4()}",
+    create_request = CreateCredentialTemplateRequest(
+            name="An Example Credential",
+            title="Example Credential",
+            description="A credential for Trinsic's SDK samples",
             allow_additional_fields=False,
             fields={
-                "firstName": TemplateField(description="Given name"),
-                "lastName": TemplateField(),
-                "age": TemplateField(optional=True, type=FieldType.NUMBER),
+                "firstName": TemplateField(title="First Name", description="Given name of holder"),
+                "lastName": TemplateField(title="Last Name", description="Surname of holder", optional=True),
+                "age": TemplateField(title="Age", description="Age in years of holder", type=FieldType.NUMBER),
             },
+            field_ordering={
+                "firstName": FieldOrdering(order=0, section="Name"),
+                "lastName": FieldOrdering(order=1, section="Name"),
+                "age": FieldOrdering(order=2, section="Miscellaneous")
+            },
+            apple_wallet_options=AppleWalletOptions(
+                primary_field="firstName",
+                secondary_fields=["lastName"],
+                auxiliary_fields=["age"]
+            )
         )
-    )
+    create_response = await trinsic_service.template.create(request=create_request)
     # }
+    template = create_response
     assert template is not None
     assert template.data is not None
     assert template.data.id is not None
     assert template.data.schema_uri is not None
+
+    template_id = template.data.id
+
+    # update template
+    # updateTemplate() {
+    update_request = UpdateCredentialTemplateRequest(
+        id=template_id,
+        title="New Title",
+        description="New Description",
+        fields={
+            "firstName": TemplateFieldPatch(title="New title for firstName"),
+            "lastName": TemplateFieldPatch(description="New description for lastName")
+        },
+        field_ordering={
+            "age": FieldOrdering(order=0, section="Misc"),
+            "firstName": FieldOrdering(order=1, section="Full Name"),
+            "lastName": FieldOrdering(order=2, section="Full Name")
+        },
+        apple_wallet_options=AppleWalletOptions(
+            primary_field="age",
+            secondary_fields=["firstName", "lastName"]
+        )
+    )
+    update_response = await trinsic_service.template.update(request=update_request)
+    # }
 
     # issue credential from this template
     # issueFromTemplate() {

@@ -8,14 +8,13 @@ The Template Service allows you to manage and search [Credential Templates](/lea
 
 ## Create Template
 
-!!! info "Field Annotations"
-    When defining the Fields of a Template, the `annotations` object can be used to set arbitrary key-value metadata on a Field.
-
-    Trinsic defines certain annotations that dictate how a credential field containing a URI will render during the verification flow.
-
-    [Click here](../../reference/other/openid.md) for more information on this use case.
-
 Creates a new credential template.
+
+The `name` of a template must be unique within your ecosystem, and cannot be changed -- it is used to derive the URI of the template itself.
+
+The `title` and `description` parameters (for the template itself, as well as for any of its fields) should be human-readable strings. They should describe the credentials issued by the template, not the template itself (for example, a good title for a medical license template would simply be "Medical License", not "Medical License Template").
+
+`field_ordering` may be used to specify the order in which fields are rendered when displaying a credential, and to categorize fields into logical sections. This is used for display only, and has no bearing on working with credentials as an issuer or verifier.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -26,7 +25,7 @@ Creates a new credential template.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:defineTemplate
+        [CreateTemplate](../../../web/test/CredentialTemplates.spec.ts) inside_block:createTemplate
         ```
         <!--/codeinclude-->
 
@@ -62,6 +61,59 @@ Creates a new credential template.
 
 ---
 
+## Update Template
+
+Updates a template's display metadata, such as its human-readable title/description.
+
+This call cannot be used to update templates in a way that might invalidate previously-issued credentials: fields cannot be added, removed, or renamed, but their `title` and `description` properties may be updated.
+
+In order to leave a property unchanged (for example, if you wish to change `description` but not `title`), simply leave it unspecified (_don't_ set it to an empty string/object). This applies to fields as well: any field not specified in `fields` will remain unchanged.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        Not yet supported
+        ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [UpdateTemplate](../../../web/test/CredentialTemplates.spec.ts) inside_block:updateTemplate
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [UpdateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:updateTemplate
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [UpdateTemplate](../../../python/samples/templates_demo.py) inside_block:updateTemplate
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [UpdateTemplate](../../../go/services/template_service_test.go) inside_block:updateTemplate
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [UpdateTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:updateTemplate
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Update") }}
+
+---
+
 ## Get Template
 
 Fetches a template definition by `id`.
@@ -69,7 +121,7 @@ Fetches a template definition by `id`.
 {{ proto_sample_start() }}
 
     === "Trinsic CLI"
-        ```bash
+        ```
         trinsic template get --id <TEMPLATE_ID>
         ```
         
@@ -119,7 +171,7 @@ Deletes a credential template by `id`.
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
-        trinsic tamplate delete --id <TEMPLATE_ID>
+        trinsic template delete --id <TEMPLATE_ID>
         ```
 
     === "C#"
