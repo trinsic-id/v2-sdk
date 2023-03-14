@@ -25,7 +25,7 @@ The `title` and `description` parameters (for the template itself, as well as fo
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [CreateTemplate](../../../web/test/CredentialTemplates.spec.ts) inside_block:createTemplate
+        [CreateTemplate](../../../web/test/CredentialTemplates.test.ts) inside_block:createTemplate
         ```
         <!--/codeinclude-->
 
