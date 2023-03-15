@@ -152,9 +152,9 @@ func TestTemplatesDemo(t *testing.T) {
 	}
 
 	// updateCredentialStatus() {
-	updateResponse, err := trinsic.Credential().UpdateStatus(context.Background(), &credential.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
+	updateStatusResponse, err := trinsic.Credential().UpdateStatus(context.Background(), &credential.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
 	// }
-	if updateResponse != nil {
+	if updateStatusResponse != nil {
 	}
 
 }
