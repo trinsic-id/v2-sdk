@@ -1,12 +1,11 @@
-import { ServiceOptions } from "../src";
+import {ServiceOptions} from "../src";
 
 export function getTestServerOptions(): ServiceOptions {
-    let defaults = ServiceOptions.fromPartial({
+    return {
         serverEndpoint: "dev-internal.trinsic.cloud",
         serverPort: 443,
         serverUseTls: true,
-    });
-    return defaults;
+    };
 }
 
 export function setTestTimeout(timeoutMs: number = 40000) {

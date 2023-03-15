@@ -18,11 +18,7 @@ describe("Demo: Credential Templates", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(getTestServerOptions());
-        let provider = trinsic.provider();
-        await provider.createEcosystem({});
-        console.log("Auth Token: ", trinsic.options.authToken, " Provider token: ", provider.options.authToken!);
-        trinsic.setAuthToken(provider.options.authToken!);
-        //
+        await trinsic.provider().createEcosystem({});
     });
 
     it("should run create credential templates", async () => {
@@ -60,7 +56,6 @@ describe("Demo: Credential Templates", () => {
 
     it("Create and update template sample", async () => {
         // createTemplate() {
-        console.log("Auth Token: ", trinsic.options.authToken);
         const createRequest: CreateCredentialTemplateRequest = {
             name: "An Example Credential",
             title: "Example Credential",
