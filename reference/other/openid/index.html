@@ -2279,15 +2279,16 @@
 </div>
 <p>Some credential template fields may be intended for URLs which resolve to images or any other data which cannot be directly embedded in a credential. For example, you may wish to include a URL to an image of a physical credential in its digital representation.</p>
 <p>By default, these will display to the holders in the OIDC flow as simple text fields containing the raw URL. However, the template can be configured to display these URLs as either inline embedded images, or convenient links to download the linked data.</p>
-<p>When creating a Template:</p>
+<p>When creating or updating a Template:</p>
 <ul>
-<li>Choose the <code>Uri</code> type for any Fields which are intended to contain URIs.</li>
-<li>Set the <code>trinsic/web.display_method</code> annotation on the Field<ul>
-<li>If the field is intended to contain an image, use the value <code>inline</code>.</li>
-<li>Otherwise, use the value <code>download</code>.</li>
+<li>Choose the <code>URI</code> type for any Fields which are intended to contain URIs.</li>
+<li>Configure the <code>UriData</code> object on the Field</li>
+<li>Set the <code>RenderMethod</code> property<ul>
+<li>If the field is intended to contain an image, use the value <code>INLINE_IMAGE</code>.</li>
+<li>Otherwise, use <code>LINK</code> for a clickable link, or <code>TEXT</code> to display the URI in raw form.</li>
 </ul>
 </li>
-<li>Set the <code>trinsic/file.content_type</code> annotation on the Field<ul>
+<li>Set the <code>MimeType</code> property<ul>
 <li>Use the value <code>image</code> if the field is intended to contain a link to an image</li>
 <li>Otherwise, the value should be the expected MIME Type of the data<ul>
 <li>If you are unsure, use <code>application/octet-stream</code> as a catch-all</li>

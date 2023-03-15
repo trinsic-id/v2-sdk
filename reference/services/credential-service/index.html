@@ -2275,7 +2275,7 @@
 <span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
 <span class="w">        </span><span class="p">.</span><span class="na">issueFromTemplate</span><span class="p">(</span>
 <span class="w">            </span><span class="n">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">template</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getId</span><span class="p">())</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">templateId</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setValuesJson</span><span class="p">(</span><span class="n">valuesJson</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
@@ -2392,7 +2392,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">updateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">UpdateStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">UpdateStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Revoked</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="nx">updateStatusResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Credential</span><span class="p">().</span><span class="nx">UpdateStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">UpdateStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Revoked</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
