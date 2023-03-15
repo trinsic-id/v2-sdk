@@ -477,7 +477,7 @@ public class Tests
         var values = JsonSerializer.Serialize(new {
             firstName = "Jane",
             lastName = "Doe",
-            age = "42"
+            age = 42
         });
 
         // issueFromTemplate() {
