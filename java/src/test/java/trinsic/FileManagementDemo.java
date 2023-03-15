@@ -1,6 +1,9 @@
 package trinsic;
 
 import com.google.protobuf.ByteString;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
@@ -8,10 +11,6 @@ import trinsic.services.filemanagement.v1.DeleteFileRequest;
 import trinsic.services.filemanagement.v1.GetFileRequest;
 import trinsic.services.filemanagement.v1.ListFilesRequest;
 import trinsic.services.filemanagement.v1.UploadFileRequest;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.ExecutionException;
 
 public class FileManagementDemo {
 
@@ -65,8 +64,7 @@ public class FileManagementDemo {
         listFilesResponse.getFiles(0).getId(), uploadResponse.getUploadedFile().getId());
 
     // getStorageStats() {
-    var getStatsResponse =
-        trinsic.fileManagement().getStorageStats().get();
+    var getStatsResponse = trinsic.fileManagement().getStorageStats().get();
     // }
 
     Assertions.assertEquals(getStatsResponse.getStats().getNumFiles(), 1);
