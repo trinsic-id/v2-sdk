@@ -2,17 +2,19 @@ import {
     CheckStatusRequest,
     CreateCredentialTemplateResponse,
     TrinsicService,
+    UpdateCredentialTemplateRequest,
     UpdateStatusRequest,
 } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
+import {getTestServerOptions, setTestTimeout} from "./env";
 import {
     createCredentialTemplateTest,
     createRequiredTestObjects,
     issueCredentialFromTemplate,
     verifyCredential,
 } from "./CredentialTemplateShared";
+import {CreateCredentialTemplateRequest, FieldType} from "../lib";
 
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
     createRequiredTestObjects();
@@ -24,7 +26,7 @@ describe("Demo: Credential Templates", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(getTestServerOptions());
-        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        await trinsic.provider().createEcosystem({});
     });
 
     it("should run create and delete credential templates", async () => {

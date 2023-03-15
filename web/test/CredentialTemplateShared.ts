@@ -99,7 +99,6 @@ export async function createCredentialTemplateTest(
         dateOfBirth,
         isVaccinated,
     } = createRequiredTestObjects();
-    // createTemplate() {
     let request = CreateCredentialTemplateRequest.fromPartial({
         name: credentialTemplateName,
         fields: {
@@ -111,7 +110,6 @@ export async function createCredentialTemplateTest(
     });
 
     let response = await trinsic.template().create(request);
-    // }
 
     return response;
 }

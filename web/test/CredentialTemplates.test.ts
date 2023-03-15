@@ -1,4 +1,4 @@
-import { TrinsicService } from "../node";
+import {TrinsicService, CreateCredentialTemplateRequest, UpdateCredentialTemplateRequest, FieldType} from "../node";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
@@ -18,7 +18,7 @@ describe("Demo: Credential Templates", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(getTestServerOptions());
-        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        await trinsic.provider().createEcosystem({});
     });
 
     it("should run create credential templates", async () => {
@@ -48,9 +48,67 @@ describe("Demo: Credential Templates", () => {
 
     it("Verify Credential Issued from Template", async () => {
         let response = await verifyCredential(
-            trinsic,
+            new TrinsicService(getTestServerOptions()),
             JSON.stringify(templateCertFrame)
         );
         expect(response).toBeTruthy();
+    });
+
+    it("Create and update template sample", async () => {
+        // createTemplate() {
+        const createRequest: CreateCredentialTemplateRequest = {
+            name: "An Example Credential",
+            title: "Example Credential",
+            description: "A credential for Trinsic's SDK samples",
+            allowAdditionalFields: false,
+            fields: {
+                firstName: { title: "First Name", description: "Given name of holder" },
+                lastName: { title: "Last Name", description: "Surname of holder", optional: true },
+                age: { title: "Age", description: "Age in years of holder", type: FieldType.NUMBER }
+            },
+            fieldOrdering: {
+                firstName: { order: 0, section: "Name" },
+                lastName: { order: 1, section: "Name" },
+                age: { order: 2, section: "Miscellaneous" }
+            },
+            appleWalletOptions: {
+                primaryField: "firstName",
+                secondaryFields: ["lastName"],
+                auxiliaryFields: ["age"]
+            }
+        };
+
+        const createResponse = await trinsic.template().create(createRequest);
+        // }
+
+        const template = createResponse.data;
+        expect(template).not.toBeNull();
+
+        const templateId = template!.id;
+
+        // updateTemplate() {
+        const updateRequest: UpdateCredentialTemplateRequest = {
+            id: templateId,
+            title: "New Title",
+            description: "New Description",
+            fields: {
+                firstName: { title: "New title for firstName" },
+                lastName: { description: "New description for lastName" }
+            },
+            fieldOrdering: {
+                age: { order: 0, section: "Misc" },
+                firstName: { order: 1, section: "Full Name" },
+                lastName: { order: 2, section: "Full Name" }
+            },
+            appleWalletOptions: {
+                primaryField: "age",
+                secondaryFields: ["firstName", "lastName"]
+            }
+        };
+
+        const updateResponse = await trinsic.template().update(updateRequest);
+        // }
+
+        expect(updateResponse.updatedTemplate?.title).toBe(updateRequest.title);
     });
 });

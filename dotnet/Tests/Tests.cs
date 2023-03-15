@@ -409,15 +409,33 @@ public class Tests
 
         // create example template
         // createTemplate() {
-        CreateCredentialTemplateRequest templateRequest = new() {
+        CreateCredentialTemplateRequest createRequest = new()
+        {
             Name = "An Example Credential",
-            AllowAdditionalFields = false
+            Title = "Example Credential",
+            Description = "A credential for Trinsic's SDK samples",
+            AllowAdditionalFields = false,
+            Fields =
+            {
+                { "firstName", new() { Title = "First Name", Description = "Given name of holder" } },
+                { "lastName", new() { Title = "Last Name", Description = "Surname of holder", Optional = true } },
+                { "age", new() { Title = "Age", Description = "Age in years of holder", Type = FieldType.Number } }
+            },
+            FieldOrdering =
+            {
+                { "firstName", new() { Order = 0, Section = "Name" } },
+                { "lastName", new() { Order = 1, Section = "Name" } },
+                { "age", new() { Order = 2, Section = "Miscellanous" } }
+            },
+            AppleWalletOptions = new()
+            {
+                PrimaryField = "firstName",
+                SecondaryFields = { "lastName" },
+                AuxiliaryFields = { "age" }
+            }
         };
-        templateRequest.Fields.Add("firstName", new() { Description = "Given name" });
-        templateRequest.Fields.Add("lastName", new());
-        templateRequest.Fields.Add("age", new() { Optional = true }); // TODO - use FieldType.NUMBER once schema validation is fixed.
 
-        var template = await trinsic.Template.CreateAsync(templateRequest);
+        var template = await trinsic.Template.CreateAsync(createRequest);
         // }
 
         template.Should().NotBeNull();
@@ -426,12 +444,40 @@ public class Tests
         template.Data.SchemaUri.Should().NotBeNull();
 
         var templateId = template.Data.Id;
+        
+        // update template
+        // updateTemplate() {
+        UpdateCredentialTemplateRequest updateRequest = new() {
+            Id = templateId,
+            Title = "New Title",
+            Description = "New Description",
+            Fields = {
+                { "firstName", new() { Title = "New title for firstName" } },
+                { "lastName", new() { Description = "New description for lastName" } }
+            },
+            FieldOrdering =
+            {
+                { "age", new() { Order = 0, Section = "Misc" } },
+                { "firstName", new() { Order = 1, Section = "Full Name" } },
+                { "lastName", new() { Order = 2, Section = "Full Name" } },
+            },
+            AppleWalletOptions = new()
+            {
+                PrimaryField = "age",
+                SecondaryFields = { "firstName", "lastName" }
+            }
+        };
+
+        var updatedTemplate = await trinsic.Template.UpdateAsync(updateRequest);
+        // }
+
+        updatedTemplate.UpdatedTemplate.Title.Should().Be(updateRequest.Title);
 
         // issue credential from this template
         var values = JsonSerializer.Serialize(new {
             firstName = "Jane",
             lastName = "Doe",
-            age = "42"
+            age = 42
         });
 
         // issueFromTemplate() {
