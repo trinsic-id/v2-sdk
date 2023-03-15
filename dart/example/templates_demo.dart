@@ -8,7 +8,7 @@ import 'package:uuid/uuid.dart';
 
 Future runTemplatesDemo() async {
   var trinsic = TrinsicService(trinsicConfig(), null);
-  var profile = await trinsic.account().loginAnonymous("default");
+  var profile = await trinsic.account().loginAnonymous(ecosystemId: "default");
   assert(profile.isNotEmpty);
 
   var uuid = Uuid();

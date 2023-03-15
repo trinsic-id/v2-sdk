@@ -11,6 +11,12 @@ The Template Service allows you to manage and search [Credential Templates](/lea
 
 ---
 
+## Service Creation
+
+{{ proto_sample_create_service("services.verifiablecredentials.templates.v1.CredentialTemplates") }}
+
+---
+
 ## Create Template
 
 !!! info "Field Annotations"
@@ -22,47 +28,8 @@ The Template Service allows you to manage and search [Credential Templates](/lea
 
 Creates a new credential template.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic template create --name 'My Credential' --fields-data '{\"field1\":{}}'
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:defineTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:createTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:createTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [CreateTemplate](../../../go/services/template_service_test.go) inside_block:createTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [CreateTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.templates.v1.CredentialTemplates.Create") }}
+{{ proto_sample_code("services.verifiablecredentials.templates.v1.CredentialTemplates.Create") }}
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Create") }}
 
 ---
@@ -71,49 +38,29 @@ Creates a new credential template.
 
 Fetches a template definition by `id`.
 
-{{ proto_sample_start() }}
-
-    === "Trinsic CLI"
-        ```bash
-        trinsic template get --id <TEMPLATE_ID>
-        ```
-        
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:getCredentialTemplate
-        ```
-        <!--/codeinclude-->
-        
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:getCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:getCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [Issue From Template](../../../go/services/template_service_test.go) inside_block:getCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:getCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.templates.v1.CredentialTemplates.Get") }}
+{{ proto_sample_code("services.verifiablecredentials.templates.v1.CredentialTemplates.Get") }}
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Get") }}
+
+---
+
+## Update
+
+Update metadata of a template
+
+{{ proto_sample_start("services.verifiablecredentials.templates.v1.CredentialTemplates.Update") }}
+{{ proto_sample_code("services.verifiablecredentials.templates.v1.CredentialTemplates.Update") }}
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Update") }}
+
+---
+
+## List
+
+Search credential templates using SQL, returning strongly-typed template data
+
+{{ proto_sample_start("services.verifiablecredentials.templates.v1.CredentialTemplates.List") }}
+{{ proto_sample_code("services.verifiablecredentials.templates.v1.CredentialTemplates.List") }}
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.List") }}
 
 ---
 
@@ -121,40 +68,8 @@ Fetches a template definition by `id`.
 
 Deletes a credential template by `id`.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic tamplate delete --id <TEMPLATE_ID>
-        ```
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:deleteCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:deleteCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [Issue From Template](../../../go/services/template_service_test.go) inside_block:deleteCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:deleteCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.templates.v1.CredentialTemplates.Delete") }}
+{{ proto_sample_code("services.verifiablecredentials.templates.v1.CredentialTemplates.Delete") }}
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Delete") }}
 
 ---
@@ -165,48 +80,8 @@ Searches all templates defined in the current ecosystem, and a `continuation_tok
 
 If no `query` is specified, this call by default returns the first 100 templates.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet search \
-            --query "SELECT * FROM c"
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:searchCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:searchCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:searchCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [Issue From Template](../../../go/services/template_service_test.go) inside_block:searchCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:searchCredentialTemplate
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.templates.v1.CredentialTemplates.Search") }}
+{{ proto_sample_code("services.verifiablecredentials.templates.v1.CredentialTemplates.Search") }}
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Search") }}
 
 ### Advanced Search

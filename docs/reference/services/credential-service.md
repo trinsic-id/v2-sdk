@@ -10,6 +10,12 @@ The Credential Service exposes functionality for issuance, proof generation, ver
 
 ---
 
+## Service Creation
+
+{{ proto_sample_create_service("services.verifiablecredentials.v1.VerifiableCredential") }}
+
+---
+
 ## Issue Credential
 
 !!! warning "Deprecation Notice"
@@ -17,47 +23,8 @@ The Credential Service exposes functionality for issuance, proof generation, ver
 
 Issues a credential from a valid JSON-LD document. Issued credentials are not automatically stored in any wallet.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [Issue Credential](../../../web/test/CredentialService.spec.ts) inside_block:issueCredential
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [Issue Credential](../../../dotnet/Tests/Tests.cs) inside_block:issueCredentialSample
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Issue Credential](../../../python/samples/credential_demo.py) inside_block:issueCredential
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [VerifyProof](../../../go/services/credential_service_test.go) inside_block:issueCredential
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:issueCredentialSample
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
 
 !!! warning "`Issue` vs `IssueFromTemplate`"
@@ -73,52 +40,8 @@ Issues a credential from a valid JSON-LD document. Issued credentials are not au
 
 Issues a credential from a [previously-defined template](/reference/services/template-service#create-template){target=_blank}.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic vc issue-from-template [OPTIONS] --template-id <ID>
-
-        # OPTIONS
-        # --out <OUTPUT_FILE>     (Optional) Output file to store the issued credential
-        # --values-data <JSON>    The JSON values of the credential subject
-        # --values-file <FILE>    The file with JSON values of the credential subject
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [Issue From Template](../../../web/test/CredentialTemplateShared.ts) inside_block:issueFromTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [Issue From Template](../../../dotnet/Tests/Tests.cs) inside_block:issueFromTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Issue From Template](../../../python/samples/templates_demo.py) inside_block:issueFromTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [Issue From Template](../../../go/services/credential_service_test.go) inside_block:issueFromTemplate
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:issueFromTemplate
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
 
 ### Add governance information to issued credential
@@ -150,47 +73,8 @@ Checks a credential's revocation status by its `credential_status_id`.
 
 A `credential_status_id` can be found in a credential's `credentialStatus.id` field, if present.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic vc get-status --credential-status-id <ID>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [Check Revocation Status](../../../web/test/CredentialTemplates.spec.ts) inside_block:checkCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [Check Revocation Status](../../../dotnet/Tests/Tests.cs) inside_block:checkCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Check Revocation Status](../../../python/samples/templates_demo.py) inside_block:checkCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [Check Revocation Status](../../../go/services/template_service_test.go) inside_block:checkCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [Check Revocation Status](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:checkCredentialStatus
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.CheckStatus") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.CheckStatus") }}
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CheckStatus") }}
 
 ---
@@ -201,51 +85,8 @@ Updates the revocation status of a credential (revoke or unrevoke).
 
 A `credential_status_id` can be found in a credential's `credentialStatus.id` field, if present.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        # Revoke a credential
-        trinsic vc update-status --revoked --credential-status-id <ID>
-
-        # Unrevoke a credential
-        trinsic vc update-status --unrevoked --credential-status-id <ID>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [Update Revocation Status](../../../web/test/CredentialTemplates.spec.ts) inside_block:updateCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [Update Revocation Status](../../../dotnet/Tests/Tests.cs) inside_block:updateCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Update Revocation Status](../../../python/samples/templates_demo.py) inside_block:updateCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [Update Revocation Status](../../../go/services/template_service_test.go) inside_block:updateCredentialStatus
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [Update Revocation Status](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:updateCredentialStatus
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus") }}
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus") }}
 
 ---
@@ -264,47 +105,8 @@ If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; other
     2. Rather than formulating a complete JSON-LD frame, you can instead provide a list of proof attributes to reveal, and the service will construct the JSON-LD proof frame internally
     3. If neither is provided, the entire proof will be returned.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic vc create-proof --document-id <STRING> --out <OUTPUT_FILE> --reveal-document <JSONLD_FRAME_FILE>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createProof
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [CreateProof](../../../python/samples/credential_demo.py) inside_block:createProof
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [CreateProof](../../../go/services/credential_service_test.go) inside_block:createProof
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:createProof
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.CreateProof") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.CreateProof") }}
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CreateProof") }}
 
 ---
@@ -313,48 +115,8 @@ If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; other
 
 Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at present.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        # The JSONLD_FILE refers to the proof document obtained from a CreateProofResponse
-        trinsic vc issuer verify-proof --proof-document <JSONLD_FILE>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:verifyProof
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:verifyProof
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [VerifyProof](../../../python/samples/credential_demo.py) inside_block:verifyProof
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [VerifyProof](../../../go/services/credential_service_test.go) inside_block:verifyProof
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [VerifyProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:verifyProof
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.VerifyProof") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.VerifyProof") }}
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.VerifyProof") }}
 
 ???+ info "Validation Results"
@@ -382,49 +144,8 @@ Sends a credential to a user via email.
 
 The specified email address must be tied to an existing account in the same ecosystem.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic vc send --email <EMAIL_ADDRESS> --item <FILE>
-        ```
-
-    === "TypeScript"
-
-        ```typescript
-        await trinsic.credential().send(SendRequest.fromPartial({
-		    email: "",
-		    documentJson: JSON.stringify({}),
-	    }));
-        ```
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [SendRequest](../../../dotnet/Tests/Tests.cs) inside_block:sendCredential
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [SendRequest](../../../python/samples/credential_demo.py) inside_block:sendCredential
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [SendRequest](../../../go/services/credential_service_test.go) inside_block:sendCredential
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [SendRequest](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:sendCredential
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.Send") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.Send") }}
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Send") }}
 
 !!! info "Alternative Exchange Protocols"

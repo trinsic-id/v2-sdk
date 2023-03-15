@@ -1,14 +1,20 @@
 # Wallet Service
 
-The wallet service is the main interface for interacting with a cloud wallet. 
+The wallet service is the main interface for interacting with a cloud wallet.
 
 !!! question "Wallets vs Accounts"
     Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
 
-    Every account has exactly one wallet. 
+    Every account has exactly one wallet.
 
 !!! info "Wallet Standard"
     This service is designed to follow the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by the W3C Community Credentials Group.
+
+---
+
+## Service Creation
+
+{{ proto_sample_create_service("services.universalwallet.v1.UniversalWallet") }}
 
 ---
 
@@ -24,51 +30,12 @@ Therefore, to create a wallet, you'll need to [create a new account](./account-s
 
 Stores a credential (or any other JSON object) in a wallet.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet insert-item --item <INPUT_JSON_FILE>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:insertItemWallet
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:insertItemWallet
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:insertItemWallet
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.universalwallet.v1.UniversalWallet.InsertItem") }}
+{{ proto_sample_code("services.universalwallet.v1.UniversalWallet.InsertItem") }}
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.InsertItem") }}
 
 !!! question "What can be stored in a wallet?"
-    
+
     Wallets are mainly intended to hold [Verifiable Credentials](/learn/concepts/credentials){target=_blank}, but can technically
     store any JSON blob.
 
@@ -82,47 +49,8 @@ Stores a credential (or any other JSON object) in a wallet.
 
 Retrieves an item by its ID.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet search --query "SELECT * FROM _ WHERE _.id = '{id}'"
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [GetItem](../../../web/test/WalletService.test.ts) inside_block:getItem
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [GetItem](../../../dotnet/Tests/Tests.cs) inside_block:getItem
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [GetItem](../../../python/samples/wallet_demo.py) inside_block:getItem
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [GetItem](../../../go/services/wallet_service_test.go) inside_block:getItem
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [GetItem](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getItem
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.universalwallet.v1.UniversalWallet.GetItem") }}
+{{ proto_sample_code("services.universalwallet.v1.UniversalWallet.GetItem") }}
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.GetItem") }}
 
 ---
@@ -131,47 +59,8 @@ Retrieves an item by its ID.
 
 Deletes an item.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet delete-item --item-id {id}
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [DeleteItem](../../../web/test/WalletService.test.ts) inside_block:deleteItem
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [DeleteItem](../../../dotnet/Tests/Tests.cs) inside_block:deleteItem
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [DeleteItem](../../../python/samples/wallet_demo.py) inside_block:deleteItem
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [DeleteItem](../../../go/services/wallet_service_test.go) inside_block:deleteItem
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [DeleteItem](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:deleteItem
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.universalwallet.v1.UniversalWallet.DeleteItem") }}
+{{ proto_sample_code("services.universalwallet.v1.UniversalWallet.DeleteItem") }}
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.DeleteItem") }}
 
 ---
@@ -185,42 +74,8 @@ Any wallet may delete itself by passing its own ID to this call. Only Provider w
 
 Wallet deletion is **permanent** and cannot be undone.
 
-{{ proto_sample_start() }}
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [DeleteWallet](../../../web/test/WalletService.test.ts) inside_block:deleteWallet
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [DeleteWallet](../../../dotnet/Tests/Tests.cs) inside_block:deleteWallet
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [DeleteWallet](../../../python/samples/wallet_demo.py) inside_block:deleteWallet
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [DeleteWallet](../../../go/services/wallet_service_test.go) inside_block:deleteWallet
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [DeleteWallet](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:deleteWallet
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.universalwallet.v1.UniversalWallet.DeleteWallet") }}
+{{ proto_sample_code("services.universalwallet.v1.UniversalWallet.DeleteWallet") }}
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.DeleteWallet") }}
 
 ---
@@ -231,47 +86,8 @@ Searches a wallet, returning all matching items, and a `continuation_token` to p
 
 If no `query` is specified, this call by default returns the first 100 items in the wallet.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet search
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWalletBasic
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletBasic
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:searchWalletBasic
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:searchWalletBasic
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletBasic
-        ```
-        <!--/codeinclude-->
-    
+{{ proto_sample_start("services.universalwallet.v1.UniversalWallet.Search") }}
+{{ proto_sample_code("services.universalwallet.v1.UniversalWallet.Search") }}
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.Search") }}
 
 
@@ -301,7 +117,7 @@ Note that `data` is an object, not a string; thus, any of its sub-fields may be 
 For example, `SELECT * FROM c WHERE c.data.someField = 'Hello, World!'` would match against the following JSON object inserted via [InsertItem](#insert-item):
 
 ```json
-{ 
+{
     "someField": "Hello, World!"
 }
 ```

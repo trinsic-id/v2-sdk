@@ -18,6 +18,12 @@ The File Management Service allows files to be uploaded and thereafter managed b
 
 ---
 
+## Service Creation
+
+{{ proto_sample_create_service("services.filemanagement.v1.FileManagement") }}
+
+---
+
 ## Upload File
 
 Uploads a file to Trinsic's CDN.
@@ -34,42 +40,9 @@ The URL returned by this endpoint will contain a [Hashlink <small>:material-open
 
 The `hl` parameter is expected to be included with the URL whenever it is issued in a credential. This allows the cryptographic signature to cover the contents of the file (through its hash), without having to include the entire raw file contents in the credential itself.
 
-{{ proto_sample_start() }}
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [UploadFile](../../../web/test/FileManagementService.test.ts) inside_block:uploadFile
-        ```
-        <!--/codeinclude-->
 
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [UploadFile](../../../dotnet/Tests/FileManagementServiceTests.cs) inside_block:uploadFile
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [UploadFile](../../../python/samples/file_management_demo.py) inside_block:uploadFile
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [UploadFile](../../../go/services/file_management_service_test.go) inside_block:uploadFile
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [UploadFile](../../../java/src/test/java/trinsic/FileManagementDemo.java) inside_block:uploadFile
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.filemanagement.v1.FileManagement.UploadFile") }}
+{{ proto_sample_code("services.filemanagement.v1.FileManagement.UploadFile") }}
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.UploadFile") }}
 
 ---
@@ -80,42 +53,8 @@ Fetches information about a file via its ID.
 
 Only files uploaded by the calling account will be returned.
 
-{{ proto_sample_start() }}
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [GetFile](../../../web/test/FileManagementService.test.ts) inside_block:getFile
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [GetFile](../../../dotnet/Tests/FileManagementServiceTests.cs) inside_block:getFile
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [GetFile](../../../python/samples/file_management_demo.py) inside_block:getFile
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [GetFile](../../../go/services/file_management_service_test.go) inside_block:getFile
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [GetFile](../../../java/src/test/java/trinsic/FileManagementDemo.java) inside_block:getFile
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.filemanagement.v1.FileManagement.GetFile") }}
+{{ proto_sample_code("services.filemanagement.v1.FileManagement.GetFile") }}
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.GetFile") }}
 
 ---
@@ -126,42 +65,8 @@ Deletes a file from Trinsic's CDN.
 
 Only files uploaded by the calling account may be deleted.
 
-{{ proto_sample_start() }}
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [DeleteFile](../../../web/test/FileManagementService.test.ts) inside_block:deleteFile
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [DeleteFile](../../../dotnet/Tests/FileManagementServiceTests.cs) inside_block:deleteFile
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [DeleteFile](../../../python/samples/file_management_demo.py) inside_block:deleteFile
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [DeleteFile](../../../go/services/file_management_service_test.go) inside_block:deleteFile
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [DeleteFile](../../../java/src/test/java/trinsic/FileManagementDemo.java) inside_block:deleteFile
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.filemanagement.v1.FileManagement.DeleteFile") }}
+{{ proto_sample_code("services.filemanagement.v1.FileManagement.DeleteFile") }}
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.DeleteFile") }}
 
 ---
@@ -170,42 +75,8 @@ Only files uploaded by the calling account may be deleted.
 
 Queries the files uploaded by the calling account.
 
-{{ proto_sample_start() }}
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [ListFiles](../../../web/test/FileManagementService.test.ts) inside_block:listFiles
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [ListFiles](../../../dotnet/Tests/FileManagementServiceTests.cs) inside_block:listFiles
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [ListFiles](../../../python/samples/file_management_demo.py) inside_block:listFiles
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [ListFiles](../../../go/services/file_management_service_test.go) inside_block:listFiles
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [ListFiles](../../../java/src/test/java/trinsic/FileManagementDemo.java) inside_block:listFiles
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.filemanagement.v1.FileManagement.ListFiles") }}
+{{ proto_sample_code("services.filemanagement.v1.FileManagement.ListFiles") }}
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.ListFiles") }}
 
 ---
@@ -214,40 +85,6 @@ Queries the files uploaded by the calling account.
 
 Returns aggregate statistics regarding the files uploaded by the calling account.
 
-{{ proto_sample_start() }}
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [GetStorageStats](../../../web/test/FileManagementService.test.ts) inside_block:getStorageStats
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [GetStorageStats](../../../dotnet/Tests/FileManagementServiceTests.cs) inside_block:getStorageStats
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [GetStorageStats](../../../python/samples/file_management_demo.py) inside_block:getStorageStats
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [GetStorageStats](../../../go/services/file_management_service_test.go) inside_block:getStorageStats
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [GetStorageStats](../../../java/src/test/java/trinsic/FileManagementDemo.java) inside_block:getStorageStats
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.filemanagement.v1.FileManagement.GetStorageStats") }}
+{{ proto_sample_code("services.filemanagement.v1.FileManagement.GetStorageStats") }}
 {{ proto_method_tabs("services.filemanagement.v1.FileManagement.GetStorageStats") }}

@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 Future runTrustRegistryDemo() async {
   var trinsic = TrinsicService(trinsicConfig(), null);
-  var account = await trinsic.account().loginAnonymous("default");
+  var account = await trinsic.account().loginAnonymous(ecosystemId: "default");
 
   var uuid = Uuid();
 

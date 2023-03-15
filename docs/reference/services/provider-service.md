@@ -13,52 +13,20 @@ The Provider Service enables the creation and management of ecosystems.
 
 ---
 
+## Service Creation
+
+{{ proto_sample_create_service("services.provider.v1.Provider") }}
+
+---
+
 ## Create Ecosystem
 
 Creates a new ecosystem, along with a root controlling account.
 
 If `name` is left empty, an anonymous ecosystem will be created.
 
-{{proto_sample_start()}}
-    === "Trinsic CLI"
-        ```bash
-        trinsic provider create-ecosystem --name <ECOSYSTEM_NAME> --email <OWNER_EMAIL>
-        ```
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [CreateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:createEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [CreateEcosystem](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [CreateEcosystem](../../../go/services/services_test.go) inside_block:createEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.provider.v1.Provider.CreateEcosystem") }}
+{{ proto_sample_code("services.provider.v1.Provider.CreateEcosystem") }}
 {{ proto_method_tabs("services.provider.v1.Provider.CreateEcosystem") }}
 
 ---
@@ -70,49 +38,8 @@ If `name` is left empty, an anonymous ecosystem will be created.
 
 Updates the active ecosystem's `description` or `uri`.
 
-{{proto_sample_start()}}
-    === "Trinsic CLI"
-        ```bash
-        trinsic provider update-ecosystem \
-                         --description "New description" \
-                         --uri "https://new-example.com"
-        ```
-
-    === "TypeScript"
-        <!--codeinclude--> 
-        ```typescript
-        [UpdateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:updateEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [UpdateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:updateEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [UpdateEcosystem](../../../python/samples/provider_demo.py) inside_block:updateEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [UpdateEcosystem](../../../go/services/provider_service_test.go) inside_block:updateEcosystem
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [UpdateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:updateEcosystem
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.provider.v1.Provider.UpdateEcosystem") }}
+{{ proto_sample_code("services.provider.v1.Provider.UpdateEcosystem") }}
 {{ proto_method_tabs("services.provider.v1.Provider.UpdateEcosystem") }}
 
 ---
@@ -121,47 +48,8 @@ Updates the active ecosystem's `description` or `uri`.
 
 Fetches information about the active ecosystem.
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic provider ecosystem-info
-        ```
-
-    === "TypeScript"
-        <!--codeinclude--> 
-        ```typescript
-        [EcosystemInfo](../../../web/test/ProviderService.test.ts) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [EcosystemInfo](../../../dotnet/Tests/Tests.cs) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [EcosystemInfo](../../../python/samples/provider_demo.py) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [EcosystemInfo](../../../go/services/provider_service_test.go) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [EcosystemInfo](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.provider.v1.Provider.EcosystemInfo") }}
+{{ proto_sample_code("services.provider.v1.Provider.EcosystemInfo") }}
 {{ proto_method_tabs("services.provider.v1.Provider.EcosystemInfo") }}
 
 ---
@@ -176,58 +64,19 @@ Fetches information about the active ecosystem.
 !!! info "Ledger Interactions"
     Depending on the DID Method chosen, you may be responsible for ledger write fees; additionally, there are some logistical concerns to be aware of.
 
-    [Click here](/learn/concepts/dids#upgrading-wallet-dids) to learn more. 
+    [Click here](/learn/concepts/dids#upgrading-wallet-dids) to learn more.
 
 Upgrades a wallet's DID from the default `did:key` to another DID Method. This endpoint may only be called by an ecosystem provider.
 
 Trinsic will register a DID Document for you, and update the wallet's `public_did` property to the newly-registered DID. Credentials previously issued by this wallet will not have their `issuer` field updated to the new DID, but they will still verify correctly.
 
-Presently, once a wallet's DID has been upgraded, its DID Method cannot be changed again. However, it is possible to perform further upgrades _within_ a method, to go from a testing to production network (for example, `did:ion:test` to `did:ion`). 
+Presently, once a wallet's DID has been upgraded, its DID Method cannot be changed again. However, it is possible to perform further upgrades _within_ a method, to go from a testing to production network (for example, `did:ion:test` to `did:ion`).
 
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic provider upgrade-did --wallet-id {wallet_id} --method ion --method-options testnet
-        ```
-
-    === "TypeScript"
-        <!--codeinclude--> 
-        ```typescript
-        [UpgradeDid](../../../web/test/ProviderService.test.ts) inside_block:upgradeDid
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [UpgradeDid](../../../dotnet/Tests/Tests.cs) inside_block:upgradeDid
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [UpgradeDid](../../../python/samples/provider_demo.py) inside_block:upgradeDid
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [UpgradeDid](../../../go/services/provider_service_test.go) inside_block:upgradeDid
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [UpgradeDid](../../../java/src/test/java/trinsic/ProviderServiceTest.java) inside_block:upgradeDid
-        ```
-        <!--/codeinclude-->
-
+{{ proto_sample_start("services.provider.v1.Provider.UpgradeDID") }}
+{{ proto_sample_code("services.provider.v1.Provider.UpgradeDID") }}
 {{ proto_method_tabs("services.provider.v1.Provider.UpgradeDID") }}
 
-<!-- 
+<!--
 // This call is not yet implemented
 ## List Ecosystems
 
@@ -239,13 +88,65 @@ When using one of the SDKs, you must supply an [List Ecosystem Request](../proto
 
 The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
 
-{{ proto_message('services.provider.v1.ListEcosystemResponse') }} 
+{{ proto_message('services.provider.v1.ListEcosystemResponse') }}
 -->
 
-<!--
+## Invite
 
-Excluding invitation documentation pending re-thinking
+This will be removed May 1, 2023
+Invite a user to the ecosystem
 
-To revert this, find the contents of this file before 6/9/2022 :~)
+{{ proto_sample_start("services.provider.v1.Provider.Invite") }}
+{{ proto_sample_code("services.provider.v1.Provider.Invite") }}
+{{ proto_method_tabs("services.provider.v1.Provider.Invite") }}
 
--->
+---
+
+## InvitationStatus
+
+This will be removed May 1, 2023
+Check the status of an invitation
+
+{{ proto_sample_start("services.provider.v1.Provider.InvitationStatus") }}
+{{ proto_sample_code("services.provider.v1.Provider.InvitationStatus") }}
+{{ proto_method_tabs("services.provider.v1.Provider.InvitationStatus") }}
+
+---
+
+## GetOberonKey
+
+Returns the public key being used to create/verify oberon tokens
+
+{{ proto_sample_start("services.provider.v1.Provider.GetOberonKey") }}
+{{ proto_sample_code("services.provider.v1.Provider.GetOberonKey") }}
+{{ proto_method_tabs("services.provider.v1.Provider.GetOberonKey") }}
+
+---
+
+## RetrieveDomainVerificationRecord
+
+Retrieve a random hash TXT that can be used to verify domain ownership
+
+{{ proto_sample_start("services.provider.v1.Provider.RetrieveDomainVerificationRecord") }}
+{{ proto_sample_code("services.provider.v1.Provider.RetrieveDomainVerificationRecord") }}
+{{ proto_method_tabs("services.provider.v1.Provider.RetrieveDomainVerificationRecord") }}
+
+---
+
+## RefreshDomainVerificationStatus
+
+Call to verify domain
+
+{{ proto_sample_start("services.provider.v1.Provider.RefreshDomainVerificationStatus") }}
+{{ proto_sample_code("services.provider.v1.Provider.RefreshDomainVerificationStatus") }}
+{{ proto_method_tabs("services.provider.v1.Provider.RefreshDomainVerificationStatus") }}
+
+---
+
+## SearchWalletConfigurations
+
+Search for issuers/providers/verifiers in the current ecosystem
+
+{{ proto_sample_start("services.provider.v1.Provider.SearchWalletConfigurations") }}
+{{ proto_sample_code("services.provider.v1.Provider.SearchWalletConfigurations") }}
+{{ proto_method_tabs("services.provider.v1.Provider.SearchWalletConfigurations") }}
