@@ -1,4 +1,4 @@
-import {TrinsicService, CreateCredentialTemplateRequest, UpdateCredentialTemplateRequest, FieldType} from "../src";
+import {TrinsicService, CreateCredentialTemplateRequest, UpdateCredentialTemplateRequest, FieldType} from "../node";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
