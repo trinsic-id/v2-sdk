@@ -2074,22 +2074,21 @@
 
 
 <h1 id="the-trinsic-go-sdk">The Trinsic Go SDK<a class="headerlink" href="#the-trinsic-go-sdk" title="Permanent link">&para;</a></h1>
-<p>The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go application. The most recent version of the library can be found on ____. You can find the SDKs source on <a href="https://github.com/trinsic-id/sdk/tree/main/go">Github</a>.</p>
+<p>The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go application. The most recent version of the library can be found on Github. You can find the SDKs source on <a href="https://github.com/trinsic-id/sdk/tree/main/go">Github</a>.</p>
 <h2 id="installation-and-configuration">Installation and Configuration<a class="headerlink" href="#installation-and-configuration" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>If you're installing go on M1, the <a href="https://go.dev/doc/install">Standard Go.dev Install Page</a> actually defaults to still showing you an amd64 install pkg even if you're on an M1.</p>
+<p>If you're installing go on M1, the <a href="https://go.dev/doc/install">Standard Go.dev Install Page</a> actually defaults to still showing you an <code>amd64</code> install pkg even if you're on an M1.</p>
 </blockquote>
 <p>You have to go to the <a href="https://go.dev/dl/">other downloads</a> page to get the <code>arm64</code> version for sure.</p>
 <div class="admonition info">
 <p class="admonition-title">Notes: Installing the SDK for Go</p>
 <ul>
-<li>Windows installation is possible, but requires jumping through a few hoops. More details to come later.</li>
-<li>Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the <a href="https://github.com/trinsic-id/okapi/">trinsic-id/okapi</a> GitHub repository.</li>
 <li>You need to have <a href="https://pkg.go.dev/cmd/cgo">CGO configured</a> for the okapi native binary link.</li>
 </ul>
 </div>
 <ol>
-<li>Run the following command:
+<li>Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the <a href="https://github.com/trinsic-id/okapi/">trinsic-id/okapi</a> GitHub repository.</li>
+<li>Run the following command to install the go SDK package
 <div class="highlight"><pre><span></span><code>go<span class="w"> </span>install<span class="w"> </span>github.com/trinsic-id/sdk/go@latest
 </code></pre></div></li>
 <li>
