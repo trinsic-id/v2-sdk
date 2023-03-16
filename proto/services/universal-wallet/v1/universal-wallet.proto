@@ -112,6 +112,7 @@ message DeleteWalletRequest {
 message DeleteWalletResponse {
 }
 
+// Service for managing wallets
 service UniversalWallet {
   // Retrieve an item from the wallet with a given item identifier
   rpc GetItem(GetItemRequest) returns (GetItemResponse);
