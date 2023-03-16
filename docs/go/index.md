@@ -1,20 +1,19 @@
 # The Trinsic Go SDK
 
-The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go application. The most recent version of the library can be found on ____. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/go).
+The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go application. The most recent version of the library can be found on Github. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/go).
 
 ## Installation and Configuration
 
-> If you're installing go on M1, the [Standard Go.dev Install Page](https://go.dev/doc/install) actually defaults to still showing you an amd64 install pkg even if you're on an M1.
+> If you're installing go on M1, the [Standard Go.dev Install Page](https://go.dev/doc/install) actually defaults to still showing you an `amd64` install pkg even if you're on an M1.
 
 You have to go to the [other downloads](https://go.dev/dl/) page to get the `arm64` version for sure.
 
 !!! info "Notes: Installing the SDK for Go"
 
-    - Windows installation is possible, but requires jumping through a few hoops. More details to come later.
-    - Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the [trinsic-id/okapi](https://github.com/trinsic-id/okapi/) GitHub repository.
     - You need to have [CGO configured](https://pkg.go.dev/cmd/cgo) for the okapi native binary link.
 
-1. Run the following command:
+1. Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the [trinsic-id/okapi](https://github.com/trinsic-id/okapi/) GitHub repository.
+2. Run the following command to install the go SDK package
 ```bash
 go install github.com/trinsic-id/sdk/go@latest
 ```
