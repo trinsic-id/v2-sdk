@@ -2,7 +2,13 @@ package trinsic.services.universalwallet.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
-/** */
+/**
+ *
+ *
+ * <pre>
+ * Service for managing wallets
+ * </pre>
+ */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.49.2)",
     comments = "Source: services/universal-wallet/v1/universal-wallet.proto")
@@ -335,7 +341,13 @@ public final class UniversalWalletGrpc {
     return UniversalWalletFutureStub.newStub(factory, channel);
   }
 
-  /** */
+  /**
+   *
+   *
+   * <pre>
+   * Service for managing wallets
+   * </pre>
+   */
   public abstract static class UniversalWalletImplBase implements io.grpc.BindableService {
 
     /**
@@ -471,7 +483,13 @@ public final class UniversalWalletGrpc {
     }
   }
 
-  /** */
+  /**
+   *
+   *
+   * <pre>
+   * Service for managing wallets
+   * </pre>
+   */
   public static final class UniversalWalletStub
       extends io.grpc.stub.AbstractAsyncStub<UniversalWalletStub> {
     private UniversalWalletStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -576,7 +594,13 @@ public final class UniversalWalletGrpc {
     }
   }
 
-  /** */
+  /**
+   *
+   *
+   * <pre>
+   * Service for managing wallets
+   * </pre>
+   */
   public static final class UniversalWalletBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<UniversalWalletBlockingStub> {
     private UniversalWalletBlockingStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -668,7 +692,13 @@ public final class UniversalWalletGrpc {
     }
   }
 
-  /** */
+  /**
+   *
+   *
+   * <pre>
+   * Service for managing wallets
+   * </pre>
+   */
   public static final class UniversalWalletFutureStub
       extends io.grpc.stub.AbstractFutureStub<UniversalWalletFutureStub> {
     private UniversalWalletFutureStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
