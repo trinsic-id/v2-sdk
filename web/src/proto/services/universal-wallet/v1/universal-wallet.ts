@@ -781,6 +781,7 @@ export const DeleteWalletResponse = {
   },
 };
 
+/** Service for managing wallets */
 export type UniversalWalletDefinition = typeof UniversalWalletDefinition;
 export const UniversalWalletDefinition = {
   name: "UniversalWallet",
