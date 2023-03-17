@@ -4593,7 +4593,7 @@
     "services.universalwallet.v1.UniversalWallet": {
       "name": "UniversalWallet",
       "full_name": "services.universalwallet.v1.UniversalWallet",
-      "description": "",
+      "description": "Service for managing wallets",
       "methods": [
         "services.universalwallet.v1.UniversalWallet.GetItem",
         "services.universalwallet.v1.UniversalWallet.Search",
