@@ -109,11 +109,6 @@ def define_env(env):
         service_file_name = f"{service_base_name}_service_examples"
         block_name = f"{service_base_name}Service{method_base_name}"
         return f"""
-=== "Trinsic CLI"
-    ```bash
-    trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
-    ```
-
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
