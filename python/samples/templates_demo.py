@@ -8,7 +8,10 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
     GetCredentialTemplateRequest,
     DeleteCredentialTemplateRequest,
-    SearchCredentialTemplatesRequest, FieldOrdering, AppleWalletOptions, UpdateCredentialTemplateRequest,
+    SearchCredentialTemplatesRequest,
+    FieldOrdering,
+    AppleWalletOptions,
+    UpdateCredentialTemplateRequest,
     TemplateFieldPatch,
 )
 from trinsic.proto.services.verifiablecredentials.v1 import (
@@ -25,26 +28,32 @@ async def templates_demo():
     # create example template
     # createTemplate() {
     create_request = CreateCredentialTemplateRequest(
-            name="An Example Credential",
-            title="Example Credential",
-            description="A credential for Trinsic's SDK samples",
-            allow_additional_fields=False,
-            fields={
-                "firstName": TemplateField(title="First Name", description="Given name of holder"),
-                "lastName": TemplateField(title="Last Name", description="Surname of holder", optional=True),
-                "age": TemplateField(title="Age", description="Age in years of holder", type=FieldType.NUMBER),
-            },
-            field_ordering={
-                "firstName": FieldOrdering(order=0, section="Name"),
-                "lastName": FieldOrdering(order=1, section="Name"),
-                "age": FieldOrdering(order=2, section="Miscellaneous")
-            },
-            apple_wallet_options=AppleWalletOptions(
-                primary_field="firstName",
-                secondary_fields=["lastName"],
-                auxiliary_fields=["age"]
-            )
-        )
+        name="An Example Credential",
+        title="Example Credential",
+        description="A credential for Trinsic's SDK samples",
+        allow_additional_fields=False,
+        fields={
+            "firstName": TemplateField(
+                title="First Name", description="Given name of holder"
+            ),
+            "lastName": TemplateField(
+                title="Last Name", description="Surname of holder", optional=True
+            ),
+            "age": TemplateField(
+                title="Age", description="Age in years of holder", type=FieldType.NUMBER
+            ),
+        },
+        field_ordering={
+            "firstName": FieldOrdering(order=0, section="Name"),
+            "lastName": FieldOrdering(order=1, section="Name"),
+            "age": FieldOrdering(order=2, section="Miscellaneous"),
+        },
+        apple_wallet_options=AppleWalletOptions(
+            primary_field="firstName",
+            secondary_fields=["lastName"],
+            auxiliary_fields=["age"],
+        ),
+    )
     create_response = await trinsic_service.template.create(request=create_request)
     # }
     template = create_response
@@ -63,17 +72,16 @@ async def templates_demo():
         description="New Description",
         fields={
             "firstName": TemplateFieldPatch(title="New title for firstName"),
-            "lastName": TemplateFieldPatch(description="New description for lastName")
+            "lastName": TemplateFieldPatch(description="New description for lastName"),
         },
         field_ordering={
             "age": FieldOrdering(order=0, section="Misc"),
             "firstName": FieldOrdering(order=1, section="Full Name"),
-            "lastName": FieldOrdering(order=2, section="Full Name")
+            "lastName": FieldOrdering(order=2, section="Full Name"),
         },
         apple_wallet_options=AppleWalletOptions(
-            primary_field="age",
-            secondary_fields=["firstName", "lastName"]
-        )
+            primary_field="age", secondary_fields=["firstName", "lastName"]
+        ),
     )
     update_response = await trinsic_service.template.update(request=update_request)
     # }
