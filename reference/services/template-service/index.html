@@ -2171,26 +2171,32 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">create_request</span> <span class="o">=</span> <span class="n">CreateCredentialTemplateRequest</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;An Example Credential&quot;</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Example Credential&quot;</span><span class="p">,</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A credential for Trinsic&#39;s SDK samples&quot;</span><span class="p">,</span>
-        <span class="n">allow_additional_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Given name of holder&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Last Name&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Surname of holder&quot;</span><span class="p">,</span> <span class="n">optional</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Age in years of holder&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FieldType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">),</span>
-        <span class="p">},</span>
-        <span class="n">field_ordering</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Miscellaneous&quot;</span><span class="p">)</span>
-        <span class="p">},</span>
-        <span class="n">apple_wallet_options</span><span class="o">=</span><span class="n">AppleWalletOptions</span><span class="p">(</span>
-            <span class="n">primary_field</span><span class="o">=</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span>
-            <span class="n">secondary_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;lastName&quot;</span><span class="p">],</span>
-            <span class="n">auxiliary_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;An Example Credential&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Example Credential&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A credential for Trinsic&#39;s SDK samples&quot;</span><span class="p">,</span>
+    <span class="n">allow_additional_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Given name of holder&quot;</span>
+        <span class="p">),</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Last Name&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Surname of holder&quot;</span><span class="p">,</span> <span class="n">optional</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">),</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Age in years of holder&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FieldType</span><span class="o">.</span><span class="n">NUMBER</span>
+        <span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">field_ordering</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Miscellaneous&quot;</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">apple_wallet_options</span><span class="o">=</span><span class="n">AppleWalletOptions</span><span class="p">(</span>
+        <span class="n">primary_field</span><span class="o">=</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span>
+        <span class="n">secondary_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;lastName&quot;</span><span class="p">],</span>
+        <span class="n">auxiliary_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span>
+    <span class="p">),</span>
+<span class="p">)</span>
 <span class="n">create_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">create_request</span><span class="p">)</span>
 </code></pre></div>
 </div>
@@ -2240,49 +2246,41 @@
 <span class="w">        </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;A credential for Trinsic&#39;s SDK samples&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">.</span><span class="na">setAllowAdditionalFields</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// Construct fields</span>
-<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="n">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;First Name&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;Given name of holder&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">putFields</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;lastName&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="n">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;Last Name&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;Surname of holder&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setOptional</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">putFields</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;age&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="n">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;Age&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;Age in years of holder&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setType</span><span class="p">(</span><span class="n">FieldType</span><span class="p">.</span><span class="na">NUMBER</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="c1">// Specify ordering and categorization of fields for rendering of credential</span>
-<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">putFieldOrdering</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">putFieldOrdering</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Miscellaneous&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Miscellaneous&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="c1">// Specify Apple Wallet configuration</span>
 <span class="w">        </span><span class="p">.</span><span class="na">setAppleWalletOptions</span><span class="p">(</span>
 <span class="w">            </span><span class="n">AppleWalletOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setPrimaryField</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">addSecondaryFields</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">addAuxiliaryFields</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="kd">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">template</span><span class="p">().</span><span class="na">create</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
@@ -2438,17 +2436,16 @@
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;New Description&quot;</span><span class="p">,</span>
     <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
         <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateFieldPatch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;New title for firstName&quot;</span><span class="p">),</span>
-        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateFieldPatch</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;New description for lastName&quot;</span><span class="p">)</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateFieldPatch</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;New description for lastName&quot;</span><span class="p">),</span>
     <span class="p">},</span>
     <span class="n">field_ordering</span><span class="o">=</span><span class="p">{</span>
         <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Misc&quot;</span><span class="p">),</span>
         <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Full Name&quot;</span><span class="p">),</span>
-        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Full Name&quot;</span><span class="p">)</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">FieldOrdering</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;Full Name&quot;</span><span class="p">),</span>
     <span class="p">},</span>
     <span class="n">apple_wallet_options</span><span class="o">=</span><span class="n">AppleWalletOptions</span><span class="p">(</span>
-        <span class="n">primary_field</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span>
-        <span class="n">secondary_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">]</span>
-    <span class="p">)</span>
+        <span class="n">primary_field</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">secondary_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">]</span>
+    <span class="p">),</span>
 <span class="p">)</span>
 <span class="n">update_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">update_request</span><span class="p">)</span>
 </code></pre></div>
@@ -2489,41 +2486,29 @@
 <span class="w">        </span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;New Title&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;New Description&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// Update title/description for a few fields</span>
-<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">TemplateFieldPatch</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;New title for firstName&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">TemplateFieldPatch</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;New title for firstName&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFields</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;lastName&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="n">TemplateFieldPatch</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;New description for lastName&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="c1">// Specify new ordering / categorization for template fields</span>
-<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Misc&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">putFieldOrdering</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Full Name&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">putFieldOrdering</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Full Name&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Misc&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Full Name&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">putFieldOrdering</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FieldOrdering</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setOrder</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="na">setSection</span><span class="p">(</span><span class="s">&quot;Full Name&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="c1">// Specify new Apple Wallet configuration</span>
 <span class="w">        </span><span class="p">.</span><span class="na">setAppleWalletOptions</span><span class="p">(</span>
 <span class="w">            </span><span class="n">AppleWalletOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setPrimaryField</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">addSecondaryFields</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">addSecondaryFields</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="n">updatedTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">template</span><span class="p">().</span><span class="na">update</span><span class="p">(</span><span class="n">updateRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
@@ -2574,7 +2559,10 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getResponse</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">template</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="n">GetCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">templateId</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">template</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">GetCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">templateId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
