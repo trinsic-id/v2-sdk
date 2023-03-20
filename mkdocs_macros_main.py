@@ -107,56 +107,50 @@ def define_env(env):
         method_base_name = method_bits[-1]
         service_base_name = method_bits[-2]
         service_file_name = f"{service_base_name.lower()}_service_examples"
-        block_name = f"{service_base_name}Service{method_base_name}"
+        service_block_name = service_base_name[0].lower() + service_base_name[1:] # Lowercase only first character of service name
+        block_name = f"{service_block_name}{method_base_name}"
         return f"""
-=== "Trinsic CLI"
-    ```bash
-    trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
-    ```
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [{block_name}](../../../web/test/{service_file_name}.spec.ts) inside_block:{block_name}
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [{block_name}](../../../web/test/{service_file_name}.spec.ts) inside_block:{block_name}
-    ```
-    <!--/codeinclude-->
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [{block_name}](../../../dotnet/Tests/{service_file_name}.cs) inside_block:{block_name}
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [{block_name}](../../../dotnet/Tests/{service_file_name}.cs) inside_block:{block_name}
-    ```
-    <!--/codeinclude-->
+    === "Dart"
+        <!--codeinclude-->
+        ```dart
+        [{block_name}](../../../dart/example/{service_file_name}.dart) inside_block:{block_name}
+        ```
+        <!--/codeinclude-->
 
-=== "Dart"
-    <!--codeinclude-->
-    ```dart
-    [{block_name}](../../../dart/example/{service_file_name}.dart) inside_block:{block_name}
-    ```
-    <!--/codeinclude-->
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [{block_name}](../../../python/samples/{service_file_name}.py) inside_block:{block_name}
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    service_file_name=`{service_file_name}`
-    block_name=`{block_name}`
-    <!--codeinclude-->
-    ```python
-    [{block_name}](../../../python/samples/{service_file_name}.py) inside_block:{block_name}
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [{block_name}](../../../go/examples/{service_file_name}_test.go) inside_block:{block_name}
+        ```
+        <!--/codeinclude-->
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [{block_name}](../../../go/examples/{service_file_name}_test.go) inside_block:{block_name}
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [{block_name}](../../../java/src/test/java/trinsic/{service_file_name}.java) inside_block:{block_name}
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [{block_name}](../../../java/src/test/java/trinsic/{service_file_name}.java) inside_block:{block_name}
+        ```
+        <!--/codeinclude-->
 """
 
     @env.macro

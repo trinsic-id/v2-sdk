@@ -62,7 +62,6 @@ You can also manually set the auth token used by the SDK (such as when loading a
 ## Services
 Our SDK is broken down into the following logical services, each of which is accessible through a single `TrinsicService` instance:
 
-- [Access Management Service](./services/accessmanagement-service.md)
 - [Account Service](./services/account-service.md)
 - [Credential Service](./services/credential-service.md)
 - [Provider Service](./services/provider-service.md)
