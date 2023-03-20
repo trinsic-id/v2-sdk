@@ -16,6 +16,7 @@ nav:
       - Templates: learn/concepts/templates.md
       - Identifiers: learn/concepts/dids.md
       - Governance: learn/concepts/trust-registries.md
+      - JSON-LD: learn/concepts/json-ld.md
     - Trinsic Platform:
       - Standards: learn/platform/standards.md
       - Security Overview: learn/platform/security.md
