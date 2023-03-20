@@ -17,7 +17,7 @@ Verifiable credentials are unique from other kinds of digital documents because 
 - **Holder:** The person/organization that holds the verifiable credential in their digital wallet.
 - **Verifier:** The person/organization that receives and authenticates the information shared with them instantly.
 
-![Trust Triangle between Issuer, Holder and Verifier.](https://trinsic.id/wp-content/uploads/2020/08/trusttriangle.png)
+![Trust Triangle between Issuer, Holder and Verifier.](../../_static/images/trusttriangle.png)
 
 
 An example of an **issuer** is the government, of a **holder** is a person who receives a digital ID from the government and of a **verifier** is a security agent in the airport checking your ID.

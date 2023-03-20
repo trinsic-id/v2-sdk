@@ -6,10 +6,10 @@ Here’s an example of a JSON-LD file:
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Chiara Paskulin",
-  "jobTitle": "Developer Advocate",
+  "name": "Jane Doe",
+  "jobTitle": "Developer",
   "telephone": "(425) 123-4567",
-  "url": "<http://www.chiarapaskulin.com>"
+  "url": "<http://www.janedoe.com>"
 }
 ```
 
