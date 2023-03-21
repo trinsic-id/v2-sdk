@@ -22,7 +22,8 @@ nav:
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md
     - Resources:
-      - Migration Guidelines: learn/migrate.md
+      - Migration Guidelines: learn/resources/migrate.md
+      - Interactive API Experience: learn/resources/interactive-api.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
