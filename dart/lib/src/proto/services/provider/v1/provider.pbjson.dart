@@ -690,12 +690,20 @@ const WalletConfiguration$json = const {
     const {'1': 'wallet_id', '3': 4, '4': 1, '5': 9, '10': 'walletId'},
     const {'1': 'public_did', '3': 5, '4': 1, '5': 9, '10': 'publicDid'},
     const {'1': 'config_type', '3': 6, '4': 1, '5': 9, '10': 'configType'},
+    const {
+      '1': 'auth_tokens',
+      '3': 7,
+      '4': 3,
+      '5': 11,
+      '6': '.services.account.v1.WalletAuthToken',
+      '10': 'authTokens'
+    },
   ],
 };
 
 /// Descriptor for `WalletConfiguration`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List walletConfigurationDescriptor = $convert.base64Decode(
-    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlkEh8KC2NvbmZpZ190eXBlGAYgASgJUgpjb25maWdUeXBl');
+    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlkEh8KC2NvbmZpZ190eXBlGAYgASgJUgpjb25maWdUeXBlEkUKC2F1dGhfdG9rZW5zGAcgAygLMiQuc2VydmljZXMuYWNjb3VudC52MS5XYWxsZXRBdXRoVG9rZW5SCmF1dGhUb2tlbnM=');
 @$core.Deprecated('Use ionOptionsDescriptor instead')
 const IonOptions$json = const {
   '1': 'IonOptions',
