@@ -593,8 +593,6 @@ You can create a governance framework through the [Trinsic dashboard](https://da
 
 The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
 
-\
-
 ---
 
 ### Register Issuer
