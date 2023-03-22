@@ -76,42 +76,6 @@ Presently, once a wallet's DID has been upgraded, its DID Method cannot be chang
 {{ proto_sample_code("services.provider.v1.Provider.UpgradeDID") }}
 {{ proto_method_tabs("services.provider.v1.Provider.UpgradeDID") }}
 
-<!--
-// This call is not yet implemented
-## List Ecosystems
-
-Lists all available ecosystem for the current authentication context.
-
-When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
-
-{{ proto_message('services.provider.v1.ListEcosystemRequest') }}
-
-The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
-
-{{ proto_message('services.provider.v1.ListEcosystemResponse') }}
--->
-
-## Invite
-
-This will be removed May 1, 2023
-Invite a user to the ecosystem
-
-{{ proto_sample_start("services.provider.v1.Provider.Invite") }}
-{{ proto_sample_code("services.provider.v1.Provider.Invite") }}
-{{ proto_method_tabs("services.provider.v1.Provider.Invite") }}
-
----
-
-## InvitationStatus
-
-This will be removed May 1, 2023
-Check the status of an invitation
-
-{{ proto_sample_start("services.provider.v1.Provider.InvitationStatus") }}
-{{ proto_sample_code("services.provider.v1.Provider.InvitationStatus") }}
-{{ proto_method_tabs("services.provider.v1.Provider.InvitationStatus") }}
-
----
 
 ## GetOberonKey
 
@@ -120,26 +84,6 @@ Returns the public key being used to create/verify oberon tokens
 {{ proto_sample_start("services.provider.v1.Provider.GetOberonKey") }}
 {{ proto_sample_code("services.provider.v1.Provider.GetOberonKey") }}
 {{ proto_method_tabs("services.provider.v1.Provider.GetOberonKey") }}
-
----
-
-## RetrieveDomainVerificationRecord
-
-Retrieve a random hash TXT that can be used to verify domain ownership
-
-{{ proto_sample_start("services.provider.v1.Provider.RetrieveDomainVerificationRecord") }}
-{{ proto_sample_code("services.provider.v1.Provider.RetrieveDomainVerificationRecord") }}
-{{ proto_method_tabs("services.provider.v1.Provider.RetrieveDomainVerificationRecord") }}
-
----
-
-## RefreshDomainVerificationStatus
-
-Call to verify domain
-
-{{ proto_sample_start("services.provider.v1.Provider.RefreshDomainVerificationStatus") }}
-{{ proto_sample_code("services.provider.v1.Provider.RefreshDomainVerificationStatus") }}
-{{ proto_method_tabs("services.provider.v1.Provider.RefreshDomainVerificationStatus") }}
 
 ---
 

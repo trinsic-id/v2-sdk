@@ -136,16 +136,6 @@
             Get account information
             </summary>
         </member>
-        <member name="M:Trinsic.AccountService.AuthorizeWebhook(Trinsic.Services.Account.V1.AuthorizeWebhookRequest)">
-            <summary>
-            Authorize Ecosystem to receive webhook events
-            </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.AuthorizeWebhookAsync(Trinsic.Services.Account.V1.AuthorizeWebhookRequest)">
-            <summary>
-            Authorize Ecosystem to receive webhook events
-            </summary>
-        </member>
         <member name="M:Trinsic.CredentialService.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest)">
              <summary>
             This endpoint will be removed around May 1, 2023
@@ -4724,6 +4714,26 @@
             Valid types for credential fields
             </summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.UriRenderMethod">
+            <summary>
+            How to display a URI value when rendering a credential.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UriRenderMethod.Text">
+            <summary>
+            Display URI as text
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UriRenderMethod.Link">
+            <summary>
+            Display URI as a clickable link
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UriRenderMethod.InlineImage">
+            <summary>
+            Display URI as an inline image. Only takes effect if the template field's MIME Type is an image type.
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest">
             <summary>
             Request to fetch a template by ID
@@ -4880,7 +4890,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.Name">
             <summary>
-            Name of new template
+            Name of new template. Must be a unique identifier within its ecosystem.
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.FieldsFieldNumber">
@@ -4900,6 +4910,39 @@
             not specified in `fields`
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.Title">
+            <summary>
+            Human-readable name of template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.Description">
+            <summary>
+            Human-readable description of template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.FieldOrderingFieldNumber">
+            <summary>Field number for the "field_ordering" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.FieldOrdering">
+            <summary>
+            Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+            If not provided, this will be auto-generated.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.AppleWalletOptionsFieldNumber">
+            <summary>Field number for the "apple_wallet_options" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.AppleWalletOptions">
+            <summary>
+            Options for rendering the template in Apple Wallet
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateResponse">
             <summary>
             Response to `CreateCredentialTemplateRequest`
@@ -4913,71 +4956,83 @@
             Created template
             </summary>
         </member>
-        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField">
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest">
             <summary>
-            A field defined in a template
+            Request to update display information for a template
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.DescriptionFieldNumber">
-            <summary>Field number for the "description" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Description">
-            <summary>
-            Human-readable description of the field
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.OptionalFieldNumber">
-            <summary>Field number for the "optional" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Optional">
-            <summary>
-            Whether this field may be omitted when a credential is issued against the template
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.TypeFieldNumber">
-            <summary>Field number for the "type" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Type">
-            <summary>
-            The type of the field
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.AnnotationsFieldNumber">
-            <summary>Field number for the "annotations" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Annotations">
-            <summary>
-            Annotations for the field that may be used to add additional information
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateRequest">
-            <summary>
-            Unused
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateRequest.IdFieldNumber">
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
-        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateResponse">
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.Id">
             <summary>
-            Unused
+            ID of Template to update
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateResponse.DataFieldNumber">
-            <summary>Field number for the "data" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
         </member>
-        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListTemplatesRequest">
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.Title">
             <summary>
-            Unused
+            New human-readable title of Template
             </summary>
         </member>
-        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListTemplatesResponse">
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.HasTitle">
+            <summary>Gets whether the "title" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.ClearTitle">
+            <summary>Clears the value of the "title" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.Description">
             <summary>
-            Unused
+            New human-readable description of Template
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListTemplatesResponse.TemplatesFieldNumber">
-            <summary>Field number for the "templates" field.</summary>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.HasDescription">
+            <summary>Gets whether the "description" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.ClearDescription">
+            <summary>Clears the value of the "description" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.FieldsFieldNumber">
+            <summary>Field number for the "fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.Fields">
+            <summary>
+            Fields to update within the Template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.FieldOrderingFieldNumber">
+            <summary>Field number for the "field_ordering" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.FieldOrdering">
+            <summary>
+            New field ordering options. See documentation for template creation for usage information.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.AppleWalletOptionsFieldNumber">
+            <summary>Field number for the "apple_wallet_options" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest.AppleWalletOptions">
+            <summary>
+            New Apple Wallet configuration
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateResponse">
+            <summary>
+            Response to `UpdateCredentialTemplateRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateResponse.UpdatedTemplateFieldNumber">
+            <summary>Field number for the "updated_template" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateResponse.UpdatedTemplate">
+            <summary>
+            The Template after the update has been applied
+            </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData">
             <summary>
@@ -5073,6 +5128,231 @@
             Date when template was created as ISO 8601 utc string
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.Title">
+            <summary>
+            Human-readable template title
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.Description">
+            <summary>
+            Human-readable template description
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.FieldOrderingFieldNumber">
+            <summary>Field number for the "field_ordering" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.FieldOrdering">
+            <summary>
+            Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.AppleWalletOptionsFieldNumber">
+            <summary>Field number for the "apple_wallet_options" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.AppleWalletOptions">
+            <summary>
+            Options for rendering the template in Apple Wallet
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions">
+            <summary>
+            Configuration options for Apple Wallet when
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.BackgroundColorFieldNumber">
+            <summary>Field number for the "background_color" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.BackgroundColor">
+            <summary>
+            Background color, in hex format, of credential when stored in an Apple Wallet.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.ForegroundColorFieldNumber">
+            <summary>Field number for the "foreground_color" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.ForegroundColor">
+            <summary>
+            Foreground color, in hex format, of credential when stored in an Apple Wallet.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.LabelColorFieldNumber">
+            <summary>Field number for the "label_color" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.LabelColor">
+            <summary>
+            Label color, in hex format, of credential when stored in an Apple Wallet.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.PrimaryFieldFieldNumber">
+            <summary>Field number for the "primary_field" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.PrimaryField">
+            <summary>
+            The ID of the template field which should be used as the primary field of a credential.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.SecondaryFieldsFieldNumber">
+            <summary>Field number for the "secondary_fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.SecondaryFields">
+            <summary>
+            The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.AuxiliaryFieldsFieldNumber">
+            <summary>Field number for the "auxiliary_fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.AppleWalletOptions.AuxiliaryFields">
+            <summary>
+            The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.FieldOrdering">
+            <summary>
+            Ordering information for a template field
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.FieldOrdering.OrderFieldNumber">
+            <summary>Field number for the "order" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.FieldOrdering.Order">
+            <summary>
+            The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+            Field orders must be contiguous from `0` to the number of fields minus 1.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.FieldOrdering.SectionFieldNumber">
+            <summary>Field number for the "section" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.FieldOrdering.Section">
+            <summary>
+            The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+            Sections must be contiguous with respect to `order`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField">
+            <summary>
+            A field defined in a template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Title">
+            <summary>
+            Human-readable name of the field
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Description">
+            <summary>
+            Human-readable description of the field
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.OptionalFieldNumber">
+            <summary>Field number for the "optional" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Optional">
+            <summary>
+            Whether this field may be omitted when a credential is issued against the template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Type">
+            <summary>
+            The type of the field
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.AnnotationsFieldNumber">
+            <summary>Field number for the "annotations" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Annotations">
+            <summary>
+            Do not use.
+            Annotations for the field that may be used to add additional information.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.UriDataFieldNumber">
+            <summary>Field number for the "uri_data" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.UriData">
+            <summary>
+            How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch">
+            <summary>
+            A patch to apply to an existing template field
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.Title">
+            <summary>
+            Human-readable name of the field
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.HasTitle">
+            <summary>Gets whether the "title" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.ClearTitle">
+            <summary>Clears the value of the "title" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.Description">
+            <summary>
+            Human-readable description of the field
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.HasDescription">
+            <summary>Gets whether the "description" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.ClearDescription">
+            <summary>Clears the value of the "description" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.UriDataFieldNumber">
+            <summary>Field number for the "uri_data" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateFieldPatch.UriData">
+            <summary>
+            How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.UriFieldData">
+            <summary>
+            Data pertaining to a URI Field
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UriFieldData.MimeTypeFieldNumber">
+            <summary>Field number for the "mime_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UriFieldData.MimeType">
+            <summary>
+            Expected MIME Type of content pointed to by URI. Can be generic (eg, "image/") or specific ("image/png").
+            Defaults to "application/octet-stream".
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UriFieldData.RenderMethodFieldNumber">
+            <summary>Field number for the "render_method" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UriFieldData.RenderMethod">
+            <summary>
+            How to display the URI value when rendering a credential.
+            </summary>
+        </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -5090,6 +5370,14 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesBase.Get(Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Fetch a credential template by ID
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesBase.Update(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Update metadata of a template
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -5204,6 +5492,42 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.GetAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest,Grpc.Core.CallOptions)">
             <summary>
             Fetch a credential template by ID
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.Update(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Update metadata of a template
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.Update(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Update metadata of a template
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.UpdateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Update metadata of a template
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.UpdateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Update metadata of a template
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -6137,26 +6461,6 @@
               Update an existing ecosystem
              </summary>
         </member>
-        <member name="M:Trinsic.ProviderService.AddWebhook(Trinsic.Services.Provider.V1.AddWebhookRequest)">
-            <summary>
-            Add a webhook endpoint to the ecosystem
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.AddWebhookAsync(Trinsic.Services.Provider.V1.AddWebhookRequest)">
-            <summary>
-            Add a webhook endpoint to the ecosystem
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.DeleteWebhook(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
-            <summary>
-            Delete a webhook endpoint from the ecosystem
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.DeleteWebhookAsync(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
-            <summary>
-            Delete a webhook endpoint from the ecosystem
-            </summary>
-        </member>
         <member name="M:Trinsic.ProviderService.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
             <summary>
             Get ecosystem information
@@ -6295,6 +6599,16 @@
         <member name="M:Trinsic.TemplateService.GetAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest)">
             <summary>
             Fetch a credential template by ID
+            </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.Update(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest)">
+            <summary>
+            Update metadata of a template
+            </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.UpdateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateCredentialTemplateRequest)">
+            <summary>
+            Update metadata of a template
             </summary>
         </member>
         <member name="M:Trinsic.TemplateService.List(Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest)">
