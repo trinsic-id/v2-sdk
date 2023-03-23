@@ -16,6 +16,26 @@ The Credential Service exposes functionality for issuance, proof generation, ver
 
 ---
 
+## Issue Credential
+
+!!! warning "Deprecation Notice"
+    This endpoint is deprecated, and will be removed on May 1, 2023. Please call [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
+
+Issues a credential from a valid JSON-LD document. Issued credentials are not automatically stored in any wallet.
+
+{{ proto_sample_start("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
+{{ proto_sample_code("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
+
+!!! warning "`Issue` vs `IssueFromTemplate`"
+    **`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
+
+    When provided a valid credential, this endpoint creates and appends the `proof` object, using a key pair tied to the issuing Trinsic account.
+
+    You can learn more about how to create these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/).
+
+---
+
 ## Issue Credential from Template
 
 Issues a credential from a [previously-defined template](/reference/services/template-service#create-template){target=_blank}.
