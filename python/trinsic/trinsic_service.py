@@ -33,7 +33,7 @@ class TrinsicService(ServiceBase):
         self.wallet.close()
 
     @cached_property
-    def accessManagement(self) -> AccessManagementService:
+    def access_management(self) -> AccessManagementService:
         return AccessManagementService(
             server_config=self.service_options, token_provider=self.token_provider
         )
