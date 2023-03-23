@@ -3,13 +3,16 @@ import json
 
 from samples.templates_demo import create_template
 from trinsic.trinsic_util import set_eventloop_policy
+
 # createVerifiableCredentialService() {
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueRequest,
     CreateProofRequest,
     VerifyProofRequest,
     SendRequest,
-    RevealTemplateAttributes, IssueFromTemplateRequest, UpdateStatusRequest,
+    RevealTemplateAttributes,
+    IssueFromTemplateRequest,
+    UpdateStatusRequest,
 )
 
 from trinsic.trinsic_service import TrinsicService
@@ -25,7 +28,8 @@ async def verifiablecredential_service_examples():
 
     # VerifiableCredentialServiceIssue() {
     issue_response = await credential_service.issue(
-        request=IssueRequest(document_json="""
+        request=IssueRequest(
+            document_json="""
 {
     "@context": [
         "https://www.w3.org/2018/credentials/v1",
@@ -49,7 +53,8 @@ async def verifiablecredential_service_examples():
         "countryOfVaccination": "US"
     }
 }
-        """)
+        """
+        )
     )
     credential_json = issue_response.signed_document_json
     # }
@@ -102,7 +107,8 @@ async def verifiablecredential_service_examples():
         "countryOfVaccination": {}
     }
 }
-            """, document_json=credential_json
+            """,
+            document_json=credential_json,
         )
     )
     selective_proof_response = await credential_service.create_proof(

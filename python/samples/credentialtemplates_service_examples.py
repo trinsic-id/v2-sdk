@@ -2,13 +2,9 @@ import json
 import uuid
 import asyncio
 from trinsic.trinsic_util import set_eventloop_policy
-from trinsic.proto.services.verifiablecredentials.templates.v1 import (
-    CreateCredentialTemplateResponse,
-    CreateCredentialTemplateRequest, TemplateField, FieldType, GetCredentialTemplateRequest,
-    UpdateCredentialTemplateRequest, ListCredentialTemplatesRequest, DeleteCredentialTemplateRequest,
-    SearchCredentialTemplatesRequest
-)
+from trinsic.proto.services.verifiablecredentials.templates.v1 import *
 from trinsic.template_service import TemplateService
+
 # createCredentialTemplatesService() {
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
@@ -17,7 +13,10 @@ trinsic = TrinsicService(server_config=trinsic_config(auth_token="[YOURAUTHTOKEN
 template_service = trinsic.template
 # }
 
-async def create_template(template_service: TemplateService) -> CreateCredentialTemplateResponse:
+
+async def create_template(
+    template_service: TemplateService,
+) -> CreateCredentialTemplateResponse:
     # CredentialTemplatesServiceCreate() {
     template = await template_service.create(
         request=CreateCredentialTemplateRequest(
@@ -45,7 +44,8 @@ async def credential_templates_service_examples():
 
     # CredentialTemplatesServiceGet() {
     get_template = await template_service.get(
-        request=GetCredentialTemplateRequest(id=template.data.id))
+        request=GetCredentialTemplateRequest(id=template.data.id)
+    )
     # }
     # Ensure it's the same template
     assert get_template.template.id == template.data.id
@@ -53,25 +53,30 @@ async def credential_templates_service_examples():
     assert get_template.template.ecosystem_id == template.data.ecosystem_id
 
     # CredentialTemplatesServiceUpdate() {
-    update_response = await template_service.update(request=UpdateCredentialTemplateRequest(
-        title="My New Title",
-        description="My template description"
-    ))
+    update_response = await template_service.update(
+        request=UpdateCredentialTemplateRequest(
+            title="My New Title", description="My template description"
+        )
+    )
     assert update_response.updated_template.title == "My New Title"
     assert update_response.updated_template.description == "My template description"
     # }
 
     # CredentialTemplatesServiceList() {
-    templates_list = await template_service.list(request=ListCredentialTemplatesRequest(
-        query=f"SELECT * FROM c WHERE c.id = '{template.data.id}'"
-    ))
+    templates_list = await template_service.list(
+        request=ListCredentialTemplatesRequest(
+            query=f"SELECT * FROM c WHERE c.id = '{template.data.id}'"
+        )
+    )
     assert len(templates_list.templates) >= 1
     # }
 
     # CredentialTemplatesServiceSearch() {
-    search_templates = await template_service.search(request=SearchCredentialTemplatesRequest(
-        query=f"SELECT c.name FROM c WHERE c.id = '{template.data.id}'"
-    ))
+    search_templates = await template_service.search(
+        request=SearchCredentialTemplatesRequest(
+            query=f"SELECT c.name FROM c WHERE c.id = '{template.data.id}'"
+        )
+    )
     # Parse the json
     template_names = json.loads(search_templates.items_json)
     # TODO - Verify this!
@@ -79,9 +84,9 @@ async def credential_templates_service_examples():
     # }
 
     # CredentialTemplatesServiceDelete() {
-    delete_response = await template_service.delete(request=DeleteCredentialTemplateRequest(
-        id=template.data.id
-    ))
+    delete_response = await template_service.delete(
+        request=DeleteCredentialTemplateRequest(id=template.data.id)
+    )
     # }
 
 

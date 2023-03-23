@@ -51,8 +51,10 @@ async def file_management_demo():
     assert list_response.files[0].id == file_id
 
     # FileManagementServiceGetStorageStats() {
-    get_stats_response: GetStorageStatsResponse = await file_management_service.get_storage_stats(
-        request=GetStorageStatsRequest()
+    get_stats_response: GetStorageStatsResponse = (
+        await file_management_service.get_storage_stats(
+            request=GetStorageStatsRequest()
+        )
     )
     print(f"Total file count={get_stats_response.stats.num_files}")
     # }

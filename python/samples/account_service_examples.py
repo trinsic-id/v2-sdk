@@ -1,11 +1,12 @@
 import asyncio
 from trinsic.trinsic_util import set_eventloop_policy
+
 # createAccountService() {
 from trinsic.proto.services.account.v1 import LoginRequest
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
 
-trinsic = TrinsicService(server_config=trinsic_config(auth_token="[YOURAUTHTOKEN]"))
+trinsic = TrinsicService(server_config=trinsic_config(auth_token="[YOUR-AUTH-TOKEN]"))
 account_service = trinsic.account
 # }
 
@@ -29,7 +30,9 @@ async def account_service_examples():
 
     # Log into an anonymous account to do the rest of the tests
     # AccountServiceLoginAnonymous() {
-    anonymous_profile = await trinsic.account.login_anonymous(ecosystem_id="[YOUR-ECOSYSTEM-ID]")
+    anonymous_profile = await trinsic.account.login_anonymous(
+        ecosystem_id="[YOUR-ECOSYSTEM-ID]"
+    )
     # }
 
     # AccountServiceInfo() {

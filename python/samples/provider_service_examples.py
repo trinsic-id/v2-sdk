@@ -6,10 +6,15 @@ from trinsic.proto.services.provider.v1 import (
     IonOptions,
     IonOptionsIonNetwork,
     UpdateEcosystemRequest,
-    UpgradeDidRequest, CreateEcosystemRequest, Ecosystem, GetOberonKeyRequest, RefreshDomainVerificationStatusRequest,
+    UpgradeDidRequest,
+    CreateEcosystemRequest,
+    Ecosystem,
+    GetOberonKeyRequest,
+    RefreshDomainVerificationStatusRequest,
     SearchWalletConfigurationsRequest,
 )
 from trinsic.provider_service import ProviderService
+
 # createProviderService() {
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import set_eventloop_policy
@@ -26,7 +31,7 @@ async def create_ecosystem(provider_service: ProviderService) -> Ecosystem:
         request=CreateEcosystemRequest(
             description="My demo ecosystem description",
             uri="https://example.com",
-            domain="https://example.com"
+            domain="https://example.com",
         )
     )
     ecosystem = ecosystem_response.ecosystem
@@ -75,8 +80,10 @@ async def provider_demo():
 
     # ProviderServiceRetrieveDomainVerificationRecord() {
     verify_record = await provider_service.retrieve_domain_verification_record()
-    print(f"Add this record to your DNS:\n"
-          f"{verify_record.verification_record_name}={verify_record.verification_record_value}")
+    print(
+        f"Add this record to your DNS:\n"
+        f"{verify_record.verification_record_name}={verify_record.verification_record_value}"
+    )
     # }
 
     # ProviderServiceRefreshDomainVerificationStatus() {
@@ -89,9 +96,7 @@ async def provider_demo():
 
     # ProviderServiceSearchWalletConfigurations() {
     wallet_configurations = await provider_service.search_wallet_configurations(
-        request=SearchWalletConfigurationsRequest(
-            query_filter="_.name = 'test'"
-        )
+        request=SearchWalletConfigurationsRequest(query_filter="_.name = 'test'")
     )
     print(f"Count of matching wallets={len(wallet_configurations.results)}")
     # }
