@@ -3,6 +3,8 @@
 # target: C:\work\sdk\python\samples\trustregistry_service_examples.py
 
 # createTrustRegistryService() {
+trinsic_service = TrinsicService(server_config=trinsic_config(auth_token="YOUR-AUTH-TOKEN"))
+trust_registry_service = trinsic_service.trust_registry
 # }
 
 # trustRegistryAddFramework() {

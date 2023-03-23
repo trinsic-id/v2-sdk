@@ -3,6 +3,8 @@
 # target: C:\work\sdk\python\samples\credentialtemplates_service_examples.py
 
 # createCredentialTemplatesService() {
+trinsic_service = TrinsicService(server_config=trinsic_config(auth_token="YOUR-AUTH-TOKEN"))
+credential_templates_service = trinsic_service.credential_templates
 # }
 
 # credentialTemplatesCreate() {

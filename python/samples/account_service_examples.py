@@ -3,6 +3,8 @@
 # target: C:\work\sdk\python\samples\account_service_examples.py
 
 # createAccountService() {
+trinsic_service = TrinsicService(server_config=trinsic_config(auth_token="YOUR-AUTH-TOKEN"))
+account_service = trinsic_service.account
 # }
 
 # accountSignIn() {

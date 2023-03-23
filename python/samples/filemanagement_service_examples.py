@@ -3,6 +3,8 @@
 # target: C:\work\sdk\python\samples\filemanagement_service_examples.py
 
 # createFileManagementService() {
+trinsic_service = TrinsicService(server_config=trinsic_config(auth_token="YOUR-AUTH-TOKEN"))
+file_management_service = trinsic_service.file_management
 # }
 
 # fileManagementUploadFile() {

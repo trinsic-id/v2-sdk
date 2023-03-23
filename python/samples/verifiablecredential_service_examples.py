@@ -3,6 +3,8 @@
 # target: C:\work\sdk\python\samples\verifiablecredential_service_examples.py
 
 # createVerifiableCredentialService() {
+trinsic_service = TrinsicService(server_config=trinsic_config(auth_token="YOUR-AUTH-TOKEN"))
+verifiable_credential_service = trinsic_service.verifiable_credential
 # }
 
 # verifiableCredentialIssue() {
