@@ -45,7 +45,7 @@ info_response = await account_service.info(request=InfoRequest())
 
 # accountAuthorizeWebhook() {
 authorize_webhook_response = await account_service.authorize_webhook(
-    request=AuthorizeWebhookRequest(events="YOUR-EVENTS")
+    request=AuthorizeWebhookRequest(events=["YOUR-EVENTS"])
 )
 # }
 

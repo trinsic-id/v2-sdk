@@ -42,7 +42,7 @@ add_webhook_response = await provider_service.add_webhook(
     request=AddWebhookRequest(
         destination_url="YOUR-DESTINATION-URL",
         secret="YOUR-SECRET",
-        events="YOUR-EVENTS",
+        events=["YOUR-EVENTS"],
     )
 )
 # }
@@ -89,7 +89,7 @@ get_oberon_key_response = await provider_service.get_oberon_key(
 
 # providerUpgradeDID() {
 upgrade_did_response = await provider_service.upgrade_did(
-    request=UpgradeDIDRequest(
+    request=UpgradeDidRequest(
         email="YOUR-EMAIL",
         wallet_id="YOUR-WALLET-ID",
         did_uri="YOUR-DID-URI",
