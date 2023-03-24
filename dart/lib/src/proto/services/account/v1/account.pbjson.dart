@@ -171,6 +171,14 @@ const AccountInfoResponse$json = const {
     const {'1': 'device_id', '3': 4, '4': 1, '5': 9, '10': 'deviceId'},
     const {'1': 'ecosystem_id', '3': 5, '4': 1, '5': 9, '10': 'ecosystemId'},
     const {'1': 'public_did', '3': 6, '4': 1, '5': 9, '10': 'publicDid'},
+    const {
+      '1': 'auth_tokens',
+      '3': 8,
+      '4': 3,
+      '5': 11,
+      '6': '.services.account.v1.WalletAuthToken',
+      '10': 'authTokens'
+    },
   ],
   '9': const [
     const {'1': 7, '2': 8},
@@ -180,7 +188,7 @@ const AccountInfoResponse$json = const {
 
 /// Descriptor for `AccountInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountInfoResponseDescriptor = $convert.base64Decode(
-    'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEkkKCmVjb3N5c3RlbXMYAiADKAsyJS5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnRFY29zeXN0ZW1CAhgBUgplY29zeXN0ZW1zEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZEoECAcQCFITYXV0aG9yaXplZF93ZWJob29rcw==');
+    'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEkkKCmVjb3N5c3RlbXMYAiADKAsyJS5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnRFY29zeXN0ZW1CAhgBUgplY29zeXN0ZW1zEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZBJFCgthdXRoX3Rva2VucxgIIAMoCzIkLnNlcnZpY2VzLmFjY291bnQudjEuV2FsbGV0QXV0aFRva2VuUgphdXRoVG9rZW5zSgQIBxAIUhNhdXRob3JpemVkX3dlYmhvb2tz');
 @$core.Deprecated('Use accountEcosystemDescriptor instead')
 const AccountEcosystem$json = const {
   '1': 'AccountEcosystem',
@@ -310,3 +318,27 @@ const AuthorizeWebhookResponse$json = const {
 /// Descriptor for `AuthorizeWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authorizeWebhookResponseDescriptor =
     $convert.base64Decode('ChhBdXRob3JpemVXZWJob29rUmVzcG9uc2U6AhgB');
+@$core.Deprecated('Use walletAuthTokenDescriptor instead')
+const WalletAuthToken$json = const {
+  '1': 'WalletAuthToken',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {
+      '1': 'description',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'description',
+      '17': true
+    },
+    const {'1': 'date_created', '3': 3, '4': 1, '5': 9, '10': 'dateCreated'},
+  ],
+  '8': const [
+    const {'1': '_description'},
+  ],
+};
+
+/// Descriptor for `WalletAuthToken`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List walletAuthTokenDescriptor = $convert.base64Decode(
+    'Cg9XYWxsZXRBdXRoVG9rZW4SDgoCaWQYASABKAlSAmlkEiUKC2Rlc2NyaXB0aW9uGAIgASgJSABSC2Rlc2NyaXB0aW9uiAEBEiEKDGRhdGVfY3JlYXRlZBgDIAEoCVILZGF0ZUNyZWF0ZWRCDgoMX2Rlc2NyaXB0aW9u');
