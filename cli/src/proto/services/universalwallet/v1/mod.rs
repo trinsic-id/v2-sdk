@@ -135,6 +135,7 @@ pub mod universal_wallet_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    /// Service for managing wallets
     #[derive(Debug, Clone)]
     pub struct UniversalWalletClient<T> {
         inner: tonic::client::Grpc<T>,

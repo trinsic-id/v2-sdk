@@ -5,9 +5,8 @@ edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 site_url: https://docs.trinsic.id
 nav:
-  - Home: index.md
   - Learn:
-    - Introduction: learn/index.md
+    - Introduction: index.md
     - Key Concepts:
       - Ecosystems: learn/concepts/ecosystems.md
       - Wallets: learn/concepts/wallets.md
@@ -24,7 +23,6 @@ nav:
     - Resources:
       - Migration Guidelines: learn/migrate.md
   - Tools & SDKs:
-    - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
       - Browser: web/index.md
       - iOS: ios/index.md
@@ -35,6 +33,7 @@ nav:
       - Python: python/index.md
       - Go: go/index.md
       - Java: java/index.md
+    - Trinsic CLI: cli/index.md
   - Reference:
     - Overview: reference/index.md
     - SDK Services:
@@ -65,8 +64,6 @@ theme:
     - announce.dismiss
     - navigation.tabs
     - navigation.tabs.sticky
-    - toc.integrate
-    - navigation.sections
   icon:
     repo: fontawesome/brands/github-alt
   font:

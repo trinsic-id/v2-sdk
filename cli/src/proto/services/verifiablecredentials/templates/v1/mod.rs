@@ -215,11 +215,11 @@ pub struct AppleWalletOptions {
     #[prost(string, tag="4")]
     pub primary_field: ::prost::alloc::string::String,
     /// The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
-    #[prost(map="int32, string", tag="5")]
-    pub secondary_fields: ::std::collections::HashMap<i32, ::prost::alloc::string::String>,
+    #[prost(string, repeated, tag="5")]
+    pub secondary_fields: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
-    #[prost(map="int32, string", tag="6")]
-    pub auxiliary_fields: ::std::collections::HashMap<i32, ::prost::alloc::string::String>,
+    #[prost(string, repeated, tag="6")]
+    pub auxiliary_fields: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// Ordering information for a template field
 #[derive(::serde::Serialize, ::serde::Deserialize)]
