@@ -165,6 +165,12 @@ export interface AccountInfoResponse {
    * This DID is used as the `issuer` when signing verifiable credentials
    */
   publicDid?: string;
+  /**
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   */
+  authTokens?: WalletAuthToken[];
 }
 
 /** Deprecated */
@@ -242,6 +248,19 @@ export interface AuthorizeWebhookRequest {
  * @deprecated
  */
 export interface AuthorizeWebhookResponse {}
+
+/** Information about authenticaton tokens for a wallet */
+export interface WalletAuthToken {
+  /**
+   * Unique identifier for the token.
+   * This field will match the `DeviceId` in the WalletAuthData
+   */
+  id?: string;
+  /** Device name/description */
+  description?: string | undefined;
+  /** Date when the token was created in ISO 8601 format */
+  dateCreated?: string;
+}
 
 function createBaseSignInRequest(): SignInRequest {
   return { details: undefined, invitationCode: "", ecosystemId: "" };
@@ -692,6 +711,7 @@ function createBaseAccountInfoResponse(): AccountInfoResponse {
     deviceId: "",
     ecosystemId: "",
     publicDid: "",
+    authTokens: [],
   };
 }
 
@@ -719,6 +739,11 @@ export const AccountInfoResponse = {
     }
     if (message.publicDid !== undefined && message.publicDid !== "") {
       writer.uint32(50).string(message.publicDid);
+    }
+    if (message.authTokens !== undefined && message.authTokens.length !== 0) {
+      for (const v of message.authTokens) {
+        WalletAuthToken.encode(v!, writer.uint32(66).fork()).ldelim();
+      }
     }
     return writer;
   },
@@ -750,6 +775,11 @@ export const AccountInfoResponse = {
         case 6:
           message.publicDid = reader.string();
           break;
+        case 8:
+          message.authTokens!.push(
+            WalletAuthToken.decode(reader, reader.uint32())
+          );
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -770,6 +800,9 @@ export const AccountInfoResponse = {
       deviceId: isSet(object.deviceId) ? String(object.deviceId) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
+      authTokens: Array.isArray(object?.authTokens)
+        ? object.authTokens.map((e: any) => WalletAuthToken.fromJSON(e))
+        : [],
     };
   },
 
@@ -791,6 +824,13 @@ export const AccountInfoResponse = {
     message.ecosystemId !== undefined &&
       (obj.ecosystemId = message.ecosystemId);
     message.publicDid !== undefined && (obj.publicDid = message.publicDid);
+    if (message.authTokens) {
+      obj.authTokens = message.authTokens.map((e) =>
+        e ? WalletAuthToken.toJSON(e) : undefined
+      );
+    } else {
+      obj.authTokens = [];
+    }
     return obj;
   },
 
@@ -806,6 +846,8 @@ export const AccountInfoResponse = {
     message.deviceId = object.deviceId ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.publicDid = object.publicDid ?? "";
+    message.authTokens =
+      object.authTokens?.map((e) => WalletAuthToken.fromPartial(e)) || [];
     return message;
   },
 };
@@ -1294,6 +1336,80 @@ export const AuthorizeWebhookResponse = {
   },
 };
 
+function createBaseWalletAuthToken(): WalletAuthToken {
+  return { id: "", description: undefined, dateCreated: "" };
+}
+
+export const WalletAuthToken = {
+  encode(
+    message: WalletAuthToken,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.description !== undefined) {
+      writer.uint32(18).string(message.description);
+    }
+    if (message.dateCreated !== undefined && message.dateCreated !== "") {
+      writer.uint32(26).string(message.dateCreated);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): WalletAuthToken {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseWalletAuthToken();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.string();
+          break;
+        case 2:
+          message.description = reader.string();
+          break;
+        case 3:
+          message.dateCreated = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): WalletAuthToken {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      description: isSet(object.description)
+        ? String(object.description)
+        : undefined,
+      dateCreated: isSet(object.dateCreated) ? String(object.dateCreated) : "",
+    };
+  },
+
+  toJSON(message: WalletAuthToken): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.dateCreated !== undefined &&
+      (obj.dateCreated = message.dateCreated);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<WalletAuthToken>): WalletAuthToken {
+    const message = createBaseWalletAuthToken();
+    message.id = object.id ?? "";
+    message.description = object.description ?? undefined;
+    message.dateCreated = object.dateCreated ?? "";
+    return message;
+  },
+};
+
 export type AccountDefinition = typeof AccountDefinition;
 export const AccountDefinition = {
   name: "Account",
@@ -1312,7 +1428,11 @@ export const AccountDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Begin login flow for specified account, creating one if it does not already exist */
+    /**
+     * Begin login flow for specified account, creating one if it does not already exist
+     *
+     * @deprecated
+     */
     login: {
       name: "Login",
       requestType: LoginRequest,
@@ -1321,7 +1441,11 @@ export const AccountDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Finalize login flow with two-factor confirmation code */
+    /**
+     * Finalize login flow with two-factor confirmation code
+     *
+     * @deprecated
+     */
     loginConfirm: {
       name: "LoginConfirm",
       requestType: LoginConfirmRequest,
@@ -1330,7 +1454,11 @@ export const AccountDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Get account information */
+    /**
+     * Get account information
+     *
+     * @deprecated
+     */
     info: {
       name: "Info",
       requestType: AccountInfoRequest,

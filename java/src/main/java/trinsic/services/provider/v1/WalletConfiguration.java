@@ -29,6 +29,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     walletId_ = "";
     publicDid_ = "";
     configType_ = "";
+    authTokens_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -279,6 +280,85 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
 
+  public static final int AUTH_TOKENS_FIELD_NUMBER = 7;
+  private java.util.List<trinsic.services.account.v1.WalletAuthToken> authTokens_;
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  @java.lang.Override
+  public java.util.List<trinsic.services.account.v1.WalletAuthToken> getAuthTokensList() {
+    return authTokens_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends trinsic.services.account.v1.WalletAuthTokenOrBuilder>
+      getAuthTokensOrBuilderList() {
+    return authTokens_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  @java.lang.Override
+  public int getAuthTokensCount() {
+    return authTokens_.size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.account.v1.WalletAuthToken getAuthTokens(int index) {
+    return authTokens_.get(index);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.account.v1.WalletAuthTokenOrBuilder getAuthTokensOrBuilder(int index) {
+    return authTokens_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -311,6 +391,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(configType_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, configType_);
     }
+    for (int i = 0; i < authTokens_.size(); i++) {
+      output.writeMessage(7, authTokens_.get(i));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -338,6 +421,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(configType_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, configType_);
     }
+    for (int i = 0; i < authTokens_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, authTokens_.get(i));
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -360,6 +446,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!getWalletId().equals(other.getWalletId())) return false;
     if (!getPublicDid().equals(other.getPublicDid())) return false;
     if (!getConfigType().equals(other.getConfigType())) return false;
+    if (!getAuthTokensList().equals(other.getAuthTokensList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -383,6 +470,10 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     hash = (53 * hash) + getPublicDid().hashCode();
     hash = (37 * hash) + CONFIG_TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getConfigType().hashCode();
+    if (getAuthTokensCount() > 0) {
+      hash = (37 * hash) + AUTH_TOKENS_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthTokensList().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -533,6 +624,13 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
       configType_ = "";
 
+      if (authTokensBuilder_ == null) {
+        authTokens_ = java.util.Collections.emptyList();
+      } else {
+        authTokens_ = null;
+        authTokensBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -560,12 +658,22 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     public trinsic.services.provider.v1.WalletConfiguration buildPartial() {
       trinsic.services.provider.v1.WalletConfiguration result =
           new trinsic.services.provider.v1.WalletConfiguration(this);
+      int from_bitField0_ = bitField0_;
       result.name_ = name_;
       result.email_ = email_;
       result.sms_ = sms_;
       result.walletId_ = walletId_;
       result.publicDid_ = publicDid_;
       result.configType_ = configType_;
+      if (authTokensBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          authTokens_ = java.util.Collections.unmodifiableList(authTokens_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.authTokens_ = authTokens_;
+      } else {
+        result.authTokens_ = authTokensBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -640,6 +748,33 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         configType_ = other.configType_;
         onChanged();
       }
+      if (authTokensBuilder_ == null) {
+        if (!other.authTokens_.isEmpty()) {
+          if (authTokens_.isEmpty()) {
+            authTokens_ = other.authTokens_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureAuthTokensIsMutable();
+            authTokens_.addAll(other.authTokens_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.authTokens_.isEmpty()) {
+          if (authTokensBuilder_.isEmpty()) {
+            authTokensBuilder_.dispose();
+            authTokensBuilder_ = null;
+            authTokens_ = other.authTokens_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            authTokensBuilder_ =
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                    ? getAuthTokensFieldBuilder()
+                    : null;
+          } else {
+            authTokensBuilder_.addAllMessages(other.authTokens_);
+          }
+        }
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -702,6 +837,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
                 break;
               } // case 50
+            case 58:
+              {
+                trinsic.services.account.v1.WalletAuthToken m =
+                    input.readMessage(
+                        trinsic.services.account.v1.WalletAuthToken.parser(), extensionRegistry);
+                if (authTokensBuilder_ == null) {
+                  ensureAuthTokensIsMutable();
+                  authTokens_.add(m);
+                } else {
+                  authTokensBuilder_.addMessage(m);
+                }
+                break;
+              } // case 58
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -718,6 +866,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       } // finally
       return this;
     }
+
+    private int bitField0_;
 
     private java.lang.Object name_ = "";
     /**
@@ -1173,6 +1323,393 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       configType_ = value;
       onChanged();
       return this;
+    }
+
+    private java.util.List<trinsic.services.account.v1.WalletAuthToken> authTokens_ =
+        java.util.Collections.emptyList();
+
+    private void ensureAuthTokensIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        authTokens_ =
+            new java.util.ArrayList<trinsic.services.account.v1.WalletAuthToken>(authTokens_);
+        bitField0_ |= 0x00000001;
+      }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+            trinsic.services.account.v1.WalletAuthToken,
+            trinsic.services.account.v1.WalletAuthToken.Builder,
+            trinsic.services.account.v1.WalletAuthTokenOrBuilder>
+        authTokensBuilder_;
+
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public java.util.List<trinsic.services.account.v1.WalletAuthToken> getAuthTokensList() {
+      if (authTokensBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(authTokens_);
+      } else {
+        return authTokensBuilder_.getMessageList();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public int getAuthTokensCount() {
+      if (authTokensBuilder_ == null) {
+        return authTokens_.size();
+      } else {
+        return authTokensBuilder_.getCount();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public trinsic.services.account.v1.WalletAuthToken getAuthTokens(int index) {
+      if (authTokensBuilder_ == null) {
+        return authTokens_.get(index);
+      } else {
+        return authTokensBuilder_.getMessage(index);
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder setAuthTokens(int index, trinsic.services.account.v1.WalletAuthToken value) {
+      if (authTokensBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAuthTokensIsMutable();
+        authTokens_.set(index, value);
+        onChanged();
+      } else {
+        authTokensBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder setAuthTokens(
+        int index, trinsic.services.account.v1.WalletAuthToken.Builder builderForValue) {
+      if (authTokensBuilder_ == null) {
+        ensureAuthTokensIsMutable();
+        authTokens_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        authTokensBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder addAuthTokens(trinsic.services.account.v1.WalletAuthToken value) {
+      if (authTokensBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAuthTokensIsMutable();
+        authTokens_.add(value);
+        onChanged();
+      } else {
+        authTokensBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder addAuthTokens(int index, trinsic.services.account.v1.WalletAuthToken value) {
+      if (authTokensBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAuthTokensIsMutable();
+        authTokens_.add(index, value);
+        onChanged();
+      } else {
+        authTokensBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder addAuthTokens(
+        trinsic.services.account.v1.WalletAuthToken.Builder builderForValue) {
+      if (authTokensBuilder_ == null) {
+        ensureAuthTokensIsMutable();
+        authTokens_.add(builderForValue.build());
+        onChanged();
+      } else {
+        authTokensBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder addAuthTokens(
+        int index, trinsic.services.account.v1.WalletAuthToken.Builder builderForValue) {
+      if (authTokensBuilder_ == null) {
+        ensureAuthTokensIsMutable();
+        authTokens_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        authTokensBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder addAllAuthTokens(
+        java.lang.Iterable<? extends trinsic.services.account.v1.WalletAuthToken> values) {
+      if (authTokensBuilder_ == null) {
+        ensureAuthTokensIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, authTokens_);
+        onChanged();
+      } else {
+        authTokensBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder clearAuthTokens() {
+      if (authTokensBuilder_ == null) {
+        authTokens_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        authTokensBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public Builder removeAuthTokens(int index) {
+      if (authTokensBuilder_ == null) {
+        ensureAuthTokensIsMutable();
+        authTokens_.remove(index);
+        onChanged();
+      } else {
+        authTokensBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public trinsic.services.account.v1.WalletAuthToken.Builder getAuthTokensBuilder(int index) {
+      return getAuthTokensFieldBuilder().getBuilder(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public trinsic.services.account.v1.WalletAuthTokenOrBuilder getAuthTokensOrBuilder(int index) {
+      if (authTokensBuilder_ == null) {
+        return authTokens_.get(index);
+      } else {
+        return authTokensBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public java.util.List<? extends trinsic.services.account.v1.WalletAuthTokenOrBuilder>
+        getAuthTokensOrBuilderList() {
+      if (authTokensBuilder_ != null) {
+        return authTokensBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(authTokens_);
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public trinsic.services.account.v1.WalletAuthToken.Builder addAuthTokensBuilder() {
+      return getAuthTokensFieldBuilder()
+          .addBuilder(trinsic.services.account.v1.WalletAuthToken.getDefaultInstance());
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public trinsic.services.account.v1.WalletAuthToken.Builder addAuthTokensBuilder(int index) {
+      return getAuthTokensFieldBuilder()
+          .addBuilder(index, trinsic.services.account.v1.WalletAuthToken.getDefaultInstance());
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of active authentication tokens for this wallet.
+     * This list does not contain the issued token, only metadata
+     * such as ID, description, and creation date.
+     * </pre>
+     *
+     * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+     */
+    public java.util.List<trinsic.services.account.v1.WalletAuthToken.Builder>
+        getAuthTokensBuilderList() {
+      return getAuthTokensFieldBuilder().getBuilderList();
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+            trinsic.services.account.v1.WalletAuthToken,
+            trinsic.services.account.v1.WalletAuthToken.Builder,
+            trinsic.services.account.v1.WalletAuthTokenOrBuilder>
+        getAuthTokensFieldBuilder() {
+      if (authTokensBuilder_ == null) {
+        authTokensBuilder_ =
+            new com.google.protobuf.RepeatedFieldBuilderV3<
+                trinsic.services.account.v1.WalletAuthToken,
+                trinsic.services.account.v1.WalletAuthToken.Builder,
+                trinsic.services.account.v1.WalletAuthTokenOrBuilder>(
+                authTokens_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+        authTokens_ = null;
+      }
+      return authTokensBuilder_;
     }
 
     @java.lang.Override

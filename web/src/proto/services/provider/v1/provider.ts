@@ -3,6 +3,7 @@ import {
   AccountDetails,
   AccountProfile,
   ConfirmationMethod,
+  WalletAuthToken,
   confirmationMethodFromJSON,
   confirmationMethodToJSON,
 } from "../../account/v1/account";
@@ -426,6 +427,12 @@ export interface WalletConfiguration {
   walletId?: string;
   publicDid?: string;
   configType?: string;
+  /**
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   */
+  authTokens?: WalletAuthToken[];
 }
 
 /** Options for creation of DID on the ION network */
@@ -2899,6 +2906,7 @@ function createBaseWalletConfiguration(): WalletConfiguration {
     walletId: "",
     publicDid: "",
     configType: "",
+    authTokens: [],
   };
 }
 
@@ -2924,6 +2932,11 @@ export const WalletConfiguration = {
     }
     if (message.configType !== undefined && message.configType !== "") {
       writer.uint32(50).string(message.configType);
+    }
+    if (message.authTokens !== undefined && message.authTokens.length !== 0) {
+      for (const v of message.authTokens) {
+        WalletAuthToken.encode(v!, writer.uint32(58).fork()).ldelim();
+      }
     }
     return writer;
   },
@@ -2953,6 +2966,11 @@ export const WalletConfiguration = {
         case 6:
           message.configType = reader.string();
           break;
+        case 7:
+          message.authTokens!.push(
+            WalletAuthToken.decode(reader, reader.uint32())
+          );
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2969,6 +2987,9 @@ export const WalletConfiguration = {
       walletId: isSet(object.walletId) ? String(object.walletId) : "",
       publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
       configType: isSet(object.configType) ? String(object.configType) : "",
+      authTokens: Array.isArray(object?.authTokens)
+        ? object.authTokens.map((e: any) => WalletAuthToken.fromJSON(e))
+        : [],
     };
   },
 
@@ -2980,6 +3001,13 @@ export const WalletConfiguration = {
     message.walletId !== undefined && (obj.walletId = message.walletId);
     message.publicDid !== undefined && (obj.publicDid = message.publicDid);
     message.configType !== undefined && (obj.configType = message.configType);
+    if (message.authTokens) {
+      obj.authTokens = message.authTokens.map((e) =>
+        e ? WalletAuthToken.toJSON(e) : undefined
+      );
+    } else {
+      obj.authTokens = [];
+    }
     return obj;
   },
 
@@ -2991,6 +3019,8 @@ export const WalletConfiguration = {
     message.walletId = object.walletId ?? "";
     message.publicDid = object.publicDid ?? "";
     message.configType = object.configType ?? "";
+    message.authTokens =
+      object.authTokens?.map((e) => WalletAuthToken.fromPartial(e)) || [];
     return message;
   },
 };

@@ -607,6 +607,12 @@ class WalletConfiguration(betterproto.Message):
     wallet_id: str = betterproto.string_field(4)
     public_did: str = betterproto.string_field(5)
     config_type: str = betterproto.string_field(6)
+    auth_tokens: List["__account_v1__.WalletAuthToken"] = betterproto.message_field(7)
+    """
+    List of active authentication tokens for this wallet. This list does not
+    contain the issued token, only metadata such as ID, description, and
+    creation date.
+    """
 
 
 @dataclass(eq=False, repr=False)
