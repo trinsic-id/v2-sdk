@@ -335,6 +335,10 @@ message WalletConfiguration {
   string wallet_id = 4;
   string public_did = 5;
   string config_type = 6;
+  // List of active authentication tokens for this wallet.
+  // This list does not contain the issued token, only metadata
+  // such as ID, description, and creation date.
+  repeated services.account.v1.WalletAuthToken auth_tokens = 7;
 }
 
 // Options for creation of DID on the ION network
