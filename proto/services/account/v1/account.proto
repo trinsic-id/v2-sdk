@@ -112,6 +112,11 @@ message AccountInfoResponse {
   // Webhook events, if any, this wallet has authorized
   reserved 7;
   reserved "authorized_webhooks";
+
+  // List of active authentication tokens for this wallet.
+  // This list does not contain the issued token, only metadata
+  // such as ID, description, and creation date.
+  repeated WalletAuthToken auth_tokens = 8;
 }
 
 // Deprecated
@@ -181,6 +186,17 @@ message AuthorizeWebhookResponse {
   option deprecated = true;
 }
 
+// Information about authenticaton tokens for a wallet
+message WalletAuthToken {
+  // Unique identifier for the token.
+  // This field will match the `DeviceId` in the WalletAuthData
+  string id = 1;
+  // Device name/description
+  optional string description = 2;
+  // Date when the token was created in ISO 8601 format
+  string date_created = 3;
+}
+
 service Account {
   // Sign in to an already existing account
   rpc SignIn              (SignInRequest)             returns (SignInResponse) {
@@ -191,18 +207,21 @@ service Account {
 
   // Begin login flow for specified account, creating one if it does not already exist
   rpc Login               (LoginRequest)              returns (LoginResponse) {
+    option deprecated = true;
     option (options.sdk_template_option).ignore = true;
     option (options.sdk_template_option).anonymous = true;
   }
 
   // Finalize login flow with two-factor confirmation code
   rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse) {
+    option deprecated = true;
     option (options.sdk_template_option).anonymous = true;
     option (options.sdk_template_option).ignore = true;
   }
 
   // Get account information
   rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
+    option deprecated = true;
     option (options.sdk_template_option).no_arguments = true;
   }
 
