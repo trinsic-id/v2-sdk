@@ -67,12 +67,4 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
           
-      - name: Mewmba Create PR into ${{ matrix.target_repo }}
-        id: mewmba-create-pr
-        uses: trinsic-id/mewmba/actions/mewmba-pr@main
-        with:
-          apiGithubToken: ${{ secrets.GITHUB_TOKEN }}
-          prTitle: "Generated protos for ${{ steps.new-branch-name.outputs.oldbranchname }}"
-          prBody: ":rocket: Compiled protos for ${{ steps.new-branch-name.outputs.oldbranchname }}"
-          githubAssignee: ${{ github.actor }}
-          githubBranch: "main"
+      - uses: stefanzweifel/git-auto-commit-action@v4
