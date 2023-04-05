@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3+insiders-4.32.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5+insiders-4.32.4">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f49c7df4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.323870f8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.6932e648.min.css">
@@ -2402,7 +2402,7 @@ store any JSON blob.</p>
 <p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.SearchRequest'><div class='proto-obj-name'><a name='services.universalwallet.v1.SearchRequest' href='/reference/proto#services.universalwallet.v1.SearchRequest'>SearchRequest</a></div><div class='proto-obj-description'>Request to search items in wallet</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>query</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>SQL Query to execute against items in wallet</div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Token provided by previous <code>SearchResponse</code> if more data is available for query</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.SearchResponse'><div class='proto-obj-name'><a name='services.universalwallet.v1.SearchResponse' href='/reference/proto#services.universalwallet.v1.SearchResponse'>SearchResponse</a></div><div class='proto-obj-description'>Response to <code>SearchRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>items</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Array of query results, as JSON strings</div></div><div class='proto-field'><div class='proto-field-name'>has_more</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether more results are available for this query via <code>continuation_token</code></div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Token to fetch next set of results via <code>SearchRequest</code></div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.universalwallet.v1.SearchResponse'><div class='proto-obj-name'><a name='services.universalwallet.v1.SearchResponse' href='/reference/proto#services.universalwallet.v1.SearchResponse'>SearchResponse</a></div><div class='proto-obj-description'>Response to <code>SearchRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>items</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Array of query results, as JSON strings</div></div><div class='proto-field'><div class='proto-field-name'>has_more_results</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether more results are available for this query via <code>continuation_token</code></div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Token to fetch next set of results via <code>SearchRequest</code></div></div></div></div></p>
 </div>
 </div>
 </div>
@@ -2535,7 +2535,7 @@ Examples and detailed description on working with grouped results <a href="https
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.80f82a11.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a3190745.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
