@@ -68,6 +68,10 @@ public final class AccountOuterClass {
       internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_account_v1_AuthorizeWebhookResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_account_v1_WalletAuthToken_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_account_v1_WalletAuthToken_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -101,7 +105,7 @@ public final class AccountOuterClass {
           + "\017TokenProtection\022\017\n"
           + "\007enabled\030\001 \001(\010\0227\n"
           + "\006method\030\002 \001(\0162\'.services.account.v1.ConfirmationMethod\"\024\n"
-          + "\022AccountInfoRequest\"\365\001\n"
+          + "\022AccountInfoRequest\"\260\002\n"
           + "\023AccountInfoResponse\0224\n"
           + "\007details\030\001 \001(\0132#.services.account.v1.AccountDetails\022=\n\n"
           + "ecosystems\030\002"
@@ -109,7 +113,9 @@ public final class AccountOuterClass {
           + "\twallet_id\030\003 \001(\t\022\021\n"
           + "\tdevice_id\030\004 \001(\t\022\024\n"
           + "\014ecosystem_id\030\005 \001(\t\022\022\n\n"
-          + "public_did\030\006 \001(\tJ\004\010\007\020\010R\023authorized_webhooks\"N\n"
+          + "public_did\030\006 \001(\t\0229\n"
+          + "\013auth_tokens\030\010 \003(\0132$.services"
+          + ".account.v1.WalletAuthTokenJ\004\010\007\020\010R\023authorized_webhooks\"N\n"
           + "\020AccountEcosystem\022\n\n"
           + "\002id\030\001 \001(\t\022\014\n"
           + "\004name\030\002 \001(\t\022\023\n"
@@ -130,27 +136,33 @@ public final class AccountOuterClass {
           + "\007profile\030\001 \001(\0132#.services.account.v1.AccountProfile\"-\n"
           + "\027AuthorizeWebhookRequest\022\016\n"
           + "\006events\030\001 \003(\t:\002\030\001\"\036\n"
-          + "\030AuthorizeWebhookResponse:\002\030\001*R\n"
+          + "\030AuthorizeWebhookResponse:\002\030\001\"]\n"
+          + "\017WalletAuthToken\022\n\n"
+          + "\002id\030\001 \001(\t\022\030\n"
+          + "\013description\030\002 \001(\tH\000\210\001\001\022\024\n"
+          + "\014date_created\030\003 \001(\tB\016\n"
+          + "\014_description*R\n"
           + "\022ConfirmationMethod\022\010\n"
           + "\004None\020\000\022\t\n"
           + "\005Email\020\001\022\007\n"
           + "\003Sms\020\002\022\023\n"
           + "\017ConnectedDevice\020\003\022\t\n"
           + "\005Other\020\n"
-          + "2\232\004\n"
+          + "2\243\004\n"
           + "\007Account\022b\n"
-          + "\006SignIn\022\".services.account.v1"
-          + ".SignInRequest\032#.services.account.v1.SignInResponse\"\017\210\002\001\212\246\035\002\020\001\212\246\035\002\010\001\022\\\n"
-          + "\005Login\022!.services.account.v1.LoginRequest\032\".servi"
-          + "ces.account.v1.LoginResponse\"\014\212\246\035\002\020\001\212\246\035\002\010\001\022q\n"
-          + "\014LoginConfirm\022(.services.account.v1"
-          + ".LoginConfirmRequest\032).services.account.v1.LoginConfirmResponse\"\014\212\246\035\002\010\001\212\246\035\002\020\001\022a\n"
+          + "\006SignIn\022\".services.account.v1.SignI"
+          + "nRequest\032#.services.account.v1.SignInResponse\"\017\210\002\001\212\246\035\002\020\001\212\246\035\002\010\001\022_\n"
+          + "\005Login\022!.services.account.v1.LoginRequest\032\".services.ac"
+          + "count.v1.LoginResponse\"\017\210\002\001\212\246\035\002\020\001\212\246\035\002\010\001\022t\n"
+          + "\014LoginConfirm\022(.services.account.v1.Lo"
+          + "ginConfirmRequest\032).services.account.v1.LoginConfirmResponse\"\017\210\002\001\212\246\035\002\010\001\212\246\035\002\020\001\022d\n"
           + "\004Info\022\'.services.account.v1.AccountInfoR"
-          + "equest\032(.services.account.v1.AccountInfoResponse\"\006\212\246\035\002\030\001\022w\n"
-          + "\020AuthorizeWebhook\022,.services.account.v1.AuthorizeWebhookReque"
-          + "st\032-.services.account.v1.AuthorizeWebhookResponse\"\006\212\246\035\002\020\001BZ\n"
-          + "\033trinsic.services.account.v1P\001Z\033services/account/v1/account\252"
-          + "\002\033Trinsic.Services.Account.V1b\006proto3"
+          + "equest\032(.services.account.v1.AccountInfoResponse\""
+          + "\t\210\002\001\212\246\035\002\030\001\022w\n"
+          + "\020AuthorizeWebhook\022,.services.account.v1.AuthorizeWebhookRe"
+          + "quest\032-.services.account.v1.AuthorizeWebhookResponse\"\006\212\246\035\002\020\001BZ\n"
+          + "\033trinsic.services.account.v1P\001Z\033services/account/v1/accou"
+          + "nt\252\002\033Trinsic.Services.Account.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -210,7 +222,13 @@ public final class AccountOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_AccountInfoResponse_descriptor,
             new java.lang.String[] {
-              "Details", "Ecosystems", "WalletId", "DeviceId", "EcosystemId", "PublicDid",
+              "Details",
+              "Ecosystems",
+              "WalletId",
+              "DeviceId",
+              "EcosystemId",
+              "PublicDid",
+              "AuthTokens",
             });
     internal_static_services_account_v1_AccountEcosystem_descriptor =
         getDescriptor().getMessageTypes().get(7);
@@ -266,6 +284,14 @@ public final class AccountOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor,
             new java.lang.String[] {});
+    internal_static_services_account_v1_WalletAuthToken_descriptor =
+        getDescriptor().getMessageTypes().get(14);
+    internal_static_services_account_v1_WalletAuthToken_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_account_v1_WalletAuthToken_descriptor,
+            new java.lang.String[] {
+              "Id", "Description", "DateCreated", "Description",
+            });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);

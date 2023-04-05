@@ -52,6 +52,39 @@ object UniversalWalletGrpcKt {
   val deleteWalletMethod: MethodDescriptor<DeleteWalletRequest, DeleteWalletResponse>
     @JvmStatic get() = UniversalWalletGrpc.getDeleteWalletMethod()
 
+  val createWalletMethod: MethodDescriptor<CreateWalletRequest, CreateWalletResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getCreateWalletMethod()
+
+  val getWalletInfoMethod: MethodDescriptor<GetWalletInfoRequest, GetWalletInfoResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getGetWalletInfoMethod()
+
+  val getMyInfoMethod: MethodDescriptor<GetMyInfoRequest, GetMyInfoResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getGetMyInfoMethod()
+
+  val generateAuthTokenMethod: MethodDescriptor<GenerateAuthTokenRequest, GenerateAuthTokenResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getGenerateAuthTokenMethod()
+
+  val revokeAuthTokenMethod: MethodDescriptor<RevokeAuthTokenRequest, RevokeAuthTokenResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getRevokeAuthTokenMethod()
+
+  val addExternalIdentityInitMethod:
+      MethodDescriptor<AddExternalIdentityInitRequest, AddExternalIdentityInitResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getAddExternalIdentityInitMethod()
+
+  val addExternalIdentityConfirmMethod:
+      MethodDescriptor<AddExternalIdentityConfirmRequest, AddExternalIdentityConfirmResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getAddExternalIdentityConfirmMethod()
+
+  val authenticateInitMethod: MethodDescriptor<AuthenticateInitRequest, AuthenticateInitResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getAuthenticateInitMethod()
+
+  val authenticateConfirmMethod:
+      MethodDescriptor<AuthenticateConfirmRequest, AuthenticateConfirmResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getAuthenticateConfirmMethod()
+
+  val listWalletsMethod: MethodDescriptor<ListWalletsRequest, ListWalletsResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getListWalletsMethod()
+
   /**
    * A stub for issuing RPCs to a(n) services.universalwallet.v1.UniversalWallet service as
    * suspending coroutines.
@@ -161,6 +194,200 @@ object UniversalWalletGrpcKt {
     ): DeleteWalletResponse =
         unaryRpc(
             channel, UniversalWalletGrpc.getDeleteWalletMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun createWallet(
+        request: CreateWalletRequest,
+        headers: Metadata = Metadata()
+    ): CreateWalletResponse =
+        unaryRpc(
+            channel, UniversalWalletGrpc.getCreateWalletMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun getWalletInfo(
+        request: GetWalletInfoRequest,
+        headers: Metadata = Metadata()
+    ): GetWalletInfoResponse =
+        unaryRpc(
+            channel, UniversalWalletGrpc.getGetWalletInfoMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun getMyInfo(
+        request: GetMyInfoRequest,
+        headers: Metadata = Metadata()
+    ): GetMyInfoResponse =
+        unaryRpc(channel, UniversalWalletGrpc.getGetMyInfoMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun generateAuthToken(
+        request: GenerateAuthTokenRequest,
+        headers: Metadata = Metadata()
+    ): GenerateAuthTokenResponse =
+        unaryRpc(
+            channel,
+            UniversalWalletGrpc.getGenerateAuthTokenMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun revokeAuthToken(
+        request: RevokeAuthTokenRequest,
+        headers: Metadata = Metadata()
+    ): RevokeAuthTokenResponse =
+        unaryRpc(
+            channel, UniversalWalletGrpc.getRevokeAuthTokenMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun addExternalIdentityInit(
+        request: AddExternalIdentityInitRequest,
+        headers: Metadata = Metadata()
+    ): AddExternalIdentityInitResponse =
+        unaryRpc(
+            channel,
+            UniversalWalletGrpc.getAddExternalIdentityInitMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun addExternalIdentityConfirm(
+        request: AddExternalIdentityConfirmRequest,
+        headers: Metadata = Metadata()
+    ): AddExternalIdentityConfirmResponse =
+        unaryRpc(
+            channel,
+            UniversalWalletGrpc.getAddExternalIdentityConfirmMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun authenticateInit(
+        request: AuthenticateInitRequest,
+        headers: Metadata = Metadata()
+    ): AuthenticateInitResponse =
+        unaryRpc(
+            channel, UniversalWalletGrpc.getAuthenticateInitMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun authenticateConfirm(
+        request: AuthenticateConfirmRequest,
+        headers: Metadata = Metadata()
+    ): AuthenticateConfirmResponse =
+        unaryRpc(
+            channel,
+            UniversalWalletGrpc.getAuthenticateConfirmMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun listWallets(
+        request: ListWalletsRequest,
+        headers: Metadata = Metadata()
+    ): ListWalletsResponse =
+        unaryRpc(channel, UniversalWalletGrpc.getListWalletsMethod(), request, callOptions, headers)
   }
 
   /**
@@ -260,6 +487,170 @@ object UniversalWalletGrpcKt {
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.DeleteWallet is unimplemented"))
 
+    /**
+     * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.CreateWallet.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun createWallet(request: CreateWalletRequest): CreateWalletResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.CreateWallet is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.GetWalletInfo.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun getWalletInfo(request: GetWalletInfoRequest): GetWalletInfoResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.GetWalletInfo is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.GetMyInfo.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun getMyInfo(request: GetMyInfoRequest): GetMyInfoResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.GetMyInfo is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.GenerateAuthToken.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun generateAuthToken(
+        request: GenerateAuthTokenRequest
+    ): GenerateAuthTokenResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.GenerateAuthToken is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.RevokeAuthToken.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun revokeAuthToken(request: RevokeAuthTokenRequest): RevokeAuthTokenResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.RevokeAuthToken is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun addExternalIdentityInit(
+        request: AddExternalIdentityInitRequest
+    ): AddExternalIdentityInitResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun addExternalIdentityConfirm(
+        request: AddExternalIdentityConfirmRequest
+    ): AddExternalIdentityConfirmResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.AuthenticateInit.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun authenticateInit(request: AuthenticateInitRequest): AuthenticateInitResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.AuthenticateInit is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.AuthenticateConfirm.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun authenticateConfirm(
+        request: AuthenticateConfirmRequest
+    ): AuthenticateConfirmResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.AuthenticateConfirm is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.ListWallets.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun listWallets(request: ListWalletsRequest): ListWalletsResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.ListWallets is unimplemented"))
+
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
             .addMethod(
@@ -292,6 +683,56 @@ object UniversalWalletGrpcKt {
                     context = this.context,
                     descriptor = UniversalWalletGrpc.getDeleteWalletMethod(),
                     implementation = ::deleteWallet))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getCreateWalletMethod(),
+                    implementation = ::createWallet))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getGetWalletInfoMethod(),
+                    implementation = ::getWalletInfo))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getGetMyInfoMethod(),
+                    implementation = ::getMyInfo))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getGenerateAuthTokenMethod(),
+                    implementation = ::generateAuthToken))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getRevokeAuthTokenMethod(),
+                    implementation = ::revokeAuthToken))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getAddExternalIdentityInitMethod(),
+                    implementation = ::addExternalIdentityInit))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getAddExternalIdentityConfirmMethod(),
+                    implementation = ::addExternalIdentityConfirm))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getAuthenticateInitMethod(),
+                    implementation = ::authenticateInit))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getAuthenticateConfirmMethod(),
+                    implementation = ::authenticateConfirm))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getListWalletsMethod(),
+                    implementation = ::listWallets))
             .build()
   }
 }

@@ -170,6 +170,13 @@ class AccountInfoResponse(betterproto.Message):
     `issuer` when signing verifiable credentials
     """
 
+    auth_tokens: List["WalletAuthToken"] = betterproto.message_field(8)
+    """
+    List of active authentication tokens for this wallet. This list does not
+    contain the issued token, only metadata such as ID, description, and
+    creation date.
+    """
+
     def __post_init__(self) -> None:
         super().__post_init__()
         if self.is_set("ecosystems"):
@@ -284,6 +291,25 @@ class AuthorizeWebhookResponse(betterproto.Message):
     def __post_init__(self) -> None:
         warnings.warn("AuthorizeWebhookResponse is deprecated", DeprecationWarning)
         super().__post_init__()
+
+
+@dataclass(eq=False, repr=False)
+class WalletAuthToken(betterproto.Message):
+    """Information about authenticaton tokens for a wallet"""
+
+    id: str = betterproto.string_field(1)
+    """
+    Unique identifier for the token. This field will match the `DeviceId` in
+    the WalletAuthData
+    """
+
+    description: Optional[str] = betterproto.string_field(
+        2, optional=True, group="_description"
+    )
+    """Device name/description"""
+
+    date_created: str = betterproto.string_field(3)
+    """Date when the token was created in ISO 8601 format"""
 
 
 class AccountStub(betterproto.ServiceStub):

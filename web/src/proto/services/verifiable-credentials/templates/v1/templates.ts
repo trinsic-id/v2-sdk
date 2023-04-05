@@ -124,7 +124,7 @@ export interface SearchCredentialTemplatesResponse {
   /** Raw JSON data returned from query */
   itemsJson?: string;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMore?: boolean;
+  hasMoreResults?: boolean;
   /** Token to fetch next set of results via `SearchCredentialTemplatesRequest` */
   continuationToken?: string;
 }
@@ -554,7 +554,7 @@ export const SearchCredentialTemplatesRequest = {
 };
 
 function createBaseSearchCredentialTemplatesResponse(): SearchCredentialTemplatesResponse {
-  return { itemsJson: "", hasMore: false, continuationToken: "" };
+  return { itemsJson: "", hasMoreResults: false, continuationToken: "" };
 }
 
 export const SearchCredentialTemplatesResponse = {
@@ -565,8 +565,8 @@ export const SearchCredentialTemplatesResponse = {
     if (message.itemsJson !== undefined && message.itemsJson !== "") {
       writer.uint32(10).string(message.itemsJson);
     }
-    if (message.hasMore === true) {
-      writer.uint32(16).bool(message.hasMore);
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
     }
     if (
       message.continuationToken !== undefined &&
@@ -591,7 +591,7 @@ export const SearchCredentialTemplatesResponse = {
           message.itemsJson = reader.string();
           break;
         case 2:
-          message.hasMore = reader.bool();
+          message.hasMoreResults = reader.bool();
           break;
         case 4:
           message.continuationToken = reader.string();
@@ -607,7 +607,9 @@ export const SearchCredentialTemplatesResponse = {
   fromJSON(object: any): SearchCredentialTemplatesResponse {
     return {
       itemsJson: isSet(object.itemsJson) ? String(object.itemsJson) : "",
-      hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+      hasMoreResults: isSet(object.hasMoreResults)
+        ? Boolean(object.hasMoreResults)
+        : false,
       continuationToken: isSet(object.continuationToken)
         ? String(object.continuationToken)
         : "",
@@ -617,7 +619,8 @@ export const SearchCredentialTemplatesResponse = {
   toJSON(message: SearchCredentialTemplatesResponse): unknown {
     const obj: any = {};
     message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
-    message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+    message.hasMoreResults !== undefined &&
+      (obj.hasMoreResults = message.hasMoreResults);
     message.continuationToken !== undefined &&
       (obj.continuationToken = message.continuationToken);
     return obj;
@@ -628,7 +631,7 @@ export const SearchCredentialTemplatesResponse = {
   ): SearchCredentialTemplatesResponse {
     const message = createBaseSearchCredentialTemplatesResponse();
     message.itemsJson = object.itemsJson ?? "";
-    message.hasMore = object.hasMore ?? false;
+    message.hasMoreResults = object.hasMoreResults ?? false;
     message.continuationToken = object.continuationToken ?? "";
     return message;
   },

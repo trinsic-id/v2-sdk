@@ -93,7 +93,13 @@ const SearchCredentialTemplatesResponse$json = const {
   '1': 'SearchCredentialTemplatesResponse',
   '2': const [
     const {'1': 'items_json', '3': 1, '4': 1, '5': 9, '10': 'itemsJson'},
-    const {'1': 'has_more', '3': 2, '4': 1, '5': 8, '10': 'hasMore'},
+    const {
+      '1': 'has_more_results',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'hasMoreResults'
+    },
     const {
       '1': 'continuation_token',
       '3': 4,
@@ -107,7 +113,7 @@ const SearchCredentialTemplatesResponse$json = const {
 /// Descriptor for `SearchCredentialTemplatesResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchCredentialTemplatesResponseDescriptor =
     $convert.base64Decode(
-        'CiFTZWFyY2hDcmVkZW50aWFsVGVtcGxhdGVzUmVzcG9uc2USHQoKaXRlbXNfanNvbhgBIAEoCVIJaXRlbXNKc29uEhkKCGhhc19tb3JlGAIgASgIUgdoYXNNb3JlEi0KEmNvbnRpbnVhdGlvbl90b2tlbhgEIAEoCVIRY29udGludWF0aW9uVG9rZW4=');
+        'CiFTZWFyY2hDcmVkZW50aWFsVGVtcGxhdGVzUmVzcG9uc2USHQoKaXRlbXNfanNvbhgBIAEoCVIJaXRlbXNKc29uEigKEGhhc19tb3JlX3Jlc3VsdHMYAiABKAhSDmhhc01vcmVSZXN1bHRzEi0KEmNvbnRpbnVhdGlvbl90b2tlbhgEIAEoCVIRY29udGludWF0aW9uVG9rZW4=');
 @$core.Deprecated('Use listCredentialTemplatesRequestDescriptor instead')
 const ListCredentialTemplatesRequest$json = const {
   '1': 'ListCredentialTemplatesRequest',

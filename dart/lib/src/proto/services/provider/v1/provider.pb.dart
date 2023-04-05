@@ -2816,7 +2816,7 @@ class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'hasMore')
+            : 'hasMoreResults')
     ..aOS(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2827,15 +2827,15 @@ class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
   SearchWalletConfigurationResponse._() : super();
   factory SearchWalletConfigurationResponse({
     $core.Iterable<WalletConfiguration>? results,
-    $core.bool? hasMore,
+    $core.bool? hasMoreResults,
     $core.String? continuationToken,
   }) {
     final _result = create();
     if (results != null) {
       _result.results.addAll(results);
     }
-    if (hasMore != null) {
-      _result.hasMore = hasMore;
+    if (hasMoreResults != null) {
+      _result.hasMoreResults = hasMoreResults;
     }
     if (continuationToken != null) {
       _result.continuationToken = continuationToken;
@@ -2878,16 +2878,16 @@ class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
   $core.List<WalletConfiguration> get results => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.bool get hasMore => $_getBF(1);
+  $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
-  set hasMore($core.bool v) {
+  set hasMoreResults($core.bool v) {
     $_setBool(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasHasMore() => $_has(1);
+  $core.bool hasHasMoreResults() => $_has(1);
   @$pb.TagNumber(2)
-  void clearHasMore() => clearField(2);
+  void clearHasMoreResults() => clearField(2);
 
   @$pb.TagNumber(4)
   $core.String get continuationToken => $_getSZ(2);
@@ -2942,6 +2942,13 @@ class WalletConfiguration extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'configType')
+    ..pc<$1.WalletAuthToken>(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'authTokens',
+        $pb.PbFieldType.PM,
+        subBuilder: $1.WalletAuthToken.create)
     ..hasRequiredFields = false;
 
   WalletConfiguration._() : super();
@@ -2952,6 +2959,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? walletId,
     $core.String? publicDid,
     $core.String? configType,
+    $core.Iterable<$1.WalletAuthToken>? authTokens,
   }) {
     final _result = create();
     if (name != null) {
@@ -2971,6 +2979,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     }
     if (configType != null) {
       _result.configType = configType;
+    }
+    if (authTokens != null) {
+      _result.authTokens.addAll(authTokens);
     }
     return _result;
   }
@@ -3072,6 +3083,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   $core.bool hasConfigType() => $_has(5);
   @$pb.TagNumber(6)
   void clearConfigType() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.List<$1.WalletAuthToken> get authTokens => $_getList(6);
 }
 
 class IonOptions extends $pb.GeneratedMessage {

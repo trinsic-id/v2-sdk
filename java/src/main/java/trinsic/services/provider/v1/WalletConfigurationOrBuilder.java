@@ -85,4 +85,66 @@ public interface WalletConfigurationOrBuilder
    * @return The bytes for configType.
    */
   com.google.protobuf.ByteString getConfigTypeBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  java.util.List<trinsic.services.account.v1.WalletAuthToken> getAuthTokensList();
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  trinsic.services.account.v1.WalletAuthToken getAuthTokens(int index);
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  int getAuthTokensCount();
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  java.util.List<? extends trinsic.services.account.v1.WalletAuthTokenOrBuilder>
+      getAuthTokensOrBuilderList();
+  /**
+   *
+   *
+   * <pre>
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   * </pre>
+   *
+   * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
+   */
+  trinsic.services.account.v1.WalletAuthTokenOrBuilder getAuthTokensOrBuilder(int index);
 }

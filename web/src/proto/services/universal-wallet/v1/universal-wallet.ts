@@ -1,5 +1,48 @@
 /* eslint-disable */
+import { WalletConfiguration } from "../../provider/v1/provider";
 import _m0 from "protobufjs/minimal";
+
+export enum IdentityProvider {
+  /** UNKNOWN - Identity provider is unknown */
+  UNKNOWN = 0,
+  /** EMAIL - Identity provider is email */
+  EMAIL = 1,
+  /** PHONE - Identity provider is phone */
+  PHONE = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function identityProviderFromJSON(object: any): IdentityProvider {
+  switch (object) {
+    case 0:
+    case "UNKNOWN":
+      return IdentityProvider.UNKNOWN;
+    case 1:
+    case "EMAIL":
+      return IdentityProvider.EMAIL;
+    case 2:
+    case "PHONE":
+      return IdentityProvider.PHONE;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return IdentityProvider.UNRECOGNIZED;
+  }
+}
+
+export function identityProviderToJSON(object: IdentityProvider): string {
+  switch (object) {
+    case IdentityProvider.UNKNOWN:
+      return "UNKNOWN";
+    case IdentityProvider.EMAIL:
+      return "EMAIL";
+    case IdentityProvider.PHONE:
+      return "PHONE";
+    case IdentityProvider.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
 
 /** Request to search items in wallet */
 export interface SearchRequest {
@@ -17,7 +60,7 @@ export interface SearchResponse {
   /** Array of query results, as JSON strings */
   items?: string[];
   /** Whether more results are available for this query via `continuation_token` */
-  hasMore?: boolean;
+  hasMoreResults?: boolean;
   /** Token to fetch next set of results via `SearchRequest` */
   continuationToken?: string;
 }
@@ -92,6 +135,134 @@ export interface DeleteWalletRequest {
 /** Response to `DeleteWalletRequest`. Empty payload. */
 export interface DeleteWalletResponse {}
 
+export interface CreateWalletRequest {
+  /** Ecosystem ID of the wallet to create */
+  ecosystemId?: string;
+  /**
+   * Wallet name or description.
+   * Use this field to add vendor specific information about this wallet,
+   * such as email, phone, internal ID, etc.
+   * This field is not unique within our platform
+   */
+  description?: string;
+}
+
+export interface CreateWalletResponse {
+  /** Wallet ID of the newly created wallet */
+  walletId?: string;
+  /** Auth token for the newly created wallet */
+  authToken?: string;
+  /** Token ID of the newly generated token */
+  tokenId?: string;
+}
+
+export interface GenerateAuthTokenRequest {
+  walletId?: string;
+  tokenDescription?: string;
+}
+
+export interface GenerateAuthTokenResponse {
+  tokenId?: string;
+  authToken?: string;
+}
+
+/** Request to retrieve wallet information about a given wallet identified by its wallet ID */
+export interface GetWalletInfoRequest {
+  /** Wallet ID of the wallet to retrieve */
+  walletId?: string;
+}
+
+/** Response to `GetWalletInfoRequest` */
+export interface GetWalletInfoResponse {
+  /** Wallet configuration */
+  wallet?: WalletConfiguration;
+}
+
+/** Request to retrieve wallet information about the currently authenticated wallet */
+export interface GetMyInfoRequest {}
+
+/** Response to `GetMyInfoRequest` */
+export interface GetMyInfoResponse {
+  /** Wallet configuration */
+  wallet?: WalletConfiguration;
+}
+
+/** Request to revoke a previously issued auth token */
+export interface RevokeAuthTokenRequest {
+  /** Wallet ID of the wallet to from which to revoke the token */
+  walletId?: string;
+  /** Token ID of the token to revoke */
+  tokenId?: string;
+}
+
+export interface RevokeAuthTokenResponse {}
+
+export interface ListWalletsRequest {
+  filter?: string;
+}
+
+export interface ListWalletsResponse {
+  wallets?: WalletConfiguration[];
+}
+
+export interface AddExternalIdentityInitRequest {
+  /** Identity to add to the wallet */
+  identity?: string;
+  provider?: IdentityProvider;
+}
+
+export interface AddExternalIdentityInitResponse {
+  /**
+   * Challenge to be verified by the user.
+   * Pass this challenge back to the `AddIdentityConfirm` endpoint
+   */
+  challenge?: string;
+}
+
+export interface AddExternalIdentityConfirmRequest {
+  /** The challenge received from the `AddIdentityInit` endpoint */
+  challenge?: string;
+  /**
+   * The response to the challenge. If using Email or Phone,
+   * this is the OTP code sent to the user's email or phone
+   */
+  response?: string;
+}
+
+export interface AddExternalIdentityConfirmResponse {}
+
+export interface AuthenticateInitRequest {
+  /** Identity to add to the wallet */
+  identity?: string;
+  /** Identity provider */
+  provider?: IdentityProvider;
+  /** Ecosystem ID to which the wallet belongs */
+  ecosystemId?: string;
+}
+
+export interface AuthenticateInitResponse {
+  /**
+   * The challenge received from the `AcquireAuthTokenInit` endpoint
+   * Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint
+   */
+  challenge?: string;
+}
+
+export interface AuthenticateConfirmRequest {
+  /** The challenge received from the `AcquireAuthTokenInit` endpoint */
+  challenge?: string;
+  /**
+   * The response to the challenge. If using Email or Phone,
+   * this is the OTP code sent to the user's email or phone
+   */
+  response?: string;
+}
+
+export interface AuthenticateConfirmResponse {
+  /** Auth token for the wallet */
+  authToken?: string;
+}
+
 function createBaseSearchRequest(): SearchRequest {
   return { query: "", continuationToken: "" };
 }
@@ -160,7 +331,7 @@ export const SearchRequest = {
 };
 
 function createBaseSearchResponse(): SearchResponse {
-  return { items: [], hasMore: false, continuationToken: "" };
+  return { items: [], hasMoreResults: false, continuationToken: "" };
 }
 
 export const SearchResponse = {
@@ -173,8 +344,8 @@ export const SearchResponse = {
         writer.uint32(10).string(v!);
       }
     }
-    if (message.hasMore === true) {
-      writer.uint32(16).bool(message.hasMore);
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
     }
     if (
       message.continuationToken !== undefined &&
@@ -196,7 +367,7 @@ export const SearchResponse = {
           message.items!.push(reader.string());
           break;
         case 2:
-          message.hasMore = reader.bool();
+          message.hasMoreResults = reader.bool();
           break;
         case 4:
           message.continuationToken = reader.string();
@@ -214,7 +385,9 @@ export const SearchResponse = {
       items: Array.isArray(object?.items)
         ? object.items.map((e: any) => String(e))
         : [],
-      hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+      hasMoreResults: isSet(object.hasMoreResults)
+        ? Boolean(object.hasMoreResults)
+        : false,
       continuationToken: isSet(object.continuationToken)
         ? String(object.continuationToken)
         : "",
@@ -228,7 +401,8 @@ export const SearchResponse = {
     } else {
       obj.items = [];
     }
-    message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+    message.hasMoreResults !== undefined &&
+      (obj.hasMoreResults = message.hasMoreResults);
     message.continuationToken !== undefined &&
       (obj.continuationToken = message.continuationToken);
     return obj;
@@ -237,7 +411,7 @@ export const SearchResponse = {
   fromPartial(object: DeepPartial<SearchResponse>): SearchResponse {
     const message = createBaseSearchResponse();
     message.items = object.items?.map((e) => e) || [];
-    message.hasMore = object.hasMore ?? false;
+    message.hasMoreResults = object.hasMoreResults ?? false;
     message.continuationToken = object.continuationToken ?? "";
     return message;
   },
@@ -781,6 +955,1236 @@ export const DeleteWalletResponse = {
   },
 };
 
+function createBaseCreateWalletRequest(): CreateWalletRequest {
+  return { ecosystemId: "", description: "" };
+}
+
+export const CreateWalletRequest = {
+  encode(
+    message: CreateWalletRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      writer.uint32(10).string(message.ecosystemId);
+    }
+    if (message.description !== undefined && message.description !== "") {
+      writer.uint32(18).string(message.description);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateWalletRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateWalletRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.ecosystemId = reader.string();
+          break;
+        case 2:
+          message.description = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateWalletRequest {
+    return {
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+    };
+  },
+
+  toJSON(message: CreateWalletRequest): unknown {
+    const obj: any = {};
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<CreateWalletRequest>): CreateWalletRequest {
+    const message = createBaseCreateWalletRequest();
+    message.ecosystemId = object.ecosystemId ?? "";
+    message.description = object.description ?? "";
+    return message;
+  },
+};
+
+function createBaseCreateWalletResponse(): CreateWalletResponse {
+  return { walletId: "", authToken: "", tokenId: "" };
+}
+
+export const CreateWalletResponse = {
+  encode(
+    message: CreateWalletResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.walletId !== undefined && message.walletId !== "") {
+      writer.uint32(10).string(message.walletId);
+    }
+    if (message.authToken !== undefined && message.authToken !== "") {
+      writer.uint32(18).string(message.authToken);
+    }
+    if (message.tokenId !== undefined && message.tokenId !== "") {
+      writer.uint32(26).string(message.tokenId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): CreateWalletResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateWalletResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.walletId = reader.string();
+          break;
+        case 2:
+          message.authToken = reader.string();
+          break;
+        case 3:
+          message.tokenId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateWalletResponse {
+    return {
+      walletId: isSet(object.walletId) ? String(object.walletId) : "",
+      authToken: isSet(object.authToken) ? String(object.authToken) : "",
+      tokenId: isSet(object.tokenId) ? String(object.tokenId) : "",
+    };
+  },
+
+  toJSON(message: CreateWalletResponse): unknown {
+    const obj: any = {};
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.authToken !== undefined && (obj.authToken = message.authToken);
+    message.tokenId !== undefined && (obj.tokenId = message.tokenId);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<CreateWalletResponse>): CreateWalletResponse {
+    const message = createBaseCreateWalletResponse();
+    message.walletId = object.walletId ?? "";
+    message.authToken = object.authToken ?? "";
+    message.tokenId = object.tokenId ?? "";
+    return message;
+  },
+};
+
+function createBaseGenerateAuthTokenRequest(): GenerateAuthTokenRequest {
+  return { walletId: "", tokenDescription: "" };
+}
+
+export const GenerateAuthTokenRequest = {
+  encode(
+    message: GenerateAuthTokenRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.walletId !== undefined && message.walletId !== "") {
+      writer.uint32(10).string(message.walletId);
+    }
+    if (
+      message.tokenDescription !== undefined &&
+      message.tokenDescription !== ""
+    ) {
+      writer.uint32(18).string(message.tokenDescription);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GenerateAuthTokenRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGenerateAuthTokenRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.walletId = reader.string();
+          break;
+        case 2:
+          message.tokenDescription = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GenerateAuthTokenRequest {
+    return {
+      walletId: isSet(object.walletId) ? String(object.walletId) : "",
+      tokenDescription: isSet(object.tokenDescription)
+        ? String(object.tokenDescription)
+        : "",
+    };
+  },
+
+  toJSON(message: GenerateAuthTokenRequest): unknown {
+    const obj: any = {};
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.tokenDescription !== undefined &&
+      (obj.tokenDescription = message.tokenDescription);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<GenerateAuthTokenRequest>
+  ): GenerateAuthTokenRequest {
+    const message = createBaseGenerateAuthTokenRequest();
+    message.walletId = object.walletId ?? "";
+    message.tokenDescription = object.tokenDescription ?? "";
+    return message;
+  },
+};
+
+function createBaseGenerateAuthTokenResponse(): GenerateAuthTokenResponse {
+  return { tokenId: "", authToken: "" };
+}
+
+export const GenerateAuthTokenResponse = {
+  encode(
+    message: GenerateAuthTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.tokenId !== undefined && message.tokenId !== "") {
+      writer.uint32(10).string(message.tokenId);
+    }
+    if (message.authToken !== undefined && message.authToken !== "") {
+      writer.uint32(18).string(message.authToken);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GenerateAuthTokenResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGenerateAuthTokenResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.tokenId = reader.string();
+          break;
+        case 2:
+          message.authToken = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GenerateAuthTokenResponse {
+    return {
+      tokenId: isSet(object.tokenId) ? String(object.tokenId) : "",
+      authToken: isSet(object.authToken) ? String(object.authToken) : "",
+    };
+  },
+
+  toJSON(message: GenerateAuthTokenResponse): unknown {
+    const obj: any = {};
+    message.tokenId !== undefined && (obj.tokenId = message.tokenId);
+    message.authToken !== undefined && (obj.authToken = message.authToken);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<GenerateAuthTokenResponse>
+  ): GenerateAuthTokenResponse {
+    const message = createBaseGenerateAuthTokenResponse();
+    message.tokenId = object.tokenId ?? "";
+    message.authToken = object.authToken ?? "";
+    return message;
+  },
+};
+
+function createBaseGetWalletInfoRequest(): GetWalletInfoRequest {
+  return { walletId: "" };
+}
+
+export const GetWalletInfoRequest = {
+  encode(
+    message: GetWalletInfoRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.walletId !== undefined && message.walletId !== "") {
+      writer.uint32(10).string(message.walletId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GetWalletInfoRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetWalletInfoRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.walletId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetWalletInfoRequest {
+    return {
+      walletId: isSet(object.walletId) ? String(object.walletId) : "",
+    };
+  },
+
+  toJSON(message: GetWalletInfoRequest): unknown {
+    const obj: any = {};
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<GetWalletInfoRequest>): GetWalletInfoRequest {
+    const message = createBaseGetWalletInfoRequest();
+    message.walletId = object.walletId ?? "";
+    return message;
+  },
+};
+
+function createBaseGetWalletInfoResponse(): GetWalletInfoResponse {
+  return { wallet: undefined };
+}
+
+export const GetWalletInfoResponse = {
+  encode(
+    message: GetWalletInfoResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.wallet !== undefined) {
+      WalletConfiguration.encode(
+        message.wallet,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GetWalletInfoResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetWalletInfoResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.wallet = WalletConfiguration.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetWalletInfoResponse {
+    return {
+      wallet: isSet(object.wallet)
+        ? WalletConfiguration.fromJSON(object.wallet)
+        : undefined,
+    };
+  },
+
+  toJSON(message: GetWalletInfoResponse): unknown {
+    const obj: any = {};
+    message.wallet !== undefined &&
+      (obj.wallet = message.wallet
+        ? WalletConfiguration.toJSON(message.wallet)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<GetWalletInfoResponse>
+  ): GetWalletInfoResponse {
+    const message = createBaseGetWalletInfoResponse();
+    message.wallet =
+      object.wallet !== undefined && object.wallet !== null
+        ? WalletConfiguration.fromPartial(object.wallet)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseGetMyInfoRequest(): GetMyInfoRequest {
+  return {};
+}
+
+export const GetMyInfoRequest = {
+  encode(
+    _: GetMyInfoRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetMyInfoRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetMyInfoRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): GetMyInfoRequest {
+    return {};
+  },
+
+  toJSON(_: GetMyInfoRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: DeepPartial<GetMyInfoRequest>): GetMyInfoRequest {
+    const message = createBaseGetMyInfoRequest();
+    return message;
+  },
+};
+
+function createBaseGetMyInfoResponse(): GetMyInfoResponse {
+  return { wallet: undefined };
+}
+
+export const GetMyInfoResponse = {
+  encode(
+    message: GetMyInfoResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.wallet !== undefined) {
+      WalletConfiguration.encode(
+        message.wallet,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetMyInfoResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetMyInfoResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.wallet = WalletConfiguration.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetMyInfoResponse {
+    return {
+      wallet: isSet(object.wallet)
+        ? WalletConfiguration.fromJSON(object.wallet)
+        : undefined,
+    };
+  },
+
+  toJSON(message: GetMyInfoResponse): unknown {
+    const obj: any = {};
+    message.wallet !== undefined &&
+      (obj.wallet = message.wallet
+        ? WalletConfiguration.toJSON(message.wallet)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<GetMyInfoResponse>): GetMyInfoResponse {
+    const message = createBaseGetMyInfoResponse();
+    message.wallet =
+      object.wallet !== undefined && object.wallet !== null
+        ? WalletConfiguration.fromPartial(object.wallet)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseRevokeAuthTokenRequest(): RevokeAuthTokenRequest {
+  return { walletId: "", tokenId: "" };
+}
+
+export const RevokeAuthTokenRequest = {
+  encode(
+    message: RevokeAuthTokenRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.walletId !== undefined && message.walletId !== "") {
+      writer.uint32(10).string(message.walletId);
+    }
+    if (message.tokenId !== undefined && message.tokenId !== "") {
+      writer.uint32(18).string(message.tokenId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RevokeAuthTokenRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRevokeAuthTokenRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.walletId = reader.string();
+          break;
+        case 2:
+          message.tokenId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RevokeAuthTokenRequest {
+    return {
+      walletId: isSet(object.walletId) ? String(object.walletId) : "",
+      tokenId: isSet(object.tokenId) ? String(object.tokenId) : "",
+    };
+  },
+
+  toJSON(message: RevokeAuthTokenRequest): unknown {
+    const obj: any = {};
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.tokenId !== undefined && (obj.tokenId = message.tokenId);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<RevokeAuthTokenRequest>
+  ): RevokeAuthTokenRequest {
+    const message = createBaseRevokeAuthTokenRequest();
+    message.walletId = object.walletId ?? "";
+    message.tokenId = object.tokenId ?? "";
+    return message;
+  },
+};
+
+function createBaseRevokeAuthTokenResponse(): RevokeAuthTokenResponse {
+  return {};
+}
+
+export const RevokeAuthTokenResponse = {
+  encode(
+    _: RevokeAuthTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RevokeAuthTokenResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRevokeAuthTokenResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): RevokeAuthTokenResponse {
+    return {};
+  },
+
+  toJSON(_: RevokeAuthTokenResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<RevokeAuthTokenResponse>
+  ): RevokeAuthTokenResponse {
+    const message = createBaseRevokeAuthTokenResponse();
+    return message;
+  },
+};
+
+function createBaseListWalletsRequest(): ListWalletsRequest {
+  return { filter: "" };
+}
+
+export const ListWalletsRequest = {
+  encode(
+    message: ListWalletsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.filter !== undefined && message.filter !== "") {
+      writer.uint32(10).string(message.filter);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListWalletsRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListWalletsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.filter = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListWalletsRequest {
+    return {
+      filter: isSet(object.filter) ? String(object.filter) : "",
+    };
+  },
+
+  toJSON(message: ListWalletsRequest): unknown {
+    const obj: any = {};
+    message.filter !== undefined && (obj.filter = message.filter);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<ListWalletsRequest>): ListWalletsRequest {
+    const message = createBaseListWalletsRequest();
+    message.filter = object.filter ?? "";
+    return message;
+  },
+};
+
+function createBaseListWalletsResponse(): ListWalletsResponse {
+  return { wallets: [] };
+}
+
+export const ListWalletsResponse = {
+  encode(
+    message: ListWalletsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.wallets !== undefined && message.wallets.length !== 0) {
+      for (const v of message.wallets) {
+        WalletConfiguration.encode(v!, writer.uint32(10).fork()).ldelim();
+      }
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListWalletsResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListWalletsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.wallets!.push(
+            WalletConfiguration.decode(reader, reader.uint32())
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListWalletsResponse {
+    return {
+      wallets: Array.isArray(object?.wallets)
+        ? object.wallets.map((e: any) => WalletConfiguration.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: ListWalletsResponse): unknown {
+    const obj: any = {};
+    if (message.wallets) {
+      obj.wallets = message.wallets.map((e) =>
+        e ? WalletConfiguration.toJSON(e) : undefined
+      );
+    } else {
+      obj.wallets = [];
+    }
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<ListWalletsResponse>): ListWalletsResponse {
+    const message = createBaseListWalletsResponse();
+    message.wallets =
+      object.wallets?.map((e) => WalletConfiguration.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseAddExternalIdentityInitRequest(): AddExternalIdentityInitRequest {
+  return { identity: "", provider: 0 };
+}
+
+export const AddExternalIdentityInitRequest = {
+  encode(
+    message: AddExternalIdentityInitRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.identity !== undefined && message.identity !== "") {
+      writer.uint32(10).string(message.identity);
+    }
+    if (message.provider !== undefined && message.provider !== 0) {
+      writer.uint32(16).int32(message.provider);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AddExternalIdentityInitRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAddExternalIdentityInitRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.identity = reader.string();
+          break;
+        case 2:
+          message.provider = reader.int32() as any;
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AddExternalIdentityInitRequest {
+    return {
+      identity: isSet(object.identity) ? String(object.identity) : "",
+      provider: isSet(object.provider)
+        ? identityProviderFromJSON(object.provider)
+        : 0,
+    };
+  },
+
+  toJSON(message: AddExternalIdentityInitRequest): unknown {
+    const obj: any = {};
+    message.identity !== undefined && (obj.identity = message.identity);
+    message.provider !== undefined &&
+      (obj.provider = identityProviderToJSON(message.provider));
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AddExternalIdentityInitRequest>
+  ): AddExternalIdentityInitRequest {
+    const message = createBaseAddExternalIdentityInitRequest();
+    message.identity = object.identity ?? "";
+    message.provider = object.provider ?? 0;
+    return message;
+  },
+};
+
+function createBaseAddExternalIdentityInitResponse(): AddExternalIdentityInitResponse {
+  return { challenge: "" };
+}
+
+export const AddExternalIdentityInitResponse = {
+  encode(
+    message: AddExternalIdentityInitResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.challenge !== undefined && message.challenge !== "") {
+      writer.uint32(10).string(message.challenge);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AddExternalIdentityInitResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAddExternalIdentityInitResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.challenge = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AddExternalIdentityInitResponse {
+    return {
+      challenge: isSet(object.challenge) ? String(object.challenge) : "",
+    };
+  },
+
+  toJSON(message: AddExternalIdentityInitResponse): unknown {
+    const obj: any = {};
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AddExternalIdentityInitResponse>
+  ): AddExternalIdentityInitResponse {
+    const message = createBaseAddExternalIdentityInitResponse();
+    message.challenge = object.challenge ?? "";
+    return message;
+  },
+};
+
+function createBaseAddExternalIdentityConfirmRequest(): AddExternalIdentityConfirmRequest {
+  return { challenge: "", response: "" };
+}
+
+export const AddExternalIdentityConfirmRequest = {
+  encode(
+    message: AddExternalIdentityConfirmRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.challenge !== undefined && message.challenge !== "") {
+      writer.uint32(10).string(message.challenge);
+    }
+    if (message.response !== undefined && message.response !== "") {
+      writer.uint32(18).string(message.response);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AddExternalIdentityConfirmRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAddExternalIdentityConfirmRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.challenge = reader.string();
+          break;
+        case 2:
+          message.response = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AddExternalIdentityConfirmRequest {
+    return {
+      challenge: isSet(object.challenge) ? String(object.challenge) : "",
+      response: isSet(object.response) ? String(object.response) : "",
+    };
+  },
+
+  toJSON(message: AddExternalIdentityConfirmRequest): unknown {
+    const obj: any = {};
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.response !== undefined && (obj.response = message.response);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AddExternalIdentityConfirmRequest>
+  ): AddExternalIdentityConfirmRequest {
+    const message = createBaseAddExternalIdentityConfirmRequest();
+    message.challenge = object.challenge ?? "";
+    message.response = object.response ?? "";
+    return message;
+  },
+};
+
+function createBaseAddExternalIdentityConfirmResponse(): AddExternalIdentityConfirmResponse {
+  return {};
+}
+
+export const AddExternalIdentityConfirmResponse = {
+  encode(
+    _: AddExternalIdentityConfirmResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AddExternalIdentityConfirmResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAddExternalIdentityConfirmResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): AddExternalIdentityConfirmResponse {
+    return {};
+  },
+
+  toJSON(_: AddExternalIdentityConfirmResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<AddExternalIdentityConfirmResponse>
+  ): AddExternalIdentityConfirmResponse {
+    const message = createBaseAddExternalIdentityConfirmResponse();
+    return message;
+  },
+};
+
+function createBaseAuthenticateInitRequest(): AuthenticateInitRequest {
+  return { identity: "", provider: 0, ecosystemId: "" };
+}
+
+export const AuthenticateInitRequest = {
+  encode(
+    message: AuthenticateInitRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.identity !== undefined && message.identity !== "") {
+      writer.uint32(10).string(message.identity);
+    }
+    if (message.provider !== undefined && message.provider !== 0) {
+      writer.uint32(16).int32(message.provider);
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      writer.uint32(26).string(message.ecosystemId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthenticateInitRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthenticateInitRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.identity = reader.string();
+          break;
+        case 2:
+          message.provider = reader.int32() as any;
+          break;
+        case 3:
+          message.ecosystemId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthenticateInitRequest {
+    return {
+      identity: isSet(object.identity) ? String(object.identity) : "",
+      provider: isSet(object.provider)
+        ? identityProviderFromJSON(object.provider)
+        : 0,
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+    };
+  },
+
+  toJSON(message: AuthenticateInitRequest): unknown {
+    const obj: any = {};
+    message.identity !== undefined && (obj.identity = message.identity);
+    message.provider !== undefined &&
+      (obj.provider = identityProviderToJSON(message.provider));
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AuthenticateInitRequest>
+  ): AuthenticateInitRequest {
+    const message = createBaseAuthenticateInitRequest();
+    message.identity = object.identity ?? "";
+    message.provider = object.provider ?? 0;
+    message.ecosystemId = object.ecosystemId ?? "";
+    return message;
+  },
+};
+
+function createBaseAuthenticateInitResponse(): AuthenticateInitResponse {
+  return { challenge: "" };
+}
+
+export const AuthenticateInitResponse = {
+  encode(
+    message: AuthenticateInitResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.challenge !== undefined && message.challenge !== "") {
+      writer.uint32(10).string(message.challenge);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthenticateInitResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthenticateInitResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.challenge = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthenticateInitResponse {
+    return {
+      challenge: isSet(object.challenge) ? String(object.challenge) : "",
+    };
+  },
+
+  toJSON(message: AuthenticateInitResponse): unknown {
+    const obj: any = {};
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AuthenticateInitResponse>
+  ): AuthenticateInitResponse {
+    const message = createBaseAuthenticateInitResponse();
+    message.challenge = object.challenge ?? "";
+    return message;
+  },
+};
+
+function createBaseAuthenticateConfirmRequest(): AuthenticateConfirmRequest {
+  return { challenge: "", response: "" };
+}
+
+export const AuthenticateConfirmRequest = {
+  encode(
+    message: AuthenticateConfirmRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.challenge !== undefined && message.challenge !== "") {
+      writer.uint32(10).string(message.challenge);
+    }
+    if (message.response !== undefined && message.response !== "") {
+      writer.uint32(18).string(message.response);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthenticateConfirmRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthenticateConfirmRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.challenge = reader.string();
+          break;
+        case 2:
+          message.response = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthenticateConfirmRequest {
+    return {
+      challenge: isSet(object.challenge) ? String(object.challenge) : "",
+      response: isSet(object.response) ? String(object.response) : "",
+    };
+  },
+
+  toJSON(message: AuthenticateConfirmRequest): unknown {
+    const obj: any = {};
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.response !== undefined && (obj.response = message.response);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AuthenticateConfirmRequest>
+  ): AuthenticateConfirmRequest {
+    const message = createBaseAuthenticateConfirmRequest();
+    message.challenge = object.challenge ?? "";
+    message.response = object.response ?? "";
+    return message;
+  },
+};
+
+function createBaseAuthenticateConfirmResponse(): AuthenticateConfirmResponse {
+  return { authToken: "" };
+}
+
+export const AuthenticateConfirmResponse = {
+  encode(
+    message: AuthenticateConfirmResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.authToken !== undefined && message.authToken !== "") {
+      writer.uint32(10).string(message.authToken);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthenticateConfirmResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthenticateConfirmResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.authToken = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthenticateConfirmResponse {
+    return {
+      authToken: isSet(object.authToken) ? String(object.authToken) : "",
+    };
+  },
+
+  toJSON(message: AuthenticateConfirmResponse): unknown {
+    const obj: any = {};
+    message.authToken !== undefined && (obj.authToken = message.authToken);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AuthenticateConfirmResponse>
+  ): AuthenticateConfirmResponse {
+    const message = createBaseAuthenticateConfirmResponse();
+    message.authToken = object.authToken ?? "";
+    return message;
+  },
+};
+
 /** Service for managing wallets */
 export type UniversalWalletDefinition = typeof UniversalWalletDefinition;
 export const UniversalWalletDefinition = {
@@ -838,6 +2242,110 @@ export const UniversalWalletDefinition = {
       requestType: DeleteWalletRequest,
       requestStream: false,
       responseType: DeleteWalletResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Create a new wallet and generate an auth token for access */
+    createWallet: {
+      name: "CreateWallet",
+      requestType: CreateWalletRequest,
+      requestStream: false,
+      responseType: CreateWalletResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Retrieve wallet details and configuration */
+    getWalletInfo: {
+      name: "GetWalletInfo",
+      requestType: GetWalletInfoRequest,
+      requestStream: false,
+      responseType: GetWalletInfoResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Retrieve wallet details and configuration about the currently authenticated wallet */
+    getMyInfo: {
+      name: "GetMyInfo",
+      requestType: GetMyInfoRequest,
+      requestStream: false,
+      responseType: GetMyInfoResponse,
+      responseStream: false,
+      options: {},
+    },
+    /**
+     * Generate new token for a given wallet and add it to the collection of known auth tokens.
+     * This endpoint requires authentication and will return a new token ID and auth token.
+     * Use this endpoint if you want to authorize another device, without having to share your
+     * existing auth token.
+     */
+    generateAuthToken: {
+      name: "GenerateAuthToken",
+      requestType: GenerateAuthTokenRequest,
+      requestStream: false,
+      responseType: GenerateAuthTokenResponse,
+      responseStream: false,
+      options: {},
+    },
+    /**
+     * Revokes a previously issued auth token and updates the collection of known auth tokens.
+     * This endpoint requires authentication.
+     */
+    revokeAuthToken: {
+      name: "RevokeAuthToken",
+      requestType: RevokeAuthTokenRequest,
+      requestStream: false,
+      responseType: RevokeAuthTokenResponse,
+      responseStream: false,
+      options: {},
+    },
+    /**
+     * Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+     * This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+     */
+    addExternalIdentityInit: {
+      name: "AddExternalIdentityInit",
+      requestType: AddExternalIdentityInitRequest,
+      requestStream: false,
+      responseType: AddExternalIdentityInitResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Confirm identity added to the current wallet using `AddIdentity` */
+    addExternalIdentityConfirm: {
+      name: "AddExternalIdentityConfirm",
+      requestType: AddExternalIdentityConfirmRequest,
+      requestStream: false,
+      responseType: AddExternalIdentityConfirmResponse,
+      responseStream: false,
+      options: {},
+    },
+    /**
+     * Sign-in to an already existing wallet, using an identity added that was previously registered
+     * This endpoint does not require authentication, and will return a challenge to be signed or verified
+     */
+    authenticateInit: {
+      name: "AuthenticateInit",
+      requestType: AuthenticateInitRequest,
+      requestStream: false,
+      responseType: AuthenticateInitResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Confirm sign-in to an already existing wallet and return authentication token */
+    authenticateConfirm: {
+      name: "AuthenticateConfirm",
+      requestType: AuthenticateConfirmRequest,
+      requestStream: false,
+      responseType: AuthenticateConfirmResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** List all wallets in the ecosystem */
+    listWallets: {
+      name: "ListWallets",
+      requestType: ListWalletsRequest,
+      requestStream: false,
+      responseType: ListWalletsResponse,
       responseStream: false,
       options: {},
     },
