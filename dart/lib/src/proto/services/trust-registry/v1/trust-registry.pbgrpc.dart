@@ -50,12 +50,6 @@ class TrustRegistryClient extends $grpc.Client {
       ($4.GetMembershipStatusRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $4.GetMembershipStatusResponse.fromBuffer(value));
-  static final _$fetchData =
-      $grpc.ClientMethod<$4.FetchDataRequest, $4.FetchDataResponse>(
-          '/services.trustregistry.v1.TrustRegistry/FetchData',
-          ($4.FetchDataRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $4.FetchDataResponse.fromBuffer(value));
 
   TrustRegistryClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -96,14 +90,6 @@ class TrustRegistryClient extends $grpc.Client {
       $4.GetMembershipStatusRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMembershipStatus, request, options: options);
-  }
-
-  $grpc.ResponseStream<$4.FetchDataResponse> fetchData(
-      $4.FetchDataRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createStreamingCall(
-        _$fetchData, $async.Stream.fromIterable([request]),
-        options: options);
   }
 }
 
@@ -165,13 +151,6 @@ abstract class TrustRegistryServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $4.GetMembershipStatusRequest.fromBuffer(value),
         ($4.GetMembershipStatusResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.FetchDataRequest, $4.FetchDataResponse>(
-        'FetchData',
-        fetchData_Pre,
-        false,
-        true,
-        ($core.List<$core.int> value) => $4.FetchDataRequest.fromBuffer(value),
-        ($4.FetchDataResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.AddFrameworkResponse> addFramework_Pre(
@@ -210,11 +189,6 @@ abstract class TrustRegistryServiceBase extends $grpc.Service {
     return getMembershipStatus(call, await request);
   }
 
-  $async.Stream<$4.FetchDataResponse> fetchData_Pre($grpc.ServiceCall call,
-      $async.Future<$4.FetchDataRequest> request) async* {
-    yield* fetchData(call, await request);
-  }
-
   $async.Future<$4.AddFrameworkResponse> addFramework(
       $grpc.ServiceCall call, $4.AddFrameworkRequest request);
   $async.Future<$4.RemoveFrameworkResponse> removeFramework(
@@ -227,6 +201,4 @@ abstract class TrustRegistryServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.UnregisterMemberRequest request);
   $async.Future<$4.GetMembershipStatusResponse> getMembershipStatus(
       $grpc.ServiceCall call, $4.GetMembershipStatusRequest request);
-  $async.Stream<$4.FetchDataResponse> fetchData(
-      $grpc.ServiceCall call, $4.FetchDataRequest request);
 }

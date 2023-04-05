@@ -40,11 +40,11 @@ public interface SearchRegistryResponseOrBuilder
    * Whether more data is available to fetch for query
    * </pre>
    *
-   * <code>bool has_more = 2;</code>
+   * <code>bool has_more_results = 2;</code>
    *
-   * @return The hasMore.
+   * @return The hasMoreResults.
    */
-  boolean getHasMore();
+  boolean getHasMoreResults();
 
   /**
    *

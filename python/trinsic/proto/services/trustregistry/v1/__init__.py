@@ -4,7 +4,6 @@
 from dataclasses import dataclass
 from typing import (
     TYPE_CHECKING,
-    AsyncIterator,
     Dict,
     Optional,
 )
@@ -96,7 +95,7 @@ class SearchRegistryResponse(betterproto.Message):
     items_json: str = betterproto.string_field(1)
     """JSON string containing array of resultant objects"""
 
-    has_more: bool = betterproto.bool_field(2)
+    has_more_results: bool = betterproto.bool_field(2)
     """Whether more data is available to fetch for query"""
 
     continuation_token: str = betterproto.string_field(4)
@@ -225,23 +224,6 @@ class GetMembershipStatusResponse(betterproto.Message):
     """Status of member for given credential schema"""
 
 
-@dataclass(eq=False, repr=False)
-class FetchDataRequest(betterproto.Message):
-    """Not implemented."""
-
-    governance_framework_uri: str = betterproto.string_field(1)
-    query: str = betterproto.string_field(2)
-
-
-@dataclass(eq=False, repr=False)
-class FetchDataResponse(betterproto.Message):
-    """Not implemented."""
-
-    response_json: str = betterproto.string_field(1)
-    has_more_results: bool = betterproto.bool_field(2)
-    continuation_token: str = betterproto.string_field(3)
-
-
 class TrustRegistryStub(betterproto.ServiceStub):
     async def add_framework(
         self,
@@ -339,23 +321,6 @@ class TrustRegistryStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def fetch_data(
-        self,
-        fetch_data_request: "FetchDataRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> AsyncIterator["FetchDataResponse"]:
-        async for response in self._unary_stream(
-            "/services.trustregistry.v1.TrustRegistry/FetchData",
-            fetch_data_request,
-            FetchDataResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        ):
-            yield response
-
 
 class TrustRegistryBase(ServiceBase):
     async def add_framework(
@@ -388,11 +353,6 @@ class TrustRegistryBase(ServiceBase):
     ) -> "GetMembershipStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def fetch_data(
-        self, fetch_data_request: "FetchDataRequest"
-    ) -> AsyncIterator["FetchDataResponse"]:
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def __rpc_add_framework(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.add_framework(request)
@@ -422,14 +382,6 @@ class TrustRegistryBase(ServiceBase):
         request = await stream.recv_message()
         response = await self.get_membership_status(request)
         await stream.send_message(response)
-
-    async def __rpc_fetch_data(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        await self._call_rpc_handler_server_stream(
-            self.fetch_data,
-            stream,
-            request,
-        )
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
@@ -468,11 +420,5 @@ class TrustRegistryBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetMembershipStatusRequest,
                 GetMembershipStatusResponse,
-            ),
-            "/services.trustregistry.v1.TrustRegistry/FetchData": grpclib.const.Handler(
-                self.__rpc_fetch_data,
-                grpclib.const.Cardinality.UNARY_STREAM,
-                FetchDataRequest,
-                FetchDataResponse,
             ),
         }

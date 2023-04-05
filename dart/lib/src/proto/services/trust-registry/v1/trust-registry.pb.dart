@@ -455,7 +455,7 @@ class SearchRegistryResponse extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'hasMore')
+            : 'hasMoreResults')
     ..aOS(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -466,15 +466,15 @@ class SearchRegistryResponse extends $pb.GeneratedMessage {
   SearchRegistryResponse._() : super();
   factory SearchRegistryResponse({
     $core.String? itemsJson,
-    $core.bool? hasMore,
+    $core.bool? hasMoreResults,
     $core.String? continuationToken,
   }) {
     final _result = create();
     if (itemsJson != null) {
       _result.itemsJson = itemsJson;
     }
-    if (hasMore != null) {
-      _result.hasMore = hasMore;
+    if (hasMoreResults != null) {
+      _result.hasMoreResults = hasMoreResults;
     }
     if (continuationToken != null) {
       _result.continuationToken = continuationToken;
@@ -523,16 +523,16 @@ class SearchRegistryResponse extends $pb.GeneratedMessage {
   void clearItemsJson() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get hasMore => $_getBF(1);
+  $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
-  set hasMore($core.bool v) {
+  set hasMoreResults($core.bool v) {
     $_setBool(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasHasMore() => $_has(1);
+  $core.bool hasHasMoreResults() => $_has(1);
   @$pb.TagNumber(2)
-  void clearHasMore() => clearField(2);
+  void clearHasMoreResults() => clearField(2);
 
   @$pb.TagNumber(4)
   $core.String get continuationToken => $_getSZ(2);
@@ -1309,201 +1309,4 @@ class GetMembershipStatusResponse extends $pb.GeneratedMessage {
   $core.bool hasStatus() => $_has(0);
   @$pb.TagNumber(1)
   void clearStatus() => clearField(1);
-}
-
-class FetchDataRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'FetchDataRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'governanceFrameworkUri')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'query')
-    ..hasRequiredFields = false;
-
-  FetchDataRequest._() : super();
-  factory FetchDataRequest({
-    $core.String? governanceFrameworkUri,
-    $core.String? query,
-  }) {
-    final _result = create();
-    if (governanceFrameworkUri != null) {
-      _result.governanceFrameworkUri = governanceFrameworkUri;
-    }
-    if (query != null) {
-      _result.query = query;
-    }
-    return _result;
-  }
-  factory FetchDataRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory FetchDataRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  FetchDataRequest clone() => FetchDataRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  FetchDataRequest copyWith(void Function(FetchDataRequest) updates) =>
-      super.copyWith((message) => updates(message as FetchDataRequest))
-          as FetchDataRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static FetchDataRequest create() => FetchDataRequest._();
-  FetchDataRequest createEmptyInstance() => create();
-  static $pb.PbList<FetchDataRequest> createRepeated() =>
-      $pb.PbList<FetchDataRequest>();
-  @$core.pragma('dart2js:noInline')
-  static FetchDataRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<FetchDataRequest>(create);
-  static FetchDataRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get governanceFrameworkUri => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set governanceFrameworkUri($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasGovernanceFrameworkUri() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearGovernanceFrameworkUri() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get query => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set query($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasQuery() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearQuery() => clearField(2);
-}
-
-class FetchDataResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'FetchDataResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'responseJson')
-    ..aOB(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'hasMoreResults')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'continuationToken')
-    ..hasRequiredFields = false;
-
-  FetchDataResponse._() : super();
-  factory FetchDataResponse({
-    $core.String? responseJson,
-    $core.bool? hasMoreResults,
-    $core.String? continuationToken,
-  }) {
-    final _result = create();
-    if (responseJson != null) {
-      _result.responseJson = responseJson;
-    }
-    if (hasMoreResults != null) {
-      _result.hasMoreResults = hasMoreResults;
-    }
-    if (continuationToken != null) {
-      _result.continuationToken = continuationToken;
-    }
-    return _result;
-  }
-  factory FetchDataResponse.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory FetchDataResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  FetchDataResponse clone() => FetchDataResponse()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  FetchDataResponse copyWith(void Function(FetchDataResponse) updates) =>
-      super.copyWith((message) => updates(message as FetchDataResponse))
-          as FetchDataResponse; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static FetchDataResponse create() => FetchDataResponse._();
-  FetchDataResponse createEmptyInstance() => create();
-  static $pb.PbList<FetchDataResponse> createRepeated() =>
-      $pb.PbList<FetchDataResponse>();
-  @$core.pragma('dart2js:noInline')
-  static FetchDataResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<FetchDataResponse>(create);
-  static FetchDataResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get responseJson => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set responseJson($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasResponseJson() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearResponseJson() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.bool get hasMoreResults => $_getBF(1);
-  @$pb.TagNumber(2)
-  set hasMoreResults($core.bool v) {
-    $_setBool(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasHasMoreResults() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearHasMoreResults() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get continuationToken => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set continuationToken($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasContinuationToken() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearContinuationToken() => clearField(3);
 }

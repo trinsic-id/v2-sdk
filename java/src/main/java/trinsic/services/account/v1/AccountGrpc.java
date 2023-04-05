@@ -295,6 +295,7 @@ public final class AccountGrpc {
      * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
+    @java.lang.Deprecated
     public void login(
         trinsic.services.account.v1.LoginRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.LoginResponse> responseObserver) {
@@ -308,6 +309,7 @@ public final class AccountGrpc {
      * Finalize login flow with two-factor confirmation code
      * </pre>
      */
+    @java.lang.Deprecated
     public void loginConfirm(
         trinsic.services.account.v1.LoginConfirmRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.LoginConfirmResponse>
@@ -323,6 +325,7 @@ public final class AccountGrpc {
      * Get account information
      * </pre>
      */
+    @java.lang.Deprecated
     public void info(
         trinsic.services.account.v1.AccountInfoRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountInfoResponse>
@@ -417,6 +420,7 @@ public final class AccountGrpc {
      * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
+    @java.lang.Deprecated
     public void login(
         trinsic.services.account.v1.LoginRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.LoginResponse> responseObserver) {
@@ -431,6 +435,7 @@ public final class AccountGrpc {
      * Finalize login flow with two-factor confirmation code
      * </pre>
      */
+    @java.lang.Deprecated
     public void loginConfirm(
         trinsic.services.account.v1.LoginConfirmRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.LoginConfirmResponse>
@@ -448,6 +453,7 @@ public final class AccountGrpc {
      * Get account information
      * </pre>
      */
+    @java.lang.Deprecated
     public void info(
         trinsic.services.account.v1.AccountInfoRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountInfoResponse>
@@ -507,6 +513,7 @@ public final class AccountGrpc {
      * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
+    @java.lang.Deprecated
     public trinsic.services.account.v1.LoginResponse login(
         trinsic.services.account.v1.LoginRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -520,6 +527,7 @@ public final class AccountGrpc {
      * Finalize login flow with two-factor confirmation code
      * </pre>
      */
+    @java.lang.Deprecated
     public trinsic.services.account.v1.LoginConfirmResponse loginConfirm(
         trinsic.services.account.v1.LoginConfirmRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -533,6 +541,7 @@ public final class AccountGrpc {
      * Get account information
      * </pre>
      */
+    @java.lang.Deprecated
     public trinsic.services.account.v1.AccountInfoResponse info(
         trinsic.services.account.v1.AccountInfoRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -587,6 +596,7 @@ public final class AccountGrpc {
      * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.account.v1.LoginResponse>
         login(trinsic.services.account.v1.LoginRequest request) {
@@ -601,6 +611,7 @@ public final class AccountGrpc {
      * Finalize login flow with two-factor confirmation code
      * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.account.v1.LoginConfirmResponse>
         loginConfirm(trinsic.services.account.v1.LoginConfirmRequest request) {
@@ -615,6 +626,7 @@ public final class AccountGrpc {
      * Get account information
      * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.account.v1.AccountInfoResponse>
         info(trinsic.services.account.v1.AccountInfoRequest request) {

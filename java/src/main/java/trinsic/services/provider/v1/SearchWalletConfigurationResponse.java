@@ -115,8 +115,8 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
     return results_.get(index);
   }
 
-  public static final int HAS_MORE_FIELD_NUMBER = 2;
-  private boolean hasMore_;
+  public static final int HAS_MORE_RESULTS_FIELD_NUMBER = 2;
+  private boolean hasMoreResults_;
   /**
    *
    *
@@ -124,13 +124,13 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
    * Whether more results are available for this query via `continuation_token`
    * </pre>
    *
-   * <code>bool has_more = 2;</code>
+   * <code>bool has_more_results = 2;</code>
    *
-   * @return The hasMore.
+   * @return The hasMoreResults.
    */
   @java.lang.Override
-  public boolean getHasMore() {
-    return hasMore_;
+  public boolean getHasMoreResults() {
+    return hasMoreResults_;
   }
 
   public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 4;
@@ -199,8 +199,8 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
     for (int i = 0; i < results_.size(); i++) {
       output.writeMessage(1, results_.get(i));
     }
-    if (hasMore_ != false) {
-      output.writeBool(2, hasMore_);
+    if (hasMoreResults_ != false) {
+      output.writeBool(2, hasMoreResults_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, continuationToken_);
@@ -217,8 +217,8 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
     for (int i = 0; i < results_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, results_.get(i));
     }
-    if (hasMore_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, hasMore_);
+    if (hasMoreResults_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, hasMoreResults_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
@@ -240,7 +240,7 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
         (trinsic.services.provider.v1.SearchWalletConfigurationResponse) obj;
 
     if (!getResultsList().equals(other.getResultsList())) return false;
-    if (getHasMore() != other.getHasMore()) return false;
+    if (getHasMoreResults() != other.getHasMoreResults()) return false;
     if (!getContinuationToken().equals(other.getContinuationToken())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -257,8 +257,8 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
       hash = (37 * hash) + RESULTS_FIELD_NUMBER;
       hash = (53 * hash) + getResultsList().hashCode();
     }
-    hash = (37 * hash) + HAS_MORE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getHasMore());
+    hash = (37 * hash) + HAS_MORE_RESULTS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getHasMoreResults());
     hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getContinuationToken().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
@@ -399,7 +399,7 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
         resultsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000001);
-      hasMore_ = false;
+      hasMoreResults_ = false;
 
       continuationToken_ = "";
 
@@ -441,7 +441,7 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
       } else {
         result.results_ = resultsBuilder_.build();
       }
-      result.hasMore_ = hasMore_;
+      result.hasMoreResults_ = hasMoreResults_;
       result.continuationToken_ = continuationToken_;
       onBuilt();
       return result;
@@ -521,8 +521,8 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
           }
         }
       }
-      if (other.getHasMore() != false) {
-        setHasMore(other.getHasMore());
+      if (other.getHasMoreResults() != false) {
+        setHasMoreResults(other.getHasMoreResults());
       }
       if (!other.getContinuationToken().isEmpty()) {
         continuationToken_ = other.continuationToken_;
@@ -570,7 +570,7 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
               } // case 10
             case 16:
               {
-                hasMore_ = input.readBool();
+                hasMoreResults_ = input.readBool();
 
                 break;
               } // case 16
@@ -951,7 +951,7 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
       return resultsBuilder_;
     }
 
-    private boolean hasMore_;
+    private boolean hasMoreResults_;
     /**
      *
      *
@@ -959,13 +959,13 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
      * Whether more results are available for this query via `continuation_token`
      * </pre>
      *
-     * <code>bool has_more = 2;</code>
+     * <code>bool has_more_results = 2;</code>
      *
-     * @return The hasMore.
+     * @return The hasMoreResults.
      */
     @java.lang.Override
-    public boolean getHasMore() {
-      return hasMore_;
+    public boolean getHasMoreResults() {
+      return hasMoreResults_;
     }
     /**
      *
@@ -974,14 +974,14 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
      * Whether more results are available for this query via `continuation_token`
      * </pre>
      *
-     * <code>bool has_more = 2;</code>
+     * <code>bool has_more_results = 2;</code>
      *
-     * @param value The hasMore to set.
+     * @param value The hasMoreResults to set.
      * @return This builder for chaining.
      */
-    public Builder setHasMore(boolean value) {
+    public Builder setHasMoreResults(boolean value) {
 
-      hasMore_ = value;
+      hasMoreResults_ = value;
       onChanged();
       return this;
     }
@@ -992,13 +992,13 @@ public final class SearchWalletConfigurationResponse extends com.google.protobuf
      * Whether more results are available for this query via `continuation_token`
      * </pre>
      *
-     * <code>bool has_more = 2;</code>
+     * <code>bool has_more_results = 2;</code>
      *
      * @return This builder for chaining.
      */
-    public Builder clearHasMore() {
+    public Builder clearHasMoreResults() {
 
-      hasMore_ = false;
+      hasMoreResults_ = false;
       onChanged();
       return this;
     }

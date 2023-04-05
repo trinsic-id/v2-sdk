@@ -67,11 +67,11 @@ public interface SearchWalletConfigurationResponseOrBuilder
    * Whether more results are available for this query via `continuation_token`
    * </pre>
    *
-   * <code>bool has_more = 2;</code>
+   * <code>bool has_more_results = 2;</code>
    *
-   * @return The hasMore.
+   * @return The hasMoreResults.
    */
-  boolean getHasMore();
+  boolean getHasMoreResults();
 
   /**
    *

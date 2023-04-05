@@ -33,10 +33,13 @@ type AccountClient interface {
 	// Deprecated: Do not use.
 	// Sign in to an already existing account
 	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
+	// Deprecated: Do not use.
 	// Begin login flow for specified account, creating one if it does not already exist
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	// Deprecated: Do not use.
 	// Finalize login flow with two-factor confirmation code
 	LoginConfirm(ctx context.Context, in *LoginConfirmRequest, opts ...grpc.CallOption) (*LoginConfirmResponse, error)
+	// Deprecated: Do not use.
 	// Get account information
 	Info(ctx context.Context, in *AccountInfoRequest, opts ...grpc.CallOption) (*AccountInfoResponse, error)
 	// Authorize Ecosystem to receive webhook events
@@ -61,6 +64,7 @@ func (c *accountClient) SignIn(ctx context.Context, in *SignInRequest, opts ...g
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *accountClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	out := new(LoginResponse)
 	err := c.cc.Invoke(ctx, Account_Login_FullMethodName, in, out, opts...)
@@ -70,6 +74,7 @@ func (c *accountClient) Login(ctx context.Context, in *LoginRequest, opts ...grp
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *accountClient) LoginConfirm(ctx context.Context, in *LoginConfirmRequest, opts ...grpc.CallOption) (*LoginConfirmResponse, error) {
 	out := new(LoginConfirmResponse)
 	err := c.cc.Invoke(ctx, Account_LoginConfirm_FullMethodName, in, out, opts...)
@@ -79,6 +84,7 @@ func (c *accountClient) LoginConfirm(ctx context.Context, in *LoginConfirmReques
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *accountClient) Info(ctx context.Context, in *AccountInfoRequest, opts ...grpc.CallOption) (*AccountInfoResponse, error) {
 	out := new(AccountInfoResponse)
 	err := c.cc.Invoke(ctx, Account_Info_FullMethodName, in, out, opts...)
@@ -104,10 +110,13 @@ type AccountServer interface {
 	// Deprecated: Do not use.
 	// Sign in to an already existing account
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
+	// Deprecated: Do not use.
 	// Begin login flow for specified account, creating one if it does not already exist
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	// Deprecated: Do not use.
 	// Finalize login flow with two-factor confirmation code
 	LoginConfirm(context.Context, *LoginConfirmRequest) (*LoginConfirmResponse, error)
+	// Deprecated: Do not use.
 	// Get account information
 	Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error)
 	// Authorize Ecosystem to receive webhook events
