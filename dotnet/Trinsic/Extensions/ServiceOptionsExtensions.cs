@@ -5,10 +5,6 @@ namespace Trinsic.Services.Common.V1;
 
 public static class ServiceOptionsExtensions
 {
-    public static ITrinsicBuilder UseInMemoryTokenProvider(this ITrinsicBuilder builder) {
-        builder.Services.AddSingleton<ITokenProvider, MemoryTokenProvider>();
-        return builder;
-    }
     public static string FormatUrl(this ServiceOptions options) {
         return $"{(options.ServerUseTls ? "https" : "http")}://{options.ServerEndpoint}:{options.ServerPort}";
     }

@@ -15,18 +15,6 @@ public class TrustRegistryService : ServiceBase
         Client = new(Channel);
     }
 
-    public TrustRegistryService() {
-        Client = new(Channel);
-    }
-
-    internal TrustRegistryService(ITokenProvider tokenProvider)
-        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) { }
-
-    internal TrustRegistryService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
-        Client = new(Channel);
-    }
-
     private TrustRegistry.TrustRegistryClient Client { get; }
 
     /// <summary>

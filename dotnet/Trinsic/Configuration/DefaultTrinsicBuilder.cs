@@ -13,8 +13,5 @@ public class DefaultTrinsicBuilder : ITrinsicBuilder
     public IServiceCollection Services { get; }
 
     /// <inheritdoc/>
-    public bool TokenPersistenceEnabled { get; set; } = true;
-
-    /// <inheritdoc/>
     public ServiceOptions ServiceOptions { get; set; }
 }

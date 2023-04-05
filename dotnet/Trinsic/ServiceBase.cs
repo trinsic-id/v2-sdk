@@ -7,7 +7,6 @@ using Trinsic.Services.Common.V1;
 using Trinsic.Services.Account.V1;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
-using Okapi.Metadata;
 using Trinsic.Sdk.Options.V1;
 #if __BROWSER__
 using System.Net.Http;
@@ -24,24 +23,12 @@ public abstract class ServiceBase
     internal const int DefaultServerPort = 443;
     internal const string DefaultServerEndpoint = "prod.trinsic.cloud";
 
-    protected internal readonly ITokenProvider TokenProvider;
-
     protected internal ServiceBase() : this(new()) { }
 
     protected internal ServiceBase(ServiceOptions options) {
         Options = options;
         EnsureOptionDefaults();
         Channel = CreateChannel(Options);
-
-#if __IOS__
-        TokenProvider = KeyChainTokenProvider.StaticInstance;
-#else
-        TokenProvider = FileTokenProvider.StaticInstance;
-#endif
-    }
-
-    protected internal ServiceBase(ServiceOptions options, ITokenProvider tokenProvider) : this(options) {
-        TokenProvider = tokenProvider;
     }
 
     private void EnsureOptionDefaults() {
@@ -59,8 +46,6 @@ public abstract class ServiceBase
 #endif
     }
 
-    private readonly ISecurityProvider _securityProvider = new OberonSecurityProvider();
-
     /// <summary>
     /// Gets the options set on this service.
     /// </summary>
@@ -72,47 +57,23 @@ public abstract class ServiceBase
     /// </summary>
     protected GrpcChannel Channel { get; }
 
-    private MetadataResponse? _okapiMetadata;
-    /// <summary>
-    /// The cached metadata of the Okapi library being used.
-    /// </summary>
-    private MetadataResponse CachedOkapiMetadata
-    {
-        get
-        {
-            _okapiMetadata ??= OkapiMetadata.GetMetadata();
-            return _okapiMetadata;
-        }
-    }
-
     /// <summary>
     /// Create call metadata by setting authentication and version headers
     /// </summary>
     /// <param name="request">Protobuf request message to create headers for</param>
     /// <returns></returns>
-    protected async Task<Metadata> BuildMetadataAsync(IMessage? request = null) {
+    protected Task<Metadata> BuildMetadataAsync(IMessage? request = null) {
         var headers = new Metadata() {
             {"TrinsicSDKLanguage", "dotnet"},
-            {"TrinsicSDKVersion", GetSdkVersion()},
-            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
+            {"TrinsicSDKVersion", GetSdkVersion()}
         };
 
-        // If no authentication needed, return early
-        if (request == null)
-            return headers;
-
-        // Build Authentication header
-        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken)
-            ? await TokenProvider.GetAsync()
-            : Options.AuthToken;
-
-        if (authToken is null)
-            throw new("Cannot call authenticated endpoint before signing in");
-
-        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
-
-        headers.Add("Authorization", await _securityProvider.GetAuthHeaderAsync(profile, request));
-        return headers;
+        // Build authentication header
+        if (string.IsNullOrWhiteSpace(Options.AuthToken))
+        {
+            headers.Add("Authorization", $"Bearer {Options.AuthToken}");
+        }
+        return Task.FromResult(headers);
     }
 
     /// <summary>
@@ -123,25 +84,14 @@ public abstract class ServiceBase
     protected Metadata BuildMetadata(IMessage? request = null) {
         var headers = new Metadata() {
             {"TrinsicSDKLanguage", "dotnet"},
-            {"TrinsicSDKVersion", GetSdkVersion()},
-            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
+            {"TrinsicSDKVersion", GetSdkVersion()}
         };
 
-        // If no authentication needed, return early
-        if (request == null)
-            return headers;
-
         // Build authentication header
-        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken)
-            ? TokenProvider.Get()
-            : Options.AuthToken;
-
-        if (authToken is null)
-            throw new("Cannot call authenticated endpoint before signing in");
-
-        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
-
-        headers.Add("Authorization", _securityProvider.GetAuthHeader(profile, request));
+        if (string.IsNullOrWhiteSpace(Options.AuthToken))
+        {
+            headers.Add("Authorization", $"Bearer {Options.AuthToken}");
+        }
         return headers;
     }
 
@@ -149,7 +99,8 @@ public abstract class ServiceBase
     /// Fetches the current version of the SDK
     /// </summary>
     /// <returns></returns>
-    protected internal string GetSdkVersion() {
+    protected internal static string GetSdkVersion()
+    {
         // This will always be 1.0.0 on local builds, since the version number is set on the github action during publish.
         return Assembly.GetAssembly(typeof(ServiceBase))?.GetName().Version?.ToString(3) ?? "unknown";
     }

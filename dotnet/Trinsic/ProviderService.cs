@@ -14,19 +14,6 @@ public class ProviderService : ServiceBase
         Client = new(Channel);
     }
 
-    public ProviderService() {
-        Client = new(Channel);
-    }
-
-    internal ProviderService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
-    }
-
-    internal ProviderService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
-        Client = new(Channel);
-    }
-
     private Provider.ProviderClient Client { get; }
 
     /// <summary>

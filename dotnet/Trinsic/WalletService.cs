@@ -13,18 +13,6 @@ public class WalletService : ServiceBase
         Client = new(Channel);
     }
 
-    public WalletService() {
-        Client = new(Channel);
-    }
-
-    internal WalletService(ITokenProvider tokenProvider)
-        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) { }
-
-    internal WalletService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
-        Client = new(Channel);
-    }
-
     private UniversalWallet.UniversalWalletClient Client { get; }
 
     /// <summary>

@@ -50,69 +50,10 @@
             Account Service
             </summary>
         </member>
-        <member name="M:Trinsic.AccountService.Unprotect(System.String,System.String)">
-            <summary>
-            Unprotects the account profile using a security code.
-            The confirmation method field will specify how this code was
-            communicated with the account owner.
-            </summary>
-            <param name="authToken"></param>
-            <param name="securityCode"></param>
-        </member>
-        <member name="M:Trinsic.AccountService.Protect(System.String,System.String)">
-            <summary>
-            Protects the account profile with a security code.
-            The code can be a PIN, password, keychain secret, etc.
-            </summary>
-            <param name="authToken"></param>
-            <param name="securityCode"></param>
-        </member>
         <member name="P:Trinsic.AccountService.Client">
             <summary>
             Gets the underlying grpc client
             </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.LoginAsync(Trinsic.Services.Account.V1.LoginRequest)">
-            <summary>
-            Logs in to the specified account; a new account will be created if it does not exist.
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.AccountService.Login(Trinsic.Services.Account.V1.LoginRequest)">
-            <summary>
-            Logs in to the specified account; a new account will be created if it does not exist.
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.AccountService.LoginConfirmAsync(Google.Protobuf.ByteString,System.String)">
-            <summary>
-            Finalizes login from a previous `LoginRequest`.
-            </summary>
-            <param name="challenge">Challenge received from call to `Login`</param>
-            <param name="authCode">Plaintext authentication code sent to account email</param>
-            <returns>Auth token on success; null on failure</returns>
-        </member>
-        <member name="M:Trinsic.AccountService.LoginConfirm(Google.Protobuf.ByteString,System.String)">
-            <summary>
-            Finalizes login from a previous `LoginRequest`.
-            </summary>
-            <param name="challenge">Challenge received from call to `Login`</param>
-            <param name="authCode">Plaintext authentication code sent to account email</param>
-            <returns>Auth token on success; null on failure</returns>
-        </member>
-        <member name="M:Trinsic.AccountService.LoginAnonymous(System.String)">
-            <summary>
-            Creates an anonymous account in the current ecosystem
-            </summary>
-            <returns>Auth token for newly-created account; null on failure</returns>
-        </member>
-        <member name="M:Trinsic.AccountService.LoginAnonymousAsync(System.String)">
-            <summary>
-            Creates an anonymous account in the given ecosystem
-            </summary>
-            <returns>Auth token for newly-created account; null on failure</returns>
         </member>
         <member name="M:Trinsic.AccountService.GetInfoAsync">
             <summary>
@@ -4402,6 +4343,11 @@
             Response to `DeleteWalletRequest`. Empty payload.
             </summary>
         </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.UniversalWallet">
+            <summary>
+            Service for managing wallets
+            </summary>
+        </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UniversalWallet.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -6533,13 +6479,6 @@
             Search for issuers/providers/verifiers in the current ecosystem
             </summary>
         </member>
-        <member name="M:Trinsic.OberonSecurityProvider.Base64UrlEncode(System.Byte[])">
-            <summary>
-            Encoded a byte array to base64url string without padding
-            </summary>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
         <member name="P:Trinsic.ServiceBase.Options">
             <summary>
             Gets the options set on this service.
@@ -6549,11 +6488,6 @@
             <summary>
             Gets the gRPC channel used by this service. This channel can be reused
             by passing this instance to other service constructors.
-            </summary>
-        </member>
-        <member name="P:Trinsic.ServiceBase.CachedOkapiMetadata">
-            <summary>
-            The cached metadata of the Okapi library being used.
             </summary>
         </member>
         <member name="M:Trinsic.ServiceBase.BuildMetadataAsync(Google.Protobuf.IMessage)">
@@ -6680,13 +6614,6 @@
             <summary>
             Exposes Wallet Service functionality
             </summary>
-        </member>
-        <member name="M:Trinsic.TrinsicService.SetAuthToken(System.String)">
-            <summary>
-            Sets the Auth Token of this instance's ServiceOptions, and returns the instance for chaining.
-            </summary>
-            <param name="authToken">The new auth token to use</param>
-            <returns></returns>
         </member>
         <member name="M:Trinsic.TrustRegistryService.SearchAsync(Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest)">
             <summary>
@@ -6878,9 +6805,6 @@
         <member name="P:Microsoft.Extensions.DependencyInjection.DefaultTrinsicBuilder.Services">
             <inheritdoc/>
         </member>
-        <member name="P:Microsoft.Extensions.DependencyInjection.DefaultTrinsicBuilder.TokenPersistenceEnabled">
-            <inheritdoc/>
-        </member>
         <member name="P:Microsoft.Extensions.DependencyInjection.DefaultTrinsicBuilder.ServiceOptions">
             <inheritdoc/>
         </member>
@@ -6889,22 +6813,10 @@
             Service collection
             </summary>
         </member>
-        <member name="P:Microsoft.Extensions.DependencyInjection.ITrinsicBuilder.TokenPersistenceEnabled">
-            <summary>
-            Enables or disables automatic token persistence
-            </summary>
-        </member>
         <member name="P:Microsoft.Extensions.DependencyInjection.ITrinsicBuilder.ServiceOptions">
             <summary>
             Gets or sets the network endpoint service options
             </summary>
-        </member>
-        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTrinsic(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
-            Registers Trinsic SDK services and dependencies
-            </summary>
-            <param name="services"></param>
-            <returns></returns>
         </member>
         <member name="M:Google.Protobuf.ProtoMessageExtensions.As``1(Google.Protobuf.IMessage)">
             <summary>

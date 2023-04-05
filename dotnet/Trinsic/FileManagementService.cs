@@ -13,19 +13,6 @@ public class FileManagementService : ServiceBase
         Client = new(Channel);
     }
 
-    public FileManagementService() {
-        Client = new(Channel);
-    }
-
-    internal FileManagementService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
-    }
-
-    internal FileManagementService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
-        Client = new(Channel);
-    }
-
     /// <summary>
     /// Gets the underlying grpc client
     /// </summary>

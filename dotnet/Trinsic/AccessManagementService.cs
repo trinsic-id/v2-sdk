@@ -13,19 +13,6 @@ public class AccessManagementService : ServiceBase
         Client = new(Channel);
     }
 
-    public AccessManagementService() {
-        Client = new(Channel);
-    }
-
-    internal AccessManagementService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
-    }
-
-    internal AccessManagementService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
-        Client = new(Channel);
-    }
-
     /// <summary>
     /// Gets the underlying grpc client
     /// </summary>
