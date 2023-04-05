@@ -7,6 +7,7 @@ option java_package = "trinsic.services.universalwallet.v1";
 option java_multiple_files = true;
 
 import "services/options/field-options.proto";
+import "services/provider/v1/provider.proto";
 
 // Search
 
@@ -25,7 +26,7 @@ message SearchResponse {
   repeated string items = 1;
 
   // Whether more results are available for this query via `continuation_token`
-  bool has_more = 2;
+  bool has_more_results = 2;
 
   // Token to fetch next set of results via `SearchRequest`
   string continuation_token = 4;
@@ -109,7 +110,68 @@ message DeleteWalletRequest {
 }
 
 // Response to `DeleteWalletRequest`. Empty payload.
-message DeleteWalletResponse {
+message DeleteWalletResponse {}
+
+message CreateWalletRequest{
+  // Ecosystem ID of the wallet to create
+  string ecosystem_id = 1;
+  // Wallet name or description.
+  // Use this field to add vendor specific information about this wallet,
+  // such as email, phone, internal ID, etc.
+  // This field is not unique within our platform
+  string description = 2;
+}
+message CreateWalletResponse{
+  // Wallet ID of the newly created wallet
+  string wallet_id = 1;
+  // Auth token for the newly created wallet
+  string auth_token = 2;
+  // Token ID of the newly generated token
+  string token_id = 3;
+}
+
+message GenerateAuthTokenRequest{
+  string wallet_id = 1;
+  string token_description = 2;
+}
+message GenerateAuthTokenResponse{
+  string token_id = 1;
+  string auth_token = 2;
+}
+
+// Request to retrieve wallet information about a given wallet identified by its wallet ID
+message GetWalletInfoRequest{
+  // Wallet ID of the wallet to retrieve
+  string wallet_id = 1;
+}
+// Response to `GetWalletInfoRequest`
+message GetWalletInfoResponse {
+  // Wallet configuration
+  services.provider.v1.WalletConfiguration wallet = 1;
+}
+
+// Request to retrieve wallet information about the currently authenticated wallet
+message GetMyInfoRequest{}
+// Response to `GetMyInfoRequest`
+message GetMyInfoResponse {
+  // Wallet configuration
+  services.provider.v1.WalletConfiguration wallet = 1;
+}
+
+// Request to revoke a previously issued auth token
+message RevokeAuthTokenRequest{
+  // Wallet ID of the wallet to from which to revoke the token
+  string wallet_id = 1;
+  // Token ID of the token to revoke
+  string token_id = 2;
+}
+message RevokeAuthTokenResponse{}
+
+message ListWalletsRequest{
+  string filter = 1;
+}
+message ListWalletsResponse{
+  repeated services.provider.v1.WalletConfiguration wallets = 1;
 }
 
 // Service for managing wallets
@@ -126,5 +188,98 @@ service UniversalWallet {
   rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
   // Delete a wallet and its credentials
   rpc DeleteWallet(DeleteWalletRequest) returns (DeleteWalletResponse);
+
+
+  // Create a new wallet and generate an auth token for access
+  rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
+
+  // Retrieve wallet details and configuration
+  rpc GetWalletInfo(GetWalletInfoRequest) returns (GetWalletInfoResponse);
+
+  // Retrieve wallet details and configuration about the currently authenticated wallet
+  rpc GetMyInfo(GetMyInfoRequest) returns (GetMyInfoResponse);
+
+  // Generate new token for a given wallet and add it to the collection of known auth tokens.
+  // This endpoint requires authentication and will return a new token ID and auth token.
+  // Use this endpoint if you want to authorize another device, without having to share your
+  // existing auth token.
+  rpc GenerateAuthToken(GenerateAuthTokenRequest) returns (GenerateAuthTokenResponse);
+
+  // Revokes a previously issued auth token and updates the collection of known auth tokens.
+  // This endpoint requires authentication.
+  rpc RevokeAuthToken(RevokeAuthTokenRequest) returns (RevokeAuthTokenResponse);
+
+  // Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+  // This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+  rpc AddExternalIdentityInit(AddExternalIdentityInitRequest) returns (AddExternalIdentityInitResponse);
+
+  // Confirm identity added to the current wallet using `AddIdentity`
+  rpc AddExternalIdentityConfirm(AddExternalIdentityConfirmRequest) returns (AddExternalIdentityConfirmResponse);
+
+  // Sign-in to an already existing wallet, using an identity added that was previously registered
+  // This endpoint does not require authentication, and will return a challenge to be signed or verified
+  rpc AuthenticateInit(AuthenticateInitRequest) returns (AuthenticateInitResponse);
+
+  // Confirm sign-in to an already existing wallet and return authentication token
+  rpc AuthenticateConfirm(AuthenticateConfirmRequest) returns (AuthenticateConfirmResponse);
+
+  // List all wallets in the ecosystem
+  rpc ListWallets(ListWalletsRequest) returns (ListWalletsResponse);
 }
 
+message AddExternalIdentityInitRequest {
+  // Identity to add to the wallet
+  string identity = 1;
+  IdentityProvider provider = 2;
+}
+message AddExternalIdentityInitResponse {
+  // Challenge to be verified by the user.
+  // Pass this challenge back to the `AddIdentityConfirm` endpoint
+  string challenge = 1;
+}
+
+enum IdentityProvider {
+  // Identity provider is unknown
+  UNKNOWN = 0;
+  // Identity provider is email
+  EMAIL = 1;
+  // Identity provider is phone
+  PHONE = 2;
+}
+
+message AddExternalIdentityConfirmRequest {
+  // The challenge received from the `AddIdentityInit` endpoint
+  string challenge = 1;
+  // The response to the challenge. If using Email or Phone,
+  // this is the OTP code sent to the user's email or phone
+  string response = 2;
+}
+message AddExternalIdentityConfirmResponse {}
+
+message AuthenticateInitRequest {
+  // Identity to add to the wallet
+  string identity = 1;
+  // Identity provider
+  IdentityProvider provider = 2;
+  // Ecosystem ID to which the wallet belongs
+  string ecosystem_id = 3;
+}
+
+message AuthenticateInitResponse {
+  // The challenge received from the `AcquireAuthTokenInit` endpoint
+  // Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint
+  string challenge = 1;
+}
+
+message AuthenticateConfirmRequest {
+  // The challenge received from the `AcquireAuthTokenInit` endpoint
+  string challenge = 1;
+  // The response to the challenge. If using Email or Phone,
+  // this is the OTP code sent to the user's email or phone
+  string response = 2;
+}
+
+message AuthenticateConfirmResponse {
+  // Auth token for the wallet
+  string auth_token = 1;
+}

@@ -37,7 +37,7 @@ message SearchCredentialTemplatesResponse {
   string items_json = 1;
 
   // Whether more results are available for this query via `continuation_token`
-  bool has_more = 2;
+  bool has_more_results = 2;
 
   // Token to fetch next set of results via `SearchCredentialTemplatesRequest`
   string continuation_token = 4;
