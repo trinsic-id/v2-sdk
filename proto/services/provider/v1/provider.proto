@@ -322,7 +322,7 @@ message SearchWalletConfigurationResponse {
   // Results matching the search query
   repeated WalletConfiguration results = 1;
   // Whether more results are available for this query via `continuation_token`
-  bool has_more = 2;
+  bool has_more_results = 2;
   // Token to fetch next set of results via `SearchRequest`
   string continuation_token = 4;
 }
@@ -335,6 +335,10 @@ message WalletConfiguration {
   string wallet_id = 4;
   string public_did = 5;
   string config_type = 6;
+  // List of active authentication tokens for this wallet.
+  // This list does not contain the issued token, only metadata
+  // such as ID, description, and creation date.
+  repeated services.account.v1.WalletAuthToken auth_tokens = 7;
 }
 
 // Options for creation of DID on the ION network
