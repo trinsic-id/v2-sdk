@@ -156,19 +156,6 @@ enum RegistrationStatus {
   NOT_FOUND = 10; // Member is not associated with given credential schema in the EGF
 }
 
-// Not implemented.
-message FetchDataRequest {
-  string governance_framework_uri = 1;
-  string query = 2;
-}
-
-// Not implemented.
-message FetchDataResponse {
-  string response_json = 1;
-  bool has_more_results = 2;
-  string continuation_token = 3;
-}
-
 service TrustRegistry {
   // Add a governance framework to the ecosystem
   rpc AddFramework(AddFrameworkRequest) returns (AddFrameworkResponse);
@@ -187,9 +174,4 @@ service TrustRegistry {
 
   // Fetch the membership status of an issuer for a given credential schema in a trust registry
   rpc GetMembershipStatus(GetMembershipStatusRequest) returns (GetMembershipStatusResponse);
-
-  // Not implemented.
-  rpc FetchData(FetchDataRequest) returns (stream FetchDataResponse) {
-    option (options.sdk_template_option).ignore = true;
-  }
 }
