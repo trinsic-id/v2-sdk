@@ -30,7 +30,7 @@ public class TrustRegistryService : ServiceBase
     }
 
     public SearchRegistryResponse Search(SearchRegistryRequest request) {
-        if (String.IsNullOrWhiteSpace(request.Query))
+        if (string.IsNullOrWhiteSpace(request.Query))
             request.Query = "SELECT * FROM _ OFFSET 0 LIMIT 100";
 
         return SearchRegistry(request);

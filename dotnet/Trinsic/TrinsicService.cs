@@ -9,7 +9,6 @@ namespace Trinsic;
 public class TrinsicService : ServiceBase
 {
     private AccessManagementService? _accessManagement;
-    private AccountService? _account;
     private CredentialService? _credential;
     private FileManagementService? _fileManagement;
     private TemplateService? _template;
@@ -18,26 +17,16 @@ public class TrinsicService : ServiceBase
     private WalletService? _wallet;
 
 
-    public TrinsicService(ServiceOptions options)
-        : base(options) {
-    }
+    public TrinsicService(ServiceOptions options) : base(options) { }
 
-    public TrinsicService() : base(new()) {
-    }
+    public TrinsicService() : base(new()) { }
 
-    internal TrinsicService(IOptions<ServiceOptions> options)
-        : base(options.Value) {
-    }
+    internal TrinsicService(IOptions<ServiceOptions> options) : base(options.Value) { }
 
     /// <summary>
     /// Exposes Account Service functionality
     /// </summary>
     public AccessManagementService AccessManagement => _accessManagement ??= new(Options);
-
-    /// <summary>
-    /// Exposes Account Service functionality
-    /// </summary>
-    public AccountService Account => _account ??= new(Options);
 
     /// <summary>
     /// Exposes Credential Service functionality
@@ -60,8 +49,7 @@ public class TrinsicService : ServiceBase
     /// <summary>
     /// Exposes Trust Registry Service functionality
     /// </summary>
-    public TrustRegistryService TrustRegistry =>
-        _trustRegistry ??= new(Options);
+    public TrustRegistryService TrustRegistry => _trustRegistry ??= new(Options);
 
     /// <summary>
     /// Exposes Wallet Service functionality

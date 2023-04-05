@@ -49,18 +49,18 @@ public class VaccineWalkthroughTests
         ecosystemId.Should().NotBeNullOrEmpty();
 
         // setupActors() {
-        var allison = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
-        var clinic = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
-        var airline = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
+        var allison = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystemId! });
+        var clinic = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystemId! });
+        var airline = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystemId! });
         // }
 
-        allison.Should().NotBeNullOrEmpty();
-        clinic.Should().NotBeNullOrEmpty();
-        airline.Should().NotBeNullOrEmpty();
+        allison.AuthToken.Should().NotBeNullOrEmpty();
+        clinic.AuthToken.Should().NotBeNullOrEmpty();
+        airline.AuthToken.Should().NotBeNullOrEmpty();
 
         // createTemplate() {
         // Set active profile to `clinic` so we can create a template
-        trinsic.SetAuthToken(clinic!);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(clinic.AuthToken!));
 
         // Prepare request to create template
         CreateCredentialTemplateRequest templateRequest = new() {
@@ -102,7 +102,7 @@ public class VaccineWalkthroughTests
 
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
-        trinsic.SetAuthToken(allison!);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(allison.AuthToken!));
 
         // Insert credential into Allison's wallet
         var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() {
@@ -120,25 +120,25 @@ public class VaccineWalkthroughTests
             ItemId = itemId
         });
 
-        var proofJSON = proofResponse?.ProofDocumentJson;
+        var proofJson = proofResponse?.ProofDocumentJson;
         // }
 
-        proofJSON.Should().NotBeNullOrEmpty();
+        proofJson.Should().NotBeNullOrEmpty();
 
         // verifyCredential() {
         // Set active profile to `airline`
-        trinsic.SetAuthToken(airline!);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(airline.AuthToken!));
 
         // Verify that Allison has provided a valid proof
         var verifyResponse = await trinsic.Credential.VerifyProofAsync(new() {
-            ProofDocumentJson = proofJSON
+            ProofDocumentJson = proofJson
         });
 
-        bool credentialValid = verifyResponse?.IsValid ?? false;
+        var credentialValid = verifyResponse?.IsValid ?? false;
         // }
 
         credentialValid.Should().BeTrue();
 
-        _testOutputHelper.WriteLine($"Proof: {proofJSON}");
+        _testOutputHelper.WriteLine($"Proof: {proofJson}");
     }
 }

@@ -28,6 +28,7 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 namespace Tests;
 
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public class Tests
 {
     // This breaks the CI pipeline, removing DEBUG option.
@@ -77,18 +78,19 @@ public class Tests
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
-        var allison = await trinsic.Account.LoginAnonymousAsync(ecosystemId) ?? "";
-        var clinic = await trinsic.Account.LoginAnonymousAsync(ecosystemId) ?? "";
-        var airline = await trinsic.Account.LoginAnonymousAsync(ecosystemId) ?? "";
+        var allison = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystemId });
+        var clinic = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystemId });
+        var airline = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystemId });
 
-        allison.Should().NotBeNullOrWhiteSpace();
-        clinic.Should().NotBeNullOrWhiteSpace();
-        airline.Should().NotBeNullOrWhiteSpace();
+        allison.AuthToken.Should().NotBeNullOrWhiteSpace();
+        clinic.AuthToken.Should().NotBeNullOrWhiteSpace();
+        airline.AuthToken.Should().NotBeNullOrWhiteSpace();
         
-        trinsic.SetAuthToken(clinic);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(clinic.AuthToken));
 
-        var info = await trinsic.Account.GetInfoAsync();
+        var info = await trinsic.Wallet.GetMyInfoAsync(new());
         info.Should().NotBeNull();
+        info.Wallet.Should().NotBeNull();
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison
@@ -109,7 +111,7 @@ public class Tests
         } catch { } // We expect this to fail
 
         // STORE CREDENTIAL
-        trinsic.SetAuthToken(allison!);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(allison.AuthToken));
 
         var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() { ItemJson = credential.SignedDocumentJson });
         var itemId = insertItemResponse.ItemId;
@@ -146,7 +148,7 @@ public class Tests
 
 
         // VERIFY CREDENTIAL
-        trinsic.SetAuthToken(airline!);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(airline.AuthToken));
 
         var valid = await trinsic.Credential.VerifyProofAsync(new() {
             ProofDocumentJson = credentialProof.ProofDocumentJson
@@ -156,7 +158,7 @@ public class Tests
         Assert.True(valid.ValidationResults["SignatureVerification"].IsValid);
         
         // DELETE CREDENTIAL
-        trinsic.SetAuthToken(allison!);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(allison.AuthToken));
         // deleteItem() {
         await trinsic.Wallet.DeleteItemAsync(new DeleteItemRequest()
         {
@@ -170,9 +172,9 @@ public class Tests
     {
         var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
-        await trinsic.Account.LoginAnonymousAsync(ecosystem.Id);
-        var newWalletInfo = await trinsic.Account.InfoAsync();
-        var walletId = newWalletInfo.WalletId;
+        await trinsic.Wallet.CreateWalletAsync(new(){ EcosystemId = ecosystem.Id });
+        var newWalletInfo = await trinsic.Wallet.GetMyInfoAsync(new());
+        var walletId = newWalletInfo.Wallet.WalletId;
 
         // deleteWallet() {
         await trinsic.Wallet.DeleteWalletAsync(new DeleteWalletRequest()
@@ -187,11 +189,11 @@ public class Tests
         var governanceUri = $"https://example.com/{Guid.NewGuid():N}";
 
         // setup
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
+        var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
         // setAuthTokenSample() {
-        trinsic.SetAuthToken(authToken);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(authToken));
         // }
 
         // registerGovernanceFramework() {
@@ -258,7 +260,7 @@ public class Tests
         ecosystem.Id.Should().NotBeNull();
         ecosystem.Id.Should().StartWith("urn:trinsic:ecosystems:");
 
-        trinsic.SetAuthToken(authToken);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(authToken));
 
         // test update ecosystem
         // wrapped in try/catch as method is not yet implemented in backend.
@@ -295,8 +297,8 @@ public class Tests
 
 
         // Test upgrading account DID
-        var accountInfo = await trinsic.Account.InfoAsync();
-        var walletId = accountInfo.WalletId;
+        var accountInfo = await trinsic.Wallet.GetMyInfoAsync(new());
+        var walletId = accountInfo.Wallet.WalletId;
 
         // Wrap in try-catch as this ecosystem will not presently have DID upgrade permissions
         try
@@ -313,44 +315,6 @@ public class Tests
         } catch (RpcException e)
         {
             e.StatusCode.Should().Be(StatusCode.PermissionDenied);
-        }
-    }
-
-    [Fact(Skip = "Named login example for docs")]
-    public async Task TestLogin() {
-        var trinsic = new TrinsicService(_options.Clone());
-        var (ecosystem, _) = await trinsic.Provider.CreateEcosystemAsync(new());
-
-        var ecosystemId = ecosystem.Id;
-
-        // loginRequest() {
-        var loginResponse = await trinsic.Account.LoginAsync(new() {
-            // ecosystem id or name
-            EcosystemId = ecosystemId,
-            Email = "bob@example.com"
-        });
-        // }
-
-        loginResponse.Should().NotBeNull();
-        loginResponse.ResponseCase.Should().Be(LoginResponse.ResponseOneofCase.Challenge);
-        loginResponse.Challenge.Should().NotBeNull();
-
-        {
-            var authCode = "1234";
-
-            await Assert.ThrowsAnyAsync<RpcException>(async () => {
-                // loginConfirm() {
-                var authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
-                // }
-            });
-        }
-
-        {
-            // loginAnonymous() {
-            var authToken = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
-            // }
-
-            authToken.Should().NotBeNullOrEmpty();
         }
     }
 

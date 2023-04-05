@@ -23,7 +23,7 @@ public class HostTests
         await host.StartAsync();
 
         var providerService = host.Services.GetService<ProviderService>();
-        var accountService = host.Services.GetRequiredService<AccountService>();
+        var accountService = host.Services.GetRequiredService<WalletService>();
 
         providerService.Should().NotBeNull();
         accountService.Should().NotBeNull();
@@ -42,17 +42,17 @@ public class HostTests
             .CreateDefaultBuilder()
             .ConfigureServices(services => {
                 services.AddTrinsic(options => {
-                    options.ServiceOptions.AuthToken = "auth";
-                    options.ServiceOptions.ServerEndpoint = "example.com";
-                    options.ServiceOptions.ServerPort = 42;
-                    options.ServiceOptions.ServerUseTls = true;
+                    options.AuthToken = "auth";
+                    options.ServerEndpoint = "example.com";
+                    options.ServerPort = 42;
+                    options.ServerUseTls = true;
                 });
             }).Build();
 
         await host.StartAsync();
 
         var providerService = host.Services.GetService<ProviderService>();
-        var accountService = host.Services.GetRequiredService<AccountService>();
+        var accountService = host.Services.GetRequiredService<WalletService>();
 
         providerService.Should().NotBeNull();
         accountService.Should().NotBeNull();

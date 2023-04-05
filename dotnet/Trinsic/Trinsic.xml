@@ -45,38 +45,6 @@
               List the role assignments for the given account
              </summary>
         </member>
-        <member name="T:Trinsic.AccountService">
-            <summary>
-            Account Service
-            </summary>
-        </member>
-        <member name="P:Trinsic.AccountService.Client">
-            <summary>
-            Gets the underlying grpc client
-            </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.GetInfoAsync">
-            <summary>
-            Return the details about the currently active account
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.AccountService.GetInfo">
-            <summary>
-            Return the details about the currently active account
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.AccountService.Info">
-            <summary>
-            Get account information
-            </summary>
-        </member>
-        <member name="M:Trinsic.AccountService.InfoAsync">
-            <summary>
-            Get account information
-            </summary>
-        </member>
         <member name="M:Trinsic.CredentialService.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest)">
              <summary>
             This endpoint will be removed around May 1, 2023
@@ -7295,11 +7263,6 @@
             Exposes Account Service functionality
             </summary>
         </member>
-        <member name="P:Trinsic.TrinsicService.Account">
-            <summary>
-            Exposes Account Service functionality
-            </summary>
-        </member>
         <member name="P:Trinsic.TrinsicService.Credential">
             <summary>
             Exposes Credential Service functionality
@@ -7631,6 +7594,14 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTrinsic(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Trinsic.Sdk.Options.V1.ServiceOptions})">
+            <summary>
+            Add Trinsic Service dependencies and optionally configure the service options
+            </summary>
+            <param name="serviceCollection"></param>
+            <param name="configureOptions"></param>
             <returns></returns>
         </member>
     </members>
