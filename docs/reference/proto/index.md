@@ -300,6 +300,7 @@ Information about the account used to make the request
 | device_id | [string](/reference/proto#string) | The device ID associated with this account session |
 | ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
 | public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as the `issuer` when signing verifiable credentials |
+| auth_tokens | [WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
 
 
 
@@ -461,6 +462,23 @@ Token protection info
 | ----- | ---- | ----------- |
 | enabled | [bool](/reference/proto#bool) | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
 | method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | The method used to protect the token |
+
+
+
+
+
+
+<a name="services-account-v1-WalletAuthToken"></a>
+
+### WalletAuthToken
+Information about authenticaton tokens for a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | Unique identifier for the token. This field will match the `DeviceId` in the WalletAuthData |
+| description | [string](/reference/proto#string) | Device name/description |
+| date_created | [string](/reference/proto#string) | Date when the token was created in ISO 8601 format |
 
 
 
@@ -1478,6 +1496,7 @@ Strongly typed information about wallet configurations
 | wallet_id | [string](/reference/proto#string) |  |
 | public_did | [string](/reference/proto#string) |  |
 | config_type | [string](/reference/proto#string) |  |
+| auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
 
 
 
@@ -1586,7 +1605,6 @@ Type of participant being invited to ecosystem
 | RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
 | UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
 | GetMembershipStatus | [GetMembershipStatusRequest](/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest) | [GetMembershipStatusResponse](/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse) | Fetch the membership status of an issuer for a given credential schema in a trust registry |
-| FetchData | [FetchDataRequest](/reference/proto#services-trustregistry-v1-FetchDataRequest) | [FetchDataResponse](/reference/proto#services-trustregistry-v1-FetchDataResponse) stream | Not implemented. |
 
  <!-- end services -->
 
@@ -1619,39 +1637,6 @@ Response to `AddFrameworkRequest`
 | id | [string](/reference/proto#string) | Unique framework identifier |
 | governing_authority | [string](/reference/proto#string) | DID URI of Trinsic account which created the governance framework |
 | trust_registry | [string](/reference/proto#string) | URN of trust registry for governance framework |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-FetchDataRequest"></a>
-
-### FetchDataRequest
-Not implemented.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-| query | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-FetchDataResponse"></a>
-
-### FetchDataResponse
-Not implemented.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| response_json | [string](/reference/proto#string) |  |
-| has_more_results | [bool](/reference/proto#bool) |  |
-| continuation_token | [string](/reference/proto#string) |  |
 
 
 
@@ -1869,8 +1854,171 @@ Service for managing wallets
 | UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
 | DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
 | DeleteWallet | [DeleteWalletRequest](/reference/proto#services-universalwallet-v1-DeleteWalletRequest) | [DeleteWalletResponse](/reference/proto#services-universalwallet-v1-DeleteWalletResponse) | Delete a wallet and its credentials |
+| CreateWallet | [CreateWalletRequest](/reference/proto#services-universalwallet-v1-CreateWalletRequest) | [CreateWalletResponse](/reference/proto#services-universalwallet-v1-CreateWalletResponse) | Create a new wallet and generate an auth token for access |
+| GetWalletInfo | [GetWalletInfoRequest](/reference/proto#services-universalwallet-v1-GetWalletInfoRequest) | [GetWalletInfoResponse](/reference/proto#services-universalwallet-v1-GetWalletInfoResponse) | Retrieve wallet details and configuration |
+| GetMyInfo | [GetMyInfoRequest](/reference/proto#services-universalwallet-v1-GetMyInfoRequest) | [GetMyInfoResponse](/reference/proto#services-universalwallet-v1-GetMyInfoResponse) | Retrieve wallet details and configuration about the currently authenticated wallet |
+| GenerateAuthToken | [GenerateAuthTokenRequest](/reference/proto#services-universalwallet-v1-GenerateAuthTokenRequest) | [GenerateAuthTokenResponse](/reference/proto#services-universalwallet-v1-GenerateAuthTokenResponse) | Generate new token for a given wallet and add it to the collection of known auth tokens. This endpoint requires authentication and will return a new token ID and auth token. Use this endpoint if you want to authorize another device, without having to share your existing auth token. |
+| RevokeAuthToken | [RevokeAuthTokenRequest](/reference/proto#services-universalwallet-v1-RevokeAuthTokenRequest) | [RevokeAuthTokenResponse](/reference/proto#services-universalwallet-v1-RevokeAuthTokenResponse) | Revokes a previously issued auth token and updates the collection of known auth tokens. This endpoint requires authentication. |
+| AddExternalIdentityInit | [AddExternalIdentityInitRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitRequest) | [AddExternalIdentityInitResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitResponse) | Add new external identity to the current wallet, such as email, sms, ethereum address, etc. This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc. |
+| AddExternalIdentityConfirm | [AddExternalIdentityConfirmRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmRequest) | [AddExternalIdentityConfirmResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmResponse) | Confirm identity added to the current wallet using `AddIdentity` |
+| AuthenticateInit | [AuthenticateInitRequest](/reference/proto#services-universalwallet-v1-AuthenticateInitRequest) | [AuthenticateInitResponse](/reference/proto#services-universalwallet-v1-AuthenticateInitResponse) | Sign-in to an already existing wallet, using an identity added that was previously registered This endpoint does not require authentication, and will return a challenge to be signed or verified |
+| AuthenticateConfirm | [AuthenticateConfirmRequest](/reference/proto#services-universalwallet-v1-AuthenticateConfirmRequest) | [AuthenticateConfirmResponse](/reference/proto#services-universalwallet-v1-AuthenticateConfirmResponse) | Confirm sign-in to an already existing wallet and return authentication token |
+| ListWallets | [ListWalletsRequest](/reference/proto#services-universalwallet-v1-ListWalletsRequest) | [ListWalletsResponse](/reference/proto#services-universalwallet-v1-ListWalletsResponse) | List all wallets in the ecosystem |
 
  <!-- end services -->
+
+
+<a name="services-universalwallet-v1-AddExternalIdentityConfirmRequest"></a>
+
+### AddExternalIdentityConfirmRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | The challenge received from the `AddIdentityInit` endpoint |
+| response | [string](/reference/proto#string) | The response to the challenge. If using Email or Phone, this is the OTP code sent to the user's email or phone |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AddExternalIdentityConfirmResponse"></a>
+
+### AddExternalIdentityConfirmResponse
+
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AddExternalIdentityInitRequest"></a>
+
+### AddExternalIdentityInitRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | Identity to add to the wallet |
+| provider | [IdentityProvider](/reference/proto#services-universalwallet-v1-IdentityProvider) |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AddExternalIdentityInitResponse"></a>
+
+### AddExternalIdentityInitResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | Challenge to be verified by the user. Pass this challenge back to the `AddIdentityConfirm` endpoint |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateConfirmRequest"></a>
+
+### AuthenticateConfirmRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | The challenge received from the `AcquireAuthTokenInit` endpoint |
+| response | [string](/reference/proto#string) | The response to the challenge. If using Email or Phone, this is the OTP code sent to the user's email or phone |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateConfirmResponse"></a>
+
+### AuthenticateConfirmResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| auth_token | [string](/reference/proto#string) | Auth token for the wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateInitRequest"></a>
+
+### AuthenticateInitRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | Identity to add to the wallet |
+| provider | [IdentityProvider](/reference/proto#services-universalwallet-v1-IdentityProvider) | Identity provider |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem ID to which the wallet belongs |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateInitResponse"></a>
+
+### AuthenticateInitResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | The challenge received from the `AcquireAuthTokenInit` endpoint Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-CreateWalletRequest"></a>
+
+### CreateWalletRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem ID of the wallet to create |
+| description | [string](/reference/proto#string) | Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, etc. This field is not unique within our platform |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-CreateWalletResponse"></a>
+
+### CreateWalletResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the newly created wallet |
+| auth_token | [string](/reference/proto#string) | Auth token for the newly created wallet |
+| token_id | [string](/reference/proto#string) | Token ID of the newly generated token |
+
+
+
+
 
 
 <a name="services-universalwallet-v1-DeleteItemRequest"></a>
@@ -1925,6 +2073,38 @@ Response to `DeleteWalletRequest`. Empty payload.
 
 
 
+<a name="services-universalwallet-v1-GenerateAuthTokenRequest"></a>
+
+### GenerateAuthTokenRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet_id | [string](/reference/proto#string) |  |
+| token_description | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GenerateAuthTokenResponse"></a>
+
+### GenerateAuthTokenResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token_id | [string](/reference/proto#string) |  |
+| auth_token | [string](/reference/proto#string) |  |
+
+
+
+
+
+
 <a name="services-universalwallet-v1-GetItemRequest"></a>
 
 ### GetItemRequest
@@ -1956,6 +2136,61 @@ Response to `GetItemRequest`
 
 
 
+<a name="services-universalwallet-v1-GetMyInfoRequest"></a>
+
+### GetMyInfoRequest
+Request to retrieve wallet information about the currently authenticated wallet
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetMyInfoResponse"></a>
+
+### GetMyInfoResponse
+Response to `GetMyInfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetWalletInfoRequest"></a>
+
+### GetWalletInfoRequest
+Request to retrieve wallet information about a given wallet identified by its wallet ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the wallet to retrieve |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetWalletInfoResponse"></a>
+
+### GetWalletInfoResponse
+Response to `GetWalletInfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
+
+
+
+
+
+
 <a name="services-universalwallet-v1-InsertItemRequest"></a>
 
 ### InsertItemRequest
@@ -1981,6 +2216,62 @@ Response to `InsertItemRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | item_id | [string](/reference/proto#string) | ID of item inserted into wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-ListWalletsRequest"></a>
+
+### ListWalletsRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| filter | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-ListWalletsResponse"></a>
+
+### ListWalletsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallets | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RevokeAuthTokenRequest"></a>
+
+### RevokeAuthTokenRequest
+Request to revoke a previously issued auth token
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the wallet to from which to revoke the token |
+| token_id | [string](/reference/proto#string) | Token ID of the token to revoke |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RevokeAuthTokenResponse"></a>
+
+### RevokeAuthTokenResponse
+
 
 
 
@@ -2046,6 +2337,19 @@ Response to `UpdateItemRequest`
 
 
  <!-- end messages -->
+
+
+<a name="services-universalwallet-v1-IdentityProvider"></a>
+
+### IdentityProvider
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNKNOWN | 0 | Identity provider is unknown |
+| EMAIL | 1 | Identity provider is email |
+| PHONE | 2 | Identity provider is phone |
+
 
  <!-- end enums -->
 

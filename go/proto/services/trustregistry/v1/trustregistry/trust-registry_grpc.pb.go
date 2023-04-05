@@ -25,7 +25,6 @@ const (
 	TrustRegistry_RegisterMember_FullMethodName      = "/services.trustregistry.v1.TrustRegistry/RegisterMember"
 	TrustRegistry_UnregisterMember_FullMethodName    = "/services.trustregistry.v1.TrustRegistry/UnregisterMember"
 	TrustRegistry_GetMembershipStatus_FullMethodName = "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus"
-	TrustRegistry_FetchData_FullMethodName           = "/services.trustregistry.v1.TrustRegistry/FetchData"
 )
 
 // TrustRegistryClient is the client API for TrustRegistry service.
@@ -44,8 +43,6 @@ type TrustRegistryClient interface {
 	UnregisterMember(ctx context.Context, in *UnregisterMemberRequest, opts ...grpc.CallOption) (*UnregisterMemberResponse, error)
 	// Fetch the membership status of an issuer for a given credential schema in a trust registry
 	GetMembershipStatus(ctx context.Context, in *GetMembershipStatusRequest, opts ...grpc.CallOption) (*GetMembershipStatusResponse, error)
-	// Not implemented.
-	FetchData(ctx context.Context, in *FetchDataRequest, opts ...grpc.CallOption) (TrustRegistry_FetchDataClient, error)
 }
 
 type trustRegistryClient struct {
@@ -110,38 +107,6 @@ func (c *trustRegistryClient) GetMembershipStatus(ctx context.Context, in *GetMe
 	return out, nil
 }
 
-func (c *trustRegistryClient) FetchData(ctx context.Context, in *FetchDataRequest, opts ...grpc.CallOption) (TrustRegistry_FetchDataClient, error) {
-	stream, err := c.cc.NewStream(ctx, &TrustRegistry_ServiceDesc.Streams[0], TrustRegistry_FetchData_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &trustRegistryFetchDataClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type TrustRegistry_FetchDataClient interface {
-	Recv() (*FetchDataResponse, error)
-	grpc.ClientStream
-}
-
-type trustRegistryFetchDataClient struct {
-	grpc.ClientStream
-}
-
-func (x *trustRegistryFetchDataClient) Recv() (*FetchDataResponse, error) {
-	m := new(FetchDataResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 // TrustRegistryServer is the server API for TrustRegistry service.
 // All implementations must embed UnimplementedTrustRegistryServer
 // for forward compatibility
@@ -158,8 +123,6 @@ type TrustRegistryServer interface {
 	UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error)
 	// Fetch the membership status of an issuer for a given credential schema in a trust registry
 	GetMembershipStatus(context.Context, *GetMembershipStatusRequest) (*GetMembershipStatusResponse, error)
-	// Not implemented.
-	FetchData(*FetchDataRequest, TrustRegistry_FetchDataServer) error
 	mustEmbedUnimplementedTrustRegistryServer()
 }
 
@@ -184,9 +147,6 @@ func (UnimplementedTrustRegistryServer) UnregisterMember(context.Context, *Unreg
 }
 func (UnimplementedTrustRegistryServer) GetMembershipStatus(context.Context, *GetMembershipStatusRequest) (*GetMembershipStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMembershipStatus not implemented")
-}
-func (UnimplementedTrustRegistryServer) FetchData(*FetchDataRequest, TrustRegistry_FetchDataServer) error {
-	return status.Errorf(codes.Unimplemented, "method FetchData not implemented")
 }
 func (UnimplementedTrustRegistryServer) mustEmbedUnimplementedTrustRegistryServer() {}
 
@@ -309,27 +269,6 @@ func _TrustRegistry_GetMembershipStatus_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrustRegistry_FetchData_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(FetchDataRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(TrustRegistryServer).FetchData(m, &trustRegistryFetchDataServer{stream})
-}
-
-type TrustRegistry_FetchDataServer interface {
-	Send(*FetchDataResponse) error
-	grpc.ServerStream
-}
-
-type trustRegistryFetchDataServer struct {
-	grpc.ServerStream
-}
-
-func (x *trustRegistryFetchDataServer) Send(m *FetchDataResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
 // TrustRegistry_ServiceDesc is the grpc.ServiceDesc for TrustRegistry service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -362,12 +301,6 @@ var TrustRegistry_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TrustRegistry_GetMembershipStatus_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "FetchData",
-			Handler:       _TrustRegistry_FetchData_Handler,
-			ServerStreams: true,
-		},
-	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "services/trust-registry/v1/trust-registry.proto",
 }

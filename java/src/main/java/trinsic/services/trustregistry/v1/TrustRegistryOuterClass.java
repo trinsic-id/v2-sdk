@@ -64,14 +64,6 @@ public final class TrustRegistryOuterClass {
       internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_FetchDataResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_FetchDataResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -131,40 +123,29 @@ public final class TrustRegistryOuterClass {
           + "\007did_uri\030\002 \001(\t\022\022\n\n"
           + "schema_uri\030\004 \001(\t\"\\\n"
           + "\033GetMembershipStatusResponse\022=\n"
-          + "\006status\030\001 \001(\0162-.services.trustregistry.v1.RegistrationStatus\"C\n"
-          + "\020FetchDataRequest\022 \n"
-          + "\030governance_framework_uri\030\001 \001(\t\022\r\n"
-          + "\005query\030\002 \001(\t\"`\n"
-          + "\021FetchDataResponse\022\025\n\r"
-          + "response_json\030\001 \001(\t\022\030\n"
-          + "\020has_more_results\030\002 \001(\010\022\032\n"
-          + "\022continuation_token\030\003 \001(\t*Z\n"
+          + "\006status\030\001 \001(\0162-.services.trustregistry.v1.RegistrationStatus*Z\n"
           + "\022RegistrationStatus\022\013\n"
           + "\007CURRENT\020\000\022\013\n"
           + "\007EXPIRED\020\001\022\016\n\n"
           + "TERMINATED\020\002\022\013\n"
           + "\007REVOKED\020\003\022\r\n"
           + "\tNOT_FOUND\020\n"
-          + "2\336\006\n\r"
+          + "2\354\005\n\r"
           + "TrustRegistry\022o\n"
-          + "\014AddFramework\022..services.trustregistry.v1.AddFrame"
-          + "workRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
-          + "\017RemoveFramework\0221.services.trustregistry.v1.RemoveFramew"
-          + "orkRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
-          + "\016SearchRegistry\0220.services.trustregistry.v1.SearchRegis"
-          + "tryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
-          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMemb"
-          + "erRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
-          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterM"
-          + "emberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
-          + "\023GetMembershipStatus\0225.services.trustregistry.v1.Ge"
-          + "tMembershipStatusRequest\0326.services.trus"
-          + "tregistry.v1.GetMembershipStatusResponse\022p\n"
-          + "\tFetchData\022+.services.trustregistry.v"
-          + "1.FetchDataRequest\032,.services.trustregistry.v1.FetchDataResponse\"\006\212\246\035\002\020\0010\001Br\n"
-          + "!trinsic.services.trustregistry.v1P\001Z\'servi"
-          + "ces/trustregistry/v1/trustregistry\252\002!Tri"
-          + "nsic.Services.TrustRegistry.V1b\006proto3"
+          + "\014AddFramework\022..services.trustregistry.v1.AddFrameworkReq"
+          + "uest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
+          + "\017RemoveFramework\0221.services.trustregistry.v1.RemoveFrameworkRequ"
+          + "est\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
+          + "\016SearchRegistry\0220.services.trustregistry.v1.SearchRegistryRequ"
+          + "est\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
+          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMemberReque"
+          + "st\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
+          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterMemberRe"
+          + "quest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
+          + "\023GetMembershipStatus\0225.services.trustregistry.v1.GetMember"
+          + "shipStatusRequest\0326.services.trustregistry.v1.GetMembershipStatusResponseBr\n"
+          + "!trinsic.services.trustregistry.v1P\001Z\'servic"
+          + "es/trustregistry/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -277,26 +258,9 @@ public final class TrustRegistryOuterClass {
             new java.lang.String[] {
               "Status",
             });
-    internal_static_services_trustregistry_v1_FetchDataRequest_descriptor =
-        getDescriptor().getMessageTypes().get(13);
-    internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_FetchDataRequest_descriptor,
-            new java.lang.String[] {
-              "GovernanceFrameworkUri", "Query",
-            });
-    internal_static_services_trustregistry_v1_FetchDataResponse_descriptor =
-        getDescriptor().getMessageTypes().get(14);
-    internal_static_services_trustregistry_v1_FetchDataResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_FetchDataResponse_descriptor,
-            new java.lang.String[] {
-              "ResponseJson", "HasMoreResults", "ContinuationToken",
-            });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
-    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();

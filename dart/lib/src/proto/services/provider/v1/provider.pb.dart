@@ -2942,6 +2942,13 @@ class WalletConfiguration extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'configType')
+    ..pc<$1.WalletAuthToken>(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'authTokens',
+        $pb.PbFieldType.PM,
+        subBuilder: $1.WalletAuthToken.create)
     ..hasRequiredFields = false;
 
   WalletConfiguration._() : super();
@@ -2952,6 +2959,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? walletId,
     $core.String? publicDid,
     $core.String? configType,
+    $core.Iterable<$1.WalletAuthToken>? authTokens,
   }) {
     final _result = create();
     if (name != null) {
@@ -2971,6 +2979,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     }
     if (configType != null) {
       _result.configType = configType;
+    }
+    if (authTokens != null) {
+      _result.authTokens.addAll(authTokens);
     }
     return _result;
   }
@@ -3072,6 +3083,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   $core.bool hasConfigType() => $_has(5);
   @$pb.TagNumber(6)
   void clearConfigType() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.List<$1.WalletAuthToken> get authTokens => $_getList(6);
 }
 
 class IonOptions extends $pb.GeneratedMessage {
