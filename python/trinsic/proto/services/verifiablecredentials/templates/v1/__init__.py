@@ -85,7 +85,7 @@ class SearchCredentialTemplatesResponse(betterproto.Message):
     items_json: str = betterproto.string_field(1)
     """Raw JSON data returned from query"""
 
-    has_more: bool = betterproto.bool_field(2)
+    has_more_results: bool = betterproto.bool_field(2)
     """
     Whether more results are available for this query via `continuation_token`
     """

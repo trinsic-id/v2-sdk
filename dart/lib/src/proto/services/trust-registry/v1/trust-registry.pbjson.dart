@@ -111,7 +111,13 @@ const SearchRegistryResponse$json = const {
   '1': 'SearchRegistryResponse',
   '2': const [
     const {'1': 'items_json', '3': 1, '4': 1, '5': 9, '10': 'itemsJson'},
-    const {'1': 'has_more', '3': 2, '4': 1, '5': 8, '10': 'hasMore'},
+    const {
+      '1': 'has_more_results',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'hasMoreResults'
+    },
     const {
       '1': 'continuation_token',
       '3': 4,
@@ -125,7 +131,7 @@ const SearchRegistryResponse$json = const {
 /// Descriptor for `SearchRegistryResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchRegistryResponseDescriptor =
     $convert.base64Decode(
-        'ChZTZWFyY2hSZWdpc3RyeVJlc3BvbnNlEh0KCml0ZW1zX2pzb24YASABKAlSCWl0ZW1zSnNvbhIZCghoYXNfbW9yZRgCIAEoCFIHaGFzTW9yZRItChJjb250aW51YXRpb25fdG9rZW4YBCABKAlSEWNvbnRpbnVhdGlvblRva2Vu');
+        'ChZTZWFyY2hSZWdpc3RyeVJlc3BvbnNlEh0KCml0ZW1zX2pzb24YASABKAlSCWl0ZW1zSnNvbhIoChBoYXNfbW9yZV9yZXN1bHRzGAIgASgIUg5oYXNNb3JlUmVzdWx0cxItChJjb250aW51YXRpb25fdG9rZW4YBCABKAlSEWNvbnRpbnVhdGlvblRva2Vu');
 @$core.Deprecated('Use governanceFrameworkDescriptor instead')
 const GovernanceFramework$json = const {
   '1': 'GovernanceFramework',
@@ -251,46 +257,3 @@ const GetMembershipStatusResponse$json = const {
 final $typed_data.Uint8List getMembershipStatusResponseDescriptor =
     $convert.base64Decode(
         'ChtHZXRNZW1iZXJzaGlwU3RhdHVzUmVzcG9uc2USRQoGc3RhdHVzGAEgASgOMi0uc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5SZWdpc3RyYXRpb25TdGF0dXNSBnN0YXR1cw==');
-@$core.Deprecated('Use fetchDataRequestDescriptor instead')
-const FetchDataRequest$json = const {
-  '1': 'FetchDataRequest',
-  '2': const [
-    const {
-      '1': 'governance_framework_uri',
-      '3': 1,
-      '4': 1,
-      '5': 9,
-      '10': 'governanceFrameworkUri'
-    },
-    const {'1': 'query', '3': 2, '4': 1, '5': 9, '10': 'query'},
-  ],
-};
-
-/// Descriptor for `FetchDataRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List fetchDataRequestDescriptor = $convert.base64Decode(
-    'ChBGZXRjaERhdGFSZXF1ZXN0EjgKGGdvdmVybmFuY2VfZnJhbWV3b3JrX3VyaRgBIAEoCVIWZ292ZXJuYW5jZUZyYW1ld29ya1VyaRIUCgVxdWVyeRgCIAEoCVIFcXVlcnk=');
-@$core.Deprecated('Use fetchDataResponseDescriptor instead')
-const FetchDataResponse$json = const {
-  '1': 'FetchDataResponse',
-  '2': const [
-    const {'1': 'response_json', '3': 1, '4': 1, '5': 9, '10': 'responseJson'},
-    const {
-      '1': 'has_more_results',
-      '3': 2,
-      '4': 1,
-      '5': 8,
-      '10': 'hasMoreResults'
-    },
-    const {
-      '1': 'continuation_token',
-      '3': 3,
-      '4': 1,
-      '5': 9,
-      '10': 'continuationToken'
-    },
-  ],
-};
-
-/// Descriptor for `FetchDataResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List fetchDataResponseDescriptor = $convert.base64Decode(
-    'ChFGZXRjaERhdGFSZXNwb25zZRIjCg1yZXNwb25zZV9qc29uGAEgASgJUgxyZXNwb25zZUpzb24SKAoQaGFzX21vcmVfcmVzdWx0cxgCIAEoCFIOaGFzTW9yZVJlc3VsdHMSLQoSY29udGludWF0aW9uX3Rva2VuGAMgASgJUhFjb250aW51YXRpb25Ub2tlbg==');

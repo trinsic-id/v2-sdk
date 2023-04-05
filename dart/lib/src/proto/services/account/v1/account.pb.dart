@@ -646,6 +646,13 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'publicDid')
+    ..pc<WalletAuthToken>(
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'authTokens',
+        $pb.PbFieldType.PM,
+        subBuilder: WalletAuthToken.create)
     ..hasRequiredFields = false;
 
   AccountInfoResponse._() : super();
@@ -657,6 +664,7 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
     $core.String? deviceId,
     $core.String? ecosystemId,
     $core.String? publicDid,
+    $core.Iterable<WalletAuthToken>? authTokens,
   }) {
     final _result = create();
     if (details != null) {
@@ -677,6 +685,9 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
     }
     if (publicDid != null) {
       _result.publicDid = publicDid;
+    }
+    if (authTokens != null) {
+      _result.authTokens.addAll(authTokens);
     }
     return _result;
   }
@@ -772,6 +783,9 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   $core.bool hasPublicDid() => $_has(5);
   @$pb.TagNumber(6)
   void clearPublicDid() => clearField(6);
+
+  @$pb.TagNumber(8)
+  $core.List<WalletAuthToken> get authTokens => $_getList(6);
 }
 
 class AccountEcosystem extends $pb.GeneratedMessage {
@@ -1386,4 +1400,113 @@ class AuthorizeWebhookResponse extends $pb.GeneratedMessage {
   static AuthorizeWebhookResponse getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<AuthorizeWebhookResponse>(create);
   static AuthorizeWebhookResponse? _defaultInstance;
+}
+
+class WalletAuthToken extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'WalletAuthToken',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.account.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'id')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'description')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'dateCreated')
+    ..hasRequiredFields = false;
+
+  WalletAuthToken._() : super();
+  factory WalletAuthToken({
+    $core.String? id,
+    $core.String? description,
+    $core.String? dateCreated,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (description != null) {
+      _result.description = description;
+    }
+    if (dateCreated != null) {
+      _result.dateCreated = dateCreated;
+    }
+    return _result;
+  }
+  factory WalletAuthToken.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory WalletAuthToken.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  WalletAuthToken clone() => WalletAuthToken()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  WalletAuthToken copyWith(void Function(WalletAuthToken) updates) =>
+      super.copyWith((message) => updates(message as WalletAuthToken))
+          as WalletAuthToken; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static WalletAuthToken create() => WalletAuthToken._();
+  WalletAuthToken createEmptyInstance() => create();
+  static $pb.PbList<WalletAuthToken> createRepeated() =>
+      $pb.PbList<WalletAuthToken>();
+  @$core.pragma('dart2js:noInline')
+  static WalletAuthToken getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WalletAuthToken>(create);
+  static WalletAuthToken? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get description => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set description($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDescription() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDescription() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get dateCreated => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set dateCreated($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasDateCreated() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDateCreated() => clearField(3);
 }

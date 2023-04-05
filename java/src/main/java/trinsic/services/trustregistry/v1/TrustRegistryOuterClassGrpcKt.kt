@@ -13,9 +13,7 @@ import io.grpc.Status.UNIMPLEMENTED
 import io.grpc.StatusException
 import io.grpc.kotlin.AbstractCoroutineServerImpl
 import io.grpc.kotlin.AbstractCoroutineStub
-import io.grpc.kotlin.ClientCalls.serverStreamingRpc
 import io.grpc.kotlin.ClientCalls.unaryRpc
-import io.grpc.kotlin.ServerCalls.serverStreamingServerMethodDefinition
 import io.grpc.kotlin.ServerCalls.unaryServerMethodDefinition
 import io.grpc.kotlin.StubFor
 import kotlin.String
@@ -23,7 +21,6 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.jvm.JvmOverloads
 import kotlin.jvm.JvmStatic
-import kotlinx.coroutines.flow.Flow
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc.getServiceDescriptor
 
 /**
@@ -55,9 +52,6 @@ object TrustRegistryGrpcKt {
   val getMembershipStatusMethod:
       MethodDescriptor<GetMembershipStatusRequest, GetMembershipStatusResponse>
     @JvmStatic get() = TrustRegistryGrpc.getGetMembershipStatusMethod()
-
-  val fetchDataMethod: MethodDescriptor<FetchDataRequest, FetchDataResponse>
-    @JvmStatic get() = TrustRegistryGrpc.getFetchDataMethod()
 
   /**
    * A stub for issuing RPCs to a(n) services.trustregistry.v1.TrustRegistry service as suspending
@@ -182,25 +176,6 @@ object TrustRegistryGrpcKt {
             request,
             callOptions,
             headers)
-    /**
-     * Returns a [Flow] that, when collected, executes this RPC and emits responses from the server
-     * as they arrive. That flow finishes normally if the server closes its response with
-     * [`Status.OK`][Status], and fails by throwing a [StatusException] otherwise. If collecting the
-     * flow downstream fails exceptionally (including via cancellation), the RPC is cancelled with
-     * that exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return A flow that, when collected, emits the responses from the server.
-     */
-    fun fetchData(
-        request: FetchDataRequest,
-        headers: Metadata = Metadata()
-    ): Flow<FetchDataResponse> =
-        serverStreamingRpc(
-            channel, TrustRegistryGrpc.getFetchDataMethod(), request, callOptions, headers)
   }
 
   /**
@@ -303,23 +278,6 @@ object TrustRegistryGrpcKt {
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.GetMembershipStatus is unimplemented"))
 
-    /**
-     * Returns a [Flow] of responses to an RPC for
-     * services.trustregistry.v1.TrustRegistry.FetchData.
-     *
-     * If creating or collecting the returned flow fails with a [StatusException], the RPC will fail
-     * with the corresponding [Status]. If it fails with a
-     * [java.util.concurrent.CancellationException], the RPC will fail with status
-     * `Status.CANCELLED`. If creating or collecting the returned flow fails for any other reason,
-     * the RPC will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open fun fetchData(request: FetchDataRequest): Flow<FetchDataResponse> =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.trustregistry.v1.TrustRegistry.FetchData is unimplemented"))
-
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
             .addMethod(
@@ -352,11 +310,6 @@ object TrustRegistryGrpcKt {
                     context = this.context,
                     descriptor = TrustRegistryGrpc.getGetMembershipStatusMethod(),
                     implementation = ::getMembershipStatus))
-            .addMethod(
-                serverStreamingServerMethodDefinition(
-                    context = this.context,
-                    descriptor = TrustRegistryGrpc.getFetchDataMethod(),
-                    implementation = ::fetchData))
             .build()
   }
 }

@@ -3,6 +3,7 @@ import {
   AccountDetails,
   AccountProfile,
   ConfirmationMethod,
+  WalletAuthToken,
   confirmationMethodFromJSON,
   confirmationMethodToJSON,
 } from "../../account/v1/account";
@@ -413,7 +414,7 @@ export interface SearchWalletConfigurationResponse {
   /** Results matching the search query */
   results?: WalletConfiguration[];
   /** Whether more results are available for this query via `continuation_token` */
-  hasMore?: boolean;
+  hasMoreResults?: boolean;
   /** Token to fetch next set of results via `SearchRequest` */
   continuationToken?: string;
 }
@@ -426,6 +427,12 @@ export interface WalletConfiguration {
   walletId?: string;
   publicDid?: string;
   configType?: string;
+  /**
+   * List of active authentication tokens for this wallet.
+   * This list does not contain the issued token, only metadata
+   * such as ID, description, and creation date.
+   */
+  authTokens?: WalletAuthToken[];
 }
 
 /** Options for creation of DID on the ION network */
@@ -2798,7 +2805,7 @@ export const SearchWalletConfigurationsRequest = {
 };
 
 function createBaseSearchWalletConfigurationResponse(): SearchWalletConfigurationResponse {
-  return { results: [], hasMore: false, continuationToken: "" };
+  return { results: [], hasMoreResults: false, continuationToken: "" };
 }
 
 export const SearchWalletConfigurationResponse = {
@@ -2811,8 +2818,8 @@ export const SearchWalletConfigurationResponse = {
         WalletConfiguration.encode(v!, writer.uint32(10).fork()).ldelim();
       }
     }
-    if (message.hasMore === true) {
-      writer.uint32(16).bool(message.hasMore);
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
     }
     if (
       message.continuationToken !== undefined &&
@@ -2839,7 +2846,7 @@ export const SearchWalletConfigurationResponse = {
           );
           break;
         case 2:
-          message.hasMore = reader.bool();
+          message.hasMoreResults = reader.bool();
           break;
         case 4:
           message.continuationToken = reader.string();
@@ -2857,7 +2864,9 @@ export const SearchWalletConfigurationResponse = {
       results: Array.isArray(object?.results)
         ? object.results.map((e: any) => WalletConfiguration.fromJSON(e))
         : [],
-      hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+      hasMoreResults: isSet(object.hasMoreResults)
+        ? Boolean(object.hasMoreResults)
+        : false,
       continuationToken: isSet(object.continuationToken)
         ? String(object.continuationToken)
         : "",
@@ -2873,7 +2882,8 @@ export const SearchWalletConfigurationResponse = {
     } else {
       obj.results = [];
     }
-    message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+    message.hasMoreResults !== undefined &&
+      (obj.hasMoreResults = message.hasMoreResults);
     message.continuationToken !== undefined &&
       (obj.continuationToken = message.continuationToken);
     return obj;
@@ -2885,7 +2895,7 @@ export const SearchWalletConfigurationResponse = {
     const message = createBaseSearchWalletConfigurationResponse();
     message.results =
       object.results?.map((e) => WalletConfiguration.fromPartial(e)) || [];
-    message.hasMore = object.hasMore ?? false;
+    message.hasMoreResults = object.hasMoreResults ?? false;
     message.continuationToken = object.continuationToken ?? "";
     return message;
   },
@@ -2899,6 +2909,7 @@ function createBaseWalletConfiguration(): WalletConfiguration {
     walletId: "",
     publicDid: "",
     configType: "",
+    authTokens: [],
   };
 }
 
@@ -2924,6 +2935,11 @@ export const WalletConfiguration = {
     }
     if (message.configType !== undefined && message.configType !== "") {
       writer.uint32(50).string(message.configType);
+    }
+    if (message.authTokens !== undefined && message.authTokens.length !== 0) {
+      for (const v of message.authTokens) {
+        WalletAuthToken.encode(v!, writer.uint32(58).fork()).ldelim();
+      }
     }
     return writer;
   },
@@ -2953,6 +2969,11 @@ export const WalletConfiguration = {
         case 6:
           message.configType = reader.string();
           break;
+        case 7:
+          message.authTokens!.push(
+            WalletAuthToken.decode(reader, reader.uint32())
+          );
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2969,6 +2990,9 @@ export const WalletConfiguration = {
       walletId: isSet(object.walletId) ? String(object.walletId) : "",
       publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
       configType: isSet(object.configType) ? String(object.configType) : "",
+      authTokens: Array.isArray(object?.authTokens)
+        ? object.authTokens.map((e: any) => WalletAuthToken.fromJSON(e))
+        : [],
     };
   },
 
@@ -2980,6 +3004,13 @@ export const WalletConfiguration = {
     message.walletId !== undefined && (obj.walletId = message.walletId);
     message.publicDid !== undefined && (obj.publicDid = message.publicDid);
     message.configType !== undefined && (obj.configType = message.configType);
+    if (message.authTokens) {
+      obj.authTokens = message.authTokens.map((e) =>
+        e ? WalletAuthToken.toJSON(e) : undefined
+      );
+    } else {
+      obj.authTokens = [];
+    }
     return obj;
   },
 
@@ -2991,6 +3022,8 @@ export const WalletConfiguration = {
     message.walletId = object.walletId ?? "";
     message.publicDid = object.publicDid ?? "";
     message.configType = object.configType ?? "";
+    message.authTokens =
+      object.authTokens?.map((e) => WalletAuthToken.fromPartial(e)) || [];
     return message;
   },
 };
