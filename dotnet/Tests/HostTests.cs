@@ -32,7 +32,6 @@ public class HostTests
         accountService.Options.ServerPort.Should().Be(ServiceBase.DefaultServerPort);
         accountService.Options.ServerUseTls.Should().Be(ServiceBase.DefaultServerUseTls);
         accountService.Options.AuthToken.Should().Be(string.Empty);
-        accountService.TokenProvider.Should().BeOfType<FileTokenProvider>();
 
         await host.StopAsync();
     }
@@ -43,8 +42,6 @@ public class HostTests
             .CreateDefaultBuilder()
             .ConfigureServices(services => {
                 services.AddTrinsic(options => {
-                    options.UseInMemoryTokenProvider();
-
                     options.ServiceOptions.AuthToken = "auth";
                     options.ServiceOptions.ServerEndpoint = "example.com";
                     options.ServiceOptions.ServerPort = 42;
@@ -56,12 +53,9 @@ public class HostTests
 
         var providerService = host.Services.GetService<ProviderService>();
         var accountService = host.Services.GetRequiredService<AccountService>();
-        var tokenProvider = host.Services.GetRequiredService<ITokenProvider>();
 
         providerService.Should().NotBeNull();
         accountService.Should().NotBeNull();
-
-        tokenProvider.Should().BeOfType<MemoryTokenProvider>();
 
         accountService.Options.ServerEndpoint.Should().Be("example.com");
         accountService.Options.ServerPort.Should().Be(42);
@@ -77,15 +71,11 @@ public class HostTests
             .CreateDefaultBuilder()
             .ConfigureServices(services => {
                 services.AddTrinsic(options => {
-                    options.TokenPersistenceEnabled = false;
+
                 });
             }).Build();
 
         await host.StartAsync();
-
-        var tokenProvider = host.Services.GetRequiredService<ITokenProvider>();
-
-        tokenProvider.Should().BeOfType<NoOpTokenProvider>();
 
         await host.StopAsync();
     }

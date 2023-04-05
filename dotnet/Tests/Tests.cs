@@ -62,7 +62,7 @@ public class Tests
 
     [Fact(DisplayName = "SDK Version has 3 decimal places")]
     public void TestGetVersion() {
-        Assert.Equal("1.0.0",(new TrinsicService()).GetSdkVersion());
+        Assert.Equal("1.0.0", TrinsicService.GetSdkVersion());
     }
 
     private const string VaccinationCertificateUnsigned = "TestData/vaccination-certificate-unsigned.jsonld";
@@ -70,7 +70,7 @@ public class Tests
 
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
+        var trinsic = new TrinsicService(_options.Clone());
 
         var (ecosystem, authToken) = trinsic.Provider.CreateEcosystem(new());
         var ecosystemId = ecosystem.Id;
@@ -168,7 +168,7 @@ public class Tests
     [Fact(DisplayName = "Demo: Wallet deletion")]
     public async Task TestWalletDeletion()
     {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
+        var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
         await trinsic.Account.LoginAnonymousAsync(ecosystem.Id);
         var newWalletInfo = await trinsic.Account.InfoAsync();
@@ -244,7 +244,7 @@ public class Tests
     [Fact(DisplayName = "Demo: ecosystem creation and listing")]
     public async Task EcosystemTests() {
         // setup
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
+        var trinsic = new TrinsicService(_options.Clone());
 
         // test create ecosystem
         // createEcosystem() {
@@ -318,7 +318,7 @@ public class Tests
 
     [Fact(Skip = "Named login example for docs")]
     public async Task TestLogin() {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
+        var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, _) = await trinsic.Provider.CreateEcosystemAsync(new());
 
         var ecosystemId = ecosystem.Id;
@@ -355,44 +355,13 @@ public class Tests
     }
 
     [Fact]
-    public async Task TestProtectUnprotectProfile() {
-        var myEcosystemId = "default";
-        // testSignInAndGetInfo() {
-        // trinsicServiceConstructor() {
-        var trinsic = new TrinsicService(_options);
-        // }
-        // accountServiceSignIn() {
-        var myProfile = await trinsic.Account.LoginAnonymousAsync(myEcosystemId);
-        // }
-        // accountServiceGetInfo() {
-        var info = await trinsic.Account.GetInfoAsync();
-        // }
-        // }
-
-        Assert.NotNull(info);
-
-        // protectUnprotectProfile() {
-        var securityCode = "1234";
-        var myProtectedProfile = AccountService.Protect(myProfile!, securityCode);
-        var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
-        // }
-
-        trinsic.SetAuthToken(myProtectedProfile);
-        await Assert.ThrowsAsync<Exception>(trinsic.Account.GetInfoAsync);
-
-        trinsic.SetAuthToken(myUnprotectedProfile);
-        Assert.NotNull(await trinsic.Account.GetInfoAsync());
-        Assert.NotNull(trinsic.Account.GetInfo());
-    }
-
-    [Fact]
     public async Task TestGovernanceFrameworkUriParse() {
         var myEcosystemId = "default";
         var trinsic = new TrinsicService(_options);
-        var myProfile = await trinsic.Account.LoginAnonymousAsync(myEcosystemId);
+        var myProfile = await trinsic.Wallet.CreateWalletAsync(new() {EcosystemId = myEcosystemId });
         Assert.NotNull(myProfile);
         
-        trinsic.SetAuthToken(myProfile);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(myProfile.AuthToken));
 
         await Assert.ThrowsAsync<RpcException>(async () => await trinsic.TrustRegistry.AddFrameworkAsync(new() {
             Description = "invalid uri",
@@ -405,7 +374,7 @@ public class Tests
         var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
-        trinsic.SetAuthToken(authToken);
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(authToken));
 
         // create example template
         // createTemplate() {

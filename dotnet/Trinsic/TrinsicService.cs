@@ -19,17 +19,14 @@ public class TrinsicService : ServiceBase
 
 
     public TrinsicService(ServiceOptions options)
-        : base(options)
-    {
+        : base(options) {
     }
 
-    internal TrinsicService() : base(new())
-    {
+    public TrinsicService() : base(new()) {
     }
 
     internal TrinsicService(IOptions<ServiceOptions> options)
-        : base(options.Value)
-    {
+        : base(options.Value) {
     }
 
     /// <summary>

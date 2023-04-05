@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Trinsic;
 using Trinsic.Sdk.Options.V1;
@@ -13,13 +12,18 @@ namespace Microsoft.Extensions.DependencyInjection;
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddTrinsic(this IServiceCollection serviceCollection, Action<ITrinsicBuilder> configureBuilder) {
-        DefaultTrinsicBuilder builder = new(serviceCollection);
-        configureBuilder(builder);
-        serviceCollection.Configure((ServiceOptions options) => options.MergeFrom(builder.ServiceOptions));
+    /// <summary>
+    /// Add Trinsic Service dependencies and optionally configure the service options
+    /// </summary>
+    /// <param name="serviceCollection"></param>
+    /// <param name="configureOptions"></param>
+    /// <returns></returns>
+    public static IServiceCollection AddTrinsic(this IServiceCollection serviceCollection, Action<ServiceOptions>? configureOptions = null) {
+        if (configureOptions is not null)
+        {
+            serviceCollection.Configure(configureOptions);
+        }
 
-        serviceCollection.AddSingleton<TrinsicService>();
-
-        return serviceCollection;
+        return serviceCollection.AddSingleton(provider => new TrinsicService(provider.GetService<IOptions<ServiceOptions>>()?.Value ?? new ServiceOptions()));
     }
 }

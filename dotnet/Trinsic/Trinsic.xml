@@ -504,6 +504,16 @@
             This DID is used as the `issuer` when signing verifiable credentials
             </summary>
         </member>
+        <member name="F:Trinsic.Services.Account.V1.AccountInfoResponse.AuthTokensFieldNumber">
+            <summary>Field number for the "auth_tokens" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.AccountInfoResponse.AuthTokens">
+            <summary>
+            List of active authentication tokens for this wallet.
+            This list does not contain the issued token, only metadata
+            such as ID, description, and creation date.
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Account.V1.AccountEcosystem">
             <summary>
             Deprecated
@@ -631,6 +641,42 @@
         <member name="T:Trinsic.Services.Account.V1.AuthorizeWebhookResponse">
             <summary>
             Response to `AuthorizeWebhookRequest`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Account.V1.WalletAuthToken">
+            <summary>
+            Information about authenticaton tokens for a wallet
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.WalletAuthToken.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.WalletAuthToken.Id">
+            <summary>
+            Unique identifier for the token.
+            This field will match the `DeviceId` in the WalletAuthData
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.WalletAuthToken.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.WalletAuthToken.Description">
+            <summary>
+            Device name/description
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.WalletAuthToken.HasDescription">
+            <summary>Gets whether the "description" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.Account.V1.WalletAuthToken.ClearDescription">
+            <summary>Clears the value of the "description" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.WalletAuthToken.DateCreatedFieldNumber">
+            <summary>Field number for the "date_created" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.WalletAuthToken.DateCreated">
+            <summary>
+            Date when the token was created in ISO 8601 format
             </summary>
         </member>
         <member name="P:Trinsic.Services.Account.V1.Account.Descriptor">
@@ -2672,10 +2718,10 @@
             Results matching the search query
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.HasMoreFieldNumber">
-            <summary>Field number for the "has_more" field.</summary>
+        <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.HasMore">
+        <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.HasMoreResults">
             <summary>
             Whether more results are available for this query via `continuation_token`
             </summary>
@@ -2710,6 +2756,16 @@
         </member>
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.ConfigTypeFieldNumber">
             <summary>Field number for the "config_type" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.AuthTokensFieldNumber">
+            <summary>Field number for the "auth_tokens" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.WalletConfiguration.AuthTokens">
+            <summary>
+            List of active authentication tokens for this wallet.
+            This list does not contain the issued token, only metadata
+            such as ID, description, and creation date.
+            </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.IonOptions">
             <summary>
@@ -3568,10 +3624,10 @@
             JSON string containing array of resultant objects
             </summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.HasMoreFieldNumber">
-            <summary>Field number for the "has_more" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.HasMore">
+        <member name="P:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.HasMoreResults">
             <summary>
             Whether more data is available to fetch for query
             </summary>
@@ -3781,31 +3837,6 @@
             Status of member for given credential schema
             </summary>
         </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.FetchDataRequest">
-            <summary>
-            Not implemented.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.FetchDataRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.FetchDataRequest.QueryFieldNumber">
-            <summary>Field number for the "query" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.FetchDataResponse">
-            <summary>
-            Not implemented.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.FetchDataResponse.ResponseJsonFieldNumber">
-            <summary>Field number for the "response_json" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.FetchDataResponse.HasMoreResultsFieldNumber">
-            <summary>Field number for the "has_more_results" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.FetchDataResponse.ContinuationTokenFieldNumber">
-            <summary>Field number for the "continuation_token" field.</summary>
-        </member>
         <member name="P:Trinsic.Services.TrustRegistry.V1.TrustRegistry.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -3859,15 +3890,6 @@
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.FetchData(Trinsic.Services.TrustRegistry.V1.FetchDataRequest,Grpc.Core.IServerStreamWriter{Trinsic.Services.TrustRegistry.V1.FetchDataResponse},Grpc.Core.ServerCallContext)">
-            <summary>
-            Not implemented.
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="responseStream">Used for sending responses back to the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>A task indicating completion of the handler.</returns>
         </member>
         <member name="T:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient">
             <summary>Client for TrustRegistry</summary>
@@ -4103,24 +4125,6 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.FetchData(Trinsic.Services.TrustRegistry.V1.FetchDataRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Not implemented.
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.FetchData(Trinsic.Services.TrustRegistry.V1.FetchDataRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Not implemented.
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
         <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
@@ -4139,6 +4143,21 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UniversalWalletReflection.Descriptor">
             <summary>File descriptor for services/universal-wallet/v1/universal-wallet.proto</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.IdentityProvider.Unknown">
+            <summary>
+            Identity provider is unknown
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.IdentityProvider.Email">
+            <summary>
+            Identity provider is email
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.IdentityProvider.Phone">
+            <summary>
+            Identity provider is phone
+            </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.SearchRequest">
             <summary>
@@ -4175,10 +4194,10 @@
             Array of query results, as JSON strings
             </summary>
         </member>
-        <member name="F:Trinsic.Services.UniversalWallet.V1.SearchResponse.HasMoreFieldNumber">
-            <summary>Field number for the "has_more" field.</summary>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.SearchResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.UniversalWallet.V1.SearchResponse.HasMore">
+        <member name="P:Trinsic.Services.UniversalWallet.V1.SearchResponse.HasMoreResults">
             <summary>
             Whether more results are available for this query via `continuation_token`
             </summary>
@@ -4343,6 +4362,227 @@
             Response to `DeleteWalletRequest`. Empty payload.
             </summary>
         </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.EcosystemId">
+            <summary>
+            Ecosystem ID of the wallet to create
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Description">
+            <summary>
+            Wallet name or description.
+            Use this field to add vendor specific information about this wallet,
+            such as email, phone, internal ID, etc.
+            This field is not unique within our platform
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.WalletId">
+            <summary>
+            Wallet ID of the newly created wallet
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.AuthTokenFieldNumber">
+            <summary>Field number for the "auth_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.AuthToken">
+            <summary>
+            Auth token for the newly created wallet
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.TokenIdFieldNumber">
+            <summary>Field number for the "token_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.TokenId">
+            <summary>
+            Token ID of the newly generated token
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest.TokenDescriptionFieldNumber">
+            <summary>Field number for the "token_description" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenResponse.TokenIdFieldNumber">
+            <summary>Field number for the "token_id" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenResponse.AuthTokenFieldNumber">
+            <summary>Field number for the "auth_token" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest">
+            <summary>
+            Request to retrieve wallet information about a given wallet identified by its wallet ID
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest.WalletId">
+            <summary>
+            Wallet ID of the wallet to retrieve
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.GetWalletInfoResponse">
+            <summary>
+            Response to `GetWalletInfoRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GetWalletInfoResponse.WalletFieldNumber">
+            <summary>Field number for the "wallet" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.GetWalletInfoResponse.Wallet">
+            <summary>
+            Wallet configuration
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest">
+            <summary>
+            Request to retrieve wallet information about the currently authenticated wallet
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.GetMyInfoResponse">
+            <summary>
+            Response to `GetMyInfoRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GetMyInfoResponse.WalletFieldNumber">
+            <summary>Field number for the "wallet" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.GetMyInfoResponse.Wallet">
+            <summary>
+            Wallet configuration
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest">
+            <summary>
+            Request to revoke a previously issued auth token
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest.WalletId">
+            <summary>
+            Wallet ID of the wallet to from which to revoke the token
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest.TokenIdFieldNumber">
+            <summary>Field number for the "token_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest.TokenId">
+            <summary>
+            Token ID of the token to revoke
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.ListWalletsRequest.FilterFieldNumber">
+            <summary>Field number for the "filter" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.ListWalletsResponse.WalletsFieldNumber">
+            <summary>Field number for the "wallets" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest.IdentityFieldNumber">
+            <summary>Field number for the "identity" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest.Identity">
+            <summary>
+            Identity to add to the wallet
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest.ProviderFieldNumber">
+            <summary>Field number for the "provider" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitResponse.ChallengeFieldNumber">
+            <summary>Field number for the "challenge" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitResponse.Challenge">
+            <summary>
+            Challenge to be verified by the user.
+            Pass this challenge back to the `AddIdentityConfirm` endpoint
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest.ChallengeFieldNumber">
+            <summary>Field number for the "challenge" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest.Challenge">
+            <summary>
+            The challenge received from the `AddIdentityInit` endpoint
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest.ResponseFieldNumber">
+            <summary>Field number for the "response" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest.Response">
+            <summary>
+            The response to the challenge. If using Email or Phone,
+            this is the OTP code sent to the user's email or phone
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest.IdentityFieldNumber">
+            <summary>Field number for the "identity" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest.Identity">
+            <summary>
+            Identity to add to the wallet
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest.ProviderFieldNumber">
+            <summary>Field number for the "provider" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest.Provider">
+            <summary>
+            Identity provider
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest.EcosystemId">
+            <summary>
+            Ecosystem ID to which the wallet belongs
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AuthenticateInitResponse.ChallengeFieldNumber">
+            <summary>Field number for the "challenge" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AuthenticateInitResponse.Challenge">
+            <summary>
+            The challenge received from the `AcquireAuthTokenInit` endpoint
+            Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest.ChallengeFieldNumber">
+            <summary>Field number for the "challenge" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest.Challenge">
+            <summary>
+            The challenge received from the `AcquireAuthTokenInit` endpoint
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest.ResponseFieldNumber">
+            <summary>Field number for the "response" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest.Response">
+            <summary>
+            The response to the challenge. If using Email or Phone,
+            this is the OTP code sent to the user's email or phone
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmResponse.AuthTokenFieldNumber">
+            <summary>Field number for the "auth_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmResponse.AuthToken">
+            <summary>
+            Auth token for the wallet
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.UniversalWallet">
             <summary>
             Service for managing wallets
@@ -4397,6 +4637,92 @@
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.DeleteWallet(Trinsic.Services.UniversalWallet.V1.DeleteWalletRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Delete a wallet and its credentials
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.CreateWallet(Trinsic.Services.UniversalWallet.V1.CreateWalletRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Create a new wallet and generate an auth token for access
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.GetWalletInfo(Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Retrieve wallet details and configuration
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.GetMyInfo(Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Retrieve wallet details and configuration about the currently authenticated wallet
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.GenerateAuthToken(Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Generate new token for a given wallet and add it to the collection of known auth tokens.
+            This endpoint requires authentication and will return a new token ID and auth token.
+            Use this endpoint if you want to authorize another device, without having to share your
+            existing auth token.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.RevokeAuthToken(Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Revokes a previously issued auth token and updates the collection of known auth tokens.
+            This endpoint requires authentication.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.AddExternalIdentityInit(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+            This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.AddExternalIdentityConfirm(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Confirm identity added to the current wallet using `AddIdentity`
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.AuthenticateInit(Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Sign-in to an already existing wallet, using an identity added that was previously registered
+            This endpoint does not require authentication, and will return a challenge to be signed or verified
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.AuthenticateConfirm(Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Confirm sign-in to an already existing wallet and return authentication token
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.ListWallets(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            List all wallets in the ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -4636,6 +4962,390 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.CreateWallet(Trinsic.Services.UniversalWallet.V1.CreateWalletRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a new wallet and generate an auth token for access
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.CreateWallet(Trinsic.Services.UniversalWallet.V1.CreateWalletRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a new wallet and generate an auth token for access
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.CreateWalletAsync(Trinsic.Services.UniversalWallet.V1.CreateWalletRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a new wallet and generate an auth token for access
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.CreateWalletAsync(Trinsic.Services.UniversalWallet.V1.CreateWalletRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a new wallet and generate an auth token for access
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetWalletInfo(Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retrieve wallet details and configuration
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetWalletInfo(Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retrieve wallet details and configuration
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetWalletInfoAsync(Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retrieve wallet details and configuration
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetWalletInfoAsync(Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retrieve wallet details and configuration
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetMyInfo(Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retrieve wallet details and configuration about the currently authenticated wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetMyInfo(Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retrieve wallet details and configuration about the currently authenticated wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetMyInfoAsync(Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retrieve wallet details and configuration about the currently authenticated wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetMyInfoAsync(Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retrieve wallet details and configuration about the currently authenticated wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GenerateAuthToken(Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Generate new token for a given wallet and add it to the collection of known auth tokens.
+            This endpoint requires authentication and will return a new token ID and auth token.
+            Use this endpoint if you want to authorize another device, without having to share your
+            existing auth token.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GenerateAuthToken(Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Generate new token for a given wallet and add it to the collection of known auth tokens.
+            This endpoint requires authentication and will return a new token ID and auth token.
+            Use this endpoint if you want to authorize another device, without having to share your
+            existing auth token.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GenerateAuthTokenAsync(Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Generate new token for a given wallet and add it to the collection of known auth tokens.
+            This endpoint requires authentication and will return a new token ID and auth token.
+            Use this endpoint if you want to authorize another device, without having to share your
+            existing auth token.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GenerateAuthTokenAsync(Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Generate new token for a given wallet and add it to the collection of known auth tokens.
+            This endpoint requires authentication and will return a new token ID and auth token.
+            Use this endpoint if you want to authorize another device, without having to share your
+            existing auth token.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.RevokeAuthToken(Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Revokes a previously issued auth token and updates the collection of known auth tokens.
+            This endpoint requires authentication.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.RevokeAuthToken(Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Revokes a previously issued auth token and updates the collection of known auth tokens.
+            This endpoint requires authentication.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.RevokeAuthTokenAsync(Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Revokes a previously issued auth token and updates the collection of known auth tokens.
+            This endpoint requires authentication.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.RevokeAuthTokenAsync(Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Revokes a previously issued auth token and updates the collection of known auth tokens.
+            This endpoint requires authentication.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityInit(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+            This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityInit(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+            This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityInitAsync(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+            This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityInitAsync(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+            This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityConfirm(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Confirm identity added to the current wallet using `AddIdentity`
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityConfirm(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Confirm identity added to the current wallet using `AddIdentity`
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityConfirmAsync(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Confirm identity added to the current wallet using `AddIdentity`
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AddExternalIdentityConfirmAsync(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Confirm identity added to the current wallet using `AddIdentity`
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateInit(Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign-in to an already existing wallet, using an identity added that was previously registered
+            This endpoint does not require authentication, and will return a challenge to be signed or verified
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateInit(Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign-in to an already existing wallet, using an identity added that was previously registered
+            This endpoint does not require authentication, and will return a challenge to be signed or verified
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateInitAsync(Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign-in to an already existing wallet, using an identity added that was previously registered
+            This endpoint does not require authentication, and will return a challenge to be signed or verified
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateInitAsync(Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign-in to an already existing wallet, using an identity added that was previously registered
+            This endpoint does not require authentication, and will return a challenge to be signed or verified
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateConfirm(Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Confirm sign-in to an already existing wallet and return authentication token
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateConfirm(Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Confirm sign-in to an already existing wallet and return authentication token
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateConfirmAsync(Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Confirm sign-in to an already existing wallet and return authentication token
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.AuthenticateConfirmAsync(Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Confirm sign-in to an already existing wallet and return authentication token
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListWallets(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List all wallets in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListWallets(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List all wallets in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListWalletsAsync(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List all wallets in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListWalletsAsync(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List all wallets in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
@@ -4741,10 +5451,10 @@
             Raw JSON data returned from query
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.HasMoreFieldNumber">
-            <summary>Field number for the "has_more" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.HasMore">
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.HasMoreResults">
             <summary>
             Whether more results are available for this query via `continuation_token`
             </summary>
@@ -6759,6 +7469,118 @@
             Delete a wallet and its credentials
             </summary>
         </member>
+        <member name="M:Trinsic.WalletService.CreateWallet(Trinsic.Services.UniversalWallet.V1.CreateWalletRequest)">
+            <summary>
+            Create a new wallet and generate an auth token for access
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.CreateWalletAsync(Trinsic.Services.UniversalWallet.V1.CreateWalletRequest)">
+            <summary>
+            Create a new wallet and generate an auth token for access
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.GetWalletInfo(Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest)">
+            <summary>
+            Retrieve wallet details and configuration
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.GetWalletInfoAsync(Trinsic.Services.UniversalWallet.V1.GetWalletInfoRequest)">
+            <summary>
+            Retrieve wallet details and configuration
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.GetMyInfo(Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest)">
+            <summary>
+            Retrieve wallet details and configuration about the currently authenticated wallet
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.GetMyInfoAsync(Trinsic.Services.UniversalWallet.V1.GetMyInfoRequest)">
+            <summary>
+            Retrieve wallet details and configuration about the currently authenticated wallet
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.GenerateAuthToken(Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest)">
+            <summary>
+            Generate new token for a given wallet and add it to the collection of known auth tokens.
+             This endpoint requires authentication and will return a new token ID and auth token.
+             Use this endpoint if you want to authorize another device, without having to share your
+             existing auth token.
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.GenerateAuthTokenAsync(Trinsic.Services.UniversalWallet.V1.GenerateAuthTokenRequest)">
+            <summary>
+            Generate new token for a given wallet and add it to the collection of known auth tokens.
+             This endpoint requires authentication and will return a new token ID and auth token.
+             Use this endpoint if you want to authorize another device, without having to share your
+             existing auth token.
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.RevokeAuthToken(Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest)">
+            <summary>
+            Revokes a previously issued auth token and updates the collection of known auth tokens.
+             This endpoint requires authentication.
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.RevokeAuthTokenAsync(Trinsic.Services.UniversalWallet.V1.RevokeAuthTokenRequest)">
+            <summary>
+            Revokes a previously issued auth token and updates the collection of known auth tokens.
+             This endpoint requires authentication.
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AddExternalIdentityInit(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest)">
+            <summary>
+            Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+             This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AddExternalIdentityInitAsync(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityInitRequest)">
+            <summary>
+            Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
+             This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AddExternalIdentityConfirm(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest)">
+            <summary>
+            Confirm identity added to the current wallet using `AddIdentity`
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AddExternalIdentityConfirmAsync(Trinsic.Services.UniversalWallet.V1.AddExternalIdentityConfirmRequest)">
+            <summary>
+            Confirm identity added to the current wallet using `AddIdentity`
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AuthenticateInit(Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest)">
+            <summary>
+            Sign-in to an already existing wallet, using an identity added that was previously registered
+             This endpoint does not require authentication, and will return a challenge to be signed or verified
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AuthenticateInitAsync(Trinsic.Services.UniversalWallet.V1.AuthenticateInitRequest)">
+            <summary>
+            Sign-in to an already existing wallet, using an identity added that was previously registered
+             This endpoint does not require authentication, and will return a challenge to be signed or verified
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AuthenticateConfirm(Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest)">
+            <summary>
+            Confirm sign-in to an already existing wallet and return authentication token
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.AuthenticateConfirmAsync(Trinsic.Services.UniversalWallet.V1.AuthenticateConfirmRequest)">
+            <summary>
+            Confirm sign-in to an already existing wallet and return authentication token
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.ListWallets(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest)">
+            <summary>
+            List all wallets in the ecosystem
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.ListWalletsAsync(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest)">
+            <summary>
+            List all wallets in the ecosystem
+            </summary>
+        </member>
         <member name="T:Trinsic.Sdk.Options.V1.OptionsReflection">
             <summary>Holder for reflection information generated from sdk/options/v1/options.proto</summary>
         </member>
@@ -6800,22 +7622,6 @@
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.AuthToken">
             <summary>
             Authentication token for SDK calls; defaults to empty string (unauthenticated)
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.DependencyInjection.DefaultTrinsicBuilder.Services">
-            <inheritdoc/>
-        </member>
-        <member name="P:Microsoft.Extensions.DependencyInjection.DefaultTrinsicBuilder.ServiceOptions">
-            <inheritdoc/>
-        </member>
-        <member name="P:Microsoft.Extensions.DependencyInjection.ITrinsicBuilder.Services">
-            <summary>
-            Service collection
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.DependencyInjection.ITrinsicBuilder.ServiceOptions">
-            <summary>
-            Gets or sets the network endpoint service options
             </summary>
         </member>
         <member name="M:Google.Protobuf.ProtoMessageExtensions.As``1(Google.Protobuf.IMessage)">

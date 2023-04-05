@@ -99,8 +99,7 @@ public abstract class ServiceBase
     /// Fetches the current version of the SDK
     /// </summary>
     /// <returns></returns>
-    protected internal static string GetSdkVersion()
-    {
+    protected internal static string GetSdkVersion() {
         // This will always be 1.0.0 on local builds, since the version number is set on the github action during publish.
         return Assembly.GetAssembly(typeof(ServiceBase))?.GetName().Version?.ToString(3) ?? "unknown";
     }
