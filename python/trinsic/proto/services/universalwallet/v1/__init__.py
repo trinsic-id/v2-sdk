@@ -13,10 +13,23 @@ import betterproto
 import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
 
+from ...provider import v1 as __provider_v1__
+
 
 if TYPE_CHECKING:
     from betterproto.grpc.grpclib_client import MetadataLike
     from grpclib.metadata import Deadline
+
+
+class IdentityProvider(betterproto.Enum):
+    UNKNOWN = 0
+    """Identity provider is unknown"""
+
+    EMAIL = 1
+    """Identity provider is email"""
+
+    PHONE = 2
+    """Identity provider is phone"""
 
 
 @dataclass(eq=False, repr=False)
@@ -40,7 +53,7 @@ class SearchResponse(betterproto.Message):
     items: List[str] = betterproto.string_field(1)
     """Array of query results, as JSON strings"""
 
-    has_more: bool = betterproto.bool_field(2)
+    has_more_results: bool = betterproto.bool_field(2)
     """
     Whether more results are available for this query via `continuation_token`
     """
@@ -150,6 +163,179 @@ class DeleteWalletResponse(betterproto.Message):
     pass
 
 
+@dataclass(eq=False, repr=False)
+class CreateWalletRequest(betterproto.Message):
+    ecosystem_id: str = betterproto.string_field(1)
+    """Ecosystem ID of the wallet to create"""
+
+    description: str = betterproto.string_field(2)
+    """
+    Wallet name or description. Use this field to add vendor specific
+    information about this wallet, such as email, phone, internal ID, etc. This
+    field is not unique within our platform
+    """
+
+
+@dataclass(eq=False, repr=False)
+class CreateWalletResponse(betterproto.Message):
+    wallet_id: str = betterproto.string_field(1)
+    """Wallet ID of the newly created wallet"""
+
+    auth_token: str = betterproto.string_field(2)
+    """Auth token for the newly created wallet"""
+
+    token_id: str = betterproto.string_field(3)
+    """Token ID of the newly generated token"""
+
+
+@dataclass(eq=False, repr=False)
+class GenerateAuthTokenRequest(betterproto.Message):
+    wallet_id: str = betterproto.string_field(1)
+    token_description: str = betterproto.string_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class GenerateAuthTokenResponse(betterproto.Message):
+    token_id: str = betterproto.string_field(1)
+    auth_token: str = betterproto.string_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class GetWalletInfoRequest(betterproto.Message):
+    """
+    Request to retrieve wallet information about a given wallet identified by
+    its wallet ID
+    """
+
+    wallet_id: str = betterproto.string_field(1)
+    """Wallet ID of the wallet to retrieve"""
+
+
+@dataclass(eq=False, repr=False)
+class GetWalletInfoResponse(betterproto.Message):
+    """Response to `GetWalletInfoRequest`"""
+
+    wallet: "__provider_v1__.WalletConfiguration" = betterproto.message_field(1)
+    """Wallet configuration"""
+
+
+@dataclass(eq=False, repr=False)
+class GetMyInfoRequest(betterproto.Message):
+    """
+    Request to retrieve wallet information about the currently authenticated
+    wallet
+    """
+
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class GetMyInfoResponse(betterproto.Message):
+    """Response to `GetMyInfoRequest`"""
+
+    wallet: "__provider_v1__.WalletConfiguration" = betterproto.message_field(1)
+    """Wallet configuration"""
+
+
+@dataclass(eq=False, repr=False)
+class RevokeAuthTokenRequest(betterproto.Message):
+    """Request to revoke a previously issued auth token"""
+
+    wallet_id: str = betterproto.string_field(1)
+    """Wallet ID of the wallet to from which to revoke the token"""
+
+    token_id: str = betterproto.string_field(2)
+    """Token ID of the token to revoke"""
+
+
+@dataclass(eq=False, repr=False)
+class RevokeAuthTokenResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class ListWalletsRequest(betterproto.Message):
+    filter: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class ListWalletsResponse(betterproto.Message):
+    wallets: List["__provider_v1__.WalletConfiguration"] = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AddExternalIdentityInitRequest(betterproto.Message):
+    identity: str = betterproto.string_field(1)
+    """Identity to add to the wallet"""
+
+    provider: "IdentityProvider" = betterproto.enum_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class AddExternalIdentityInitResponse(betterproto.Message):
+    challenge: str = betterproto.string_field(1)
+    """
+    Challenge to be verified by the user. Pass this challenge back to the
+    `AddIdentityConfirm` endpoint
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AddExternalIdentityConfirmRequest(betterproto.Message):
+    challenge: str = betterproto.string_field(1)
+    """The challenge received from the `AddIdentityInit` endpoint"""
+
+    response: str = betterproto.string_field(2)
+    """
+    The response to the challenge. If using Email or Phone, this is the OTP
+    code sent to the user's email or phone
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AddExternalIdentityConfirmResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class AuthenticateInitRequest(betterproto.Message):
+    identity: str = betterproto.string_field(1)
+    """Identity to add to the wallet"""
+
+    provider: "IdentityProvider" = betterproto.enum_field(2)
+    """Identity provider"""
+
+    ecosystem_id: str = betterproto.string_field(3)
+    """Ecosystem ID to which the wallet belongs"""
+
+
+@dataclass(eq=False, repr=False)
+class AuthenticateInitResponse(betterproto.Message):
+    challenge: str = betterproto.string_field(1)
+    """
+    The challenge received from the `AcquireAuthTokenInit` endpoint Pass this
+    challenge back to the `AcquireAuthTokenConfirm` endpoint
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AuthenticateConfirmRequest(betterproto.Message):
+    challenge: str = betterproto.string_field(1)
+    """The challenge received from the `AcquireAuthTokenInit` endpoint"""
+
+    response: str = betterproto.string_field(2)
+    """
+    The response to the challenge. If using Email or Phone, this is the OTP
+    code sent to the user's email or phone
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AuthenticateConfirmResponse(betterproto.Message):
+    auth_token: str = betterproto.string_field(1)
+    """Auth token for the wallet"""
+
+
 class UniversalWalletStub(betterproto.ServiceStub):
     async def get_item(
         self,
@@ -247,6 +433,166 @@ class UniversalWalletStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def create_wallet(
+        self,
+        create_wallet_request: "CreateWalletRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "CreateWalletResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/CreateWallet",
+            create_wallet_request,
+            CreateWalletResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def get_wallet_info(
+        self,
+        get_wallet_info_request: "GetWalletInfoRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetWalletInfoResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/GetWalletInfo",
+            get_wallet_info_request,
+            GetWalletInfoResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def get_my_info(
+        self,
+        get_my_info_request: "GetMyInfoRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetMyInfoResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/GetMyInfo",
+            get_my_info_request,
+            GetMyInfoResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def generate_auth_token(
+        self,
+        generate_auth_token_request: "GenerateAuthTokenRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GenerateAuthTokenResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/GenerateAuthToken",
+            generate_auth_token_request,
+            GenerateAuthTokenResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def revoke_auth_token(
+        self,
+        revoke_auth_token_request: "RevokeAuthTokenRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "RevokeAuthTokenResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/RevokeAuthToken",
+            revoke_auth_token_request,
+            RevokeAuthTokenResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def add_external_identity_init(
+        self,
+        add_external_identity_init_request: "AddExternalIdentityInitRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AddExternalIdentityInitResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit",
+            add_external_identity_init_request,
+            AddExternalIdentityInitResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def add_external_identity_confirm(
+        self,
+        add_external_identity_confirm_request: "AddExternalIdentityConfirmRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AddExternalIdentityConfirmResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm",
+            add_external_identity_confirm_request,
+            AddExternalIdentityConfirmResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def authenticate_init(
+        self,
+        authenticate_init_request: "AuthenticateInitRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AuthenticateInitResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateInit",
+            authenticate_init_request,
+            AuthenticateInitResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def authenticate_confirm(
+        self,
+        authenticate_confirm_request: "AuthenticateConfirmRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AuthenticateConfirmResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm",
+            authenticate_confirm_request,
+            AuthenticateConfirmResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def list_wallets(
+        self,
+        list_wallets_request: "ListWalletsRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListWalletsResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/ListWallets",
+            list_wallets_request,
+            ListWalletsResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class UniversalWalletBase(ServiceBase):
     async def get_item(self, get_item_request: "GetItemRequest") -> "GetItemResponse":
@@ -273,6 +619,56 @@ class UniversalWalletBase(ServiceBase):
     async def delete_wallet(
         self, delete_wallet_request: "DeleteWalletRequest"
     ) -> "DeleteWalletResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def create_wallet(
+        self, create_wallet_request: "CreateWalletRequest"
+    ) -> "CreateWalletResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def get_wallet_info(
+        self, get_wallet_info_request: "GetWalletInfoRequest"
+    ) -> "GetWalletInfoResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def get_my_info(
+        self, get_my_info_request: "GetMyInfoRequest"
+    ) -> "GetMyInfoResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def generate_auth_token(
+        self, generate_auth_token_request: "GenerateAuthTokenRequest"
+    ) -> "GenerateAuthTokenResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def revoke_auth_token(
+        self, revoke_auth_token_request: "RevokeAuthTokenRequest"
+    ) -> "RevokeAuthTokenResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def add_external_identity_init(
+        self, add_external_identity_init_request: "AddExternalIdentityInitRequest"
+    ) -> "AddExternalIdentityInitResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def add_external_identity_confirm(
+        self, add_external_identity_confirm_request: "AddExternalIdentityConfirmRequest"
+    ) -> "AddExternalIdentityConfirmResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def authenticate_init(
+        self, authenticate_init_request: "AuthenticateInitRequest"
+    ) -> "AuthenticateInitResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def authenticate_confirm(
+        self, authenticate_confirm_request: "AuthenticateConfirmRequest"
+    ) -> "AuthenticateConfirmResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def list_wallets(
+        self, list_wallets_request: "ListWalletsRequest"
+    ) -> "ListWalletsResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_get_item(self, stream: grpclib.server.Stream) -> None:
@@ -303,6 +699,60 @@ class UniversalWalletBase(ServiceBase):
     async def __rpc_delete_wallet(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.delete_wallet(request)
+        await stream.send_message(response)
+
+    async def __rpc_create_wallet(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.create_wallet(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_wallet_info(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.get_wallet_info(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_my_info(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.get_my_info(request)
+        await stream.send_message(response)
+
+    async def __rpc_generate_auth_token(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.generate_auth_token(request)
+        await stream.send_message(response)
+
+    async def __rpc_revoke_auth_token(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.revoke_auth_token(request)
+        await stream.send_message(response)
+
+    async def __rpc_add_external_identity_init(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.add_external_identity_init(request)
+        await stream.send_message(response)
+
+    async def __rpc_add_external_identity_confirm(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.add_external_identity_confirm(request)
+        await stream.send_message(response)
+
+    async def __rpc_authenticate_init(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.authenticate_init(request)
+        await stream.send_message(response)
+
+    async def __rpc_authenticate_confirm(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.authenticate_confirm(request)
+        await stream.send_message(response)
+
+    async def __rpc_list_wallets(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.list_wallets(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -342,5 +792,65 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 DeleteWalletRequest,
                 DeleteWalletResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/CreateWallet": grpclib.const.Handler(
+                self.__rpc_create_wallet,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                CreateWalletRequest,
+                CreateWalletResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/GetWalletInfo": grpclib.const.Handler(
+                self.__rpc_get_wallet_info,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetWalletInfoRequest,
+                GetWalletInfoResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/GetMyInfo": grpclib.const.Handler(
+                self.__rpc_get_my_info,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetMyInfoRequest,
+                GetMyInfoResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/GenerateAuthToken": grpclib.const.Handler(
+                self.__rpc_generate_auth_token,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GenerateAuthTokenRequest,
+                GenerateAuthTokenResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/RevokeAuthToken": grpclib.const.Handler(
+                self.__rpc_revoke_auth_token,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                RevokeAuthTokenRequest,
+                RevokeAuthTokenResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit": grpclib.const.Handler(
+                self.__rpc_add_external_identity_init,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AddExternalIdentityInitRequest,
+                AddExternalIdentityInitResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm": grpclib.const.Handler(
+                self.__rpc_add_external_identity_confirm,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AddExternalIdentityConfirmRequest,
+                AddExternalIdentityConfirmResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateInit": grpclib.const.Handler(
+                self.__rpc_authenticate_init,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthenticateInitRequest,
+                AuthenticateInitResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm": grpclib.const.Handler(
+                self.__rpc_authenticate_confirm,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthenticateConfirmRequest,
+                AuthenticateConfirmResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/ListWallets": grpclib.const.Handler(
+                self.__rpc_list_wallets,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListWalletsRequest,
+                ListWalletsResponse,
             ),
         }

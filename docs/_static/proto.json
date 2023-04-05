@@ -132,6 +132,12 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
+    "services.account.v1.AccountInfoResponse.auth_tokens": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
     "services.account.v1.AccountInfoResponse.details": {
       "type": "field",
       "collection": "fields",
@@ -383,6 +389,30 @@
       "collection": "fields",
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.TokenProtection"
+    },
+    "services.account.v1.WalletAuthToken": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.WalletAuthToken.date_created": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.WalletAuthToken"
+    },
+    "services.account.v1.WalletAuthToken.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.WalletAuthToken"
+    },
+    "services.account.v1.WalletAuthToken.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.WalletAuthToken"
     },
     "services.common.v1.Nonce": {
       "type": "message",
@@ -1602,7 +1632,7 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.SearchWalletConfigurationResponse"
     },
-    "services.provider.v1.SearchWalletConfigurationResponse.has_more": {
+    "services.provider.v1.SearchWalletConfigurationResponse.has_more_results": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
@@ -1734,6 +1764,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.WalletConfiguration.auth_tokens": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
     "services.provider.v1.WalletConfiguration.config_type": {
       "type": "field",
       "collection": "fields",
@@ -1847,48 +1883,6 @@
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.AddFrameworkResponse"
-    },
-    "services.trustregistry.v1.FetchDataRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": ""
-    },
-    "services.trustregistry.v1.FetchDataRequest.governance_framework_uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.FetchDataRequest"
-    },
-    "services.trustregistry.v1.FetchDataRequest.query": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.FetchDataRequest"
-    },
-    "services.trustregistry.v1.FetchDataResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": ""
-    },
-    "services.trustregistry.v1.FetchDataResponse.continuation_token": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.FetchDataResponse"
-    },
-    "services.trustregistry.v1.FetchDataResponse.has_more_results": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.FetchDataResponse"
-    },
-    "services.trustregistry.v1.FetchDataResponse.response_json": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.FetchDataResponse"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest": {
       "type": "message",
@@ -2088,7 +2082,7 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.SearchRegistryResponse"
     },
-    "services.trustregistry.v1.SearchRegistryResponse.has_more": {
+    "services.trustregistry.v1.SearchRegistryResponse.has_more_results": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -2107,12 +2101,6 @@
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.AddFramework": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": ""
-    },
-    "services.trustregistry.v1.TrustRegistry.FetchData": {
       "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -2190,6 +2178,168 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.AddExternalIdentityConfirmRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AddExternalIdentityConfirmRequest.challenge": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AddExternalIdentityConfirmRequest"
+    },
+    "services.universalwallet.v1.AddExternalIdentityConfirmRequest.response": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AddExternalIdentityConfirmRequest"
+    },
+    "services.universalwallet.v1.AddExternalIdentityConfirmResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitRequest.identity": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AddExternalIdentityInitRequest"
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitRequest.provider": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AddExternalIdentityInitRequest"
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AddExternalIdentityInitResponse"
+    },
+    "services.universalwallet.v1.AuthenticateConfirmRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AuthenticateConfirmRequest.challenge": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateConfirmRequest"
+    },
+    "services.universalwallet.v1.AuthenticateConfirmRequest.response": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateConfirmRequest"
+    },
+    "services.universalwallet.v1.AuthenticateConfirmResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AuthenticateConfirmResponse.auth_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateConfirmResponse"
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateInitRequest"
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest.identity": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateInitRequest"
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest.provider": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateInitRequest"
+    },
+    "services.universalwallet.v1.AuthenticateInitResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AuthenticateInitResponse.challenge": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateInitResponse"
+    },
+    "services.universalwallet.v1.CreateWalletRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.CreateWalletRequest.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletRequest"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletRequest"
+    },
+    "services.universalwallet.v1.CreateWalletResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.CreateWalletResponse.auth_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletResponse"
+    },
+    "services.universalwallet.v1.CreateWalletResponse.token_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletResponse"
+    },
+    "services.universalwallet.v1.CreateWalletResponse.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletResponse"
+    },
     "services.universalwallet.v1.DeleteItemRequest": {
       "type": "message",
       "collection": "messages",
@@ -2238,6 +2388,42 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.GenerateAuthTokenRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GenerateAuthTokenRequest.token_description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GenerateAuthTokenRequest"
+    },
+    "services.universalwallet.v1.GenerateAuthTokenRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GenerateAuthTokenRequest"
+    },
+    "services.universalwallet.v1.GenerateAuthTokenResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GenerateAuthTokenResponse.auth_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GenerateAuthTokenResponse"
+    },
+    "services.universalwallet.v1.GenerateAuthTokenResponse.token_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GenerateAuthTokenResponse"
+    },
     "services.universalwallet.v1.GetItemRequest": {
       "type": "message",
       "collection": "messages",
@@ -2267,6 +2453,72 @@
       "collection": "fields",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.GetItemResponse"
+    },
+    "services.universalwallet.v1.GetMyInfoRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GetMyInfoResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GetMyInfoResponse.wallet": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GetMyInfoResponse"
+    },
+    "services.universalwallet.v1.GetWalletInfoRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GetWalletInfoRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GetWalletInfoRequest"
+    },
+    "services.universalwallet.v1.GetWalletInfoResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GetWalletInfoResponse.wallet": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GetWalletInfoResponse"
+    },
+    "services.universalwallet.v1.IdentityProvider": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.IdentityProvider.EMAIL": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.IdentityProvider"
+    },
+    "services.universalwallet.v1.IdentityProvider.PHONE": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.IdentityProvider"
+    },
+    "services.universalwallet.v1.IdentityProvider.UNKNOWN": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.IdentityProvider"
     },
     "services.universalwallet.v1.InsertItemRequest": {
       "type": "message",
@@ -2298,6 +2550,54 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.InsertItemResponse"
     },
+    "services.universalwallet.v1.ListWalletsRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.ListWalletsRequest.filter": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.ListWalletsRequest"
+    },
+    "services.universalwallet.v1.ListWalletsResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.ListWalletsResponse.wallets": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.ListWalletsResponse"
+    },
+    "services.universalwallet.v1.RevokeAuthTokenRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.RevokeAuthTokenRequest.token_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.RevokeAuthTokenRequest"
+    },
+    "services.universalwallet.v1.RevokeAuthTokenRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.RevokeAuthTokenRequest"
+    },
+    "services.universalwallet.v1.RevokeAuthTokenResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.SearchRequest": {
       "type": "message",
       "collection": "messages",
@@ -2328,7 +2628,7 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.SearchResponse"
     },
-    "services.universalwallet.v1.SearchResponse.has_more": {
+    "services.universalwallet.v1.SearchResponse.has_more_results": {
       "type": "field",
       "collection": "fields",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -2346,6 +2646,36 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.AuthenticateInit": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.CreateWallet": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.UniversalWallet.DeleteItem": {
       "type": "method",
       "collection": "methods",
@@ -2358,13 +2688,43 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.UniversalWallet.GenerateAuthToken": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.UniversalWallet.GetItem": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.UniversalWallet.GetMyInfo": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.GetWalletInfo": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.UniversalWallet.InsertItem": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.ListWallets": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.RevokeAuthToken": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -2754,7 +3114,7 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse"
     },
-    "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more": {
+    "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more_results": {
       "type": "field",
       "collection": "fields",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
@@ -3762,7 +4122,8 @@
         "services.account.v1.LoginConfirmRequest",
         "services.account.v1.LoginConfirmResponse",
         "services.account.v1.AuthorizeWebhookRequest",
-        "services.account.v1.AuthorizeWebhookResponse"
+        "services.account.v1.AuthorizeWebhookResponse",
+        "services.account.v1.WalletAuthToken"
       ],
       "fields": [
         "services.account.v1.SignInRequest.details",
@@ -3785,6 +4146,7 @@
         "services.account.v1.AccountInfoResponse.device_id",
         "services.account.v1.AccountInfoResponse.ecosystem_id",
         "services.account.v1.AccountInfoResponse.public_did",
+        "services.account.v1.AccountInfoResponse.auth_tokens",
         "services.account.v1.AccountEcosystem.id",
         "services.account.v1.AccountEcosystem.name",
         "services.account.v1.AccountEcosystem.description",
@@ -3797,7 +4159,10 @@
         "services.account.v1.LoginConfirmRequest.challenge",
         "services.account.v1.LoginConfirmRequest.confirmation_code_hashed",
         "services.account.v1.LoginConfirmResponse.profile",
-        "services.account.v1.AuthorizeWebhookRequest.events"
+        "services.account.v1.AuthorizeWebhookRequest.events",
+        "services.account.v1.WalletAuthToken.id",
+        "services.account.v1.WalletAuthToken.description",
+        "services.account.v1.WalletAuthToken.date_created"
       ],
       "enums": [
         "services.account.v1.ConfirmationMethod"
@@ -4135,7 +4500,7 @@
         "services.provider.v1.SearchWalletConfigurationsRequest.query_filter",
         "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token",
         "services.provider.v1.SearchWalletConfigurationResponse.results",
-        "services.provider.v1.SearchWalletConfigurationResponse.has_more",
+        "services.provider.v1.SearchWalletConfigurationResponse.has_more_results",
         "services.provider.v1.SearchWalletConfigurationResponse.continuation_token",
         "services.provider.v1.WalletConfiguration.name",
         "services.provider.v1.WalletConfiguration.email",
@@ -4143,6 +4508,7 @@
         "services.provider.v1.WalletConfiguration.wallet_id",
         "services.provider.v1.WalletConfiguration.public_did",
         "services.provider.v1.WalletConfiguration.config_type",
+        "services.provider.v1.WalletConfiguration.auth_tokens",
         "services.provider.v1.IonOptions.network",
         "services.provider.v1.IndyOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
@@ -4192,8 +4558,7 @@
         "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
-        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
-        "services.trustregistry.v1.TrustRegistry.FetchData"
+        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus"
       ],
       "messages": [
         "services.trustregistry.v1.AddFrameworkRequest",
@@ -4208,9 +4573,7 @@
         "services.trustregistry.v1.UnregisterMemberRequest",
         "services.trustregistry.v1.UnregisterMemberResponse",
         "services.trustregistry.v1.GetMembershipStatusRequest",
-        "services.trustregistry.v1.GetMembershipStatusResponse",
-        "services.trustregistry.v1.FetchDataRequest",
-        "services.trustregistry.v1.FetchDataResponse"
+        "services.trustregistry.v1.GetMembershipStatusResponse"
       ],
       "fields": [
         "services.trustregistry.v1.AddFrameworkRequest.governance_framework_uri",
@@ -4223,7 +4586,7 @@
         "services.trustregistry.v1.SearchRegistryRequest.query",
         "services.trustregistry.v1.SearchRegistryRequest.continuation_token",
         "services.trustregistry.v1.SearchRegistryResponse.items_json",
-        "services.trustregistry.v1.SearchRegistryResponse.has_more",
+        "services.trustregistry.v1.SearchRegistryResponse.has_more_results",
         "services.trustregistry.v1.SearchRegistryResponse.continuation_token",
         "services.trustregistry.v1.GovernanceFramework.governance_framework_uri",
         "services.trustregistry.v1.GovernanceFramework.trust_registry_uri",
@@ -4243,12 +4606,7 @@
         "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri",
-        "services.trustregistry.v1.GetMembershipStatusResponse.status",
-        "services.trustregistry.v1.FetchDataRequest.governance_framework_uri",
-        "services.trustregistry.v1.FetchDataRequest.query",
-        "services.trustregistry.v1.FetchDataResponse.response_json",
-        "services.trustregistry.v1.FetchDataResponse.has_more_results",
-        "services.trustregistry.v1.FetchDataResponse.continuation_token"
+        "services.trustregistry.v1.GetMembershipStatusResponse.status"
       ],
       "enums": [
         "services.trustregistry.v1.RegistrationStatus"
@@ -4274,7 +4632,17 @@
         "services.universalwallet.v1.UniversalWallet.InsertItem",
         "services.universalwallet.v1.UniversalWallet.UpdateItem",
         "services.universalwallet.v1.UniversalWallet.DeleteItem",
-        "services.universalwallet.v1.UniversalWallet.DeleteWallet"
+        "services.universalwallet.v1.UniversalWallet.DeleteWallet",
+        "services.universalwallet.v1.UniversalWallet.CreateWallet",
+        "services.universalwallet.v1.UniversalWallet.GetWalletInfo",
+        "services.universalwallet.v1.UniversalWallet.GetMyInfo",
+        "services.universalwallet.v1.UniversalWallet.GenerateAuthToken",
+        "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
+        "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
+        "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm",
+        "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
+        "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
+        "services.universalwallet.v1.UniversalWallet.ListWallets"
       ],
       "messages": [
         "services.universalwallet.v1.SearchRequest",
@@ -4288,13 +4656,33 @@
         "services.universalwallet.v1.DeleteItemRequest",
         "services.universalwallet.v1.DeleteItemResponse",
         "services.universalwallet.v1.DeleteWalletRequest",
-        "services.universalwallet.v1.DeleteWalletResponse"
+        "services.universalwallet.v1.DeleteWalletResponse",
+        "services.universalwallet.v1.CreateWalletRequest",
+        "services.universalwallet.v1.CreateWalletResponse",
+        "services.universalwallet.v1.GenerateAuthTokenRequest",
+        "services.universalwallet.v1.GenerateAuthTokenResponse",
+        "services.universalwallet.v1.GetWalletInfoRequest",
+        "services.universalwallet.v1.GetWalletInfoResponse",
+        "services.universalwallet.v1.GetMyInfoRequest",
+        "services.universalwallet.v1.GetMyInfoResponse",
+        "services.universalwallet.v1.RevokeAuthTokenRequest",
+        "services.universalwallet.v1.RevokeAuthTokenResponse",
+        "services.universalwallet.v1.ListWalletsRequest",
+        "services.universalwallet.v1.ListWalletsResponse",
+        "services.universalwallet.v1.AddExternalIdentityInitRequest",
+        "services.universalwallet.v1.AddExternalIdentityInitResponse",
+        "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
+        "services.universalwallet.v1.AddExternalIdentityConfirmResponse",
+        "services.universalwallet.v1.AuthenticateInitRequest",
+        "services.universalwallet.v1.AuthenticateInitResponse",
+        "services.universalwallet.v1.AuthenticateConfirmRequest",
+        "services.universalwallet.v1.AuthenticateConfirmResponse"
       ],
       "fields": [
         "services.universalwallet.v1.SearchRequest.query",
         "services.universalwallet.v1.SearchRequest.continuation_token",
         "services.universalwallet.v1.SearchResponse.items",
-        "services.universalwallet.v1.SearchResponse.has_more",
+        "services.universalwallet.v1.SearchResponse.has_more_results",
         "services.universalwallet.v1.SearchResponse.continuation_token",
         "services.universalwallet.v1.GetItemRequest.item_id",
         "services.universalwallet.v1.GetItemResponse.item_json",
@@ -4307,10 +4695,44 @@
         "services.universalwallet.v1.DeleteItemRequest.item_id",
         "services.universalwallet.v1.DeleteWalletRequest.email",
         "services.universalwallet.v1.DeleteWalletRequest.wallet_id",
-        "services.universalwallet.v1.DeleteWalletRequest.did_uri"
+        "services.universalwallet.v1.DeleteWalletRequest.did_uri",
+        "services.universalwallet.v1.CreateWalletRequest.ecosystem_id",
+        "services.universalwallet.v1.CreateWalletRequest.description",
+        "services.universalwallet.v1.CreateWalletResponse.wallet_id",
+        "services.universalwallet.v1.CreateWalletResponse.auth_token",
+        "services.universalwallet.v1.CreateWalletResponse.token_id",
+        "services.universalwallet.v1.GenerateAuthTokenRequest.wallet_id",
+        "services.universalwallet.v1.GenerateAuthTokenRequest.token_description",
+        "services.universalwallet.v1.GenerateAuthTokenResponse.token_id",
+        "services.universalwallet.v1.GenerateAuthTokenResponse.auth_token",
+        "services.universalwallet.v1.GetWalletInfoRequest.wallet_id",
+        "services.universalwallet.v1.GetWalletInfoResponse.wallet",
+        "services.universalwallet.v1.GetMyInfoResponse.wallet",
+        "services.universalwallet.v1.RevokeAuthTokenRequest.wallet_id",
+        "services.universalwallet.v1.RevokeAuthTokenRequest.token_id",
+        "services.universalwallet.v1.ListWalletsRequest.filter",
+        "services.universalwallet.v1.ListWalletsResponse.wallets",
+        "services.universalwallet.v1.AddExternalIdentityInitRequest.identity",
+        "services.universalwallet.v1.AddExternalIdentityInitRequest.provider",
+        "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge",
+        "services.universalwallet.v1.AddExternalIdentityConfirmRequest.challenge",
+        "services.universalwallet.v1.AddExternalIdentityConfirmRequest.response",
+        "services.universalwallet.v1.AuthenticateInitRequest.identity",
+        "services.universalwallet.v1.AuthenticateInitRequest.provider",
+        "services.universalwallet.v1.AuthenticateInitRequest.ecosystem_id",
+        "services.universalwallet.v1.AuthenticateInitResponse.challenge",
+        "services.universalwallet.v1.AuthenticateConfirmRequest.challenge",
+        "services.universalwallet.v1.AuthenticateConfirmRequest.response",
+        "services.universalwallet.v1.AuthenticateConfirmResponse.auth_token"
       ],
-      "enums": [],
-      "enum_values": []
+      "enums": [
+        "services.universalwallet.v1.IdentityProvider"
+      ],
+      "enum_values": [
+        "services.universalwallet.v1.IdentityProvider.UNKNOWN",
+        "services.universalwallet.v1.IdentityProvider.EMAIL",
+        "services.universalwallet.v1.IdentityProvider.PHONE"
+      ]
     },
     "services/verifiable-credentials/templates/v1/templates.proto": {
       "name": "services/verifiable-credentials/templates/v1/templates.proto",
@@ -4360,7 +4782,7 @@
         "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.query",
         "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.continuation_token",
         "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.items_json",
-        "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more",
+        "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more_results",
         "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.continuation_token",
         "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest.query",
         "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest.continuation_token",
@@ -4586,8 +5008,7 @@
         "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
-        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
-        "services.trustregistry.v1.TrustRegistry.FetchData"
+        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus"
       ]
     },
     "services.universalwallet.v1.UniversalWallet": {
@@ -4600,7 +5021,17 @@
         "services.universalwallet.v1.UniversalWallet.InsertItem",
         "services.universalwallet.v1.UniversalWallet.UpdateItem",
         "services.universalwallet.v1.UniversalWallet.DeleteItem",
-        "services.universalwallet.v1.UniversalWallet.DeleteWallet"
+        "services.universalwallet.v1.UniversalWallet.DeleteWallet",
+        "services.universalwallet.v1.UniversalWallet.CreateWallet",
+        "services.universalwallet.v1.UniversalWallet.GetWalletInfo",
+        "services.universalwallet.v1.UniversalWallet.GetMyInfo",
+        "services.universalwallet.v1.UniversalWallet.GenerateAuthToken",
+        "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
+        "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
+        "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm",
+        "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
+        "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
+        "services.universalwallet.v1.UniversalWallet.ListWallets"
       ]
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates": {
@@ -4649,6 +5080,7 @@
       "output_type": "services.account.v1.AccountInfoResponse",
       "description": "Get account information",
       "options": {
+        "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -4659,6 +5091,7 @@
       "output_type": "services.account.v1.LoginResponse",
       "description": "Begin login flow for specified account, creating one if it does not already exist",
       "options": {
+        "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -4669,6 +5102,7 @@
       "output_type": "services.account.v1.LoginConfirmResponse",
       "description": "Finalize login flow with two-factor confirmation code",
       "options": {
+        "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -4904,16 +5338,6 @@
       "output_type": "services.trustregistry.v1.AddFrameworkResponse",
       "description": "Add a governance framework to the ecosystem"
     },
-    "services.trustregistry.v1.TrustRegistry.FetchData": {
-      "name": "FetchData",
-      "full_name": "services.trustregistry.v1.TrustRegistry.FetchData",
-      "input_type": "services.trustregistry.v1.FetchDataRequest",
-      "output_type": "services.trustregistry.v1.FetchDataResponse",
-      "description": "Not implemented.",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
     "services.trustregistry.v1.TrustRegistry.GetMembershipStatus": {
       "name": "GetMembershipStatus",
       "full_name": "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
@@ -4949,6 +5373,41 @@
       "output_type": "services.trustregistry.v1.UnregisterMemberResponse",
       "description": "Removes an authoritative issuer for a credential schema from the trust registry"
     },
+    "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm": {
+      "name": "AddExternalIdentityConfirm",
+      "full_name": "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm",
+      "input_type": "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
+      "output_type": "services.universalwallet.v1.AddExternalIdentityConfirmResponse",
+      "description": "Confirm identity added to the current wallet using `AddIdentity`"
+    },
+    "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit": {
+      "name": "AddExternalIdentityInit",
+      "full_name": "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
+      "input_type": "services.universalwallet.v1.AddExternalIdentityInitRequest",
+      "output_type": "services.universalwallet.v1.AddExternalIdentityInitResponse",
+      "description": "Add new external identity to the current wallet, such as email, sms, ethereum address, etc.\nThis identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc."
+    },
+    "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm": {
+      "name": "AuthenticateConfirm",
+      "full_name": "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
+      "input_type": "services.universalwallet.v1.AuthenticateConfirmRequest",
+      "output_type": "services.universalwallet.v1.AuthenticateConfirmResponse",
+      "description": "Confirm sign-in to an already existing wallet and return authentication token"
+    },
+    "services.universalwallet.v1.UniversalWallet.AuthenticateInit": {
+      "name": "AuthenticateInit",
+      "full_name": "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
+      "input_type": "services.universalwallet.v1.AuthenticateInitRequest",
+      "output_type": "services.universalwallet.v1.AuthenticateInitResponse",
+      "description": "Sign-in to an already existing wallet, using an identity added that was previously registered\nThis endpoint does not require authentication, and will return a challenge to be signed or verified"
+    },
+    "services.universalwallet.v1.UniversalWallet.CreateWallet": {
+      "name": "CreateWallet",
+      "full_name": "services.universalwallet.v1.UniversalWallet.CreateWallet",
+      "input_type": "services.universalwallet.v1.CreateWalletRequest",
+      "output_type": "services.universalwallet.v1.CreateWalletResponse",
+      "description": "Create a new wallet and generate an auth token for access"
+    },
     "services.universalwallet.v1.UniversalWallet.DeleteItem": {
       "name": "DeleteItem",
       "full_name": "services.universalwallet.v1.UniversalWallet.DeleteItem",
@@ -4963,6 +5422,13 @@
       "output_type": "services.universalwallet.v1.DeleteWalletResponse",
       "description": "Delete a wallet and its credentials"
     },
+    "services.universalwallet.v1.UniversalWallet.GenerateAuthToken": {
+      "name": "GenerateAuthToken",
+      "full_name": "services.universalwallet.v1.UniversalWallet.GenerateAuthToken",
+      "input_type": "services.universalwallet.v1.GenerateAuthTokenRequest",
+      "output_type": "services.universalwallet.v1.GenerateAuthTokenResponse",
+      "description": "Generate new token for a given wallet and add it to the collection of known auth tokens.\nThis endpoint requires authentication and will return a new token ID and auth token.\nUse this endpoint if you want to authorize another device, without having to share your\nexisting auth token."
+    },
     "services.universalwallet.v1.UniversalWallet.GetItem": {
       "name": "GetItem",
       "full_name": "services.universalwallet.v1.UniversalWallet.GetItem",
@@ -4970,12 +5436,40 @@
       "output_type": "services.universalwallet.v1.GetItemResponse",
       "description": "Retrieve an item from the wallet with a given item identifier"
     },
+    "services.universalwallet.v1.UniversalWallet.GetMyInfo": {
+      "name": "GetMyInfo",
+      "full_name": "services.universalwallet.v1.UniversalWallet.GetMyInfo",
+      "input_type": "services.universalwallet.v1.GetMyInfoRequest",
+      "output_type": "services.universalwallet.v1.GetMyInfoResponse",
+      "description": "Retrieve wallet details and configuration about the currently authenticated wallet"
+    },
+    "services.universalwallet.v1.UniversalWallet.GetWalletInfo": {
+      "name": "GetWalletInfo",
+      "full_name": "services.universalwallet.v1.UniversalWallet.GetWalletInfo",
+      "input_type": "services.universalwallet.v1.GetWalletInfoRequest",
+      "output_type": "services.universalwallet.v1.GetWalletInfoResponse",
+      "description": "Retrieve wallet details and configuration"
+    },
     "services.universalwallet.v1.UniversalWallet.InsertItem": {
       "name": "InsertItem",
       "full_name": "services.universalwallet.v1.UniversalWallet.InsertItem",
       "input_type": "services.universalwallet.v1.InsertItemRequest",
       "output_type": "services.universalwallet.v1.InsertItemResponse",
       "description": "Insert an item into the wallet"
+    },
+    "services.universalwallet.v1.UniversalWallet.ListWallets": {
+      "name": "ListWallets",
+      "full_name": "services.universalwallet.v1.UniversalWallet.ListWallets",
+      "input_type": "services.universalwallet.v1.ListWalletsRequest",
+      "output_type": "services.universalwallet.v1.ListWalletsResponse",
+      "description": "List all wallets in the ecosystem"
+    },
+    "services.universalwallet.v1.UniversalWallet.RevokeAuthToken": {
+      "name": "RevokeAuthToken",
+      "full_name": "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
+      "input_type": "services.universalwallet.v1.RevokeAuthTokenRequest",
+      "output_type": "services.universalwallet.v1.RevokeAuthTokenResponse",
+      "description": "Revokes a previously issued auth token and updates the collection of known auth tokens.\nThis endpoint requires authentication."
     },
     "services.universalwallet.v1.UniversalWallet.Search": {
       "name": "Search",
@@ -5143,7 +5637,8 @@
         "services.account.v1.AccountInfoResponse.wallet_id",
         "services.account.v1.AccountInfoResponse.device_id",
         "services.account.v1.AccountInfoResponse.ecosystem_id",
-        "services.account.v1.AccountInfoResponse.public_did"
+        "services.account.v1.AccountInfoResponse.public_did",
+        "services.account.v1.AccountInfoResponse.auth_tokens"
       ],
       "messages": [],
       "enums": []
@@ -5259,6 +5754,18 @@
       "fields": [
         "services.account.v1.TokenProtection.enabled",
         "services.account.v1.TokenProtection.method"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.account.v1.WalletAuthToken": {
+      "name": "WalletAuthToken",
+      "full_name": "services.account.v1.WalletAuthToken",
+      "description": "Information about authenticaton tokens for a wallet",
+      "fields": [
+        "services.account.v1.WalletAuthToken.id",
+        "services.account.v1.WalletAuthToken.description",
+        "services.account.v1.WalletAuthToken.date_created"
       ],
       "messages": [],
       "enums": []
@@ -5860,7 +6367,7 @@
       "description": "",
       "fields": [
         "services.provider.v1.SearchWalletConfigurationResponse.results",
-        "services.provider.v1.SearchWalletConfigurationResponse.has_more",
+        "services.provider.v1.SearchWalletConfigurationResponse.has_more_results",
         "services.provider.v1.SearchWalletConfigurationResponse.continuation_token"
       ],
       "messages": [],
@@ -5935,7 +6442,8 @@
         "services.provider.v1.WalletConfiguration.sms",
         "services.provider.v1.WalletConfiguration.wallet_id",
         "services.provider.v1.WalletConfiguration.public_did",
-        "services.provider.v1.WalletConfiguration.config_type"
+        "services.provider.v1.WalletConfiguration.config_type",
+        "services.provider.v1.WalletConfiguration.auth_tokens"
       ],
       "messages": [],
       "enums": []
@@ -5976,29 +6484,6 @@
         "services.trustregistry.v1.AddFrameworkResponse.id",
         "services.trustregistry.v1.AddFrameworkResponse.governing_authority",
         "services.trustregistry.v1.AddFrameworkResponse.trust_registry"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.trustregistry.v1.FetchDataRequest": {
-      "name": "FetchDataRequest",
-      "full_name": "services.trustregistry.v1.FetchDataRequest",
-      "description": "Not implemented.",
-      "fields": [
-        "services.trustregistry.v1.FetchDataRequest.governance_framework_uri",
-        "services.trustregistry.v1.FetchDataRequest.query"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.trustregistry.v1.FetchDataResponse": {
-      "name": "FetchDataResponse",
-      "full_name": "services.trustregistry.v1.FetchDataResponse",
-      "description": "Not implemented.",
-      "fields": [
-        "services.trustregistry.v1.FetchDataResponse.response_json",
-        "services.trustregistry.v1.FetchDataResponse.has_more_results",
-        "services.trustregistry.v1.FetchDataResponse.continuation_token"
       ],
       "messages": [],
       "enums": []
@@ -6096,7 +6581,7 @@
       "description": "Response to `SearchRegistryRequest`",
       "fields": [
         "services.trustregistry.v1.SearchRegistryResponse.items_json",
-        "services.trustregistry.v1.SearchRegistryResponse.has_more",
+        "services.trustregistry.v1.SearchRegistryResponse.has_more_results",
         "services.trustregistry.v1.SearchRegistryResponse.continuation_token"
       ],
       "messages": [],
@@ -6121,6 +6606,112 @@
       "full_name": "services.trustregistry.v1.UnregisterMemberResponse",
       "description": "Response to `UnregisterMemberRequest`",
       "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AddExternalIdentityConfirmRequest": {
+      "name": "AddExternalIdentityConfirmRequest",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AddExternalIdentityConfirmRequest.challenge",
+        "services.universalwallet.v1.AddExternalIdentityConfirmRequest.response"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AddExternalIdentityConfirmResponse": {
+      "name": "AddExternalIdentityConfirmResponse",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityConfirmResponse",
+      "description": "",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitRequest": {
+      "name": "AddExternalIdentityInitRequest",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityInitRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AddExternalIdentityInitRequest.identity",
+        "services.universalwallet.v1.AddExternalIdentityInitRequest.provider"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitResponse": {
+      "name": "AddExternalIdentityInitResponse",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityInitResponse",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AuthenticateConfirmRequest": {
+      "name": "AuthenticateConfirmRequest",
+      "full_name": "services.universalwallet.v1.AuthenticateConfirmRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AuthenticateConfirmRequest.challenge",
+        "services.universalwallet.v1.AuthenticateConfirmRequest.response"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AuthenticateConfirmResponse": {
+      "name": "AuthenticateConfirmResponse",
+      "full_name": "services.universalwallet.v1.AuthenticateConfirmResponse",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AuthenticateConfirmResponse.auth_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest": {
+      "name": "AuthenticateInitRequest",
+      "full_name": "services.universalwallet.v1.AuthenticateInitRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AuthenticateInitRequest.identity",
+        "services.universalwallet.v1.AuthenticateInitRequest.provider",
+        "services.universalwallet.v1.AuthenticateInitRequest.ecosystem_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AuthenticateInitResponse": {
+      "name": "AuthenticateInitResponse",
+      "full_name": "services.universalwallet.v1.AuthenticateInitResponse",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AuthenticateInitResponse.challenge"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.CreateWalletRequest": {
+      "name": "CreateWalletRequest",
+      "full_name": "services.universalwallet.v1.CreateWalletRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.CreateWalletRequest.ecosystem_id",
+        "services.universalwallet.v1.CreateWalletRequest.description"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.CreateWalletResponse": {
+      "name": "CreateWalletResponse",
+      "full_name": "services.universalwallet.v1.CreateWalletResponse",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.CreateWalletResponse.wallet_id",
+        "services.universalwallet.v1.CreateWalletResponse.auth_token",
+        "services.universalwallet.v1.CreateWalletResponse.token_id"
+      ],
       "messages": [],
       "enums": []
     },
@@ -6162,6 +6753,28 @@
       "messages": [],
       "enums": []
     },
+    "services.universalwallet.v1.GenerateAuthTokenRequest": {
+      "name": "GenerateAuthTokenRequest",
+      "full_name": "services.universalwallet.v1.GenerateAuthTokenRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.GenerateAuthTokenRequest.wallet_id",
+        "services.universalwallet.v1.GenerateAuthTokenRequest.token_description"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.GenerateAuthTokenResponse": {
+      "name": "GenerateAuthTokenResponse",
+      "full_name": "services.universalwallet.v1.GenerateAuthTokenResponse",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.GenerateAuthTokenResponse.token_id",
+        "services.universalwallet.v1.GenerateAuthTokenResponse.auth_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.universalwallet.v1.GetItemRequest": {
       "name": "GetItemRequest",
       "full_name": "services.universalwallet.v1.GetItemRequest",
@@ -6179,6 +6792,44 @@
       "fields": [
         "services.universalwallet.v1.GetItemResponse.item_json",
         "services.universalwallet.v1.GetItemResponse.item_type"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.GetMyInfoRequest": {
+      "name": "GetMyInfoRequest",
+      "full_name": "services.universalwallet.v1.GetMyInfoRequest",
+      "description": "Request to retrieve wallet information about the currently authenticated wallet",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.GetMyInfoResponse": {
+      "name": "GetMyInfoResponse",
+      "full_name": "services.universalwallet.v1.GetMyInfoResponse",
+      "description": "Response to `GetMyInfoRequest`",
+      "fields": [
+        "services.universalwallet.v1.GetMyInfoResponse.wallet"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.GetWalletInfoRequest": {
+      "name": "GetWalletInfoRequest",
+      "full_name": "services.universalwallet.v1.GetWalletInfoRequest",
+      "description": "Request to retrieve wallet information about a given wallet identified by its wallet ID",
+      "fields": [
+        "services.universalwallet.v1.GetWalletInfoRequest.wallet_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.GetWalletInfoResponse": {
+      "name": "GetWalletInfoResponse",
+      "full_name": "services.universalwallet.v1.GetWalletInfoResponse",
+      "description": "Response to `GetWalletInfoRequest`",
+      "fields": [
+        "services.universalwallet.v1.GetWalletInfoResponse.wallet"
       ],
       "messages": [],
       "enums": []
@@ -6204,6 +6855,45 @@
       "messages": [],
       "enums": []
     },
+    "services.universalwallet.v1.ListWalletsRequest": {
+      "name": "ListWalletsRequest",
+      "full_name": "services.universalwallet.v1.ListWalletsRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.ListWalletsRequest.filter"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.ListWalletsResponse": {
+      "name": "ListWalletsResponse",
+      "full_name": "services.universalwallet.v1.ListWalletsResponse",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.ListWalletsResponse.wallets"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.RevokeAuthTokenRequest": {
+      "name": "RevokeAuthTokenRequest",
+      "full_name": "services.universalwallet.v1.RevokeAuthTokenRequest",
+      "description": "Request to revoke a previously issued auth token",
+      "fields": [
+        "services.universalwallet.v1.RevokeAuthTokenRequest.wallet_id",
+        "services.universalwallet.v1.RevokeAuthTokenRequest.token_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.RevokeAuthTokenResponse": {
+      "name": "RevokeAuthTokenResponse",
+      "full_name": "services.universalwallet.v1.RevokeAuthTokenResponse",
+      "description": "",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
     "services.universalwallet.v1.SearchRequest": {
       "name": "SearchRequest",
       "full_name": "services.universalwallet.v1.SearchRequest",
@@ -6221,7 +6911,7 @@
       "description": "Response to `SearchRequest`",
       "fields": [
         "services.universalwallet.v1.SearchResponse.items",
-        "services.universalwallet.v1.SearchResponse.has_more",
+        "services.universalwallet.v1.SearchResponse.has_more_results",
         "services.universalwallet.v1.SearchResponse.continuation_token"
       ],
       "messages": [],
@@ -6403,7 +7093,7 @@
       "description": "Response to `SearchCredentialTemplatesRequest`",
       "fields": [
         "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.items_json",
-        "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more",
+        "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more_results",
         "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.continuation_token"
       ],
       "messages": [],
@@ -6945,6 +7635,14 @@
       "full_type": "string",
       "description": ""
     },
+    "services.account.v1.AccountInfoResponse.auth_tokens": {
+      "name": "auth_tokens",
+      "full_name": "services.account.v1.AccountInfoResponse.auth_tokens",
+      "label": "LABEL_REPEATED",
+      "type": "WalletAuthToken",
+      "full_type": "services.account.v1.WalletAuthToken",
+      "description": "List of active authentication tokens for this wallet.\nThis list does not contain the issued token, only metadata\nsuch as ID, description, and creation date."
+    },
     "services.account.v1.AccountInfoResponse.details": {
       "name": "details",
       "full_name": "services.account.v1.AccountInfoResponse.details",
@@ -7175,6 +7873,30 @@
       "type": "ConfirmationMethod",
       "full_type": "services.account.v1.ConfirmationMethod",
       "description": "The method used to protect the token"
+    },
+    "services.account.v1.WalletAuthToken.date_created": {
+      "name": "date_created",
+      "full_name": "services.account.v1.WalletAuthToken.date_created",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Date when the token was created in ISO 8601 format"
+    },
+    "services.account.v1.WalletAuthToken.description": {
+      "name": "description",
+      "full_name": "services.account.v1.WalletAuthToken.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Device name/description"
+    },
+    "services.account.v1.WalletAuthToken.id": {
+      "name": "id",
+      "full_name": "services.account.v1.WalletAuthToken.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Unique identifier for the token.\nThis field will match the `DeviceId` in the WalletAuthData"
     },
     "services.common.v1.Nonce.request_hash": {
       "name": "request_hash",
@@ -7942,9 +8664,9 @@
       "full_type": "string",
       "description": "Token to fetch next set of results via `SearchRequest`"
     },
-    "services.provider.v1.SearchWalletConfigurationResponse.has_more": {
-      "name": "has_more",
-      "full_name": "services.provider.v1.SearchWalletConfigurationResponse.has_more",
+    "services.provider.v1.SearchWalletConfigurationResponse.has_more_results": {
+      "name": "has_more_results",
+      "full_name": "services.provider.v1.SearchWalletConfigurationResponse.has_more_results",
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
@@ -8079,6 +8801,14 @@
       "full_type": "string",
       "description": "New DID of wallet"
     },
+    "services.provider.v1.WalletConfiguration.auth_tokens": {
+      "name": "auth_tokens",
+      "full_name": "services.provider.v1.WalletConfiguration.auth_tokens",
+      "label": "LABEL_REPEATED",
+      "type": "WalletAuthToken",
+      "full_type": "services.account.v1.WalletAuthToken",
+      "description": "List of active authentication tokens for this wallet.\nThis list does not contain the issued token, only metadata\nsuch as ID, description, and creation date."
+    },
     "services.provider.v1.WalletConfiguration.config_type": {
       "name": "config_type",
       "full_name": "services.provider.v1.WalletConfiguration.config_type",
@@ -8212,46 +8942,6 @@
       "type": "string",
       "full_type": "string",
       "description": "URN of trust registry for governance framework"
-    },
-    "services.trustregistry.v1.FetchDataRequest.governance_framework_uri": {
-      "name": "governance_framework_uri",
-      "full_name": "services.trustregistry.v1.FetchDataRequest.governance_framework_uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.trustregistry.v1.FetchDataRequest.query": {
-      "name": "query",
-      "full_name": "services.trustregistry.v1.FetchDataRequest.query",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.trustregistry.v1.FetchDataResponse.continuation_token": {
-      "name": "continuation_token",
-      "full_name": "services.trustregistry.v1.FetchDataResponse.continuation_token",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.trustregistry.v1.FetchDataResponse.has_more_results": {
-      "name": "has_more_results",
-      "full_name": "services.trustregistry.v1.FetchDataResponse.has_more_results",
-      "label": "LABEL_OPTIONAL",
-      "type": "bool",
-      "full_type": "bool",
-      "description": ""
-    },
-    "services.trustregistry.v1.FetchDataResponse.response_json": {
-      "name": "response_json",
-      "full_name": "services.trustregistry.v1.FetchDataResponse.response_json",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.did_uri": {
       "name": "did_uri",
@@ -8400,9 +9090,9 @@
       "full_type": "string",
       "description": "Token to fetch next set of results via `SearchRegistryRequest`"
     },
-    "services.trustregistry.v1.SearchRegistryResponse.has_more": {
-      "name": "has_more",
-      "full_name": "services.trustregistry.v1.SearchRegistryResponse.has_more",
+    "services.trustregistry.v1.SearchRegistryResponse.has_more_results": {
+      "name": "has_more_results",
+      "full_name": "services.trustregistry.v1.SearchRegistryResponse.has_more_results",
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
@@ -8456,6 +9146,142 @@
       "full_type": "string",
       "description": "Trinsic Wallet ID of member to unregister"
     },
+    "services.universalwallet.v1.AddExternalIdentityConfirmRequest.challenge": {
+      "name": "challenge",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityConfirmRequest.challenge",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The challenge received from the `AddIdentityInit` endpoint"
+    },
+    "services.universalwallet.v1.AddExternalIdentityConfirmRequest.response": {
+      "name": "response",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityConfirmRequest.response",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The response to the challenge. If using Email or Phone,\nthis is the OTP code sent to the user's email or phone"
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitRequest.identity": {
+      "name": "identity",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityInitRequest.identity",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Identity to add to the wallet"
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitRequest.provider": {
+      "name": "provider",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityInitRequest.provider",
+      "label": "LABEL_OPTIONAL",
+      "type": "IdentityProvider",
+      "full_type": "services.universalwallet.v1.IdentityProvider",
+      "description": ""
+    },
+    "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge": {
+      "name": "challenge",
+      "full_name": "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Challenge to be verified by the user.\nPass this challenge back to the `AddIdentityConfirm` endpoint"
+    },
+    "services.universalwallet.v1.AuthenticateConfirmRequest.challenge": {
+      "name": "challenge",
+      "full_name": "services.universalwallet.v1.AuthenticateConfirmRequest.challenge",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The challenge received from the `AcquireAuthTokenInit` endpoint"
+    },
+    "services.universalwallet.v1.AuthenticateConfirmRequest.response": {
+      "name": "response",
+      "full_name": "services.universalwallet.v1.AuthenticateConfirmRequest.response",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The response to the challenge. If using Email or Phone,\nthis is the OTP code sent to the user's email or phone"
+    },
+    "services.universalwallet.v1.AuthenticateConfirmResponse.auth_token": {
+      "name": "auth_token",
+      "full_name": "services.universalwallet.v1.AuthenticateConfirmResponse.auth_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Auth token for the wallet"
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.universalwallet.v1.AuthenticateInitRequest.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Ecosystem ID to which the wallet belongs"
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest.identity": {
+      "name": "identity",
+      "full_name": "services.universalwallet.v1.AuthenticateInitRequest.identity",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Identity to add to the wallet"
+    },
+    "services.universalwallet.v1.AuthenticateInitRequest.provider": {
+      "name": "provider",
+      "full_name": "services.universalwallet.v1.AuthenticateInitRequest.provider",
+      "label": "LABEL_OPTIONAL",
+      "type": "IdentityProvider",
+      "full_type": "services.universalwallet.v1.IdentityProvider",
+      "description": "Identity provider"
+    },
+    "services.universalwallet.v1.AuthenticateInitResponse.challenge": {
+      "name": "challenge",
+      "full_name": "services.universalwallet.v1.AuthenticateInitResponse.challenge",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The challenge received from the `AcquireAuthTokenInit` endpoint\nPass this challenge back to the `AcquireAuthTokenConfirm` endpoint"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.description": {
+      "name": "description",
+      "full_name": "services.universalwallet.v1.CreateWalletRequest.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet name or description.\nUse this field to add vendor specific information about this wallet,\nsuch as email, phone, internal ID, etc.\nThis field is not unique within our platform"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.universalwallet.v1.CreateWalletRequest.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Ecosystem ID of the wallet to create"
+    },
+    "services.universalwallet.v1.CreateWalletResponse.auth_token": {
+      "name": "auth_token",
+      "full_name": "services.universalwallet.v1.CreateWalletResponse.auth_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Auth token for the newly created wallet"
+    },
+    "services.universalwallet.v1.CreateWalletResponse.token_id": {
+      "name": "token_id",
+      "full_name": "services.universalwallet.v1.CreateWalletResponse.token_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token ID of the newly generated token"
+    },
+    "services.universalwallet.v1.CreateWalletResponse.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.universalwallet.v1.CreateWalletResponse.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of the newly created wallet"
+    },
     "services.universalwallet.v1.DeleteItemRequest.item_id": {
       "name": "item_id",
       "full_name": "services.universalwallet.v1.DeleteItemRequest.item_id",
@@ -8488,6 +9314,38 @@
       "full_type": "string",
       "description": "Wallet ID of account to delete.\nMutually exclusive with `email` and `didUri`."
     },
+    "services.universalwallet.v1.GenerateAuthTokenRequest.token_description": {
+      "name": "token_description",
+      "full_name": "services.universalwallet.v1.GenerateAuthTokenRequest.token_description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.universalwallet.v1.GenerateAuthTokenRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.universalwallet.v1.GenerateAuthTokenRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.universalwallet.v1.GenerateAuthTokenResponse.auth_token": {
+      "name": "auth_token",
+      "full_name": "services.universalwallet.v1.GenerateAuthTokenResponse.auth_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.universalwallet.v1.GenerateAuthTokenResponse.token_id": {
+      "name": "token_id",
+      "full_name": "services.universalwallet.v1.GenerateAuthTokenResponse.token_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
     "services.universalwallet.v1.GetItemRequest.item_id": {
       "name": "item_id",
       "full_name": "services.universalwallet.v1.GetItemRequest.item_id",
@@ -8511,6 +9369,30 @@
       "type": "string",
       "full_type": "string",
       "description": "Type of item specified when item was inserted into wallet"
+    },
+    "services.universalwallet.v1.GetMyInfoResponse.wallet": {
+      "name": "wallet",
+      "full_name": "services.universalwallet.v1.GetMyInfoResponse.wallet",
+      "label": "LABEL_OPTIONAL",
+      "type": "WalletConfiguration",
+      "full_type": "services.provider.v1.WalletConfiguration",
+      "description": "Wallet configuration"
+    },
+    "services.universalwallet.v1.GetWalletInfoRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.universalwallet.v1.GetWalletInfoRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of the wallet to retrieve"
+    },
+    "services.universalwallet.v1.GetWalletInfoResponse.wallet": {
+      "name": "wallet",
+      "full_name": "services.universalwallet.v1.GetWalletInfoResponse.wallet",
+      "label": "LABEL_OPTIONAL",
+      "type": "WalletConfiguration",
+      "full_type": "services.provider.v1.WalletConfiguration",
+      "description": "Wallet configuration"
     },
     "services.universalwallet.v1.InsertItemRequest.item_json": {
       "name": "item_json",
@@ -8539,6 +9421,38 @@
       "full_type": "string",
       "description": "ID of item inserted into wallet"
     },
+    "services.universalwallet.v1.ListWalletsRequest.filter": {
+      "name": "filter",
+      "full_name": "services.universalwallet.v1.ListWalletsRequest.filter",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.universalwallet.v1.ListWalletsResponse.wallets": {
+      "name": "wallets",
+      "full_name": "services.universalwallet.v1.ListWalletsResponse.wallets",
+      "label": "LABEL_REPEATED",
+      "type": "WalletConfiguration",
+      "full_type": "services.provider.v1.WalletConfiguration",
+      "description": ""
+    },
+    "services.universalwallet.v1.RevokeAuthTokenRequest.token_id": {
+      "name": "token_id",
+      "full_name": "services.universalwallet.v1.RevokeAuthTokenRequest.token_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token ID of the token to revoke"
+    },
+    "services.universalwallet.v1.RevokeAuthTokenRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.universalwallet.v1.RevokeAuthTokenRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of the wallet to from which to revoke the token"
+    },
     "services.universalwallet.v1.SearchRequest.continuation_token": {
       "name": "continuation_token",
       "full_name": "services.universalwallet.v1.SearchRequest.continuation_token",
@@ -8566,9 +9480,9 @@
       "full_type": "string",
       "description": "Token to fetch next set of results via `SearchRequest`"
     },
-    "services.universalwallet.v1.SearchResponse.has_more": {
-      "name": "has_more",
-      "full_name": "services.universalwallet.v1.SearchResponse.has_more",
+    "services.universalwallet.v1.SearchResponse.has_more_results": {
+      "name": "has_more_results",
+      "full_name": "services.universalwallet.v1.SearchResponse.has_more_results",
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
@@ -8855,9 +9769,9 @@
       "full_type": "string",
       "description": "Token to fetch next set of results via `SearchCredentialTemplatesRequest`"
     },
-    "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more": {
-      "name": "has_more",
-      "full_name": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more",
+    "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more_results": {
+      "name": "has_more_results",
+      "full_name": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more_results",
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
@@ -9796,6 +10710,16 @@
         "services.trustregistry.v1.RegistrationStatus.NOT_FOUND"
       ]
     },
+    "services.universalwallet.v1.IdentityProvider": {
+      "name": "IdentityProvider",
+      "full_name": "services.universalwallet.v1.IdentityProvider",
+      "description": "",
+      "values": [
+        "services.universalwallet.v1.IdentityProvider.UNKNOWN",
+        "services.universalwallet.v1.IdentityProvider.EMAIL",
+        "services.universalwallet.v1.IdentityProvider.PHONE"
+      ]
+    },
     "services.verifiablecredentials.templates.v1.FieldType": {
       "name": "FieldType",
       "full_name": "services.verifiablecredentials.templates.v1.FieldType",
@@ -10052,6 +10976,24 @@
       "full_name": "services.trustregistry.v1.RegistrationStatus.TERMINATED",
       "description": "Member has voluntarily ceased Issuer role under the specific EGF",
       "value": 2
+    },
+    "services.universalwallet.v1.IdentityProvider.EMAIL": {
+      "name": "EMAIL",
+      "full_name": "services.universalwallet.v1.IdentityProvider.EMAIL",
+      "description": "Identity provider is email",
+      "value": 1
+    },
+    "services.universalwallet.v1.IdentityProvider.PHONE": {
+      "name": "PHONE",
+      "full_name": "services.universalwallet.v1.IdentityProvider.PHONE",
+      "description": "Identity provider is phone",
+      "value": 2
+    },
+    "services.universalwallet.v1.IdentityProvider.UNKNOWN": {
+      "name": "UNKNOWN",
+      "full_name": "services.universalwallet.v1.IdentityProvider.UNKNOWN",
+      "description": "Identity provider is unknown",
+      "value": 0
     },
     "services.verifiablecredentials.templates.v1.FieldType.BOOL": {
       "name": "BOOL",

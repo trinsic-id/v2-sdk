@@ -588,7 +588,7 @@ class SearchWalletConfigurationResponse(betterproto.Message):
     results: List["WalletConfiguration"] = betterproto.message_field(1)
     """Results matching the search query"""
 
-    has_more: bool = betterproto.bool_field(2)
+    has_more_results: bool = betterproto.bool_field(2)
     """
     Whether more results are available for this query via `continuation_token`
     """
@@ -607,6 +607,12 @@ class WalletConfiguration(betterproto.Message):
     wallet_id: str = betterproto.string_field(4)
     public_did: str = betterproto.string_field(5)
     config_type: str = betterproto.string_field(6)
+    auth_tokens: List["__account_v1__.WalletAuthToken"] = betterproto.message_field(7)
+    """
+    List of active authentication tokens for this wallet. This list does not
+    contain the issued token, only metadata such as ID, description, and
+    creation date.
+    """
 
 
 @dataclass(eq=False, repr=False)

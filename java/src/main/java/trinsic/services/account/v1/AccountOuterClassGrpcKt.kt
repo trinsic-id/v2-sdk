@@ -85,6 +85,7 @@ object AccountGrpcKt {
      *
      * @return The single response from the server.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     suspend fun login(request: LoginRequest, headers: Metadata = Metadata()): LoginResponse =
         unaryRpc(channel, AccountGrpc.getLoginMethod(), request, callOptions, headers)
     /**
@@ -99,6 +100,7 @@ object AccountGrpcKt {
      *
      * @return The single response from the server.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     suspend fun loginConfirm(
         request: LoginConfirmRequest,
         headers: Metadata = Metadata()
@@ -116,6 +118,7 @@ object AccountGrpcKt {
      *
      * @return The single response from the server.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     suspend fun info(
         request: AccountInfoRequest,
         headers: Metadata = Metadata()
@@ -172,6 +175,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     open suspend fun login(request: LoginRequest): LoginResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
@@ -187,6 +191,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     open suspend fun loginConfirm(request: LoginConfirmRequest): LoginConfirmResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
@@ -202,6 +207,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     open suspend fun info(request: AccountInfoRequest): AccountInfoResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(

@@ -100,7 +100,7 @@ export interface SearchRegistryResponse {
   /** JSON string containing array of resultant objects */
   itemsJson?: string;
   /** Whether more data is available to fetch for query */
-  hasMore?: boolean;
+  hasMoreResults?: boolean;
   /** Token to fetch next set of results via `SearchRegistryRequest` */
   continuationToken?: string;
 }
@@ -177,19 +177,6 @@ export interface GetMembershipStatusRequest {
 export interface GetMembershipStatusResponse {
   /** Status of member for given credential schema */
   status?: RegistrationStatus;
-}
-
-/** Not implemented. */
-export interface FetchDataRequest {
-  governanceFrameworkUri?: string;
-  query?: string;
-}
-
-/** Not implemented. */
-export interface FetchDataResponse {
-  responseJson?: string;
-  hasMoreResults?: boolean;
-  continuationToken?: string;
 }
 
 function createBaseAddFrameworkRequest(): AddFrameworkRequest {
@@ -528,7 +515,7 @@ export const SearchRegistryRequest = {
 };
 
 function createBaseSearchRegistryResponse(): SearchRegistryResponse {
-  return { itemsJson: "", hasMore: false, continuationToken: "" };
+  return { itemsJson: "", hasMoreResults: false, continuationToken: "" };
 }
 
 export const SearchRegistryResponse = {
@@ -539,8 +526,8 @@ export const SearchRegistryResponse = {
     if (message.itemsJson !== undefined && message.itemsJson !== "") {
       writer.uint32(10).string(message.itemsJson);
     }
-    if (message.hasMore === true) {
-      writer.uint32(16).bool(message.hasMore);
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
     }
     if (
       message.continuationToken !== undefined &&
@@ -565,7 +552,7 @@ export const SearchRegistryResponse = {
           message.itemsJson = reader.string();
           break;
         case 2:
-          message.hasMore = reader.bool();
+          message.hasMoreResults = reader.bool();
           break;
         case 4:
           message.continuationToken = reader.string();
@@ -581,7 +568,9 @@ export const SearchRegistryResponse = {
   fromJSON(object: any): SearchRegistryResponse {
     return {
       itemsJson: isSet(object.itemsJson) ? String(object.itemsJson) : "",
-      hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+      hasMoreResults: isSet(object.hasMoreResults)
+        ? Boolean(object.hasMoreResults)
+        : false,
       continuationToken: isSet(object.continuationToken)
         ? String(object.continuationToken)
         : "",
@@ -591,7 +580,8 @@ export const SearchRegistryResponse = {
   toJSON(message: SearchRegistryResponse): unknown {
     const obj: any = {};
     message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
-    message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+    message.hasMoreResults !== undefined &&
+      (obj.hasMoreResults = message.hasMoreResults);
     message.continuationToken !== undefined &&
       (obj.continuationToken = message.continuationToken);
     return obj;
@@ -602,7 +592,7 @@ export const SearchRegistryResponse = {
   ): SearchRegistryResponse {
     const message = createBaseSearchRegistryResponse();
     message.itemsJson = object.itemsJson ?? "";
-    message.hasMore = object.hasMore ?? false;
+    message.hasMoreResults = object.hasMoreResults ?? false;
     message.continuationToken = object.continuationToken ?? "";
     return message;
   },
@@ -1145,155 +1135,6 @@ export const GetMembershipStatusResponse = {
   },
 };
 
-function createBaseFetchDataRequest(): FetchDataRequest {
-  return { governanceFrameworkUri: "", query: "" };
-}
-
-export const FetchDataRequest = {
-  encode(
-    message: FetchDataRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (
-      message.governanceFrameworkUri !== undefined &&
-      message.governanceFrameworkUri !== ""
-    ) {
-      writer.uint32(10).string(message.governanceFrameworkUri);
-    }
-    if (message.query !== undefined && message.query !== "") {
-      writer.uint32(18).string(message.query);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): FetchDataRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseFetchDataRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.governanceFrameworkUri = reader.string();
-          break;
-        case 2:
-          message.query = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): FetchDataRequest {
-    return {
-      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
-        ? String(object.governanceFrameworkUri)
-        : "",
-      query: isSet(object.query) ? String(object.query) : "",
-    };
-  },
-
-  toJSON(message: FetchDataRequest): unknown {
-    const obj: any = {};
-    message.governanceFrameworkUri !== undefined &&
-      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
-    message.query !== undefined && (obj.query = message.query);
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<FetchDataRequest>): FetchDataRequest {
-    const message = createBaseFetchDataRequest();
-    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
-    message.query = object.query ?? "";
-    return message;
-  },
-};
-
-function createBaseFetchDataResponse(): FetchDataResponse {
-  return { responseJson: "", hasMoreResults: false, continuationToken: "" };
-}
-
-export const FetchDataResponse = {
-  encode(
-    message: FetchDataResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.responseJson !== undefined && message.responseJson !== "") {
-      writer.uint32(10).string(message.responseJson);
-    }
-    if (message.hasMoreResults === true) {
-      writer.uint32(16).bool(message.hasMoreResults);
-    }
-    if (
-      message.continuationToken !== undefined &&
-      message.continuationToken !== ""
-    ) {
-      writer.uint32(26).string(message.continuationToken);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): FetchDataResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseFetchDataResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.responseJson = reader.string();
-          break;
-        case 2:
-          message.hasMoreResults = reader.bool();
-          break;
-        case 3:
-          message.continuationToken = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): FetchDataResponse {
-    return {
-      responseJson: isSet(object.responseJson)
-        ? String(object.responseJson)
-        : "",
-      hasMoreResults: isSet(object.hasMoreResults)
-        ? Boolean(object.hasMoreResults)
-        : false,
-      continuationToken: isSet(object.continuationToken)
-        ? String(object.continuationToken)
-        : "",
-    };
-  },
-
-  toJSON(message: FetchDataResponse): unknown {
-    const obj: any = {};
-    message.responseJson !== undefined &&
-      (obj.responseJson = message.responseJson);
-    message.hasMoreResults !== undefined &&
-      (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined &&
-      (obj.continuationToken = message.continuationToken);
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<FetchDataResponse>): FetchDataResponse {
-    const message = createBaseFetchDataResponse();
-    message.responseJson = object.responseJson ?? "";
-    message.hasMoreResults = object.hasMoreResults ?? false;
-    message.continuationToken = object.continuationToken ?? "";
-    return message;
-  },
-};
-
 export type TrustRegistryDefinition = typeof TrustRegistryDefinition;
 export const TrustRegistryDefinition = {
   name: "TrustRegistry",
@@ -1351,15 +1192,6 @@ export const TrustRegistryDefinition = {
       requestStream: false,
       responseType: GetMembershipStatusResponse,
       responseStream: false,
-      options: {},
-    },
-    /** Not implemented. */
-    fetchData: {
-      name: "FetchData",
-      requestType: FetchDataRequest,
-      requestStream: false,
-      responseType: FetchDataResponse,
-      responseStream: true,
       options: {},
     },
   },

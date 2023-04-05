@@ -270,7 +270,7 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'hasMore')
+            : 'hasMoreResults')
     ..aOS(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -281,15 +281,15 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
   SearchCredentialTemplatesResponse._() : super();
   factory SearchCredentialTemplatesResponse({
     $core.String? itemsJson,
-    $core.bool? hasMore,
+    $core.bool? hasMoreResults,
     $core.String? continuationToken,
   }) {
     final _result = create();
     if (itemsJson != null) {
       _result.itemsJson = itemsJson;
     }
-    if (hasMore != null) {
-      _result.hasMore = hasMore;
+    if (hasMoreResults != null) {
+      _result.hasMoreResults = hasMoreResults;
     }
     if (continuationToken != null) {
       _result.continuationToken = continuationToken;
@@ -341,16 +341,16 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
   void clearItemsJson() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get hasMore => $_getBF(1);
+  $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
-  set hasMore($core.bool v) {
+  set hasMoreResults($core.bool v) {
     $_setBool(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasHasMore() => $_has(1);
+  $core.bool hasHasMoreResults() => $_has(1);
   @$pb.TagNumber(2)
-  void clearHasMore() => clearField(2);
+  void clearHasMoreResults() => clearField(2);
 
   @$pb.TagNumber(4)
   $core.String get continuationToken => $_getSZ(2);
