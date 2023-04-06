@@ -12,9 +12,9 @@ public final class Options {
     registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public interface ServiceOptionsOrBuilder
+  public interface TrinsicOptionsOrBuilder
       extends
-      // @@protoc_insertion_point(interface_extends:sdk.options.v1.ServiceOptions)
+      // @@protoc_insertion_point(interface_extends:sdk.options.v1.TrinsicOptions)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -100,19 +100,19 @@ public final class Options {
    * Configuration for Trinsic SDK Services
    * </pre>
    *
-   * Protobuf type {@code sdk.options.v1.ServiceOptions}
+   * Protobuf type {@code sdk.options.v1.TrinsicOptions}
    */
-  public static final class ServiceOptions extends com.google.protobuf.GeneratedMessageV3
+  public static final class TrinsicOptions extends com.google.protobuf.GeneratedMessageV3
       implements
-      // @@protoc_insertion_point(message_implements:sdk.options.v1.ServiceOptions)
-      ServiceOptionsOrBuilder {
+      // @@protoc_insertion_point(message_implements:sdk.options.v1.TrinsicOptions)
+      TrinsicOptionsOrBuilder {
     private static final long serialVersionUID = 0L;
-    // Use ServiceOptions.newBuilder() to construct.
-    private ServiceOptions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use TrinsicOptions.newBuilder() to construct.
+    private TrinsicOptions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
 
-    private ServiceOptions() {
+    private TrinsicOptions() {
       serverEndpoint_ = "";
       authToken_ = "";
     }
@@ -120,7 +120,7 @@ public final class Options {
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-      return new ServiceOptions();
+      return new TrinsicOptions();
     }
 
     @java.lang.Override
@@ -130,17 +130,17 @@ public final class Options {
 
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.sdk.options.v1.Options
-          .internal_static_sdk_options_v1_ServiceOptions_descriptor;
+          .internal_static_sdk_options_v1_TrinsicOptions_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.sdk.options.v1.Options
-          .internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable
+          .internal_static_sdk_options_v1_TrinsicOptions_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.sdk.options.v1.Options.ServiceOptions.class,
-              trinsic.sdk.options.v1.Options.ServiceOptions.Builder.class);
+              trinsic.sdk.options.v1.Options.TrinsicOptions.class,
+              trinsic.sdk.options.v1.Options.TrinsicOptions.Builder.class);
     }
 
     public static final int SERVER_ENDPOINT_FIELD_NUMBER = 1;
@@ -334,11 +334,11 @@ public final class Options {
       if (obj == this) {
         return true;
       }
-      if (!(obj instanceof trinsic.sdk.options.v1.Options.ServiceOptions)) {
+      if (!(obj instanceof trinsic.sdk.options.v1.Options.TrinsicOptions)) {
         return super.equals(obj);
       }
-      trinsic.sdk.options.v1.Options.ServiceOptions other =
-          (trinsic.sdk.options.v1.Options.ServiceOptions) obj;
+      trinsic.sdk.options.v1.Options.TrinsicOptions other =
+          (trinsic.sdk.options.v1.Options.TrinsicOptions) obj;
 
       if (!getServerEndpoint().equals(other.getServerEndpoint())) return false;
       if (getServerPort() != other.getServerPort()) return false;
@@ -368,71 +368,71 @@ public final class Options {
       return hash;
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(java.nio.ByteBuffer data)
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(
         java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(byte[] data)
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(
         byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(java.io.InputStream input)
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(
         java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
           PARSER, input, extensionRegistry);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseDelimitedFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseDelimitedFrom(
         java.io.InputStream input) throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseDelimitedFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseDelimitedFrom(
         java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
           PARSER, input, extensionRegistry);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(
         com.google.protobuf.CodedInputStream input) throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -449,7 +449,7 @@ public final class Options {
       return DEFAULT_INSTANCE.toBuilder();
     }
 
-    public static Builder newBuilder(trinsic.sdk.options.v1.Options.ServiceOptions prototype) {
+    public static Builder newBuilder(trinsic.sdk.options.v1.Options.TrinsicOptions prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
@@ -471,29 +471,29 @@ public final class Options {
      * Configuration for Trinsic SDK Services
      * </pre>
      *
-     * Protobuf type {@code sdk.options.v1.ServiceOptions}
+     * Protobuf type {@code sdk.options.v1.TrinsicOptions}
      */
     public static final class Builder
         extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
         implements
-        // @@protoc_insertion_point(builder_implements:sdk.options.v1.ServiceOptions)
-        trinsic.sdk.options.v1.Options.ServiceOptionsOrBuilder {
+        // @@protoc_insertion_point(builder_implements:sdk.options.v1.TrinsicOptions)
+        trinsic.sdk.options.v1.Options.TrinsicOptionsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.sdk.options.v1.Options
-            .internal_static_sdk_options_v1_ServiceOptions_descriptor;
+            .internal_static_sdk_options_v1_TrinsicOptions_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return trinsic.sdk.options.v1.Options
-            .internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable
+            .internal_static_sdk_options_v1_TrinsicOptions_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.sdk.options.v1.Options.ServiceOptions.class,
-                trinsic.sdk.options.v1.Options.ServiceOptions.Builder.class);
+                trinsic.sdk.options.v1.Options.TrinsicOptions.class,
+                trinsic.sdk.options.v1.Options.TrinsicOptions.Builder.class);
       }
 
-      // Construct using trinsic.sdk.options.v1.Options.ServiceOptions.newBuilder()
+      // Construct using trinsic.sdk.options.v1.Options.TrinsicOptions.newBuilder()
       private Builder() {}
 
       private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -517,17 +517,17 @@ public final class Options {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.sdk.options.v1.Options
-            .internal_static_sdk_options_v1_ServiceOptions_descriptor;
+            .internal_static_sdk_options_v1_TrinsicOptions_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.sdk.options.v1.Options.ServiceOptions getDefaultInstanceForType() {
-        return trinsic.sdk.options.v1.Options.ServiceOptions.getDefaultInstance();
+      public trinsic.sdk.options.v1.Options.TrinsicOptions getDefaultInstanceForType() {
+        return trinsic.sdk.options.v1.Options.TrinsicOptions.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.sdk.options.v1.Options.ServiceOptions build() {
-        trinsic.sdk.options.v1.Options.ServiceOptions result = buildPartial();
+      public trinsic.sdk.options.v1.Options.TrinsicOptions build() {
+        trinsic.sdk.options.v1.Options.TrinsicOptions result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -535,9 +535,9 @@ public final class Options {
       }
 
       @java.lang.Override
-      public trinsic.sdk.options.v1.Options.ServiceOptions buildPartial() {
-        trinsic.sdk.options.v1.Options.ServiceOptions result =
-            new trinsic.sdk.options.v1.Options.ServiceOptions(this);
+      public trinsic.sdk.options.v1.Options.TrinsicOptions buildPartial() {
+        trinsic.sdk.options.v1.Options.TrinsicOptions result =
+            new trinsic.sdk.options.v1.Options.TrinsicOptions(this);
         result.serverEndpoint_ = serverEndpoint_;
         result.serverPort_ = serverPort_;
         result.serverUseTls_ = serverUseTls_;
@@ -583,16 +583,16 @@ public final class Options {
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.sdk.options.v1.Options.ServiceOptions) {
-          return mergeFrom((trinsic.sdk.options.v1.Options.ServiceOptions) other);
+        if (other instanceof trinsic.sdk.options.v1.Options.TrinsicOptions) {
+          return mergeFrom((trinsic.sdk.options.v1.Options.TrinsicOptions) other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.sdk.options.v1.Options.ServiceOptions other) {
-        if (other == trinsic.sdk.options.v1.Options.ServiceOptions.getDefaultInstance())
+      public Builder mergeFrom(trinsic.sdk.options.v1.Options.TrinsicOptions other) {
+        if (other == trinsic.sdk.options.v1.Options.TrinsicOptions.getDefaultInstance())
           return this;
         if (!other.getServerEndpoint().isEmpty()) {
           serverEndpoint_ = other.serverEndpoint_;
@@ -1003,24 +1003,24 @@ public final class Options {
         return super.mergeUnknownFields(unknownFields);
       }
 
-      // @@protoc_insertion_point(builder_scope:sdk.options.v1.ServiceOptions)
+      // @@protoc_insertion_point(builder_scope:sdk.options.v1.TrinsicOptions)
     }
 
-    // @@protoc_insertion_point(class_scope:sdk.options.v1.ServiceOptions)
-    private static final trinsic.sdk.options.v1.Options.ServiceOptions DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:sdk.options.v1.TrinsicOptions)
+    private static final trinsic.sdk.options.v1.Options.TrinsicOptions DEFAULT_INSTANCE;
 
     static {
-      DEFAULT_INSTANCE = new trinsic.sdk.options.v1.Options.ServiceOptions();
+      DEFAULT_INSTANCE = new trinsic.sdk.options.v1.Options.TrinsicOptions();
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions getDefaultInstance() {
+    public static trinsic.sdk.options.v1.Options.TrinsicOptions getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ServiceOptions> PARSER =
-        new com.google.protobuf.AbstractParser<ServiceOptions>() {
+    private static final com.google.protobuf.Parser<TrinsicOptions> PARSER =
+        new com.google.protobuf.AbstractParser<TrinsicOptions>() {
           @java.lang.Override
-          public ServiceOptions parsePartialFrom(
+          public TrinsicOptions parsePartialFrom(
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1040,25 +1040,25 @@ public final class Options {
           }
         };
 
-    public static com.google.protobuf.Parser<ServiceOptions> parser() {
+    public static com.google.protobuf.Parser<TrinsicOptions> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ServiceOptions> getParserForType() {
+    public com.google.protobuf.Parser<TrinsicOptions> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.sdk.options.v1.Options.ServiceOptions getDefaultInstanceForType() {
+    public trinsic.sdk.options.v1.Options.TrinsicOptions getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_sdk_options_v1_ServiceOptions_descriptor;
+      internal_static_sdk_options_v1_TrinsicOptions_descriptor;
   private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable;
+      internal_static_sdk_options_v1_TrinsicOptions_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -1069,7 +1069,7 @@ public final class Options {
   static {
     java.lang.String[] descriptorData = {
       "\n\034sdk/options/v1/options.proto\022\016sdk.opti"
-          + "ons.v1\"j\n\016ServiceOptions\022\027\n\017server_endpo"
+          + "ons.v1\"j\n\016TrinsicOptions\022\027\n\017server_endpo"
           + "int\030\001 \001(\t\022\023\n\013server_port\030\002 \001(\005\022\026\n\016server"
           + "_use_tls\030\003 \001(\010\022\022\n\nauth_token\030\004 \001(\tBI\n\026tr"
           + "insic.sdk.options.v1Z\026sdk/options/v1/opt"
@@ -1078,11 +1078,11 @@ public final class Options {
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
             descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
-    internal_static_sdk_options_v1_ServiceOptions_descriptor =
+    internal_static_sdk_options_v1_TrinsicOptions_descriptor =
         getDescriptor().getMessageTypes().get(0);
-    internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable =
+    internal_static_sdk_options_v1_TrinsicOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_sdk_options_v1_ServiceOptions_descriptor,
+            internal_static_sdk_options_v1_TrinsicOptions_descriptor,
             new java.lang.String[] {
               "ServerEndpoint", "ServerPort", "ServerUseTls", "AuthToken",
             });

@@ -21,7 +21,7 @@ const (
 )
 
 // Configuration for Trinsic SDK Services
-type ServiceOptions struct {
+type TrinsicOptions struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -36,8 +36,8 @@ type ServiceOptions struct {
 	AuthToken string `protobuf:"bytes,4,opt,name=auth_token,json=authToken,proto3" json:"auth_token,omitempty"`
 }
 
-func (x *ServiceOptions) Reset() {
-	*x = ServiceOptions{}
+func (x *TrinsicOptions) Reset() {
+	*x = TrinsicOptions{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_sdk_options_v1_options_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -45,13 +45,13 @@ func (x *ServiceOptions) Reset() {
 	}
 }
 
-func (x *ServiceOptions) String() string {
+func (x *TrinsicOptions) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ServiceOptions) ProtoMessage() {}
+func (*TrinsicOptions) ProtoMessage() {}
 
-func (x *ServiceOptions) ProtoReflect() protoreflect.Message {
+func (x *TrinsicOptions) ProtoReflect() protoreflect.Message {
 	mi := &file_sdk_options_v1_options_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -63,33 +63,33 @@ func (x *ServiceOptions) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ServiceOptions.ProtoReflect.Descriptor instead.
-func (*ServiceOptions) Descriptor() ([]byte, []int) {
+// Deprecated: Use TrinsicOptions.ProtoReflect.Descriptor instead.
+func (*TrinsicOptions) Descriptor() ([]byte, []int) {
 	return file_sdk_options_v1_options_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ServiceOptions) GetServerEndpoint() string {
+func (x *TrinsicOptions) GetServerEndpoint() string {
 	if x != nil {
 		return x.ServerEndpoint
 	}
 	return ""
 }
 
-func (x *ServiceOptions) GetServerPort() int32 {
+func (x *TrinsicOptions) GetServerPort() int32 {
 	if x != nil {
 		return x.ServerPort
 	}
 	return 0
 }
 
-func (x *ServiceOptions) GetServerUseTls() bool {
+func (x *TrinsicOptions) GetServerUseTls() bool {
 	if x != nil {
 		return x.ServerUseTls
 	}
 	return false
 }
 
-func (x *ServiceOptions) GetAuthToken() string {
+func (x *TrinsicOptions) GetAuthToken() string {
 	if x != nil {
 		return x.AuthToken
 	}
@@ -102,7 +102,7 @@ var file_sdk_options_v1_options_proto_rawDesc = []byte{
 	0x0a, 0x1c, 0x73, 0x64, 0x6b, 0x2f, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x76, 0x31,
 	0x2f, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0e,
 	0x73, 0x64, 0x6b, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x22, 0x9f,
-	0x01, 0x0a, 0x0e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e,
+	0x01, 0x0a, 0x0e, 0x54, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e,
 	0x73, 0x12, 0x27, 0x0a, 0x0f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x65, 0x6e, 0x64, 0x70,
 	0x6f, 0x69, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x73, 0x65, 0x72, 0x76,
 	0x65, 0x72, 0x45, 0x6e, 0x64, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x65,
@@ -134,7 +134,7 @@ func file_sdk_options_v1_options_proto_rawDescGZIP() []byte {
 
 var file_sdk_options_v1_options_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_sdk_options_v1_options_proto_goTypes = []interface{}{
-	(*ServiceOptions)(nil), // 0: sdk.options.v1.ServiceOptions
+	(*TrinsicOptions)(nil), // 0: sdk.options.v1.TrinsicOptions
 }
 var file_sdk_options_v1_options_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -151,7 +151,7 @@ func file_sdk_options_v1_options_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_sdk_options_v1_options_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ServiceOptions); i {
+			switch v := v.(*TrinsicOptions); i {
 			case 0:
 				return &v.state
 			case 1:
