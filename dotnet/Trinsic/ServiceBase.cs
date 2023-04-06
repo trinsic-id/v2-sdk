@@ -69,7 +69,7 @@ public abstract class ServiceBase
         };
 
         // Build authentication header
-        if (string.IsNullOrWhiteSpace(Options.AuthToken))
+        if (!string.IsNullOrWhiteSpace(Options.AuthToken))
         {
             headers.Add("Authorization", $"Bearer {Options.AuthToken}");
         }
@@ -88,7 +88,7 @@ public abstract class ServiceBase
         };
 
         // Build authentication header
-        if (string.IsNullOrWhiteSpace(Options.AuthToken))
+        if (!string.IsNullOrWhiteSpace(Options.AuthToken))
         {
             headers.Add("Authorization", $"Bearer {Options.AuthToken}");
         }
