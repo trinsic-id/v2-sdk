@@ -8,7 +8,7 @@ from betterproto.grpc.grpclib_server import ServiceBase
 
 
 @dataclass(eq=False, repr=False)
-class ServiceOptions(betterproto.Message):
+class TrinsicOptions(betterproto.Message):
     """Configuration for Trinsic SDK Services"""
 
     server_endpoint: str = betterproto.string_field(1)
