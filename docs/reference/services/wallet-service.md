@@ -1,11 +1,7 @@
-# Wallet Service
+# Wallet API
 
-The wallet service is the main interface for interacting with a cloud wallet. 
-
-!!! question "Wallets vs Accounts"
-    Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
-
-    Every account has exactly one wallet. 
+The Wallet API is the main interface for interacting with a cloud wallet, if you're providing custom wallet experience and building your own digital wallet integration.
+If you'd like to use Trinsic's integrated cloud wallet app, you likely won't need to use this API.
 
 !!! info "Wallet Standard"
     This service is designed to follow the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by the W3C Community Credentials Group.
@@ -14,9 +10,28 @@ The wallet service is the main interface for interacting with a cloud wallet.
 
 ## Create Wallet
 
-A wallet is created whenever an account is created.
+Create a new wallet and return the authentication token and wallet information about the newly created wallet.
 
-Therefore, to create a wallet, you'll need to [create a new account](./account-service.md#sign-in).
+{{ proto_sample_start() }}
+    === "C#"
+        ```csharp
+        using Trinsic;
+        using Trinsic.Services.UniversalWallet.V1;
+
+        var trinsic = new TrinsicService();
+
+        var response = await trinsic.Wallet.CreateWalletAsync(new CreateWalletRequest {
+            EcosystemId = "acme-corp",
+            Description = "user@acme-corp.org"
+        });
+
+        // Response:
+        // {
+        //     "WalletId": "urn:wallets:abc123",
+        //     "AuthToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
+        // }
+        ```
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.CreateWallet") }}
 
 ---
 
@@ -25,11 +40,6 @@ Therefore, to create a wallet, you'll need to [create a new account](./account-s
 Stores a credential (or any other JSON object) in a wallet.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet insert-item --item <INPUT_JSON_FILE>
-        ```
-
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
@@ -68,7 +78,7 @@ Stores a credential (or any other JSON object) in a wallet.
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.InsertItem") }}
 
 !!! question "What can be stored in a wallet?"
-    
+
     Wallets are mainly intended to hold [Verifiable Credentials](/learn/concepts/credentials){target=_blank}, but can technically
     store any JSON blob.
 
@@ -271,7 +281,7 @@ If no `query` is specified, this call by default returns the first 100 items in 
         [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletBasic
         ```
         <!--/codeinclude-->
-    
+
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.Search") }}
 
 
@@ -301,7 +311,7 @@ Note that `data` is an object, not a string; thus, any of its sub-fields may be 
 For example, `SELECT * FROM c WHERE c.data.someField = 'Hello, World!'` would match against the following JSON object inserted via [InsertItem](#insert-item):
 
 ```json
-{ 
+{
     "someField": "Hello, World!"
 }
 ```
