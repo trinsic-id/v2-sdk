@@ -7,7 +7,7 @@ option java_package = "trinsic.sdk.options.v1";
 option csharp_namespace = "Trinsic.Sdk.Options.V1";
 
 // Configuration for Trinsic SDK Services
-message ServiceOptions {
+message TrinsicOptions {
     // Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
     string server_endpoint = 1;
     // Trinsic API port; defaults to `443`

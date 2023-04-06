@@ -18,12 +18,12 @@ public static class ServiceCollectionExtensions
     /// <param name="serviceCollection"></param>
     /// <param name="configureOptions"></param>
     /// <returns></returns>
-    public static IServiceCollection AddTrinsic(this IServiceCollection serviceCollection, Action<ServiceOptions>? configureOptions = null) {
+    public static IServiceCollection AddTrinsic(this IServiceCollection serviceCollection, Action<TrinsicOptions>? configureOptions = null) {
         if (configureOptions is not null)
         {
             serviceCollection.Configure(configureOptions);
         }
 
-        return serviceCollection.AddSingleton(provider => new TrinsicService(provider.GetService<IOptions<ServiceOptions>>()?.Value ?? new ServiceOptions()));
+        return serviceCollection.AddSingleton(provider => new TrinsicService(provider.GetService<IOptions<TrinsicOptions>>()?.Value ?? new TrinsicOptions()));
     }
 }

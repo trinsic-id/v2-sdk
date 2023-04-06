@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Provider.V1;
 
@@ -8,7 +7,7 @@ namespace Trinsic;
 
 public class AccessManagementService : ServiceBase
 {
-    public AccessManagementService(ServiceOptions options)
+    public AccessManagementService(TrinsicOptions options)
         : base(options) {
         Client = new(Channel);
     }

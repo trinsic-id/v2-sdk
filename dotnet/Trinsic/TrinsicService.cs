@@ -16,12 +16,11 @@ public class TrinsicService : ServiceBase
     private TrustRegistryService? _trustRegistry;
     private WalletService? _wallet;
 
-
-    public TrinsicService(ServiceOptions options) : base(options) { }
+    public TrinsicService(TrinsicOptions options) : base(options) { }
 
     public TrinsicService() : base(new()) { }
 
-    internal TrinsicService(IOptions<ServiceOptions> options) : base(options.Value) { }
+    internal TrinsicService(IOptions<TrinsicOptions> options) : base(options.Value) { }
 
     /// <summary>
     /// Exposes Account Service functionality

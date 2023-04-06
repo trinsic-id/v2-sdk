@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Newtonsoft.Json;
 using Trinsic;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Common.V1;
@@ -23,7 +22,7 @@ public class VaccineWalkthroughTests
     private const int DefaultPort = 443;
 
     private readonly ITestOutputHelper _testOutputHelper;
-    private readonly ServiceOptions _options;
+    private readonly TrinsicOptions _options;
 
     public VaccineWalkthroughTests(ITestOutputHelper testOutputHelper) {
         _testOutputHelper = testOutputHelper;
@@ -41,8 +40,7 @@ public class VaccineWalkthroughTests
     public async Task TestWalkthrough() {
         // createEcosystem() {
         var trinsic = new TrinsicService(_options);
-
-        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
+        var (ecosystem, _) = await trinsic.Provider.CreateEcosystemAsync(new());
         var ecosystemId = ecosystem?.Id;
         // }
 
@@ -82,7 +80,7 @@ public class VaccineWalkthroughTests
 
         // issueCredential() {
         // Prepare credential values
-        var credentialValues = new Dictionary<string, string>() {
+        var credentialValues = new Dictionary<string, string> {
             { "firstName", "Allison" },
             { "lastName", "Allisonne" },
             { "batchNumber", "123454321" },

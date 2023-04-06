@@ -1,13 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using Grpc.Core;
-using Google.Protobuf;
-using Trinsic.Services.Common.V1;
-using Trinsic.Services.Account.V1;
 using System.Threading.Tasks;
+using Google.Protobuf;
+using Grpc.Core;
 using Grpc.Net.Client;
 using Trinsic.Sdk.Options.V1;
+using Trinsic.Services.Common.V1;
 #if __BROWSER__
 using System.Net.Http;
 using Grpc.Net.Client.Web;
@@ -25,19 +23,30 @@ public abstract class ServiceBase
 
     protected internal ServiceBase() : this(new()) { }
 
-    protected internal ServiceBase(ServiceOptions options) {
+    protected internal ServiceBase(TrinsicOptions options) {
         Options = options;
         EnsureOptionDefaults();
         Channel = CreateChannel(Options);
     }
 
     private void EnsureOptionDefaults() {
-        if (string.IsNullOrWhiteSpace(Options.ServerEndpoint)) Options.ServerEndpoint = DefaultServerEndpoint;
-        if (Options.ServerPort == default) Options.ServerPort = DefaultServerPort;
-        if (Options.ServerPort == DefaultServerPort) Options.ServerUseTls = DefaultServerUseTls;
+        if (string.IsNullOrWhiteSpace(Options.ServerEndpoint))
+        {
+            Options.ServerEndpoint = DefaultServerEndpoint;
+        }
+
+        if (Options.ServerPort == default)
+        {
+            Options.ServerPort = DefaultServerPort;
+        }
+
+        if (Options.ServerPort == DefaultServerPort)
+        {
+            Options.ServerUseTls = DefaultServerUseTls;
+        }
     }
 
-    private static GrpcChannel CreateChannel(ServiceOptions options) {
+    private static GrpcChannel CreateChannel(TrinsicOptions options) {
 #if __BROWSER__
         var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
         return GrpcChannel.ForAddress(options.FormatUrl(), new GrpcChannelOptions { HttpClient = httpClient });
@@ -49,7 +58,7 @@ public abstract class ServiceBase
     /// <summary>
     /// Gets the options set on this service.
     /// </summary>
-    public ServiceOptions Options { get; }
+    public TrinsicOptions Options { get; }
 
     /// <summary>
     /// Gets the gRPC channel used by this service. This channel can be reused
@@ -73,6 +82,7 @@ public abstract class ServiceBase
         {
             headers.Add("Authorization", $"Bearer {Options.AuthToken}");
         }
+
         return Task.FromResult(headers);
     }
 
@@ -92,6 +102,7 @@ public abstract class ServiceBase
         {
             headers.Add("Authorization", $"Bearer {Options.AuthToken}");
         }
+
         return headers;
     }
 

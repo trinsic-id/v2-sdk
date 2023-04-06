@@ -1,15 +1,13 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 
 namespace Trinsic;
 
 public class CredentialService : ServiceBase
 {
-    public CredentialService(ServiceOptions options)
+    public CredentialService(TrinsicOptions options)
         : base(options) {
         Client = new(Channel);
     }

@@ -1,16 +1,12 @@
-using System;
 using System.Threading.Tasks;
-using Grpc.Core;
-using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
 
 namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(ServiceOptions options)
+    public TrustRegistryService(TrinsicOptions options)
         : base(options) {
         Client = new(Channel);
     }
@@ -23,7 +19,9 @@ public class TrustRegistryService : ServiceBase
     /// <returns></returns>
     public async Task<SearchRegistryResponse> SearchAsync(SearchRegistryRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
+        {
             request.Query = "SELECT * FROM _ OFFSET 0 LIMIT 100";
+        }
 
         var response = await SearchRegistryAsync(request);
         return response;
@@ -31,7 +29,9 @@ public class TrustRegistryService : ServiceBase
 
     public SearchRegistryResponse Search(SearchRegistryRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
+        {
             request.Query = "SELECT * FROM _ OFFSET 0 LIMIT 100";
+        }
 
         return SearchRegistry(request);
     }

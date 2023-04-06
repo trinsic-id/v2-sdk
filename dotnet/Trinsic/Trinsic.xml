@@ -7550,39 +7550,39 @@
         <member name="P:Trinsic.Sdk.Options.V1.OptionsReflection.Descriptor">
             <summary>File descriptor for sdk/options/v1/options.proto</summary>
         </member>
-        <member name="T:Trinsic.Sdk.Options.V1.ServiceOptions">
+        <member name="T:Trinsic.Sdk.Options.V1.TrinsicOptions">
             <summary>
             Configuration for Trinsic SDK Services
             </summary>
         </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerEndpointFieldNumber">
+        <member name="F:Trinsic.Sdk.Options.V1.TrinsicOptions.ServerEndpointFieldNumber">
             <summary>Field number for the "server_endpoint" field.</summary>
         </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerEndpoint">
+        <member name="P:Trinsic.Sdk.Options.V1.TrinsicOptions.ServerEndpoint">
             <summary>
             Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
             </summary>
         </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerPortFieldNumber">
+        <member name="F:Trinsic.Sdk.Options.V1.TrinsicOptions.ServerPortFieldNumber">
             <summary>Field number for the "server_port" field.</summary>
         </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerPort">
+        <member name="P:Trinsic.Sdk.Options.V1.TrinsicOptions.ServerPort">
             <summary>
             Trinsic API port; defaults to `443`
             </summary>
         </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerUseTlsFieldNumber">
+        <member name="F:Trinsic.Sdk.Options.V1.TrinsicOptions.ServerUseTlsFieldNumber">
             <summary>Field number for the "server_use_tls" field.</summary>
         </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerUseTls">
+        <member name="P:Trinsic.Sdk.Options.V1.TrinsicOptions.ServerUseTls">
             <summary>
             Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
             </summary>
         </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.AuthTokenFieldNumber">
+        <member name="F:Trinsic.Sdk.Options.V1.TrinsicOptions.AuthTokenFieldNumber">
             <summary>Field number for the "auth_token" field.</summary>
         </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.AuthToken">
+        <member name="P:Trinsic.Sdk.Options.V1.TrinsicOptions.AuthToken">
             <summary>
             Authentication token for SDK calls; defaults to empty string (unauthenticated)
             </summary>
@@ -7596,7 +7596,7 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTrinsic(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Trinsic.Sdk.Options.V1.ServiceOptions})">
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTrinsic(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Trinsic.Sdk.Options.V1.TrinsicOptions})">
             <summary>
             Add Trinsic Service dependencies and optionally configure the service options
             </summary>

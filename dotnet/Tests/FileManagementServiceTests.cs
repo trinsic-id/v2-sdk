@@ -19,10 +19,9 @@ namespace Tests;
 public class FileManagementServiceTests
 {
     private readonly ITestOutputHelper _testOutputHelper;
-    private readonly ServiceOptions _options;
+    private readonly TrinsicOptions _options;
 
-    public FileManagementServiceTests(ITestOutputHelper testOutputHelper)
-    {
+    public FileManagementServiceTests(ITestOutputHelper testOutputHelper) {
         _testOutputHelper = testOutputHelper;
         _options = Tests.GetTestServiceOptions();
 
@@ -30,17 +29,17 @@ public class FileManagementServiceTests
     }
 
     [Fact]
-    public async Task TestFileManagementService()
-    {
+    public async Task TestFileManagementService() {
         var trinsic = new TrinsicService(_options.Clone());
-        await trinsic.Wallet.CreateWalletAsync(new() {EcosystemId = "default"});
+        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = "default" });
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(createWalletResponse.AuthToken));
 
         // uploadFile() {
         // Get raw bytes of string
         var fileBytes = Encoding.UTF8.GetBytes("Hello, world!");
-        var fileMimeType = "application/text";
+        const string fileMimeType = "application/text";
 
-        var uploadResponse = trinsic.FileManagement.UploadFile(new UploadFileRequest() {
+        var uploadResponse = trinsic.FileManagement.UploadFile(new UploadFileRequest {
             Contents = ByteString.CopyFrom(fileBytes),
             MimeType = fileMimeType
         });
@@ -52,16 +51,15 @@ public class FileManagementServiceTests
         var fileId = uploadResponse.UploadedFile.Id;
 
         // getFile() {
-        var getFileResponse = trinsic.FileManagement.GetFile(new GetFileRequest() {
+        var getFileResponse = trinsic.FileManagement.GetFile(new GetFileRequest {
             Id = fileId
         });
         //}
 
         getFileResponse.File.Should().Be(uploadResponse.UploadedFile);
 
-
         // listFiles() {
-        var listFilesResponse = trinsic.FileManagement.ListFiles(new ListFilesRequest() {
+        var listFilesResponse = trinsic.FileManagement.ListFiles(new ListFilesRequest {
             Query = "SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100"
         });
         // }
@@ -77,7 +75,7 @@ public class FileManagementServiceTests
         getStorageStatsResponse.Stats.TotalSize.Should().Be(getFileResponse.File.Size);
 
         // deleteFile() {
-        trinsic.FileManagement.DeleteFile(new DeleteFileRequest() {
+        trinsic.FileManagement.DeleteFile(new DeleteFileRequest {
             Id = fileId
         });
         //}

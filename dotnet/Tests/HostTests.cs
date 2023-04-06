@@ -4,7 +4,6 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Trinsic;
-using Trinsic.Services.Common.V1;
 using Xunit;
 
 namespace Tests;
@@ -22,8 +21,9 @@ public class HostTests
 
         await host.StartAsync();
 
-        var providerService = host.Services.GetService<ProviderService>();
-        var accountService = host.Services.GetRequiredService<WalletService>();
+        var trinsicService = host.Services.GetRequiredService<TrinsicService>();
+        var providerService = trinsicService.Provider;
+        var accountService = trinsicService.Wallet;
 
         providerService.Should().NotBeNull();
         accountService.Should().NotBeNull();
@@ -51,16 +51,17 @@ public class HostTests
 
         await host.StartAsync();
 
-        var providerService = host.Services.GetService<ProviderService>();
-        var accountService = host.Services.GetRequiredService<WalletService>();
+        var trinsicService = host.Services.GetRequiredService<TrinsicService>();
+        var providerService = trinsicService.Provider;
+        var walletService = trinsicService.Wallet;
 
         providerService.Should().NotBeNull();
-        accountService.Should().NotBeNull();
+        walletService.Should().NotBeNull();
 
-        accountService.Options.ServerEndpoint.Should().Be("example.com");
-        accountService.Options.ServerPort.Should().Be(42);
-        accountService.Options.ServerUseTls.Should().BeTrue();
-        accountService.Options.AuthToken.Should().Be("auth");
+        walletService.Options.ServerEndpoint.Should().Be("example.com");
+        walletService.Options.ServerPort.Should().Be(42);
+        walletService.Options.ServerUseTls.Should().BeTrue();
+        walletService.Options.AuthToken.Should().Be("auth");
 
         await host.StopAsync();
     }
