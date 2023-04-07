@@ -2022,6 +2022,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#removeexternalidentityrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RemoveExternalIdentityRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeexternalidentityresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RemoveExternalIdentityResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#revokeauthtokenrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4418,7 +4440,13 @@
 <td>AddExternalIdentityConfirm</td>
 <td><a href="/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmRequest">AddExternalIdentityConfirmRequest</a></td>
 <td><a href="/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmResponse">AddExternalIdentityConfirmResponse</a></td>
-<td>Confirm identity added to the current wallet using <code>AddIdentity</code></td>
+<td>Confirm identity added to the current wallet using <code>AddExternalIdentityInit</code></td>
+</tr>
+<tr>
+<td>RemoveExternalIdentity</td>
+<td><a href="/reference/proto#services-universalwallet-v1-RemoveExternalIdentityRequest">RemoveExternalIdentityRequest</a></td>
+<td><a href="/reference/proto#services-universalwallet-v1-RemoveExternalIdentityResponse">RemoveExternalIdentityResponse</a></td>
+<td>Remove an external identity from the current wallet</td>
 </tr>
 <tr>
 <td>AuthenticateInit</td>
@@ -4456,7 +4484,7 @@
 <tr>
 <td>challenge</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>The challenge received from the <code>AddIdentityInit</code> endpoint</td>
+<td>The challenge received from the <code>AddExternalIdentityInit</code> endpoint</td>
 </tr>
 <tr>
 <td>response</td>
@@ -4481,12 +4509,12 @@
 <tr>
 <td>identity</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Identity to add to the wallet</td>
+<td>The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number])</td>
 </tr>
 <tr>
 <td>provider</td>
 <td><a href="/reference/proto#services-universalwallet-v1-IdentityProvider">IdentityProvider</a></td>
-<td></td>
+<td>The type of identity provider, like EMAIL or PHONE</td>
 </tr>
 </tbody>
 </table>
@@ -4504,7 +4532,7 @@
 <tr>
 <td>challenge</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Challenge to be verified by the user. Pass this challenge back to the <code>AddIdentityConfirm</code> endpoint</td>
+<td>Challenge or reference to the challenge to be used in the <code>AddExternalIdentityConfirm</code> endpoint</td>
 </tr>
 </tbody>
 </table>
@@ -4614,7 +4642,7 @@
 <tr>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, etc. This field is not unique within our platform</td>
+<td>Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, or anything you'd like to associate with this wallet. This field is searchable.</td>
 </tr>
 </tbody>
 </table>
@@ -4630,11 +4658,6 @@
 </thead>
 <tbody>
 <tr>
-<td>wallet_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Wallet ID of the newly created wallet</td>
-</tr>
-<tr>
 <td>auth_token</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Auth token for the newly created wallet</td>
@@ -4643,6 +4666,11 @@
 <td>token_id</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Token ID of the newly generated token</td>
+</tr>
+<tr>
+<td>wallet</td>
+<td><a href="/reference/proto#services-provider-v1-WalletConfiguration">services.provider.v1.WalletConfiguration</a></td>
+<td>Wallet configuration</td>
 </tr>
 </tbody>
 </table>
@@ -4928,6 +4956,26 @@
 </tr>
 </tbody>
 </table>
+<p><a name="services-universalwallet-v1-RemoveExternalIdentityRequest"></a></p>
+<h3 id="removeexternalidentityrequest">RemoveExternalIdentityRequest<a class="headerlink" href="#removeexternalidentityrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>identity</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The user identity to remove from the wallet This can be an email address or phone number (formatted as +[country code][phone number])</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-RemoveExternalIdentityResponse"></a></p>
+<h3 id="removeexternalidentityresponse">RemoveExternalIdentityResponse<a class="headerlink" href="#removeexternalidentityresponse" title="Permanent link">&para;</a></h3>
 <p><a name="services-universalwallet-v1-RevokeAuthTokenRequest"></a></p>
 <h3 id="revokeauthtokenrequest">RevokeAuthTokenRequest<a class="headerlink" href="#revokeauthtokenrequest" title="Permanent link">&para;</a></h3>
 <p>Request to revoke a previously issued auth token</p>
@@ -7636,7 +7684,7 @@ to verify authentication token validity</p>
 <tr>
 <td>name</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Name/description of the wallet</td>
 </tr>
 <tr>
 <td>email</td>
@@ -7656,7 +7704,7 @@ to verify authentication token validity</p>
 <tr>
 <td>public_did</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>The DID of the wallet</td>
 </tr>
 <tr>
 <td>config_type</td>
@@ -7667,6 +7715,11 @@ to verify authentication token validity</p>
 <td>auth_tokens</td>
 <td><a href="/reference/proto#services-account-v1-WalletAuthToken">services.account.v1.WalletAuthToken</a>[]</td>
 <td>List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date.</td>
+</tr>
+<tr>
+<td>external_identities</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>List of external identities associated with this wallet.</td>
 </tr>
 </tbody>
 </table>
