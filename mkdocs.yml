@@ -63,8 +63,6 @@ theme:
     - announce.dismiss
     - navigation.tabs
     - navigation.tabs.sticky
-    - toc.integrate
-    - navigation.sections
   icon:
     repo: fontawesome/brands/github-alt
   font:
