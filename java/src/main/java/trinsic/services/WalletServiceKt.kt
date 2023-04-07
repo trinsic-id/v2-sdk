@@ -100,8 +100,15 @@ class WalletServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(op
   suspend fun addExternalIdentityConfirm(
       request: AddExternalIdentityConfirmRequest
   ): AddExternalIdentityConfirmResponse {
-    /** Confirm identity added to the current wallet using `AddIdentity` */
+    /** Confirm identity added to the current wallet using `AddExternalIdentityInit` */
     return withMetadata(stub, request).addExternalIdentityConfirm(request)
+  }
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
+  suspend fun removeExternalIdentity(
+      request: RemoveExternalIdentityRequest
+  ): RemoveExternalIdentityResponse {
+    /** Remove an external identity from the current wallet */
+    return withMetadata(stub, request).removeExternalIdentity(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun authenticateInit(request: AuthenticateInitRequest): AuthenticateInitResponse {

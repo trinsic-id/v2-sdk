@@ -12,8 +12,7 @@ public interface AddExternalIdentityInitResponseOrBuilder
    *
    *
    * <pre>
-   * Challenge to be verified by the user.
-   * Pass this challenge back to the `AddIdentityConfirm` endpoint
+   * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
    * </pre>
    *
    * <code>string challenge = 1;</code>
@@ -25,8 +24,7 @@ public interface AddExternalIdentityInitResponseOrBuilder
    *
    *
    * <pre>
-   * Challenge to be verified by the user.
-   * Pass this challenge back to the `AddIdentityConfirm` endpoint
+   * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
    * </pre>
    *
    * <code>string challenge = 1;</code>

@@ -168,24 +168,27 @@ class CreateWalletRequest(betterproto.Message):
     ecosystem_id: str = betterproto.string_field(1)
     """Ecosystem ID of the wallet to create"""
 
-    description: str = betterproto.string_field(2)
+    description: Optional[str] = betterproto.string_field(
+        2, optional=True, group="_description"
+    )
     """
     Wallet name or description. Use this field to add vendor specific
-    information about this wallet, such as email, phone, internal ID, etc. This
-    field is not unique within our platform
+    information about this wallet, such as email, phone, internal ID, or
+    anything you'd like to associate with this wallet. This field is
+    searchable.
     """
 
 
 @dataclass(eq=False, repr=False)
 class CreateWalletResponse(betterproto.Message):
-    wallet_id: str = betterproto.string_field(1)
-    """Wallet ID of the newly created wallet"""
-
     auth_token: str = betterproto.string_field(2)
     """Auth token for the newly created wallet"""
 
     token_id: str = betterproto.string_field(3)
     """Token ID of the newly generated token"""
+
+    wallet: "__provider_v1__.WalletConfiguration" = betterproto.message_field(4)
+    """Wallet configuration"""
 
 
 @dataclass(eq=False, repr=False)
@@ -266,24 +269,28 @@ class ListWalletsResponse(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class AddExternalIdentityInitRequest(betterproto.Message):
     identity: str = betterproto.string_field(1)
-    """Identity to add to the wallet"""
+    """
+    The user identity to add to the wallet This can be an email address or
+    phone number (formatted as +[country code][phone number])
+    """
 
     provider: "IdentityProvider" = betterproto.enum_field(2)
+    """The type of identity provider, like EMAIL or PHONE"""
 
 
 @dataclass(eq=False, repr=False)
 class AddExternalIdentityInitResponse(betterproto.Message):
     challenge: str = betterproto.string_field(1)
     """
-    Challenge to be verified by the user. Pass this challenge back to the
-    `AddIdentityConfirm` endpoint
+    Challenge or reference to the challenge to be used in the
+    `AddExternalIdentityConfirm` endpoint
     """
 
 
 @dataclass(eq=False, repr=False)
 class AddExternalIdentityConfirmRequest(betterproto.Message):
     challenge: str = betterproto.string_field(1)
-    """The challenge received from the `AddIdentityInit` endpoint"""
+    """The challenge received from the `AddExternalIdentityInit` endpoint"""
 
     response: str = betterproto.string_field(2)
     """
@@ -294,6 +301,20 @@ class AddExternalIdentityConfirmRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AddExternalIdentityConfirmResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class RemoveExternalIdentityRequest(betterproto.Message):
+    identity: str = betterproto.string_field(1)
+    """
+    The user identity to remove from the wallet This can be an email address or
+    phone number (formatted as +[country code][phone number])
+    """
+
+
+@dataclass(eq=False, repr=False)
+class RemoveExternalIdentityResponse(betterproto.Message):
     pass
 
 
@@ -545,6 +566,22 @@ class UniversalWalletStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def remove_external_identity(
+        self,
+        remove_external_identity_request: "RemoveExternalIdentityRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "RemoveExternalIdentityResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity",
+            remove_external_identity_request,
+            RemoveExternalIdentityResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
     async def authenticate_init(
         self,
         authenticate_init_request: "AuthenticateInitRequest",
@@ -656,6 +693,11 @@ class UniversalWalletBase(ServiceBase):
     ) -> "AddExternalIdentityConfirmResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def remove_external_identity(
+        self, remove_external_identity_request: "RemoveExternalIdentityRequest"
+    ) -> "RemoveExternalIdentityResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def authenticate_init(
         self, authenticate_init_request: "AuthenticateInitRequest"
     ) -> "AuthenticateInitResponse":
@@ -738,6 +780,13 @@ class UniversalWalletBase(ServiceBase):
     ) -> None:
         request = await stream.recv_message()
         response = await self.add_external_identity_confirm(request)
+        await stream.send_message(response)
+
+    async def __rpc_remove_external_identity(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.remove_external_identity(request)
         await stream.send_message(response)
 
     async def __rpc_authenticate_init(self, stream: grpclib.server.Stream) -> None:
@@ -834,6 +883,12 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 AddExternalIdentityConfirmRequest,
                 AddExternalIdentityConfirmResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity": grpclib.const.Handler(
+                self.__rpc_remove_external_identity,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                RemoveExternalIdentityRequest,
+                RemoveExternalIdentityResponse,
             ),
             "/services.universalwallet.v1.UniversalWallet/AuthenticateInit": grpclib.const.Handler(
                 self.__rpc_authenticate_init,

@@ -32,6 +32,7 @@ const (
 	UniversalWallet_RevokeAuthToken_FullMethodName            = "/services.universalwallet.v1.UniversalWallet/RevokeAuthToken"
 	UniversalWallet_AddExternalIdentityInit_FullMethodName    = "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit"
 	UniversalWallet_AddExternalIdentityConfirm_FullMethodName = "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm"
+	UniversalWallet_RemoveExternalIdentity_FullMethodName     = "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity"
 	UniversalWallet_AuthenticateInit_FullMethodName           = "/services.universalwallet.v1.UniversalWallet/AuthenticateInit"
 	UniversalWallet_AuthenticateConfirm_FullMethodName        = "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm"
 	UniversalWallet_ListWallets_FullMethodName                = "/services.universalwallet.v1.UniversalWallet/ListWallets"
@@ -70,8 +71,10 @@ type UniversalWalletClient interface {
 	// Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
 	// This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
 	AddExternalIdentityInit(ctx context.Context, in *AddExternalIdentityInitRequest, opts ...grpc.CallOption) (*AddExternalIdentityInitResponse, error)
-	// Confirm identity added to the current wallet using `AddIdentity`
+	// Confirm identity added to the current wallet using `AddExternalIdentityInit`
 	AddExternalIdentityConfirm(ctx context.Context, in *AddExternalIdentityConfirmRequest, opts ...grpc.CallOption) (*AddExternalIdentityConfirmResponse, error)
+	// Remove an external identity from the current wallet
+	RemoveExternalIdentity(ctx context.Context, in *RemoveExternalIdentityRequest, opts ...grpc.CallOption) (*RemoveExternalIdentityResponse, error)
 	// Sign-in to an already existing wallet, using an identity added that was previously registered
 	// This endpoint does not require authentication, and will return a challenge to be signed or verified
 	AuthenticateInit(ctx context.Context, in *AuthenticateInitRequest, opts ...grpc.CallOption) (*AuthenticateInitResponse, error)
@@ -206,6 +209,15 @@ func (c *universalWalletClient) AddExternalIdentityConfirm(ctx context.Context, 
 	return out, nil
 }
 
+func (c *universalWalletClient) RemoveExternalIdentity(ctx context.Context, in *RemoveExternalIdentityRequest, opts ...grpc.CallOption) (*RemoveExternalIdentityResponse, error) {
+	out := new(RemoveExternalIdentityResponse)
+	err := c.cc.Invoke(ctx, UniversalWallet_RemoveExternalIdentity_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *universalWalletClient) AuthenticateInit(ctx context.Context, in *AuthenticateInitRequest, opts ...grpc.CallOption) (*AuthenticateInitResponse, error) {
 	out := new(AuthenticateInitResponse)
 	err := c.cc.Invoke(ctx, UniversalWallet_AuthenticateInit_FullMethodName, in, out, opts...)
@@ -266,8 +278,10 @@ type UniversalWalletServer interface {
 	// Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
 	// This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
 	AddExternalIdentityInit(context.Context, *AddExternalIdentityInitRequest) (*AddExternalIdentityInitResponse, error)
-	// Confirm identity added to the current wallet using `AddIdentity`
+	// Confirm identity added to the current wallet using `AddExternalIdentityInit`
 	AddExternalIdentityConfirm(context.Context, *AddExternalIdentityConfirmRequest) (*AddExternalIdentityConfirmResponse, error)
+	// Remove an external identity from the current wallet
+	RemoveExternalIdentity(context.Context, *RemoveExternalIdentityRequest) (*RemoveExternalIdentityResponse, error)
 	// Sign-in to an already existing wallet, using an identity added that was previously registered
 	// This endpoint does not require authentication, and will return a challenge to be signed or verified
 	AuthenticateInit(context.Context, *AuthenticateInitRequest) (*AuthenticateInitResponse, error)
@@ -320,6 +334,9 @@ func (UnimplementedUniversalWalletServer) AddExternalIdentityInit(context.Contex
 }
 func (UnimplementedUniversalWalletServer) AddExternalIdentityConfirm(context.Context, *AddExternalIdentityConfirmRequest) (*AddExternalIdentityConfirmResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddExternalIdentityConfirm not implemented")
+}
+func (UnimplementedUniversalWalletServer) RemoveExternalIdentity(context.Context, *RemoveExternalIdentityRequest) (*RemoveExternalIdentityResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveExternalIdentity not implemented")
 }
 func (UnimplementedUniversalWalletServer) AuthenticateInit(context.Context, *AuthenticateInitRequest) (*AuthenticateInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthenticateInit not implemented")
@@ -577,6 +594,24 @@ func _UniversalWallet_AddExternalIdentityConfirm_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UniversalWallet_RemoveExternalIdentity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveExternalIdentityRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversalWalletServer).RemoveExternalIdentity(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UniversalWallet_RemoveExternalIdentity_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversalWalletServer).RemoveExternalIdentity(ctx, req.(*RemoveExternalIdentityRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UniversalWallet_AuthenticateInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AuthenticateInitRequest)
 	if err := dec(in); err != nil {
@@ -689,6 +724,10 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddExternalIdentityConfirm",
 			Handler:    _UniversalWallet_AddExternalIdentityConfirm_Handler,
+		},
+		{
+			MethodName: "RemoveExternalIdentity",
+			Handler:    _UniversalWallet_RemoveExternalIdentity_Handler,
 		},
 		{
 			MethodName: "AuthenticateInit",

@@ -117,17 +117,18 @@ message CreateWalletRequest{
   string ecosystem_id = 1;
   // Wallet name or description.
   // Use this field to add vendor specific information about this wallet,
-  // such as email, phone, internal ID, etc.
-  // This field is not unique within our platform
-  string description = 2;
+  // such as email, phone, internal ID, or anything you'd like to associate
+  // with this wallet. This field is searchable.
+  optional string description = 2 [(options.optional) = true];
 }
 message CreateWalletResponse{
-  // Wallet ID of the newly created wallet
-  string wallet_id = 1;
+  reserved 1;
   // Auth token for the newly created wallet
   string auth_token = 2;
   // Token ID of the newly generated token
   string token_id = 3;
+  // Wallet configuration
+  services.provider.v1.WalletConfiguration wallet = 4;
 }
 
 message GenerateAuthTokenRequest{
@@ -213,8 +214,11 @@ service UniversalWallet {
   // This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
   rpc AddExternalIdentityInit(AddExternalIdentityInitRequest) returns (AddExternalIdentityInitResponse);
 
-  // Confirm identity added to the current wallet using `AddIdentity`
+  // Confirm identity added to the current wallet using `AddExternalIdentityInit`
   rpc AddExternalIdentityConfirm(AddExternalIdentityConfirmRequest) returns (AddExternalIdentityConfirmResponse);
+
+  // Remove an external identity from the current wallet
+  rpc RemoveExternalIdentity(RemoveExternalIdentityRequest) returns (RemoveExternalIdentityResponse);
 
   // Sign-in to an already existing wallet, using an identity added that was previously registered
   // This endpoint does not require authentication, and will return a challenge to be signed or verified
@@ -228,13 +232,14 @@ service UniversalWallet {
 }
 
 message AddExternalIdentityInitRequest {
-  // Identity to add to the wallet
+  // The user identity to add to the wallet
+  // This can be an email address or phone number (formatted as +[country code][phone number])
   string identity = 1;
+  // The type of identity provider, like EMAIL or PHONE
   IdentityProvider provider = 2;
 }
 message AddExternalIdentityInitResponse {
-  // Challenge to be verified by the user.
-  // Pass this challenge back to the `AddIdentityConfirm` endpoint
+  // Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
   string challenge = 1;
 }
 
@@ -248,13 +253,20 @@ enum IdentityProvider {
 }
 
 message AddExternalIdentityConfirmRequest {
-  // The challenge received from the `AddIdentityInit` endpoint
+  // The challenge received from the `AddExternalIdentityInit` endpoint
   string challenge = 1;
   // The response to the challenge. If using Email or Phone,
   // this is the OTP code sent to the user's email or phone
   string response = 2;
 }
 message AddExternalIdentityConfirmResponse {}
+
+message RemoveExternalIdentityRequest {
+  // The user identity to remove from the wallet
+  // This can be an email address or phone number (formatted as +[country code][phone number])
+  string identity = 1;
+}
+message RemoveExternalIdentityResponse {}
 
 message AuthenticateInitRequest {
   // Identity to add to the wallet

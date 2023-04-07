@@ -286,7 +286,7 @@ public class WalletService : ServiceBase
     }
 
 	/// <summary>
-    /// Confirm identity added to the current wallet using `AddIdentity`
+    /// Confirm identity added to the current wallet using `AddExternalIdentityInit`
     /// </summary>
     
     public AddExternalIdentityConfirmResponse AddExternalIdentityConfirm(AddExternalIdentityConfirmRequest request) {
@@ -295,12 +295,30 @@ public class WalletService : ServiceBase
     }
 	
 	/// <summary>
-    /// Confirm identity added to the current wallet using `AddIdentity`
+    /// Confirm identity added to the current wallet using `AddExternalIdentityInit`
     /// </summary>
     
     public async Task<AddExternalIdentityConfirmResponse> AddExternalIdentityConfirmAsync(AddExternalIdentityConfirmRequest request) {
         
         return await Client.AddExternalIdentityConfirmAsync(request, await BuildMetadataAsync(request));
+    }
+
+	/// <summary>
+    /// Remove an external identity from the current wallet
+    /// </summary>
+    
+    public RemoveExternalIdentityResponse RemoveExternalIdentity(RemoveExternalIdentityRequest request) {
+        
+        return Client.RemoveExternalIdentity(request, BuildMetadata(request));
+    }
+	
+	/// <summary>
+    /// Remove an external identity from the current wallet
+    /// </summary>
+    
+    public async Task<RemoveExternalIdentityResponse> RemoveExternalIdentityAsync(RemoveExternalIdentityRequest request) {
+        
+        return await Client.RemoveExternalIdentityAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>

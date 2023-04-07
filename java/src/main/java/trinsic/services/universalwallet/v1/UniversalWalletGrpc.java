@@ -638,6 +638,56 @@ public final class UniversalWalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest,
+          trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>
+      getRemoveExternalIdentityMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "RemoveExternalIdentity",
+      requestType = trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.class,
+      responseType = trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest,
+          trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>
+      getRemoveExternalIdentityMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest,
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>
+        getRemoveExternalIdentityMethod;
+    if ((getRemoveExternalIdentityMethod = UniversalWalletGrpc.getRemoveExternalIdentityMethod)
+        == null) {
+      synchronized (UniversalWalletGrpc.class) {
+        if ((getRemoveExternalIdentityMethod = UniversalWalletGrpc.getRemoveExternalIdentityMethod)
+            == null) {
+          UniversalWalletGrpc.getRemoveExternalIdentityMethod =
+              getRemoveExternalIdentityMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest,
+                          trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "RemoveExternalIdentity"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new UniversalWalletMethodDescriptorSupplier("RemoveExternalIdentity"))
+                      .build();
+        }
+      }
+    }
+    return getRemoveExternalIdentityMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.universalwallet.v1.AuthenticateInitRequest,
           trinsic.services.universalwallet.v1.AuthenticateInitResponse>
       getAuthenticateInitMethod;
@@ -1014,7 +1064,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Confirm identity added to the current wallet using `AddIdentity`
+     * Confirm identity added to the current wallet using `AddExternalIdentityInit`
      * </pre>
      */
     public void addExternalIdentityConfirm(
@@ -1024,6 +1074,22 @@ public final class UniversalWalletGrpc {
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getAddExternalIdentityConfirmMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Remove an external identity from the current wallet
+     * </pre>
+     */
+    public void removeExternalIdentity(
+        trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getRemoveExternalIdentityMethod(), responseObserver);
     }
 
     /**
@@ -1165,6 +1231,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.AddExternalIdentityConfirmRequest,
                       trinsic.services.universalwallet.v1.AddExternalIdentityConfirmResponse>(
                       this, METHODID_ADD_EXTERNAL_IDENTITY_CONFIRM)))
+          .addMethod(
+              getRemoveExternalIdentityMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest,
+                      trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>(
+                      this, METHODID_REMOVE_EXTERNAL_IDENTITY)))
           .addMethod(
               getAuthenticateInitMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1410,7 +1483,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Confirm identity added to the current wallet using `AddIdentity`
+     * Confirm identity added to the current wallet using `AddExternalIdentityInit`
      * </pre>
      */
     public void addExternalIdentityConfirm(
@@ -1420,6 +1493,24 @@ public final class UniversalWalletGrpc {
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddExternalIdentityConfirmMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Remove an external identity from the current wallet
+     * </pre>
+     */
+    public void removeExternalIdentity(
+        trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getRemoveExternalIdentityMethod(), getCallOptions()),
           request,
           responseObserver);
     }
@@ -1662,7 +1753,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Confirm identity added to the current wallet using `AddIdentity`
+     * Confirm identity added to the current wallet using `AddExternalIdentityInit`
      * </pre>
      */
     public trinsic.services.universalwallet.v1.AddExternalIdentityConfirmResponse
@@ -1670,6 +1761,20 @@ public final class UniversalWalletGrpc {
             trinsic.services.universalwallet.v1.AddExternalIdentityConfirmRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddExternalIdentityConfirmMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Remove an external identity from the current wallet
+     * </pre>
+     */
+    public trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
+        removeExternalIdentity(
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getRemoveExternalIdentityMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1910,7 +2015,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Confirm identity added to the current wallet using `AddIdentity`
+     * Confirm identity added to the current wallet using `AddExternalIdentityInit`
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1919,6 +2024,21 @@ public final class UniversalWalletGrpc {
             trinsic.services.universalwallet.v1.AddExternalIdentityConfirmRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddExternalIdentityConfirmMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Remove an external identity from the current wallet
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>
+        removeExternalIdentity(
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getRemoveExternalIdentityMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1979,9 +2099,10 @@ public final class UniversalWalletGrpc {
   private static final int METHODID_REVOKE_AUTH_TOKEN = 10;
   private static final int METHODID_ADD_EXTERNAL_IDENTITY_INIT = 11;
   private static final int METHODID_ADD_EXTERNAL_IDENTITY_CONFIRM = 12;
-  private static final int METHODID_AUTHENTICATE_INIT = 13;
-  private static final int METHODID_AUTHENTICATE_CONFIRM = 14;
-  private static final int METHODID_LIST_WALLETS = 15;
+  private static final int METHODID_REMOVE_EXTERNAL_IDENTITY = 13;
+  private static final int METHODID_AUTHENTICATE_INIT = 14;
+  private static final int METHODID_AUTHENTICATE_CONFIRM = 15;
+  private static final int METHODID_LIST_WALLETS = 16;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2085,6 +2206,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.AddExternalIdentityConfirmResponse>)
                   responseObserver);
           break;
+        case METHODID_REMOVE_EXTERNAL_IDENTITY:
+          serviceImpl.removeExternalIdentity(
+              (trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse>)
+                  responseObserver);
+          break;
         case METHODID_AUTHENTICATE_INIT:
           serviceImpl.authenticateInit(
               (trinsic.services.universalwallet.v1.AuthenticateInitRequest) request,
@@ -2182,6 +2310,7 @@ public final class UniversalWalletGrpc {
                       .addMethod(getRevokeAuthTokenMethod())
                       .addMethod(getAddExternalIdentityInitMethod())
                       .addMethod(getAddExternalIdentityConfirmMethod())
+                      .addMethod(getRemoveExternalIdentityMethod())
                       .addMethod(getAuthenticateInitMethod())
                       .addMethod(getAuthenticateConfirmMethod())
                       .addMethod(getListWalletsMethod())

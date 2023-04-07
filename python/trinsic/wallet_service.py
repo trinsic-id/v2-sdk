@@ -150,9 +150,18 @@ class WalletService(ServiceBase):
     async def add_external_identity_confirm(
         self, *, request: AddExternalIdentityConfirmRequest
     ) -> AddExternalIdentityConfirmResponse:
-        """Confirm identity added to the current wallet using `AddIdentity`"""
+        """Confirm identity added to the current wallet using `AddExternalIdentityInit`"""
 
         return await self.client.add_external_identity_confirm(
+            request, metadata=self.build_metadata(request)
+        )
+
+    async def remove_external_identity(
+        self, *, request: RemoveExternalIdentityRequest
+    ) -> RemoveExternalIdentityResponse:
+        """Remove an external identity from the current wallet"""
+
+        return await self.client.remove_external_identity(
             request, metadata=self.build_metadata(request)
         )
 

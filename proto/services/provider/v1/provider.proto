@@ -329,16 +329,20 @@ message SearchWalletConfigurationResponse {
 
 // Strongly typed information about wallet configurations
 message WalletConfiguration {
+  // Name/description of the wallet
   string name = 1;
   string email = 2  [(options.optional) = true];
   string sms = 3  [(options.optional) = true];
   string wallet_id = 4;
+  // The DID of the wallet
   string public_did = 5;
   string config_type = 6;
   // List of active authentication tokens for this wallet.
   // This list does not contain the issued token, only metadata
   // such as ID, description, and creation date.
   repeated services.account.v1.WalletAuthToken auth_tokens = 7;
+  // List of external identities associated with this wallet.
+  repeated string external_identities = 8;
 }
 
 // Options for creation of DID on the ION network

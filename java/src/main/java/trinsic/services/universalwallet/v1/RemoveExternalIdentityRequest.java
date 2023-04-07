@@ -3,27 +3,25 @@
 
 package trinsic.services.universalwallet.v1;
 
-/** Protobuf type {@code services.universalwallet.v1.AddExternalIdentityInitRequest} */
-public final class AddExternalIdentityInitRequest extends com.google.protobuf.GeneratedMessageV3
+/** Protobuf type {@code services.universalwallet.v1.RemoveExternalIdentityRequest} */
+public final class RemoveExternalIdentityRequest extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.universalwallet.v1.AddExternalIdentityInitRequest)
-    AddExternalIdentityInitRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.universalwallet.v1.RemoveExternalIdentityRequest)
+    RemoveExternalIdentityRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use AddExternalIdentityInitRequest.newBuilder() to construct.
-  private AddExternalIdentityInitRequest(
-      com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use RemoveExternalIdentityRequest.newBuilder() to construct.
+  private RemoveExternalIdentityRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private AddExternalIdentityInitRequest() {
+  private RemoveExternalIdentityRequest() {
     identity_ = "";
-    provider_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new AddExternalIdentityInitRequest();
+    return new RemoveExternalIdentityRequest();
   }
 
   @java.lang.Override
@@ -33,17 +31,17 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-        .internal_static_services_universalwallet_v1_AddExternalIdentityInitRequest_descriptor;
+        .internal_static_services_universalwallet_v1_RemoveExternalIdentityRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-        .internal_static_services_universalwallet_v1_AddExternalIdentityInitRequest_fieldAccessorTable
+        .internal_static_services_universalwallet_v1_RemoveExternalIdentityRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest.class,
-            trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest.Builder.class);
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.class,
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.Builder.class);
   }
 
   public static final int IDENTITY_FIELD_NUMBER = 1;
@@ -52,7 +50,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
    *
    *
    * <pre>
-   * The user identity to add to the wallet
+   * The user identity to remove from the wallet
    * This can be an email address or phone number (formatted as +[country code][phone number])
    * </pre>
    *
@@ -76,7 +74,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
    *
    *
    * <pre>
-   * The user identity to add to the wallet
+   * The user identity to remove from the wallet
    * This can be an email address or phone number (formatted as +[country code][phone number])
    * </pre>
    *
@@ -97,44 +95,6 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     }
   }
 
-  public static final int PROVIDER_FIELD_NUMBER = 2;
-  private int provider_;
-  /**
-   *
-   *
-   * <pre>
-   * The type of identity provider, like EMAIL or PHONE
-   * </pre>
-   *
-   * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
-   *
-   * @return The enum numeric value on the wire for provider.
-   */
-  @java.lang.Override
-  public int getProviderValue() {
-    return provider_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The type of identity provider, like EMAIL or PHONE
-   * </pre>
-   *
-   * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
-   *
-   * @return The provider.
-   */
-  @java.lang.Override
-  public trinsic.services.universalwallet.v1.IdentityProvider getProvider() {
-    @SuppressWarnings("deprecation")
-    trinsic.services.universalwallet.v1.IdentityProvider result =
-        trinsic.services.universalwallet.v1.IdentityProvider.valueOf(provider_);
-    return result == null
-        ? trinsic.services.universalwallet.v1.IdentityProvider.UNRECOGNIZED
-        : result;
-  }
-
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -152,9 +112,6 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(identity_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, identity_);
     }
-    if (provider_ != trinsic.services.universalwallet.v1.IdentityProvider.UNKNOWN.getNumber()) {
-      output.writeEnum(2, provider_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -167,9 +124,6 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(identity_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, identity_);
     }
-    if (provider_ != trinsic.services.universalwallet.v1.IdentityProvider.UNKNOWN.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, provider_);
-    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -180,14 +134,13 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest)) {
+    if (!(obj instanceof trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest other =
-        (trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest) obj;
+    trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest other =
+        (trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest) obj;
 
     if (!getIdentity().equals(other.getIdentity())) return false;
-    if (provider_ != other.provider_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -201,66 +154,64 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + IDENTITY_FIELD_NUMBER;
     hash = (53 * hash) + getIdentity().hashCode();
-    hash = (37 * hash) + PROVIDER_FIELD_NUMBER;
-    hash = (53 * hash) + provider_;
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest
       parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest
       parseDelimitedFrom(
           java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -268,12 +219,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -291,7 +242,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
   }
 
   public static Builder newBuilder(
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest prototype) {
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -305,28 +256,28 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.universalwallet.v1.AddExternalIdentityInitRequest} */
+  /** Protobuf type {@code services.universalwallet.v1.RemoveExternalIdentityRequest} */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.AddExternalIdentityInitRequest)
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.RemoveExternalIdentityRequest)
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_AddExternalIdentityInitRequest_descriptor;
+          .internal_static_services_universalwallet_v1_RemoveExternalIdentityRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_AddExternalIdentityInitRequest_fieldAccessorTable
+          .internal_static_services_universalwallet_v1_RemoveExternalIdentityRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest.class,
-              trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest.Builder.class);
+              trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.class,
+              trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.Builder.class);
     }
 
     // Construct using
-    // trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest.newBuilder()
+    // trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -338,27 +289,24 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
       super.clear();
       identity_ = "";
 
-      provider_ = 0;
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_AddExternalIdentityInitRequest_descriptor;
+          .internal_static_services_universalwallet_v1_RemoveExternalIdentityRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
+    public trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest
         getDefaultInstanceForType() {
-      return trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
-          .getDefaultInstance();
+      return trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest build() {
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest result = buildPartial();
+    public trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest build() {
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -366,11 +314,10 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     }
 
     @java.lang.Override
-    public trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest buildPartial() {
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest result =
-          new trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest(this);
+    public trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest buildPartial() {
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest result =
+          new trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest(this);
       result.identity_ = identity_;
-      result.provider_ = provider_;
       onBuilt();
       return result;
     }
@@ -410,9 +357,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest) {
-        return mergeFrom(
-            (trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest) other);
+      if (other instanceof trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest) {
+        return mergeFrom((trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -420,16 +366,13 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     }
 
     public Builder mergeFrom(
-        trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest other) {
+        trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest other) {
       if (other
-          == trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
-              .getDefaultInstance()) return this;
+          == trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest.getDefaultInstance())
+        return this;
       if (!other.getIdentity().isEmpty()) {
         identity_ = other.identity_;
         onChanged();
-      }
-      if (other.provider_ != 0) {
-        setProviderValue(other.getProviderValue());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -463,12 +406,6 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
 
                 break;
               } // case 10
-            case 16:
-              {
-                provider_ = input.readEnum();
-
-                break;
-              } // case 16
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -491,7 +428,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * The user identity to add to the wallet
+     * The user identity to remove from the wallet
      * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
@@ -514,7 +451,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * The user identity to add to the wallet
+     * The user identity to remove from the wallet
      * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
@@ -537,7 +474,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * The user identity to add to the wallet
+     * The user identity to remove from the wallet
      * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
@@ -559,7 +496,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * The user identity to add to the wallet
+     * The user identity to remove from the wallet
      * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
@@ -577,7 +514,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * The user identity to add to the wallet
+     * The user identity to remove from the wallet
      * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
@@ -597,99 +534,6 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
       return this;
     }
 
-    private int provider_ = 0;
-    /**
-     *
-     *
-     * <pre>
-     * The type of identity provider, like EMAIL or PHONE
-     * </pre>
-     *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
-     *
-     * @return The enum numeric value on the wire for provider.
-     */
-    @java.lang.Override
-    public int getProviderValue() {
-      return provider_;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The type of identity provider, like EMAIL or PHONE
-     * </pre>
-     *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
-     *
-     * @param value The enum numeric value on the wire for provider to set.
-     * @return This builder for chaining.
-     */
-    public Builder setProviderValue(int value) {
-
-      provider_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The type of identity provider, like EMAIL or PHONE
-     * </pre>
-     *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
-     *
-     * @return The provider.
-     */
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.IdentityProvider getProvider() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.universalwallet.v1.IdentityProvider result =
-          trinsic.services.universalwallet.v1.IdentityProvider.valueOf(provider_);
-      return result == null
-          ? trinsic.services.universalwallet.v1.IdentityProvider.UNRECOGNIZED
-          : result;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The type of identity provider, like EMAIL or PHONE
-     * </pre>
-     *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
-     *
-     * @param value The provider to set.
-     * @return This builder for chaining.
-     */
-    public Builder setProvider(trinsic.services.universalwallet.v1.IdentityProvider value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      provider_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The type of identity provider, like EMAIL or PHONE
-     * </pre>
-     *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearProvider() {
-
-      provider_ = 0;
-      onChanged();
-      return this;
-    }
-
     @java.lang.Override
     public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
@@ -701,26 +545,26 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.AddExternalIdentityInitRequest)
+    // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.RemoveExternalIdentityRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:services.universalwallet.v1.AddExternalIdentityInitRequest)
-  private static final trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
+  // @@protoc_insertion_point(class_scope:services.universalwallet.v1.RemoveExternalIdentityRequest)
+  private static final trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest
       DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest();
+    DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest();
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest
       getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddExternalIdentityInitRequest> PARSER =
-      new com.google.protobuf.AbstractParser<AddExternalIdentityInitRequest>() {
+  private static final com.google.protobuf.Parser<RemoveExternalIdentityRequest> PARSER =
+      new com.google.protobuf.AbstractParser<RemoveExternalIdentityRequest>() {
         @java.lang.Override
-        public AddExternalIdentityInitRequest parsePartialFrom(
+        public RemoveExternalIdentityRequest parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -739,17 +583,17 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
         }
       };
 
-  public static com.google.protobuf.Parser<AddExternalIdentityInitRequest> parser() {
+  public static com.google.protobuf.Parser<RemoveExternalIdentityRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<AddExternalIdentityInitRequest> getParserForType() {
+  public com.google.protobuf.Parser<RemoveExternalIdentityRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.universalwallet.v1.AddExternalIdentityInitRequest
+  public trinsic.services.universalwallet.v1.RemoveExternalIdentityRequest
       getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }

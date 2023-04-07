@@ -30,6 +30,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     publicDid_ = "";
     configType_ = "";
     authTokens_ = java.util.Collections.emptyList();
+    externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -61,6 +62,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
+   *
+   *
+   * <pre>
+   * Name/description of the wallet
+   * </pre>
+   *
    * <code>string name = 1;</code>
    *
    * @return The name.
@@ -78,6 +85,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * Name/description of the wallet
+   * </pre>
+   *
    * <code>string name = 1;</code>
    *
    * @return The bytes for name.
@@ -209,6 +222,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
   public static final int PUBLIC_DID_FIELD_NUMBER = 5;
   private volatile java.lang.Object publicDid_;
   /**
+   *
+   *
+   * <pre>
+   * The DID of the wallet
+   * </pre>
+   *
    * <code>string public_did = 5;</code>
    *
    * @return The publicDid.
@@ -226,6 +245,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * The DID of the wallet
+   * </pre>
+   *
    * <code>string public_did = 5;</code>
    *
    * @return The bytes for publicDid.
@@ -359,6 +384,67 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     return authTokens_.get(index);
   }
 
+  public static final int EXTERNAL_IDENTITIES_FIELD_NUMBER = 8;
+  private com.google.protobuf.LazyStringList externalIdentities_;
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @return A list containing the externalIdentities.
+   */
+  public com.google.protobuf.ProtocolStringList getExternalIdentitiesList() {
+    return externalIdentities_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @return The count of externalIdentities.
+   */
+  public int getExternalIdentitiesCount() {
+    return externalIdentities_.size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @param index The index of the element to return.
+   * @return The externalIdentities at the given index.
+   */
+  public java.lang.String getExternalIdentities(int index) {
+    return externalIdentities_.get(index);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @param index The index of the value to return.
+   * @return The bytes of the externalIdentities at the given index.
+   */
+  public com.google.protobuf.ByteString getExternalIdentitiesBytes(int index) {
+    return externalIdentities_.getByteString(index);
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -394,6 +480,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     for (int i = 0; i < authTokens_.size(); i++) {
       output.writeMessage(7, authTokens_.get(i));
     }
+    for (int i = 0; i < externalIdentities_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, externalIdentities_.getRaw(i));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -424,6 +513,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     for (int i = 0; i < authTokens_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, authTokens_.get(i));
     }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < externalIdentities_.size(); i++) {
+        dataSize += computeStringSizeNoTag(externalIdentities_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getExternalIdentitiesList().size();
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -447,6 +544,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!getPublicDid().equals(other.getPublicDid())) return false;
     if (!getConfigType().equals(other.getConfigType())) return false;
     if (!getAuthTokensList().equals(other.getAuthTokensList())) return false;
+    if (!getExternalIdentitiesList().equals(other.getExternalIdentitiesList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -473,6 +571,10 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (getAuthTokensCount() > 0) {
       hash = (37 * hash) + AUTH_TOKENS_FIELD_NUMBER;
       hash = (53 * hash) + getAuthTokensList().hashCode();
+    }
+    if (getExternalIdentitiesCount() > 0) {
+      hash = (37 * hash) + EXTERNAL_IDENTITIES_FIELD_NUMBER;
+      hash = (53 * hash) + getExternalIdentitiesList().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -631,6 +733,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         authTokensBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000001);
+      externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -674,6 +778,11 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       } else {
         result.authTokens_ = authTokensBuilder_.build();
       }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        externalIdentities_ = externalIdentities_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000002);
+      }
+      result.externalIdentities_ = externalIdentities_;
       onBuilt();
       return result;
     }
@@ -775,6 +884,16 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
           }
         }
       }
+      if (!other.externalIdentities_.isEmpty()) {
+        if (externalIdentities_.isEmpty()) {
+          externalIdentities_ = other.externalIdentities_;
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          ensureExternalIdentitiesIsMutable();
+          externalIdentities_.addAll(other.externalIdentities_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -850,6 +969,13 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
                 }
                 break;
               } // case 58
+            case 66:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureExternalIdentitiesIsMutable();
+                externalIdentities_.add(s);
+                break;
+              } // case 66
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -871,6 +997,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object name_ = "";
     /**
+     *
+     *
+     * <pre>
+     * Name/description of the wallet
+     * </pre>
+     *
      * <code>string name = 1;</code>
      *
      * @return The name.
@@ -887,6 +1019,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Name/description of the wallet
+     * </pre>
+     *
      * <code>string name = 1;</code>
      *
      * @return The bytes for name.
@@ -903,6 +1041,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Name/description of the wallet
+     * </pre>
+     *
      * <code>string name = 1;</code>
      *
      * @param value The name to set.
@@ -918,6 +1062,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Name/description of the wallet
+     * </pre>
+     *
      * <code>string name = 1;</code>
      *
      * @return This builder for chaining.
@@ -929,6 +1079,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Name/description of the wallet
+     * </pre>
+     *
      * <code>string name = 1;</code>
      *
      * @param value The bytes for name to set.
@@ -1175,6 +1331,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object publicDid_ = "";
     /**
+     *
+     *
+     * <pre>
+     * The DID of the wallet
+     * </pre>
+     *
      * <code>string public_did = 5;</code>
      *
      * @return The publicDid.
@@ -1191,6 +1353,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * The DID of the wallet
+     * </pre>
+     *
      * <code>string public_did = 5;</code>
      *
      * @return The bytes for publicDid.
@@ -1207,6 +1375,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * The DID of the wallet
+     * </pre>
+     *
      * <code>string public_did = 5;</code>
      *
      * @param value The publicDid to set.
@@ -1222,6 +1396,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * The DID of the wallet
+     * </pre>
+     *
      * <code>string public_did = 5;</code>
      *
      * @return This builder for chaining.
@@ -1233,6 +1413,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * The DID of the wallet
+     * </pre>
+     *
      * <code>string public_did = 5;</code>
      *
      * @param value The bytes for publicDid to set.
@@ -1710,6 +1896,174 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         authTokens_ = null;
       }
       return authTokensBuilder_;
+    }
+
+    private com.google.protobuf.LazyStringList externalIdentities_ =
+        com.google.protobuf.LazyStringArrayList.EMPTY;
+
+    private void ensureExternalIdentitiesIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        externalIdentities_ = new com.google.protobuf.LazyStringArrayList(externalIdentities_);
+        bitField0_ |= 0x00000002;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @return A list containing the externalIdentities.
+     */
+    public com.google.protobuf.ProtocolStringList getExternalIdentitiesList() {
+      return externalIdentities_.getUnmodifiableView();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @return The count of externalIdentities.
+     */
+    public int getExternalIdentitiesCount() {
+      return externalIdentities_.size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @param index The index of the element to return.
+     * @return The externalIdentities at the given index.
+     */
+    public java.lang.String getExternalIdentities(int index) {
+      return externalIdentities_.get(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @param index The index of the value to return.
+     * @return The bytes of the externalIdentities at the given index.
+     */
+    public com.google.protobuf.ByteString getExternalIdentitiesBytes(int index) {
+      return externalIdentities_.getByteString(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @param index The index to set the value at.
+     * @param value The externalIdentities to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExternalIdentities(int index, java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureExternalIdentitiesIsMutable();
+      externalIdentities_.set(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @param value The externalIdentities to add.
+     * @return This builder for chaining.
+     */
+    public Builder addExternalIdentities(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureExternalIdentitiesIsMutable();
+      externalIdentities_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @param values The externalIdentities to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllExternalIdentities(java.lang.Iterable<java.lang.String> values) {
+      ensureExternalIdentitiesIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, externalIdentities_);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearExternalIdentities() {
+      externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated string external_identities = 8;</code>
+     *
+     * @param value The bytes of the externalIdentities to add.
+     * @return This builder for chaining.
+     */
+    public Builder addExternalIdentitiesBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      ensureExternalIdentitiesIsMutable();
+      externalIdentities_.add(value);
+      onChanged();
+      return this;
     }
 
     @java.lang.Override

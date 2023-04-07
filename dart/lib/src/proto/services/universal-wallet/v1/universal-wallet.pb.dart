@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../provider/v1/provider.pb.dart' as $3;
+import '../../provider/v1/provider.pb.dart' as $1;
 
 import 'universal-wallet.pbenum.dart';
 
@@ -1017,11 +1017,6 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
     ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'walletId')
-    ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -1031,23 +1026,29 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'tokenId')
+    ..aOM<$1.WalletConfiguration>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'wallet',
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   CreateWalletResponse._() : super();
   factory CreateWalletResponse({
-    $core.String? walletId,
     $core.String? authToken,
     $core.String? tokenId,
+    $1.WalletConfiguration? wallet,
   }) {
     final _result = create();
-    if (walletId != null) {
-      _result.walletId = walletId;
-    }
     if (authToken != null) {
       _result.authToken = authToken;
     }
     if (tokenId != null) {
       _result.tokenId = tokenId;
+    }
+    if (wallet != null) {
+      _result.wallet = wallet;
     }
     return _result;
   }
@@ -1079,41 +1080,43 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateWalletResponse>(create);
   static CreateWalletResponse? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $core.String get walletId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set walletId($core.String v) {
+  @$pb.TagNumber(2)
+  $core.String get authToken => $_getSZ(0);
+  @$pb.TagNumber(2)
+  set authToken($core.String v) {
     $_setString(0, v);
   }
 
-  @$pb.TagNumber(1)
-  $core.bool hasWalletId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearWalletId() => clearField(1);
-
   @$pb.TagNumber(2)
-  $core.String get authToken => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set authToken($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasAuthToken() => $_has(1);
+  $core.bool hasAuthToken() => $_has(0);
   @$pb.TagNumber(2)
   void clearAuthToken() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get tokenId => $_getSZ(2);
+  $core.String get tokenId => $_getSZ(1);
   @$pb.TagNumber(3)
   set tokenId($core.String v) {
-    $_setString(2, v);
+    $_setString(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasTokenId() => $_has(2);
+  $core.bool hasTokenId() => $_has(1);
   @$pb.TagNumber(3)
   void clearTokenId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $1.WalletConfiguration get wallet => $_getN(2);
+  @$pb.TagNumber(4)
+  set wallet($1.WalletConfiguration v) {
+    setField(4, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasWallet() => $_has(2);
+  @$pb.TagNumber(4)
+  void clearWallet() => clearField(4);
+  @$pb.TagNumber(4)
+  $1.WalletConfiguration ensureWallet() => $_ensure(2);
 }
 
 class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1374,17 +1377,17 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$3.WalletConfiguration>(
+    ..aOM<$1.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $3.WalletConfiguration.create)
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   GetWalletInfoResponse._() : super();
   factory GetWalletInfoResponse({
-    $3.WalletConfiguration? wallet,
+    $1.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (wallet != null) {
@@ -1422,9 +1425,9 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   static GetWalletInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.WalletConfiguration get wallet => $_getN(0);
+  $1.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($3.WalletConfiguration v) {
+  set wallet($1.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1433,7 +1436,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $3.WalletConfiguration ensureWallet() => $_ensure(0);
+  $1.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class GetMyInfoRequest extends $pb.GeneratedMessage {
@@ -1488,17 +1491,17 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$3.WalletConfiguration>(
+    ..aOM<$1.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $3.WalletConfiguration.create)
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   GetMyInfoResponse._() : super();
   factory GetMyInfoResponse({
-    $3.WalletConfiguration? wallet,
+    $1.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (wallet != null) {
@@ -1534,9 +1537,9 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   static GetMyInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.WalletConfiguration get wallet => $_getN(0);
+  $1.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($3.WalletConfiguration v) {
+  set wallet($1.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1545,7 +1548,7 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $3.WalletConfiguration ensureWallet() => $_ensure(0);
+  $1.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1759,18 +1762,18 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..pc<$3.WalletConfiguration>(
+    ..pc<$1.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallets',
         $pb.PbFieldType.PM,
-        subBuilder: $3.WalletConfiguration.create)
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   ListWalletsResponse._() : super();
   factory ListWalletsResponse({
-    $core.Iterable<$3.WalletConfiguration>? wallets,
+    $core.Iterable<$1.WalletConfiguration>? wallets,
   }) {
     final _result = create();
     if (wallets != null) {
@@ -1806,7 +1809,7 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
   static ListWalletsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$3.WalletConfiguration> get wallets => $_getList(0);
+  $core.List<$1.WalletConfiguration> get wallets => $_getList(0);
 }
 
 class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
@@ -2115,6 +2118,123 @@ class AddExternalIdentityConfirmResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AddExternalIdentityConfirmResponse>(
           create);
   static AddExternalIdentityConfirmResponse? _defaultInstance;
+}
+
+class RemoveExternalIdentityRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RemoveExternalIdentityRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.universalwallet.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'identity')
+    ..hasRequiredFields = false;
+
+  RemoveExternalIdentityRequest._() : super();
+  factory RemoveExternalIdentityRequest({
+    $core.String? identity,
+  }) {
+    final _result = create();
+    if (identity != null) {
+      _result.identity = identity;
+    }
+    return _result;
+  }
+  factory RemoveExternalIdentityRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RemoveExternalIdentityRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RemoveExternalIdentityRequest clone() =>
+      RemoveExternalIdentityRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RemoveExternalIdentityRequest copyWith(
+          void Function(RemoveExternalIdentityRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as RemoveExternalIdentityRequest))
+          as RemoveExternalIdentityRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RemoveExternalIdentityRequest create() =>
+      RemoveExternalIdentityRequest._();
+  RemoveExternalIdentityRequest createEmptyInstance() => create();
+  static $pb.PbList<RemoveExternalIdentityRequest> createRepeated() =>
+      $pb.PbList<RemoveExternalIdentityRequest>();
+  @$core.pragma('dart2js:noInline')
+  static RemoveExternalIdentityRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RemoveExternalIdentityRequest>(create);
+  static RemoveExternalIdentityRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get identity => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set identity($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasIdentity() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIdentity() => clearField(1);
+}
+
+class RemoveExternalIdentityResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RemoveExternalIdentityResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.universalwallet.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  RemoveExternalIdentityResponse._() : super();
+  factory RemoveExternalIdentityResponse() => create();
+  factory RemoveExternalIdentityResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RemoveExternalIdentityResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RemoveExternalIdentityResponse clone() =>
+      RemoveExternalIdentityResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RemoveExternalIdentityResponse copyWith(
+          void Function(RemoveExternalIdentityResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as RemoveExternalIdentityResponse))
+          as RemoveExternalIdentityResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RemoveExternalIdentityResponse create() =>
+      RemoveExternalIdentityResponse._();
+  RemoveExternalIdentityResponse createEmptyInstance() => create();
+  static $pb.PbList<RemoveExternalIdentityResponse> createRepeated() =>
+      $pb.PbList<RemoveExternalIdentityResponse>();
+  @$core.pragma('dart2js:noInline')
+  static RemoveExternalIdentityResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RemoveExternalIdentityResponse>(create);
+  static RemoveExternalIdentityResponse? _defaultInstance;
 }
 
 class AuthenticateInitRequest extends $pb.GeneratedMessage {
