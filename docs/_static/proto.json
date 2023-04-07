@@ -1782,6 +1782,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.WalletConfiguration"
     },
+    "services.provider.v1.WalletConfiguration.external_identities": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
     "services.provider.v1.WalletConfiguration.name": {
       "type": "field",
       "collection": "fields",
@@ -2334,7 +2340,7 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.CreateWalletResponse"
     },
-    "services.universalwallet.v1.CreateWalletResponse.wallet_id": {
+    "services.universalwallet.v1.CreateWalletResponse.wallet": {
       "type": "field",
       "collection": "fields",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -2574,6 +2580,24 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.ListWalletsResponse"
     },
+    "services.universalwallet.v1.RemoveExternalIdentityRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.RemoveExternalIdentityRequest.identity": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.RemoveExternalIdentityRequest"
+    },
+    "services.universalwallet.v1.RemoveExternalIdentityResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.RevokeAuthTokenRequest": {
       "type": "message",
       "collection": "messages",
@@ -2719,6 +2743,12 @@
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.ListWallets": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -4509,6 +4539,7 @@
         "services.provider.v1.WalletConfiguration.public_did",
         "services.provider.v1.WalletConfiguration.config_type",
         "services.provider.v1.WalletConfiguration.auth_tokens",
+        "services.provider.v1.WalletConfiguration.external_identities",
         "services.provider.v1.IonOptions.network",
         "services.provider.v1.IndyOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
@@ -4640,6 +4671,7 @@
         "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
         "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
         "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm",
+        "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity",
         "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
         "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
         "services.universalwallet.v1.UniversalWallet.ListWallets"
@@ -4673,6 +4705,8 @@
         "services.universalwallet.v1.AddExternalIdentityInitResponse",
         "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
         "services.universalwallet.v1.AddExternalIdentityConfirmResponse",
+        "services.universalwallet.v1.RemoveExternalIdentityRequest",
+        "services.universalwallet.v1.RemoveExternalIdentityResponse",
         "services.universalwallet.v1.AuthenticateInitRequest",
         "services.universalwallet.v1.AuthenticateInitResponse",
         "services.universalwallet.v1.AuthenticateConfirmRequest",
@@ -4698,9 +4732,9 @@
         "services.universalwallet.v1.DeleteWalletRequest.did_uri",
         "services.universalwallet.v1.CreateWalletRequest.ecosystem_id",
         "services.universalwallet.v1.CreateWalletRequest.description",
-        "services.universalwallet.v1.CreateWalletResponse.wallet_id",
         "services.universalwallet.v1.CreateWalletResponse.auth_token",
         "services.universalwallet.v1.CreateWalletResponse.token_id",
+        "services.universalwallet.v1.CreateWalletResponse.wallet",
         "services.universalwallet.v1.GenerateAuthTokenRequest.wallet_id",
         "services.universalwallet.v1.GenerateAuthTokenRequest.token_description",
         "services.universalwallet.v1.GenerateAuthTokenResponse.token_id",
@@ -4717,6 +4751,7 @@
         "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge",
         "services.universalwallet.v1.AddExternalIdentityConfirmRequest.challenge",
         "services.universalwallet.v1.AddExternalIdentityConfirmRequest.response",
+        "services.universalwallet.v1.RemoveExternalIdentityRequest.identity",
         "services.universalwallet.v1.AuthenticateInitRequest.identity",
         "services.universalwallet.v1.AuthenticateInitRequest.provider",
         "services.universalwallet.v1.AuthenticateInitRequest.ecosystem_id",
@@ -5029,6 +5064,7 @@
         "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
         "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
         "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm",
+        "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity",
         "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
         "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
         "services.universalwallet.v1.UniversalWallet.ListWallets"
@@ -5378,7 +5414,7 @@
       "full_name": "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm",
       "input_type": "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
       "output_type": "services.universalwallet.v1.AddExternalIdentityConfirmResponse",
-      "description": "Confirm identity added to the current wallet using `AddIdentity`"
+      "description": "Confirm identity added to the current wallet using `AddExternalIdentityInit`"
     },
     "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit": {
       "name": "AddExternalIdentityInit",
@@ -5463,6 +5499,13 @@
       "input_type": "services.universalwallet.v1.ListWalletsRequest",
       "output_type": "services.universalwallet.v1.ListWalletsResponse",
       "description": "List all wallets in the ecosystem"
+    },
+    "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity": {
+      "name": "RemoveExternalIdentity",
+      "full_name": "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity",
+      "input_type": "services.universalwallet.v1.RemoveExternalIdentityRequest",
+      "output_type": "services.universalwallet.v1.RemoveExternalIdentityResponse",
+      "description": "Remove an external identity from the current wallet"
     },
     "services.universalwallet.v1.UniversalWallet.RevokeAuthToken": {
       "name": "RevokeAuthToken",
@@ -6443,7 +6486,8 @@
         "services.provider.v1.WalletConfiguration.wallet_id",
         "services.provider.v1.WalletConfiguration.public_did",
         "services.provider.v1.WalletConfiguration.config_type",
-        "services.provider.v1.WalletConfiguration.auth_tokens"
+        "services.provider.v1.WalletConfiguration.auth_tokens",
+        "services.provider.v1.WalletConfiguration.external_identities"
       ],
       "messages": [],
       "enums": []
@@ -6708,9 +6752,9 @@
       "full_name": "services.universalwallet.v1.CreateWalletResponse",
       "description": "",
       "fields": [
-        "services.universalwallet.v1.CreateWalletResponse.wallet_id",
         "services.universalwallet.v1.CreateWalletResponse.auth_token",
-        "services.universalwallet.v1.CreateWalletResponse.token_id"
+        "services.universalwallet.v1.CreateWalletResponse.token_id",
+        "services.universalwallet.v1.CreateWalletResponse.wallet"
       ],
       "messages": [],
       "enums": []
@@ -6872,6 +6916,24 @@
       "fields": [
         "services.universalwallet.v1.ListWalletsResponse.wallets"
       ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.RemoveExternalIdentityRequest": {
+      "name": "RemoveExternalIdentityRequest",
+      "full_name": "services.universalwallet.v1.RemoveExternalIdentityRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.RemoveExternalIdentityRequest.identity"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.RemoveExternalIdentityResponse": {
+      "name": "RemoveExternalIdentityResponse",
+      "full_name": "services.universalwallet.v1.RemoveExternalIdentityResponse",
+      "description": "",
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -8828,13 +8890,21 @@
         "services.options.optional": true
       }
     },
+    "services.provider.v1.WalletConfiguration.external_identities": {
+      "name": "external_identities",
+      "full_name": "services.provider.v1.WalletConfiguration.external_identities",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "List of external identities associated with this wallet."
+    },
     "services.provider.v1.WalletConfiguration.name": {
       "name": "name",
       "full_name": "services.provider.v1.WalletConfiguration.name",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Name/description of the wallet"
     },
     "services.provider.v1.WalletConfiguration.public_did": {
       "name": "public_did",
@@ -8842,7 +8912,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "The DID of the wallet"
     },
     "services.provider.v1.WalletConfiguration.sms": {
       "name": "sms",
@@ -9152,7 +9222,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The challenge received from the `AddIdentityInit` endpoint"
+      "description": "The challenge received from the `AddExternalIdentityInit` endpoint"
     },
     "services.universalwallet.v1.AddExternalIdentityConfirmRequest.response": {
       "name": "response",
@@ -9168,7 +9238,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Identity to add to the wallet"
+      "description": "The user identity to add to the wallet\nThis can be an email address or phone number (formatted as +[country code][phone number])"
     },
     "services.universalwallet.v1.AddExternalIdentityInitRequest.provider": {
       "name": "provider",
@@ -9176,7 +9246,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "IdentityProvider",
       "full_type": "services.universalwallet.v1.IdentityProvider",
-      "description": ""
+      "description": "The type of identity provider, like EMAIL or PHONE"
     },
     "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge": {
       "name": "challenge",
@@ -9184,7 +9254,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Challenge to be verified by the user.\nPass this challenge back to the `AddIdentityConfirm` endpoint"
+      "description": "Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint"
     },
     "services.universalwallet.v1.AuthenticateConfirmRequest.challenge": {
       "name": "challenge",
@@ -9248,7 +9318,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet name or description.\nUse this field to add vendor specific information about this wallet,\nsuch as email, phone, internal ID, etc.\nThis field is not unique within our platform"
+      "description": "Wallet name or description.\nUse this field to add vendor specific information about this wallet,\nsuch as email, phone, internal ID, or anything you'd like to associate\nwith this wallet. This field is searchable.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.universalwallet.v1.CreateWalletRequest.ecosystem_id": {
       "name": "ecosystem_id",
@@ -9274,13 +9347,13 @@
       "full_type": "string",
       "description": "Token ID of the newly generated token"
     },
-    "services.universalwallet.v1.CreateWalletResponse.wallet_id": {
-      "name": "wallet_id",
-      "full_name": "services.universalwallet.v1.CreateWalletResponse.wallet_id",
+    "services.universalwallet.v1.CreateWalletResponse.wallet": {
+      "name": "wallet",
+      "full_name": "services.universalwallet.v1.CreateWalletResponse.wallet",
       "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Wallet ID of the newly created wallet"
+      "type": "WalletConfiguration",
+      "full_type": "services.provider.v1.WalletConfiguration",
+      "description": "Wallet configuration"
     },
     "services.universalwallet.v1.DeleteItemRequest.item_id": {
       "name": "item_id",
@@ -9436,6 +9509,14 @@
       "type": "WalletConfiguration",
       "full_type": "services.provider.v1.WalletConfiguration",
       "description": ""
+    },
+    "services.universalwallet.v1.RemoveExternalIdentityRequest.identity": {
+      "name": "identity",
+      "full_name": "services.universalwallet.v1.RemoveExternalIdentityRequest.identity",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The user identity to remove from the wallet\nThis can be an email address or phone number (formatted as +[country code][phone number])"
     },
     "services.universalwallet.v1.RevokeAuthTokenRequest.token_id": {
       "name": "token_id",

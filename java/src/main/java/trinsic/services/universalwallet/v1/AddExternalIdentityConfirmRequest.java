@@ -52,7 +52,7 @@ public final class AddExternalIdentityConfirmRequest extends com.google.protobuf
    *
    *
    * <pre>
-   * The challenge received from the `AddIdentityInit` endpoint
+   * The challenge received from the `AddExternalIdentityInit` endpoint
    * </pre>
    *
    * <code>string challenge = 1;</code>
@@ -75,7 +75,7 @@ public final class AddExternalIdentityConfirmRequest extends com.google.protobuf
    *
    *
    * <pre>
-   * The challenge received from the `AddIdentityInit` endpoint
+   * The challenge received from the `AddExternalIdentityInit` endpoint
    * </pre>
    *
    * <code>string challenge = 1;</code>
@@ -503,7 +503,7 @@ public final class AddExternalIdentityConfirmRequest extends com.google.protobuf
      *
      *
      * <pre>
-     * The challenge received from the `AddIdentityInit` endpoint
+     * The challenge received from the `AddExternalIdentityInit` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -525,7 +525,7 @@ public final class AddExternalIdentityConfirmRequest extends com.google.protobuf
      *
      *
      * <pre>
-     * The challenge received from the `AddIdentityInit` endpoint
+     * The challenge received from the `AddExternalIdentityInit` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -547,7 +547,7 @@ public final class AddExternalIdentityConfirmRequest extends com.google.protobuf
      *
      *
      * <pre>
-     * The challenge received from the `AddIdentityInit` endpoint
+     * The challenge received from the `AddExternalIdentityInit` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -568,7 +568,7 @@ public final class AddExternalIdentityConfirmRequest extends com.google.protobuf
      *
      *
      * <pre>
-     * The challenge received from the `AddIdentityInit` endpoint
+     * The challenge received from the `AddExternalIdentityInit` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -585,7 +585,7 @@ public final class AddExternalIdentityConfirmRequest extends com.google.protobuf
      *
      *
      * <pre>
-     * The challenge received from the `AddIdentityInit` endpoint
+     * The challenge received from the `AddExternalIdentityInit` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>

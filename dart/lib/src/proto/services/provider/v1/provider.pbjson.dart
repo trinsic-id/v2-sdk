@@ -704,12 +704,19 @@ const WalletConfiguration$json = const {
       '6': '.services.account.v1.WalletAuthToken',
       '10': 'authTokens'
     },
+    const {
+      '1': 'external_identities',
+      '3': 8,
+      '4': 3,
+      '5': 9,
+      '10': 'externalIdentities'
+    },
   ],
 };
 
 /// Descriptor for `WalletConfiguration`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List walletConfigurationDescriptor = $convert.base64Decode(
-    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlkEh8KC2NvbmZpZ190eXBlGAYgASgJUgpjb25maWdUeXBlEkUKC2F1dGhfdG9rZW5zGAcgAygLMiQuc2VydmljZXMuYWNjb3VudC52MS5XYWxsZXRBdXRoVG9rZW5SCmF1dGhUb2tlbnM=');
+    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlkEh8KC2NvbmZpZ190eXBlGAYgASgJUgpjb25maWdUeXBlEkUKC2F1dGhfdG9rZW5zGAcgAygLMiQuc2VydmljZXMuYWNjb3VudC52MS5XYWxsZXRBdXRoVG9rZW5SCmF1dGhUb2tlbnMSLwoTZXh0ZXJuYWxfaWRlbnRpdGllcxgIIAMoCVISZXh0ZXJuYWxJZGVudGl0aWVz');
 @$core.Deprecated('Use ionOptionsDescriptor instead')
 const IonOptions$json = const {
   '1': 'IonOptions',

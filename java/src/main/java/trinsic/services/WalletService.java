@@ -121,12 +121,18 @@ public class WalletService extends ServiceBase {
 
     return withMetadata(stub, request).addExternalIdentityInit(request);
   }
-  /** Confirm identity added to the current wallet using `AddIdentity` */
+  /** Confirm identity added to the current wallet using `AddExternalIdentityInit` */
   public ListenableFuture<AddExternalIdentityConfirmResponse> addExternalIdentityConfirm(
       AddExternalIdentityConfirmRequest request)
       throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).addExternalIdentityConfirm(request);
+  }
+  /** Remove an external identity from the current wallet */
+  public ListenableFuture<RemoveExternalIdentityResponse> removeExternalIdentity(
+      RemoveExternalIdentityRequest request) throws InvalidProtocolBufferException, DidException {
+
+    return withMetadata(stub, request).removeExternalIdentity(request);
   }
   /**
    * Sign-in to an already existing wallet, using an identity added that was previously registered

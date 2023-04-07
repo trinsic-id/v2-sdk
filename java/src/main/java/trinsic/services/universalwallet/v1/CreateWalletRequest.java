@@ -45,6 +45,7 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
             trinsic.services.universalwallet.v1.CreateWalletRequest.Builder.class);
   }
 
+  private int bitField0_;
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object ecosystemId_;
   /**
@@ -102,11 +103,29 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
    * <pre>
    * Wallet name or description.
    * Use this field to add vendor specific information about this wallet,
-   * such as email, phone, internal ID, etc.
-   * This field is not unique within our platform
+   * such as email, phone, internal ID, or anything you'd like to associate
+   * with this wallet. This field is searchable.
    * </pre>
    *
-   * <code>string description = 2;</code>
+   * <code>optional string description = 2 [(.services.options.optional) = true];</code>
+   *
+   * @return Whether the description field is set.
+   */
+  @java.lang.Override
+  public boolean hasDescription() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Wallet name or description.
+   * Use this field to add vendor specific information about this wallet,
+   * such as email, phone, internal ID, or anything you'd like to associate
+   * with this wallet. This field is searchable.
+   * </pre>
+   *
+   * <code>optional string description = 2 [(.services.options.optional) = true];</code>
    *
    * @return The description.
    */
@@ -128,11 +147,11 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
    * <pre>
    * Wallet name or description.
    * Use this field to add vendor specific information about this wallet,
-   * such as email, phone, internal ID, etc.
-   * This field is not unique within our platform
+   * such as email, phone, internal ID, or anything you'd like to associate
+   * with this wallet. This field is searchable.
    * </pre>
    *
-   * <code>string description = 2;</code>
+   * <code>optional string description = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for description.
    */
@@ -166,7 +185,7 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ecosystemId_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
     }
     getUnknownFields().writeTo(output);
@@ -181,7 +200,7 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ecosystemId_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
     }
     size += getUnknownFields().getSerializedSize();
@@ -201,7 +220,10 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
         (trinsic.services.universalwallet.v1.CreateWalletRequest) obj;
 
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
-    if (!getDescription().equals(other.getDescription())) return false;
+    if (hasDescription() != other.hasDescription()) return false;
+    if (hasDescription()) {
+      if (!getDescription().equals(other.getDescription())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -215,8 +237,10 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
-    hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-    hash = (53 * hash) + getDescription().hashCode();
+    if (hasDescription()) {
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -351,7 +375,7 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
       ecosystemId_ = "";
 
       description_ = "";
-
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -379,8 +403,14 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     public trinsic.services.universalwallet.v1.CreateWalletRequest buildPartial() {
       trinsic.services.universalwallet.v1.CreateWalletRequest result =
           new trinsic.services.universalwallet.v1.CreateWalletRequest(this);
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       result.ecosystemId_ = ecosystemId_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        to_bitField0_ |= 0x00000001;
+      }
       result.description_ = description_;
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -435,7 +465,8 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
         ecosystemId_ = other.ecosystemId_;
         onChanged();
       }
-      if (!other.getDescription().isEmpty()) {
+      if (other.hasDescription()) {
+        bitField0_ |= 0x00000001;
         description_ = other.description_;
         onChanged();
       }
@@ -474,7 +505,7 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
             case 18:
               {
                 description_ = input.readStringRequireUtf8();
-
+                bitField0_ |= 0x00000001;
                 break;
               } // case 18
             default:
@@ -493,6 +524,8 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
       } // finally
       return this;
     }
+
+    private int bitField0_;
 
     private java.lang.Object ecosystemId_ = "";
     /**
@@ -607,11 +640,28 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
      * <pre>
      * Wallet name or description.
      * Use this field to add vendor specific information about this wallet,
-     * such as email, phone, internal ID, etc.
-     * This field is not unique within our platform
+     * such as email, phone, internal ID, or anything you'd like to associate
+     * with this wallet. This field is searchable.
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>optional string description = 2 [(.services.options.optional) = true];</code>
+     *
+     * @return Whether the description field is set.
+     */
+    public boolean hasDescription() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet name or description.
+     * Use this field to add vendor specific information about this wallet,
+     * such as email, phone, internal ID, or anything you'd like to associate
+     * with this wallet. This field is searchable.
+     * </pre>
+     *
+     * <code>optional string description = 2 [(.services.options.optional) = true];</code>
      *
      * @return The description.
      */
@@ -632,11 +682,11 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
      * <pre>
      * Wallet name or description.
      * Use this field to add vendor specific information about this wallet,
-     * such as email, phone, internal ID, etc.
-     * This field is not unique within our platform
+     * such as email, phone, internal ID, or anything you'd like to associate
+     * with this wallet. This field is searchable.
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>optional string description = 2 [(.services.options.optional) = true];</code>
      *
      * @return The bytes for description.
      */
@@ -657,11 +707,11 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
      * <pre>
      * Wallet name or description.
      * Use this field to add vendor specific information about this wallet,
-     * such as email, phone, internal ID, etc.
-     * This field is not unique within our platform
+     * such as email, phone, internal ID, or anything you'd like to associate
+     * with this wallet. This field is searchable.
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>optional string description = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The description to set.
      * @return This builder for chaining.
@@ -670,7 +720,7 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
       if (value == null) {
         throw new NullPointerException();
       }
-
+      bitField0_ |= 0x00000001;
       description_ = value;
       onChanged();
       return this;
@@ -681,16 +731,16 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
      * <pre>
      * Wallet name or description.
      * Use this field to add vendor specific information about this wallet,
-     * such as email, phone, internal ID, etc.
-     * This field is not unique within our platform
+     * such as email, phone, internal ID, or anything you'd like to associate
+     * with this wallet. This field is searchable.
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>optional string description = 2 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
-
+      bitField0_ = (bitField0_ & ~0x00000001);
       description_ = getDefaultInstance().getDescription();
       onChanged();
       return this;
@@ -701,11 +751,11 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
      * <pre>
      * Wallet name or description.
      * Use this field to add vendor specific information about this wallet,
-     * such as email, phone, internal ID, etc.
-     * This field is not unique within our platform
+     * such as email, phone, internal ID, or anything you'd like to associate
+     * with this wallet. This field is searchable.
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>optional string description = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The bytes for description to set.
      * @return This builder for chaining.
@@ -715,7 +765,7 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
-
+      bitField0_ |= 0x00000001;
       description_ = value;
       onChanged();
       return this;

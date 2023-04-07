@@ -3,26 +3,24 @@
 
 package trinsic.services.universalwallet.v1;
 
-/** Protobuf type {@code services.universalwallet.v1.AddExternalIdentityInitResponse} */
-public final class AddExternalIdentityInitResponse extends com.google.protobuf.GeneratedMessageV3
+/** Protobuf type {@code services.universalwallet.v1.RemoveExternalIdentityResponse} */
+public final class RemoveExternalIdentityResponse extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.universalwallet.v1.AddExternalIdentityInitResponse)
-    AddExternalIdentityInitResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.universalwallet.v1.RemoveExternalIdentityResponse)
+    RemoveExternalIdentityResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use AddExternalIdentityInitResponse.newBuilder() to construct.
-  private AddExternalIdentityInitResponse(
+  // Use RemoveExternalIdentityResponse.newBuilder() to construct.
+  private RemoveExternalIdentityResponse(
       com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private AddExternalIdentityInitResponse() {
-    challenge_ = "";
-  }
+  private RemoveExternalIdentityResponse() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new AddExternalIdentityInitResponse();
+    return new RemoveExternalIdentityResponse();
   }
 
   @java.lang.Override
@@ -32,66 +30,17 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-        .internal_static_services_universalwallet_v1_AddExternalIdentityInitResponse_descriptor;
+        .internal_static_services_universalwallet_v1_RemoveExternalIdentityResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-        .internal_static_services_universalwallet_v1_AddExternalIdentityInitResponse_fieldAccessorTable
+        .internal_static_services_universalwallet_v1_RemoveExternalIdentityResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse.class,
-            trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse.Builder.class);
-  }
-
-  public static final int CHALLENGE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object challenge_;
-  /**
-   *
-   *
-   * <pre>
-   * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
-   * </pre>
-   *
-   * <code>string challenge = 1;</code>
-   *
-   * @return The challenge.
-   */
-  @java.lang.Override
-  public java.lang.String getChallenge() {
-    java.lang.Object ref = challenge_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      challenge_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
-   * </pre>
-   *
-   * <code>string challenge = 1;</code>
-   *
-   * @return The bytes for challenge.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getChallengeBytes() {
-    java.lang.Object ref = challenge_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      challenge_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse.class,
+            trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse.Builder.class);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -108,9 +57,6 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(challenge_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, challenge_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -120,9 +66,6 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(challenge_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, challenge_);
-    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -133,13 +76,12 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse)) {
+    if (!(obj instanceof trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse other =
-        (trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse) obj;
+    trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse other =
+        (trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse) obj;
 
-    if (!getChallenge().equals(other.getChallenge())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -151,66 +93,64 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CHALLENGE_FIELD_NUMBER;
-    hash = (53 * hash) + getChallenge().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
       parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
       parseDelimitedFrom(
           java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -218,12 +158,12 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse parseFrom(
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -241,7 +181,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
   }
 
   public static Builder newBuilder(
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse prototype) {
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -255,28 +195,28 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.universalwallet.v1.AddExternalIdentityInitResponse} */
+  /** Protobuf type {@code services.universalwallet.v1.RemoveExternalIdentityResponse} */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.AddExternalIdentityInitResponse)
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.RemoveExternalIdentityResponse)
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_AddExternalIdentityInitResponse_descriptor;
+          .internal_static_services_universalwallet_v1_RemoveExternalIdentityResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_AddExternalIdentityInitResponse_fieldAccessorTable
+          .internal_static_services_universalwallet_v1_RemoveExternalIdentityResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse.class,
-              trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse.Builder.class);
+              trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse.class,
+              trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse.Builder.class);
     }
 
     // Construct using
-    // trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse.newBuilder()
+    // trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -286,27 +226,25 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      challenge_ = "";
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_AddExternalIdentityInitResponse_descriptor;
+          .internal_static_services_universalwallet_v1_RemoveExternalIdentityResponse_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+    public trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
         getDefaultInstanceForType() {
-      return trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+      return trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
           .getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse build() {
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse result = buildPartial();
+    public trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse build() {
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -314,10 +252,9 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
     }
 
     @java.lang.Override
-    public trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse buildPartial() {
-      trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse result =
-          new trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse(this);
-      result.challenge_ = challenge_;
+    public trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse buildPartial() {
+      trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse result =
+          new trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse(this);
       onBuilt();
       return result;
     }
@@ -357,9 +294,9 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse) {
+      if (other instanceof trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse) {
         return mergeFrom(
-            (trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse) other);
+            (trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -367,14 +304,10 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
     }
 
     public Builder mergeFrom(
-        trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse other) {
+        trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse other) {
       if (other
-          == trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+          == trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
               .getDefaultInstance()) return this;
-      if (!other.getChallenge().isEmpty()) {
-        challenge_ = other.challenge_;
-        onChanged();
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -401,12 +334,6 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                challenge_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -424,112 +351,6 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
       return this;
     }
 
-    private java.lang.Object challenge_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
-     * </pre>
-     *
-     * <code>string challenge = 1;</code>
-     *
-     * @return The challenge.
-     */
-    public java.lang.String getChallenge() {
-      java.lang.Object ref = challenge_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        challenge_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
-     * </pre>
-     *
-     * <code>string challenge = 1;</code>
-     *
-     * @return The bytes for challenge.
-     */
-    public com.google.protobuf.ByteString getChallengeBytes() {
-      java.lang.Object ref = challenge_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        challenge_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
-     * </pre>
-     *
-     * <code>string challenge = 1;</code>
-     *
-     * @param value The challenge to set.
-     * @return This builder for chaining.
-     */
-    public Builder setChallenge(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      challenge_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
-     * </pre>
-     *
-     * <code>string challenge = 1;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearChallenge() {
-
-      challenge_ = getDefaultInstance().getChallenge();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
-     * </pre>
-     *
-     * <code>string challenge = 1;</code>
-     *
-     * @param value The bytes for challenge to set.
-     * @return This builder for chaining.
-     */
-    public Builder setChallengeBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      challenge_ = value;
-      onChanged();
-      return this;
-    }
-
     @java.lang.Override
     public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
@@ -541,26 +362,26 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.AddExternalIdentityInitResponse)
+    // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.RemoveExternalIdentityResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:services.universalwallet.v1.AddExternalIdentityInitResponse)
-  private static final trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+  // @@protoc_insertion_point(class_scope:services.universalwallet.v1.RemoveExternalIdentityResponse)
+  private static final trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
       DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse();
+    DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse();
   }
 
-  public static trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+  public static trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
       getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddExternalIdentityInitResponse> PARSER =
-      new com.google.protobuf.AbstractParser<AddExternalIdentityInitResponse>() {
+  private static final com.google.protobuf.Parser<RemoveExternalIdentityResponse> PARSER =
+      new com.google.protobuf.AbstractParser<RemoveExternalIdentityResponse>() {
         @java.lang.Override
-        public AddExternalIdentityInitResponse parsePartialFrom(
+        public RemoveExternalIdentityResponse parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -579,17 +400,17 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
         }
       };
 
-  public static com.google.protobuf.Parser<AddExternalIdentityInitResponse> parser() {
+  public static com.google.protobuf.Parser<RemoveExternalIdentityResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<AddExternalIdentityInitResponse> getParserForType() {
+  public com.google.protobuf.Parser<RemoveExternalIdentityResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.universalwallet.v1.AddExternalIdentityInitResponse
+  public trinsic.services.universalwallet.v1.RemoveExternalIdentityResponse
       getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }

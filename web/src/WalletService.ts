@@ -117,11 +117,18 @@ export class WalletService extends ServiceBase {
       metadata: await this.buildMetadata(proto.AddExternalIdentityInitRequest.encode(request).finish())
     });
   }
-  /** Confirm identity added to the current wallet using `AddIdentity` */
+  /** Confirm identity added to the current wallet using `AddExternalIdentityInit` */
   public async addExternalIdentityConfirm(request: proto.AddExternalIdentityConfirmRequest): Promise<proto.AddExternalIdentityConfirmResponse> {
     
     return this.client.addExternalIdentityConfirm(request, {
       metadata: await this.buildMetadata(proto.AddExternalIdentityConfirmRequest.encode(request).finish())
+    });
+  }
+  /** Remove an external identity from the current wallet */
+  public async removeExternalIdentity(request: proto.RemoveExternalIdentityRequest): Promise<proto.RemoveExternalIdentityResponse> {
+    
+    return this.client.removeExternalIdentity(request, {
+      metadata: await this.buildMetadata(proto.RemoveExternalIdentityRequest.encode(request).finish())
     });
   }
   /** Sign-in to an already existing wallet, using an identity added that was previously registered

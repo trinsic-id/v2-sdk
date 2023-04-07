@@ -12,31 +12,6 @@ public interface CreateWalletResponseOrBuilder
    *
    *
    * <pre>
-   * Wallet ID of the newly created wallet
-   * </pre>
-   *
-   * <code>string wallet_id = 1;</code>
-   *
-   * @return The walletId.
-   */
-  java.lang.String getWalletId();
-  /**
-   *
-   *
-   * <pre>
-   * Wallet ID of the newly created wallet
-   * </pre>
-   *
-   * <code>string wallet_id = 1;</code>
-   *
-   * @return The bytes for walletId.
-   */
-  com.google.protobuf.ByteString getWalletIdBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * Auth token for the newly created wallet
    * </pre>
    *
@@ -82,4 +57,39 @@ public interface CreateWalletResponseOrBuilder
    * @return The bytes for tokenId.
    */
   com.google.protobuf.ByteString getTokenIdBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Wallet configuration
+   * </pre>
+   *
+   * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+   *
+   * @return Whether the wallet field is set.
+   */
+  boolean hasWallet();
+  /**
+   *
+   *
+   * <pre>
+   * Wallet configuration
+   * </pre>
+   *
+   * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+   *
+   * @return The wallet.
+   */
+  trinsic.services.provider.v1.WalletConfiguration getWallet();
+  /**
+   *
+   *
+   * <pre>
+   * Wallet configuration
+   * </pre>
+   *
+   * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+   */
+  trinsic.services.provider.v1.WalletConfigurationOrBuilder getWalletOrBuilder();
 }

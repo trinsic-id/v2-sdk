@@ -39,11 +39,26 @@ public interface CreateWalletRequestOrBuilder
    * <pre>
    * Wallet name or description.
    * Use this field to add vendor specific information about this wallet,
-   * such as email, phone, internal ID, etc.
-   * This field is not unique within our platform
+   * such as email, phone, internal ID, or anything you'd like to associate
+   * with this wallet. This field is searchable.
    * </pre>
    *
-   * <code>string description = 2;</code>
+   * <code>optional string description = 2 [(.services.options.optional) = true];</code>
+   *
+   * @return Whether the description field is set.
+   */
+  boolean hasDescription();
+  /**
+   *
+   *
+   * <pre>
+   * Wallet name or description.
+   * Use this field to add vendor specific information about this wallet,
+   * such as email, phone, internal ID, or anything you'd like to associate
+   * with this wallet. This field is searchable.
+   * </pre>
+   *
+   * <code>optional string description = 2 [(.services.options.optional) = true];</code>
    *
    * @return The description.
    */
@@ -54,11 +69,11 @@ public interface CreateWalletRequestOrBuilder
    * <pre>
    * Wallet name or description.
    * Use this field to add vendor specific information about this wallet,
-   * such as email, phone, internal ID, etc.
-   * This field is not unique within our platform
+   * such as email, phone, internal ID, or anything you'd like to associate
+   * with this wallet. This field is searchable.
    * </pre>
    *
-   * <code>string description = 2;</code>
+   * <code>optional string description = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for description.
    */

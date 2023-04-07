@@ -60,8 +60,10 @@ type WalletService interface {
 	// AddExternalIdentityInit  Add new external identity to the current wallet, such as email, sms, ethereum address, etc.
 	// This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
 	AddExternalIdentityInit(userContext context.Context, request *wallet.AddExternalIdentityInitRequest) (*wallet.AddExternalIdentityInitResponse, error)
-	// AddExternalIdentityConfirm  Confirm identity added to the current wallet using `AddIdentity`
+	// AddExternalIdentityConfirm  Confirm identity added to the current wallet using `AddExternalIdentityInit`
 	AddExternalIdentityConfirm(userContext context.Context, request *wallet.AddExternalIdentityConfirmRequest) (*wallet.AddExternalIdentityConfirmResponse, error)
+	// RemoveExternalIdentity  Remove an external identity from the current wallet
+	RemoveExternalIdentity(userContext context.Context, request *wallet.RemoveExternalIdentityRequest) (*wallet.RemoveExternalIdentityResponse, error)
 	// AuthenticateInit  Sign-in to an already existing wallet, using an identity added that was previously registered
 	// This endpoint does not require authentication, and will return a challenge to be signed or verified
 	AuthenticateInit(userContext context.Context, request *wallet.AuthenticateInitRequest) (*wallet.AuthenticateInitResponse, error)
@@ -254,13 +256,26 @@ func (w *universalWalletBase) AddExternalIdentityInit(userContext context.Contex
 	return response, nil
 }
 
-// AddExternalIdentityConfirm  Confirm identity added to the current wallet using `AddIdentity`
+// AddExternalIdentityConfirm  Confirm identity added to the current wallet using `AddExternalIdentityInit`
 func (w *universalWalletBase) AddExternalIdentityConfirm(userContext context.Context, request *wallet.AddExternalIdentityConfirmRequest) (*wallet.AddExternalIdentityConfirmResponse, error) {
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
 	response, err := w.client.AddExternalIdentityConfirm(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+// RemoveExternalIdentity  Remove an external identity from the current wallet
+func (w *universalWalletBase) RemoveExternalIdentity(userContext context.Context, request *wallet.RemoveExternalIdentityRequest) (*wallet.RemoveExternalIdentityResponse, error) {
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := w.client.RemoveExternalIdentity(md, request)
 	if err != nil {
 		return nil, err
 	}

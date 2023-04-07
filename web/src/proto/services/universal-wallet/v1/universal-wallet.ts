@@ -141,19 +141,19 @@ export interface CreateWalletRequest {
   /**
    * Wallet name or description.
    * Use this field to add vendor specific information about this wallet,
-   * such as email, phone, internal ID, etc.
-   * This field is not unique within our platform
+   * such as email, phone, internal ID, or anything you'd like to associate
+   * with this wallet. This field is searchable.
    */
-  description?: string;
+  description?: string | undefined;
 }
 
 export interface CreateWalletResponse {
-  /** Wallet ID of the newly created wallet */
-  walletId?: string;
   /** Auth token for the newly created wallet */
   authToken?: string;
   /** Token ID of the newly generated token */
   tokenId?: string;
+  /** Wallet configuration */
+  wallet?: WalletConfiguration;
 }
 
 export interface GenerateAuthTokenRequest {
@@ -206,21 +206,22 @@ export interface ListWalletsResponse {
 }
 
 export interface AddExternalIdentityInitRequest {
-  /** Identity to add to the wallet */
+  /**
+   * The user identity to add to the wallet
+   * This can be an email address or phone number (formatted as +[country code][phone number])
+   */
   identity?: string;
+  /** The type of identity provider, like EMAIL or PHONE */
   provider?: IdentityProvider;
 }
 
 export interface AddExternalIdentityInitResponse {
-  /**
-   * Challenge to be verified by the user.
-   * Pass this challenge back to the `AddIdentityConfirm` endpoint
-   */
+  /** Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint */
   challenge?: string;
 }
 
 export interface AddExternalIdentityConfirmRequest {
-  /** The challenge received from the `AddIdentityInit` endpoint */
+  /** The challenge received from the `AddExternalIdentityInit` endpoint */
   challenge?: string;
   /**
    * The response to the challenge. If using Email or Phone,
@@ -230,6 +231,16 @@ export interface AddExternalIdentityConfirmRequest {
 }
 
 export interface AddExternalIdentityConfirmResponse {}
+
+export interface RemoveExternalIdentityRequest {
+  /**
+   * The user identity to remove from the wallet
+   * This can be an email address or phone number (formatted as +[country code][phone number])
+   */
+  identity?: string;
+}
+
+export interface RemoveExternalIdentityResponse {}
 
 export interface AuthenticateInitRequest {
   /** Identity to add to the wallet */
@@ -956,7 +967,7 @@ export const DeleteWalletResponse = {
 };
 
 function createBaseCreateWalletRequest(): CreateWalletRequest {
-  return { ecosystemId: "", description: "" };
+  return { ecosystemId: "", description: undefined };
 }
 
 export const CreateWalletRequest = {
@@ -967,7 +978,7 @@ export const CreateWalletRequest = {
     if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
       writer.uint32(10).string(message.ecosystemId);
     }
-    if (message.description !== undefined && message.description !== "") {
+    if (message.description !== undefined) {
       writer.uint32(18).string(message.description);
     }
     return writer;
@@ -997,7 +1008,9 @@ export const CreateWalletRequest = {
   fromJSON(object: any): CreateWalletRequest {
     return {
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
-      description: isSet(object.description) ? String(object.description) : "",
+      description: isSet(object.description)
+        ? String(object.description)
+        : undefined,
     };
   },
 
@@ -1013,13 +1026,13 @@ export const CreateWalletRequest = {
   fromPartial(object: DeepPartial<CreateWalletRequest>): CreateWalletRequest {
     const message = createBaseCreateWalletRequest();
     message.ecosystemId = object.ecosystemId ?? "";
-    message.description = object.description ?? "";
+    message.description = object.description ?? undefined;
     return message;
   },
 };
 
 function createBaseCreateWalletResponse(): CreateWalletResponse {
-  return { walletId: "", authToken: "", tokenId: "" };
+  return { authToken: "", tokenId: "", wallet: undefined };
 }
 
 export const CreateWalletResponse = {
@@ -1027,14 +1040,17 @@ export const CreateWalletResponse = {
     message: CreateWalletResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.walletId !== undefined && message.walletId !== "") {
-      writer.uint32(10).string(message.walletId);
-    }
     if (message.authToken !== undefined && message.authToken !== "") {
       writer.uint32(18).string(message.authToken);
     }
     if (message.tokenId !== undefined && message.tokenId !== "") {
       writer.uint32(26).string(message.tokenId);
+    }
+    if (message.wallet !== undefined) {
+      WalletConfiguration.encode(
+        message.wallet,
+        writer.uint32(34).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -1049,14 +1065,14 @@ export const CreateWalletResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.walletId = reader.string();
-          break;
         case 2:
           message.authToken = reader.string();
           break;
         case 3:
           message.tokenId = reader.string();
+          break;
+        case 4:
+          message.wallet = WalletConfiguration.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -1068,25 +1084,33 @@ export const CreateWalletResponse = {
 
   fromJSON(object: any): CreateWalletResponse {
     return {
-      walletId: isSet(object.walletId) ? String(object.walletId) : "",
       authToken: isSet(object.authToken) ? String(object.authToken) : "",
       tokenId: isSet(object.tokenId) ? String(object.tokenId) : "",
+      wallet: isSet(object.wallet)
+        ? WalletConfiguration.fromJSON(object.wallet)
+        : undefined,
     };
   },
 
   toJSON(message: CreateWalletResponse): unknown {
     const obj: any = {};
-    message.walletId !== undefined && (obj.walletId = message.walletId);
     message.authToken !== undefined && (obj.authToken = message.authToken);
     message.tokenId !== undefined && (obj.tokenId = message.tokenId);
+    message.wallet !== undefined &&
+      (obj.wallet = message.wallet
+        ? WalletConfiguration.toJSON(message.wallet)
+        : undefined);
     return obj;
   },
 
   fromPartial(object: DeepPartial<CreateWalletResponse>): CreateWalletResponse {
     const message = createBaseCreateWalletResponse();
-    message.walletId = object.walletId ?? "";
     message.authToken = object.authToken ?? "";
     message.tokenId = object.tokenId ?? "";
+    message.wallet =
+      object.wallet !== undefined && object.wallet !== null
+        ? WalletConfiguration.fromPartial(object.wallet)
+        : undefined;
     return message;
   },
 };
@@ -1926,6 +1950,110 @@ export const AddExternalIdentityConfirmResponse = {
   },
 };
 
+function createBaseRemoveExternalIdentityRequest(): RemoveExternalIdentityRequest {
+  return { identity: "" };
+}
+
+export const RemoveExternalIdentityRequest = {
+  encode(
+    message: RemoveExternalIdentityRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.identity !== undefined && message.identity !== "") {
+      writer.uint32(10).string(message.identity);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RemoveExternalIdentityRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRemoveExternalIdentityRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.identity = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RemoveExternalIdentityRequest {
+    return {
+      identity: isSet(object.identity) ? String(object.identity) : "",
+    };
+  },
+
+  toJSON(message: RemoveExternalIdentityRequest): unknown {
+    const obj: any = {};
+    message.identity !== undefined && (obj.identity = message.identity);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<RemoveExternalIdentityRequest>
+  ): RemoveExternalIdentityRequest {
+    const message = createBaseRemoveExternalIdentityRequest();
+    message.identity = object.identity ?? "";
+    return message;
+  },
+};
+
+function createBaseRemoveExternalIdentityResponse(): RemoveExternalIdentityResponse {
+  return {};
+}
+
+export const RemoveExternalIdentityResponse = {
+  encode(
+    _: RemoveExternalIdentityResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RemoveExternalIdentityResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRemoveExternalIdentityResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): RemoveExternalIdentityResponse {
+    return {};
+  },
+
+  toJSON(_: RemoveExternalIdentityResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<RemoveExternalIdentityResponse>
+  ): RemoveExternalIdentityResponse {
+    const message = createBaseRemoveExternalIdentityResponse();
+    return message;
+  },
+};
+
 function createBaseAuthenticateInitRequest(): AuthenticateInitRequest {
   return { identity: "", provider: 0, ecosystemId: "" };
 }
@@ -2310,12 +2438,21 @@ export const UniversalWalletDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Confirm identity added to the current wallet using `AddIdentity` */
+    /** Confirm identity added to the current wallet using `AddExternalIdentityInit` */
     addExternalIdentityConfirm: {
       name: "AddExternalIdentityConfirm",
       requestType: AddExternalIdentityConfirmRequest,
       requestStream: false,
       responseType: AddExternalIdentityConfirmResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Remove an external identity from the current wallet */
+    removeExternalIdentity: {
+      name: "RemoveExternalIdentity",
+      requestType: RemoveExternalIdentityRequest,
+      requestStream: false,
+      responseType: RemoveExternalIdentityResponse,
       responseStream: false,
       options: {},
     },
