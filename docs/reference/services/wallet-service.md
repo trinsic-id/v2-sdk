@@ -1,10 +1,7 @@
 # Wallet API
 
-The Wallet API is the main interface for interacting with a cloud wallet, if you're providing custom wallet experience and building your own digital wallet integration.
+The Wallet API is the main interface for interacting with a cloud wallet. It is primarly used when you're providing custom wallet experience and building your own digital wallet integration.
 If you'd like to use Trinsic's integrated cloud wallet app, you likely won't need to use this API.
-
-!!! info "Wallet Standard"
-    This service is designed to follow the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by the W3C Community Credentials Group.
 
 ---
 
@@ -20,18 +17,41 @@ Create a new wallet and return the authentication token and wallet information a
 
         var trinsic = new TrinsicService();
 
-        var response = await trinsic.Wallet.CreateWalletAsync(new CreateWalletRequest {
+        var request = new CreateWalletRequest {
             EcosystemId = "acme-corp",
             Description = "user@acme-corp.org"
-        });
+        };
+        var response = await trinsic.Wallet.CreateWalletAsync(request);
 
-        // Response:
-        // {
-        //     "WalletId": "urn:wallets:abc123",
-        //     "AuthToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
+        // Response: {
+        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
+        //     "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
+        //     "wallet": {
+        //         "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
+        //         "publicDid": "did:key:123456"
+        //     }
         // }
         ```
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.CreateWallet") }}
+
+---
+
+## Add External Identity
+
+This service is used to attach external identity, such as email or phone number, to a wallet. The purpose of this process is to allow
+the user to authenticate to their existing wallet (using the `Authenticate` endpoint) to get an auth token.
+This may be needed if the user is logging in on a different device, have lost access to the initial auth token, etc.
+
+The process for adding external identity is based on confirming an OTP code that will be sent to the user's email address or phone number. To do this, you should call the
+services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
+
+### `AddExternalIdentityInit`
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit") }}
+
+### `AddExternalIdentityConfirm`
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm") }}
 
 ---
 
