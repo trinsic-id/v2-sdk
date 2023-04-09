@@ -637,17 +637,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#components-of-a-verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Components of a verification
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#zero-knowledge-proofs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -754,6 +743,32 @@
     
   
     Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-ld/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON-LD
   
 
     
@@ -1013,13 +1028,39 @@
   
   
     <li class="md-nav__item">
-      <a href="../../migrate/" class="md-nav__link">
+      <a href="../../resources/migrate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
     Migration Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/interactive-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive API Experience
   
 
     
@@ -2062,10 +2103,9 @@
 
 
 <h1 id="verifications">Verifications<a class="headerlink" href="#verifications" title="Permanent link">&para;</a></h1>
-<p>“Verifications” are the mechanism for requesting, consenting, and authenticating data from the verifiable credentials in an identity wallet. Designing the way verifications will be done in your ecosystem is arguably the most important step in creating a successful IDtech product.</p>
+<p>Creating <a href="https://docs.trinsic.id/learn/concepts/credentials/">Verifiable Credentials</a> involves generating <strong>cryptographic</strong> proofs that can be used to verify the authenticity of the VC. Digital signatures are generated using the issuer’s private key and these are used to create the proofs. When a verifier receives a VC, they can use the issuer’s public key to verify the credential’s signature and ensure that it hasn’t been tampered with. This allows information to be shared in a secure and trustworthy way between parties.</p>
+<p>Designing the way verifications will be done in your ecosystem is arguably the most important step in creating a successful IDtech product. Verifications are privacy-preserving proofs of data inside a VC. </p>
 <p>A verification is an abstraction provided by Trinsic that makes it easy to utilize W3C-conformant <a href="https://www.w3.org/TR/vc-data-model/#presentations">Verifiable Presentations</a>, <a href="https://openid.net/specs/openid-connect-4-verifiable-presentations-1_0-08.html">OpenID Connect</a>, zero-knowledge proofs, and other identity specifications without having to spend months becoming an expert or writing your own implementation. For more on the standards we use, see our Standards page.</p>
-<h2 id="components-of-a-verification">Components of a verification<a class="headerlink" href="#components-of-a-verification" title="Permanent link">&para;</a></h2>
-<p>“Verifications” are privacy-preserving proofs of data inside a VC. </p>
 <h2 id="zero-knowledge-proofs">Zero-knowledge proofs<a class="headerlink" href="#zero-knowledge-proofs" title="Permanent link">&para;</a></h2>
 <p>A zero-knowledge proof (ZKP) allows a user to prove some information is true without revealing the information itself. The classic example is proving you’re over 18 without revealing your birthdate. </p>
 <p>The most important application of zero-knowledge proofs today is the ability to perform selective disclosure on the contents of a verifiable credential. This is important for the obvious privacy reasons related to data minimization, but it’s also important for the less-obvious privacy reasons of obfuscating correlatable identifiers from verifiable presentations. Over time we will add the capability for providers to offer verifiers ZKP capabilities that allow computation on values, such as ‘<em>is <code>GPA</code> &gt; 3.0’</em> or <em>‘does <code>home_address</code> contain “New York”’.</em></p>

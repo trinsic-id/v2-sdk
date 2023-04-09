@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.trinsic.id/dotnet/">
+        <link rel="canonical" href="https://docs.trinsic.id/learn/resources/interactive-api/">
       
       
-        <link rel="prev" href="../node/">
+        <link rel="prev" href="../migrate/">
       
       
-        <link rel="next" href="../python/">
+        <link rel="next" href="../../../cli/">
       
       
         
       
       
-      <link rel="icon" href="../_static/logo.png">
+      <link rel="icon" href="../../../_static/logo.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6+insiders-4.32.5">
     
     
       
-        <title>C# - Documentation</title>
+        <title>Interactive API Experience - Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.dc5b59cc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.dc5b59cc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.6932e648.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.6932e648.min.css">
       
       
 
@@ -48,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css">
     
-      <link rel="stylesheet" href="../_static/extra.css">
+      <link rel="stylesheet" href="../../../_static/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-trinsic-c-net-sdk" class="md-skip">
+        <a href="#how-to-get-the-token-for-authentication" class="md-skip">
           Skip to content
         </a>
       
@@ -103,9 +103,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../_static/logo-title.svg" alt="logo">
+  <img src="../../../_static/logo-title.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              C#
+              Interactive API Experience
             
           </span>
         </div>
@@ -212,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -227,11 +227,13 @@
         
   
   
+    
+  
   
     
     
       <li class="md-tabs__item">
-        <a href="../learn/" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
           
   
   Learn
@@ -245,13 +247,11 @@
         
   
   
-    
-  
   
     
     
       <li class="md-tabs__item">
-        <a href="../cli/" class="md-tabs__link md-tabs__link--active">
+        <a href="../../../cli/" class="md-tabs__link">
           
   
   Tools & SDKs
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../reference/" class="md-tabs__link">
+        <a href="../../../reference/" class="md-tabs__link">
           
   
   Reference
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../roadmap/" class="md-tabs__link">
+        <a href="../../../roadmap/" class="md-tabs__link">
           
   
   Resources
@@ -328,9 +328,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../_static/logo-title.svg" alt="logo">
+  <img src="../../../_static/logo-title.svg" alt="logo">
 
     </a>
     Documentation
@@ -356,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -379,17 +379,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -408,7 +410,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -425,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -497,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/ecosystems/" class="md-nav__link">
+      <a href="../../concepts/ecosystems/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -523,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/wallets/" class="md-nav__link">
+      <a href="../../concepts/wallets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/credentials/" class="md-nav__link">
+      <a href="../../concepts/credentials/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/verifications/" class="md-nav__link">
+      <a href="../../concepts/verifications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/templates/" class="md-nav__link">
+      <a href="../../concepts/templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -627,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/dids/" class="md-nav__link">
+      <a href="../../concepts/dids/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -653,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/trust-registries/" class="md-nav__link">
+      <a href="../../concepts/trust-registries/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -679,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/json-ld/" class="md-nav__link">
+      <a href="../../concepts/json-ld/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -759,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/platform/standards/" class="md-nav__link">
+      <a href="../../platform/standards/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/platform/security/" class="md-nav__link">
+      <a href="../../platform/security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -865,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../walkthroughs/vaccination/" class="md-nav__link">
+      <a href="../../../walkthroughs/vaccination/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -897,19 +899,21 @@
                 
   
   
+    
+  
   
     
     
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
@@ -928,7 +932,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -945,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/resources/migrate/" class="md-nav__link">
+      <a href="../migrate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -969,9 +973,33 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../learn/resources/interactive-api/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive API Experience
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -986,6 +1014,157 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-get-the-token-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to get the token for authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postman
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Postman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring Postman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-api-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making API Calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issuing-a-credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issuing a Credential
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buf-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buf Studio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Buf Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-buf-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring Buf Studio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-api-calls_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making API Calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issuing-a-credential_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issuing a Credential
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-queries_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1010,19 +1189,17 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
@@ -1041,7 +1218,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1058,7 +1235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../../cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1130,7 +1307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../web/" class="md-nav__link">
+      <a href="../../../web/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1156,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ios/" class="md-nav__link">
+      <a href="../../../ios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1182,7 +1359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../android/" class="md-nav__link">
+      <a href="../../../android/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1214,21 +1391,19 @@
                 
   
   
-    
-  
   
     
     
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
@@ -1247,7 +1422,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1264,7 +1439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../node/" class="md-nav__link">
+      <a href="../../../node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1288,35 +1463,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    
-  
-    C#
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../dotnet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1331,48 +1480,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation-in-a-new-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation in a new project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1384,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1410,7 +1517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go/" class="md-nav__link">
+      <a href="../../../go/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1436,7 +1543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/" class="md-nav__link">
+      <a href="../../../java/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1521,7 +1628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../../reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1593,7 +1700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/account-service/" class="md-nav__link">
+      <a href="../../../reference/services/account-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1619,7 +1726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/credential-service/" class="md-nav__link">
+      <a href="../../../reference/services/credential-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1645,7 +1752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/file-management-service/" class="md-nav__link">
+      <a href="../../../reference/services/file-management-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1671,7 +1778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/provider-service/" class="md-nav__link">
+      <a href="../../../reference/services/provider-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1697,7 +1804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/template-service/" class="md-nav__link">
+      <a href="../../../reference/services/template-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1723,7 +1830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/trust-registry-service/" class="md-nav__link">
+      <a href="../../../reference/services/trust-registry-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1749,7 +1856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/wallet-service/" class="md-nav__link">
+      <a href="../../../reference/services/wallet-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1775,7 +1882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/proto/" class="md-nav__link">
+      <a href="../../../reference/proto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1855,7 +1962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/other/openid/" class="md-nav__link">
+      <a href="../../../reference/other/openid/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1889,7 +1996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/events/" class="md-nav__link">
+      <a href="../../../reference/events/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1966,7 +2073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roadmap/" class="md-nav__link">
+      <a href="../../../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1992,7 +2099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../support/" class="md-nav__link">
+      <a href="../../../support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2091,59 +2198,106 @@
   
 
 
-<h1 id="the-trinsic-c-net-sdk">The Trinsic C# / .NET SDK<a class="headerlink" href="#the-trinsic-c-net-sdk" title="Permanent link">&para;</a></h1>
-<p>The Trinsic C# / .NET SDK makes it easy to interact with the Trinsic API from your .NET application. The most recent version of the library can be found on NuGet. The Trinsic SDK supports .NET applications written in C#, VB.NET, and F# that utilize any supported version of .NET Core. You can also find the SDKs source on <a href="https://github.com/trinsic-id/sdk/dotnet">Github</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Supported runtimes</p>
-<p>.NET targets for iOS, Android, and Blazor are fully supported using the same package dependencies via .NET 6.</p>
-</div>
-<h2 id="installation-in-a-new-project">Installation in a new project<a class="headerlink" href="#installation-in-a-new-project" title="Permanent link">&para;</a></h2>
-<p>Add the required dependencies from <a href="https://www.nuget.org/packages/Trinsic">Nuget.org <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Package Manager</label><label for="__tabbed_1_2">.NET CLI</label><label for="__tabbed_1_3">PackageReference</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>PM&gt; Install-Package Trinsic
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>dotnet<span class="w"> </span>add<span class="w"> </span>package<span class="w"> </span>Trinsic
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>&lt;PackageReference Include=&quot;Trinsic&quot; /&gt;
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>To register the services with dependency injection pipeline:</p>
-<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">();</span>
-</code></pre></div>
-<p>To configure additional parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// to configure the service with your auth token</span>
-<span class="w">    </span><span class="n">options</span><span class="p">.</span><span class="n">ServiceOptions</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span><span class="p">;</span>
-<span class="p">})</span>
-</code></pre></div>
-<p>The service can then be injected in your controller as</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MyController</span><span class="p">(</span><span class="n">TrinsicService</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// init</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Alternatively, you can simply instantiate this service with or without parameters</p>
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">();</span>
+  <h1>Interactive API Experience</h1>
 
-<span class="c1">// or</span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServiceOptions</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">AuthToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Once the .NET SDK package is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>
-<p><a class="md-button md-button--primary" href="../walkthroughs/vaccination/">Start Walkthrough</a> <a class="md-button" href="../reference/">Explore API</a> <a class="md-button" href="../reference/">C# API Reference</a></p>
+<p>In this session, we’ll walk through how to have an interactive experience with the Trinsic API. By following the steps below, you’ll be able to experiment quicker, experience our API’s functionality, and understand how Trinsic Ecosystem works without having to setup any project environment. We’ll teach you how to use two different tools — <a href="https://www.postman.com/">Postman</a> and <a href="https://docs.buf.build/bsr/studio">Buf Studio</a> — which both have an interactive UI for calling the API.</p>
+<p>But before we make any API calls, the tools mentioned above require you to have an authorization token. You cannot use your authorization token from the Dashboard directly in the API as it is not meant to be transmitted directly with each call. Instead, you should use the token through the SDK, and it will calculate a derivation of your token that you can use. (We use zero-knowledge proofs (ZKPs) to do so—you can learn more in our <a href="https://docs.trinsic.id/learn/platform/security/#oberon-auth-scheme">documentation</a>).</p>
+<p>Let’s get started with our step-by-step tutorial below.</p>
+<h2 id="how-to-get-the-token-for-authentication">How to get the token for authentication<a class="headerlink" href="#how-to-get-the-token-for-authentication" title="Permanent link">&para;</a></h2>
+<p>To get the token for authentication, you’ll need to make API calls. Follow these steps:</p>
+<ol>
+<li><a href="https://docs.trinsic.id/cli/">Get the Trinsic CLI</a> and ensure it’s properly installed by running <code>trinsic</code> from the command line.</li>
+<li>Go to your <a href="https://dashboard.trinsic.id/ecosystem">Trinsic Ecosystem Dashboard</a>.</li>
+<li>Click <strong>View API Token</strong> and copy your token.</li>
+</ol>
+<p><img alt="API Token" src="../../../_static/images/1-api-token.png" /></p>
+<ol>
+<li>Run <code>trinsic config -a &lt;token&gt;</code>. This will set your token in the config file.</li>
+</ol>
+<p><img alt="Trinsic Config" src="../../../_static/images/2-trinsic-config.png" /></p>
+<ol>
+<li>Run <code>trinsic config</code> and make sure your token is set correctly and your server endpoint is set to <code>prod.trinsic.cloud</code>.</li>
+<li>Run <code>trinsic account info</code> and see if the information matches the ones from your account.</li>
+<li>Run <code>trinsic —-debug account info</code> and copy the pink text after <em>DEBUG: Authorization</em>. This is the ZKP token for authentication you will use with your calls.</li>
+</ol>
+<p><em>Please note this is a lot longer than in the below screenshot.</em></p>
+<p><img alt="Trinsic Debug" src="../../../_static/images/3-trinsic-debug.png" /></p>
+<h2 id="postman">Postman<a class="headerlink" href="#postman" title="Permanent link">&para;</a></h2>
+<h3 id="configuring-postman">Configuring Postman<a class="headerlink" href="#configuring-postman" title="Permanent link">&para;</a></h3>
+<p>To configure Postman, follow these steps:</p>
+<ol>
+<li><a href="https://www.postman.com/downloads/">Download Postman</a> and create an account/log in.</li>
+<li>Click <strong>New &gt; gRPC Request</strong>.</li>
+</ol>
+<p><img alt="Postman gRPC" src="../../../_static/images/postman-grpc.png" /></p>
+<ol>
+<li>In the field <strong>Enter server URL</strong>, add <a href="http://prod.trinsic.cloud:443/">prod.trinsic.cloud:443</a> and click the padlock to enable TLS.</li>
+<li>In the tab <em>Metadata</em>, add <strong>Authorization</strong> in the <em>Key</em> field and your token (the one you generated above) in the <em>Value</em> field.</li>
+<li>Your page should look like this:</li>
+</ol>
+<p><img alt="Postman Authorization" src="../../../_static/images/postman-authorization.png" /></p>
+<ol>
+<li>In Postman, you can save these configurations by clicking on the dropdown next to <strong>Save</strong> and saving the request inside a Collection.</li>
+</ol>
+<h3 id="making-api-calls">Making API Calls<a class="headerlink" href="#making-api-calls" title="Permanent link">&para;</a></h3>
+<p>With your Postman configured, you can now test all API calls from Trinsic’s API.</p>
+<p>If you click <strong>Select a method</strong>, you’ll see all available methods.</p>
+<p><img alt="Postman API Calls" src="../../../_static/images/postman-api-calls.png" /></p>
+<p>Try selecting the option <strong>Info</strong> and click <strong>Invoke</strong>. You should see something like this:</p>
+<p><img alt="Postman Info" src="../../../_static/images/postman-info.png" /></p>
+<p>If you run the <em>CredentialTemplates/List</em> method, you should see all your Credential Templates listed in the Response:</p>
+<p><img alt="Postman List" src="../../../_static/images/postman-list.png" /></p>
+<p>Whenever you call any method, if you have any doubts regarding the fields that appear in the body of the call when you click <strong>Generate Example Message</strong> (what they should be and if they’re required or not), just consult the <a href="https://docs.trinsic.id/reference/">Reference tab of our documentation</a>.</p>
+<h3 id="issuing-a-credential">Issuing a Credential<a class="headerlink" href="#issuing-a-credential" title="Permanent link">&para;</a></h3>
+<p>Copy the <em>id</em> value from one of your Credential Templates, and issue a credential from it following the next steps:</p>
+<ol>
+<li>Select the method <em>VerifiableCredential/IssueFromTemplate</em>.</li>
+<li>Click on <strong>Generate Example Message</strong>.</li>
+<li>Clear/delete the field <code>framework_id</code>.</li>
+<li>Paste the template id in the <code>template_id</code> field.</li>
+<li>Populate the field <code>values_json</code> with the information required by your credential template. Remember to use the character <code>\</code> before all double quotes.</li>
+<li>Click on <strong>Invoke</strong>.</li>
+</ol>
+<p><img alt="Postman Issue" src="../../../_static/images/postman-issue.png" /></p>
+<p>You just issued a credential from your credential template! 😄</p>
+<h3 id="using-queries">Using Queries<a class="headerlink" href="#using-queries" title="Permanent link">&para;</a></h3>
+<p>You can use queries to make searches or get, insert, and update wallets. See the example below:</p>
+<p><img alt="Postman Search" src="../../../_static/images/postman-search.png" /></p>
+<p>Make sure to explore all the methods provided by the Trinsic API! 🤩</p>
+<h2 id="buf-studio">Buf Studio<a class="headerlink" href="#buf-studio" title="Permanent link">&para;</a></h2>
+<h3 id="configuring-buf-studio">Configuring Buf Studio<a class="headerlink" href="#configuring-buf-studio" title="Permanent link">&para;</a></h3>
+<p>To configure your Buf Studio, follow these steps:</p>
+<ol>
+<li>Access <a href="https://studio.buf.build/trinsic/services">Trinsic Services inside Buf Studio</a>.</li>
+<li>In the <em>Target</em> field, paste the following URL: <a href="https://prod.trinsic.cloud/">https://prod.trinsic.cloud:443</a></li>
+<li>In the tab <em>Headers</em>, add <strong>Authorization</strong> in the <em>Key</em> field and your token (the one you generated above) in the <em>Value</em> field.</li>
+<li>Click <strong>gRPC-web</strong> at the end of the page.</li>
+<li>Your page should look like this:</li>
+</ol>
+<p><img alt="Buf Studio Authorization" src="../../../_static/images/buf-authorization.png" /></p>
+<h3 id="making-api-calls_1">Making API Calls<a class="headerlink" href="#making-api-calls_1" title="Permanent link">&para;</a></h3>
+<p>With your Buf Studio configured, you can now test all API calls from Trinsic’s API.</p>
+<p>If you click <strong>Select method</strong>, you’ll see all available methods.</p>
+<p><img alt="Buf Studio API Calls" src="../../../_static/images/buf-api-calls.png" /></p>
+<p>Try selecting the option <strong>Info</strong> and click <strong>Send</strong>. You should see something like this:</p>
+<p><img alt="Buf Studio Info" src="../../../_static/images/buf-info.png" /></p>
+<p>If you run the <em>CredentialTemplates/List</em> method, you should see all your Credential Templates listed in the Response:</p>
+<p><img alt="Buf Studio List" src="../../../_static/images/buf-list.png" /></p>
+<p>Whenever you call any method, if you have any doubts regarding the fields that appear in the body of the call (what they should be and if they’re required or not), just consult the <a href="https://docs.trinsic.id/reference/">Reference tab of our documentation</a>.</p>
+<h3 id="issuing-a-credential_1">Issuing a Credential<a class="headerlink" href="#issuing-a-credential_1" title="Permanent link">&para;</a></h3>
+<p>Copy the <strong>id</strong> value from one of your Credential Templates and issue a credential from it following the next steps:</p>
+<ol>
+<li>Select the method <em>VerifiableCredential/IssueFromTemplate</em>.</li>
+<li>Paste the template id in the <code>templateId</code> field.</li>
+<li>Populate the field <code>valuesJson</code> with the information required by your credential template. Remember to use the character <code>\</code> before all double quotes.</li>
+<li>Click on <strong>Send</strong>.</li>
+</ol>
+<p><img alt="Buf Studio Issue" src="../../../_static/images/buf-issue.png" /></p>
+<p>You just issued a credential from your credential template! 😄</p>
+<h3 id="using-queries_1">Using Queries<a class="headerlink" href="#using-queries_1" title="Permanent link">&para;</a></h3>
+<p>You can use queries to make searches or get, insert, and update wallets. See the example below:</p>
+<p><img alt="Buf Studio Search" src="../../../_static/images/buf-search.png" /></p>
+<p>Make sure to explore all the methods provided by the Trinsic API! 🤩</p>
 
 
 
@@ -2211,18 +2365,18 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.803ed251.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.803ed251.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
-        <script src="../_static/javascripts/config.js"></script>
+        <script src="../../../_static/javascripts/config.js"></script>
       
-        <script src="../_static/javascripts/proto_functionality.js"></script>
+        <script src="../../../_static/javascripts/proto_functionality.js"></script>
       
-        <script src="../_static/javascripts/tab_sync.js"></script>
+        <script src="../../../_static/javascripts/tab_sync.js"></script>
       
     
   </body>

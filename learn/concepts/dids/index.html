@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#working-with-dids-on-trinsic" class="md-skip">
+        <a href="#how-dids-work" class="md-skip">
           Skip to content
         </a>
       
@@ -685,45 +685,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#working-with-dids-on-trinsic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Working with DIDs on Trinsic
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Working with DIDs on Trinsic">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#upgrading-wallet-dids" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upgrading wallet DIDs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#supported-did-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported DID methods
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#how-dids-work" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -736,10 +697,60 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-dids-are-used-with-verifiable-credentials" class="md-nav__link">
+  <a href="#dids-are" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How DIDs are used with Verifiable Credentials
+        DIDs are
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-dids-on-trinsic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working with DIDs on Trinsic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with DIDs on Trinsic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-did-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported DID methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-wallet-dids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading wallet DIDs
       
     </span>
   </a>
@@ -773,6 +784,32 @@
     
   
     Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json-ld/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    JSON-LD
   
 
     
@@ -1032,13 +1069,39 @@
   
   
     <li class="md-nav__item">
-      <a href="../../migrate/" class="md-nav__link">
+      <a href="../../resources/migrate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
     Migration Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/interactive-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive API Experience
   
 
     
@@ -2082,23 +2145,30 @@
 
   <h1>Identifiers</h1>
 
-<p>Identifiers are necessary to assign to each member of an ecosystem. Identity wallets manage identifiers on behalf of the holder(s) that control(s) the wallet. At Trinsic we use “Decentralized identifiers” or “DIDs,” which are globally unique, cryptographically verifiable URIs that are not bound to a centralized registry. DIDs provide a way to separate a public identifier from public keys, which is an important requirement for resilient identity systems.</p>
+<p>Identifiers are necessary to assign to each member of an ecosystem. Identity wallets manage identifiers on behalf of the holder(s) that control(s) the wallet. At Trinsic we use <strong>Decentralized identifiers</strong> or <strong>DIDs</strong>, which are globally unique, cryptographically verifiable URIs that are not bound to a centralized registry. DIDs provide a way to separate a public identifier from public keys, which is an important requirement for resilient identity systems.</p>
 <p>Trinsic aims to abstract the complexities of interacting with DIDs. So while this section provides a brief explanation of DIDs, you do not need to fully grok them in order to build an identity product using Trinsic.</p>
+<h2 id="how-dids-work">How DIDs work<a class="headerlink" href="#how-dids-work" title="Permanent link">&para;</a></h2>
+<p>Examples of centralized identifiers include Student ID, ID number, driver's license number, username, email address, and user ID. These are considered <em>centralized</em> because they are provided by an authority, provider, or organization that gets between us and our ability to access certain services. The concept of identity being decentralized means that we become the owners of our data and access without relying on any intermediary organization or central issuing agency.</p>
+<h3 id="dids-are">DIDs are<a class="headerlink" href="#dids-are" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Decentralized</strong>;</li>
+<li><strong>Persistent</strong>: They don’t require the continued operation of an underling organization, such as Gmail or the government;</li>
+<li><strong>Cryptographically verifiable</strong>: You can prove control of the identifier cryptographically;</li>
+<li><strong>Resolvable</strong>: You can discover metadata about the identifier.</li>
+</ul>
+<h3 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h3>
+<p>An example of DID is <code>did:example:12345abcdefghijklm</code></p>
+<p><code>did</code> is the <strong>Scheme</strong> - all DIDs start with it</p>
+<p><code>example</code> is the <strong>Method</strong> - where the DID is stored (blockchain, digital wallet or anywhere else)</p>
+<p><code>12345abcdefghijklm</code> is the <strong>Identifier</strong> - the unique identifier of the DID</p>
+<p>Examples of DID methods: <code>key</code> (public key is stored directly in the URI, enabling local resolution), <code>ion</code> (DID stored in the Bitcoin blockchain), <code>web</code>, <code>indy</code>.
+The goal of DIDs is to provide a decentralized, method-agnostic way to bundle an <strong>Identifier</strong> together with information about how to communicate and interact securely with the subject attached to said identifier. When you resolve a DID using its DID <strong>Method</strong> and the <strong>Identifier</strong>, you retrieve a <strong>DID Document</strong>, which contains information about how to interact with the subject (chiefly, cryptographic keys associated with the subject which can be used for verifiable communication).</p>
 <h2 id="working-with-dids-on-trinsic">Working with DIDs on Trinsic<a class="headerlink" href="#working-with-dids-on-trinsic" title="Permanent link">&para;</a></h2>
 <p>Trinsic abstracts away the complexities of working with DIDs and cryptography, allowing you to focus on building a great identity product.</p>
-<p>When a <a href="https://docs-v2.trinsic.id/learn/concepts/wallets">wallet</a> is created, Trinsic generates a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a <code>did:key</code> DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the <code>public_did</code> field of the wallet object.</p>
-<h3 id="upgrading-wallet-dids">Upgrading wallet DIDs<a class="headerlink" href="#upgrading-wallet-dids" title="Permanent link">&para;</a></h3>
-<p>Providers of an ecosystem may <em>upgrade</em> a wallet's DID from <code>did:key</code> to any of the supported methods via <a href="https://docs-v2.trinsic.id/reference/services/provider-service/#upgrade-wallet-did">a simple API call</a>. Trinsic handles the complexities of this process for you.</p>
-<p>Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:</p>
-<p><strong>Data Protection &amp; Compliance</strong></p>
-<p>When writing an identifier to a public, permanent resource like a blockchain, it’s important to be extremely sure that you want that data to remain there forever. Permanence is hard to reconcile with “right to be forgotten”, and the jury is out on whether a person’s identifiers are considered personal data (literally).</p>
-<p>For these reasons, it is <strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>not advisable</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong> to upgrade DIDs controlled by wallets whose holders are natural persons (in other words, DIDs whose subjects are persons). If doing so is important for your use case, we strongly recommend you work with legal counsel to understand all of the implications before doing so.</p>
-<p><strong>Fees</strong></p>
-<p>Depending on the DID method chosen, registering a DID may incur a transaction fee, which is different for each ledger. <strong>You are responsible for these fees.</strong></p>
-<p>Documentation of these fees will be visible through our Dashboard and on our pricing page. You should keep this in mind before you programmatically upgrade DIDs through the API.</p>
-<p><strong>Resolution</strong></p>
-<p>Newly-registered DIDs may not be immediately resolvable, as distributed ledgers typically cannot provide instantaneous writes.</p>
-<p>Issuance and verification of credentials against these DIDs will still function during this time, but only within the Trinsic platform.</p>
+<p>In an IDtech product, <em>issuers</em> and <em>holders</em> will have its own DID, which will be specified in the credentials issued/held by it. It signs a cryptographic proof against the contents of the credential (using its own private key) and stores this in the <code>proof</code> field of the credential. Critically, the public key associated with the signing private key is stored in the issuer's DID Document.</p>
+<p>When verifying a credential, the verifier looks at the DID in the <code>issuer</code> field and resolves it to fetch its associated <strong>DID Document</strong>. Then, they verify that the <code>proof</code> field is cryptographically valid and was generated using one of the keys in the DID Document. This process guarantees that the issuer claimed by the credential is indeed the entity that signed the credential and that the credential has not been modified.</p>
+<p>At Trinsic, when a <a href="https://docs-v2.trinsic.id/learn/concepts/wallets">wallet</a> is created, we generate a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a <code>did:key</code> DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the <code>public_did</code> field of the wallet object.</p>
+<p>When using this scheme, one must only maintain a list of issuer DIDs which are trusted to issue credentials of a certain type (this might be accomplished by a <a href="https://docs-v2.trinsic.id/learn/concepts/trust-registries">Trust Registry</a>); the cryptographic guarantees of DIDs and VCs take care of the rest.</p>
 <h3 id="supported-did-methods">Supported DID methods<a class="headerlink" href="#supported-did-methods" title="Permanent link">&para;</a></h3>
 <p><strong>More to come</strong></p>
 <p>We plan to grow the list of supported DID methods as we move towards general availability of this feature.</p>
@@ -2133,21 +2203,16 @@
 </tr>
 </tbody>
 </table>
-<h2 id="how-dids-work">How DIDs work<a class="headerlink" href="#how-dids-work" title="Permanent link">&para;</a></h2>
-<p>DIDs serve as identifiers of subjects (most commonly individuals); a DID can be <em>resolved</em> to retrieve a <em>DID Document</em>, which contains information about how to interact with the subject (chiefly, cryptographic keys associated with the subject which can be used for verifiable communication).</p>
-<p>DIDs always start with the <code>did:</code> prefix, but can take many forms. For example, <code>did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK</code> and <code>did:ion:test:EiAmZrbqZvA81YBazg3h3ucL6yIYh_OTxaj_W_ggeEEOYA</code> are both valid DIDs, but have different prefixes. In this example, <code>key</code> and <code>ion</code> are the <em>DID methods</em> of these DIDs, respectively. Other DID Methods include <code>did:web</code> and <code>did:indy</code>.</p>
-<p>The method of a DID determines how to resolve it to retrieve its associated DID Document; there is no common strategy. For example, resolving a <code>did:ion</code> DID requires interacting with the Bitcoin blockchain, whereas <code>did:key</code> encodes the DID Document information (the public keys) directly into the URI enabling local resolution.</p>
-<p>To sum up, the goal of DIDs is to provide a decentralized, method-agnostic way to bundle an identifier together with information about how to communicate and interact securely with the subject attached to said identifier.</p>
-<h3 id="how-dids-are-used-with-verifiable-credentials">How DIDs are used with Verifiable Credentials<a class="headerlink" href="#how-dids-are-used-with-verifiable-credentials" title="Permanent link">&para;</a></h3>
-<p>DIDs are an important component of the Verifiable Credential spec; they enable decentralized issuance and verification of credentials.</p>
-<p>When someone (or something) issues a credential, they set the <code>issuer</code> field of the credential to their own DID. They then generate (or "sign") a cryptographic proof against the contents of the credential, using their own private key, and store this in the <code>proof</code> field of the credential. Critically, the public key associated with the signing private key is stored in the issuer's DID Document.</p>
-<p>To verify a credential, the verifier first looks at the DID contained in the <code>issuer</code> field, and resolves it to fetch its associated DID Document. Then, they verify that the <code>proof</code> field is cryptographically valid and was generated using one of the keys in the DID Document.</p>
-<p>This scheme enables verifiers to guarantee the following cryptographically:</p>
-<ol>
-<li>The <code>issuer</code> claimed by the credential is indeed the entity which signed the credential.</li>
-<li>The credential has not been modified or tampered with; all of its data is attested to by the issuer.</li>
-</ol>
-<p>Using this scheme, one must only maintain a list of issuer DIDs which are trusted to issue credentials of a certain type (this might be accomplished by a <a href="https://docs-v2.trinsic.id/learn/concepts/trust-registries">Trust Registry</a>); the cryptographic guarantees of DIDs and VCs take care of the rest.</p>
+<h3 id="upgrading-wallet-dids">Upgrading wallet DIDs<a class="headerlink" href="#upgrading-wallet-dids" title="Permanent link">&para;</a></h3>
+<p>Providers of an ecosystem may <em>upgrade</em> a wallet's DID from <code>did:key</code> to any of the supported methods via <a href="https://docs-v2.trinsic.id/reference/services/provider-service/#upgrade-wallet-did">a simple API call</a>. Trinsic handles the complexities of this process for you.</p>
+<p>Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:</p>
+<p><strong>Data Protection &amp; Compliance</strong></p>
+<p>When writing an identifier to a public, permanent resource like a blockchain, it’s important to be extremely sure that you want that data to remain there forever. Permanence is hard to reconcile with “right to be forgotten”, and the jury is out on whether a person’s identifiers are considered personal data (literally).</p>
+<p>For these reasons, it is <strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>not advisable</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong> to upgrade DIDs controlled by wallets whose holders are natural persons (in other words, DIDs whose subjects are persons). If doing so is important for your use case, we strongly recommend you work with legal counsel to understand all of the implications before doing so.</p>
+<p><strong>Fees</strong></p>
+<p>Depending on the DID method chosen, registering a DID may incur a transaction fee, which is different for each ledger. <strong>You are responsible for these fees.</strong> Documentation of these fees will be visible through our Dashboard and on our pricing page. You should keep this in mind before you programmatically upgrade DIDs through the API.</p>
+<p><strong>Resolution</strong></p>
+<p>Newly-registered DIDs may not be immediately resolvable, as distributed ledgers typically cannot provide instantaneous writes. Issuance and verification of credentials against these DIDs will still function during this time, but only within the Trinsic platform.</p>
 
 
 

@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.trinsic.id/dotnet/">
+        <link rel="canonical" href="https://docs.trinsic.id/learn/resources/migrate/">
       
       
-        <link rel="prev" href="../node/">
+        <link rel="prev" href="../../../walkthroughs/vaccination/">
       
       
-        <link rel="next" href="../python/">
+        <link rel="next" href="../interactive-api/">
       
       
         
       
       
-      <link rel="icon" href="../_static/logo.png">
+      <link rel="icon" href="../../../_static/logo.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6+insiders-4.32.5">
     
     
       
-        <title>C# - Documentation</title>
+        <title>Migration Guidelines - Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.dc5b59cc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.dc5b59cc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.6932e648.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.6932e648.min.css">
       
       
 
@@ -48,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css">
     
-      <link rel="stylesheet" href="../_static/extra.css">
+      <link rel="stylesheet" href="../../../_static/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-trinsic-c-net-sdk" class="md-skip">
+        <a href="#migration-guidelines" class="md-skip">
           Skip to content
         </a>
       
@@ -103,9 +103,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../_static/logo-title.svg" alt="logo">
+  <img src="../../../_static/logo-title.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              C#
+              Migration Guidelines
             
           </span>
         </div>
@@ -212,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -227,11 +227,13 @@
         
   
   
+    
+  
   
     
     
       <li class="md-tabs__item">
-        <a href="../learn/" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
           
   
   Learn
@@ -245,13 +247,11 @@
         
   
   
-    
-  
   
     
     
       <li class="md-tabs__item">
-        <a href="../cli/" class="md-tabs__link md-tabs__link--active">
+        <a href="../../../cli/" class="md-tabs__link">
           
   
   Tools & SDKs
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../reference/" class="md-tabs__link">
+        <a href="../../../reference/" class="md-tabs__link">
           
   
   Reference
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../roadmap/" class="md-tabs__link">
+        <a href="../../../roadmap/" class="md-tabs__link">
           
   
   Resources
@@ -328,9 +328,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../_static/logo-title.svg" alt="logo">
+  <img src="../../../_static/logo-title.svg" alt="logo">
 
     </a>
     Documentation
@@ -356,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -379,17 +379,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -408,7 +410,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -425,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -497,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/ecosystems/" class="md-nav__link">
+      <a href="../../concepts/ecosystems/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -523,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/wallets/" class="md-nav__link">
+      <a href="../../concepts/wallets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/credentials/" class="md-nav__link">
+      <a href="../../concepts/credentials/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/verifications/" class="md-nav__link">
+      <a href="../../concepts/verifications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/templates/" class="md-nav__link">
+      <a href="../../concepts/templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -627,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/dids/" class="md-nav__link">
+      <a href="../../concepts/dids/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -653,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/trust-registries/" class="md-nav__link">
+      <a href="../../concepts/trust-registries/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -679,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/json-ld/" class="md-nav__link">
+      <a href="../../concepts/json-ld/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -759,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/platform/standards/" class="md-nav__link">
+      <a href="../../platform/standards/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/platform/security/" class="md-nav__link">
+      <a href="../../platform/security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -865,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../walkthroughs/vaccination/" class="md-nav__link">
+      <a href="../../../walkthroughs/vaccination/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -897,19 +899,21 @@
                 
   
   
+    
+  
   
     
     
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
@@ -928,7 +932,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -943,9 +947,35 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../learn/resources/migrate/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration Guidelines
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -960,6 +990,153 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivations-to-build-the-new-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motivations to build the new platform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-should-consider-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who should consider migration?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepts Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organizations-and-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organizations and Tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-wallets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Wallets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ledgers-and-decentralized-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ledgers and Decentralized Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credential-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credential Formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anoncreds-vs-bbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anoncreds vs BBS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revocation-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revocation Registries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's next?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -971,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/resources/interactive-api/" class="md-nav__link">
+      <a href="../interactive-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1010,19 +1187,17 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
@@ -1041,7 +1216,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1058,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../../cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1130,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../web/" class="md-nav__link">
+      <a href="../../../web/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1156,7 +1331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ios/" class="md-nav__link">
+      <a href="../../../ios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1182,7 +1357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../android/" class="md-nav__link">
+      <a href="../../../android/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1214,21 +1389,19 @@
                 
   
   
-    
-  
   
     
     
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
@@ -1247,7 +1420,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1264,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../node/" class="md-nav__link">
+      <a href="../../../node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1288,35 +1461,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    
-  
-    C#
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../dotnet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1331,48 +1478,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation-in-a-new-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation in a new project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1384,7 +1489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1410,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go/" class="md-nav__link">
+      <a href="../../../go/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1436,7 +1541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/" class="md-nav__link">
+      <a href="../../../java/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1521,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../../reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1593,7 +1698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/account-service/" class="md-nav__link">
+      <a href="../../../reference/services/account-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1619,7 +1724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/credential-service/" class="md-nav__link">
+      <a href="../../../reference/services/credential-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1645,7 +1750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/file-management-service/" class="md-nav__link">
+      <a href="../../../reference/services/file-management-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1671,7 +1776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/provider-service/" class="md-nav__link">
+      <a href="../../../reference/services/provider-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1697,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/template-service/" class="md-nav__link">
+      <a href="../../../reference/services/template-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1723,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/trust-registry-service/" class="md-nav__link">
+      <a href="../../../reference/services/trust-registry-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1749,7 +1854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/wallet-service/" class="md-nav__link">
+      <a href="../../../reference/services/wallet-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1775,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/proto/" class="md-nav__link">
+      <a href="../../../reference/proto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1855,7 +1960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/other/openid/" class="md-nav__link">
+      <a href="../../../reference/other/openid/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1889,7 +1994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/events/" class="md-nav__link">
+      <a href="../../../reference/events/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1966,7 +2071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roadmap/" class="md-nav__link">
+      <a href="../../../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1992,7 +2097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../support/" class="md-nav__link">
+      <a href="../../../support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2091,59 +2196,173 @@
   
 
 
-<h1 id="the-trinsic-c-net-sdk">The Trinsic C# / .NET SDK<a class="headerlink" href="#the-trinsic-c-net-sdk" title="Permanent link">&para;</a></h1>
-<p>The Trinsic C# / .NET SDK makes it easy to interact with the Trinsic API from your .NET application. The most recent version of the library can be found on NuGet. The Trinsic SDK supports .NET applications written in C#, VB.NET, and F# that utilize any supported version of .NET Core. You can also find the SDKs source on <a href="https://github.com/trinsic-id/sdk/dotnet">Github</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Supported runtimes</p>
-<p>.NET targets for iOS, Android, and Blazor are fully supported using the same package dependencies via .NET 6.</p>
+<h1 id="migration-guidelines">Migration Guidelines<a class="headerlink" href="#migration-guidelines" title="Permanent link">&para;</a></h1>
+<p>This document outlines the differences between our existing platform based on Hyperledger Aries and our next-gen identity infrastructure known as Ecosystems. The intended audience of this document is technical business decision makers or solution architects who are looking to migrate their existing integration. For everyone else, this can also be a good source of information with comparsion between the two platforms. Please feel free to <a href="/support">reach out to us</a> or ask any questions in our <a href="https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ">Slack Community</a> channels.</p>
+<h2 id="motivations-to-build-the-new-platform">Motivations to build the new platform<a class="headerlink" href="#motivations-to-build-the-new-platform" title="Permanent link">&para;</a></h2>
+<p><strong>Open standards and protocols</strong> &mdash; One of the critical decisions to create our new platform was the ability to use standardized data models. The <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials Data Model</a> was an important milestone that standardized the data exchange format. The use of Decentralized Identifiers was another important step in building solutions that will work with community supported specifications. The tight coupling of Anoncreds with the wallet, communication, and ledger layers proved to be very challenging to iterate on. While projects like Anoncreds and DIDComm that started in Indy are now on a standards track, the success of our customers in production required prioritizing existing W3C, OIDC, and other standards first.</p>
+<p><strong>Cryptographic suites performance and extensibility</strong> &mdash; To provide developers the best experience possible, we needed to be able to introduce different cryptographic schemes with a standardized model in order to support different data workflows. The Data Integrity and JOSE proof formats work well with the VC model and allow extensibility and use of different cryptographic suites.</p>
+<p><strong>Scalability concerns and technology lock-in</strong> &mdash; Through rigorous testing, including with customers in production, we encountered concerning scalability issues with ledger throughput for Indy Node and the indy-sdk. The complexity introduced by requiring certain artifacts to be written to a specific ledger exasperated the problem. In addition, the inflexibility of the architecture of the open source implementations made it difficult to extend our platform or build customized experiences, and we found the efforts by the open source community to address these problems lacking.</p>
+<p><strong>Ledger costs and transaction fees</strong> &mdash; The high costs to write data to production Indy ledgers, and the difficulty in forecasting those costs, was a significant barrier for many developers going to production. In addition, we found the centralized governance of existing production Indy ledgers to result in "rug-pulls", "single points of failure", and sustainability concerns that introduced additional risks for developers in building a business on those networks.</p>
+<p><strong>Customized wallet experience</strong> &mdash; The developers in our community consistently wanted something the Aries-based platform couldn't provide--a platform for building a customized wallet experience for their end-users, whether in a standalone wallet product or embedded into an existing product. Strong wallet products need features like cross-device synchronization, multi-language SDK support, small SDK size, offline support, all while keeping the highest security standards. See our documentation on <a href="/learn/concepts/wallets">Wallets</a> for more.</p>
+<h2 id="who-should-consider-migration">Who should consider migration?<a class="headerlink" href="#who-should-consider-migration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Teams looking to manage their own identity data in the ecosystem</li>
+<li>Your solution requires support for ecosystem governance</li>
+<li>You are looking to use open standard and need interoperability with VC, JWT, or OIDC</li>
+<li>Teams looking to reduce transaction costs of writing to decentralized ledgers</li>
+<li>Developers looking to provide custom wallet experience or customized integration</li>
+</ul>
+<h2 id="concepts-comparison">Concepts Comparison<a class="headerlink" href="#concepts-comparison" title="Permanent link">&para;</a></h2>
+<p>Direct comparsions of technical details between the two platforms may be enclosed in <strong>colored blocks</strong> as shown below:</p>
+<div class="admonition cite">
+<p>Description of concepts as found in our <strong>existing</strong> platform</p>
 </div>
-<h2 id="installation-in-a-new-project">Installation in a new project<a class="headerlink" href="#installation-in-a-new-project" title="Permanent link">&para;</a></h2>
-<p>Add the required dependencies from <a href="https://www.nuget.org/packages/Trinsic">Nuget.org <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Package Manager</label><label for="__tabbed_1_2">.NET CLI</label><label for="__tabbed_1_3">PackageReference</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>PM&gt; Install-Package Trinsic
-</code></pre></div>
+<div class="admonition success">
+<p>Description of concepts as found in our <strong>new</strong> platform</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>dotnet<span class="w"> </span>add<span class="w"> </span>package<span class="w"> </span>Trinsic
-</code></pre></div>
+<p>Let's take a deeper look of how different problems and concepts map between the existing and new platform.</p>
+<ul>
+<li><a href="#migration-guidelines">Migration Guidelines</a></li>
+<li><a href="#motivations-to-build-the-new-platform">Motivations to build the new platform</a></li>
+<li><a href="#who-should-consider-migration">Who should consider migration?</a></li>
+<li><a href="#concepts-comparison">Concepts Comparison</a><ul>
+<li><a href="#organizations-and-tenants">Organizations and Tenants</a></li>
+<li><a href="#identity-wallets">Identity Wallets</a></li>
+<li><a href="#ledgers-and-decentralized-infrastructure">Ledgers and Decentralized Infrastructure</a></li>
+<li><a href="#credential-formats">Credential Formats</a></li>
+<li><a href="#anoncreds-vs-bbs">Anoncreds vs BBS</a></li>
+<li><a href="#revocation-registries">Revocation Registries</a></li>
+<li><a href="#verification-workflows">Verification Workflows</a></li>
+<li><a href="#whats-next">What's next?</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="organizations-and-tenants">Organizations and Tenants<a class="headerlink" href="#organizations-and-tenants" title="Permanent link">&para;</a></h3>
+<p>The concept of an organization (or tenant) as a top level scope of identity network is now represented as a more expanded concept of an ecosystem.
+Ecosystems represent your enterprise network as an established model of relationships between different entities. Providers define the contracts of how verifiable data can be exchanged and governed in an ecosystem. Individual holders of credentials will be assigned a wallet within the scope of an ecosystem.</p>
+<div class="admonition cite">
+<p>Managed through <a href="https://docs.trinsic.id/reference/createtenant-1">Provider API</a> endpoints</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>&lt;PackageReference Include=&quot;Trinsic&quot; /&gt;
-</code></pre></div>
+<div class="admonition success">
+<p>Managed through <a href="/reference/services/provider-service/">Provider Service</a> SDK</p>
 </div>
+<h3 id="identity-wallets">Identity Wallets<a class="headerlink" href="#identity-wallets" title="Permanent link">&para;</a></h3>
+<p>In our existing platform, our customers needed to choose between requiring end-users to download a standalone wallet to self-manage their credentials and keys on their mobile device, or use our Wallet API to create a purely custodial service. The former had the security advantage of all private material being stored on the user's device, but comes with the cost of backup &amp; recovery questions, inability to access data from secondary devices/browers, and difficulty embedding into existing applications. The latter afforded a fantastic developer experience (indeed, 95% of developers chose this option to ship products quickly) but introduced a less-than-ideal security profile, and was inaccessible in an offline setting.</p>
+<p>Our new platform uses hyrbid wallets with cloud-hosted credential storage and edge-managed access security through our SDK. Wallet data is accessed through our new API which allows developers to take advantage of a great experience building their own wallet-enabled products as a web app, mobile app, etc.  without compromising on security or offline usage. Custodial wallets also allow us to support more standards and interoperability profiles, leading to better products for our customers.</p>
+<div class="admonition info">
+<p class="admonition-title">Future considerations</p>
+<p>We are actively working to improve the features of our hybrid wallet experience with things like encrypted query/search and the ability to export wallet data to remove lock-in for users.</p>
 </div>
+<h3 id="ledgers-and-decentralized-infrastructure">Ledgers and Decentralized Infrastructure<a class="headerlink" href="#ledgers-and-decentralized-infrastructure" title="Permanent link">&para;</a></h3>
+<p>Our existing platform uses decentralized ledgers based on Indy Node to store credential artifacts in a public network. These artifacts include DIDs, Schemas, Credential Definitions and Revocation Registries. The instances of Indy networks we supported includes Sovrin, Indicio and BCovrin, for production and test workloads.</p>
+<p>The new platform uses decentralized ledgers or blockchains for DIDs only. Schemas and <a href="#revocation-registries">revocation registries</a> use web infrastructure and are published at a well known URL address. The need for credential definitions is removed thanks to improved credential signature schemes. The new platform is built independent of a single network, thus being truly ledger agnostic. Currently supported networks for DIDs are Bitcoin (using layer 2 protocol <a href="https://identity.foundation/sidetree/spec/">Sidetree</a>), Indy, EBSI, with more to come.</p>
+<div class="admonition cite">
+<ul>
+<li>Indy Node based</li>
+<li>Supported networks: Sovrin, Indicio, BCovrin</li>
+</ul>
 </div>
-<p>To register the services with dependency injection pipeline:</p>
-<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">();</span>
-</code></pre></div>
-<p>To configure additional parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTrinsic</span><span class="p">(</span><span class="n">options</span><span class="w"> </span><span class="o">=&gt;</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// to configure the service with your auth token</span>
-<span class="w">    </span><span class="n">options</span><span class="p">.</span><span class="n">ServiceOptions</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span><span class="p">;</span>
-<span class="p">})</span>
-</code></pre></div>
-<p>The service can then be injected in your controller as</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MyController</span><span class="p">(</span><span class="n">TrinsicService</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="c1">// init</span>
+<div class="admonition success">
+<ul>
+<li>Self-asserting identifiers</li>
+<li>Bitcoin layer 2 using Sidetree</li>
+<li>Indy Node based</li>
+<li>EBSI</li>
+</ul>
+</div>
+<h3 id="credential-formats">Credential Formats<a class="headerlink" href="#credential-formats" title="Permanent link">&para;</a></h3>
+<p>Credential formats were generally represented as a collection of attributes defined with a schema and version. The schemas were represented with a schema ID like <code>Gs6cQcvrtWoZKsbBhD3dQJ:2:Certificate of Attendance:2.0</code>. This schema contains attributes and is associated with a <a href="https://indyscan.io/tx/SOVRIN_MAINNET/domain/151840">transaction on the ledger</a>. The flat schemas do not support any heirarchy, severely limiting the use cases they are suited for.</p>
+<p>Under the new model, schemas are part of a credential template and are represented as a standard JSON schema where each attribute can be defined with a specific data type and extended properties. Additionally, templates reference a JSON-LD vocabulary which adds semantic definition of each attribute under the Linked Data guidelines. This vocabulary is used during the process of issuance and verification of credentials, technically known as data canonicalization.
+The schemas are not written on a ledger, they are instead published as a web resource with a static URL.</p>
+<div class="admonition cite">
+<ul>
+<li>Schemas are represented as JSON array of attribute names</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identity Card&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;attr_names&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;lastName&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;dateOfBirth&quot;</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Alternatively, you can simply instantiate this service with or without parameters</p>
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">();</span>
-
-<span class="c1">// or</span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ServiceOptions</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">AuthToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;auth_token&gt;&quot;</span>
-<span class="p">});</span>
+<ul>
+<li>Credential definitions are required and their value must be written on the ledger</li>
+<li>Data structure supports flat hierarchy</li>
+<li>Schema ID is identifier <code>Gs6cQcvrtWoZKsbBhD3dQJ:2:Certificate of Attendance:2.0</code></li>
+</ul>
+</div>
+<div class="admonition success">
+<ul>
+<li>Schemas are JSON objects</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.trinsic.cloud/default/identity-card&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;firstName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First or given name&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;lastName&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Last or family name&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;dateOfBirth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Once the .NET SDK package is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>
-<p><a class="md-button md-button--primary" href="../walkthroughs/vaccination/">Start Walkthrough</a> <a class="md-button" href="../reference/">Explore API</a> <a class="md-button" href="../reference/">C# API Reference</a></p>
+<ul>
+<li>No credential definition required</li>
+<li>Data structure can be any complex JSON graph</li>
+<li>Schema ID is URL <code>https://schema.trinsic.cloud/default/identity-card</code></li>
+</ul>
+</div>
+<h3 id="anoncreds-vs-bbs">Anoncreds vs BBS<a class="headerlink" href="#anoncreds-vs-bbs" title="Permanent link">&para;</a></h3>
+<p>Our existing platform uses the cryptographic suite <a href="https://hyperledger-indy.readthedocs.io/projects/sdk/en/latest/docs/design/002-anoncreds/README.html">Anoncreds</a> to provide different credential exchange solutions. In our new platform, we introduced <a href="https://www.ietf.org/archive/id/draft-looker-cfrg-bbs-signatures-01.html">BBS signatures</a>, as a replacement for Anoncreds. The main motivating factors for this are:</p>
+<ul>
+<li>Standardized data models for the signature suites using <a href="https://json-schema.org">JSON Schema</a> and <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials</a></li>
+<li>Fast and small signature size (cryptographic signatures based on pairing-friendly curves)</li>
+<li>No setup required (Anoncreds require creating credential definition which is very slow and requires ledger write)</li>
+<li>Flexible proof format (Data Integrity, JOSE)</li>
+</ul>
+<h3 id="revocation-registries">Revocation Registries<a class="headerlink" href="#revocation-registries" title="Permanent link">&para;</a></h3>
+<p>Revocation in our existing platform uses Anoncreds with RSA accumulator. This is a powerful, privacy preserving solution, but cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, writing to the ledger whenever credentials are revoked, publishing a tails file on a web resource, and layering workarounds on top to make it all scalable. Even after all of this, the performance of holders creating non-revocation proofs was below an acceptable level for production use.</p>
+<p>Our new platform uses a more flexible solution based on <a href="https://w3c-ccg.github.io/vc-status-list-2021/">Status List</a>. This approach is based on a W3C community published specification with a much simpler and flexible approach to revocation, albeit without the same privacy guarantees.</p>
+<div class="admonition info">
+<p class="admonition-title">Future considerations</p>
+<p>At the time of writing this article, we are actively looking to add support for additional revocation solutions, such as one based on accumulators for pairing-friendly curves. These are significant improvements over RSA accumulators with an improvement in data privacy, performance and scalability.</p>
+</div>
+<h3 id="verification-workflows">Verification Workflows<a class="headerlink" href="#verification-workflows" title="Permanent link">&para;</a></h3>
+<p>In our existing platform we use Aries protocols to exchange data between two parties. To verify a credential, the verifier must prepare a verification request and communicate this to the user via URL (or QR code). The holder then resolves the URL (or scans the code) to respond to the request, most often through use of a mobile app.</p>
+<p>Our new platform is intended to support a broader set of verification options for developers, including widely-adopted protocols such as OpenID Connect. Today we support an interactive protocol based on <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentations</a> (OIDC4VP). During verification, the holder is redirected to Trinsic's OIDC provider (which can be customized on a per-ecosystem basis) which allows the user access to their identity wallet to respond to the verification request. We'll continue to support additional verification protocols as they're needed by our customers to succeed in production.</p>
+<div class="admonition cite">
+<p>An example verification request payload</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification-request&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">&quot;policyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verify-name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;attributeNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;firstName&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;restrictions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="nt">&quot;issuerID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">        </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">&quot;predicates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;revocationRequirement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;validNow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition success">
+<p>Example OIDC request for verifiable presentation</p>
+<div class="highlight"><pre><span></span><code>GET https://connect.trinsic.cloud/authorize?
+    &amp;response_type=code
+    &amp;scope=openid
+    &amp;client_id=client01
+    &amp;trinsic%3Aecosystem=example
+    &amp;redirect_uri=https://example.com/callback
+    &amp;nonce=n-0S6_WzA2Mj HTTP/1.1
+</code></pre></div>
+</div>
+<h3 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h3>
+<p>If you're looking to do a migration and need help, please drop us a line on <a href="https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ">Slack</a> or Intercom. Otherwise, feel free to explore our documentation, try the Getting Started guide or watch an introductory video.</p>
 
 
 
@@ -2211,18 +2430,18 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.803ed251.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.803ed251.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
-        <script src="../_static/javascripts/config.js"></script>
+        <script src="../../../_static/javascripts/config.js"></script>
       
-        <script src="../_static/javascripts/proto_functionality.js"></script>
+        <script src="../../../_static/javascripts/proto_functionality.js"></script>
       
-        <script src="../_static/javascripts/tab_sync.js"></script>
+        <script src="../../../_static/javascripts/tab_sync.js"></script>
       
     
   </body>
