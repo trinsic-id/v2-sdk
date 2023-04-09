@@ -1,12 +1,10 @@
 # Verifications
 
-“Verifications” are the mechanism for requesting, consenting, and authenticating data from the verifiable credentials in an identity wallet. Designing the way verifications will be done in your ecosystem is arguably the most important step in creating a successful IDtech product.
+Creating [Verifiable Credentials](https://docs.trinsic.id/learn/concepts/credentials/) involves generating **cryptographic** proofs that can be used to verify the authenticity of the VC. Digital signatures are generated using the issuer’s private key and these are used to create the proofs. When a verifier receives a VC, they can use the issuer’s public key to verify the credential’s signature and ensure that it hasn’t been tampered with. This allows information to be shared in a secure and trustworthy way between parties.
+
+Designing the way verifications will be done in your ecosystem is arguably the most important step in creating a successful IDtech product. Verifications are privacy-preserving proofs of data inside a VC. 
 
 A verification is an abstraction provided by Trinsic that makes it easy to utilize W3C-conformant [Verifiable Presentations](https://www.w3.org/TR/vc-data-model/#presentations), [OpenID Connect](https://openid.net/specs/openid-connect-4-verifiable-presentations-1_0-08.html), zero-knowledge proofs, and other identity specifications without having to spend months becoming an expert or writing your own implementation. For more on the standards we use, see our Standards page.
-
-## Components of a verification
-
-“Verifications” are privacy-preserving proofs of data inside a VC. 
 
 ## Zero-knowledge proofs
 

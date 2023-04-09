@@ -15,7 +15,6 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
   }
 
   private CreateWalletResponse() {
-    walletId_ = "";
     authToken_ = "";
     tokenId_ = "";
   }
@@ -44,55 +43,6 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
         .ensureFieldAccessorsInitialized(
             trinsic.services.universalwallet.v1.CreateWalletResponse.class,
             trinsic.services.universalwallet.v1.CreateWalletResponse.Builder.class);
-  }
-
-  public static final int WALLET_ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object walletId_;
-  /**
-   *
-   *
-   * <pre>
-   * Wallet ID of the newly created wallet
-   * </pre>
-   *
-   * <code>string wallet_id = 1;</code>
-   *
-   * @return The walletId.
-   */
-  @java.lang.Override
-  public java.lang.String getWalletId() {
-    java.lang.Object ref = walletId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      walletId_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Wallet ID of the newly created wallet
-   * </pre>
-   *
-   * <code>string wallet_id = 1;</code>
-   *
-   * @return The bytes for walletId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getWalletIdBytes() {
-    java.lang.Object ref = walletId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      walletId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
   }
 
   public static final int AUTH_TOKEN_FIELD_NUMBER = 2;
@@ -193,6 +143,54 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
     }
   }
 
+  public static final int WALLET_FIELD_NUMBER = 4;
+  private trinsic.services.provider.v1.WalletConfiguration wallet_;
+  /**
+   *
+   *
+   * <pre>
+   * Wallet configuration
+   * </pre>
+   *
+   * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+   *
+   * @return Whether the wallet field is set.
+   */
+  @java.lang.Override
+  public boolean hasWallet() {
+    return wallet_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Wallet configuration
+   * </pre>
+   *
+   * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+   *
+   * @return The wallet.
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.WalletConfiguration getWallet() {
+    return wallet_ == null
+        ? trinsic.services.provider.v1.WalletConfiguration.getDefaultInstance()
+        : wallet_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Wallet configuration
+   * </pre>
+   *
+   * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.WalletConfigurationOrBuilder getWalletOrBuilder() {
+    return getWallet();
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -207,14 +205,14 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, walletId_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(authToken_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authToken_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tokenId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, tokenId_);
+    }
+    if (wallet_ != null) {
+      output.writeMessage(4, getWallet());
     }
     getUnknownFields().writeTo(output);
   }
@@ -225,14 +223,14 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, walletId_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(authToken_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authToken_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tokenId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, tokenId_);
+    }
+    if (wallet_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getWallet());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -250,9 +248,12 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
     trinsic.services.universalwallet.v1.CreateWalletResponse other =
         (trinsic.services.universalwallet.v1.CreateWalletResponse) obj;
 
-    if (!getWalletId().equals(other.getWalletId())) return false;
     if (!getAuthToken().equals(other.getAuthToken())) return false;
     if (!getTokenId().equals(other.getTokenId())) return false;
+    if (hasWallet() != other.hasWallet()) return false;
+    if (hasWallet()) {
+      if (!getWallet().equals(other.getWallet())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -264,12 +265,14 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getWalletId().hashCode();
     hash = (37 * hash) + AUTH_TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getAuthToken().hashCode();
     hash = (37 * hash) + TOKEN_ID_FIELD_NUMBER;
     hash = (53 * hash) + getTokenId().hashCode();
+    if (hasWallet()) {
+      hash = (37 * hash) + WALLET_FIELD_NUMBER;
+      hash = (53 * hash) + getWallet().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -401,12 +404,16 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      walletId_ = "";
-
       authToken_ = "";
 
       tokenId_ = "";
 
+      if (walletBuilder_ == null) {
+        wallet_ = null;
+      } else {
+        wallet_ = null;
+        walletBuilder_ = null;
+      }
       return this;
     }
 
@@ -434,9 +441,13 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
     public trinsic.services.universalwallet.v1.CreateWalletResponse buildPartial() {
       trinsic.services.universalwallet.v1.CreateWalletResponse result =
           new trinsic.services.universalwallet.v1.CreateWalletResponse(this);
-      result.walletId_ = walletId_;
       result.authToken_ = authToken_;
       result.tokenId_ = tokenId_;
+      if (walletBuilder_ == null) {
+        result.wallet_ = wallet_;
+      } else {
+        result.wallet_ = walletBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -487,10 +498,6 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
     public Builder mergeFrom(trinsic.services.universalwallet.v1.CreateWalletResponse other) {
       if (other == trinsic.services.universalwallet.v1.CreateWalletResponse.getDefaultInstance())
         return this;
-      if (!other.getWalletId().isEmpty()) {
-        walletId_ = other.walletId_;
-        onChanged();
-      }
       if (!other.getAuthToken().isEmpty()) {
         authToken_ = other.authToken_;
         onChanged();
@@ -498,6 +505,9 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
       if (!other.getTokenId().isEmpty()) {
         tokenId_ = other.tokenId_;
         onChanged();
+      }
+      if (other.hasWallet()) {
+        mergeWallet(other.getWallet());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -525,12 +535,6 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                walletId_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
             case 18:
               {
                 authToken_ = input.readStringRequireUtf8();
@@ -543,6 +547,12 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
 
                 break;
               } // case 26
+            case 34:
+              {
+                input.readMessage(getWalletFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 34
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -557,112 +567,6 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
       } finally {
         onChanged();
       } // finally
-      return this;
-    }
-
-    private java.lang.Object walletId_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Wallet ID of the newly created wallet
-     * </pre>
-     *
-     * <code>string wallet_id = 1;</code>
-     *
-     * @return The walletId.
-     */
-    public java.lang.String getWalletId() {
-      java.lang.Object ref = walletId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        walletId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Wallet ID of the newly created wallet
-     * </pre>
-     *
-     * <code>string wallet_id = 1;</code>
-     *
-     * @return The bytes for walletId.
-     */
-    public com.google.protobuf.ByteString getWalletIdBytes() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        walletId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Wallet ID of the newly created wallet
-     * </pre>
-     *
-     * <code>string wallet_id = 1;</code>
-     *
-     * @param value The walletId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setWalletId(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      walletId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Wallet ID of the newly created wallet
-     * </pre>
-     *
-     * <code>string wallet_id = 1;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearWalletId() {
-
-      walletId_ = getDefaultInstance().getWalletId();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Wallet ID of the newly created wallet
-     * </pre>
-     *
-     * <code>string wallet_id = 1;</code>
-     *
-     * @param value The bytes for walletId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setWalletIdBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      walletId_ = value;
-      onChanged();
       return this;
     }
 
@@ -876,6 +780,192 @@ public final class CreateWalletResponse extends com.google.protobuf.GeneratedMes
       tokenId_ = value;
       onChanged();
       return this;
+    }
+
+    private trinsic.services.provider.v1.WalletConfiguration wallet_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.provider.v1.WalletConfiguration,
+            trinsic.services.provider.v1.WalletConfiguration.Builder,
+            trinsic.services.provider.v1.WalletConfigurationOrBuilder>
+        walletBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     *
+     * @return Whether the wallet field is set.
+     */
+    public boolean hasWallet() {
+      return walletBuilder_ != null || wallet_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     *
+     * @return The wallet.
+     */
+    public trinsic.services.provider.v1.WalletConfiguration getWallet() {
+      if (walletBuilder_ == null) {
+        return wallet_ == null
+            ? trinsic.services.provider.v1.WalletConfiguration.getDefaultInstance()
+            : wallet_;
+      } else {
+        return walletBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     */
+    public Builder setWallet(trinsic.services.provider.v1.WalletConfiguration value) {
+      if (walletBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        wallet_ = value;
+        onChanged();
+      } else {
+        walletBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     */
+    public Builder setWallet(
+        trinsic.services.provider.v1.WalletConfiguration.Builder builderForValue) {
+      if (walletBuilder_ == null) {
+        wallet_ = builderForValue.build();
+        onChanged();
+      } else {
+        walletBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     */
+    public Builder mergeWallet(trinsic.services.provider.v1.WalletConfiguration value) {
+      if (walletBuilder_ == null) {
+        if (wallet_ != null) {
+          wallet_ =
+              trinsic.services.provider.v1.WalletConfiguration.newBuilder(wallet_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          wallet_ = value;
+        }
+        onChanged();
+      } else {
+        walletBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     */
+    public Builder clearWallet() {
+      if (walletBuilder_ == null) {
+        wallet_ = null;
+        onChanged();
+      } else {
+        wallet_ = null;
+        walletBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     */
+    public trinsic.services.provider.v1.WalletConfiguration.Builder getWalletBuilder() {
+
+      onChanged();
+      return getWalletFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     */
+    public trinsic.services.provider.v1.WalletConfigurationOrBuilder getWalletOrBuilder() {
+      if (walletBuilder_ != null) {
+        return walletBuilder_.getMessageOrBuilder();
+      } else {
+        return wallet_ == null
+            ? trinsic.services.provider.v1.WalletConfiguration.getDefaultInstance()
+            : wallet_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Wallet configuration
+     * </pre>
+     *
+     * <code>.services.provider.v1.WalletConfiguration wallet = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.provider.v1.WalletConfiguration,
+            trinsic.services.provider.v1.WalletConfiguration.Builder,
+            trinsic.services.provider.v1.WalletConfigurationOrBuilder>
+        getWalletFieldBuilder() {
+      if (walletBuilder_ == null) {
+        walletBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.provider.v1.WalletConfiguration,
+                trinsic.services.provider.v1.WalletConfiguration.Builder,
+                trinsic.services.provider.v1.WalletConfigurationOrBuilder>(
+                getWallet(), getParentForChildren(), isClean());
+        wallet_ = null;
+      }
+      return walletBuilder_;
     }
 
     @java.lang.Override

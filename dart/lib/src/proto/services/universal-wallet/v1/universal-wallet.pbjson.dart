@@ -195,26 +195,48 @@ const CreateWalletRequest$json = const {
   '1': 'CreateWalletRequest',
   '2': const [
     const {'1': 'ecosystem_id', '3': 1, '4': 1, '5': 9, '10': 'ecosystemId'},
-    const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
+    const {
+      '1': 'description',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '9': 0,
+      '10': 'description',
+      '17': true
+    },
+  ],
+  '8': const [
+    const {'1': '_description'},
   ],
 };
 
 /// Descriptor for `CreateWalletRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createWalletRequestDescriptor = $convert.base64Decode(
-    'ChNDcmVhdGVXYWxsZXRSZXF1ZXN0EiEKDGVjb3N5c3RlbV9pZBgBIAEoCVILZWNvc3lzdGVtSWQSIAoLZGVzY3JpcHRpb24YAiABKAlSC2Rlc2NyaXB0aW9u');
+    'ChNDcmVhdGVXYWxsZXRSZXF1ZXN0EiEKDGVjb3N5c3RlbV9pZBgBIAEoCVILZWNvc3lzdGVtSWQSKwoLZGVzY3JpcHRpb24YAiABKAlCBICmHQFIAFILZGVzY3JpcHRpb26IAQFCDgoMX2Rlc2NyaXB0aW9u');
 @$core.Deprecated('Use createWalletResponseDescriptor instead')
 const CreateWalletResponse$json = const {
   '1': 'CreateWalletResponse',
   '2': const [
-    const {'1': 'wallet_id', '3': 1, '4': 1, '5': 9, '10': 'walletId'},
     const {'1': 'auth_token', '3': 2, '4': 1, '5': 9, '10': 'authToken'},
     const {'1': 'token_id', '3': 3, '4': 1, '5': 9, '10': 'tokenId'},
+    const {
+      '1': 'wallet',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.WalletConfiguration',
+      '10': 'wallet'
+    },
+  ],
+  '9': const [
+    const {'1': 1, '2': 2},
   ],
 };
 
 /// Descriptor for `CreateWalletResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createWalletResponseDescriptor = $convert.base64Decode(
-    'ChRDcmVhdGVXYWxsZXRSZXNwb25zZRIbCgl3YWxsZXRfaWQYASABKAlSCHdhbGxldElkEh0KCmF1dGhfdG9rZW4YAiABKAlSCWF1dGhUb2tlbhIZCgh0b2tlbl9pZBgDIAEoCVIHdG9rZW5JZA==');
+    'ChRDcmVhdGVXYWxsZXRSZXNwb25zZRIdCgphdXRoX3Rva2VuGAIgASgJUglhdXRoVG9rZW4SGQoIdG9rZW5faWQYAyABKAlSB3Rva2VuSWQSQQoGd2FsbGV0GAQgASgLMikuc2VydmljZXMucHJvdmlkZXIudjEuV2FsbGV0Q29uZmlndXJhdGlvblIGd2FsbGV0SgQIARAC');
 @$core.Deprecated('Use generateAuthTokenRequestDescriptor instead')
 const GenerateAuthTokenRequest$json = const {
   '1': 'GenerateAuthTokenRequest',
@@ -407,6 +429,26 @@ const AddExternalIdentityConfirmResponse$json = const {
 /// Descriptor for `AddExternalIdentityConfirmResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List addExternalIdentityConfirmResponseDescriptor =
     $convert.base64Decode('CiJBZGRFeHRlcm5hbElkZW50aXR5Q29uZmlybVJlc3BvbnNl');
+@$core.Deprecated('Use removeExternalIdentityRequestDescriptor instead')
+const RemoveExternalIdentityRequest$json = const {
+  '1': 'RemoveExternalIdentityRequest',
+  '2': const [
+    const {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
+  ],
+};
+
+/// Descriptor for `RemoveExternalIdentityRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List removeExternalIdentityRequestDescriptor =
+    $convert.base64Decode(
+        'Ch1SZW1vdmVFeHRlcm5hbElkZW50aXR5UmVxdWVzdBIaCghpZGVudGl0eRgBIAEoCVIIaWRlbnRpdHk=');
+@$core.Deprecated('Use removeExternalIdentityResponseDescriptor instead')
+const RemoveExternalIdentityResponse$json = const {
+  '1': 'RemoveExternalIdentityResponse',
+};
+
+/// Descriptor for `RemoveExternalIdentityResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List removeExternalIdentityResponseDescriptor =
+    $convert.base64Decode('Ch5SZW1vdmVFeHRlcm5hbElkZW50aXR5UmVzcG9uc2U=');
 @$core.Deprecated('Use authenticateInitRequestDescriptor instead')
 const AuthenticateInitRequest$json = const {
   '1': 'AuthenticateInitRequest',

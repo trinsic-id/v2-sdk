@@ -9,12 +9,24 @@ public interface WalletConfigurationOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
+   * <pre>
+   * Name/description of the wallet
+   * </pre>
+   *
    * <code>string name = 1;</code>
    *
    * @return The name.
    */
   java.lang.String getName();
   /**
+   *
+   *
+   * <pre>
+   * Name/description of the wallet
+   * </pre>
+   *
    * <code>string name = 1;</code>
    *
    * @return The bytes for name.
@@ -61,12 +73,24 @@ public interface WalletConfigurationOrBuilder
   com.google.protobuf.ByteString getWalletIdBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * The DID of the wallet
+   * </pre>
+   *
    * <code>string public_did = 5;</code>
    *
    * @return The publicDid.
    */
   java.lang.String getPublicDid();
   /**
+   *
+   *
+   * <pre>
+   * The DID of the wallet
+   * </pre>
+   *
    * <code>string public_did = 5;</code>
    *
    * @return The bytes for publicDid.
@@ -147,4 +171,55 @@ public interface WalletConfigurationOrBuilder
    * <code>repeated .services.account.v1.WalletAuthToken auth_tokens = 7;</code>
    */
   trinsic.services.account.v1.WalletAuthTokenOrBuilder getAuthTokensOrBuilder(int index);
+
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @return A list containing the externalIdentities.
+   */
+  java.util.List<java.lang.String> getExternalIdentitiesList();
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @return The count of externalIdentities.
+   */
+  int getExternalIdentitiesCount();
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @param index The index of the element to return.
+   * @return The externalIdentities at the given index.
+   */
+  java.lang.String getExternalIdentities(int index);
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated string external_identities = 8;</code>
+   *
+   * @param index The index of the value to return.
+   * @return The bytes of the externalIdentities at the given index.
+   */
+  com.google.protobuf.ByteString getExternalIdentitiesBytes(int index);
 }

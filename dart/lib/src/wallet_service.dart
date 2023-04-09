@@ -115,9 +115,17 @@ class WalletService extends ServiceBase {
 
   Future<AddExternalIdentityConfirmResponse> addExternalIdentityConfirm(
       AddExternalIdentityConfirmRequest request) async {
-    ///  Confirm identity added to the current wallet using `AddIdentity`
+    ///  Confirm identity added to the current wallet using `AddExternalIdentityInit`
 
     return client.addExternalIdentityConfirm(request,
+        options: await buildMetadata(request: request));
+  }
+
+  Future<RemoveExternalIdentityResponse> removeExternalIdentity(
+      RemoveExternalIdentityRequest request) async {
+    ///  Remove an external identity from the current wallet
+
+    return client.removeExternalIdentity(request,
         options: await buildMetadata(request: request));
   }
 

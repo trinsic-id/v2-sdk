@@ -12,7 +12,8 @@ public interface AddExternalIdentityInitRequestOrBuilder
    *
    *
    * <pre>
-   * Identity to add to the wallet
+   * The user identity to add to the wallet
+   * This can be an email address or phone number (formatted as +[country code][phone number])
    * </pre>
    *
    * <code>string identity = 1;</code>
@@ -24,7 +25,8 @@ public interface AddExternalIdentityInitRequestOrBuilder
    *
    *
    * <pre>
-   * Identity to add to the wallet
+   * The user identity to add to the wallet
+   * This can be an email address or phone number (formatted as +[country code][phone number])
    * </pre>
    *
    * <code>string identity = 1;</code>
@@ -34,12 +36,24 @@ public interface AddExternalIdentityInitRequestOrBuilder
   com.google.protobuf.ByteString getIdentityBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * The type of identity provider, like EMAIL or PHONE
+   * </pre>
+   *
    * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
    *
    * @return The enum numeric value on the wire for provider.
    */
   int getProviderValue();
   /**
+   *
+   *
+   * <pre>
+   * The type of identity provider, like EMAIL or PHONE
+   * </pre>
+   *
    * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
    *
    * @return The provider.

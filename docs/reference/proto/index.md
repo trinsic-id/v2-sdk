@@ -34,7 +34,8 @@ Service for managing wallets
 | GenerateAuthToken | [GenerateAuthTokenRequest](/reference/proto#services-universalwallet-v1-GenerateAuthTokenRequest) | [GenerateAuthTokenResponse](/reference/proto#services-universalwallet-v1-GenerateAuthTokenResponse) | Generate new token for a given wallet and add it to the collection of known auth tokens. This endpoint requires authentication and will return a new token ID and auth token. Use this endpoint if you want to authorize another device, without having to share your existing auth token. |
 | RevokeAuthToken | [RevokeAuthTokenRequest](/reference/proto#services-universalwallet-v1-RevokeAuthTokenRequest) | [RevokeAuthTokenResponse](/reference/proto#services-universalwallet-v1-RevokeAuthTokenResponse) | Revokes a previously issued auth token and updates the collection of known auth tokens. This endpoint requires authentication. |
 | AddExternalIdentityInit | [AddExternalIdentityInitRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitRequest) | [AddExternalIdentityInitResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitResponse) | Add new external identity to the current wallet, such as email, sms, ethereum address, etc. This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc. |
-| AddExternalIdentityConfirm | [AddExternalIdentityConfirmRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmRequest) | [AddExternalIdentityConfirmResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmResponse) | Confirm identity added to the current wallet using `AddIdentity` |
+| AddExternalIdentityConfirm | [AddExternalIdentityConfirmRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmRequest) | [AddExternalIdentityConfirmResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmResponse) | Confirm identity added to the current wallet using `AddExternalIdentityInit` |
+| RemoveExternalIdentity | [RemoveExternalIdentityRequest](/reference/proto#services-universalwallet-v1-RemoveExternalIdentityRequest) | [RemoveExternalIdentityResponse](/reference/proto#services-universalwallet-v1-RemoveExternalIdentityResponse) | Remove an external identity from the current wallet |
 | AuthenticateInit | [AuthenticateInitRequest](/reference/proto#services-universalwallet-v1-AuthenticateInitRequest) | [AuthenticateInitResponse](/reference/proto#services-universalwallet-v1-AuthenticateInitResponse) | Sign-in to an already existing wallet, using an identity added that was previously registered This endpoint does not require authentication, and will return a challenge to be signed or verified |
 | AuthenticateConfirm | [AuthenticateConfirmRequest](/reference/proto#services-universalwallet-v1-AuthenticateConfirmRequest) | [AuthenticateConfirmResponse](/reference/proto#services-universalwallet-v1-AuthenticateConfirmResponse) | Confirm sign-in to an already existing wallet and return authentication token |
 | ListWallets | [ListWalletsRequest](/reference/proto#services-universalwallet-v1-ListWalletsRequest) | [ListWalletsResponse](/reference/proto#services-universalwallet-v1-ListWalletsResponse) | List all wallets in the ecosystem |
@@ -50,7 +51,7 @@ Service for managing wallets
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| challenge | [string](/reference/proto#string) | The challenge received from the `AddIdentityInit` endpoint |
+| challenge | [string](/reference/proto#string) | The challenge received from the `AddExternalIdentityInit` endpoint |
 | response | [string](/reference/proto#string) | The response to the challenge. If using Email or Phone, this is the OTP code sent to the user's email or phone |
 
 
@@ -76,8 +77,8 @@ Service for managing wallets
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| identity | [string](/reference/proto#string) | Identity to add to the wallet |
-| provider | [IdentityProvider](/reference/proto#services-universalwallet-v1-IdentityProvider) |  |
+| identity | [string](/reference/proto#string) | The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
+| provider | [IdentityProvider](/reference/proto#services-universalwallet-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
 
 
 
@@ -92,7 +93,7 @@ Service for managing wallets
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| challenge | [string](/reference/proto#string) | Challenge to be verified by the user. Pass this challenge back to the `AddIdentityConfirm` endpoint |
+| challenge | [string](/reference/proto#string) | Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint |
 
 
 
@@ -171,7 +172,7 @@ Service for managing wallets
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | ecosystem_id | [string](/reference/proto#string) | Ecosystem ID of the wallet to create |
-| description | [string](/reference/proto#string) | Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, etc. This field is not unique within our platform |
+| description | [string](/reference/proto#string) | Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, or anything you'd like to associate with this wallet. This field is searchable. |
 
 
 
@@ -186,9 +187,9 @@ Service for managing wallets
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of the newly created wallet |
 | auth_token | [string](/reference/proto#string) | Auth token for the newly created wallet |
 | token_id | [string](/reference/proto#string) | Token ID of the newly generated token |
+| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
 
 
 
@@ -420,6 +421,31 @@ Response to `InsertItemRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | wallets | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RemoveExternalIdentityRequest"></a>
+
+### RemoveExternalIdentityRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | The user identity to remove from the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RemoveExternalIdentityResponse"></a>
+
+### RemoveExternalIdentityResponse
+
 
 
 
@@ -2119,13 +2145,14 @@ Strongly typed information about wallet configurations
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) |  |
+| name | [string](/reference/proto#string) | Name/description of the wallet |
 | email | [string](/reference/proto#string) |  |
 | sms | [string](/reference/proto#string) |  |
 | wallet_id | [string](/reference/proto#string) |  |
-| public_did | [string](/reference/proto#string) |  |
+| public_did | [string](/reference/proto#string) | The DID of the wallet |
 | config_type | [string](/reference/proto#string) |  |
 | auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
+| external_identities | [string](/reference/proto#string)[] | List of external identities associated with this wallet. |
 
 
 

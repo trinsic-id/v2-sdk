@@ -2949,6 +2949,11 @@ class WalletConfiguration extends $pb.GeneratedMessage {
             : 'authTokens',
         $pb.PbFieldType.PM,
         subBuilder: $0.WalletAuthToken.create)
+    ..pPS(
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'externalIdentities')
     ..hasRequiredFields = false;
 
   WalletConfiguration._() : super();
@@ -2960,6 +2965,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? publicDid,
     $core.String? configType,
     $core.Iterable<$0.WalletAuthToken>? authTokens,
+    $core.Iterable<$core.String>? externalIdentities,
   }) {
     final _result = create();
     if (name != null) {
@@ -2982,6 +2988,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     }
     if (authTokens != null) {
       _result.authTokens.addAll(authTokens);
+    }
+    if (externalIdentities != null) {
+      _result.externalIdentities.addAll(externalIdentities);
     }
     return _result;
   }
@@ -3086,6 +3095,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(7)
   $core.List<$0.WalletAuthToken> get authTokens => $_getList(6);
+
+  @$pb.TagNumber(8)
+  $core.List<$core.String> get externalIdentities => $_getList(7);
 }
 
 class IonOptions extends $pb.GeneratedMessage {

@@ -421,10 +421,12 @@ export interface SearchWalletConfigurationResponse {
 
 /** Strongly typed information about wallet configurations */
 export interface WalletConfiguration {
+  /** Name/description of the wallet */
   name?: string;
   email?: string;
   sms?: string;
   walletId?: string;
+  /** The DID of the wallet */
   publicDid?: string;
   configType?: string;
   /**
@@ -433,6 +435,8 @@ export interface WalletConfiguration {
    * such as ID, description, and creation date.
    */
   authTokens?: WalletAuthToken[];
+  /** List of external identities associated with this wallet. */
+  externalIdentities?: string[];
 }
 
 /** Options for creation of DID on the ION network */
@@ -2910,6 +2914,7 @@ function createBaseWalletConfiguration(): WalletConfiguration {
     publicDid: "",
     configType: "",
     authTokens: [],
+    externalIdentities: [],
   };
 }
 
@@ -2939,6 +2944,14 @@ export const WalletConfiguration = {
     if (message.authTokens !== undefined && message.authTokens.length !== 0) {
       for (const v of message.authTokens) {
         WalletAuthToken.encode(v!, writer.uint32(58).fork()).ldelim();
+      }
+    }
+    if (
+      message.externalIdentities !== undefined &&
+      message.externalIdentities.length !== 0
+    ) {
+      for (const v of message.externalIdentities) {
+        writer.uint32(66).string(v!);
       }
     }
     return writer;
@@ -2974,6 +2987,9 @@ export const WalletConfiguration = {
             WalletAuthToken.decode(reader, reader.uint32())
           );
           break;
+        case 8:
+          message.externalIdentities!.push(reader.string());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2993,6 +3009,9 @@ export const WalletConfiguration = {
       authTokens: Array.isArray(object?.authTokens)
         ? object.authTokens.map((e: any) => WalletAuthToken.fromJSON(e))
         : [],
+      externalIdentities: Array.isArray(object?.externalIdentities)
+        ? object.externalIdentities.map((e: any) => String(e))
+        : [],
     };
   },
 
@@ -3011,6 +3030,11 @@ export const WalletConfiguration = {
     } else {
       obj.authTokens = [];
     }
+    if (message.externalIdentities) {
+      obj.externalIdentities = message.externalIdentities.map((e) => e);
+    } else {
+      obj.externalIdentities = [];
+    }
     return obj;
   },
 
@@ -3024,6 +3048,7 @@ export const WalletConfiguration = {
     message.configType = object.configType ?? "";
     message.authTokens =
       object.authTokens?.map((e) => WalletAuthToken.fromPartial(e)) || [];
+    message.externalIdentities = object.externalIdentities?.map((e) => e) || [];
     return message;
   },
 };

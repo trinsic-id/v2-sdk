@@ -93,6 +93,12 @@ class UniversalWalletClient extends $grpc.Client {
       ($2.AddExternalIdentityConfirmRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $2.AddExternalIdentityConfirmResponse.fromBuffer(value));
+  static final _$removeExternalIdentity = $grpc.ClientMethod<
+          $2.RemoveExternalIdentityRequest, $2.RemoveExternalIdentityResponse>(
+      '/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity',
+      ($2.RemoveExternalIdentityRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $2.RemoveExternalIdentityResponse.fromBuffer(value));
   static final _$authenticateInit = $grpc.ClientMethod<
           $2.AuthenticateInitRequest, $2.AuthenticateInitResponse>(
       '/services.universalwallet.v1.UniversalWallet/AuthenticateInit',
@@ -192,6 +198,13 @@ class UniversalWalletClient extends $grpc.Client {
       addExternalIdentityConfirm($2.AddExternalIdentityConfirmRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addExternalIdentityConfirm, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$2.RemoveExternalIdentityResponse>
+      removeExternalIdentity($2.RemoveExternalIdentityRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$removeExternalIdentity, request,
         options: options);
   }
 
@@ -324,6 +337,15 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
             $2.AddExternalIdentityConfirmRequest.fromBuffer(value),
         ($2.AddExternalIdentityConfirmResponse value) =>
             value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.RemoveExternalIdentityRequest,
+            $2.RemoveExternalIdentityResponse>(
+        'RemoveExternalIdentity',
+        removeExternalIdentity_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $2.RemoveExternalIdentityRequest.fromBuffer(value),
+        ($2.RemoveExternalIdentityResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.AuthenticateInitRequest,
             $2.AuthenticateInitResponse>(
         'AuthenticateInit',
@@ -425,6 +447,12 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
     return addExternalIdentityConfirm(call, await request);
   }
 
+  $async.Future<$2.RemoveExternalIdentityResponse> removeExternalIdentity_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$2.RemoveExternalIdentityRequest> request) async {
+    return removeExternalIdentity(call, await request);
+  }
+
   $async.Future<$2.AuthenticateInitResponse> authenticateInit_Pre(
       $grpc.ServiceCall call,
       $async.Future<$2.AuthenticateInitRequest> request) async {
@@ -469,6 +497,8 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
   $async.Future<$2.AddExternalIdentityConfirmResponse>
       addExternalIdentityConfirm(
           $grpc.ServiceCall call, $2.AddExternalIdentityConfirmRequest request);
+  $async.Future<$2.RemoveExternalIdentityResponse> removeExternalIdentity(
+      $grpc.ServiceCall call, $2.RemoveExternalIdentityRequest request);
   $async.Future<$2.AuthenticateInitResponse> authenticateInit(
       $grpc.ServiceCall call, $2.AuthenticateInitRequest request);
   $async.Future<$2.AuthenticateConfirmResponse> authenticateConfirm(

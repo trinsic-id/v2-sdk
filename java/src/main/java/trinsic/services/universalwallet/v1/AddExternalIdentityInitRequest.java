@@ -52,7 +52,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
    *
    *
    * <pre>
-   * Identity to add to the wallet
+   * The user identity to add to the wallet
+   * This can be an email address or phone number (formatted as +[country code][phone number])
    * </pre>
    *
    * <code>string identity = 1;</code>
@@ -75,7 +76,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
    *
    *
    * <pre>
-   * Identity to add to the wallet
+   * The user identity to add to the wallet
+   * This can be an email address or phone number (formatted as +[country code][phone number])
    * </pre>
    *
    * <code>string identity = 1;</code>
@@ -98,6 +100,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
   public static final int PROVIDER_FIELD_NUMBER = 2;
   private int provider_;
   /**
+   *
+   *
+   * <pre>
+   * The type of identity provider, like EMAIL or PHONE
+   * </pre>
+   *
    * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
    *
    * @return The enum numeric value on the wire for provider.
@@ -107,6 +115,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     return provider_;
   }
   /**
+   *
+   *
+   * <pre>
+   * The type of identity provider, like EMAIL or PHONE
+   * </pre>
+   *
    * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
    *
    * @return The provider.
@@ -477,7 +491,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * Identity to add to the wallet
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
      * <code>string identity = 1;</code>
@@ -499,7 +514,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * Identity to add to the wallet
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
      * <code>string identity = 1;</code>
@@ -521,7 +537,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * Identity to add to the wallet
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
      * <code>string identity = 1;</code>
@@ -542,7 +559,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * Identity to add to the wallet
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
      * <code>string identity = 1;</code>
@@ -559,7 +577,8 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      *
      *
      * <pre>
-     * Identity to add to the wallet
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
      * </pre>
      *
      * <code>string identity = 1;</code>
@@ -580,6 +599,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
 
     private int provider_ = 0;
     /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
      * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
      *
      * @return The enum numeric value on the wire for provider.
@@ -589,6 +614,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
       return provider_;
     }
     /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
      * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
      *
      * @param value The enum numeric value on the wire for provider to set.
@@ -601,6 +632,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
      * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
      *
      * @return The provider.
@@ -615,6 +652,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
           : result;
     }
     /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
      * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
      *
      * @param value The provider to set.
@@ -630,6 +673,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
      * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
      *
      * @return This builder for chaining.

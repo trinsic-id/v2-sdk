@@ -48,6 +48,10 @@ input {
     margin-top: 0em;
 }
 
+.center {
+    display: block;
+    margin: 0 auto;
+}
 
 /***********************************************************
  * Protobuf Object Inclusion Macro Styles  ( proto_message() )

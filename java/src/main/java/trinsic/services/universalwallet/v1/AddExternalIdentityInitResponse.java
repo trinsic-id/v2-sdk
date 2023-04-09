@@ -51,8 +51,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Challenge to be verified by the user.
-   * Pass this challenge back to the `AddIdentityConfirm` endpoint
+   * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
    * </pre>
    *
    * <code>string challenge = 1;</code>
@@ -75,8 +74,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Challenge to be verified by the user.
-   * Pass this challenge back to the `AddIdentityConfirm` endpoint
+   * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
    * </pre>
    *
    * <code>string challenge = 1;</code>
@@ -431,8 +429,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Challenge to be verified by the user.
-     * Pass this challenge back to the `AddIdentityConfirm` endpoint
+     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -454,8 +451,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Challenge to be verified by the user.
-     * Pass this challenge back to the `AddIdentityConfirm` endpoint
+     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -477,8 +473,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Challenge to be verified by the user.
-     * Pass this challenge back to the `AddIdentityConfirm` endpoint
+     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -499,8 +494,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Challenge to be verified by the user.
-     * Pass this challenge back to the `AddIdentityConfirm` endpoint
+     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>
@@ -517,8 +511,7 @@ public final class AddExternalIdentityInitResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Challenge to be verified by the user.
-     * Pass this challenge back to the `AddIdentityConfirm` endpoint
+     * Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
      * </pre>
      *
      * <code>string challenge = 1;</code>

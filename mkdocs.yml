@@ -16,13 +16,15 @@ nav:
       - Templates: learn/concepts/templates.md
       - Identifiers: learn/concepts/dids.md
       - Governance: learn/concepts/trust-registries.md
+      - JSON-LD: learn/concepts/json-ld.md
     - Trinsic Platform:
       - Standards: learn/platform/standards.md
       - Security Overview: learn/platform/security.md
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md
     - Resources:
-      - Migration Guidelines: learn/migrate.md
+      - Migration Guidelines: learn/resources/migrate.md
+      - Interactive API Experience: learn/resources/interactive-api.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:

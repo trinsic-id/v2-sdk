@@ -500,10 +500,14 @@ class WalletConfiguration(betterproto.Message):
     """Strongly typed information about wallet configurations"""
 
     name: str = betterproto.string_field(1)
+    """Name/description of the wallet"""
+
     email: str = betterproto.string_field(2)
     sms: str = betterproto.string_field(3)
     wallet_id: str = betterproto.string_field(4)
     public_did: str = betterproto.string_field(5)
+    """The DID of the wallet"""
+
     config_type: str = betterproto.string_field(6)
     auth_tokens: List["__account_v1__.WalletAuthToken"] = betterproto.message_field(7)
     """
@@ -511,6 +515,9 @@ class WalletConfiguration(betterproto.Message):
     contain the issued token, only metadata such as ID, description, and
     creation date.
     """
+
+    external_identities: List[str] = betterproto.string_field(8)
+    """List of external identities associated with this wallet."""
 
 
 @dataclass(eq=False, repr=False)
