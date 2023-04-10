@@ -1,0 +1,1 @@
+trinsic-sdk==1.10.0

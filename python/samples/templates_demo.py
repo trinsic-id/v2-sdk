@@ -1,6 +1,6 @@
 import asyncio
 import json
-import uuid
+import random
 
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     TemplateField,
@@ -25,10 +25,12 @@ async def templates_demo():
     trinsic_service = TrinsicService(server_config=trinsic_config())
     ecosystem = await trinsic_service.provider.create_ecosystem()
 
+    print("Ecosystem Token", trinsic_service.service_options.auth_token)
+
     # create example template
     # createTemplate() {
     create_request = CreateCredentialTemplateRequest(
-        name="An Example Credential",
+        name=f"An Example Credential-{random.Random().randint(0,100)}",
         title="Example Credential",
         description="A credential for Trinsic's SDK samples",
         allow_additional_fields=False,
