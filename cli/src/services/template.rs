@@ -98,7 +98,7 @@ async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<Output
     Ok(dict! {
         "query".into() => Item::String(args.query.clone()),
         "templates".into() => Item::Json(as_value(&response.items_json)?),
-        "more results".into() => Item::String(response.has_more.to_string())
+        "more results".into() => Item::String(response.has_more_results.to_string())
     })
 }
 

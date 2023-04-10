@@ -1,5 +1,5 @@
 /// Configuration for Trinsic SDK Services
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct TrinsicOptions {
     /// Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
     #[prost(string, tag = "1")]
