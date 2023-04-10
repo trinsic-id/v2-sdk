@@ -6,6 +6,8 @@ pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
         return search(&args.subcommand_matches("search").expect("Error parsing request"));
     } else if args.subcommand_matches("insert-item").is_some() {
         return insert_item(&args.subcommand_matches("insert-item").expect("Error parsing request"));
+    } else if args.subcommand_matches("create-wallet").is_some() {
+        return create_wallet(&args.subcommand_matches("create-wallet").expect("Error parsing request"));
     } else if args.subcommand_matches("delete-item").is_some() {
         return delete_item(&args.subcommand_matches("delete-item").expect("Error parsing request"));
     } else if args.subcommand_matches("send").is_some() {
@@ -28,6 +30,12 @@ fn insert_item(args: &ArgMatches) -> Result<Command, Error> {
     }))
 }
 
+fn create_wallet(args: &ArgMatches) -> Result<Command, Error> {
+    Ok(Command::CreateWallet(CreateWalletArgs {
+        ecosystem: args.value_of("ecosystem"),
+    }))
+}
+
 fn delete_item(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::DeleteItem(DeleteItemArgs {
         item_id: args.value_of("item-id"),
@@ -45,6 +53,7 @@ fn send(args: &ArgMatches) -> Result<Command, Error> {
 #[derive(Debug, PartialEq)]
 pub enum Command<'a> {
     Search(SearchArgs<'a>),
+    CreateWallet(CreateWalletArgs<'a>),
     InsertItem(InsertItemArgs<'a>),
     DeleteItem(DeleteItemArgs<'a>),
     Send(SendArgs<'a>),
@@ -53,6 +62,11 @@ pub enum Command<'a> {
 #[derive(Debug, PartialEq)]
 pub struct SearchArgs<'a> {
     pub query: Option<&'a str>,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct CreateWalletArgs<'a> {
+    pub ecosystem: Option<&'a str>,
 }
 
 #[derive(Debug, PartialEq)]

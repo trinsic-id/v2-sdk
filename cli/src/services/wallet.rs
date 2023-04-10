@@ -4,11 +4,11 @@ use crate::{
     error::Error,
     grpc_channel, grpc_client_with_auth,
     proto::services::{
-        universalwallet::v1::{universal_wallet_client::UniversalWalletClient, DeleteItemRequest, InsertItemRequest, SearchRequest},
+        universalwallet::v1::{universal_wallet_client::UniversalWalletClient, DeleteItemRequest, InsertItemRequest, SearchRequest, CreateWalletRequest},
         verifiablecredentials::v1::{send_request::DeliveryMethod, verifiable_credential_client::VerifiableCredentialClient, SendRequest},
     },
     services::config::*,
-    utils::{as_value, read_file},
+    utils::{as_value, read_file, to_value}, grpc_client_with_metadata,
 };
 use std::default::*;
 use std::str::FromStr;
@@ -21,6 +21,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
         Command::InsertItem(args) => insert_item(args, config),
         Command::DeleteItem(args) => delete_item(args, config),
         Command::Send(args) => send(args, config),
+        Command::CreateWallet(args) => create_wallet(args, config),
     }
 }
 
@@ -50,6 +51,25 @@ async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     Ok(dict! {
         "query".into() => Item::String(query),
         "items".into() => Item::Json(as_value(&out)?)
+    })
+}
+
+
+#[tokio::main]
+async fn create_wallet(args: &CreateWalletArgs, config: CliConfig) -> Result<Output, Error> {
+
+    let mut client = grpc_client_with_metadata!(UniversalWalletClient<Channel>, config.to_owned());
+    let request = tonic::Request::new(CreateWalletRequest {
+        ecosystem_id: args.ecosystem.map_or(String::default(), |x| x.to_string()),
+        ..Default::default()
+    });
+
+    let response = client.create_wallet(request).await?.into_inner();
+
+    Ok(dict! {
+        "auth token".into() => Item::String(response.auth_token),
+        "token id".into() => Item::String(response.token_id),
+        "wallet".into() => Item::Json(to_value(&response.wallet)?)
     })
 }
 
