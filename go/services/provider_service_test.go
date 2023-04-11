@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"github.com/trinsic-id/sdk/go/proto/services/common/v1/common"
+	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,7 +13,7 @@ import (
 func TestEcosystemUpdateInfo(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
+	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -49,17 +50,20 @@ func TestEcosystemUpdateInfo(t *testing.T) {
 func TestUpgradeDid(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
+	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
 
-	info, err := trinsic.Account().Info(context.Background())
+	createWallet, err := trinsic.Wallet().CreateWallet(context.Background(), &wallet.CreateWalletRequest{
+		EcosystemId: "default",
+		Description: nil,
+	})
 	if !assert2.Nil(err) {
 		return
 	}
 
-	walletId := info.WalletId
+	walletId := createWallet.Wallet.WalletId
 
 	// upgradeDid() {
 	upgradeResponse, err := trinsic.Provider().UpgradeDID(context.Background(), &provider.UpgradeDidRequest{

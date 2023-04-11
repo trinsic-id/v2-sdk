@@ -8,10 +8,10 @@ package wallet
 
 import (
 	_ "github.com/trinsic-id/sdk/go/proto/services/options"
+	provider "github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	provider "services/provider/v1/provider"
 	sync "sync"
 )
 
