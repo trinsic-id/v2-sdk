@@ -31,7 +31,10 @@ export default abstract class ServiceBase {
         );
         metadata.append("trinsicsdkversion".toLowerCase(), getSdkVersion());
         if (this.options.authToken) {
-            metadata.append("authorization", "Bearer " + this.options.authToken!);
+            metadata.append(
+                "authorization",
+                "Bearer " + this.options.authToken!
+            );
         }
         return metadata;
     }
@@ -43,11 +46,9 @@ export default abstract class ServiceBase {
     protected createClient<ClientService extends ClientServiceDefinition>(
         definition: ClientService
     ): BrowserClient<ClientService> {
-        let address = `${this.options.serverUseTls ? "https" : "http"}://${this.options.serverEndpoint
-            }:${this.options.serverPort}`;
-        return ServiceBase.platform.createGrpcClient(
-            definition,
-            address
-        );
+        let address = `${this.options.serverUseTls ? "https" : "http"}://${
+            this.options.serverEndpoint
+        }:${this.options.serverPort}`;
+        return ServiceBase.platform.createGrpcClient(definition, address);
     }
 }

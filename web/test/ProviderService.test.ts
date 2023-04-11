@@ -17,7 +17,8 @@ describe("ProviderService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         let trinsic = new TrinsicService(options);
-        options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        trinsic.options.authToken = response.authToken;
     });
 
     it("Demo: Ecosystem Tests", async () => {
@@ -63,8 +64,8 @@ describe("ProviderService Unit Tests", () => {
 
         expect(ecosystem).toEqual(updateResponse.Ecosystem);
 
-        let accountInfoResponse = await trinsic.account().info();
-        let walletId = accountInfoResponse.walletId;
+        let accountInfoResponse = await trinsic.wallet().getMyInfo({});
+        let walletId = accountInfoResponse.wallet!.walletId;
 
         // Try/catch this as ecosystems currently can't upgrade DIDs by default
         try {

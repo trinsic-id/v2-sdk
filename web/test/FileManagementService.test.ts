@@ -2,7 +2,6 @@ import {
     UploadFileRequest,
     GetFileRequest,
     ListFilesRequest,
-    GetStorageStatsRequest,
     DeleteFileRequest,
     TrinsicService,
 } from "../node";
@@ -14,7 +13,8 @@ describe("FileManagementService Unit Tests", () => {
 
     it("end-to-end test", async () => {
         let trinsic = new TrinsicService(getTestServerOptions());
-        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        trinsic.options.authToken = response.authToken;
 
         // uploadFile() {
         // Get raw bytes of string

@@ -59,26 +59,26 @@ export async function verifyCredential(
     trinsic: TrinsicService,
     templateCertFrame: string
 ): Promise<boolean> {
-    const allison = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
-    const airline = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+    const allison = await trinsic.wallet().createWallet({ecosystemId: myEcosystemIdOrName()});
+    const airline = await trinsic.wallet().createWallet({ecosystemId: myEcosystemIdOrName()});
 
     const credential = await issueCredentialFromTemplate(trinsic);
 
-    trinsic.wallet().options.authToken = allison;
+    trinsic.wallet().options.authToken = allison.authToken;
     const insertItemResponse = await trinsic
         .wallet()
         .insertItem(
             InsertItemRequest.fromPartial({ itemJson: credential.documentJson })
         );
 
-    trinsic.credential().options.authToken = allison;
+    trinsic.credential().options.authToken = allison.authToken;
     const proofRequest = CreateProofRequest.fromPartial({
         itemId: insertItemResponse.itemId,
         revealDocumentJson: templateCertFrame,
     });
     const proof = await trinsic.credential().createProof(proofRequest);
 
-    trinsic.credential().options.authToken = airline;
+    trinsic.credential().options.authToken = airline.authToken;
     const verifyProofRequest = VerifyProofRequest.fromPartial({
         proofDocumentJson: proof.proofDocumentJson,
     });
