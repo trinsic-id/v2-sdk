@@ -1,9 +1,6 @@
 package trinsic;
 
 import com.google.protobuf.ByteString;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
@@ -11,6 +8,11 @@ import trinsic.services.filemanagement.v1.DeleteFileRequest;
 import trinsic.services.filemanagement.v1.GetFileRequest;
 import trinsic.services.filemanagement.v1.ListFilesRequest;
 import trinsic.services.filemanagement.v1.UploadFileRequest;
+import trinsic.services.universalwallet.v1.CreateWalletRequest;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.ExecutionException;
 
 public class FileManagementDemo {
 
@@ -21,10 +23,9 @@ public class FileManagementDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsic.account().loginAnonymous("default").get();
-
-    trinsic.setAuthToken(account);
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
+    var account = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId("default").build()).get();
+    trinsic.setAuthToken(account.getAuthToken());
 
     // uploadFile() {
     // Get raw bytes of string

@@ -13,7 +13,7 @@ public class FileManagementService extends ServiceBase {
     this(null);
   }
 
-  public FileManagementService(Options.ServiceOptions.Builder options) {
+  public FileManagementService(Options.TrinsicOptions.Builder options) {
     super(options);
 
     this.stub = FileManagementGrpc.newFutureStub(this.getChannel());

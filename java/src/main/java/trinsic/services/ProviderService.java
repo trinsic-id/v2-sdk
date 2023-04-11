@@ -3,11 +3,12 @@ package trinsic.services;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.util.Base64;
-import java.util.concurrent.Executors;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.provider.v1.*;
+
+import java.util.Base64;
+import java.util.concurrent.Executors;
 
 public class ProviderService extends ServiceBase {
   public ProviderGrpc.ProviderFutureStub stub;
@@ -16,7 +17,7 @@ public class ProviderService extends ServiceBase {
     this(null);
   }
 
-  public ProviderService(Options.ServiceOptions.Builder options) {
+  public ProviderService(Options.TrinsicOptions.Builder options) {
     super(options);
     this.stub = ProviderGrpc.newFutureStub(this.getChannel());
   }
@@ -35,8 +36,7 @@ public class ProviderService extends ServiceBase {
           if (!input.hasProfile() || input.getProfile().getProtection().getEnabled()) return null;
 
           var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-          this.getOptionsBuilder().setAuthToken(token);
-          tokenProvider.save(token);
+          this.setAuthToken(token);
           return input;
         },
         Executors.newSingleThreadExecutor());

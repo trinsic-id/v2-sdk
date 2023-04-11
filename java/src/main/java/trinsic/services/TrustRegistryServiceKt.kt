@@ -6,7 +6,7 @@ import trinsic.sdk.options.v1.Options
 import trinsic.services.trustregistry.v1.*
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 
-class TrustRegistryServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
+class TrustRegistryServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(options) {
   var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)

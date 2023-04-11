@@ -4,7 +4,6 @@ import trinsic.sdk.options.v1.Options;
 
 public class TrinsicService extends ServiceBase {
   private AccessManagementService _accessManagementService;
-  private AccountService _accountService;
   private CredentialService _credentialService;
   private FileManagementService _fileManagementService;
   private TemplateService _TemplateService;
@@ -16,7 +15,7 @@ public class TrinsicService extends ServiceBase {
     this(null);
   }
 
-  public TrinsicService(Options.ServiceOptions.Builder options) {
+  public TrinsicService(Options.TrinsicOptions.Builder options) {
     super(options);
   }
 
@@ -24,11 +23,6 @@ public class TrinsicService extends ServiceBase {
     if (_accessManagementService == null)
       _accessManagementService = new AccessManagementService(this.getOptionsBuilder());
     return _accessManagementService;
-  }
-
-  public AccountService account() {
-    if (_accountService == null) _accountService = new AccountService(this.getOptionsBuilder());
-    return _accountService;
   }
 
   public CredentialService credential() {
