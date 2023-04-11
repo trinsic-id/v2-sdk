@@ -6,6 +6,7 @@ from trinsic.proto.services.filemanagement.v1 import (
     ListFilesRequest,
     UploadFileRequest,
 )
+from trinsic.proto.services.universalwallet.v1 import CreateWalletRequest
 
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
@@ -14,8 +15,8 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 async def file_management_demo():
     config = trinsic_config()
     trinsic = TrinsicService(server_config=config)
-    await trinsic.account.login_anonymous(ecosystem_id="default")
-
+    wallet_response = await trinsic.wallet.create_wallet(request=CreateWalletRequest(ecosystem_id="default"))
+    trinsic.service_options.auth_token = wallet_response.auth_token
     # uploadFile() {
     # Get raw bytes of string
     file_bytes = bytes("Hello, world!", "utf-8")

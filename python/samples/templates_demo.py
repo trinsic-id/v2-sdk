@@ -1,6 +1,5 @@
 import asyncio
 import json
-import uuid
 
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     TemplateField,

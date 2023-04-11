@@ -9,18 +9,10 @@ import trinsicokapi.metadata
 from betterproto import Message
 from grpclib.client import Channel
 
-from trinsicokapi import metadata
-
 import trinsic
-from trinsic.proto.sdk.options.v1 import ServiceOptions
+from trinsic.proto.sdk.options.v1 import TrinsicOptions
 from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.common.v1 import ResponseStatus
-from trinsic.security_providers import (
-    OberonSecurityProvider,
-    SecurityProvider,
-    ITokenProvider,
-    MemoryTokenProviderFactory,
-)
 from trinsic.trinsic_util import trinsic_config, create_channel
 
 
@@ -29,13 +21,9 @@ class ServiceBase(ABC):
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
     """
 
-    def __init__(self, server_config: ServiceOptions, token_provider: ITokenProvider):
-        self.service_options: ServiceOptions = server_config or trinsic_config()
-        self.token_provider: ITokenProvider = (
-            token_provider or MemoryTokenProviderFactory.instance()
-        )
+    def __init__(self, server_config: TrinsicOptions):
+        self.service_options: TrinsicOptions = server_config or trinsic_config()
         self._channel: Channel = create_channel(self.service_options)
-        self._security_provider: SecurityProvider = OberonSecurityProvider()
 
     def __enter__(self):
         return self
@@ -64,19 +52,15 @@ class ServiceBase(ABC):
         :return: authentication headers with base-64 encoded Oberon
         """
         call_metadata = {
-            "TrinsicOkapiVersion".lower(): trinsicokapi.metadata.get_metadata().version,
             "TrinsicSDKLanguage".lower(): "python",
             "TrinsicSDKVersion".lower(): trinsic.__version__(),
         }
+        auth_token = ""
         if request is not None:
-            auth_token = self.token_provider.get()
             if self.service_options and self.service_options.auth_token:
                 auth_token = self.service_options.auth_token
 
-            call_metadata["authorization"] = self._security_provider.get_auth_header(
-                AccountProfile().parse(data=base64.urlsafe_b64decode(auth_token)),
-                request,
-            )
+            call_metadata["authorization"] = f"Bearer {auth_token}"
         return call_metadata
 
     @property

@@ -7,7 +7,7 @@ from trinsic.proto.services.universalwallet.v1 import (
     DeleteWalletRequest,
     GetItemRequest,
     InsertItemRequest,
-    SearchRequest,
+    SearchRequest, CreateWalletRequest,
 )
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
@@ -27,13 +27,10 @@ async def wallet_demo():
     trinsic = TrinsicService(server_config=config)
 
     ecosystem = await trinsic.provider.create_ecosystem()
-    auth_token = await trinsic.account.login_anonymous(
-        ecosystem_id=ecosystem.ecosystem.id
-    )
-    trinsic.set_auth_token(auth_token)
+    wallet_response = await trinsic.wallet.create_wallet(request=CreateWalletRequest(ecosystem_id="default"))
+    trinsic.set_auth_token(wallet_response.auth_token)
 
-    account_info = await trinsic.account.info()
-    wallet_id = account_info.wallet_id
+    wallet_id = wallet_response.wallet.wallet_id
 
     # Sign a credential as the clinic and send it to Allison
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
