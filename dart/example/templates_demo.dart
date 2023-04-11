@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:trinsic_dart/src/proto/services/universal-wallet/v1/universal-wallet.pb.dart';
 import 'package:trinsic_dart/src/proto/services/verifiable-credentials/templates/v1/templates.pbgrpc.dart';
 import 'package:trinsic_dart/src/proto/services/verifiable-credentials/v1/verifiable-credentials.pbgrpc.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
@@ -7,9 +8,10 @@ import 'package:trinsic_dart/trinsic.dart';
 import 'package:uuid/uuid.dart';
 
 Future runTemplatesDemo() async {
-  var trinsic = TrinsicService(trinsicConfig(), null);
-  var profile = await trinsic.account().loginAnonymous("default");
-  assert(profile.isNotEmpty);
+  var trinsic = TrinsicService(trinsicConfig());
+  var createWalletResponse = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: "default"));
+  assert(createWalletResponse.authToken.isNotEmpty);
+  trinsic = TrinsicService(trinsicConfig(authToken: createWalletResponse.authToken));
 
   var uuid = Uuid();
   // createTemplate() {

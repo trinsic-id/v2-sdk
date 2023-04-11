@@ -11,7 +11,6 @@ dependencies:
   protobuf: ^2.0.0
   grpc: ^3.0.2
   uuid: ^3.0.6
-  okapi_dart: ^1.6.1
   fixnum: ^1.0.1
 
 dev_dependencies:

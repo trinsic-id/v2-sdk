@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/provider/v1/provider.pbgrpc.dart';
 import 'package:trinsic_dart/src/service_base.dart';
-import 'package:trinsic_dart/src/storage/token_provider.dart';
+
 
 class ProviderService extends ServiceBase {
   late ProviderClient client;
 
-  ProviderService(ServiceOptions? serverOptions, ITokenProvider? tokenProvider)
-      : super(serverOptions, tokenProvider) {
+  ProviderService(TrinsicOptions? serverOptions)
+      : super(serverOptions) {
     client = ProviderClient(super.channel);
   }
 
@@ -23,8 +23,8 @@ class ProviderService extends ServiceBase {
     var response =
         await client.createEcosystem(request, options: await metadata);
     if (!response.profile.protection.enabled) {
-      tokenProvider.save(
-          Base64Encoder.urlSafe().convert(response.profile.writeToBuffer()));
+      serviceOptions.authToken =
+          Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
     }
     return response;
   }
