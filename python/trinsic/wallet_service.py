@@ -13,7 +13,6 @@ class WalletService(ServiceBase):
         self,
         *,
         server_config: TrinsicOptions = None,
-
     ):
         """
         Initialize a connection to the server.

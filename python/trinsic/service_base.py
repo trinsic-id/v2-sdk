@@ -1,17 +1,14 @@
 """
 Base class and helper methods for the Service wrappers
 """
-import base64
 from abc import ABC
 from typing import Dict
 
-import trinsicokapi.metadata
 from betterproto import Message
 from grpclib.client import Channel
 
 import trinsic
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
-from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.trinsic_util import trinsic_config, create_channel
 

@@ -7,7 +7,8 @@ from trinsic.proto.services.universalwallet.v1 import (
     DeleteWalletRequest,
     GetItemRequest,
     InsertItemRequest,
-    SearchRequest, CreateWalletRequest,
+    SearchRequest,
+    CreateWalletRequest,
 )
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
@@ -27,7 +28,9 @@ async def wallet_demo():
     trinsic = TrinsicService(server_config=config)
 
     ecosystem = await trinsic.provider.create_ecosystem()
-    wallet_response = await trinsic.wallet.create_wallet(request=CreateWalletRequest(ecosystem_id="default"))
+    wallet_response = await trinsic.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id="default")
+    )
     trinsic.set_auth_token(wallet_response.auth_token)
 
     wallet_id = wallet_response.wallet.wallet_id

@@ -2,7 +2,10 @@ import asyncio
 import json
 import uuid
 
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, CreateWalletRequest
+from trinsic.proto.services.universalwallet.v1 import (
+    InsertItemRequest,
+    CreateWalletRequest,
+)
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
     TemplateData,
@@ -31,9 +34,15 @@ async def vaccine_demo():
 
     # setupActors() {
     # Create an account for each participant in the scenario
-    allison = await trinsic_service.wallet.create_wallet(request=CreateWalletRequest(ecosystem_id=ecosystem_id))
-    airline = await trinsic_service.wallet.create_wallet(request=CreateWalletRequest(ecosystem_id=ecosystem_id))
-    clinic = await trinsic_service.wallet.create_wallet(request=CreateWalletRequest(ecosystem_id=ecosystem_id))
+    allison = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id=ecosystem_id)
+    )
+    airline = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id=ecosystem_id)
+    )
+    clinic = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id=ecosystem_id)
+    )
     # }
 
     # Create a template

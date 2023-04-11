@@ -17,7 +17,6 @@ class ProviderService(ServiceBase):
         self,
         *,
         server_config: TrinsicOptions = None,
-
     ):
         """
         Initialize the connection

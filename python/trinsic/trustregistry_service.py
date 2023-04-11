@@ -13,7 +13,6 @@ class TrustRegistryService(ServiceBase):
         self,
         *,
         server_config: TrinsicOptions = None,
-
     ):
         super().__init__(server_config)
         self.client = TrustRegistryStub(super().channel)

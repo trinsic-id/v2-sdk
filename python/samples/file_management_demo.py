@@ -15,7 +15,9 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 async def file_management_demo():
     config = trinsic_config()
     trinsic = TrinsicService(server_config=config)
-    wallet_response = await trinsic.wallet.create_wallet(request=CreateWalletRequest(ecosystem_id="default"))
+    wallet_response = await trinsic.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id="default")
+    )
     trinsic.service_options.auth_token = wallet_response.auth_token
     # uploadFile() {
     # Get raw bytes of string

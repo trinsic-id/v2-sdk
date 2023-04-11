@@ -17,7 +17,6 @@ class TrinsicService(ServiceBase):
         self,
         *,
         server_config: TrinsicOptions = None,
-
     ):
         super().__init__(server_config)
 
@@ -32,42 +31,28 @@ class TrinsicService(ServiceBase):
 
     @cached_property
     def access_management(self) -> AccessManagementService:
-        return AccessManagementService(
-            server_config=self.service_options
-        )
+        return AccessManagementService(server_config=self.service_options)
 
     @cached_property
     def credential(self) -> CredentialService:
-        return CredentialService(
-            server_config=self.service_options
-        )
+        return CredentialService(server_config=self.service_options)
 
     @cached_property
     def file_management(self) -> FileManagementService:
-        return FileManagementService(
-            server_config=self.service_options
-        )
+        return FileManagementService(server_config=self.service_options)
 
     @cached_property
     def template(self) -> TemplateService:
-        return TemplateService(
-            server_config=self.service_options
-        )
+        return TemplateService(server_config=self.service_options)
 
     @cached_property
     def provider(self) -> ProviderService:
-        return ProviderService(
-            server_config=self.service_options
-        )
+        return ProviderService(server_config=self.service_options)
 
     @cached_property
     def trust_registry(self) -> TrustRegistryService:
-        return TrustRegistryService(
-            server_config=self.service_options
-        )
+        return TrustRegistryService(server_config=self.service_options)
 
     @cached_property
     def wallet(self) -> WalletService:
-        return WalletService(
-            server_config=self.service_options
-        )
+        return WalletService(server_config=self.service_options)
