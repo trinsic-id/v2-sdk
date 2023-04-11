@@ -6,7 +6,7 @@ import type { Client as BrowserClient } from "nice-grpc-web";
 export class FileManagementService extends ServiceBase {
     client: BrowserClient<typeof proto.FileManagementDefinition>;
 
-    constructor(options?: proto.ServiceOptions) {
+    constructor(options?: proto.TrinsicOptions) {
         super(options);
 
         this.client = this.createClient(proto.FileManagementDefinition);
@@ -18,7 +18,7 @@ export class FileManagementService extends ServiceBase {
   /** Upload a file to Trinsic's CDN
 *@deprecated This method is experimental */
   public async uploadFile(request: proto.UploadFileRequest): Promise<proto.UploadFileResponse> {
-    
+
     return this.client.uploadFile(request, {
       metadata: await this.buildMetadata(proto.UploadFileRequest.encode(request).finish())
     });
@@ -26,7 +26,7 @@ export class FileManagementService extends ServiceBase {
   /** Fetch information about a file by its ID
 *@deprecated This method is experimental */
   public async getFile(request: proto.GetFileRequest): Promise<proto.GetFileResponse> {
-    
+
     return this.client.getFile(request, {
       metadata: await this.buildMetadata(proto.GetFileRequest.encode(request).finish())
     });
@@ -34,7 +34,7 @@ export class FileManagementService extends ServiceBase {
   /** Delete a file by its ID
 *@deprecated This method is experimental */
   public async deleteFile(request: proto.DeleteFileRequest): Promise<proto.DeleteFileResponse> {
-    
+
     return this.client.deleteFile(request, {
       metadata: await this.buildMetadata(proto.DeleteFileRequest.encode(request).finish())
     });
@@ -42,7 +42,7 @@ export class FileManagementService extends ServiceBase {
   /** List files the calling account has uploaded
 *@deprecated This method is experimental */
   public async listFiles(request: proto.ListFilesRequest): Promise<proto.ListFilesResponse> {
-    
+
     return this.client.listFiles(request, {
       metadata: await this.buildMetadata(proto.ListFilesRequest.encode(request).finish())
     });

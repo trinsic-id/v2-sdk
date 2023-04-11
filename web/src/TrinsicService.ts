@@ -1,6 +1,5 @@
 import ServiceBase from "./ServiceBase";
-import { ServiceOptions } from "./proto/sdk/options/v1/options";
-import { AccountService } from "./AccountService";
+import { TrinsicOptions } from "./proto/sdk/options/v1/options";
 import { CredentialService } from "./CredentialService";
 import { TemplateService } from "./TemplateService";
 import { ProviderService } from "./ProviderService";
@@ -11,7 +10,6 @@ import { FileManagementService } from "./FileManagementService";
 
 export class TrinsicService extends ServiceBase {
     private _access: AccessManagementService | undefined;
-    private _account: AccountService | undefined;
     private _credential: CredentialService | undefined;
     private _fileManagement: FileManagementService | undefined;
     private _provider: ProviderService | undefined;
@@ -19,7 +17,7 @@ export class TrinsicService extends ServiceBase {
     private _trustRegistry: TrustRegistryService | undefined;
     private _wallet: WalletService | undefined;
 
-    constructor(options?: ServiceOptions) {
+    constructor(options?: TrinsicOptions) {
         super(options);
     }
 
@@ -30,12 +28,6 @@ export class TrinsicService extends ServiceBase {
         return this._access!;
     }
 
-    public account(): AccountService {
-        this._account = this._account || new AccountService(this.options);
-        this._account.options = this.options;
-        return this._account!;
-    }
-
     public credential(): CredentialService {
         this._credential =
             this._credential || new CredentialService(this.options);
@@ -44,7 +36,7 @@ export class TrinsicService extends ServiceBase {
     }
 
     public fileManagement(): FileManagementService {
-        this._fileManagement = 
+        this._fileManagement =
             this._fileManagement || new FileManagementService(this.options);
         this._fileManagement.options = this.options;
         return this._fileManagement!;

@@ -1,19 +1,9 @@
 import ServiceBase from "./ServiceBase";
 import {
-    AddFrameworkRequest,
-    AddFrameworkResponse,
-    GetMembershipStatusRequest,
-    GetMembershipStatusResponse,
-    RegisterMemberRequest,
-    RegisterMemberResponse,
-    RemoveFrameworkRequest,
-    RemoveFrameworkResponse,
     SearchRegistryRequest,
     SearchRegistryResponse,
-    ServiceOptions,
+    TrinsicOptions,
     TrustRegistryDefinition,
-    UnregisterMemberRequest,
-    UnregisterMemberResponse,
 } from "./proto";
 import * as proto from "./proto";
 
@@ -22,7 +12,7 @@ import type { Client as BrowserClient } from "nice-grpc-web";
 export class TrustRegistryService extends ServiceBase {
     client: BrowserClient<typeof TrustRegistryDefinition>;
 
-    constructor(options?: ServiceOptions) {
+    constructor(options?: TrinsicOptions) {
         super(options);
 
         this.client = this.createClient(TrustRegistryDefinition);
@@ -40,42 +30,42 @@ export class TrustRegistryService extends ServiceBase {
 
   /** Add a governance framework to the ecosystem */
   public async addFramework(request: proto.AddFrameworkRequest): Promise<proto.AddFrameworkResponse> {
-    
+
     return this.client.addFramework(request, {
       metadata: await this.buildMetadata(proto.AddFrameworkRequest.encode(request).finish())
     });
   }
   /** Remove a governance framework from the ecosystem */
   public async removeFramework(request: proto.RemoveFrameworkRequest): Promise<proto.RemoveFrameworkResponse> {
-    
+
     return this.client.removeFramework(request, {
       metadata: await this.buildMetadata(proto.RemoveFrameworkRequest.encode(request).finish())
     });
   }
   /** Search the ecosystem's governance frameworks */
   public async searchRegistry(request: proto.SearchRegistryRequest): Promise<proto.SearchRegistryResponse> {
-    
+
     return this.client.searchRegistry(request, {
       metadata: await this.buildMetadata(proto.SearchRegistryRequest.encode(request).finish())
     });
   }
   /** Register an authoritative issuer for a credential schema */
   public async registerMember(request: proto.RegisterMemberRequest): Promise<proto.RegisterMemberResponse> {
-    
+
     return this.client.registerMember(request, {
       metadata: await this.buildMetadata(proto.RegisterMemberRequest.encode(request).finish())
     });
   }
   /** Removes an authoritative issuer for a credential schema from the trust registry */
   public async unregisterMember(request: proto.UnregisterMemberRequest): Promise<proto.UnregisterMemberResponse> {
-    
+
     return this.client.unregisterMember(request, {
       metadata: await this.buildMetadata(proto.UnregisterMemberRequest.encode(request).finish())
     });
   }
   /** Fetch the membership status of an issuer for a given credential schema in a trust registry */
   public async getMembershipStatus(request: proto.GetMembershipStatusRequest): Promise<proto.GetMembershipStatusResponse> {
-    
+
     return this.client.getMembershipStatus(request, {
       metadata: await this.buildMetadata(proto.GetMembershipStatusRequest.encode(request).finish())
     });
