@@ -18,18 +18,6 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
-        id: install_okapi_binaries
-        with:
-          apiGithubToken: ${{ secrets.API_GITHUB_TOKEN }}
-      - name: Download C header
-        uses: dawidd6/action-download-artifact@v2.22.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./samples/go
-          repo: trinsic-id/okapi
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          name: C_header
       - name: Set up Go
         uses: actions/setup-go@v3
         with:

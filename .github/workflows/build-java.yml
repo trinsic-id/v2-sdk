@@ -40,10 +40,6 @@ jobs:
         with:
           python-version: 3.9
           cache: pip
-#       - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
-#         id: install_okapi_binaries
-#         with:
-#           apiGithubToken: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py --language=java
@@ -53,7 +49,6 @@ jobs:
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This has github maven package repo permissions
-          OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs"
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}

@@ -28,10 +28,6 @@ jobs:
         os: [ ubuntu-latest, windows-latest ]  # ,macos-latest ] - as usual, macos blocks DLL execution lol
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
-        id: install_okapi_binaries
-        with:
-          apiGithubToken: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
       - name: Set up Python
