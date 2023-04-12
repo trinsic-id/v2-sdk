@@ -18,17 +18,15 @@ Whenever you perform an SDK call which returns an auth token (signing in to an a
 
 You can also manually set the auth token used by the SDK (such as when loading an auth token from storage):
 
-=== "Trinsic CLI" 
+=== "Trinsic CLI"
     ```bash
     trinsic config --auth-token {AUTH_TOKEN}
     ```
 
 === "TypeScript"
-    <!--codeinclude--> 
     ```typescript
     [SetAuthTokenSample](../../web/test/VaccineDemoShared.ts) inside_block:setAuthTokenSample
     ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -60,31 +58,34 @@ You can also manually set the auth token used by the SDK (such as when loading a
 
 
 ## Services
-Our SDK is broken down into the following logical services, each of which is accessible through a single `TrinsicService` instance:
+Our SDK is broken down into the following logical APIs, each of which is accessible through a single `TrinsicService` instance:
 
-- [Account Service](./services/account-service.md)
-- [Credential Service](./services/credential-service.md)
-- [Provider Service](./services/provider-service.md)
-- [Template Service](./services/template-service.md)
-- [Trust Registry Service](./services/trust-registry-service.md)
-- [Wallet Service](./services/wallet-service.md)
+- [Credential API](./services/credential-service.md)
+- [Provider API](./services/provider-service.md)
+- [Template API](./services/template-service.md)
+- [Trust Registry API](./services/trust-registry-service.md)
+- [Wallet API](./services/wallet-service.md)
 
- 
+
 ### Using an SDK Service
 
 If you are using one of the Trinsic SDKs, you will need to create an instance of a `TrinsicService` in order to use it.
 
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     const trinsic = new TrinsicService();
     ```
+    <!--/codeinclude-->
 
 === "C#"
-    <!--codeinclude-->
     ```csharp
-    [CreateProof](../../dotnet/Tests/Tests.cs) inside_block:trinsicServiceConstructor
+    using Trinsic;
+
+    var trinsic = new TrinsicService();
+    // or instantiate with auth token
+    // var trinsic = new TrinsicService(new TrinsicOptions { AuthToken = "<auth token>" });
     ```
-    <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
@@ -111,4 +112,4 @@ The constructor accepts a [ServiceOptions](./proto/#sdk.options.v1.ServiceOption
 
 {{ proto_message('sdk.options.v1.ServiceOptions') }}
 
-The exact structure of this object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt. 
+The exact structure of this object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt.
