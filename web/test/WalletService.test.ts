@@ -37,6 +37,8 @@ describe("WalletService Unit Tests", () => {
     });
 
     it("get account info", async () => {
+        trinsic.options.authToken = allison.authToken;
+
         let info = await trinsic.wallet().getMyInfo({});
 
         expect(info).not.toBeNull();
