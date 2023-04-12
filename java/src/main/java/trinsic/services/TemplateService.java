@@ -14,7 +14,7 @@ public class TemplateService extends ServiceBase {
     this(null);
   }
 
-  public TemplateService(Options.ServiceOptions.Builder options) {
+  public TemplateService(Options.TrinsicOptions.Builder options) {
     super(options);
 
     this.stub = CredentialTemplatesGrpc.newFutureStub(this.getChannel());

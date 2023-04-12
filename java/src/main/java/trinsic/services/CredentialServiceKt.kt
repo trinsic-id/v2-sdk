@@ -6,7 +6,7 @@ import trinsic.sdk.options.v1.Options
 import trinsic.services.verifiablecredentials.v1.*
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
 
-class CredentialServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
+class CredentialServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(options) {
   var stub = VerifiableCredentialGrpcKt.VerifiableCredentialCoroutineStub(this.channel)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)

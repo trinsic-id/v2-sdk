@@ -28,7 +28,7 @@ void main() {
     });
 
     test('Trust Registry Service Input Validation', () async {
-      var trService = TrustRegistryService(trinsicConfig(), null);
+      var trService = TrustRegistryService(trinsicConfig());
       try {
         await trService.addFramework(AddFrameworkRequest(
             governanceFrameworkUri: "", description: "invalid framework"));
@@ -38,38 +38,5 @@ void main() {
         assert(true);
       }
     });
-
-    test('Test Protect/Unprotect Account', () async {
-      // accountServiceConstructor() {
-      var accountService = AccountService(trinsicConfig(), null);
-      // }
-      var myEcosystemId = "default";
-      // accountServiceSignIn() {
-      var myProfile = await accountService.loginAnonymous(myEcosystemId);
-      // }
-      await printGetInfo(accountService, myProfile);
-      // protectUnprotectProfile() {
-      var securityCode = "1234";
-      var myProtectedProfile = AccountService.protect(myProfile, securityCode);
-      var myUnprotectedProfile =
-          AccountService.unprotect(myProtectedProfile, securityCode);
-      // }
-      try {
-        await printGetInfo(accountService, myProtectedProfile);
-        assert(false);
-      } catch (e) {
-        assert(true);
-      }
-      await printGetInfo(accountService, myUnprotectedProfile);
-    });
   });
-}
-
-Future<void> printGetInfo(AccountService accountService, String profile) async {
-  accountService.serviceOptions.authToken = profile;
-  // accountServiceGetInfo() {
-  var info = await accountService.getInfo();
-  // }
-  assert(info.ecosystemId != "");
-  print("profile=$info");
 }

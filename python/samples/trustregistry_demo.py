@@ -8,6 +8,7 @@ from trinsic.proto.services.trustregistry.v1 import (
     GetMembershipStatusRequest,
     RegisterMemberRequest,
 )
+from trinsic.proto.services.universalwallet.v1 import CreateWalletRequest
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
@@ -15,7 +16,10 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 async def trustregistry_demo():
     # setup
     trinsic_service = TrinsicService(server_config=trinsic_config())
-    account = await trinsic_service.account.login_anonymous(ecosystem_id="default")
+    wallet_response = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id="default")
+    )
+    trinsic_service.service_options.auth_token = wallet_response.auth_token
 
     # data
     https_schema_org = "https://schema.org/Card"

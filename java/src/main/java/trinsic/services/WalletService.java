@@ -14,7 +14,7 @@ public class WalletService extends ServiceBase {
     this(null);
   }
 
-  public WalletService(Options.ServiceOptions.Builder options) {
+  public WalletService(Options.TrinsicOptions.Builder options) {
     super(options);
     this.stub = UniversalWalletGrpc.newFutureStub(this.getChannel());
   }

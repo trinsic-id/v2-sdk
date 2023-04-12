@@ -9,9 +9,9 @@ from samples.templates_demo import templates_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
 from samples.wallet_demo import wallet_demo
-from trinsic.account_service import AccountService
 from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.service_base import ResponseStatusException
+from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
@@ -37,7 +37,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         )
 
     def test_default_constructor(self):
-        AccountService()
+        TrinsicService()
 
     async def test_lib_main(self):
         from trinsic import __main__
@@ -67,40 +67,6 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
 
     async def test_wallet_demo(self):
         await wallet_demo()
-
-    async def test_protect_unprotect_account(self):
-        # accountServiceConstructor() {
-        account_service = AccountService(server_config=trinsic_config())
-        # }
-        my_ecosystem_id_or_name = "default"
-        # accountServiceSignIn() {
-        my_profile = await account_service.login_anonymous(
-            ecosystem_id=my_ecosystem_id_or_name
-        )
-        # }
-        await self.print_get_info(account_service, my_profile)
-
-        # protectUnprotectProfile() {
-        code = b"1234"
-        my_protected_profile = account_service.protect(
-            profile=my_profile, security_code=code
-        )
-        my_unprotected_profile = account_service.unprotect(
-            profile=my_protected_profile, security_code=code
-        )
-        # }
-        with self.assertRaises(Exception) as ve:
-            await self.print_get_info(account_service, my_protected_profile)
-        await self.print_get_info(account_service, my_unprotected_profile)
-
-    @staticmethod
-    async def print_get_info(service: AccountService, my_profile):
-        service.service_options.auth_token = my_profile
-        # accountServiceGetInfo() {
-        info = await service.get_info()
-        # }
-        assert info is not None
-        print(f"profile={info}")
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ import (
 func TestIssueAndVerify(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
+	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
 	assert2.Nil(err)
 
 	// Create a simple template to issue against

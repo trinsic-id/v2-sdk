@@ -20,22 +20,22 @@ public class TrinsicUtilities {
     return defaultValue;
   }
 
-  public static Options.ServiceOptions.Builder getTrinsicServiceOptions() {
+  public static Options.TrinsicOptions.Builder getTrinsicTrinsicOptions() {
 
     String endpoint = getEnvVar("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud");
     int port = Integer.parseInt(getEnvVar("TEST_SERVER_PORT", "443"));
     boolean useTls = Boolean.parseBoolean(getEnvVar("TEST_SERVER_USE_TLS", "true"));
     String authToken = getEnvVar("TEST_SERVER_AUTH_TOKEN", "");
 
-    return Options.ServiceOptions.newBuilder()
+    return Options.TrinsicOptions.newBuilder()
         .setServerEndpoint(endpoint)
         .setServerPort(port)
         .setAuthToken(authToken)
         .setServerUseTls(useTls);
   }
 
-  public static Options.ServiceOptions.Builder getTrinsicServiceOptions(String authToken) {
-    return getTrinsicServiceOptions().setAuthToken(authToken);
+  public static Options.TrinsicOptions.Builder getTrinsicTrinsicOptions(String authToken) {
+    return getTrinsicTrinsicOptions().setAuthToken(authToken);
   }
 
   public static String hashmapToJson(HashMap document) {
@@ -43,7 +43,7 @@ public class TrinsicUtilities {
     return gson.toJson(document, HashMap.class);
   }
 
-  public static ManagedChannel getChannel(Options.ServiceOptions config) {
+  public static ManagedChannel getChannel(Options.TrinsicOptions config) {
     var channelBuilder =
         ManagedChannelBuilder.forAddress(config.getServerEndpoint(), config.getServerPort());
     if (!config.getServerUseTls()) channelBuilder = channelBuilder.usePlaintext();

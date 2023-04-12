@@ -1,12 +1,13 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.*;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -17,17 +18,14 @@ public class WalletsDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     // Create ecosystem
-    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
     var ecosystemResponse =
         trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
-    var account = trinsic.account().loginAnonymous(ecosystemId).get();
+    var account = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build()).get();
+    trinsic.setAuthToken(account.getAuthToken());
 
-    // Insert wallet item into wallet
-    trinsic.setAuthToken(account);
-
-    var accountInfo = trinsic.account().getInfo().get();
-    var walletId = accountInfo.getWalletId();
+    var walletId = account.getWallet().getWalletId();
 
     var credentialJson =
         "{\"foo\":\"bar\"}"; // Doesn't need to actually be a credential for this test

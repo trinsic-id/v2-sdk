@@ -1,14 +1,16 @@
 package trinsic;
 
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
+import trinsic.services.universalwallet.v1.CreateWalletRequest;
+import trinsic.services.verifiablecredentials.v1.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.provider.v1.CreateEcosystemRequest;
-import trinsic.services.verifiablecredentials.v1.*;
 
 public class CredentialsDemo {
   public static void main(String[] args)
@@ -22,7 +24,7 @@ public class CredentialsDemo {
     var proofRequestJson = Files.readString(vaccineCertFramePath());
     var recipientEmail = "example@trinsic.id";
 
-    var serverConfig = TrinsicUtilities.getTrinsicServiceOptions();
+    var serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions();
 
     var trinsic = new TrinsicService(serverConfig);
     var ecosystemId =
@@ -33,11 +35,10 @@ public class CredentialsDemo {
             .getEcosystem()
             .getId();
 
-    var issuerVerifier =
-        trinsic.account().loginAnonymous(ecosystemId).get(); // Both issues and verifies
-    var holder = trinsic.account().loginAnonymous(ecosystemId).get();
+    var issuerVerifier = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build()).get();
+    var holder = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build()).get();
 
-    trinsic.setAuthToken(issuerVerifier);
+    trinsic.setAuthToken(issuerVerifier.getAuthToken());
 
     // issueCredentialSample() {
     var issueResult =
@@ -51,7 +52,7 @@ public class CredentialsDemo {
 
     System.out.println("Credential: " + signedCredentialJson);
 
-    trinsic.setAuthToken(holder);
+    trinsic.setAuthToken(holder.getAuthToken());
     // createProof() {
     var createProofResponse =
         trinsic
@@ -97,7 +98,7 @@ public class CredentialsDemo {
       // This is okay, we don't expect that account to exist.
     }
 
-    trinsic.setAuthToken(issuerVerifier);
+    trinsic.setAuthToken(issuerVerifier.getAuthToken());
     // verifyProof() {
     var verifyProofResponse =
         trinsic

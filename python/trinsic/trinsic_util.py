@@ -11,21 +11,21 @@ from typing import Tuple
 
 from grpclib.client import Channel
 
-from trinsic.proto.sdk.options.v1 import ServiceOptions
+from trinsic.proto.sdk.options.v1 import TrinsicOptions
 
 
-def trinsic_config(auth_token: str = None) -> ServiceOptions:
+def trinsic_config(auth_token: str = None) -> TrinsicOptions:
     """
     Test Server configuration - if environment variables aren't set, default to production
     Args:
         auth_token: Existing auth token to use (instead of `clone_options_with_auth_token(trinsic_config(), auth_token)`)
     Returns:
-        [ServiceOptions](/reference/proto/#serviceoptions)
+        [TrinsicOptions](/reference/proto/#TrinsicOptions)
     """
     endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
     port = int(getenv("TEST_SERVER_PORT", 443))
     use_tls = bool(strtobool(getenv("TEST_SERVER_USE_TLS", "true")))
-    return ServiceOptions(
+    return TrinsicOptions(
         server_endpoint=endpoint,
         server_port=port,
         server_use_tls=use_tls,
@@ -34,8 +34,8 @@ def trinsic_config(auth_token: str = None) -> ServiceOptions:
 
 
 def clone_options_with_auth_token(
-    options: ServiceOptions, auth_token: str
-) -> ServiceOptions:
+    options: TrinsicOptions, auth_token: str
+) -> TrinsicOptions:
     """
     Clone the service options and replace the authentication token.
     Args:
@@ -43,14 +43,14 @@ def clone_options_with_auth_token(
         auth_token:
 
     Returns:
-        [ServiceOptions](/reference/proto/#serviceoptions)
+        [TrinsicOptions](/reference/proto/#TrinsicOptions)
     """
     cloned = dataclasses.replace(options)
     cloned.auth_token = auth_token
     return cloned
 
 
-def create_channel(config: ServiceOptions) -> Channel:
+def create_channel(config: TrinsicOptions) -> Channel:
     """
     Create the channel from the provided URL
     Args:

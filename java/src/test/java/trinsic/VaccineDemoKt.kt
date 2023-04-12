@@ -9,6 +9,7 @@ import trinsic.okapi.DidException
 import trinsic.services.TemplateServiceKt
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.provider.v1.CreateEcosystemRequest
+import trinsic.services.universalwallet.v1.CreateWalletRequest
 import trinsic.services.universalwallet.v1.InsertItemRequest
 import trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
 import trinsic.services.verifiablecredentials.templates.v1.FieldType
@@ -24,7 +25,7 @@ suspend fun main() {
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runVaccineDemo() {
-  val serverConfig = TrinsicUtilities.getTrinsicServiceOptions()
+  val serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions()
 
   val trinsic = TrinsicServiceKt(serverConfig)
 
@@ -43,21 +44,21 @@ suspend fun runVaccineDemo() {
 
   // setupActors() {
   // Create an account for each participant in the scenario
-  val allison = trinsic.account().loginAnonymous(ecosystemId)
-  val clinic = trinsic.account().loginAnonymous(ecosystemId)
-  val airline = trinsic.account().loginAnonymous(ecosystemId)
+  val allison = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+  val clinic = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+  val airline = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
   // }
 
   // Create template
   // }
 
   // Create template
-  val templateId = defineTemplate(trinsic.template(), clinic)
+  val templateId = defineTemplate(trinsic.template(), clinic.authToken)
 
   // Issue credential
 
   // Issue credential
-  val credential = issueCredential(trinsic, templateId, clinic)
+  val credential = issueCredential(trinsic, templateId, clinic.authToken)
 
   println("Credential: $credential")
 
@@ -66,7 +67,7 @@ suspend fun runVaccineDemo() {
 
   // storeCredential() {
   // Set active profile to 'allison' so we can manage her cloud wallet
-  trinsic.setAuthToken(allison)
+  trinsic.setAuthToken(allison.authToken)
 
   // Allison stores the credential in her cloud wallet.
 
@@ -85,7 +86,7 @@ suspend fun runVaccineDemo() {
 
   // shareCredential() {
   // Set active profile to 'allison' so we can create a proof using her key
-  trinsic.setAuthToken(allison)
+  trinsic.setAuthToken(allison.authToken)
 
   // Allison shares the credential with the venue
 
@@ -102,7 +103,7 @@ suspend fun runVaccineDemo() {
   // verifyCredential() {
 
   // verifyCredential() {
-  trinsic.setAuthToken(airline)
+  trinsic.setAuthToken(airline.authToken)
 
   // Verify that Allison has provided a valid proof
 

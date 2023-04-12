@@ -23,7 +23,7 @@ String vaccineCertFramePath() {
 
 Future runVaccineDemo() async {
   // createService() {
-  var trinsic = TrinsicService(trinsicConfig(), null);
+  var trinsic = TrinsicService(trinsicConfig());
   // }
 
   // createEcosystem() {
@@ -33,22 +33,20 @@ Future runVaccineDemo() async {
 
   // setupActors() {
   // Create 3 different profiles for each participant in the scenario
-  var allison = await trinsic.account().loginAnonymous(ecosystemId);
-  var clinic = await trinsic.account().loginAnonymous(ecosystemId);
-  var airline = await trinsic.account().loginAnonymous(ecosystemId);
+  var allison = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
+  var clinic = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
+  var airline = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
   // }
 
-  trinsic.serviceOptions.authToken = clinic;
-  var info = await trinsic.account().getInfo();
-  print("Account info=$info");
+  trinsic.serviceOptions.authToken = clinic.authToken;
 
   // storeAndRecallProfile() {
   // Store profile for later use
   var fid = File('allison.txt');
-  await fid.writeAsString(allison);
+  await fid.writeAsString(allison.authToken);
   // Create profile from existing data
   fid = File('allison.txt');
-  allison = await fid.readAsString();
+  allison.authToken = await fid.readAsString();
   // }
 
   // Sign credential as clinic and send to Allison
@@ -65,7 +63,7 @@ Future runVaccineDemo() async {
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
-  trinsic.serviceOptions.authToken = allison;
+  trinsic.serviceOptions.authToken = allison.authToken;
   // insertItemWallet() {
   var insertResponse = await trinsic
       .wallet()
@@ -95,7 +93,7 @@ Future runVaccineDemo() async {
 
   // verifyCredential() {
   // The airline verifies the credential
-  trinsic.serviceOptions.authToken = airline;
+  trinsic.serviceOptions.authToken = airline.authToken;
   // verifyProof() {
   var verifyResult = await trinsic
       .credential()

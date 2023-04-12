@@ -17,28 +17,31 @@ func GetSdkVersion() string {
 
 // Options for configuring the sdk
 type Options struct {
-	ServiceOptions  *options.ServiceOptions
+	TrinsicOptions  *options.TrinsicOptions
 	GrpcDialOptions []grpc.DialOption
 }
 
 // NewServiceOptions returns a service options configuration with the provided options set
 func NewServiceOptions(opts ...Option) (*Options, error) {
-	options := &Options{
-		ServiceOptions: &options.ServiceOptions{},
+	myOptions := &Options{
+		TrinsicOptions: &options.TrinsicOptions{},
 	}
 
 	// Default to production
-	WithProductionEnv()(options)
+	err := WithProductionEnv()(myOptions)
+	if err != nil {
+		return nil, err
+	}
 
 	// set user defined options
 	for _, o := range opts {
-		err := o(options)
+		err := o(myOptions)
 		if err != nil {
 			return nil, err
 		}
 	}
 
-	return options, nil
+	return myOptions, nil
 }
 
 // Option function for setting options when configuring the service
@@ -47,7 +50,7 @@ type Option func(*Options) error
 // WithAuthToken sets a specific account token to use
 func WithAuthToken(token string) Option {
 	return func(s *Options) error {
-		s.ServiceOptions.AuthToken = token
+		s.TrinsicOptions.AuthToken = token
 
 		return nil
 	}
@@ -76,12 +79,12 @@ func WithDefaultEcosystem(ecosystemID string) Option {
 }
 
 // WithOptions will replace the current options with the one provided
-func WithOptions(serviceOptions *options.ServiceOptions) Option {
+func WithOptions(TrinsicOptions *options.TrinsicOptions) Option {
 	return func(s *Options) error {
-		s.ServiceOptions.AuthToken = serviceOptions.AuthToken
-		s.ServiceOptions.ServerPort = serviceOptions.ServerPort
-		s.ServiceOptions.ServerEndpoint = serviceOptions.ServerEndpoint
-		s.ServiceOptions.ServerUseTls = serviceOptions.ServerUseTls
+		s.TrinsicOptions.AuthToken = TrinsicOptions.AuthToken
+		s.TrinsicOptions.ServerPort = TrinsicOptions.ServerPort
+		s.TrinsicOptions.ServerEndpoint = TrinsicOptions.ServerEndpoint
+		s.TrinsicOptions.ServerUseTls = TrinsicOptions.ServerUseTls
 
 		return nil
 	}
@@ -90,9 +93,9 @@ func WithOptions(serviceOptions *options.ServiceOptions) Option {
 // WithDevEnv will configure the server to use the trinsic development environment
 func WithDevEnv() Option {
 	return func(s *Options) error {
-		s.ServiceOptions.ServerEndpoint = "dev-internal.trinsic.cloud"
-		s.ServiceOptions.ServerPort = 443
-		s.ServiceOptions.ServerUseTls = true
+		s.TrinsicOptions.ServerEndpoint = "dev-internal.trinsic.cloud"
+		s.TrinsicOptions.ServerPort = 443
+		s.TrinsicOptions.ServerUseTls = true
 
 		return nil
 	}
@@ -101,9 +104,9 @@ func WithDevEnv() Option {
 // WithStagingEnv will configure the server to use the trinsic staging environment
 func WithStagingEnv() Option {
 	return func(s *Options) error {
-		s.ServiceOptions.ServerEndpoint = "staging-internal.trinsic.cloud"
-		s.ServiceOptions.ServerPort = 443
-		s.ServiceOptions.ServerUseTls = true
+		s.TrinsicOptions.ServerEndpoint = "staging-internal.trinsic.cloud"
+		s.TrinsicOptions.ServerPort = 443
+		s.TrinsicOptions.ServerUseTls = true
 
 		return nil
 	}
@@ -112,9 +115,9 @@ func WithStagingEnv() Option {
 // WithProductionEnv will configure the server to use the trinsic production environment
 func WithProductionEnv() Option {
 	return func(s *Options) error {
-		s.ServiceOptions.ServerEndpoint = "prod.trinsic.cloud"
-		s.ServiceOptions.ServerPort = 443
-		s.ServiceOptions.ServerUseTls = true
+		s.TrinsicOptions.ServerEndpoint = "prod.trinsic.cloud"
+		s.TrinsicOptions.ServerPort = 443
+		s.TrinsicOptions.ServerUseTls = true
 
 		return nil
 	}
@@ -128,19 +131,19 @@ func WithTestEnv() Option {
 		if len(testEndpoint) == 0 {
 			testEndpoint = "prod.trinsic.cloud"
 		}
-		s.ServiceOptions.ServerEndpoint = testEndpoint
+		s.TrinsicOptions.ServerEndpoint = testEndpoint
 
 		port, err := strconv.Atoi(os.Getenv("TEST_SERVER_PORT"))
 		if err != nil || port <= 0 {
 			port = 443
 		}
-		s.ServiceOptions.ServerPort = int32(port)
+		s.TrinsicOptions.ServerPort = int32(port)
 
 		useTLS := os.Getenv("TEST_SERVER_USE_TLS")
 		if len(useTLS) != 0 && strings.Compare(strings.ToLower(useTLS), "false") == 0 {
-			s.ServiceOptions.ServerUseTls = false
+			s.TrinsicOptions.ServerUseTls = false
 		} else {
-			s.ServiceOptions.ServerUseTls = true
+			s.TrinsicOptions.ServerUseTls = true
 		}
 
 		return nil

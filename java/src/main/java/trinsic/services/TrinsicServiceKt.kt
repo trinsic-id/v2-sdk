@@ -2,10 +2,9 @@ package trinsic.services
 
 import trinsic.sdk.options.v1.Options
 
-class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions.Builder? = null) :
+class TrinsicServiceKt @JvmOverloads constructor(options: Options.TrinsicOptions.Builder? = null) :
     ServiceBase(options) {
   private var _accessManagementService: AccessManagementServiceKt? = null
-  private var _accountService: AccountServiceKt? = null
   private var _credentialService: CredentialServiceKt? = null
   private var _providerService: ProviderServiceKt? = null
   private var _fileManagementService: FileManagementServiceKt? = null
@@ -16,10 +15,6 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
     if (_accessManagementService == null)
         _accessManagementService = AccessManagementServiceKt(optionsBuilder)
     return _accessManagementService!!
-  }
-  fun account(): AccountServiceKt {
-    if (_accountService == null) _accountService = AccountServiceKt(optionsBuilder)
-    return _accountService!!
   }
 
   fun credential(): CredentialServiceKt {
