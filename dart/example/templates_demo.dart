@@ -9,9 +9,12 @@ import 'package:uuid/uuid.dart';
 
 Future runTemplatesDemo() async {
   var trinsic = TrinsicService(trinsicConfig());
-  var createWalletResponse = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: "default"));
+  var createWalletResponse = await trinsic
+      .wallet()
+      .createWallet(CreateWalletRequest(ecosystemId: "default"));
   assert(createWalletResponse.authToken.isNotEmpty);
-  trinsic = TrinsicService(trinsicConfig(authToken: createWalletResponse.authToken));
+  trinsic =
+      TrinsicService(trinsicConfig(authToken: createWalletResponse.authToken));
 
   var uuid = Uuid();
   // createTemplate() {

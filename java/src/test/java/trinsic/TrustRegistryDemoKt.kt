@@ -19,7 +19,10 @@ suspend fun main() {
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
   val trinsic = TrinsicServiceKt(TrinsicUtilities.getTrinsicTrinsicOptions())
-  var createWallet = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId("default").build())
+  var createWallet =
+      trinsic
+          .wallet()
+          .createWallet(CreateWalletRequest.newBuilder().setEcosystemId("default").build())
   trinsic.setAuthToken(createWallet.authToken)
 
   val didUri = "did:example:test"

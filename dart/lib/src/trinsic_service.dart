@@ -11,12 +11,10 @@ class TrinsicService extends ServiceBase {
   TemplateService? _templateService;
   TrustRegistryService? _trustRegistryService;
   WalletService? _walletService;
-  TrinsicService(TrinsicOptions? serverOptions)
-      : super(serverOptions);
+  TrinsicService(TrinsicOptions? serverOptions) : super(serverOptions);
 
   AccessManagementService accessManagement() {
-    _accessManagementService ??=
-        AccessManagementService(serviceOptions);
+    _accessManagementService ??= AccessManagementService(serviceOptions);
     return _accessManagementService!;
   }
 
@@ -26,8 +24,7 @@ class TrinsicService extends ServiceBase {
   }
 
   FileManagementService fileManagement() {
-    _fileManagementService ??=
-        FileManagementService(serviceOptions);
+    _fileManagementService ??= FileManagementService(serviceOptions);
     return _fileManagementService!;
   }
 
@@ -42,8 +39,7 @@ class TrinsicService extends ServiceBase {
   }
 
   TrustRegistryService trustRegistry() {
-    _trustRegistryService ??=
-        TrustRegistryService(serviceOptions);
+    _trustRegistryService ??= TrustRegistryService(serviceOptions);
     return _trustRegistryService!;
   }
 

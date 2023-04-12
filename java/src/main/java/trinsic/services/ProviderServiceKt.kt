@@ -2,8 +2,6 @@ package trinsic.services
 
 import com.google.protobuf.InvalidProtocolBufferException
 import java.util.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import trinsic.okapi.DidException
 import trinsic.sdk.options.v1.Options
 import trinsic.services.provider.v1.*

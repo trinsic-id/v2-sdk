@@ -5,8 +5,7 @@ import 'package:trinsic_dart/src/service_base.dart';
 class AccessManagementService extends ServiceBase {
   late AccessManagementClient client;
 
-  AccessManagementService(
-      TrinsicOptions? serverOptions)
+  AccessManagementService(TrinsicOptions? serverOptions)
       : super(serverOptions) {
     client = AccessManagementClient(super.channel);
   }

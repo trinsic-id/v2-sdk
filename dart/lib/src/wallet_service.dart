@@ -2,12 +2,10 @@ import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/universal-wallet/v1/universal-wallet.pbgrpc.dart';
 import 'package:trinsic_dart/src/service_base.dart';
 
-
 class WalletService extends ServiceBase {
   late UniversalWalletClient client;
 
-  WalletService(TrinsicOptions? serverOptions)
-      : super(serverOptions) {
+  WalletService(TrinsicOptions? serverOptions) : super(serverOptions) {
     client = UniversalWalletClient(super.channel);
   }
 

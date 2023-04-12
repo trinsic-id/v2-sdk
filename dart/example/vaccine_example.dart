@@ -33,9 +33,15 @@ Future runVaccineDemo() async {
 
   // setupActors() {
   // Create 3 different profiles for each participant in the scenario
-  var allison = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
-  var clinic = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
-  var airline = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
+  var allison = await trinsic
+      .wallet()
+      .createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
+  var clinic = await trinsic
+      .wallet()
+      .createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
+  var airline = await trinsic
+      .wallet()
+      .createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
   // }
 
   trinsic.serviceOptions.authToken = clinic.authToken;

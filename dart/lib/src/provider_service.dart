@@ -4,12 +4,10 @@ import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/provider/v1/provider.pbgrpc.dart';
 import 'package:trinsic_dart/src/service_base.dart';
 
-
 class ProviderService extends ServiceBase {
   late ProviderClient client;
 
-  ProviderService(TrinsicOptions? serverOptions)
-      : super(serverOptions) {
+  ProviderService(TrinsicOptions? serverOptions) : super(serverOptions) {
     client = ProviderClient(super.channel);
   }
 

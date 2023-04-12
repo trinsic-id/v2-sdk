@@ -44,9 +44,18 @@ suspend fun runVaccineDemo() {
 
   // setupActors() {
   // Create an account for each participant in the scenario
-  val allison = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
-  val clinic = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
-  val airline = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+  val allison =
+      trinsic
+          .wallet()
+          .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+  val clinic =
+      trinsic
+          .wallet()
+          .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+  val airline =
+      trinsic
+          .wallet()
+          .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
   // }
 
   // Create template

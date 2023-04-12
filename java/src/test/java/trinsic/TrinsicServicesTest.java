@@ -1,10 +1,9 @@
 package trinsic;
 
-import org.junit.jupiter.api.Test;
-import trinsic.okapi.DidException;
-
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
+import org.junit.jupiter.api.Test;
+import trinsic.okapi.DidException;
 
 class TrinsicServicesTest {
   @Test

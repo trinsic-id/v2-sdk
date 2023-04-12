@@ -5,7 +5,9 @@ import 'package:trinsic_dart/trinsic.dart';
 
 Future runEcosystemDemo() async {
   var trinsic = TrinsicService(trinsicConfig());
-  var account = await trinsic.wallet().createWallet(CreateWalletRequest(ecosystemId: "default"));
+  var account = await trinsic
+      .wallet()
+      .createWallet(CreateWalletRequest(ecosystemId: "default"));
   assert(account.authToken.isNotEmpty);
   trinsic = TrinsicService(trinsicConfig(authToken: account.authToken));
   // createEcosystem() {

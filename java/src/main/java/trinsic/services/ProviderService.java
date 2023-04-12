@@ -3,12 +3,11 @@ package trinsic.services;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.util.Base64;
+import java.util.concurrent.Executors;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.provider.v1.*;
-
-import java.util.Base64;
-import java.util.concurrent.Executors;
 
 public class ProviderService extends ServiceBase {
   public ProviderGrpc.ProviderFutureStub stub;

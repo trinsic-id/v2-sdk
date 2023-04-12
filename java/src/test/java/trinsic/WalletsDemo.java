@@ -1,13 +1,12 @@
 package trinsic;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.*;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -22,7 +21,11 @@ public class WalletsDemo {
     var ecosystemResponse =
         trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
-    var account = trinsic.wallet().createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build()).get();
+    var account =
+        trinsic
+            .wallet()
+            .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+            .get();
     trinsic.setAuthToken(account.getAuthToken());
 
     var walletId = account.getWallet().getWalletId();
