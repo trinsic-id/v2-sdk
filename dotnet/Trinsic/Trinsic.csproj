@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-<!--        <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>-->
         <TargetFramework>net6.0</TargetFramework>
         <NoWarn>CS0612,CS1591</NoWarn>
         <Nullable>enable</Nullable>
@@ -33,15 +32,13 @@
         </ItemGroup>
     </Target>
     <ItemGroup>
+        <PackageReference Include="Google.Protobuf" Version="3.22.1" />
         <PackageReference Include="Grpc.Net.Client" Version="2.47.0" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Grpc.Tools" Version="2.48.0" PrivateAssets="All" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-        <PackageReference Include="Okapi.Net" Version="1.6.3">
-            <PrivateAssets>none</PrivateAssets>
-        </PackageReference>
     </ItemGroup>
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">

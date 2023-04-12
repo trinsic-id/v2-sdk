@@ -12,22 +12,17 @@ import (
 func TestWalletService(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
-	assert2.Nil(err)
-
-	// Get account info to learn the ecosystem name
-	accountInfo, err := trinsic.Account().GetInfo(context.Background())
+	trinsic, ecosystem, err := CreateTestTrinsicWithNewEcosystem()
 	assert2.Nil(err)
 
 	// Create a new account in the ecosystem
-	_, err = trinsic.Account().LoginAnonymous(context.Background(), accountInfo.EcosystemId)
+	createResponse, err := trinsic.Wallet().CreateWallet(context.Background(), &wallet.CreateWalletRequest{
+		EcosystemId: ecosystem.Id,
+		Description: nil,
+	})
 	assert2.Nil(err)
 
-	// Get account info again to get new wallet ID
-	accountInfo, err = trinsic.Account().GetInfo(context.Background())
-	assert2.Nil(err)
-
-	walletId := accountInfo.WalletId
+	walletId := createResponse.Wallet.WalletId
 
 	valuesBytes, _ := json.Marshal(struct{ name string }{name: "A Realperson"})
 	credentialJson := string(valuesBytes)

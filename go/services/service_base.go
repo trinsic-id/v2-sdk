@@ -3,12 +3,11 @@ package services
 import (
 	"context"
 	"crypto/x509"
+	"encoding/base64"
 	"errors"
 	"fmt"
-	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
 	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
-
 	"runtime"
 
 	"google.golang.org/grpc"
@@ -20,16 +19,14 @@ import (
 // NewServiceBase returns a base service which is the foundation
 // for all the other services
 func NewServiceBase(options *Options) (Service, error) {
-	conn, err := NewServiceConnection(options.ServiceOptions, options.GrpcDialOptions...)
+	conn, err := NewServiceConnection(options.TrinsicOptions, options.GrpcDialOptions...)
 	if err != nil {
 		return nil, err
 	}
 
 	return &serviceBase{
-		options:          options,
-		channel:          conn,
-		securityProvider: &OberonSecurityProvider{},
-		tokenProvider:    DefaultTokenProvider, // This is a global instance
+		options: options,
+		channel: conn,
 	}, nil
 }
 
@@ -45,49 +42,31 @@ type Service interface {
 	// GetAuthToken returns the auth token currently assigned to this service or an empty string
 	// if none is set
 	GetAuthToken() string
-	// GetProfile returns the account profile associated with this service, or null if none
-	GetProfile() *account.AccountProfile
-	// GetServiceOptions returns the set of ServiceOptions the service is using
-	GetServiceOptions() *options.ServiceOptions
+	// GetServiceOptions returns the set of TrinsicOptions the service is using
+	GetServiceOptions() *options.TrinsicOptions
 	// GetChannel returns the grpc client connect
 	GetChannel() *grpc.ClientConn
-	// GetTokenProvider returns the Token provider
-	GetTokenProvider() TokenProvider
 }
 
 type serviceBase struct {
-	options          *Options
-	channel          *grpc.ClientConn
-	securityProvider SecurityProvider
-	tokenProvider    TokenProvider
+	options *Options
+	channel *grpc.ClientConn
 }
 
 func (s *serviceBase) GetChannel() *grpc.ClientConn {
 	return s.channel
 }
-func (s *serviceBase) GetTokenProvider() TokenProvider {
-	return s.tokenProvider
-}
 
 func (s *serviceBase) SetAuthToken(authtoken string) {
-	s.options.ServiceOptions.AuthToken = authtoken
+	s.options.TrinsicOptions.AuthToken = authtoken
 }
 
 func (s *serviceBase) GetAuthToken() string {
-	return s.options.ServiceOptions.AuthToken
+	return s.options.TrinsicOptions.AuthToken
 }
 
-func (s *serviceBase) GetProfile() *account.AccountProfile {
-	if s.options != nil && len(s.options.ServiceOptions.AuthToken) != 0 {
-		profile, _ := ProfileFromToken(s.options.ServiceOptions.AuthToken)
-		return profile
-	}
-
-	return nil
-}
-
-func (s *serviceBase) GetServiceOptions() *options.ServiceOptions {
-	return s.options.ServiceOptions
+func (s *serviceBase) GetServiceOptions() *options.TrinsicOptions {
+	return s.options.TrinsicOptions
 }
 
 // GetMetadataContext returns a new context with grpc metadata containing authentication headers
@@ -111,32 +90,12 @@ func (s *serviceBase) GetMetadataContext(userContext context.Context, message pr
 // This call will return an error if the auth token is not set
 func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) {
 	md := metadata.New(make(map[string]string))
-	if len(s.options.ServiceOptions.AuthToken) == 0 {
-		return nil, errors.New("cannot call authenticated endpoint: auth token must be set in service options")
-	}
-	okapiVersion, err := okapi.OkapiMetadata().GetMetadata()
-	if err != nil {
-		return nil, err
-	}
-	md.Set("TrinsicOkapiVersion", okapiVersion.Version)
 	md.Set("TrinsicSDKVersion", GetSdkVersion())
 	md.Set("TrinsicSDKLanguage", "golang")
 
 	if message != nil {
-		authToken := s.options.ServiceOptions.AuthToken
-		if authToken == "" {
-			authToken = s.tokenProvider.GetDefault()
-		}
-		profile, err := ProfileFromToken(s.options.ServiceOptions.AuthToken)
-		if err != nil {
-			return nil, err
-		}
-
-		authString, err := s.securityProvider.GetAuthHeader(profile, message)
-		if err != nil {
-			return nil, err
-		}
-		md.Set("authorization", authString)
+		authToken := s.options.TrinsicOptions.AuthToken
+		md.Set("Authorization", "Bearer "+authToken)
 	}
 
 	return md, nil
@@ -144,7 +103,7 @@ func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 
 // NewServiceConnection returns a grpc client connection to the target
 // provided in the options (ServerEndpoint, ServerPort, and ServerUseTLS)
-func NewServiceConnection(options *options.ServiceOptions, grpcDialOptions ...grpc.DialOption) (*grpc.ClientConn, error) {
+func NewServiceConnection(options *options.TrinsicOptions, grpcDialOptions ...grpc.DialOption) (*grpc.ClientConn, error) {
 	var dialOptions []grpc.DialOption
 
 	if !options.ServerUseTls {
@@ -169,4 +128,28 @@ func NewServiceConnection(options *options.ServiceOptions, grpcDialOptions ...gr
 	}
 
 	return grpc.Dial(fmt.Sprintf("%s:%d", options.ServerEndpoint, options.ServerPort), dialOptions...)
+}
+
+// ProfileToToken takes the profile and returns an encoded auth token
+func ProfileToToken(profile *account.AccountProfile) (string, error) {
+	pbytes, err := proto.Marshal(profile)
+	if err != nil {
+		return "", err
+	}
+
+	return base64.RawURLEncoding.EncodeToString(pbytes), nil
+}
+
+// ProfileFromToken takes an encoded auth token and returns the account profile
+func ProfileFromToken(token string) (*account.AccountProfile, error) {
+	tb, err := base64.RawURLEncoding.DecodeString(token)
+	if err != nil {
+		return nil, err
+	}
+
+	profile := &account.AccountProfile{}
+
+	err = proto.Unmarshal(tb, profile)
+
+	return profile, err
 }

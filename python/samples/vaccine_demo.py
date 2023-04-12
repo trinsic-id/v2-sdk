@@ -2,7 +2,10 @@ import asyncio
 import json
 import uuid
 
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
+from trinsic.proto.services.universalwallet.v1 import (
+    InsertItemRequest,
+    CreateWalletRequest,
+)
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
     TemplateData,
@@ -31,17 +34,19 @@ async def vaccine_demo():
 
     # setupActors() {
     # Create an account for each participant in the scenario
-    allison = await trinsic_service.account.login_anonymous(ecosystem_id=ecosystem_id)
-    airline = await trinsic_service.account.login_anonymous(ecosystem_id=ecosystem_id)
-    clinic = await trinsic_service.account.login_anonymous(ecosystem_id=ecosystem_id)
+    allison = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id=ecosystem_id)
+    )
+    airline = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id=ecosystem_id)
+    )
+    clinic = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id=ecosystem_id)
+    )
     # }
 
-    trinsic_service.service_options.auth_token = clinic
-    info = await trinsic_service.account.get_info()
-    print(f"Account info={info}")
-
     # Create a template
-    trinsic_service.service_options.auth_token = clinic
+    trinsic_service.service_options.auth_token = clinic.auth_token
     template = await do_template(trinsic_service)
 
     # Create template values
@@ -78,7 +83,7 @@ async def vaccine_demo():
 
     # storeCredential() {
     # Allison stores the credential in her cloud wallet
-    trinsic_service.service_options.auth_token = allison
+    trinsic_service.service_options.auth_token = allison.auth_token
 
     insert_response = await trinsic_service.wallet.insert_item(
         request=InsertItemRequest(item_json=credential)
@@ -90,7 +95,7 @@ async def vaccine_demo():
 
     # shareCredential() {
     # Allison shares the credential with the airline
-    trinsic_service.service_options.auth_token = allison
+    trinsic_service.service_options.auth_token = allison.auth_token
 
     proof_response = await trinsic_service.credential.create_proof(
         request=CreateProofRequest(item_id=item_id)
@@ -103,7 +108,7 @@ async def vaccine_demo():
 
     # verifyCredential() {
     # The airline verifies the credential
-    trinsic_service.service_options.auth_token = airline
+    trinsic_service.service_options.auth_token = airline.auth_token
 
     verify_result = await trinsic_service.credential.verify_proof(
         request=VerifyProofRequest(proof_document_json=credential_proof)

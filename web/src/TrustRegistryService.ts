@@ -1,19 +1,9 @@
 import ServiceBase from "./ServiceBase";
 import {
-    AddFrameworkRequest,
-    AddFrameworkResponse,
-    GetMembershipStatusRequest,
-    GetMembershipStatusResponse,
-    RegisterMemberRequest,
-    RegisterMemberResponse,
-    RemoveFrameworkRequest,
-    RemoveFrameworkResponse,
     SearchRegistryRequest,
     SearchRegistryResponse,
-    ServiceOptions,
+    TrinsicOptions,
     TrustRegistryDefinition,
-    UnregisterMemberRequest,
-    UnregisterMemberResponse,
 } from "./proto";
 import * as proto from "./proto";
 
@@ -22,7 +12,7 @@ import type { Client as BrowserClient } from "nice-grpc-web";
 export class TrustRegistryService extends ServiceBase {
     client: BrowserClient<typeof TrustRegistryDefinition>;
 
-    constructor(options?: ServiceOptions) {
+    constructor(options?: TrinsicOptions) {
         super(options);
 
         this.client = this.createClient(TrustRegistryDefinition);

@@ -30,16 +30,18 @@ export async function vaccineDemo() {
 
     // setupActors() {
     // Create 3 different profiles for each participant in the scenario
-    const allison = await trinsic.account().loginAnonymous(ecosystemId);
-    const clinic = await trinsic.account().loginAnonymous(ecosystemId);
-    const airline = await trinsic.account().loginAnonymous(ecosystemId);
+    const allison = await trinsic.wallet().createWallet({ ecosystemId: ecosystemId });
+    const clinic = await trinsic.wallet().createWallet({ ecosystemId: ecosystemId });
+    const airline = await trinsic.wallet().createWallet({ ecosystemId: ecosystemId });
     // }
 
-    trinsic.options.authToken = clinic;
-    const info = await trinsic.account().getInfo();
+    // setAuthTokenSample() {
+    trinsic.options.authToken = clinic.authToken;
+    // }
+    const info = await trinsic.wallet().getMyInfo({});
 
     // Create template
-    trinsic.options.authToken = clinic;
+    trinsic.options.authToken = clinic.authToken;
     const template = await doTemplate(trinsic);
 
     // issueCredential() {
@@ -52,7 +54,7 @@ export async function vaccineDemo() {
     });
 
     // Sign a credential as the clinic and send it to Allison
-    trinsic.options.authToken = clinic;
+    trinsic.options.authToken = clinic.authToken;
     const issueResponse = await trinsic.credential().issueFromTemplate(
         IssueFromTemplateRequest.fromPartial({
             templateId: template.id,
@@ -63,7 +65,7 @@ export async function vaccineDemo() {
 
     // storeCredential() {
     // Alice stores the credential in her cloud wallet.
-    trinsic.options.authToken = allison;
+    trinsic.options.authToken = allison.authToken;
     const insertResponse = await trinsic.wallet().insertItem(
         InsertItemRequest.fromPartial({
             itemJson: issueResponse.documentJson,
@@ -73,7 +75,7 @@ export async function vaccineDemo() {
 
     // shareCredential() {
     // Allison shares the credential with the venue.
-    trinsic.options.authToken = allison;
+    trinsic.options.authToken = allison.authToken;
     const proofResponse = await trinsic.credential().createProof(
         CreateProofRequest.fromPartial({
             itemId: insertResponse.itemId,
@@ -83,7 +85,7 @@ export async function vaccineDemo() {
 
     // verifyCredential() {
     // The airline verifies the credential
-    trinsic.options.authToken = airline;
+    trinsic.options.authToken = airline.authToken;
     const verifyResponse = await trinsic.credential().verifyProof(
         VerifyProofRequest.fromPartial({
             proofDocumentJson: proofResponse.proofDocumentJson,

@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.FileManagement.V1;
 
@@ -8,21 +7,8 @@ namespace Trinsic;
 
 public class FileManagementService : ServiceBase
 {
-    public FileManagementService(ServiceOptions options)
+    public FileManagementService(TrinsicOptions options)
         : base(options) {
-        Client = new(Channel);
-    }
-
-    public FileManagementService() {
-        Client = new(Channel);
-    }
-
-    internal FileManagementService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
-    }
-
-    internal FileManagementService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 

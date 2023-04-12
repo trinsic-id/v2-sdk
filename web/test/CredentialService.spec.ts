@@ -1,25 +1,26 @@
-import { IssueRequest, ServiceOptions, TrinsicService } from "../browser";
+import { IssueRequest, TrinsicOptions, TrinsicService } from "../browser";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
 import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
 
-let options: ServiceOptions = getTestServerOptions();
+let options: TrinsicOptions = getTestServerOptions();
 let trinsic: TrinsicService;
 
 describe("CredentialService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        trinsic.options.authToken = response.authToken;
     });
 
     it("Issue Credential From Template", async () => {
         // Get account info, so we can compare issued DID etc.
-        let info = await trinsic.account().getInfo();
+        let info = await trinsic.wallet().getMyInfo({});
 
         // Set issuer DID of credential
         let vaccineCert = Object.assign({}, vaccineCertUnsigned, {
-            issuer: info.publicDid,
+            issuer: info.wallet!.publicDid,
         });
         let credentialJSON = JSON.stringify(vaccineCert);
 
@@ -37,6 +38,6 @@ describe("CredentialService Unit Tests", () => {
         expect(credential.credentialSubject).toEqual(
             vaccineCert.credentialSubject
         );
-        expect(credential.issuer).toBe(info.publicDid);
+        expect(credential.issuer).toBe(info.wallet!.publicDid);
     });
 });

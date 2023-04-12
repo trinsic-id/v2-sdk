@@ -14,7 +14,6 @@ import {
     issueCredentialFromTemplate,
     verifyCredential,
 } from "./CredentialTemplateShared";
-import {CreateCredentialTemplateRequest, FieldType} from "../lib";
 
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
     createRequiredTestObjects();

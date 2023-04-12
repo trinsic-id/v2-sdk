@@ -1,18 +1,7 @@
-use crate::{
-    dict,
-    error::Error,
-    parser::config::ConfigCommand,
-    proto::{
-        sdk::options::v1::ServiceOptions,
-        services::{account::v1::AccountProfile, common::v1::Nonce},
-    },
-    MessageFormatter,
-};
+use crate::{dict, error::Error, parser::config::ConfigCommand, proto::sdk::options::v1::TrinsicOptions};
 use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
-use okapi::{proto::metadata::MetadataRequest, proto::security::CreateOberonProofRequest, Metadata, Oberon};
-use prost::Message;
 use serde::{Deserialize, Serialize};
 use std::{
     env::var,
@@ -20,7 +9,6 @@ use std::{
     fs::{self, OpenOptions},
     io::prelude::*,
     path::PathBuf,
-    time::{SystemTime, UNIX_EPOCH},
 };
 use tonic::service::Interceptor;
 
@@ -36,7 +24,7 @@ pub static CONFIG_FILENAME: &str = "config.test.toml";
 
 #[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub(crate) struct CliConfig {
-    pub options: ServiceOptions,
+    pub options: TrinsicOptions,
     pub defaults: Option<ConfigDefaults>,
 }
 
@@ -52,7 +40,7 @@ pub(crate) struct ConfigDefaults {
 impl Default for CliConfig {
     fn default() -> Self {
         CliConfig {
-            options: ServiceOptions {
+            options: TrinsicOptions {
                 server_endpoint: DEFAULT_SERVER_ENDPOINT.into(),
                 server_port: DEFAULT_SERVER_PORT,
                 server_use_tls: DEFAULT_SERVER_USE_TLS,
@@ -69,7 +57,7 @@ impl Default for MetadataVersion {
     }
 }
 
-impl Into<Bytes> for &ServiceOptions {
+impl Into<Bytes> for &TrinsicOptions {
     fn into(self) -> Bytes {
         Bytes::from(format!(
             "{tls}://{endpoint}:{port}",
@@ -144,34 +132,7 @@ impl Interceptor for CliConfig {
             return Err(tonic::Status::invalid_argument("missing auth token"));
         }
 
-        // read the currently configured profile
-        let profile_data = base64::decode_config(&self.options.auth_token, base64::URL_SAFE)
-            .map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
-        let profile: AccountProfile =
-            AccountProfile::from_vec(&profile_data).map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
-
-        // generate nonce by combining the current unix epoch timestamp
-        // and a hash of the request payload
-        let nonce = Nonce {
-            timestamp: SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() as i64,
-            request_hash: blake3::hash(&request.get_ref().encode_to_vec()).as_bytes().to_vec(),
-        };
-
-        // generate proof of knowledge using the stored token and the generated nonce
-        let proof = Oberon::proof(&CreateOberonProofRequest {
-            data: profile.auth_data.clone(),
-            token: profile.auth_token,
-            nonce: nonce.encode_to_vec(),
-            blinding: vec![],
-        })
-        .map_err(|e| tonic::Status::internal(format!("{:?}", e)))?;
-
-        let header = format!(
-            "Oberon data={data},proof={proof},nonce={nonce},ver=1",
-            data = base64::encode_config(profile.auth_data, base64::URL_SAFE_NO_PAD),
-            proof = base64::encode_config(proof.proof, base64::URL_SAFE_NO_PAD),
-            nonce = base64::encode_config(nonce.encode_to_vec(), base64::URL_SAFE_NO_PAD)
-        );
+        let header = format!("Bearer {token}", token = self.options.auth_token);
 
         unsafe {
             if DEBUG {
@@ -195,10 +156,6 @@ pub(crate) fn add_version_metadata(mut request: tonic::Request<()>) -> Result<to
     request.metadata_mut().insert(
         "trinsicsdkversion",
         option_env!("CARGO_PKG_VERSION").unwrap_or_default().to_string().parse().unwrap(),
-    );
-    request.metadata_mut().insert(
-        "trinsicokapiversion",
-        Metadata::get_metadata(&MetadataRequest {}).unwrap_or_default().version.parse().unwrap(),
     );
     Ok(request)
 }
@@ -263,7 +220,7 @@ fn data_path() -> Result<PathBuf, Error> {
 
 #[cfg(test)]
 mod test {
-    use crate::proto::sdk::options::v1::ServiceOptions;
+    use crate::proto::sdk::options::v1::TrinsicOptions;
 
     use super::*;
 
@@ -276,7 +233,7 @@ mod test {
 
     #[test]
     fn serde_service_options() {
-        let options = ServiceOptions {
+        let options = TrinsicOptions {
             server_endpoint: "example.com".into(),
             server_port: 443,
             server_use_tls: true,

@@ -53,8 +53,6 @@
     "license": "ISC",
     "dependencies": {
         "@improbable-eng/grpc-web-node-http-transport": "0.15.0",
-        "@trinsic/okapi-node": "1.6.2",
-        "@trinsic/okapi-web": "1.6.2",
         "buffer": "6.0.3",
         "google-protobuf": "3.21.0",
         "long": "5.2.0",

@@ -7,7 +7,7 @@ import { Base64 } from "js-base64";
 export class ProviderService extends ServiceBase {
     client: BrowserClient<typeof proto.ProviderDefinition>;
 
-    constructor(options?: proto.ServiceOptions) {
+    constructor(options?: proto.TrinsicOptions) {
         super(options);
 
         this.client = this.createClient(proto.ProviderDefinition);

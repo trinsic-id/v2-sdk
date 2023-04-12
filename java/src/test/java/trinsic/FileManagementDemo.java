@@ -11,6 +11,7 @@ import trinsic.services.filemanagement.v1.DeleteFileRequest;
 import trinsic.services.filemanagement.v1.GetFileRequest;
 import trinsic.services.filemanagement.v1.ListFilesRequest;
 import trinsic.services.filemanagement.v1.UploadFileRequest;
+import trinsic.services.universalwallet.v1.CreateWalletRequest;
 
 public class FileManagementDemo {
 
@@ -21,10 +22,13 @@ public class FileManagementDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsic.account().loginAnonymous("default").get();
-
-    trinsic.setAuthToken(account);
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
+    var account =
+        trinsic
+            .wallet()
+            .createWallet(CreateWalletRequest.newBuilder().setEcosystemId("default").build())
+            .get();
+    trinsic.setAuthToken(account.getAuthToken());
 
     // uploadFile() {
     // Get raw bytes of string

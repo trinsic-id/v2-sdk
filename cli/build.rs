@@ -5,7 +5,7 @@ fn main() {
 
     config
         .compile_well_known_types(true)
-        .type_attribute("ServiceOptions", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
+        .type_attribute("TrinsicOptions", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
         .type_attribute(".services", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
         .type_attribute(
             ".google.protobuf.UninterpretedOption",

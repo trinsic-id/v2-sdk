@@ -38,45 +38,20 @@ subcommands:
             help: (Optional) Sets the auth token for outgoing requests
             takes_value: true
             required: false
-  - account:
-      about: Account Service
-      subcommands:
-        - login:
-            about: >-
-              Create login credentials by signing into an existing account or
-              creating a new one.
-            args:
-              - email:
-                  long: email
-                  value_name: STRING
-                  help: (Optional) Email to associate with this account
-                  takes_value: true
-                  required: false
-              - invitation-code:
-                  long: invitation-code
-                  value_name: CODE
-                  help: (Optional) Invitation code provided by authorized entity
-                  takes_value: true
-                  required: false
-              - ecosystem:
-                  long: ecosystem
-                  short: e
-                  takes_value: true
-                  required: false
-                  help: (Optional) The ecosystem name or id to sign in
-        - authorize-webhook:
-            about: Authorizes ecosystem provider to receive webhooks for current account
-            args:
-              - events:
-                  long: events
-                  help: Comma-separated list of events to authorize, or "*" for all events
-                  takes_value: true
-                  required: true
-        - info:
-            about: Show account information
   - wallet:
       about: Wallet Service
       subcommands:
+        - create-wallet:
+            about: Create new wallet
+            args:
+              - ecosystem:
+                  long: ecosystem
+                  short: e
+                  value_name: NAME_OR_ID
+                  takes_value: true
+                  help: The ecosystem name or ID to associate the wallet
+        - my-info:
+            about: Display my wallet info
         - search:
             about: Search the wallet using SQL queries
             args:

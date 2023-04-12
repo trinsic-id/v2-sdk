@@ -28,10 +28,6 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/install-okapi-binaries-action  # We cannot put action.yaml in `.github/workflows` dir
-        id: install_okapi_binaries
-        with:
-          apiGithubToken: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
@@ -45,16 +41,11 @@ jobs:
           cache: pip
       - name: Build and Test Golang
         run: |
-          Copy-Item -Path "../../libs/*" -Recurse
           go version
           go test -covermode "atomic" -coverprofile "coverage.txt"
         working-directory: go/services
         shell: pwsh
         env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          LD_LIBRARY_PATH: "${{ github.workspace }}/go/services"
-          CGO_LDFLAGS: "-L${{ github.workspace }}/go/services"
-          CGO_CFLAGS: "-I${{ github.workspace }}/go/services"
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}

@@ -6,7 +6,7 @@ import trinsic.sdk.options.v1.Options
 import trinsic.services.universalwallet.v1.*
 import trinsic.services.universalwallet.v1.UniversalWalletGrpcKt
 
-class WalletServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
+class WalletServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(options) {
   var stub = UniversalWalletGrpcKt.UniversalWalletCoroutineStub(this.channel)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)

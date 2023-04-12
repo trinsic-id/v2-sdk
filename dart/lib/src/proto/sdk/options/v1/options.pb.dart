@@ -9,11 +9,11 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class ServiceOptions extends $pb.GeneratedMessage {
+class TrinsicOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'ServiceOptions',
+          : 'TrinsicOptions',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -42,8 +42,8 @@ class ServiceOptions extends $pb.GeneratedMessage {
             : 'authToken')
     ..hasRequiredFields = false;
 
-  ServiceOptions._() : super();
-  factory ServiceOptions({
+  TrinsicOptions._() : super();
+  factory TrinsicOptions({
     $core.String? serverEndpoint,
     $core.int? serverPort,
     $core.bool? serverUseTls,
@@ -64,32 +64,32 @@ class ServiceOptions extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ServiceOptions.fromBuffer($core.List<$core.int> i,
+  factory TrinsicOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory ServiceOptions.fromJson($core.String i,
+  factory TrinsicOptions.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  ServiceOptions clone() => ServiceOptions()..mergeFromMessage(this);
+  TrinsicOptions clone() => TrinsicOptions()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  ServiceOptions copyWith(void Function(ServiceOptions) updates) =>
-      super.copyWith((message) => updates(message as ServiceOptions))
-          as ServiceOptions; // ignore: deprecated_member_use
+  TrinsicOptions copyWith(void Function(TrinsicOptions) updates) =>
+      super.copyWith((message) => updates(message as TrinsicOptions))
+          as TrinsicOptions; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ServiceOptions create() => ServiceOptions._();
-  ServiceOptions createEmptyInstance() => create();
-  static $pb.PbList<ServiceOptions> createRepeated() =>
-      $pb.PbList<ServiceOptions>();
+  static TrinsicOptions create() => TrinsicOptions._();
+  TrinsicOptions createEmptyInstance() => create();
+  static $pb.PbList<TrinsicOptions> createRepeated() =>
+      $pb.PbList<TrinsicOptions>();
   @$core.pragma('dart2js:noInline')
-  static ServiceOptions getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ServiceOptions>(create);
-  static ServiceOptions? _defaultInstance;
+  static TrinsicOptions getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TrinsicOptions>(create);
+  static TrinsicOptions? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get serverEndpoint => $_getSZ(0);

@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
-using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Provider.V1;
 
@@ -9,21 +8,8 @@ namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(ServiceOptions options)
+    public ProviderService(TrinsicOptions options)
         : base(options) {
-        Client = new(Channel);
-    }
-
-    public ProviderService() {
-        Client = new(Channel);
-    }
-
-    internal ProviderService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
-    }
-
-    internal ProviderService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 

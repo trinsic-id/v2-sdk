@@ -1,22 +1,149 @@
-# Wallet Service
+# Wallet API
 
-The wallet service is the main interface for interacting with a cloud wallet. 
-
-!!! question "Wallets vs Accounts"
-    Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
-
-    Every account has exactly one wallet. 
-
-!!! info "Wallet Standard"
-    This service is designed to follow the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by the W3C Community Credentials Group.
+The Wallet API is the main interface for interacting with a cloud wallet. It is primarly used when you're providing custom wallet experience and building your own digital wallet integration.
+If you'd like to use Trinsic's integrated cloud wallet app, you likely won't need to use this API.
 
 ---
 
 ## Create Wallet
 
-A wallet is created whenever an account is created.
+Create a new wallet and return the authentication token and wallet information about the newly created wallet.
 
-Therefore, to create a wallet, you'll need to [create a new account](./account-service.md#sign-in).
+{{ proto_sample_start() }}
+    === "C#"
+        ```csharp
+        using Trinsic;
+        using Trinsic.Services.UniversalWallet.V1;
+
+        var trinsic = new TrinsicService();
+
+        var request = new CreateWalletRequest {
+            EcosystemId = "acme-corp",
+            Description = "user@acme-corp.org"
+        };
+        var response = await trinsic.Wallet.CreateWalletAsync(request);
+
+        // Response: {
+        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
+        //     "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
+        //     "wallet": {
+        //         "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
+        //         "publicDid": "did:key:123456"
+        //     }
+        // }
+        ```
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.CreateWallet") }}
+
+---
+
+## Add External Identity
+
+This service is used to attach external identity, such as email or phone number, to a wallet. The purpose of this process is to allow
+the user to authenticate to their existing wallet (using the `Authenticate` endpoint) to get an auth token.
+This may be needed if the user is logging in on a different device, have lost access to the initial auth token, etc.
+
+The process for adding external identity is based on confirming an OTP code that will be sent to the user's email address or phone number. To do this, you should call the
+services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
+
+#### `AddExternalIdentityInit`
+
+{{ proto_sample_start() }}
+    === "C#"
+        ```csharp
+        using Trinsic;
+        using Trinsic.Services.UniversalWallet.V1;
+
+        // these endpoints require authenticated user context
+        var options = new TrinsicOptions { AuthToken = "<auth token>" };
+        var trinsic = new TrinsicService(options);
+
+        // step 1 - initiate identity challenge
+        var requestInit = new AddExternalIdentityInitRequest {
+            Identity = "user@acme-corp.org",
+            Provider = IdentityProvider.Email
+        };
+        var responseInit = await trinsic.Wallet.AddExternalIdentityInitAsync(requestInit);
+
+        // step 2 - confirm challenge response
+        var requestConfirm = new AddExternalIdentityConfirmRequest {
+            Challenge = responseInit.Challenge,
+            Response = "123456" // OTP code
+        };
+        await trinsic.Wallet.AddExternalIdentityConfirmAsync(requestConfirm);
+
+        ```
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit") }}
+
+#### `AddExternalIdentityConfirm`
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm") }}
+
+---
+
+## Remove External Identity
+
+Removes an external identity from the associated identities of the authenticated wallet.
+
+TODO: add `proto_method_tabs`
+
+---
+
+## Authenticate
+
+Authenticate and return an auth token for an existing wallet using one of the associated external identities.
+This endpoint requires that the wallet user has previously added at least one external identity using the above endpoints.
+
+Once a token is obtained, it can be reused for future sessions -- users don't need to authenciate if they already have a valid token.
+You can store the auth token in secure enclaves on the users device, browser, etc.
+
+!!! note "When should users authenticate?"
+
+    - If your integration solution doesn't manage the wallet tokens, users may need to re-authenticate on their device to get a new auth token
+    - Users want to log in to a different device using their email or phone number
+    - Returning users that have lost their previous session and require new auth token
+
+#### `AuthenticateInit`
+
+{{ proto_sample_start() }}
+    === "C#"
+        ```csharp
+        using Trinsic;
+        using Trinsic.Services.UniversalWallet.V1;
+
+        var trinsic = new TrinsicService();
+
+        // step 1 - initiate auth challenge
+        var requestInit = new AuthenticateInitRequest {
+            Identity = "user@acme-corp.org",
+            Provider = IdentityProvider.Email,
+            EcosystemId = "acme-corp" // short name or full ecosystem ID
+        };
+        var responseInit = await trinsic.Wallet.AuthenticateInit(requestInit);
+
+        // step 2 - confirm auth response
+        var requestConfirm = new AuthenticateConfirmRequest {
+            Challenge = responseInit.Challenge,
+            Response = "123456" // OTP code
+        };
+        var responseConfirm = await trinsic.Wallet.AuthenticateConfirm(requestConfirm);
+
+        // Response:
+        // {
+        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
+        // }
+
+        // use the new token to make authenticated calls
+        var options = new TrinsicOptions { AuthToken = responseConfirm.AuthToken };
+        trinsic = new TrinsicService(options);
+        ```
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateInit") }}
+
+#### `AuthenticateConfirm`
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateConfirm") }}
 
 ---
 
@@ -25,11 +152,6 @@ Therefore, to create a wallet, you'll need to [create a new account](./account-s
 Stores a credential (or any other JSON object) in a wallet.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet insert-item --item <INPUT_JSON_FILE>
-        ```
-
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
@@ -68,7 +190,7 @@ Stores a credential (or any other JSON object) in a wallet.
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.InsertItem") }}
 
 !!! question "What can be stored in a wallet?"
-    
+
     Wallets are mainly intended to hold [Verifiable Credentials](/learn/concepts/credentials){target=_blank}, but can technically
     store any JSON blob.
 
@@ -271,7 +393,7 @@ If no `query` is specified, this call by default returns the first 100 items in 
         [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletBasic
         ```
         <!--/codeinclude-->
-    
+
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.Search") }}
 
 
@@ -301,7 +423,7 @@ Note that `data` is an object, not a string; thus, any of its sub-fields may be 
 For example, `SELECT * FROM c WHERE c.data.someField = 'Hello, World!'` would match against the following JSON object inserted via [InsertItem](#insert-item):
 
 ```json
-{ 
+{
     "someField": "Hello, World!"
 }
 ```

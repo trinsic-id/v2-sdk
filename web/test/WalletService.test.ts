@@ -26,22 +26,29 @@ let trinsic = new TrinsicService(options);
 describe("WalletService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
-        allison.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
-        clinic.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
-        airline.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        allison.authToken = response.authToken;
+
+        response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        clinic.authToken = response.authToken;
+
+        response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        airline.authToken = response.authToken;
     });
 
     it("get account info", async () => {
-        let info = await trinsic.account().getInfo();
+        trinsic.options.authToken = allison.authToken;
+
+        let info = await trinsic.wallet().getMyInfo({});
 
         expect(info).not.toBeNull();
     });
 
     it("create new account", async () => {
-        let response = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        let response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName() });
 
         expect(response).not.toBeNull();
-        expect(response).not.toBe("");
+        expect(response.authToken).not.toBe("");
     });
 
     it("Demo: create wallet, set profile, search records, issue credential", async () => {
@@ -134,7 +141,9 @@ describe("WalletService Unit Tests", () => {
     });
 
     it("Demo: template management and credential issuance from template", async () => {
-        let response = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        let response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName() });
+        trinsic.options.authToken = response.authToken;
+
         // create example template
         let templateRequest = CreateCredentialTemplateRequest.fromPartial({
             name: `My Example Credential-${uuid()}`,
@@ -179,10 +188,11 @@ describe("WalletService Unit Tests", () => {
     });
 
     it("Delete wallet functions", async ()=> {
-        let response = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
-        let accountInfo = await trinsic.account().getInfo();
+        let response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName() });
+        trinsic.options.authToken = response.authToken;
+        let accountInfo = await trinsic.wallet().getMyInfo({});
 
-        let walletId = accountInfo.walletId;
+        let walletId = accountInfo.wallet!.walletId;
 
         // deleteWallet() {
         await trinsic.wallet().deleteWallet({

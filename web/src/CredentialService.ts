@@ -1,5 +1,5 @@
 import ServiceBase from "./ServiceBase";
-import { ServiceOptions, VerifiableCredentialDefinition } from "./proto";
+import { TrinsicOptions, VerifiableCredentialDefinition } from "./proto";
 import * as proto from "./proto";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
@@ -7,7 +7,7 @@ import type { Client as BrowserClient } from "nice-grpc-web";
 export class CredentialService extends ServiceBase {
     client: BrowserClient<typeof VerifiableCredentialDefinition>;
 
-    constructor(options?: ServiceOptions) {
+    constructor(options?: TrinsicOptions) {
         super(options);
 
         this.client = this.createClient(VerifiableCredentialDefinition);

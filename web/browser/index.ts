@@ -3,4 +3,4 @@ import { BrowserProvider } from "./BrowserProvider";
 
 export * from "../src";
 
-ServiceBase.setProvider(new BrowserProvider());
+ServiceBase.platform = new BrowserProvider();

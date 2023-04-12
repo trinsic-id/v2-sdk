@@ -9,6 +9,7 @@ import trinsic.okapi.DidException;
 import trinsic.services.TemplateService;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
+import trinsic.services.universalwallet.v1.CreateWalletRequest;
 import trinsic.services.universalwallet.v1.InsertItemRequest;
 import trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest;
 import trinsic.services.verifiablecredentials.templates.v1.FieldType;
@@ -26,9 +27,10 @@ public class VaccineDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var serverConfig = TrinsicUtilities.getTrinsicServiceOptions();
-
+    // trinsicServiceConstructor() {
+    var serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions();
     var trinsic = new TrinsicService(serverConfig);
+    // }
 
     // createEcosystem() {
     var ecosystemResponse =
@@ -39,22 +41,36 @@ public class VaccineDemo {
 
     // setupActors() {
     // Create an account for each participant in the scenario
-    var allison = trinsic.account().loginAnonymous(ecosystemId).get();
-    var clinic = trinsic.account().loginAnonymous(ecosystemId).get();
-    var airline = trinsic.account().loginAnonymous(ecosystemId).get();
+    var allison =
+        trinsic
+            .wallet()
+            .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+            .get();
+    var clinic =
+        trinsic
+            .wallet()
+            .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+            .get();
+    var airline =
+        trinsic
+            .wallet()
+            .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecosystemId).build())
+            .get();
     // }
 
     // Create template
-    var templateId = DefineTemplate(trinsic.template(), clinic);
+    var templateId = DefineTemplate(trinsic.template(), clinic.getAuthToken());
 
     // Issue credential
-    var credential = IssueCredential(trinsic, templateId, clinic);
+    var credential = IssueCredential(trinsic, templateId, clinic.getAuthToken());
 
     System.out.println("Credential: " + credential);
 
     // storeCredential() {
     // Set active profile to 'allison' so we can manage her cloud wallet
-    trinsic.setAuthToken(allison);
+    // setAuthToken() {
+    trinsic.setAuthToken(allison.getAuthToken());
+    // }
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =
@@ -70,7 +86,7 @@ public class VaccineDemo {
 
     // shareCredential() {
     // Set active profile to 'allison' so we can create a proof using her key
-    trinsic.setAuthToken(allison);
+    trinsic.setAuthToken(allison.getAuthToken());
 
     // Allison shares the credential with the venue
     var createProofResponse =
@@ -85,7 +101,7 @@ public class VaccineDemo {
     System.out.println("Proof: " + credentialProof);
 
     // verifyCredential() {
-    trinsic.setAuthToken(airline);
+    trinsic.setAuthToken(airline.getAuthToken());
 
     // Verify that Allison has provided a valid proof
     var verifyProofResponse =

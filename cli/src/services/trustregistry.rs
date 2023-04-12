@@ -69,7 +69,7 @@ async fn search(args: &SearchArgs, config: &CliConfig) -> Result<Output, Error> 
     Ok(dict! {
         "query".into() => Item::String(args.query.clone()),
         "items".into() => Item::Json(as_value(&response.items_json)?),
-        "more results".into() => Item::String(response.has_more.to_string())
+        "more results".into() => Item::String(response.has_more_results.to_string())
     })
 }
 

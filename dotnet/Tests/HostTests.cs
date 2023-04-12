@@ -4,7 +4,6 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Trinsic;
-using Trinsic.Services.Common.V1;
 using Xunit;
 
 namespace Tests;
@@ -22,8 +21,9 @@ public class HostTests
 
         await host.StartAsync();
 
-        var providerService = host.Services.GetService<ProviderService>();
-        var accountService = host.Services.GetRequiredService<AccountService>();
+        var trinsicService = host.Services.GetRequiredService<TrinsicService>();
+        var providerService = trinsicService.Provider;
+        var accountService = trinsicService.Wallet;
 
         providerService.Should().NotBeNull();
         accountService.Should().NotBeNull();
@@ -32,7 +32,6 @@ public class HostTests
         accountService.Options.ServerPort.Should().Be(ServiceBase.DefaultServerPort);
         accountService.Options.ServerUseTls.Should().Be(ServiceBase.DefaultServerUseTls);
         accountService.Options.AuthToken.Should().Be(string.Empty);
-        accountService.TokenProvider.Should().BeOfType<FileTokenProvider>();
 
         await host.StopAsync();
     }
@@ -43,30 +42,26 @@ public class HostTests
             .CreateDefaultBuilder()
             .ConfigureServices(services => {
                 services.AddTrinsic(options => {
-                    options.UseInMemoryTokenProvider();
-
-                    options.ServiceOptions.AuthToken = "auth";
-                    options.ServiceOptions.ServerEndpoint = "example.com";
-                    options.ServiceOptions.ServerPort = 42;
-                    options.ServiceOptions.ServerUseTls = true;
+                    options.AuthToken = "auth";
+                    options.ServerEndpoint = "example.com";
+                    options.ServerPort = 42;
+                    options.ServerUseTls = true;
                 });
             }).Build();
 
         await host.StartAsync();
 
-        var providerService = host.Services.GetService<ProviderService>();
-        var accountService = host.Services.GetRequiredService<AccountService>();
-        var tokenProvider = host.Services.GetRequiredService<ITokenProvider>();
+        var trinsicService = host.Services.GetRequiredService<TrinsicService>();
+        var providerService = trinsicService.Provider;
+        var walletService = trinsicService.Wallet;
 
         providerService.Should().NotBeNull();
-        accountService.Should().NotBeNull();
+        walletService.Should().NotBeNull();
 
-        tokenProvider.Should().BeOfType<MemoryTokenProvider>();
-
-        accountService.Options.ServerEndpoint.Should().Be("example.com");
-        accountService.Options.ServerPort.Should().Be(42);
-        accountService.Options.ServerUseTls.Should().BeTrue();
-        accountService.Options.AuthToken.Should().Be("auth");
+        walletService.Options.ServerEndpoint.Should().Be("example.com");
+        walletService.Options.ServerPort.Should().Be(42);
+        walletService.Options.ServerUseTls.Should().BeTrue();
+        walletService.Options.AuthToken.Should().Be("auth");
 
         await host.StopAsync();
     }
@@ -77,15 +72,11 @@ public class HostTests
             .CreateDefaultBuilder()
             .ConfigureServices(services => {
                 services.AddTrinsic(options => {
-                    options.TokenPersistenceEnabled = false;
+
                 });
             }).Build();
 
         await host.StartAsync();
-
-        var tokenProvider = host.Services.GetRequiredService<ITokenProvider>();
-
-        tokenProvider.Should().BeOfType<NoOpTokenProvider>();
 
         await host.StopAsync();
     }

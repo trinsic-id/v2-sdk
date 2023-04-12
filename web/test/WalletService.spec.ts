@@ -1,9 +1,7 @@
 import {
     CreateCredentialTemplateRequest,
-    CreateEcosystemRequest,
     FieldType,
     InsertItemRequest,
-    IssueFromTemplateRequest,
     TemplateField,
     TrinsicService,
 } from "../browser";
@@ -18,18 +16,19 @@ describe("wallet service tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        trinsic.options.authToken = response.authToken;
     });
 
     it("can retrieve account info", async () => {
-        const info = await trinsic.account().getInfo();
+        const info = await trinsic.wallet().getMyInfo({});
         expect(info).not.toBeNull();
     });
 
     it("can create new ecosystem", async () => {
         const response = await trinsic
             .provider()
-            .createEcosystem(CreateEcosystemRequest.fromPartial({}));
+            .createEcosystem({});
 
         expect(response.ecosystem).not.toBeNull();
         expect(response.profile).not.toBeNull();

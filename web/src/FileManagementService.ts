@@ -6,7 +6,7 @@ import type { Client as BrowserClient } from "nice-grpc-web";
 export class FileManagementService extends ServiceBase {
     client: BrowserClient<typeof proto.FileManagementDefinition>;
 
-    constructor(options?: proto.ServiceOptions) {
+    constructor(options?: proto.TrinsicOptions) {
         super(options);
 
         this.client = this.createClient(proto.FileManagementDefinition);

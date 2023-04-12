@@ -2,7 +2,7 @@ import ServiceBase from "./ServiceBase";
 import {
     SearchRequest,
     SearchResponse,
-    ServiceOptions,
+    TrinsicOptions,
     UniversalWalletDefinition,
 } from "./proto";
 import * as proto from "./proto";
@@ -12,7 +12,7 @@ import type { Client as BrowserClient } from "nice-grpc-web";
 export class WalletService extends ServiceBase {
     client: BrowserClient<typeof UniversalWalletDefinition>;
 
-    constructor(options?: ServiceOptions) {
+    constructor(options?: TrinsicOptions) {
         super(options);
 
         this.client = this.createClient(UniversalWalletDefinition);

@@ -3169,9 +3169,9 @@ How to display a URI value when rendering a credential.
  <!-- end services -->
 
 
-<a name="sdk-options-v1-ServiceOptions"></a>
+<a name="sdk-options-v1-TrinsicOptions"></a>
 
-### ServiceOptions
+### TrinsicOptions
 Configuration for Trinsic SDK Services
 
 

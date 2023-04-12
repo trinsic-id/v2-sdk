@@ -9,9 +9,9 @@ import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use serviceOptionsDescriptor instead')
-const ServiceOptions$json = const {
-  '1': 'ServiceOptions',
+@$core.Deprecated('Use trinsicOptionsDescriptor instead')
+const TrinsicOptions$json = const {
+  '1': 'TrinsicOptions',
   '2': const [
     const {
       '1': 'server_endpoint',
@@ -26,6 +26,6 @@ const ServiceOptions$json = const {
   ],
 };
 
-/// Descriptor for `ServiceOptions`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List serviceOptionsDescriptor = $convert.base64Decode(
-    'Cg5TZXJ2aWNlT3B0aW9ucxInCg9zZXJ2ZXJfZW5kcG9pbnQYASABKAlSDnNlcnZlckVuZHBvaW50Eh8KC3NlcnZlcl9wb3J0GAIgASgFUgpzZXJ2ZXJQb3J0EiQKDnNlcnZlcl91c2VfdGxzGAMgASgIUgxzZXJ2ZXJVc2VUbHMSHQoKYXV0aF90b2tlbhgEIAEoCVIJYXV0aFRva2Vu');
+/// Descriptor for `TrinsicOptions`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List trinsicOptionsDescriptor = $convert.base64Decode(
+    'Cg5Ucmluc2ljT3B0aW9ucxInCg9zZXJ2ZXJfZW5kcG9pbnQYASABKAlSDnNlcnZlckVuZHBvaW50Eh8KC3NlcnZlcl9wb3J0GAIgASgFUgpzZXJ2ZXJQb3J0EiQKDnNlcnZlcl91c2VfdGxzGAMgASgIUgxzZXJ2ZXJVc2VUbHMSHQoKYXV0aF90b2tlbhgEIAEoCVIJYXV0aFRva2Vu');

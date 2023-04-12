@@ -2,7 +2,7 @@
 import _m0 from "protobufjs/minimal";
 
 /** Configuration for Trinsic SDK Services */
-export interface ServiceOptions {
+export interface TrinsicOptions {
   /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
   serverEndpoint?: string;
   /** Trinsic API port; defaults to `443` */
@@ -13,7 +13,7 @@ export interface ServiceOptions {
   authToken?: string;
 }
 
-function createBaseServiceOptions(): ServiceOptions {
+function createBaseTrinsicOptions(): TrinsicOptions {
   return {
     serverEndpoint: "",
     serverPort: 0,
@@ -22,9 +22,9 @@ function createBaseServiceOptions(): ServiceOptions {
   };
 }
 
-export const ServiceOptions = {
+export const TrinsicOptions = {
   encode(
-    message: ServiceOptions,
+    message: TrinsicOptions,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.serverEndpoint !== undefined && message.serverEndpoint !== "") {
@@ -42,10 +42,10 @@ export const ServiceOptions = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): ServiceOptions {
+  decode(input: _m0.Reader | Uint8Array, length?: number): TrinsicOptions {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseServiceOptions();
+    const message = createBaseTrinsicOptions();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -69,7 +69,7 @@ export const ServiceOptions = {
     return message;
   },
 
-  fromJSON(object: any): ServiceOptions {
+  fromJSON(object: any): TrinsicOptions {
     return {
       serverEndpoint: isSet(object.serverEndpoint)
         ? String(object.serverEndpoint)
@@ -82,7 +82,7 @@ export const ServiceOptions = {
     };
   },
 
-  toJSON(message: ServiceOptions): unknown {
+  toJSON(message: TrinsicOptions): unknown {
     const obj: any = {};
     message.serverEndpoint !== undefined &&
       (obj.serverEndpoint = message.serverEndpoint);
@@ -94,8 +94,8 @@ export const ServiceOptions = {
     return obj;
   },
 
-  fromPartial(object: DeepPartial<ServiceOptions>): ServiceOptions {
-    const message = createBaseServiceOptions();
+  fromPartial(object: DeepPartial<TrinsicOptions>): TrinsicOptions {
+    const message = createBaseTrinsicOptions();
     message.serverEndpoint = object.serverEndpoint ?? "";
     message.serverPort = object.serverPort ?? 0;
     message.serverUseTls = object.serverUseTls ?? false;

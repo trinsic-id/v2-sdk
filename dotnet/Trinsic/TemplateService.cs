@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 
@@ -10,21 +9,8 @@ namespace Trinsic;
 /// </summary>
 public class TemplateService : ServiceBase
 {
-    public TemplateService(ServiceOptions options)
+    public TemplateService(TrinsicOptions options)
         : base(options) {
-        Client = new(Channel);
-    }
-
-    public TemplateService() {
-        Client = new(Channel);
-    }
-
-    internal TemplateService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
-    }
-
-    internal TemplateService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 

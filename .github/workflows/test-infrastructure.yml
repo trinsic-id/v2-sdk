@@ -30,11 +30,11 @@ jobs:
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
-      - run: |
-          brew tap trinsic-id/tap
-          brew install trinsic-cli
+      - run: cargo build
+        with:
+          path: ./cli
       - name: Run CLI Demos
-        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}"
+        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}" -CommandPath ./sdk/cli/target/debug/trinsic
         shell: pwsh
 
   test-infra-grpc-web:

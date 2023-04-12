@@ -39,15 +39,13 @@ nav:
       - Java: java/index.md
   - Reference:
     - Overview: reference/index.md
-    - SDK Services:
-      - Account Service: reference/services/account-service.md
-      - Credential Service: reference/services/credential-service.md
-      - File Management Service: reference/services/file-management-service.md
-      - Provider Service: reference/services/provider-service.md
-      - Template Service: reference/services/template-service.md
-      - Trust Registry Service: reference/services/trust-registry-service.md
-      - Wallet Service: reference/services/wallet-service.md
-      - Protocol Buffers Reference: reference/proto/index.md
+    - APIs:
+      - Credential API: reference/services/credential-service.md
+      - File Management API: reference/services/file-management-service.md
+      - Provider API: reference/services/provider-service.md
+      - Template API: reference/services/template-service.md
+      - Governance API: reference/services/trust-registry-service.md
+      - Wallet API: reference/services/wallet-service.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
     - Events Reference: reference/events.md
@@ -67,8 +65,6 @@ theme:
     - announce.dismiss
     - navigation.tabs
     - navigation.tabs.sticky
-    - toc.integrate
-    - navigation.sections
   icon:
     repo: fontawesome/brands/github-alt
   font:

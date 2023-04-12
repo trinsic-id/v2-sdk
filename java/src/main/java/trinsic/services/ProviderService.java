@@ -16,7 +16,7 @@ public class ProviderService extends ServiceBase {
     this(null);
   }
 
-  public ProviderService(Options.ServiceOptions.Builder options) {
+  public ProviderService(Options.TrinsicOptions.Builder options) {
     super(options);
     this.stub = ProviderGrpc.newFutureStub(this.getChannel());
   }
@@ -35,8 +35,7 @@ public class ProviderService extends ServiceBase {
           if (!input.hasProfile() || input.getProfile().getProtection().getEnabled()) return null;
 
           var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-          this.getOptionsBuilder().setAuthToken(token);
-          tokenProvider.save(token);
+          this.setAuthToken(token);
           return input;
         },
         Executors.newSingleThreadExecutor());

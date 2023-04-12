@@ -15,10 +15,11 @@ using Xunit.Abstractions;
 namespace Tests;
 
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public class FileManagementServiceTests
 {
     private readonly ITestOutputHelper _testOutputHelper;
-    private readonly ServiceOptions _options;
+    private readonly TrinsicOptions _options;
 
     public FileManagementServiceTests(ITestOutputHelper testOutputHelper) {
         _testOutputHelper = testOutputHelper;
@@ -26,19 +27,19 @@ public class FileManagementServiceTests
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
     }
-    
+
     [Fact]
     public async Task TestFileManagementService() {
-        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
-        await trinsic.Account.LoginAnonymousAsync("default");
-        
+        var trinsic = new TrinsicService(_options.Clone());
+        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = "default" });
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(createWalletResponse.AuthToken));
+
         // uploadFile() {
         // Get raw bytes of string
         var fileBytes = Encoding.UTF8.GetBytes("Hello, world!");
-        var fileMimeType = "application/text";
+        const string fileMimeType = "application/text";
 
-        var uploadResponse = trinsic.FileManagement.UploadFile(new UploadFileRequest()
-        {
+        var uploadResponse = trinsic.FileManagement.UploadFile(new UploadFileRequest {
             Contents = ByteString.CopyFrom(fileBytes),
             MimeType = fileMimeType
         });
@@ -46,22 +47,19 @@ public class FileManagementServiceTests
 
         uploadResponse.UploadedFile.Should().NotBeNull();
         uploadResponse.UploadedFile.Id.Should().NotBeEmpty();
-        
+
         var fileId = uploadResponse.UploadedFile.Id;
-        
+
         // getFile() {
-        var getFileResponse = trinsic.FileManagement.GetFile(new GetFileRequest()
-        {
+        var getFileResponse = trinsic.FileManagement.GetFile(new GetFileRequest {
             Id = fileId
         });
         //}
 
         getFileResponse.File.Should().Be(uploadResponse.UploadedFile);
 
-
         // listFiles() {
-        var listFilesResponse = trinsic.FileManagement.ListFiles(new ListFilesRequest()
-        {
+        var listFilesResponse = trinsic.FileManagement.ListFiles(new ListFilesRequest {
             Query = "SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100"
         });
         // }
@@ -77,15 +75,13 @@ public class FileManagementServiceTests
         getStorageStatsResponse.Stats.TotalSize.Should().Be(getFileResponse.File.Size);
 
         // deleteFile() {
-        trinsic.FileManagement.DeleteFile(new DeleteFileRequest()
-        {
+        trinsic.FileManagement.DeleteFile(new DeleteFileRequest {
             Id = fileId
         });
         //}
-        
+
         getStorageStatsResponse = trinsic.FileManagement.GetStorageStats();
         getStorageStatsResponse.Stats.NumFiles.Should().Be(0);
         getStorageStatsResponse.Stats.TotalSize.Should().Be(0);
     }
-
 }

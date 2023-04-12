@@ -16,7 +16,8 @@ describe("TrustRegistryService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        trinsic.options.authToken = await trinsic.account().loginAnonymous(myEcosystemIdOrName());
+        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        trinsic.options.authToken = response.authToken;
     });
 
     it("add governance framework", async () => {

@@ -24,27 +24,27 @@ func GetBasePath() string {
 // }
 
 // CreateTestTrinsicWithNewEcosystem creates a testing ecosystem and returns a `services.Trinsic` configured against it
-func CreateTestTrinsicWithNewEcosystem() (*Trinsic, error) {
+func CreateTestTrinsicWithNewEcosystem() (*Trinsic, *provider.Ecosystem, error) {
 	trinsic, err := NewTrinsic(WithTestEnv())
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	// Make a new ecosystem
 	ecoResponse, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	// Set auth token and ecosystem ID
 	token, err := ProfileToToken(ecoResponse.GetProfile())
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	trinsic.SetAuthToken(token)
 
-	return trinsic, nil
+	return trinsic, ecoResponse.Ecosystem, nil
 }
 
 func TestServiceOptions(t *testing.T) {
@@ -53,24 +53,24 @@ func TestServiceOptions(t *testing.T) {
 	opts, err := NewServiceOptions()
 	assert.Nil(err)
 
-	prodOpts := &Options{ServiceOptions: &options.ServiceOptions{}}
+	prodOpts := &Options{TrinsicOptions: &options.TrinsicOptions{}}
 	err = WithProductionEnv()(prodOpts)
 	assert.Nil(err, "production options should return")
 
 	assert.Equal(prodOpts, opts, "should default to production env")
-	assert.Equal("prod.trinsic.cloud", opts.ServiceOptions.ServerEndpoint, "incorrect prod url")
+	assert.Equal("prod.trinsic.cloud", opts.TrinsicOptions.ServerEndpoint, "incorrect prod url")
 
 	err = WithAuthToken("test token")(opts)
 	assert.Nil(err, "should not error on test token")
-	assert.Equal("test token", opts.ServiceOptions.AuthToken, "test token not applied")
+	assert.Equal("test token", opts.TrinsicOptions.AuthToken, "test token not applied")
 
 	err = WithDevEnv()(opts)
 	assert.Nil(err, "should not error on dev env")
-	assert.Equal("dev-internal.trinsic.cloud", opts.ServiceOptions.ServerEndpoint, "incorrect dev url")
+	assert.Equal("dev-internal.trinsic.cloud", opts.TrinsicOptions.ServerEndpoint, "incorrect dev url")
 
 	err = WithStagingEnv()(opts)
 	assert.Nil(err, "should not error on staging env")
-	assert.Equal("staging-internal.trinsic.cloud", opts.ServiceOptions.ServerEndpoint, "incorrect staging url")
+	assert.Equal("staging-internal.trinsic.cloud", opts.TrinsicOptions.ServerEndpoint, "incorrect staging url")
 
 	err = WithDefaultEcosystem("test1")(opts)
 	assert.Nil(err, "should not error on setting default ecosystem")
@@ -78,7 +78,7 @@ func TestServiceOptions(t *testing.T) {
 
 func TestTrustRegistryDemo(t *testing.T) {
 	assert2 := assert.New(t)
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
+	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -145,7 +145,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 
 func TestEcosystemDemo(t *testing.T) {
 	assert2 := assert.New(t)
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
+	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}

@@ -1,60 +1,50 @@
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/service_base.dart';
-import 'package:trinsic_dart/src/storage/token_provider.dart';
+
 import 'package:trinsic_dart/trinsic.dart';
 
 class TrinsicService extends ServiceBase {
   AccessManagementService? _accessManagementService;
-  AccountService? _accountService;
   CredentialService? _credentialService;
   FileManagementService? _fileManagementService;
   ProviderService? _providerService;
   TemplateService? _templateService;
   TrustRegistryService? _trustRegistryService;
   WalletService? _walletService;
-  TrinsicService(ServiceOptions? serverOptions, ITokenProvider? provider)
-      : super(serverOptions, provider);
+  TrinsicService(TrinsicOptions? serverOptions) : super(serverOptions);
 
   AccessManagementService accessManagement() {
-    _accessManagementService ??=
-        AccessManagementService(serviceOptions, tokenProvider);
+    _accessManagementService ??= AccessManagementService(serviceOptions);
     return _accessManagementService!;
   }
 
-  AccountService account() {
-    _accountService ??= AccountService(serviceOptions, tokenProvider);
-    return _accountService!;
-  }
-
   CredentialService credential() {
-    _credentialService ??= CredentialService(serviceOptions, tokenProvider);
+    _credentialService ??= CredentialService(serviceOptions);
     return _credentialService!;
   }
 
   FileManagementService fileManagement() {
-    _fileManagementService ??=
-        FileManagementService(serviceOptions, tokenProvider);
+    _fileManagementService ??= FileManagementService(serviceOptions);
     return _fileManagementService!;
   }
 
   ProviderService provider() {
-    _providerService ??= ProviderService(serviceOptions, tokenProvider);
+    _providerService ??= ProviderService(serviceOptions);
     return _providerService!;
   }
 
   TemplateService template() {
-    _templateService ??= TemplateService(serviceOptions, tokenProvider);
+    _templateService ??= TemplateService(serviceOptions);
     return _templateService!;
   }
 
   TrustRegistryService trustRegistry() {
-    _trustRegistryService ??=
-        TrustRegistryService(serviceOptions, tokenProvider);
+    _trustRegistryService ??= TrustRegistryService(serviceOptions);
     return _trustRegistryService!;
   }
 
   WalletService wallet() {
-    _walletService ??= WalletService(serviceOptions, tokenProvider);
+    _walletService ??= WalletService(serviceOptions);
     return _walletService!;
   }
 }

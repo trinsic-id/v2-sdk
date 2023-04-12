@@ -11,7 +11,7 @@ import (
 
 func TestTemplatesDemo(t *testing.T) {
 	assert2 := assert.New(t)
-	trinsic, err := CreateTestTrinsicWithNewEcosystem()
+	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}

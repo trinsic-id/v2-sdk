@@ -13,7 +13,7 @@ public class AccessManagementService extends ServiceBase {
     this(null);
   }
 
-  public AccessManagementService(Options.ServiceOptions.Builder options) {
+  public AccessManagementService(Options.TrinsicOptions.Builder options) {
     super(options);
 
     this.stub = AccessManagementGrpc.newFutureStub(this.getChannel());

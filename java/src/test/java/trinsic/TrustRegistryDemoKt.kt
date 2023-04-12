@@ -6,6 +6,7 @@ import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.trustregistry.v1.*
+import trinsic.services.universalwallet.v1.CreateWalletRequest
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
@@ -17,9 +18,12 @@ suspend fun main() {
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
-  val trinsic = TrinsicServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
-  val account = trinsic.account().loginAnonymous("default")
-  trinsic.setAuthToken(account)
+  val trinsic = TrinsicServiceKt(TrinsicUtilities.getTrinsicTrinsicOptions())
+  var createWallet =
+      trinsic
+          .wallet()
+          .createWallet(CreateWalletRequest.newBuilder().setEcosystemId("default").build())
+  trinsic.setAuthToken(createWallet.authToken)
 
   val didUri = "did:example:test"
   val frameworkUri = "https://example.com/" + UUID.randomUUID()

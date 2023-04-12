@@ -1,7 +1,6 @@
 use crate::{error::Error, services::Service};
 use clap::ArgMatches;
 
-pub mod account;
 pub mod config;
 pub mod provider;
 pub mod template;
@@ -16,8 +15,6 @@ pub(crate) fn parse(args: &ArgMatches) -> Result<Service, Error> {
         Service::Config(config::parse(&args.subcommand_matches("config").expect("Error parsing request")))
     } else if args.subcommand_matches("vc").is_some() {
         Service::VerifiableCredential(vc::parse(&args.subcommand_matches("vc").expect("Error parsing request"))?)
-    } else if args.subcommand_matches("account").is_some() {
-        Service::Account(account::parse(&args.subcommand_matches("account").expect("Error parsing request"))?)
     } else if args.subcommand_matches("provider").is_some() {
         Service::Provider(provider::parse(&args.subcommand_matches("provider").expect("Error parsing request"))?)
     } else if args.subcommand_matches("trust-registry").is_some() {

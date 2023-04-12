@@ -13,7 +13,6 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 async def ecosystem_demo():
     trinsic_service = TrinsicService(server_config=trinsic_config())
-    account = await trinsic_service.account.login_anonymous(ecosystem_id="default")
     # createEcosystem() {
     actual_create = await trinsic_service.provider.create_ecosystem(
         request=CreateEcosystemRequest(

@@ -3,4 +3,4 @@ import { NodeProvider } from "./NodeProvider";
 
 export * from "../src";
 
-ServiceBase.setProvider(new NodeProvider());
+ServiceBase.platform = new NodeProvider();

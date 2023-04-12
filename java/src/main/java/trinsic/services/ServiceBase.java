@@ -1,7 +1,7 @@
 package trinsic.services;
 
 import static trinsic.TrinsicUtilities.getSdkVersion;
-import static trinsic.TrinsicUtilities.getTrinsicServiceOptions;
+import static trinsic.TrinsicUtilities.getTrinsicTrinsicOptions;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
@@ -13,23 +13,16 @@ import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
-import trinsic.okapi.OkapiMetadata;
 import trinsic.sdk.options.v1.Options;
-import trinsic.security.ISecurityProvider;
-import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountProfile;
-import trinsic.storage.ITokenProvider;
-import trinsic.storage.MemoryTokenProvider;
 
 public abstract class ServiceBase {
-  private final ISecurityProvider securityProvider = new OberonSecurityProvider();
-  final ITokenProvider tokenProvider = new MemoryTokenProvider();
   private final Channel channel;
-  private Options.ServiceOptions.Builder options;
+  private Options.TrinsicOptions.Builder options;
 
-  protected ServiceBase(Options.ServiceOptions.Builder options) {
+  protected ServiceBase(Options.TrinsicOptions.Builder options) {
     this.options = options;
-    if (this.options == null) this.options = getTrinsicServiceOptions();
+    if (this.options == null) this.options = getTrinsicTrinsicOptions();
     this.channel = TrinsicUtilities.getChannel(this.options.build());
   }
 
@@ -47,19 +40,15 @@ public abstract class ServiceBase {
     m.put(Metadata.Key.of(key, Metadata.ASCII_STRING_MARSHALLER), value);
   }
 
-  public Metadata buildMetadata(Message request)
-      throws InvalidProtocolBufferException, DidException {
+  public Metadata buildMetadata(Message request) {
     var metadata = new Metadata();
     putMetadata(metadata, "TrinsicSDKLanguage", "java");
     putMetadata(metadata, "TrinsicSDKVersion", getSdkVersion());
-    putMetadata(metadata, "TrinsicOkapiVersion", OkapiMetadata.getMetadata().getVersion());
+    var authToken = "";
     if (request != null) {
-      if (this.options == null || this.options.getAuthToken().isEmpty())
-        throw new IllegalArgumentException(
-            "Cannot call authenticated endpoint: profile must be set");
+      if (this.options != null) authToken = this.options.getAuthToken();
 
-      putMetadata(
-          metadata, "authorization", securityProvider.GetAuthHeader(this.getProfile(), request));
+      putMetadata(metadata, "Authorization", "Bearer " + authToken);
     }
     return metadata;
   }
@@ -74,11 +63,11 @@ public abstract class ServiceBase {
     this.options.setAuthToken(base64ProfileToken);
   }
 
-  public Options.ServiceOptions.Builder getOptionsBuilder() {
+  public Options.TrinsicOptions.Builder getOptionsBuilder() {
     return this.options;
   }
 
-  public void setOptionsBuilder(Options.ServiceOptions.Builder builder) {
+  public void setOptionsBuilder(Options.TrinsicOptions.Builder builder) {
     this.options = builder;
   }
 

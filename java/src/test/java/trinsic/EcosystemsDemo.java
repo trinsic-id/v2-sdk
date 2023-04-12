@@ -6,7 +6,10 @@ import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
-import trinsic.services.provider.v1.*;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
+import trinsic.services.provider.v1.EcosystemInfoRequest;
+import trinsic.services.provider.v1.UpdateEcosystemRequest;
+import trinsic.services.universalwallet.v1.CreateWalletRequest;
 
 public class EcosystemsDemo {
   public static void main(String[] args)
@@ -16,8 +19,13 @@ public class EcosystemsDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsic.account().loginAnonymous().get();
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
+    var account =
+        trinsic
+            .wallet()
+            .createWallet(CreateWalletRequest.newBuilder().setEcosystemId("default").build())
+            .get();
+    trinsic.setAuthToken(account.getAuthToken());
 
     // createEcosystem() {
     var response =

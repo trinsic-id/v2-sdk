@@ -3,7 +3,6 @@ import { ProviderService } from "./ProviderService";
 import { TrustRegistryService } from "./TrustRegistryService";
 import { CredentialService } from "./CredentialService";
 import { TemplateService } from "./TemplateService";
-import { AccountService } from "./AccountService";
 import { TrinsicService } from "./TrinsicService";
 import ServiceBase from "./ServiceBase";
 import { IPlatformProvider } from "./IPlatformProvider";
@@ -15,7 +14,6 @@ export {
     WalletService,
     ProviderService,
     TrustRegistryService,
-    AccountService,
     CredentialService,
     TemplateService,
     ServiceBase,

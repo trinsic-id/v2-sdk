@@ -1,6 +1,7 @@
 import asyncio
 from os.path import abspath, join, dirname
 
+from trinsic.proto.services.universalwallet.v1 import CreateWalletRequest
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueRequest,
     CreateProofRequest,
@@ -28,9 +29,10 @@ async def credential_demo():
     config = trinsic_config()
     trinsic_service = TrinsicService(server_config=config)
 
-    account = await trinsic_service.account.login_anonymous(ecosystem_id="default")
-
-    config.auth_token = account
+    wallet_response = await trinsic_service.wallet.create_wallet(
+        request=CreateWalletRequest(ecosystem_id="default")
+    )
+    config.auth_token = wallet_response.auth_token
 
     ecosystem = await trinsic_service.provider.create_ecosystem()
 
