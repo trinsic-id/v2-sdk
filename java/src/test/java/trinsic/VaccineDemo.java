@@ -27,9 +27,10 @@ public class VaccineDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
+      // trinsicServiceConstructor() {
     var serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions();
-
     var trinsic = new TrinsicService(serverConfig);
+    // }
 
     // createEcosystem() {
     var ecosystemResponse =
@@ -67,7 +68,9 @@ public class VaccineDemo {
 
     // storeCredential() {
     // Set active profile to 'allison' so we can manage her cloud wallet
+    // setAuthToken() {
     trinsic.setAuthToken(allison.getAuthToken());
+    // }
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =

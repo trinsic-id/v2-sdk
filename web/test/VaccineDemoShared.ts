@@ -35,7 +35,9 @@ export async function vaccineDemo() {
     const airline = await trinsic.wallet().createWallet({ ecosystemId: ecosystemId });
     // }
 
+    // setAuthTokenSample() {
     trinsic.options.authToken = clinic.authToken;
+    // }
     const info = await trinsic.wallet().getMyInfo({});
 
     // Create template

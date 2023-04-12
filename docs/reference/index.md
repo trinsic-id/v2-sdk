@@ -26,7 +26,7 @@ You can also manually set the auth token used by the SDK (such as when loading a
 === "TypeScript"
     <!--codeinclude--> 
     ```typescript
-    [SetAuthTokenSample](../../web/test/AccountService.test.ts) inside_block:setAuthTokenSample
+    [SetAuthTokenSample](../../web/test/VaccineDemoShared.ts) inside_block:setAuthTokenSample
     ```
     <!--/codeinclude-->
 
@@ -47,14 +47,14 @@ You can also manually set the auth token used by the SDK (such as when loading a
 === "Go"
     <!--codeinclude-->
     ```golang
-    [SetAuthTokenSample](../../go/services/account_service_test.go) inside_block:setAuthTokenSample
+    [SetAuthTokenSample](../../go/services/file_management_service_test.go) inside_block:setAuthTokenSample
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [SetAuthTokenSample](../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:setAuthTokenSample
+    [SetAuthTokenSample](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setAuthTokenSample
     ```
     <!--/codeinclude-->
 
@@ -96,14 +96,14 @@ If you are using one of the Trinsic SDKs, you will need to create an instance of
 === "Go"
     <!--codeinclude-->
     ```golang
-    [CreateEcosystem](../../go/services/account_service_test.go) inside_block:accountServiceConstructor
+    [CreateEcosystem](../../go/services/file_management_service_test.go) inside_block:trinsicServiceConstructor
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [CreateEcosystem](../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceConstructor
+    [CreateEcosystem](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:trinsicServiceConstructor
     ```
     <!--/codeinclude-->
 

@@ -12,8 +12,10 @@ import (
 func TestEndToEndUpload(t *testing.T) {
 	assert2 := assert.New(t)
 
+    // trinsicServiceConstructor() {
 	trinsic, err := NewTrinsic(WithTestEnv())
 	assert2.Nil(err)
+	// }
 
 	createWallet, err := trinsic.Wallet().CreateWallet(context.Background(), &wallet.CreateWalletRequest{
 		EcosystemId: "default",
@@ -22,9 +24,11 @@ func TestEndToEndUpload(t *testing.T) {
 	assert2.Nil(err)
 	assert2.NotNil(createWallet.Wallet)
 
+    // setAuthTokenSample() {}
 	trinsic, err = NewTrinsic(WithTestEnv(), WithAuthToken(createWallet.AuthToken))
 	assert2.NotNil(trinsic)
 	assert2.Nil(err)
+	// }
 
 	// uploadFile() {
 	uploadResponse, err := trinsic.FileManagement().UploadFile(context.Background(),
