@@ -1,34 +1,34 @@
 {
   "index": {
-    "sdk.options.v1.ServiceOptions": {
+    "sdk.options.v1.TrinsicOptions": {
       "type": "message",
       "collection": "messages",
       "file": "sdk/options/v1/options.proto",
       "parent": ""
     },
-    "sdk.options.v1.ServiceOptions.auth_token": {
+    "sdk.options.v1.TrinsicOptions.auth_token": {
       "type": "field",
       "collection": "fields",
       "file": "sdk/options/v1/options.proto",
-      "parent": "sdk.options.v1.ServiceOptions"
+      "parent": "sdk.options.v1.TrinsicOptions"
     },
-    "sdk.options.v1.ServiceOptions.server_endpoint": {
+    "sdk.options.v1.TrinsicOptions.server_endpoint": {
       "type": "field",
       "collection": "fields",
       "file": "sdk/options/v1/options.proto",
-      "parent": "sdk.options.v1.ServiceOptions"
+      "parent": "sdk.options.v1.TrinsicOptions"
     },
-    "sdk.options.v1.ServiceOptions.server_port": {
+    "sdk.options.v1.TrinsicOptions.server_port": {
       "type": "field",
       "collection": "fields",
       "file": "sdk/options/v1/options.proto",
-      "parent": "sdk.options.v1.ServiceOptions"
+      "parent": "sdk.options.v1.TrinsicOptions"
     },
-    "sdk.options.v1.ServiceOptions.server_use_tls": {
+    "sdk.options.v1.TrinsicOptions.server_use_tls": {
       "type": "field",
       "collection": "fields",
       "file": "sdk/options/v1/options.proto",
-      "parent": "sdk.options.v1.ServiceOptions"
+      "parent": "sdk.options.v1.TrinsicOptions"
     },
     "services.account.v1.Account": {
       "type": "service",
@@ -4113,13 +4113,13 @@
       "services": [],
       "methods": [],
       "messages": [
-        "sdk.options.v1.ServiceOptions"
+        "sdk.options.v1.TrinsicOptions"
       ],
       "fields": [
-        "sdk.options.v1.ServiceOptions.server_endpoint",
-        "sdk.options.v1.ServiceOptions.server_port",
-        "sdk.options.v1.ServiceOptions.server_use_tls",
-        "sdk.options.v1.ServiceOptions.auth_token"
+        "sdk.options.v1.TrinsicOptions.server_endpoint",
+        "sdk.options.v1.TrinsicOptions.server_port",
+        "sdk.options.v1.TrinsicOptions.server_use_tls",
+        "sdk.options.v1.TrinsicOptions.auth_token"
       ],
       "enums": [],
       "enum_values": []
@@ -5624,15 +5624,15 @@
     }
   },
   "messages": {
-    "sdk.options.v1.ServiceOptions": {
-      "name": "ServiceOptions",
-      "full_name": "sdk.options.v1.ServiceOptions",
+    "sdk.options.v1.TrinsicOptions": {
+      "name": "TrinsicOptions",
+      "full_name": "sdk.options.v1.TrinsicOptions",
       "description": "Configuration for Trinsic SDK Services",
       "fields": [
-        "sdk.options.v1.ServiceOptions.server_endpoint",
-        "sdk.options.v1.ServiceOptions.server_port",
-        "sdk.options.v1.ServiceOptions.server_use_tls",
-        "sdk.options.v1.ServiceOptions.auth_token"
+        "sdk.options.v1.TrinsicOptions.server_endpoint",
+        "sdk.options.v1.TrinsicOptions.server_port",
+        "sdk.options.v1.TrinsicOptions.server_use_tls",
+        "sdk.options.v1.TrinsicOptions.auth_token"
       ],
       "messages": [],
       "enums": []
@@ -7600,33 +7600,33 @@
     }
   },
   "fields": {
-    "sdk.options.v1.ServiceOptions.auth_token": {
+    "sdk.options.v1.TrinsicOptions.auth_token": {
       "name": "auth_token",
-      "full_name": "sdk.options.v1.ServiceOptions.auth_token",
+      "full_name": "sdk.options.v1.TrinsicOptions.auth_token",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Authentication token for SDK calls; defaults to empty string (unauthenticated)\n\nDefault ecosystem ID to use for various SDK calls; defaults to `default`\nstring default_ecosystem = 5;"
     },
-    "sdk.options.v1.ServiceOptions.server_endpoint": {
+    "sdk.options.v1.TrinsicOptions.server_endpoint": {
       "name": "server_endpoint",
-      "full_name": "sdk.options.v1.ServiceOptions.server_endpoint",
+      "full_name": "sdk.options.v1.TrinsicOptions.server_endpoint",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"
     },
-    "sdk.options.v1.ServiceOptions.server_port": {
+    "sdk.options.v1.TrinsicOptions.server_port": {
       "name": "server_port",
-      "full_name": "sdk.options.v1.ServiceOptions.server_port",
+      "full_name": "sdk.options.v1.TrinsicOptions.server_port",
       "label": "LABEL_OPTIONAL",
       "type": "int32",
       "full_type": "int32",
       "description": "Trinsic API port; defaults to `443`"
     },
-    "sdk.options.v1.ServiceOptions.server_use_tls": {
+    "sdk.options.v1.TrinsicOptions.server_use_tls": {
       "name": "server_use_tls",
-      "full_name": "sdk.options.v1.ServiceOptions.server_use_tls",
+      "full_name": "sdk.options.v1.TrinsicOptions.server_use_tls",
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
