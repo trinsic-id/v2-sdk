@@ -72,7 +72,7 @@ Stop-OnError
 Write-Output "✅ Adding trusted issuer to framework"
 $PublicDid = Invoke-Expression "$trinsic wallet my-info"
 | ConvertFrom-Json
-| ForEach-Object { $_.'wallet'.public_did }
+| ForEach-Object { $_.wallet.public_did }
 Stop-OnError
 
 Invoke-Expression "$trinsic trust-registry register-member --schema $($Template.SchemaUri) --framework-id $FrameworkId --did $PublicDid" | Out-Null
