@@ -12,7 +12,7 @@ import (
 func TestEndToEndUpload(t *testing.T) {
 	assert2 := assert.New(t)
 
-    // trinsicServiceConstructor() {
+	// trinsicServiceConstructor() {
 	trinsic, err := NewTrinsic(WithTestEnv())
 	assert2.Nil(err)
 	// }
@@ -24,7 +24,7 @@ func TestEndToEndUpload(t *testing.T) {
 	assert2.Nil(err)
 	assert2.NotNil(createWallet.Wallet)
 
-    // setAuthTokenSample() {}
+	// setAuthTokenSample() {}
 	trinsic, err = NewTrinsic(WithTestEnv(), WithAuthToken(createWallet.AuthToken))
 	assert2.NotNil(trinsic)
 	assert2.Nil(err)

@@ -27,7 +27,7 @@ public class VaccineDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-      // trinsicServiceConstructor() {
+    // trinsicServiceConstructor() {
     var serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions();
     var trinsic = new TrinsicService(serverConfig);
     // }
