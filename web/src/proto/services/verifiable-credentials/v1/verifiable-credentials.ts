@@ -194,19 +194,24 @@ export const IssueRequest = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): IssueRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseIssueRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.documentJson = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -224,6 +229,10 @@ export const IssueRequest = {
         message.documentJson !== undefined &&
             (obj.documentJson = message.documentJson);
         return obj;
+    },
+
+    create(base?: DeepPartial<IssueRequest>): IssueRequest {
+        return IssueRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<IssueRequest>): IssueRequest {
@@ -253,19 +262,24 @@ export const IssueResponse = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): IssueResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseIssueResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.signedDocumentJson = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -283,6 +297,10 @@ export const IssueResponse = {
         message.signedDocumentJson !== undefined &&
             (obj.signedDocumentJson = message.signedDocumentJson);
         return obj;
+    },
+
+    create(base?: DeepPartial<IssueResponse>): IssueResponse {
+        return IssueResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<IssueResponse>): IssueResponse {
@@ -321,28 +339,45 @@ export const IssueFromTemplateRequest = {
         length?: number
     ): IssueFromTemplateRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseIssueFromTemplateRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.templateId = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.valuesJson = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.frameworkId = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 32) {
+                        break;
+                    }
+
                     message.saveCopy = reader.bool();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -372,6 +407,12 @@ export const IssueFromTemplateRequest = {
             (obj.frameworkId = message.frameworkId);
         message.saveCopy !== undefined && (obj.saveCopy = message.saveCopy);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<IssueFromTemplateRequest>
+    ): IssueFromTemplateRequest {
+        return IssueFromTemplateRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -406,19 +447,24 @@ export const IssueFromTemplateResponse = {
         length?: number
     ): IssueFromTemplateResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseIssueFromTemplateResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.documentJson = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -436,6 +482,12 @@ export const IssueFromTemplateResponse = {
         message.documentJson !== undefined &&
             (obj.documentJson = message.documentJson);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<IssueFromTemplateResponse>
+    ): IssueFromTemplateResponse {
+        return IssueFromTemplateResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -492,37 +544,62 @@ export const CreateProofRequest = {
         length?: number
     ): CreateProofRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCreateProofRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.revealDocumentJson = reader.string();
-                    break;
+                    continue;
                 case 11:
+                    if (tag != 90) {
+                        break;
+                    }
+
                     message.revealTemplate = RevealTemplateAttributes.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.itemId = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.documentJson = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 32) {
+                        break;
+                    }
+
                     message.useVerifiablePresentation = reader.bool();
-                    break;
+                    continue;
                 case 10:
+                    if (tag != 82) {
+                        break;
+                    }
+
                     message.nonce = reader.bytes();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -568,6 +645,10 @@ export const CreateProofRequest = {
         return obj;
     },
 
+    create(base?: DeepPartial<CreateProofRequest>): CreateProofRequest {
+        return CreateProofRequest.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<CreateProofRequest>): CreateProofRequest {
         const message = createBaseCreateProofRequest();
         message.revealDocumentJson = object.revealDocumentJson ?? undefined;
@@ -610,19 +691,24 @@ export const RevealTemplateAttributes = {
         length?: number
     ): RevealTemplateAttributes {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRevealTemplateAttributes();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.templateAttributes!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -643,6 +729,12 @@ export const RevealTemplateAttributes = {
             obj.templateAttributes = [];
         }
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RevealTemplateAttributes>
+    ): RevealTemplateAttributes {
+        return RevealTemplateAttributes.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -678,19 +770,24 @@ export const CreateProofResponse = {
         length?: number
     ): CreateProofResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCreateProofResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.proofDocumentJson = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -708,6 +805,10 @@ export const CreateProofResponse = {
         message.proofDocumentJson !== undefined &&
             (obj.proofDocumentJson = message.proofDocumentJson);
         return obj;
+    },
+
+    create(base?: DeepPartial<CreateProofResponse>): CreateProofResponse {
+        return CreateProofResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<CreateProofResponse>): CreateProofResponse {
@@ -740,19 +841,24 @@ export const VerifyProofRequest = {
         length?: number
     ): VerifyProofRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseVerifyProofRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.proofDocumentJson = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -770,6 +876,10 @@ export const VerifyProofRequest = {
         message.proofDocumentJson !== undefined &&
             (obj.proofDocumentJson = message.proofDocumentJson);
         return obj;
+    },
+
+    create(base?: DeepPartial<VerifyProofRequest>): VerifyProofRequest {
+        return VerifyProofRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<VerifyProofRequest>): VerifyProofRequest {
@@ -815,19 +925,31 @@ export const VerifyProofResponse = {
         length?: number
     ): VerifyProofResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseVerifyProofResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.isValid = reader.bool();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.validationMessages!.push(reader.string());
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     const entry3 =
                         VerifyProofResponse_ValidationResultsEntry.decode(
                             reader,
@@ -836,11 +958,12 @@ export const VerifyProofResponse = {
                     if (entry3.value !== undefined) {
                         message.validationResults![entry3.key] = entry3.value;
                     }
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -877,6 +1000,10 @@ export const VerifyProofResponse = {
             });
         }
         return obj;
+    },
+
+    create(base?: DeepPartial<VerifyProofResponse>): VerifyProofResponse {
+        return VerifyProofResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<VerifyProofResponse>): VerifyProofResponse {
@@ -922,25 +1049,34 @@ export const VerifyProofResponse_ValidationResultsEntry = {
         length?: number
     ): VerifyProofResponse_ValidationResultsEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseVerifyProofResponse_ValidationResultsEntry();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = ValidationMessage.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -962,6 +1098,14 @@ export const VerifyProofResponse_ValidationResultsEntry = {
                 ? ValidationMessage.toJSON(message.value)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<VerifyProofResponse_ValidationResultsEntry>
+    ): VerifyProofResponse_ValidationResultsEntry {
+        return VerifyProofResponse_ValidationResultsEntry.fromPartial(
+            base ?? {}
+        );
     },
 
     fromPartial(
@@ -999,22 +1143,31 @@ export const ValidationMessage = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidationMessage {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseValidationMessage();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.isValid = reader.bool();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.messages!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1037,6 +1190,10 @@ export const ValidationMessage = {
             obj.messages = [];
         }
         return obj;
+    },
+
+    create(base?: DeepPartial<ValidationMessage>): ValidationMessage {
+        return ValidationMessage.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<ValidationMessage>): ValidationMessage {
@@ -1086,34 +1243,59 @@ export const SendRequest = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): SendRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSendRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
+                    continue;
                 case 7:
+                    if (tag != 58) {
+                        break;
+                    }
+
                     message.phoneNumber = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 32) {
+                        break;
+                    }
+
                     message.sendNotification = reader.bool();
-                    break;
+                    continue;
                 case 100:
+                    if (tag != 802) {
+                        break;
+                    }
+
                     message.documentJson = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1151,6 +1333,10 @@ export const SendRequest = {
         return obj;
     },
 
+    create(base?: DeepPartial<SendRequest>): SendRequest {
+        return SendRequest.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<SendRequest>): SendRequest {
         const message = createBaseSendRequest();
         message.email = object.email ?? undefined;
@@ -1177,16 +1363,17 @@ export const SendResponse = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): SendResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSendResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1198,6 +1385,10 @@ export const SendResponse = {
     toJSON(_: SendResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(base?: DeepPartial<SendResponse>): SendResponse {
+        return SendResponse.fromPartial(base ?? {});
     },
 
     fromPartial(_: DeepPartial<SendResponse>): SendResponse {
@@ -1232,22 +1423,31 @@ export const UpdateStatusRequest = {
         length?: number
     ): UpdateStatusRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpdateStatusRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.credentialStatusId = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.revoked = reader.bool();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1267,6 +1467,10 @@ export const UpdateStatusRequest = {
             (obj.credentialStatusId = message.credentialStatusId);
         message.revoked !== undefined && (obj.revoked = message.revoked);
         return obj;
+    },
+
+    create(base?: DeepPartial<UpdateStatusRequest>): UpdateStatusRequest {
+        return UpdateStatusRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<UpdateStatusRequest>): UpdateStatusRequest {
@@ -1294,16 +1498,17 @@ export const UpdateStatusResponse = {
         length?: number
     ): UpdateStatusResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpdateStatusResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1315,6 +1520,10 @@ export const UpdateStatusResponse = {
     toJSON(_: UpdateStatusResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(base?: DeepPartial<UpdateStatusResponse>): UpdateStatusResponse {
+        return UpdateStatusResponse.fromPartial(base ?? {});
     },
 
     fromPartial(_: DeepPartial<UpdateStatusResponse>): UpdateStatusResponse {
@@ -1346,19 +1555,24 @@ export const CheckStatusRequest = {
         length?: number
     ): CheckStatusRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCheckStatusRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.credentialStatusId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1376,6 +1590,10 @@ export const CheckStatusRequest = {
         message.credentialStatusId !== undefined &&
             (obj.credentialStatusId = message.credentialStatusId);
         return obj;
+    },
+
+    create(base?: DeepPartial<CheckStatusRequest>): CheckStatusRequest {
+        return CheckStatusRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<CheckStatusRequest>): CheckStatusRequest {
@@ -1405,19 +1623,24 @@ export const CheckStatusResponse = {
         length?: number
     ): CheckStatusResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCheckStatusResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.revoked = reader.bool();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1432,6 +1655,10 @@ export const CheckStatusResponse = {
         const obj: any = {};
         message.revoked !== undefined && (obj.revoked = message.revoked);
         return obj;
+    },
+
+    create(base?: DeepPartial<CheckStatusResponse>): CheckStatusResponse {
+        return CheckStatusResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<CheckStatusResponse>): CheckStatusResponse {
@@ -1458,7 +1685,19 @@ export const VerifiableCredentialDefinition = {
             requestStream: false,
             responseType: IssueResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([
+                            55, 42, 53, 8, 1, 18, 49, 84, 104, 105, 115, 32,
+                            101, 110, 100, 112, 111, 105, 110, 116, 32, 119,
+                            105, 108, 108, 32, 98, 101, 32, 114, 101, 109, 111,
+                            118, 101, 100, 32, 97, 114, 111, 117, 110, 100, 32,
+                            74, 117, 110, 101, 32, 49, 44, 32, 50, 48, 50, 51,
+                        ]),
+                    ],
+                },
+            },
         },
         /**
          * Sign and issue a verifiable credential from a pre-defined template.
@@ -1530,19 +1769,27 @@ export const VerifiableCredentialDefinition = {
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
-var globalThis: any = (() => {
-    if (typeof globalThis !== "undefined") return globalThis;
-    if (typeof self !== "undefined") return self;
-    if (typeof window !== "undefined") return window;
-    if (typeof global !== "undefined") return global;
+var tsProtoGlobalThis: any = (() => {
+    if (typeof globalThis !== "undefined") {
+        return globalThis;
+    }
+    if (typeof self !== "undefined") {
+        return self;
+    }
+    if (typeof window !== "undefined") {
+        return window;
+    }
+    if (typeof global !== "undefined") {
+        return global;
+    }
     throw "Unable to locate global object";
 })();
 
 function bytesFromBase64(b64: string): Uint8Array {
-    if (globalThis.Buffer) {
-        return Uint8Array.from(globalThis.Buffer.from(b64, "base64"));
+    if (tsProtoGlobalThis.Buffer) {
+        return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
     } else {
-        const bin = globalThis.atob(b64);
+        const bin = tsProtoGlobalThis.atob(b64);
         const arr = new Uint8Array(bin.length);
         for (let i = 0; i < bin.length; ++i) {
             arr[i] = bin.charCodeAt(i);
@@ -1552,14 +1799,14 @@ function bytesFromBase64(b64: string): Uint8Array {
 }
 
 function base64FromBytes(arr: Uint8Array): string {
-    if (globalThis.Buffer) {
-        return globalThis.Buffer.from(arr).toString("base64");
+    if (tsProtoGlobalThis.Buffer) {
+        return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
     } else {
         const bin: string[] = [];
         arr.forEach((byte) => {
             bin.push(String.fromCharCode(byte));
         });
-        return globalThis.btoa(bin.join(""));
+        return tsProtoGlobalThis.btoa(bin.join(""));
     }
 }
 
