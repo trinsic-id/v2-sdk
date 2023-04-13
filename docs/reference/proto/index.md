@@ -1086,7 +1086,7 @@ Information about the account used to make the request
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details associated with the calling request context |
-| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** Use `ecosystem_id` instead |
+| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** DEPRECATED, will be removed April 1st 2023 Use `ecosystem_id` instead |
 | wallet_id | [string](/reference/proto#string) | The wallet ID associated with this account |
 | device_id | [string](/reference/proto#string) | The device ID associated with this account session |
 | ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
@@ -1583,13 +1583,13 @@ Response to `UploadFileRequest`
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
-| UpdateEcosystem | [UpdateEcosystemRequest](/reference/proto#services-provider-v1-UpdateEcosystemRequest) | [UpdateEcosystemResponse](/reference/proto#services-provider-v1-UpdateEcosystemResponse) | Update an existing ecosystem |
-| AddWebhook | [AddWebhookRequest](/reference/proto#services-provider-v1-AddWebhookRequest) | [AddWebhookResponse](/reference/proto#services-provider-v1-AddWebhookResponse) | Add a webhook endpoint to the ecosystem |
-| DeleteWebhook | [DeleteWebhookRequest](/reference/proto#services-provider-v1-DeleteWebhookRequest) | [DeleteWebhookResponse](/reference/proto#services-provider-v1-DeleteWebhookResponse) | Delete a webhook endpoint from the ecosystem |
-| EcosystemInfo | [EcosystemInfoRequest](/reference/proto#services-provider-v1-EcosystemInfoRequest) | [EcosystemInfoResponse](/reference/proto#services-provider-v1-EcosystemInfoResponse) | Get ecosystem information |
-| GetPublicEcosystemInfo | [GetPublicEcosystemInfoRequest](/reference/proto#services-provider-v1-GetPublicEcosystemInfoRequest) | [GetPublicEcosystemInfoResponse](/reference/proto#services-provider-v1-GetPublicEcosystemInfoResponse) | Get public ecosystem information about *any* ecosystem |
-| Invite | [InviteRequest](/reference/proto#services-provider-v1-InviteRequest) | [InviteResponse](/reference/proto#services-provider-v1-InviteResponse) | Invite a user to the ecosystem |
-| InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the status of an invitation |
+| UpdateEcosystem | [UpdateEcosystemRequest](/reference/proto#services-provider-v1-UpdateEcosystemRequest) | [UpdateEcosystemResponse](/reference/proto#services-provider-v1-UpdateEcosystemResponse) | The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023 |
+| AddWebhook | [AddWebhookRequest](/reference/proto#services-provider-v1-AddWebhookRequest) | [AddWebhookResponse](/reference/proto#services-provider-v1-AddWebhookResponse) | The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed April 1st 2023 |
+| DeleteWebhook | [DeleteWebhookRequest](/reference/proto#services-provider-v1-DeleteWebhookRequest) | [DeleteWebhookResponse](/reference/proto#services-provider-v1-DeleteWebhookResponse) | The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed April 1st 2023 |
+| EcosystemInfo | [EcosystemInfoRequest](/reference/proto#services-provider-v1-EcosystemInfoRequest) | [EcosystemInfoResponse](/reference/proto#services-provider-v1-EcosystemInfoResponse) | The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023 |
+| GetPublicEcosystemInfo | [GetPublicEcosystemInfoRequest](/reference/proto#services-provider-v1-GetPublicEcosystemInfoRequest) | [GetPublicEcosystemInfoResponse](/reference/proto#services-provider-v1-GetPublicEcosystemInfoResponse) | The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023 |
+| Invite | [InviteRequest](/reference/proto#services-provider-v1-InviteRequest) | [InviteResponse](/reference/proto#services-provider-v1-InviteResponse) | DEPRECATED, will be removed April 1st 2023 |
+| InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | DEPRECATED, will be removed April 1st 2023 |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
 | RetrieveDomainVerificationRecord | [RetrieveDomainVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest) | [RetrieveDomainVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
@@ -1602,6 +1602,7 @@ Response to `UploadFileRequest`
 <a name="services-provider-v1-AddWebhookRequest"></a>
 
 ### AddWebhookRequest
+DEPRECATED, will be removed April 1st 2023
 Request to add a webhook to an ecosystem
 
 
@@ -1619,6 +1620,7 @@ Request to add a webhook to an ecosystem
 <a name="services-provider-v1-AddWebhookResponse"></a>
 
 ### AddWebhookResponse
+DEPRECATED, will be removed April 1st 2023
 Response to `AddWebhookRequest`
 
 
@@ -1641,7 +1643,7 @@ Request to create an ecosystem
 | ----- | ---- | ----------- |
 | name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
 | description | [string](/reference/proto#string) | Ecosystem description |
-| uri | [string](/reference/proto#string) | **Deprecated.** External URL associated with your organization or ecosystem entity |
+| uri | [string](/reference/proto#string) | **Deprecated.** DEPRECATED, will be removed April 1st 2023 External URL associated with your organization or ecosystem entity |
 | details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
 | domain | [string](/reference/proto#string) | New domain URL |
 
@@ -1670,6 +1672,7 @@ Response to `CreateEcosystemRequest`
 <a name="services-provider-v1-DeleteWebhookRequest"></a>
 
 ### DeleteWebhookRequest
+DEPRECATED, will be removed April 1st 2023
 Request to delete a webhook from an ecosystem
 
 
@@ -1685,6 +1688,7 @@ Request to delete a webhook from an ecosystem
 <a name="services-provider-v1-DeleteWebhookResponse"></a>
 
 ### DeleteWebhookResponse
+DEPRECATED, will be removed April 1st 2023
 Response to `DeleteWebhookRequest`
 
 
@@ -1708,7 +1712,7 @@ Details of an ecosystem
 | id | [string](/reference/proto#string) | URN of the ecosystem |
 | name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
 | description | [string](/reference/proto#string) | Ecosystem description |
-| uri | [string](/reference/proto#string) | **Deprecated.** External URL associated with the organization or ecosystem entity |
+| uri | [string](/reference/proto#string) | **Deprecated.** DEPRECATED, will be removed April 1st 2023 External URL associated with the organization or ecosystem entity |
 | display | [EcosystemDisplay](/reference/proto#services-provider-v1-EcosystemDisplay) | Display details |
 | domain | [string](/reference/proto#string) | Domain |
 
@@ -1834,6 +1838,7 @@ Response to `GetOberonKeyRequest`
 <a name="services-provider-v1-GetPublicEcosystemInfoRequest"></a>
 
 ### GetPublicEcosystemInfoRequest
+DEPRECATED, will be removed April 1st 2023
 Request to fetch information about an ecosystem
 
 
@@ -1849,6 +1854,7 @@ Request to fetch information about an ecosystem
 <a name="services-provider-v1-GetPublicEcosystemInfoResponse"></a>
 
 ### GetPublicEcosystemInfoResponse
+DEPRECATED, will be removed April 1st 2023
 Response to `InfoRequest`
 
 
@@ -1879,6 +1885,7 @@ Options for creation of DID on the SOV network
 <a name="services-provider-v1-InvitationStatusRequest"></a>
 
 ### InvitationStatusRequest
+DEPRECATED, will be removed April 1st 2023
 Request details for the status of an invitation
 
 
@@ -1894,6 +1901,7 @@ Request details for the status of an invitation
 <a name="services-provider-v1-InvitationStatusResponse"></a>
 
 ### InvitationStatusResponse
+DEPRECATED, will be removed April 1st 2023
 Response to `InvitationStatusRequest`
 
 
@@ -1937,6 +1945,7 @@ Request to invite a participant to an ecosystem
 <a name="services-provider-v1-InviteResponse"></a>
 
 ### InviteResponse
+DEPRECATED, will be removed April 1st 2023
 Response to `InviteRequest`
 
 
@@ -1968,7 +1977,7 @@ Options for creation of DID on the ION network
 <a name="services-provider-v1-PublicEcosystemInformation"></a>
 
 ### PublicEcosystemInformation
-
+DEPRECATED, will be removed April 1st 2023
 
 
 | Field | Type | Description |
@@ -1987,7 +1996,8 @@ Options for creation of DID on the ION network
 <a name="services-provider-v1-RefreshDomainVerificationStatusRequest"></a>
 
 ### RefreshDomainVerificationStatusRequest
-
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
 
 
 
@@ -1997,7 +2007,8 @@ Options for creation of DID on the ION network
 <a name="services-provider-v1-RefreshDomainVerificationStatusResponse"></a>
 
 ### RefreshDomainVerificationStatusResponse
-
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
 
 
 | Field | Type | Description |
@@ -2013,7 +2024,8 @@ Options for creation of DID on the ION network
 <a name="services-provider-v1-RetrieveDomainVerificationRecordRequest"></a>
 
 ### RetrieveDomainVerificationRecordRequest
-
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
 
 
 
@@ -2023,7 +2035,8 @@ Options for creation of DID on the ION network
 <a name="services-provider-v1-RetrieveDomainVerificationRecordResponse"></a>
 
 ### RetrieveDomainVerificationRecordResponse
-Response message containing a TXT record content for domain url verification
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
 
 
 | Field | Type | Description |
@@ -2078,7 +2091,7 @@ Request to update an ecosystem's metadata
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | description | [string](/reference/proto#string) | New description of the ecosystem |
-| uri | [string](/reference/proto#string) | **Deprecated.** New external URL associated with the organization or ecosystem entity |
+| uri | [string](/reference/proto#string) | **Deprecated.** DEPRECATED, will be removed April 1st 2023 New external URL associated with the organization or ecosystem entity |
 | domain | [string](/reference/proto#string) | New domain URL |
 | display | [EcosystemDisplayRequest](/reference/proto#services-provider-v1-EcosystemDisplayRequest) | **Deprecated.** Display details |
 
@@ -2162,6 +2175,7 @@ Strongly typed information about wallet configurations
 <a name="services-provider-v1-WebhookConfig"></a>
 
 ### WebhookConfig
+DEPRECATED, will be removed April 1st 2023
 Webhook configured on an ecosystem
 
 
@@ -2227,6 +2241,7 @@ Webhook configured on an ecosystem
 <a name="services-provider-v1-ParticipantType"></a>
 
 ### ParticipantType
+DEPRECATED, will be removed April 1st 2023
 Type of participant being invited to ecosystem
 
 | Name | Number | Description |
@@ -2398,7 +2413,7 @@ Request to fetch the list of roles assigned to the current account
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Issue | [IssueRequest](/reference/proto#services-verifiablecredentials-v1-IssueRequest) | [IssueResponse](/reference/proto#services-verifiablecredentials-v1-IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. |
+| Issue | [IssueRequest](/reference/proto#services-verifiablecredentials-v1-IssueRequest) | [IssueResponse](/reference/proto#services-verifiablecredentials-v1-IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. DEPRECATED, will be removed June 1st 2023 |
 | IssueFromTemplate | [IssueFromTemplateRequest](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest) | [IssueFromTemplateResponse](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry values to the credential. |
 | CheckStatus | [CheckStatusRequest](/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status in the revocation registry |
 | UpdateStatus | [UpdateStatusRequest](/reference/proto#services-verifiablecredentials-v1-UpdateStatusRequest) | [UpdateStatusResponse](/reference/proto#services-verifiablecredentials-v1-UpdateStatusResponse) | Update credential status by setting the revocation value |
@@ -2511,7 +2526,7 @@ Response to `IssueFromTemplateRequest`
 <a name="services-verifiablecredentials-v1-IssueRequest"></a>
 
 ### IssueRequest
-Request to sign a JSON-LD Credential using public key tied to caller
+DEPRECATED, will be removed May 1st 2023
 
 
 | Field | Type | Description |
@@ -2526,7 +2541,7 @@ Request to sign a JSON-LD Credential using public key tied to caller
 <a name="services-verifiablecredentials-v1-IssueResponse"></a>
 
 ### IssueResponse
-Response to `IssueRequest`
+DEPRECATED, will be removed May 1st 2023
 
 
 | Field | Type | Description |
@@ -2942,7 +2957,7 @@ Credential Template
 | fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] | Fields defined for the template |
 | allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials issued against this template may contain fields not defined by template |
 | schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
-| context_uri | [string](/reference/proto#string) | **Deprecated.** URI pointing to template JSON-LD context document |
+| context_uri | [string](/reference/proto#string) | **Deprecated.** DEPRECATED, will be removed April 1st 2023 |
 | ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
 | type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
 | created_by | [string](/reference/proto#string) | ID of template creator |

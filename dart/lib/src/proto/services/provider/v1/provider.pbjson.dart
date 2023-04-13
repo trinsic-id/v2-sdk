@@ -571,12 +571,13 @@ final $typed_data.Uint8List getOberonKeyResponseDescriptor = $convert
     .Deprecated('Use retrieveDomainVerificationRecordRequestDescriptor instead')
 const RetrieveDomainVerificationRecordRequest$json = const {
   '1': 'RetrieveDomainVerificationRecordRequest',
+  '7': const {'3': true},
 };
 
 /// Descriptor for `RetrieveDomainVerificationRecordRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List retrieveDomainVerificationRecordRequestDescriptor =
     $convert.base64Decode(
-        'CidSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlcXVlc3Q=');
+        'CidSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlcXVlc3Q6AhgB');
 @$core.Deprecated(
     'Use retrieveDomainVerificationRecordResponseDescriptor instead')
 const RetrieveDomainVerificationRecordResponse$json = const {
@@ -597,22 +598,24 @@ const RetrieveDomainVerificationRecordResponse$json = const {
       '10': 'verificationRecordValue'
     },
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `RetrieveDomainVerificationRecordResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List retrieveDomainVerificationRecordResponseDescriptor =
     $convert.base64Decode(
-        'CihSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlc3BvbnNlEjgKGHZlcmlmaWNhdGlvbl9yZWNvcmRfbmFtZRgBIAEoCVIWdmVyaWZpY2F0aW9uUmVjb3JkTmFtZRI6Chl2ZXJpZmljYXRpb25fcmVjb3JkX1ZhbHVlGAIgASgJUhd2ZXJpZmljYXRpb25SZWNvcmRWYWx1ZQ==');
+        'CihSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlc3BvbnNlEjgKGHZlcmlmaWNhdGlvbl9yZWNvcmRfbmFtZRgBIAEoCVIWdmVyaWZpY2F0aW9uUmVjb3JkTmFtZRI6Chl2ZXJpZmljYXRpb25fcmVjb3JkX1ZhbHVlGAIgASgJUhd2ZXJpZmljYXRpb25SZWNvcmRWYWx1ZToCGAE=');
 @$core
     .Deprecated('Use refreshDomainVerificationStatusRequestDescriptor instead')
 const RefreshDomainVerificationStatusRequest$json = const {
   '1': 'RefreshDomainVerificationStatusRequest',
+  '7': const {'3': true},
 };
 
 /// Descriptor for `RefreshDomainVerificationStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List refreshDomainVerificationStatusRequestDescriptor =
     $convert.base64Decode(
-        'CiZSZWZyZXNoRG9tYWluVmVyaWZpY2F0aW9uU3RhdHVzUmVxdWVzdA==');
+        'CiZSZWZyZXNoRG9tYWluVmVyaWZpY2F0aW9uU3RhdHVzUmVxdWVzdDoCGAE=');
 @$core
     .Deprecated('Use refreshDomainVerificationStatusResponseDescriptor instead')
 const RefreshDomainVerificationStatusResponse$json = const {
@@ -627,12 +630,13 @@ const RefreshDomainVerificationStatusResponse$json = const {
       '10': 'domainVerified'
     },
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `RefreshDomainVerificationStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List refreshDomainVerificationStatusResponseDescriptor =
     $convert.base64Decode(
-        'CidSZWZyZXNoRG9tYWluVmVyaWZpY2F0aW9uU3RhdHVzUmVzcG9uc2USFgoGZG9tYWluGAEgASgJUgZkb21haW4SJwoPZG9tYWluX3ZlcmlmaWVkGAIgASgIUg5kb21haW5WZXJpZmllZA==');
+        'CidSZWZyZXNoRG9tYWluVmVyaWZpY2F0aW9uU3RhdHVzUmVzcG9uc2USFgoGZG9tYWluGAEgASgJUgZkb21haW4SJwoPZG9tYWluX3ZlcmlmaWVkGAIgASgIUg5kb21haW5WZXJpZmllZDoCGAE=');
 @$core.Deprecated('Use searchWalletConfigurationsRequestDescriptor instead')
 const SearchWalletConfigurationsRequest$json = const {
   '1': 'SearchWalletConfigurationsRequest',

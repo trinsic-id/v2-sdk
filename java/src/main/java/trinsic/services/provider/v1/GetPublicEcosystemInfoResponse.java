@@ -7,6 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `InfoRequest`
  * </pre>
  *
@@ -269,6 +270,7 @@ public final class GetPublicEcosystemInfoResponse extends com.google.protobuf.Ge
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Response to `InfoRequest`
    * </pre>
    *

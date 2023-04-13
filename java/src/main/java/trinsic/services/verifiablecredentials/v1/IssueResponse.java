@@ -7,11 +7,12 @@ package trinsic.services.verifiablecredentials.v1;
  *
  *
  * <pre>
- * Response to `IssueRequest`
+ * DEPRECATED, will be removed May 1st 2023
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
  */
+@java.lang.Deprecated
 public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.IssueResponse)
@@ -267,7 +268,7 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Response to `IssueRequest`
+   * DEPRECATED, will be removed May 1st 2023
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}

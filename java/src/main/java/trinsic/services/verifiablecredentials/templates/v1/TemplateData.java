@@ -387,7 +387,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * URI pointing to template JSON-LD context document
+   * DEPRECATED, will be removed April 1st 2023
    * </pre>
    *
    * <code>string context_uri = 7 [deprecated = true];</code>
@@ -413,7 +413,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * URI pointing to template JSON-LD context document
+   * DEPRECATED, will be removed April 1st 2023
    * </pre>
    *
    * <code>string context_uri = 7 [deprecated = true];</code>
@@ -2253,7 +2253,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * URI pointing to template JSON-LD context document
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      *
      * <code>string context_uri = 7 [deprecated = true];</code>
@@ -2278,7 +2278,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * URI pointing to template JSON-LD context document
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      *
      * <code>string context_uri = 7 [deprecated = true];</code>
@@ -2303,7 +2303,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * URI pointing to template JSON-LD context document
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      *
      * <code>string context_uri = 7 [deprecated = true];</code>
@@ -2327,7 +2327,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * URI pointing to template JSON-LD context document
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      *
      * <code>string context_uri = 7 [deprecated = true];</code>
@@ -2347,7 +2347,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * URI pointing to template JSON-LD context document
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      *
      * <code>string context_uri = 7 [deprecated = true];</code>

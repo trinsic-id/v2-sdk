@@ -50,6 +50,7 @@ public interface AccountInfoResponseOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -61,6 +62,7 @@ public interface AccountInfoResponseOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -72,6 +74,7 @@ public interface AccountInfoResponseOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -83,6 +86,7 @@ public interface AccountInfoResponseOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -95,6 +99,7 @@ public interface AccountInfoResponseOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *

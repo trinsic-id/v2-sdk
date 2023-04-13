@@ -52,58 +52,66 @@ public class ProviderService : ServiceBase
 // target: /home/runner/work/sdk/sdk/dotnet/Trinsic/ProviderService.cs
 
 	/// <summary>
-    ///This will be removed May 1, 2023
-    ///  Update an existing ecosystem
+    ///This will be removed June 1, 2023
+    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    [Obsolete("This will be removed May 1, 2023")]
+    [Obsolete("This will be removed June 1, 2023")]
     public UpdateEcosystemResponse UpdateEcosystem(UpdateEcosystemRequest request) {
         
         return Client.UpdateEcosystem(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    ///This will be removed May 1, 2023
-    ///  Update an existing ecosystem
+    ///This will be removed June 1, 2023
+    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    [Obsolete("This will be removed May 1, 2023")]
+    [Obsolete("This will be removed June 1, 2023")]
     public async Task<UpdateEcosystemResponse> UpdateEcosystemAsync(UpdateEcosystemRequest request) {
         
         return await Client.UpdateEcosystemAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// Get ecosystem information
+    ///This will be removed June 1, 2023
+    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    
+    [Obsolete("This will be removed June 1, 2023")]
     public EcosystemInfoResponse EcosystemInfo(EcosystemInfoRequest request) {
         
         return Client.EcosystemInfo(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Get ecosystem information
+    ///This will be removed June 1, 2023
+    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    
+    [Obsolete("This will be removed June 1, 2023")]
     public async Task<EcosystemInfoResponse> EcosystemInfoAsync(EcosystemInfoRequest request) {
         
         return await Client.EcosystemInfoAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    ///This will be removed May 1, 2023
-    ///  Get public ecosystem information about *any* ecosystem
+    ///This will be removed June 1, 2023
+    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    [Obsolete("This will be removed May 1, 2023")]
+    [Obsolete("This will be removed June 1, 2023")]
     public GetPublicEcosystemInfoResponse GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest request) {
         
         return Client.GetPublicEcosystemInfo(request, BuildMetadata());
     }
 	
 	/// <summary>
-    ///This will be removed May 1, 2023
-    ///  Get public ecosystem information about *any* ecosystem
+    ///This will be removed June 1, 2023
+    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    [Obsolete("This will be removed May 1, 2023")]
+    [Obsolete("This will be removed June 1, 2023")]
     public async Task<GetPublicEcosystemInfoResponse> GetPublicEcosystemInfoAsync(GetPublicEcosystemInfoRequest request) {
         
         return await Client.GetPublicEcosystemInfoAsync(request, await BuildMetadataAsync());

@@ -7,11 +7,12 @@ package trinsic.services.verifiablecredentials.v1;
  *
  *
  * <pre>
- * Request to sign a JSON-LD Credential using public key tied to caller
+ * DEPRECATED, will be removed May 1st 2023
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.IssueRequest}
  */
+@java.lang.Deprecated
 public final class IssueRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.IssueRequest)
@@ -265,7 +266,7 @@ public final class IssueRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Request to sign a JSON-LD Credential using public key tied to caller
+   * DEPRECATED, will be removed May 1st 2023
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueRequest}

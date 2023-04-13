@@ -14,7 +14,10 @@ import {
 } from "../../common/v1/common";
 import _m0 from "protobufjs/minimal";
 
-/** Type of participant being invited to ecosystem */
+/**
+ * DEPRECATED, will be removed April 1st 2023
+ * Type of participant being invited to ecosystem
+ */
 export enum ParticipantType {
   /** participant_type_individual - Participant is an individual */
   participant_type_individual = 0,
@@ -67,6 +70,7 @@ export interface InviteRequest {
 export interface InviteRequest_DidCommInvitation {}
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `InviteRequest`
  *
  * @deprecated
@@ -79,6 +83,7 @@ export interface InviteResponse {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Request details for the status of an invitation
  *
  * @deprecated
@@ -89,6 +94,7 @@ export interface InvitationStatusRequest {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `InvitationStatusRequest`
  *
  * @deprecated
@@ -162,6 +168,7 @@ export interface Ecosystem {
   /** Ecosystem description */
   description?: string;
   /**
+   * DEPRECATED, will be removed April 1st 2023
    * External URL associated with the organization or ecosystem entity
    *
    * @deprecated
@@ -174,6 +181,7 @@ export interface Ecosystem {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Webhook configured on an ecosystem
  *
  * @deprecated
@@ -201,6 +209,7 @@ export interface CreateEcosystemRequest {
   /** Ecosystem description */
   description?: string;
   /**
+   * DEPRECATED, will be removed April 1st 2023
    * External URL associated with your organization or ecosystem entity
    *
    * @deprecated
@@ -227,6 +236,7 @@ export interface UpdateEcosystemRequest {
   /** New description of the ecosystem */
   description?: string;
   /**
+   * DEPRECATED, will be removed April 1st 2023
    * New external URL associated with the organization or ecosystem entity
    *
    * @deprecated
@@ -277,6 +287,7 @@ export interface EcosystemDisplayDetails {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Request to add a webhook to an ecosystem
  *
  * @deprecated
@@ -297,6 +308,7 @@ export interface AddWebhookRequest {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `AddWebhookRequest`
  *
  * @deprecated
@@ -307,6 +319,7 @@ export interface AddWebhookResponse {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Request to delete a webhook from an ecosystem
  *
  * @deprecated
@@ -317,6 +330,7 @@ export interface DeleteWebhookRequest {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `DeleteWebhookRequest`
  *
  * @deprecated
@@ -336,6 +350,7 @@ export interface EcosystemInfoResponse {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Request to fetch information about an ecosystem
  *
  * @deprecated
@@ -345,6 +360,7 @@ export interface GetPublicEcosystemInfoRequest {
 }
 
 /**
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `InfoRequest`
  *
  * @deprecated
@@ -354,7 +370,11 @@ export interface GetPublicEcosystemInfoResponse {
   ecosystem?: PublicEcosystemInformation;
 }
 
-/** @deprecated */
+/**
+ * DEPRECATED, will be removed April 1st 2023
+ *
+ * @deprecated
+ */
 export interface PublicEcosystemInformation {
   /** Public name of this ecosystem */
   name?: string;
@@ -380,9 +400,20 @@ export interface GetOberonKeyResponse {
   key?: string;
 }
 
+/**
+ * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+ * DEPRECATED, will be removed June 1st 2023
+ *
+ * @deprecated
+ */
 export interface RetrieveDomainVerificationRecordRequest {}
 
-/** Response message containing a TXT record content for domain url verification */
+/**
+ * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+ * DEPRECATED, will be removed June 1st 2023
+ *
+ * @deprecated
+ */
 export interface RetrieveDomainVerificationRecordResponse {
   /** TXT record name to use for domain verification */
   verificationRecordName?: string;
@@ -390,8 +421,20 @@ export interface RetrieveDomainVerificationRecordResponse {
   verificationRecordValue?: string;
 }
 
+/**
+ * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+ * DEPRECATED, will be removed June 1st 2023
+ *
+ * @deprecated
+ */
 export interface RefreshDomainVerificationStatusRequest {}
 
+/**
+ * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+ * DEPRECATED, will be removed June 1st 2023
+ *
+ * @deprecated
+ */
 export interface RefreshDomainVerificationStatusResponse {
   /** Domain URL verified */
   domain?: string;
@@ -3356,7 +3399,8 @@ export const ProviderDefinition = {
       options: {},
     },
     /**
-     * Update an existing ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      *
      * @deprecated
      */
@@ -3368,7 +3412,10 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Add a webhook endpoint to the ecosystem */
+    /**
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
+     */
     addWebhook: {
       name: "AddWebhook",
       requestType: AddWebhookRequest,
@@ -3377,7 +3424,10 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Delete a webhook endpoint from the ecosystem */
+    /**
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
+     */
     deleteWebhook: {
       name: "DeleteWebhook",
       requestType: DeleteWebhookRequest,
@@ -3386,7 +3436,10 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Get ecosystem information */
+    /**
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
+     */
     ecosystemInfo: {
       name: "EcosystemInfo",
       requestType: EcosystemInfoRequest,
@@ -3395,7 +3448,10 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Get public ecosystem information about *any* ecosystem */
+    /**
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
+     */
     getPublicEcosystemInfo: {
       name: "GetPublicEcosystemInfo",
       requestType: GetPublicEcosystemInfoRequest,
@@ -3405,7 +3461,7 @@ export const ProviderDefinition = {
       options: {},
     },
     /**
-     * Invite a user to the ecosystem
+     * DEPRECATED, will be removed April 1st 2023
      *
      * @deprecated
      */
@@ -3418,7 +3474,7 @@ export const ProviderDefinition = {
       options: {},
     },
     /**
-     * Check the status of an invitation
+     * DEPRECATED, will be removed April 1st 2023
      *
      * @deprecated
      */

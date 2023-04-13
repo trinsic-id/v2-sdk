@@ -684,7 +684,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Update an existing ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -700,7 +701,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Add a webhook endpoint to the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public void addWebhook(
@@ -714,7 +716,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Delete a webhook endpoint from the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public void deleteWebhook(
@@ -729,7 +732,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get ecosystem information
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public void ecosystemInfo(
@@ -744,7 +748,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get public ecosystem information about *any* ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public void getPublicEcosystemInfo(
@@ -759,7 +764,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Invite a user to the ecosystem
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -773,7 +778,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the status of an invitation
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -988,7 +993,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Update an existing ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1006,7 +1012,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Add a webhook endpoint to the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public void addWebhook(
@@ -1021,7 +1028,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Delete a webhook endpoint from the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public void deleteWebhook(
@@ -1038,7 +1046,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get ecosystem information
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public void ecosystemInfo(
@@ -1055,7 +1064,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get public ecosystem information about *any* ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public void getPublicEcosystemInfo(
@@ -1072,7 +1082,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Invite a user to the ecosystem
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1087,7 +1097,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the status of an invitation
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1216,7 +1226,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Update an existing ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1230,7 +1241,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Add a webhook endpoint to the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public trinsic.services.provider.v1.AddWebhookResponse addWebhook(
@@ -1243,7 +1255,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Delete a webhook endpoint from the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public trinsic.services.provider.v1.DeleteWebhookResponse deleteWebhook(
@@ -1256,7 +1269,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get ecosystem information
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public trinsic.services.provider.v1.EcosystemInfoResponse ecosystemInfo(
@@ -1269,7 +1283,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get public ecosystem information about *any* ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public trinsic.services.provider.v1.GetPublicEcosystemInfoResponse getPublicEcosystemInfo(
@@ -1282,7 +1297,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Invite a user to the ecosystem
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1296,7 +1311,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the status of an invitation
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1405,7 +1420,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Update an existing ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1420,7 +1436,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Add a webhook endpoint to the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1434,7 +1451,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Delete a webhook endpoint from the ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1448,7 +1466,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get ecosystem information
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1462,7 +1481,8 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Get public ecosystem information about *any* ecosystem
+     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1476,7 +1496,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Invite a user to the ecosystem
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated
@@ -1491,7 +1511,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the status of an invitation
+     * DEPRECATED, will be removed April 1st 2023
      * </pre>
      */
     @java.lang.Deprecated

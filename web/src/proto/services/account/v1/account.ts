@@ -149,6 +149,7 @@ export interface AccountInfoResponse {
    */
   details?: AccountDetails;
   /**
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    *
    * @deprecated

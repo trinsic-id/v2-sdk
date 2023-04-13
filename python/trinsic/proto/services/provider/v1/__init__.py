@@ -24,7 +24,10 @@ if TYPE_CHECKING:
 
 
 class ParticipantType(betterproto.Enum):
-    """Type of participant being invited to ecosystem"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Type of participant being
+    invited to ecosystem
+    """
 
     participant_type_individual = 0
     """Participant is an individual"""
@@ -89,7 +92,9 @@ class InviteRequestDidCommInvitation(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InviteResponse(betterproto.Message):
-    """Response to `InviteRequest`"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Response to `InviteRequest`
+    """
 
     invitation_id: str = betterproto.string_field(10)
     """ID of created invitation"""
@@ -104,7 +109,10 @@ class InviteResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusRequest(betterproto.Message):
-    """Request details for the status of an invitation"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Request details for the status
+    of an invitation
+    """
 
     invitation_id: str = betterproto.string_field(1)
     """ID of invitation, received from `InviteResponse`"""
@@ -116,7 +124,10 @@ class InvitationStatusRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusResponse(betterproto.Message):
-    """Response to `InvitationStatusRequest`"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Response to
+    `InvitationStatusRequest`
+    """
 
     status: "InvitationStatusResponseStatus" = betterproto.enum_field(1)
     """Status of invitation"""
@@ -143,7 +154,10 @@ class Ecosystem(betterproto.Message):
     """Ecosystem description"""
 
     uri: str = betterproto.string_field(4)
-    """External URL associated with the organization or ecosystem entity"""
+    """
+    DEPRECATED, will be removed April 1st 2023 External URL associated with the
+    organization or ecosystem entity
+    """
 
     display: "EcosystemDisplay" = betterproto.message_field(6)
     """Display details"""
@@ -159,7 +173,10 @@ class Ecosystem(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class WebhookConfig(betterproto.Message):
-    """Webhook configured on an ecosystem"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Webhook configured on an
+    ecosystem
+    """
 
     id: str = betterproto.string_field(1)
     """UUID of the webhook"""
@@ -197,7 +214,10 @@ class CreateEcosystemRequest(betterproto.Message):
     """Ecosystem description"""
 
     uri: str = betterproto.string_field(3)
-    """External URL associated with your organization or ecosystem entity"""
+    """
+    DEPRECATED, will be removed April 1st 2023 External URL associated with
+    your organization or ecosystem entity
+    """
 
     details: "__account_v1__.AccountDetails" = betterproto.message_field(4)
     """The account details of the owner of the ecosystem"""
@@ -236,7 +256,8 @@ class UpdateEcosystemRequest(betterproto.Message):
 
     uri: str = betterproto.string_field(2)
     """
-    New external URL associated with the organization or ecosystem entity
+    DEPRECATED, will be removed April 1st 2023 New external URL associated with
+    the organization or ecosystem entity
     """
 
     domain: str = betterproto.string_field(3)
@@ -299,7 +320,10 @@ class EcosystemDisplayDetails(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AddWebhookRequest(betterproto.Message):
-    """Request to add a webhook to an ecosystem"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Request to add a webhook to an
+    ecosystem
+    """
 
     destination_url: str = betterproto.string_field(1)
     """Destination to post webhook calls to. Must be a reachable HTTPS URL."""
@@ -320,7 +344,9 @@ class AddWebhookRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AddWebhookResponse(betterproto.Message):
-    """Response to `AddWebhookRequest`"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Response to `AddWebhookRequest`
+    """
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
     """Ecosystem data with new webhook"""
@@ -332,7 +358,10 @@ class AddWebhookResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class DeleteWebhookRequest(betterproto.Message):
-    """Request to delete a webhook from an ecosystem"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Request to delete a webhook from
+    an ecosystem
+    """
 
     webhook_id: str = betterproto.string_field(1)
     """ID of webhook to delete"""
@@ -344,7 +373,10 @@ class DeleteWebhookRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class DeleteWebhookResponse(betterproto.Message):
-    """Response to `DeleteWebhookRequest`"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Response to
+    `DeleteWebhookRequest`
+    """
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
     """Ecosystem data after removal of webhook"""
@@ -371,7 +403,10 @@ class EcosystemInfoResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class GetPublicEcosystemInfoRequest(betterproto.Message):
-    """Request to fetch information about an ecosystem"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Request to fetch information
+    about an ecosystem
+    """
 
     ecosystem_id: str = betterproto.string_field(1)
 
@@ -382,7 +417,7 @@ class GetPublicEcosystemInfoRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class GetPublicEcosystemInfoResponse(betterproto.Message):
-    """Response to `InfoRequest`"""
+    """DEPRECATED, will be removed April 1st 2023 Response to `InfoRequest`"""
 
     ecosystem: "PublicEcosystemInformation" = betterproto.message_field(1)
     """Ecosystem corresponding to requested `ecosystem_id`"""
@@ -396,6 +431,8 @@ class GetPublicEcosystemInfoResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class PublicEcosystemInformation(betterproto.Message):
+    """DEPRECATED, will be removed April 1st 2023"""
+
     name: str = betterproto.string_field(1)
     """Public name of this ecosystem"""
 
@@ -436,14 +473,27 @@ class GetOberonKeyResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class RetrieveDomainVerificationRecordRequest(betterproto.Message):
+    """
+    The below display can be removed only once the Dashboard is updating this
+    itself - currently it uses this request DEPRECATED, will be removed June
+    1st 2023
+    """
+
     pass
+
+    def __post_init__(self) -> None:
+        warnings.warn(
+            "RetrieveDomainVerificationRecordRequest is deprecated", DeprecationWarning
+        )
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
 class RetrieveDomainVerificationRecordResponse(betterproto.Message):
     """
-    Response message containing a TXT record content for domain url
-    verification
+    The below display can be removed only once the Dashboard is updating this
+    itself - currently it uses this request DEPRECATED, will be removed June
+    1st 2023
     """
 
     verification_record_name: str = betterproto.string_field(1)
@@ -452,19 +502,49 @@ class RetrieveDomainVerificationRecordResponse(betterproto.Message):
     verification_record_value: str = betterproto.string_field(2)
     """TXT code for domain verification"""
 
+    def __post_init__(self) -> None:
+        warnings.warn(
+            "RetrieveDomainVerificationRecordResponse is deprecated", DeprecationWarning
+        )
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class RefreshDomainVerificationStatusRequest(betterproto.Message):
+    """
+    The below display can be removed only once the Dashboard is updating this
+    itself - currently it uses this request DEPRECATED, will be removed June
+    1st 2023
+    """
+
     pass
+
+    def __post_init__(self) -> None:
+        warnings.warn(
+            "RefreshDomainVerificationStatusRequest is deprecated", DeprecationWarning
+        )
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
 class RefreshDomainVerificationStatusResponse(betterproto.Message):
+    """
+    The below display can be removed only once the Dashboard is updating this
+    itself - currently it uses this request DEPRECATED, will be removed June
+    1st 2023
+    """
+
     domain: str = betterproto.string_field(1)
     """Domain URL verified"""
 
     domain_verified: bool = betterproto.bool_field(2)
     """Specifies if the above `domain` was successfully verified"""
+
+    def __post_init__(self) -> None:
+        warnings.warn(
+            "RefreshDomainVerificationStatusResponse is deprecated", DeprecationWarning
+        )
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)

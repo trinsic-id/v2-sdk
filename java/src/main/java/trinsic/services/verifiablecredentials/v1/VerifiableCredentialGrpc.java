@@ -395,6 +395,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a submitted document.
      * The document must be a valid JSON-LD document.
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public void issue(
@@ -572,6 +573,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a submitted document.
      * The document must be a valid JSON-LD document.
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public void issue(
@@ -708,6 +710,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a submitted document.
      * The document must be a valid JSON-LD document.
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.IssueResponse issue(
@@ -819,6 +822,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a submitted document.
      * The document must be a valid JSON-LD document.
+     * DEPRECATED, will be removed June 1st 2023
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<

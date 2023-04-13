@@ -7,6 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
+ * DEPRECATED, will be removed April 1st 2023
  * Request to add a webhook to an ecosystem
  * </pre>
  *
@@ -406,6 +407,7 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Request to add a webhook to an ecosystem
    * </pre>
    *

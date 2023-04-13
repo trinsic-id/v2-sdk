@@ -7,11 +7,13 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * Response message containing a TXT record content for domain url verification
+ * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+ * DEPRECATED, will be removed June 1st 2023
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.RetrieveDomainVerificationRecordResponse}
  */
+@java.lang.Deprecated
 public final class RetrieveDomainVerificationRecordResponse
     extends com.google.protobuf.GeneratedMessageV3
     implements
@@ -327,7 +329,8 @@ public final class RetrieveDomainVerificationRecordResponse
    *
    *
    * <pre>
-   * Response message containing a TXT record content for domain url verification
+   * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+   * DEPRECATED, will be removed June 1st 2023
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.RetrieveDomainVerificationRecordResponse}

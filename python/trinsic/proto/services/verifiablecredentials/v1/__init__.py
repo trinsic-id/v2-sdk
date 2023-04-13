@@ -22,21 +22,29 @@ if TYPE_CHECKING:
 
 @dataclass(eq=False, repr=False)
 class IssueRequest(betterproto.Message):
-    """Request to sign a JSON-LD Credential using public key tied to caller"""
+    """DEPRECATED, will be removed May 1st 2023"""
 
     document_json: str = betterproto.string_field(1)
     """Valid JSON-LD Credential document to be signed, in string form"""
 
+    def __post_init__(self) -> None:
+        warnings.warn("IssueRequest is deprecated", DeprecationWarning)
+        super().__post_init__()
+
 
 @dataclass(eq=False, repr=False)
 class IssueResponse(betterproto.Message):
-    """Response to `IssueRequest`"""
+    """DEPRECATED, will be removed May 1st 2023"""
 
     signed_document_json: str = betterproto.string_field(1)
     """
     Verifiable Credential document, signed with public key tied to caller of
     `IssueRequest`
     """
+
+    def __post_init__(self) -> None:
+        warnings.warn("IssueResponse is deprecated", DeprecationWarning)
+        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)

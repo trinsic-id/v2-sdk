@@ -87,13 +87,14 @@ public interface EcosystemOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * External URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 4 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=91
+   *     services/provider/v1/provider.proto;l=97
    * @return The uri.
    */
   @java.lang.Deprecated
@@ -102,13 +103,14 @@ public interface EcosystemOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * External URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 4 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.Ecosystem.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=91
+   *     services/provider/v1/provider.proto;l=97
    * @return The bytes for uri.
    */
   @java.lang.Deprecated

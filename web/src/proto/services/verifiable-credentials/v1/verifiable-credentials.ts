@@ -1,13 +1,21 @@
 /* eslint-disable */
 import _m0 from "protobufjs/minimal";
 
-/** Request to sign a JSON-LD Credential using public key tied to caller */
+/**
+ * DEPRECATED, will be removed May 1st 2023
+ *
+ * @deprecated
+ */
 export interface IssueRequest {
   /** Valid JSON-LD Credential document to be signed, in string form */
   documentJson?: string;
 }
 
-/** Response to `IssueRequest` */
+/**
+ * DEPRECATED, will be removed May 1st 2023
+ *
+ * @deprecated
+ */
 export interface IssueResponse {
   /**
    * Verifiable Credential document, signed with public key
@@ -1370,6 +1378,7 @@ export const VerifiableCredentialDefinition = {
     /**
      * Sign and issue a verifiable credential from a submitted document.
      * The document must be a valid JSON-LD document.
+     * DEPRECATED, will be removed June 1st 2023
      */
     issue: {
       name: "Issue",

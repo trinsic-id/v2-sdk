@@ -109,13 +109,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=157
+   *     services/provider/v1/provider.proto;l=166
    * @return The uri.
    */
   @java.lang.Override
@@ -135,13 +136,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=157
+   *     services/provider/v1/provider.proto;l=166
    * @return The bytes for uri.
    */
   @java.lang.Override
@@ -219,7 +221,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=164
+   *     services/provider/v1/provider.proto;l=177
    * @return Whether the display field is set.
    */
   @java.lang.Override
@@ -237,7 +239,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=164
+   *     services/provider/v1/provider.proto;l=177
    * @return The display.
    */
   @java.lang.Override
@@ -781,13 +783,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=157
+     *     services/provider/v1/provider.proto;l=166
      * @return The uri.
      */
     @java.lang.Deprecated
@@ -806,13 +809,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=157
+     *     services/provider/v1/provider.proto;l=166
      * @return The bytes for uri.
      */
     @java.lang.Deprecated
@@ -831,13 +835,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=157
+     *     services/provider/v1/provider.proto;l=166
      * @param value The uri to set.
      * @return This builder for chaining.
      */
@@ -855,13 +860,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=157
+     *     services/provider/v1/provider.proto;l=166
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -875,13 +881,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=157
+     *     services/provider/v1/provider.proto;l=166
      * @param value The bytes for uri to set.
      * @return This builder for chaining.
      */
@@ -1019,7 +1026,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-     *     services/provider/v1/provider.proto;l=164
+     *     services/provider/v1/provider.proto;l=177
      * @return Whether the display field is set.
      */
     @java.lang.Deprecated
@@ -1036,7 +1043,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-     *     services/provider/v1/provider.proto;l=164
+     *     services/provider/v1/provider.proto;l=177
      * @return The display.
      */
     @java.lang.Deprecated

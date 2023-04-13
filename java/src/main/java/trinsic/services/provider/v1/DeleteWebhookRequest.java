@@ -7,6 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
+ * DEPRECATED, will be removed April 1st 2023
  * Request to delete a webhook from an ecosystem
  * </pre>
  *
@@ -265,6 +266,7 @@ public final class DeleteWebhookRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Request to delete a webhook from an ecosystem
    * </pre>
    *

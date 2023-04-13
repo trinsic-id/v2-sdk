@@ -41,21 +41,26 @@ type ProviderClient interface {
 	// Create new ecosystem and assign the authenticated user as owner
 	CreateEcosystem(ctx context.Context, in *CreateEcosystemRequest, opts ...grpc.CallOption) (*CreateEcosystemResponse, error)
 	// Deprecated: Do not use.
-	// Update an existing ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed June 1st 2023
 	UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error)
-	// Add a webhook endpoint to the ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed April 1st 2023
 	AddWebhook(ctx context.Context, in *AddWebhookRequest, opts ...grpc.CallOption) (*AddWebhookResponse, error)
-	// Delete a webhook endpoint from the ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed April 1st 2023
 	DeleteWebhook(ctx context.Context, in *DeleteWebhookRequest, opts ...grpc.CallOption) (*DeleteWebhookResponse, error)
-	// Get ecosystem information
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed June 1st 2023
 	EcosystemInfo(ctx context.Context, in *EcosystemInfoRequest, opts ...grpc.CallOption) (*EcosystemInfoResponse, error)
-	// Get public ecosystem information about *any* ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed June 1st 2023
 	GetPublicEcosystemInfo(ctx context.Context, in *GetPublicEcosystemInfoRequest, opts ...grpc.CallOption) (*GetPublicEcosystemInfoResponse, error)
 	// Deprecated: Do not use.
-	// Invite a user to the ecosystem
+	// DEPRECATED, will be removed April 1st 2023
 	Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error)
 	// Deprecated: Do not use.
-	// Check the status of an invitation
+	// DEPRECATED, will be removed April 1st 2023
 	InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error)
@@ -204,21 +209,26 @@ type ProviderServer interface {
 	// Create new ecosystem and assign the authenticated user as owner
 	CreateEcosystem(context.Context, *CreateEcosystemRequest) (*CreateEcosystemResponse, error)
 	// Deprecated: Do not use.
-	// Update an existing ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed June 1st 2023
 	UpdateEcosystem(context.Context, *UpdateEcosystemRequest) (*UpdateEcosystemResponse, error)
-	// Add a webhook endpoint to the ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed April 1st 2023
 	AddWebhook(context.Context, *AddWebhookRequest) (*AddWebhookResponse, error)
-	// Delete a webhook endpoint from the ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed April 1st 2023
 	DeleteWebhook(context.Context, *DeleteWebhookRequest) (*DeleteWebhookResponse, error)
-	// Get ecosystem information
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed June 1st 2023
 	EcosystemInfo(context.Context, *EcosystemInfoRequest) (*EcosystemInfoResponse, error)
-	// Get public ecosystem information about *any* ecosystem
+	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+	// DEPRECATED, will be removed June 1st 2023
 	GetPublicEcosystemInfo(context.Context, *GetPublicEcosystemInfoRequest) (*GetPublicEcosystemInfoResponse, error)
 	// Deprecated: Do not use.
-	// Invite a user to the ecosystem
+	// DEPRECATED, will be removed April 1st 2023
 	Invite(context.Context, *InviteRequest) (*InviteResponse, error)
 	// Deprecated: Do not use.
-	// Check the status of an invitation
+	// DEPRECATED, will be removed April 1st 2023
 	InvitationStatus(context.Context, *InvitationStatusRequest) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error)

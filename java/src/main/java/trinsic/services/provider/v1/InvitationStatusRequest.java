@@ -7,6 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
+ * DEPRECATED, will be removed April 1st 2023
  * Request details for the status of an invitation
  * </pre>
  *
@@ -265,6 +266,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Request details for the status of an invitation
    * </pre>
    *

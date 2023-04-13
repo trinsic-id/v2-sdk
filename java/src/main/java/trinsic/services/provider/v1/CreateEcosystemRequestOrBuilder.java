@@ -68,13 +68,14 @@ public interface CreateEcosystemRequestOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * External URL associated with your organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=133
+   *     services/provider/v1/provider.proto;l=141
    * @return The uri.
    */
   @java.lang.Deprecated
@@ -83,13 +84,14 @@ public interface CreateEcosystemRequestOrBuilder
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * External URL associated with your organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=133
+   *     services/provider/v1/provider.proto;l=141
    * @return The bytes for uri.
    */
   @java.lang.Deprecated

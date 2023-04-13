@@ -3,7 +3,17 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.RetrieveDomainVerificationRecordRequest} */
+/**
+ *
+ *
+ * <pre>
+ * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+ * DEPRECATED, will be removed June 1st 2023
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.RetrieveDomainVerificationRecordRequest}
+ */
+@java.lang.Deprecated
 public final class RetrieveDomainVerificationRecordRequest
     extends com.google.protobuf.GeneratedMessageV3
     implements
@@ -196,7 +206,16 @@ public final class RetrieveDomainVerificationRecordRequest
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.RetrieveDomainVerificationRecordRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+   * DEPRECATED, will be removed June 1st 2023
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.RetrieveDomainVerificationRecordRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.RetrieveDomainVerificationRecordRequest)

@@ -17,7 +17,8 @@ export class CredentialService extends ServiceBase {
 
   /** Sign and issue a verifiable credential from a submitted document.
 * The document must be a valid JSON-LD document.
-*@deprecated This endpoint will be removed around May 1, 2023 */
+* DEPRECATED, will be removed June 1st 2023
+*@deprecated This endpoint will be removed around June 1, 2023 */
   public async issue(request: proto.IssueRequest): Promise<proto.IssueResponse> {
     
     return this.client.issue(request, {
