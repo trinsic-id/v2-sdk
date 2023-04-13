@@ -86,11 +86,6 @@ Our SDK will take care of hashing the confirmation code for you.
         ```
 
     === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [LoginConfirm](../../../web/test/AccountService.test.ts) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
