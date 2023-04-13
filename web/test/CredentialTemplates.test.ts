@@ -5,7 +5,6 @@ import {
     CreateCredentialTemplateRequest,
     UpdateCredentialTemplateRequest,
     FieldType,
-    UpdateStatusRequest
 } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
