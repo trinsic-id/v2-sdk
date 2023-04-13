@@ -1,18 +1,18 @@
 /* eslint-disable */
+import _m0 from "protobufjs/minimal";
 import {
     AccountDetails,
     AccountProfile,
     ConfirmationMethod,
-    WalletAuthToken,
     confirmationMethodFromJSON,
     confirmationMethodToJSON,
+    WalletAuthToken,
 } from "../../account/v1/account";
 import {
     SupportedDidMethod,
     supportedDidMethodFromJSON,
     supportedDidMethodToJSON,
 } from "../../common/v1/common";
-import _m0 from "protobufjs/minimal";
 
 /**
  * DEPRECATED, will be removed April 1st 2023
@@ -667,28 +667,41 @@ export const InviteRequest = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): InviteRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseInviteRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.participant = reader.int32() as any;
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.details = AccountDetails.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -720,6 +733,10 @@ export const InviteRequest = {
         return obj;
     },
 
+    create(base?: DeepPartial<InviteRequest>): InviteRequest {
+        return InviteRequest.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<InviteRequest>): InviteRequest {
         const message = createBaseInviteRequest();
         message.participant = object.participant ?? 0;
@@ -749,16 +766,17 @@ export const InviteRequest_DidCommInvitation = {
         length?: number
     ): InviteRequest_DidCommInvitation {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseInviteRequest_DidCommInvitation();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -770,6 +788,12 @@ export const InviteRequest_DidCommInvitation = {
     toJSON(_: InviteRequest_DidCommInvitation): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<InviteRequest_DidCommInvitation>
+    ): InviteRequest_DidCommInvitation {
+        return InviteRequest_DidCommInvitation.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -803,22 +827,31 @@ export const InviteResponse = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): InviteResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseInviteResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 10:
+                    if (tag != 82) {
+                        break;
+                    }
+
                     message.invitationId = reader.string();
-                    break;
+                    continue;
                 case 11:
+                    if (tag != 90) {
+                        break;
+                    }
+
                     message.invitationCode = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -841,6 +874,10 @@ export const InviteResponse = {
         message.invitationCode !== undefined &&
             (obj.invitationCode = message.invitationCode);
         return obj;
+    },
+
+    create(base?: DeepPartial<InviteResponse>): InviteResponse {
+        return InviteResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<InviteResponse>): InviteResponse {
@@ -871,19 +908,24 @@ export const InvitationStatusRequest = {
         length?: number
     ): InvitationStatusRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseInvitationStatusRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.invitationId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -901,6 +943,12 @@ export const InvitationStatusRequest = {
         message.invitationId !== undefined &&
             (obj.invitationId = message.invitationId);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<InvitationStatusRequest>
+    ): InvitationStatusRequest {
+        return InvitationStatusRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -938,22 +986,31 @@ export const InvitationStatusResponse = {
         length?: number
     ): InvitationStatusResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseInvitationStatusResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.status = reader.int32() as any;
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.statusDetails = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -978,6 +1035,12 @@ export const InvitationStatusResponse = {
         message.statusDetails !== undefined &&
             (obj.statusDetails = message.statusDetails);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<InvitationStatusResponse>
+    ): InvitationStatusResponse {
+        return InvitationStatusResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1032,37 +1095,62 @@ export const Ecosystem = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): Ecosystem {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseEcosystem();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.uri = reader.string();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.display = EcosystemDisplay.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 7:
+                    if (tag != 58) {
+                        break;
+                    }
+
                     message.domain = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1095,6 +1183,10 @@ export const Ecosystem = {
                 : undefined);
         message.domain !== undefined && (obj.domain = message.domain);
         return obj;
+    },
+
+    create(base?: DeepPartial<Ecosystem>): Ecosystem {
+        return Ecosystem.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<Ecosystem>): Ecosystem {
@@ -1143,28 +1235,45 @@ export const WebhookConfig = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): WebhookConfig {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseWebhookConfig();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.destinationUrl = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.events!.push(reader.string());
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.status = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1194,6 +1303,10 @@ export const WebhookConfig = {
         }
         message.status !== undefined && (obj.status = message.status);
         return obj;
+    },
+
+    create(base?: DeepPartial<WebhookConfig>): WebhookConfig {
+        return WebhookConfig.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<WebhookConfig>): WebhookConfig {
@@ -1247,34 +1360,55 @@ export const CreateEcosystemRequest = {
         length?: number
     ): CreateEcosystemRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCreateEcosystemRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.uri = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.details = AccountDetails.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.domain = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1305,6 +1439,10 @@ export const CreateEcosystemRequest = {
                 : undefined);
         message.domain !== undefined && (obj.domain = message.domain);
         return obj;
+    },
+
+    create(base?: DeepPartial<CreateEcosystemRequest>): CreateEcosystemRequest {
+        return CreateEcosystemRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1358,31 +1496,44 @@ export const CreateEcosystemResponse = {
         length?: number
     ): CreateEcosystemResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCreateEcosystemResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.ecosystem = Ecosystem.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.profile = AccountProfile.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.confirmationMethod = reader.int32() as any;
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1416,6 +1567,12 @@ export const CreateEcosystemResponse = {
                 message.confirmationMethod
             ));
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<CreateEcosystemResponse>
+    ): CreateEcosystemResponse {
+        return CreateEcosystemResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1467,31 +1624,48 @@ export const UpdateEcosystemRequest = {
         length?: number
     ): UpdateEcosystemRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpdateEcosystemRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.uri = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.domain = reader.string();
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.display = EcosystemDisplayRequest.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1520,6 +1694,10 @@ export const UpdateEcosystemRequest = {
                 ? EcosystemDisplayRequest.toJSON(message.display)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<UpdateEcosystemRequest>): UpdateEcosystemRequest {
+        return UpdateEcosystemRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1560,22 +1738,27 @@ export const EcosystemDisplayRequest = {
         length?: number
     ): EcosystemDisplayRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseEcosystemDisplayRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.light = EcosystemDisplayDetailsRequest.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1595,6 +1778,12 @@ export const EcosystemDisplayRequest = {
                 ? EcosystemDisplayDetailsRequest.toJSON(message.light)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<EcosystemDisplayRequest>
+    ): EcosystemDisplayRequest {
+        return EcosystemDisplayRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1635,25 +1824,38 @@ export const EcosystemDisplayDetailsRequest = {
         length?: number
     ): EcosystemDisplayDetailsRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseEcosystemDisplayDetailsRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.color = reader.string();
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.logoData = reader.bytes();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.logoFormat = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1682,6 +1884,12 @@ export const EcosystemDisplayDetailsRequest = {
         message.logoFormat !== undefined &&
             (obj.logoFormat = message.logoFormat);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<EcosystemDisplayDetailsRequest>
+    ): EcosystemDisplayDetailsRequest {
+        return EcosystemDisplayDetailsRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1718,22 +1926,27 @@ export const UpdateEcosystemResponse = {
         length?: number
     ): UpdateEcosystemResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpdateEcosystemResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.Ecosystem = Ecosystem.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1753,6 +1966,12 @@ export const UpdateEcosystemResponse = {
                 ? Ecosystem.toJSON(message.Ecosystem)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<UpdateEcosystemResponse>
+    ): UpdateEcosystemResponse {
+        return UpdateEcosystemResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1787,22 +2006,27 @@ export const EcosystemDisplay = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): EcosystemDisplay {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseEcosystemDisplay();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.light = EcosystemDisplayDetails.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1822,6 +2046,10 @@ export const EcosystemDisplay = {
                 ? EcosystemDisplayDetails.toJSON(message.light)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<EcosystemDisplay>): EcosystemDisplay {
+        return EcosystemDisplay.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<EcosystemDisplay>): EcosystemDisplay {
@@ -1857,22 +2085,31 @@ export const EcosystemDisplayDetails = {
         length?: number
     ): EcosystemDisplayDetails {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseEcosystemDisplayDetails();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.logoUrl = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.color = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1889,6 +2126,12 @@ export const EcosystemDisplayDetails = {
         message.logoUrl !== undefined && (obj.logoUrl = message.logoUrl);
         message.color !== undefined && (obj.color = message.color);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<EcosystemDisplayDetails>
+    ): EcosystemDisplayDetails {
+        return EcosystemDisplayDetails.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1929,25 +2172,38 @@ export const AddWebhookRequest = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): AddWebhookRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAddWebhookRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.destinationUrl = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.secret = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.events!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1975,6 +2231,10 @@ export const AddWebhookRequest = {
             obj.events = [];
         }
         return obj;
+    },
+
+    create(base?: DeepPartial<AddWebhookRequest>): AddWebhookRequest {
+        return AddWebhookRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<AddWebhookRequest>): AddWebhookRequest {
@@ -2009,22 +2269,27 @@ export const AddWebhookResponse = {
         length?: number
     ): AddWebhookResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAddWebhookResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.ecosystem = Ecosystem.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2044,6 +2309,10 @@ export const AddWebhookResponse = {
                 ? Ecosystem.toJSON(message.ecosystem)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<AddWebhookResponse>): AddWebhookResponse {
+        return AddWebhookResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<AddWebhookResponse>): AddWebhookResponse {
@@ -2076,19 +2345,24 @@ export const DeleteWebhookRequest = {
         length?: number
     ): DeleteWebhookRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseDeleteWebhookRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.webhookId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2103,6 +2377,10 @@ export const DeleteWebhookRequest = {
         const obj: any = {};
         message.webhookId !== undefined && (obj.webhookId = message.webhookId);
         return obj;
+    },
+
+    create(base?: DeepPartial<DeleteWebhookRequest>): DeleteWebhookRequest {
+        return DeleteWebhookRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2137,22 +2415,27 @@ export const DeleteWebhookResponse = {
         length?: number
     ): DeleteWebhookResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseDeleteWebhookResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.ecosystem = Ecosystem.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2172,6 +2455,10 @@ export const DeleteWebhookResponse = {
                 ? Ecosystem.toJSON(message.ecosystem)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<DeleteWebhookResponse>): DeleteWebhookResponse {
+        return DeleteWebhookResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2203,16 +2490,17 @@ export const EcosystemInfoRequest = {
         length?: number
     ): EcosystemInfoRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseEcosystemInfoRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2224,6 +2512,10 @@ export const EcosystemInfoRequest = {
     toJSON(_: EcosystemInfoRequest): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(base?: DeepPartial<EcosystemInfoRequest>): EcosystemInfoRequest {
+        return EcosystemInfoRequest.fromPartial(base ?? {});
     },
 
     fromPartial(_: DeepPartial<EcosystemInfoRequest>): EcosystemInfoRequest {
@@ -2255,22 +2547,27 @@ export const EcosystemInfoResponse = {
         length?: number
     ): EcosystemInfoResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseEcosystemInfoResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.ecosystem = Ecosystem.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2290,6 +2587,10 @@ export const EcosystemInfoResponse = {
                 ? Ecosystem.toJSON(message.ecosystem)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<EcosystemInfoResponse>): EcosystemInfoResponse {
+        return EcosystemInfoResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2324,19 +2625,24 @@ export const GetPublicEcosystemInfoRequest = {
         length?: number
     ): GetPublicEcosystemInfoRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetPublicEcosystemInfoRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.ecosystemId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2354,6 +2660,12 @@ export const GetPublicEcosystemInfoRequest = {
         message.ecosystemId !== undefined &&
             (obj.ecosystemId = message.ecosystemId);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<GetPublicEcosystemInfoRequest>
+    ): GetPublicEcosystemInfoRequest {
+        return GetPublicEcosystemInfoRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2388,22 +2700,27 @@ export const GetPublicEcosystemInfoResponse = {
         length?: number
     ): GetPublicEcosystemInfoResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetPublicEcosystemInfoResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.ecosystem = PublicEcosystemInformation.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2423,6 +2740,12 @@ export const GetPublicEcosystemInfoResponse = {
                 ? PublicEcosystemInformation.toJSON(message.ecosystem)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<GetPublicEcosystemInfoResponse>
+    ): GetPublicEcosystemInfoResponse {
+        return GetPublicEcosystemInfoResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2478,34 +2801,55 @@ export const PublicEcosystemInformation = {
         length?: number
     ): PublicEcosystemInformation {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBasePublicEcosystemInformation();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.domain = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.domainVerified = reader.bool();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.styleDisplay = EcosystemDisplay.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2541,6 +2885,12 @@ export const PublicEcosystemInformation = {
         return obj;
     },
 
+    create(
+        base?: DeepPartial<PublicEcosystemInformation>
+    ): PublicEcosystemInformation {
+        return PublicEcosystemInformation.fromPartial(base ?? {});
+    },
+
     fromPartial(
         object: DeepPartial<PublicEcosystemInformation>
     ): PublicEcosystemInformation {
@@ -2574,16 +2924,17 @@ export const GetOberonKeyRequest = {
         length?: number
     ): GetOberonKeyRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetOberonKeyRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2595,6 +2946,10 @@ export const GetOberonKeyRequest = {
     toJSON(_: GetOberonKeyRequest): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(base?: DeepPartial<GetOberonKeyRequest>): GetOberonKeyRequest {
+        return GetOberonKeyRequest.fromPartial(base ?? {});
     },
 
     fromPartial(_: DeepPartial<GetOberonKeyRequest>): GetOberonKeyRequest {
@@ -2623,33 +2978,40 @@ export const GetOberonKeyResponse = {
         length?: number
     ): GetOberonKeyResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetOberonKeyResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
 
     fromJSON(object: any): GetOberonKeyResponse {
-        return {
-            key: isSet(object.key) ? String(object.key) : "",
-        };
+        return { key: isSet(object.key) ? String(object.key) : "" };
     },
 
     toJSON(message: GetOberonKeyResponse): unknown {
         const obj: any = {};
         message.key !== undefined && (obj.key = message.key);
         return obj;
+    },
+
+    create(base?: DeepPartial<GetOberonKeyResponse>): GetOberonKeyResponse {
+        return GetOberonKeyResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2678,16 +3040,17 @@ export const RetrieveDomainVerificationRecordRequest = {
         length?: number
     ): RetrieveDomainVerificationRecordRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRetrieveDomainVerificationRecordRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2699,6 +3062,12 @@ export const RetrieveDomainVerificationRecordRequest = {
     toJSON(_: RetrieveDomainVerificationRecordRequest): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RetrieveDomainVerificationRecordRequest>
+    ): RetrieveDomainVerificationRecordRequest {
+        return RetrieveDomainVerificationRecordRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2738,22 +3107,31 @@ export const RetrieveDomainVerificationRecordResponse = {
         length?: number
     ): RetrieveDomainVerificationRecordResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRetrieveDomainVerificationRecordResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.verificationRecordName = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.verificationRecordValue = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2776,6 +3154,12 @@ export const RetrieveDomainVerificationRecordResponse = {
         message.verificationRecordValue !== undefined &&
             (obj.verificationRecordValue = message.verificationRecordValue);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RetrieveDomainVerificationRecordResponse>
+    ): RetrieveDomainVerificationRecordResponse {
+        return RetrieveDomainVerificationRecordResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2805,16 +3189,17 @@ export const RefreshDomainVerificationStatusRequest = {
         length?: number
     ): RefreshDomainVerificationStatusRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRefreshDomainVerificationStatusRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2826,6 +3211,12 @@ export const RefreshDomainVerificationStatusRequest = {
     toJSON(_: RefreshDomainVerificationStatusRequest): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RefreshDomainVerificationStatusRequest>
+    ): RefreshDomainVerificationStatusRequest {
+        return RefreshDomainVerificationStatusRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2859,22 +3250,31 @@ export const RefreshDomainVerificationStatusResponse = {
         length?: number
     ): RefreshDomainVerificationStatusResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRefreshDomainVerificationStatusResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.domain = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.domainVerified = reader.bool();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2894,6 +3294,12 @@ export const RefreshDomainVerificationStatusResponse = {
         message.domainVerified !== undefined &&
             (obj.domainVerified = message.domainVerified);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RefreshDomainVerificationStatusResponse>
+    ): RefreshDomainVerificationStatusResponse {
+        return RefreshDomainVerificationStatusResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2932,22 +3338,31 @@ export const SearchWalletConfigurationsRequest = {
         length?: number
     ): SearchWalletConfigurationsRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSearchWalletConfigurationsRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.queryFilter = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2970,6 +3385,12 @@ export const SearchWalletConfigurationsRequest = {
         message.continuationToken !== undefined &&
             (obj.continuationToken = message.continuationToken);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<SearchWalletConfigurationsRequest>
+    ): SearchWalletConfigurationsRequest {
+        return SearchWalletConfigurationsRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -3016,27 +3437,40 @@ export const SearchWalletConfigurationResponse = {
         length?: number
     ): SearchWalletConfigurationResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSearchWalletConfigurationResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.results!.push(
                         WalletConfiguration.decode(reader, reader.uint32())
                     );
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.hasMoreResults = reader.bool();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -3071,6 +3505,12 @@ export const SearchWalletConfigurationResponse = {
         message.continuationToken !== undefined &&
             (obj.continuationToken = message.continuationToken);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<SearchWalletConfigurationResponse>
+    ): SearchWalletConfigurationResponse {
+        return SearchWalletConfigurationResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -3146,42 +3586,75 @@ export const WalletConfiguration = {
         length?: number
     ): WalletConfiguration {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseWalletConfiguration();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.sms = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.publicDid = reader.string();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.configType = reader.string();
-                    break;
+                    continue;
                 case 7:
+                    if (tag != 58) {
+                        break;
+                    }
+
                     message.authTokens!.push(
                         WalletAuthToken.decode(reader, reader.uint32())
                     );
-                    break;
+                    continue;
                 case 8:
+                    if (tag != 66) {
+                        break;
+                    }
+
                     message.externalIdentities!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -3229,6 +3702,10 @@ export const WalletConfiguration = {
         return obj;
     },
 
+    create(base?: DeepPartial<WalletConfiguration>): WalletConfiguration {
+        return WalletConfiguration.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<WalletConfiguration>): WalletConfiguration {
         const message = createBaseWalletConfiguration();
         message.name = object.name ?? "";
@@ -3262,19 +3739,24 @@ export const IonOptions = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): IonOptions {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseIonOptions();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.network = reader.int32() as any;
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -3292,6 +3774,10 @@ export const IonOptions = {
         message.network !== undefined &&
             (obj.network = ionOptions_IonNetworkToJSON(message.network));
         return obj;
+    },
+
+    create(base?: DeepPartial<IonOptions>): IonOptions {
+        return IonOptions.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<IonOptions>): IonOptions {
@@ -3318,19 +3804,24 @@ export const IndyOptions = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): IndyOptions {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseIndyOptions();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.network = reader.int32() as any;
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -3348,6 +3839,10 @@ export const IndyOptions = {
         message.network !== undefined &&
             (obj.network = indyOptions_IndyNetworkToJSON(message.network));
         return obj;
+    },
+
+    create(base?: DeepPartial<IndyOptions>): IndyOptions {
+        return IndyOptions.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<IndyOptions>): IndyOptions {
@@ -3402,40 +3897,65 @@ export const UpgradeDidRequest = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeDidRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpgradeDidRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.method = reader.int32() as any;
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.ionOptions = IonOptions.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.indyOptions = IndyOptions.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -3477,6 +3997,10 @@ export const UpgradeDidRequest = {
         return obj;
     },
 
+    create(base?: DeepPartial<UpgradeDidRequest>): UpgradeDidRequest {
+        return UpgradeDidRequest.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<UpgradeDidRequest>): UpgradeDidRequest {
         const message = createBaseUpgradeDidRequest();
         message.email = object.email ?? undefined;
@@ -3515,33 +4039,40 @@ export const UpgradeDidResponse = {
         length?: number
     ): UpgradeDidResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpgradeDidResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.did = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
 
     fromJSON(object: any): UpgradeDidResponse {
-        return {
-            did: isSet(object.did) ? String(object.did) : "",
-        };
+        return { did: isSet(object.did) ? String(object.did) : "" };
     },
 
     toJSON(message: UpgradeDidResponse): unknown {
         const obj: any = {};
         message.did !== undefined && (obj.did = message.did);
         return obj;
+    },
+
+    create(base?: DeepPartial<UpgradeDidResponse>): UpgradeDidResponse {
+        return UpgradeDidResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<UpgradeDidResponse>): UpgradeDidResponse {
@@ -3563,7 +4094,9 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: CreateEcosystemResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([2, 16, 1])] },
+            },
         },
         /**
          * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
@@ -3577,7 +4110,18 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: UpdateEcosystemResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([
+                            39, 42, 37, 8, 1, 18, 33, 84, 104, 105, 115, 32,
+                            119, 105, 108, 108, 32, 98, 101, 32, 114, 101, 109,
+                            111, 118, 101, 100, 32, 74, 117, 110, 101, 32, 49,
+                            44, 32, 50, 48, 50, 51,
+                        ]),
+                    ],
+                },
+            },
         },
         /**
          * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
@@ -3589,7 +4133,9 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: AddWebhookResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([2, 16, 1])] },
+            },
         },
         /**
          * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
@@ -3601,7 +4147,9 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: DeleteWebhookResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([2, 16, 1])] },
+            },
         },
         /**
          * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
@@ -3613,7 +4161,18 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: EcosystemInfoResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([
+                            39, 42, 37, 8, 1, 18, 33, 84, 104, 105, 115, 32,
+                            119, 105, 108, 108, 32, 98, 101, 32, 114, 101, 109,
+                            111, 118, 101, 100, 32, 74, 117, 110, 101, 32, 49,
+                            44, 32, 50, 48, 50, 51,
+                        ]),
+                    ],
+                },
+            },
         },
         /**
          * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
@@ -3625,7 +4184,19 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: GetPublicEcosystemInfoResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([2, 8, 1]),
+                        new Uint8Array([
+                            39, 42, 37, 8, 1, 18, 33, 84, 104, 105, 115, 32,
+                            119, 105, 108, 108, 32, 98, 101, 32, 114, 101, 109,
+                            111, 118, 101, 100, 32, 74, 117, 110, 101, 32, 49,
+                            44, 32, 50, 48, 50, 51,
+                        ]),
+                    ],
+                },
+            },
         },
         /**
          * DEPRECATED, will be removed April 1st 2023
@@ -3638,7 +4209,19 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: InviteResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([
+                            40, 42, 38, 8, 1, 18, 34, 84, 104, 105, 115, 32,
+                            119, 105, 108, 108, 32, 98, 101, 32, 114, 101, 109,
+                            111, 118, 101, 100, 32, 65, 112, 114, 105, 108, 32,
+                            49, 44, 32, 50, 48, 50, 51,
+                        ]),
+                        new Uint8Array([2, 16, 1]),
+                    ],
+                },
+            },
         },
         /**
          * DEPRECATED, will be removed April 1st 2023
@@ -3651,7 +4234,19 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: InvitationStatusResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([
+                            40, 42, 38, 8, 1, 18, 34, 84, 104, 105, 115, 32,
+                            119, 105, 108, 108, 32, 98, 101, 32, 114, 101, 109,
+                            111, 118, 101, 100, 32, 65, 112, 114, 105, 108, 32,
+                            49, 44, 32, 50, 48, 50, 51,
+                        ]),
+                        new Uint8Array([2, 16, 1]),
+                    ],
+                },
+            },
         },
         /** Returns the public key being used to create/verify oberon tokens */
         getOberonKey: {
@@ -3660,7 +4255,14 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: GetOberonKeyResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([2, 8, 1]),
+                        new Uint8Array([2, 24, 1]),
+                    ],
+                },
+            },
         },
         /** Upgrade a wallet's DID from `did:key` to another method */
         upgradeDID: {
@@ -3678,7 +4280,9 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: RetrieveDomainVerificationRecordResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] },
+            },
         },
         /** Call to verify domain */
         refreshDomainVerificationStatus: {
@@ -3687,7 +4291,9 @@ export const ProviderDefinition = {
             requestStream: false,
             responseType: RefreshDomainVerificationStatusResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] },
+            },
         },
         /** Search for issuers/providers/verifiers in the current ecosystem */
         searchWalletConfigurations: {
@@ -3704,19 +4310,27 @@ export const ProviderDefinition = {
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
-var globalThis: any = (() => {
-    if (typeof globalThis !== "undefined") return globalThis;
-    if (typeof self !== "undefined") return self;
-    if (typeof window !== "undefined") return window;
-    if (typeof global !== "undefined") return global;
+var tsProtoGlobalThis: any = (() => {
+    if (typeof globalThis !== "undefined") {
+        return globalThis;
+    }
+    if (typeof self !== "undefined") {
+        return self;
+    }
+    if (typeof window !== "undefined") {
+        return window;
+    }
+    if (typeof global !== "undefined") {
+        return global;
+    }
     throw "Unable to locate global object";
 })();
 
 function bytesFromBase64(b64: string): Uint8Array {
-    if (globalThis.Buffer) {
-        return Uint8Array.from(globalThis.Buffer.from(b64, "base64"));
+    if (tsProtoGlobalThis.Buffer) {
+        return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
     } else {
-        const bin = globalThis.atob(b64);
+        const bin = tsProtoGlobalThis.atob(b64);
         const arr = new Uint8Array(bin.length);
         for (let i = 0; i < bin.length; ++i) {
             arr[i] = bin.charCodeAt(i);
@@ -3726,14 +4340,14 @@ function bytesFromBase64(b64: string): Uint8Array {
 }
 
 function base64FromBytes(arr: Uint8Array): string {
-    if (globalThis.Buffer) {
-        return globalThis.Buffer.from(arr).toString("base64");
+    if (tsProtoGlobalThis.Buffer) {
+        return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
     } else {
         const bin: string[] = [];
         arr.forEach((byte) => {
             bin.push(String.fromCharCode(byte));
         });
-        return globalThis.btoa(bin.join(""));
+        return tsProtoGlobalThis.btoa(bin.join(""));
     }
 }
 

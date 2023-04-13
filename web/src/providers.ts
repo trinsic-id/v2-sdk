@@ -4,7 +4,8 @@ import {
     createClient,
     createChannel,
     CompatServiceDefinition,
-    NodeHttpTransport, FetchTransport
+    NodeHttpTransport,
+    FetchTransport,
 } from "nice-grpc-web";
 
 export interface IPlatformProvider {
@@ -18,7 +19,7 @@ export interface IPlatformProvider {
 
 function isNode(): boolean {
     // https://stackoverflow.com/a/38815760
-    return typeof process === 'object' && process + '' === '[object process]';
+    return typeof process === "object" && process + "" === "[object process]";
 }
 
 export class BrowserProvider implements IPlatformProvider {
@@ -29,7 +30,7 @@ export class BrowserProvider implements IPlatformProvider {
     ): Client<ClientService> {
         let channel: any;
         if (isNode()) {
-            channel = createChannel(address, NodeHttpTransport())
+            channel = createChannel(address, NodeHttpTransport());
         } else {
             channel = createChannel(address, FetchTransport());
         }
@@ -42,7 +43,7 @@ export class BrowserProvider implements IPlatformProvider {
             if (isNode()) {
                 this.language = "typescript-node";
             } else {
-                this.language = "typescript-web"
+                this.language = "typescript-web";
             }
         }
         return this.language;

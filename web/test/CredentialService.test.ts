@@ -1,4 +1,9 @@
-import { TrinsicOptions, TrinsicService } from "../src";
+import {
+    TrinsicOptions,
+    TrinsicService,
+    CheckStatusRequest,
+    UpdateStatusRequest,
+} from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 // @ts-ignore
@@ -8,8 +13,7 @@ import {
     myEcosystemIdOrName,
     setTestTimeout,
 } from "./env";
-import {CheckStatusRequest, UpdateStatusRequest} from "../lib";
-import {verifyCredential} from "./CredentialTemplateShared";
+import { verifyCredential } from "./CredentialTemplateShared";
 
 let options: TrinsicOptions = getTestServerOptions();
 let trinsic: TrinsicService;

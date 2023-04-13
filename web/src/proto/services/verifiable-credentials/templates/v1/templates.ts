@@ -379,33 +379,42 @@ export const GetCredentialTemplateRequest = {
         length?: number
     ): GetCredentialTemplateRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetCredentialTemplateRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
 
     fromJSON(object: any): GetCredentialTemplateRequest {
-        return {
-            id: isSet(object.id) ? String(object.id) : "",
-        };
+        return { id: isSet(object.id) ? String(object.id) : "" };
     },
 
     toJSON(message: GetCredentialTemplateRequest): unknown {
         const obj: any = {};
         message.id !== undefined && (obj.id = message.id);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<GetCredentialTemplateRequest>
+    ): GetCredentialTemplateRequest {
+        return GetCredentialTemplateRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -440,22 +449,27 @@ export const GetCredentialTemplateResponse = {
         length?: number
     ): GetCredentialTemplateResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetCredentialTemplateResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.template = TemplateData.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -475,6 +489,12 @@ export const GetCredentialTemplateResponse = {
                 ? TemplateData.toJSON(message.template)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<GetCredentialTemplateResponse>
+    ): GetCredentialTemplateResponse {
+        return GetCredentialTemplateResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -515,22 +535,31 @@ export const SearchCredentialTemplatesRequest = {
         length?: number
     ): SearchCredentialTemplatesRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSearchCredentialTemplatesRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.query = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -550,6 +579,12 @@ export const SearchCredentialTemplatesRequest = {
         message.continuationToken !== undefined &&
             (obj.continuationToken = message.continuationToken);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<SearchCredentialTemplatesRequest>
+    ): SearchCredentialTemplatesRequest {
+        return SearchCredentialTemplatesRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -591,25 +626,38 @@ export const SearchCredentialTemplatesResponse = {
         length?: number
     ): SearchCredentialTemplatesResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSearchCredentialTemplatesResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.itemsJson = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.hasMoreResults = reader.bool();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -634,6 +682,12 @@ export const SearchCredentialTemplatesResponse = {
         message.continuationToken !== undefined &&
             (obj.continuationToken = message.continuationToken);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<SearchCredentialTemplatesResponse>
+    ): SearchCredentialTemplatesResponse {
+        return SearchCredentialTemplatesResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -673,22 +727,31 @@ export const ListCredentialTemplatesRequest = {
         length?: number
     ): ListCredentialTemplatesRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseListCredentialTemplatesRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.query = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -708,6 +771,12 @@ export const ListCredentialTemplatesRequest = {
         message.continuationToken !== undefined &&
             (obj.continuationToken = message.continuationToken);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<ListCredentialTemplatesRequest>
+    ): ListCredentialTemplatesRequest {
+        return ListCredentialTemplatesRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -751,27 +820,40 @@ export const ListCredentialTemplatesResponse = {
         length?: number
     ): ListCredentialTemplatesResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseListCredentialTemplatesResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.templates!.push(
                         TemplateData.decode(reader, reader.uint32())
                     );
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.hasMoreResults = reader.bool();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -806,6 +888,12 @@ export const ListCredentialTemplatesResponse = {
         return obj;
     },
 
+    create(
+        base?: DeepPartial<ListCredentialTemplatesResponse>
+    ): ListCredentialTemplatesResponse {
+        return ListCredentialTemplatesResponse.fromPartial(base ?? {});
+    },
+
     fromPartial(
         object: DeepPartial<ListCredentialTemplatesResponse>
     ): ListCredentialTemplatesResponse {
@@ -838,33 +926,42 @@ export const DeleteCredentialTemplateRequest = {
         length?: number
     ): DeleteCredentialTemplateRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseDeleteCredentialTemplateRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
 
     fromJSON(object: any): DeleteCredentialTemplateRequest {
-        return {
-            id: isSet(object.id) ? String(object.id) : "",
-        };
+        return { id: isSet(object.id) ? String(object.id) : "" };
     },
 
     toJSON(message: DeleteCredentialTemplateRequest): unknown {
         const obj: any = {};
         message.id !== undefined && (obj.id = message.id);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<DeleteCredentialTemplateRequest>
+    ): DeleteCredentialTemplateRequest {
+        return DeleteCredentialTemplateRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -893,16 +990,17 @@ export const DeleteCredentialTemplateResponse = {
         length?: number
     ): DeleteCredentialTemplateResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseDeleteCredentialTemplateResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -914,6 +1012,12 @@ export const DeleteCredentialTemplateResponse = {
     toJSON(_: DeleteCredentialTemplateResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<DeleteCredentialTemplateResponse>
+    ): DeleteCredentialTemplateResponse {
+        return DeleteCredentialTemplateResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -979,16 +1083,24 @@ export const CreateCredentialTemplateRequest = {
         length?: number
     ): CreateCredentialTemplateRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCreateCredentialTemplateRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     const entry2 =
                         CreateCredentialTemplateRequest_FieldsEntry.decode(
                             reader,
@@ -997,17 +1109,33 @@ export const CreateCredentialTemplateRequest = {
                     if (entry2.value !== undefined) {
                         message.fields![entry2.key] = entry2.value;
                     }
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.allowAdditionalFields = reader.bool();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.title = reader.string();
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     const entry6 =
                         CreateCredentialTemplateRequest_FieldOrderingEntry.decode(
                             reader,
@@ -1016,17 +1144,22 @@ export const CreateCredentialTemplateRequest = {
                     if (entry6.value !== undefined) {
                         message.fieldOrdering![entry6.key] = entry6.value;
                     }
-                    break;
+                    continue;
                 case 7:
+                    if (tag != 58) {
+                        break;
+                    }
+
                     message.appleWalletOptions = AppleWalletOptions.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1090,6 +1223,12 @@ export const CreateCredentialTemplateRequest = {
         return obj;
     },
 
+    create(
+        base?: DeepPartial<CreateCredentialTemplateRequest>
+    ): CreateCredentialTemplateRequest {
+        return CreateCredentialTemplateRequest.fromPartial(base ?? {});
+    },
+
     fromPartial(
         object: DeepPartial<CreateCredentialTemplateRequest>
     ): CreateCredentialTemplateRequest {
@@ -1108,9 +1247,7 @@ export const CreateCredentialTemplateRequest = {
         message.description = object.description ?? "";
         message.fieldOrdering = Object.entries(
             object.fieldOrdering ?? {}
-        ).reduce<{
-            [key: string]: FieldOrdering;
-        }>((acc, [key, value]) => {
+        ).reduce<{ [key: string]: FieldOrdering }>((acc, [key, value]) => {
             if (value !== undefined) {
                 acc[key] = FieldOrdering.fromPartial(value);
             }
@@ -1151,25 +1288,34 @@ export const CreateCredentialTemplateRequest_FieldsEntry = {
         length?: number
     ): CreateCredentialTemplateRequest_FieldsEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCreateCredentialTemplateRequest_FieldsEntry();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = TemplateField.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1191,6 +1337,14 @@ export const CreateCredentialTemplateRequest_FieldsEntry = {
                 ? TemplateField.toJSON(message.value)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<CreateCredentialTemplateRequest_FieldsEntry>
+    ): CreateCredentialTemplateRequest_FieldsEntry {
+        return CreateCredentialTemplateRequest_FieldsEntry.fromPartial(
+            base ?? {}
+        );
     },
 
     fromPartial(
@@ -1232,7 +1386,7 @@ export const CreateCredentialTemplateRequest_FieldOrderingEntry = {
         length?: number
     ): CreateCredentialTemplateRequest_FieldOrderingEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message =
             createBaseCreateCredentialTemplateRequest_FieldOrderingEntry();
@@ -1240,18 +1394,27 @@ export const CreateCredentialTemplateRequest_FieldOrderingEntry = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = FieldOrdering.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1275,6 +1438,14 @@ export const CreateCredentialTemplateRequest_FieldOrderingEntry = {
                 ? FieldOrdering.toJSON(message.value)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<CreateCredentialTemplateRequest_FieldOrderingEntry>
+    ): CreateCredentialTemplateRequest_FieldOrderingEntry {
+        return CreateCredentialTemplateRequest_FieldOrderingEntry.fromPartial(
+            base ?? {}
+        );
     },
 
     fromPartial(
@@ -1314,19 +1485,24 @@ export const CreateCredentialTemplateResponse = {
         length?: number
     ): CreateCredentialTemplateResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseCreateCredentialTemplateResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.data = TemplateData.decode(reader, reader.uint32());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1346,6 +1522,12 @@ export const CreateCredentialTemplateResponse = {
                 ? TemplateData.toJSON(message.data)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<CreateCredentialTemplateResponse>
+    ): CreateCredentialTemplateResponse {
+        return CreateCredentialTemplateResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1411,22 +1593,38 @@ export const UpdateCredentialTemplateRequest = {
         length?: number
     ): UpdateCredentialTemplateRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpdateCredentialTemplateRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.title = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     const entry4 =
                         UpdateCredentialTemplateRequest_FieldsEntry.decode(
                             reader,
@@ -1435,8 +1633,12 @@ export const UpdateCredentialTemplateRequest = {
                     if (entry4.value !== undefined) {
                         message.fields![entry4.key] = entry4.value;
                     }
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     const entry5 =
                         UpdateCredentialTemplateRequest_FieldOrderingEntry.decode(
                             reader,
@@ -1445,17 +1647,22 @@ export const UpdateCredentialTemplateRequest = {
                     if (entry5.value !== undefined) {
                         message.fieldOrdering![entry5.key] = entry5.value;
                     }
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.appleWalletOptions = AppleWalletOptions.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1514,6 +1721,12 @@ export const UpdateCredentialTemplateRequest = {
         return obj;
     },
 
+    create(
+        base?: DeepPartial<UpdateCredentialTemplateRequest>
+    ): UpdateCredentialTemplateRequest {
+        return UpdateCredentialTemplateRequest.fromPartial(base ?? {});
+    },
+
     fromPartial(
         object: DeepPartial<UpdateCredentialTemplateRequest>
     ): UpdateCredentialTemplateRequest {
@@ -1531,9 +1744,7 @@ export const UpdateCredentialTemplateRequest = {
         }, {});
         message.fieldOrdering = Object.entries(
             object.fieldOrdering ?? {}
-        ).reduce<{
-            [key: string]: FieldOrdering;
-        }>((acc, [key, value]) => {
+        ).reduce<{ [key: string]: FieldOrdering }>((acc, [key, value]) => {
             if (value !== undefined) {
                 acc[key] = FieldOrdering.fromPartial(value);
             }
@@ -1574,25 +1785,34 @@ export const UpdateCredentialTemplateRequest_FieldsEntry = {
         length?: number
     ): UpdateCredentialTemplateRequest_FieldsEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpdateCredentialTemplateRequest_FieldsEntry();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = TemplateFieldPatch.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1614,6 +1834,14 @@ export const UpdateCredentialTemplateRequest_FieldsEntry = {
                 ? TemplateFieldPatch.toJSON(message.value)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<UpdateCredentialTemplateRequest_FieldsEntry>
+    ): UpdateCredentialTemplateRequest_FieldsEntry {
+        return UpdateCredentialTemplateRequest_FieldsEntry.fromPartial(
+            base ?? {}
+        );
     },
 
     fromPartial(
@@ -1655,7 +1883,7 @@ export const UpdateCredentialTemplateRequest_FieldOrderingEntry = {
         length?: number
     ): UpdateCredentialTemplateRequest_FieldOrderingEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message =
             createBaseUpdateCredentialTemplateRequest_FieldOrderingEntry();
@@ -1663,18 +1891,27 @@ export const UpdateCredentialTemplateRequest_FieldOrderingEntry = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = FieldOrdering.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1698,6 +1935,14 @@ export const UpdateCredentialTemplateRequest_FieldOrderingEntry = {
                 ? FieldOrdering.toJSON(message.value)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<UpdateCredentialTemplateRequest_FieldOrderingEntry>
+    ): UpdateCredentialTemplateRequest_FieldOrderingEntry {
+        return UpdateCredentialTemplateRequest_FieldOrderingEntry.fromPartial(
+            base ?? {}
+        );
     },
 
     fromPartial(
@@ -1737,22 +1982,27 @@ export const UpdateCredentialTemplateResponse = {
         length?: number
     ): UpdateCredentialTemplateResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUpdateCredentialTemplateResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.updatedTemplate = TemplateData.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1772,6 +2022,12 @@ export const UpdateCredentialTemplateResponse = {
                 ? TemplateData.toJSON(message.updatedTemplate)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<UpdateCredentialTemplateResponse>
+    ): UpdateCredentialTemplateResponse {
+        return UpdateCredentialTemplateResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1871,22 +2127,38 @@ export const TemplateData = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): TemplateData {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseTemplateData();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.version = reader.int32();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     const entry4 = TemplateData_FieldsEntry.decode(
                         reader,
                         reader.uint32()
@@ -1894,35 +2166,75 @@ export const TemplateData = {
                     if (entry4.value !== undefined) {
                         message.fields![entry4.key] = entry4.value;
                     }
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 40) {
+                        break;
+                    }
+
                     message.allowAdditionalFields = reader.bool();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.schemaUri = reader.string();
-                    break;
+                    continue;
                 case 7:
+                    if (tag != 58) {
+                        break;
+                    }
+
                     message.contextUri = reader.string();
-                    break;
+                    continue;
                 case 8:
+                    if (tag != 66) {
+                        break;
+                    }
+
                     message.ecosystemId = reader.string();
-                    break;
+                    continue;
                 case 9:
+                    if (tag != 74) {
+                        break;
+                    }
+
                     message.type = reader.string();
-                    break;
+                    continue;
                 case 10:
+                    if (tag != 82) {
+                        break;
+                    }
+
                     message.createdBy = reader.string();
-                    break;
+                    continue;
                 case 11:
+                    if (tag != 90) {
+                        break;
+                    }
+
                     message.dateCreated = reader.string();
-                    break;
+                    continue;
                 case 12:
+                    if (tag != 98) {
+                        break;
+                    }
+
                     message.title = reader.string();
-                    break;
+                    continue;
                 case 13:
+                    if (tag != 106) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 14:
+                    if (tag != 114) {
+                        break;
+                    }
+
                     const entry14 = TemplateData_FieldOrderingEntry.decode(
                         reader,
                         reader.uint32()
@@ -1930,17 +2242,22 @@ export const TemplateData = {
                     if (entry14.value !== undefined) {
                         message.fieldOrdering![entry14.key] = entry14.value;
                     }
-                    break;
+                    continue;
                 case 15:
+                    if (tag != 122) {
+                        break;
+                    }
+
                     message.appleWalletOptions = AppleWalletOptions.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2030,6 +2347,10 @@ export const TemplateData = {
         return obj;
     },
 
+    create(base?: DeepPartial<TemplateData>): TemplateData {
+        return TemplateData.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<TemplateData>): TemplateData {
         const message = createBaseTemplateData();
         message.id = object.id ?? "";
@@ -2054,9 +2375,7 @@ export const TemplateData = {
         message.description = object.description ?? "";
         message.fieldOrdering = Object.entries(
             object.fieldOrdering ?? {}
-        ).reduce<{
-            [key: string]: FieldOrdering;
-        }>((acc, [key, value]) => {
+        ).reduce<{ [key: string]: FieldOrdering }>((acc, [key, value]) => {
             if (value !== undefined) {
                 acc[key] = FieldOrdering.fromPartial(value);
             }
@@ -2097,25 +2416,34 @@ export const TemplateData_FieldsEntry = {
         length?: number
     ): TemplateData_FieldsEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseTemplateData_FieldsEntry();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = TemplateField.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2137,6 +2465,12 @@ export const TemplateData_FieldsEntry = {
                 ? TemplateField.toJSON(message.value)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<TemplateData_FieldsEntry>
+    ): TemplateData_FieldsEntry {
+        return TemplateData_FieldsEntry.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2178,25 +2512,34 @@ export const TemplateData_FieldOrderingEntry = {
         length?: number
     ): TemplateData_FieldOrderingEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseTemplateData_FieldOrderingEntry();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = FieldOrdering.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2218,6 +2561,12 @@ export const TemplateData_FieldOrderingEntry = {
                 ? FieldOrdering.toJSON(message.value)
                 : undefined);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<TemplateData_FieldOrderingEntry>
+    ): TemplateData_FieldOrderingEntry {
+        return TemplateData_FieldOrderingEntry.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2291,34 +2640,59 @@ export const AppleWalletOptions = {
         length?: number
     ): AppleWalletOptions {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAppleWalletOptions();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.backgroundColor = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.foregroundColor = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.labelColor = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.primaryField = reader.string();
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.secondaryFields!.push(reader.string());
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.auxiliaryFields!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2369,6 +2743,10 @@ export const AppleWalletOptions = {
         return obj;
     },
 
+    create(base?: DeepPartial<AppleWalletOptions>): AppleWalletOptions {
+        return AppleWalletOptions.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<AppleWalletOptions>): AppleWalletOptions {
         const message = createBaseAppleWalletOptions();
         message.backgroundColor = object.backgroundColor ?? "";
@@ -2401,22 +2779,31 @@ export const FieldOrdering = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): FieldOrdering {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseFieldOrdering();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.order = reader.int32();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.section = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2433,6 +2820,10 @@ export const FieldOrdering = {
         message.order !== undefined && (obj.order = Math.round(message.order));
         message.section !== undefined && (obj.section = message.section);
         return obj;
+    },
+
+    create(base?: DeepPartial<FieldOrdering>): FieldOrdering {
+        return FieldOrdering.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<FieldOrdering>): FieldOrdering {
@@ -2488,25 +2879,45 @@ export const TemplateField = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): TemplateField {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseTemplateField();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.title = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.optional = reader.bool();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 32) {
+                        break;
+                    }
+
                     message.type = reader.int32() as any;
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     const entry5 = TemplateField_AnnotationsEntry.decode(
                         reader,
                         reader.uint32()
@@ -2514,17 +2925,22 @@ export const TemplateField = {
                     if (entry5.value !== undefined) {
                         message.annotations![entry5.key] = entry5.value;
                     }
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.uriData = UriFieldData.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2572,6 +2988,10 @@ export const TemplateField = {
         return obj;
     },
 
+    create(base?: DeepPartial<TemplateField>): TemplateField {
+        return TemplateField.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<TemplateField>): TemplateField {
         const message = createBaseTemplateField();
         message.title = object.title ?? "";
@@ -2617,22 +3037,31 @@ export const TemplateField_AnnotationsEntry = {
         length?: number
     ): TemplateField_AnnotationsEntry {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseTemplateField_AnnotationsEntry();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.key = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.value = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2649,6 +3078,12 @@ export const TemplateField_AnnotationsEntry = {
         message.key !== undefined && (obj.key = message.key);
         message.value !== undefined && (obj.value = message.value);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<TemplateField_AnnotationsEntry>
+    ): TemplateField_AnnotationsEntry {
+        return TemplateField_AnnotationsEntry.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -2690,28 +3125,41 @@ export const TemplateFieldPatch = {
         length?: number
     ): TemplateFieldPatch {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseTemplateFieldPatch();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.title = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.uriData = UriFieldData.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2738,6 +3186,10 @@ export const TemplateFieldPatch = {
                 ? UriFieldData.toJSON(message.uriData)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<TemplateFieldPatch>): TemplateFieldPatch {
+        return TemplateFieldPatch.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<TemplateFieldPatch>): TemplateFieldPatch {
@@ -2772,22 +3224,31 @@ export const UriFieldData = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): UriFieldData {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUriFieldData();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.mimeType = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.renderMethod = reader.int32() as any;
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -2807,6 +3268,10 @@ export const UriFieldData = {
         message.renderMethod !== undefined &&
             (obj.renderMethod = uriRenderMethodToJSON(message.renderMethod));
         return obj;
+    },
+
+    create(base?: DeepPartial<UriFieldData>): UriFieldData {
+        return UriFieldData.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<UriFieldData>): UriFieldData {

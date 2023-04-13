@@ -292,28 +292,41 @@ export const SignInRequest = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): SignInRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSignInRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.details = AccountDetails.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.invitationCode = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.ecosystemId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -343,6 +356,10 @@ export const SignInRequest = {
         message.ecosystemId !== undefined &&
             (obj.ecosystemId = message.ecosystemId);
         return obj;
+    },
+
+    create(base?: DeepPartial<SignInRequest>): SignInRequest {
+        return SignInRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<SignInRequest>): SignInRequest {
@@ -380,25 +397,38 @@ export const AccountDetails = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountDetails {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAccountDetails();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.sms = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -417,6 +447,10 @@ export const AccountDetails = {
         message.email !== undefined && (obj.email = message.email);
         message.sms !== undefined && (obj.sms = message.sms);
         return obj;
+    },
+
+    create(base?: DeepPartial<AccountDetails>): AccountDetails {
+        return AccountDetails.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<AccountDetails>): AccountDetails {
@@ -454,25 +488,34 @@ export const SignInResponse = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): SignInResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSignInResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.confirmationMethod = reader.int32() as any;
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.profile = AccountProfile.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -499,6 +542,10 @@ export const SignInResponse = {
                 ? AccountProfile.toJSON(message.profile)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<SignInResponse>): SignInResponse {
+        return SignInResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<SignInResponse>): SignInResponse {
@@ -546,31 +593,48 @@ export const AccountProfile = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountProfile {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAccountProfile();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.profileType = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.authData = reader.bytes();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.authToken = reader.bytes();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.protection = TokenProtection.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -615,6 +679,10 @@ export const AccountProfile = {
         return obj;
     },
 
+    create(base?: DeepPartial<AccountProfile>): AccountProfile {
+        return AccountProfile.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<AccountProfile>): AccountProfile {
         const message = createBaseAccountProfile();
         message.profileType = object.profileType ?? "";
@@ -648,22 +716,31 @@ export const TokenProtection = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): TokenProtection {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseTokenProtection();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.enabled = reader.bool();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.method = reader.int32() as any;
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -683,6 +760,10 @@ export const TokenProtection = {
         message.method !== undefined &&
             (obj.method = confirmationMethodToJSON(message.method));
         return obj;
+    },
+
+    create(base?: DeepPartial<TokenProtection>): TokenProtection {
+        return TokenProtection.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<TokenProtection>): TokenProtection {
@@ -710,16 +791,17 @@ export const AccountInfoRequest = {
         length?: number
     ): AccountInfoRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAccountInfoRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -731,6 +813,10 @@ export const AccountInfoRequest = {
     toJSON(_: AccountInfoRequest): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(base?: DeepPartial<AccountInfoRequest>): AccountInfoRequest {
+        return AccountInfoRequest.fromPartial(base ?? {});
     },
 
     fromPartial(_: DeepPartial<AccountInfoRequest>): AccountInfoRequest {
@@ -798,44 +884,73 @@ export const AccountInfoResponse = {
         length?: number
     ): AccountInfoResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAccountInfoResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.details = AccountDetails.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.ecosystems!.push(
                         AccountEcosystem.decode(reader, reader.uint32())
                     );
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.deviceId = reader.string();
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.ecosystemId = reader.string();
-                    break;
+                    continue;
                 case 6:
+                    if (tag != 50) {
+                        break;
+                    }
+
                     message.publicDid = reader.string();
-                    break;
+                    continue;
                 case 8:
+                    if (tag != 66) {
+                        break;
+                    }
+
                     message.authTokens!.push(
                         WalletAuthToken.decode(reader, reader.uint32())
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -890,6 +1005,10 @@ export const AccountInfoResponse = {
         return obj;
     },
 
+    create(base?: DeepPartial<AccountInfoResponse>): AccountInfoResponse {
+        return AccountInfoResponse.fromPartial(base ?? {});
+    },
+
     fromPartial(object: DeepPartial<AccountInfoResponse>): AccountInfoResponse {
         const message = createBaseAccountInfoResponse();
         message.details =
@@ -935,28 +1054,45 @@ export const AccountEcosystem = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): AccountEcosystem {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAccountEcosystem();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.uri = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -980,6 +1116,10 @@ export const AccountEcosystem = {
             (obj.description = message.description);
         message.uri !== undefined && (obj.uri = message.uri);
         return obj;
+    },
+
+    create(base?: DeepPartial<AccountEcosystem>): AccountEcosystem {
+        return AccountEcosystem.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<AccountEcosystem>): AccountEcosystem {
@@ -1018,25 +1158,38 @@ export const LoginRequest = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): LoginRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseLoginRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.invitationCode = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.ecosystemId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1061,6 +1214,10 @@ export const LoginRequest = {
         message.ecosystemId !== undefined &&
             (obj.ecosystemId = message.ecosystemId);
         return obj;
+    },
+
+    create(base?: DeepPartial<LoginRequest>): LoginRequest {
+        return LoginRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<LoginRequest>): LoginRequest {
@@ -1095,25 +1252,34 @@ export const LoginResponse = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): LoginResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseLoginResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.challenge = reader.bytes();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.profile = AccountProfile.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1141,6 +1307,10 @@ export const LoginResponse = {
                 ? AccountProfile.toJSON(message.profile)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<LoginResponse>): LoginResponse {
+        return LoginResponse.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<LoginResponse>): LoginResponse {
@@ -1183,22 +1353,31 @@ export const LoginConfirmRequest = {
         length?: number
     ): LoginConfirmRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseLoginConfirmRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.challenge = reader.bytes();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.confirmationCodeHashed = reader.bytes();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1229,6 +1408,10 @@ export const LoginConfirmRequest = {
                     : new Uint8Array()
             ));
         return obj;
+    },
+
+    create(base?: DeepPartial<LoginConfirmRequest>): LoginConfirmRequest {
+        return LoginConfirmRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<LoginConfirmRequest>): LoginConfirmRequest {
@@ -1263,22 +1446,27 @@ export const LoginConfirmResponse = {
         length?: number
     ): LoginConfirmResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseLoginConfirmResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.profile = AccountProfile.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1298,6 +1486,10 @@ export const LoginConfirmResponse = {
                 ? AccountProfile.toJSON(message.profile)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<LoginConfirmResponse>): LoginConfirmResponse {
+        return LoginConfirmResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1334,19 +1526,24 @@ export const AuthorizeWebhookRequest = {
         length?: number
     ): AuthorizeWebhookRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAuthorizeWebhookRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.events!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1367,6 +1564,12 @@ export const AuthorizeWebhookRequest = {
             obj.events = [];
         }
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<AuthorizeWebhookRequest>
+    ): AuthorizeWebhookRequest {
+        return AuthorizeWebhookRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1395,16 +1598,17 @@ export const AuthorizeWebhookResponse = {
         length?: number
     ): AuthorizeWebhookResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAuthorizeWebhookResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1416,6 +1620,12 @@ export const AuthorizeWebhookResponse = {
     toJSON(_: AuthorizeWebhookResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<AuthorizeWebhookResponse>
+    ): AuthorizeWebhookResponse {
+        return AuthorizeWebhookResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1449,25 +1659,38 @@ export const WalletAuthToken = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): WalletAuthToken {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseWalletAuthToken();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.dateCreated = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1492,6 +1715,10 @@ export const WalletAuthToken = {
         message.dateCreated !== undefined &&
             (obj.dateCreated = message.dateCreated);
         return obj;
+    },
+
+    create(base?: DeepPartial<WalletAuthToken>): WalletAuthToken {
+        return WalletAuthToken.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<WalletAuthToken>): WalletAuthToken {
@@ -1519,7 +1746,14 @@ export const AccountDefinition = {
             requestStream: false,
             responseType: SignInResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([2, 16, 1]),
+                        new Uint8Array([2, 8, 1]),
+                    ],
+                },
+            },
         },
         /**
          * Begin login flow for specified account, creating one if it does not already exist
@@ -1532,7 +1766,14 @@ export const AccountDefinition = {
             requestStream: false,
             responseType: LoginResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([2, 16, 1]),
+                        new Uint8Array([2, 8, 1]),
+                    ],
+                },
+            },
         },
         /**
          * Finalize login flow with two-factor confirmation code
@@ -1545,7 +1786,14 @@ export const AccountDefinition = {
             requestStream: false,
             responseType: LoginConfirmResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([2, 8, 1]),
+                        new Uint8Array([2, 16, 1]),
+                    ],
+                },
+            },
         },
         /**
          * Get account information
@@ -1558,7 +1806,9 @@ export const AccountDefinition = {
             requestStream: false,
             responseType: AccountInfoResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] },
+            },
         },
         /** Authorize Ecosystem to receive webhook events */
         authorizeWebhook: {
@@ -1567,7 +1817,9 @@ export const AccountDefinition = {
             requestStream: false,
             responseType: AuthorizeWebhookResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([2, 16, 1])] },
+            },
         },
     },
 } as const;
@@ -1575,19 +1827,27 @@ export const AccountDefinition = {
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
-var globalThis: any = (() => {
-    if (typeof globalThis !== "undefined") return globalThis;
-    if (typeof self !== "undefined") return self;
-    if (typeof window !== "undefined") return window;
-    if (typeof global !== "undefined") return global;
+var tsProtoGlobalThis: any = (() => {
+    if (typeof globalThis !== "undefined") {
+        return globalThis;
+    }
+    if (typeof self !== "undefined") {
+        return self;
+    }
+    if (typeof window !== "undefined") {
+        return window;
+    }
+    if (typeof global !== "undefined") {
+        return global;
+    }
     throw "Unable to locate global object";
 })();
 
 function bytesFromBase64(b64: string): Uint8Array {
-    if (globalThis.Buffer) {
-        return Uint8Array.from(globalThis.Buffer.from(b64, "base64"));
+    if (tsProtoGlobalThis.Buffer) {
+        return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
     } else {
-        const bin = globalThis.atob(b64);
+        const bin = tsProtoGlobalThis.atob(b64);
         const arr = new Uint8Array(bin.length);
         for (let i = 0; i < bin.length; ++i) {
             arr[i] = bin.charCodeAt(i);
@@ -1597,14 +1857,14 @@ function bytesFromBase64(b64: string): Uint8Array {
 }
 
 function base64FromBytes(arr: Uint8Array): string {
-    if (globalThis.Buffer) {
-        return globalThis.Buffer.from(arr).toString("base64");
+    if (tsProtoGlobalThis.Buffer) {
+        return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
     } else {
         const bin: string[] = [];
         arr.forEach((byte) => {
             bin.push(String.fromCharCode(byte));
         });
-        return globalThis.btoa(bin.join(""));
+        return tsProtoGlobalThis.btoa(bin.join(""));
     }
 }
 
