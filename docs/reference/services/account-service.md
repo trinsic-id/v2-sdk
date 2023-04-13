@@ -31,11 +31,6 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         ```
 
     === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
