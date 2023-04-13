@@ -246,6 +246,14 @@ const SendRequest$json = const {
     const {'1': 'wallet_id', '3': 5, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
     const {'1': 'did_uri', '3': 6, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
     const {
+      '1': 'phone_number',
+      '3': 7,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'phoneNumber'
+    },
+    const {
       '1': 'send_notification',
       '3': 4,
       '4': 1,
@@ -272,7 +280,7 @@ const SendRequest$json = const {
 
 /// Descriptor for `SendRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendRequestDescriptor = $convert.base64Decode(
-    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYBSABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgGIAEoCUgAUgZkaWRVcmkSKwoRc2VuZF9ub3RpZmljYXRpb24YBCABKAhSEHNlbmROb3RpZmljYXRpb24SIwoNZG9jdW1lbnRfanNvbhhkIAEoCVIMZG9jdW1lbnRKc29uQhEKD2RlbGl2ZXJ5X21ldGhvZEoECAIQA0oECAMQBFIXZGlkY29tbV9pbnZpdGF0aW9uX2pzb24=');
+    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYBSABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgGIAEoCUgAUgZkaWRVcmkSIwoMcGhvbmVfbnVtYmVyGAcgASgJSABSC3Bob25lTnVtYmVyEisKEXNlbmRfbm90aWZpY2F0aW9uGAQgASgIUhBzZW5kTm90aWZpY2F0aW9uEiMKDWRvY3VtZW50X2pzb24YZCABKAlSDGRvY3VtZW50SnNvbkIRCg9kZWxpdmVyeV9tZXRob2RKBAgCEANKBAgDEARSF2RpZGNvbW1faW52aXRhdGlvbl9qc29u');
 @$core.Deprecated('Use sendResponseDescriptor instead')
 const SendResponse$json = const {
   '1': 'SendResponse',

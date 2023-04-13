@@ -199,13 +199,16 @@ class SendRequest(betterproto.Message):
     """Request to send a document to another user's wallet"""
 
     email: str = betterproto.string_field(1, group="delivery_method")
-    """Email address of user to send item to"""
+    """Email address of user to whom you'll send the item"""
 
     wallet_id: str = betterproto.string_field(5, group="delivery_method")
     """Wallet ID of the recipient within the ecosystem"""
 
     did_uri: str = betterproto.string_field(6, group="delivery_method")
     """DID URI of the recipient"""
+
+    phone_number: str = betterproto.string_field(7, group="delivery_method")
+    """SMS of user to whom you'll send the item"""
 
     send_notification: bool = betterproto.bool_field(4)
     """Send email notification that credential has been sent to a wallet"""
