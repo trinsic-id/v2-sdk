@@ -2194,20 +2194,31 @@
 <span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A credential for Trinsic&#39;s SDK samples&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">allowAdditionalFields</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Given name of holder&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Last Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Surname of holder&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">optional</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Age&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Age in years of holder&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">NUMBER</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Given name of holder&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Last Name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Surname of holder&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">optional</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Age in years of holder&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">NUMBER</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">fieldOrdering</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span><span class="w"> </span><span class="nx">section</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="w"> </span><span class="p">},</span>
 <span class="w">        </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">section</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span><span class="w"> </span><span class="nx">section</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Miscellaneous&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span><span class="w"> </span><span class="nx">section</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Miscellaneous&quot;</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">appleWalletOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">primaryField</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">secondaryFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;lastName&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="nx">auxiliaryFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">auxiliaryFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="p">};</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">createResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">template</span><span class="p">().</span><span class="nx">create</span><span class="p">(</span><span class="nx">createRequest</span><span class="p">);</span>
@@ -2392,7 +2403,7 @@
 <span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../src&quot;</span><span class="p">;</span>
 <span class="c1">// @ts-ignore</span>
 <span class="k">import</span><span class="w"> </span><span class="nx">templateCertFrame</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./data/credential-template-frame.json&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">getTestServerOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">setTestTimeout</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./env&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getTestServerOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">setTestTimeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./env&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">createCredentialTemplateTest</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">createRequiredTestObjects</span><span class="p">,</span>
@@ -2608,9 +2619,11 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">getTemplateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">template</span><span class="p">().</span><span class="nx">get</span><span class="p">(</span><span class="nx">GetCredentialTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;id&quot;</span>
-<span class="p">}));</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">getTemplateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">template</span><span class="p">().</span><span class="nx">get</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">GetCredentialTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
