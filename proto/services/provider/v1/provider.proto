@@ -13,6 +13,7 @@ import "services/common/v1/common.proto";
 
 // Request to invite a participant to an ecosystem
 message InviteRequest {
+  // DEPRECATED, will be removed April 1st 2023
   option deprecated = true;
   // Type of participant being invited (individual/organization)
   ParticipantType participant = 1;
@@ -26,6 +27,7 @@ message InviteRequest {
   message DidCommInvitation {}
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Type of participant being invited to ecosystem
 enum ParticipantType {
   // Participant is an individual
@@ -35,6 +37,7 @@ enum ParticipantType {
   participant_type_organization = 1;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Response to `InviteRequest`
 message InviteResponse {
   option deprecated = true;
@@ -46,6 +49,7 @@ message InviteResponse {
   string invitation_code = 11;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Request details for the status of an invitation
 message InvitationStatusRequest {
   option deprecated = true;
@@ -53,6 +57,7 @@ message InvitationStatusRequest {
   string invitation_id = 1;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Response to `InvitationStatusRequest`
 message InvitationStatusResponse {
   option deprecated = true;
@@ -88,6 +93,7 @@ message Ecosystem {
   // Ecosystem description
   string description = 3;
 
+  // DEPRECATED, will be removed April 1st 2023
   // External URL associated with the organization or ecosystem entity
   string uri = 4 [deprecated = true];
 
@@ -102,6 +108,7 @@ message Ecosystem {
   string domain = 7;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Webhook configured on an ecosystem
 message WebhookConfig {
   option deprecated = true;
@@ -130,6 +137,7 @@ message CreateEcosystemRequest {
   // Ecosystem description
   string description = 2 [(options.optional) = true];
 
+  // DEPRECATED, will be removed April 1st 2023
   // External URL associated with your organization or ecosystem entity
   string uri = 3 [(options.optional) = true, deprecated = true];
 
@@ -154,6 +162,7 @@ message CreateEcosystemResponse {
 message UpdateEcosystemRequest {
   // New description of the ecosystem
   string description = 1;
+  // DEPRECATED, will be removed April 1st 2023
   // New external URL associated with the organization or ecosystem entity
   string uri = 2 [deprecated = true];
   // New domain URL
@@ -161,6 +170,10 @@ message UpdateEcosystemRequest {
   // New name
   reserved 4;
   reserved "name";
+
+  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+  // DEPRECATED, will be removed June 1st 2023
+
   // Display details
   EcosystemDisplayRequest display = 5 [deprecated = true];
 }
@@ -199,6 +212,7 @@ message EcosystemDisplayDetails {
   string color = 4;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Request to add a webhook to an ecosystem
 message AddWebhookRequest {
   option deprecated = true;
@@ -215,6 +229,7 @@ message AddWebhookRequest {
   repeated string events = 3;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Response to `AddWebhookRequest`
 message AddWebhookResponse {
   option deprecated = true;
@@ -223,6 +238,7 @@ message AddWebhookResponse {
   Ecosystem ecosystem = 1;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Request to delete a webhook from an ecosystem
 message DeleteWebhookRequest {
   option deprecated = true;
@@ -231,6 +247,7 @@ message DeleteWebhookRequest {
   string webhook_id = 1;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Response to `DeleteWebhookRequest`
 message DeleteWebhookResponse {
   option deprecated = true;
@@ -249,12 +266,14 @@ message EcosystemInfoResponse {
   Ecosystem ecosystem = 1;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Request to fetch information about an ecosystem
 message GetPublicEcosystemInfoRequest {
   option deprecated = true;
   string ecosystem_id = 1;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 // Response to `InfoRequest`
 message GetPublicEcosystemInfoResponse {
   option deprecated = true;
@@ -262,6 +281,7 @@ message GetPublicEcosystemInfoResponse {
   PublicEcosystemInformation ecosystem = 1;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 message PublicEcosystemInformation {
   option deprecated = true;
   // Public name of this ecosystem
@@ -288,21 +308,32 @@ message GetOberonKeyResponse {
   string key = 1;
 }
 
+// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+// DEPRECATED, will be removed June 1st 2023
 message RetrieveDomainVerificationRecordRequest {
+  option deprecated = true;
 }
 
-// Response message containing a TXT record content for domain url verification
+
+// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+// DEPRECATED, will be removed June 1st 2023
 message RetrieveDomainVerificationRecordResponse {
+  option deprecated = true;
   // TXT record name to use for domain verification
   string verification_record_name = 1;
   // TXT code for domain verification
   string verification_record_Value = 2;
 }
-
+// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+// DEPRECATED, will be removed June 1st 2023
 message RefreshDomainVerificationStatusRequest {
+  option deprecated = true;
 }
 
+// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+// DEPRECATED, will be removed June 1st 2023
 message RefreshDomainVerificationStatusResponse {
+  option deprecated = true;
   // Domain URL verified
   string domain = 1;
   // Specifies if the above `domain` was successfully verified
@@ -413,42 +444,49 @@ service Provider {
     option (options.sdk_template_option).ignore = true;
   }
 
-  // Update an existing ecosystem
+  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+  // DEPRECATED, will be removed June 1st 2023
   rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse) {
     option deprecated = true;
-    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed June 1, 2023"};
   }
 
-  // Add a webhook endpoint to the ecosystem
+  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+  // DEPRECATED, will be removed April 1st 2023
   rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse){
     option (options.sdk_template_option).ignore = true;
   }
 
-  // Delete a webhook endpoint from the ecosystem
+  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+  // DEPRECATED, will be removed April 1st 2023
   rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse){
     option (options.sdk_template_option).ignore = true;
   }
 
-  // Get ecosystem information
-  rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse);
-
-  // Get public ecosystem information about *any* ecosystem
-  rpc GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest) returns (GetPublicEcosystemInfoResponse) {
-    option (options.sdk_template_option).anonymous = true;
-    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+  // DEPRECATED, will be removed June 1st 2023
+  rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse){
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed June 1, 2023"};
   }
 
-  // Invite a user to the ecosystem
+  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+  // DEPRECATED, will be removed June 1st 2023
+  rpc GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest) returns (GetPublicEcosystemInfoResponse) {
+    option (options.sdk_template_option).anonymous = true;
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed June 1, 2023"};
+  }
+
+  // DEPRECATED, will be removed April 1st 2023
   rpc Invite(InviteRequest) returns (InviteResponse) {
     option deprecated = true;
-    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed April 1, 2023"};
     option (options.sdk_template_option).ignore = true;
   }
 
-  // Check the status of an invitation
+  // DEPRECATED, will be removed April 1st 2023
   rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse) {
     option deprecated = true;
-    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed May 1, 2023"};
+    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed April 1, 2023"};
     option (options.sdk_template_option).ignore = true;
   }
 

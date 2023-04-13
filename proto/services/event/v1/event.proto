@@ -14,6 +14,7 @@ extend google.protobuf.MessageOptions {
   optional EventType event_type = 60002;
 }
 
+// DEPRECATED, will be removed April 1st 2023
 
 // All event types
 enum EventType {
