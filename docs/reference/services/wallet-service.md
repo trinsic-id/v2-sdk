@@ -3,6 +3,10 @@
 The Wallet API is the main interface for interacting with a cloud wallet. It is primarly used when you're providing custom wallet experience and building your own digital wallet integration.
 If you'd like to use Trinsic's integrated cloud wallet app, you likely won't need to use this API.
 
+!!! question "Migrating from Account API?"
+
+    Check out our [migration guide](/learn/resources/migrate-account) on how to migrate your code that uses the deprecated Account API.
+
 ---
 
 ## Create Wallet
@@ -98,7 +102,7 @@ This endpoint requires that the wallet user has previously added at least one ex
 Once a token is obtained, it can be reused for future sessions -- users don't need to authenciate if they already have a valid token.
 You can store the auth token in secure enclaves on the users device, browser, etc.
 
-!!! note "When should users authenticate?"
+!!! question "When should users authenticate?"
 
     - If your integration solution doesn't manage the wallet tokens, users may need to re-authenticate on their device to get a new auth token
     - Users want to log in to a different device using their email or phone number
