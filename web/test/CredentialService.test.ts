@@ -1,16 +1,22 @@
-import { TrinsicService } from "../node";
+import { TrinsicOptions, TrinsicService } from "../src";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
-import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
+import {
+    getTestServerOptions,
+    myEcosystemIdOrName,
+    setTestTimeout,
+} from "./env";
 
-let options = getTestServerOptions();
+let options: TrinsicOptions = getTestServerOptions();
 let trinsic: TrinsicService;
 
 describe("CredentialService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        const response = await trinsic
+            .wallet()
+            .createWallet({ ecosystemId: myEcosystemIdOrName() });
         trinsic.options.authToken = response.authToken;
     });
 

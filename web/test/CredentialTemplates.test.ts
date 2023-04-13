@@ -1,7 +1,18 @@
-import {TrinsicService, CreateCredentialTemplateRequest, UpdateCredentialTemplateRequest, FieldType} from "../node";
+import {
+    CheckStatusRequest,
+    CreateCredentialTemplateResponse,
+    TrinsicService,
+    CreateCredentialTemplateRequest,
+    UpdateCredentialTemplateRequest,
+    FieldType,
+    UpdateStatusRequest
+} from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
+import {
+    getTestServerOptions,
+    setTestTimeout,
+} from "./env";
 import {
     createCredentialTemplateTest,
     createRequiredTestObjects,
@@ -9,10 +20,13 @@ import {
     verifyCredential,
 } from "./CredentialTemplateShared";
 
+import { v4 as uuid } from "uuid";
+
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
     createRequiredTestObjects();
 
 let trinsic: TrinsicService;
+let createdTemplate: CreateCredentialTemplateResponse;
 
 describe("Demo: Credential Templates", () => {
     setTestTimeout();
@@ -21,14 +35,19 @@ describe("Demo: Credential Templates", () => {
         await trinsic.provider().createEcosystem({});
     });
 
-    it("should run create credential templates", async () => {
-        let response = await createCredentialTemplateTest(trinsic);
+    it("should run create and delete credential templates", async () => {
+        createdTemplate = await createCredentialTemplateTest(trinsic);
 
-        const fieldsMap = response.data?.fields!;
+        const fieldsMap = createdTemplate.data?.fields!;
         expect(fieldsMap["name"]).toEqual(nameField);
         expect(fieldsMap["numberOfBags"]).toEqual(numberOfBags);
         expect(fieldsMap["dateOfBirth"]).toEqual(dateOfBirth);
         expect(fieldsMap["vaccinated"]).toEqual(isVaccinated);
+
+        let deletedTemplate = await trinsic
+            .template()
+            .delete({ id: createdTemplate.data?.id ?? "" });
+        console.log(deletedTemplate);
     });
 
     it("Issue Credential From Template", async () => {
@@ -48,7 +67,7 @@ describe("Demo: Credential Templates", () => {
 
     it("Verify Credential Issued from Template", async () => {
         let response = await verifyCredential(
-            new TrinsicService(getTestServerOptions()),
+            trinsic,
             JSON.stringify(templateCertFrame)
         );
         expect(response).toBeTruthy();
@@ -57,25 +76,36 @@ describe("Demo: Credential Templates", () => {
     it("Create and update template sample", async () => {
         // createTemplate() {
         const createRequest: CreateCredentialTemplateRequest = {
-            name: "An Example Credential",
+            name: `An Example Credential-${uuid()}`,
             title: "Example Credential",
             description: "A credential for Trinsic's SDK samples",
             allowAdditionalFields: false,
             fields: {
-                firstName: { title: "First Name", description: "Given name of holder" },
-                lastName: { title: "Last Name", description: "Surname of holder", optional: true },
-                age: { title: "Age", description: "Age in years of holder", type: FieldType.NUMBER }
+                firstName: {
+                    title: "First Name",
+                    description: "Given name of holder",
+                },
+                lastName: {
+                    title: "Last Name",
+                    description: "Surname of holder",
+                    optional: true,
+                },
+                age: {
+                    title: "Age",
+                    description: "Age in years of holder",
+                    type: FieldType.NUMBER,
+                },
             },
             fieldOrdering: {
                 firstName: { order: 0, section: "Name" },
                 lastName: { order: 1, section: "Name" },
-                age: { order: 2, section: "Miscellaneous" }
+                age: { order: 2, section: "Miscellaneous" },
             },
             appleWalletOptions: {
                 primaryField: "firstName",
                 secondaryFields: ["lastName"],
-                auxiliaryFields: ["age"]
-            }
+                auxiliaryFields: ["age"],
+            },
         };
 
         const createResponse = await trinsic.template().create(createRequest);
@@ -93,22 +123,44 @@ describe("Demo: Credential Templates", () => {
             description: "New Description",
             fields: {
                 firstName: { title: "New title for firstName" },
-                lastName: { description: "New description for lastName" }
+                lastName: { description: "New description for lastName" },
             },
             fieldOrdering: {
                 age: { order: 0, section: "Misc" },
                 firstName: { order: 1, section: "Full Name" },
-                lastName: { order: 2, section: "Full Name" }
+                lastName: { order: 2, section: "Full Name" },
             },
             appleWalletOptions: {
                 primaryField: "age",
-                secondaryFields: ["firstName", "lastName"]
-            }
+                secondaryFields: ["firstName", "lastName"],
+            },
         };
 
         const updateResponse = await trinsic.template().update(updateRequest);
         // }
 
         expect(updateResponse.updatedTemplate?.title).toBe(updateRequest.title);
+    });
+
+    it("Update Revocation Status for Template", async () => {
+        try {
+            // checkCredentialStatus() {
+            let checkStatusResponse = await trinsic
+                .credential()
+                .checkStatus(CheckStatusRequest.fromPartial({}));
+            // }
+        } catch {
+            // This is okay as an example
+        }
+
+        try {
+            // updateCredentialStatus() {
+            let updateStatusResponse = await trinsic
+                .credential()
+                .updateStatus(UpdateStatusRequest.fromPartial({}));
+            // }
+        } catch {
+            // This is okay as an example
+        }
     });
 });

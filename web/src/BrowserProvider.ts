@@ -1,9 +1,12 @@
-import { AccountProfile, IPlatformProvider } from "../src";
-import { Client, CompatServiceDefinition } from "nice-grpc-web";
-import { createClient, createChannel } from "nice-grpc-web";
+import { IPlatformProvider } from "./index";
+import {
+    Client,
+    CompatServiceDefinition,
+    createClient,
+    createChannel,
+} from "nice-grpc-web";
 
 export class BrowserProvider implements IPlatformProvider {
-
     createGrpcClient<ClientService extends CompatServiceDefinition>(
         definition: ClientService,
         address: string

@@ -1,15 +1,15 @@
-import { Nonce, TrinsicOptions } from "./proto";
+import { TrinsicOptions } from "./proto";
 import { Metadata } from "nice-grpc-common";
-import { Base64 } from "js-base64";
 import {
     Client as BrowserClient,
     CompatServiceDefinition as ClientServiceDefinition,
 } from "nice-grpc-web";
 import { getSdkVersion } from "./Version";
 import { IPlatformProvider } from "./IPlatformProvider";
+import { BrowserProvider } from "./BrowserProvider";
 
 export default abstract class ServiceBase {
-    static platform: IPlatformProvider;
+    static platform: IPlatformProvider = new BrowserProvider();
     options: TrinsicOptions;
 
     protected constructor(
