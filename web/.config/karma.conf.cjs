@@ -39,7 +39,7 @@ module.exports = async (config) => {
         // You may need to tweak this pattern to find your test files/
         files: [
             {
-                pattern: "test/**/*.spec.ts",
+                pattern: "test/**/*.test.ts",
                 watched: false,
                 included: true,
                 served: true,
@@ -56,7 +56,7 @@ module.exports = async (config) => {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             // Use webpack to bundle our tests files
-            "test/**/*.spec.ts": ["webpack"],
+            "test/**/*.test.ts": ["webpack"],
             // Report coverage
             "src/**/*.ts": ["coverage"],
         },

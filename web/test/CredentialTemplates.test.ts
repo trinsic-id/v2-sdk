@@ -1,16 +1,15 @@
 import {
+    CheckStatusRequest,
+    CreateCredentialTemplateResponse,
     TrinsicService,
     CreateCredentialTemplateRequest,
     UpdateCredentialTemplateRequest,
+    UpdateStatusRequest,
     FieldType,
-} from "../node";
+} from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import {
-    getTestServerOptions,
-    myEcosystemIdOrName,
-    setTestTimeout,
-} from "./env";
+import { getTestServerOptions, setTestTimeout } from "./env";
 import {
     createCredentialTemplateTest,
     createRequiredTestObjects,
@@ -18,10 +17,13 @@ import {
     verifyCredential,
 } from "./CredentialTemplateShared";
 
+import { v4 as uuid } from "uuid";
+
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
     createRequiredTestObjects();
 
 let trinsic: TrinsicService;
+let createdTemplate: CreateCredentialTemplateResponse;
 
 describe("Demo: Credential Templates", () => {
     setTestTimeout();
@@ -30,14 +32,19 @@ describe("Demo: Credential Templates", () => {
         await trinsic.provider().createEcosystem({});
     });
 
-    it("should run create credential templates", async () => {
-        let response = await createCredentialTemplateTest(trinsic);
+    it("should run create and delete credential templates", async () => {
+        createdTemplate = await createCredentialTemplateTest(trinsic);
 
-        const fieldsMap = response.data?.fields!;
+        const fieldsMap = createdTemplate.data?.fields!;
         expect(fieldsMap["name"]).toEqual(nameField);
         expect(fieldsMap["numberOfBags"]).toEqual(numberOfBags);
         expect(fieldsMap["dateOfBirth"]).toEqual(dateOfBirth);
         expect(fieldsMap["vaccinated"]).toEqual(isVaccinated);
+
+        let deletedTemplate = await trinsic
+            .template()
+            .delete({ id: createdTemplate.data?.id ?? "" });
+        console.log(deletedTemplate);
     });
 
     it("Issue Credential From Template", async () => {
@@ -57,7 +64,7 @@ describe("Demo: Credential Templates", () => {
 
     it("Verify Credential Issued from Template", async () => {
         let response = await verifyCredential(
-            new TrinsicService(getTestServerOptions()),
+            trinsic,
             JSON.stringify(templateCertFrame)
         );
         expect(response).toBeTruthy();
@@ -66,7 +73,7 @@ describe("Demo: Credential Templates", () => {
     it("Create and update template sample", async () => {
         // createTemplate() {
         const createRequest: CreateCredentialTemplateRequest = {
-            name: "An Example Credential",
+            name: `An Example Credential-${uuid()}`,
             title: "Example Credential",
             description: "A credential for Trinsic's SDK samples",
             allowAdditionalFields: false,
@@ -130,5 +137,27 @@ describe("Demo: Credential Templates", () => {
         // }
 
         expect(updateResponse.updatedTemplate?.title).toBe(updateRequest.title);
+    });
+
+    it("Update Revocation Status for Template", async () => {
+        try {
+            // checkCredentialStatus() {
+            let checkStatusResponse = await trinsic
+                .credential()
+                .checkStatus(CheckStatusRequest.fromPartial({}));
+            // }
+        } catch {
+            // This is okay as an example
+        }
+
+        try {
+            // updateCredentialStatus() {
+            let updateStatusResponse = await trinsic
+                .credential()
+                .updateStatus(UpdateStatusRequest.fromPartial({}));
+            // }
+        } catch {
+            // This is okay as an example
+        }
     });
 });

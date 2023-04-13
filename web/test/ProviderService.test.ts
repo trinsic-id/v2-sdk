@@ -7,7 +7,7 @@ import {
     TrinsicService,
     UpdateEcosystemRequest,
     UpgradeDidRequest,
-} from "../node";
+} from "../src";
 
 import {
     getTestServerOptions,

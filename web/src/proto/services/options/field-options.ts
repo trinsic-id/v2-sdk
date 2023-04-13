@@ -50,22 +50,31 @@ export const AnnotationOption = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): AnnotationOption {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAnnotationOption();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.active = reader.bool();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.message = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -82,6 +91,10 @@ export const AnnotationOption = {
         message.active !== undefined && (obj.active = message.active);
         message.message !== undefined && (obj.message = message.message);
         return obj;
+    },
+
+    create(base?: DeepPartial<AnnotationOption>): AnnotationOption {
+        return AnnotationOption.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<AnnotationOption>): AnnotationOption {
@@ -133,37 +146,58 @@ export const SdkTemplateOption = {
 
     decode(input: _m0.Reader | Uint8Array, length?: number): SdkTemplateOption {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSdkTemplateOption();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.anonymous = reader.bool();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.ignore = reader.bool();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 24) {
+                        break;
+                    }
+
                     message.noArguments = reader.bool();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.experimental = AnnotationOption.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
+                    continue;
                 case 5:
+                    if (tag != 42) {
+                        break;
+                    }
+
                     message.deprecated = AnnotationOption.decode(
                         reader,
                         reader.uint32()
                     );
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -201,6 +235,10 @@ export const SdkTemplateOption = {
                 ? AnnotationOption.toJSON(message.deprecated)
                 : undefined);
         return obj;
+    },
+
+    create(base?: DeepPartial<SdkTemplateOption>): SdkTemplateOption {
+        return SdkTemplateOption.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<SdkTemplateOption>): SdkTemplateOption {

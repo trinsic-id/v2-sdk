@@ -208,25 +208,38 @@ export const AddFrameworkRequest = {
         length?: number
     ): AddFrameworkRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAddFrameworkRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.governanceFrameworkUri = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.name = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -251,6 +264,10 @@ export const AddFrameworkRequest = {
         message.description !== undefined &&
             (obj.description = message.description);
         return obj;
+    },
+
+    create(base?: DeepPartial<AddFrameworkRequest>): AddFrameworkRequest {
+        return AddFrameworkRequest.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<AddFrameworkRequest>): AddFrameworkRequest {
@@ -294,25 +311,38 @@ export const AddFrameworkResponse = {
         length?: number
     ): AddFrameworkResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAddFrameworkResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.governingAuthority = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.trustRegistry = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -337,6 +367,10 @@ export const AddFrameworkResponse = {
         message.trustRegistry !== undefined &&
             (obj.trustRegistry = message.trustRegistry);
         return obj;
+    },
+
+    create(base?: DeepPartial<AddFrameworkResponse>): AddFrameworkResponse {
+        return AddFrameworkResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -370,33 +404,40 @@ export const RemoveFrameworkRequest = {
         length?: number
     ): RemoveFrameworkRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRemoveFrameworkRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.id = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
 
     fromJSON(object: any): RemoveFrameworkRequest {
-        return {
-            id: isSet(object.id) ? String(object.id) : "",
-        };
+        return { id: isSet(object.id) ? String(object.id) : "" };
     },
 
     toJSON(message: RemoveFrameworkRequest): unknown {
         const obj: any = {};
         message.id !== undefined && (obj.id = message.id);
         return obj;
+    },
+
+    create(base?: DeepPartial<RemoveFrameworkRequest>): RemoveFrameworkRequest {
+        return RemoveFrameworkRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -425,16 +466,17 @@ export const RemoveFrameworkResponse = {
         length?: number
     ): RemoveFrameworkResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRemoveFrameworkResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -446,6 +488,12 @@ export const RemoveFrameworkResponse = {
     toJSON(_: RemoveFrameworkResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RemoveFrameworkResponse>
+    ): RemoveFrameworkResponse {
+        return RemoveFrameworkResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -482,22 +530,31 @@ export const SearchRegistryRequest = {
         length?: number
     ): SearchRegistryRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSearchRegistryRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.query = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -517,6 +574,10 @@ export const SearchRegistryRequest = {
         message.continuationToken !== undefined &&
             (obj.continuationToken = message.continuationToken);
         return obj;
+    },
+
+    create(base?: DeepPartial<SearchRegistryRequest>): SearchRegistryRequest {
+        return SearchRegistryRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -558,25 +619,38 @@ export const SearchRegistryResponse = {
         length?: number
     ): SearchRegistryResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseSearchRegistryResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.itemsJson = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 16) {
+                        break;
+                    }
+
                     message.hasMoreResults = reader.bool();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.continuationToken = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -601,6 +675,10 @@ export const SearchRegistryResponse = {
         message.continuationToken !== undefined &&
             (obj.continuationToken = message.continuationToken);
         return obj;
+    },
+
+    create(base?: DeepPartial<SearchRegistryResponse>): SearchRegistryResponse {
+        return SearchRegistryResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -650,25 +728,38 @@ export const GovernanceFramework = {
         length?: number
     ): GovernanceFramework {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGovernanceFramework();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.governanceFrameworkUri = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.trustRegistryUri = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.description = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -696,6 +787,10 @@ export const GovernanceFramework = {
         message.description !== undefined &&
             (obj.description = message.description);
         return obj;
+    },
+
+    create(base?: DeepPartial<GovernanceFramework>): GovernanceFramework {
+        return GovernanceFramework.fromPartial(base ?? {});
     },
 
     fromPartial(object: DeepPartial<GovernanceFramework>): GovernanceFramework {
@@ -756,41 +851,70 @@ export const RegisterMemberRequest = {
         length?: number
     ): RegisterMemberRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRegisterMemberRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 10:
+                    if (tag != 82) {
+                        break;
+                    }
+
                     message.schemaUri = reader.string();
-                    break;
+                    continue;
                 case 11:
+                    if (tag != 88) {
+                        break;
+                    }
+
                     message.validFromUtc = longToNumber(
                         reader.uint64() as Long
                     );
-                    break;
+                    continue;
                 case 12:
+                    if (tag != 96) {
+                        break;
+                    }
+
                     message.validUntilUtc = longToNumber(
                         reader.uint64() as Long
                     );
-                    break;
+                    continue;
                 case 30:
+                    if (tag != 242) {
+                        break;
+                    }
+
                     message.frameworkId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -830,6 +954,10 @@ export const RegisterMemberRequest = {
         return obj;
     },
 
+    create(base?: DeepPartial<RegisterMemberRequest>): RegisterMemberRequest {
+        return RegisterMemberRequest.fromPartial(base ?? {});
+    },
+
     fromPartial(
         object: DeepPartial<RegisterMemberRequest>
     ): RegisterMemberRequest {
@@ -862,16 +990,17 @@ export const RegisterMemberResponse = {
         length?: number
     ): RegisterMemberResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRegisterMemberResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -883,6 +1012,10 @@ export const RegisterMemberResponse = {
     toJSON(_: RegisterMemberResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(base?: DeepPartial<RegisterMemberResponse>): RegisterMemberResponse {
+        return RegisterMemberResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -931,31 +1064,52 @@ export const UnregisterMemberRequest = {
         length?: number
     ): UnregisterMemberRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUnregisterMemberRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 10:
+                    if (tag != 82) {
+                        break;
+                    }
+
                     message.schemaUri = reader.string();
-                    break;
+                    continue;
                 case 20:
+                    if (tag != 162) {
+                        break;
+                    }
+
                     message.frameworkId = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -983,6 +1137,12 @@ export const UnregisterMemberRequest = {
         message.frameworkId !== undefined &&
             (obj.frameworkId = message.frameworkId);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<UnregisterMemberRequest>
+    ): UnregisterMemberRequest {
+        return UnregisterMemberRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1015,16 +1175,17 @@ export const UnregisterMemberResponse = {
         length?: number
     ): UnregisterMemberResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseUnregisterMemberResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1036,6 +1197,12 @@ export const UnregisterMemberResponse = {
     toJSON(_: UnregisterMemberResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<UnregisterMemberResponse>
+    ): UnregisterMemberResponse {
+        return UnregisterMemberResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1072,25 +1239,38 @@ export const GetMembershipStatusRequest = {
         length?: number
     ): GetMembershipStatusRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetMembershipStatusRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.frameworkId = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.schemaUri = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1112,6 +1292,12 @@ export const GetMembershipStatusRequest = {
         message.didUri !== undefined && (obj.didUri = message.didUri);
         message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<GetMembershipStatusRequest>
+    ): GetMembershipStatusRequest {
+        return GetMembershipStatusRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1145,19 +1331,24 @@ export const GetMembershipStatusResponse = {
         length?: number
     ): GetMembershipStatusResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseGetMembershipStatusResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 8) {
+                        break;
+                    }
+
                     message.status = reader.int32() as any;
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -1175,6 +1366,12 @@ export const GetMembershipStatusResponse = {
         message.status !== undefined &&
             (obj.status = registrationStatusToJSON(message.status));
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<GetMembershipStatusResponse>
+    ): GetMembershipStatusResponse {
+        return GetMembershipStatusResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -1251,11 +1448,19 @@ export const TrustRegistryDefinition = {
 declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
-var globalThis: any = (() => {
-    if (typeof globalThis !== "undefined") return globalThis;
-    if (typeof self !== "undefined") return self;
-    if (typeof window !== "undefined") return window;
-    if (typeof global !== "undefined") return global;
+var tsProtoGlobalThis: any = (() => {
+    if (typeof globalThis !== "undefined") {
+        return globalThis;
+    }
+    if (typeof self !== "undefined") {
+        return self;
+    }
+    if (typeof window !== "undefined") {
+        return window;
+    }
+    if (typeof global !== "undefined") {
+        return global;
+    }
     throw "Unable to locate global object";
 })();
 
@@ -1280,7 +1485,7 @@ type DeepPartial<T> = T extends Builtin
 
 function longToNumber(long: Long): number {
     if (long.gt(Number.MAX_SAFE_INTEGER)) {
-        throw new globalThis.Error(
+        throw new tsProtoGlobalThis.Error(
             "Value is larger than Number.MAX_SAFE_INTEGER"
         );
     }

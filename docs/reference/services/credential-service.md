@@ -26,7 +26,7 @@ Issues a credential from a valid JSON-LD document. Issued credentials are not au
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [Issue Credential](../../../web/test/CredentialService.spec.ts) inside_block:issueCredential
+        [Issue Credential](../../../web/test/CredentialService.test.ts) inside_block:issueCredentialSample
         ```
         <!--/codeinclude-->
 
@@ -159,7 +159,7 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [Check Revocation Status](../../../web/test/CredentialTemplates.spec.ts) inside_block:checkCredentialStatus
+        [Check Revocation Status](../../../web/test/CredentialTemplates.test.ts) inside_block:checkCredentialStatus
         ```
         <!--/codeinclude-->
 
@@ -214,7 +214,7 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [Update Revocation Status](../../../web/test/CredentialTemplates.spec.ts) inside_block:updateCredentialStatus
+        [Update Revocation Status](../../../web/test/CredentialTemplates.test.ts) inside_block:updateCredentialStatus
         ```
         <!--/codeinclude-->
 

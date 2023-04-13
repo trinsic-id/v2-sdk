@@ -5,7 +5,7 @@ import {
     RegistrationStatus,
     SignInRequest,
     TrinsicService,
-} from "../node";
+} from "../src";
 import { v4 as uuid } from "uuid";
 import {
     getTestServerOptions,
@@ -20,7 +20,7 @@ describe("TrustRegistryService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        var response = await trinsic
+        const response = await trinsic
             .wallet()
             .createWallet({ ecosystemId: myEcosystemIdOrName() });
         trinsic.options.authToken = response.authToken;

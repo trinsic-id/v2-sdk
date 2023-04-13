@@ -112,28 +112,45 @@ export const AddRoleAssignmentRequest = {
         length?: number
     ): AddRoleAssignmentRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAddRoleAssignmentRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.role = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -156,6 +173,12 @@ export const AddRoleAssignmentRequest = {
         message.walletId !== undefined && (obj.walletId = message.walletId);
         message.didUri !== undefined && (obj.didUri = message.didUri);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<AddRoleAssignmentRequest>
+    ): AddRoleAssignmentRequest {
+        return AddRoleAssignmentRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -187,16 +210,17 @@ export const AddRoleAssignmentResponse = {
         length?: number
     ): AddRoleAssignmentResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseAddRoleAssignmentResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -208,6 +232,12 @@ export const AddRoleAssignmentResponse = {
     toJSON(_: AddRoleAssignmentResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<AddRoleAssignmentResponse>
+    ): AddRoleAssignmentResponse {
+        return AddRoleAssignmentResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -252,28 +282,45 @@ export const RemoveRoleAssignmentRequest = {
         length?: number
     ): RemoveRoleAssignmentRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRemoveRoleAssignmentRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.role = reader.string();
-                    break;
+                    continue;
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -296,6 +343,12 @@ export const RemoveRoleAssignmentRequest = {
         message.walletId !== undefined && (obj.walletId = message.walletId);
         message.didUri !== undefined && (obj.didUri = message.didUri);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RemoveRoleAssignmentRequest>
+    ): RemoveRoleAssignmentRequest {
+        return RemoveRoleAssignmentRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -327,16 +380,17 @@ export const RemoveRoleAssignmentResponse = {
         length?: number
     ): RemoveRoleAssignmentResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseRemoveRoleAssignmentResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -348,6 +402,12 @@ export const RemoveRoleAssignmentResponse = {
     toJSON(_: RemoveRoleAssignmentResponse): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<RemoveRoleAssignmentResponse>
+    ): RemoveRoleAssignmentResponse {
+        return RemoveRoleAssignmentResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -384,25 +444,38 @@ export const ListRoleAssignmentsRequest = {
         length?: number
     ): ListRoleAssignmentsRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseListRoleAssignmentsRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 2:
+                    if (tag != 18) {
+                        break;
+                    }
+
                     message.email = reader.string();
-                    break;
+                    continue;
                 case 3:
+                    if (tag != 26) {
+                        break;
+                    }
+
                     message.walletId = reader.string();
-                    break;
+                    continue;
                 case 4:
+                    if (tag != 34) {
+                        break;
+                    }
+
                     message.didUri = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -423,6 +496,12 @@ export const ListRoleAssignmentsRequest = {
         message.walletId !== undefined && (obj.walletId = message.walletId);
         message.didUri !== undefined && (obj.didUri = message.didUri);
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<ListRoleAssignmentsRequest>
+    ): ListRoleAssignmentsRequest {
+        return ListRoleAssignmentsRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -458,19 +537,24 @@ export const ListRoleAssignmentsResponse = {
         length?: number
     ): ListRoleAssignmentsResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseListRoleAssignmentsResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.roles!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -491,6 +575,12 @@ export const ListRoleAssignmentsResponse = {
             obj.roles = [];
         }
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<ListRoleAssignmentsResponse>
+    ): ListRoleAssignmentsResponse {
+        return ListRoleAssignmentsResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -519,16 +609,17 @@ export const ListAvailableRolesRequest = {
         length?: number
     ): ListAvailableRolesRequest {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseListAvailableRolesRequest();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -540,6 +631,12 @@ export const ListAvailableRolesRequest = {
     toJSON(_: ListAvailableRolesRequest): unknown {
         const obj: any = {};
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<ListAvailableRolesRequest>
+    ): ListAvailableRolesRequest {
+        return ListAvailableRolesRequest.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -572,19 +669,24 @@ export const ListAvailableRolesResponse = {
         length?: number
     ): ListAvailableRolesResponse {
         const reader =
-            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
         let end = length === undefined ? reader.len : reader.pos + length;
         const message = createBaseListAvailableRolesResponse();
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
+                    if (tag != 10) {
+                        break;
+                    }
+
                     message.roles!.push(reader.string());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
+                    continue;
             }
+            if ((tag & 7) == 4 || tag == 0) {
+                break;
+            }
+            reader.skipType(tag & 7);
         }
         return message;
     },
@@ -605,6 +707,12 @@ export const ListAvailableRolesResponse = {
             obj.roles = [];
         }
         return obj;
+    },
+
+    create(
+        base?: DeepPartial<ListAvailableRolesResponse>
+    ): ListAvailableRolesResponse {
+        return ListAvailableRolesResponse.fromPartial(base ?? {});
     },
 
     fromPartial(
@@ -632,7 +740,9 @@ export const AccessManagementDefinition = {
             requestStream: false,
             responseType: AddRoleAssignmentResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] },
+            },
         },
         /** Removes a role assignment from the account */
         removeRoleAssignment: {
@@ -641,7 +751,9 @@ export const AccessManagementDefinition = {
             requestStream: false,
             responseType: RemoveRoleAssignmentResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] },
+            },
         },
         /** List the role assignments for the given account */
         listRoleAssignments: {
@@ -650,7 +762,9 @@ export const AccessManagementDefinition = {
             requestStream: false,
             responseType: ListRoleAssignmentsResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] },
+            },
         },
         /** List the roles available in the ecosystem */
         listAvailableRoles: {
@@ -659,7 +773,14 @@ export const AccessManagementDefinition = {
             requestStream: false,
             responseType: ListAvailableRolesResponse,
             responseStream: false,
-            options: {},
+            options: {
+                _unknownFields: {
+                    480010: [
+                        new Uint8Array([4, 34, 2, 8, 1]),
+                        new Uint8Array([2, 16, 1]),
+                    ],
+                },
+            },
         },
     },
 } as const;

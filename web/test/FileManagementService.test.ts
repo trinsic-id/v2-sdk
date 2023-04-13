@@ -4,7 +4,7 @@ import {
     ListFilesRequest,
     DeleteFileRequest,
     TrinsicService,
-} from "../node";
+} from "../src";
 
 import {
     getTestServerOptions,
@@ -17,7 +17,7 @@ describe("FileManagementService Unit Tests", () => {
 
     it("end-to-end test", async () => {
         let trinsic = new TrinsicService(getTestServerOptions());
-        var response = await trinsic
+        const response = await trinsic
             .wallet()
             .createWallet({ ecosystemId: myEcosystemIdOrName() });
         trinsic.options.authToken = response.authToken;

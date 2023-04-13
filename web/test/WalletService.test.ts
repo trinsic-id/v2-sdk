@@ -1,19 +1,17 @@
 import {
     CreateCredentialTemplateRequest,
     CreateProofRequest,
-    DeleteItemRequest,
     FieldType,
-    GetItemRequest,
     InsertItemRequest,
-    IssueFromTemplateRequest,
     SearchRequest,
     TemplateField,
     TrinsicService,
-} from "../node";
-import {
-    getVaccineCertFrameJSON,
-    getVaccineCertUnsignedJSON,
-} from "./TestData";
+} from "../src";
+
+// @ts-ignore
+import vaccineCertFrame from "./data/vaccination-certificate-frame.json";
+// @ts-ignore
+import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
 
 import {
     getTestServerOptions,
@@ -21,7 +19,6 @@ import {
     setTestTimeout,
 } from "./env";
 import { v4 as uuid } from "uuid";
-import exp from "constants";
 
 const options = getTestServerOptions();
 const allison = getTestServerOptions();
@@ -68,8 +65,9 @@ describe("WalletService Unit Tests", () => {
     it("Demo: create wallet, set profile, search records, issue credential", async () => {
         trinsic.options = clinic;
         let issueResponse = await trinsic.credential().issue({
-            documentJson: getVaccineCertUnsignedJSON(),
+            documentJson: JSON.stringify(vaccineCertUnsigned),
         });
+        expect(issueResponse).not.toBeNull();
 
         trinsic.options = allison;
         // insertItemWallet() {
@@ -113,7 +111,7 @@ describe("WalletService Unit Tests", () => {
         let proof = await trinsic.credential().createProof(
             CreateProofRequest.fromPartial({
                 itemId: insertItemResponse.itemId,
-                revealDocumentJson: getVaccineCertFrameJSON(),
+                revealDocumentJson: JSON.stringify(vaccineCertFrame),
             })
         );
         let selectiveProof = await trinsic.credential().createProof(
@@ -180,9 +178,9 @@ describe("WalletService Unit Tests", () => {
         let template = await trinsic.template().create(templateRequest);
 
         expect(template).not.toBeNull();
-        expect(template.data).not.toBeNull();
-        expect(template.data!.id).not.toBeNull();
-        expect(template.data!.schemaUri).not.toBeNull();
+        expect(template!.data).not.toBeNull();
+        expect(template!.data!.id).not.toBeNull();
+        expect(template!.data!.schemaUri).not.toBeNull();
 
         // issue credential from this template
         let values = JSON.stringify({
@@ -191,12 +189,10 @@ describe("WalletService Unit Tests", () => {
             age: 42,
         });
 
-        let issueResponse = await trinsic.credential().issueFromTemplate(
-            IssueFromTemplateRequest.fromPartial({
-                templateId: template.data!.id,
-                valuesJson: values,
-            })
-        );
+        let issueResponse = await trinsic.credential().issueFromTemplate({
+            templateId: template!.data!.id,
+            valuesJson: values,
+        });
         let jsonDocument = JSON.parse(issueResponse.documentJson!);
 
         expect(jsonDocument).not.toBeNull();
