@@ -13,7 +13,7 @@ import {
     TrinsicService,
     VerifyProofRequest,
 } from "../src";
-import {myEcosystemIdOrName} from "./env";
+import { myEcosystemIdOrName } from "./env";
 
 export function createRequiredTestObjects() {
     // defineTemplate() {
@@ -59,8 +59,12 @@ export async function verifyCredential(
     trinsic: TrinsicService,
     templateCertFrame: string
 ): Promise<boolean> {
-    const allison = await trinsic.wallet().createWallet({ecosystemId: myEcosystemIdOrName()});
-    const airline = await trinsic.wallet().createWallet({ecosystemId: myEcosystemIdOrName()});
+    const allison = await trinsic
+        .wallet()
+        .createWallet({ ecosystemId: myEcosystemIdOrName() });
+    const airline = await trinsic
+        .wallet()
+        .createWallet({ ecosystemId: myEcosystemIdOrName() });
 
     trinsic.options.authToken = airline.authToken;
 
@@ -151,9 +155,11 @@ export async function searchTemplate(trinsic: TrinsicService) {
 
 export async function getTemplate(trinsic: TrinsicService) {
     // getCredentialTemplate() {
-    let getTemplateResponse = await trinsic.template().get(GetCredentialTemplateRequest.fromPartial({
-        id: "id"
-    }));
+    let getTemplateResponse = await trinsic.template().get(
+        GetCredentialTemplateRequest.fromPartial({
+            id: "id",
+        })
+    );
     // }
     return getTemplateResponse;
 }

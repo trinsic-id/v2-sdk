@@ -5,7 +5,11 @@ import {
     TemplateField,
     TrinsicService,
 } from "../browser";
-import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
+import {
+    getTestServerOptions,
+    myEcosystemIdOrName,
+    setTestTimeout,
+} from "./env";
 import { v4 as uuid } from "uuid";
 
 let options = getTestServerOptions();
@@ -16,7 +20,9 @@ describe("wallet service tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        var response = await trinsic
+            .wallet()
+            .createWallet({ ecosystemId: myEcosystemIdOrName() });
         trinsic.options.authToken = response.authToken;
     });
 
@@ -26,9 +32,7 @@ describe("wallet service tests", () => {
     });
 
     it("can create new ecosystem", async () => {
-        const response = await trinsic
-            .provider()
-            .createEcosystem({});
+        const response = await trinsic.provider().createEcosystem({});
 
         expect(response.ecosystem).not.toBeNull();
         expect(response.profile).not.toBeNull();

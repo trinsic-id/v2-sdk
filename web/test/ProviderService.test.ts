@@ -9,7 +9,11 @@ import {
     UpgradeDidRequest,
 } from "../node";
 
-import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
+import {
+    getTestServerOptions,
+    myEcosystemIdOrName,
+    setTestTimeout,
+} from "./env";
 
 const options = getTestServerOptions();
 
@@ -17,7 +21,9 @@ describe("ProviderService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         let trinsic = new TrinsicService(options);
-        var response = await trinsic.wallet().createWallet({ ecosystemId: myEcosystemIdOrName()});
+        var response = await trinsic
+            .wallet()
+            .createWallet({ ecosystemId: myEcosystemIdOrName() });
         trinsic.options.authToken = response.authToken;
     });
 
