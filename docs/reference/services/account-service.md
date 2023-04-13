@@ -46,19 +46,6 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         ```
         <!--/codeinclude-->
 
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [LoginRequest](../../../go/services/account_service_test.go) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.account.v1.Account.Login") }}
 
@@ -101,19 +88,6 @@ Our SDK will take care of hashing the confirmation code for you.
         ```
         <!--/codeinclude-->
 
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [LoginConfirm](../../../go/services/account_service_test.go) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [LoginConfirm](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.account.v1.Account.LoginConfirm") }}
 
@@ -148,19 +122,6 @@ Returns the account information (name, email address, phone number, etc.) used t
         ```
         <!--/codeinclude-->
 
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:getInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:getInfo
-        ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.account.v1.Account.Info") }}
 
