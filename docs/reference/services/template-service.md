@@ -78,7 +78,7 @@ In order to leave a property unchanged (for example, if you wish to change `desc
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [UpdateTemplate](../../../web/test/CredentialTemplates.spec.ts) inside_block:updateTemplate
+        [UpdateTemplate](../../../web/test/CredentialTemplates.test.ts) inside_block:updateTemplate
         ```
         <!--/codeinclude-->
 
