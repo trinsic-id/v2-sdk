@@ -5,8 +5,7 @@ import {
     CompatServiceDefinition as ClientServiceDefinition,
 } from "nice-grpc-web";
 import { getSdkVersion } from "./Version";
-import { IPlatformProvider } from "./providers";
-import { BrowserProvider } from "./BrowserProvider";
+import {BrowserProvider, IPlatformProvider} from "./providers";
 
 export default abstract class ServiceBase {
     static platform: IPlatformProvider = new BrowserProvider();

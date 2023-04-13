@@ -18,7 +18,7 @@ export interface IPlatformProvider {
 
 function isNode(): boolean {
     // https://stackoverflow.com/a/38815760
-    return (typeof global !== 'undefined');
+    return typeof process === 'object' && process + '' === '[object process]';
 }
 
 export class BrowserProvider implements IPlatformProvider {
