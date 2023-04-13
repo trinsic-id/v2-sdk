@@ -4,6 +4,7 @@ import {
     TrinsicService,
     CreateCredentialTemplateRequest,
     UpdateCredentialTemplateRequest,
+    UpdateStatusRequest,
     FieldType,
 } from "../src";
 // @ts-ignore
