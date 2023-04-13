@@ -1,7 +1,16 @@
-import {TrinsicService, CreateCredentialTemplateRequest, UpdateCredentialTemplateRequest, FieldType} from "../node";
+import {
+    TrinsicService,
+    CreateCredentialTemplateRequest,
+    UpdateCredentialTemplateRequest,
+    FieldType,
+} from "../node";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import {getTestServerOptions, myEcosystemIdOrName, setTestTimeout} from "./env";
+import {
+    getTestServerOptions,
+    myEcosystemIdOrName,
+    setTestTimeout,
+} from "./env";
 import {
     createCredentialTemplateTest,
     createRequiredTestObjects,
@@ -62,20 +71,31 @@ describe("Demo: Credential Templates", () => {
             description: "A credential for Trinsic's SDK samples",
             allowAdditionalFields: false,
             fields: {
-                firstName: { title: "First Name", description: "Given name of holder" },
-                lastName: { title: "Last Name", description: "Surname of holder", optional: true },
-                age: { title: "Age", description: "Age in years of holder", type: FieldType.NUMBER }
+                firstName: {
+                    title: "First Name",
+                    description: "Given name of holder",
+                },
+                lastName: {
+                    title: "Last Name",
+                    description: "Surname of holder",
+                    optional: true,
+                },
+                age: {
+                    title: "Age",
+                    description: "Age in years of holder",
+                    type: FieldType.NUMBER,
+                },
             },
             fieldOrdering: {
                 firstName: { order: 0, section: "Name" },
                 lastName: { order: 1, section: "Name" },
-                age: { order: 2, section: "Miscellaneous" }
+                age: { order: 2, section: "Miscellaneous" },
             },
             appleWalletOptions: {
                 primaryField: "firstName",
                 secondaryFields: ["lastName"],
-                auxiliaryFields: ["age"]
-            }
+                auxiliaryFields: ["age"],
+            },
         };
 
         const createResponse = await trinsic.template().create(createRequest);
@@ -93,17 +113,17 @@ describe("Demo: Credential Templates", () => {
             description: "New Description",
             fields: {
                 firstName: { title: "New title for firstName" },
-                lastName: { description: "New description for lastName" }
+                lastName: { description: "New description for lastName" },
             },
             fieldOrdering: {
                 age: { order: 0, section: "Misc" },
                 firstName: { order: 1, section: "Full Name" },
-                lastName: { order: 2, section: "Full Name" }
+                lastName: { order: 2, section: "Full Name" },
             },
             appleWalletOptions: {
                 primaryField: "age",
-                secondaryFields: ["firstName", "lastName"]
-            }
+                secondaryFields: ["firstName", "lastName"],
+            },
         };
 
         const updateResponse = await trinsic.template().update(updateRequest);

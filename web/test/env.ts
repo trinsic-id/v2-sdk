@@ -1,4 +1,4 @@
-import {TrinsicOptions} from "../src";
+import { TrinsicOptions } from "../src";
 
 export function getTestServerOptions(): TrinsicOptions {
     return {

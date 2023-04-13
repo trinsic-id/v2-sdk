@@ -7,7 +7,7 @@ import {
 } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import {getTestServerOptions, setTestTimeout} from "./env";
+import { getTestServerOptions, setTestTimeout } from "./env";
 import {
     createCredentialTemplateTest,
     createRequiredTestObjects,
