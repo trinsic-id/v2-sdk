@@ -17,18 +17,12 @@ export interface IPlatformProvider {
 }
 
 function isNode(): boolean {
-    let isNode = false;
-    if (typeof process === 'object') {
-        if (typeof process.versions === 'object') {
-            if (typeof process.versions.node !== 'undefined') {
-                isNode = true;
-            }
-        }
-    }
-    return isNode;
+    // https://stackoverflow.com/a/38815760
+    return (typeof global !== 'undefined');
 }
 
 export class BrowserProvider implements IPlatformProvider {
+    private language?: string = undefined;
     createGrpcClient<ClientService extends CompatServiceDefinition>(
         definition: ClientService,
         address: string
@@ -44,6 +38,13 @@ export class BrowserProvider implements IPlatformProvider {
     }
 
     metadataLanguage(): string {
-        return "typescript";
+        if (this.language === undefined) {
+            if (isNode()) {
+                this.language = "typescript-node";
+            } else {
+                this.language = "typescript-web"
+            }
+        }
+        return this.language;
     }
 }
