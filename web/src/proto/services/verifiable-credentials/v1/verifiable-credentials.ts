@@ -137,12 +137,14 @@ export interface ValidationMessage {
 
 /** Request to send a document to another user's wallet */
 export interface SendRequest {
-  /** Email address of user to send item to */
+  /** Email address of user to whom you'll send the item */
   email?: string | undefined;
   /** Wallet ID of the recipient within the ecosystem */
   walletId?: string | undefined;
   /** DID URI of the recipient */
   didUri?: string | undefined;
+  /** SMS of user to whom you'll send the item */
+  phoneNumber?: string | undefined;
   /** Send email notification that credential has been sent to a wallet */
   sendNotification?: boolean;
   /** JSON document to send to recipient */
@@ -1010,6 +1012,7 @@ function createBaseSendRequest(): SendRequest {
     email: undefined,
     walletId: undefined,
     didUri: undefined,
+    phoneNumber: undefined,
     sendNotification: false,
     documentJson: "",
   };
@@ -1028,6 +1031,9 @@ export const SendRequest = {
     }
     if (message.didUri !== undefined) {
       writer.uint32(50).string(message.didUri);
+    }
+    if (message.phoneNumber !== undefined) {
+      writer.uint32(58).string(message.phoneNumber);
     }
     if (message.sendNotification === true) {
       writer.uint32(32).bool(message.sendNotification);
@@ -1054,6 +1060,9 @@ export const SendRequest = {
         case 6:
           message.didUri = reader.string();
           break;
+        case 7:
+          message.phoneNumber = reader.string();
+          break;
         case 4:
           message.sendNotification = reader.bool();
           break;
@@ -1073,6 +1082,9 @@ export const SendRequest = {
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
       didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      phoneNumber: isSet(object.phoneNumber)
+        ? String(object.phoneNumber)
+        : undefined,
       sendNotification: isSet(object.sendNotification)
         ? Boolean(object.sendNotification)
         : false,
@@ -1087,6 +1099,8 @@ export const SendRequest = {
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
     message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.phoneNumber !== undefined &&
+      (obj.phoneNumber = message.phoneNumber);
     message.sendNotification !== undefined &&
       (obj.sendNotification = message.sendNotification);
     message.documentJson !== undefined &&
@@ -1099,6 +1113,7 @@ export const SendRequest = {
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
     message.didUri = object.didUri ?? undefined;
+    message.phoneNumber = object.phoneNumber ?? undefined;
     message.sendNotification = object.sendNotification ?? false;
     message.documentJson = object.documentJson ?? "";
     return message;

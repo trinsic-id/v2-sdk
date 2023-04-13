@@ -62,6 +62,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     EMAIL(1),
     WALLET_ID(5),
     DID_URI(6),
+    PHONE_NUMBER(7),
     DELIVERYMETHOD_NOT_SET(0);
     private final int value;
 
@@ -86,6 +87,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
           return WALLET_ID;
         case 6:
           return DID_URI;
+        case 7:
+          return PHONE_NUMBER;
         case 0:
           return DELIVERYMETHOD_NOT_SET;
         default:
@@ -107,7 +110,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email address of user to send item to
+   * Email address of user to whom you'll send the item
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -121,7 +124,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email address of user to send item to
+   * Email address of user to whom you'll send the item
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -148,7 +151,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email address of user to send item to
+   * Email address of user to whom you'll send the item
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -312,6 +315,76 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
+  public static final int PHONE_NUMBER_FIELD_NUMBER = 7;
+  /**
+   *
+   *
+   * <pre>
+   * SMS of user to whom you'll send the item
+   * </pre>
+   *
+   * <code>string phone_number = 7;</code>
+   *
+   * @return Whether the phoneNumber field is set.
+   */
+  public boolean hasPhoneNumber() {
+    return deliveryMethodCase_ == 7;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * SMS of user to whom you'll send the item
+   * </pre>
+   *
+   * <code>string phone_number = 7;</code>
+   *
+   * @return The phoneNumber.
+   */
+  public java.lang.String getPhoneNumber() {
+    java.lang.Object ref = "";
+    if (deliveryMethodCase_ == 7) {
+      ref = deliveryMethod_;
+    }
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (deliveryMethodCase_ == 7) {
+        deliveryMethod_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * SMS of user to whom you'll send the item
+   * </pre>
+   *
+   * <code>string phone_number = 7;</code>
+   *
+   * @return The bytes for phoneNumber.
+   */
+  public com.google.protobuf.ByteString getPhoneNumberBytes() {
+    java.lang.Object ref = "";
+    if (deliveryMethodCase_ == 7) {
+      ref = deliveryMethod_;
+    }
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      if (deliveryMethodCase_ == 7) {
+        deliveryMethod_ = b;
+      }
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   public static final int SEND_NOTIFICATION_FIELD_NUMBER = 4;
   private boolean sendNotification_;
   /**
@@ -405,6 +478,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (deliveryMethodCase_ == 6) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, deliveryMethod_);
     }
+    if (deliveryMethodCase_ == 7) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, deliveryMethod_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 100, documentJson_);
     }
@@ -428,6 +504,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
     if (deliveryMethodCase_ == 6) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, deliveryMethod_);
+    }
+    if (deliveryMethodCase_ == 7) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, deliveryMethod_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(100, documentJson_);
@@ -461,6 +540,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       case 6:
         if (!getDidUri().equals(other.getDidUri())) return false;
         break;
+      case 7:
+        if (!getPhoneNumber().equals(other.getPhoneNumber())) return false;
+        break;
       case 0:
       default:
     }
@@ -491,6 +573,10 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       case 6:
         hash = (37 * hash) + DID_URI_FIELD_NUMBER;
         hash = (53 * hash) + getDidUri().hashCode();
+        break;
+      case 7:
+        hash = (37 * hash) + PHONE_NUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getPhoneNumber().hashCode();
         break;
       case 0:
       default:
@@ -676,6 +762,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       if (deliveryMethodCase_ == 6) {
         result.deliveryMethod_ = deliveryMethod_;
       }
+      if (deliveryMethodCase_ == 7) {
+        result.deliveryMethod_ = deliveryMethod_;
+      }
       result.sendNotification_ = sendNotification_;
       result.documentJson_ = documentJson_;
       result.deliveryMethodCase_ = deliveryMethodCase_;
@@ -758,6 +847,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
             onChanged();
             break;
           }
+        case PHONE_NUMBER:
+          {
+            deliveryMethodCase_ = 7;
+            deliveryMethod_ = other.deliveryMethod_;
+            onChanged();
+            break;
+          }
         case DELIVERYMETHOD_NOT_SET:
           {
             break;
@@ -816,6 +912,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
                 deliveryMethod_ = s;
                 break;
               } // case 50
+            case 58:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                deliveryMethodCase_ = 7;
+                deliveryMethod_ = s;
+                break;
+              } // case 58
             case 802:
               {
                 documentJson_ = input.readStringRequireUtf8();
@@ -857,7 +960,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of user to send item to
+     * Email address of user to whom you'll send the item
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -872,7 +975,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of user to send item to
+     * Email address of user to whom you'll send the item
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -900,7 +1003,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of user to send item to
+     * Email address of user to whom you'll send the item
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -928,7 +1031,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of user to send item to
+     * Email address of user to whom you'll send the item
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -949,7 +1052,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of user to send item to
+     * Email address of user to whom you'll send the item
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -968,7 +1071,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of user to send item to
+     * Email address of user to whom you'll send the item
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -1250,6 +1353,140 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
       checkByteStringIsUtf8(value);
       deliveryMethodCase_ = 6;
+      deliveryMethod_ = value;
+      onChanged();
+      return this;
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * SMS of user to whom you'll send the item
+     * </pre>
+     *
+     * <code>string phone_number = 7;</code>
+     *
+     * @return Whether the phoneNumber field is set.
+     */
+    @java.lang.Override
+    public boolean hasPhoneNumber() {
+      return deliveryMethodCase_ == 7;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * SMS of user to whom you'll send the item
+     * </pre>
+     *
+     * <code>string phone_number = 7;</code>
+     *
+     * @return The phoneNumber.
+     */
+    @java.lang.Override
+    public java.lang.String getPhoneNumber() {
+      java.lang.Object ref = "";
+      if (deliveryMethodCase_ == 7) {
+        ref = deliveryMethod_;
+      }
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (deliveryMethodCase_ == 7) {
+          deliveryMethod_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * SMS of user to whom you'll send the item
+     * </pre>
+     *
+     * <code>string phone_number = 7;</code>
+     *
+     * @return The bytes for phoneNumber.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPhoneNumberBytes() {
+      java.lang.Object ref = "";
+      if (deliveryMethodCase_ == 7) {
+        ref = deliveryMethod_;
+      }
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        if (deliveryMethodCase_ == 7) {
+          deliveryMethod_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * SMS of user to whom you'll send the item
+     * </pre>
+     *
+     * <code>string phone_number = 7;</code>
+     *
+     * @param value The phoneNumber to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPhoneNumber(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      deliveryMethodCase_ = 7;
+      deliveryMethod_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * SMS of user to whom you'll send the item
+     * </pre>
+     *
+     * <code>string phone_number = 7;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearPhoneNumber() {
+      if (deliveryMethodCase_ == 7) {
+        deliveryMethodCase_ = 0;
+        deliveryMethod_ = null;
+        onChanged();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * SMS of user to whom you'll send the item
+     * </pre>
+     *
+     * <code>string phone_number = 7;</code>
+     *
+     * @param value The bytes for phoneNumber to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPhoneNumberBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      deliveryMethodCase_ = 7;
       deliveryMethod_ = value;
       onChanged();
       return this;

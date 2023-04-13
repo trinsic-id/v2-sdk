@@ -923,7 +923,7 @@ class ValidationMessage extends $pb.GeneratedMessage {
   $core.List<$core.String> get messages => $_getList(1);
 }
 
-enum SendRequest_DeliveryMethod { email, walletId, didUri, notSet }
+enum SendRequest_DeliveryMethod { email, walletId, didUri, phoneNumber, notSet }
 
 class SendRequest extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, SendRequest_DeliveryMethod>
@@ -931,6 +931,7 @@ class SendRequest extends $pb.GeneratedMessage {
     1: SendRequest_DeliveryMethod.email,
     5: SendRequest_DeliveryMethod.walletId,
     6: SendRequest_DeliveryMethod.didUri,
+    7: SendRequest_DeliveryMethod.phoneNumber,
     0: SendRequest_DeliveryMethod.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -942,7 +943,7 @@ class SendRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
-    ..oo(0, [1, 5, 6])
+    ..oo(0, [1, 5, 6, 7])
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -964,6 +965,11 @@ class SendRequest extends $pb.GeneratedMessage {
             ? ''
             : 'didUri')
     ..aOS(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'phoneNumber')
+    ..aOS(
         100,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -976,6 +982,7 @@ class SendRequest extends $pb.GeneratedMessage {
     $core.bool? sendNotification,
     $core.String? walletId,
     $core.String? didUri,
+    $core.String? phoneNumber,
     $core.String? documentJson,
   }) {
     final _result = create();
@@ -990,6 +997,9 @@ class SendRequest extends $pb.GeneratedMessage {
     }
     if (didUri != null) {
       _result.didUri = didUri;
+    }
+    if (phoneNumber != null) {
+      _result.phoneNumber = phoneNumber;
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
@@ -1074,15 +1084,27 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearDidUri() => clearField(6);
 
-  @$pb.TagNumber(100)
-  $core.String get documentJson => $_getSZ(4);
-  @$pb.TagNumber(100)
-  set documentJson($core.String v) {
+  @$pb.TagNumber(7)
+  $core.String get phoneNumber => $_getSZ(4);
+  @$pb.TagNumber(7)
+  set phoneNumber($core.String v) {
     $_setString(4, v);
   }
 
+  @$pb.TagNumber(7)
+  $core.bool hasPhoneNumber() => $_has(4);
+  @$pb.TagNumber(7)
+  void clearPhoneNumber() => clearField(7);
+
   @$pb.TagNumber(100)
-  $core.bool hasDocumentJson() => $_has(4);
+  $core.String get documentJson => $_getSZ(5);
+  @$pb.TagNumber(100)
+  set documentJson($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(100)
+  $core.bool hasDocumentJson() => $_has(5);
   @$pb.TagNumber(100)
   void clearDocumentJson() => clearField(100);
 }
