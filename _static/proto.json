@@ -3684,6 +3684,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.SendRequest"
     },
+    "services.verifiablecredentials.v1.SendRequest.phone_number": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SendRequest"
+    },
     "services.verifiablecredentials.v1.SendRequest.send_notification": {
       "type": "field",
       "collection": "fields",
@@ -4966,6 +4972,7 @@
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.wallet_id",
         "services.verifiablecredentials.v1.SendRequest.did_uri",
+        "services.verifiablecredentials.v1.SendRequest.phone_number",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json",
         "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id",
@@ -7443,6 +7450,7 @@
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.wallet_id",
         "services.verifiablecredentials.v1.SendRequest.did_uri",
+        "services.verifiablecredentials.v1.SendRequest.phone_number",
         "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json"
       ],
@@ -10401,7 +10409,15 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of user to send item to"
+      "description": "Email address of user to whom you'll send the item"
+    },
+    "services.verifiablecredentials.v1.SendRequest.phone_number": {
+      "name": "phone_number",
+      "full_name": "services.verifiablecredentials.v1.SendRequest.phone_number",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "SMS of user to whom you'll send the item"
     },
     "services.verifiablecredentials.v1.SendRequest.send_notification": {
       "name": "send_notification",
