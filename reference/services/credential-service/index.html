@@ -2274,7 +2274,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">issue</span><span class="p">(</span><span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialJSON</span><span class="w"> </span><span class="p">}));</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">issue</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialJSON</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2551,7 +2551,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertItemResponse.itemId</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">revealDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">getVaccineCertFrameJSON</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">revealDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">(</span><span class="nx">vaccineCertFrame</span><span class="p">),</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="p">);</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">selectiveProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span>

@@ -2189,7 +2189,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">createRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCredentialTemplateRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;An Example Credential&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="sb">`An Example Credential-</span><span class="si">${</span><span class="nx">uuid</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Example Credential&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A credential for Trinsic&#39;s SDK samples&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">allowAdditionalFields</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
@@ -2394,96 +2394,26 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">CheckStatusRequest</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">CreateCredentialTemplateResponse</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">TrinsicService</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">UpdateCredentialTemplateRequest</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">UpdateStatusRequest</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../src&quot;</span><span class="p">;</span>
-<span class="c1">// @ts-ignore</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">templateCertFrame</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./data/credential-template-frame.json&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getTestServerOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">setTestTimeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./env&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">createCredentialTemplateTest</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">createRequiredTestObjects</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">issueCredentialFromTemplate</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">verifyCredential</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./CredentialTemplateShared&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">updateRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">UpdateCredentialTemplateRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">templateId</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New Title&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New Description&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New title for firstName&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New description for lastName&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">fieldOrdering</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span><span class="w"> </span><span class="nx">section</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Misc&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">section</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Full Name&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span><span class="w"> </span><span class="nx">section</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Full Name&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">appleWalletOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">primaryField</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;age&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">secondaryFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;lastName&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">};</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nameField</span><span class="p">,</span><span class="w"> </span><span class="nx">numberOfBags</span><span class="p">,</span><span class="w"> </span><span class="nx">dateOfBirth</span><span class="p">,</span><span class="w"> </span><span class="nx">isVaccinated</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="nx">createRequiredTestObjects</span><span class="p">();</span>
-
-<span class="kd">let</span><span class="w"> </span><span class="nx">trinsic</span><span class="o">:</span><span class="w"> </span><span class="kt">TrinsicService</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">createdTemplate</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCredentialTemplateResponse</span><span class="p">;</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Demo: Credential Templates&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">setTestTimeout</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">beforeAll</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">(</span><span class="nx">getTestServerOptions</span><span class="p">());</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">createEcosystem</span><span class="p">({});</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should run create and delete credential templates&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">createdTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">createCredentialTemplateTest</span><span class="p">(</span><span class="nx">trinsic</span><span class="p">);</span>
-
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">fieldsMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createdTemplate</span><span class="p">.</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">fields</span><span class="o">!</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">fieldsMap</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">nameField</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">fieldsMap</span><span class="p">[</span><span class="s2">&quot;numberOfBags&quot;</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">numberOfBags</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">fieldsMap</span><span class="p">[</span><span class="s2">&quot;dateOfBirth&quot;</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">dateOfBirth</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">fieldsMap</span><span class="p">[</span><span class="s2">&quot;vaccinated&quot;</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">isVaccinated</span><span class="p">);</span>
-
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">deletedTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
-<span class="w">            </span><span class="p">.</span><span class="nx">template</span><span class="p">()</span>
-<span class="w">            </span><span class="p">.</span><span class="ow">delete</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">createdTemplate.data?.id</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">deletedTemplate</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;Issue Credential From Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span>
-<span class="w">            </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">issueCredentialFromTemplate</span><span class="p">(</span><span class="nx">trinsic</span><span class="p">)).</span><span class="nx">documentJson</span><span class="o">!</span>
-<span class="w">        </span><span class="p">);</span>
-
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">issuer</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeNull</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeNull</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">credentialSubject</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">credentialSubject</span><span class="o">?</span><span class="p">.</span><span class="nx">numberOfBags</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span>
-<span class="w">            </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">credentialSubject</span><span class="o">?</span><span class="p">.</span><span class="nx">dateOfBirth</span><span class="p">).</span><span class="nx">toISOString</span><span class="p">()</span>
-<span class="w">        </span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;1/1/2000&quot;</span><span class="p">).</span><span class="nx">toISOString</span><span class="p">());</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">credentialSubject</span><span class="o">?</span><span class="p">.</span><span class="nx">vaccinated</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;Verify Credential Issued from Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">verifyCredential</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">trinsic</span><span class="p">,</span>
-<span class="w">            </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">templateCertFrame</span><span class="p">)</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;Update Revocation Status for Template&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// checkCredentialStatus() {</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nx">checkStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
-<span class="w">                </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">CheckStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span>
-<span class="w">            </span><span class="c1">// }</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// This is okay as an example</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// updateCredentialStatus() {</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nx">updateStatusResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
-<span class="w">                </span><span class="p">.</span><span class="nx">credential</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="nx">updateStatus</span><span class="p">(</span><span class="nx">UpdateStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span>
-<span class="w">            </span><span class="c1">// }</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// This is okay as an example</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">updateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">template</span><span class="p">().</span><span class="nx">update</span><span class="p">(</span><span class="nx">updateRequest</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
