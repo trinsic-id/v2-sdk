@@ -3,7 +3,15 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.PublicEcosystemInformation} */
+/**
+ *
+ *
+ * <pre>
+ * DEPRECATED, will be removed April 1st 2023
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.PublicEcosystemInformation}
+ */
 @java.lang.Deprecated
 public final class PublicEcosystemInformation extends com.google.protobuf.GeneratedMessageV3
     implements
@@ -461,7 +469,15 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.PublicEcosystemInformation} */
+  /**
+   *
+   *
+   * <pre>
+   * DEPRECATED, will be removed April 1st 2023
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.PublicEcosystemInformation}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.PublicEcosystemInformation)

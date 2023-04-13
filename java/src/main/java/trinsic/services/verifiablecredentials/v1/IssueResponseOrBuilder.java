@@ -3,6 +3,7 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
+@java.lang.Deprecated
 public interface IssueResponseOrBuilder
     extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.IssueResponse)

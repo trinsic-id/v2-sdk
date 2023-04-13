@@ -264,7 +264,7 @@ class TemplateData(betterproto.Message):
     """URI pointing to template JSON schema document"""
 
     context_uri: str = betterproto.string_field(7)
-    """URI pointing to template JSON-LD context document"""
+    """DEPRECATED, will be removed April 1st 2023"""
 
     ecosystem_id: str = betterproto.string_field(8)
     """ID of ecosystem in which template resides"""

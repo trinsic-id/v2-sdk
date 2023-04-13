@@ -97,6 +97,7 @@ message AccountInfoResponse {
   // The account details associated with
   // the calling request context
   AccountDetails details = 1;
+  // DEPRECATED, will be removed April 1st 2023
   // Use `ecosystem_id` instead
   repeated AccountEcosystem ecosystems = 2 [deprecated = true];
   // The wallet ID associated with this account

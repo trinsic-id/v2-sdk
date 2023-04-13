@@ -5248,7 +5248,7 @@
       "full_name": "services.provider.v1.Provider.AddWebhook",
       "input_type": "services.provider.v1.AddWebhookRequest",
       "output_type": "services.provider.v1.AddWebhookResponse",
-      "description": "Add a webhook endpoint to the ecosystem",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed April 1st 2023",
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
@@ -5268,7 +5268,7 @@
       "full_name": "services.provider.v1.Provider.DeleteWebhook",
       "input_type": "services.provider.v1.DeleteWebhookRequest",
       "output_type": "services.provider.v1.DeleteWebhookResponse",
-      "description": "Delete a webhook endpoint from the ecosystem",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed April 1st 2023",
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
@@ -5278,7 +5278,10 @@
       "full_name": "services.provider.v1.Provider.EcosystemInfo",
       "input_type": "services.provider.v1.EcosystemInfoRequest",
       "output_type": "services.provider.v1.EcosystemInfoResponse",
-      "description": "Get ecosystem information"
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.GetOberonKey": {
       "name": "GetOberonKey",
@@ -5295,7 +5298,7 @@
       "full_name": "services.provider.v1.Provider.GetPublicEcosystemInfo",
       "input_type": "services.provider.v1.GetPublicEcosystemInfoRequest",
       "output_type": "services.provider.v1.GetPublicEcosystemInfoResponse",
-      "description": "Get public ecosystem information about *any* ecosystem",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
@@ -5305,7 +5308,7 @@
       "full_name": "services.provider.v1.Provider.InvitationStatus",
       "input_type": "services.provider.v1.InvitationStatusRequest",
       "output_type": "services.provider.v1.InvitationStatusResponse",
-      "description": "Check the status of an invitation",
+      "description": "DEPRECATED, will be removed April 1st 2023",
       "options": {
         "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
@@ -5316,7 +5319,7 @@
       "full_name": "services.provider.v1.Provider.Invite",
       "input_type": "services.provider.v1.InviteRequest",
       "output_type": "services.provider.v1.InviteResponse",
-      "description": "Invite a user to the ecosystem",
+      "description": "DEPRECATED, will be removed April 1st 2023",
       "options": {
         "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
@@ -5354,7 +5357,7 @@
       "full_name": "services.provider.v1.Provider.UpdateEcosystem",
       "input_type": "services.provider.v1.UpdateEcosystemRequest",
       "output_type": "services.provider.v1.UpdateEcosystemResponse",
-      "description": "Update an existing ecosystem",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
       "options": {
         "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
@@ -5589,7 +5592,7 @@
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.Issue",
       "input_type": "services.verifiablecredentials.v1.IssueRequest",
       "output_type": "services.verifiablecredentials.v1.IssueResponse",
-      "description": "Sign and issue a verifiable credential from a submitted document.\nThe document must be a valid JSON-LD document.",
+      "description": "Sign and issue a verifiable credential from a submitted document.\nThe document must be a valid JSON-LD document.\nDEPRECATED, will be removed June 1st 2023",
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
@@ -5999,7 +6002,7 @@
     "services.provider.v1.AddWebhookRequest": {
       "name": "AddWebhookRequest",
       "full_name": "services.provider.v1.AddWebhookRequest",
-      "description": "Request to add a webhook to an ecosystem",
+      "description": "DEPRECATED, will be removed April 1st 2023\nRequest to add a webhook to an ecosystem",
       "options": {
         "deprecated": true
       },
@@ -6014,7 +6017,7 @@
     "services.provider.v1.AddWebhookResponse": {
       "name": "AddWebhookResponse",
       "full_name": "services.provider.v1.AddWebhookResponse",
-      "description": "Response to `AddWebhookRequest`",
+      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `AddWebhookRequest`",
       "options": {
         "deprecated": true
       },
@@ -6053,7 +6056,7 @@
     "services.provider.v1.DeleteWebhookRequest": {
       "name": "DeleteWebhookRequest",
       "full_name": "services.provider.v1.DeleteWebhookRequest",
-      "description": "Request to delete a webhook from an ecosystem",
+      "description": "DEPRECATED, will be removed April 1st 2023\nRequest to delete a webhook from an ecosystem",
       "options": {
         "deprecated": true
       },
@@ -6066,7 +6069,7 @@
     "services.provider.v1.DeleteWebhookResponse": {
       "name": "DeleteWebhookResponse",
       "full_name": "services.provider.v1.DeleteWebhookResponse",
-      "description": "Response to `DeleteWebhookRequest`",
+      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `DeleteWebhookRequest`",
       "options": {
         "deprecated": true
       },
@@ -6173,7 +6176,7 @@
     "services.provider.v1.GetPublicEcosystemInfoRequest": {
       "name": "GetPublicEcosystemInfoRequest",
       "full_name": "services.provider.v1.GetPublicEcosystemInfoRequest",
-      "description": "Request to fetch information about an ecosystem",
+      "description": "DEPRECATED, will be removed April 1st 2023\nRequest to fetch information about an ecosystem",
       "options": {
         "deprecated": true
       },
@@ -6186,7 +6189,7 @@
     "services.provider.v1.GetPublicEcosystemInfoResponse": {
       "name": "GetPublicEcosystemInfoResponse",
       "full_name": "services.provider.v1.GetPublicEcosystemInfoResponse",
-      "description": "Response to `InfoRequest`",
+      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `InfoRequest`",
       "options": {
         "deprecated": true
       },
@@ -6211,7 +6214,7 @@
     "services.provider.v1.InvitationStatusRequest": {
       "name": "InvitationStatusRequest",
       "full_name": "services.provider.v1.InvitationStatusRequest",
-      "description": "Request details for the status of an invitation",
+      "description": "DEPRECATED, will be removed April 1st 2023\nRequest details for the status of an invitation",
       "options": {
         "deprecated": true
       },
@@ -6224,7 +6227,7 @@
     "services.provider.v1.InvitationStatusResponse": {
       "name": "InvitationStatusResponse",
       "full_name": "services.provider.v1.InvitationStatusResponse",
-      "description": "Response to `InvitationStatusRequest`",
+      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `InvitationStatusRequest`",
       "options": {
         "deprecated": true
       },
@@ -6265,7 +6268,7 @@
     "services.provider.v1.InviteResponse": {
       "name": "InviteResponse",
       "full_name": "services.provider.v1.InviteResponse",
-      "description": "Response to `InviteRequest`",
+      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `InviteRequest`",
       "options": {
         "deprecated": true
       },
@@ -6331,7 +6334,7 @@
     "services.provider.v1.PublicEcosystemInformation": {
       "name": "PublicEcosystemInformation",
       "full_name": "services.provider.v1.PublicEcosystemInformation",
-      "description": "",
+      "description": "DEPRECATED, will be removed April 1st 2023",
       "options": {
         "deprecated": true
       },
@@ -6348,7 +6351,10 @@
     "services.provider.v1.RefreshDomainVerificationStatusRequest": {
       "name": "RefreshDomainVerificationStatusRequest",
       "full_name": "services.provider.v1.RefreshDomainVerificationStatusRequest",
-      "description": "",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
+      "options": {
+        "deprecated": true
+      },
       "fields": [],
       "messages": [],
       "enums": []
@@ -6356,7 +6362,10 @@
     "services.provider.v1.RefreshDomainVerificationStatusResponse": {
       "name": "RefreshDomainVerificationStatusResponse",
       "full_name": "services.provider.v1.RefreshDomainVerificationStatusResponse",
-      "description": "",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified"
@@ -6388,7 +6397,10 @@
     "services.provider.v1.RetrieveDomainVerificationRecordRequest": {
       "name": "RetrieveDomainVerificationRecordRequest",
       "full_name": "services.provider.v1.RetrieveDomainVerificationRecordRequest",
-      "description": "",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
+      "options": {
+        "deprecated": true
+      },
       "fields": [],
       "messages": [],
       "enums": []
@@ -6396,7 +6408,10 @@
     "services.provider.v1.RetrieveDomainVerificationRecordResponse": {
       "name": "RetrieveDomainVerificationRecordResponse",
       "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse",
-      "description": "Response message containing a TXT record content for domain url verification",
+      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value"
@@ -6495,7 +6510,7 @@
     "services.provider.v1.WebhookConfig": {
       "name": "WebhookConfig",
       "full_name": "services.provider.v1.WebhookConfig",
-      "description": "Webhook configured on an ecosystem",
+      "description": "DEPRECATED, will be removed April 1st 2023\nWebhook configured on an ecosystem",
       "options": {
         "deprecated": true
       },
@@ -7387,7 +7402,10 @@
     "services.verifiablecredentials.v1.IssueRequest": {
       "name": "IssueRequest",
       "full_name": "services.verifiablecredentials.v1.IssueRequest",
-      "description": "Request to sign a JSON-LD Credential using public key tied to caller",
+      "description": "DEPRECATED, will be removed May 1st 2023",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.verifiablecredentials.v1.IssueRequest.document_json"
       ],
@@ -7397,7 +7415,10 @@
     "services.verifiablecredentials.v1.IssueResponse": {
       "name": "IssueResponse",
       "full_name": "services.verifiablecredentials.v1.IssueResponse",
-      "description": "Response to `IssueRequest`",
+      "description": "DEPRECATED, will be removed May 1st 2023",
+      "options": {
+        "deprecated": true
+      },
       "fields": [
         "services.verifiablecredentials.v1.IssueResponse.signed_document_json"
       ],
@@ -7735,7 +7756,7 @@
       "label": "LABEL_REPEATED",
       "type": "AccountEcosystem",
       "full_type": "services.account.v1.AccountEcosystem",
-      "description": "Use `ecosystem_id` instead",
+      "description": "DEPRECATED, will be removed April 1st 2023\nUse `ecosystem_id` instead",
       "options": {
         "deprecated": true
       }
@@ -8303,7 +8324,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "External URL associated with your organization or ecosystem entity",
+      "description": "DEPRECATED, will be removed April 1st 2023\nExternal URL associated with your organization or ecosystem entity",
       "options": {
         "deprecated": true,
         "services.options.optional": true
@@ -8395,7 +8416,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "External URL associated with the organization or ecosystem entity",
+      "description": "DEPRECATED, will be removed April 1st 2023\nExternal URL associated with the organization or ecosystem entity",
       "options": {
         "deprecated": true
       }
@@ -8794,7 +8815,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "New external URL associated with the organization or ecosystem entity",
+      "description": "DEPRECATED, will be removed April 1st 2023\nNew external URL associated with the organization or ecosystem entity",
       "options": {
         "deprecated": true
       }
@@ -9920,7 +9941,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "URI pointing to template JSON-LD context document",
+      "description": "DEPRECATED, will be removed April 1st 2023",
       "options": {
         "deprecated": true
       }
@@ -10773,7 +10794,7 @@
     "services.provider.v1.ParticipantType": {
       "name": "ParticipantType",
       "full_name": "services.provider.v1.ParticipantType",
-      "description": "Type of participant being invited to ecosystem",
+      "description": "DEPRECATED, will be removed April 1st 2023\nType of participant being invited to ecosystem",
       "values": [
         "services.provider.v1.ParticipantType.participant_type_individual",
         "services.provider.v1.ParticipantType.participant_type_organization"

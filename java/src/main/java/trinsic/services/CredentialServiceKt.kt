@@ -18,11 +18,12 @@ class CredentialServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBas
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/CredentialServiceKt.kt
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  @Deprecated("This endpoint will be removed around May 1, 2023")
+  @Deprecated("This endpoint will be removed around June 1, 2023")
   suspend fun issue(request: IssueRequest): IssueResponse {
     /**
-     * This endpoint will be removed around May 1, 2023 Sign and issue a verifiable credential from
-     * a submitted document. The document must be a valid JSON-LD document.
+     * This endpoint will be removed around June 1, 2023 Sign and issue a verifiable credential from
+     * a submitted document. The document must be a valid JSON-LD document. DEPRECATED, will be
+     * removed June 1st 2023
      */
     return withMetadata(stub, request).issue(request)
   }

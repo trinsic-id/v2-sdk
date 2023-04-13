@@ -884,7 +884,7 @@ type TemplateData struct {
 	AllowAdditionalFields bool `protobuf:"varint,5,opt,name=allow_additional_fields,json=allowAdditionalFields,proto3" json:"allow_additional_fields,omitempty"`
 	// URI pointing to template JSON schema document
 	SchemaUri string `protobuf:"bytes,6,opt,name=schema_uri,json=schemaUri,proto3" json:"schema_uri,omitempty"`
-	// URI pointing to template JSON-LD context document
+	// DEPRECATED, will be removed April 1st 2023
 	//
 	// Deprecated: Marked as deprecated in services/verifiable-credentials/templates/v1/templates.proto.
 	ContextUri string `protobuf:"bytes,7,opt,name=context_uri,json=contextUri,proto3" json:"context_uri,omitempty"`

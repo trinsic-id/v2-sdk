@@ -18,22 +18,24 @@ public class CredentialService : ServiceBase
 // target: /home/runner/work/sdk/sdk/dotnet/Trinsic/CredentialService.cs
 
 	/// <summary>
-    ///This endpoint will be removed around May 1, 2023
+    ///This endpoint will be removed around June 1, 2023
     ///  Sign and issue a verifiable credential from a submitted document.
     ///  The document must be a valid JSON-LD document.
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    [Obsolete("This endpoint will be removed around May 1, 2023")]
+    [Obsolete("This endpoint will be removed around June 1, 2023")]
     public IssueResponse Issue(IssueRequest request) {
         
         return Client.Issue(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    ///This endpoint will be removed around May 1, 2023
+    ///This endpoint will be removed around June 1, 2023
     ///  Sign and issue a verifiable credential from a submitted document.
     ///  The document must be a valid JSON-LD document.
+    ///  DEPRECATED, will be removed June 1st 2023
     /// </summary>
-    [Obsolete("This endpoint will be removed around May 1, 2023")]
+    [Obsolete("This endpoint will be removed around June 1, 2023")]
     public async Task<IssueResponse> IssueAsync(IssueRequest request) {
         
         return await Client.IssueAsync(request, await BuildMetadataAsync(request));

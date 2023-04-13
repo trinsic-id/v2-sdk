@@ -7,6 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `DeleteWebhookRequest`
  * </pre>
  *
@@ -267,6 +268,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Response to `DeleteWebhookRequest`
    * </pre>
    *

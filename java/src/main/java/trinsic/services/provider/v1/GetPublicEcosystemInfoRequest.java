@@ -7,6 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
+ * DEPRECATED, will be removed April 1st 2023
  * Request to fetch information about an ecosystem
  * </pre>
  *
@@ -254,6 +255,7 @@ public final class GetPublicEcosystemInfoRequest extends com.google.protobuf.Gen
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Request to fetch information about an ecosystem
    * </pre>
    *

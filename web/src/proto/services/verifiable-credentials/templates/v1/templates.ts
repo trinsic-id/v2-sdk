@@ -249,7 +249,7 @@ export interface TemplateData {
   /** URI pointing to template JSON schema document */
   schemaUri?: string;
   /**
-   * URI pointing to template JSON-LD context document
+   * DEPRECATED, will be removed April 1st 2023
    *
    * @deprecated
    */

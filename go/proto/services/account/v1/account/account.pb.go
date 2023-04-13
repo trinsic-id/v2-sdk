@@ -473,6 +473,7 @@ type AccountInfoResponse struct {
 	// The account details associated with
 	// the calling request context
 	Details *AccountDetails `protobuf:"bytes,1,opt,name=details,proto3" json:"details,omitempty"`
+	// DEPRECATED, will be removed April 1st 2023
 	// Use `ecosystem_id` instead
 	//
 	// Deprecated: Marked as deprecated in services/account/v1/account.proto.

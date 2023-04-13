@@ -15,11 +15,12 @@ const IssueRequest$json = const {
   '2': const [
     const {'1': 'document_json', '3': 1, '4': 1, '5': 9, '10': 'documentJson'},
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `IssueRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List issueRequestDescriptor = $convert.base64Decode(
-    'CgxJc3N1ZVJlcXVlc3QSIwoNZG9jdW1lbnRfanNvbhgBIAEoCVIMZG9jdW1lbnRKc29u');
+    'CgxJc3N1ZVJlcXVlc3QSIwoNZG9jdW1lbnRfanNvbhgBIAEoCVIMZG9jdW1lbnRKc29uOgIYAQ==');
 @$core.Deprecated('Use issueResponseDescriptor instead')
 const IssueResponse$json = const {
   '1': 'IssueResponse',
@@ -32,11 +33,12 @@ const IssueResponse$json = const {
       '10': 'signedDocumentJson'
     },
   ],
+  '7': const {'3': true},
 };
 
 /// Descriptor for `IssueResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List issueResponseDescriptor = $convert.base64Decode(
-    'Cg1Jc3N1ZVJlc3BvbnNlEjAKFHNpZ25lZF9kb2N1bWVudF9qc29uGAEgASgJUhJzaWduZWREb2N1bWVudEpzb24=');
+    'Cg1Jc3N1ZVJlc3BvbnNlEjAKFHNpZ25lZF9kb2N1bWVudF9qc29uGAEgASgJUhJzaWduZWREb2N1bWVudEpzb246AhgB');
 @$core.Deprecated('Use issueFromTemplateRequestDescriptor instead')
 const IssueFromTemplateRequest$json = const {
   '1': 'IssueFromTemplateRequest',

@@ -7,6 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
+ * DEPRECATED, will be removed April 1st 2023
  * Response to `AddWebhookRequest`
  * </pre>
  *
@@ -267,6 +268,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Response to `AddWebhookRequest`
    * </pre>
    *

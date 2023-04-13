@@ -114,6 +114,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -128,6 +129,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -143,6 +145,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -157,6 +160,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -171,6 +175,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
+   * DEPRECATED, will be removed April 1st 2023
    * Use `ecosystem_id` instead
    * </pre>
    *
@@ -1241,6 +1246,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1259,6 +1265,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1277,6 +1284,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1295,6 +1303,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1319,6 +1328,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1341,6 +1351,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1365,6 +1376,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1389,6 +1401,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1411,6 +1424,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1433,6 +1447,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1455,6 +1470,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1476,6 +1492,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1497,6 +1514,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1511,6 +1529,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1529,6 +1548,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1548,6 +1568,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1563,6 +1584,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *
@@ -1578,6 +1600,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
+     * DEPRECATED, will be removed April 1st 2023
      * Use `ecosystem_id` instead
      * </pre>
      *

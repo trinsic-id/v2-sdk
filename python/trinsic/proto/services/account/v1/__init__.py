@@ -153,7 +153,9 @@ class AccountInfoResponse(betterproto.Message):
     """The account details associated with the calling request context"""
 
     ecosystems: List["AccountEcosystem"] = betterproto.message_field(2)
-    """Use `ecosystem_id` instead"""
+    """
+    DEPRECATED, will be removed April 1st 2023 Use `ecosystem_id` instead
+    """
 
     wallet_id: str = betterproto.string_field(3)
     """The wallet ID associated with this account"""
