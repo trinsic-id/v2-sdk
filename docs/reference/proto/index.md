@@ -2576,9 +2576,10 @@ Request to send a document to another user's wallet
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of user to send item to |
+| email | [string](/reference/proto#string) | Email address of user to whom you'll send the item |
 | wallet_id | [string](/reference/proto#string) | Wallet ID of the recipient within the ecosystem |
 | did_uri | [string](/reference/proto#string) | DID URI of the recipient |
+| phone_number | [string](/reference/proto#string) | SMS of user to whom you'll send the item |
 | send_notification | [bool](/reference/proto#bool) | Send email notification that credential has been sent to a wallet |
 | document_json | [string](/reference/proto#string) | JSON document to send to recipient |
 

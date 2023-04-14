@@ -30,9 +30,15 @@ export async function vaccineDemo() {
 
     // setupActors() {
     // Create 3 different profiles for each participant in the scenario
-    const allison = await trinsic.wallet().createWallet({ ecosystemId: ecosystemId });
-    const clinic = await trinsic.wallet().createWallet({ ecosystemId: ecosystemId });
-    const airline = await trinsic.wallet().createWallet({ ecosystemId: ecosystemId });
+    const allison = await trinsic
+        .wallet()
+        .createWallet({ ecosystemId: ecosystemId });
+    const clinic = await trinsic
+        .wallet()
+        .createWallet({ ecosystemId: ecosystemId });
+    const airline = await trinsic
+        .wallet()
+        .createWallet({ ecosystemId: ecosystemId });
     // }
 
     // setAuthTokenSample() {

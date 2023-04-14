@@ -5,7 +5,7 @@ import { CredentialService } from "./CredentialService";
 import { TemplateService } from "./TemplateService";
 import { TrinsicService } from "./TrinsicService";
 import ServiceBase from "./ServiceBase";
-import { IPlatformProvider } from "./IPlatformProvider";
+import { IPlatformProvider } from "./providers";
 
 export * from "./proto/index";
 

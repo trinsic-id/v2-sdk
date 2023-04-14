@@ -12,7 +12,7 @@ public interface SendRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of user to send item to
+   * Email address of user to whom you'll send the item
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -24,7 +24,7 @@ public interface SendRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of user to send item to
+   * Email address of user to whom you'll send the item
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -36,7 +36,7 @@ public interface SendRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of user to send item to
+   * Email address of user to whom you'll send the item
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -118,6 +118,43 @@ public interface SendRequestOrBuilder
    * @return The bytes for didUri.
    */
   com.google.protobuf.ByteString getDidUriBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * SMS of user to whom you'll send the item
+   * </pre>
+   *
+   * <code>string phone_number = 7;</code>
+   *
+   * @return Whether the phoneNumber field is set.
+   */
+  boolean hasPhoneNumber();
+  /**
+   *
+   *
+   * <pre>
+   * SMS of user to whom you'll send the item
+   * </pre>
+   *
+   * <code>string phone_number = 7;</code>
+   *
+   * @return The phoneNumber.
+   */
+  java.lang.String getPhoneNumber();
+  /**
+   *
+   *
+   * <pre>
+   * SMS of user to whom you'll send the item
+   * </pre>
+   *
+   * <code>string phone_number = 7;</code>
+   *
+   * @return The bytes for phoneNumber.
+   */
+  com.google.protobuf.ByteString getPhoneNumberBytes();
 
   /**
    *
