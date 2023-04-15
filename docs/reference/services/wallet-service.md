@@ -23,7 +23,7 @@ Create a new wallet and return the authentication token and wallet information a
 
         var request = new CreateWalletRequest {
             EcosystemId = "acme-corp",
-            Description = "user@acme-corp.org"
+            Description = "user123"
         };
         var response = await trinsic.Wallet.CreateWalletAsync(request);
 
@@ -64,7 +64,7 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
         // step 1 - initiate identity challenge
         var requestInit = new AddExternalIdentityInitRequest {
-            Identity = "user@acme-corp.org",
+            Identity = "user123@acme-corp.org",
             Provider = IdentityProvider.Email
         };
         var responseInit = await trinsic.Wallet.AddExternalIdentityInitAsync(requestInit);
@@ -120,7 +120,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
 
         // step 1 - initiate auth challenge
         var requestInit = new AuthenticateInitRequest {
-            Identity = "user@acme-corp.org",
+            Identity = "user123@acme-corp.org",
             Provider = IdentityProvider.Email,
             EcosystemId = "acme-corp" // short name or full ecosystem ID
         };
