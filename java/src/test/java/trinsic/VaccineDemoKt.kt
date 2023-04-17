@@ -5,7 +5,6 @@ import java.io.IOException
 import java.nio.file.Path
 import java.util.concurrent.ExecutionException
 import trinsic.TrinsicUtilities
-import trinsic.okapi.DidException
 import trinsic.services.TemplateServiceKt
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.provider.v1.CreateEcosystemRequest
@@ -23,7 +22,7 @@ suspend fun main() {
 }
 
 @Throws(
-    IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
+    IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runVaccineDemo() {
   val serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions()
 
@@ -134,7 +133,6 @@ suspend fun runVaccineDemo() {
 
 @Throws(
     InvalidProtocolBufferException::class,
-    DidException::class,
     ExecutionException::class,
     InterruptedException::class)
 private suspend fun issueCredential(
@@ -173,7 +171,6 @@ private suspend fun issueCredential(
 
 @Throws(
     InvalidProtocolBufferException::class,
-    DidException::class,
     ExecutionException::class,
     InterruptedException::class)
 private suspend fun defineTemplate(templateService: TemplateServiceKt, clinic: String): String {

@@ -1,6 +1,6 @@
 # The Trinsic Javascript / Typescript Node SDK
 
-The Trinsic Node SDK makes it easy to interact with the Trinsic API from any backend javascript application. The most recent version of the library can be found on npm. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web). The @trinsic/trinsic package comes with Typescript bindings.
+The Trinsic Node/Web SDK makes it easy to interact with the Trinsic API from any backend javascript application. The most recent version of the library can be found on npm. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web). The @trinsic/trinsic package comes with Typescript bindings.
 ## Installation
 Install the package for Node from [npmjs.com <small>:material-open-in-new:</small>](https://www.npmjs.com/package/@trinsic/trinsic){target=_blank}
 
@@ -12,37 +12,37 @@ Install the package for Node from [npmjs.com <small>:material-open-in-new:</smal
 ## Javascript
 
 
-To import the Trinsic SDK in ES6:
+To import the Trinsic SDK:
 ```js
 import { TrinsicService } from "@trinsic/trinsic";
 ```
 
-To import the Trinsic SDK in CommonJS:
-```js
-let { TrinsicService } = require("@trinsic/trinsic/browser");
+For CommonJS:
+```typescript
+let { TrinsicService } = require("@trinsic/trinsic");
 ```
 
 You must instantiate the trinsic service first:
 ```js
 const trinsicService = new TrinsicService({
     /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
-    serverEndpoint: "prod.trinsic.cloud";
+    serverEndpoint: "prod.trinsic.cloud",
     /** Trinsic API port; defaults to `443` */
-    serverPort: 443;
+    serverPort: 443,
     /** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */
-    serverUseTls: true;
+    serverUseTls: true,
     /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
-    authToken: "<Your auth token>";
+    authToken: "<Your auth token>"
 });
 ```
 
 Now you can use the SDK:
 ```js
-const accountInfo = await trinsicService.account().getInfo();
-console.log(JSON.stringify(accountInfo, null, 4));
+const newWallet = await trinsicService.wallet().createWallet();
+console.log(JSON.stringify(newWallet, null, 4));
 ```
 
-You can find all of the SDK methods documented [here](/reference/)
+You can find all the SDK methods documented [here](/reference/)
 
 
 ## Next Steps

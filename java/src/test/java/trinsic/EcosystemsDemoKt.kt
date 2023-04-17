@@ -2,18 +2,17 @@ import java.io.IOException
 import java.util.concurrent.ExecutionException
 import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
-import trinsic.okapi.DidException
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.provider.v1.CreateEcosystemRequest
 
 @Throws(
-    IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
+    IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun main() {
   runEcosystemsDemo()
 }
 
 @Throws(
-    IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
+    IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runEcosystemsDemo() {
   val service = TrinsicServiceKt(TrinsicUtilities.getTrinsicTrinsicOptions())
   val response =

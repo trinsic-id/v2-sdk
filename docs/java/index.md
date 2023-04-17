@@ -24,11 +24,7 @@ The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API fro
 
 ```java
 dependencies {
-    // other dependencies
-    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.2.jar', 'trinsic-okapi-1.6.2')
-    // android version:
-    // implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.1.aar', 'trinsic-okapi-1.6.1')
-    implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.8.0/trinsic-services-1.8.1.jar', 'trinsic-services-1.8.1')
+    implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.10.0/trinsic-services-1.10.0.jar', 'trinsic-services-1.10.0')
 }
 ```
 

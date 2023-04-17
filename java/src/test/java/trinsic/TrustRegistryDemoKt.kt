@@ -3,20 +3,19 @@ import java.util.*
 import java.util.concurrent.ExecutionException
 import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
-import trinsic.okapi.DidException
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.trustregistry.v1.*
 import trinsic.services.universalwallet.v1.CreateWalletRequest
 
 @Throws(
-    IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
+    IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun main() {
   // Make sure you set the TEST_SERVER_ENDPOINT environment variable
   runTrustRegistryDemo()
 }
 
 @Throws(
-    IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
+    IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
   val trinsic = TrinsicServiceKt(TrinsicUtilities.getTrinsicTrinsicOptions())
   var createWallet =
