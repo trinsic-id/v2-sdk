@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.trinsic.id/ios/">
+        <link rel="canonical" href="https://docs.trinsic.id/learn/resources/migrate-account/">
       
       
-        <link rel="prev" href="../web/">
+        <link rel="prev" href="../migrate/">
       
       
-        <link rel="next" href="../android/">
+        <link rel="next" href="../interactive-api/">
       
       
         
       
       
-      <link rel="icon" href="../_static/logo.png">
+      <link rel="icon" href="../../../_static/logo.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6+insiders-4.32.5">
     
     
       
-        <title>iOS - Documentation</title>
+        <title>Migration: Account API - Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.dc5b59cc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.dc5b59cc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.6932e648.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.6932e648.min.css">
       
       
 
@@ -48,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css">
     
-      <link rel="stylesheet" href="../_static/extra.css">
+      <link rel="stylesheet" href="../../../_static/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-trinsic-swift-sdk" class="md-skip">
+        <a href="#migration-from-account-api-to-wallet-api" class="md-skip">
           Skip to content
         </a>
       
@@ -103,9 +103,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../_static/logo-title.svg" alt="logo">
+  <img src="../../../_static/logo-title.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              iOS
+              Migration: Account API
             
           </span>
         </div>
@@ -212,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -227,11 +227,13 @@
         
   
   
+    
+  
   
     
     
       <li class="md-tabs__item">
-        <a href="../learn/" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link md-tabs__link--active">
           
   
   Learn
@@ -245,13 +247,11 @@
         
   
   
-    
-  
   
     
     
       <li class="md-tabs__item">
-        <a href="../cli/" class="md-tabs__link md-tabs__link--active">
+        <a href="../../../cli/" class="md-tabs__link">
           
   
   Tools & SDKs
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../reference/" class="md-tabs__link">
+        <a href="../../../reference/" class="md-tabs__link">
           
   
   Reference
@@ -287,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../roadmap/" class="md-tabs__link">
+        <a href="../../../roadmap/" class="md-tabs__link">
           
   
   Resources
@@ -315,6 +315,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -326,9 +328,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="../../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../_static/logo-title.svg" alt="logo">
+  <img src="../../../_static/logo-title.svg" alt="logo">
 
     </a>
     Documentation
@@ -354,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -377,19 +379,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -408,7 +410,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -425,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -497,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/ecosystems/" class="md-nav__link">
+      <a href="../../concepts/ecosystems/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -523,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/wallets/" class="md-nav__link">
+      <a href="../../concepts/wallets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/credentials/" class="md-nav__link">
+      <a href="../../concepts/credentials/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/verifications/" class="md-nav__link">
+      <a href="../../concepts/verifications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/templates/" class="md-nav__link">
+      <a href="../../concepts/templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -627,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/dids/" class="md-nav__link">
+      <a href="../../concepts/dids/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -653,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/trust-registries/" class="md-nav__link">
+      <a href="../../concepts/trust-registries/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -679,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/concepts/json-ld/" class="md-nav__link">
+      <a href="../../concepts/json-ld/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -759,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/platform/standards/" class="md-nav__link">
+      <a href="../../platform/standards/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/platform/security/" class="md-nav__link">
+      <a href="../../platform/security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -865,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../walkthroughs/vaccination/" class="md-nav__link">
+      <a href="../../../walkthroughs/vaccination/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -897,19 +899,19 @@
                 
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
@@ -928,7 +930,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -945,7 +947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/resources/migrate/" class="md-nav__link">
+      <a href="../migrate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -969,9 +971,35 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../learn/resources/migrate-account/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration: Account API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -986,6 +1014,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accountloginanonymous-moved-to-walletcreatewallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account.LoginAnonymous moved to Wallet.CreateWallet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountlogin-and-accountloginconfirm-core-design-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account.Login and Account.LoginConfirm core design changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Account.Login and Account.LoginConfirm core design changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-wallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Wallet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-external-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add External Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authenticate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authenticate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountinfo-moved-to-walletgetmyinfo-and-walletgetwalletinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account.Info moved to Wallet.GetMyInfo and Wallet.GetWalletInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -997,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../learn/resources/interactive-api/" class="md-nav__link">
+      <a href="../interactive-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1036,19 +1167,19 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
@@ -1067,7 +1198,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1084,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../../cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1108,19 +1239,19 @@
                 
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
         
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
@@ -1139,7 +1270,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1156,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../web/" class="md-nav__link">
+      <a href="../../../web/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1180,18 +1311,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../ios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1206,7 +1328,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1218,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../android/" class="md-nav__link">
+      <a href="../../../android/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1298,7 +1419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../node/" class="md-nav__link">
+      <a href="../../../node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1324,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dotnet/" class="md-nav__link">
+      <a href="../../../dotnet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1350,7 +1471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1376,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../go/" class="md-nav__link">
+      <a href="../../../go/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1402,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java/" class="md-nav__link">
+      <a href="../../../java/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1489,7 +1610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../../reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1561,7 +1682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/credential-service/" class="md-nav__link">
+      <a href="../../../reference/services/credential-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1587,7 +1708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/file-management-service/" class="md-nav__link">
+      <a href="../../../reference/services/file-management-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1613,7 +1734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/provider-service/" class="md-nav__link">
+      <a href="../../../reference/services/provider-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1639,7 +1760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/template-service/" class="md-nav__link">
+      <a href="../../../reference/services/template-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1665,7 +1786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/trust-registry-service/" class="md-nav__link">
+      <a href="../../../reference/services/trust-registry-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1691,7 +1812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/services/wallet-service/" class="md-nav__link">
+      <a href="../../../reference/services/wallet-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1771,7 +1892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/other/openid/" class="md-nav__link">
+      <a href="../../../reference/other/openid/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1805,7 +1926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/events/" class="md-nav__link">
+      <a href="../../../reference/events/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1884,7 +2005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roadmap/" class="md-nav__link">
+      <a href="../../../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1910,7 +2031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../support/" class="md-nav__link">
+      <a href="../../../support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1997,7 +2118,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2008,6 +2131,97 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accountloginanonymous-moved-to-walletcreatewallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account.LoginAnonymous moved to Wallet.CreateWallet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountlogin-and-accountloginconfirm-core-design-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account.Login and Account.LoginConfirm core design changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Account.Login and Account.LoginConfirm core design changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-wallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Wallet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-external-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add External Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authenticate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authenticate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountinfo-moved-to-walletgetmyinfo-and-walletgetwalletinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account.Info moved to Wallet.GetMyInfo and Wallet.GetWalletInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Need help?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2027,16 +2241,69 @@
   
 
 
-<h1 id="the-trinsic-swift-sdk">The Trinsic Swift SDK<a class="headerlink" href="#the-trinsic-swift-sdk" title="Permanent link">&para;</a></h1>
-<p>The Trinsic Swift SDK makes it easy to interact with the Trinsic API from any application built for iOS, MacCatalyst, or MacOS. The SDK is available for Swift Package Manager and can be added in your dependency section in <code>Package.swift</code> as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">.</span><span class="n">package</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&quot;Trinsic&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s">&quot;https://github.com/trinsic-id/sdk-swift&quot;</span><span class="p">,</span> <span class="n">branch</span><span class="p">:</span> <span class="s">&quot;main&quot;</span><span class="p">)</span>
-<span class="p">],</span>
-</code></pre></div>
-<p>You can find more details, source code, and tests for the Swift SDK at <a href="https://github.com/trinsic-id/sdk-swift">trinsic-id/sdk-swift</a>.</p>
+<h1 id="migration-from-account-api-to-wallet-api">Migration from Account API to Wallet API<a class="headerlink" href="#migration-from-account-api-to-wallet-api" title="Permanent link">&para;</a></h1>
+<p>This document outlines the code updates you will need to do to migrate from the deprecated Account API to the Wallet API methods. We decided to deprecate the Account API
+as we felt it didn't warrant it's own API category and mostly created confusion. All methods available in the Account API are also available in the Wallet API, though some naming and parameters have changed.</p>
+<h2 id="accountloginanonymous-moved-to-walletcreatewallet"><code>Account.LoginAnonymous</code> moved to <code>Wallet.CreateWallet</code><a class="headerlink" href="#accountloginanonymous-moved-to-walletcreatewallet" title="Permanent link">&para;</a></h2>
+<p>This method is responsble for creating a wallet and returning an auth token that can be used to access this wallet. The updated method also returns all wallet information, such as <code>wallet_id</code>, <code>public_did</code>, etc.</p>
+<p>Usage: <a href="/reference/services/wallet-service/#create-wallet">Wallet API / Create Wallet</a></p>
+<h2 id="accountlogin-and-accountloginconfirm-core-design-changes"><code>Account.Login</code> and <code>Account.LoginConfirm</code> core design changes<a class="headerlink" href="#accountlogin-and-accountloginconfirm-core-design-changes" title="Permanent link">&para;</a></h2>
+<p>The purpose of the old <code>Login/LoginConfirm</code> methods was to obtain an auth token for an existing wallet using an email as external identity method. If a wallet was not found for this email, one would be automatically created. This design introduced some confusion on when clients should use this method. We decided that it's better to be explicit about the wallet creation process and separate associating it with an external identity, as opposed to having an API that silently creates a wallet.</p>
+<p>Under the new API, there is an explicit process for each step</p>
+<ul>
+<li>Wallet creation using <code>CreateWallet</code></li>
+<li>Adding external identity using <code>AddExternalIdentity</code> (2-step process with <code>Init</code> and <code>Confirm</code> of OTP token)</li>
+<li>Authentication to existing wallet using <code>Authenticate</code> (2-step process with <code>Init</code> and <code>Confirm</code> of OTP token)</li>
+</ul>
+<h3 id="create-wallet">Create Wallet<a class="headerlink" href="#create-wallet" title="Permanent link">&para;</a></h3>
+<p>This endpoint will create new wallet and return an auth token for accessing the wallet. This endpoint can be called from the client side and the token will be in control of the user.
+If your integration operates with custodial wallets on behalf of users, you can call this endpoint from your server side. You should ensure that tokens are stored securely.</p>
+<pre class="mermaid"><code>sequenceDiagram
+  autonumber
+  Client-&gt;&gt;API: Request: CreateWallet { Ecosystem="example" }
+  API-&gt;&gt;Client: Response: { AuthToken, WalletID, PublicDID }
+  Client-&gt;&gt;Client: Save [AuthToken] securely
+  Note over Client: [AuthToken] should be stored in a&lt;br/&gt;secure enclave, such as keychain, &lt;br/&gt;secure browser storage, cloud vaults, etc.</code></pre>
+<h3 id="add-external-identity">Add External Identity<a class="headerlink" href="#add-external-identity" title="Permanent link">&para;</a></h3>
+<p>This endpoint will associate external identity, such as email or phone number, to an existing wallet and allow the user to obtain an auth token to the wallet they control.
+If your integration operates with custodial wallets on behalf of users, you will likely not need to use this endpoint.</p>
+<pre class="mermaid"><code>sequenceDiagram
+  autonumber
+  Client-&gt;&gt;Client: Load [AuthToken]
+  Client-&gt;&gt;API: Request: AddExternalIdentityInit { Identity="user@example.com" }
+  API-&gt;&gt;Client: Response: { Challenge }
+  Note over Client: Client checks email or phone number&lt;br/&gt;for OTP confirmation code
+  Client-&gt;&gt;API: Request: AddExternalIdentityConfirm { Challenge, Response(OTP) }
+  API-&gt;&gt;Client: Response: OK</code></pre>
+<h3 id="authenticate">Authenticate<a class="headerlink" href="#authenticate" title="Permanent link">&para;</a></h3>
+<p>This endpoint will associate external identity, such as email or phone number, to an existing wallet and allow the user to obtain an auth token to the wallet they control.
+If your integration operates with custodial wallets on behalf of users, you will likely not need to use this endpoint.</p>
+<pre class="mermaid"><code>sequenceDiagram
+  autonumber
+  Client-&gt;&gt;API: Request: AuthenticateInit { Identity="user@example.com" }
+  API-&gt;&gt;Client: Response: { Challenge }
+  Note over Client: Client checks email or phone number&lt;br/&gt;for OTP confirmation code
+  Client-&gt;&gt;API: Request: AuthenticateConfirm { Challenge, Response(OTP) }
+  API-&gt;&gt;Client: Response: { AuthToken, WalletID, PublicDID }
+  Client-&gt;&gt;Client: Save [AuthToken] securely
+  Note over Client: [AuthToken] should be stored in a&lt;br/&gt;secure enclave, such as keychain, &lt;br/&gt;secure browser storage, cloud vaults, etc.</code></pre>
+<h2 id="accountinfo-moved-to-walletgetmyinfo-and-walletgetwalletinfo"><code>Account.Info</code> moved to <code>Wallet.GetMyInfo</code> and <code>Wallet.GetWalletInfo</code><a class="headerlink" href="#accountinfo-moved-to-walletgetmyinfo-and-walletgetwalletinfo" title="Permanent link">&para;</a></h2>
+<p>The new API contains two methods for getting the wallet information</p>
+<ul>
+<li><code>Wallet.GetMyInfo</code> — takes no parameters; this endpoint can be called by the wallet owner to get the information about their wallet (such as walletId, public DID, etc)</li>
+<li><code>Wallet.GetWalletInfo</code> — takes <code>walletId</code> parameter; this endpoint can be called by the provider to get wallet information for the specified walletId. This endpoint requires auth token with provider level privileges. You can obtain this token from the <a href="https://dashboard.trinsic.id" target="_blank">Trinsic Dashboard <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
+</ul>
+<hr />
+<h2 id="need-help">Need help?<a class="headerlink" href="#need-help" title="Permanent link">&para;</a></h2>
+<p>Please <a href="/support">reach out</a> if you have any questions regarding the migration to the new endpoint; we're happy to help make your transition easy.</p>
+
+  
+  
 
 
 
+
+  
 
 
 
@@ -2101,18 +2368,18 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.803ed251.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.803ed251.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
-        <script src="../_static/javascripts/config.js"></script>
+        <script src="../../../_static/javascripts/config.js"></script>
       
-        <script src="../_static/javascripts/proto_functionality.js"></script>
+        <script src="../../../_static/javascripts/proto_functionality.js"></script>
       
-        <script src="../_static/javascripts/tab_sync.js"></script>
+        <script src="../../../_static/javascripts/tab_sync.js"></script>
       
     
   </body>
