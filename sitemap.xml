@@ -156,6 +156,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.trinsic.id/reference/services/account-service/</loc>
+         <lastmod>2023-04-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.trinsic.id/reference/services/credential-service/</loc>
          <lastmod>2023-04-17</lastmod>
          <changefreq>daily</changefreq>
