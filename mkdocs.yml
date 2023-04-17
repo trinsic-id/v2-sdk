@@ -23,7 +23,8 @@ nav:
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md
     - Resources:
-      - Migration Guidelines: learn/resources/migrate.md
+      - "Migration: From v1" : learn/resources/migrate.md
+      - "Migration: Account API": learn/resources/migrate-account.md
       - Interactive API Experience: learn/resources/interactive-api.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
@@ -65,6 +66,7 @@ theme:
     - announce.dismiss
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.expand
   icon:
     repo: fontawesome/brands/github-alt
   font:

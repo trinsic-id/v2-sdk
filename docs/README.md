@@ -13,6 +13,7 @@ We're using [mkdocs](https://www.mkdocs.org/) with [`mkdocs-material`](https://s
   - If you get the error that it is missing the `poetry` module, run  `pip install -U poetry`
 - https://www.mkdocs.org/#installation
 - https://squidfunk.github.io/mkdocs-material/getting-started/#installation
+  - `pip3 install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git` (find GH_TOKEN in 1Password)
 - https://github.com/rnorth/mkdocs-codeinclude-plugin
 
 ### Running locally
@@ -61,7 +62,7 @@ Immediately following `proto_sample_start()` should be a set of tabs, **indented
 **Example:**
 ```markdown
 {{ proto_sample_start() }}
-    === "Trinsic CLI" 
+    === "Trinsic CLI"
         ```bash
         trinsic account login --email <PROFILE_EMAIL>
         ```
