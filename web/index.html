@@ -2174,29 +2174,29 @@
 </div>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@trinsic/trinsic
 </code></pre></div>
-<p>To import the Trinsic SDK in ES6:
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@trinsic/trinsic/browser&quot;</span><span class="p">;</span>
+<p>To import the Trinsic SDK:
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@trinsic/trinsic&quot;</span><span class="p">;</span>
 </code></pre></div></p>
-<p>To import the Trinsic SDK in CommonJS:
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@trinsic/trinsic/browser&quot;</span><span class="p">);</span>
+<p>For CommonJS:
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@trinsic/trinsic&quot;</span><span class="p">);</span>
 </code></pre></div></p>
 <p>You must instantiate the trinsic service first:
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">({</span>
 <span class="w">    </span><span class="cm">/** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */</span>
-<span class="w">    </span><span class="nx">serverEndpoint</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;prod.trinsic.cloud&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">serverEndpoint</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;prod.trinsic.cloud&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="cm">/** Trinsic API port; defaults to `443` */</span>
-<span class="w">    </span><span class="nx">serverPort</span><span class="o">:</span><span class="w"> </span><span class="mf">443</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">serverPort</span><span class="o">:</span><span class="w"> </span><span class="mf">443</span><span class="p">,</span>
 <span class="w">    </span><span class="cm">/** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */</span>
-<span class="w">    </span><span class="nx">serverUseTls</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">serverUseTls</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="cm">/** Authentication token for SDK calls; defaults to empty string (unauthenticated) */</span>
-<span class="w">    </span><span class="nx">authToken</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;Your auth token&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">authToken</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;Your auth token&gt;&quot;</span>
 <span class="p">});</span>
 </code></pre></div></p>
 <p>Now you can use the SDK:
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">accountInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">getInfo</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">accountInfo</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newWallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">createWallet</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newWallet</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span>
 </code></pre></div></p>
-<p>You can find all of the SDK methods documented <a href="/reference/">here</a></p>
+<p>You can find all the SDK methods documented <a href="/reference/">here</a></p>
 <!-- prettier-ignore-start -->
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <!-- prettier-ignore -->

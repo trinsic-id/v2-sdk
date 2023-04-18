@@ -2172,14 +2172,9 @@
 <li>Run <code>gradle build</code> to download the required jar files. This can take some time.</li>
 </ol>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Okapi binaries are now included with the server <code>.jar</code> or the corresponding android <code>.aar</code> file. The gradle include process is essentially similar (see below).</li>
-<li>If you install to a different location for debugging, use the environment variable <code>LD_LIBRARY_PATH</code>, even on Windows.</li>
-<li>For Android, the okapi binaries must be copied (currently manually) to a <a href="https://github.com/trinsic-id/sdk-examples/tree/main/android/app/src/main/jniLibs">specific location with a specific folder structure</a>. <a href="https://github.com/trinsic-id/sdk-examples/tree/main/android">The complete sample application is here</a></li>
-</ol>
 <div class="admonition note jar download note">
 <p class="admonition-title">Note</p>
-<p>If you want to include the two required Trinsic <code>.jar</code> files in your own application (android or other java), be sure to copy the following lines. They allow you to specify a remote file location as a gradle <code>implementation</code> target as shown below:</p>
+<p>If you want to include the required Trinsic <code>.jar</code> file in your own application (android or other java), be sure to copy the following lines. They allow you to specify a remote file location as a gradle <code>implementation</code> target as shown below:</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="kt">def</span><span class="w"> </span><span class="n">urlFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="n">url</span><span class="o">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">-&gt;</span>
 <span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="o">(</span><span class="s2">&quot;$buildDir/download/${name}&quot;</span><span class="o">)</span>
@@ -2195,11 +2190,7 @@
 <span class="o">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// other dependencies</span>
-<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.2.jar&#39;, &#39;trinsic-okapi-1.6.2&#39;)</span>
-<span class="w">    </span><span class="c1">// android version:</span>
-<span class="w">    </span><span class="c1">// implementation urlFile(&#39;https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.1.aar&#39;, &#39;trinsic-okapi-1.6.1&#39;)</span>
-<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/sdk/releases/download/v1.8.0/trinsic-services-1.8.1.jar&#39;, &#39;trinsic-services-1.8.1&#39;)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/sdk/releases/download/v1.10.0/trinsic-services-1.10.0.jar&#39;, &#39;trinsic-services-1.10.0&#39;)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

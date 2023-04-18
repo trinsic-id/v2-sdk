@@ -2372,10 +2372,6 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">com.google.gson.Gson</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">com.google.protobuf.InvalidProtocolBufferException</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutionException</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.okapi.DidException</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.TemplateService</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.TrinsicService</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.provider.v1.CreateEcosystemRequest</span><span class="p">;</span>
@@ -2388,15 +2384,19 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.verifiablecredentials.v1.VerifyProofRequest</span><span class="p">;</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutionException</span><span class="p">;</span>
+
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">VaccineDemo</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
-<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">DidException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">run</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span>
-<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">DidException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// trinsicServiceConstructor() {</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">serverConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrinsicUtilities</span><span class="p">.</span><span class="na">getTrinsicTrinsicOptions</span><span class="p">();</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">serverConfig</span><span class="p">);</span>
@@ -2491,7 +2491,7 @@
 
 <span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">IssueCredential</span><span class="p">(</span>
 <span class="w">      </span><span class="n">TrinsicService</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">templateId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clinic</span><span class="p">)</span>
-<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">InvalidProtocolBufferException</span><span class="p">,</span><span class="w"> </span><span class="n">DidException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span>
+<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">InvalidProtocolBufferException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span>
 <span class="w">          </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// issueCredential() {</span>
 <span class="w">    </span><span class="c1">// Set active profile to &#39;clinic&#39; so we can issue credential signed</span>
@@ -2526,7 +2526,7 @@
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">DefineTemplate</span><span class="p">(</span><span class="n">TemplateService</span><span class="w"> </span><span class="n">templateService</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clinic</span><span class="p">)</span>
-<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">InvalidProtocolBufferException</span><span class="p">,</span><span class="w"> </span><span class="n">DidException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span>
+<span class="w">      </span><span class="kd">throws</span><span class="w"> </span><span class="n">InvalidProtocolBufferException</span><span class="p">,</span><span class="w"> </span><span class="n">ExecutionException</span><span class="p">,</span>
 <span class="w">          </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// createTemplate() {</span>
 <span class="w">    </span><span class="c1">// Set active profile to &#39;clinic&#39;</span>
