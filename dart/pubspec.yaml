@@ -1,6 +1,6 @@
 name: trinsic_dart
 description: Dart wrapper for the trinsic services SDK
-version: "1.11.0-rc2"
+version: "1.11.0-rc4"
 homepage: https://trinsic.id
 
 environment:

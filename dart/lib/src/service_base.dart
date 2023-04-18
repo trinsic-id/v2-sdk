@@ -1,21 +1,20 @@
-import 'package:grpc/grpc.dart';
+import 'package:grpc/grpc_or_grpcweb.dart';
 import 'package:protobuf/protobuf.dart' as $pb;
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 
 class ServiceBase {
   late TrinsicOptions serviceOptions;
-  late ClientChannel channel;
+  late GrpcOrGrpcWebClientChannel channel;
 
   ServiceBase(TrinsicOptions? serverOptions) {
     serviceOptions = serverOptions ?? trinsicConfig();
-    channel = ClientChannel(serviceOptions.serverEndpoint,
+
+      channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
+        host: serviceOptions.serverEndpoint,
         port: serviceOptions.serverPort,
-        options: ChannelOptions(
-          credentials: serviceOptions.serverUseTls
-              ? ChannelCredentials.secure()
-              : ChannelCredentials.insecure(),
-        ));
+        transportSecure: serviceOptions.serverUseTls
+      );
   }
 
   void close() {
