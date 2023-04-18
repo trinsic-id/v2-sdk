@@ -27,9 +27,10 @@ jobs:
         with:
           repository: trinsic-id/sdk
           path: ./sdk
-      - name: Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run cargo build
         run: cargo build
         working-directory: ./sdk/cli
