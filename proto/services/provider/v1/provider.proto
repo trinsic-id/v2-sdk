@@ -374,6 +374,8 @@ message WalletConfiguration {
   repeated services.account.v1.WalletAuthToken auth_tokens = 7;
   // List of external identities associated with this wallet.
   repeated string external_identities = 8;
+  // Ecosystem in which this wallet is contained.
+  string ecosystem_id = 9;
 }
 
 // Options for creation of DID on the ION network

@@ -2166,6 +2166,7 @@ Strongly typed information about wallet configurations
 | config_type | [string](/reference/proto#string) |  |
 | auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
 | external_identities | [string](/reference/proto#string)[] | List of external identities associated with this wallet. |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
 
 
 

@@ -1,5 +1,7 @@
 package trinsic;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Test;
 import trinsic.services.TrinsicService;
 import trinsic.services.common.v1.SupportedDidMethod;
@@ -8,15 +10,11 @@ import trinsic.services.provider.v1.IonOptions;
 import trinsic.services.provider.v1.UpgradeDidRequest;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-
 public class ProviderServiceTest {
   private static String myEcosystemIdOrName = "default";
 
   @Test
-  public void testUpgradeDid()
-      throws IOException, ExecutionException, InterruptedException {
+  public void testUpgradeDid() throws IOException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
 
     var ecoCreateResponse =

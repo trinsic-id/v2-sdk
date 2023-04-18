@@ -1776,6 +1776,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.WalletConfiguration"
     },
+    "services.provider.v1.WalletConfiguration.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
     "services.provider.v1.WalletConfiguration.email": {
       "type": "field",
       "collection": "fields",
@@ -4546,6 +4552,7 @@
         "services.provider.v1.WalletConfiguration.config_type",
         "services.provider.v1.WalletConfiguration.auth_tokens",
         "services.provider.v1.WalletConfiguration.external_identities",
+        "services.provider.v1.WalletConfiguration.ecosystem_id",
         "services.provider.v1.IonOptions.network",
         "services.provider.v1.IndyOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
@@ -6509,7 +6516,8 @@
         "services.provider.v1.WalletConfiguration.public_did",
         "services.provider.v1.WalletConfiguration.config_type",
         "services.provider.v1.WalletConfiguration.auth_tokens",
-        "services.provider.v1.WalletConfiguration.external_identities"
+        "services.provider.v1.WalletConfiguration.external_identities",
+        "services.provider.v1.WalletConfiguration.ecosystem_id"
       ],
       "messages": [],
       "enums": []
@@ -8907,6 +8915,14 @@
       "type": "string",
       "full_type": "string",
       "description": ""
+    },
+    "services.provider.v1.WalletConfiguration.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.provider.v1.WalletConfiguration.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Ecosystem in which this wallet is contained."
     },
     "services.provider.v1.WalletConfiguration.email": {
       "name": "email",

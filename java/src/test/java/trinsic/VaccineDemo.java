@@ -2,6 +2,9 @@ package trinsic;
 
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 import trinsic.services.TemplateService;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
@@ -14,10 +17,6 @@ import trinsic.services.verifiablecredentials.v1.CreateProofRequest;
 import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest;
 import trinsic.services.verifiablecredentials.v1.VerifyProofRequest;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
-
 public class VaccineDemo {
 
   public static void main(String[] args)
@@ -25,8 +24,7 @@ public class VaccineDemo {
     run();
   }
 
-  public static void run()
-      throws IOException, ExecutionException, InterruptedException {
+  public static void run() throws IOException, ExecutionException, InterruptedException {
     // trinsicServiceConstructor() {
     var serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions();
     var trinsic = new TrinsicService(serverConfig);
@@ -121,8 +119,7 @@ public class VaccineDemo {
 
   private static String IssueCredential(
       TrinsicService trinsicService, String templateId, String clinic)
-      throws InvalidProtocolBufferException, ExecutionException,
-          InterruptedException {
+      throws InvalidProtocolBufferException, ExecutionException, InterruptedException {
     // issueCredential() {
     // Set active profile to 'clinic' so we can issue credential signed
     // with the clinic's signing keys
@@ -156,8 +153,7 @@ public class VaccineDemo {
   }
 
   private static String DefineTemplate(TemplateService templateService, String clinic)
-      throws InvalidProtocolBufferException, ExecutionException,
-          InterruptedException {
+      throws InvalidProtocolBufferException, ExecutionException, InterruptedException {
     // createTemplate() {
     // Set active profile to 'clinic'
     templateService.setAuthToken(clinic);

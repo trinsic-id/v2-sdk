@@ -7,15 +7,13 @@ import trinsic.services.TrinsicServiceKt
 import trinsic.services.trustregistry.v1.*
 import trinsic.services.universalwallet.v1.CreateWalletRequest
 
-@Throws(
-    IOException::class, ExecutionException::class, InterruptedException::class)
+@Throws(IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun main() {
   // Make sure you set the TEST_SERVER_ENDPOINT environment variable
   runTrustRegistryDemo()
 }
 
-@Throws(
-    IOException::class, ExecutionException::class, InterruptedException::class)
+@Throws(IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
   val trinsic = TrinsicServiceKt(TrinsicUtilities.getTrinsicTrinsicOptions())
   var createWallet =

@@ -1,9 +1,8 @@
 package trinsic;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
+import org.junit.jupiter.api.Test;
 
 class TrinsicServicesTest {
   @Test
@@ -19,32 +18,27 @@ class TrinsicServicesTest {
   }
 
   @Test
-  public void testTrustRegistryDemo()
-      throws IOException, ExecutionException, InterruptedException {
+  public void testTrustRegistryDemo() throws IOException, ExecutionException, InterruptedException {
     TrustRegistryDemo.run();
   }
 
   @Test
-  public void testEcosystemsDemo()
-      throws IOException, ExecutionException, InterruptedException {
+  public void testEcosystemsDemo() throws IOException, ExecutionException, InterruptedException {
     EcosystemsDemo.run();
   }
 
   @Test
-  public void testTemplatesDemo()
-      throws IOException, ExecutionException, InterruptedException {
+  public void testTemplatesDemo() throws IOException, ExecutionException, InterruptedException {
     TemplatesDemo.run();
   }
 
   @Test
-  public void testWalletDemo()
-      throws IOException, ExecutionException, InterruptedException {
+  public void testWalletDemo() throws IOException, ExecutionException, InterruptedException {
     WalletsDemo.run();
   }
 
   @Test
-  public void testCredentialsDemo()
-      throws IOException, ExecutionException, InterruptedException {
+  public void testCredentialsDemo() throws IOException, ExecutionException, InterruptedException {
     CredentialsDemo.run();
   }
 }

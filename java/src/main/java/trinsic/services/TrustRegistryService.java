@@ -20,8 +20,7 @@ public class TrustRegistryService extends ServiceBase {
     this.stub2 = TrustRegistryGrpc.newBlockingStub(this.getChannel());
   }
 
-  public ListenableFuture<SearchRegistryResponse> search()
-      throws InvalidProtocolBufferException {
+  public ListenableFuture<SearchRegistryResponse> search() throws InvalidProtocolBufferException {
     return search(SearchRegistryRequest.getDefaultInstance());
   }
 
@@ -39,37 +38,37 @@ public class TrustRegistryService extends ServiceBase {
 
   /** Add a governance framework to the ecosystem */
   public ListenableFuture<AddFrameworkResponse> addFramework(AddFrameworkRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).addFramework(request);
   }
   /** Remove a governance framework from the ecosystem */
   public ListenableFuture<RemoveFrameworkResponse> removeFramework(RemoveFrameworkRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).removeFramework(request);
   }
   /** Search the ecosystem's governance frameworks */
   public ListenableFuture<SearchRegistryResponse> searchRegistry(SearchRegistryRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).searchRegistry(request);
   }
   /** Register an authoritative issuer for a credential schema */
   public ListenableFuture<RegisterMemberResponse> registerMember(RegisterMemberRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).registerMember(request);
   }
   /** Removes an authoritative issuer for a credential schema from the trust registry */
   public ListenableFuture<UnregisterMemberResponse> unregisterMember(
-      UnregisterMemberRequest request) throws InvalidProtocolBufferException {
+      UnregisterMemberRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).unregisterMember(request);
   }
   /** Fetch the membership status of an issuer for a given credential schema in a trust registry */
   public ListenableFuture<GetMembershipStatusResponse> getMembershipStatus(
-      GetMembershipStatusRequest request) throws InvalidProtocolBufferException {
+      GetMembershipStatusRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).getMembershipStatus(request);
   }

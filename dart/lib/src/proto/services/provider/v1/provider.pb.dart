@@ -2954,6 +2954,11 @@ class WalletConfiguration extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'externalIdentities')
+    ..aOS(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
     ..hasRequiredFields = false;
 
   WalletConfiguration._() : super();
@@ -2966,6 +2971,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? configType,
     $core.Iterable<$0.WalletAuthToken>? authTokens,
     $core.Iterable<$core.String>? externalIdentities,
+    $core.String? ecosystemId,
   }) {
     final _result = create();
     if (name != null) {
@@ -2991,6 +2997,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     }
     if (externalIdentities != null) {
       _result.externalIdentities.addAll(externalIdentities);
+    }
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
     }
     return _result;
   }
@@ -3098,6 +3107,18 @@ class WalletConfiguration extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(8)
   $core.List<$core.String> get externalIdentities => $_getList(7);
+
+  @$pb.TagNumber(9)
+  $core.String get ecosystemId => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set ecosystemId($core.String v) {
+    $_setString(8, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasEcosystemId() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearEcosystemId() => clearField(9);
 }
 
 class IonOptions extends $pb.GeneratedMessage {

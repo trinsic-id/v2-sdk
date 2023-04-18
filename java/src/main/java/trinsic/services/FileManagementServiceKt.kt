@@ -11,31 +11,31 @@ class FileManagementServiceKt(options: Options.TrinsicOptions.Builder?) : Servic
   // target:
   // /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/FileManagementServiceKt.kt
 
-  @Throws(InvalidProtocolBufferException::class)
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
   @Deprecated("This method is experimental")
   suspend fun uploadFile(request: UploadFileRequest): UploadFileResponse {
     /** This method is experimental Upload a file to Trinsic's CDN */
     return withMetadata(stub, request).uploadFile(request)
   }
-  @Throws(InvalidProtocolBufferException::class)
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
   @Deprecated("This method is experimental")
   suspend fun getFile(request: GetFileRequest): GetFileResponse {
     /** This method is experimental Fetch information about a file by its ID */
     return withMetadata(stub, request).getFile(request)
   }
-  @Throws(InvalidProtocolBufferException::class)
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
   @Deprecated("This method is experimental")
   suspend fun deleteFile(request: DeleteFileRequest): DeleteFileResponse {
     /** This method is experimental Delete a file by its ID */
     return withMetadata(stub, request).deleteFile(request)
   }
-  @Throws(InvalidProtocolBufferException::class)
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
   @Deprecated("This method is experimental")
   suspend fun listFiles(request: ListFilesRequest): ListFilesResponse {
     /** This method is experimental List files the calling account has uploaded */
     return withMetadata(stub, request).listFiles(request)
   }
-  @Throws(InvalidProtocolBufferException::class)
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
   @Deprecated("This method is experimental")
   suspend fun getStorageStats(): GetStorageStatsResponse {
     /** This method is experimental Get statistics about files uploaded by the calling account */
