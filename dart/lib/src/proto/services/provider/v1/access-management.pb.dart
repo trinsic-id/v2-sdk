@@ -24,7 +24,7 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AddRoleAssignmentRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -161,7 +161,7 @@ class AddRoleAssignmentResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AddRoleAssignmentResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -214,7 +214,7 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RemoveRoleAssignmentRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -353,7 +353,7 @@ class RemoveRoleAssignmentResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RemoveRoleAssignmentResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -408,7 +408,7 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
           ? ''
           : 'ListRoleAssignmentsRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -525,7 +525,7 @@ class ListRoleAssignmentsResponse extends $pb.GeneratedMessage {
           ? ''
           : 'ListRoleAssignmentsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -587,7 +587,7 @@ class ListAvailableRolesRequest extends $pb.GeneratedMessage {
           ? ''
           : 'ListAvailableRolesRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -631,7 +631,7 @@ class ListAvailableRolesResponse extends $pb.GeneratedMessage {
           ? ''
           : 'ListAvailableRolesResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)

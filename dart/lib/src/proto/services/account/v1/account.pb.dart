@@ -19,7 +19,7 @@ class SignInRequest extends $pb.GeneratedMessage {
           ? ''
           : 'SignInRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -136,7 +136,7 @@ class AccountDetails extends $pb.GeneratedMessage {
           ? ''
           : 'AccountDetails',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -245,7 +245,7 @@ class SignInResponse extends $pb.GeneratedMessage {
           ? ''
           : 'SignInResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -340,7 +340,7 @@ class AccountProfile extends $pb.GeneratedMessage {
           ? ''
           : 'AccountProfile',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -475,7 +475,7 @@ class TokenProtection extends $pb.GeneratedMessage {
           ? ''
           : 'TokenProtection',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -567,7 +567,7 @@ class AccountInfoRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AccountInfoRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -609,7 +609,7 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AccountInfoResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -794,7 +794,7 @@ class AccountEcosystem extends $pb.GeneratedMessage {
           ? ''
           : 'AccountEcosystem',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -924,7 +924,7 @@ class LoginRequest extends $pb.GeneratedMessage {
           ? ''
           : 'LoginRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -1046,7 +1046,7 @@ class LoginResponse extends $pb.GeneratedMessage {
           ? ''
           : 'LoginResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -1143,7 +1143,7 @@ class LoginConfirmRequest extends $pb.GeneratedMessage {
           ? ''
           : 'LoginConfirmRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -1233,7 +1233,7 @@ class LoginConfirmResponse extends $pb.GeneratedMessage {
           ? ''
           : 'LoginConfirmResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -1304,7 +1304,7 @@ class AuthorizeWebhookRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AuthorizeWebhookRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -1364,7 +1364,7 @@ class AuthorizeWebhookResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AuthorizeWebhookResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)
@@ -1408,7 +1408,7 @@ class WalletAuthToken extends $pb.GeneratedMessage {
           ? ''
           : 'WalletAuthToken',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.account.v1'),
       createEmptyInstance: create)

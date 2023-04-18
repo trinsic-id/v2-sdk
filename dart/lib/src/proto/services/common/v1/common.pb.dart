@@ -18,7 +18,7 @@ class Nonce extends $pb.GeneratedMessage {
           ? ''
           : 'Nonce',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.common.v1'),
       createEmptyInstance: create)
