@@ -17,9 +17,23 @@ export interface IPlatformProvider {
     ): Client<ClientService>;
 }
 
-function isNode(): boolean {
-    // https://stackoverflow.com/a/38815760
-    return typeof process === "object" && process + "" === "[object process]";
+function getRuntime(): string {
+    // https://stackoverflow.com/a/39473604
+    if (typeof document !== 'undefined') {
+        // I'm on the web!
+        console.warn("Web!");
+        return "web";
+    }
+    else if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+        // I'm in react-native
+        console.warn("React native!");
+        return "react-native";
+    }
+    else {
+        console.warn("Node.js!");
+        // I'm in node js
+        return "node";
+    }
 }
 
 export class BrowserProvider implements IPlatformProvider {
@@ -29,10 +43,11 @@ export class BrowserProvider implements IPlatformProvider {
         address: string
     ): Client<ClientService> {
         let channel: any;
-        if (isNode()) {
-            channel = createChannel(address, NodeHttpTransport());
-        } else {
+        const runtime = getRuntime();
+        if (runtime === "web") {
             channel = createChannel(address, FetchTransport());
+        } else {
+            channel = createChannel(address, NodeHttpTransport());
         }
         // @ts-ignore - compatible types, duplicate definitions
         return createClient(definition, channel);
@@ -40,11 +55,7 @@ export class BrowserProvider implements IPlatformProvider {
 
     metadataLanguage(): string {
         if (this.language === undefined) {
-            if (isNode()) {
-                this.language = "typescript-node";
-            } else {
-                this.language = "typescript-web";
-            }
+            this.language = "typescript-" + getRuntime();
         }
         return this.language;
     }
