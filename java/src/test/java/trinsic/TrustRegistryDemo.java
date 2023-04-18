@@ -1,13 +1,12 @@
 package trinsic;
 
+import java.io.IOException;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
 import trinsic.services.trustregistry.v1.*;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
-
-import java.io.IOException;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryDemo {
   private static String myEcosystemIdOrName = "default";
@@ -17,8 +16,7 @@ public class TrustRegistryDemo {
     run();
   }
 
-  public static void run()
-      throws IOException, ExecutionException, InterruptedException {
+  public static void run() throws IOException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
     var account =
         trinsic

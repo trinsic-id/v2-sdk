@@ -27,7 +27,7 @@ public class CredentialService extends ServiceBase {
    */
   @Deprecated(since = "This endpoint will be removed around June 1, 2023")
   public ListenableFuture<IssueResponse> issue(IssueRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).issue(request);
   }
@@ -36,19 +36,19 @@ public class CredentialService extends ServiceBase {
    * schema validation and revocation registry values to the credential.
    */
   public ListenableFuture<IssueFromTemplateResponse> issueFromTemplate(
-      IssueFromTemplateRequest request) throws InvalidProtocolBufferException {
+      IssueFromTemplateRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).issueFromTemplate(request);
   }
   /** Check credential status in the revocation registry */
   public ListenableFuture<CheckStatusResponse> checkStatus(CheckStatusRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).checkStatus(request);
   }
   /** Update credential status by setting the revocation value */
   public ListenableFuture<UpdateStatusResponse> updateStatus(UpdateStatusRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).updateStatus(request);
   }
@@ -57,7 +57,7 @@ public class CredentialService extends ServiceBase {
    * signature from which a proof can be derived.
    */
   public ListenableFuture<CreateProofResponse> createProof(CreateProofRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).createProof(request);
   }
@@ -66,13 +66,13 @@ public class CredentialService extends ServiceBase {
    * status, and issuer status against a trust registry
    */
   public ListenableFuture<VerifyProofResponse> verifyProof(VerifyProofRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).verifyProof(request);
   }
   /** Sends a document directly to a user's email within the given ecosystem */
   public ListenableFuture<SendResponse> send(SendRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).send(request);
   }

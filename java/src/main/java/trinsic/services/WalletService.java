@@ -17,8 +17,7 @@ public class WalletService extends ServiceBase {
     this.stub = UniversalWalletGrpc.newFutureStub(this.getChannel());
   }
 
-  public ListenableFuture<SearchResponse> searchWallet()
-      throws InvalidProtocolBufferException {
+  public ListenableFuture<SearchResponse> searchWallet() throws InvalidProtocolBufferException {
     return searchWallet(SearchRequest.getDefaultInstance());
   }
 
@@ -38,55 +37,55 @@ public class WalletService extends ServiceBase {
 
   /** Retrieve an item from the wallet with a given item identifier */
   public ListenableFuture<GetItemResponse> getItem(GetItemRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).getItem(request);
   }
   /** Search the wallet using a SQL syntax */
   public ListenableFuture<SearchResponse> search(SearchRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).search(request);
   }
   /** Insert an item into the wallet */
   public ListenableFuture<InsertItemResponse> insertItem(InsertItemRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).insertItem(request);
   }
   /** Update an item in the wallet */
   public ListenableFuture<UpdateItemResponse> updateItem(UpdateItemRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).updateItem(request);
   }
   /** Delete an item from the wallet permanently */
   public ListenableFuture<DeleteItemResponse> deleteItem(DeleteItemRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).deleteItem(request);
   }
   /** Delete a wallet and its credentials */
   public ListenableFuture<DeleteWalletResponse> deleteWallet(DeleteWalletRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).deleteWallet(request);
   }
   /** Create a new wallet and generate an auth token for access */
   public ListenableFuture<CreateWalletResponse> createWallet(CreateWalletRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).createWallet(request);
   }
   /** Retrieve wallet details and configuration */
   public ListenableFuture<GetWalletInfoResponse> getWalletInfo(GetWalletInfoRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).getWalletInfo(request);
   }
   /** Retrieve wallet details and configuration about the currently authenticated wallet */
   public ListenableFuture<GetMyInfoResponse> getMyInfo(GetMyInfoRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).getMyInfo(request);
   }
@@ -97,7 +96,7 @@ public class WalletService extends ServiceBase {
    * token.
    */
   public ListenableFuture<GenerateAuthTokenResponse> generateAuthToken(
-      GenerateAuthTokenRequest request) throws InvalidProtocolBufferException {
+      GenerateAuthTokenRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).generateAuthToken(request);
   }
@@ -106,7 +105,7 @@ public class WalletService extends ServiceBase {
    * endpoint requires authentication.
    */
   public ListenableFuture<RevokeAuthTokenResponse> revokeAuthToken(RevokeAuthTokenRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).revokeAuthToken(request);
   }
@@ -115,20 +114,20 @@ public class WalletService extends ServiceBase {
    * This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.
    */
   public ListenableFuture<AddExternalIdentityInitResponse> addExternalIdentityInit(
-      AddExternalIdentityInitRequest request) throws InvalidProtocolBufferException {
+      AddExternalIdentityInitRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).addExternalIdentityInit(request);
   }
   /** Confirm identity added to the current wallet using `AddExternalIdentityInit` */
   public ListenableFuture<AddExternalIdentityConfirmResponse> addExternalIdentityConfirm(
       AddExternalIdentityConfirmRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).addExternalIdentityConfirm(request);
   }
   /** Remove an external identity from the current wallet */
   public ListenableFuture<RemoveExternalIdentityResponse> removeExternalIdentity(
-      RemoveExternalIdentityRequest request) throws InvalidProtocolBufferException {
+      RemoveExternalIdentityRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).removeExternalIdentity(request);
   }
@@ -138,19 +137,19 @@ public class WalletService extends ServiceBase {
    * verified
    */
   public ListenableFuture<AuthenticateInitResponse> authenticateInit(
-      AuthenticateInitRequest request) throws InvalidProtocolBufferException {
+      AuthenticateInitRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).authenticateInit(request);
   }
   /** Confirm sign-in to an already existing wallet and return authentication token */
   public ListenableFuture<AuthenticateConfirmResponse> authenticateConfirm(
-      AuthenticateConfirmRequest request) throws InvalidProtocolBufferException {
+      AuthenticateConfirmRequest request) throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).authenticateConfirm(request);
   }
   /** List all wallets in the ecosystem */
   public ListenableFuture<ListWalletsResponse> listWallets(ListWalletsRequest request)
-      throws InvalidProtocolBufferException {
+      throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).listWallets(request);
   }

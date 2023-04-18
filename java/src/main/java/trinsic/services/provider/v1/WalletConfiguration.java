@@ -31,6 +31,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     configType_ = "";
     authTokens_ = java.util.Collections.emptyList();
     externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    ecosystemId_ = "";
   }
 
   @java.lang.Override
@@ -445,6 +446,55 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     return externalIdentities_.getByteString(index);
   }
 
+  public static final int ECOSYSTEM_ID_FIELD_NUMBER = 9;
+  private volatile java.lang.Object ecosystemId_;
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem in which this wallet is contained.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 9;</code>
+   *
+   * @return The ecosystemId.
+   */
+  @java.lang.Override
+  public java.lang.String getEcosystemId() {
+    java.lang.Object ref = ecosystemId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      ecosystemId_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem in which this wallet is contained.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 9;</code>
+   *
+   * @return The bytes for ecosystemId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getEcosystemIdBytes() {
+    java.lang.Object ref = ecosystemId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      ecosystemId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -482,6 +532,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
     for (int i = 0; i < externalIdentities_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, externalIdentities_.getRaw(i));
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, ecosystemId_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -521,6 +574,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       size += dataSize;
       size += 1 * getExternalIdentitiesList().size();
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, ecosystemId_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -545,6 +601,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!getConfigType().equals(other.getConfigType())) return false;
     if (!getAuthTokensList().equals(other.getAuthTokensList())) return false;
     if (!getExternalIdentitiesList().equals(other.getExternalIdentitiesList())) return false;
+    if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -576,6 +633,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       hash = (37 * hash) + EXTERNAL_IDENTITIES_FIELD_NUMBER;
       hash = (53 * hash) + getExternalIdentitiesList().hashCode();
     }
+    hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getEcosystemId().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -735,6 +794,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       bitField0_ = (bitField0_ & ~0x00000001);
       externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000002);
+      ecosystemId_ = "";
+
       return this;
     }
 
@@ -783,6 +844,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         bitField0_ = (bitField0_ & ~0x00000002);
       }
       result.externalIdentities_ = externalIdentities_;
+      result.ecosystemId_ = ecosystemId_;
       onBuilt();
       return result;
     }
@@ -894,6 +956,10 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         }
         onChanged();
       }
+      if (!other.getEcosystemId().isEmpty()) {
+        ecosystemId_ = other.ecosystemId_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -976,6 +1042,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
                 externalIdentities_.add(s);
                 break;
               } // case 66
+            case 74:
+              {
+                ecosystemId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 74
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -2062,6 +2134,112 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       checkByteStringIsUtf8(value);
       ensureExternalIdentitiesIsMutable();
       externalIdentities_.add(value);
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object ecosystemId_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem in which this wallet is contained.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 9;</code>
+     *
+     * @return The ecosystemId.
+     */
+    public java.lang.String getEcosystemId() {
+      java.lang.Object ref = ecosystemId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ecosystemId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem in which this wallet is contained.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 9;</code>
+     *
+     * @return The bytes for ecosystemId.
+     */
+    public com.google.protobuf.ByteString getEcosystemIdBytes() {
+      java.lang.Object ref = ecosystemId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        ecosystemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem in which this wallet is contained.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 9;</code>
+     *
+     * @param value The ecosystemId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEcosystemId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      ecosystemId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem in which this wallet is contained.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 9;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearEcosystemId() {
+
+      ecosystemId_ = getDefaultInstance().getEcosystemId();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Ecosystem in which this wallet is contained.
+     * </pre>
+     *
+     * <code>string ecosystem_id = 9;</code>
+     *
+     * @param value The bytes for ecosystemId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      ecosystemId_ = value;
       onChanged();
       return this;
     }

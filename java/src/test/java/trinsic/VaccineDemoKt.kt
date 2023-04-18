@@ -21,8 +21,7 @@ suspend fun main() {
   runVaccineDemo()
 }
 
-@Throws(
-    IOException::class, ExecutionException::class, InterruptedException::class)
+@Throws(IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runVaccineDemo() {
   val serverConfig = TrinsicUtilities.getTrinsicTrinsicOptions()
 
@@ -132,9 +131,7 @@ suspend fun runVaccineDemo() {
 }
 
 @Throws(
-    InvalidProtocolBufferException::class,
-    ExecutionException::class,
-    InterruptedException::class)
+    InvalidProtocolBufferException::class, ExecutionException::class, InterruptedException::class)
 private suspend fun issueCredential(
     trinsicService: TrinsicServiceKt,
     templateId: String,
@@ -170,9 +167,7 @@ private suspend fun issueCredential(
 }
 
 @Throws(
-    InvalidProtocolBufferException::class,
-    ExecutionException::class,
-    InterruptedException::class)
+    InvalidProtocolBufferException::class, ExecutionException::class, InterruptedException::class)
 private suspend fun defineTemplate(templateService: TemplateServiceKt, clinic: String): String {
   // createTemplate() {
   // Set active profile to 'clinic'

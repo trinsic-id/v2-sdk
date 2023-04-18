@@ -599,6 +599,9 @@ class WalletConfiguration(betterproto.Message):
     external_identities: List[str] = betterproto.string_field(8)
     """List of external identities associated with this wallet."""
 
+    ecosystem_id: str = betterproto.string_field(9)
+    """Ecosystem in which this wallet is contained."""
+
 
 @dataclass(eq=False, repr=False)
 class IonOptions(betterproto.Message):

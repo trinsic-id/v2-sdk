@@ -222,4 +222,29 @@ public interface WalletConfigurationOrBuilder
    * @return The bytes of the externalIdentities at the given index.
    */
   com.google.protobuf.ByteString getExternalIdentitiesBytes(int index);
+
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem in which this wallet is contained.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 9;</code>
+   *
+   * @return The ecosystemId.
+   */
+  java.lang.String getEcosystemId();
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem in which this wallet is contained.
+   * </pre>
+   *
+   * <code>string ecosystem_id = 9;</code>
+   *
+   * @return The bytes for ecosystemId.
+   */
+  com.google.protobuf.ByteString getEcosystemIdBytes();
 }

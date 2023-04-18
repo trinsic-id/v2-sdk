@@ -5,14 +5,12 @@ import trinsic.TrinsicUtilities
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.provider.v1.CreateEcosystemRequest
 
-@Throws(
-    IOException::class, ExecutionException::class, InterruptedException::class)
+@Throws(IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun main() {
   runEcosystemsDemo()
 }
 
-@Throws(
-    IOException::class, ExecutionException::class, InterruptedException::class)
+@Throws(IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runEcosystemsDemo() {
   val service = TrinsicServiceKt(TrinsicUtilities.getTrinsicTrinsicOptions())
   val response =
