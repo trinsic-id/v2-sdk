@@ -19,24 +19,31 @@ Creates a Governance Framework and attaches it to the current ecosystem.
         trinsic trust-registry add-framework --name 'Example EGF' --uri 'https://example.com/governance'
         ```
 
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [RegisterGovernanceFramework](../../../web/test/TrustRegistry.test.ts) inside_block:registerGovernanceFramework
+        ```
+        <!--/codeinclude-->
+
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerGovernanceFramework
+        [RegisterGovernanceFramework](../../../dotnet/Tests/Tests.cs) inside_block:registerGovernanceFramework
         ```
         <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerGovernanceFramework
+        [RegisterGovernanceFramework](../../../python/samples/trustregistry_demo.py) inside_block:registerGovernanceFramework
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerGovernanceFramework
+        [RegisterGovernanceFramework](../../../go/services/services_test.go) inside_block:registerGovernanceFramework
         ```
         <!--/codeinclude-->
 
@@ -64,17 +71,24 @@ Registers an authorized issuer for a specific credential type (identified by its
             --did did:key:xxxxx.....
         ```
 
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [RegisterIssuer](../../../web/test/TrustRegistry.test.ts) inside_block:registerMemberSample
+        ```
+        <!--/codeinclude-->
+
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerIssuerSample
+        [RegisterIssuer](../../../dotnet/Tests/Tests.cs) inside_block:registerIssuerSample
         ```
         <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerIssuerSample
+        [RegisterIssuer](../../../python/samples/trustregistry_demo.py) inside_block:registerIssuerSample
         ```
         <!--/codeinclude-->
 
@@ -110,31 +124,38 @@ Unregisters an issuer for a specific credential type (identified by its `schema_
             --did did:example:fabre
         ```
 
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [UnregisterMember](../../../web/test/TrustRegistry.test.ts) inside_block:unregisterMember
+        ```
+        <!--/codeinclude-->
+
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:unregisterIssuer
+        [UnregisterMember](../../../dotnet/Tests/Tests.cs) inside_block:unregisterIssuer
         ```
         <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:unregisterIssuer
+        [UnregisterMember](../../../python/samples/trustregistry_demo.py) inside_block:unregisterIssuer
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:unregisterMember
+        [UnregisterMember](../../../go/services/services_test.go) inside_block:unregisterMember
         ```
         <!--/codeinclude-->
 
     === "Java"
         <!--codeinclude-->
         ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:unregisterIssuer
+        [UnregisterMember](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:unregisterIssuer
         ```
         <!--/codeinclude-->
 
@@ -153,6 +174,13 @@ Check the status of an issuer for a specific credential type.
             --credential-type https://w3id.org/vaccination#VaccinationCertificate \
             --did did:example:fabre
         ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [GetMembershipStatus](../../../web/test/TrustRegistry.test.ts) inside_block:getMembershipStatus
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -195,6 +223,13 @@ Search the registry for registered issuers using a SQL query.
         ```bash
         trinsic trust-registry search --query <SQL query>
         ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [SearchTrustRegistry](../../../web/test/TrustRegistry.test.ts) inside_block:searchTrustRegistry
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
