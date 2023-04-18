@@ -21,7 +21,7 @@ class SearchRequest extends $pb.GeneratedMessage {
           ? ''
           : 'SearchRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -109,7 +109,7 @@ class SearchResponse extends $pb.GeneratedMessage {
           ? ''
           : 'SearchResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -209,7 +209,7 @@ class GetItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -276,7 +276,7 @@ class GetItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -364,7 +364,7 @@ class UpdateItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -452,7 +452,7 @@ class UpdateItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -494,7 +494,7 @@ class InsertItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'InsertItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -582,7 +582,7 @@ class InsertItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'InsertItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -649,7 +649,7 @@ class DeleteItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -716,7 +716,7 @@ class DeleteItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -767,7 +767,7 @@ class DeleteWalletRequest extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteWalletRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -881,7 +881,7 @@ class DeleteWalletResponse extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteWalletResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -924,7 +924,7 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
           ? ''
           : 'CreateWalletRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1012,7 +1012,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
           ? ''
           : 'CreateWalletResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1125,7 +1125,7 @@ class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GenerateAuthTokenRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1215,7 +1215,7 @@ class GenerateAuthTokenResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GenerateAuthTokenResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1305,7 +1305,7 @@ class GetWalletInfoRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetWalletInfoRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1373,7 +1373,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetWalletInfoResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1445,7 +1445,7 @@ class GetMyInfoRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetMyInfoRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1487,7 +1487,7 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetMyInfoResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1557,7 +1557,7 @@ class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RevokeAuthTokenRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1647,7 +1647,7 @@ class RevokeAuthTokenResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RevokeAuthTokenResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1691,7 +1691,7 @@ class ListWalletsRequest extends $pb.GeneratedMessage {
           ? ''
           : 'ListWalletsRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1758,7 +1758,7 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
           ? ''
           : 'ListWalletsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1818,7 +1818,7 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AddExternalIdentityInitRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1914,7 +1914,7 @@ class AddExternalIdentityInitResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AddExternalIdentityInitResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -1986,7 +1986,7 @@ class AddExternalIdentityConfirmRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AddExternalIdentityConfirmRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -2079,7 +2079,7 @@ class AddExternalIdentityConfirmResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AddExternalIdentityConfirmResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -2126,7 +2126,7 @@ class RemoveExternalIdentityRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RemoveExternalIdentityRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -2197,7 +2197,7 @@ class RemoveExternalIdentityResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RemoveExternalIdentityResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -2243,7 +2243,7 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AuthenticateInitRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -2358,7 +2358,7 @@ class AuthenticateInitResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AuthenticateInitResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -2427,7 +2427,7 @@ class AuthenticateConfirmRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AuthenticateConfirmRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -2518,7 +2518,7 @@ class AuthenticateConfirmResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AuthenticateConfirmResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)

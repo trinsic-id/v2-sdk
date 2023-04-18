@@ -16,7 +16,7 @@ class File extends $pb.GeneratedMessage {
           ? ''
           : 'File',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -188,7 +188,7 @@ class StorageStats extends $pb.GeneratedMessage {
           ? ''
           : 'StorageStats',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -279,7 +279,7 @@ class UploadFileRequest extends $pb.GeneratedMessage {
           ? ''
           : 'UploadFileRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -368,7 +368,7 @@ class UploadFileResponse extends $pb.GeneratedMessage {
           ? ''
           : 'UploadFileResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -438,7 +438,7 @@ class GetFileRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetFileRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -505,7 +505,7 @@ class GetFileResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetFileResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -575,7 +575,7 @@ class DeleteFileRequest extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteFileRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -642,7 +642,7 @@ class DeleteFileResponse extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteFileResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -684,7 +684,7 @@ class ListFilesRequest extends $pb.GeneratedMessage {
           ? ''
           : 'ListFilesRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -772,7 +772,7 @@ class ListFilesResponse extends $pb.GeneratedMessage {
           ? ''
           : 'ListFilesResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -874,7 +874,7 @@ class GetStorageStatsRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetStorageStatsRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)
@@ -918,7 +918,7 @@ class GetStorageStatsResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetStorageStatsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.filemanagement.v1'),
       createEmptyInstance: create)

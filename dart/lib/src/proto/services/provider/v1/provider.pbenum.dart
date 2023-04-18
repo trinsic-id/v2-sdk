@@ -12,13 +12,13 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class ParticipantType extends $pb.ProtobufEnum {
   static const ParticipantType participant_type_individual = ParticipantType._(
       0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'participant_type_individual');
   static const ParticipantType participant_type_organization =
       ParticipantType._(
           1,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'participant_type_organization');
 
@@ -38,25 +38,25 @@ class InvitationStatusResponse_Status extends $pb.ProtobufEnum {
   static const InvitationStatusResponse_Status Error =
       InvitationStatusResponse_Status._(
           0,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'Error');
   static const InvitationStatusResponse_Status InvitationSent =
       InvitationStatusResponse_Status._(
           1,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'InvitationSent');
   static const InvitationStatusResponse_Status Completed =
       InvitationStatusResponse_Status._(
           2,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'Completed');
   static const InvitationStatusResponse_Status Expired =
       InvitationStatusResponse_Status._(
           3,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'Expired');
 
@@ -78,16 +78,10 @@ class InvitationStatusResponse_Status extends $pb.ProtobufEnum {
 }
 
 class IonOptions_IonNetwork extends $pb.ProtobufEnum {
-  static const IonOptions_IonNetwork TestNet = IonOptions_IonNetwork._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'TestNet');
-  static const IonOptions_IonNetwork MainNet = IonOptions_IonNetwork._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'MainNet');
+  static const IonOptions_IonNetwork TestNet = IonOptions_IonNetwork._(0,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TestNet');
+  static const IonOptions_IonNetwork MainNet = IonOptions_IonNetwork._(1,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MainNet');
 
   static const $core.List<IonOptions_IonNetwork> values =
       <IonOptions_IonNetwork>[
@@ -103,53 +97,41 @@ class IonOptions_IonNetwork extends $pb.ProtobufEnum {
 }
 
 class IndyOptions_IndyNetwork extends $pb.ProtobufEnum {
-  static const IndyOptions_IndyNetwork Danube = IndyOptions_IndyNetwork._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Danube');
+  static const IndyOptions_IndyNetwork Danube = IndyOptions_IndyNetwork._(0,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Danube');
   static const IndyOptions_IndyNetwork SovrinBuilder =
       IndyOptions_IndyNetwork._(
           1,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'SovrinBuilder');
   static const IndyOptions_IndyNetwork SovrinStaging =
       IndyOptions_IndyNetwork._(
           2,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'SovrinStaging');
-  static const IndyOptions_IndyNetwork Sovrin = IndyOptions_IndyNetwork._(
-      3,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Sovrin');
+  static const IndyOptions_IndyNetwork Sovrin = IndyOptions_IndyNetwork._(3,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Sovrin');
   static const IndyOptions_IndyNetwork IdUnionTest = IndyOptions_IndyNetwork._(
       4,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'IdUnionTest');
-  static const IndyOptions_IndyNetwork IdUnion = IndyOptions_IndyNetwork._(
-      5,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'IdUnion');
+  static const IndyOptions_IndyNetwork IdUnion = IndyOptions_IndyNetwork._(5,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'IdUnion');
   static const IndyOptions_IndyNetwork IndicioTest = IndyOptions_IndyNetwork._(
       6,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'IndicioTest');
   static const IndyOptions_IndyNetwork IndicioDemo = IndyOptions_IndyNetwork._(
       7,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'IndicioDemo');
-  static const IndyOptions_IndyNetwork Indicio = IndyOptions_IndyNetwork._(
-      8,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Indicio');
+  static const IndyOptions_IndyNetwork Indicio = IndyOptions_IndyNetwork._(8,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Indicio');
 
   static const $core.List<IndyOptions_IndyNetwork> values =
       <IndyOptions_IndyNetwork>[

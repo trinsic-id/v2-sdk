@@ -10,11 +10,11 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use annotationOptionDescriptor instead')
-const AnnotationOption$json = const {
+const AnnotationOption$json = {
   '1': 'AnnotationOption',
-  '2': const [
-    const {'1': 'active', '3': 1, '4': 1, '5': 8, '10': 'active'},
-    const {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+  '2': [
+    {'1': 'active', '3': 1, '4': 1, '5': 8, '10': 'active'},
+    {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
   ],
 };
 
@@ -22,13 +22,13 @@ const AnnotationOption$json = const {
 final $typed_data.Uint8List annotationOptionDescriptor = $convert.base64Decode(
     'ChBBbm5vdGF0aW9uT3B0aW9uEhYKBmFjdGl2ZRgBIAEoCFIGYWN0aXZlEhgKB21lc3NhZ2UYAiABKAlSB21lc3NhZ2U=');
 @$core.Deprecated('Use sdkTemplateOptionDescriptor instead')
-const SdkTemplateOption$json = const {
+const SdkTemplateOption$json = {
   '1': 'SdkTemplateOption',
-  '2': const [
-    const {'1': 'anonymous', '3': 1, '4': 1, '5': 8, '10': 'anonymous'},
-    const {'1': 'ignore', '3': 2, '4': 1, '5': 8, '10': 'ignore'},
-    const {'1': 'no_arguments', '3': 3, '4': 1, '5': 8, '10': 'noArguments'},
-    const {
+  '2': [
+    {'1': 'anonymous', '3': 1, '4': 1, '5': 8, '10': 'anonymous'},
+    {'1': 'ignore', '3': 2, '4': 1, '5': 8, '10': 'ignore'},
+    {'1': 'no_arguments', '3': 3, '4': 1, '5': 8, '10': 'noArguments'},
+    {
       '1': 'experimental',
       '3': 4,
       '4': 1,
@@ -36,7 +36,7 @@ const SdkTemplateOption$json = const {
       '6': '.services.options.AnnotationOption',
       '10': 'experimental'
     },
-    const {
+    {
       '1': 'deprecated',
       '3': 5,
       '4': 1,

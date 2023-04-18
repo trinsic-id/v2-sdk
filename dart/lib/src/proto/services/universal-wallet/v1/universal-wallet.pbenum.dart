@@ -10,21 +10,12 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class IdentityProvider extends $pb.ProtobufEnum {
-  static const IdentityProvider UNKNOWN = IdentityProvider._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'UNKNOWN');
+  static const IdentityProvider UNKNOWN = IdentityProvider._(0,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'UNKNOWN');
   static const IdentityProvider EMAIL = IdentityProvider._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'EMAIL');
+      1, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EMAIL');
   static const IdentityProvider PHONE = IdentityProvider._(
-      2,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'PHONE');
+      2, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PHONE');
 
   static const $core.List<IdentityProvider> values = <IdentityProvider>[
     UNKNOWN,

@@ -10,31 +10,16 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class FieldType extends $pb.ProtobufEnum {
-  static const FieldType STRING = FieldType._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'STRING');
-  static const FieldType NUMBER = FieldType._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'NUMBER');
+  static const FieldType STRING = FieldType._(0,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'STRING');
+  static const FieldType NUMBER = FieldType._(1,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'NUMBER');
   static const FieldType BOOL = FieldType._(
-      2,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'BOOL');
-  static const FieldType DATETIME = FieldType._(
-      4,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'DATETIME');
+      2, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'BOOL');
+  static const FieldType DATETIME = FieldType._(4,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DATETIME');
   static const FieldType URI = FieldType._(
-      5,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'URI');
+      5, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'URI');
 
   static const $core.List<FieldType> values = <FieldType>[
     STRING,
@@ -53,18 +38,12 @@ class FieldType extends $pb.ProtobufEnum {
 
 class UriRenderMethod extends $pb.ProtobufEnum {
   static const UriRenderMethod TEXT = UriRenderMethod._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'TEXT');
+      0, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TEXT');
   static const UriRenderMethod LINK = UriRenderMethod._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'LINK');
+      1, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'LINK');
   static const UriRenderMethod INLINE_IMAGE = UriRenderMethod._(
       2,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'INLINE_IMAGE');
 
