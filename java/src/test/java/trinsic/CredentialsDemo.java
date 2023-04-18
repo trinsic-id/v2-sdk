@@ -1,24 +1,24 @@
 package trinsic;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.ExecutionException;
-import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
 import trinsic.services.verifiablecredentials.v1.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.ExecutionException;
+
 public class CredentialsDemo {
   public static void main(String[] args)
-      throws IOException, DidException, ExecutionException, InterruptedException {
+      throws IOException, ExecutionException, InterruptedException {
     run();
   }
 
   public static void run()
-      throws IOException, DidException, ExecutionException, InterruptedException {
+      throws IOException, ExecutionException, InterruptedException {
     var unsignedCredential = Files.readString(vaccineCertUnsignedPath());
     var proofRequestJson = Files.readString(vaccineCertFramePath());
     var recipientEmail = "example@trinsic.id";

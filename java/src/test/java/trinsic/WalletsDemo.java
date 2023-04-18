@@ -1,21 +1,21 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
-import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.*;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
 public class WalletsDemo {
   public static void main(String[] args)
-      throws IOException, DidException, ExecutionException, InterruptedException {
+      throws IOException, ExecutionException, InterruptedException {
     run();
   }
 
   public static void run()
-      throws IOException, DidException, ExecutionException, InterruptedException {
+      throws IOException, ExecutionException, InterruptedException {
     // Create ecosystem
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
     var ecosystemResponse =
