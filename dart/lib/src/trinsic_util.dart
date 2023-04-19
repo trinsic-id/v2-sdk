@@ -7,10 +7,11 @@ TrinsicOptions trinsicConfig({String authToken = ""}) {
   String port = "443";
   String useTls = "true";
   try {
-    endpoint = Platform.environment["TEST_SERVER_ENDPOINT"] ?? "prod.trinsic.cloud";
+    endpoint =
+        Platform.environment["TEST_SERVER_ENDPOINT"] ?? "prod.trinsic.cloud";
     port = Platform.environment["TEST_SERVER_PORT"] ?? "443";
     useTls = Platform.environment["TEST_SERVER_USE_TLS"] ?? "true";
-  }on Error{
+  } on Error {
     // unsupported operation happens in flutter, ignore it.
   }
 

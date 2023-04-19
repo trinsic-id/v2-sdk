@@ -247,4 +247,17 @@ public interface WalletConfigurationOrBuilder
    * @return The bytes for ecosystemId.
    */
   com.google.protobuf.ByteString getEcosystemIdBytes();
+
+  /**
+   * <code>string description = 10;</code>
+   *
+   * @return The description.
+   */
+  java.lang.String getDescription();
+  /**
+   * <code>string description = 10;</code>
+   *
+   * @return The bytes for description.
+   */
+  com.google.protobuf.ByteString getDescriptionBytes();
 }

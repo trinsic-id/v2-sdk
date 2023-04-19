@@ -10,12 +10,12 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use identityProviderDescriptor instead')
-const IdentityProvider$json = {
+const IdentityProvider$json = const {
   '1': 'IdentityProvider',
-  '2': [
-    {'1': 'UNKNOWN', '2': 0},
-    {'1': 'EMAIL', '2': 1},
-    {'1': 'PHONE', '2': 2},
+  '2': const [
+    const {'1': 'UNKNOWN', '2': 0},
+    const {'1': 'EMAIL', '2': 1},
+    const {'1': 'PHONE', '2': 2},
   ],
 };
 
@@ -23,16 +23,16 @@ const IdentityProvider$json = {
 final $typed_data.Uint8List identityProviderDescriptor = $convert.base64Decode(
     'ChBJZGVudGl0eVByb3ZpZGVyEgsKB1VOS05PV04QABIJCgVFTUFJTBABEgkKBVBIT05FEAI=');
 @$core.Deprecated('Use searchRequestDescriptor instead')
-const SearchRequest$json = {
+const SearchRequest$json = const {
   '1': 'SearchRequest',
-  '2': [
-    {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
-    {
+  '2': const [
+    const {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
+    const {
       '1': 'continuation_token',
       '3': 2,
       '4': 1,
       '5': 9,
-      '8': {},
+      '8': const {},
       '10': 'continuationToken'
     },
   ],
@@ -42,12 +42,18 @@ const SearchRequest$json = {
 final $typed_data.Uint8List searchRequestDescriptor = $convert.base64Decode(
     'Cg1TZWFyY2hSZXF1ZXN0EhQKBXF1ZXJ5GAEgASgJUgVxdWVyeRIzChJjb250aW51YXRpb25fdG9rZW4YAiABKAlCBICmHQFSEWNvbnRpbnVhdGlvblRva2Vu');
 @$core.Deprecated('Use searchResponseDescriptor instead')
-const SearchResponse$json = {
+const SearchResponse$json = const {
   '1': 'SearchResponse',
-  '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 9, '10': 'items'},
-    {'1': 'has_more_results', '3': 2, '4': 1, '5': 8, '10': 'hasMoreResults'},
-    {
+  '2': const [
+    const {'1': 'items', '3': 1, '4': 3, '5': 9, '10': 'items'},
+    const {
+      '1': 'has_more_results',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'hasMoreResults'
+    },
+    const {
       '1': 'continuation_token',
       '3': 4,
       '4': 1,
@@ -61,10 +67,10 @@ const SearchResponse$json = {
 final $typed_data.Uint8List searchResponseDescriptor = $convert.base64Decode(
     'Cg5TZWFyY2hSZXNwb25zZRIUCgVpdGVtcxgBIAMoCVIFaXRlbXMSKAoQaGFzX21vcmVfcmVzdWx0cxgCIAEoCFIOaGFzTW9yZVJlc3VsdHMSLQoSY29udGludWF0aW9uX3Rva2VuGAQgASgJUhFjb250aW51YXRpb25Ub2tlbg==');
 @$core.Deprecated('Use getItemRequestDescriptor instead')
-const GetItemRequest$json = {
+const GetItemRequest$json = const {
   '1': 'GetItemRequest',
-  '2': [
-    {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
+  '2': const [
+    const {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
   ],
 };
 
@@ -72,11 +78,11 @@ const GetItemRequest$json = {
 final $typed_data.Uint8List getItemRequestDescriptor = $convert
     .base64Decode('Cg5HZXRJdGVtUmVxdWVzdBIXCgdpdGVtX2lkGAEgASgJUgZpdGVtSWQ=');
 @$core.Deprecated('Use getItemResponseDescriptor instead')
-const GetItemResponse$json = {
+const GetItemResponse$json = const {
   '1': 'GetItemResponse',
-  '2': [
-    {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
-    {'1': 'item_type', '3': 2, '4': 1, '5': 9, '10': 'itemType'},
+  '2': const [
+    const {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
+    const {'1': 'item_type', '3': 2, '4': 1, '5': 9, '10': 'itemType'},
   ],
 };
 
@@ -84,11 +90,18 @@ const GetItemResponse$json = {
 final $typed_data.Uint8List getItemResponseDescriptor = $convert.base64Decode(
     'Cg9HZXRJdGVtUmVzcG9uc2USGwoJaXRlbV9qc29uGAEgASgJUghpdGVtSnNvbhIbCglpdGVtX3R5cGUYAiABKAlSCGl0ZW1UeXBl');
 @$core.Deprecated('Use updateItemRequestDescriptor instead')
-const UpdateItemRequest$json = {
+const UpdateItemRequest$json = const {
   '1': 'UpdateItemRequest',
-  '2': [
-    {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
-    {'1': 'item_type', '3': 2, '4': 1, '5': 9, '8': {}, '10': 'itemType'},
+  '2': const [
+    const {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
+    const {
+      '1': 'item_type',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'itemType'
+    },
   ],
 };
 
@@ -96,7 +109,7 @@ const UpdateItemRequest$json = {
 final $typed_data.Uint8List updateItemRequestDescriptor = $convert.base64Decode(
     'ChFVcGRhdGVJdGVtUmVxdWVzdBIXCgdpdGVtX2lkGAEgASgJUgZpdGVtSWQSIQoJaXRlbV90eXBlGAIgASgJQgSAph0BUghpdGVtVHlwZQ==');
 @$core.Deprecated('Use updateItemResponseDescriptor instead')
-const UpdateItemResponse$json = {
+const UpdateItemResponse$json = const {
   '1': 'UpdateItemResponse',
 };
 
@@ -104,11 +117,18 @@ const UpdateItemResponse$json = {
 final $typed_data.Uint8List updateItemResponseDescriptor =
     $convert.base64Decode('ChJVcGRhdGVJdGVtUmVzcG9uc2U=');
 @$core.Deprecated('Use insertItemRequestDescriptor instead')
-const InsertItemRequest$json = {
+const InsertItemRequest$json = const {
   '1': 'InsertItemRequest',
-  '2': [
-    {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
-    {'1': 'item_type', '3': 2, '4': 1, '5': 9, '8': {}, '10': 'itemType'},
+  '2': const [
+    const {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
+    const {
+      '1': 'item_type',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'itemType'
+    },
   ],
 };
 
@@ -116,10 +136,10 @@ const InsertItemRequest$json = {
 final $typed_data.Uint8List insertItemRequestDescriptor = $convert.base64Decode(
     'ChFJbnNlcnRJdGVtUmVxdWVzdBIbCglpdGVtX2pzb24YASABKAlSCGl0ZW1Kc29uEiEKCWl0ZW1fdHlwZRgCIAEoCUIEgKYdAVIIaXRlbVR5cGU=');
 @$core.Deprecated('Use insertItemResponseDescriptor instead')
-const InsertItemResponse$json = {
+const InsertItemResponse$json = const {
   '1': 'InsertItemResponse',
-  '2': [
-    {'1': 'item_id', '3': 2, '4': 1, '5': 9, '10': 'itemId'},
+  '2': const [
+    const {'1': 'item_id', '3': 2, '4': 1, '5': 9, '10': 'itemId'},
   ],
 };
 
@@ -128,10 +148,10 @@ final $typed_data.Uint8List insertItemResponseDescriptor =
     $convert.base64Decode(
         'ChJJbnNlcnRJdGVtUmVzcG9uc2USFwoHaXRlbV9pZBgCIAEoCVIGaXRlbUlk');
 @$core.Deprecated('Use deleteItemRequestDescriptor instead')
-const DeleteItemRequest$json = {
+const DeleteItemRequest$json = const {
   '1': 'DeleteItemRequest',
-  '2': [
-    {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
+  '2': const [
+    const {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
   ],
 };
 
@@ -139,7 +159,7 @@ const DeleteItemRequest$json = {
 final $typed_data.Uint8List deleteItemRequestDescriptor = $convert.base64Decode(
     'ChFEZWxldGVJdGVtUmVxdWVzdBIXCgdpdGVtX2lkGAEgASgJUgZpdGVtSWQ=');
 @$core.Deprecated('Use deleteItemResponseDescriptor instead')
-const DeleteItemResponse$json = {
+const DeleteItemResponse$json = const {
   '1': 'DeleteItemResponse',
 };
 
@@ -147,15 +167,15 @@ const DeleteItemResponse$json = {
 final $typed_data.Uint8List deleteItemResponseDescriptor =
     $convert.base64Decode('ChJEZWxldGVJdGVtUmVzcG9uc2U=');
 @$core.Deprecated('Use deleteWalletRequestDescriptor instead')
-const DeleteWalletRequest$json = {
+const DeleteWalletRequest$json = const {
   '1': 'DeleteWalletRequest',
-  '2': [
-    {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
-    {'1': 'wallet_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
-    {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
+  '2': const [
+    const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
   ],
-  '8': [
-    {'1': 'account'},
+  '8': const [
+    const {'1': 'account'},
   ],
 };
 
@@ -163,7 +183,7 @@ const DeleteWalletRequest$json = {
 final $typed_data.Uint8List deleteWalletRequestDescriptor = $convert.base64Decode(
     'ChNEZWxldGVXYWxsZXRSZXF1ZXN0EhYKBWVtYWlsGAEgASgJSABSBWVtYWlsEh0KCXdhbGxldF9pZBgCIAEoCUgAUgh3YWxsZXRJZBIZCgdkaWRfdXJpGAQgASgJSABSBmRpZFVyaUIJCgdhY2NvdW50');
 @$core.Deprecated('Use deleteWalletResponseDescriptor instead')
-const DeleteWalletResponse$json = {
+const DeleteWalletResponse$json = const {
   '1': 'DeleteWalletResponse',
 };
 
@@ -171,23 +191,23 @@ const DeleteWalletResponse$json = {
 final $typed_data.Uint8List deleteWalletResponseDescriptor =
     $convert.base64Decode('ChREZWxldGVXYWxsZXRSZXNwb25zZQ==');
 @$core.Deprecated('Use createWalletRequestDescriptor instead')
-const CreateWalletRequest$json = {
+const CreateWalletRequest$json = const {
   '1': 'CreateWalletRequest',
-  '2': [
-    {'1': 'ecosystem_id', '3': 1, '4': 1, '5': 9, '10': 'ecosystemId'},
-    {
+  '2': const [
+    const {'1': 'ecosystem_id', '3': 1, '4': 1, '5': 9, '10': 'ecosystemId'},
+    const {
       '1': 'description',
       '3': 2,
       '4': 1,
       '5': 9,
-      '8': {},
+      '8': const {},
       '9': 0,
       '10': 'description',
       '17': true
     },
   ],
-  '8': [
-    {'1': '_description'},
+  '8': const [
+    const {'1': '_description'},
   ],
 };
 
@@ -195,12 +215,12 @@ const CreateWalletRequest$json = {
 final $typed_data.Uint8List createWalletRequestDescriptor = $convert.base64Decode(
     'ChNDcmVhdGVXYWxsZXRSZXF1ZXN0EiEKDGVjb3N5c3RlbV9pZBgBIAEoCVILZWNvc3lzdGVtSWQSKwoLZGVzY3JpcHRpb24YAiABKAlCBICmHQFIAFILZGVzY3JpcHRpb26IAQFCDgoMX2Rlc2NyaXB0aW9u');
 @$core.Deprecated('Use createWalletResponseDescriptor instead')
-const CreateWalletResponse$json = {
+const CreateWalletResponse$json = const {
   '1': 'CreateWalletResponse',
-  '2': [
-    {'1': 'auth_token', '3': 2, '4': 1, '5': 9, '10': 'authToken'},
-    {'1': 'token_id', '3': 3, '4': 1, '5': 9, '10': 'tokenId'},
-    {
+  '2': const [
+    const {'1': 'auth_token', '3': 2, '4': 1, '5': 9, '10': 'authToken'},
+    const {'1': 'token_id', '3': 3, '4': 1, '5': 9, '10': 'tokenId'},
+    const {
       '1': 'wallet',
       '3': 4,
       '4': 1,
@@ -209,8 +229,8 @@ const CreateWalletResponse$json = {
       '10': 'wallet'
     },
   ],
-  '9': [
-    {'1': 1, '2': 2},
+  '9': const [
+    const {'1': 1, '2': 2},
   ],
 };
 
@@ -218,11 +238,11 @@ const CreateWalletResponse$json = {
 final $typed_data.Uint8List createWalletResponseDescriptor = $convert.base64Decode(
     'ChRDcmVhdGVXYWxsZXRSZXNwb25zZRIdCgphdXRoX3Rva2VuGAIgASgJUglhdXRoVG9rZW4SGQoIdG9rZW5faWQYAyABKAlSB3Rva2VuSWQSQQoGd2FsbGV0GAQgASgLMikuc2VydmljZXMucHJvdmlkZXIudjEuV2FsbGV0Q29uZmlndXJhdGlvblIGd2FsbGV0SgQIARAC');
 @$core.Deprecated('Use generateAuthTokenRequestDescriptor instead')
-const GenerateAuthTokenRequest$json = {
+const GenerateAuthTokenRequest$json = const {
   '1': 'GenerateAuthTokenRequest',
-  '2': [
-    {'1': 'wallet_id', '3': 1, '4': 1, '5': 9, '10': 'walletId'},
-    {
+  '2': const [
+    const {'1': 'wallet_id', '3': 1, '4': 1, '5': 9, '10': 'walletId'},
+    const {
       '1': 'token_description',
       '3': 2,
       '4': 1,
@@ -237,11 +257,11 @@ final $typed_data.Uint8List generateAuthTokenRequestDescriptor =
     $convert.base64Decode(
         'ChhHZW5lcmF0ZUF1dGhUb2tlblJlcXVlc3QSGwoJd2FsbGV0X2lkGAEgASgJUgh3YWxsZXRJZBIrChF0b2tlbl9kZXNjcmlwdGlvbhgCIAEoCVIQdG9rZW5EZXNjcmlwdGlvbg==');
 @$core.Deprecated('Use generateAuthTokenResponseDescriptor instead')
-const GenerateAuthTokenResponse$json = {
+const GenerateAuthTokenResponse$json = const {
   '1': 'GenerateAuthTokenResponse',
-  '2': [
-    {'1': 'token_id', '3': 1, '4': 1, '5': 9, '10': 'tokenId'},
-    {'1': 'auth_token', '3': 2, '4': 1, '5': 9, '10': 'authToken'},
+  '2': const [
+    const {'1': 'token_id', '3': 1, '4': 1, '5': 9, '10': 'tokenId'},
+    const {'1': 'auth_token', '3': 2, '4': 1, '5': 9, '10': 'authToken'},
   ],
 };
 
@@ -250,10 +270,10 @@ final $typed_data.Uint8List generateAuthTokenResponseDescriptor =
     $convert.base64Decode(
         'ChlHZW5lcmF0ZUF1dGhUb2tlblJlc3BvbnNlEhkKCHRva2VuX2lkGAEgASgJUgd0b2tlbklkEh0KCmF1dGhfdG9rZW4YAiABKAlSCWF1dGhUb2tlbg==');
 @$core.Deprecated('Use getWalletInfoRequestDescriptor instead')
-const GetWalletInfoRequest$json = {
+const GetWalletInfoRequest$json = const {
   '1': 'GetWalletInfoRequest',
-  '2': [
-    {'1': 'wallet_id', '3': 1, '4': 1, '5': 9, '10': 'walletId'},
+  '2': const [
+    const {'1': 'wallet_id', '3': 1, '4': 1, '5': 9, '10': 'walletId'},
   ],
 };
 
@@ -262,10 +282,10 @@ final $typed_data.Uint8List getWalletInfoRequestDescriptor =
     $convert.base64Decode(
         'ChRHZXRXYWxsZXRJbmZvUmVxdWVzdBIbCgl3YWxsZXRfaWQYASABKAlSCHdhbGxldElk');
 @$core.Deprecated('Use getWalletInfoResponseDescriptor instead')
-const GetWalletInfoResponse$json = {
+const GetWalletInfoResponse$json = const {
   '1': 'GetWalletInfoResponse',
-  '2': [
-    {
+  '2': const [
+    const {
       '1': 'wallet',
       '3': 1,
       '4': 1,
@@ -280,7 +300,7 @@ const GetWalletInfoResponse$json = {
 final $typed_data.Uint8List getWalletInfoResponseDescriptor = $convert.base64Decode(
     'ChVHZXRXYWxsZXRJbmZvUmVzcG9uc2USQQoGd2FsbGV0GAEgASgLMikuc2VydmljZXMucHJvdmlkZXIudjEuV2FsbGV0Q29uZmlndXJhdGlvblIGd2FsbGV0');
 @$core.Deprecated('Use getMyInfoRequestDescriptor instead')
-const GetMyInfoRequest$json = {
+const GetMyInfoRequest$json = const {
   '1': 'GetMyInfoRequest',
 };
 
@@ -288,10 +308,10 @@ const GetMyInfoRequest$json = {
 final $typed_data.Uint8List getMyInfoRequestDescriptor =
     $convert.base64Decode('ChBHZXRNeUluZm9SZXF1ZXN0');
 @$core.Deprecated('Use getMyInfoResponseDescriptor instead')
-const GetMyInfoResponse$json = {
+const GetMyInfoResponse$json = const {
   '1': 'GetMyInfoResponse',
-  '2': [
-    {
+  '2': const [
+    const {
       '1': 'wallet',
       '3': 1,
       '4': 1,
@@ -306,11 +326,11 @@ const GetMyInfoResponse$json = {
 final $typed_data.Uint8List getMyInfoResponseDescriptor = $convert.base64Decode(
     'ChFHZXRNeUluZm9SZXNwb25zZRJBCgZ3YWxsZXQYASABKAsyKS5zZXJ2aWNlcy5wcm92aWRlci52MS5XYWxsZXRDb25maWd1cmF0aW9uUgZ3YWxsZXQ=');
 @$core.Deprecated('Use revokeAuthTokenRequestDescriptor instead')
-const RevokeAuthTokenRequest$json = {
+const RevokeAuthTokenRequest$json = const {
   '1': 'RevokeAuthTokenRequest',
-  '2': [
-    {'1': 'wallet_id', '3': 1, '4': 1, '5': 9, '10': 'walletId'},
-    {'1': 'token_id', '3': 2, '4': 1, '5': 9, '10': 'tokenId'},
+  '2': const [
+    const {'1': 'wallet_id', '3': 1, '4': 1, '5': 9, '10': 'walletId'},
+    const {'1': 'token_id', '3': 2, '4': 1, '5': 9, '10': 'tokenId'},
   ],
 };
 
@@ -319,7 +339,7 @@ final $typed_data.Uint8List revokeAuthTokenRequestDescriptor =
     $convert.base64Decode(
         'ChZSZXZva2VBdXRoVG9rZW5SZXF1ZXN0EhsKCXdhbGxldF9pZBgBIAEoCVIId2FsbGV0SWQSGQoIdG9rZW5faWQYAiABKAlSB3Rva2VuSWQ=');
 @$core.Deprecated('Use revokeAuthTokenResponseDescriptor instead')
-const RevokeAuthTokenResponse$json = {
+const RevokeAuthTokenResponse$json = const {
   '1': 'RevokeAuthTokenResponse',
 };
 
@@ -327,10 +347,10 @@ const RevokeAuthTokenResponse$json = {
 final $typed_data.Uint8List revokeAuthTokenResponseDescriptor =
     $convert.base64Decode('ChdSZXZva2VBdXRoVG9rZW5SZXNwb25zZQ==');
 @$core.Deprecated('Use listWalletsRequestDescriptor instead')
-const ListWalletsRequest$json = {
+const ListWalletsRequest$json = const {
   '1': 'ListWalletsRequest',
-  '2': [
-    {'1': 'filter', '3': 1, '4': 1, '5': 9, '10': 'filter'},
+  '2': const [
+    const {'1': 'filter', '3': 1, '4': 1, '5': 9, '10': 'filter'},
   ],
 };
 
@@ -339,10 +359,10 @@ final $typed_data.Uint8List listWalletsRequestDescriptor =
     $convert.base64Decode(
         'ChJMaXN0V2FsbGV0c1JlcXVlc3QSFgoGZmlsdGVyGAEgASgJUgZmaWx0ZXI=');
 @$core.Deprecated('Use listWalletsResponseDescriptor instead')
-const ListWalletsResponse$json = {
+const ListWalletsResponse$json = const {
   '1': 'ListWalletsResponse',
-  '2': [
-    {
+  '2': const [
+    const {
       '1': 'wallets',
       '3': 1,
       '4': 3,
@@ -357,11 +377,11 @@ const ListWalletsResponse$json = {
 final $typed_data.Uint8List listWalletsResponseDescriptor = $convert.base64Decode(
     'ChNMaXN0V2FsbGV0c1Jlc3BvbnNlEkMKB3dhbGxldHMYASADKAsyKS5zZXJ2aWNlcy5wcm92aWRlci52MS5XYWxsZXRDb25maWd1cmF0aW9uUgd3YWxsZXRz');
 @$core.Deprecated('Use addExternalIdentityInitRequestDescriptor instead')
-const AddExternalIdentityInitRequest$json = {
+const AddExternalIdentityInitRequest$json = const {
   '1': 'AddExternalIdentityInitRequest',
-  '2': [
-    {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
-    {
+  '2': const [
+    const {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
+    const {
       '1': 'provider',
       '3': 2,
       '4': 1,
@@ -377,10 +397,10 @@ final $typed_data.Uint8List addExternalIdentityInitRequestDescriptor =
     $convert.base64Decode(
         'Ch5BZGRFeHRlcm5hbElkZW50aXR5SW5pdFJlcXVlc3QSGgoIaWRlbnRpdHkYASABKAlSCGlkZW50aXR5EkkKCHByb3ZpZGVyGAIgASgOMi0uc2VydmljZXMudW5pdmVyc2Fsd2FsbGV0LnYxLklkZW50aXR5UHJvdmlkZXJSCHByb3ZpZGVy');
 @$core.Deprecated('Use addExternalIdentityInitResponseDescriptor instead')
-const AddExternalIdentityInitResponse$json = {
+const AddExternalIdentityInitResponse$json = const {
   '1': 'AddExternalIdentityInitResponse',
-  '2': [
-    {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
+  '2': const [
+    const {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
   ],
 };
 
@@ -389,11 +409,11 @@ final $typed_data.Uint8List addExternalIdentityInitResponseDescriptor =
     $convert.base64Decode(
         'Ch9BZGRFeHRlcm5hbElkZW50aXR5SW5pdFJlc3BvbnNlEhwKCWNoYWxsZW5nZRgBIAEoCVIJY2hhbGxlbmdl');
 @$core.Deprecated('Use addExternalIdentityConfirmRequestDescriptor instead')
-const AddExternalIdentityConfirmRequest$json = {
+const AddExternalIdentityConfirmRequest$json = const {
   '1': 'AddExternalIdentityConfirmRequest',
-  '2': [
-    {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
-    {'1': 'response', '3': 2, '4': 1, '5': 9, '10': 'response'},
+  '2': const [
+    const {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
+    const {'1': 'response', '3': 2, '4': 1, '5': 9, '10': 'response'},
   ],
 };
 
@@ -402,7 +422,7 @@ final $typed_data.Uint8List addExternalIdentityConfirmRequestDescriptor =
     $convert.base64Decode(
         'CiFBZGRFeHRlcm5hbElkZW50aXR5Q29uZmlybVJlcXVlc3QSHAoJY2hhbGxlbmdlGAEgASgJUgljaGFsbGVuZ2USGgoIcmVzcG9uc2UYAiABKAlSCHJlc3BvbnNl');
 @$core.Deprecated('Use addExternalIdentityConfirmResponseDescriptor instead')
-const AddExternalIdentityConfirmResponse$json = {
+const AddExternalIdentityConfirmResponse$json = const {
   '1': 'AddExternalIdentityConfirmResponse',
 };
 
@@ -410,10 +430,10 @@ const AddExternalIdentityConfirmResponse$json = {
 final $typed_data.Uint8List addExternalIdentityConfirmResponseDescriptor =
     $convert.base64Decode('CiJBZGRFeHRlcm5hbElkZW50aXR5Q29uZmlybVJlc3BvbnNl');
 @$core.Deprecated('Use removeExternalIdentityRequestDescriptor instead')
-const RemoveExternalIdentityRequest$json = {
+const RemoveExternalIdentityRequest$json = const {
   '1': 'RemoveExternalIdentityRequest',
-  '2': [
-    {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
+  '2': const [
+    const {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
   ],
 };
 
@@ -422,7 +442,7 @@ final $typed_data.Uint8List removeExternalIdentityRequestDescriptor =
     $convert.base64Decode(
         'Ch1SZW1vdmVFeHRlcm5hbElkZW50aXR5UmVxdWVzdBIaCghpZGVudGl0eRgBIAEoCVIIaWRlbnRpdHk=');
 @$core.Deprecated('Use removeExternalIdentityResponseDescriptor instead')
-const RemoveExternalIdentityResponse$json = {
+const RemoveExternalIdentityResponse$json = const {
   '1': 'RemoveExternalIdentityResponse',
 };
 
@@ -430,11 +450,11 @@ const RemoveExternalIdentityResponse$json = {
 final $typed_data.Uint8List removeExternalIdentityResponseDescriptor =
     $convert.base64Decode('Ch5SZW1vdmVFeHRlcm5hbElkZW50aXR5UmVzcG9uc2U=');
 @$core.Deprecated('Use authenticateInitRequestDescriptor instead')
-const AuthenticateInitRequest$json = {
+const AuthenticateInitRequest$json = const {
   '1': 'AuthenticateInitRequest',
-  '2': [
-    {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
-    {
+  '2': const [
+    const {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
+    const {
       '1': 'provider',
       '3': 2,
       '4': 1,
@@ -442,7 +462,7 @@ const AuthenticateInitRequest$json = {
       '6': '.services.universalwallet.v1.IdentityProvider',
       '10': 'provider'
     },
-    {'1': 'ecosystem_id', '3': 3, '4': 1, '5': 9, '10': 'ecosystemId'},
+    const {'1': 'ecosystem_id', '3': 3, '4': 1, '5': 9, '10': 'ecosystemId'},
   ],
 };
 
@@ -451,10 +471,10 @@ final $typed_data.Uint8List authenticateInitRequestDescriptor =
     $convert.base64Decode(
         'ChdBdXRoZW50aWNhdGVJbml0UmVxdWVzdBIaCghpZGVudGl0eRgBIAEoCVIIaWRlbnRpdHkSSQoIcHJvdmlkZXIYAiABKA4yLS5zZXJ2aWNlcy51bml2ZXJzYWx3YWxsZXQudjEuSWRlbnRpdHlQcm92aWRlclIIcHJvdmlkZXISIQoMZWNvc3lzdGVtX2lkGAMgASgJUgtlY29zeXN0ZW1JZA==');
 @$core.Deprecated('Use authenticateInitResponseDescriptor instead')
-const AuthenticateInitResponse$json = {
+const AuthenticateInitResponse$json = const {
   '1': 'AuthenticateInitResponse',
-  '2': [
-    {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
+  '2': const [
+    const {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
   ],
 };
 
@@ -463,11 +483,11 @@ final $typed_data.Uint8List authenticateInitResponseDescriptor =
     $convert.base64Decode(
         'ChhBdXRoZW50aWNhdGVJbml0UmVzcG9uc2USHAoJY2hhbGxlbmdlGAEgASgJUgljaGFsbGVuZ2U=');
 @$core.Deprecated('Use authenticateConfirmRequestDescriptor instead')
-const AuthenticateConfirmRequest$json = {
+const AuthenticateConfirmRequest$json = const {
   '1': 'AuthenticateConfirmRequest',
-  '2': [
-    {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
-    {'1': 'response', '3': 2, '4': 1, '5': 9, '10': 'response'},
+  '2': const [
+    const {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
+    const {'1': 'response', '3': 2, '4': 1, '5': 9, '10': 'response'},
   ],
 };
 
@@ -476,10 +496,10 @@ final $typed_data.Uint8List authenticateConfirmRequestDescriptor =
     $convert.base64Decode(
         'ChpBdXRoZW50aWNhdGVDb25maXJtUmVxdWVzdBIcCgljaGFsbGVuZ2UYASABKAlSCWNoYWxsZW5nZRIaCghyZXNwb25zZRgCIAEoCVIIcmVzcG9uc2U=');
 @$core.Deprecated('Use authenticateConfirmResponseDescriptor instead')
-const AuthenticateConfirmResponse$json = {
+const AuthenticateConfirmResponse$json = const {
   '1': 'AuthenticateConfirmResponse',
-  '2': [
-    {'1': 'auth_token', '3': 1, '4': 1, '5': 9, '10': 'authToken'},
+  '2': const [
+    const {'1': 'auth_token', '3': 1, '4': 1, '5': 9, '10': 'authToken'},
   ],
 };
 

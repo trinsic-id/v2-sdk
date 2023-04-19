@@ -10,16 +10,16 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use addRoleAssignmentRequestDescriptor instead')
-const AddRoleAssignmentRequest$json = {
+const AddRoleAssignmentRequest$json = const {
   '1': 'AddRoleAssignmentRequest',
-  '2': [
-    {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
-    {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
-    {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
-    {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
+  '2': const [
+    const {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
   ],
-  '8': [
-    {'1': 'account'},
+  '8': const [
+    const {'1': 'account'},
   ],
 };
 
@@ -28,7 +28,7 @@ final $typed_data.Uint8List addRoleAssignmentRequestDescriptor =
     $convert.base64Decode(
         'ChhBZGRSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgEIAEoCUgAUgZkaWRVcmlCCQoHYWNjb3VudA==');
 @$core.Deprecated('Use addRoleAssignmentResponseDescriptor instead')
-const AddRoleAssignmentResponse$json = {
+const AddRoleAssignmentResponse$json = const {
   '1': 'AddRoleAssignmentResponse',
 };
 
@@ -36,16 +36,16 @@ const AddRoleAssignmentResponse$json = {
 final $typed_data.Uint8List addRoleAssignmentResponseDescriptor =
     $convert.base64Decode('ChlBZGRSb2xlQXNzaWdubWVudFJlc3BvbnNl');
 @$core.Deprecated('Use removeRoleAssignmentRequestDescriptor instead')
-const RemoveRoleAssignmentRequest$json = {
+const RemoveRoleAssignmentRequest$json = const {
   '1': 'RemoveRoleAssignmentRequest',
-  '2': [
-    {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
-    {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
-    {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
-    {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
+  '2': const [
+    const {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
   ],
-  '8': [
-    {'1': 'account'},
+  '8': const [
+    const {'1': 'account'},
   ],
 };
 
@@ -54,7 +54,7 @@ final $typed_data.Uint8List removeRoleAssignmentRequestDescriptor =
     $convert.base64Decode(
         'ChtSZW1vdmVSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgEIAEoCUgAUgZkaWRVcmlCCQoHYWNjb3VudA==');
 @$core.Deprecated('Use removeRoleAssignmentResponseDescriptor instead')
-const RemoveRoleAssignmentResponse$json = {
+const RemoveRoleAssignmentResponse$json = const {
   '1': 'RemoveRoleAssignmentResponse',
 };
 
@@ -62,15 +62,15 @@ const RemoveRoleAssignmentResponse$json = {
 final $typed_data.Uint8List removeRoleAssignmentResponseDescriptor =
     $convert.base64Decode('ChxSZW1vdmVSb2xlQXNzaWdubWVudFJlc3BvbnNl');
 @$core.Deprecated('Use listRoleAssignmentsRequestDescriptor instead')
-const ListRoleAssignmentsRequest$json = {
+const ListRoleAssignmentsRequest$json = const {
   '1': 'ListRoleAssignmentsRequest',
-  '2': [
-    {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
-    {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
-    {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
+  '2': const [
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'did_uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
   ],
-  '8': [
-    {'1': 'account'},
+  '8': const [
+    const {'1': 'account'},
   ],
 };
 
@@ -79,10 +79,10 @@ final $typed_data.Uint8List listRoleAssignmentsRequestDescriptor =
     $convert.base64Decode(
         'ChpMaXN0Um9sZUFzc2lnbm1lbnRzUmVxdWVzdBIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgEIAEoCUgAUgZkaWRVcmlCCQoHYWNjb3VudA==');
 @$core.Deprecated('Use listRoleAssignmentsResponseDescriptor instead')
-const ListRoleAssignmentsResponse$json = {
+const ListRoleAssignmentsResponse$json = const {
   '1': 'ListRoleAssignmentsResponse',
-  '2': [
-    {'1': 'roles', '3': 1, '4': 3, '5': 9, '10': 'roles'},
+  '2': const [
+    const {'1': 'roles', '3': 1, '4': 3, '5': 9, '10': 'roles'},
   ],
 };
 
@@ -91,7 +91,7 @@ final $typed_data.Uint8List listRoleAssignmentsResponseDescriptor =
     $convert.base64Decode(
         'ChtMaXN0Um9sZUFzc2lnbm1lbnRzUmVzcG9uc2USFAoFcm9sZXMYASADKAlSBXJvbGVz');
 @$core.Deprecated('Use listAvailableRolesRequestDescriptor instead')
-const ListAvailableRolesRequest$json = {
+const ListAvailableRolesRequest$json = const {
   '1': 'ListAvailableRolesRequest',
 };
 
@@ -99,10 +99,10 @@ const ListAvailableRolesRequest$json = {
 final $typed_data.Uint8List listAvailableRolesRequestDescriptor =
     $convert.base64Decode('ChlMaXN0QXZhaWxhYmxlUm9sZXNSZXF1ZXN0');
 @$core.Deprecated('Use listAvailableRolesResponseDescriptor instead')
-const ListAvailableRolesResponse$json = {
+const ListAvailableRolesResponse$json = const {
   '1': 'ListAvailableRolesResponse',
-  '2': [
-    {'1': 'roles', '3': 1, '4': 3, '5': 9, '10': 'roles'},
+  '2': const [
+    const {'1': 'roles', '3': 1, '4': 3, '5': 9, '10': 'roles'},
   ],
 };
 
