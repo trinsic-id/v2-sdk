@@ -43,7 +43,8 @@
         "google-protobuf": "3.21.2",
         "js-base64": "3.7.5",
         "long": "5.2.3",
-        "nice-grpc-web": "3.2.4"
+        "nice-grpc-web": "3.2.4",
+        "protobufjs": "7.2.3"
     },
     "devDependencies": {
         "@babel/core": "7.18.10",
