@@ -12,7 +12,7 @@ as we felt it didn't warrant it's own API category and mostly created confusion.
 
 This method is responsble for creating a wallet and returning an auth token that can be used to access this wallet. The updated method also returns all wallet information, such as `wallet_id`, `public_did`, etc.
 
-Usage: [Wallet API / Create Wallet](/reference/services/wallet-service/#create-wallet)
+API Reference: [Wallet API / Create Wallet](/reference/services/wallet-service/#create-wallet)
 
 ## `Account.Login` and `Account.LoginConfirm` core design changes
 
@@ -23,6 +23,11 @@ Under the new API, there is an explicit process for each step
 - Wallet creation using `CreateWallet`
 - Adding external identity using `AddExternalIdentity` (2-step process with `Init` and `Confirm` of OTP token)
 - Authentication to existing wallet using `Authenticate` (2-step process with `Init` and `Confirm` of OTP token)
+
+API References:
+
+- [Wallet API / Add External Identity](/reference/services/wallet-service/#add-external-identity)
+- [Wallet API / Authenticate](/reference/services/wallet-service/#authenticate)
 
 ### Create Wallet
 
@@ -56,8 +61,8 @@ sequenceDiagram
 
 ### Authenticate
 
-This endpoint will associate external identity, such as email or phone number, to an existing wallet and allow the user to obtain an auth token to the wallet they control.
-If your integration operates with custodial wallets on behalf of users, you will likely not need to use this endpoint.
+Authenticate and return an auth token for an existing wallet using one of the associated external identities.
+This endpoint requires that the wallet user has previously added at least one external identity using the above endpoints.
 
 ``` mermaid
 sequenceDiagram

@@ -27,7 +27,7 @@ nav:
       - "Migration: Account API": learn/resources/migrate-account.md
       - Interactive API Experience: learn/resources/interactive-api.md
   - Tools & SDKs:
-    - Trinsic CLI: cli/index.md
+    - Overview: sdk/index.md
     - Client-Side SDKs:
       - Browser: web/index.md
       - iOS: ios/index.md
@@ -38,6 +38,7 @@ nav:
       - Python: python/index.md
       - Go: go/index.md
       - Java: java/index.md
+    - Trinsic CLI: cli/index.md
   - Reference:
     - Overview: reference/index.md
     - APIs:
@@ -50,7 +51,6 @@ nav:
       - Wallet API: reference/services/wallet-service.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
-    - Events Reference: reference/events.md
   - Resources:
     - Roadmap: roadmap.md
     - Ask a Question: support.md

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # The Trinsic Java / Kotlin SDK
 
 The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API from any Java (or Kotlin) application. The most recent version of the package is found on the [Github Release](https://github.com/trinsic-id/sdk/releases). You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/java).
@@ -25,8 +30,3 @@ dependencies {
 }
 ```
 
-## Next Steps
-
-Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](../walkthroughs/vaccination.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
-
-[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Java API Reference](../reference/index.md){ .md-button }

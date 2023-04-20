@@ -1,13 +1,19 @@
-# The Trinsic CLI
+---
+hide:
+  - toc
+---
 
-The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal. You can get the CLI on homebrew or build the CLI from source on [Github](https://github.com/trinsic-id/sdk/tree/main/cli). It contains all the commands of Trinsic's SDKs and makes them interactive. 
+# Trinsic CLI
+
+The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal. It can be used for task automation without needing to setup a project.
 
 ## Installation
+
+You can get the CLI on homebrew or build the CLI from source on [Github](https://github.com/trinsic-id/sdk/tree/main/cli). It contains all the commands of Trinsic's SDKs and makes them interactive.
 
 === "MacOS and Linux"
     We use homebrew to distribute the CLI packages for MacOS and Linux. Install [Homebrew](https://brew.sh/)
 
-    Then run these commands to install the Trinsic CLI
     ```
     brew install trinsic-id/tap/trinsic-cli
     ```
@@ -35,9 +41,10 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
     trinsic --help
     ```
 
-## Next Steps
+## Usage
 
-Once the CLI is installed, you're ready to start building! We recommend going through the walkthrough next. If you're ready to dive into building your ecosystem, check out our API Reference. For more information about the CLI, read the [configuration guide](./config.md)
+Get a full list of supported subcommands and arguments:
 
-[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button }
-
+```
+trinsic --help
+```
