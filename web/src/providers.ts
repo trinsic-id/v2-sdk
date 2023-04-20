@@ -9,6 +9,7 @@ import {
 } from "nice-grpc-web";
 import {XHRTransport} from "./XHRTransport";
 import {Transport} from "nice-grpc-web/lib/client/Transport";
+import {FetchReactNativeTransport} from "./FetchReactNativeTransport";
 
 export interface IPlatformProvider {
     metadataLanguage(): string;
@@ -19,7 +20,7 @@ export interface IPlatformProvider {
     ): Client<ClientService>;
 }
 
-function getRuntime(): string {
+export function getRuntime(): string {
     // https://stackoverflow.com/a/39473604
     if (typeof document !== 'undefined') {
         // I'm on the web!
@@ -51,7 +52,7 @@ export class TransportProvider implements IPlatformProvider {
             transport = FetchTransport();
         } else if (runtime === "react-native") {
             // TODO - Once this PR is merged: https://github.com/deeplay-io/nice-grpc/pull/348
-            transport = XHRTransport();
+            transport = FetchReactNativeTransport();
         } else {
             transport = NodeHttpTransport();
         }

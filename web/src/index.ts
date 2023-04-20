@@ -5,9 +5,11 @@ import { CredentialService } from "./CredentialService";
 import { TemplateService } from "./TemplateService";
 import { TrinsicService } from "./TrinsicService";
 import ServiceBase from "./ServiceBase";
-import { IPlatformProvider } from "./providers";
 
 export * from "./proto/index";
+export * from "./providers"
+export * from "./FetchReactNativeTransport"
+export * from "./XHRTransport"
 
 export {
     TrinsicService,
@@ -17,5 +19,4 @@ export {
     CredentialService,
     TemplateService,
     ServiceBase,
-    IPlatformProvider,
 };
