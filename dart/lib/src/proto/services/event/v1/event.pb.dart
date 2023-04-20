@@ -19,7 +19,7 @@ class APICall extends $pb.GeneratedMessage {
           ? ''
           : 'APICall',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -129,7 +129,7 @@ class PingV1 extends $pb.GeneratedMessage {
           ? ''
           : 'PingV1',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -279,7 +279,7 @@ class GovernanceFrameworkCreatedV1 extends $pb.GeneratedMessage {
           ? ''
           : 'GovernanceFrameworkCreatedV1',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -518,7 +518,7 @@ class TemplateCreatedV1 extends $pb.GeneratedMessage {
           ? ''
           : 'TemplateCreatedV1',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -690,7 +690,7 @@ class ItemReceivedV1 extends $pb.GeneratedMessage {
           ? ''
           : 'ItemReceivedV1',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)

@@ -10,20 +10,29 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class RegistrationStatus extends $pb.ProtobufEnum {
-  static const RegistrationStatus CURRENT = RegistrationStatus._(0,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CURRENT');
-  static const RegistrationStatus EXPIRED = RegistrationStatus._(1,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EXPIRED');
+  static const RegistrationStatus CURRENT = RegistrationStatus._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'CURRENT');
+  static const RegistrationStatus EXPIRED = RegistrationStatus._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'EXPIRED');
   static const RegistrationStatus TERMINATED = RegistrationStatus._(
       2,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'TERMINATED');
-  static const RegistrationStatus REVOKED = RegistrationStatus._(3,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REVOKED');
+  static const RegistrationStatus REVOKED = RegistrationStatus._(
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'REVOKED');
   static const RegistrationStatus NOT_FOUND = RegistrationStatus._(
       10,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'NOT_FOUND');
 

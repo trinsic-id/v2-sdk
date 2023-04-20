@@ -368,6 +368,7 @@ message WalletConfiguration {
   // The DID of the wallet
   string public_did = 5;
   string config_type = 6;
+
   // List of active authentication tokens for this wallet.
   // This list does not contain the issued token, only metadata
   // such as ID, description, and creation date.
@@ -376,6 +377,7 @@ message WalletConfiguration {
   repeated string external_identities = 8;
   // Ecosystem in which this wallet is contained.
   string ecosystem_id = 9;
+  string description = 10;
 }
 
 // Options for creation of DID on the ION network

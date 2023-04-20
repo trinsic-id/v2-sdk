@@ -32,6 +32,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     authTokens_ = java.util.Collections.emptyList();
     externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     ecosystemId_ = "";
+    description_ = "";
   }
 
   @java.lang.Override
@@ -495,6 +496,43 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
 
+  public static final int DESCRIPTION_FIELD_NUMBER = 10;
+  private volatile java.lang.Object description_;
+  /**
+   * <code>string description = 10;</code>
+   *
+   * @return The description.
+   */
+  @java.lang.Override
+  public java.lang.String getDescription() {
+    java.lang.Object ref = description_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      description_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string description = 10;</code>
+   *
+   * @return The bytes for description.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getDescriptionBytes() {
+    java.lang.Object ref = description_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      description_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -535,6 +573,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, ecosystemId_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, description_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -577,6 +618,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, ecosystemId_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, description_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -602,6 +646,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!getAuthTokensList().equals(other.getAuthTokensList())) return false;
     if (!getExternalIdentitiesList().equals(other.getExternalIdentitiesList())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
+    if (!getDescription().equals(other.getDescription())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -635,6 +680,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
+    hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+    hash = (53 * hash) + getDescription().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -796,6 +843,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       bitField0_ = (bitField0_ & ~0x00000002);
       ecosystemId_ = "";
 
+      description_ = "";
+
       return this;
     }
 
@@ -845,6 +894,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
       result.externalIdentities_ = externalIdentities_;
       result.ecosystemId_ = ecosystemId_;
+      result.description_ = description_;
       onBuilt();
       return result;
     }
@@ -960,6 +1010,10 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         ecosystemId_ = other.ecosystemId_;
         onChanged();
       }
+      if (!other.getDescription().isEmpty()) {
+        description_ = other.description_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -1048,6 +1102,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
                 break;
               } // case 74
+            case 82:
+              {
+                description_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 82
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -2240,6 +2300,82 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       checkByteStringIsUtf8(value);
 
       ecosystemId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object description_ = "";
+    /**
+     * <code>string description = 10;</code>
+     *
+     * @return The description.
+     */
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string description = 10;</code>
+     *
+     * @return The bytes for description.
+     */
+    public com.google.protobuf.ByteString getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string description = 10;</code>
+     *
+     * @param value The description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescription(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      description_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string description = 10;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDescription() {
+
+      description_ = getDefaultInstance().getDescription();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string description = 10;</code>
+     *
+     * @param value The bytes for description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      description_ = value;
       onChanged();
       return this;
     }

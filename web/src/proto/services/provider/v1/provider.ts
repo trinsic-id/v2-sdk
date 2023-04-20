@@ -479,6 +479,7 @@ export interface WalletConfiguration {
   externalIdentities?: string[];
   /** Ecosystem in which this wallet is contained. */
   ecosystemId?: string;
+  description?: string;
 }
 
 /** Options for creation of DID on the ION network */
@@ -2932,6 +2933,7 @@ function createBaseWalletConfiguration(): WalletConfiguration {
     authTokens: [],
     externalIdentities: [],
     ecosystemId: "",
+    description: "",
   };
 }
 
@@ -2967,6 +2969,9 @@ export const WalletConfiguration = {
     }
     if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
       writer.uint32(74).string(message.ecosystemId);
+    }
+    if (message.description !== undefined && message.description !== "") {
+      writer.uint32(82).string(message.description);
     }
     return writer;
   },
@@ -3041,6 +3046,13 @@ export const WalletConfiguration = {
 
           message.ecosystemId = reader.string();
           continue;
+        case 10:
+          if (tag != 82) {
+            break;
+          }
+
+          message.description = reader.string();
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -3065,6 +3077,7 @@ export const WalletConfiguration = {
         ? object.externalIdentities.map((e: any) => String(e))
         : [],
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+      description: isSet(object.description) ? String(object.description) : "",
     };
   },
 
@@ -3087,6 +3100,7 @@ export const WalletConfiguration = {
       obj.externalIdentities = [];
     }
     message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
+    message.description !== undefined && (obj.description = message.description);
     return obj;
   },
 
@@ -3105,6 +3119,7 @@ export const WalletConfiguration = {
     message.authTokens = object.authTokens?.map((e) => WalletAuthToken.fromPartial(e)) || [];
     message.externalIdentities = object.externalIdentities?.map((e) => e) || [];
     message.ecosystemId = object.ecosystemId ?? "";
+    message.description = object.description ?? "";
     return message;
   },
 };

@@ -15,7 +15,7 @@ class TrinsicOptions extends $pb.GeneratedMessage {
           ? ''
           : 'TrinsicOptions',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'sdk.options.v1'),
       createEmptyInstance: create)

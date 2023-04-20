@@ -602,6 +602,8 @@ class WalletConfiguration(betterproto.Message):
     ecosystem_id: str = betterproto.string_field(9)
     """Ecosystem in which this wallet is contained."""
 
+    description: str = betterproto.string_field(10)
+
 
 @dataclass(eq=False, repr=False)
 class IonOptions(betterproto.Message):

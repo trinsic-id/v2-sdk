@@ -10,11 +10,10 @@ class ServiceBase {
   ServiceBase(TrinsicOptions? serverOptions) {
     serviceOptions = serverOptions ?? trinsicConfig();
 
-      channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
+    channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
         host: serviceOptions.serverEndpoint,
         port: serviceOptions.serverPort,
-        transportSecure: serviceOptions.serverUseTls
-      );
+        transportSecure: serviceOptions.serverUseTls);
   }
 
   void close() {
