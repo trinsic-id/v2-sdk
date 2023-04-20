@@ -90,7 +90,7 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
 Removes an external identity from the associated identities of the authenticated wallet.
 
-TODO: add `proto_method_tabs`
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity") }}
 
 ---
 
@@ -209,10 +209,6 @@ Stores a credential (or any other JSON object) in a wallet.
 Retrieves an item by its ID.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet search --query "SELECT * FROM _ WHERE _.id = '{id}'"
-        ```
 
     === "TypeScript"
         <!--codeinclude-->
@@ -258,10 +254,6 @@ Retrieves an item by its ID.
 Deletes an item.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet delete-item --item-id {id}
-        ```
 
     === "TypeScript"
         <!--codeinclude-->
@@ -358,10 +350,6 @@ Searches a wallet, returning all matching items, and a `continuation_token` to p
 If no `query` is specified, this call by default returns the first 100 items in the wallet.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic wallet search
-        ```
 
     === "TypeScript"
         <!--codeinclude-->

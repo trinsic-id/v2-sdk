@@ -3,61 +3,15 @@
 This section serves as the reference for the Trinsic API, which can be accessed using any of our [SDKs](/cli/).
 
 ## Authentication
-### Auth Tokens
-Authentication with the Trinsic platform uses auth tokens, which are strings that operate similarly to API keys.
 
-Unlike API keys, however, Trinsic utilizes [zero-knowledge proofs](/learn/platform/security) to sign SDK calls using an auth token, without ever transmitting the auth token itself down the wire. This provides increased security compared to API keys, while being more convenient than other auth schemes, such as public/private tokens.
-
-### Custom Protection of Auth Tokens
-
-We provide helper methods to [protect](/reference/services/account-service#protect) auth tokens -- enabling you to perform custom security operations. An auth token, once protected with a code, is unusable until unprotected with that same code. Protection and unprotection are performed entirely on-device.
+Authentication with the Trinsic platform uses auth tokens, which are strings that operate similarly to API keys. You can get an auth token from the Dashboard.
 
 ### Using Auth Tokens in the SDK
 
-Whenever you perform an SDK call which returns an auth token (signing in to an account, or creating an ecosystem), our SDKs will automatically store the auth token in memory and use it for subsequent calls.
-
-You can also manually set the auth token used by the SDK (such as when loading an auth token from storage):
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic config --auth-token {AUTH_TOKEN}
-    ```
-
-=== "TypeScript"
-    ```typescript
-    [SetAuthTokenSample](../../web/test/VaccineDemoShared.ts) inside_block:setAuthTokenSample
-    ```
-
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [SetAuthTokenSample](../../dotnet/Tests/Tests.cs) inside_block:setAuthTokenSample
-    ```
-    <!--/codeinclude-->
-
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [SetAuthTokenSample](../../python/samples/account_demo.py) inside_block:setAuthTokenSample
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [SetAuthTokenSample](../../go/services/file_management_service_test.go) inside_block:setAuthTokenSample
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [SetAuthTokenSample](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setAuthTokenSample
-    ```
-    <!--/codeinclude-->
-
+Tokens are passed to the SDK during service instantiation as part of the `TrinsicOptions`.
 
 ## Services
+
 Our SDK is broken down into the following logical APIs, each of which is accessible through a single `TrinsicService` instance:
 
 - [Credential API](./services/credential-service.md)
@@ -65,7 +19,6 @@ Our SDK is broken down into the following logical APIs, each of which is accessi
 - [Template API](./services/template-service.md)
 - [Trust Registry API](./services/trust-registry-service.md)
 - [Wallet API](./services/wallet-service.md)
-
 
 ### Using an SDK Service
 

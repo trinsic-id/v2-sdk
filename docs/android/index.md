@@ -39,5 +39,3 @@ dependencies {
     implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.10.0/trinsic-services-1.10.0.jar', 'trinsic-services-1.10.0')
 }
 ```
-
-
