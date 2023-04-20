@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Wallets
 
 In Trinsic’s platform, identity wallets are secure, partitioned data stores scoped to a single holder, capable of storing and sharing credentials and proofs. Endless configurations of wallets exist (custodial, non-custodial, etc.) each with different trade-offs; Trinsic has designed a hybrid-cloud wallet system intended to strike the ideal balance between security and usability:

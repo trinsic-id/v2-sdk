@@ -44,9 +44,3 @@ console.log(JSON.stringify(newWallet, null, 4));
 
 You can find all the SDK methods documented [here](/reference/)
 
-
-## Next Steps
-
-Once the SDK is installed and configured, you're ready to start building! We recommend going through the walkthrough next. If you're ready to dive into building your ecosystem, check out our API Reference.
-
-[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button }
