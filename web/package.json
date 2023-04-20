@@ -37,12 +37,13 @@
     ],
     "license": "ISC",
     "dependencies": {
-        "@improbable-eng/grpc-web-node-http-transport": "0.15.0",
+        "@azure/core-asynciterator-polyfill": "1.0.2",
         "buffer": "6.0.3",
+        "fastestsmallesttextencoderdecoder": "1.0.22",
         "google-protobuf": "3.21.0",
+        "js-base64": "3.7.2",
         "long": "5.2.0",
-        "nice-grpc-web": "3.2.3",
-        "js-base64": "3.7.2"
+        "nice-grpc-web": "3.2.3"
     },
     "devDependencies": {
         "@babel/core": "7.18.10",
