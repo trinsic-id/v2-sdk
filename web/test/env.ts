@@ -1,7 +1,6 @@
 import { TrinsicOptions } from "../src";
 
 export function getTestServerOptions(): TrinsicOptions {
-    return getLocalServerOptions();
     return {
         serverEndpoint: "dev-internal.trinsic.cloud",
         serverPort: 443,
