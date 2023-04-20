@@ -8,6 +8,14 @@ export function getTestServerOptions(): TrinsicOptions {
     };
 }
 
+export function getLocalServerOptions(): TrinsicOptions {
+    return {
+        serverEndpoint: "127.0.0.1",
+        serverPort: 5000,
+        serverUseTls: false,
+    }
+}
+
 export function setTestTimeout(timeoutMs: number = 40000) {
     if (typeof jasmine !== "undefined")
         jasmine.DEFAULT_TIMEOUT_INTERVAL = timeoutMs;

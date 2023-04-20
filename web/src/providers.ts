@@ -7,6 +7,9 @@ import {
     NodeHttpTransport,
     FetchTransport,
 } from "nice-grpc-web";
+import {XHRTransport} from "./XHRTransport";
+import {Transport} from "nice-grpc-web/lib/client/Transport";
+import {FetchReactNativeTransport} from "./FetchReactNativeTransport";
 
 export interface IPlatformProvider {
     metadataLanguage(): string;
@@ -17,34 +20,52 @@ export interface IPlatformProvider {
     ): Client<ClientService>;
 }
 
-function isNode(): boolean {
-    // https://stackoverflow.com/a/38815760
-    return typeof process === "object" && process + "" === "[object process]";
+export function getRuntime(): string {
+    // https://stackoverflow.com/a/39473604
+    if (typeof document !== 'undefined') {
+        // I'm on the web!
+        return "web";
+    }
+    else if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+        // I'm in react-native
+        return "react-native";
+    }
+    else {
+        // I'm in node js
+        return "node";
+    }
 }
 
-export class BrowserProvider implements IPlatformProvider {
+export class TransportProvider implements IPlatformProvider {
+    /**
+     * Override this to specify which transport to use.
+     */
+    public static overrideTransport?: Transport = undefined;
     private language?: string = undefined;
     createGrpcClient<ClientService extends CompatServiceDefinition>(
         definition: ClientService,
         address: string
     ): Client<ClientService> {
-        let channel: any;
-        if (isNode()) {
-            channel = createChannel(address, NodeHttpTransport());
+        let transport: any;
+        const runtime = getRuntime();
+        if (runtime === "web") {
+            transport = FetchTransport();
+        } else if (runtime === "react-native") {
+            // TODO - Once this PR is merged: https://github.com/deeplay-io/nice-grpc/pull/348
+            transport = FetchReactNativeTransport();
         } else {
-            channel = createChannel(address, FetchTransport());
+            transport = NodeHttpTransport();
         }
-        // @ts-ignore - compatible types, duplicate definitions
+        if (TransportProvider.overrideTransport !== undefined) {
+            transport = TransportProvider.overrideTransport;
+        }
+        const channel = createChannel(address, transport);
         return createClient(definition, channel);
     }
 
     metadataLanguage(): string {
         if (this.language === undefined) {
-            if (isNode()) {
-                this.language = "typescript-node";
-            } else {
-                this.language = "typescript-web";
-            }
+            this.language = "typescript-" + getRuntime();
         }
         return this.language;
     }
