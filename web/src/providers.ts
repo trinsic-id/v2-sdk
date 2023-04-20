@@ -7,6 +7,8 @@ import {
     NodeHttpTransport,
     FetchTransport,
 } from "nice-grpc-web";
+import {XHRTransport} from "./XHRTransport";
+import {Transport} from "nice-grpc-web/lib/client/Transport";
 
 export interface IPlatformProvider {
     metadataLanguage(): string;
@@ -36,20 +38,28 @@ function getRuntime(): string {
     }
 }
 
-export class BrowserProvider implements IPlatformProvider {
+export class TransportProvider implements IPlatformProvider {
+    public static overrideTransport?: Transport = undefined;
     private language?: string = undefined;
     createGrpcClient<ClientService extends CompatServiceDefinition>(
         definition: ClientService,
         address: string
     ): Client<ClientService> {
-        let channel: any;
+        let transport: any;
         const runtime = getRuntime();
         if (runtime === "web") {
-            channel = createChannel(address, FetchTransport());
+            transport = FetchTransport();
+        } else if (runtime === "react-native") {
+            // TODO - Once this PR is merged: https://github.com/deeplay-io/nice-grpc/pull/348
+            transport = XHRTransport();
         } else {
-            channel = createChannel(address, NodeHttpTransport());
+            transport = NodeHttpTransport();
         }
-        // @ts-ignore - compatible types, duplicate definitions
+        if (TransportProvider.overrideTransport !== undefined) {
+            console.log("Overridden transport method", TransportProvider.overrideTransport);
+            transport = TransportProvider.overrideTransport;
+        }
+        const channel = createChannel(address, transport);
         return createClient(definition, channel);
     }
 
