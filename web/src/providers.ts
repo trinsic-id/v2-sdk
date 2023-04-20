@@ -36,6 +36,9 @@ function getRuntime(): string {
 }
 
 export class TransportProvider implements IPlatformProvider {
+    /**
+     * Override this to specify which transport to use.
+     */
     public static overrideTransport?: Transport = undefined;
     private language?: string = undefined;
     createGrpcClient<ClientService extends CompatServiceDefinition>(
@@ -53,7 +56,6 @@ export class TransportProvider implements IPlatformProvider {
             transport = NodeHttpTransport();
         }
         if (TransportProvider.overrideTransport !== undefined) {
-            console.log("Overridden transport method", TransportProvider.overrideTransport);
             transport = TransportProvider.overrideTransport;
         }
         const channel = createChannel(address, transport);

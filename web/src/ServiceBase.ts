@@ -5,10 +5,10 @@ import {
     CompatServiceDefinition as ClientServiceDefinition,
 } from "nice-grpc-web";
 import { getSdkVersion } from "./Version";
-import { BrowserProvider, IPlatformProvider } from "./providers";
+import { TransportProvider, IPlatformProvider } from "./providers";
 
 export default abstract class ServiceBase {
-    static platform: IPlatformProvider = new BrowserProvider();
+    static platform: IPlatformProvider = new TransportProvider();
     options: TrinsicOptions;
 
     protected constructor(
