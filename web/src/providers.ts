@@ -23,16 +23,13 @@ function getRuntime(): string {
     // https://stackoverflow.com/a/39473604
     if (typeof document !== 'undefined') {
         // I'm on the web!
-        console.warn("Web!");
         return "web";
     }
     else if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
         // I'm in react-native
-        console.warn("React native!");
         return "react-native";
     }
     else {
-        console.warn("Node.js!");
         // I'm in node js
         return "node";
     }
