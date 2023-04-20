@@ -22,9 +22,15 @@ To import the Trinsic SDK:
 ```js
 import { TrinsicService } from "@trinsic/trinsic";
 
-const trinsic = new TrinsicService();
+// instantiate the service without parameters
+let trinsic = new TrinsicService();
+const walletResponse = await trinsic.wallet().createWallet({ ecosystemId: "acme-corp" });
 
-const response = await trinsic.wallet().createWallet({});
+// instantiate the service with 'authToken' from the response
+trinsic = new TrinsicService({ authToken: walletResponse.authToken });
+const infoResponse = await trinsic.wallet().getMyInfo({});
+
+console.log(infoResponse);
 ```
 
 You can find all the SDK methods documented [here](/reference/)
