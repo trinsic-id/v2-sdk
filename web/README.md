@@ -3,16 +3,16 @@
 ## Installation
 
 ```bash
-npm install @trinsic/sdk
+npm install @trinsic/trinsic
 ```
 
 ```ts
-import { TrinsicService } from "@trinsic/sdk";
+import { TrinsicService } from "@trinsic/trinsic";
 ```
 
 If you have need to override the transport method (for instance, old versions of Node), you can do it in the following manner:
 ```typescript
-import {TransportProvider} from "@trinsic/sdk"
+import {TransportProvider} from "@trinsic/trinsic"
 TransportProvider.overrideTransport = XHRTransport(); // or other `nice-grpc-web` transports
 // Proceed to make your SDK calls here
 ```
