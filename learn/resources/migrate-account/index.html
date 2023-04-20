@@ -251,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../cli/" class="md-tabs__link">
+        <a href="../../../sdk/" class="md-tabs__link">
           
   
   Tools & SDKs
@@ -1215,13 +1215,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/" class="md-nav__link">
+      <a href="../../../sdk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
-    Trinsic CLI
+    Overview
   
 
     
@@ -1546,6 +1546,32 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Trinsic CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1946,32 +1972,6 @@
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../reference/events/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Events Reference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2272,7 +2272,7 @@
 as we felt it didn't warrant it's own API category and mostly created confusion. All methods available in the Account API are also available in the Wallet API, though some naming and parameters have changed.</p>
 <h2 id="accountloginanonymous-moved-to-walletcreatewallet"><code>Account.LoginAnonymous</code> moved to <code>Wallet.CreateWallet</code><a class="headerlink" href="#accountloginanonymous-moved-to-walletcreatewallet" title="Permanent link">&para;</a></h2>
 <p>This method is responsble for creating a wallet and returning an auth token that can be used to access this wallet. The updated method also returns all wallet information, such as <code>wallet_id</code>, <code>public_did</code>, etc.</p>
-<p>Usage: <a href="/reference/services/wallet-service/#create-wallet">Wallet API / Create Wallet</a></p>
+<p>API Reference: <a href="/reference/services/wallet-service/#create-wallet">Wallet API / Create Wallet</a></p>
 <h2 id="accountlogin-and-accountloginconfirm-core-design-changes"><code>Account.Login</code> and <code>Account.LoginConfirm</code> core design changes<a class="headerlink" href="#accountlogin-and-accountloginconfirm-core-design-changes" title="Permanent link">&para;</a></h2>
 <p>The purpose of the old <code>Login/LoginConfirm</code> methods was to obtain an auth token for an existing wallet using an email as external identity method. If a wallet was not found for this email, one would be automatically created. This design introduced some confusion on when clients should use this method. We decided that it's better to be explicit about the wallet creation process and separate associating it with an external identity, as opposed to having an API that silently creates a wallet.</p>
 <p>Under the new API, there is an explicit process for each step</p>
@@ -2280,6 +2280,11 @@ as we felt it didn't warrant it's own API category and mostly created confusion.
 <li>Wallet creation using <code>CreateWallet</code></li>
 <li>Adding external identity using <code>AddExternalIdentity</code> (2-step process with <code>Init</code> and <code>Confirm</code> of OTP token)</li>
 <li>Authentication to existing wallet using <code>Authenticate</code> (2-step process with <code>Init</code> and <code>Confirm</code> of OTP token)</li>
+</ul>
+<p>API References:</p>
+<ul>
+<li><a href="/reference/services/wallet-service/#add-external-identity">Wallet API / Add External Identity</a></li>
+<li><a href="/reference/services/wallet-service/#authenticate">Wallet API / Authenticate</a></li>
 </ul>
 <h3 id="create-wallet">Create Wallet<a class="headerlink" href="#create-wallet" title="Permanent link">&para;</a></h3>
 <p>This endpoint will create new wallet and return an auth token for accessing the wallet. This endpoint can be called from the client side and the token will be in control of the user.
@@ -2302,8 +2307,8 @@ If your integration operates with custodial wallets on behalf of users, you will
   Client-&gt;&gt;API: Request: AddExternalIdentityConfirm { Challenge, Response(OTP) }
   API-&gt;&gt;Client: Response: OK</code></pre>
 <h3 id="authenticate">Authenticate<a class="headerlink" href="#authenticate" title="Permanent link">&para;</a></h3>
-<p>This endpoint will associate external identity, such as email or phone number, to an existing wallet and allow the user to obtain an auth token to the wallet they control.
-If your integration operates with custodial wallets on behalf of users, you will likely not need to use this endpoint.</p>
+<p>Authenticate and return an auth token for an existing wallet using one of the associated external identities.
+This endpoint requires that the wallet user has previously added at least one external identity using the above endpoints.</p>
 <pre class="mermaid"><code>sequenceDiagram
   autonumber
   Client-&gt;&gt;API: Request: AuthenticateInit { Identity="user@example.com" }

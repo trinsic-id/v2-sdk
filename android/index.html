@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#android-sample-application" class="md-skip">
+        <a href="#android-sdk" class="md-skip">
           Skip to content
         </a>
       
@@ -251,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../cli/" class="md-tabs__link md-tabs__link--active">
+        <a href="../sdk/" class="md-tabs__link md-tabs__link--active">
           
   
   Tools & SDKs
@@ -314,6 +314,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -1084,13 +1086,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../sdk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
-    Trinsic CLI
+    Overview
   
 
     
@@ -1266,6 +1268,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#android-sample-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Android Sample Application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Android Sample Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1275,15 +1289,9 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1483,6 +1491,32 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Trinsic CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1883,32 +1917,6 @@
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/events/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Events Reference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2081,7 +2089,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2100,6 +2110,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#android-sample-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Android Sample Application
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Android Sample Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2109,15 +2131,9 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2141,9 +2157,17 @@
   
 
 
-<h1 id="android-sample-application">Android Sample Application<a class="headerlink" href="#android-sample-application" title="Permanent link">&para;</a></h1>
+<h1 id="android-sdk">Android SDK<a class="headerlink" href="#android-sdk" title="Permanent link">&para;</a></h1>
+<p>The SDK is available for all languages. See individual language for installation isntructions.</p>
+<ul>
+<li><a href="/java/">Native</a></li>
+<li><a href="/dart/">Flutter</a></li>
+<li><a href="/dotnet/">.NET MAUI</a></li>
+<li><a href="/web/">React Native</a></li>
+</ul>
+<h2 id="android-sample-application">Android Sample Application<a class="headerlink" href="#android-sample-application" title="Permanent link">&para;</a></h2>
 <p>The Trinsic Android sample application makes it easy to interact with the Trinsic API. The sample application is <a href="https://github.com/trinsic-id/sdk-examples/tree/main/android">located here</a></p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Clone the <code>sdk-examples</code> <a href="https://github.com/trinsic-id/sdk-examples">repository</a></li>
 <li>Open the folder <code>sdk-examples/android</code> in <a href="https://developer.android.com/studio">Android Studio</a></li>
@@ -2173,12 +2197,14 @@
 <span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/sdk/releases/download/v1.10.0/trinsic-services-1.10.0.jar&#39;, &#39;trinsic-services-1.10.0&#39;)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Once the SDK is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>
-<p><a class="md-button md-button--primary" href="../walkthroughs/vaccination/">Start Walkthrough</a> <a class="md-button" href="../reference/">Explore API</a> <a class="md-button" href="../reference/">Java API Reference</a></p>
+
+  
+  
 
 
 
+
+  
 
 
 

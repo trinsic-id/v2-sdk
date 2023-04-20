@@ -191,6 +191,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.trinsic.id/sdk/</loc>
+         <lastmod>2023-04-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.trinsic.id/walkthroughs/vaccination/</loc>
          <lastmod>2023-04-20</lastmod>
          <changefreq>daily</changefreq>
