@@ -24,21 +24,21 @@ public class AccessManagementService extends ServiceBase {
   /** This method is experimental Adds a role assignment to an account */
   @Deprecated(since = "This method is experimental")
   public ListenableFuture<AddRoleAssignmentResponse> addRoleAssignment(
-      AddRoleAssignmentRequest request) throws InvalidProtocolBufferException, DidException {
+      AddRoleAssignmentRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).addRoleAssignment(request);
   }
   /** This method is experimental Removes a role assignment from the account */
   @Deprecated(since = "This method is experimental")
   public ListenableFuture<RemoveRoleAssignmentResponse> removeRoleAssignment(
-      RemoveRoleAssignmentRequest request) throws InvalidProtocolBufferException, DidException {
+      RemoveRoleAssignmentRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).removeRoleAssignment(request);
   }
   /** This method is experimental List the role assignments for the given account */
   @Deprecated(since = "This method is experimental")
   public ListenableFuture<ListRoleAssignmentsResponse> listRoleAssignments(
-      ListRoleAssignmentsRequest request) throws InvalidProtocolBufferException, DidException {
+      ListRoleAssignmentsRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).listRoleAssignments(request);
   }

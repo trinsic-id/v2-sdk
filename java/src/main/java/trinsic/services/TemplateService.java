@@ -23,38 +23,37 @@ public class TemplateService extends ServiceBase {
 
   /** Create a credential template in the current ecosystem */
   public ListenableFuture<CreateCredentialTemplateResponse> create(
-      CreateCredentialTemplateRequest request) throws InvalidProtocolBufferException, DidException {
+      CreateCredentialTemplateRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).create(request);
   }
   /** Fetch a credential template by ID */
   public ListenableFuture<GetCredentialTemplateResponse> get(GetCredentialTemplateRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).get(request);
   }
   /** Update metadata of a template */
   public ListenableFuture<UpdateCredentialTemplateResponse> update(
-      UpdateCredentialTemplateRequest request) throws InvalidProtocolBufferException, DidException {
+      UpdateCredentialTemplateRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).update(request);
   }
   /** Search credential templates using SQL, returning strongly-typed template data */
   public ListenableFuture<ListCredentialTemplatesResponse> list(
-      ListCredentialTemplatesRequest request) throws InvalidProtocolBufferException, DidException {
+      ListCredentialTemplatesRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).list(request);
   }
   /** Search credential templates using SQL, returning raw JSON data */
   public ListenableFuture<SearchCredentialTemplatesResponse> search(
-      SearchCredentialTemplatesRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      SearchCredentialTemplatesRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).search(request);
   }
   /** Delete a credential template from the current ecosystem by ID */
   public ListenableFuture<DeleteCredentialTemplateResponse> delete(
-      DeleteCredentialTemplateRequest request) throws InvalidProtocolBufferException, DidException {
+      DeleteCredentialTemplateRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).delete(request);
   }
