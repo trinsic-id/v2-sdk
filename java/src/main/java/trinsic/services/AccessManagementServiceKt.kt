@@ -11,13 +11,13 @@ class AccessManagementServiceKt(options: Options.TrinsicOptions.Builder?) : Serv
   // target:
   // /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/AccessManagementServiceKt.kt
 
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
+  @Throws(InvalidProtocolBufferException::class)
   @Deprecated("This method is experimental")
   suspend fun addRoleAssignment(request: AddRoleAssignmentRequest): AddRoleAssignmentResponse {
     /** This method is experimental Adds a role assignment to an account */
     return withMetadata(stub, request).addRoleAssignment(request)
   }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
+  @Throws(InvalidProtocolBufferException::class)
   @Deprecated("This method is experimental")
   suspend fun removeRoleAssignment(
       request: RemoveRoleAssignmentRequest
@@ -25,7 +25,7 @@ class AccessManagementServiceKt(options: Options.TrinsicOptions.Builder?) : Serv
     /** This method is experimental Removes a role assignment from the account */
     return withMetadata(stub, request).removeRoleAssignment(request)
   }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
+  @Throws(InvalidProtocolBufferException::class)
   @Deprecated("This method is experimental")
   suspend fun listRoleAssignments(
       request: ListRoleAssignmentsRequest

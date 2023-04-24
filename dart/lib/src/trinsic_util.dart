@@ -23,6 +23,6 @@ TrinsicOptions trinsicConfig({String authToken = ""}) {
 }
 
 String getSdkVersion() {
-  const sdkVersion = "1.11.0-rc4";
+  const sdkVersion = "1.11.0";
   return sdkVersion;
 }
