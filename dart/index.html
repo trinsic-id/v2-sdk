@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.trinsic.id/learn/concepts/verifications/">
+        <link rel="canonical" href="https://docs.trinsic.id/dart/">
       
       
-        <link rel="prev" href="../credentials/">
+        <link rel="prev" href="../android/">
       
       
-        <link rel="next" href="../templates/">
+        <link rel="next" href="../node/">
       
       
         
       
       
-      <link rel="icon" href="../../../_static/logo.png">
+      <link rel="icon" href="../_static/logo.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8+insiders-4.32.6">
     
     
       
-        <title>Verifications - Documentation</title>
+        <title>Dart - Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.dc5b59cc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.dc5b59cc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.6932e648.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.6932e648.min.css">
       
       
 
@@ -48,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css">
     
-      <link rel="stylesheet" href="../../../_static/extra.css">
+      <link rel="stylesheet" href="../_static/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#verifications" class="md-skip">
+        <a href="#the-trinsic-dart-sdk" class="md-skip">
           Skip to content
         </a>
       
@@ -103,9 +103,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href=".." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../../../_static/logo-title.svg" alt="logo">
+  <img src="../_static/logo-title.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Verifications
+              Dart
             
           </span>
         </div>
@@ -218,7 +218,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
     
@@ -233,13 +233,11 @@
         
   
   
-    
-  
   
     
     
       <li class="md-tabs__item">
-        <a href="../../" class="md-tabs__link md-tabs__link--active">
+        <a href="../learn/" class="md-tabs__link">
           
   
   Learn
@@ -253,11 +251,13 @@
         
   
   
+    
+  
   
     
     
       <li class="md-tabs__item">
-        <a href="../../../sdk/" class="md-tabs__link">
+        <a href="../sdk/" class="md-tabs__link md-tabs__link--active">
           
   
   Tools & SDKs
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../reference/" class="md-tabs__link">
+        <a href="../reference/" class="md-tabs__link">
           
   
   Reference
@@ -293,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../roadmap/" class="md-tabs__link">
+        <a href="../roadmap/" class="md-tabs__link">
           
   
   Resources
@@ -332,9 +332,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href=".." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
       
-  <img src="../../../_static/logo-title.svg" alt="logo">
+  <img src="../_static/logo-title.svg" alt="logo">
 
     </a>
     Documentation
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -383,19 +383,19 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -414,7 +414,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -431,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../learn/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -455,19 +455,19 @@
                 
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
@@ -486,7 +486,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -503,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ecosystems/" class="md-nav__link">
+      <a href="../learn/concepts/ecosystems/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -529,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../wallets/" class="md-nav__link">
+      <a href="../learn/concepts/wallets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -555,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../credentials/" class="md-nav__link">
+      <a href="../learn/concepts/credentials/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -579,35 +579,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    
-  
-    Verifications
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../learn/concepts/verifications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -622,59 +596,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#zero-knowledge-proofs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Zero-knowledge proofs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-verifications-in-your-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using verifications in your app
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adoption-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adoption tools
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -686,7 +607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../templates/" class="md-nav__link">
+      <a href="../learn/concepts/templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -712,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dids/" class="md-nav__link">
+      <a href="../learn/concepts/dids/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -738,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../trust-registries/" class="md-nav__link">
+      <a href="../learn/concepts/trust-registries/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../json-ld/" class="md-nav__link">
+      <a href="../learn/concepts/json-ld/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -844,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../platform/standards/" class="md-nav__link">
+      <a href="../learn/platform/standards/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -870,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../platform/security/" class="md-nav__link">
+      <a href="../learn/platform/security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -950,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../walkthroughs/vaccination/" class="md-nav__link">
+      <a href="../walkthroughs/vaccination/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../resources/migrate/" class="md-nav__link">
+      <a href="../learn/resources/migrate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1056,7 +977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../resources/migrate-account/" class="md-nav__link">
+      <a href="../learn/resources/migrate-account/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1082,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../resources/interactive-api/" class="md-nav__link">
+      <a href="../learn/resources/interactive-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1121,19 +1042,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
@@ -1152,7 +1073,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1169,7 +1090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../sdk/" class="md-nav__link">
+      <a href="../sdk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1241,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dart/" class="md-nav__link">
+      <a href="./" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1267,7 +1188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../web/" class="md-nav__link">
+      <a href="../web/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1293,7 +1214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../web/" class="md-nav__link">
+      <a href="../web/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1319,7 +1240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ios/" class="md-nav__link">
+      <a href="../ios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1345,7 +1266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../android/" class="md-nav__link">
+      <a href="../android/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1377,19 +1298,19 @@
                 
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
@@ -1408,7 +1329,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1423,9 +1344,35 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../dart/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    Dart
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1440,6 +1387,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-in-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation in a new project
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1451,7 +1429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../node/" class="md-nav__link">
+      <a href="../node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1477,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dotnet/" class="md-nav__link">
+      <a href="../dotnet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1503,7 +1481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/" class="md-nav__link">
+      <a href="../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1529,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../go/" class="md-nav__link">
+      <a href="../go/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1555,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../java/" class="md-nav__link">
+      <a href="../java/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1589,7 +1567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/" class="md-nav__link">
+      <a href="../cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1668,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/" class="md-nav__link">
+      <a href="../reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1740,7 +1718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/services/account-service/" class="md-nav__link">
+      <a href="../reference/services/account-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1766,7 +1744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/services/credential-service/" class="md-nav__link">
+      <a href="../reference/services/credential-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1792,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/services/file-management-service/" class="md-nav__link">
+      <a href="../reference/services/file-management-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1818,7 +1796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/services/provider-service/" class="md-nav__link">
+      <a href="../reference/services/provider-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1844,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/services/template-service/" class="md-nav__link">
+      <a href="../reference/services/template-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1870,7 +1848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/services/trust-registry-service/" class="md-nav__link">
+      <a href="../reference/services/trust-registry-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1896,7 +1874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/services/wallet-service/" class="md-nav__link">
+      <a href="../reference/services/wallet-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1976,7 +1954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/other/openid/" class="md-nav__link">
+      <a href="../reference/other/openid/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2063,7 +2041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../roadmap/" class="md-nav__link">
+      <a href="../roadmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2089,7 +2067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../support/" class="md-nav__link">
+      <a href="../support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2195,32 +2173,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#zero-knowledge-proofs" class="md-nav__link">
+  <a href="#installation-in-a-new-project" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Zero-knowledge proofs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-verifications-in-your-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using verifications in your app
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adoption-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adoption tools
+        Installation in a new project
       
     </span>
   </a>
@@ -2247,25 +2203,33 @@
   
 
 
-<h1 id="verifications">Verifications<a class="headerlink" href="#verifications" title="Permanent link">&para;</a></h1>
-<p>Creating <a href="https://docs.trinsic.id/learn/concepts/credentials/">Verifiable Credentials</a> involves generating <strong>cryptographic</strong> proofs that can be used to verify the authenticity of the VC. Digital signatures are generated using the issuer’s private key and these are used to create the proofs. When a verifier receives a VC, they can use the issuer’s public key to verify the credential’s signature and ensure that it hasn’t been tampered with. This allows information to be shared in a secure and trustworthy way between parties.</p>
-<p>Designing the way verifications will be done in your ecosystem is arguably the most important step in creating a successful IDtech product. Verifications are privacy-preserving proofs of data inside a VC. </p>
-<p>A verification is an abstraction provided by Trinsic that makes it easy to utilize W3C-conformant <a href="https://www.w3.org/TR/vc-data-model/#presentations">Verifiable Presentations</a>, <a href="https://openid.net/specs/openid-connect-4-verifiable-presentations-1_0-08.html">OpenID Connect</a>, zero-knowledge proofs, and other identity specifications without having to spend months becoming an expert or writing your own implementation. For more on the standards we use, see our Standards page.</p>
-<h2 id="zero-knowledge-proofs">Zero-knowledge proofs<a class="headerlink" href="#zero-knowledge-proofs" title="Permanent link">&para;</a></h2>
-<p>A zero-knowledge proof (ZKP) allows a user to prove some information is true without revealing the information itself. The classic example is proving you’re over 18 without revealing your birthdate. </p>
-<p>The most important application of zero-knowledge proofs today is the ability to perform selective disclosure on the contents of a verifiable credential. This is important for the obvious privacy reasons related to data minimization, but it’s also important for the less-obvious privacy reasons of obfuscating correlatable identifiers from verifiable presentations. Over time we will add the capability for providers to offer verifiers ZKP capabilities that allow computation on values, such as ‘<em>is <code>GPA</code> &gt; 3.0’</em> or <em>‘does <code>home_address</code> contain “New York”’.</em></p>
-<p>Trinsic’s ZKP implementation is based on an extremely performant algorithm called BBS+ which is currently being standardized. To learn more, see here.</p>
-<!-- TODO: add link to the bbs+ algorithm -->
-
-<h2 id="using-verifications-in-your-app">Using verifications in your app<a class="headerlink" href="#using-verifications-in-your-app" title="Permanent link">&para;</a></h2>
-<p>Instantly verifying data to access a product, service, or resource is the bread and butter of an IDtech product. It is the point value is realized. So designing a user-friendly method for verification is critical.</p>
-<p>Verification policies</p>
-<p>The first step is to understand the requirements for verification, according to your use case—verifying medical information will have much different constraints than verifying a library card. And authenticating medical information online differs from sharing that information in-person.</p>
-<p>As a provider, you should design verification templates that enable verifiers to collect the data they need from a holder, but no more. This is an important part of the data minimization principles underpinning Trinsic’s infrastructure.</p>
-<p>Most successful providers do significant product work to understand how users and verifiers want to interact to optimize their desired outcomes. Trinsic’s infrastructure is designed to enable this verification flexibility across various use cases.</p>
-<h2 id="adoption-tools">Adoption tools<a class="headerlink" href="#adoption-tools" title="Permanent link">&para;</a></h2>
-<p>The first adoption tool Trinsic provides for easy verifications is an OpenID Connect (OIDC) service to fit into the legacy systems and mental models that verifiers and consumers are already familiar with. To learn more about setting up your OIDC app, please see the following documentation.</p>
-<!-- TODO: add link to the documentation describing OIDC app setup -->
+<h1 id="the-trinsic-dart-sdk">The Trinsic Dart SDK<a class="headerlink" href="#the-trinsic-dart-sdk" title="Permanent link">&para;</a></h1>
+<p>The Trinsic Dart SDK makes it easy to interact with the Trinsic API from your Dart/Flutter application. The most recent version of the library can be found on <a href="https://pub.dev/packages/trinsic_dart">pub.dev</a>. You can also find the SDKs source on <a href="https://github.com/trinsic-id/sdk/dart">Github</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Supported runtimes</p>
+<p>Flutter targets (Windows, MacOS, iOS, Android, Web) are supported natively with the Dart SDK. <a href="https://github.com/trinsic-id/sdk-examples/tree/main/trinsic_flutter">A sample application is here</a></p>
+</div>
+<h2 id="installation-in-a-new-project">Installation in a new project<a class="headerlink" href="#installation-in-a-new-project" title="Permanent link">&para;</a></h2>
+<p>Add the required dependency to your Dart/Flutter <code>pubspec.yaml</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Dart</label><label for="__tabbed_1_2">Flutter</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>dart<span class="w"> </span>pub<span class="w"> </span>add<span class="w"> </span>trinsic_dart
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>flutter<span class="w"> </span>pub<span class="w"> </span>add<span class="w"> </span>trinsic_dart
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, you can simply instantiate this service with or without parameters</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="s1">&#39;package:trinsic_dart/trinsic.dart&#39;</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="c1">// Or, if you have an auth token</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">trinsicConfig</span><span class="p">(</span><span class="nl">authToken:</span><span class="w"> </span><span class="s2">&quot;&lt;auth_token&gt;&quot;</span><span class="p">));</span>
+</code></pre></div>
 
 
 
@@ -2333,18 +2297,18 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.803ed251.min.js"></script>
+      <script src="../assets/javascripts/bundle.803ed251.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
-        <script src="../../../_static/javascripts/config.js"></script>
+        <script src="../_static/javascripts/config.js"></script>
       
-        <script src="../../../_static/javascripts/proto_functionality.js"></script>
+        <script src="../_static/javascripts/proto_functionality.js"></script>
       
-        <script src="../../../_static/javascripts/tab_sync.js"></script>
+        <script src="../_static/javascripts/tab_sync.js"></script>
       
     
   </body>
