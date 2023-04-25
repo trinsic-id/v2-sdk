@@ -5,11 +5,14 @@ hide:
 
 # Typescript SDK
 
-The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web). The @trinsic/trinsic package comes with Typescript bindings.
+The Trinsic Typescript SDK makes it easy to interact with the Trinsic API from any client-side web, Node.js, or React Native application. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web). The @trinsic/trinsic package comes with Typescript bindings.
 
 ## Installation
 
 Install the package for Node or Browser from [npmjs.com <small>:material-open-in-new:</small>](https://www.npmjs.com/package/@trinsic/trinsic){target=\_blank}
+
+!!! note "Supported runtimes"
+    Recent browsers, Node.js (v16+), React Native (including expo) are all supported. [A sample react native application is here](https://github.com/trinsic-id/sdk-examples/tree/main/trinsic-react-native)
 
 === "Install"
 
