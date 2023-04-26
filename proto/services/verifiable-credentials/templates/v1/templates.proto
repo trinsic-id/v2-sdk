@@ -143,8 +143,6 @@ message TemplateData {
   bool allow_additional_fields = 5;
   // URI pointing to template JSON schema document
   string schema_uri = 6;
-  // DEPRECATED, will be removed April 1st 2023
-  string context_uri = 7 [deprecated = true];
   // ID of ecosystem in which template resides
   string ecosystem_id = 8 [json_name = "ecosystemId"];
   // Template type (`VerifiableCredential`)
@@ -161,6 +159,9 @@ message TemplateData {
   map<string, FieldOrdering> field_ordering = 14 [json_name="fieldOrdering"];
   // Options for rendering the template in Apple Wallet
   AppleWalletOptions apple_wallet_options = 15 [json_name="appleWalletOptions"];
+
+  reserved 7;
+  reserved "context_uri";
 }
 
 // Configuration options for Apple Wallet when
@@ -209,12 +210,11 @@ message TemplateField {
   // The type of the field
   FieldType type = 4;
 
-  // Do not use.
-  // Annotations for the field that may be used to add additional information.
-  map<string, string> annotations = 5 [deprecated=true];
-
   // How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
   optional UriFieldData uri_data = 6;
+
+  reserved 5;
+  reserved "annotations";
 }
 
 // A patch to apply to an existing template field
