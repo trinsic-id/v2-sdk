@@ -13,13 +13,12 @@ message SignInRequest {
   // Account registration details
   AccountDetails details = 1 [(options.optional) = true];
 
-  // DEPRECATED, will be removed April 1st 2023
-  // Invitation code associated with this registration
-  string invitation_code = 2 [(options.optional) = true, deprecated = true];
-
   // ID of Ecosystem to use
   // Ignored if `invitation_code` is passed
   string ecosystem_id = 3 [(options.optional) = true];
+
+  reserved 2;
+  reserved "invitation_code";
 }
 
 // Account registration details
@@ -77,7 +76,6 @@ message AccountProfile {
   // If token protection is enabled, implementations must supply
   // protection secret before using the token for authentication.
   TokenProtection protection = 4;
-
 }
 
 // Token protection info
@@ -97,9 +95,6 @@ message AccountInfoResponse {
   // The account details associated with
   // the calling request context
   AccountDetails details = 1;
-  // DEPRECATED, will be removed April 1st 2023
-  // Use `ecosystem_id` instead
-  repeated AccountEcosystem ecosystems = 2 [deprecated = true];
   // The wallet ID associated with this account
   string wallet_id = 3;
   // The device ID associated with this account session
@@ -110,38 +105,25 @@ message AccountInfoResponse {
   // This DID is used as the `issuer` when signing verifiable credentials
   string public_did = 6;
 
-  // Webhook events, if any, this wallet has authorized
-  reserved 7;
-  reserved "authorized_webhooks";
-
   // List of active authentication tokens for this wallet.
   // This list does not contain the issued token, only metadata
   // such as ID, description, and creation date.
   repeated WalletAuthToken auth_tokens = 8;
-}
 
-// Deprecated
-message AccountEcosystem {
-  string id = 1;
-  string name = 2;
-  string description = 3;
-  string uri = 4;
+  reserved 2, 7;
+  reserved "ecosystems", "authorized_webhooks";
 }
-
-// Login
 
 // Request to begin login flow
 message LoginRequest {
   // Email address of account. If unspecified, an anonymous account will be created.
   string email = 1  [(options.optional) = true];
 
-  // DEPRECATED, will be removed April 1st 2023
-  // Invitation code associated with this registration
-  string invitation_code = 2 [(options.optional) = true, deprecated = true];
-
   // ID of Ecosystem to sign into.
-  // Ignored if `invitation_code` is passed.
   string ecosystem_id = 3 [(options.optional) = true];
+
+  reserved 2;
+  reserved "invitation_code";
 }
 
 // Response to `LoginRequest`
@@ -172,19 +154,6 @@ message LoginConfirmResponse {
   // Profile response; must be unprotected using unhashed confirmation code.
   // Our SDKs will handle this process for you, and return to you an authentication token string.
   AccountProfile profile = 1;
-}
-
-// Request to authorize Ecosystem provider to receive webhooks for events
-// which occur on this wallet.
-message AuthorizeWebhookRequest {
-  option deprecated = true;
-  // Events to authorize access to. Default is "*" (all events)
-  repeated string events = 1;
-}
-
-// Response to `AuthorizeWebhookRequest`
-message AuthorizeWebhookResponse {
-  option deprecated = true;
 }
 
 // Information about authenticaton tokens for a wallet
@@ -224,10 +193,5 @@ service Account {
   rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
     option deprecated = true;
     option (options.sdk_template_option).no_arguments = true;
-  }
-
-  // Authorize Ecosystem to receive webhook events
-  rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse){
-    option (options.sdk_template_option).ignore = true;
   }
 }
