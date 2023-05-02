@@ -2,21 +2,21 @@
 
 The Account Service allows you to create and sign in to accounts.
 
-!!! question "Wallets vs Accounts"
-    Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
+!!! danger "Deprecated"
 
-    Every account has exactly one wallet.
-
-!!! info "Authentication Tokens"
-    When you create or sign in to an account, the response is an authentication token string.
-
-    This string is an encoded form of your account profile, as well as an access key to perform calls using the account.
-
-    These are effectively API keys; they should be kept safe and never published.
+    This API has been deprecated; use the [Wallet API](../wallet-service) instead.
 
 ---
 
 ## Login
+
+!!! danger "Deprecated"
+
+    This endpoint has been deprecated; use the [Wallet API](../wallet-service) instead:
+
+    - For wallet creation, use [CreateWallet](../wallet-service#create-wallet)
+    - To login to an existing wallet, use [Authenticate](../wallet-service#authenticate)
+      - This requires that an external identity (such as an email or phone number) has been added to the wallet via [AddExternalIdentity](../wallet-service#add-external-identity), or (if the wallet was created using the deprecated `Login` API) during wallet creation.
 
 Attempts the first step of the login process for the specified account, creating it if it does not already exist.
 
@@ -30,35 +30,16 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         trinsic account login --email "bob@example.com" --ecosystem "<ecosystem id or name>"
         ```
 
-    === "TypeScript"
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [LoginRequest](../../../python/samples/account_demo.py) inside_block:loginRequest
-        ```
-        <!--/codeinclude-->
-
 
 {{ proto_method_tabs("services.account.v1.Account.Login") }}
-
-!!! tip "Anonymous Login"
-    Anonymous accounts are accounts which are not tied to any email or phone number, and do not require any authentication. They are typically used for testing and prototypes.
-
-    To create an anonymous account with an SDK, use the `TrinsicService.LoginAnonymous()` method.
-
-    To create an anonymous account with the CLI, simply leave the `email` parameter unspecified.
 
 ---
 
 ## Login Confirm
+
+!!! danger "Deprecated"
+
+    This endpoint has been deprecated; use the [Wallet API](../wallet-service) instead
 
 Finalizes the login process.
 
@@ -71,22 +52,6 @@ Our SDK will take care of hashing the confirmation code for you.
         ```bash
         trinsic account login --email "bob@example.com"
         ```
-
-    === "TypeScript"
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [LoginConfirm](../../../dotnet/Tests/Tests.cs) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [LoginConfirm](../../../python/samples/account_demo.py) inside_block:loginConfirm
-        ```
-        <!--/codeinclude-->
 
 
 {{ proto_method_tabs("services.account.v1.Account.LoginConfirm") }}
