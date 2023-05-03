@@ -1,5 +1,3 @@
-from functools import cached_property
-
 from trinsic.access_management_service import AccessManagementService
 from trinsic.credential_service import CredentialService
 from trinsic.file_management_service import FileManagementService
@@ -20,6 +18,14 @@ class TrinsicService(ServiceBase):
     ):
         super().__init__(server_config)
 
+        self._access_management: AccessManagementService = None
+        self._credential: CredentialService = None
+        self._file_management: FileManagementService = None
+        self._template: TemplateService = None
+        self._provider: ProviderService = None
+        self._trust_registry: TrustRegistryService = None
+        self._wallet: WalletService = None
+
     def close(self):
         # TODO - Channel management
         self.credential.close()
@@ -29,30 +35,44 @@ class TrinsicService(ServiceBase):
         self.trust_registry.close()
         self.wallet.close()
 
-    @cached_property
+    @property
     def access_management(self) -> AccessManagementService:
-        return AccessManagementService(server_config=self.service_options)
+        self._access_management = self._access_management or AccessManagementService(server_config=self.service_options)
+        self._access_management.service_options = self.service_options
+        return self._access_management
 
-    @cached_property
+    @property
     def credential(self) -> CredentialService:
-        return CredentialService(server_config=self.service_options)
+        self._credential = self._credential or CredentialService(server_config=self.service_options)
+        self._credential.service_options = self.service_options
+        return self._credential
 
-    @cached_property
+    @property
     def file_management(self) -> FileManagementService:
-        return FileManagementService(server_config=self.service_options)
+        self._file_management = self._file_management or FileManagementService(server_config=self.service_options)
+        self._file_management.service_options = self.service_options
+        return self._file_management
 
-    @cached_property
+    @property
     def template(self) -> TemplateService:
-        return TemplateService(server_config=self.service_options)
+        self._template = self._template or TemplateService(server_config=self.service_options)
+        self._template.service_options = self.service_options
+        return self._template
 
-    @cached_property
+    @property
     def provider(self) -> ProviderService:
-        return ProviderService(server_config=self.service_options)
+        self._provider = self._provider or ProviderService(server_config=self.service_options)
+        self._provider.service_options = self.service_options
+        return self._provider
 
-    @cached_property
+    @property
     def trust_registry(self) -> TrustRegistryService:
-        return TrustRegistryService(server_config=self.service_options)
+        self._trust_registry = self._trust_registry or TrustRegistryService(server_config=self.service_options)
+        self._trust_registry.service_options = self.service_options
+        return self._trust_registry
 
-    @cached_property
+    @property
     def wallet(self) -> WalletService:
-        return WalletService(server_config=self.service_options)
+        self._wallet = self._wallet or WalletService(server_config=self.service_options)
+        self._wallet.service_options = self.service_options
+        return self._wallet
