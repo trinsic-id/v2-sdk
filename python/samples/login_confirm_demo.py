@@ -1,26 +1,27 @@
 import asyncio
 
-from trinsic.proto.services.account.v1 import LoginRequest
-from trinsic.proto.services.universalwallet.v1 import SearchRequest
+from trinsic.proto.sdk.options.v1 import TrinsicOptions
+from trinsic.proto.services.universalwallet.v1 import SearchRequest, AuthenticateInitRequest, IdentityProvider, \
+    AuthenticateConfirmRequest
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
 
-
+server_config=TrinsicOptions(server_port=5000, server_use_tls=False, server_endpoint="localhost")
 async def signin(email: str) -> str:
-    trinsic_service = TrinsicService()
-    login_response = await trinsic_service.account.login(
-        request=LoginRequest(email=email, ecosystem_id="default")
+    trinsic_service = TrinsicService(server_config=server_config)
+    login_response = await trinsic_service.wallet.authenticate_init(
+        request=AuthenticateInitRequest(identity=email, provider=IdentityProvider.EMAIL, ecosystem_id="default")
     )
     verify_code = input("Code sent to email, enter it here:")
-    new_account = await trinsic_service.account.login_confirm(
-        challenge=login_response.challenge, auth_code=verify_code
+    wallet_auth = await trinsic_service.wallet.authenticate_confirm(
+        request=AuthenticateConfirmRequest(challenge=login_response.challenge, response=verify_code)
     )
-    return new_account
+    return wallet_auth.auth_token
 
 
 async def check_wallet_contents(profile: str):
     # Check wallet contents
-    trinsic_service = TrinsicService(server_config=trinsic_config(auth_token=profile))
+    trinsic_service = TrinsicService(server_config=server_config)
+    trinsic_service.set_auth_token(profile)
     search_results = await trinsic_service.wallet.search(
         request=SearchRequest(query="SELECT * FROM _")
     )
