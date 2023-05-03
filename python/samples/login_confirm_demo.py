@@ -4,8 +4,12 @@ from trinsic.proto.sdk.options.v1 import TrinsicOptions
 from trinsic.proto.services.universalwallet.v1 import SearchRequest, AuthenticateInitRequest, IdentityProvider, \
     AuthenticateConfirmRequest
 from trinsic.trinsic_service import TrinsicService
+from trinsic.trinsic_util import trinsic_config
 
-server_config=TrinsicOptions(server_port=5000, server_use_tls=False, server_endpoint="localhost")
+# server_config=TrinsicOptions(server_port=5000, server_use_tls=False, server_endpoint="localhost")
+server_config = trinsic_config()
+
+
 async def signin(email: str) -> str:
     trinsic_service = TrinsicService(server_config=server_config)
     login_response = await trinsic_service.wallet.authenticate_init(
