@@ -53,13 +53,13 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
     async def test_file_management_demo(self):
         await file_management_demo()
 
-    async def test_providerservice_demo(self):
+    async def test_provider_service_demo(self):
         await provider_demo()
 
     async def test_templates_demo(self):
         await templates_demo()
 
-    async def test_trustregistry_demo(self):
+    async def test_trust_registry_demo(self):
         await trustregistry_demo()
 
     async def test_vaccine_demo(self):

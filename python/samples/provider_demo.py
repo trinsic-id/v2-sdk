@@ -29,8 +29,7 @@ async def provider_demo():
     # }
 
     # ecosystemInfo() {
-    response = await trinsic.provider.ecosystem_info(request=EcosystemInfoRequest())
-    ecosystem = response.ecosystem
+    # REMOVED
     # }
 
 

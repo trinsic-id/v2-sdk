@@ -55,24 +55,24 @@ class TrinsicService(ServiceBase):
 
     @property
     def template(self) -> TemplateService:
-        self._template = self._credential or TemplateService(server_config=self.service_options)
+        self._template = self._template or TemplateService(server_config=self.service_options)
         self._template.service_options = self.service_options
         return self._template
 
     @property
     def provider(self) -> ProviderService:
-        self._provider = self._credential or ProviderService(server_config=self.service_options)
+        self._provider = self._provider or ProviderService(server_config=self.service_options)
         self._provider.service_options = self.service_options
         return self._provider
 
     @property
     def trust_registry(self) -> TrustRegistryService:
-        self._trust_registry = self._credential or TrustRegistryService(server_config=self.service_options)
+        self._trust_registry = self._trust_registry or TrustRegistryService(server_config=self.service_options)
         self._trust_registry.service_options = self.service_options
         return self._trust_registry
 
     @property
     def wallet(self) -> WalletService:
-        self._wallet = self._credential or WalletService(server_config=self.service_options)
+        self._wallet = self._wallet or WalletService(server_config=self.service_options)
         self._wallet.service_options = self.service_options
         return self._wallet
