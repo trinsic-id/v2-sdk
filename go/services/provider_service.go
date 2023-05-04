@@ -32,14 +32,6 @@ type ProviderService interface {
 	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 	// DEPRECATED, will be removed June 1st 2023
 	UpdateEcosystem(userContext context.Context, request *provider.UpdateEcosystemRequest) (*provider.UpdateEcosystemResponse, error)
-	// EcosystemInfo Deprecated: This will be removed June 1, 2023
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	EcosystemInfo(userContext context.Context, request *provider.EcosystemInfoRequest) (*provider.EcosystemInfoResponse, error)
-	// GetPublicEcosystemInfo Deprecated: This will be removed June 1, 2023
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	GetPublicEcosystemInfo(userContext context.Context, request *provider.GetPublicEcosystemInfoRequest) (*provider.GetPublicEcosystemInfoResponse, error)
 	// GetOberonKey  Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(userContext context.Context) (*provider.GetOberonKeyResponse, error)
 	// UpgradeDID  Upgrade a wallet's DID from `did:key` to another method
@@ -100,36 +92,6 @@ func (p *providerBase) UpdateEcosystem(userContext context.Context, request *pro
 		return nil, err
 	}
 	response, err := p.client.UpdateEcosystem(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// EcosystemInfo Deprecated: This will be removed June 1, 2023
-// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-// DEPRECATED, will be removed June 1st 2023
-func (p *providerBase) EcosystemInfo(userContext context.Context, request *provider.EcosystemInfoRequest) (*provider.EcosystemInfoResponse, error) {
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.EcosystemInfo(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// GetPublicEcosystemInfo Deprecated: This will be removed June 1, 2023
-// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-// DEPRECATED, will be removed June 1st 2023
-func (p *providerBase) GetPublicEcosystemInfo(userContext context.Context, request *provider.GetPublicEcosystemInfoRequest) (*provider.GetPublicEcosystemInfoResponse, error) {
-	md, err := p.GetMetadataContext(userContext, nil)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.GetPublicEcosystemInfo(md, request)
 	if err != nil {
 		return nil, err
 	}

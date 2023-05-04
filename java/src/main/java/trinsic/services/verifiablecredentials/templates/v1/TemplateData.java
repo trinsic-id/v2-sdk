@@ -26,7 +26,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     id_ = "";
     name_ = "";
     schemaUri_ = "";
-    contextUri_ = "";
     ecosystemId_ = "";
     type_ = "";
     createdBy_ = "";
@@ -375,61 +374,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       schemaUri_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CONTEXT_URI_FIELD_NUMBER = 7;
-  private volatile java.lang.Object contextUri_;
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * </pre>
-   *
-   * <code>string context_uri = 7 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
-   * @return The contextUri.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.lang.String getContextUri() {
-    java.lang.Object ref = contextUri_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      contextUri_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * </pre>
-   *
-   * <code>string context_uri = 7 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
-   * @return The bytes for contextUri.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public com.google.protobuf.ByteString getContextUriBytes() {
-    java.lang.Object ref = contextUri_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      contextUri_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -948,9 +892,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, schemaUri_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contextUri_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, contextUri_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, ecosystemId_);
     }
@@ -1011,9 +952,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, schemaUri_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contextUri_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, contextUri_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, ecosystemId_);
     }
@@ -1070,7 +1008,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     if (!internalGetFields().equals(other.internalGetFields())) return false;
     if (getAllowAdditionalFields() != other.getAllowAdditionalFields()) return false;
     if (!getSchemaUri().equals(other.getSchemaUri())) return false;
-    if (!getContextUri().equals(other.getContextUri())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getType().equals(other.getType())) return false;
     if (!getCreatedBy().equals(other.getCreatedBy())) return false;
@@ -1107,8 +1044,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAllowAdditionalFields());
     hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
     hash = (53 * hash) + getSchemaUri().hashCode();
-    hash = (37 * hash) + CONTEXT_URI_FIELD_NUMBER;
-    hash = (53 * hash) + getContextUri().hashCode();
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -1303,8 +1238,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
 
       schemaUri_ = "";
 
-      contextUri_ = "";
-
       ecosystemId_ = "";
 
       type_ = "";
@@ -1360,7 +1293,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       result.fields_.makeImmutable();
       result.allowAdditionalFields_ = allowAdditionalFields_;
       result.schemaUri_ = schemaUri_;
-      result.contextUri_ = contextUri_;
       result.ecosystemId_ = ecosystemId_;
       result.type_ = type_;
       result.createdBy_ = createdBy_;
@@ -1443,10 +1375,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       }
       if (!other.getSchemaUri().isEmpty()) {
         schemaUri_ = other.schemaUri_;
-        onChanged();
-      }
-      if (!other.getContextUri().isEmpty()) {
-        contextUri_ = other.contextUri_;
         onChanged();
       }
       if (!other.getEcosystemId().isEmpty()) {
@@ -1547,12 +1475,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 50
-            case 58:
-              {
-                contextUri_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 58
             case 66:
               {
                 ecosystemId_ = input.readStringRequireUtf8();
@@ -2244,127 +2166,6 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       checkByteStringIsUtf8(value);
 
       schemaUri_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object contextUri_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * </pre>
-     *
-     * <code>string context_uri = 7 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
-     * @return The contextUri.
-     */
-    @java.lang.Deprecated
-    public java.lang.String getContextUri() {
-      java.lang.Object ref = contextUri_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        contextUri_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * </pre>
-     *
-     * <code>string context_uri = 7 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
-     * @return The bytes for contextUri.
-     */
-    @java.lang.Deprecated
-    public com.google.protobuf.ByteString getContextUriBytes() {
-      java.lang.Object ref = contextUri_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        contextUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * </pre>
-     *
-     * <code>string context_uri = 7 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
-     * @param value The contextUri to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder setContextUri(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      contextUri_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * </pre>
-     *
-     * <code>string context_uri = 7 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder clearContextUri() {
-
-      contextUri_ = getDefaultInstance().getContextUri();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * </pre>
-     *
-     * <code>string context_uri = 7 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is
-     *     deprecated. See services/verifiable-credentials/templates/v1/templates.proto;l=146
-     * @param value The bytes for contextUri to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder setContextUriBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      contextUri_ = value;
       onChanged();
       return this;
     }

@@ -1,8 +1,12 @@
 import asyncio
 
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
-from trinsic.proto.services.universalwallet.v1 import SearchRequest, AuthenticateInitRequest, IdentityProvider, \
-    AuthenticateConfirmRequest
+from trinsic.proto.services.universalwallet.v1 import (
+    SearchRequest,
+    AuthenticateInitRequest,
+    IdentityProvider,
+    AuthenticateConfirmRequest,
+)
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
 
@@ -13,11 +17,15 @@ server_config = trinsic_config()
 async def signin(email: str) -> str:
     trinsic_service = TrinsicService(server_config=server_config)
     login_response = await trinsic_service.wallet.authenticate_init(
-        request=AuthenticateInitRequest(identity=email, provider=IdentityProvider.EMAIL, ecosystem_id="default")
+        request=AuthenticateInitRequest(
+            identity=email, provider=IdentityProvider.EMAIL, ecosystem_id="default"
+        )
     )
     verify_code = input("Code sent to email, enter it here:")
     wallet_auth = await trinsic_service.wallet.authenticate_confirm(
-        request=AuthenticateConfirmRequest(challenge=login_response.challenge, response=verify_code)
+        request=AuthenticateConfirmRequest(
+            challenge=login_response.challenge, response=verify_code
+        )
     )
     return wallet_auth.auth_token
 

@@ -196,8 +196,8 @@ public class WalletService : ServiceBase
     /// Retrieve wallet details and configuration about the currently authenticated wallet
     /// </summary>
     
-    public GetMyInfoResponse GetMyInfo(GetMyInfoRequest request) {
-        
+    public GetMyInfoResponse GetMyInfo() {
+        var request = new GetMyInfoRequest();
         return Client.GetMyInfo(request, BuildMetadata(request));
     }
 	
@@ -205,8 +205,8 @@ public class WalletService : ServiceBase
     /// Retrieve wallet details and configuration about the currently authenticated wallet
     /// </summary>
     
-    public async Task<GetMyInfoResponse> GetMyInfoAsync(GetMyInfoRequest request) {
-        
+    public async Task<GetMyInfoResponse> GetMyInfoAsync() {
+        var request = new GetMyInfoRequest();
         return await Client.GetMyInfoAsync(request, await BuildMetadataAsync(request));
     }
 

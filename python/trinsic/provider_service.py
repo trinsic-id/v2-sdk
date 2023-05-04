@@ -70,34 +70,6 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    @deprecation.deprecated(details="This will be removed June 1, 2023")
-    async def ecosystem_info(
-        self, *, request: EcosystemInfoRequest
-    ) -> EcosystemInfoResponse:
-        """
-        This will be removed June 1, 2023
-          The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-          DEPRECATED, will be removed June 1st 2023
-        """
-
-        return await self.client.ecosystem_info(
-            request, metadata=self.build_metadata(request)
-        )
-
-    @deprecation.deprecated(details="This will be removed June 1, 2023")
-    async def get_public_ecosystem_info(
-        self, *, request: GetPublicEcosystemInfoRequest
-    ) -> GetPublicEcosystemInfoResponse:
-        """
-        This will be removed June 1, 2023
-          The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-          DEPRECATED, will be removed June 1st 2023
-        """
-
-        return await self.client.get_public_ecosystem_info(
-            request, metadata=self.build_metadata()
-        )
-
     async def get_oberon_key(self) -> GetOberonKeyResponse:
         """Returns the public key being used to create/verify oberon tokens"""
         request = GetOberonKeyRequest()

@@ -23,33 +23,6 @@ if TYPE_CHECKING:
     from grpclib.metadata import Deadline
 
 
-class ParticipantType(betterproto.Enum):
-    """
-    DEPRECATED, will be removed April 1st 2023 Type of participant being
-    invited to ecosystem
-    """
-
-    participant_type_individual = 0
-    """Participant is an individual"""
-
-    participant_type_organization = 1
-    """Participant is an organization"""
-
-
-class InvitationStatusResponseStatus(betterproto.Enum):
-    Error = 0
-    """Onboarding resulted in error"""
-
-    InvitationSent = 1
-    """The participant has been invited"""
-
-    Completed = 2
-    """The participant has been onboarded"""
-
-    Expired = 3
-    """The invite has expired"""
-
-
 class IonOptionsIonNetwork(betterproto.Enum):
     TestNet = 0
     MainNet = 1
@@ -68,79 +41,6 @@ class IndyOptionsIndyNetwork(betterproto.Enum):
 
 
 @dataclass(eq=False, repr=False)
-class InviteRequest(betterproto.Message):
-    """Request to invite a participant to an ecosystem"""
-
-    participant: "ParticipantType" = betterproto.enum_field(1)
-    """Type of participant being invited (individual/organization)"""
-
-    description: str = betterproto.string_field(2)
-    """Description of invitation"""
-
-    details: "__account_v1__.AccountDetails" = betterproto.message_field(3)
-    """Account details of invitee"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("InviteRequest is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class InviteRequestDidCommInvitation(betterproto.Message):
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class InviteResponse(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Response to `InviteRequest`
-    """
-
-    invitation_id: str = betterproto.string_field(10)
-    """ID of created invitation"""
-
-    invitation_code: str = betterproto.string_field(11)
-    """Invitation code -- must be passed back in `LoginRequest`"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("InviteResponse is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class InvitationStatusRequest(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Request details for the status
-    of an invitation
-    """
-
-    invitation_id: str = betterproto.string_field(1)
-    """ID of invitation, received from `InviteResponse`"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("InvitationStatusRequest is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class InvitationStatusResponse(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Response to
-    `InvitationStatusRequest`
-    """
-
-    status: "InvitationStatusResponseStatus" = betterproto.enum_field(1)
-    """Status of invitation"""
-
-    status_details: str = betterproto.string_field(2)
-    """Human-readable string with details about invitation status"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("InvitationStatusResponse is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
 class Ecosystem(betterproto.Message):
     """Details of an ecosystem"""
 
@@ -153,49 +53,11 @@ class Ecosystem(betterproto.Message):
     description: str = betterproto.string_field(3)
     """Ecosystem description"""
 
-    uri: str = betterproto.string_field(4)
-    """
-    DEPRECATED, will be removed April 1st 2023 External URL associated with the
-    organization or ecosystem entity
-    """
-
     display: "EcosystemDisplay" = betterproto.message_field(6)
     """Display details"""
 
     domain: str = betterproto.string_field(7)
     """Domain"""
-
-    def __post_init__(self) -> None:
-        super().__post_init__()
-        if self.is_set("uri"):
-            warnings.warn("Ecosystem.uri is deprecated", DeprecationWarning)
-
-
-@dataclass(eq=False, repr=False)
-class WebhookConfig(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Webhook configured on an
-    ecosystem
-    """
-
-    id: str = betterproto.string_field(1)
-    """UUID of the webhook"""
-
-    destination_url: str = betterproto.string_field(2)
-    """HTTPS URL to POST webhook calls to"""
-
-    events: List[str] = betterproto.string_field(4)
-    """Events the webhook is subscribed to"""
-
-    status: str = betterproto.string_field(5)
-    """
-    Last known status of webhook (whether or not Trinsic can successfully reach
-    destination)
-    """
-
-    def __post_init__(self) -> None:
-        warnings.warn("WebhookConfig is deprecated", DeprecationWarning)
-        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
@@ -213,24 +75,11 @@ class CreateEcosystemRequest(betterproto.Message):
     description: str = betterproto.string_field(2)
     """Ecosystem description"""
 
-    uri: str = betterproto.string_field(3)
-    """
-    DEPRECATED, will be removed April 1st 2023 External URL associated with
-    your organization or ecosystem entity
-    """
-
     details: "__account_v1__.AccountDetails" = betterproto.message_field(4)
     """The account details of the owner of the ecosystem"""
 
     domain: str = betterproto.string_field(5)
     """New domain URL"""
-
-    def __post_init__(self) -> None:
-        super().__post_init__()
-        if self.is_set("uri"):
-            warnings.warn(
-                "CreateEcosystemRequest.uri is deprecated", DeprecationWarning
-            )
 
 
 @dataclass(eq=False, repr=False)
@@ -254,12 +103,6 @@ class UpdateEcosystemRequest(betterproto.Message):
     description: str = betterproto.string_field(1)
     """New description of the ecosystem"""
 
-    uri: str = betterproto.string_field(2)
-    """
-    DEPRECATED, will be removed April 1st 2023 New external URL associated with
-    the organization or ecosystem entity
-    """
-
     domain: str = betterproto.string_field(3)
     """New domain URL"""
 
@@ -268,10 +111,6 @@ class UpdateEcosystemRequest(betterproto.Message):
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        if self.is_set("uri"):
-            warnings.warn(
-                "UpdateEcosystemRequest.uri is deprecated", DeprecationWarning
-            )
         if self.is_set("display"):
             warnings.warn(
                 "UpdateEcosystemRequest.display is deprecated", DeprecationWarning
@@ -308,7 +147,7 @@ class EcosystemDisplay(betterproto.Message):
     light: "EcosystemDisplayDetails" = betterproto.message_field(2)
     """
     Removed the Dark after discussion with team, as we don't provide a dark UI
-    anywhere (yet) in our platform.    EcosystemDisplayDetails dark = 1;
+    anywhere (yet) in our platform.
     """
 
 
@@ -316,74 +155,6 @@ class EcosystemDisplay(betterproto.Message):
 class EcosystemDisplayDetails(betterproto.Message):
     logo_url: str = betterproto.string_field(3)
     color: str = betterproto.string_field(4)
-
-
-@dataclass(eq=False, repr=False)
-class AddWebhookRequest(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Request to add a webhook to an
-    ecosystem
-    """
-
-    destination_url: str = betterproto.string_field(1)
-    """Destination to post webhook calls to. Must be a reachable HTTPS URL."""
-
-    secret: str = betterproto.string_field(2)
-    """
-    Secret string used for HMAC-SHA256 signing of webhook payloads to verify
-    that a webhook comes from Trinsic
-    """
-
-    events: List[str] = betterproto.string_field(3)
-    """Events to subscribe to. Default is "*" (all events)"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("AddWebhookRequest is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class AddWebhookResponse(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Response to `AddWebhookRequest`
-    """
-
-    ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Ecosystem data with new webhook"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("AddWebhookResponse is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class DeleteWebhookRequest(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Request to delete a webhook from
-    an ecosystem
-    """
-
-    webhook_id: str = betterproto.string_field(1)
-    """ID of webhook to delete"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("DeleteWebhookRequest is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class DeleteWebhookResponse(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Response to
-    `DeleteWebhookRequest`
-    """
-
-    ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Ecosystem data after removal of webhook"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("DeleteWebhookResponse is deprecated", DeprecationWarning)
-        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
@@ -399,58 +170,6 @@ class EcosystemInfoResponse(betterproto.Message):
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
     """Ecosystem corresponding to current ecosystem in the account token"""
-
-
-@dataclass(eq=False, repr=False)
-class GetPublicEcosystemInfoRequest(betterproto.Message):
-    """
-    DEPRECATED, will be removed April 1st 2023 Request to fetch information
-    about an ecosystem
-    """
-
-    ecosystem_id: str = betterproto.string_field(1)
-
-    def __post_init__(self) -> None:
-        warnings.warn("GetPublicEcosystemInfoRequest is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class GetPublicEcosystemInfoResponse(betterproto.Message):
-    """DEPRECATED, will be removed April 1st 2023 Response to `InfoRequest`"""
-
-    ecosystem: "PublicEcosystemInformation" = betterproto.message_field(1)
-    """Ecosystem corresponding to requested `ecosystem_id`"""
-
-    def __post_init__(self) -> None:
-        warnings.warn(
-            "GetPublicEcosystemInfoResponse is deprecated", DeprecationWarning
-        )
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class PublicEcosystemInformation(betterproto.Message):
-    """DEPRECATED, will be removed April 1st 2023"""
-
-    name: str = betterproto.string_field(1)
-    """Public name of this ecosystem"""
-
-    domain: str = betterproto.string_field(2)
-    """Public domain for the owner of this ecosystem"""
-
-    domain_verified: bool = betterproto.bool_field(3)
-    """Trinsic verified the domain is owned by the owner of this ecosystem"""
-
-    style_display: "EcosystemDisplay" = betterproto.message_field(4)
-    """Style display information"""
-
-    description: str = betterproto.string_field(5)
-    """Description of the ecosystem"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("PublicEcosystemInformation is deprecated", DeprecationWarning)
-        super().__post_init__()
 
 
 @dataclass(eq=False, repr=False)
@@ -796,102 +515,6 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def add_webhook(
-        self,
-        add_webhook_request: "AddWebhookRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "AddWebhookResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/AddWebhook",
-            add_webhook_request,
-            AddWebhookResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def delete_webhook(
-        self,
-        delete_webhook_request: "DeleteWebhookRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "DeleteWebhookResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/DeleteWebhook",
-            delete_webhook_request,
-            DeleteWebhookResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def ecosystem_info(
-        self,
-        ecosystem_info_request: "EcosystemInfoRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "EcosystemInfoResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/EcosystemInfo",
-            ecosystem_info_request,
-            EcosystemInfoResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def get_public_ecosystem_info(
-        self,
-        get_public_ecosystem_info_request: "GetPublicEcosystemInfoRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "GetPublicEcosystemInfoResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/GetPublicEcosystemInfo",
-            get_public_ecosystem_info_request,
-            GetPublicEcosystemInfoResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def invite(
-        self,
-        invite_request: "InviteRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "InviteResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/Invite",
-            invite_request,
-            InviteResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def invitation_status(
-        self,
-        invitation_status_request: "InvitationStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "InvitationStatusResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/InvitationStatus",
-            invitation_status_request,
-            InvitationStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def get_oberon_key(
         self,
         get_oberon_key_request: "GetOberonKeyRequest",
@@ -1050,34 +673,6 @@ class ProviderBase(ServiceBase):
     ) -> "UpdateEcosystemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def add_webhook(
-        self, add_webhook_request: "AddWebhookRequest"
-    ) -> "AddWebhookResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def delete_webhook(
-        self, delete_webhook_request: "DeleteWebhookRequest"
-    ) -> "DeleteWebhookResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def ecosystem_info(
-        self, ecosystem_info_request: "EcosystemInfoRequest"
-    ) -> "EcosystemInfoResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def get_public_ecosystem_info(
-        self, get_public_ecosystem_info_request: "GetPublicEcosystemInfoRequest"
-    ) -> "GetPublicEcosystemInfoResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def invite(self, invite_request: "InviteRequest") -> "InviteResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def invitation_status(
-        self, invitation_status_request: "InvitationStatusRequest"
-    ) -> "InvitationStatusResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def get_oberon_key(
         self, get_oberon_key_request: "GetOberonKeyRequest"
     ) -> "GetOberonKeyResponse":
@@ -1113,38 +708,6 @@ class ProviderBase(ServiceBase):
     async def __rpc_update_ecosystem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.update_ecosystem(request)
-        await stream.send_message(response)
-
-    async def __rpc_add_webhook(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.add_webhook(request)
-        await stream.send_message(response)
-
-    async def __rpc_delete_webhook(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.delete_webhook(request)
-        await stream.send_message(response)
-
-    async def __rpc_ecosystem_info(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.ecosystem_info(request)
-        await stream.send_message(response)
-
-    async def __rpc_get_public_ecosystem_info(
-        self, stream: grpclib.server.Stream
-    ) -> None:
-        request = await stream.recv_message()
-        response = await self.get_public_ecosystem_info(request)
-        await stream.send_message(response)
-
-    async def __rpc_invite(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.invite(request)
-        await stream.send_message(response)
-
-    async def __rpc_invitation_status(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.invitation_status(request)
         await stream.send_message(response)
 
     async def __rpc_get_oberon_key(self, stream: grpclib.server.Stream) -> None:
@@ -1191,42 +754,6 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 UpdateEcosystemRequest,
                 UpdateEcosystemResponse,
-            ),
-            "/services.provider.v1.Provider/AddWebhook": grpclib.const.Handler(
-                self.__rpc_add_webhook,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                AddWebhookRequest,
-                AddWebhookResponse,
-            ),
-            "/services.provider.v1.Provider/DeleteWebhook": grpclib.const.Handler(
-                self.__rpc_delete_webhook,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                DeleteWebhookRequest,
-                DeleteWebhookResponse,
-            ),
-            "/services.provider.v1.Provider/EcosystemInfo": grpclib.const.Handler(
-                self.__rpc_ecosystem_info,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                EcosystemInfoRequest,
-                EcosystemInfoResponse,
-            ),
-            "/services.provider.v1.Provider/GetPublicEcosystemInfo": grpclib.const.Handler(
-                self.__rpc_get_public_ecosystem_info,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GetPublicEcosystemInfoRequest,
-                GetPublicEcosystemInfoResponse,
-            ),
-            "/services.provider.v1.Provider/Invite": grpclib.const.Handler(
-                self.__rpc_invite,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                InviteRequest,
-                InviteResponse,
-            ),
-            "/services.provider.v1.Provider/InvitationStatus": grpclib.const.Handler(
-                self.__rpc_invitation_status,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                InvitationStatusRequest,
-                InvitationStatusResponse,
             ),
             "/services.provider.v1.Provider/GetOberonKey": grpclib.const.Handler(
                 self.__rpc_get_oberon_key,

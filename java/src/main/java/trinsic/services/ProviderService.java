@@ -53,26 +53,6 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).updateEcosystem(request);
   }
-  /**
-   * This will be removed June 1, 2023 The below display can be removed only once the Dashboard is
-   * updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023
-   */
-  @Deprecated(since = "This will be removed June 1, 2023")
-  public ListenableFuture<EcosystemInfoResponse> ecosystemInfo(EcosystemInfoRequest request)
-      throws InvalidProtocolBufferException {
-
-    return withMetadata(stub, request).ecosystemInfo(request);
-  }
-  /**
-   * This will be removed June 1, 2023 The below display can be removed only once the Dashboard is
-   * updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023
-   */
-  @Deprecated(since = "This will be removed June 1, 2023")
-  public ListenableFuture<GetPublicEcosystemInfoResponse> getPublicEcosystemInfo(
-      GetPublicEcosystemInfoRequest request) throws InvalidProtocolBufferException {
-
-    return withMetadata(stub, request).getPublicEcosystemInfo(request);
-  }
   /** Returns the public key being used to create/verify oberon tokens */
   public ListenableFuture<GetOberonKeyResponse> getOberonKey()
       throws InvalidProtocolBufferException {

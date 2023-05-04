@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../provider/v1/provider.pb.dart' as $1;
+import '../../provider/v1/provider.pb.dart' as $2;
 
 import 'universal-wallet.pbenum.dart';
 
@@ -1026,19 +1026,19 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'tokenId')
-    ..aOM<$1.WalletConfiguration>(
+    ..aOM<$2.WalletConfiguration>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $1.WalletConfiguration.create)
+        subBuilder: $2.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   CreateWalletResponse._() : super();
   factory CreateWalletResponse({
     $core.String? authToken,
     $core.String? tokenId,
-    $1.WalletConfiguration? wallet,
+    $2.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (authToken != null) {
@@ -1105,9 +1105,9 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   void clearTokenId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $1.WalletConfiguration get wallet => $_getN(2);
+  $2.WalletConfiguration get wallet => $_getN(2);
   @$pb.TagNumber(4)
-  set wallet($1.WalletConfiguration v) {
+  set wallet($2.WalletConfiguration v) {
     setField(4, v);
   }
 
@@ -1116,7 +1116,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearWallet() => clearField(4);
   @$pb.TagNumber(4)
-  $1.WalletConfiguration ensureWallet() => $_ensure(2);
+  $2.WalletConfiguration ensureWallet() => $_ensure(2);
 }
 
 class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1377,17 +1377,17 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$1.WalletConfiguration>(
+    ..aOM<$2.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $1.WalletConfiguration.create)
+        subBuilder: $2.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   GetWalletInfoResponse._() : super();
   factory GetWalletInfoResponse({
-    $1.WalletConfiguration? wallet,
+    $2.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (wallet != null) {
@@ -1425,9 +1425,9 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   static GetWalletInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.WalletConfiguration get wallet => $_getN(0);
+  $2.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($1.WalletConfiguration v) {
+  set wallet($2.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1436,7 +1436,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $1.WalletConfiguration ensureWallet() => $_ensure(0);
+  $2.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class GetMyInfoRequest extends $pb.GeneratedMessage {
@@ -1491,17 +1491,17 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$1.WalletConfiguration>(
+    ..aOM<$2.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $1.WalletConfiguration.create)
+        subBuilder: $2.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   GetMyInfoResponse._() : super();
   factory GetMyInfoResponse({
-    $1.WalletConfiguration? wallet,
+    $2.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (wallet != null) {
@@ -1537,9 +1537,9 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   static GetMyInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.WalletConfiguration get wallet => $_getN(0);
+  $2.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($1.WalletConfiguration v) {
+  set wallet($2.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1548,7 +1548,7 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $1.WalletConfiguration ensureWallet() => $_ensure(0);
+  $2.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1762,18 +1762,18 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..pc<$1.WalletConfiguration>(
+    ..pc<$2.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallets',
         $pb.PbFieldType.PM,
-        subBuilder: $1.WalletConfiguration.create)
+        subBuilder: $2.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   ListWalletsResponse._() : super();
   factory ListWalletsResponse({
-    $core.Iterable<$1.WalletConfiguration>? wallets,
+    $core.Iterable<$2.WalletConfiguration>? wallets,
   }) {
     final _result = create();
     if (wallets != null) {
@@ -1809,7 +1809,7 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
   static ListWalletsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$1.WalletConfiguration> get wallets => $_getList(0);
+  $core.List<$2.WalletConfiguration> get wallets => $_getList(0);
 }
 
 class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {

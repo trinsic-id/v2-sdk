@@ -24,7 +24,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
   private UpdateEcosystemRequest() {
     description_ = "";
-    uri_ = "";
     domain_ = "";
   }
 
@@ -103,63 +102,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     }
   }
 
-  public static final int URI_FIELD_NUMBER = 2;
-  private volatile java.lang.Object uri_;
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * New external URL associated with the organization or ecosystem entity
-   * </pre>
-   *
-   * <code>string uri = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=166
-   * @return The uri.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.lang.String getUri() {
-    java.lang.Object ref = uri_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      uri_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * New external URL associated with the organization or ecosystem entity
-   * </pre>
-   *
-   * <code>string uri = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=166
-   * @return The bytes for uri.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public com.google.protobuf.ByteString getUriBytes() {
-    java.lang.Object ref = uri_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      uri_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int DOMAIN_FIELD_NUMBER = 3;
   private volatile java.lang.Object domain_;
   /**
@@ -221,7 +163,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=177
+   *     services/provider/v1/provider.proto;l=76
    * @return Whether the display field is set.
    */
   @java.lang.Override
@@ -239,7 +181,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=177
+   *     services/provider/v1/provider.proto;l=76
    * @return The display.
    */
   @java.lang.Override
@@ -281,9 +223,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, description_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, uri_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, domain_);
     }
@@ -301,9 +240,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, description_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, uri_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, domain_);
@@ -328,7 +264,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
         (trinsic.services.provider.v1.UpdateEcosystemRequest) obj;
 
     if (!getDescription().equals(other.getDescription())) return false;
-    if (!getUri().equals(other.getUri())) return false;
     if (!getDomain().equals(other.getDomain())) return false;
     if (hasDisplay() != other.hasDisplay()) return false;
     if (hasDisplay()) {
@@ -347,8 +282,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + URI_FIELD_NUMBER;
-    hash = (53 * hash) + getUri().hashCode();
     hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
     hash = (53 * hash) + getDomain().hashCode();
     if (hasDisplay()) {
@@ -495,8 +428,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       super.clear();
       description_ = "";
 
-      uri_ = "";
-
       domain_ = "";
 
       if (displayBuilder_ == null) {
@@ -533,7 +464,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       trinsic.services.provider.v1.UpdateEcosystemRequest result =
           new trinsic.services.provider.v1.UpdateEcosystemRequest(this);
       result.description_ = description_;
-      result.uri_ = uri_;
       result.domain_ = domain_;
       if (displayBuilder_ == null) {
         result.display_ = display_;
@@ -594,10 +524,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
         description_ = other.description_;
         onChanged();
       }
-      if (!other.getUri().isEmpty()) {
-        uri_ = other.uri_;
-        onChanged();
-      }
       if (!other.getDomain().isEmpty()) {
         domain_ = other.domain_;
         onChanged();
@@ -637,12 +563,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
                 break;
               } // case 10
-            case 18:
-              {
-                uri_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
             case 26:
               {
                 domain_ = input.readStringRequireUtf8();
@@ -778,132 +698,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       return this;
     }
 
-    private java.lang.Object uri_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * New external URL associated with the organization or ecosystem entity
-     * </pre>
-     *
-     * <code>string uri = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=166
-     * @return The uri.
-     */
-    @java.lang.Deprecated
-    public java.lang.String getUri() {
-      java.lang.Object ref = uri_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        uri_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * New external URL associated with the organization or ecosystem entity
-     * </pre>
-     *
-     * <code>string uri = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=166
-     * @return The bytes for uri.
-     */
-    @java.lang.Deprecated
-    public com.google.protobuf.ByteString getUriBytes() {
-      java.lang.Object ref = uri_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        uri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * New external URL associated with the organization or ecosystem entity
-     * </pre>
-     *
-     * <code>string uri = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=166
-     * @param value The uri to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder setUri(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      uri_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * New external URL associated with the organization or ecosystem entity
-     * </pre>
-     *
-     * <code>string uri = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=166
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder clearUri() {
-
-      uri_ = getDefaultInstance().getUri();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * New external URL associated with the organization or ecosystem entity
-     * </pre>
-     *
-     * <code>string uri = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=166
-     * @param value The bytes for uri to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder setUriBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      uri_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object domain_ = "";
     /**
      *
@@ -1026,7 +820,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-     *     services/provider/v1/provider.proto;l=177
+     *     services/provider/v1/provider.proto;l=76
      * @return Whether the display field is set.
      */
     @java.lang.Deprecated
@@ -1043,7 +837,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-     *     services/provider/v1/provider.proto;l=177
+     *     services/provider/v1/provider.proto;l=76
      * @return The display.
      */
     @java.lang.Deprecated

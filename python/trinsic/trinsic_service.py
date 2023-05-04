@@ -37,37 +37,49 @@ class TrinsicService(ServiceBase):
 
     @property
     def access_management(self) -> AccessManagementService:
-        self._access_management = self._access_management or AccessManagementService(server_config=self.service_options)
+        self._access_management = self._access_management or AccessManagementService(
+            server_config=self.service_options
+        )
         self._access_management.service_options = self.service_options
         return self._access_management
 
     @property
     def credential(self) -> CredentialService:
-        self._credential = self._credential or CredentialService(server_config=self.service_options)
+        self._credential = self._credential or CredentialService(
+            server_config=self.service_options
+        )
         self._credential.service_options = self.service_options
         return self._credential
 
     @property
     def file_management(self) -> FileManagementService:
-        self._file_management = self._file_management or FileManagementService(server_config=self.service_options)
+        self._file_management = self._file_management or FileManagementService(
+            server_config=self.service_options
+        )
         self._file_management.service_options = self.service_options
         return self._file_management
 
     @property
     def template(self) -> TemplateService:
-        self._template = self._template or TemplateService(server_config=self.service_options)
+        self._template = self._template or TemplateService(
+            server_config=self.service_options
+        )
         self._template.service_options = self.service_options
         return self._template
 
     @property
     def provider(self) -> ProviderService:
-        self._provider = self._provider or ProviderService(server_config=self.service_options)
+        self._provider = self._provider or ProviderService(
+            server_config=self.service_options
+        )
         self._provider.service_options = self.service_options
         return self._provider
 
     @property
     def trust_registry(self) -> TrustRegistryService:
-        self._trust_registry = self._trust_registry or TrustRegistryService(server_config=self.service_options)
+        self._trust_registry = self._trust_registry or TrustRegistryService(
+            server_config=self.service_options
+        )
         self._trust_registry.service_options = self.service_options
         return self._trust_registry
 

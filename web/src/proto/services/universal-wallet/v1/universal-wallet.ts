@@ -2490,7 +2490,7 @@ export const UniversalWalletDefinition = {
       requestStream: false,
       responseType: GetMyInfoResponse,
       responseStream: false,
-      options: {},
+      options: { _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] } },
     },
     /**
      * Generate new token for a given wallet and add it to the collection of known auth tokens.
