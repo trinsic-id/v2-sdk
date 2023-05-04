@@ -98,7 +98,6 @@ message RegisterMemberRequest {
   // Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
   uint64 valid_until_utc = 12;
 
-
   // ID of the governance framework that member is being added to
   string framework_id = 30;
 }
