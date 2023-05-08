@@ -3,6 +3,7 @@
 ## Status
 #### Production
 
+[![Dart](https://github.com/trinsic-id/sdk/actions/workflows/test-dart.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-dart.yml)
 [![.NET](https://github.com/trinsic-id/sdk/actions/workflows/test-dotnet.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-dotnet.yml)
 [![Go](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml)
 [![Java](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml)
@@ -12,6 +13,7 @@
 
 #### Development / Build
 
+[![Dart](https://github.com/trinsic-id/sdk/actions/workflows/build-dart.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-dart.yml)
 [![.NET](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml)
 [![Go](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml)
 [![Java](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml)
@@ -38,13 +40,14 @@ Learn how to issue and verify universally-accepted digital credentials so that a
 
 ## Getting Started
 
-Check our our [documentation](https://docs.trinsic.id) to learn about Trinsic, work through a basic implementation, plan a full integration, and learn about our tools you can use.
+Check our [documentation](https://docs.trinsic.id) to learn about Trinsic, work through a basic implementation, plan a full integration, and learn about our tools you can use.
 
 ## Example Implementations
 
 Check out our [dedicated repository with various examples](https://github.com/trinsic-id/sdk-examples/) and use cases for different platforms and languages.
 
 ## Available SDKs
+- [Dart](https://docs.trinsic.id/dart)
 - [.NET](https://docs.trinsic.id/dotnet)
 - [Java / Android](https://docs.trinsic.id/java)
 - [Swift](https://docs.trinsic.id/python)

@@ -5,7 +5,7 @@ hide:
 
 # Android SDK
 
-The SDK is available for all languages. See individual language for installation isntructions.
+The SDK is available for all languages. See individual language for installation instructions.
 
 - [Native](/java/)
 - [Flutter](/dart/)
