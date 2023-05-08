@@ -1,4 +1,4 @@
-import {CreateProofRequest, InsertItemRequest, TrinsicService} from '@trinsic/trinsic';
+import {CreateProofRequest, InsertItemRequest, TrinsicService, VerifyProofResponse} from '@trinsic/trinsic';
 import {resolve} from "path";
 import {readFileSync} from "fs";
 
@@ -47,17 +47,17 @@ function getTemplateCertFrameJSON(): string {
     return readFileSync(templateCertFramePath(), "utf8");
 }
 
-async function vaccineDemo() {
+async function vaccineDemo(): Promise<VerifyProofResponse> {
     const trinsic = new TrinsicService();
 
     // Create 3 different profiles for each participant in the scenario
-    const allison = await trinsic.account().loginAnonymous();
-    const clinic = await trinsic.account().loginAnonymous();
-    const airline = await trinsic.account().loginAnonymous();
+    const allison = await trinsic.wallet().createWallet({ecosystemId: "default"});
+    const clinic = await trinsic.wallet().createWallet({ecosystemId: "default"});
+    const airline = await trinsic.wallet().createWallet({ecosystemId: "default"});
 
     // @ts-ignore
-    trinsic.options.authToken = clinic;
-    const info = await trinsic.account().getInfo();
+    trinsic.options.authToken = clinic.authToken;
+    const info = await trinsic.wallet().getMyInfo({});
     console.log(info)
 
     // Sign a credential as the clinic and send it to Allison
@@ -66,14 +66,14 @@ async function vaccineDemo() {
 
     // Alice stores the credential in her cloud wallet.
     // @ts-ignore
-    trinsic.options.authToken = allison;
+    trinsic.options.authToken = allison.authToken;
     const itemId = await trinsic.wallet().insertItem(InsertItemRequest.fromPartial({itemJson: credential.signedDocumentJson}));
 
     // Allison shares the credential with the venue.
     // The venue has communicated with Allison the details of the credential
     // that they require expressed as a JSON-LD frame.
     // @ts-ignore
-    trinsic.options.authToken = (allison);
+    trinsic.options.authToken = allison.authToken;
     const proofRequestJson = getVaccineCertFrameJSON();
     const proof = await trinsic.credential().createProof(CreateProofRequest.fromPartial({
         itemId: itemId.itemId,

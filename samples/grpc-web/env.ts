@@ -1,8 +1,14 @@
-import {ServiceOptions} from "@trinsic/trinsic/browser";
+import {TrinsicOptions} from "@trinsic/trinsic";
 
-export function getTestServerOptions(): ServiceOptions {
-    // @ts-ignore
-    const testEnv = __karma__.config.trinsic_environment.toLowerCase();
+export function getTestServerOptions(): TrinsicOptions {
+    let testEnv = "staging";
+    try {
+        // @ts-ignore
+        testEnv = __karma__.config.trinsic_environment.toLowerCase();
+    } catch (e) {
+        // @ts-ignore
+        testEnv = process.env.trinsic_environment;
+    }
     let serverEndpoint = "staging-internal.trinsic.cloud";
     if (testEnv.startsWith("dev"))
         serverEndpoint = "dev-internal.trinsic.cloud";
@@ -11,12 +17,11 @@ export function getTestServerOptions(): ServiceOptions {
 
     console.log(`Provided environment:${testEnv} -> server endpoint:${serverEndpoint}`);
 
-    let defaults = ServiceOptions.fromPartial({
+    return TrinsicOptions.fromPartial({
         serverEndpoint: serverEndpoint,
         serverPort: 443,
         serverUseTls: true,
     });
-    return defaults;
 }
 
 export function setTestTimeout(timeoutMs: number = 40000) {

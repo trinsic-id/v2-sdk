@@ -4,7 +4,7 @@
   "description": "Trinsic production test sample of node",
   "main": "index.ts",
   "scripts": {
-    "main": "npx ts-node ./index.ts"
+    "main": "npx ts-node ./index.ts",
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/trinsic-id/sdk#readme",
   "dependencies": {
-    "@trinsic/trinsic": "1.7.0"
+    "@trinsic/trinsic": "1.11.0"
   },
   "devDependencies": {
-    "ts-node": "10.9.1"
+    "ts-node": "10.9.1",
   }
 }
