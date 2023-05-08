@@ -14,36 +14,43 @@ class TrinsicService extends ServiceBase {
 
   AccessManagementService accessManagement() {
     _accessManagementService ??= AccessManagementService(serviceOptions);
+    _accessManagementService!.serviceOptions = serviceOptions;
     return _accessManagementService!;
   }
 
   CredentialService credential() {
     _credentialService ??= CredentialService(serviceOptions);
+    _credentialService!.serviceOptions = serviceOptions;
     return _credentialService!;
   }
 
   FileManagementService fileManagement() {
     _fileManagementService ??= FileManagementService(serviceOptions);
+    _fileManagementService!.serviceOptions = serviceOptions;
     return _fileManagementService!;
   }
 
   ProviderService provider() {
     _providerService ??= ProviderService(serviceOptions);
+    _providerService!.serviceOptions = serviceOptions;
     return _providerService!;
   }
 
   TemplateService template() {
     _templateService ??= TemplateService(serviceOptions);
+    _templateService!.serviceOptions = serviceOptions;
     return _templateService!;
   }
 
   TrustRegistryService trustRegistry() {
     _trustRegistryService ??= TrustRegistryService(serviceOptions);
+    _trustRegistryService!.serviceOptions = serviceOptions;
     return _trustRegistryService!;
   }
 
   WalletService wallet() {
     _walletService ??= WalletService(serviceOptions);
+    _walletService!.serviceOptions = serviceOptions;
     return _walletService!;
   }
 }
