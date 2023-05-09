@@ -19,7 +19,7 @@ on:
 
 jobs:
   test-infra:
-    name: Test Infrastructure via HTTP2 ${{ inputs.environment }}
+    name: Test Infrastructure ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
       # Because called actions run in caller repository, we have to be explicit here.
@@ -27,18 +27,14 @@ jobs:
         with:
           repository: trinsic-id/sdk
           path: ./sdk
-      - uses: actions/setup-node@v3
-        name: Setup Node v18
-        with:
-          node-version: 18
-      - run: |
-          npm ci
-          npm run test:node
-        env:
-          TRINSIC_ENVIRONMENT: ${{ inputs.environment }}
-        name: "Run grpc tests"
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Install CLI
+        run: brew install trinsic-id/tap/trinsic-cli
+      - name: Run CLI Demos
+        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}" -CommandPath ./sdk/cli/target/debug/trinsic
         shell: pwsh
-        working-directory: ./sdk/samples/grpc-web
 
   test-infra-grpc-web:
     name: Test Infrastructure via grpc-web ${{ inputs.environment }}
