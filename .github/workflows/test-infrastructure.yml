@@ -27,15 +27,13 @@ jobs:
         with:
           repository: trinsic-id/sdk
           path: ./sdk
-      - name: Install Protoc
-        uses: arduino/setup-protoc@v1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run cargo build
-        run: cargo build
-        working-directory: ./sdk/cli
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Install CLI
+        run: brew install trinsic-id/tap/trinsic-cli
       - name: Run CLI Demos
-        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}" -CommandPath ./sdk/cli/target/debug/trinsic
+        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}"
         shell: pwsh
 
   test-infra-grpc-web:

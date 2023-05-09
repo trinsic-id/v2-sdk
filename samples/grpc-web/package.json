@@ -3,10 +3,13 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "test:browser": "karma start ./karma.conf.cjs"
+        "test:browser": "karma start ./karma.conf.cjs",
+        "test:node": "jest --config ./jest.config.cjs --no-cache"
     },
     "dependencies": {
-        "@trinsic/trinsic": "1.8.1",
+        "@trinsic/trinsic": "1.11.0"
+    },
+    "devDependencies": {
         "@types/jasmine": "4.0.3",
         "@types/jest": "28.1.7",
         "@types/karma": "6.3.3",
