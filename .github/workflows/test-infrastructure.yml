@@ -33,7 +33,7 @@ jobs:
       - name: Install CLI
         run: brew install trinsic-id/tap/trinsic-cli
       - name: Run CLI Demos
-        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}" -CommandPath ./sdk/cli/target/debug/trinsic
+        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}"
         shell: pwsh
 
   test-infra-grpc-web:
