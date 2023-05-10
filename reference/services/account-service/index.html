@@ -2419,7 +2419,7 @@
 
 <span class="w">        </span><span class="n">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">clinic</span><span class="p">.</span><span class="n">AuthToken</span><span class="p">));</span>
 
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetMyInfoAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetMyInfoAsync</span><span class="p">();</span>
 <span class="w">        </span><span class="n">info</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span>
 <span class="w">        </span><span class="n">info</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span>
 
@@ -2504,7 +2504,7 @@
 <span class="w">        </span><span class="c1">// set the auth token to the newly created wallet</span>
 <span class="w">        </span><span class="n">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">createWalletResponse</span><span class="p">.</span><span class="n">AuthToken</span><span class="p">));</span>
 
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">newWalletInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetMyInfoAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">newWalletInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetMyInfoAsync</span><span class="p">();</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">walletId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newWalletInfo</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">WalletId</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// deleteWallet() {</span>
@@ -2610,11 +2610,7 @@
 
 <span class="w">        </span><span class="c1">// test get ecosystem info</span>
 <span class="w">        </span><span class="c1">// ecosystemInfo() {</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">infoResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">EcosystemInfoAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
 <span class="w">        </span><span class="c1">// }</span>
-
-<span class="w">        </span><span class="n">infoResult</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span>
-<span class="w">        </span><span class="c1">//infoResult.Ecosystem.Should().Be(updateResult.Ecosystem); //TODO: UNCOMMENT WHEN updateEcosystem() TEST IS UN-CATCHED.</span>
 
 <span class="w">        </span><span class="c1">// inviteParticipant() {</span>
 <span class="w">        </span><span class="c1">// }</span>
@@ -2623,7 +2619,7 @@
 <span class="w">        </span><span class="c1">// }</span>
 
 <span class="w">        </span><span class="c1">// Test upgrading account DID</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">accountInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetMyInfoAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">accountInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetMyInfoAsync</span><span class="p">();</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">walletId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountInfo</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">WalletId</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// Wrap in try-catch as this ecosystem will not presently have DID upgrade permissions</span>
