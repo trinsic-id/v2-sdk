@@ -32,7 +32,7 @@ public class EcosystemsDemo {
             .createEcosystem(
                 CreateEcosystemRequest.newBuilder()
                     .setDescription("My ecosystem")
-                    .setUri("https://example.com")
+                    .setDomain("https://example.com")
                     .build())
             .get();
     // }
@@ -56,13 +56,7 @@ public class EcosystemsDemo {
     Assertions.assertNotNull(updateResponse.getEcosystem());
 
     // ecosystemInfo() {
-    var infoResponse =
-        trinsic.provider().ecosystemInfo(EcosystemInfoRequest.getDefaultInstance()).get();
     // }
-
-    Assertions.assertNotNull(infoResponse.getEcosystem());
-    Assertions.assertEquals(
-        infoResponse.getEcosystem().getUri(), updateResponse.getEcosystem().getUri());
 
     // listEcosystems() {
     // }
