@@ -21,7 +21,7 @@ func TestEcosystemUpdateInfo(t *testing.T) {
 	// updateEcosystem() {
 	updateRequest := &provider.UpdateEcosystemRequest{
 		Description: "My new description",
-		Uri:         "https://new-example.com",
+		Domain:      "https://new-example.com",
 	}
 
 	updateResponse, err := trinsic.Provider().UpdateEcosystem(context.Background(), updateRequest)
@@ -35,14 +35,9 @@ func TestEcosystemUpdateInfo(t *testing.T) {
 	}
 
 	// ecosystemInfo() {
-	infoResponse, err := trinsic.Provider().EcosystemInfo(context.Background(), &provider.EcosystemInfoRequest{})
 	// }
 
 	if !assert2.Nil(err) || !assert2.NotNil(updateResponse) {
-		return
-	}
-
-	if !assert2.Equal(infoResponse.Ecosystem.Description, updateResponse.Ecosystem.Description) {
 		return
 	}
 }

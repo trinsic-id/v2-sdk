@@ -153,7 +153,7 @@ func TestEcosystemDemo(t *testing.T) {
 	// createEcosystem() {
 	actualCreate, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{
 		Description: "My ecosystem",
-		Uri:         "https://example.com",
+		Domain:      "https://example.com",
 	})
 	// }
 	if !assert2.Nil(err) {
