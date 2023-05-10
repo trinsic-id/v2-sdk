@@ -63,8 +63,9 @@ class WalletServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(op
     return withMetadata(stub, request).getWalletInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class)
-  suspend fun getMyInfo(request: GetMyInfoRequest): GetMyInfoResponse {
+  suspend fun getMyInfo(): GetMyInfoResponse {
     /** Retrieve wallet details and configuration about the currently authenticated wallet */
+    val request = GetMyInfoRequest.newBuilder().build()
     return withMetadata(stub, request).getMyInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class)
@@ -124,6 +125,13 @@ class WalletServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(op
   ): AuthenticateConfirmResponse {
     /** Confirm sign-in to an already existing wallet and return authentication token */
     return withMetadata(stub, request).authenticateConfirm(request)
+  }
+  @Throws(InvalidProtocolBufferException::class)
+  suspend fun authenticateResendCode(
+      request: AuthenticateResendCodeRequest
+  ): AuthenticateResendCodeResponse {
+    /** Resend previous authentication code */
+    return withMetadata(stub, request).authenticateResendCode(request)
   }
   @Throws(InvalidProtocolBufferException::class)
   suspend fun listWallets(request: ListWalletsRequest): ListWalletsResponse {

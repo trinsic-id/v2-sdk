@@ -1250,11 +1250,6 @@ class TemplateData extends $pb.GeneratedMessage {
             ? ''
             : 'schemaUri')
     ..aOS(
-        7,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'contextUri')
-    ..aOS(
         8,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -1311,7 +1306,6 @@ class TemplateData extends $pb.GeneratedMessage {
     $core.Map<$core.String, TemplateField>? fields,
     $core.bool? allowAdditionalFields,
     $core.String? schemaUri,
-    @$core.Deprecated('This field is deprecated.') $core.String? contextUri,
     $core.String? ecosystemId,
     $core.String? type,
     $core.String? createdBy,
@@ -1339,10 +1333,6 @@ class TemplateData extends $pb.GeneratedMessage {
     }
     if (schemaUri != null) {
       _result.schemaUri = schemaUri;
-    }
-    if (contextUri != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.contextUri = contextUri;
     }
     if (ecosystemId != null) {
       _result.ecosystemId = ecosystemId;
@@ -1460,110 +1450,94 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearSchemaUri() => clearField(6);
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(7)
-  $core.String get contextUri => $_getSZ(6);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(7)
-  set contextUri($core.String v) {
+  @$pb.TagNumber(8)
+  $core.String get ecosystemId => $_getSZ(6);
+  @$pb.TagNumber(8)
+  set ecosystemId($core.String v) {
     $_setString(6, v);
   }
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(7)
-  $core.bool hasContextUri() => $_has(6);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(7)
-  void clearContextUri() => clearField(7);
-
   @$pb.TagNumber(8)
-  $core.String get ecosystemId => $_getSZ(7);
-  @$pb.TagNumber(8)
-  set ecosystemId($core.String v) {
-    $_setString(7, v);
-  }
-
-  @$pb.TagNumber(8)
-  $core.bool hasEcosystemId() => $_has(7);
+  $core.bool hasEcosystemId() => $_has(6);
   @$pb.TagNumber(8)
   void clearEcosystemId() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get type => $_getSZ(8);
+  $core.String get type => $_getSZ(7);
   @$pb.TagNumber(9)
   set type($core.String v) {
-    $_setString(8, v);
+    $_setString(7, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasType() => $_has(8);
+  $core.bool hasType() => $_has(7);
   @$pb.TagNumber(9)
   void clearType() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.String get createdBy => $_getSZ(9);
+  $core.String get createdBy => $_getSZ(8);
   @$pb.TagNumber(10)
   set createdBy($core.String v) {
-    $_setString(9, v);
+    $_setString(8, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasCreatedBy() => $_has(9);
+  $core.bool hasCreatedBy() => $_has(8);
   @$pb.TagNumber(10)
   void clearCreatedBy() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.String get dateCreated => $_getSZ(10);
+  $core.String get dateCreated => $_getSZ(9);
   @$pb.TagNumber(11)
   set dateCreated($core.String v) {
-    $_setString(10, v);
+    $_setString(9, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasDateCreated() => $_has(10);
+  $core.bool hasDateCreated() => $_has(9);
   @$pb.TagNumber(11)
   void clearDateCreated() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.String get title => $_getSZ(11);
+  $core.String get title => $_getSZ(10);
   @$pb.TagNumber(12)
   set title($core.String v) {
-    $_setString(11, v);
+    $_setString(10, v);
   }
 
   @$pb.TagNumber(12)
-  $core.bool hasTitle() => $_has(11);
+  $core.bool hasTitle() => $_has(10);
   @$pb.TagNumber(12)
   void clearTitle() => clearField(12);
 
   @$pb.TagNumber(13)
-  $core.String get description => $_getSZ(12);
+  $core.String get description => $_getSZ(11);
   @$pb.TagNumber(13)
   set description($core.String v) {
-    $_setString(12, v);
+    $_setString(11, v);
   }
 
   @$pb.TagNumber(13)
-  $core.bool hasDescription() => $_has(12);
+  $core.bool hasDescription() => $_has(11);
   @$pb.TagNumber(13)
   void clearDescription() => clearField(13);
 
   @$pb.TagNumber(14)
-  $core.Map<$core.String, FieldOrdering> get fieldOrdering => $_getMap(13);
+  $core.Map<$core.String, FieldOrdering> get fieldOrdering => $_getMap(12);
 
   @$pb.TagNumber(15)
-  AppleWalletOptions get appleWalletOptions => $_getN(14);
+  AppleWalletOptions get appleWalletOptions => $_getN(13);
   @$pb.TagNumber(15)
   set appleWalletOptions(AppleWalletOptions v) {
     setField(15, v);
   }
 
   @$pb.TagNumber(15)
-  $core.bool hasAppleWalletOptions() => $_has(14);
+  $core.bool hasAppleWalletOptions() => $_has(13);
   @$pb.TagNumber(15)
   void clearAppleWalletOptions() => clearField(15);
   @$pb.TagNumber(15)
-  AppleWalletOptions ensureAppleWalletOptions() => $_ensure(14);
+  AppleWalletOptions ensureAppleWalletOptions() => $_ensure(13);
 }
 
 class AppleWalletOptions extends $pb.GeneratedMessage {
@@ -1843,16 +1817,6 @@ class TemplateField extends $pb.GeneratedMessage {
         defaultOrMaker: FieldType.STRING,
         valueOf: FieldType.valueOf,
         enumValues: FieldType.values)
-    ..m<$core.String, $core.String>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'annotations',
-        entryClassName: 'TemplateField.AnnotationsEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OS,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
     ..aOM<UriFieldData>(
         6,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1867,8 +1831,6 @@ class TemplateField extends $pb.GeneratedMessage {
     $core.String? description,
     $core.bool? optional,
     FieldType? type,
-    @$core.Deprecated('This field is deprecated.')
-        $core.Map<$core.String, $core.String>? annotations,
     UriFieldData? uriData,
   }) {
     final _result = create();
@@ -1883,10 +1845,6 @@ class TemplateField extends $pb.GeneratedMessage {
     }
     if (type != null) {
       _result.type = type;
-    }
-    if (annotations != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.annotations.addAll(annotations);
     }
     if (uriData != null) {
       _result.uriData = uriData;
@@ -1968,23 +1926,19 @@ class TemplateField extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearType() => clearField(4);
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(5)
-  $core.Map<$core.String, $core.String> get annotations => $_getMap(4);
-
   @$pb.TagNumber(6)
-  UriFieldData get uriData => $_getN(5);
+  UriFieldData get uriData => $_getN(4);
   @$pb.TagNumber(6)
   set uriData(UriFieldData v) {
     setField(6, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasUriData() => $_has(5);
+  $core.bool hasUriData() => $_has(4);
   @$pb.TagNumber(6)
   void clearUriData() => clearField(6);
   @$pb.TagNumber(6)
-  UriFieldData ensureUriData() => $_ensure(5);
+  UriFieldData ensureUriData() => $_ensure(4);
 }
 
 class TemplateFieldPatch extends $pb.GeneratedMessage {

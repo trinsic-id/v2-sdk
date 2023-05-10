@@ -38,14 +38,6 @@ const SignInRequest$json = const {
       '10': 'details'
     },
     const {
-      '1': 'invitation_code',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '8': const {'3': true},
-      '10': 'invitationCode',
-    },
-    const {
       '1': 'ecosystem_id',
       '3': 3,
       '4': 1,
@@ -54,11 +46,15 @@ const SignInRequest$json = const {
       '10': 'ecosystemId'
     },
   ],
+  '9': const [
+    const {'1': 2, '2': 3},
+  ],
+  '10': const ['invitation_code'],
 };
 
 /// Descriptor for `SignInRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signInRequestDescriptor = $convert.base64Decode(
-    'Cg1TaWduSW5SZXF1ZXN0EkMKB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzQgSAph0BUgdkZXRhaWxzEi8KD2ludml0YXRpb25fY29kZRgCIAEoCUIGGAGAph0BUg5pbnZpdGF0aW9uQ29kZRInCgxlY29zeXN0ZW1faWQYAyABKAlCBICmHQFSC2Vjb3N5c3RlbUlk');
+    'Cg1TaWduSW5SZXF1ZXN0EkMKB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzQgSAph0BUgdkZXRhaWxzEicKDGVjb3N5c3RlbV9pZBgDIAEoCUIEgKYdAVILZWNvc3lzdGVtSWRKBAgCEANSD2ludml0YXRpb25fY29kZQ==');
 @$core.Deprecated('Use accountDetailsDescriptor instead')
 const AccountDetails$json = const {
   '1': 'AccountDetails',
@@ -158,15 +154,6 @@ const AccountInfoResponse$json = const {
       '6': '.services.account.v1.AccountDetails',
       '10': 'details'
     },
-    const {
-      '1': 'ecosystems',
-      '3': 2,
-      '4': 3,
-      '5': 11,
-      '6': '.services.account.v1.AccountEcosystem',
-      '8': const {'3': true},
-      '10': 'ecosystems',
-    },
     const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '10': 'walletId'},
     const {'1': 'device_id', '3': 4, '4': 1, '5': 9, '10': 'deviceId'},
     const {'1': 'ecosystem_id', '3': 5, '4': 1, '5': 9, '10': 'ecosystemId'},
@@ -181,41 +168,20 @@ const AccountInfoResponse$json = const {
     },
   ],
   '9': const [
+    const {'1': 2, '2': 3},
     const {'1': 7, '2': 8},
   ],
-  '10': const ['authorized_webhooks'],
+  '10': const ['ecosystems', 'authorized_webhooks'],
 };
 
 /// Descriptor for `AccountInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountInfoResponseDescriptor = $convert.base64Decode(
-    'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEkkKCmVjb3N5c3RlbXMYAiADKAsyJS5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnRFY29zeXN0ZW1CAhgBUgplY29zeXN0ZW1zEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZBJFCgthdXRoX3Rva2VucxgIIAMoCzIkLnNlcnZpY2VzLmFjY291bnQudjEuV2FsbGV0QXV0aFRva2VuUgphdXRoVG9rZW5zSgQIBxAIUhNhdXRob3JpemVkX3dlYmhvb2tz');
-@$core.Deprecated('Use accountEcosystemDescriptor instead')
-const AccountEcosystem$json = const {
-  '1': 'AccountEcosystem',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'description', '3': 3, '4': 1, '5': 9, '10': 'description'},
-    const {'1': 'uri', '3': 4, '4': 1, '5': 9, '10': 'uri'},
-  ],
-};
-
-/// Descriptor for `AccountEcosystem`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List accountEcosystemDescriptor = $convert.base64Decode(
-    'ChBBY2NvdW50RWNvc3lzdGVtEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiAKC2Rlc2NyaXB0aW9uGAMgASgJUgtkZXNjcmlwdGlvbhIQCgN1cmkYBCABKAlSA3VyaQ==');
+    'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZBJFCgthdXRoX3Rva2VucxgIIAMoCzIkLnNlcnZpY2VzLmFjY291bnQudjEuV2FsbGV0QXV0aFRva2VuUgphdXRoVG9rZW5zSgQIAhADSgQIBxAIUgplY29zeXN0ZW1zUhNhdXRob3JpemVkX3dlYmhvb2tz');
 @$core.Deprecated('Use loginRequestDescriptor instead')
 const LoginRequest$json = const {
   '1': 'LoginRequest',
   '2': const [
     const {'1': 'email', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'email'},
-    const {
-      '1': 'invitation_code',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '8': const {'3': true},
-      '10': 'invitationCode',
-    },
     const {
       '1': 'ecosystem_id',
       '3': 3,
@@ -225,11 +191,15 @@ const LoginRequest$json = const {
       '10': 'ecosystemId'
     },
   ],
+  '9': const [
+    const {'1': 2, '2': 3},
+  ],
+  '10': const ['invitation_code'],
 };
 
 /// Descriptor for `LoginRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode(
-    'CgxMb2dpblJlcXVlc3QSGgoFZW1haWwYASABKAlCBICmHQFSBWVtYWlsEi8KD2ludml0YXRpb25fY29kZRgCIAEoCUIGGAGAph0BUg5pbnZpdGF0aW9uQ29kZRInCgxlY29zeXN0ZW1faWQYAyABKAlCBICmHQFSC2Vjb3N5c3RlbUlk');
+    'CgxMb2dpblJlcXVlc3QSGgoFZW1haWwYASABKAlCBICmHQFSBWVtYWlsEicKDGVjb3N5c3RlbV9pZBgDIAEoCUIEgKYdAVILZWNvc3lzdGVtSWRKBAgCEANSD2ludml0YXRpb25fY29kZQ==');
 @$core.Deprecated('Use loginResponseDescriptor instead')
 const LoginResponse$json = const {
   '1': 'LoginResponse',
@@ -296,28 +266,6 @@ const LoginConfirmResponse$json = const {
 /// Descriptor for `LoginConfirmResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List loginConfirmResponseDescriptor = $convert.base64Decode(
     'ChRMb2dpbkNvbmZpcm1SZXNwb25zZRI9Cgdwcm9maWxlGAEgASgLMiMuc2VydmljZXMuYWNjb3VudC52MS5BY2NvdW50UHJvZmlsZVIHcHJvZmlsZQ==');
-@$core.Deprecated('Use authorizeWebhookRequestDescriptor instead')
-const AuthorizeWebhookRequest$json = const {
-  '1': 'AuthorizeWebhookRequest',
-  '2': const [
-    const {'1': 'events', '3': 1, '4': 3, '5': 9, '10': 'events'},
-  ],
-  '7': const {'3': true},
-};
-
-/// Descriptor for `AuthorizeWebhookRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authorizeWebhookRequestDescriptor =
-    $convert.base64Decode(
-        'ChdBdXRob3JpemVXZWJob29rUmVxdWVzdBIWCgZldmVudHMYASADKAlSBmV2ZW50czoCGAE=');
-@$core.Deprecated('Use authorizeWebhookResponseDescriptor instead')
-const AuthorizeWebhookResponse$json = const {
-  '1': 'AuthorizeWebhookResponse',
-  '7': const {'3': true},
-};
-
-/// Descriptor for `AuthorizeWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authorizeWebhookResponseDescriptor =
-    $convert.base64Decode('ChhBdXRob3JpemVXZWJob29rUmVzcG9uc2U6AhgB');
 @$core.Deprecated('Use walletAuthTokenDescriptor instead')
 const WalletAuthToken$json = const {
   '1': 'WalletAuthToken',

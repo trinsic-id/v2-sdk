@@ -482,6 +482,26 @@ const AuthenticateInitResponse$json = const {
 final $typed_data.Uint8List authenticateInitResponseDescriptor =
     $convert.base64Decode(
         'ChhBdXRoZW50aWNhdGVJbml0UmVzcG9uc2USHAoJY2hhbGxlbmdlGAEgASgJUgljaGFsbGVuZ2U=');
+@$core.Deprecated('Use authenticateResendCodeRequestDescriptor instead')
+const AuthenticateResendCodeRequest$json = const {
+  '1': 'AuthenticateResendCodeRequest',
+  '2': const [
+    const {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
+  ],
+};
+
+/// Descriptor for `AuthenticateResendCodeRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authenticateResendCodeRequestDescriptor =
+    $convert.base64Decode(
+        'Ch1BdXRoZW50aWNhdGVSZXNlbmRDb2RlUmVxdWVzdBIcCgljaGFsbGVuZ2UYASABKAlSCWNoYWxsZW5nZQ==');
+@$core.Deprecated('Use authenticateResendCodeResponseDescriptor instead')
+const AuthenticateResendCodeResponse$json = const {
+  '1': 'AuthenticateResendCodeResponse',
+};
+
+/// Descriptor for `AuthenticateResendCodeResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authenticateResendCodeResponseDescriptor =
+    $convert.base64Decode('Ch5BdXRoZW50aWNhdGVSZXNlbmRDb2RlUmVzcG9uc2U=');
 @$core.Deprecated('Use authenticateConfirmRequestDescriptor instead')
 const AuthenticateConfirmRequest$json = const {
   '1': 'AuthenticateConfirmRequest',

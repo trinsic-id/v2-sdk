@@ -41,28 +41,6 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
-  @Deprecated('This will be removed June 1, 2023')
-  Future<EcosystemInfoResponse> ecosystemInfo(
-      EcosystemInfoRequest request) async {
-    /// This will be removed June 1, 2023
-    /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-    /// DEPRECATED, will be removed June 1st 2023
-
-    return client.ecosystemInfo(request,
-        options: await buildMetadata(request: request));
-  }
-
-  @Deprecated('This will be removed June 1, 2023')
-  Future<GetPublicEcosystemInfoResponse> getPublicEcosystemInfo(
-      GetPublicEcosystemInfoRequest request) async {
-    /// This will be removed June 1, 2023
-    /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-    /// DEPRECATED, will be removed June 1st 2023
-
-    return client.getPublicEcosystemInfo(request,
-        options: await buildMetadata());
-  }
-
   Future<GetOberonKeyResponse> getOberonKey() async {
     ///  Returns the public key being used to create/verify oberon tokens
     var request = GetOberonKeyRequest();

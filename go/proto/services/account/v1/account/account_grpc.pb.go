@@ -19,11 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Account_SignIn_FullMethodName           = "/services.account.v1.Account/SignIn"
-	Account_Login_FullMethodName            = "/services.account.v1.Account/Login"
-	Account_LoginConfirm_FullMethodName     = "/services.account.v1.Account/LoginConfirm"
-	Account_Info_FullMethodName             = "/services.account.v1.Account/Info"
-	Account_AuthorizeWebhook_FullMethodName = "/services.account.v1.Account/AuthorizeWebhook"
+	Account_SignIn_FullMethodName       = "/services.account.v1.Account/SignIn"
+	Account_Login_FullMethodName        = "/services.account.v1.Account/Login"
+	Account_LoginConfirm_FullMethodName = "/services.account.v1.Account/LoginConfirm"
+	Account_Info_FullMethodName         = "/services.account.v1.Account/Info"
 )
 
 // AccountClient is the client API for Account service.
@@ -42,8 +41,6 @@ type AccountClient interface {
 	// Deprecated: Do not use.
 	// Get account information
 	Info(ctx context.Context, in *AccountInfoRequest, opts ...grpc.CallOption) (*AccountInfoResponse, error)
-	// Authorize Ecosystem to receive webhook events
-	AuthorizeWebhook(ctx context.Context, in *AuthorizeWebhookRequest, opts ...grpc.CallOption) (*AuthorizeWebhookResponse, error)
 }
 
 type accountClient struct {
@@ -94,15 +91,6 @@ func (c *accountClient) Info(ctx context.Context, in *AccountInfoRequest, opts .
 	return out, nil
 }
 
-func (c *accountClient) AuthorizeWebhook(ctx context.Context, in *AuthorizeWebhookRequest, opts ...grpc.CallOption) (*AuthorizeWebhookResponse, error) {
-	out := new(AuthorizeWebhookResponse)
-	err := c.cc.Invoke(ctx, Account_AuthorizeWebhook_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AccountServer is the server API for Account service.
 // All implementations must embed UnimplementedAccountServer
 // for forward compatibility
@@ -119,8 +107,6 @@ type AccountServer interface {
 	// Deprecated: Do not use.
 	// Get account information
 	Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error)
-	// Authorize Ecosystem to receive webhook events
-	AuthorizeWebhook(context.Context, *AuthorizeWebhookRequest) (*AuthorizeWebhookResponse, error)
 	mustEmbedUnimplementedAccountServer()
 }
 
@@ -139,9 +125,6 @@ func (UnimplementedAccountServer) LoginConfirm(context.Context, *LoginConfirmReq
 }
 func (UnimplementedAccountServer) Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
-}
-func (UnimplementedAccountServer) AuthorizeWebhook(context.Context, *AuthorizeWebhookRequest) (*AuthorizeWebhookResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AuthorizeWebhook not implemented")
 }
 func (UnimplementedAccountServer) mustEmbedUnimplementedAccountServer() {}
 
@@ -228,24 +211,6 @@ func _Account_Info_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Account_AuthorizeWebhook_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AuthorizeWebhookRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServer).AuthorizeWebhook(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Account_AuthorizeWebhook_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServer).AuthorizeWebhook(ctx, req.(*AuthorizeWebhookRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // Account_ServiceDesc is the grpc.ServiceDesc for Account service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -268,10 +233,6 @@ var Account_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Info",
 			Handler:    _Account_Info_Handler,
-		},
-		{
-			MethodName: "AuthorizeWebhook",
-			Handler:    _Account_AuthorizeWebhook_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

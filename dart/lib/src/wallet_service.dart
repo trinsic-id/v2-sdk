@@ -75,9 +75,9 @@ class WalletService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
-  Future<GetMyInfoResponse> getMyInfo(GetMyInfoRequest request) async {
+  Future<GetMyInfoResponse> getMyInfo() async {
     ///  Retrieve wallet details and configuration about the currently authenticated wallet
-
+    var request = GetMyInfoRequest();
     return client.getMyInfo(request,
         options: await buildMetadata(request: request));
   }
@@ -141,6 +141,14 @@ class WalletService extends ServiceBase {
     ///  Confirm sign-in to an already existing wallet and return authentication token
 
     return client.authenticateConfirm(request,
+        options: await buildMetadata(request: request));
+  }
+
+  Future<AuthenticateResendCodeResponse> authenticateResendCode(
+      AuthenticateResendCodeRequest request) async {
+    ///  Resend previous authentication code
+
+    return client.authenticateResendCode(request,
         options: await buildMetadata(request: request));
   }
 

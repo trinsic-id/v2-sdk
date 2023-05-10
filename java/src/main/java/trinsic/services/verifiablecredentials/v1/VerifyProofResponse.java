@@ -22,9 +22,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     super(builder);
   }
 
-  private VerifyProofResponse() {
-    validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-  }
+  private VerifyProofResponse() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
@@ -79,79 +77,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
   @java.lang.Override
   public boolean getIsValid() {
     return isValid_;
-  }
-
-  public static final int VALIDATION_MESSAGES_FIELD_NUMBER = 2;
-  private com.google.protobuf.LazyStringList validationMessages_;
-  /**
-   *
-   *
-   * <pre>
-   * Use `validation_results` instead
-   * </pre>
-   *
-   * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-   * @return A list containing the validationMessages.
-   */
-  @java.lang.Deprecated
-  public com.google.protobuf.ProtocolStringList getValidationMessagesList() {
-    return validationMessages_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Use `validation_results` instead
-   * </pre>
-   *
-   * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-   * @return The count of validationMessages.
-   */
-  @java.lang.Deprecated
-  public int getValidationMessagesCount() {
-    return validationMessages_.size();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Use `validation_results` instead
-   * </pre>
-   *
-   * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-   * @param index The index of the element to return.
-   * @return The validationMessages at the given index.
-   */
-  @java.lang.Deprecated
-  public java.lang.String getValidationMessages(int index) {
-    return validationMessages_.get(index);
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Use `validation_results` instead
-   * </pre>
-   *
-   * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-   * @param index The index of the value to return.
-   * @return The bytes of the validationMessages at the given index.
-   */
-  @java.lang.Deprecated
-  public com.google.protobuf.ByteString getValidationMessagesBytes(int index) {
-    return validationMessages_.getByteString(index);
   }
 
   public static final int VALIDATION_RESULTS_FIELD_NUMBER = 3;
@@ -304,9 +229,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     if (isValid_ != false) {
       output.writeBool(1, isValid_);
     }
-    for (int i = 0; i < validationMessages_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, validationMessages_.getRaw(i));
-    }
     com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
         output,
         internalGetValidationResults(),
@@ -323,14 +245,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     size = 0;
     if (isValid_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, isValid_);
-    }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < validationMessages_.size(); i++) {
-        dataSize += computeStringSizeNoTag(validationMessages_.getRaw(i));
-      }
-      size += dataSize;
-      size += 1 * getValidationMessagesList().size();
     }
     for (java.util.Map.Entry<
             java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
@@ -362,7 +276,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
         (trinsic.services.verifiablecredentials.v1.VerifyProofResponse) obj;
 
     if (getIsValid() != other.getIsValid()) return false;
-    if (!getValidationMessagesList().equals(other.getValidationMessagesList())) return false;
     if (!internalGetValidationResults().equals(other.internalGetValidationResults())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -377,10 +290,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + IS_VALID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIsValid());
-    if (getValidationMessagesCount() > 0) {
-      hash = (37 * hash) + VALIDATION_MESSAGES_FIELD_NUMBER;
-      hash = (53 * hash) + getValidationMessagesList().hashCode();
-    }
     if (!internalGetValidationResults().getMap().isEmpty()) {
       hash = (37 * hash) + VALIDATION_RESULTS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetValidationResults().hashCode();
@@ -546,8 +455,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       super.clear();
       isValid_ = false;
 
-      validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
       internalGetMutableValidationResults().clear();
       return this;
     }
@@ -579,11 +486,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
           new trinsic.services.verifiablecredentials.v1.VerifyProofResponse(this);
       int from_bitField0_ = bitField0_;
       result.isValid_ = isValid_;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        validationMessages_ = validationMessages_.getUnmodifiableView();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      }
-      result.validationMessages_ = validationMessages_;
       result.validationResults_ = internalGetValidationResults();
       result.validationResults_.makeImmutable();
       onBuilt();
@@ -640,16 +542,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       if (other.getIsValid() != false) {
         setIsValid(other.getIsValid());
       }
-      if (!other.validationMessages_.isEmpty()) {
-        if (validationMessages_.isEmpty()) {
-          validationMessages_ = other.validationMessages_;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ensureValidationMessagesIsMutable();
-          validationMessages_.addAll(other.validationMessages_);
-        }
-        onChanged();
-      }
       internalGetMutableValidationResults().mergeFrom(other.internalGetValidationResults());
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -683,13 +575,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
 
                 break;
               } // case 8
-            case 18:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureValidationMessagesIsMutable();
-                validationMessages_.add(s);
-                break;
-              } // case 18
             case 26:
               {
                 com.google.protobuf.MapEntry<
@@ -771,201 +656,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     public Builder clearIsValid() {
 
       isValid_ = false;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.LazyStringList validationMessages_ =
-        com.google.protobuf.LazyStringArrayList.EMPTY;
-
-    private void ensureValidationMessagesIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        validationMessages_ = new com.google.protobuf.LazyStringArrayList(validationMessages_);
-        bitField0_ |= 0x00000001;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @return A list containing the validationMessages.
-     */
-    @java.lang.Deprecated
-    public com.google.protobuf.ProtocolStringList getValidationMessagesList() {
-      return validationMessages_.getUnmodifiableView();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @return The count of validationMessages.
-     */
-    @java.lang.Deprecated
-    public int getValidationMessagesCount() {
-      return validationMessages_.size();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @param index The index of the element to return.
-     * @return The validationMessages at the given index.
-     */
-    @java.lang.Deprecated
-    public java.lang.String getValidationMessages(int index) {
-      return validationMessages_.get(index);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @param index The index of the value to return.
-     * @return The bytes of the validationMessages at the given index.
-     */
-    @java.lang.Deprecated
-    public com.google.protobuf.ByteString getValidationMessagesBytes(int index) {
-      return validationMessages_.getByteString(index);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @param index The index to set the value at.
-     * @param value The validationMessages to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder setValidationMessages(int index, java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureValidationMessagesIsMutable();
-      validationMessages_.set(index, value);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @param value The validationMessages to add.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder addValidationMessages(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureValidationMessagesIsMutable();
-      validationMessages_.add(value);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @param values The validationMessages to add.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder addAllValidationMessages(java.lang.Iterable<java.lang.String> values) {
-      ensureValidationMessagesIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, validationMessages_);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder clearValidationMessages() {
-      validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Use `validation_results` instead
-     * </pre>
-     *
-     * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=111
-     * @param value The bytes of the validationMessages to add.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder addValidationMessagesBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-      ensureValidationMessagesIsMutable();
-      validationMessages_.add(value);
       onChanged();
       return this;
     }

@@ -784,6 +784,56 @@ public final class UniversalWalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest,
+          trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>
+      getAuthenticateResendCodeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AuthenticateResendCode",
+      requestType = trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest.class,
+      responseType = trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest,
+          trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>
+      getAuthenticateResendCodeMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest,
+            trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>
+        getAuthenticateResendCodeMethod;
+    if ((getAuthenticateResendCodeMethod = UniversalWalletGrpc.getAuthenticateResendCodeMethod)
+        == null) {
+      synchronized (UniversalWalletGrpc.class) {
+        if ((getAuthenticateResendCodeMethod = UniversalWalletGrpc.getAuthenticateResendCodeMethod)
+            == null) {
+          UniversalWalletGrpc.getAuthenticateResendCodeMethod =
+              getAuthenticateResendCodeMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest,
+                          trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "AuthenticateResendCode"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new UniversalWalletMethodDescriptorSupplier("AuthenticateResendCode"))
+                      .build();
+        }
+      }
+    }
+    return getAuthenticateResendCodeMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.universalwallet.v1.ListWalletsRequest,
           trinsic.services.universalwallet.v1.ListWalletsResponse>
       getListWalletsMethod;
@@ -1127,6 +1177,22 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
+     * Resend previous authentication code
+     * </pre>
+     */
+    public void authenticateResendCode(
+        trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getAuthenticateResendCodeMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * List all wallets in the ecosystem
      * </pre>
      */
@@ -1252,6 +1318,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.AuthenticateConfirmRequest,
                       trinsic.services.universalwallet.v1.AuthenticateConfirmResponse>(
                       this, METHODID_AUTHENTICATE_CONFIRM)))
+          .addMethod(
+              getAuthenticateResendCodeMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest,
+                      trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>(
+                      this, METHODID_AUTHENTICATE_RESEND_CODE)))
           .addMethod(
               getListWalletsMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1554,6 +1627,24 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
+     * Resend previous authentication code
+     * </pre>
+     */
+    public void authenticateResendCode(
+        trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getAuthenticateResendCodeMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * List all wallets in the ecosystem
      * </pre>
      */
@@ -1802,6 +1893,20 @@ public final class UniversalWalletGrpc {
         trinsic.services.universalwallet.v1.AuthenticateConfirmRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAuthenticateConfirmMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Resend previous authentication code
+     * </pre>
+     */
+    public trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse
+        authenticateResendCode(
+            trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAuthenticateResendCodeMethod(), getCallOptions(), request);
     }
 
     /**
@@ -2075,6 +2180,21 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
+     * Resend previous authentication code
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>
+        authenticateResendCode(
+            trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getAuthenticateResendCodeMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * List all wallets in the ecosystem
      * </pre>
      */
@@ -2102,7 +2222,8 @@ public final class UniversalWalletGrpc {
   private static final int METHODID_REMOVE_EXTERNAL_IDENTITY = 13;
   private static final int METHODID_AUTHENTICATE_INIT = 14;
   private static final int METHODID_AUTHENTICATE_CONFIRM = 15;
-  private static final int METHODID_LIST_WALLETS = 16;
+  private static final int METHODID_AUTHENTICATE_RESEND_CODE = 16;
+  private static final int METHODID_LIST_WALLETS = 17;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2227,6 +2348,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.AuthenticateConfirmResponse>)
                   responseObserver);
           break;
+        case METHODID_AUTHENTICATE_RESEND_CODE:
+          serviceImpl.authenticateResendCode(
+              (trinsic.services.universalwallet.v1.AuthenticateResendCodeRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.universalwallet.v1.AuthenticateResendCodeResponse>)
+                  responseObserver);
+          break;
         case METHODID_LIST_WALLETS:
           serviceImpl.listWallets(
               (trinsic.services.universalwallet.v1.ListWalletsRequest) request,
@@ -2313,6 +2441,7 @@ public final class UniversalWalletGrpc {
                       .addMethod(getRemoveExternalIdentityMethod())
                       .addMethod(getAuthenticateInitMethod())
                       .addMethod(getAuthenticateConfirmMethod())
+                      .addMethod(getAuthenticateResendCodeMethod())
                       .addMethod(getListWalletsMethod())
                       .build();
         }

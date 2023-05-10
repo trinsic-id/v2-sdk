@@ -141,6 +141,14 @@ public final class UniversalWalletOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_universalwallet_v1_AuthenticateInitResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_universalwallet_v1_AuthenticateResendCodeRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_universalwallet_v1_AuthenticateResendCodeRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_universalwallet_v1_AuthenticateResendCodeResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_universalwallet_v1_AuthenticateResendCodeResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_universalwallet_v1_AuthenticateConfirmRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_universalwallet_v1_AuthenticateConfirmRequest_fieldAccessorTable;
@@ -239,7 +247,10 @@ public final class UniversalWalletOuterClass {
           + "services.universalwallet.v1.IdentityProvider\022\024\n"
           + "\014ecosystem_id\030\003 \001(\t\"-\n"
           + "\030AuthenticateInitResponse\022\021\n"
-          + "\tchallenge\030\001 \001(\t\"A\n"
+          + "\tchallenge\030\001 \001(\t\"2\n"
+          + "\035AuthenticateResendCodeRequest\022\021\n"
+          + "\tchallenge\030\001 \001(\t\" \n"
+          + "\036AuthenticateResendCodeResponse\"A\n"
           + "\032AuthenticateConfirmRequest\022\021\n"
           + "\tchallenge\030\001 \001(\t\022\020\n"
           + "\010response\030\002 \001(\t\"1\n"
@@ -248,48 +259,51 @@ public final class UniversalWalletOuterClass {
           + "\020IdentityProvider\022\013\n"
           + "\007UNKNOWN\020\000\022\t\n"
           + "\005EMAIL\020\001\022\t\n"
-          + "\005PHONE\020\0022\301\020\n"
+          + "\005PHONE\020\0022\335\021\n"
           + "\017UniversalWallet\022d\n"
-          + "\007GetItem\022+.services.universalwallet.v1.GetItemReque"
-          + "st\032,.services.universalwallet.v1.GetItemResponse\022a\n"
-          + "\006Search\022*.services.universalw"
-          + "allet.v1.SearchRequest\032+.services.universalwallet.v1.SearchResponse\022m\n\n"
-          + "InsertItem\022..services.universalwallet.v1.InsertIt"
-          + "emRequest\032/.services.universalwallet.v1.InsertItemResponse\022m\n\n"
-          + "UpdateItem\022..services.universalwallet.v1.UpdateItemRequest"
-          + "\032/.services.universalwallet.v1.UpdateItemResponse\022m\n\n"
-          + "DeleteItem\022..services.universalwallet.v1.DeleteItemRequest\032/.servic"
-          + "es.universalwallet.v1.DeleteItemResponse\022s\n"
-          + "\014DeleteWallet\0220.services.universalwal"
-          + "let.v1.DeleteWalletRequest\0321.services.universalwallet.v1.DeleteWalletResponse\022s\n"
-          + "\014CreateWallet\0220.services.universalwallet"
-          + ".v1.CreateWalletRequest\0321.services.universalwallet.v1.CreateWalletResponse\022v\n\r"
-          + "GetWalletInfo\0221.services.universalwallet.v"
-          + "1.GetWalletInfoRequest\0322.services.universalwallet.v1.GetWalletInfoResponse\022j\n"
-          + "\tGetMyInfo\022-.services.universalwallet.v1.Ge"
-          + "tMyInfoRequest\032..services.universalwallet.v1.GetMyInfoResponse\022\202\001\n"
-          + "\021GenerateAuthToken\0225.services.universalwallet.v1.Gener"
-          + "ateAuthTokenRequest\0326.services.universalwallet.v1.GenerateAuthTokenResponse\022|\n"
-          + "\017RevokeAuthToken\0223.services.universalwalle"
-          + "t.v1.RevokeAuthTokenRequest\0324.services.u"
-          + "niversalwallet.v1.RevokeAuthTokenResponse\022\224\001\n"
-          + "\027AddExternalIdentityInit\022;.services.universalwallet.v1.AddExternalIdentityI"
-          + "nitRequest\032<.services.universalwallet.v1.AddExternalIdentityInitResponse\022\235\001\n"
-          + "\032AddExternalIdentityConfirm\022>.services.unive"
-          + "rsalwallet.v1.AddExternalIdentityConfirm"
-          + "Request\032?.services.universalwallet.v1.AddExternalIdentityConfirmResponse\022\221\001\n"
-          + "\026RemoveExternalIdentity\022:.services.universal"
-          + "wallet.v1.RemoveExternalIdentityRequest\032"
-          + ";.services.universalwallet.v1.RemoveExternalIdentityResponse\022\177\n"
-          + "\020AuthenticateInit\0224.services.universalwallet.v1.Authentic"
-          + "ateInitRequest\0325.services.universalwallet.v1.AuthenticateInitResponse\022\210\001\n"
-          + "\023AuthenticateConfirm\0227.services.universalwallet"
-          + ".v1.AuthenticateConfirmRequest\0328.service"
-          + "s.universalwallet.v1.AuthenticateConfirmResponse\022p\n"
-          + "\013ListWallets\022/.services.universalwallet.v1.ListWalletsRequest\0320.servi"
-          + "ces.universalwallet.v1.ListWalletsResponseBq\n"
-          + "#trinsic.services.universalwallet.v1P\001Z\"services/universalwallet/v1/wallet\252"
-          + "\002#Trinsic.Services.UniversalWallet.V1b\006proto3"
+          + "\007GetItem\022+.services.universalwallet.v1.GetIte"
+          + "mRequest\032,.services.universalwallet.v1.GetItemResponse\022a\n"
+          + "\006Search\022*.services.univ"
+          + "ersalwallet.v1.SearchRequest\032+.services.universalwallet.v1.SearchResponse\022m\n\n"
+          + "InsertItem\022..services.universalwallet.v1.In"
+          + "sertItemRequest\032/.services.universalwallet.v1.InsertItemResponse\022m\n\n"
+          + "UpdateItem\022..services.universalwallet.v1.UpdateItemR"
+          + "equest\032/.services.universalwallet.v1.UpdateItemResponse\022m\n\n"
+          + "DeleteItem\022..services.universalwallet.v1.DeleteItemRequest\032/."
+          + "services.universalwallet.v1.DeleteItemResponse\022s\n"
+          + "\014DeleteWallet\0220.services.universalwallet.v1.DeleteWalletRequest\0321.servi"
+          + "ces.universalwallet.v1.DeleteWalletResponse\022s\n"
+          + "\014CreateWallet\0220.services.universalwallet.v1.CreateWalletRequest\0321.services"
+          + ".universalwallet.v1.CreateWalletResponse\022v\n\r"
+          + "GetWalletInfo\0221.services.universalwallet.v1.GetWalletInfoRequest\0322.services."
+          + "universalwallet.v1.GetWalletInfoResponse\022r\n"
+          + "\tGetMyInfo\022-.services.universalwallet"
+          + ".v1.GetMyInfoRequest\032..services.universalwallet.v1.GetMyInfoResponse\"\006\212\246\035\002\030\001\022\202\001\n"
+          + "\021GenerateAuthToken\0225.services.universalw"
+          + "allet.v1.GenerateAuthTokenRequest\0326.serv"
+          + "ices.universalwallet.v1.GenerateAuthTokenResponse\022|\n"
+          + "\017RevokeAuthToken\0223.services.universalwallet.v1.RevokeAuthTokenReques"
+          + "t\0324.services.universalwallet.v1.RevokeAuthTokenResponse\022\224\001\n"
+          + "\027AddExternalIdentityInit\022;.services.universalwallet.v1.AddExt"
+          + "ernalIdentityInitRequest\032<.services.univ"
+          + "ersalwallet.v1.AddExternalIdentityInitResponse\022\235\001\n"
+          + "\032AddExternalIdentityConfirm\022>.services.universalwallet.v1.AddExternalI"
+          + "dentityConfirmRequest\032?.services.univers"
+          + "alwallet.v1.AddExternalIdentityConfirmResponse\022\221\001\n"
+          + "\026RemoveExternalIdentity\022:.services.universalwallet.v1.RemoveExternalId"
+          + "entityRequest\032;.services.universalwallet.v1.RemoveExternalIdentityResponse\022\177\n"
+          + "\020AuthenticateInit\0224.services.universalwalle"
+          + "t.v1.AuthenticateInitRequest\0325.services."
+          + "universalwallet.v1.AuthenticateInitResponse\022\210\001\n"
+          + "\023AuthenticateConfirm\0227.services.universalwallet.v1.AuthenticateConfirmReq"
+          + "uest\0328.services.universalwallet.v1.AuthenticateConfirmResponse\022\221\001\n"
+          + "\026AuthenticateResendCode\022:.services.universalwallet.v1."
+          + "AuthenticateResendCodeRequest\032;.services"
+          + ".universalwallet.v1.AuthenticateResendCodeResponse\022p\n"
+          + "\013ListWallets\022/.services.universalwallet.v1.ListWalletsRequest\0320.ser"
+          + "vices.universalwallet.v1.ListWalletsResponseBq\n"
+          + "#trinsic.services.universalwallet.v1P\001Z\"services/universalwallet/v1/walle"
+          + "t\252\002#Trinsic.Services.UniversalWallet.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -540,8 +554,22 @@ public final class UniversalWalletOuterClass {
             new java.lang.String[] {
               "Challenge",
             });
-    internal_static_services_universalwallet_v1_AuthenticateConfirmRequest_descriptor =
+    internal_static_services_universalwallet_v1_AuthenticateResendCodeRequest_descriptor =
         getDescriptor().getMessageTypes().get(32);
+    internal_static_services_universalwallet_v1_AuthenticateResendCodeRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_universalwallet_v1_AuthenticateResendCodeRequest_descriptor,
+            new java.lang.String[] {
+              "Challenge",
+            });
+    internal_static_services_universalwallet_v1_AuthenticateResendCodeResponse_descriptor =
+        getDescriptor().getMessageTypes().get(33);
+    internal_static_services_universalwallet_v1_AuthenticateResendCodeResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_universalwallet_v1_AuthenticateResendCodeResponse_descriptor,
+            new java.lang.String[] {});
+    internal_static_services_universalwallet_v1_AuthenticateConfirmRequest_descriptor =
+        getDescriptor().getMessageTypes().get(34);
     internal_static_services_universalwallet_v1_AuthenticateConfirmRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_universalwallet_v1_AuthenticateConfirmRequest_descriptor,
@@ -549,7 +577,7 @@ public final class UniversalWalletOuterClass {
               "Challenge", "Response",
             });
     internal_static_services_universalwallet_v1_AuthenticateConfirmResponse_descriptor =
-        getDescriptor().getMessageTypes().get(33);
+        getDescriptor().getMessageTypes().get(35);
     internal_static_services_universalwallet_v1_AuthenticateConfirmResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_universalwallet_v1_AuthenticateConfirmResponse_descriptor,
@@ -559,6 +587,7 @@ public final class UniversalWalletOuterClass {
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();

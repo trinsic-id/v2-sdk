@@ -84,9 +84,8 @@ public class WalletService extends ServiceBase {
     return withMetadata(stub, request).getWalletInfo(request);
   }
   /** Retrieve wallet details and configuration about the currently authenticated wallet */
-  public ListenableFuture<GetMyInfoResponse> getMyInfo(GetMyInfoRequest request)
-      throws InvalidProtocolBufferException {
-
+  public ListenableFuture<GetMyInfoResponse> getMyInfo() throws InvalidProtocolBufferException {
+    var request = GetMyInfoRequest.newBuilder().build();
     return withMetadata(stub, request).getMyInfo(request);
   }
   /**
@@ -145,6 +144,12 @@ public class WalletService extends ServiceBase {
       AuthenticateConfirmRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).authenticateConfirm(request);
+  }
+  /** Resend previous authentication code */
+  public ListenableFuture<AuthenticateResendCodeResponse> authenticateResendCode(
+      AuthenticateResendCodeRequest request) throws InvalidProtocolBufferException {
+
+    return withMetadata(stub, request).authenticateResendCode(request);
   }
   /** List all wallets in the ecosystem */
   public ListenableFuture<ListWalletsResponse> listWallets(ListWalletsRequest request)

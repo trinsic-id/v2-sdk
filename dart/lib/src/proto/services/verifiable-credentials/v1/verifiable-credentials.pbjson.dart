@@ -186,14 +186,6 @@ const VerifyProofResponse$json = const {
   '2': const [
     const {'1': 'is_valid', '3': 1, '4': 1, '5': 8, '10': 'isValid'},
     const {
-      '1': 'validation_messages',
-      '3': 2,
-      '4': 3,
-      '5': 9,
-      '8': const {'3': true},
-      '10': 'validationMessages',
-    },
-    const {
       '1': 'validation_results',
       '3': 3,
       '4': 3,
@@ -204,6 +196,10 @@ const VerifyProofResponse$json = const {
     },
   ],
   '3': const [VerifyProofResponse_ValidationResultsEntry$json],
+  '9': const [
+    const {'1': 2, '2': 3},
+  ],
+  '10': const ['validation_messages'],
 };
 
 @$core.Deprecated('Use verifyProofResponseDescriptor instead')
@@ -225,7 +221,7 @@ const VerifyProofResponse_ValidationResultsEntry$json = const {
 
 /// Descriptor for `VerifyProofResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verifyProofResponseDescriptor = $convert.base64Decode(
-    'ChNWZXJpZnlQcm9vZlJlc3BvbnNlEhkKCGlzX3ZhbGlkGAEgASgIUgdpc1ZhbGlkEjMKE3ZhbGlkYXRpb25fbWVzc2FnZXMYAiADKAlCAhgBUhJ2YWxpZGF0aW9uTWVzc2FnZXMSfAoSdmFsaWRhdGlvbl9yZXN1bHRzGAMgAygLMk0uc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnYxLlZlcmlmeVByb29mUmVzcG9uc2UuVmFsaWRhdGlvblJlc3VsdHNFbnRyeVIRdmFsaWRhdGlvblJlc3VsdHMaegoWVmFsaWRhdGlvblJlc3VsdHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRJKCgV2YWx1ZRgCIAEoCzI0LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5WYWxpZGF0aW9uTWVzc2FnZVIFdmFsdWU6AjgB');
+    'ChNWZXJpZnlQcm9vZlJlc3BvbnNlEhkKCGlzX3ZhbGlkGAEgASgIUgdpc1ZhbGlkEnwKEnZhbGlkYXRpb25fcmVzdWx0cxgDIAMoCzJNLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5WZXJpZnlQcm9vZlJlc3BvbnNlLlZhbGlkYXRpb25SZXN1bHRzRW50cnlSEXZhbGlkYXRpb25SZXN1bHRzGnoKFlZhbGlkYXRpb25SZXN1bHRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSSgoFdmFsdWUYAiABKAsyNC5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuVmFsaWRhdGlvbk1lc3NhZ2VSBXZhbHVlOgI4AUoECAIQA1ITdmFsaWRhdGlvbl9tZXNzYWdlcw==');
 @$core.Deprecated('Use validationMessageDescriptor instead')
 const ValidationMessage$json = const {
   '1': 'ValidationMessage',

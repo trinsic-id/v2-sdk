@@ -48,7 +48,7 @@ type WalletService interface {
 	// GetWalletInfo  Retrieve wallet details and configuration
 	GetWalletInfo(userContext context.Context, request *wallet.GetWalletInfoRequest) (*wallet.GetWalletInfoResponse, error)
 	// GetMyInfo  Retrieve wallet details and configuration about the currently authenticated wallet
-	GetMyInfo(userContext context.Context, request *wallet.GetMyInfoRequest) (*wallet.GetMyInfoResponse, error)
+	GetMyInfo(userContext context.Context) (*wallet.GetMyInfoResponse, error)
 	// GenerateAuthToken  Generate new token for a given wallet and add it to the collection of known auth tokens.
 	// This endpoint requires authentication and will return a new token ID and auth token.
 	// Use this endpoint if you want to authorize another device, without having to share your
@@ -69,6 +69,8 @@ type WalletService interface {
 	AuthenticateInit(userContext context.Context, request *wallet.AuthenticateInitRequest) (*wallet.AuthenticateInitResponse, error)
 	// AuthenticateConfirm  Confirm sign-in to an already existing wallet and return authentication token
 	AuthenticateConfirm(userContext context.Context, request *wallet.AuthenticateConfirmRequest) (*wallet.AuthenticateConfirmResponse, error)
+	// AuthenticateResendCode  Resend previous authentication code
+	AuthenticateResendCode(userContext context.Context, request *wallet.AuthenticateResendCodeRequest) (*wallet.AuthenticateResendCodeResponse, error)
 	// ListWallets  List all wallets in the ecosystem
 	ListWallets(userContext context.Context, request *wallet.ListWalletsRequest) (*wallet.ListWalletsResponse, error)
 
@@ -200,7 +202,8 @@ func (w *universalWalletBase) GetWalletInfo(userContext context.Context, request
 }
 
 // GetMyInfo  Retrieve wallet details and configuration about the currently authenticated wallet
-func (w *universalWalletBase) GetMyInfo(userContext context.Context, request *wallet.GetMyInfoRequest) (*wallet.GetMyInfoResponse, error) {
+func (w *universalWalletBase) GetMyInfo(userContext context.Context) (*wallet.GetMyInfoResponse, error) {
+	request := &wallet.GetMyInfoRequest{}
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -303,6 +306,19 @@ func (w *universalWalletBase) AuthenticateConfirm(userContext context.Context, r
 		return nil, err
 	}
 	response, err := w.client.AuthenticateConfirm(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+// AuthenticateResendCode  Resend previous authentication code
+func (w *universalWalletBase) AuthenticateResendCode(userContext context.Context, request *wallet.AuthenticateResendCodeRequest) (*wallet.AuthenticateResendCodeResponse, error) {
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := w.client.AuthenticateResendCode(md, request)
 	if err != nil {
 		return nil, err
 	}
