@@ -49,6 +49,8 @@ jobs:
         name: Setup Node v18
         with:
           node-version: 18
+          cache: 'npm'
+          cache-dependency-path: ./sdk/samples/grpc-web/package-lock.json
       - run: |
           npm ci
           npm run test:browser -- --trinsic_environment="${{ inputs.environment }}"
