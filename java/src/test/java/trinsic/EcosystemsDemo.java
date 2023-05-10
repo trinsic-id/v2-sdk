@@ -1,14 +1,14 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
-import trinsic.services.provider.v1.EcosystemInfoRequest;
 import trinsic.services.provider.v1.UpdateEcosystemRequest;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
+
+import java.io.IOException;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
 
 public class EcosystemsDemo {
   public static void main(String[] args)
@@ -32,7 +32,7 @@ public class EcosystemsDemo {
             .createEcosystem(
                 CreateEcosystemRequest.newBuilder()
                     .setDescription("My ecosystem")
-                    .setUri("https://example.com")
+                    .setDomain("https://example.com")
                     .build())
             .get();
     // }
@@ -56,13 +56,7 @@ public class EcosystemsDemo {
     Assertions.assertNotNull(updateResponse.getEcosystem());
 
     // ecosystemInfo() {
-    var infoResponse =
-        trinsic.provider().ecosystemInfo(EcosystemInfoRequest.getDefaultInstance()).get();
     // }
-
-    Assertions.assertNotNull(infoResponse.getEcosystem());
-    Assertions.assertEquals(
-        infoResponse.getEcosystem().getUri(), updateResponse.getEcosystem().getUri());
 
     // listEcosystems() {
     // }

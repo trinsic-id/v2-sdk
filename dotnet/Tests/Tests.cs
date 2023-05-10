@@ -82,7 +82,7 @@ public class Tests
 
         trinsic = new TrinsicService(_options.CloneWithAuthToken(clinic.AuthToken));
 
-        var info = await trinsic.Wallet.GetMyInfoAsync(new());
+        var info = await trinsic.Wallet.GetMyInfoAsync();
         info.Should().NotBeNull();
         info.Wallet.Should().NotBeNull();
 
@@ -167,7 +167,7 @@ public class Tests
         // set the auth token to the newly created wallet
         trinsic = new TrinsicService(_options.CloneWithAuthToken(createWalletResponse.AuthToken));
 
-        var newWalletInfo = await trinsic.Wallet.GetMyInfoAsync(new());
+        var newWalletInfo = await trinsic.Wallet.GetMyInfoAsync();
         var walletId = newWalletInfo.Wallet.WalletId;
 
         // deleteWallet() {
@@ -273,11 +273,7 @@ public class Tests
 
         // test get ecosystem info
         // ecosystemInfo() {
-        var infoResult = await trinsic.Provider.EcosystemInfoAsync(new());
         // }
-
-        infoResult.Should().NotBeNull();
-        //infoResult.Ecosystem.Should().Be(updateResult.Ecosystem); //TODO: UNCOMMENT WHEN updateEcosystem() TEST IS UN-CATCHED.
 
         // inviteParticipant() {
         // }
@@ -286,7 +282,7 @@ public class Tests
         // }
 
         // Test upgrading account DID
-        var accountInfo = await trinsic.Wallet.GetMyInfoAsync(new());
+        var accountInfo = await trinsic.Wallet.GetMyInfoAsync();
         var walletId = accountInfo.Wallet.WalletId;
 
         // Wrap in try-catch as this ecosystem will not presently have DID upgrade permissions

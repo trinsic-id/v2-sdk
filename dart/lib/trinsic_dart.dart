@@ -26,10 +26,6 @@ export 'src/proto/services/common/v1/common.pb.dart';
 export 'src/proto/services/common/v1/common.pbenum.dart';
 export 'src/proto/services/common/v1/common.pbjson.dart';
 
-export 'src/proto/services/event/v1/event.pb.dart';
-export 'src/proto/services/event/v1/event.pbenum.dart';
-export 'src/proto/services/event/v1/event.pbjson.dart';
-
 export 'src/proto/services/file-management/v1/file-management.pb.dart';
 export 'src/proto/services/file-management/v1/file-management.pbenum.dart';
 export 'src/proto/services/file-management/v1/file-management.pbgrpc.dart';

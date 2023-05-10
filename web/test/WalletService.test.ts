@@ -48,7 +48,7 @@ describe("WalletService Unit Tests", () => {
     it("get account info", async () => {
         trinsic.options.authToken = allison.authToken;
 
-        let info = await trinsic.wallet().getMyInfo({});
+        let info = await trinsic.wallet().getMyInfo();
 
         expect(info).not.toBeNull();
     });
@@ -205,7 +205,7 @@ describe("WalletService Unit Tests", () => {
             .wallet()
             .createWallet({ ecosystemId: myEcosystemIdOrName() });
         trinsic.options.authToken = response.authToken;
-        let accountInfo = await trinsic.wallet().getMyInfo({});
+        let accountInfo = await trinsic.wallet().getMyInfo();
 
         let walletId = accountInfo.wallet!.walletId;
 

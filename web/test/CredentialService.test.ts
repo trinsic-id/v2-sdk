@@ -30,7 +30,7 @@ describe("CredentialService Unit Tests", () => {
 
     it("Issue Credential From Template", async () => {
         // Get account info, so we can compare issued DID etc.
-        let info = await trinsic.wallet().getMyInfo({});
+        let info = await trinsic.wallet().getMyInfo();
 
         // Set issuer DID of credential
         let vaccineCert = Object.assign({}, vaccineCertUnsigned, {
