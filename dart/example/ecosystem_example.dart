@@ -13,7 +13,7 @@ Future runEcosystemDemo() async {
   // createEcosystem() {
   var actualCreate = await trinsic.provider().createEcosystem(
       request: CreateEcosystemRequest(
-          description: "My ecosystem", uri: "https://example.com"));
+          description: "My ecosystem", domain: "https://example.com"));
   // }
 
   assert(actualCreate.ecosystem.id != "");

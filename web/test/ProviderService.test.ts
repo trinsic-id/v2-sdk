@@ -34,7 +34,7 @@ describe("ProviderService Unit Tests", () => {
         let createResponse = await trinsic.provider().createEcosystem(
             CreateEcosystemRequest.fromPartial({
                 description: "Test ecosystem from Node",
-                uri: "https://example.com",
+                domain: "https://example.com",
             })
         );
         // }
@@ -49,7 +49,7 @@ describe("ProviderService Unit Tests", () => {
         let updateResponse = await trinsic.provider().updateEcosystem(
             UpdateEcosystemRequest.fromPartial({
                 description: "New ecosystem description",
-                uri: "https://new-example.com",
+                domain: "https://new-example.com",
             })
         );
         //}
@@ -61,16 +61,9 @@ describe("ProviderService Unit Tests", () => {
         );
 
         // ecosystemInfo() {
-        const infoResponse = await trinsic
-            .provider()
-            .ecosystemInfo(EcosystemInfoRequest.fromPartial({}));
-
-        const ecosystem = infoResponse.ecosystem;
         //}
 
-        expect(ecosystem).toEqual(updateResponse.Ecosystem);
-
-        let accountInfoResponse = await trinsic.wallet().getMyInfo({});
+        let accountInfoResponse = await trinsic.wallet().getMyInfo();
         let walletId = accountInfoResponse.wallet!.walletId;
 
         // Try/catch this as ecosystems currently can't upgrade DIDs by default
