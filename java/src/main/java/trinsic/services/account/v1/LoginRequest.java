@@ -24,7 +24,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
 
   private LoginRequest() {
     email_ = "";
-    invitationCode_ = "";
     ecosystemId_ = "";
   }
 
@@ -103,65 +102,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
-  public static final int INVITATION_CODE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object invitationCode_;
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Invitation code associated with this registration
-   * </pre>
-   *
-   * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-   * </code>
-   *
-   * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=139
-   * @return The invitationCode.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.lang.String getInvitationCode() {
-    java.lang.Object ref = invitationCode_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      invitationCode_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Invitation code associated with this registration
-   * </pre>
-   *
-   * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-   * </code>
-   *
-   * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=139
-   * @return The bytes for invitationCode.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public com.google.protobuf.ByteString getInvitationCodeBytes() {
-    java.lang.Object ref = invitationCode_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      invitationCode_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 3;
   private volatile java.lang.Object ecosystemId_;
   /**
@@ -169,7 +109,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * ID of Ecosystem to sign into.
-   * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -193,7 +132,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * ID of Ecosystem to sign into.
-   * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -230,9 +168,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationCode_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, invitationCode_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ecosystemId_);
     }
@@ -247,9 +182,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationCode_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, invitationCode_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ecosystemId_);
@@ -270,7 +202,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
     trinsic.services.account.v1.LoginRequest other = (trinsic.services.account.v1.LoginRequest) obj;
 
     if (!getEmail().equals(other.getEmail())) return false;
-    if (!getInvitationCode().equals(other.getInvitationCode())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -285,8 +216,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + EMAIL_FIELD_NUMBER;
     hash = (53 * hash) + getEmail().hashCode();
-    hash = (37 * hash) + INVITATION_CODE_FIELD_NUMBER;
-    hash = (53 * hash) + getInvitationCode().hashCode();
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
@@ -429,8 +358,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
       super.clear();
       email_ = "";
 
-      invitationCode_ = "";
-
       ecosystemId_ = "";
 
       return this;
@@ -461,7 +388,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
       trinsic.services.account.v1.LoginRequest result =
           new trinsic.services.account.v1.LoginRequest(this);
       result.email_ = email_;
-      result.invitationCode_ = invitationCode_;
       result.ecosystemId_ = ecosystemId_;
       onBuilt();
       return result;
@@ -516,10 +442,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
         email_ = other.email_;
         onChanged();
       }
-      if (!other.getInvitationCode().isEmpty()) {
-        invitationCode_ = other.invitationCode_;
-        onChanged();
-      }
       if (!other.getEcosystemId().isEmpty()) {
         ecosystemId_ = other.ecosystemId_;
         onChanged();
@@ -556,12 +478,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 10
-            case 18:
-              {
-                invitationCode_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
             case 26:
               {
                 ecosystemId_ = input.readStringRequireUtf8();
@@ -691,144 +607,12 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private java.lang.Object invitationCode_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Invitation code associated with this registration
-     * </pre>
-     *
-     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-     * </code>
-     *
-     * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=139
-     * @return The invitationCode.
-     */
-    @java.lang.Deprecated
-    public java.lang.String getInvitationCode() {
-      java.lang.Object ref = invitationCode_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        invitationCode_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Invitation code associated with this registration
-     * </pre>
-     *
-     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-     * </code>
-     *
-     * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=139
-     * @return The bytes for invitationCode.
-     */
-    @java.lang.Deprecated
-    public com.google.protobuf.ByteString getInvitationCodeBytes() {
-      java.lang.Object ref = invitationCode_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        invitationCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Invitation code associated with this registration
-     * </pre>
-     *
-     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-     * </code>
-     *
-     * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=139
-     * @param value The invitationCode to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder setInvitationCode(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      invitationCode_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Invitation code associated with this registration
-     * </pre>
-     *
-     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-     * </code>
-     *
-     * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=139
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder clearInvitationCode() {
-
-      invitationCode_ = getDefaultInstance().getInvitationCode();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Invitation code associated with this registration
-     * </pre>
-     *
-     * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-     * </code>
-     *
-     * @deprecated services.account.v1.LoginRequest.invitation_code is deprecated. See
-     *     services/account/v1/account.proto;l=139
-     * @param value The bytes for invitationCode to set.
-     * @return This builder for chaining.
-     */
-    @java.lang.Deprecated
-    public Builder setInvitationCodeBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      invitationCode_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object ecosystemId_ = "";
     /**
      *
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -851,7 +635,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -874,7 +657,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -896,7 +678,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -914,7 +695,6 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>

@@ -48,7 +48,7 @@ type WalletService interface {
 	// GetWalletInfo  Retrieve wallet details and configuration
 	GetWalletInfo(userContext context.Context, request *wallet.GetWalletInfoRequest) (*wallet.GetWalletInfoResponse, error)
 	// GetMyInfo  Retrieve wallet details and configuration about the currently authenticated wallet
-	GetMyInfo(userContext context.Context, request *wallet.GetMyInfoRequest) (*wallet.GetMyInfoResponse, error)
+	GetMyInfo(userContext context.Context) (*wallet.GetMyInfoResponse, error)
 	// GenerateAuthToken  Generate new token for a given wallet and add it to the collection of known auth tokens.
 	// This endpoint requires authentication and will return a new token ID and auth token.
 	// Use this endpoint if you want to authorize another device, without having to share your
@@ -200,7 +200,8 @@ func (w *universalWalletBase) GetWalletInfo(userContext context.Context, request
 }
 
 // GetMyInfo  Retrieve wallet details and configuration about the currently authenticated wallet
-func (w *universalWalletBase) GetMyInfo(userContext context.Context, request *wallet.GetMyInfoRequest) (*wallet.GetMyInfoResponse, error) {
+func (w *universalWalletBase) GetMyInfo(userContext context.Context) (*wallet.GetMyInfoResponse, error) {
+	request := &wallet.GetMyInfoRequest{}
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

@@ -10,148 +10,6 @@ import {
 } from "../../account/v1/account";
 import { SupportedDidMethod, supportedDidMethodFromJSON, supportedDidMethodToJSON } from "../../common/v1/common";
 
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Type of participant being invited to ecosystem
- */
-export enum ParticipantType {
-  /** participant_type_individual - Participant is an individual */
-  participant_type_individual = 0,
-  /** participant_type_organization - Participant is an organization */
-  participant_type_organization = 1,
-  UNRECOGNIZED = -1,
-}
-
-export function participantTypeFromJSON(object: any): ParticipantType {
-  switch (object) {
-    case 0:
-    case "participant_type_individual":
-      return ParticipantType.participant_type_individual;
-    case 1:
-    case "participant_type_organization":
-      return ParticipantType.participant_type_organization;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return ParticipantType.UNRECOGNIZED;
-  }
-}
-
-export function participantTypeToJSON(object: ParticipantType): string {
-  switch (object) {
-    case ParticipantType.participant_type_individual:
-      return "participant_type_individual";
-    case ParticipantType.participant_type_organization:
-      return "participant_type_organization";
-    case ParticipantType.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
-  }
-}
-
-/**
- * Request to invite a participant to an ecosystem
- *
- * @deprecated
- */
-export interface InviteRequest {
-  /** Type of participant being invited (individual/organization) */
-  participant?: ParticipantType;
-  /** Description of invitation */
-  description?: string;
-  /** Account details of invitee */
-  details?: AccountDetails;
-}
-
-export interface InviteRequest_DidCommInvitation {
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Response to `InviteRequest`
- *
- * @deprecated
- */
-export interface InviteResponse {
-  /** ID of created invitation */
-  invitationId?: string;
-  /** Invitation code -- must be passed back in `LoginRequest` */
-  invitationCode?: string;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Request details for the status of an invitation
- *
- * @deprecated
- */
-export interface InvitationStatusRequest {
-  /** ID of invitation, received from `InviteResponse` */
-  invitationId?: string;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Response to `InvitationStatusRequest`
- *
- * @deprecated
- */
-export interface InvitationStatusResponse {
-  /** Status of invitation */
-  status?: InvitationStatusResponse_Status;
-  /** Human-readable string with details about invitation status */
-  statusDetails?: string;
-}
-
-export enum InvitationStatusResponse_Status {
-  /** Error - Onboarding resulted in error */
-  Error = 0,
-  /** InvitationSent - The participant has been invited */
-  InvitationSent = 1,
-  /** Completed - The participant has been onboarded */
-  Completed = 2,
-  /** Expired - The invite has expired */
-  Expired = 3,
-  UNRECOGNIZED = -1,
-}
-
-export function invitationStatusResponse_StatusFromJSON(object: any): InvitationStatusResponse_Status {
-  switch (object) {
-    case 0:
-    case "Error":
-      return InvitationStatusResponse_Status.Error;
-    case 1:
-    case "InvitationSent":
-      return InvitationStatusResponse_Status.InvitationSent;
-    case 2:
-    case "Completed":
-      return InvitationStatusResponse_Status.Completed;
-    case 3:
-    case "Expired":
-      return InvitationStatusResponse_Status.Expired;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return InvitationStatusResponse_Status.UNRECOGNIZED;
-  }
-}
-
-export function invitationStatusResponse_StatusToJSON(object: InvitationStatusResponse_Status): string {
-  switch (object) {
-    case InvitationStatusResponse_Status.Error:
-      return "Error";
-    case InvitationStatusResponse_Status.InvitationSent:
-      return "InvitationSent";
-    case InvitationStatusResponse_Status.Completed:
-      return "Completed";
-    case InvitationStatusResponse_Status.Expired:
-      return "Expired";
-    case InvitationStatusResponse_Status.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
-  }
-}
-
 /** Details of an ecosystem */
 export interface Ecosystem {
   /** URN of the ecosystem */
@@ -160,34 +18,10 @@ export interface Ecosystem {
   name?: string;
   /** Ecosystem description */
   description?: string;
-  /**
-   * DEPRECATED, will be removed April 1st 2023
-   * External URL associated with the organization or ecosystem entity
-   *
-   * @deprecated
-   */
-  uri?: string;
   /** Display details */
   display?: EcosystemDisplay;
   /** Domain */
   domain?: string;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Webhook configured on an ecosystem
- *
- * @deprecated
- */
-export interface WebhookConfig {
-  /** UUID of the webhook */
-  id?: string;
-  /** HTTPS URL to POST webhook calls to */
-  destinationUrl?: string;
-  /** Events the webhook is subscribed to */
-  events?: string[];
-  /** Last known status of webhook (whether or not Trinsic can successfully reach destination) */
-  status?: string;
 }
 
 /** Request to create an ecosystem */
@@ -201,13 +35,6 @@ export interface CreateEcosystemRequest {
   name?: string;
   /** Ecosystem description */
   description?: string;
-  /**
-   * DEPRECATED, will be removed April 1st 2023
-   * External URL associated with your organization or ecosystem entity
-   *
-   * @deprecated
-   */
-  uri?: string;
   /** The account details of the owner of the ecosystem */
   details?: AccountDetails;
   /** New domain URL */
@@ -228,13 +55,6 @@ export interface CreateEcosystemResponse {
 export interface UpdateEcosystemRequest {
   /** New description of the ecosystem */
   description?: string;
-  /**
-   * DEPRECATED, will be removed April 1st 2023
-   * New external URL associated with the organization or ecosystem entity
-   *
-   * @deprecated
-   */
-  uri?: string;
   /** New domain URL */
   domain?: string;
   /**
@@ -267,70 +87,13 @@ export interface UpdateEcosystemResponse {
 }
 
 export interface EcosystemDisplay {
-  /**
-   * Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-   *    EcosystemDisplayDetails dark = 1;
-   */
+  /** Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform. */
   light?: EcosystemDisplayDetails;
 }
 
 export interface EcosystemDisplayDetails {
   logoUrl?: string;
   color?: string;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Request to add a webhook to an ecosystem
- *
- * @deprecated
- */
-export interface AddWebhookRequest {
-  /**
-   * Destination to post webhook calls to.
-   * Must be a reachable HTTPS URL.
-   */
-  destinationUrl?: string;
-  /**
-   * Secret string used for HMAC-SHA256 signing of webhook payloads
-   * to verify that a webhook comes from Trinsic
-   */
-  secret?: string;
-  /** Events to subscribe to. Default is "*" (all events) */
-  events?: string[];
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Response to `AddWebhookRequest`
- *
- * @deprecated
- */
-export interface AddWebhookResponse {
-  /** Ecosystem data with new webhook */
-  ecosystem?: Ecosystem;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Request to delete a webhook from an ecosystem
- *
- * @deprecated
- */
-export interface DeleteWebhookRequest {
-  /** ID of webhook to delete */
-  webhookId?: string;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Response to `DeleteWebhookRequest`
- *
- * @deprecated
- */
-export interface DeleteWebhookResponse {
-  /** Ecosystem data after removal of webhook */
-  ecosystem?: Ecosystem;
 }
 
 /** Request to fetch information about an ecosystem */
@@ -341,45 +104,6 @@ export interface EcosystemInfoRequest {
 export interface EcosystemInfoResponse {
   /** Ecosystem corresponding to current ecosystem in the account token */
   ecosystem?: Ecosystem;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Request to fetch information about an ecosystem
- *
- * @deprecated
- */
-export interface GetPublicEcosystemInfoRequest {
-  ecosystemId?: string;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- * Response to `InfoRequest`
- *
- * @deprecated
- */
-export interface GetPublicEcosystemInfoResponse {
-  /** Ecosystem corresponding to requested `ecosystem_id` */
-  ecosystem?: PublicEcosystemInformation;
-}
-
-/**
- * DEPRECATED, will be removed April 1st 2023
- *
- * @deprecated
- */
-export interface PublicEcosystemInformation {
-  /** Public name of this ecosystem */
-  name?: string;
-  /** Public domain for the owner of this ecosystem */
-  domain?: string;
-  /** Trinsic verified the domain is owned by the owner of this ecosystem */
-  domainVerified?: boolean;
-  /** Style display information */
-  styleDisplay?: EcosystemDisplay;
-  /** Description of the ecosystem */
-  description?: string;
 }
 
 /**
@@ -641,337 +365,8 @@ export interface UpgradeDidResponse {
   did?: string;
 }
 
-function createBaseInviteRequest(): InviteRequest {
-  return { participant: 0, description: "", details: undefined };
-}
-
-export const InviteRequest = {
-  encode(message: InviteRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.participant !== undefined && message.participant !== 0) {
-      writer.uint32(8).int32(message.participant);
-    }
-    if (message.description !== undefined && message.description !== "") {
-      writer.uint32(18).string(message.description);
-    }
-    if (message.details !== undefined) {
-      AccountDetails.encode(message.details, writer.uint32(26).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): InviteRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInviteRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 8) {
-            break;
-          }
-
-          message.participant = reader.int32() as any;
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.description = reader.string();
-          continue;
-        case 3:
-          if (tag != 26) {
-            break;
-          }
-
-          message.details = AccountDetails.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): InviteRequest {
-    return {
-      participant: isSet(object.participant) ? participantTypeFromJSON(object.participant) : 0,
-      description: isSet(object.description) ? String(object.description) : "",
-      details: isSet(object.details) ? AccountDetails.fromJSON(object.details) : undefined,
-    };
-  },
-
-  toJSON(message: InviteRequest): unknown {
-    const obj: any = {};
-    message.participant !== undefined && (obj.participant = participantTypeToJSON(message.participant));
-    message.description !== undefined && (obj.description = message.description);
-    message.details !== undefined &&
-      (obj.details = message.details ? AccountDetails.toJSON(message.details) : undefined);
-    return obj;
-  },
-
-  create(base?: DeepPartial<InviteRequest>): InviteRequest {
-    return InviteRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<InviteRequest>): InviteRequest {
-    const message = createBaseInviteRequest();
-    message.participant = object.participant ?? 0;
-    message.description = object.description ?? "";
-    message.details = (object.details !== undefined && object.details !== null)
-      ? AccountDetails.fromPartial(object.details)
-      : undefined;
-    return message;
-  },
-};
-
-function createBaseInviteRequest_DidCommInvitation(): InviteRequest_DidCommInvitation {
-  return {};
-}
-
-export const InviteRequest_DidCommInvitation = {
-  encode(_: InviteRequest_DidCommInvitation, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): InviteRequest_DidCommInvitation {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInviteRequest_DidCommInvitation();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(_: any): InviteRequest_DidCommInvitation {
-    return {};
-  },
-
-  toJSON(_: InviteRequest_DidCommInvitation): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  create(base?: DeepPartial<InviteRequest_DidCommInvitation>): InviteRequest_DidCommInvitation {
-    return InviteRequest_DidCommInvitation.fromPartial(base ?? {});
-  },
-
-  fromPartial(_: DeepPartial<InviteRequest_DidCommInvitation>): InviteRequest_DidCommInvitation {
-    const message = createBaseInviteRequest_DidCommInvitation();
-    return message;
-  },
-};
-
-function createBaseInviteResponse(): InviteResponse {
-  return { invitationId: "", invitationCode: "" };
-}
-
-export const InviteResponse = {
-  encode(message: InviteResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.invitationId !== undefined && message.invitationId !== "") {
-      writer.uint32(82).string(message.invitationId);
-    }
-    if (message.invitationCode !== undefined && message.invitationCode !== "") {
-      writer.uint32(90).string(message.invitationCode);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): InviteResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInviteResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 10:
-          if (tag != 82) {
-            break;
-          }
-
-          message.invitationId = reader.string();
-          continue;
-        case 11:
-          if (tag != 90) {
-            break;
-          }
-
-          message.invitationCode = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): InviteResponse {
-    return {
-      invitationId: isSet(object.invitationId) ? String(object.invitationId) : "",
-      invitationCode: isSet(object.invitationCode) ? String(object.invitationCode) : "",
-    };
-  },
-
-  toJSON(message: InviteResponse): unknown {
-    const obj: any = {};
-    message.invitationId !== undefined && (obj.invitationId = message.invitationId);
-    message.invitationCode !== undefined && (obj.invitationCode = message.invitationCode);
-    return obj;
-  },
-
-  create(base?: DeepPartial<InviteResponse>): InviteResponse {
-    return InviteResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<InviteResponse>): InviteResponse {
-    const message = createBaseInviteResponse();
-    message.invitationId = object.invitationId ?? "";
-    message.invitationCode = object.invitationCode ?? "";
-    return message;
-  },
-};
-
-function createBaseInvitationStatusRequest(): InvitationStatusRequest {
-  return { invitationId: "" };
-}
-
-export const InvitationStatusRequest = {
-  encode(message: InvitationStatusRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.invitationId !== undefined && message.invitationId !== "") {
-      writer.uint32(10).string(message.invitationId);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): InvitationStatusRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInvitationStatusRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.invitationId = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): InvitationStatusRequest {
-    return { invitationId: isSet(object.invitationId) ? String(object.invitationId) : "" };
-  },
-
-  toJSON(message: InvitationStatusRequest): unknown {
-    const obj: any = {};
-    message.invitationId !== undefined && (obj.invitationId = message.invitationId);
-    return obj;
-  },
-
-  create(base?: DeepPartial<InvitationStatusRequest>): InvitationStatusRequest {
-    return InvitationStatusRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<InvitationStatusRequest>): InvitationStatusRequest {
-    const message = createBaseInvitationStatusRequest();
-    message.invitationId = object.invitationId ?? "";
-    return message;
-  },
-};
-
-function createBaseInvitationStatusResponse(): InvitationStatusResponse {
-  return { status: 0, statusDetails: "" };
-}
-
-export const InvitationStatusResponse = {
-  encode(message: InvitationStatusResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.status !== undefined && message.status !== 0) {
-      writer.uint32(8).int32(message.status);
-    }
-    if (message.statusDetails !== undefined && message.statusDetails !== "") {
-      writer.uint32(18).string(message.statusDetails);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): InvitationStatusResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInvitationStatusResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 8) {
-            break;
-          }
-
-          message.status = reader.int32() as any;
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.statusDetails = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): InvitationStatusResponse {
-    return {
-      status: isSet(object.status) ? invitationStatusResponse_StatusFromJSON(object.status) : 0,
-      statusDetails: isSet(object.statusDetails) ? String(object.statusDetails) : "",
-    };
-  },
-
-  toJSON(message: InvitationStatusResponse): unknown {
-    const obj: any = {};
-    message.status !== undefined && (obj.status = invitationStatusResponse_StatusToJSON(message.status));
-    message.statusDetails !== undefined && (obj.statusDetails = message.statusDetails);
-    return obj;
-  },
-
-  create(base?: DeepPartial<InvitationStatusResponse>): InvitationStatusResponse {
-    return InvitationStatusResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<InvitationStatusResponse>): InvitationStatusResponse {
-    const message = createBaseInvitationStatusResponse();
-    message.status = object.status ?? 0;
-    message.statusDetails = object.statusDetails ?? "";
-    return message;
-  },
-};
-
 function createBaseEcosystem(): Ecosystem {
-  return { id: "", name: "", description: "", uri: "", display: undefined, domain: "" };
+  return { id: "", name: "", description: "", display: undefined, domain: "" };
 }
 
 export const Ecosystem = {
@@ -984,9 +379,6 @@ export const Ecosystem = {
     }
     if (message.description !== undefined && message.description !== "") {
       writer.uint32(26).string(message.description);
-    }
-    if (message.uri !== undefined && message.uri !== "") {
-      writer.uint32(34).string(message.uri);
     }
     if (message.display !== undefined) {
       EcosystemDisplay.encode(message.display, writer.uint32(50).fork()).ldelim();
@@ -1025,13 +417,6 @@ export const Ecosystem = {
 
           message.description = reader.string();
           continue;
-        case 4:
-          if (tag != 34) {
-            break;
-          }
-
-          message.uri = reader.string();
-          continue;
         case 6:
           if (tag != 50) {
             break;
@@ -1060,7 +445,6 @@ export const Ecosystem = {
       id: isSet(object.id) ? String(object.id) : "",
       name: isSet(object.name) ? String(object.name) : "",
       description: isSet(object.description) ? String(object.description) : "",
-      uri: isSet(object.uri) ? String(object.uri) : "",
       display: isSet(object.display) ? EcosystemDisplay.fromJSON(object.display) : undefined,
       domain: isSet(object.domain) ? String(object.domain) : "",
     };
@@ -1071,7 +455,6 @@ export const Ecosystem = {
     message.id !== undefined && (obj.id = message.id);
     message.name !== undefined && (obj.name = message.name);
     message.description !== undefined && (obj.description = message.description);
-    message.uri !== undefined && (obj.uri = message.uri);
     message.display !== undefined &&
       (obj.display = message.display ? EcosystemDisplay.toJSON(message.display) : undefined);
     message.domain !== undefined && (obj.domain = message.domain);
@@ -1087,7 +470,6 @@ export const Ecosystem = {
     message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.description = object.description ?? "";
-    message.uri = object.uri ?? "";
     message.display = (object.display !== undefined && object.display !== null)
       ? EcosystemDisplay.fromPartial(object.display)
       : undefined;
@@ -1096,111 +478,8 @@ export const Ecosystem = {
   },
 };
 
-function createBaseWebhookConfig(): WebhookConfig {
-  return { id: "", destinationUrl: "", events: [], status: "" };
-}
-
-export const WebhookConfig = {
-  encode(message: WebhookConfig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.id !== undefined && message.id !== "") {
-      writer.uint32(10).string(message.id);
-    }
-    if (message.destinationUrl !== undefined && message.destinationUrl !== "") {
-      writer.uint32(18).string(message.destinationUrl);
-    }
-    if (message.events !== undefined && message.events.length !== 0) {
-      for (const v of message.events) {
-        writer.uint32(34).string(v!);
-      }
-    }
-    if (message.status !== undefined && message.status !== "") {
-      writer.uint32(42).string(message.status);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): WebhookConfig {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseWebhookConfig();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.id = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.destinationUrl = reader.string();
-          continue;
-        case 4:
-          if (tag != 34) {
-            break;
-          }
-
-          message.events!.push(reader.string());
-          continue;
-        case 5:
-          if (tag != 42) {
-            break;
-          }
-
-          message.status = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): WebhookConfig {
-    return {
-      id: isSet(object.id) ? String(object.id) : "",
-      destinationUrl: isSet(object.destinationUrl) ? String(object.destinationUrl) : "",
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => String(e)) : [],
-      status: isSet(object.status) ? String(object.status) : "",
-    };
-  },
-
-  toJSON(message: WebhookConfig): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.destinationUrl !== undefined && (obj.destinationUrl = message.destinationUrl);
-    if (message.events) {
-      obj.events = message.events.map((e) => e);
-    } else {
-      obj.events = [];
-    }
-    message.status !== undefined && (obj.status = message.status);
-    return obj;
-  },
-
-  create(base?: DeepPartial<WebhookConfig>): WebhookConfig {
-    return WebhookConfig.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<WebhookConfig>): WebhookConfig {
-    const message = createBaseWebhookConfig();
-    message.id = object.id ?? "";
-    message.destinationUrl = object.destinationUrl ?? "";
-    message.events = object.events?.map((e) => e) || [];
-    message.status = object.status ?? "";
-    return message;
-  },
-};
-
 function createBaseCreateEcosystemRequest(): CreateEcosystemRequest {
-  return { name: "", description: "", uri: "", details: undefined, domain: "" };
+  return { name: "", description: "", details: undefined, domain: "" };
 }
 
 export const CreateEcosystemRequest = {
@@ -1210,9 +489,6 @@ export const CreateEcosystemRequest = {
     }
     if (message.description !== undefined && message.description !== "") {
       writer.uint32(18).string(message.description);
-    }
-    if (message.uri !== undefined && message.uri !== "") {
-      writer.uint32(26).string(message.uri);
     }
     if (message.details !== undefined) {
       AccountDetails.encode(message.details, writer.uint32(34).fork()).ldelim();
@@ -1244,13 +520,6 @@ export const CreateEcosystemRequest = {
 
           message.description = reader.string();
           continue;
-        case 3:
-          if (tag != 26) {
-            break;
-          }
-
-          message.uri = reader.string();
-          continue;
         case 4:
           if (tag != 34) {
             break;
@@ -1278,7 +547,6 @@ export const CreateEcosystemRequest = {
     return {
       name: isSet(object.name) ? String(object.name) : "",
       description: isSet(object.description) ? String(object.description) : "",
-      uri: isSet(object.uri) ? String(object.uri) : "",
       details: isSet(object.details) ? AccountDetails.fromJSON(object.details) : undefined,
       domain: isSet(object.domain) ? String(object.domain) : "",
     };
@@ -1288,7 +556,6 @@ export const CreateEcosystemRequest = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.description !== undefined && (obj.description = message.description);
-    message.uri !== undefined && (obj.uri = message.uri);
     message.details !== undefined &&
       (obj.details = message.details ? AccountDetails.toJSON(message.details) : undefined);
     message.domain !== undefined && (obj.domain = message.domain);
@@ -1303,7 +570,6 @@ export const CreateEcosystemRequest = {
     const message = createBaseCreateEcosystemRequest();
     message.name = object.name ?? "";
     message.description = object.description ?? "";
-    message.uri = object.uri ?? "";
     message.details = (object.details !== undefined && object.details !== null)
       ? AccountDetails.fromPartial(object.details)
       : undefined;
@@ -1404,16 +670,13 @@ export const CreateEcosystemResponse = {
 };
 
 function createBaseUpdateEcosystemRequest(): UpdateEcosystemRequest {
-  return { description: "", uri: "", domain: "", display: undefined };
+  return { description: "", domain: "", display: undefined };
 }
 
 export const UpdateEcosystemRequest = {
   encode(message: UpdateEcosystemRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.description !== undefined && message.description !== "") {
       writer.uint32(10).string(message.description);
-    }
-    if (message.uri !== undefined && message.uri !== "") {
-      writer.uint32(18).string(message.uri);
     }
     if (message.domain !== undefined && message.domain !== "") {
       writer.uint32(26).string(message.domain);
@@ -1437,13 +700,6 @@ export const UpdateEcosystemRequest = {
           }
 
           message.description = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.uri = reader.string();
           continue;
         case 3:
           if (tag != 26) {
@@ -1471,7 +727,6 @@ export const UpdateEcosystemRequest = {
   fromJSON(object: any): UpdateEcosystemRequest {
     return {
       description: isSet(object.description) ? String(object.description) : "",
-      uri: isSet(object.uri) ? String(object.uri) : "",
       domain: isSet(object.domain) ? String(object.domain) : "",
       display: isSet(object.display) ? EcosystemDisplayRequest.fromJSON(object.display) : undefined,
     };
@@ -1480,7 +735,6 @@ export const UpdateEcosystemRequest = {
   toJSON(message: UpdateEcosystemRequest): unknown {
     const obj: any = {};
     message.description !== undefined && (obj.description = message.description);
-    message.uri !== undefined && (obj.uri = message.uri);
     message.domain !== undefined && (obj.domain = message.domain);
     message.display !== undefined &&
       (obj.display = message.display ? EcosystemDisplayRequest.toJSON(message.display) : undefined);
@@ -1494,7 +748,6 @@ export const UpdateEcosystemRequest = {
   fromPartial(object: DeepPartial<UpdateEcosystemRequest>): UpdateEcosystemRequest {
     const message = createBaseUpdateEcosystemRequest();
     message.description = object.description ?? "";
-    message.uri = object.uri ?? "";
     message.domain = object.domain ?? "";
     message.display = (object.display !== undefined && object.display !== null)
       ? EcosystemDisplayRequest.fromPartial(object.display)
@@ -1836,270 +1089,6 @@ export const EcosystemDisplayDetails = {
   },
 };
 
-function createBaseAddWebhookRequest(): AddWebhookRequest {
-  return { destinationUrl: "", secret: "", events: [] };
-}
-
-export const AddWebhookRequest = {
-  encode(message: AddWebhookRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.destinationUrl !== undefined && message.destinationUrl !== "") {
-      writer.uint32(10).string(message.destinationUrl);
-    }
-    if (message.secret !== undefined && message.secret !== "") {
-      writer.uint32(18).string(message.secret);
-    }
-    if (message.events !== undefined && message.events.length !== 0) {
-      for (const v of message.events) {
-        writer.uint32(26).string(v!);
-      }
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddWebhookRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAddWebhookRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.destinationUrl = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.secret = reader.string();
-          continue;
-        case 3:
-          if (tag != 26) {
-            break;
-          }
-
-          message.events!.push(reader.string());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AddWebhookRequest {
-    return {
-      destinationUrl: isSet(object.destinationUrl) ? String(object.destinationUrl) : "",
-      secret: isSet(object.secret) ? String(object.secret) : "",
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => String(e)) : [],
-    };
-  },
-
-  toJSON(message: AddWebhookRequest): unknown {
-    const obj: any = {};
-    message.destinationUrl !== undefined && (obj.destinationUrl = message.destinationUrl);
-    message.secret !== undefined && (obj.secret = message.secret);
-    if (message.events) {
-      obj.events = message.events.map((e) => e);
-    } else {
-      obj.events = [];
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<AddWebhookRequest>): AddWebhookRequest {
-    return AddWebhookRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<AddWebhookRequest>): AddWebhookRequest {
-    const message = createBaseAddWebhookRequest();
-    message.destinationUrl = object.destinationUrl ?? "";
-    message.secret = object.secret ?? "";
-    message.events = object.events?.map((e) => e) || [];
-    return message;
-  },
-};
-
-function createBaseAddWebhookResponse(): AddWebhookResponse {
-  return { ecosystem: undefined };
-}
-
-export const AddWebhookResponse = {
-  encode(message: AddWebhookResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.ecosystem !== undefined) {
-      Ecosystem.encode(message.ecosystem, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddWebhookResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAddWebhookResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.ecosystem = Ecosystem.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AddWebhookResponse {
-    return { ecosystem: isSet(object.ecosystem) ? Ecosystem.fromJSON(object.ecosystem) : undefined };
-  },
-
-  toJSON(message: AddWebhookResponse): unknown {
-    const obj: any = {};
-    message.ecosystem !== undefined &&
-      (obj.ecosystem = message.ecosystem ? Ecosystem.toJSON(message.ecosystem) : undefined);
-    return obj;
-  },
-
-  create(base?: DeepPartial<AddWebhookResponse>): AddWebhookResponse {
-    return AddWebhookResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<AddWebhookResponse>): AddWebhookResponse {
-    const message = createBaseAddWebhookResponse();
-    message.ecosystem = (object.ecosystem !== undefined && object.ecosystem !== null)
-      ? Ecosystem.fromPartial(object.ecosystem)
-      : undefined;
-    return message;
-  },
-};
-
-function createBaseDeleteWebhookRequest(): DeleteWebhookRequest {
-  return { webhookId: "" };
-}
-
-export const DeleteWebhookRequest = {
-  encode(message: DeleteWebhookRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.webhookId !== undefined && message.webhookId !== "") {
-      writer.uint32(10).string(message.webhookId);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): DeleteWebhookRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseDeleteWebhookRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.webhookId = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): DeleteWebhookRequest {
-    return { webhookId: isSet(object.webhookId) ? String(object.webhookId) : "" };
-  },
-
-  toJSON(message: DeleteWebhookRequest): unknown {
-    const obj: any = {};
-    message.webhookId !== undefined && (obj.webhookId = message.webhookId);
-    return obj;
-  },
-
-  create(base?: DeepPartial<DeleteWebhookRequest>): DeleteWebhookRequest {
-    return DeleteWebhookRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<DeleteWebhookRequest>): DeleteWebhookRequest {
-    const message = createBaseDeleteWebhookRequest();
-    message.webhookId = object.webhookId ?? "";
-    return message;
-  },
-};
-
-function createBaseDeleteWebhookResponse(): DeleteWebhookResponse {
-  return { ecosystem: undefined };
-}
-
-export const DeleteWebhookResponse = {
-  encode(message: DeleteWebhookResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.ecosystem !== undefined) {
-      Ecosystem.encode(message.ecosystem, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): DeleteWebhookResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseDeleteWebhookResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.ecosystem = Ecosystem.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): DeleteWebhookResponse {
-    return { ecosystem: isSet(object.ecosystem) ? Ecosystem.fromJSON(object.ecosystem) : undefined };
-  },
-
-  toJSON(message: DeleteWebhookResponse): unknown {
-    const obj: any = {};
-    message.ecosystem !== undefined &&
-      (obj.ecosystem = message.ecosystem ? Ecosystem.toJSON(message.ecosystem) : undefined);
-    return obj;
-  },
-
-  create(base?: DeepPartial<DeleteWebhookResponse>): DeleteWebhookResponse {
-    return DeleteWebhookResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<DeleteWebhookResponse>): DeleteWebhookResponse {
-    const message = createBaseDeleteWebhookResponse();
-    message.ecosystem = (object.ecosystem !== undefined && object.ecosystem !== null)
-      ? Ecosystem.fromPartial(object.ecosystem)
-      : undefined;
-    return message;
-  },
-};
-
 function createBaseEcosystemInfoRequest(): EcosystemInfoRequest {
   return {};
 }
@@ -2199,234 +1188,6 @@ export const EcosystemInfoResponse = {
     message.ecosystem = (object.ecosystem !== undefined && object.ecosystem !== null)
       ? Ecosystem.fromPartial(object.ecosystem)
       : undefined;
-    return message;
-  },
-};
-
-function createBaseGetPublicEcosystemInfoRequest(): GetPublicEcosystemInfoRequest {
-  return { ecosystemId: "" };
-}
-
-export const GetPublicEcosystemInfoRequest = {
-  encode(message: GetPublicEcosystemInfoRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
-      writer.uint32(10).string(message.ecosystemId);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetPublicEcosystemInfoRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetPublicEcosystemInfoRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.ecosystemId = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): GetPublicEcosystemInfoRequest {
-    return { ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "" };
-  },
-
-  toJSON(message: GetPublicEcosystemInfoRequest): unknown {
-    const obj: any = {};
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    return obj;
-  },
-
-  create(base?: DeepPartial<GetPublicEcosystemInfoRequest>): GetPublicEcosystemInfoRequest {
-    return GetPublicEcosystemInfoRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<GetPublicEcosystemInfoRequest>): GetPublicEcosystemInfoRequest {
-    const message = createBaseGetPublicEcosystemInfoRequest();
-    message.ecosystemId = object.ecosystemId ?? "";
-    return message;
-  },
-};
-
-function createBaseGetPublicEcosystemInfoResponse(): GetPublicEcosystemInfoResponse {
-  return { ecosystem: undefined };
-}
-
-export const GetPublicEcosystemInfoResponse = {
-  encode(message: GetPublicEcosystemInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.ecosystem !== undefined) {
-      PublicEcosystemInformation.encode(message.ecosystem, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetPublicEcosystemInfoResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetPublicEcosystemInfoResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.ecosystem = PublicEcosystemInformation.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): GetPublicEcosystemInfoResponse {
-    return { ecosystem: isSet(object.ecosystem) ? PublicEcosystemInformation.fromJSON(object.ecosystem) : undefined };
-  },
-
-  toJSON(message: GetPublicEcosystemInfoResponse): unknown {
-    const obj: any = {};
-    message.ecosystem !== undefined &&
-      (obj.ecosystem = message.ecosystem ? PublicEcosystemInformation.toJSON(message.ecosystem) : undefined);
-    return obj;
-  },
-
-  create(base?: DeepPartial<GetPublicEcosystemInfoResponse>): GetPublicEcosystemInfoResponse {
-    return GetPublicEcosystemInfoResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<GetPublicEcosystemInfoResponse>): GetPublicEcosystemInfoResponse {
-    const message = createBaseGetPublicEcosystemInfoResponse();
-    message.ecosystem = (object.ecosystem !== undefined && object.ecosystem !== null)
-      ? PublicEcosystemInformation.fromPartial(object.ecosystem)
-      : undefined;
-    return message;
-  },
-};
-
-function createBasePublicEcosystemInformation(): PublicEcosystemInformation {
-  return { name: "", domain: "", domainVerified: false, styleDisplay: undefined, description: "" };
-}
-
-export const PublicEcosystemInformation = {
-  encode(message: PublicEcosystemInformation, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name !== undefined && message.name !== "") {
-      writer.uint32(10).string(message.name);
-    }
-    if (message.domain !== undefined && message.domain !== "") {
-      writer.uint32(18).string(message.domain);
-    }
-    if (message.domainVerified === true) {
-      writer.uint32(24).bool(message.domainVerified);
-    }
-    if (message.styleDisplay !== undefined) {
-      EcosystemDisplay.encode(message.styleDisplay, writer.uint32(34).fork()).ldelim();
-    }
-    if (message.description !== undefined && message.description !== "") {
-      writer.uint32(42).string(message.description);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): PublicEcosystemInformation {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasePublicEcosystemInformation();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.name = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.domain = reader.string();
-          continue;
-        case 3:
-          if (tag != 24) {
-            break;
-          }
-
-          message.domainVerified = reader.bool();
-          continue;
-        case 4:
-          if (tag != 34) {
-            break;
-          }
-
-          message.styleDisplay = EcosystemDisplay.decode(reader, reader.uint32());
-          continue;
-        case 5:
-          if (tag != 42) {
-            break;
-          }
-
-          message.description = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): PublicEcosystemInformation {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      domain: isSet(object.domain) ? String(object.domain) : "",
-      domainVerified: isSet(object.domainVerified) ? Boolean(object.domainVerified) : false,
-      styleDisplay: isSet(object.styleDisplay) ? EcosystemDisplay.fromJSON(object.styleDisplay) : undefined,
-      description: isSet(object.description) ? String(object.description) : "",
-    };
-  },
-
-  toJSON(message: PublicEcosystemInformation): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.domain !== undefined && (obj.domain = message.domain);
-    message.domainVerified !== undefined && (obj.domainVerified = message.domainVerified);
-    message.styleDisplay !== undefined &&
-      (obj.styleDisplay = message.styleDisplay ? EcosystemDisplay.toJSON(message.styleDisplay) : undefined);
-    message.description !== undefined && (obj.description = message.description);
-    return obj;
-  },
-
-  create(base?: DeepPartial<PublicEcosystemInformation>): PublicEcosystemInformation {
-    return PublicEcosystemInformation.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<PublicEcosystemInformation>): PublicEcosystemInformation {
-    const message = createBasePublicEcosystemInformation();
-    message.name = object.name ?? "";
-    message.domain = object.domain ?? "";
-    message.domainVerified = object.domainVerified ?? false;
-    message.styleDisplay = (object.styleDisplay !== undefined && object.styleDisplay !== null)
-      ? EcosystemDisplay.fromPartial(object.styleDisplay)
-      : undefined;
-    message.description = object.description ?? "";
     return message;
   },
 };
@@ -3499,273 +2260,6 @@ export const ProviderDefinition = {
               50,
               51,
             ]),
-          ],
-        },
-      },
-    },
-    /**
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed April 1st 2023
-     */
-    addWebhook: {
-      name: "AddWebhook",
-      requestType: AddWebhookRequest,
-      requestStream: false,
-      responseType: AddWebhookResponse,
-      responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([2, 16, 1])] } },
-    },
-    /**
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed April 1st 2023
-     */
-    deleteWebhook: {
-      name: "DeleteWebhook",
-      requestType: DeleteWebhookRequest,
-      requestStream: false,
-      responseType: DeleteWebhookResponse,
-      responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([2, 16, 1])] } },
-    },
-    /**
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed June 1st 2023
-     */
-    ecosystemInfo: {
-      name: "EcosystemInfo",
-      requestType: EcosystemInfoRequest,
-      requestStream: false,
-      responseType: EcosystemInfoResponse,
-      responseStream: false,
-      options: {
-        _unknownFields: {
-          480010: [
-            new Uint8Array([
-              39,
-              42,
-              37,
-              8,
-              1,
-              18,
-              33,
-              84,
-              104,
-              105,
-              115,
-              32,
-              119,
-              105,
-              108,
-              108,
-              32,
-              98,
-              101,
-              32,
-              114,
-              101,
-              109,
-              111,
-              118,
-              101,
-              100,
-              32,
-              74,
-              117,
-              110,
-              101,
-              32,
-              49,
-              44,
-              32,
-              50,
-              48,
-              50,
-              51,
-            ]),
-          ],
-        },
-      },
-    },
-    /**
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed June 1st 2023
-     */
-    getPublicEcosystemInfo: {
-      name: "GetPublicEcosystemInfo",
-      requestType: GetPublicEcosystemInfoRequest,
-      requestStream: false,
-      responseType: GetPublicEcosystemInfoResponse,
-      responseStream: false,
-      options: {
-        _unknownFields: {
-          480010: [
-            new Uint8Array([2, 8, 1]),
-            new Uint8Array([
-              39,
-              42,
-              37,
-              8,
-              1,
-              18,
-              33,
-              84,
-              104,
-              105,
-              115,
-              32,
-              119,
-              105,
-              108,
-              108,
-              32,
-              98,
-              101,
-              32,
-              114,
-              101,
-              109,
-              111,
-              118,
-              101,
-              100,
-              32,
-              74,
-              117,
-              110,
-              101,
-              32,
-              49,
-              44,
-              32,
-              50,
-              48,
-              50,
-              51,
-            ]),
-          ],
-        },
-      },
-    },
-    /**
-     * DEPRECATED, will be removed April 1st 2023
-     *
-     * @deprecated
-     */
-    invite: {
-      name: "Invite",
-      requestType: InviteRequest,
-      requestStream: false,
-      responseType: InviteResponse,
-      responseStream: false,
-      options: {
-        _unknownFields: {
-          480010: [
-            new Uint8Array([
-              40,
-              42,
-              38,
-              8,
-              1,
-              18,
-              34,
-              84,
-              104,
-              105,
-              115,
-              32,
-              119,
-              105,
-              108,
-              108,
-              32,
-              98,
-              101,
-              32,
-              114,
-              101,
-              109,
-              111,
-              118,
-              101,
-              100,
-              32,
-              65,
-              112,
-              114,
-              105,
-              108,
-              32,
-              49,
-              44,
-              32,
-              50,
-              48,
-              50,
-              51,
-            ]),
-            new Uint8Array([2, 16, 1]),
-          ],
-        },
-      },
-    },
-    /**
-     * DEPRECATED, will be removed April 1st 2023
-     *
-     * @deprecated
-     */
-    invitationStatus: {
-      name: "InvitationStatus",
-      requestType: InvitationStatusRequest,
-      requestStream: false,
-      responseType: InvitationStatusResponse,
-      responseStream: false,
-      options: {
-        _unknownFields: {
-          480010: [
-            new Uint8Array([
-              40,
-              42,
-              38,
-              8,
-              1,
-              18,
-              34,
-              84,
-              104,
-              105,
-              115,
-              32,
-              119,
-              105,
-              108,
-              108,
-              32,
-              98,
-              101,
-              32,
-              114,
-              101,
-              109,
-              111,
-              118,
-              101,
-              100,
-              32,
-              65,
-              112,
-              114,
-              105,
-              108,
-              32,
-              49,
-              44,
-              32,
-              50,
-              48,
-              50,
-              51,
-            ]),
-            new Uint8Array([2, 16, 1]),
           ],
         },
       },

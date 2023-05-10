@@ -85,8 +85,8 @@ export class WalletService extends ServiceBase {
     });
   }
   /** Retrieve wallet details and configuration about the currently authenticated wallet */
-  public async getMyInfo(request: proto.GetMyInfoRequest): Promise<proto.GetMyInfoResponse> {
-    
+  public async getMyInfo(): Promise<proto.GetMyInfoResponse> {
+    let request = proto.GetMyInfoRequest.fromPartial({});
     return this.client.getMyInfo(request, {
       metadata: await this.buildMetadata(proto.GetMyInfoRequest.encode(request).finish())
     });

@@ -84,9 +84,8 @@ public class WalletService extends ServiceBase {
     return withMetadata(stub, request).getWalletInfo(request);
   }
   /** Retrieve wallet details and configuration about the currently authenticated wallet */
-  public ListenableFuture<GetMyInfoResponse> getMyInfo(GetMyInfoRequest request)
-      throws InvalidProtocolBufferException {
-
+  public ListenableFuture<GetMyInfoResponse> getMyInfo() throws InvalidProtocolBufferException {
+    var request = GetMyInfoRequest.newBuilder().build();
     return withMetadata(stub, request).getMyInfo(request);
   }
   /**

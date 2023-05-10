@@ -101,9 +101,9 @@ class WalletService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def get_my_info(self, *, request: GetMyInfoRequest) -> GetMyInfoResponse:
+    async def get_my_info(self) -> GetMyInfoResponse:
         """Retrieve wallet details and configuration about the currently authenticated wallet"""
-
+        request = GetMyInfoRequest()
         return await self.client.get_my_info(
             request, metadata=self.build_metadata(request)
         )

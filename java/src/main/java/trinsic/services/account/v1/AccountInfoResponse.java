@@ -23,7 +23,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
   }
 
   private AccountInfoResponse() {
-    ecosystems_ = java.util.Collections.emptyList();
     walletId_ = "";
     deviceId_ = "";
     ecosystemId_ = "";
@@ -106,85 +105,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
   @java.lang.Override
   public trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder() {
     return getDetails();
-  }
-
-  public static final int ECOSYSTEMS_FIELD_NUMBER = 2;
-  private java.util.List<trinsic.services.account.v1.AccountEcosystem> ecosystems_;
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.util.List<trinsic.services.account.v1.AccountEcosystem> getEcosystemsList() {
-    return ecosystems_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.util.List<? extends trinsic.services.account.v1.AccountEcosystemOrBuilder>
-      getEcosystemsOrBuilderList() {
-    return ecosystems_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public int getEcosystemsCount() {
-    return ecosystems_.size();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public trinsic.services.account.v1.AccountEcosystem getEcosystems(int index) {
-    return ecosystems_.get(index);
-  }
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public trinsic.services.account.v1.AccountEcosystemOrBuilder getEcosystemsOrBuilder(int index) {
-    return ecosystems_.get(index);
   }
 
   public static final int WALLET_ID_FIELD_NUMBER = 3;
@@ -481,9 +401,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     if (details_ != null) {
       output.writeMessage(1, getDetails());
     }
-    for (int i = 0; i < ecosystems_.size(); i++) {
-      output.writeMessage(2, ecosystems_.get(i));
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, walletId_);
     }
@@ -510,9 +427,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     size = 0;
     if (details_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getDetails());
-    }
-    for (int i = 0; i < ecosystems_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, ecosystems_.get(i));
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, walletId_);
@@ -549,7 +463,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     if (hasDetails()) {
       if (!getDetails().equals(other.getDetails())) return false;
     }
-    if (!getEcosystemsList().equals(other.getEcosystemsList())) return false;
     if (!getWalletId().equals(other.getWalletId())) return false;
     if (!getDeviceId().equals(other.getDeviceId())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
@@ -569,10 +482,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     if (hasDetails()) {
       hash = (37 * hash) + DETAILS_FIELD_NUMBER;
       hash = (53 * hash) + getDetails().hashCode();
-    }
-    if (getEcosystemsCount() > 0) {
-      hash = (37 * hash) + ECOSYSTEMS_FIELD_NUMBER;
-      hash = (53 * hash) + getEcosystemsList().hashCode();
     }
     hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
     hash = (53 * hash) + getWalletId().hashCode();
@@ -730,13 +639,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         details_ = null;
         detailsBuilder_ = null;
       }
-      if (ecosystemsBuilder_ == null) {
-        ecosystems_ = java.util.Collections.emptyList();
-      } else {
-        ecosystems_ = null;
-        ecosystemsBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       walletId_ = "";
 
       deviceId_ = "";
@@ -751,7 +653,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         authTokens_ = null;
         authTokensBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -785,23 +687,14 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
       } else {
         result.details_ = detailsBuilder_.build();
       }
-      if (ecosystemsBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          ecosystems_ = java.util.Collections.unmodifiableList(ecosystems_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.ecosystems_ = ecosystems_;
-      } else {
-        result.ecosystems_ = ecosystemsBuilder_.build();
-      }
       result.walletId_ = walletId_;
       result.deviceId_ = deviceId_;
       result.ecosystemId_ = ecosystemId_;
       result.publicDid_ = publicDid_;
       if (authTokensBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           authTokens_ = java.util.Collections.unmodifiableList(authTokens_);
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.authTokens_ = authTokens_;
       } else {
@@ -860,33 +753,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
       if (other.hasDetails()) {
         mergeDetails(other.getDetails());
       }
-      if (ecosystemsBuilder_ == null) {
-        if (!other.ecosystems_.isEmpty()) {
-          if (ecosystems_.isEmpty()) {
-            ecosystems_ = other.ecosystems_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureEcosystemsIsMutable();
-            ecosystems_.addAll(other.ecosystems_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.ecosystems_.isEmpty()) {
-          if (ecosystemsBuilder_.isEmpty()) {
-            ecosystemsBuilder_.dispose();
-            ecosystemsBuilder_ = null;
-            ecosystems_ = other.ecosystems_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            ecosystemsBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getEcosystemsFieldBuilder()
-                    : null;
-          } else {
-            ecosystemsBuilder_.addAllMessages(other.ecosystems_);
-          }
-        }
-      }
       if (!other.getWalletId().isEmpty()) {
         walletId_ = other.walletId_;
         onChanged();
@@ -907,7 +773,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         if (!other.authTokens_.isEmpty()) {
           if (authTokens_.isEmpty()) {
             authTokens_ = other.authTokens_;
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureAuthTokensIsMutable();
             authTokens_.addAll(other.authTokens_);
@@ -920,7 +786,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
             authTokensBuilder_.dispose();
             authTokensBuilder_ = null;
             authTokens_ = other.authTokens_;
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
             authTokensBuilder_ =
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                     ? getAuthTokensFieldBuilder()
@@ -962,19 +828,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
 
                 break;
               } // case 10
-            case 18:
-              {
-                trinsic.services.account.v1.AccountEcosystem m =
-                    input.readMessage(
-                        trinsic.services.account.v1.AccountEcosystem.parser(), extensionRegistry);
-                if (ecosystemsBuilder_ == null) {
-                  ensureEcosystemsIsMutable();
-                  ecosystems_.add(m);
-                } else {
-                  ecosystemsBuilder_.addMessage(m);
-                }
-                break;
-              } // case 18
             case 26:
               {
                 walletId_ = input.readStringRequireUtf8();
@@ -1223,411 +1076,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         details_ = null;
       }
       return detailsBuilder_;
-    }
-
-    private java.util.List<trinsic.services.account.v1.AccountEcosystem> ecosystems_ =
-        java.util.Collections.emptyList();
-
-    private void ensureEcosystemsIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        ecosystems_ =
-            new java.util.ArrayList<trinsic.services.account.v1.AccountEcosystem>(ecosystems_);
-        bitField0_ |= 0x00000001;
-      }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.account.v1.AccountEcosystem,
-            trinsic.services.account.v1.AccountEcosystem.Builder,
-            trinsic.services.account.v1.AccountEcosystemOrBuilder>
-        ecosystemsBuilder_;
-
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public java.util.List<trinsic.services.account.v1.AccountEcosystem> getEcosystemsList() {
-      if (ecosystemsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(ecosystems_);
-      } else {
-        return ecosystemsBuilder_.getMessageList();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public int getEcosystemsCount() {
-      if (ecosystemsBuilder_ == null) {
-        return ecosystems_.size();
-      } else {
-        return ecosystemsBuilder_.getCount();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.account.v1.AccountEcosystem getEcosystems(int index) {
-      if (ecosystemsBuilder_ == null) {
-        return ecosystems_.get(index);
-      } else {
-        return ecosystemsBuilder_.getMessage(index);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder setEcosystems(int index, trinsic.services.account.v1.AccountEcosystem value) {
-      if (ecosystemsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEcosystemsIsMutable();
-        ecosystems_.set(index, value);
-        onChanged();
-      } else {
-        ecosystemsBuilder_.setMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder setEcosystems(
-        int index, trinsic.services.account.v1.AccountEcosystem.Builder builderForValue) {
-      if (ecosystemsBuilder_ == null) {
-        ensureEcosystemsIsMutable();
-        ecosystems_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        ecosystemsBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder addEcosystems(trinsic.services.account.v1.AccountEcosystem value) {
-      if (ecosystemsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEcosystemsIsMutable();
-        ecosystems_.add(value);
-        onChanged();
-      } else {
-        ecosystemsBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder addEcosystems(int index, trinsic.services.account.v1.AccountEcosystem value) {
-      if (ecosystemsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEcosystemsIsMutable();
-        ecosystems_.add(index, value);
-        onChanged();
-      } else {
-        ecosystemsBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder addEcosystems(
-        trinsic.services.account.v1.AccountEcosystem.Builder builderForValue) {
-      if (ecosystemsBuilder_ == null) {
-        ensureEcosystemsIsMutable();
-        ecosystems_.add(builderForValue.build());
-        onChanged();
-      } else {
-        ecosystemsBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder addEcosystems(
-        int index, trinsic.services.account.v1.AccountEcosystem.Builder builderForValue) {
-      if (ecosystemsBuilder_ == null) {
-        ensureEcosystemsIsMutable();
-        ecosystems_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        ecosystemsBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder addAllEcosystems(
-        java.lang.Iterable<? extends trinsic.services.account.v1.AccountEcosystem> values) {
-      if (ecosystemsBuilder_ == null) {
-        ensureEcosystemsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, ecosystems_);
-        onChanged();
-      } else {
-        ecosystemsBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder clearEcosystems() {
-      if (ecosystemsBuilder_ == null) {
-        ecosystems_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        ecosystemsBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public Builder removeEcosystems(int index) {
-      if (ecosystemsBuilder_ == null) {
-        ensureEcosystemsIsMutable();
-        ecosystems_.remove(index);
-        onChanged();
-      } else {
-        ecosystemsBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.account.v1.AccountEcosystem.Builder getEcosystemsBuilder(int index) {
-      return getEcosystemsFieldBuilder().getBuilder(index);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.account.v1.AccountEcosystemOrBuilder getEcosystemsOrBuilder(int index) {
-      if (ecosystemsBuilder_ == null) {
-        return ecosystems_.get(index);
-      } else {
-        return ecosystemsBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public java.util.List<? extends trinsic.services.account.v1.AccountEcosystemOrBuilder>
-        getEcosystemsOrBuilderList() {
-      if (ecosystemsBuilder_ != null) {
-        return ecosystemsBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(ecosystems_);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.account.v1.AccountEcosystem.Builder addEcosystemsBuilder() {
-      return getEcosystemsFieldBuilder()
-          .addBuilder(trinsic.services.account.v1.AccountEcosystem.getDefaultInstance());
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.account.v1.AccountEcosystem.Builder addEcosystemsBuilder(int index) {
-      return getEcosystemsFieldBuilder()
-          .addBuilder(index, trinsic.services.account.v1.AccountEcosystem.getDefaultInstance());
-    }
-    /**
-     *
-     *
-     * <pre>
-     * DEPRECATED, will be removed April 1st 2023
-     * Use `ecosystem_id` instead
-     * </pre>
-     *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];
-     * </code>
-     */
-    @java.lang.Deprecated
-    public java.util.List<trinsic.services.account.v1.AccountEcosystem.Builder>
-        getEcosystemsBuilderList() {
-      return getEcosystemsFieldBuilder().getBuilderList();
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.account.v1.AccountEcosystem,
-            trinsic.services.account.v1.AccountEcosystem.Builder,
-            trinsic.services.account.v1.AccountEcosystemOrBuilder>
-        getEcosystemsFieldBuilder() {
-      if (ecosystemsBuilder_ == null) {
-        ecosystemsBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                trinsic.services.account.v1.AccountEcosystem,
-                trinsic.services.account.v1.AccountEcosystem.Builder,
-                trinsic.services.account.v1.AccountEcosystemOrBuilder>(
-                ecosystems_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
-        ecosystems_ = null;
-      }
-      return ecosystemsBuilder_;
     }
 
     private java.lang.Object walletId_ = "";
@@ -2063,10 +1511,10 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         java.util.Collections.emptyList();
 
     private void ensureAuthTokensIsMutable() {
-      if (!((bitField0_ & 0x00000002) != 0)) {
+      if (!((bitField0_ & 0x00000001) != 0)) {
         authTokens_ =
             new java.util.ArrayList<trinsic.services.account.v1.WalletAuthToken>(authTokens_);
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
       }
     }
 
@@ -2304,7 +1752,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     public Builder clearAuthTokens() {
       if (authTokensBuilder_ == null) {
         authTokens_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
         authTokensBuilder_.clear();
@@ -2440,7 +1888,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
                 trinsic.services.account.v1.WalletAuthToken,
                 trinsic.services.account.v1.WalletAuthToken.Builder,
                 trinsic.services.account.v1.WalletAuthTokenOrBuilder>(
-                authTokens_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
+                authTokens_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
         authTokens_ = null;
       }
       return authTokensBuilder_;

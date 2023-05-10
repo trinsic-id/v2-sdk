@@ -49,7 +49,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
    *
    * <pre>
    *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-   *    EcosystemDisplayDetails dark = 1;
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -65,7 +64,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
    *
    * <pre>
    *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-   *    EcosystemDisplayDetails dark = 1;
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -83,7 +81,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
    *
    * <pre>
    *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-   *    EcosystemDisplayDetails dark = 1;
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -437,7 +434,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -452,7 +448,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -473,7 +468,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -496,7 +490,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -517,7 +510,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -544,7 +536,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -565,7 +556,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -580,7 +570,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>
@@ -599,7 +588,6 @@ public final class EcosystemDisplay extends com.google.protobuf.GeneratedMessage
      *
      * <pre>
      *    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-     *    EcosystemDisplayDetails dark = 1;
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplayDetails light = 2;</code>

@@ -117,12 +117,6 @@ export interface VerifyProofResponse {
   /** Whether all validations in `validation_results` passed */
   isValid?: boolean;
   /**
-   * Use `validation_results` instead
-   *
-   * @deprecated
-   */
-  validationMessages?: string[];
-  /**
    * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
@@ -780,18 +774,13 @@ export const VerifyProofRequest = {
 };
 
 function createBaseVerifyProofResponse(): VerifyProofResponse {
-  return { isValid: false, validationMessages: [], validationResults: {} };
+  return { isValid: false, validationResults: {} };
 }
 
 export const VerifyProofResponse = {
   encode(message: VerifyProofResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.isValid === true) {
       writer.uint32(8).bool(message.isValid);
-    }
-    if (message.validationMessages !== undefined && message.validationMessages.length !== 0) {
-      for (const v of message.validationMessages) {
-        writer.uint32(18).string(v!);
-      }
     }
     Object.entries(message.validationResults || {}).forEach(([key, value]) => {
       VerifyProofResponse_ValidationResultsEntry.encode({ key: key as any, value }, writer.uint32(26).fork()).ldelim();
@@ -812,13 +801,6 @@ export const VerifyProofResponse = {
           }
 
           message.isValid = reader.bool();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.validationMessages!.push(reader.string());
           continue;
         case 3:
           if (tag != 26) {
@@ -842,9 +824,6 @@ export const VerifyProofResponse = {
   fromJSON(object: any): VerifyProofResponse {
     return {
       isValid: isSet(object.isValid) ? Boolean(object.isValid) : false,
-      validationMessages: Array.isArray(object?.validationMessages)
-        ? object.validationMessages.map((e: any) => String(e))
-        : [],
       validationResults: isObject(object.validationResults)
         ? Object.entries(object.validationResults).reduce<{ [key: string]: ValidationMessage }>((acc, [key, value]) => {
           acc[key] = ValidationMessage.fromJSON(value);
@@ -857,11 +836,6 @@ export const VerifyProofResponse = {
   toJSON(message: VerifyProofResponse): unknown {
     const obj: any = {};
     message.isValid !== undefined && (obj.isValid = message.isValid);
-    if (message.validationMessages) {
-      obj.validationMessages = message.validationMessages.map((e) => e);
-    } else {
-      obj.validationMessages = [];
-    }
     obj.validationResults = {};
     if (message.validationResults) {
       Object.entries(message.validationResults).forEach(([k, v]) => {
@@ -878,7 +852,6 @@ export const VerifyProofResponse = {
   fromPartial(object: DeepPartial<VerifyProofResponse>): VerifyProofResponse {
     const message = createBaseVerifyProofResponse();
     message.isValid = object.isValid ?? false;
-    message.validationMessages = object.validationMessages?.map((e) => e) || [];
     message.validationResults = Object.entries(object.validationResults ?? {}).reduce<
       { [key: string]: ValidationMessage }
     >((acc, [key, value]) => {

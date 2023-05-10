@@ -37,39 +37,6 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * New external URL associated with the organization or ecosystem entity
-   * </pre>
-   *
-   * <code>string uri = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=166
-   * @return The uri.
-   */
-  @java.lang.Deprecated
-  java.lang.String getUri();
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * New external URL associated with the organization or ecosystem entity
-   * </pre>
-   *
-   * <code>string uri = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=166
-   * @return The bytes for uri.
-   */
-  @java.lang.Deprecated
-  com.google.protobuf.ByteString getUriBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * New domain URL
    * </pre>
    *
@@ -101,7 +68,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=177
+   *     services/provider/v1/provider.proto;l=76
    * @return Whether the display field is set.
    */
   @java.lang.Deprecated
@@ -116,7 +83,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=177
+   *     services/provider/v1/provider.proto;l=76
    * @return The display.
    */
   @java.lang.Deprecated

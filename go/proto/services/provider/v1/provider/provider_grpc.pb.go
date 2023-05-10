@@ -21,12 +21,6 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	Provider_CreateEcosystem_FullMethodName                  = "/services.provider.v1.Provider/CreateEcosystem"
 	Provider_UpdateEcosystem_FullMethodName                  = "/services.provider.v1.Provider/UpdateEcosystem"
-	Provider_AddWebhook_FullMethodName                       = "/services.provider.v1.Provider/AddWebhook"
-	Provider_DeleteWebhook_FullMethodName                    = "/services.provider.v1.Provider/DeleteWebhook"
-	Provider_EcosystemInfo_FullMethodName                    = "/services.provider.v1.Provider/EcosystemInfo"
-	Provider_GetPublicEcosystemInfo_FullMethodName           = "/services.provider.v1.Provider/GetPublicEcosystemInfo"
-	Provider_Invite_FullMethodName                           = "/services.provider.v1.Provider/Invite"
-	Provider_InvitationStatus_FullMethodName                 = "/services.provider.v1.Provider/InvitationStatus"
 	Provider_GetOberonKey_FullMethodName                     = "/services.provider.v1.Provider/GetOberonKey"
 	Provider_UpgradeDID_FullMethodName                       = "/services.provider.v1.Provider/UpgradeDID"
 	Provider_RetrieveDomainVerificationRecord_FullMethodName = "/services.provider.v1.Provider/RetrieveDomainVerificationRecord"
@@ -44,24 +38,6 @@ type ProviderClient interface {
 	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 	// DEPRECATED, will be removed June 1st 2023
 	UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed April 1st 2023
-	AddWebhook(ctx context.Context, in *AddWebhookRequest, opts ...grpc.CallOption) (*AddWebhookResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed April 1st 2023
-	DeleteWebhook(ctx context.Context, in *DeleteWebhookRequest, opts ...grpc.CallOption) (*DeleteWebhookResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	EcosystemInfo(ctx context.Context, in *EcosystemInfoRequest, opts ...grpc.CallOption) (*EcosystemInfoResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	GetPublicEcosystemInfo(ctx context.Context, in *GetPublicEcosystemInfoRequest, opts ...grpc.CallOption) (*GetPublicEcosystemInfoResponse, error)
-	// Deprecated: Do not use.
-	// DEPRECATED, will be removed April 1st 2023
-	Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error)
-	// Deprecated: Do not use.
-	// DEPRECATED, will be removed April 1st 2023
-	InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
@@ -95,62 +71,6 @@ func (c *providerClient) CreateEcosystem(ctx context.Context, in *CreateEcosyste
 func (c *providerClient) UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error) {
 	out := new(UpdateEcosystemResponse)
 	err := c.cc.Invoke(ctx, Provider_UpdateEcosystem_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *providerClient) AddWebhook(ctx context.Context, in *AddWebhookRequest, opts ...grpc.CallOption) (*AddWebhookResponse, error) {
-	out := new(AddWebhookResponse)
-	err := c.cc.Invoke(ctx, Provider_AddWebhook_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *providerClient) DeleteWebhook(ctx context.Context, in *DeleteWebhookRequest, opts ...grpc.CallOption) (*DeleteWebhookResponse, error) {
-	out := new(DeleteWebhookResponse)
-	err := c.cc.Invoke(ctx, Provider_DeleteWebhook_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *providerClient) EcosystemInfo(ctx context.Context, in *EcosystemInfoRequest, opts ...grpc.CallOption) (*EcosystemInfoResponse, error) {
-	out := new(EcosystemInfoResponse)
-	err := c.cc.Invoke(ctx, Provider_EcosystemInfo_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *providerClient) GetPublicEcosystemInfo(ctx context.Context, in *GetPublicEcosystemInfoRequest, opts ...grpc.CallOption) (*GetPublicEcosystemInfoResponse, error) {
-	out := new(GetPublicEcosystemInfoResponse)
-	err := c.cc.Invoke(ctx, Provider_GetPublicEcosystemInfo_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// Deprecated: Do not use.
-func (c *providerClient) Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error) {
-	out := new(InviteResponse)
-	err := c.cc.Invoke(ctx, Provider_Invite_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// Deprecated: Do not use.
-func (c *providerClient) InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error) {
-	out := new(InvitationStatusResponse)
-	err := c.cc.Invoke(ctx, Provider_InvitationStatus_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -212,24 +132,6 @@ type ProviderServer interface {
 	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 	// DEPRECATED, will be removed June 1st 2023
 	UpdateEcosystem(context.Context, *UpdateEcosystemRequest) (*UpdateEcosystemResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed April 1st 2023
-	AddWebhook(context.Context, *AddWebhookRequest) (*AddWebhookResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed April 1st 2023
-	DeleteWebhook(context.Context, *DeleteWebhookRequest) (*DeleteWebhookResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	EcosystemInfo(context.Context, *EcosystemInfoRequest) (*EcosystemInfoResponse, error)
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	GetPublicEcosystemInfo(context.Context, *GetPublicEcosystemInfoRequest) (*GetPublicEcosystemInfoResponse, error)
-	// Deprecated: Do not use.
-	// DEPRECATED, will be removed April 1st 2023
-	Invite(context.Context, *InviteRequest) (*InviteResponse, error)
-	// Deprecated: Do not use.
-	// DEPRECATED, will be removed April 1st 2023
-	InvitationStatus(context.Context, *InvitationStatusRequest) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
@@ -252,24 +154,6 @@ func (UnimplementedProviderServer) CreateEcosystem(context.Context, *CreateEcosy
 }
 func (UnimplementedProviderServer) UpdateEcosystem(context.Context, *UpdateEcosystemRequest) (*UpdateEcosystemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateEcosystem not implemented")
-}
-func (UnimplementedProviderServer) AddWebhook(context.Context, *AddWebhookRequest) (*AddWebhookResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddWebhook not implemented")
-}
-func (UnimplementedProviderServer) DeleteWebhook(context.Context, *DeleteWebhookRequest) (*DeleteWebhookResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteWebhook not implemented")
-}
-func (UnimplementedProviderServer) EcosystemInfo(context.Context, *EcosystemInfoRequest) (*EcosystemInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EcosystemInfo not implemented")
-}
-func (UnimplementedProviderServer) GetPublicEcosystemInfo(context.Context, *GetPublicEcosystemInfoRequest) (*GetPublicEcosystemInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPublicEcosystemInfo not implemented")
-}
-func (UnimplementedProviderServer) Invite(context.Context, *InviteRequest) (*InviteResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Invite not implemented")
-}
-func (UnimplementedProviderServer) InvitationStatus(context.Context, *InvitationStatusRequest) (*InvitationStatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method InvitationStatus not implemented")
 }
 func (UnimplementedProviderServer) GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOberonKey not implemented")
@@ -331,114 +215,6 @@ func _Provider_UpdateEcosystem_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProviderServer).UpdateEcosystem(ctx, req.(*UpdateEcosystemRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_AddWebhook_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddWebhookRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).AddWebhook(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_AddWebhook_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).AddWebhook(ctx, req.(*AddWebhookRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_DeleteWebhook_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteWebhookRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).DeleteWebhook(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_DeleteWebhook_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).DeleteWebhook(ctx, req.(*DeleteWebhookRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_EcosystemInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EcosystemInfoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).EcosystemInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_EcosystemInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).EcosystemInfo(ctx, req.(*EcosystemInfoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_GetPublicEcosystemInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPublicEcosystemInfoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).GetPublicEcosystemInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_GetPublicEcosystemInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).GetPublicEcosystemInfo(ctx, req.(*GetPublicEcosystemInfoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_Invite_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(InviteRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).Invite(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_Invite_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).Invite(ctx, req.(*InviteRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_InvitationStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(InvitationStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).InvitationStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_InvitationStatus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).InvitationStatus(ctx, req.(*InvitationStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -547,30 +323,6 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateEcosystem",
 			Handler:    _Provider_UpdateEcosystem_Handler,
-		},
-		{
-			MethodName: "AddWebhook",
-			Handler:    _Provider_AddWebhook_Handler,
-		},
-		{
-			MethodName: "DeleteWebhook",
-			Handler:    _Provider_DeleteWebhook_Handler,
-		},
-		{
-			MethodName: "EcosystemInfo",
-			Handler:    _Provider_EcosystemInfo_Handler,
-		},
-		{
-			MethodName: "GetPublicEcosystemInfo",
-			Handler:    _Provider_GetPublicEcosystemInfo_Handler,
-		},
-		{
-			MethodName: "Invite",
-			Handler:    _Provider_Invite_Handler,
-		},
-		{
-			MethodName: "InvitationStatus",
-			Handler:    _Provider_InvitationStatus_Handler,
 		},
 		{
 			MethodName: "GetOberonKey",

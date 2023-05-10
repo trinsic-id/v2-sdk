@@ -44,24 +44,6 @@ export class ProviderService extends ServiceBase {
       metadata: await this.buildMetadata(proto.UpdateEcosystemRequest.encode(request).finish())
     });
   }
-  /** The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-* DEPRECATED, will be removed June 1st 2023
-*@deprecated This will be removed June 1, 2023 */
-  public async ecosystemInfo(request: proto.EcosystemInfoRequest): Promise<proto.EcosystemInfoResponse> {
-    
-    return this.client.ecosystemInfo(request, {
-      metadata: await this.buildMetadata(proto.EcosystemInfoRequest.encode(request).finish())
-    });
-  }
-  /** The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-* DEPRECATED, will be removed June 1st 2023
-*@deprecated This will be removed June 1, 2023 */
-  public async getPublicEcosystemInfo(request: proto.GetPublicEcosystemInfoRequest): Promise<proto.GetPublicEcosystemInfoResponse> {
-    
-    return this.client.getPublicEcosystemInfo(request, {
-      metadata: await this.buildMetadata()
-    });
-  }
   /** Returns the public key being used to create/verify oberon tokens */
   public async getOberonKey(): Promise<proto.GetOberonKeyResponse> {
     let request = proto.GetOberonKeyRequest.fromPartial({});

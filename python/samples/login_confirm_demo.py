@@ -3,9 +3,16 @@ import base64
 
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
 from trinsic.proto.services.account.v1 import AccountProfile
-from trinsic.proto.services.universalwallet.v1 import SearchRequest, AuthenticateInitRequest, IdentityProvider, \
-    AuthenticateConfirmRequest, CreateWalletRequest, AddExternalIdentityInitRequest, AddExternalIdentityConfirmRequest, \
-    GetMyInfoRequest
+from trinsic.proto.services.universalwallet.v1 import (
+    SearchRequest,
+    AuthenticateInitRequest,
+    IdentityProvider,
+    AuthenticateConfirmRequest,
+    CreateWalletRequest,
+    AddExternalIdentityInitRequest,
+    AddExternalIdentityConfirmRequest,
+    GetMyInfoRequest,
+)
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
 
@@ -18,29 +25,42 @@ trinsic_service = TrinsicService(server_config=server_config)
 
 async def create_anonymous_wallet() -> str:
     new_wallet_response = await trinsic_service.wallet.create_wallet(
-        request=CreateWalletRequest(ecosystem_id=ECOSYSTEM_ID))
+        request=CreateWalletRequest(ecosystem_id=ECOSYSTEM_ID)
+    )
     print("New wallet created:", new_wallet_response)
 
 
 async def add_external_identity() -> str:
     phone_nr = input("Enter phone number to link:")
     add_id_resp = await trinsic_service.wallet.add_external_identity_init(
-        request=AddExternalIdentityInitRequest(identity=phone_nr, provider=IdentityProvider.PHONE))
+        request=AddExternalIdentityInitRequest(
+            identity=phone_nr, provider=IdentityProvider.PHONE
+        )
+    )
     id_code = input("Code sent to phone, enter it here:")
     add_id_conf = await trinsic_service.wallet.add_external_identity_confirm(
-        request=AddExternalIdentityConfirmRequest(challenge=add_id_resp.challenge, response=id_code))
+        request=AddExternalIdentityConfirmRequest(
+            challenge=add_id_resp.challenge, response=id_code
+        )
+    )
     print(f"Phone:{phone_nr} successfully added")
 
 
 async def signin(email: str) -> str:
     login_response = await trinsic_service.wallet.authenticate_init(
-        request=AuthenticateInitRequest(identity=email, provider=IdentityProvider.EMAIL, ecosystem_id=ECOSYSTEM_ID)
+        request=AuthenticateInitRequest(
+            identity=email, provider=IdentityProvider.EMAIL, ecosystem_id=ECOSYSTEM_ID
+        )
     )
     verify_code = input("Code sent to email, enter it here:")
     wallet_auth = await trinsic_service.wallet.authenticate_confirm(
-        request=AuthenticateConfirmRequest(challenge=login_response.challenge, response=verify_code)
+        request=AuthenticateConfirmRequest(
+            challenge=login_response.challenge, response=verify_code
+        )
     )
-    acc_profile = AccountProfile.FromString(base64.urlsafe_b64decode(wallet_auth.auth_token))
+    acc_profile = AccountProfile.FromString(
+        base64.urlsafe_b64decode(wallet_auth.auth_token)
+    )
     trinsic_service.set_auth_token(wallet_auth.auth_token)
 
 
