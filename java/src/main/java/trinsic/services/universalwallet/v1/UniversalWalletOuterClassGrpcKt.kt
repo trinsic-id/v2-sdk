@@ -86,6 +86,10 @@ object UniversalWalletGrpcKt {
       MethodDescriptor<AuthenticateConfirmRequest, AuthenticateConfirmResponse>
     @JvmStatic get() = UniversalWalletGrpc.getAuthenticateConfirmMethod()
 
+  val authenticateResendCodeMethod:
+      MethodDescriptor<AuthenticateResendCodeRequest, AuthenticateResendCodeResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getAuthenticateResendCodeMethod()
+
   val listWalletsMethod: MethodDescriptor<ListWalletsRequest, ListWalletsResponse>
     @JvmStatic get() = UniversalWalletGrpc.getListWalletsMethod()
 
@@ -409,6 +413,28 @@ object UniversalWalletGrpcKt {
      *
      * @return The single response from the server.
      */
+    suspend fun authenticateResendCode(
+        request: AuthenticateResendCodeRequest,
+        headers: Metadata = Metadata()
+    ): AuthenticateResendCodeResponse =
+        unaryRpc(
+            channel,
+            UniversalWalletGrpc.getAuthenticateResendCodeMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
     suspend fun listWallets(
         request: ListWalletsRequest,
         headers: Metadata = Metadata()
@@ -681,6 +707,24 @@ object UniversalWalletGrpcKt {
                 "Method services.universalwallet.v1.UniversalWallet.AuthenticateConfirm is unimplemented"))
 
     /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.AuthenticateResendCode.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun authenticateResendCode(
+        request: AuthenticateResendCodeRequest
+    ): AuthenticateResendCodeResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.AuthenticateResendCode is unimplemented"))
+
+    /**
      * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.ListWallets.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -777,6 +821,11 @@ object UniversalWalletGrpcKt {
                     context = this.context,
                     descriptor = UniversalWalletGrpc.getAuthenticateConfirmMethod(),
                     implementation = ::authenticateConfirm))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getAuthenticateResendCodeMethod(),
+                    implementation = ::authenticateResendCode))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,

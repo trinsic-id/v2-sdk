@@ -181,37 +181,6 @@ public interface TemplateDataOrBuilder
    *
    *
    * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * </pre>
-   *
-   * <code>string context_uri = 7 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
-   * @return The contextUri.
-   */
-  @java.lang.Deprecated
-  java.lang.String getContextUri();
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * </pre>
-   *
-   * <code>string context_uri = 7 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.templates.v1.TemplateData.context_uri is deprecated.
-   *     See services/verifiable-credentials/templates/v1/templates.proto;l=146
-   * @return The bytes for contextUri.
-   */
-  @java.lang.Deprecated
-  com.google.protobuf.ByteString getContextUriBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * ID of ecosystem in which template resides
    * </pre>
    *

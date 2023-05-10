@@ -36,12 +36,6 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
-    "services.account.v1.Account.AuthorizeWebhook": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.Account.Info": {
       "type": "method",
       "collection": "methods",
@@ -90,36 +84,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.AccountDetails"
     },
-    "services.account.v1.AccountEcosystem": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.AccountEcosystem.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountEcosystem"
-    },
-    "services.account.v1.AccountEcosystem.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountEcosystem"
-    },
-    "services.account.v1.AccountEcosystem.name": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountEcosystem"
-    },
-    "services.account.v1.AccountEcosystem.uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountEcosystem"
-    },
     "services.account.v1.AccountInfoRequest": {
       "type": "message",
       "collection": "messages",
@@ -151,12 +115,6 @@
       "parent": "services.account.v1.AccountInfoResponse"
     },
     "services.account.v1.AccountInfoResponse.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
-    },
-    "services.account.v1.AccountInfoResponse.ecosystems": {
       "type": "field",
       "collection": "fields",
       "file": "services/account/v1/account.proto",
@@ -203,24 +161,6 @@
       "collection": "fields",
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.AccountProfile"
-    },
-    "services.account.v1.AuthorizeWebhookRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.AuthorizeWebhookRequest.events": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AuthorizeWebhookRequest"
-    },
-    "services.account.v1.AuthorizeWebhookResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
     },
     "services.account.v1.ConfirmationMethod": {
       "type": "enum",
@@ -306,12 +246,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.LoginRequest"
     },
-    "services.account.v1.LoginRequest.invitation_code": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginRequest"
-    },
     "services.account.v1.LoginResponse": {
       "type": "message",
       "collection": "messages",
@@ -343,12 +277,6 @@
       "parent": "services.account.v1.SignInRequest"
     },
     "services.account.v1.SignInRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInRequest"
-    },
-    "services.account.v1.SignInRequest.invitation_code": {
       "type": "field",
       "collection": "fields",
       "file": "services/account/v1/account.proto",
@@ -846,42 +774,6 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
     },
-    "services.provider.v1.AddWebhookRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.AddWebhookRequest.destination_url": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.AddWebhookRequest"
-    },
-    "services.provider.v1.AddWebhookRequest.events": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.AddWebhookRequest"
-    },
-    "services.provider.v1.AddWebhookRequest.secret": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.AddWebhookRequest"
-    },
-    "services.provider.v1.AddWebhookResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.AddWebhookResponse.ecosystem": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.AddWebhookResponse"
-    },
     "services.provider.v1.CreateEcosystemRequest": {
       "type": "message",
       "collection": "messages",
@@ -912,12 +804,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.CreateEcosystemRequest"
     },
-    "services.provider.v1.CreateEcosystemRequest.uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.CreateEcosystemRequest"
-    },
     "services.provider.v1.CreateEcosystemResponse": {
       "type": "message",
       "collection": "messages",
@@ -941,30 +827,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.CreateEcosystemResponse"
-    },
-    "services.provider.v1.DeleteWebhookRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.DeleteWebhookRequest.webhook_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.DeleteWebhookRequest"
-    },
-    "services.provider.v1.DeleteWebhookResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.DeleteWebhookResponse.ecosystem": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.DeleteWebhookResponse"
     },
     "services.provider.v1.Ecosystem": {
       "type": "message",
@@ -997,12 +859,6 @@
       "parent": "services.provider.v1.Ecosystem"
     },
     "services.provider.v1.Ecosystem.name": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Ecosystem"
-    },
-    "services.provider.v1.Ecosystem.uri": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
@@ -1110,30 +966,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.GetOberonKeyResponse"
     },
-    "services.provider.v1.GetPublicEcosystemInfoRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetPublicEcosystemInfoRequest"
-    },
-    "services.provider.v1.GetPublicEcosystemInfoResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.GetPublicEcosystemInfoResponse"
-    },
     "services.provider.v1.IndyOptions": {
       "type": "message",
       "collection": "messages",
@@ -1205,114 +1037,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.IndyOptions"
-    },
-    "services.provider.v1.InvitationStatusRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.InvitationStatusRequest.invitation_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusRequest"
-    },
-    "services.provider.v1.InvitationStatusResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.InvitationStatusResponse.Status": {
-      "type": "enum",
-      "collection": "enums",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusResponse"
-    },
-    "services.provider.v1.InvitationStatusResponse.Status.Completed": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusResponse.Status"
-    },
-    "services.provider.v1.InvitationStatusResponse.Status.Error": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusResponse.Status"
-    },
-    "services.provider.v1.InvitationStatusResponse.Status.Expired": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusResponse.Status"
-    },
-    "services.provider.v1.InvitationStatusResponse.Status.InvitationSent": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusResponse.Status"
-    },
-    "services.provider.v1.InvitationStatusResponse.status": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusResponse"
-    },
-    "services.provider.v1.InvitationStatusResponse.status_details": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InvitationStatusResponse"
-    },
-    "services.provider.v1.InviteRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.InviteRequest.DidCommInvitation": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InviteRequest"
-    },
-    "services.provider.v1.InviteRequest.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InviteRequest"
-    },
-    "services.provider.v1.InviteRequest.details": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InviteRequest"
-    },
-    "services.provider.v1.InviteRequest.participant": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InviteRequest"
-    },
-    "services.provider.v1.InviteResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.InviteResponse.invitation_code": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InviteResponse"
-    },
-    "services.provider.v1.InviteResponse.invitation_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.InviteResponse"
     },
     "services.provider.v1.IonOptions": {
       "type": "message",
@@ -1398,33 +1122,9 @@
       "file": "services/provider/v1/access-management.proto",
       "parent": "services.provider.v1.ListRoleAssignmentsResponse"
     },
-    "services.provider.v1.ParticipantType": {
-      "type": "enum",
-      "collection": "enums",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.ParticipantType.participant_type_individual": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.ParticipantType"
-    },
-    "services.provider.v1.ParticipantType.participant_type_organization": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.ParticipantType"
-    },
     "services.provider.v1.Provider": {
       "type": "service",
       "collection": "services",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.AddWebhook": {
-      "type": "method",
-      "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
@@ -1434,37 +1134,7 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.Provider.DeleteWebhook": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.EcosystemInfo": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
     "services.provider.v1.Provider.GetOberonKey": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.GetPublicEcosystemInfo": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.InvitationStatus": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.Invite": {
       "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -1499,42 +1169,6 @@
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
-    },
-    "services.provider.v1.PublicEcosystemInformation": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.PublicEcosystemInformation.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.PublicEcosystemInformation"
-    },
-    "services.provider.v1.PublicEcosystemInformation.domain": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.PublicEcosystemInformation"
-    },
-    "services.provider.v1.PublicEcosystemInformation.domain_verified": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.PublicEcosystemInformation"
-    },
-    "services.provider.v1.PublicEcosystemInformation.name": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.PublicEcosystemInformation"
-    },
-    "services.provider.v1.PublicEcosystemInformation.style_display": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.PublicEcosystemInformation"
     },
     "services.provider.v1.RefreshDomainVerificationStatusRequest": {
       "type": "message",
@@ -1686,12 +1320,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.UpdateEcosystemRequest"
     },
-    "services.provider.v1.UpdateEcosystemRequest.uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpdateEcosystemRequest"
-    },
     "services.provider.v1.UpdateEcosystemResponse": {
       "type": "message",
       "collection": "messages",
@@ -1823,36 +1451,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.WalletConfiguration"
-    },
-    "services.provider.v1.WebhookConfig": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.WebhookConfig.destination_url": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.WebhookConfig"
-    },
-    "services.provider.v1.WebhookConfig.events": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.WebhookConfig"
-    },
-    "services.provider.v1.WebhookConfig.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.WebhookConfig"
-    },
-    "services.provider.v1.WebhookConfig.status": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.WebhookConfig"
     },
     "services.trustregistry.v1.AddFrameworkRequest": {
       "type": "message",
@@ -2316,6 +1914,24 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.AuthenticateInitResponse"
     },
+    "services.universalwallet.v1.AuthenticateResendCodeRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.AuthenticateResendCodeRequest.challenge": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.AuthenticateResendCodeRequest"
+    },
+    "services.universalwallet.v1.AuthenticateResendCodeResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
     "services.universalwallet.v1.CreateWalletRequest": {
       "type": "message",
       "collection": "messages",
@@ -2701,6 +2317,12 @@
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.AuthenticateInit": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -3222,12 +2844,6 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.TemplateData"
     },
-    "services.verifiablecredentials.templates.v1.TemplateData.context_uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.TemplateData"
-    },
     "services.verifiablecredentials.templates.v1.TemplateData.created_by": {
       "type": "field",
       "collection": "fields",
@@ -3305,30 +2921,6 @@
       "collection": "messages",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.TemplateField"
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry"
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry"
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.annotations": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.TemplateField"
     },
     "services.verifiablecredentials.templates.v1.TemplateField.description": {
       "type": "field",
@@ -3852,275 +3444,11 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.VerifyProofResponse"
     },
-    "services.verifiablecredentials.v1.VerifyProofResponse.validation_messages": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": "services.verifiablecredentials.v1.VerifyProofResponse"
-    },
     "services.verifiablecredentials.v1.VerifyProofResponse.validation_results": {
       "type": "field",
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.VerifyProofResponse"
-    },
-    "trinsic.services.event.APICall": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.APICall.request": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.APICall"
-    },
-    "trinsic.services.event.APICall.response": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.APICall"
-    },
-    "trinsic.services.event.APICall.source": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.APICall"
-    },
-    "trinsic.services.event.EventType": {
-      "type": "enum",
-      "collection": "enums",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.EventType.CREDENTIAL_ISSUED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.ITEM_RECEIVED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.LOG": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.PING": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.TEMPLATE_CREATED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.TEMPLATE_DELETED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.EventType.WALLET_CREATED": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.EventType"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.name": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.type": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.GovernanceFrameworkCreatedV1"
-    },
-    "trinsic.services.event.ItemReceivedV1": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.ItemReceivedV1.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.ItemReceivedV1"
-    },
-    "trinsic.services.event.ItemReceivedV1.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.ItemReceivedV1"
-    },
-    "trinsic.services.event.ItemReceivedV1.received": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.ItemReceivedV1"
-    },
-    "trinsic.services.event.ItemReceivedV1.wallet_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.ItemReceivedV1"
-    },
-    "trinsic.services.event.PingV1": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.PingV1.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.PingV1"
-    },
-    "trinsic.services.event.PingV1.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.PingV1"
-    },
-    "trinsic.services.event.PingV1.message": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.PingV1"
-    },
-    "trinsic.services.event.PingV1.timestamp": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.PingV1"
-    },
-    "trinsic.services.event.PingV1.webhook_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.PingV1"
-    },
-    "trinsic.services.event.TemplateCreatedV1": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/event/v1/event.proto",
-      "parent": ""
-    },
-    "trinsic.services.event.TemplateCreatedV1.created_by": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreatedV1"
-    },
-    "trinsic.services.event.TemplateCreatedV1.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreatedV1"
-    },
-    "trinsic.services.event.TemplateCreatedV1.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreatedV1"
-    },
-    "trinsic.services.event.TemplateCreatedV1.name": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreatedV1"
-    },
-    "trinsic.services.event.TemplateCreatedV1.timestamp": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreatedV1"
-    },
-    "trinsic.services.event.TemplateCreatedV1.type": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/event/v1/event.proto",
-      "parent": "trinsic.services.event.TemplateCreatedV1"
     }
   },
   "files": {
@@ -4153,8 +3481,7 @@
         "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
-        "services.account.v1.Account.Info",
-        "services.account.v1.Account.AuthorizeWebhook"
+        "services.account.v1.Account.Info"
       ],
       "messages": [
         "services.account.v1.SignInRequest",
@@ -4164,18 +3491,14 @@
         "services.account.v1.TokenProtection",
         "services.account.v1.AccountInfoRequest",
         "services.account.v1.AccountInfoResponse",
-        "services.account.v1.AccountEcosystem",
         "services.account.v1.LoginRequest",
         "services.account.v1.LoginResponse",
         "services.account.v1.LoginConfirmRequest",
         "services.account.v1.LoginConfirmResponse",
-        "services.account.v1.AuthorizeWebhookRequest",
-        "services.account.v1.AuthorizeWebhookResponse",
         "services.account.v1.WalletAuthToken"
       ],
       "fields": [
         "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.invitation_code",
         "services.account.v1.SignInRequest.ecosystem_id",
         "services.account.v1.AccountDetails.name",
         "services.account.v1.AccountDetails.email",
@@ -4189,25 +3512,18 @@
         "services.account.v1.TokenProtection.enabled",
         "services.account.v1.TokenProtection.method",
         "services.account.v1.AccountInfoResponse.details",
-        "services.account.v1.AccountInfoResponse.ecosystems",
         "services.account.v1.AccountInfoResponse.wallet_id",
         "services.account.v1.AccountInfoResponse.device_id",
         "services.account.v1.AccountInfoResponse.ecosystem_id",
         "services.account.v1.AccountInfoResponse.public_did",
         "services.account.v1.AccountInfoResponse.auth_tokens",
-        "services.account.v1.AccountEcosystem.id",
-        "services.account.v1.AccountEcosystem.name",
-        "services.account.v1.AccountEcosystem.description",
-        "services.account.v1.AccountEcosystem.uri",
         "services.account.v1.LoginRequest.email",
-        "services.account.v1.LoginRequest.invitation_code",
         "services.account.v1.LoginRequest.ecosystem_id",
         "services.account.v1.LoginResponse.challenge",
         "services.account.v1.LoginResponse.profile",
         "services.account.v1.LoginConfirmRequest.challenge",
         "services.account.v1.LoginConfirmRequest.confirmation_code_hashed",
         "services.account.v1.LoginConfirmResponse.profile",
-        "services.account.v1.AuthorizeWebhookRequest.events",
         "services.account.v1.WalletAuthToken.id",
         "services.account.v1.WalletAuthToken.description",
         "services.account.v1.WalletAuthToken.date_created"
@@ -4250,64 +3566,6 @@
         "services.common.v1.SupportedDidMethod.KEY",
         "services.common.v1.SupportedDidMethod.ION",
         "services.common.v1.SupportedDidMethod.INDY"
-      ]
-    },
-    "services/event/v1/event.proto": {
-      "name": "services/event/v1/event.proto",
-      "package": "trinsic.services.event",
-      "description": "",
-      "services": [],
-      "methods": [],
-      "messages": [
-        "trinsic.services.event.APICall",
-        "trinsic.services.event.PingV1",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1",
-        "trinsic.services.event.TemplateCreatedV1",
-        "trinsic.services.event.ItemReceivedV1"
-      ],
-      "fields": [
-        "trinsic.services.event.APICall.source",
-        "trinsic.services.event.APICall.request",
-        "trinsic.services.event.APICall.response",
-        "trinsic.services.event.PingV1.id",
-        "trinsic.services.event.PingV1.webhook_id",
-        "trinsic.services.event.PingV1.timestamp",
-        "trinsic.services.event.PingV1.message",
-        "trinsic.services.event.PingV1.ecosystem_id",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.id",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.type",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.name",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.description",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp",
-        "trinsic.services.event.TemplateCreatedV1.id",
-        "trinsic.services.event.TemplateCreatedV1.ecosystem_id",
-        "trinsic.services.event.TemplateCreatedV1.name",
-        "trinsic.services.event.TemplateCreatedV1.type",
-        "trinsic.services.event.TemplateCreatedV1.created_by",
-        "trinsic.services.event.TemplateCreatedV1.timestamp",
-        "trinsic.services.event.ItemReceivedV1.id",
-        "trinsic.services.event.ItemReceivedV1.received",
-        "trinsic.services.event.ItemReceivedV1.wallet_id",
-        "trinsic.services.event.ItemReceivedV1.ecosystem_id"
-      ],
-      "enums": [
-        "trinsic.services.event.EventType"
-      ],
-      "enum_values": [
-        "trinsic.services.event.EventType.PING",
-        "trinsic.services.event.EventType.LOG",
-        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED",
-        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
-        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
-        "trinsic.services.event.EventType.TEMPLATE_CREATED",
-        "trinsic.services.event.EventType.TEMPLATE_DELETED",
-        "trinsic.services.event.EventType.WALLET_CREATED",
-        "trinsic.services.event.EventType.ITEM_RECEIVED",
-        "trinsic.services.event.EventType.CREDENTIAL_ISSUED"
       ]
     },
     "services/file-management/v1/file-management.proto": {
@@ -4436,12 +3694,6 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
-        "services.provider.v1.Provider.AddWebhook",
-        "services.provider.v1.Provider.DeleteWebhook",
-        "services.provider.v1.Provider.EcosystemInfo",
-        "services.provider.v1.Provider.GetPublicEcosystemInfo",
-        "services.provider.v1.Provider.Invite",
-        "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
@@ -4449,13 +3701,7 @@
         "services.provider.v1.Provider.SearchWalletConfigurations"
       ],
       "messages": [
-        "services.provider.v1.InviteRequest",
-        "services.provider.v1.InviteRequest.DidCommInvitation",
-        "services.provider.v1.InviteResponse",
-        "services.provider.v1.InvitationStatusRequest",
-        "services.provider.v1.InvitationStatusResponse",
         "services.provider.v1.Ecosystem",
-        "services.provider.v1.WebhookConfig",
         "services.provider.v1.CreateEcosystemRequest",
         "services.provider.v1.CreateEcosystemResponse",
         "services.provider.v1.UpdateEcosystemRequest",
@@ -4464,15 +3710,8 @@
         "services.provider.v1.UpdateEcosystemResponse",
         "services.provider.v1.EcosystemDisplay",
         "services.provider.v1.EcosystemDisplayDetails",
-        "services.provider.v1.AddWebhookRequest",
-        "services.provider.v1.AddWebhookResponse",
-        "services.provider.v1.DeleteWebhookRequest",
-        "services.provider.v1.DeleteWebhookResponse",
         "services.provider.v1.EcosystemInfoRequest",
         "services.provider.v1.EcosystemInfoResponse",
-        "services.provider.v1.GetPublicEcosystemInfoRequest",
-        "services.provider.v1.GetPublicEcosystemInfoResponse",
-        "services.provider.v1.PublicEcosystemInformation",
         "services.provider.v1.GetOberonKeyRequest",
         "services.provider.v1.GetOberonKeyResponse",
         "services.provider.v1.RetrieveDomainVerificationRecordRequest",
@@ -4488,34 +3727,19 @@
         "services.provider.v1.UpgradeDidResponse"
       ],
       "fields": [
-        "services.provider.v1.InviteRequest.participant",
-        "services.provider.v1.InviteRequest.description",
-        "services.provider.v1.InviteRequest.details",
-        "services.provider.v1.InviteResponse.invitation_id",
-        "services.provider.v1.InviteResponse.invitation_code",
-        "services.provider.v1.InvitationStatusRequest.invitation_id",
-        "services.provider.v1.InvitationStatusResponse.status",
-        "services.provider.v1.InvitationStatusResponse.status_details",
         "services.provider.v1.Ecosystem.id",
         "services.provider.v1.Ecosystem.name",
         "services.provider.v1.Ecosystem.description",
-        "services.provider.v1.Ecosystem.uri",
         "services.provider.v1.Ecosystem.display",
         "services.provider.v1.Ecosystem.domain",
-        "services.provider.v1.WebhookConfig.id",
-        "services.provider.v1.WebhookConfig.destination_url",
-        "services.provider.v1.WebhookConfig.events",
-        "services.provider.v1.WebhookConfig.status",
         "services.provider.v1.CreateEcosystemRequest.name",
         "services.provider.v1.CreateEcosystemRequest.description",
-        "services.provider.v1.CreateEcosystemRequest.uri",
         "services.provider.v1.CreateEcosystemRequest.details",
         "services.provider.v1.CreateEcosystemRequest.domain",
         "services.provider.v1.CreateEcosystemResponse.ecosystem",
         "services.provider.v1.CreateEcosystemResponse.profile",
         "services.provider.v1.CreateEcosystemResponse.confirmation_method",
         "services.provider.v1.UpdateEcosystemRequest.description",
-        "services.provider.v1.UpdateEcosystemRequest.uri",
         "services.provider.v1.UpdateEcosystemRequest.domain",
         "services.provider.v1.UpdateEcosystemRequest.display",
         "services.provider.v1.EcosystemDisplayRequest.light",
@@ -4526,20 +3750,7 @@
         "services.provider.v1.EcosystemDisplay.light",
         "services.provider.v1.EcosystemDisplayDetails.logo_url",
         "services.provider.v1.EcosystemDisplayDetails.color",
-        "services.provider.v1.AddWebhookRequest.destination_url",
-        "services.provider.v1.AddWebhookRequest.secret",
-        "services.provider.v1.AddWebhookRequest.events",
-        "services.provider.v1.AddWebhookResponse.ecosystem",
-        "services.provider.v1.DeleteWebhookRequest.webhook_id",
-        "services.provider.v1.DeleteWebhookResponse.ecosystem",
         "services.provider.v1.EcosystemInfoResponse.ecosystem",
-        "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id",
-        "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem",
-        "services.provider.v1.PublicEcosystemInformation.name",
-        "services.provider.v1.PublicEcosystemInformation.domain",
-        "services.provider.v1.PublicEcosystemInformation.domain_verified",
-        "services.provider.v1.PublicEcosystemInformation.style_display",
-        "services.provider.v1.PublicEcosystemInformation.description",
         "services.provider.v1.GetOberonKeyResponse.key",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value",
@@ -4571,16 +3782,10 @@
         "services.provider.v1.UpgradeDidResponse.did"
       ],
       "enums": [
-        "services.provider.v1.InvitationStatusResponse.Status",
         "services.provider.v1.IonOptions.IonNetwork",
-        "services.provider.v1.IndyOptions.IndyNetwork",
-        "services.provider.v1.ParticipantType"
+        "services.provider.v1.IndyOptions.IndyNetwork"
       ],
       "enum_values": [
-        "services.provider.v1.InvitationStatusResponse.Status.Error",
-        "services.provider.v1.InvitationStatusResponse.Status.InvitationSent",
-        "services.provider.v1.InvitationStatusResponse.Status.Completed",
-        "services.provider.v1.InvitationStatusResponse.Status.Expired",
         "services.provider.v1.IonOptions.IonNetwork.TestNet",
         "services.provider.v1.IonOptions.IonNetwork.MainNet",
         "services.provider.v1.IndyOptions.IndyNetwork.Danube",
@@ -4591,9 +3796,7 @@
         "services.provider.v1.IndyOptions.IndyNetwork.IdUnion",
         "services.provider.v1.IndyOptions.IndyNetwork.IndicioTest",
         "services.provider.v1.IndyOptions.IndyNetwork.IndicioDemo",
-        "services.provider.v1.IndyOptions.IndyNetwork.Indicio",
-        "services.provider.v1.ParticipantType.participant_type_individual",
-        "services.provider.v1.ParticipantType.participant_type_organization"
+        "services.provider.v1.IndyOptions.IndyNetwork.Indicio"
       ]
     },
     "services/trust-registry/v1/trust-registry.proto": {
@@ -4694,6 +3897,7 @@
         "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity",
         "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
         "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
+        "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode",
         "services.universalwallet.v1.UniversalWallet.ListWallets"
       ],
       "messages": [
@@ -4729,6 +3933,8 @@
         "services.universalwallet.v1.RemoveExternalIdentityResponse",
         "services.universalwallet.v1.AuthenticateInitRequest",
         "services.universalwallet.v1.AuthenticateInitResponse",
+        "services.universalwallet.v1.AuthenticateResendCodeRequest",
+        "services.universalwallet.v1.AuthenticateResendCodeResponse",
         "services.universalwallet.v1.AuthenticateConfirmRequest",
         "services.universalwallet.v1.AuthenticateConfirmResponse"
       ],
@@ -4776,6 +3982,7 @@
         "services.universalwallet.v1.AuthenticateInitRequest.provider",
         "services.universalwallet.v1.AuthenticateInitRequest.ecosystem_id",
         "services.universalwallet.v1.AuthenticateInitResponse.challenge",
+        "services.universalwallet.v1.AuthenticateResendCodeRequest.challenge",
         "services.universalwallet.v1.AuthenticateConfirmRequest.challenge",
         "services.universalwallet.v1.AuthenticateConfirmRequest.response",
         "services.universalwallet.v1.AuthenticateConfirmResponse.auth_token"
@@ -4827,7 +4034,6 @@
         "services.verifiablecredentials.templates.v1.AppleWalletOptions",
         "services.verifiablecredentials.templates.v1.FieldOrdering",
         "services.verifiablecredentials.templates.v1.TemplateField",
-        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry",
         "services.verifiablecredentials.templates.v1.TemplateFieldPatch",
         "services.verifiablecredentials.templates.v1.UriFieldData"
       ],
@@ -4874,7 +4080,6 @@
         "services.verifiablecredentials.templates.v1.TemplateData.fields",
         "services.verifiablecredentials.templates.v1.TemplateData.allow_additional_fields",
         "services.verifiablecredentials.templates.v1.TemplateData.schema_uri",
-        "services.verifiablecredentials.templates.v1.TemplateData.context_uri",
         "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.TemplateData.type",
         "services.verifiablecredentials.templates.v1.TemplateData.created_by",
@@ -4899,10 +4104,7 @@
         "services.verifiablecredentials.templates.v1.TemplateField.description",
         "services.verifiablecredentials.templates.v1.TemplateField.optional",
         "services.verifiablecredentials.templates.v1.TemplateField.type",
-        "services.verifiablecredentials.templates.v1.TemplateField.annotations",
         "services.verifiablecredentials.templates.v1.TemplateField.uri_data",
-        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key",
-        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value",
         "services.verifiablecredentials.templates.v1.TemplateFieldPatch.title",
         "services.verifiablecredentials.templates.v1.TemplateFieldPatch.description",
         "services.verifiablecredentials.templates.v1.TemplateFieldPatch.uri_data",
@@ -4977,7 +4179,6 @@
         "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json",
         "services.verifiablecredentials.v1.VerifyProofRequest.proof_document_json",
         "services.verifiablecredentials.v1.VerifyProofResponse.is_valid",
-        "services.verifiablecredentials.v1.VerifyProofResponse.validation_messages",
         "services.verifiablecredentials.v1.VerifyProofResponse.validation_results",
         "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry.key",
         "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry.value",
@@ -5007,8 +4208,7 @@
         "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
-        "services.account.v1.Account.Info",
-        "services.account.v1.Account.AuthorizeWebhook"
+        "services.account.v1.Account.Info"
       ]
     },
     "services.filemanagement.v1.FileManagement": {
@@ -5041,12 +4241,6 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
-        "services.provider.v1.Provider.AddWebhook",
-        "services.provider.v1.Provider.DeleteWebhook",
-        "services.provider.v1.Provider.EcosystemInfo",
-        "services.provider.v1.Provider.GetPublicEcosystemInfo",
-        "services.provider.v1.Provider.Invite",
-        "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
@@ -5088,6 +4282,7 @@
         "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity",
         "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
         "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
+        "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode",
         "services.universalwallet.v1.UniversalWallet.ListWallets"
       ]
     },
@@ -5120,16 +4315,6 @@
     }
   },
   "methods": {
-    "services.account.v1.Account.AuthorizeWebhook": {
-      "name": "AuthorizeWebhook",
-      "full_name": "services.account.v1.Account.AuthorizeWebhook",
-      "input_type": "services.account.v1.AuthorizeWebhookRequest",
-      "output_type": "services.account.v1.AuthorizeWebhookResponse",
-      "description": "Authorize Ecosystem to receive webhook events",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
     "services.account.v1.Account.Info": {
       "name": "Info",
       "full_name": "services.account.v1.Account.Info",
@@ -5264,42 +4449,12 @@
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
-    "services.provider.v1.Provider.AddWebhook": {
-      "name": "AddWebhook",
-      "full_name": "services.provider.v1.Provider.AddWebhook",
-      "input_type": "services.provider.v1.AddWebhookRequest",
-      "output_type": "services.provider.v1.AddWebhookResponse",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed April 1st 2023",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
     "services.provider.v1.Provider.CreateEcosystem": {
       "name": "CreateEcosystem",
       "full_name": "services.provider.v1.Provider.CreateEcosystem",
       "input_type": "services.provider.v1.CreateEcosystemRequest",
       "output_type": "services.provider.v1.CreateEcosystemResponse",
       "description": "Create new ecosystem and assign the authenticated user as owner",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.provider.v1.Provider.DeleteWebhook": {
-      "name": "DeleteWebhook",
-      "full_name": "services.provider.v1.Provider.DeleteWebhook",
-      "input_type": "services.provider.v1.DeleteWebhookRequest",
-      "output_type": "services.provider.v1.DeleteWebhookResponse",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed April 1st 2023",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.provider.v1.Provider.EcosystemInfo": {
-      "name": "EcosystemInfo",
-      "full_name": "services.provider.v1.Provider.EcosystemInfo",
-      "input_type": "services.provider.v1.EcosystemInfoRequest",
-      "output_type": "services.provider.v1.EcosystemInfoResponse",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
@@ -5311,38 +4466,6 @@
       "output_type": "services.provider.v1.GetOberonKeyResponse",
       "description": "Returns the public key being used to create/verify oberon tokens",
       "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.provider.v1.Provider.GetPublicEcosystemInfo": {
-      "name": "GetPublicEcosystemInfo",
-      "full_name": "services.provider.v1.Provider.GetPublicEcosystemInfo",
-      "input_type": "services.provider.v1.GetPublicEcosystemInfoRequest",
-      "output_type": "services.provider.v1.GetPublicEcosystemInfoResponse",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.provider.v1.Provider.InvitationStatus": {
-      "name": "InvitationStatus",
-      "full_name": "services.provider.v1.Provider.InvitationStatus",
-      "input_type": "services.provider.v1.InvitationStatusRequest",
-      "output_type": "services.provider.v1.InvitationStatusResponse",
-      "description": "DEPRECATED, will be removed April 1st 2023",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.provider.v1.Provider.Invite": {
-      "name": "Invite",
-      "full_name": "services.provider.v1.Provider.Invite",
-      "input_type": "services.provider.v1.InviteRequest",
-      "output_type": "services.provider.v1.InviteResponse",
-      "description": "DEPRECATED, will be removed April 1st 2023",
-      "options": {
-        "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5461,6 +4584,13 @@
       "output_type": "services.universalwallet.v1.AuthenticateInitResponse",
       "description": "Sign-in to an already existing wallet, using an identity added that was previously registered\nThis endpoint does not require authentication, and will return a challenge to be signed or verified"
     },
+    "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode": {
+      "name": "AuthenticateResendCode",
+      "full_name": "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode",
+      "input_type": "services.universalwallet.v1.AuthenticateResendCodeRequest",
+      "output_type": "services.universalwallet.v1.AuthenticateResendCodeResponse",
+      "description": "Resend previous authentication code"
+    },
     "services.universalwallet.v1.UniversalWallet.CreateWallet": {
       "name": "CreateWallet",
       "full_name": "services.universalwallet.v1.UniversalWallet.CreateWallet",
@@ -5501,7 +4631,10 @@
       "full_name": "services.universalwallet.v1.UniversalWallet.GetMyInfo",
       "input_type": "services.universalwallet.v1.GetMyInfoRequest",
       "output_type": "services.universalwallet.v1.GetMyInfoResponse",
-      "description": "Retrieve wallet details and configuration about the currently authenticated wallet"
+      "description": "Retrieve wallet details and configuration about the currently authenticated wallet",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.GetWalletInfo": {
       "name": "GetWalletInfo",
@@ -5673,19 +4806,6 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.AccountEcosystem": {
-      "name": "AccountEcosystem",
-      "full_name": "services.account.v1.AccountEcosystem",
-      "description": "Deprecated",
-      "fields": [
-        "services.account.v1.AccountEcosystem.id",
-        "services.account.v1.AccountEcosystem.name",
-        "services.account.v1.AccountEcosystem.description",
-        "services.account.v1.AccountEcosystem.uri"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.account.v1.AccountInfoRequest": {
       "name": "AccountInfoRequest",
       "full_name": "services.account.v1.AccountInfoRequest",
@@ -5700,7 +4820,6 @@
       "description": "Information about the account used to make the request",
       "fields": [
         "services.account.v1.AccountInfoResponse.details",
-        "services.account.v1.AccountInfoResponse.ecosystems",
         "services.account.v1.AccountInfoResponse.wallet_id",
         "services.account.v1.AccountInfoResponse.device_id",
         "services.account.v1.AccountInfoResponse.ecosystem_id",
@@ -5720,30 +4839,6 @@
         "services.account.v1.AccountProfile.auth_token",
         "services.account.v1.AccountProfile.protection"
       ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.AuthorizeWebhookRequest": {
-      "name": "AuthorizeWebhookRequest",
-      "full_name": "services.account.v1.AuthorizeWebhookRequest",
-      "description": "Request to authorize Ecosystem provider to receive webhooks for events\nwhich occur on this wallet.",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.account.v1.AuthorizeWebhookRequest.events"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.AuthorizeWebhookResponse": {
-      "name": "AuthorizeWebhookResponse",
-      "full_name": "services.account.v1.AuthorizeWebhookResponse",
-      "description": "Response to `AuthorizeWebhookRequest`",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -5774,7 +4869,6 @@
       "description": "Request to begin login flow",
       "fields": [
         "services.account.v1.LoginRequest.email",
-        "services.account.v1.LoginRequest.invitation_code",
         "services.account.v1.LoginRequest.ecosystem_id"
       ],
       "messages": [],
@@ -5797,7 +4891,6 @@
       "description": "Request for creating or signing into an account",
       "fields": [
         "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.invitation_code",
         "services.account.v1.SignInRequest.ecosystem_id"
       ],
       "messages": [],
@@ -6020,34 +5113,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.AddWebhookRequest": {
-      "name": "AddWebhookRequest",
-      "full_name": "services.provider.v1.AddWebhookRequest",
-      "description": "DEPRECATED, will be removed April 1st 2023\nRequest to add a webhook to an ecosystem",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.AddWebhookRequest.destination_url",
-        "services.provider.v1.AddWebhookRequest.secret",
-        "services.provider.v1.AddWebhookRequest.events"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.AddWebhookResponse": {
-      "name": "AddWebhookResponse",
-      "full_name": "services.provider.v1.AddWebhookResponse",
-      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `AddWebhookRequest`",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.AddWebhookResponse.ecosystem"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.CreateEcosystemRequest": {
       "name": "CreateEcosystemRequest",
       "full_name": "services.provider.v1.CreateEcosystemRequest",
@@ -6055,7 +5120,6 @@
       "fields": [
         "services.provider.v1.CreateEcosystemRequest.name",
         "services.provider.v1.CreateEcosystemRequest.description",
-        "services.provider.v1.CreateEcosystemRequest.uri",
         "services.provider.v1.CreateEcosystemRequest.details",
         "services.provider.v1.CreateEcosystemRequest.domain"
       ],
@@ -6074,32 +5138,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.DeleteWebhookRequest": {
-      "name": "DeleteWebhookRequest",
-      "full_name": "services.provider.v1.DeleteWebhookRequest",
-      "description": "DEPRECATED, will be removed April 1st 2023\nRequest to delete a webhook from an ecosystem",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.DeleteWebhookRequest.webhook_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.DeleteWebhookResponse": {
-      "name": "DeleteWebhookResponse",
-      "full_name": "services.provider.v1.DeleteWebhookResponse",
-      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `DeleteWebhookRequest`",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.DeleteWebhookResponse.ecosystem"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.Ecosystem": {
       "name": "Ecosystem",
       "full_name": "services.provider.v1.Ecosystem",
@@ -6108,7 +5146,6 @@
         "services.provider.v1.Ecosystem.id",
         "services.provider.v1.Ecosystem.name",
         "services.provider.v1.Ecosystem.description",
-        "services.provider.v1.Ecosystem.uri",
         "services.provider.v1.Ecosystem.display",
         "services.provider.v1.Ecosystem.domain"
       ],
@@ -6194,32 +5231,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.GetPublicEcosystemInfoRequest": {
-      "name": "GetPublicEcosystemInfoRequest",
-      "full_name": "services.provider.v1.GetPublicEcosystemInfoRequest",
-      "description": "DEPRECATED, will be removed April 1st 2023\nRequest to fetch information about an ecosystem",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.GetPublicEcosystemInfoResponse": {
-      "name": "GetPublicEcosystemInfoResponse",
-      "full_name": "services.provider.v1.GetPublicEcosystemInfoResponse",
-      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `InfoRequest`",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.IndyOptions": {
       "name": "IndyOptions",
       "full_name": "services.provider.v1.IndyOptions",
@@ -6231,74 +5242,6 @@
       "enums": [
         "services.provider.v1.IndyOptions.IndyNetwork"
       ]
-    },
-    "services.provider.v1.InvitationStatusRequest": {
-      "name": "InvitationStatusRequest",
-      "full_name": "services.provider.v1.InvitationStatusRequest",
-      "description": "DEPRECATED, will be removed April 1st 2023\nRequest details for the status of an invitation",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.InvitationStatusRequest.invitation_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.InvitationStatusResponse": {
-      "name": "InvitationStatusResponse",
-      "full_name": "services.provider.v1.InvitationStatusResponse",
-      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `InvitationStatusRequest`",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.InvitationStatusResponse.status",
-        "services.provider.v1.InvitationStatusResponse.status_details"
-      ],
-      "messages": [],
-      "enums": [
-        "services.provider.v1.InvitationStatusResponse.Status"
-      ]
-    },
-    "services.provider.v1.InviteRequest": {
-      "name": "InviteRequest",
-      "full_name": "services.provider.v1.InviteRequest",
-      "description": "Request to invite a participant to an ecosystem",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.InviteRequest.participant",
-        "services.provider.v1.InviteRequest.description",
-        "services.provider.v1.InviteRequest.details"
-      ],
-      "messages": [
-        "services.provider.v1.InviteRequest.DidCommInvitation"
-      ],
-      "enums": []
-    },
-    "services.provider.v1.InviteRequest.DidCommInvitation": {
-      "name": "DidCommInvitation",
-      "full_name": "services.provider.v1.InviteRequest.DidCommInvitation",
-      "description": "",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.InviteResponse": {
-      "name": "InviteResponse",
-      "full_name": "services.provider.v1.InviteResponse",
-      "description": "DEPRECATED, will be removed April 1st 2023\nResponse to `InviteRequest`",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.InviteResponse.invitation_id",
-        "services.provider.v1.InviteResponse.invitation_code"
-      ],
-      "messages": [],
-      "enums": []
     },
     "services.provider.v1.IonOptions": {
       "name": "IonOptions",
@@ -6348,23 +5291,6 @@
       "description": "",
       "fields": [
         "services.provider.v1.ListRoleAssignmentsResponse.roles"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.PublicEcosystemInformation": {
-      "name": "PublicEcosystemInformation",
-      "full_name": "services.provider.v1.PublicEcosystemInformation",
-      "description": "DEPRECATED, will be removed April 1st 2023",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.PublicEcosystemInformation.name",
-        "services.provider.v1.PublicEcosystemInformation.domain",
-        "services.provider.v1.PublicEcosystemInformation.domain_verified",
-        "services.provider.v1.PublicEcosystemInformation.style_display",
-        "services.provider.v1.PublicEcosystemInformation.description"
       ],
       "messages": [],
       "enums": []
@@ -6469,7 +5395,6 @@
       "description": "Request to update an ecosystem's metadata",
       "fields": [
         "services.provider.v1.UpdateEcosystemRequest.description",
-        "services.provider.v1.UpdateEcosystemRequest.uri",
         "services.provider.v1.UpdateEcosystemRequest.domain",
         "services.provider.v1.UpdateEcosystemRequest.display"
       ],
@@ -6526,22 +5451,6 @@
         "services.provider.v1.WalletConfiguration.external_identities",
         "services.provider.v1.WalletConfiguration.ecosystem_id",
         "services.provider.v1.WalletConfiguration.description"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.WebhookConfig": {
-      "name": "WebhookConfig",
-      "full_name": "services.provider.v1.WebhookConfig",
-      "description": "DEPRECATED, will be removed April 1st 2023\nWebhook configured on an ecosystem",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.WebhookConfig.id",
-        "services.provider.v1.WebhookConfig.destination_url",
-        "services.provider.v1.WebhookConfig.events",
-        "services.provider.v1.WebhookConfig.status"
       ],
       "messages": [],
       "enums": []
@@ -6771,6 +5680,24 @@
       "fields": [
         "services.universalwallet.v1.AuthenticateInitResponse.challenge"
       ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AuthenticateResendCodeRequest": {
+      "name": "AuthenticateResendCodeRequest",
+      "full_name": "services.universalwallet.v1.AuthenticateResendCodeRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.AuthenticateResendCodeRequest.challenge"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.AuthenticateResendCodeResponse": {
+      "name": "AuthenticateResendCodeResponse",
+      "full_name": "services.universalwallet.v1.AuthenticateResendCodeResponse",
+      "description": "",
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -7210,7 +6137,6 @@
         "services.verifiablecredentials.templates.v1.TemplateData.fields",
         "services.verifiablecredentials.templates.v1.TemplateData.allow_additional_fields",
         "services.verifiablecredentials.templates.v1.TemplateData.schema_uri",
-        "services.verifiablecredentials.templates.v1.TemplateData.context_uri",
         "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.TemplateData.type",
         "services.verifiablecredentials.templates.v1.TemplateData.created_by",
@@ -7259,22 +6185,7 @@
         "services.verifiablecredentials.templates.v1.TemplateField.description",
         "services.verifiablecredentials.templates.v1.TemplateField.optional",
         "services.verifiablecredentials.templates.v1.TemplateField.type",
-        "services.verifiablecredentials.templates.v1.TemplateField.annotations",
         "services.verifiablecredentials.templates.v1.TemplateField.uri_data"
-      ],
-      "messages": [
-        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry"
-      ],
-      "enums": []
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry": {
-      "name": "AnnotationsEntry",
-      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry",
-      "description": "",
-      "is_map_entry": true,
-      "fields": [
-        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key",
-        "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value"
       ],
       "messages": [],
       "enums": []
@@ -7527,7 +6438,6 @@
       "description": "Response to `VerifyProofRequest`",
       "fields": [
         "services.verifiablecredentials.v1.VerifyProofResponse.is_valid",
-        "services.verifiablecredentials.v1.VerifyProofResponse.validation_messages",
         "services.verifiablecredentials.v1.VerifyProofResponse.validation_results"
       ],
       "messages": [
@@ -7543,102 +6453,6 @@
       "fields": [
         "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry.key",
         "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry.value"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "trinsic.services.event.APICall": {
-      "name": "APICall",
-      "full_name": "trinsic.services.event.APICall",
-      "description": "",
-      "fields": [
-        "trinsic.services.event.APICall.source",
-        "trinsic.services.event.APICall.request",
-        "trinsic.services.event.APICall.response"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1": {
-      "name": "GovernanceFrameworkCreatedV1",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1",
-      "description": "Entity Governance Framework created and attached to ecosystem",
-      "options": {
-        "trinsic.services.event.event_type": {
-          "enum_type": "trinsic.services.event.EventType",
-          "enum_value": 5
-        }
-      },
-      "fields": [
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.id",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.type",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.name",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.description",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework",
-        "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "trinsic.services.event.ItemReceivedV1": {
-      "name": "ItemReceivedV1",
-      "full_name": "trinsic.services.event.ItemReceivedV1",
-      "description": "Item inserted into wallet",
-      "options": {
-        "trinsic.services.event.event_type": {
-          "enum_type": "trinsic.services.event.EventType",
-          "enum_value": 16
-        }
-      },
-      "fields": [
-        "trinsic.services.event.ItemReceivedV1.id",
-        "trinsic.services.event.ItemReceivedV1.received",
-        "trinsic.services.event.ItemReceivedV1.wallet_id",
-        "trinsic.services.event.ItemReceivedV1.ecosystem_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "trinsic.services.event.PingV1": {
-      "name": "PingV1",
-      "full_name": "trinsic.services.event.PingV1",
-      "description": "Webhook test event",
-      "options": {
-        "trinsic.services.event.event_type": {
-          "enum_type": "trinsic.services.event.EventType",
-          "enum_value": 0
-        }
-      },
-      "fields": [
-        "trinsic.services.event.PingV1.id",
-        "trinsic.services.event.PingV1.webhook_id",
-        "trinsic.services.event.PingV1.timestamp",
-        "trinsic.services.event.PingV1.message",
-        "trinsic.services.event.PingV1.ecosystem_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "trinsic.services.event.TemplateCreatedV1": {
-      "name": "TemplateCreatedV1",
-      "full_name": "trinsic.services.event.TemplateCreatedV1",
-      "description": "Template created in ecosystem",
-      "options": {
-        "trinsic.services.event.event_type": {
-          "enum_type": "trinsic.services.event.EventType",
-          "enum_value": 10
-        }
-      },
-      "fields": [
-        "trinsic.services.event.TemplateCreatedV1.id",
-        "trinsic.services.event.TemplateCreatedV1.ecosystem_id",
-        "trinsic.services.event.TemplateCreatedV1.name",
-        "trinsic.services.event.TemplateCreatedV1.type",
-        "trinsic.services.event.TemplateCreatedV1.created_by",
-        "trinsic.services.event.TemplateCreatedV1.timestamp"
       ],
       "messages": [],
       "enums": []
@@ -7710,38 +6524,6 @@
         "services.options.optional": true
       }
     },
-    "services.account.v1.AccountEcosystem.description": {
-      "name": "description",
-      "full_name": "services.account.v1.AccountEcosystem.description",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.account.v1.AccountEcosystem.id": {
-      "name": "id",
-      "full_name": "services.account.v1.AccountEcosystem.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.account.v1.AccountEcosystem.name": {
-      "name": "name",
-      "full_name": "services.account.v1.AccountEcosystem.name",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.account.v1.AccountEcosystem.uri": {
-      "name": "uri",
-      "full_name": "services.account.v1.AccountEcosystem.uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
     "services.account.v1.AccountInfoResponse.auth_tokens": {
       "name": "auth_tokens",
       "full_name": "services.account.v1.AccountInfoResponse.auth_tokens",
@@ -7773,17 +6555,6 @@
       "type": "string",
       "full_type": "string",
       "description": "The ecosystem ID within which this account resides"
-    },
-    "services.account.v1.AccountInfoResponse.ecosystems": {
-      "name": "ecosystems",
-      "full_name": "services.account.v1.AccountInfoResponse.ecosystems",
-      "label": "LABEL_REPEATED",
-      "type": "AccountEcosystem",
-      "full_type": "services.account.v1.AccountEcosystem",
-      "description": "DEPRECATED, will be removed April 1st 2023\nUse `ecosystem_id` instead",
-      "options": {
-        "deprecated": true
-      }
     },
     "services.account.v1.AccountInfoResponse.public_did": {
       "name": "public_did",
@@ -7833,14 +6604,6 @@
       "full_type": "services.account.v1.TokenProtection",
       "description": "Token security information about the token.\nIf token protection is enabled, implementations must supply\nprotection secret before using the token for authentication."
     },
-    "services.account.v1.AuthorizeWebhookRequest.events": {
-      "name": "events",
-      "full_name": "services.account.v1.AuthorizeWebhookRequest.events",
-      "label": "LABEL_REPEATED",
-      "type": "string",
-      "full_type": "string",
-      "description": "Events to authorize access to. Default is \"*\" (all events)"
-    },
     "services.account.v1.LoginConfirmRequest.challenge": {
       "name": "challenge",
       "full_name": "services.account.v1.LoginConfirmRequest.challenge",
@@ -7871,7 +6634,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "ID of Ecosystem to sign into.\nIgnored if `invitation_code` is passed.",
+      "description": "ID of Ecosystem to sign into.",
       "options": {
         "services.options.optional": true
       }
@@ -7884,18 +6647,6 @@
       "full_type": "string",
       "description": "Email address of account. If unspecified, an anonymous account will be created.",
       "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.LoginRequest.invitation_code": {
-      "name": "invitation_code",
-      "full_name": "services.account.v1.LoginRequest.invitation_code",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DEPRECATED, will be removed April 1st 2023\nInvitation code associated with this registration",
-      "options": {
-        "deprecated": true,
         "services.options.optional": true
       }
     },
@@ -7934,18 +6685,6 @@
       "full_type": "string",
       "description": "ID of Ecosystem to use\nIgnored if `invitation_code` is passed",
       "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.SignInRequest.invitation_code": {
-      "name": "invitation_code",
-      "full_name": "services.account.v1.SignInRequest.invitation_code",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DEPRECATED, will be removed April 1st 2023\nInvitation code associated with this registration",
-      "options": {
-        "deprecated": true,
         "services.options.optional": true
       }
     },
@@ -8272,38 +7011,6 @@
       "full_type": "string",
       "description": "Wallet ID of account to assign role to.\nMutually exclusive with `email` and `didUri`."
     },
-    "services.provider.v1.AddWebhookRequest.destination_url": {
-      "name": "destination_url",
-      "full_name": "services.provider.v1.AddWebhookRequest.destination_url",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Destination to post webhook calls to.\nMust be a reachable HTTPS URL."
-    },
-    "services.provider.v1.AddWebhookRequest.events": {
-      "name": "events",
-      "full_name": "services.provider.v1.AddWebhookRequest.events",
-      "label": "LABEL_REPEATED",
-      "type": "string",
-      "full_type": "string",
-      "description": "Events to subscribe to. Default is \"*\" (all events)"
-    },
-    "services.provider.v1.AddWebhookRequest.secret": {
-      "name": "secret",
-      "full_name": "services.provider.v1.AddWebhookRequest.secret",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Secret string used for HMAC-SHA256 signing of webhook payloads\nto verify that a webhook comes from Trinsic"
-    },
-    "services.provider.v1.AddWebhookResponse.ecosystem": {
-      "name": "ecosystem",
-      "full_name": "services.provider.v1.AddWebhookResponse.ecosystem",
-      "label": "LABEL_OPTIONAL",
-      "type": "Ecosystem",
-      "full_type": "services.provider.v1.Ecosystem",
-      "description": "Ecosystem data with new webhook"
-    },
     "services.provider.v1.CreateEcosystemRequest.description": {
       "name": "description",
       "full_name": "services.provider.v1.CreateEcosystemRequest.description",
@@ -8342,18 +7049,6 @@
         "services.options.optional": true
       }
     },
-    "services.provider.v1.CreateEcosystemRequest.uri": {
-      "name": "uri",
-      "full_name": "services.provider.v1.CreateEcosystemRequest.uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DEPRECATED, will be removed April 1st 2023\nExternal URL associated with your organization or ecosystem entity",
-      "options": {
-        "deprecated": true,
-        "services.options.optional": true
-      }
-    },
     "services.provider.v1.CreateEcosystemResponse.confirmation_method": {
       "name": "confirmation_method",
       "full_name": "services.provider.v1.CreateEcosystemResponse.confirmation_method",
@@ -8377,22 +7072,6 @@
       "type": "AccountProfile",
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account profile for auth of the owner of the ecosystem"
-    },
-    "services.provider.v1.DeleteWebhookRequest.webhook_id": {
-      "name": "webhook_id",
-      "full_name": "services.provider.v1.DeleteWebhookRequest.webhook_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of webhook to delete"
-    },
-    "services.provider.v1.DeleteWebhookResponse.ecosystem": {
-      "name": "ecosystem",
-      "full_name": "services.provider.v1.DeleteWebhookResponse.ecosystem",
-      "label": "LABEL_OPTIONAL",
-      "type": "Ecosystem",
-      "full_type": "services.provider.v1.Ecosystem",
-      "description": "Ecosystem data after removal of webhook"
     },
     "services.provider.v1.Ecosystem.description": {
       "name": "description",
@@ -8434,24 +7113,13 @@
       "full_type": "string",
       "description": "Globally unique name for the ecosystem"
     },
-    "services.provider.v1.Ecosystem.uri": {
-      "name": "uri",
-      "full_name": "services.provider.v1.Ecosystem.uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DEPRECATED, will be removed April 1st 2023\nExternal URL associated with the organization or ecosystem entity",
-      "options": {
-        "deprecated": true
-      }
-    },
     "services.provider.v1.EcosystemDisplay.light": {
       "name": "light",
       "full_name": "services.provider.v1.EcosystemDisplay.light",
       "label": "LABEL_OPTIONAL",
       "type": "EcosystemDisplayDetails",
       "full_type": "services.provider.v1.EcosystemDisplayDetails",
-      "description": "Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.\n   EcosystemDisplayDetails dark = 1;"
+      "description": "Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform."
     },
     "services.provider.v1.EcosystemDisplayDetails.color": {
       "name": "color",
@@ -8517,22 +7185,6 @@
       "full_type": "string",
       "description": "Oberon Public Key as RAW base64-url encoded string"
     },
-    "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem": {
-      "name": "ecosystem",
-      "full_name": "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem",
-      "label": "LABEL_OPTIONAL",
-      "type": "PublicEcosystemInformation",
-      "full_type": "services.provider.v1.PublicEcosystemInformation",
-      "description": "Ecosystem corresponding to requested `ecosystem_id`"
-    },
     "services.provider.v1.IndyOptions.network": {
       "name": "network",
       "full_name": "services.provider.v1.IndyOptions.network",
@@ -8540,76 +7192,6 @@
       "type": "IndyNetwork",
       "full_type": "services.provider.v1.IndyOptions.IndyNetwork",
       "description": "SOV network on which DID should be published"
-    },
-    "services.provider.v1.InvitationStatusRequest.invitation_id": {
-      "name": "invitation_id",
-      "full_name": "services.provider.v1.InvitationStatusRequest.invitation_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of invitation, received from `InviteResponse`"
-    },
-    "services.provider.v1.InvitationStatusResponse.status": {
-      "name": "status",
-      "full_name": "services.provider.v1.InvitationStatusResponse.status",
-      "label": "LABEL_OPTIONAL",
-      "type": "Status",
-      "full_type": "services.provider.v1.InvitationStatusResponse.Status",
-      "description": "Status of invitation"
-    },
-    "services.provider.v1.InvitationStatusResponse.status_details": {
-      "name": "status_details",
-      "full_name": "services.provider.v1.InvitationStatusResponse.status_details",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Human-readable string with details about invitation status"
-    },
-    "services.provider.v1.InviteRequest.description": {
-      "name": "description",
-      "full_name": "services.provider.v1.InviteRequest.description",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Description of invitation",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.provider.v1.InviteRequest.details": {
-      "name": "details",
-      "full_name": "services.provider.v1.InviteRequest.details",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountDetails",
-      "full_type": "services.account.v1.AccountDetails",
-      "description": "Account details of invitee",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.provider.v1.InviteRequest.participant": {
-      "name": "participant",
-      "full_name": "services.provider.v1.InviteRequest.participant",
-      "label": "LABEL_OPTIONAL",
-      "type": "ParticipantType",
-      "full_type": "services.provider.v1.ParticipantType",
-      "description": "Type of participant being invited (individual/organization)"
-    },
-    "services.provider.v1.InviteResponse.invitation_code": {
-      "name": "invitation_code",
-      "full_name": "services.provider.v1.InviteResponse.invitation_code",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Invitation code -- must be passed back in `LoginRequest`"
-    },
-    "services.provider.v1.InviteResponse.invitation_id": {
-      "name": "invitation_id",
-      "full_name": "services.provider.v1.InviteResponse.invitation_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of created invitation"
     },
     "services.provider.v1.IonOptions.network": {
       "name": "network",
@@ -8658,46 +7240,6 @@
       "type": "string",
       "full_type": "string",
       "description": "List of roles"
-    },
-    "services.provider.v1.PublicEcosystemInformation.description": {
-      "name": "description",
-      "full_name": "services.provider.v1.PublicEcosystemInformation.description",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Description of the ecosystem"
-    },
-    "services.provider.v1.PublicEcosystemInformation.domain": {
-      "name": "domain",
-      "full_name": "services.provider.v1.PublicEcosystemInformation.domain",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Public domain for the owner of this ecosystem"
-    },
-    "services.provider.v1.PublicEcosystemInformation.domain_verified": {
-      "name": "domain_verified",
-      "full_name": "services.provider.v1.PublicEcosystemInformation.domain_verified",
-      "label": "LABEL_OPTIONAL",
-      "type": "bool",
-      "full_type": "bool",
-      "description": "Trinsic verified the domain is owned by the owner of this ecosystem"
-    },
-    "services.provider.v1.PublicEcosystemInformation.name": {
-      "name": "name",
-      "full_name": "services.provider.v1.PublicEcosystemInformation.name",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Public name of this ecosystem"
-    },
-    "services.provider.v1.PublicEcosystemInformation.style_display": {
-      "name": "style_display",
-      "full_name": "services.provider.v1.PublicEcosystemInformation.style_display",
-      "label": "LABEL_OPTIONAL",
-      "type": "EcosystemDisplay",
-      "full_type": "services.provider.v1.EcosystemDisplay",
-      "description": "Style display information"
     },
     "services.provider.v1.RefreshDomainVerificationStatusResponse.domain": {
       "name": "domain",
@@ -8832,17 +7374,6 @@
       "type": "string",
       "full_type": "string",
       "description": "New domain URL"
-    },
-    "services.provider.v1.UpdateEcosystemRequest.uri": {
-      "name": "uri",
-      "full_name": "services.provider.v1.UpdateEcosystemRequest.uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DEPRECATED, will be removed April 1st 2023\nNew external URL associated with the organization or ecosystem entity",
-      "options": {
-        "deprecated": true
-      }
     },
     "services.provider.v1.UpdateEcosystemResponse.Ecosystem": {
       "name": "Ecosystem",
@@ -8993,38 +7524,6 @@
       "type": "string",
       "full_type": "string",
       "description": ""
-    },
-    "services.provider.v1.WebhookConfig.destination_url": {
-      "name": "destination_url",
-      "full_name": "services.provider.v1.WebhookConfig.destination_url",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "HTTPS URL to POST webhook calls to"
-    },
-    "services.provider.v1.WebhookConfig.events": {
-      "name": "events",
-      "full_name": "services.provider.v1.WebhookConfig.events",
-      "label": "LABEL_REPEATED",
-      "type": "string",
-      "full_type": "string",
-      "description": "Events the webhook is subscribed to"
-    },
-    "services.provider.v1.WebhookConfig.id": {
-      "name": "id",
-      "full_name": "services.provider.v1.WebhookConfig.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of the webhook"
-    },
-    "services.provider.v1.WebhookConfig.status": {
-      "name": "status",
-      "full_name": "services.provider.v1.WebhookConfig.status",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Last known status of webhook (whether or not Trinsic can successfully reach destination)"
     },
     "services.trustregistry.v1.AddFrameworkRequest.description": {
       "name": "description",
@@ -9372,6 +7871,14 @@
       "type": "string",
       "full_type": "string",
       "description": "The challenge received from the `AcquireAuthTokenInit` endpoint\nPass this challenge back to the `AcquireAuthTokenConfirm` endpoint"
+    },
+    "services.universalwallet.v1.AuthenticateResendCodeRequest.challenge": {
+      "name": "challenge",
+      "full_name": "services.universalwallet.v1.AuthenticateResendCodeRequest.challenge",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Challenge for the code you want resent."
     },
     "services.universalwallet.v1.CreateWalletRequest.description": {
       "name": "description",
@@ -9975,17 +8482,6 @@
       "full_type": "services.verifiablecredentials.templates.v1.AppleWalletOptions",
       "description": "Options for rendering the template in Apple Wallet"
     },
-    "services.verifiablecredentials.templates.v1.TemplateData.context_uri": {
-      "name": "context_uri",
-      "full_name": "services.verifiablecredentials.templates.v1.TemplateData.context_uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "DEPRECATED, will be removed April 1st 2023",
-      "options": {
-        "deprecated": true
-      }
-    },
     "services.verifiablecredentials.templates.v1.TemplateData.created_by": {
       "name": "created_by",
       "full_name": "services.verifiablecredentials.templates.v1.TemplateData.created_by",
@@ -10081,33 +8577,6 @@
       "type": "int32",
       "full_type": "int32",
       "description": "Template version number"
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key": {
-      "name": "key",
-      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.key",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value": {
-      "name": "value",
-      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry.value",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.verifiablecredentials.templates.v1.TemplateField.annotations": {
-      "name": "annotations",
-      "full_name": "services.verifiablecredentials.templates.v1.TemplateField.annotations",
-      "label": "LABEL_REPEATED",
-      "type": "AnnotationsEntry",
-      "full_type": "services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry",
-      "description": "Do not use.\nAnnotations for the field that may be used to add additional information.",
-      "options": {
-        "deprecated": true
-      }
     },
     "services.verifiablecredentials.templates.v1.TemplateField.description": {
       "name": "description",
@@ -10531,17 +9000,6 @@
       "full_type": "bool",
       "description": "Whether all validations in `validation_results` passed"
     },
-    "services.verifiablecredentials.v1.VerifyProofResponse.validation_messages": {
-      "name": "validation_messages",
-      "full_name": "services.verifiablecredentials.v1.VerifyProofResponse.validation_messages",
-      "label": "LABEL_REPEATED",
-      "type": "string",
-      "full_type": "string",
-      "description": "Use `validation_results` instead",
-      "options": {
-        "deprecated": true
-      }
-    },
     "services.verifiablecredentials.v1.VerifyProofResponse.validation_results": {
       "name": "validation_results",
       "full_name": "services.verifiablecredentials.v1.VerifyProofResponse.validation_results",
@@ -10549,222 +9007,6 @@
       "type": "ValidationResultsEntry",
       "full_type": "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry",
       "description": "Results of each validation check performed,\nsuch as schema conformance, revocation status, signature, etc.\nDetailed results are provided for failed validations."
-    },
-    "trinsic.services.event.APICall.request": {
-      "name": "request",
-      "full_name": "trinsic.services.event.APICall.request",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": ""
-    },
-    "trinsic.services.event.APICall.response": {
-      "name": "response",
-      "full_name": "trinsic.services.event.APICall.response",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": ""
-    },
-    "trinsic.services.event.APICall.source": {
-      "name": "source",
-      "full_name": "trinsic.services.event.APICall.source",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.description": {
-      "name": "description",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.description",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Description of the EGF"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of the ecosystem that owns this EGF"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework": {
-      "name": "governance_framework",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.governance_framework",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "URI for the EGF"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority": {
-      "name": "governing_authority",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.governing_authority",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Wallet ID of the authority for this EGF"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.id": {
-      "name": "id",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of the governance framework"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.name": {
-      "name": "name",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.name",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "User-friendly name for the EGF"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp": {
-      "name": "timestamp",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.timestamp",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry": {
-      "name": "trust_registry",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.trust_registry",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Trust registry associated with this EGF"
-    },
-    "trinsic.services.event.GovernanceFrameworkCreatedV1.type": {
-      "name": "type",
-      "full_name": "trinsic.services.event.GovernanceFrameworkCreatedV1.type",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Type of EGF"
-    },
-    "trinsic.services.event.ItemReceivedV1.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "trinsic.services.event.ItemReceivedV1.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Ecosystem where this event originated, if any."
-    },
-    "trinsic.services.event.ItemReceivedV1.id": {
-      "name": "id",
-      "full_name": "trinsic.services.event.ItemReceivedV1.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of the new item"
-    },
-    "trinsic.services.event.ItemReceivedV1.received": {
-      "name": "received",
-      "full_name": "trinsic.services.event.ItemReceivedV1.received",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
-    },
-    "trinsic.services.event.ItemReceivedV1.wallet_id": {
-      "name": "wallet_id",
-      "full_name": "trinsic.services.event.ItemReceivedV1.wallet_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of wallet"
-    },
-    "trinsic.services.event.PingV1.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "trinsic.services.event.PingV1.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Ecosystem where this event originated, if any."
-    },
-    "trinsic.services.event.PingV1.id": {
-      "name": "id",
-      "full_name": "trinsic.services.event.PingV1.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of this ping"
-    },
-    "trinsic.services.event.PingV1.message": {
-      "name": "message",
-      "full_name": "trinsic.services.event.PingV1.message",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Arbitrary message specified when ping was requested"
-    },
-    "trinsic.services.event.PingV1.timestamp": {
-      "name": "timestamp",
-      "full_name": "trinsic.services.event.PingV1.timestamp",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
-    },
-    "trinsic.services.event.PingV1.webhook_id": {
-      "name": "webhook_id",
-      "full_name": "trinsic.services.event.PingV1.webhook_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of the webhook receiving the ping"
-    },
-    "trinsic.services.event.TemplateCreatedV1.created_by": {
-      "name": "created_by",
-      "full_name": "trinsic.services.event.TemplateCreatedV1.created_by",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "WalletID that created the template"
-    },
-    "trinsic.services.event.TemplateCreatedV1.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "trinsic.services.event.TemplateCreatedV1.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of the ecosystem that owns this template"
-    },
-    "trinsic.services.event.TemplateCreatedV1.id": {
-      "name": "id",
-      "full_name": "trinsic.services.event.TemplateCreatedV1.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "UUID of the template"
-    },
-    "trinsic.services.event.TemplateCreatedV1.name": {
-      "name": "name",
-      "full_name": "trinsic.services.event.TemplateCreatedV1.name",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Template name"
-    },
-    "trinsic.services.event.TemplateCreatedV1.timestamp": {
-      "name": "timestamp",
-      "full_name": "trinsic.services.event.TemplateCreatedV1.timestamp",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
-    },
-    "trinsic.services.event.TemplateCreatedV1.type": {
-      "name": "type",
-      "full_name": "trinsic.services.event.TemplateCreatedV1.type",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Template type"
     }
   },
   "enums": {
@@ -10819,17 +9061,6 @@
         "services.provider.v1.IndyOptions.IndyNetwork.Indicio"
       ]
     },
-    "services.provider.v1.InvitationStatusResponse.Status": {
-      "name": "Status",
-      "full_name": "services.provider.v1.InvitationStatusResponse.Status",
-      "description": "",
-      "values": [
-        "services.provider.v1.InvitationStatusResponse.Status.Error",
-        "services.provider.v1.InvitationStatusResponse.Status.InvitationSent",
-        "services.provider.v1.InvitationStatusResponse.Status.Completed",
-        "services.provider.v1.InvitationStatusResponse.Status.Expired"
-      ]
-    },
     "services.provider.v1.IonOptions.IonNetwork": {
       "name": "IonNetwork",
       "full_name": "services.provider.v1.IonOptions.IonNetwork",
@@ -10837,15 +9068,6 @@
       "values": [
         "services.provider.v1.IonOptions.IonNetwork.TestNet",
         "services.provider.v1.IonOptions.IonNetwork.MainNet"
-      ]
-    },
-    "services.provider.v1.ParticipantType": {
-      "name": "ParticipantType",
-      "full_name": "services.provider.v1.ParticipantType",
-      "description": "DEPRECATED, will be removed April 1st 2023\nType of participant being invited to ecosystem",
-      "values": [
-        "services.provider.v1.ParticipantType.participant_type_individual",
-        "services.provider.v1.ParticipantType.participant_type_organization"
       ]
     },
     "services.trustregistry.v1.RegistrationStatus": {
@@ -10890,23 +9112,6 @@
         "services.verifiablecredentials.templates.v1.UriRenderMethod.TEXT",
         "services.verifiablecredentials.templates.v1.UriRenderMethod.LINK",
         "services.verifiablecredentials.templates.v1.UriRenderMethod.INLINE_IMAGE"
-      ]
-    },
-    "trinsic.services.event.EventType": {
-      "name": "EventType",
-      "full_name": "trinsic.services.event.EventType",
-      "description": "All event types",
-      "values": [
-        "trinsic.services.event.EventType.PING",
-        "trinsic.services.event.EventType.LOG",
-        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED",
-        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
-        "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
-        "trinsic.services.event.EventType.TEMPLATE_CREATED",
-        "trinsic.services.event.EventType.TEMPLATE_DELETED",
-        "trinsic.services.event.EventType.WALLET_CREATED",
-        "trinsic.services.event.EventType.ITEM_RECEIVED",
-        "trinsic.services.event.EventType.CREDENTIAL_ISSUED"
       ]
     }
   },
@@ -11049,30 +9254,6 @@
       "description": "",
       "value": 2
     },
-    "services.provider.v1.InvitationStatusResponse.Status.Completed": {
-      "name": "Completed",
-      "full_name": "services.provider.v1.InvitationStatusResponse.Status.Completed",
-      "description": "The participant has been onboarded",
-      "value": 2
-    },
-    "services.provider.v1.InvitationStatusResponse.Status.Error": {
-      "name": "Error",
-      "full_name": "services.provider.v1.InvitationStatusResponse.Status.Error",
-      "description": "Onboarding resulted in error",
-      "value": 0
-    },
-    "services.provider.v1.InvitationStatusResponse.Status.Expired": {
-      "name": "Expired",
-      "full_name": "services.provider.v1.InvitationStatusResponse.Status.Expired",
-      "description": "The invite has expired",
-      "value": 3
-    },
-    "services.provider.v1.InvitationStatusResponse.Status.InvitationSent": {
-      "name": "InvitationSent",
-      "full_name": "services.provider.v1.InvitationStatusResponse.Status.InvitationSent",
-      "description": "The participant has been invited",
-      "value": 1
-    },
     "services.provider.v1.IonOptions.IonNetwork.MainNet": {
       "name": "MainNet",
       "full_name": "services.provider.v1.IonOptions.IonNetwork.MainNet",
@@ -11084,18 +9265,6 @@
       "full_name": "services.provider.v1.IonOptions.IonNetwork.TestNet",
       "description": "",
       "value": 0
-    },
-    "services.provider.v1.ParticipantType.participant_type_individual": {
-      "name": "participant_type_individual",
-      "full_name": "services.provider.v1.ParticipantType.participant_type_individual",
-      "description": "Participant is an individual",
-      "value": 0
-    },
-    "services.provider.v1.ParticipantType.participant_type_organization": {
-      "name": "participant_type_organization",
-      "full_name": "services.provider.v1.ParticipantType.participant_type_organization",
-      "description": "Participant is an organization",
-      "value": 1
     },
     "services.trustregistry.v1.RegistrationStatus.CURRENT": {
       "name": "CURRENT",
@@ -11192,66 +9361,6 @@
       "full_name": "services.verifiablecredentials.templates.v1.UriRenderMethod.TEXT",
       "description": "Display URI as text",
       "value": 0
-    },
-    "trinsic.services.event.EventType.CREDENTIAL_ISSUED": {
-      "name": "CREDENTIAL_ISSUED",
-      "full_name": "trinsic.services.event.EventType.CREDENTIAL_ISSUED",
-      "description": "",
-      "value": 17
-    },
-    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED": {
-      "name": "GOVERNANCE_FRAMEWORK_CREATED",
-      "full_name": "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_CREATED",
-      "description": "",
-      "value": 5
-    },
-    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED": {
-      "name": "GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
-      "full_name": "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_REGISTERED",
-      "description": "",
-      "value": 6
-    },
-    "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED": {
-      "name": "GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
-      "full_name": "trinsic.services.event.EventType.GOVERNANCE_FRAMEWORK_MEMBER_UNREGISTERED",
-      "description": "",
-      "value": 7
-    },
-    "trinsic.services.event.EventType.ITEM_RECEIVED": {
-      "name": "ITEM_RECEIVED",
-      "full_name": "trinsic.services.event.EventType.ITEM_RECEIVED",
-      "description": "",
-      "value": 16
-    },
-    "trinsic.services.event.EventType.LOG": {
-      "name": "LOG",
-      "full_name": "trinsic.services.event.EventType.LOG",
-      "description": "",
-      "value": 1
-    },
-    "trinsic.services.event.EventType.PING": {
-      "name": "PING",
-      "full_name": "trinsic.services.event.EventType.PING",
-      "description": "",
-      "value": 0
-    },
-    "trinsic.services.event.EventType.TEMPLATE_CREATED": {
-      "name": "TEMPLATE_CREATED",
-      "full_name": "trinsic.services.event.EventType.TEMPLATE_CREATED",
-      "description": "",
-      "value": 10
-    },
-    "trinsic.services.event.EventType.TEMPLATE_DELETED": {
-      "name": "TEMPLATE_DELETED",
-      "full_name": "trinsic.services.event.EventType.TEMPLATE_DELETED",
-      "description": "",
-      "value": 11
-    },
-    "trinsic.services.event.EventType.WALLET_CREATED": {
-      "name": "WALLET_CREATED",
-      "full_name": "trinsic.services.event.EventType.WALLET_CREATED",
-      "description": "",
-      "value": 15
     }
   }
 }

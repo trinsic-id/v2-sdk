@@ -270,6 +270,14 @@ export interface AuthenticateInitResponse {
   challenge?: string;
 }
 
+export interface AuthenticateResendCodeRequest {
+  /** Challenge for the code you want resent. */
+  challenge?: string;
+}
+
+export interface AuthenticateResendCodeResponse {
+}
+
 export interface AuthenticateConfirmRequest {
   /** The challenge received from the `AcquireAuthTokenInit` endpoint */
   challenge?: string;
@@ -2278,6 +2286,106 @@ export const AuthenticateInitResponse = {
   },
 };
 
+function createBaseAuthenticateResendCodeRequest(): AuthenticateResendCodeRequest {
+  return { challenge: "" };
+}
+
+export const AuthenticateResendCodeRequest = {
+  encode(message: AuthenticateResendCodeRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.challenge !== undefined && message.challenge !== "") {
+      writer.uint32(10).string(message.challenge);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AuthenticateResendCodeRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthenticateResendCodeRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.challenge = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthenticateResendCodeRequest {
+    return { challenge: isSet(object.challenge) ? String(object.challenge) : "" };
+  },
+
+  toJSON(message: AuthenticateResendCodeRequest): unknown {
+    const obj: any = {};
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    return obj;
+  },
+
+  create(base?: DeepPartial<AuthenticateResendCodeRequest>): AuthenticateResendCodeRequest {
+    return AuthenticateResendCodeRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<AuthenticateResendCodeRequest>): AuthenticateResendCodeRequest {
+    const message = createBaseAuthenticateResendCodeRequest();
+    message.challenge = object.challenge ?? "";
+    return message;
+  },
+};
+
+function createBaseAuthenticateResendCodeResponse(): AuthenticateResendCodeResponse {
+  return {};
+}
+
+export const AuthenticateResendCodeResponse = {
+  encode(_: AuthenticateResendCodeResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AuthenticateResendCodeResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthenticateResendCodeResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(_: any): AuthenticateResendCodeResponse {
+    return {};
+  },
+
+  toJSON(_: AuthenticateResendCodeResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  create(base?: DeepPartial<AuthenticateResendCodeResponse>): AuthenticateResendCodeResponse {
+    return AuthenticateResendCodeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<AuthenticateResendCodeResponse>): AuthenticateResendCodeResponse {
+    const message = createBaseAuthenticateResendCodeResponse();
+    return message;
+  },
+};
+
 function createBaseAuthenticateConfirmRequest(): AuthenticateConfirmRequest {
   return { challenge: "", response: "" };
 }
@@ -2490,7 +2598,7 @@ export const UniversalWalletDefinition = {
       requestStream: false,
       responseType: GetMyInfoResponse,
       responseStream: false,
-      options: {},
+      options: { _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] } },
     },
     /**
      * Generate new token for a given wallet and add it to the collection of known auth tokens.
@@ -2566,6 +2674,15 @@ export const UniversalWalletDefinition = {
       requestType: AuthenticateConfirmRequest,
       requestStream: false,
       responseType: AuthenticateConfirmResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Resend previous authentication code */
+    authenticateResendCode: {
+      name: "AuthenticateResendCode",
+      requestType: AuthenticateResendCodeRequest,
+      requestStream: false,
+      responseType: AuthenticateResendCodeResponse,
       responseStream: false,
       options: {},
     },

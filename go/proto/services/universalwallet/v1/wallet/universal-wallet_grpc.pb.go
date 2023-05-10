@@ -35,6 +35,7 @@ const (
 	UniversalWallet_RemoveExternalIdentity_FullMethodName     = "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity"
 	UniversalWallet_AuthenticateInit_FullMethodName           = "/services.universalwallet.v1.UniversalWallet/AuthenticateInit"
 	UniversalWallet_AuthenticateConfirm_FullMethodName        = "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm"
+	UniversalWallet_AuthenticateResendCode_FullMethodName     = "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode"
 	UniversalWallet_ListWallets_FullMethodName                = "/services.universalwallet.v1.UniversalWallet/ListWallets"
 )
 
@@ -80,6 +81,8 @@ type UniversalWalletClient interface {
 	AuthenticateInit(ctx context.Context, in *AuthenticateInitRequest, opts ...grpc.CallOption) (*AuthenticateInitResponse, error)
 	// Confirm sign-in to an already existing wallet and return authentication token
 	AuthenticateConfirm(ctx context.Context, in *AuthenticateConfirmRequest, opts ...grpc.CallOption) (*AuthenticateConfirmResponse, error)
+	// Resend previous authentication code
+	AuthenticateResendCode(ctx context.Context, in *AuthenticateResendCodeRequest, opts ...grpc.CallOption) (*AuthenticateResendCodeResponse, error)
 	// List all wallets in the ecosystem
 	ListWallets(ctx context.Context, in *ListWalletsRequest, opts ...grpc.CallOption) (*ListWalletsResponse, error)
 }
@@ -236,6 +239,15 @@ func (c *universalWalletClient) AuthenticateConfirm(ctx context.Context, in *Aut
 	return out, nil
 }
 
+func (c *universalWalletClient) AuthenticateResendCode(ctx context.Context, in *AuthenticateResendCodeRequest, opts ...grpc.CallOption) (*AuthenticateResendCodeResponse, error) {
+	out := new(AuthenticateResendCodeResponse)
+	err := c.cc.Invoke(ctx, UniversalWallet_AuthenticateResendCode_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *universalWalletClient) ListWallets(ctx context.Context, in *ListWalletsRequest, opts ...grpc.CallOption) (*ListWalletsResponse, error) {
 	out := new(ListWalletsResponse)
 	err := c.cc.Invoke(ctx, UniversalWallet_ListWallets_FullMethodName, in, out, opts...)
@@ -287,6 +299,8 @@ type UniversalWalletServer interface {
 	AuthenticateInit(context.Context, *AuthenticateInitRequest) (*AuthenticateInitResponse, error)
 	// Confirm sign-in to an already existing wallet and return authentication token
 	AuthenticateConfirm(context.Context, *AuthenticateConfirmRequest) (*AuthenticateConfirmResponse, error)
+	// Resend previous authentication code
+	AuthenticateResendCode(context.Context, *AuthenticateResendCodeRequest) (*AuthenticateResendCodeResponse, error)
 	// List all wallets in the ecosystem
 	ListWallets(context.Context, *ListWalletsRequest) (*ListWalletsResponse, error)
 	mustEmbedUnimplementedUniversalWalletServer()
@@ -343,6 +357,9 @@ func (UnimplementedUniversalWalletServer) AuthenticateInit(context.Context, *Aut
 }
 func (UnimplementedUniversalWalletServer) AuthenticateConfirm(context.Context, *AuthenticateConfirmRequest) (*AuthenticateConfirmResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthenticateConfirm not implemented")
+}
+func (UnimplementedUniversalWalletServer) AuthenticateResendCode(context.Context, *AuthenticateResendCodeRequest) (*AuthenticateResendCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthenticateResendCode not implemented")
 }
 func (UnimplementedUniversalWalletServer) ListWallets(context.Context, *ListWalletsRequest) (*ListWalletsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListWallets not implemented")
@@ -648,6 +665,24 @@ func _UniversalWallet_AuthenticateConfirm_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UniversalWallet_AuthenticateResendCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthenticateResendCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversalWalletServer).AuthenticateResendCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UniversalWallet_AuthenticateResendCode_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversalWalletServer).AuthenticateResendCode(ctx, req.(*AuthenticateResendCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UniversalWallet_ListWallets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListWalletsRequest)
 	if err := dec(in); err != nil {
@@ -736,6 +771,10 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AuthenticateConfirm",
 			Handler:    _UniversalWallet_AuthenticateConfirm_Handler,
+		},
+		{
+			MethodName: "AuthenticateResendCode",
+			Handler:    _UniversalWallet_AuthenticateResendCode_Handler,
 		},
 		{
 			MethodName: "ListWallets",

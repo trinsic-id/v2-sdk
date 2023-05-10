@@ -253,12 +253,6 @@ export interface TemplateData {
   allowAdditionalFields?: boolean;
   /** URI pointing to template JSON schema document */
   schemaUri?: string;
-  /**
-   * DEPRECATED, will be removed April 1st 2023
-   *
-   * @deprecated
-   */
-  contextUri?: string;
   /** ID of ecosystem in which template resides */
   ecosystemId?: string;
   /** Template type (`VerifiableCredential`) */
@@ -327,20 +321,8 @@ export interface TemplateField {
   optional?: boolean;
   /** The type of the field */
   type?: FieldType;
-  /**
-   * Do not use.
-   * Annotations for the field that may be used to add additional information.
-   *
-   * @deprecated
-   */
-  annotations?: { [key: string]: string };
   /** How to deal with this URI field when rendering credential. Only use if `type` is `URI`. */
   uriData?: UriFieldData | undefined;
-}
-
-export interface TemplateField_AnnotationsEntry {
-  key: string;
-  value: string;
 }
 
 /** A patch to apply to an existing template field */
@@ -1708,7 +1690,6 @@ function createBaseTemplateData(): TemplateData {
     fields: {},
     allowAdditionalFields: false,
     schemaUri: "",
-    contextUri: "",
     ecosystemId: "",
     type: "",
     createdBy: "",
@@ -1739,9 +1720,6 @@ export const TemplateData = {
     }
     if (message.schemaUri !== undefined && message.schemaUri !== "") {
       writer.uint32(50).string(message.schemaUri);
-    }
-    if (message.contextUri !== undefined && message.contextUri !== "") {
-      writer.uint32(58).string(message.contextUri);
     }
     if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
       writer.uint32(66).string(message.ecosystemId);
@@ -1821,13 +1799,6 @@ export const TemplateData = {
           }
 
           message.schemaUri = reader.string();
-          continue;
-        case 7:
-          if (tag != 58) {
-            break;
-          }
-
-          message.contextUri = reader.string();
           continue;
         case 8:
           if (tag != 66) {
@@ -1910,7 +1881,6 @@ export const TemplateData = {
         : {},
       allowAdditionalFields: isSet(object.allowAdditionalFields) ? Boolean(object.allowAdditionalFields) : false,
       schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
-      contextUri: isSet(object.contextUri) ? String(object.contextUri) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       type: isSet(object.type) ? String(object.type) : "",
       createdBy: isSet(object.createdBy) ? String(object.createdBy) : "",
@@ -1942,7 +1912,6 @@ export const TemplateData = {
     }
     message.allowAdditionalFields !== undefined && (obj.allowAdditionalFields = message.allowAdditionalFields);
     message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
-    message.contextUri !== undefined && (obj.contextUri = message.contextUri);
     message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
     message.type !== undefined && (obj.type = message.type);
     message.createdBy !== undefined && (obj.createdBy = message.createdBy);
@@ -1981,7 +1950,6 @@ export const TemplateData = {
     );
     message.allowAdditionalFields = object.allowAdditionalFields ?? false;
     message.schemaUri = object.schemaUri ?? "";
-    message.contextUri = object.contextUri ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.type = object.type ?? "";
     message.createdBy = object.createdBy ?? "";
@@ -2364,7 +2332,7 @@ export const FieldOrdering = {
 };
 
 function createBaseTemplateField(): TemplateField {
-  return { title: "", description: "", optional: false, type: 0, annotations: {}, uriData: undefined };
+  return { title: "", description: "", optional: false, type: 0, uriData: undefined };
 }
 
 export const TemplateField = {
@@ -2381,9 +2349,6 @@ export const TemplateField = {
     if (message.type !== undefined && message.type !== 0) {
       writer.uint32(32).int32(message.type);
     }
-    Object.entries(message.annotations || {}).forEach(([key, value]) => {
-      TemplateField_AnnotationsEntry.encode({ key: key as any, value }, writer.uint32(42).fork()).ldelim();
-    });
     if (message.uriData !== undefined) {
       UriFieldData.encode(message.uriData, writer.uint32(50).fork()).ldelim();
     }
@@ -2425,16 +2390,6 @@ export const TemplateField = {
 
           message.type = reader.int32() as any;
           continue;
-        case 5:
-          if (tag != 42) {
-            break;
-          }
-
-          const entry5 = TemplateField_AnnotationsEntry.decode(reader, reader.uint32());
-          if (entry5.value !== undefined) {
-            message.annotations![entry5.key] = entry5.value;
-          }
-          continue;
         case 6:
           if (tag != 50) {
             break;
@@ -2457,12 +2412,6 @@ export const TemplateField = {
       description: isSet(object.description) ? String(object.description) : "",
       optional: isSet(object.optional) ? Boolean(object.optional) : false,
       type: isSet(object.type) ? fieldTypeFromJSON(object.type) : 0,
-      annotations: isObject(object.annotations)
-        ? Object.entries(object.annotations).reduce<{ [key: string]: string }>((acc, [key, value]) => {
-          acc[key] = String(value);
-          return acc;
-        }, {})
-        : {},
       uriData: isSet(object.uriData) ? UriFieldData.fromJSON(object.uriData) : undefined,
     };
   },
@@ -2473,12 +2422,6 @@ export const TemplateField = {
     message.description !== undefined && (obj.description = message.description);
     message.optional !== undefined && (obj.optional = message.optional);
     message.type !== undefined && (obj.type = fieldTypeToJSON(message.type));
-    obj.annotations = {};
-    if (message.annotations) {
-      Object.entries(message.annotations).forEach(([k, v]) => {
-        obj.annotations[k] = v;
-      });
-    }
     message.uriData !== undefined && (obj.uriData = message.uriData ? UriFieldData.toJSON(message.uriData) : undefined);
     return obj;
   },
@@ -2493,86 +2436,9 @@ export const TemplateField = {
     message.description = object.description ?? "";
     message.optional = object.optional ?? false;
     message.type = object.type ?? 0;
-    message.annotations = Object.entries(object.annotations ?? {}).reduce<{ [key: string]: string }>(
-      (acc, [key, value]) => {
-        if (value !== undefined) {
-          acc[key] = String(value);
-        }
-        return acc;
-      },
-      {},
-    );
     message.uriData = (object.uriData !== undefined && object.uriData !== null)
       ? UriFieldData.fromPartial(object.uriData)
       : undefined;
-    return message;
-  },
-};
-
-function createBaseTemplateField_AnnotationsEntry(): TemplateField_AnnotationsEntry {
-  return { key: "", value: "" };
-}
-
-export const TemplateField_AnnotationsEntry = {
-  encode(message: TemplateField_AnnotationsEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.key !== "") {
-      writer.uint32(10).string(message.key);
-    }
-    if (message.value !== "") {
-      writer.uint32(18).string(message.value);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): TemplateField_AnnotationsEntry {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTemplateField_AnnotationsEntry();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.key = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.value = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): TemplateField_AnnotationsEntry {
-    return { key: isSet(object.key) ? String(object.key) : "", value: isSet(object.value) ? String(object.value) : "" };
-  },
-
-  toJSON(message: TemplateField_AnnotationsEntry): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
-  },
-
-  create(base?: DeepPartial<TemplateField_AnnotationsEntry>): TemplateField_AnnotationsEntry {
-    return TemplateField_AnnotationsEntry.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<TemplateField_AnnotationsEntry>): TemplateField_AnnotationsEntry {
-    const message = createBaseTemplateField_AnnotationsEntry();
-    message.key = object.key ?? "";
-    message.value = object.value ?? "";
     return message;
   },
 };

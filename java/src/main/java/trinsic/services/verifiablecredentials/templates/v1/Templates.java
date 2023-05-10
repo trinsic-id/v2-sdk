@@ -101,10 +101,6 @@ public final class Templates {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_verifiablecredentials_templates_v1_TemplateFieldPatch_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_TemplateFieldPatch_fieldAccessorTable;
@@ -193,7 +189,7 @@ public final class Templates {
           + "\025_apple_wallet_options\"w\n"
           + " UpdateCredentialTemplateResponse\022S\n"
           + "\020updated_template\030\001 \001(\01329.service"
-          + "s.verifiablecredentials.templates.v1.TemplateData\"\304\006\n"
+          + "s.verifiablecredentials.templates.v1.TemplateData\"\276\006\n"
           + "\014TemplateData\022\016\n"
           + "\002id\030\001 \001(\tR\002id\022\014\n"
           + "\004name\030\002 \001(\t\022\017\n"
@@ -201,8 +197,7 @@ public final class Templates {
           + "\006fields\030\004 \003(\0132E.services.verifiablecredentia"
           + "ls.templates.v1.TemplateData.FieldsEntry\022\037\n"
           + "\027allow_additional_fields\030\005 \001(\010\022\022\n\n"
-          + "schema_uri\030\006 \001(\t\022\027\n"
-          + "\013context_uri\030\007 \001(\tB\002\030\001\022!\n"
+          + "schema_uri\030\006 \001(\t\022!\n"
           + "\014ecosystem_id\030\010 \001(\tR\013ecosystemId\022\022\n"
           + "\004type\030\t \001(\tR\004type\022\035\n\n"
           + "created_by\030\n"
@@ -211,19 +206,19 @@ public final class Templates {
           + "\005title\030\014 \001(\t\022\023\n"
           + "\013description\030\r"
           + " \001(\t\022s\n"
-          + "\016field_ordering\030\016 \003(\0132L.services.verifiabl"
-          + "ecredentials.templates.v1.TemplateData.FieldOrderingEntryR\r"
+          + "\016field_ordering\030\016 \003(\0132L.ser"
+          + "vices.verifiablecredentials.templates.v1.TemplateData.FieldOrderingEntryR\r"
           + "fieldOrdering\022q\n"
-          + "\024apple_wallet_options\030\017 \001(\0132?.services.verifi"
-          + "ablecredentials.templates.v1.AppleWalletOptionsR\022appleWalletOptions\032i\n"
+          + "\024apple_wallet_options\030\017 \001(\0132?.services.verifiablecredentials.templates"
+          + ".v1.AppleWalletOptionsR\022appleWalletOptions\032i\n"
           + "\013FieldsEntry\022\013\n"
           + "\003key\030\001 \001(\t\022I\n"
-          + "\005value\030\002 \001(\0132:.service"
-          + "s.verifiablecredentials.templates.v1.TemplateField:\0028\001\032p\n"
+          + "\005value\030\002"
+          + " \001(\0132:.services.verifiablecredentials.templates.v1.TemplateField:\0028\001\032p\n"
           + "\022FieldOrderingEntry\022\013\n"
           + "\003key\030\001 \001(\t\022I\n"
-          + "\005value\030\002 \001(\0132:.services.veri"
-          + "fiablecredentials.templates.v1.FieldOrdering:\0028\001\"\250\001\n"
+          + "\005value\030\002 \001(\0132:.services.verifiablecredentials.templat"
+          + "es.v1.FieldOrdering:\0028\001J\004\010\007\020\010R\013context_uri\"\250\001\n"
           + "\022AppleWalletOptions\022\030\n"
           + "\020background_color\030\001 \001(\t\022\030\n"
           + "\020foreground_color\030\002 \001(\t\022\023\n"
@@ -233,33 +228,28 @@ public final class Templates {
           + "\020auxiliary_fields\030\006 \003(\t\"/\n\r"
           + "FieldOrdering\022\r\n"
           + "\005order\030\001 \001(\005\022\017\n"
-          + "\007section\030\002 \001(\t\"\204\003\n\r"
+          + "\007section\030\002 \001(\t\"\375\001\n\r"
           + "TemplateField\022\r\n"
           + "\005title\030\001 \001(\t\022\023\n"
           + "\013description\030\002 \001(\t\022\020\n"
           + "\010optional\030\003 \001(\010\022D\n"
-          + "\004type\030\004 \001(\01626.ser"
-          + "vices.verifiablecredentials.templates.v1.FieldType\022d\n"
-          + "\013annotations\030\005 \003(\0132K.servic"
-          + "es.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntryB\002\030\001\022P\n"
-          + "\010uri_data\030\006"
-          + " \001(\01329.services.verifiablecredentials.templates.v1.UriFieldDataH\000\210\001\001\0322\n"
-          + "\020AnnotationsEntry\022\013\n"
-          + "\003key\030\001 \001(\t\022\r\n"
-          + "\005value\030\002 \001(\t:\0028\001B\013\n"
-          + "\t_uri_data\"\273\001\n"
+          + "\004type\030\004 \001(\01626.services."
+          + "verifiablecredentials.templates.v1.FieldType\022P\n"
+          + "\010uri_data\030\006 \001(\01329.services.verifi"
+          + "ablecredentials.templates.v1.UriFieldDataH\000\210\001\001B\013\n"
+          + "\t_uri_dataJ\004\010\005\020\006R\013annotations\"\273\001\n"
           + "\022TemplateFieldPatch\022\022\n"
           + "\005title\030\001 \001(\tH\000\210\001\001\022\030\n"
           + "\013description\030\002 \001(\tH\001\210\001\001\022P\n"
-          + "\010uri_data\030\003 \001(\01329.services.ve"
-          + "rifiablecredentials.templates.v1.UriFieldDataH\002\210\001\001B\010\n"
+          + "\010uri_data\030\003"
+          + " \001(\01329.services.verifiablecredentials.templates.v1.UriFieldDataH\002\210\001\001B\010\n"
           + "\006_titleB\016\n"
           + "\014_descriptionB\013\n"
           + "\t_uri_data\"v\n"
           + "\014UriFieldData\022\021\n"
           + "\tmime_type\030\001 \001(\t\022S\n\r"
-          + "render_method\030\002 \001(\0162<.services.v"
-          + "erifiablecredentials.templates.v1.UriRenderMethod*D\n"
+          + "render_method\030\002"
+          + " \001(\0162<.services.verifiablecredentials.templates.v1.UriRenderMethod*D\n"
           + "\tFieldType\022\n\n"
           + "\006STRING\020\000\022\n\n"
           + "\006NUMBER\020\001\022\010\n"
@@ -271,27 +261,27 @@ public final class Templates {
           + "\004LINK\020\001\022\020\n"
           + "\014INLINE_IMAGE\020\0022\372\007\n"
           + "\023CredentialTemplates\022\245\001\n"
-          + "\006Create\022L.services.verifiablecredentials.templates.v1.CreateCredentialTempla"
-          + "teRequest\032M.services.verifiablecredentia"
-          + "ls.templates.v1.CreateCredentialTemplateResponse\022\234\001\n"
-          + "\003Get\022I.services.verifiablecredentials.templates.v1.GetCredentialTemp"
-          + "lateRequest\032J.services.verifiablecredent"
-          + "ials.templates.v1.GetCredentialTemplateResponse\022\245\001\n"
-          + "\006Update\022L.services.verifiablecredentials.templates.v1.UpdateCredentia"
-          + "lTemplateRequest\032M.services.verifiablecr"
-          + "edentials.templates.v1.UpdateCredentialTemplateResponse\022\241\001\n"
-          + "\004List\022K.services.verifiablecredentials.templates.v1.ListCrede"
-          + "ntialTemplatesRequest\032L.services.verifia"
-          + "blecredentials.templates.v1.ListCredentialTemplatesResponse\022\247\001\n"
-          + "\006Search\022M.services.verifiablecredentials.templates.v1.Sea"
-          + "rchCredentialTemplatesRequest\032N.services"
-          + ".verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
-          + "\006Delete\022L.services.verifiablecredentials.templa"
-          + "tes.v1.DeleteCredentialTemplateRequest\032M.services.verifiablecredentials.template"
-          + "s.v1.DeleteCredentialTemplateResponseB\243\001\n"
-          + "3trinsic.services.verifiablecredentials.templates.v1P\001Z4services/verifiablecred"
-          + "entials/templates/v1/template\252\0023Trinsic.Services.VerifiableCredentials.Templates"
-          + ".V1b\006proto3"
+          + "\006Create\022L.services.verifiablecredentials.templates.v1.Cre"
+          + "ateCredentialTemplateRequest\032M.services."
+          + "verifiablecredentials.templates.v1.CreateCredentialTemplateResponse\022\234\001\n"
+          + "\003Get\022I.services.verifiablecredentials.templates.v"
+          + "1.GetCredentialTemplateRequest\032J.service"
+          + "s.verifiablecredentials.templates.v1.GetCredentialTemplateResponse\022\245\001\n"
+          + "\006Update\022L.services.verifiablecredentials.templates"
+          + ".v1.UpdateCredentialTemplateRequest\032M.se"
+          + "rvices.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse\022\241\001\n"
+          + "\004List\022K.services.verifiablecredentials.tem"
+          + "plates.v1.ListCredentialTemplatesRequest\032L.services.verifiablecredentials.templa"
+          + "tes.v1.ListCredentialTemplatesResponse\022\247\001\n"
+          + "\006Search\022M.services.verifiablecredentials.templates.v1.SearchCredentialTemplate"
+          + "sRequest\032N.services.verifiablecredential"
+          + "s.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
+          + "\006Delete\022L.services.verifiablecredentials.templates.v1.DeleteCredenti"
+          + "alTemplateRequest\032M.services.verifiablec"
+          + "redentials.templates.v1.DeleteCredentialTemplateResponseB\243\001\n"
+          + "3trinsic.services.verifiablecredentials.templates.v1P\001Z4serv"
+          + "ices/verifiablecredentials/templates/v1/template\252\0023Trinsic.Services.VerifiableCr"
+          + "edentials.Templates.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -460,7 +450,6 @@ public final class Templates {
               "Fields",
               "AllowAdditionalFields",
               "SchemaUri",
-              "ContextUri",
               "EcosystemId",
               "Type",
               "CreatedBy",
@@ -517,17 +506,7 @@ public final class Templates {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor,
             new java.lang.String[] {
-              "Title", "Description", "Optional", "Type", "Annotations", "UriData", "UriData",
-            });
-    internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_descriptor =
-        internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor
-            .getNestedTypes()
-            .get(0);
-    internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_verifiablecredentials_templates_v1_TemplateField_AnnotationsEntry_descriptor,
-            new java.lang.String[] {
-              "Key", "Value",
+              "Title", "Description", "Optional", "Type", "UriData", "UriData",
             });
     internal_static_services_verifiablecredentials_templates_v1_TemplateFieldPatch_descriptor =
         getDescriptor().getMessageTypes().get(16);

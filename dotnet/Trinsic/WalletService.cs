@@ -196,8 +196,8 @@ public class WalletService : ServiceBase
     /// Retrieve wallet details and configuration about the currently authenticated wallet
     /// </summary>
     
-    public GetMyInfoResponse GetMyInfo(GetMyInfoRequest request) {
-        
+    public GetMyInfoResponse GetMyInfo() {
+        var request = new GetMyInfoRequest();
         return Client.GetMyInfo(request, BuildMetadata(request));
     }
 	
@@ -205,8 +205,8 @@ public class WalletService : ServiceBase
     /// Retrieve wallet details and configuration about the currently authenticated wallet
     /// </summary>
     
-    public async Task<GetMyInfoResponse> GetMyInfoAsync(GetMyInfoRequest request) {
-        
+    public async Task<GetMyInfoResponse> GetMyInfoAsync() {
+        var request = new GetMyInfoRequest();
         return await Client.GetMyInfoAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -346,6 +346,24 @@ public class WalletService : ServiceBase
     public async Task<AuthenticateConfirmResponse> AuthenticateConfirmAsync(AuthenticateConfirmRequest request) {
         
         return await Client.AuthenticateConfirmAsync(request, await BuildMetadataAsync(request));
+    }
+
+	/// <summary>
+    /// Resend previous authentication code
+    /// </summary>
+    
+    public AuthenticateResendCodeResponse AuthenticateResendCode(AuthenticateResendCodeRequest request) {
+        
+        return Client.AuthenticateResendCode(request, BuildMetadata(request));
+    }
+	
+	/// <summary>
+    /// Resend previous authentication code
+    /// </summary>
+    
+    public async Task<AuthenticateResendCodeResponse> AuthenticateResendCodeAsync(AuthenticateResendCodeRequest request) {
+        
+        return await Client.AuthenticateResendCodeAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>

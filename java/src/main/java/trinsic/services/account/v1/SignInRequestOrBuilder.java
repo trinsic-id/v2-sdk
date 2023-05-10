@@ -50,41 +50,6 @@ public interface SignInRequestOrBuilder
    *
    *
    * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Invitation code associated with this registration
-   * </pre>
-   *
-   * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-   * </code>
-   *
-   * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=17
-   * @return The invitationCode.
-   */
-  @java.lang.Deprecated
-  java.lang.String getInvitationCode();
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Invitation code associated with this registration
-   * </pre>
-   *
-   * <code>string invitation_code = 2 [deprecated = true, (.services.options.optional) = true];
-   * </code>
-   *
-   * @deprecated services.account.v1.SignInRequest.invitation_code is deprecated. See
-   *     services/account/v1/account.proto;l=17
-   * @return The bytes for invitationCode.
-   */
-  @java.lang.Deprecated
-  com.google.protobuf.ByteString getInvitationCodeBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * ID of Ecosystem to use
    * Ignored if `invitation_code` is passed
    * </pre>

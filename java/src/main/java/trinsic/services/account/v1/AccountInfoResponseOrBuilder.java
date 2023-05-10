@@ -50,68 +50,6 @@ public interface AccountInfoResponseOrBuilder
    *
    *
    * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Deprecated
-  java.util.List<trinsic.services.account.v1.AccountEcosystem> getEcosystemsList();
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Deprecated
-  trinsic.services.account.v1.AccountEcosystem getEcosystems(int index);
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Deprecated
-  int getEcosystemsCount();
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Deprecated
-  java.util.List<? extends trinsic.services.account.v1.AccountEcosystemOrBuilder>
-      getEcosystemsOrBuilderList();
-  /**
-   *
-   *
-   * <pre>
-   * DEPRECATED, will be removed April 1st 2023
-   * Use `ecosystem_id` instead
-   * </pre>
-   *
-   * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
-   */
-  @java.lang.Deprecated
-  trinsic.services.account.v1.AccountEcosystemOrBuilder getEcosystemsOrBuilder(int index);
-
-  /**
-   *
-   *
-   * <pre>
    * The wallet ID associated with this account
    * </pre>
    *

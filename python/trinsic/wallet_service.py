@@ -101,9 +101,9 @@ class WalletService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def get_my_info(self, *, request: GetMyInfoRequest) -> GetMyInfoResponse:
+    async def get_my_info(self) -> GetMyInfoResponse:
         """Retrieve wallet details and configuration about the currently authenticated wallet"""
-
+        request = GetMyInfoRequest()
         return await self.client.get_my_info(
             request, metadata=self.build_metadata(request)
         )
@@ -182,6 +182,15 @@ class WalletService(ServiceBase):
         """Confirm sign-in to an already existing wallet and return authentication token"""
 
         return await self.client.authenticate_confirm(
+            request, metadata=self.build_metadata(request)
+        )
+
+    async def authenticate_resend_code(
+        self, *, request: AuthenticateResendCodeRequest
+    ) -> AuthenticateResendCodeResponse:
+        """Resend previous authentication code"""
+
+        return await self.client.authenticate_resend_code(
             request, metadata=self.build_metadata(request)
         )
 

@@ -30,11 +30,6 @@ class SignInRequest extends $pb.GeneratedMessage {
             : 'details',
         subBuilder: AccountDetails.create)
     ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'invitationCode')
-    ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -44,16 +39,11 @@ class SignInRequest extends $pb.GeneratedMessage {
   SignInRequest._() : super();
   factory SignInRequest({
     AccountDetails? details,
-    @$core.Deprecated('This field is deprecated.') $core.String? invitationCode,
     $core.String? ecosystemId,
   }) {
     final _result = create();
     if (details != null) {
       _result.details = details;
-    }
-    if (invitationCode != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.invitationCode = invitationCode;
     }
     if (ecosystemId != null) {
       _result.ecosystemId = ecosystemId;
@@ -101,31 +91,15 @@ class SignInRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   AccountDetails ensureDetails() => $_ensure(0);
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.String get invitationCode => $_getSZ(1);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  set invitationCode($core.String v) {
+  @$pb.TagNumber(3)
+  $core.String get ecosystemId => $_getSZ(1);
+  @$pb.TagNumber(3)
+  set ecosystemId($core.String v) {
     $_setString(1, v);
   }
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.bool hasInvitationCode() => $_has(1);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  void clearInvitationCode() => clearField(2);
-
   @$pb.TagNumber(3)
-  $core.String get ecosystemId => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set ecosystemId($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasEcosystemId() => $_has(2);
+  $core.bool hasEcosystemId() => $_has(1);
   @$pb.TagNumber(3)
   void clearEcosystemId() => clearField(3);
 }
@@ -619,13 +593,6 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
             ? ''
             : 'details',
         subBuilder: AccountDetails.create)
-    ..pc<AccountEcosystem>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ecosystems',
-        $pb.PbFieldType.PM,
-        subBuilder: AccountEcosystem.create)
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -658,8 +625,6 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   AccountInfoResponse._() : super();
   factory AccountInfoResponse({
     AccountDetails? details,
-    @$core.Deprecated('This field is deprecated.')
-        $core.Iterable<AccountEcosystem>? ecosystems,
     $core.String? walletId,
     $core.String? deviceId,
     $core.String? ecosystemId,
@@ -669,10 +634,6 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
     final _result = create();
     if (details != null) {
       _result.details = details;
-    }
-    if (ecosystems != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.ecosystems.addAll(ecosystems);
     }
     if (walletId != null) {
       _result.walletId = walletId;
@@ -732,190 +693,56 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   AccountDetails ensureDetails() => $_ensure(0);
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.List<AccountEcosystem> get ecosystems => $_getList(1);
-
   @$pb.TagNumber(3)
-  $core.String get walletId => $_getSZ(2);
+  $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(3)
   set walletId($core.String v) {
-    $_setString(2, v);
+    $_setString(1, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasWalletId() => $_has(2);
+  $core.bool hasWalletId() => $_has(1);
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get deviceId => $_getSZ(3);
+  $core.String get deviceId => $_getSZ(2);
   @$pb.TagNumber(4)
   set deviceId($core.String v) {
-    $_setString(3, v);
+    $_setString(2, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasDeviceId() => $_has(3);
+  $core.bool hasDeviceId() => $_has(2);
   @$pb.TagNumber(4)
   void clearDeviceId() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get ecosystemId => $_getSZ(4);
+  $core.String get ecosystemId => $_getSZ(3);
   @$pb.TagNumber(5)
   set ecosystemId($core.String v) {
-    $_setString(4, v);
+    $_setString(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasEcosystemId() => $_has(4);
+  $core.bool hasEcosystemId() => $_has(3);
   @$pb.TagNumber(5)
   void clearEcosystemId() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get publicDid => $_getSZ(5);
+  $core.String get publicDid => $_getSZ(4);
   @$pb.TagNumber(6)
   set publicDid($core.String v) {
-    $_setString(5, v);
+    $_setString(4, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasPublicDid() => $_has(5);
+  $core.bool hasPublicDid() => $_has(4);
   @$pb.TagNumber(6)
   void clearPublicDid() => clearField(6);
 
   @$pb.TagNumber(8)
-  $core.List<WalletAuthToken> get authTokens => $_getList(6);
-}
-
-class AccountEcosystem extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AccountEcosystem',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.account.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'id')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'name')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'description')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'uri')
-    ..hasRequiredFields = false;
-
-  AccountEcosystem._() : super();
-  factory AccountEcosystem({
-    $core.String? id,
-    $core.String? name,
-    $core.String? description,
-    $core.String? uri,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (name != null) {
-      _result.name = name;
-    }
-    if (description != null) {
-      _result.description = description;
-    }
-    if (uri != null) {
-      _result.uri = uri;
-    }
-    return _result;
-  }
-  factory AccountEcosystem.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory AccountEcosystem.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  AccountEcosystem clone() => AccountEcosystem()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  AccountEcosystem copyWith(void Function(AccountEcosystem) updates) =>
-      super.copyWith((message) => updates(message as AccountEcosystem))
-          as AccountEcosystem; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static AccountEcosystem create() => AccountEcosystem._();
-  AccountEcosystem createEmptyInstance() => create();
-  static $pb.PbList<AccountEcosystem> createRepeated() =>
-      $pb.PbList<AccountEcosystem>();
-  @$core.pragma('dart2js:noInline')
-  static AccountEcosystem getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<AccountEcosystem>(create);
-  static AccountEcosystem? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set name($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearName() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get description => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set description($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasDescription() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearDescription() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.String get uri => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set uri($core.String v) {
-    $_setString(3, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasUri() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearUri() => clearField(4);
+  $core.List<WalletAuthToken> get authTokens => $_getList(5);
 }
 
 class LoginRequest extends $pb.GeneratedMessage {
@@ -934,11 +761,6 @@ class LoginRequest extends $pb.GeneratedMessage {
             ? ''
             : 'email')
     ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'invitationCode')
-    ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
@@ -948,16 +770,11 @@ class LoginRequest extends $pb.GeneratedMessage {
   LoginRequest._() : super();
   factory LoginRequest({
     $core.String? email,
-    @$core.Deprecated('This field is deprecated.') $core.String? invitationCode,
     $core.String? ecosystemId,
   }) {
     final _result = create();
     if (email != null) {
       _result.email = email;
-    }
-    if (invitationCode != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.invitationCode = invitationCode;
     }
     if (ecosystemId != null) {
       _result.ecosystemId = ecosystemId;
@@ -1003,31 +820,15 @@ class LoginRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.String get invitationCode => $_getSZ(1);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  set invitationCode($core.String v) {
+  @$pb.TagNumber(3)
+  $core.String get ecosystemId => $_getSZ(1);
+  @$pb.TagNumber(3)
+  set ecosystemId($core.String v) {
     $_setString(1, v);
   }
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.bool hasInvitationCode() => $_has(1);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  void clearInvitationCode() => clearField(2);
-
   @$pb.TagNumber(3)
-  $core.String get ecosystemId => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set ecosystemId($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasEcosystemId() => $_has(2);
+  $core.bool hasEcosystemId() => $_has(1);
   @$pb.TagNumber(3)
   void clearEcosystemId() => clearField(3);
 }
@@ -1296,110 +1097,6 @@ class LoginConfirmResponse extends $pb.GeneratedMessage {
   void clearProfile() => clearField(1);
   @$pb.TagNumber(1)
   AccountProfile ensureProfile() => $_ensure(0);
-}
-
-class AuthorizeWebhookRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AuthorizeWebhookRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.account.v1'),
-      createEmptyInstance: create)
-    ..pPS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'events')
-    ..hasRequiredFields = false;
-
-  AuthorizeWebhookRequest._() : super();
-  factory AuthorizeWebhookRequest({
-    $core.Iterable<$core.String>? events,
-  }) {
-    final _result = create();
-    if (events != null) {
-      _result.events.addAll(events);
-    }
-    return _result;
-  }
-  factory AuthorizeWebhookRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory AuthorizeWebhookRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  AuthorizeWebhookRequest clone() =>
-      AuthorizeWebhookRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  AuthorizeWebhookRequest copyWith(
-          void Function(AuthorizeWebhookRequest) updates) =>
-      super.copyWith((message) => updates(message as AuthorizeWebhookRequest))
-          as AuthorizeWebhookRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static AuthorizeWebhookRequest create() => AuthorizeWebhookRequest._();
-  AuthorizeWebhookRequest createEmptyInstance() => create();
-  static $pb.PbList<AuthorizeWebhookRequest> createRepeated() =>
-      $pb.PbList<AuthorizeWebhookRequest>();
-  @$core.pragma('dart2js:noInline')
-  static AuthorizeWebhookRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<AuthorizeWebhookRequest>(create);
-  static AuthorizeWebhookRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<$core.String> get events => $_getList(0);
-}
-
-class AuthorizeWebhookResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AuthorizeWebhookResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.account.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  AuthorizeWebhookResponse._() : super();
-  factory AuthorizeWebhookResponse() => create();
-  factory AuthorizeWebhookResponse.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory AuthorizeWebhookResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  AuthorizeWebhookResponse clone() =>
-      AuthorizeWebhookResponse()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  AuthorizeWebhookResponse copyWith(
-          void Function(AuthorizeWebhookResponse) updates) =>
-      super.copyWith((message) => updates(message as AuthorizeWebhookResponse))
-          as AuthorizeWebhookResponse; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static AuthorizeWebhookResponse create() => AuthorizeWebhookResponse._();
-  AuthorizeWebhookResponse createEmptyInstance() => create();
-  static $pb.PbList<AuthorizeWebhookResponse> createRepeated() =>
-      $pb.PbList<AuthorizeWebhookResponse>();
-  @$core.pragma('dart2js:noInline')
-  static AuthorizeWebhookResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<AuthorizeWebhookResponse>(create);
-  static AuthorizeWebhookResponse? _defaultInstance;
 }
 
 class WalletAuthToken extends $pb.GeneratedMessage {

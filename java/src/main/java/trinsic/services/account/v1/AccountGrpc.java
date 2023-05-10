@@ -185,52 +185,6 @@ public final class AccountGrpc {
     return getInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.account.v1.AuthorizeWebhookRequest,
-          trinsic.services.account.v1.AuthorizeWebhookResponse>
-      getAuthorizeWebhookMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "AuthorizeWebhook",
-      requestType = trinsic.services.account.v1.AuthorizeWebhookRequest.class,
-      responseType = trinsic.services.account.v1.AuthorizeWebhookResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<
-          trinsic.services.account.v1.AuthorizeWebhookRequest,
-          trinsic.services.account.v1.AuthorizeWebhookResponse>
-      getAuthorizeWebhookMethod() {
-    io.grpc.MethodDescriptor<
-            trinsic.services.account.v1.AuthorizeWebhookRequest,
-            trinsic.services.account.v1.AuthorizeWebhookResponse>
-        getAuthorizeWebhookMethod;
-    if ((getAuthorizeWebhookMethod = AccountGrpc.getAuthorizeWebhookMethod) == null) {
-      synchronized (AccountGrpc.class) {
-        if ((getAuthorizeWebhookMethod = AccountGrpc.getAuthorizeWebhookMethod) == null) {
-          AccountGrpc.getAuthorizeWebhookMethod =
-              getAuthorizeWebhookMethod =
-                  io.grpc.MethodDescriptor
-                      .<trinsic.services.account.v1.AuthorizeWebhookRequest,
-                          trinsic.services.account.v1.AuthorizeWebhookResponse>
-                          newBuilder()
-                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AuthorizeWebhook"))
-                      .setSampledToLocalTracing(true)
-                      .setRequestMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.account.v1.AuthorizeWebhookRequest
-                                  .getDefaultInstance()))
-                      .setResponseMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.account.v1.AuthorizeWebhookResponse
-                                  .getDefaultInstance()))
-                      .setSchemaDescriptor(new AccountMethodDescriptorSupplier("AuthorizeWebhook"))
-                      .build();
-        }
-      }
-    }
-    return getAuthorizeWebhookMethod;
-  }
-
   /** Creates a new async stub that supports all call types for the service */
   public static AccountStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<AccountStub> factory =
@@ -333,21 +287,6 @@ public final class AccountGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInfoMethod(), responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Authorize Ecosystem to receive webhook events
-     * </pre>
-     */
-    public void authorizeWebhook(
-        trinsic.services.account.v1.AuthorizeWebhookRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AuthorizeWebhookResponse>
-            responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
-          getAuthorizeWebhookMethod(), responseObserver);
-    }
-
     @java.lang.Override
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
@@ -376,13 +315,6 @@ public final class AccountGrpc {
                   new MethodHandlers<
                       trinsic.services.account.v1.AccountInfoRequest,
                       trinsic.services.account.v1.AccountInfoResponse>(this, METHODID_INFO)))
-          .addMethod(
-              getAuthorizeWebhookMethod(),
-              io.grpc.stub.ServerCalls.asyncUnaryCall(
-                  new MethodHandlers<
-                      trinsic.services.account.v1.AuthorizeWebhookRequest,
-                      trinsic.services.account.v1.AuthorizeWebhookResponse>(
-                      this, METHODID_AUTHORIZE_WEBHOOK)))
           .build();
     }
   }
@@ -461,23 +393,6 @@ public final class AccountGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInfoMethod(), getCallOptions()), request, responseObserver);
     }
-
-    /**
-     *
-     *
-     * <pre>
-     * Authorize Ecosystem to receive webhook events
-     * </pre>
-     */
-    public void authorizeWebhook(
-        trinsic.services.account.v1.AuthorizeWebhookRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AuthorizeWebhookResponse>
-            responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAuthorizeWebhookMethod(), getCallOptions()),
-          request,
-          responseObserver);
-    }
   }
 
   /** */
@@ -546,19 +461,6 @@ public final class AccountGrpc {
         trinsic.services.account.v1.AccountInfoRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInfoMethod(), getCallOptions(), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Authorize Ecosystem to receive webhook events
-     * </pre>
-     */
-    public trinsic.services.account.v1.AuthorizeWebhookResponse authorizeWebhook(
-        trinsic.services.account.v1.AuthorizeWebhookRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAuthorizeWebhookMethod(), getCallOptions(), request);
     }
   }
 
@@ -633,27 +535,12 @@ public final class AccountGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInfoMethod(), getCallOptions()), request);
     }
-
-    /**
-     *
-     *
-     * <pre>
-     * Authorize Ecosystem to receive webhook events
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.account.v1.AuthorizeWebhookResponse>
-        authorizeWebhook(trinsic.services.account.v1.AuthorizeWebhookRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAuthorizeWebhookMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_SIGN_IN = 0;
   private static final int METHODID_LOGIN = 1;
   private static final int METHODID_LOGIN_CONFIRM = 2;
   private static final int METHODID_INFO = 3;
-  private static final int METHODID_AUTHORIZE_WEBHOOK = 4;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -694,12 +581,6 @@ public final class AccountGrpc {
           serviceImpl.info(
               (trinsic.services.account.v1.AccountInfoRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountInfoResponse>)
-                  responseObserver);
-          break;
-        case METHODID_AUTHORIZE_WEBHOOK:
-          serviceImpl.authorizeWebhook(
-              (trinsic.services.account.v1.AuthorizeWebhookRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.account.v1.AuthorizeWebhookResponse>)
                   responseObserver);
           break;
         default:
@@ -768,7 +649,6 @@ public final class AccountGrpc {
                       .addMethod(getLoginMethod())
                       .addMethod(getLoginConfirmMethod())
                       .addMethod(getInfoMethod())
-                      .addMethod(getAuthorizeWebhookMethod())
                       .build();
         }
       }

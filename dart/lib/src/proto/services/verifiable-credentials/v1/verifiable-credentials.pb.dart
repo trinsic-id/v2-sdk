@@ -759,11 +759,6 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'isValid')
-    ..pPS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'validationMessages')
     ..m<$core.String, ValidationMessage>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -779,17 +774,11 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
   VerifyProofResponse._() : super();
   factory VerifyProofResponse({
     $core.bool? isValid,
-    @$core.Deprecated('This field is deprecated.')
-        $core.Iterable<$core.String>? validationMessages,
     $core.Map<$core.String, ValidationMessage>? validationResults,
   }) {
     final _result = create();
     if (isValid != null) {
       _result.isValid = isValid;
-    }
-    if (validationMessages != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.validationMessages.addAll(validationMessages);
     }
     if (validationResults != null) {
       _result.validationResults.addAll(validationResults);
@@ -835,13 +824,9 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIsValid() => clearField(1);
 
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(2)
-  $core.List<$core.String> get validationMessages => $_getList(1);
-
   @$pb.TagNumber(3)
   $core.Map<$core.String, ValidationMessage> get validationResults =>
-      $_getMap(2);
+      $_getMap(1);
 }
 
 class ValidationMessage extends $pb.GeneratedMessage {

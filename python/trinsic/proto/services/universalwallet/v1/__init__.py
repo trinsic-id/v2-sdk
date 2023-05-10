@@ -340,6 +340,17 @@ class AuthenticateInitResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
+class AuthenticateResendCodeRequest(betterproto.Message):
+    challenge: str = betterproto.string_field(1)
+    """Challenge for the code you want resent."""
+
+
+@dataclass(eq=False, repr=False)
+class AuthenticateResendCodeResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
 class AuthenticateConfirmRequest(betterproto.Message):
     challenge: str = betterproto.string_field(1)
     """The challenge received from the `AcquireAuthTokenInit` endpoint"""
@@ -614,6 +625,22 @@ class UniversalWalletStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def authenticate_resend_code(
+        self,
+        authenticate_resend_code_request: "AuthenticateResendCodeRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AuthenticateResendCodeResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode",
+            authenticate_resend_code_request,
+            AuthenticateResendCodeResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
     async def list_wallets(
         self,
         list_wallets_request: "ListWalletsRequest",
@@ -708,6 +735,11 @@ class UniversalWalletBase(ServiceBase):
     ) -> "AuthenticateConfirmResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def authenticate_resend_code(
+        self, authenticate_resend_code_request: "AuthenticateResendCodeRequest"
+    ) -> "AuthenticateResendCodeResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def list_wallets(
         self, list_wallets_request: "ListWalletsRequest"
     ) -> "ListWalletsResponse":
@@ -797,6 +829,13 @@ class UniversalWalletBase(ServiceBase):
     async def __rpc_authenticate_confirm(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.authenticate_confirm(request)
+        await stream.send_message(response)
+
+    async def __rpc_authenticate_resend_code(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.authenticate_resend_code(request)
         await stream.send_message(response)
 
     async def __rpc_list_wallets(self, stream: grpclib.server.Stream) -> None:
@@ -901,6 +940,12 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 AuthenticateConfirmRequest,
                 AuthenticateConfirmResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode": grpclib.const.Handler(
+                self.__rpc_authenticate_resend_code,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthenticateResendCodeRequest,
+                AuthenticateResendCodeResponse,
             ),
             "/services.universalwallet.v1.UniversalWallet/ListWallets": grpclib.const.Handler(
                 self.__rpc_list_wallets,
