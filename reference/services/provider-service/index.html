@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#provider-service" class="md-skip">
+        <a href="#macro-rendering-error" class="md-skip">
           Skip to content
         </a>
       
@@ -1747,23 +1747,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    
-  
-    Provider API
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1779,69 +1762,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Ecosystem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Update Ecosystem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-ecosystem-info" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Ecosystem Info
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade-wallet-did" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upgrade Wallet DID
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -2198,58 +2118,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Ecosystem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Update Ecosystem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-ecosystem-info" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Ecosystem Info
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade-wallet-did" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upgrade Wallet DID
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2268,350 +2136,24 @@
   
 
 
-<h1 id="provider-service">Provider Service<a class="headerlink" href="#provider-service" title="Permanent link">&para;</a></h1>
-<p>The Provider Service enables the creation and management of ecosystems.</p>
-<div class="admonition warning">
-<p class="admonition-title">Named vs Anonymous ecosystems</p>
-<p>There are two types of ecosystems: <em>named</em> and <em>anonymous</em>.</p>
-<p>Named ecosystems are suitable for production, and will be prepared for you by Trinsic during onboarding.</p>
-<p>Anonymous ecosystems have auto-generated names (such as <code>eager-elephant-94jkn5h</code>), and may be created by anyone at any time.</p>
-<p>Using an anonymous ecosystem for purposes other than prototyping and testing is considered an unauthorized use of Trinsic's platform.</p>
-</div>
-<hr />
-<h2 id="create-ecosystem">Create Ecosystem<a class="headerlink" href="#create-ecosystem" title="Permanent link">&para;</a></h2>
-<p>Creates a new ecosystem, along with a root controlling account.</p>
-<p>If <code>name</code> is left empty, an anonymous ecosystem will be created.</p>
-<div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>create-ecosystem<span class="w"> </span>--name<span class="w"> </span>&lt;ECOSYSTEM_NAME&gt;<span class="w"> </span>--email<span class="w"> </span>&lt;OWNER_EMAIL&gt;
+<h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">&para;</a></h1>
+<p><strong>Exception</strong>: Cannot find protobuf object with name services.provider.v1.Provider.EcosystemInfo</p>
+<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/mkdocs_macros/plugin.py&quot;, line 480, in render
+    return md_template.render(**page_variables)
+  File &quot;/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/jinja2/environment.py&quot;, line 1301, in render
+    self.environment.handle_exception()
+  File &quot;/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/jinja2/environment.py&quot;, line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File &quot;&lt;template&gt;&quot;, line 165, in top-level template code
+  File &quot;/home/runner/work/sdk/sdk/mkdocs_macros_main.py&quot;, line 65, in proto_method_tabs
+    method = get_entity(method_name)
+  File &quot;/home/runner/work/sdk/sdk/mkdocs_macros_main.py&quot;, line 548, in get_entity
+    index_entry = get_index_entry(name)
+  File &quot;/home/runner/work/sdk/sdk/mkdocs_macros_main.py&quot;, line 526, in get_index_entry
+    raise Exception(f&quot;Cannot find protobuf object with name {name}&quot;)
+Exception: Cannot find protobuf object with name services.provider.v1.Provider.EcosystemInfo
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">createResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">createEcosystem</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="p">);</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">authToken</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span>
-<span class="p">});</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">actual_create</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">CreateEcosystemRequest</span><span class="p">(</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My ecosystem&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
-<span class="p">})</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span>
-<span class="w">            </span><span class="n">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.CreateEcosystemRequest'><div class='proto-obj-name'><a name='services.provider.v1.CreateEcosystemRequest' href='/reference/proto#services.provider.v1.CreateEcosystemRequest'>CreateEcosystemRequest</a></div><div class='proto-obj-description'>Request to create an ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>name</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated.</div></div><div class='proto-field'><div class='proto-field-name'>description</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'>uri</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>DEPRECATED, will be removed April 1st 2023 External URL associated with your organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'>details</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountDetails'>AccountDetails</a></div><div class='proto-field-description'>The account details of the owner of the ecosystem</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>name</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Account name</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>email</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Email address of account</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>sms</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>SMS number including country code</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>domain</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>New domain URL</div></div></div></div></p>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.CreateEcosystemResponse'><div class='proto-obj-name'><a name='services.provider.v1.CreateEcosystemResponse' href='/reference/proto#services.provider.v1.CreateEcosystemResponse'>CreateEcosystemResponse</a></div><div class='proto-obj-description'>Response to <code>CreateEcosystemRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Details of the created ecosystem</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DEPRECATED, will be removed April 1st 2023 External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>display</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplay'>EcosystemDisplay</a></div><div class='proto-field-description'>Display details</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.</span>light</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplayDetails'>EcosystemDisplayDetails</a></div><div class='proto-field-description'>Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.    EcosystemDisplayDetails dark = 1;</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.light.</span>logo_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.light.</span>color</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>domain</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Domain</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>profile</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountProfile'>AccountProfile</a></div><div class='proto-field-description'>Account profile for auth of the owner of the ecosystem</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>profile_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The type of profile, used to differentiate between protocol schemes or versions</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_data</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Auth data containg information about the current device access</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_token</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Secure token issued by server used to generate zero-knowledge proofs</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>protection</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.TokenProtection'>TokenProtection</a></div><div class='proto-field-description'>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>enabled</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Indicates if token is protected using a PIN, security code, HSM secret, etc.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>The method used to protect the token</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Third-party method of confirmation is required</div></div></div></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>confirmation_method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>Indicates if confirmation of account is required.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Third-party method of confirmation is required</div></div></div></div></div></div></div></p>
-</div>
-</div>
-</div>
-<hr />
-<h2 id="update-ecosystem">Update Ecosystem<a class="headerlink" href="#update-ecosystem" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Deprecation Notice</p>
-<p>This endpoint is deprecated, and will be removed May 1, 2023. Please use the <a href="https://dashboard.trinsic.id/">dashboard to update</a>.</p>
-</div>
-<p>Updates the active ecosystem's <code>description</code> or <code>uri</code>.</p>
-<div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>update-ecosystem<span class="w"> </span><span class="se">\</span>
-<span class="w">                 </span>--description<span class="w"> </span><span class="s2">&quot;New description&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                 </span>--uri<span class="w"> </span><span class="s2">&quot;https://new-example.com&quot;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">updateEcosystem</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">UpdateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New ecosystem description&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://new-example.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="p">);</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">updateResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpdateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;New ecosystem description&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;New ecosystem URI&quot;</span>
-<span class="p">});</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">UpdateEcosystemRequest</span><span class="p">(</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My new description&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
-<span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">update_ecosystem</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">updateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpdateEcosystemRequest</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My new description&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://new-example.com&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="nx">updateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">UpdateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">updateRequest</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">updateResponse</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">updateEcosystem</span><span class="p">(</span>
-<span class="w">            </span><span class="n">UpdateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My updated ecosystem&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpdateEcosystemRequest'><div class='proto-obj-name'><a name='services.provider.v1.UpdateEcosystemRequest' href='/reference/proto#services.provider.v1.UpdateEcosystemRequest'>UpdateEcosystemRequest</a></div><div class='proto-obj-description'>Request to update an ecosystem's metadata</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>New description of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DEPRECATED, will be removed April 1st 2023 New external URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'>domain</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>New domain URL</div></div><div class='proto-field'><div class='proto-field-name'>display</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplayRequest'>EcosystemDisplayRequest</a></div><div class='proto-field-description'>Display details</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>display.</span>light</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplayDetailsRequest'>EcosystemDisplayDetailsRequest</a></div><div class='proto-field-description'>Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform. EcosystemDisplayDetailsRequest dark = 1;</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>display.light.</span>color</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>display.light.</span>logo_data</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>display.light.</span>logo_format</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>MIME type of the file</div></div></div></div></div></div></div></div></div></div></p>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpdateEcosystemResponse'><div class='proto-obj-name'><a name='services.provider.v1.UpdateEcosystemResponse' href='/reference/proto#services.provider.v1.UpdateEcosystemResponse'>UpdateEcosystemResponse</a></div><div class='proto-obj-description'>Response to <code>UpdateEcosystemRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>Ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Current ecosystem metadata, post-update</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DEPRECATED, will be removed April 1st 2023 External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>display</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplay'>EcosystemDisplay</a></div><div class='proto-field-description'>Display details</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.display.</span>light</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplayDetails'>EcosystemDisplayDetails</a></div><div class='proto-field-description'>Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.    EcosystemDisplayDetails dark = 1;</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.display.light.</span>logo_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.display.light.</span>color</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>domain</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Domain</div></div></div></div></div></div></div></p>
-</div>
-</div>
-</div>
-<hr />
-<h2 id="get-ecosystem-info">Get Ecosystem Info<a class="headerlink" href="#get-ecosystem-info" title="Permanent link">&para;</a></h2>
-<p>Fetches information about the active ecosystem.</p>
-<div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>ecosystem-info
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">infoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">provider</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">ecosystemInfo</span><span class="p">(</span><span class="nx">EcosystemInfoRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infoResponse</span><span class="p">.</span><span class="nx">ecosystem</span><span class="p">;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">infoResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">EcosystemInfoAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># REMOVED</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">infoResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">EcosystemInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">EcosystemInfoRequest</span><span class="p">{})</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">infoResponse</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">ecosystemInfo</span><span class="p">(</span><span class="n">EcosystemInfoRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.EcosystemInfoRequest'><div class='proto-obj-name'><a name='services.provider.v1.EcosystemInfoRequest' href='/reference/proto#services.provider.v1.EcosystemInfoRequest'>EcosystemInfoRequest</a></div><div class='proto-obj-description'>Request to fetch information about an ecosystem</div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.EcosystemInfoResponse'><div class='proto-obj-name'><a name='services.provider.v1.EcosystemInfoResponse' href='/reference/proto#services.provider.v1.EcosystemInfoResponse'>EcosystemInfoResponse</a></div><div class='proto-obj-description'>Response to <code>InfoRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Ecosystem corresponding to current ecosystem in the account token</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DEPRECATED, will be removed April 1st 2023 External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>display</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplay'>EcosystemDisplay</a></div><div class='proto-field-description'>Display details</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.</span>light</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplayDetails'>EcosystemDisplayDetails</a></div><div class='proto-field-description'>Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.    EcosystemDisplayDetails dark = 1;</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.light.</span>logo_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.light.</span>color</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>domain</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Domain</div></div></div></div></div></div></div></p>
-</div>
-</div>
-</div>
-<hr />
-<h2 id="upgrade-wallet-did">Upgrade Wallet DID<a class="headerlink" href="#upgrade-wallet-did" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Restricted API</p>
-<p>This feature is not yet publicly available, and the list of supported DID Methods is not final.</p>
-<p>Please contact Trinsic to enable this endpoint on your account.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Ledger Interactions</p>
-<p>Depending on the DID Method chosen, you may be responsible for ledger write fees; additionally, there are some logistical concerns to be aware of.</p>
-<p><a href="/learn/concepts/dids#upgrading-wallet-dids">Click here</a> to learn more. </p>
-</div>
-<p>Upgrades a wallet's DID from the default <code>did:key</code> to another DID Method. This endpoint may only be called by an ecosystem provider.</p>
-<p>Trinsic will register a DID Document for you, and update the wallet's <code>public_did</code> property to the newly-registered DID. Credentials previously issued by this wallet will not have their <code>issuer</code> field updated to the new DID, but they will still verify correctly.</p>
-<p>Presently, once a wallet's DID has been upgraded, its DID Method cannot be changed again. However, it is possible to perform further upgrades <em>within</em> a method, to go from a testing to production network (for example, <code>did:ion:test</code> to <code>did:ion</code>). </p>
-<div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Go</label><label for="__tabbed_8_6">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>provider<span class="w"> </span>upgrade-did<span class="w"> </span>--wallet-id<span class="w"> </span><span class="o">{</span>wallet_id<span class="o">}</span><span class="w"> </span>--method<span class="w"> </span>ion<span class="w"> </span>--method-options<span class="w"> </span>testnet
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">upgradeDID</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">UpgradeDidRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">walletId</span><span class="o">:</span><span class="w"> </span><span class="kt">walletId</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">SupportedDidMethod.ION</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">ionOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions.fromPartial</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">network</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions_IonNetwork.TestNet</span><span class="p">,</span>
-<span class="w">        </span><span class="p">}),</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="p">);</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpgradeDIDAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">WalletId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletId</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="n">Ion</span><span class="p">,</span>
-<span class="w">    </span><span class="n">IonOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IonOptions</span><span class="p">.</span><span class="n">Types</span><span class="p">.</span><span class="n">IonNetwork</span><span class="p">.</span><span class="n">TestNet</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">import</span> <span class="nn">base64</span>
-
-<span class="kn">from</span> <span class="nn">trinsic.proto.services.provider.v1</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">EcosystemInfoRequest</span><span class="p">,</span>
-    <span class="n">UpdateEcosystemRequest</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">trinsic.trinsic_service</span> <span class="kn">import</span> <span class="n">TrinsicService</span>
-<span class="kn">from</span> <span class="nn">trinsic.trinsic_util</span> <span class="kn">import</span> <span class="n">trinsic_config</span><span class="p">,</span> <span class="n">set_eventloop_policy</span>
-
-
-<span class="k">async</span> <span class="k">def</span> <span class="nf">provider_demo</span><span class="p">():</span>
-    <span class="n">trinsic</span> <span class="o">=</span> <span class="n">TrinsicService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">())</span>
-
-    <span class="n">ecosystem_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">()</span>
-    <span class="n">ecosystem</span> <span class="o">=</span> <span class="n">ecosystem_response</span><span class="o">.</span><span class="n">ecosystem</span>
-    <span class="n">auth_token</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">ecosystem_response</span><span class="o">.</span><span class="n">profile</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
-        <span class="s2">&quot;utf-8&quot;</span>
-    <span class="p">)</span>
-
-    <span class="n">trinsic</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">default_ecosystem</span> <span class="o">=</span> <span class="n">ecosystem</span>
-    <span class="n">trinsic</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">auth_token</span>
-
-    <span class="c1"># updateEcosystem() {</span>
-    <span class="n">request</span> <span class="o">=</span> <span class="n">UpdateEcosystemRequest</span><span class="p">(</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My new description&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
-    <span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">update_ecosystem</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-    <span class="c1"># }</span>
-
-    <span class="c1"># ecosystemInfo() {</span>
-    <span class="c1"># REMOVED</span>
-    <span class="c1"># }</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">set_eventloop_policy</span><span class="p">()</span>
-    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">provider_demo</span><span class="p">())</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">upgradeResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">UpgradeDID</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Account</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_WalletId</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">WalletId</span><span class="p">:</span><span class="w"> </span><span class="nx">walletId</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">Method</span><span class="p">:</span><span class="w"> </span><span class="nx">common</span><span class="p">.</span><span class="nx">SupportedDidMethod_ION</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">Options</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_IonOptions</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">IonOptions</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions</span><span class="p">{</span>
-<span class="w">            </span><span class="nx">Network</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions_TestNet</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="p">})</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">upgradeRequest</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">UpgradeDidRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="na">getAuthToken</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setMethod</span><span class="p">(</span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="na">ION</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">setIonOptions</span><span class="p">(</span>
-<span class="w">            </span><span class="n">IonOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setNetwork</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">IonNetwork</span><span class="p">.</span><span class="na">TestNet</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="kd">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">upgradeDID</span><span class="p">(</span><span class="n">upgradeRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpgradeDidRequest'><div class='proto-obj-name'><a name='services.provider.v1.UpgradeDidRequest' href='/reference/proto#services.provider.v1.UpgradeDidRequest'>UpgradeDidRequest</a></div><div class='proto-obj-description'>Request to upgrade a wallet</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of account to upgrade. Mutually exclusive with <code>walletId</code> and <code>didUri</code>.</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Wallet ID of account to upgrade. Mutually exclusive with <code>email</code> and <code>didUri</code>.</div></div><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of the account to upgrade. Mutually exclusive with <code>email</code> and <code>walletId</code>.</div></div><div class='proto-field'><div class='proto-field-name'>method</div> <div class='proto-field-type'><a href='/reference/proto#services.common.v1.SupportedDidMethod'>SupportedDidMethod</a></div><div class='proto-field-description'>DID Method to which wallet should be upgraded</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SupportedDidMethod.</span>KEY</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>The did:key method -- all wallets use this by default</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SupportedDidMethod.</span>ION</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SupportedDidMethod.</span>INDY</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>The did:sov method -- Hyperledger Indy based by Sovrin Foundation</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>ion_options</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.IonOptions'>IonOptions</a></div><div class='proto-field-description'>Configuration for creation of DID on ION network</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ion_options.</span>network</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.IonOptions.IonNetwork'>IonNetwork</a></div><div class='proto-field-description'>ION network on which DID should be published</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IonNetwork.</span>TestNet</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IonNetwork.</span>MainNet</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>indy_options</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.IndyOptions'>IndyOptions</a></div><div class='proto-field-description'>Configuration for creation of DID on INDY network</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>indy_options.</span>network</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.IndyOptions.IndyNetwork'>IndyNetwork</a></div><div class='proto-field-description'>SOV network on which DID should be published</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>Danube</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>SovrinBuilder</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>SovrinStaging</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>Sovrin</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>IdUnionTest</div> <div class='proto-field-type'> = 4</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>IdUnion</div> <div class='proto-field-type'> = 5</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>IndicioTest</div> <div class='proto-field-type'> = 6</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>IndicioDemo</div> <div class='proto-field-type'> = 7</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IndyNetwork.</span>Indicio</div> <div class='proto-field-type'> = 8</div><div class='proto-field-description'></div></div></div></div></div></div></div></div></div></div></p>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpgradeDidResponse'><div class='proto-obj-name'><a name='services.provider.v1.UpgradeDidResponse' href='/reference/proto#services.provider.v1.UpgradeDidResponse'>UpgradeDidResponse</a></div><div class='proto-obj-description'>Response to <code>UpgradeDIDRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>New DID of wallet</div></div></div></div></p>
-</div>
-</div>
-</div>
-<!-- 
-// This call is not yet implemented
-## List Ecosystems
-
-Lists all available ecosystem for the current authentication context.
-
-When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
-
-Cannot print proto message: Cannot find protobuf object with name services.provider.v1.ListEcosystemRequest
-
-The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
-
-Cannot print proto message: Cannot find protobuf object with name services.provider.v1.ListEcosystemResponse 
--->
-
-<!--
-
-Excluding invitation documentation pending re-thinking
-
-To revert this, find the contents of this file before 6/9/2022 :~)
-
--->
 
 
 
