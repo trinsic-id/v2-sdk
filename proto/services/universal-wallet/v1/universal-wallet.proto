@@ -122,13 +122,14 @@ message CreateWalletRequest{
   optional string description = 2 [(options.optional) = true];
 }
 message CreateWalletResponse{
-  reserved 1;
   // Auth token for the newly created wallet
   string auth_token = 2;
   // Token ID of the newly generated token
   string token_id = 3;
   // Wallet configuration
   services.provider.v1.WalletConfiguration wallet = 4;
+
+  reserved 1;
 }
 
 message GenerateAuthTokenRequest{
@@ -198,7 +199,9 @@ service UniversalWallet {
   rpc GetWalletInfo(GetWalletInfoRequest) returns (GetWalletInfoResponse);
 
   // Retrieve wallet details and configuration about the currently authenticated wallet
-  rpc GetMyInfo(GetMyInfoRequest) returns (GetMyInfoResponse);
+  rpc GetMyInfo(GetMyInfoRequest) returns (GetMyInfoResponse) {
+    option (options.sdk_template_option).no_arguments = true;
+  }
 
   // Generate new token for a given wallet and add it to the collection of known auth tokens.
   // This endpoint requires authentication and will return a new token ID and auth token.
@@ -226,6 +229,9 @@ service UniversalWallet {
 
   // Confirm sign-in to an already existing wallet and return authentication token
   rpc AuthenticateConfirm(AuthenticateConfirmRequest) returns (AuthenticateConfirmResponse);
+
+  // Resend previous authentication code
+  rpc AuthenticateResendCode(AuthenticateResendCodeRequest) returns (AuthenticateResendCodeResponse);
 
   // List all wallets in the ecosystem
   rpc ListWallets(ListWalletsRequest) returns (ListWalletsResponse);
@@ -282,6 +288,13 @@ message AuthenticateInitResponse {
   // Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint
   string challenge = 1;
 }
+
+message AuthenticateResendCodeRequest {
+  // Challenge for the code you want resent.
+  string challenge = 1;
+}
+
+message AuthenticateResendCodeResponse {}
 
 message AuthenticateConfirmRequest {
   // The challenge received from the `AcquireAuthTokenInit` endpoint
