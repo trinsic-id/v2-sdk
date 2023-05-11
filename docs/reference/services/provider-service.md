@@ -117,55 +117,6 @@ Updates the active ecosystem's `description` or `uri`.
 
 ---
 
-## Get Ecosystem Info
-
-Fetches information about the active ecosystem.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic provider ecosystem-info
-        ```
-
-    === "TypeScript"
-        <!--codeinclude--> 
-        ```typescript
-        [EcosystemInfo](../../../web/test/ProviderService.test.ts) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [EcosystemInfo](../../../dotnet/Tests/Tests.cs) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [EcosystemInfo](../../../python/samples/provider_demo.py) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [EcosystemInfo](../../../go/services/provider_service_test.go) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [EcosystemInfo](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:ecosystemInfo
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.provider.v1.Provider.EcosystemInfo") }}
-
----
-
 ## Upgrade Wallet DID
 
 !!! warning "Restricted API"
