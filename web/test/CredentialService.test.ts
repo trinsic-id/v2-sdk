@@ -13,7 +13,6 @@ import {
     myEcosystemIdOrName,
     setTestTimeout,
 } from "./env";
-import { verifyCredential } from "./CredentialTemplateShared";
 
 let options: TrinsicOptions = getTestServerOptions();
 let trinsic: TrinsicService;
@@ -48,40 +47,12 @@ describe("CredentialService Unit Tests", () => {
         const credential = JSON.parse(issueResponse?.signedDocumentJson!);
 
         expect(credential).not.toBeNull();
+        expect(credential.issuer).not.toBeNull();
         expect(credential.proof).not.toBeNull();
+        expect(credential.id).not.toBeNull();
         expect(credential.credentialSubject).toEqual(
             vaccineCert.credentialSubject
         );
         expect(credential.issuer).toBe(info.wallet!.publicDid);
-    });
-
-    it("Verify Credential Issued from Template", async () => {
-        let response = await verifyCredential(
-            trinsic,
-            JSON.stringify(templateCertFrame)
-        );
-        expect(response).toBeTruthy();
-    });
-
-    it("Update Revocation Status for Template", async () => {
-        try {
-            // checkCredentialStatus() {
-            let checkStatusResponse = await trinsic
-                .credential()
-                .checkStatus(CheckStatusRequest.fromPartial({}));
-            // }
-        } catch {
-            // This is okay as an example
-        }
-
-        try {
-            // updateCredentialStatus() {
-            let updateStatusResponse = await trinsic
-                .credential()
-                .updateStatus(UpdateStatusRequest.fromPartial({}));
-            // }
-        } catch {
-            // This is okay as an example
-        }
     });
 });

@@ -1726,6 +1726,21 @@
         <member name="P:Trinsic.Services.Provider.V1.ProviderReflection.Descriptor">
             <summary>File descriptor for services/provider/v1/provider.proto</summary>
         </member>
+        <member name="F:Trinsic.Services.Provider.V1.IdentityProvider.Unknown">
+            <summary>
+            Identity provider is unknown
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.IdentityProvider.Email">
+            <summary>
+            Identity provider is email
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.IdentityProvider.Phone">
+            <summary>
+            Identity provider is phone
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Provider.V1.Ecosystem">
             <summary>
             Details of an ecosystem
@@ -3237,21 +3252,6 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UniversalWalletReflection.Descriptor">
             <summary>File descriptor for services/universal-wallet/v1/universal-wallet.proto</summary>
-        </member>
-        <member name="F:Trinsic.Services.UniversalWallet.V1.IdentityProvider.Unknown">
-            <summary>
-            Identity provider is unknown
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.UniversalWallet.V1.IdentityProvider.Email">
-            <summary>
-            Identity provider is email
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.UniversalWallet.V1.IdentityProvider.Phone">
-            <summary>
-            Identity provider is phone
-            </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.SearchRequest">
             <summary>
