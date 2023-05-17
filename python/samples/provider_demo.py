@@ -23,7 +23,7 @@ async def provider_demo():
 
     # updateEcosystem() {
     request = UpdateEcosystemRequest(
-        description="My new description", uri="https://example.com"
+        description="My new description", domain="https://example.com"
     )
     response = await trinsic.provider.update_ecosystem(request=request)
     # }
