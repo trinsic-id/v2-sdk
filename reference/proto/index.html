@@ -3086,50 +3086,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecosystemdisplay" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EcosystemDisplay
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosystemdisplaydetails" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EcosystemDisplayDetails
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosystemdisplaydetailsrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EcosystemDisplayDetailsRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosystemdisplayrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EcosystemDisplayRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#ecosysteminforequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5982,18 +5938,6 @@ such by assigning roles and permissions to wallet accounts</p>
 <td>Upgrade a wallet's DID from <code>did:key</code> to another method</td>
 </tr>
 <tr>
-<td>RetrieveDomainVerificationRecord</td>
-<td><a href="/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest">RetrieveDomainVerificationRecordRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse">RetrieveDomainVerificationRecordResponse</a></td>
-<td>Retrieve a random hash TXT that can be used to verify domain ownership</td>
-</tr>
-<tr>
-<td>RefreshDomainVerificationStatus</td>
-<td><a href="/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest">RefreshDomainVerificationStatusRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse">RefreshDomainVerificationStatusResponse</a></td>
-<td>Call to verify domain</td>
-</tr>
-<tr>
 <td>SearchWalletConfigurations</td>
 <td><a href="/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest">SearchWalletConfigurationsRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-SearchWalletConfigurationResponse">SearchWalletConfigurationResponse</a></td>
@@ -6092,103 +6036,6 @@ such by assigning roles and permissions to wallet accounts</p>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Ecosystem description</td>
-</tr>
-<tr>
-<td>display</td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemDisplay">EcosystemDisplay</a></td>
-<td>Display details</td>
-</tr>
-<tr>
-<td>domain</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Domain</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-EcosystemDisplay"></a></p>
-<h3 id="ecosystemdisplay">EcosystemDisplay<a class="headerlink" href="#ecosystemdisplay" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>light</td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetails">EcosystemDisplayDetails</a></td>
-<td>Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-EcosystemDisplayDetails"></a></p>
-<h3 id="ecosystemdisplaydetails">EcosystemDisplayDetails<a class="headerlink" href="#ecosystemdisplaydetails" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>logo_url</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>color</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-EcosystemDisplayDetailsRequest"></a></p>
-<h3 id="ecosystemdisplaydetailsrequest">EcosystemDisplayDetailsRequest<a class="headerlink" href="#ecosystemdisplaydetailsrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>color</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>logo_data</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td></td>
-</tr>
-<tr>
-<td>logo_format</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>MIME type of the file</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-EcosystemDisplayRequest"></a></p>
-<h3 id="ecosystemdisplayrequest">EcosystemDisplayRequest<a class="headerlink" href="#ecosystemdisplayrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>light</td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest">EcosystemDisplayDetailsRequest</a></td>
-<td>Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform. EcosystemDisplayDetailsRequest dark = 1;</td>
 </tr>
 </tbody>
 </table>
@@ -6327,7 +6174,7 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>TXT record name to use for domain verification</td>
 </tr>
 <tr>
-<td>verification_record_Value</td>
+<td>verification_record_value</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>TXT code for domain verification</td>
 </tr>
@@ -6401,16 +6248,6 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>New description of the ecosystem</td>
-</tr>
-<tr>
-<td>domain</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>New domain URL</td>
-</tr>
-<tr>
-<td>display</td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayRequest">EcosystemDisplayRequest</a></td>
-<td><strong>Deprecated.</strong> Display details</td>
 </tr>
 </tbody>
 </table>
