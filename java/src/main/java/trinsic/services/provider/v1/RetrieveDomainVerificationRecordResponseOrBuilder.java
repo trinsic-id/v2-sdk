@@ -41,7 +41,7 @@ public interface RetrieveDomainVerificationRecordResponseOrBuilder
    * TXT code for domain verification
    * </pre>
    *
-   * <code>string verification_record_Value = 2;</code>
+   * <code>string verification_record_value = 2;</code>
    *
    * @return The verificationRecordValue.
    */
@@ -53,7 +53,7 @@ public interface RetrieveDomainVerificationRecordResponseOrBuilder
    * TXT code for domain verification
    * </pre>
    *
-   * <code>string verification_record_Value = 2;</code>
+   * <code>string verification_record_value = 2;</code>
    *
    * @return The bytes for verificationRecordValue.
    */

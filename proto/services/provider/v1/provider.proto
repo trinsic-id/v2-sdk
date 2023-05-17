@@ -22,14 +22,8 @@ message Ecosystem {
   // Ecosystem description
   string description = 3;
 
-  // Display details
-  EcosystemDisplay display = 6;
-
-  // Domain
-  string domain = 7;
-
-  reserved 4, 5;
-  reserved "uri", "webhooks";
+  reserved 4, 5, 6, 7;
+  reserved "uri", "webhooks", "display", "domain";
 }
 
 // Request to create an ecosystem
@@ -67,54 +61,15 @@ message CreateEcosystemResponse {
 message UpdateEcosystemRequest {
   // New description of the ecosystem
   string description = 1;
-  // New domain URL
-  string domain = 3;
 
-  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-  // DEPRECATED, will be removed June 1st 2023
-
-  // Display details
-  EcosystemDisplayRequest display = 5 [deprecated = true];
-
-  reserved 2, 4;
-  reserved "uri", "name";
-}
-
-message EcosystemDisplayRequest {
-  //Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-  // EcosystemDisplayDetailsRequest dark = 1;
-  EcosystemDisplayDetailsRequest light = 2;
-}
-
-message EcosystemDisplayDetailsRequest {
-  string color = 4;
-  bytes logo_data = 5;
-  // MIME type of the file
-  string logo_format = 6;
-
-  reserved 1,2,3;
-  reserved "id","name","logo_url";
+  reserved 2, 3, 4, 5;
+  reserved "uri", "name", "display", "domain";
 }
 
 // Response to `UpdateEcosystemRequest`
 message UpdateEcosystemResponse {
   // Current ecosystem metadata, post-update
   Ecosystem Ecosystem = 1;
-}
-
-message EcosystemDisplay {
-  //    Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-  EcosystemDisplayDetails light = 2;
-  reserved 1;
-  reserved "dark";
-}
-
-message EcosystemDisplayDetails {
-  string logo_url = 3;
-  string color = 4;
-
-  reserved 1,2;
-  reserved "id","name";
 }
 
 // Request to fetch information about an ecosystem
@@ -151,7 +106,7 @@ message RetrieveDomainVerificationRecordResponse {
   // TXT record name to use for domain verification
   string verification_record_name = 1;
   // TXT code for domain verification
-  string verification_record_Value = 2;
+  string verification_record_value = 2;
 }
 // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 // DEPRECATED, will be removed June 1st 2023
@@ -301,16 +256,6 @@ service Provider {
 
   // Upgrade a wallet's DID from `did:key` to another method
   rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse);
-
-  // Retrieve a random hash TXT that can be used to verify domain ownership
-  rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
-    option (options.sdk_template_option).no_arguments = true;
-  }
-
-  // Call to verify domain
-  rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse) {
-    option (options.sdk_template_option).no_arguments = true;
-  }
 
   // Search for issuers/providers/verifiers in the current ecosystem
   rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse);

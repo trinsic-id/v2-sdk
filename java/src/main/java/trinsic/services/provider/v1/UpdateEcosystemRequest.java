@@ -24,7 +24,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
   private UpdateEcosystemRequest() {
     description_ = "";
-    domain_ = "";
   }
 
   @java.lang.Override
@@ -102,110 +101,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     }
   }
 
-  public static final int DOMAIN_FIELD_NUMBER = 3;
-  private volatile java.lang.Object domain_;
-  /**
-   *
-   *
-   * <pre>
-   * New domain URL
-   * </pre>
-   *
-   * <code>string domain = 3;</code>
-   *
-   * @return The domain.
-   */
-  @java.lang.Override
-  public java.lang.String getDomain() {
-    java.lang.Object ref = domain_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      domain_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * New domain URL
-   * </pre>
-   *
-   * <code>string domain = 3;</code>
-   *
-   * @return The bytes for domain.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getDomainBytes() {
-    java.lang.Object ref = domain_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      domain_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int DISPLAY_FIELD_NUMBER = 5;
-  private trinsic.services.provider.v1.EcosystemDisplayRequest display_;
-  /**
-   *
-   *
-   * <pre>
-   * Display details
-   * </pre>
-   *
-   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-   *
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=76
-   * @return Whether the display field is set.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public boolean hasDisplay() {
-    return display_ != null;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Display details
-   * </pre>
-   *
-   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-   *
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-   *     services/provider/v1/provider.proto;l=76
-   * @return The display.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public trinsic.services.provider.v1.EcosystemDisplayRequest getDisplay() {
-    return display_ == null
-        ? trinsic.services.provider.v1.EcosystemDisplayRequest.getDefaultInstance()
-        : display_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Display details
-   * </pre>
-   *
-   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder getDisplayOrBuilder() {
-    return getDisplay();
-  }
-
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -223,12 +118,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, description_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, domain_);
-    }
-    if (display_ != null) {
-      output.writeMessage(5, getDisplay());
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -240,12 +129,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, description_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, domain_);
-    }
-    if (display_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getDisplay());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -264,11 +147,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
         (trinsic.services.provider.v1.UpdateEcosystemRequest) obj;
 
     if (!getDescription().equals(other.getDescription())) return false;
-    if (!getDomain().equals(other.getDomain())) return false;
-    if (hasDisplay() != other.hasDisplay()) return false;
-    if (hasDisplay()) {
-      if (!getDisplay().equals(other.getDisplay())) return false;
-    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -282,12 +160,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
-    hash = (53 * hash) + getDomain().hashCode();
-    if (hasDisplay()) {
-      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
-      hash = (53 * hash) + getDisplay().hashCode();
-    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -428,14 +300,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       super.clear();
       description_ = "";
 
-      domain_ = "";
-
-      if (displayBuilder_ == null) {
-        display_ = null;
-      } else {
-        display_ = null;
-        displayBuilder_ = null;
-      }
       return this;
     }
 
@@ -464,12 +328,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       trinsic.services.provider.v1.UpdateEcosystemRequest result =
           new trinsic.services.provider.v1.UpdateEcosystemRequest(this);
       result.description_ = description_;
-      result.domain_ = domain_;
-      if (displayBuilder_ == null) {
-        result.display_ = display_;
-      } else {
-        result.display_ = displayBuilder_.build();
-      }
       onBuilt();
       return result;
     }
@@ -524,13 +382,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
         description_ = other.description_;
         onChanged();
       }
-      if (!other.getDomain().isEmpty()) {
-        domain_ = other.domain_;
-        onChanged();
-      }
-      if (other.hasDisplay()) {
-        mergeDisplay(other.getDisplay());
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -563,18 +414,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
                 break;
               } // case 10
-            case 26:
-              {
-                domain_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 26
-            case 42:
-              {
-                input.readMessage(getDisplayFieldBuilder().getBuilder(), extensionRegistry);
-
-                break;
-              } // case 42
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -696,310 +535,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       description_ = value;
       onChanged();
       return this;
-    }
-
-    private java.lang.Object domain_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * New domain URL
-     * </pre>
-     *
-     * <code>string domain = 3;</code>
-     *
-     * @return The domain.
-     */
-    public java.lang.String getDomain() {
-      java.lang.Object ref = domain_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        domain_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New domain URL
-     * </pre>
-     *
-     * <code>string domain = 3;</code>
-     *
-     * @return The bytes for domain.
-     */
-    public com.google.protobuf.ByteString getDomainBytes() {
-      java.lang.Object ref = domain_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        domain_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New domain URL
-     * </pre>
-     *
-     * <code>string domain = 3;</code>
-     *
-     * @param value The domain to set.
-     * @return This builder for chaining.
-     */
-    public Builder setDomain(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      domain_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New domain URL
-     * </pre>
-     *
-     * <code>string domain = 3;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearDomain() {
-
-      domain_ = getDefaultInstance().getDomain();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New domain URL
-     * </pre>
-     *
-     * <code>string domain = 3;</code>
-     *
-     * @param value The bytes for domain to set.
-     * @return This builder for chaining.
-     */
-    public Builder setDomainBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      domain_ = value;
-      onChanged();
-      return this;
-    }
-
-    private trinsic.services.provider.v1.EcosystemDisplayRequest display_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplayRequest,
-            trinsic.services.provider.v1.EcosystemDisplayRequest.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder>
-        displayBuilder_;
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     *
-     * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-     *     services/provider/v1/provider.proto;l=76
-     * @return Whether the display field is set.
-     */
-    @java.lang.Deprecated
-    public boolean hasDisplay() {
-      return displayBuilder_ != null || display_ != null;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     *
-     * @deprecated services.provider.v1.UpdateEcosystemRequest.display is deprecated. See
-     *     services/provider/v1/provider.proto;l=76
-     * @return The display.
-     */
-    @java.lang.Deprecated
-    public trinsic.services.provider.v1.EcosystemDisplayRequest getDisplay() {
-      if (displayBuilder_ == null) {
-        return display_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplayRequest.getDefaultInstance()
-            : display_;
-      } else {
-        return displayBuilder_.getMessage();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated
-    public Builder setDisplay(trinsic.services.provider.v1.EcosystemDisplayRequest value) {
-      if (displayBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        display_ = value;
-        onChanged();
-      } else {
-        displayBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated
-    public Builder setDisplay(
-        trinsic.services.provider.v1.EcosystemDisplayRequest.Builder builderForValue) {
-      if (displayBuilder_ == null) {
-        display_ = builderForValue.build();
-        onChanged();
-      } else {
-        displayBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated
-    public Builder mergeDisplay(trinsic.services.provider.v1.EcosystemDisplayRequest value) {
-      if (displayBuilder_ == null) {
-        if (display_ != null) {
-          display_ =
-              trinsic.services.provider.v1.EcosystemDisplayRequest.newBuilder(display_)
-                  .mergeFrom(value)
-                  .buildPartial();
-        } else {
-          display_ = value;
-        }
-        onChanged();
-      } else {
-        displayBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated
-    public Builder clearDisplay() {
-      if (displayBuilder_ == null) {
-        display_ = null;
-        onChanged();
-      } else {
-        display_ = null;
-        displayBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.provider.v1.EcosystemDisplayRequest.Builder getDisplayBuilder() {
-
-      onChanged();
-      return getDisplayFieldBuilder().getBuilder();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder getDisplayOrBuilder() {
-      if (displayBuilder_ != null) {
-        return displayBuilder_.getMessageOrBuilder();
-      } else {
-        return display_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplayRequest.getDefaultInstance()
-            : display_;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5 [deprecated = true];</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplayRequest,
-            trinsic.services.provider.v1.EcosystemDisplayRequest.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder>
-        getDisplayFieldBuilder() {
-      if (displayBuilder_ == null) {
-        displayBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.provider.v1.EcosystemDisplayRequest,
-                trinsic.services.provider.v1.EcosystemDisplayRequest.Builder,
-                trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder>(
-                getDisplay(), getParentForChildren(), isClean());
-        display_ = null;
-      }
-      return displayBuilder_;
     }
 
     @java.lang.Override

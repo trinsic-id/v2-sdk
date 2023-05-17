@@ -54,22 +54,6 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
-  Future<RetrieveDomainVerificationRecordResponse>
-      retrieveDomainVerificationRecord() async {
-    ///  Retrieve a random hash TXT that can be used to verify domain ownership
-    var request = RetrieveDomainVerificationRecordRequest();
-    return client.retrieveDomainVerificationRecord(request,
-        options: await buildMetadata(request: request));
-  }
-
-  Future<RefreshDomainVerificationStatusResponse>
-      refreshDomainVerificationStatus() async {
-    ///  Call to verify domain
-    var request = RefreshDomainVerificationStatusRequest();
-    return client.refreshDomainVerificationStatus(request,
-        options: await buildMetadata(request: request));
-  }
-
   Future<SearchWalletConfigurationResponse> searchWalletConfigurations(
       SearchWalletConfigurationsRequest request) async {
     ///  Search for issuers/providers/verifiers in the current ecosystem

@@ -42,17 +42,6 @@ class Ecosystem extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOM<EcosystemDisplay>(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'display',
-        subBuilder: EcosystemDisplay.create)
-    ..aOS(
-        7,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'domain')
     ..hasRequiredFields = false;
 
   Ecosystem._() : super();
@@ -60,8 +49,6 @@ class Ecosystem extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? name,
     $core.String? description,
-    EcosystemDisplay? display,
-    $core.String? domain,
   }) {
     final _result = create();
     if (id != null) {
@@ -72,12 +59,6 @@ class Ecosystem extends $pb.GeneratedMessage {
     }
     if (description != null) {
       _result.description = description;
-    }
-    if (display != null) {
-      _result.display = display;
-    }
-    if (domain != null) {
-      _result.domain = domain;
     }
     return _result;
   }
@@ -142,32 +123,6 @@ class Ecosystem extends $pb.GeneratedMessage {
   $core.bool hasDescription() => $_has(2);
   @$pb.TagNumber(3)
   void clearDescription() => clearField(3);
-
-  @$pb.TagNumber(6)
-  EcosystemDisplay get display => $_getN(3);
-  @$pb.TagNumber(6)
-  set display(EcosystemDisplay v) {
-    setField(6, v);
-  }
-
-  @$pb.TagNumber(6)
-  $core.bool hasDisplay() => $_has(3);
-  @$pb.TagNumber(6)
-  void clearDisplay() => clearField(6);
-  @$pb.TagNumber(6)
-  EcosystemDisplay ensureDisplay() => $_ensure(3);
-
-  @$pb.TagNumber(7)
-  $core.String get domain => $_getSZ(4);
-  @$pb.TagNumber(7)
-  set domain($core.String v) {
-    $_setString(4, v);
-  }
-
-  @$pb.TagNumber(7)
-  $core.bool hasDomain() => $_has(4);
-  @$pb.TagNumber(7)
-  void clearDomain() => clearField(7);
 }
 
 class CreateEcosystemRequest extends $pb.GeneratedMessage {
@@ -441,36 +396,15 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'domain')
-    ..aOM<EcosystemDisplayRequest>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'display',
-        subBuilder: EcosystemDisplayRequest.create)
     ..hasRequiredFields = false;
 
   UpdateEcosystemRequest._() : super();
   factory UpdateEcosystemRequest({
     $core.String? description,
-    $core.String? domain,
-    @$core.Deprecated('This field is deprecated.')
-    EcosystemDisplayRequest? display,
   }) {
     final _result = create();
     if (description != null) {
       _result.description = description;
-    }
-    if (domain != null) {
-      _result.domain = domain;
-    }
-    if (display != null) {
-      // ignore: deprecated_member_use_from_same_package
-      _result.display = display;
     }
     return _result;
   }
@@ -514,223 +448,6 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
   $core.bool hasDescription() => $_has(0);
   @$pb.TagNumber(1)
   void clearDescription() => clearField(1);
-
-  @$pb.TagNumber(3)
-  $core.String get domain => $_getSZ(1);
-  @$pb.TagNumber(3)
-  set domain($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasDomain() => $_has(1);
-  @$pb.TagNumber(3)
-  void clearDomain() => clearField(3);
-
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(5)
-  EcosystemDisplayRequest get display => $_getN(2);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(5)
-  set display(EcosystemDisplayRequest v) {
-    setField(5, v);
-  }
-
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(5)
-  $core.bool hasDisplay() => $_has(2);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(5)
-  void clearDisplay() => clearField(5);
-  @$core.Deprecated('This field is deprecated.')
-  @$pb.TagNumber(5)
-  EcosystemDisplayRequest ensureDisplay() => $_ensure(2);
-}
-
-class EcosystemDisplayRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'EcosystemDisplayRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..aOM<EcosystemDisplayDetailsRequest>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'light',
-        subBuilder: EcosystemDisplayDetailsRequest.create)
-    ..hasRequiredFields = false;
-
-  EcosystemDisplayRequest._() : super();
-  factory EcosystemDisplayRequest({
-    EcosystemDisplayDetailsRequest? light,
-  }) {
-    final _result = create();
-    if (light != null) {
-      _result.light = light;
-    }
-    return _result;
-  }
-  factory EcosystemDisplayRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory EcosystemDisplayRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplayRequest clone() =>
-      EcosystemDisplayRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplayRequest copyWith(
-          void Function(EcosystemDisplayRequest) updates) =>
-      super.copyWith((message) => updates(message as EcosystemDisplayRequest))
-          as EcosystemDisplayRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplayRequest create() => EcosystemDisplayRequest._();
-  EcosystemDisplayRequest createEmptyInstance() => create();
-  static $pb.PbList<EcosystemDisplayRequest> createRepeated() =>
-      $pb.PbList<EcosystemDisplayRequest>();
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplayRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<EcosystemDisplayRequest>(create);
-  static EcosystemDisplayRequest? _defaultInstance;
-
-  @$pb.TagNumber(2)
-  EcosystemDisplayDetailsRequest get light => $_getN(0);
-  @$pb.TagNumber(2)
-  set light(EcosystemDisplayDetailsRequest v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasLight() => $_has(0);
-  @$pb.TagNumber(2)
-  void clearLight() => clearField(2);
-  @$pb.TagNumber(2)
-  EcosystemDisplayDetailsRequest ensureLight() => $_ensure(0);
-}
-
-class EcosystemDisplayDetailsRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'EcosystemDisplayDetailsRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'color')
-    ..a<$core.List<$core.int>>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'logoData',
-        $pb.PbFieldType.OY)
-    ..aOS(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'logoFormat')
-    ..hasRequiredFields = false;
-
-  EcosystemDisplayDetailsRequest._() : super();
-  factory EcosystemDisplayDetailsRequest({
-    $core.String? color,
-    $core.List<$core.int>? logoData,
-    $core.String? logoFormat,
-  }) {
-    final _result = create();
-    if (color != null) {
-      _result.color = color;
-    }
-    if (logoData != null) {
-      _result.logoData = logoData;
-    }
-    if (logoFormat != null) {
-      _result.logoFormat = logoFormat;
-    }
-    return _result;
-  }
-  factory EcosystemDisplayDetailsRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory EcosystemDisplayDetailsRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplayDetailsRequest clone() =>
-      EcosystemDisplayDetailsRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplayDetailsRequest copyWith(
-          void Function(EcosystemDisplayDetailsRequest) updates) =>
-      super.copyWith(
-              (message) => updates(message as EcosystemDisplayDetailsRequest))
-          as EcosystemDisplayDetailsRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplayDetailsRequest create() =>
-      EcosystemDisplayDetailsRequest._();
-  EcosystemDisplayDetailsRequest createEmptyInstance() => create();
-  static $pb.PbList<EcosystemDisplayDetailsRequest> createRepeated() =>
-      $pb.PbList<EcosystemDisplayDetailsRequest>();
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplayDetailsRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<EcosystemDisplayDetailsRequest>(create);
-  static EcosystemDisplayDetailsRequest? _defaultInstance;
-
-  @$pb.TagNumber(4)
-  $core.String get color => $_getSZ(0);
-  @$pb.TagNumber(4)
-  set color($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasColor() => $_has(0);
-  @$pb.TagNumber(4)
-  void clearColor() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.List<$core.int> get logoData => $_getN(1);
-  @$pb.TagNumber(5)
-  set logoData($core.List<$core.int> v) {
-    $_setBytes(1, v);
-  }
-
-  @$pb.TagNumber(5)
-  $core.bool hasLogoData() => $_has(1);
-  @$pb.TagNumber(5)
-  void clearLogoData() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.String get logoFormat => $_getSZ(2);
-  @$pb.TagNumber(6)
-  set logoFormat($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(6)
-  $core.bool hasLogoFormat() => $_has(2);
-  @$pb.TagNumber(6)
-  void clearLogoFormat() => clearField(6);
 }
 
 class UpdateEcosystemResponse extends $pb.GeneratedMessage {
@@ -804,166 +521,6 @@ class UpdateEcosystemResponse extends $pb.GeneratedMessage {
   void clearEcosystem() => clearField(1);
   @$pb.TagNumber(1)
   Ecosystem ensureEcosystem() => $_ensure(0);
-}
-
-class EcosystemDisplay extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'EcosystemDisplay',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..aOM<EcosystemDisplayDetails>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'light',
-        subBuilder: EcosystemDisplayDetails.create)
-    ..hasRequiredFields = false;
-
-  EcosystemDisplay._() : super();
-  factory EcosystemDisplay({
-    EcosystemDisplayDetails? light,
-  }) {
-    final _result = create();
-    if (light != null) {
-      _result.light = light;
-    }
-    return _result;
-  }
-  factory EcosystemDisplay.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory EcosystemDisplay.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplay clone() => EcosystemDisplay()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplay copyWith(void Function(EcosystemDisplay) updates) =>
-      super.copyWith((message) => updates(message as EcosystemDisplay))
-          as EcosystemDisplay; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplay create() => EcosystemDisplay._();
-  EcosystemDisplay createEmptyInstance() => create();
-  static $pb.PbList<EcosystemDisplay> createRepeated() =>
-      $pb.PbList<EcosystemDisplay>();
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplay getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<EcosystemDisplay>(create);
-  static EcosystemDisplay? _defaultInstance;
-
-  @$pb.TagNumber(2)
-  EcosystemDisplayDetails get light => $_getN(0);
-  @$pb.TagNumber(2)
-  set light(EcosystemDisplayDetails v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasLight() => $_has(0);
-  @$pb.TagNumber(2)
-  void clearLight() => clearField(2);
-  @$pb.TagNumber(2)
-  EcosystemDisplayDetails ensureLight() => $_ensure(0);
-}
-
-class EcosystemDisplayDetails extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'EcosystemDisplayDetails',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'logoUrl')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'color')
-    ..hasRequiredFields = false;
-
-  EcosystemDisplayDetails._() : super();
-  factory EcosystemDisplayDetails({
-    $core.String? logoUrl,
-    $core.String? color,
-  }) {
-    final _result = create();
-    if (logoUrl != null) {
-      _result.logoUrl = logoUrl;
-    }
-    if (color != null) {
-      _result.color = color;
-    }
-    return _result;
-  }
-  factory EcosystemDisplayDetails.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory EcosystemDisplayDetails.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplayDetails clone() =>
-      EcosystemDisplayDetails()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  EcosystemDisplayDetails copyWith(
-          void Function(EcosystemDisplayDetails) updates) =>
-      super.copyWith((message) => updates(message as EcosystemDisplayDetails))
-          as EcosystemDisplayDetails; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplayDetails create() => EcosystemDisplayDetails._();
-  EcosystemDisplayDetails createEmptyInstance() => create();
-  static $pb.PbList<EcosystemDisplayDetails> createRepeated() =>
-      $pb.PbList<EcosystemDisplayDetails>();
-  @$core.pragma('dart2js:noInline')
-  static EcosystemDisplayDetails getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<EcosystemDisplayDetails>(create);
-  static EcosystemDisplayDetails? _defaultInstance;
-
-  @$pb.TagNumber(3)
-  $core.String get logoUrl => $_getSZ(0);
-  @$pb.TagNumber(3)
-  set logoUrl($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasLogoUrl() => $_has(0);
-  @$pb.TagNumber(3)
-  void clearLogoUrl() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.String get color => $_getSZ(1);
-  @$pb.TagNumber(4)
-  set color($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(4)
-  $core.bool hasColor() => $_has(1);
-  @$pb.TagNumber(4)
-  void clearColor() => clearField(4);
 }
 
 class EcosystemInfoRequest extends $pb.GeneratedMessage {
@@ -1258,8 +815,7 @@ class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'verificationRecordValue',
-        protoName: 'verification_record_Value')
+            : 'verificationRecordValue')
     ..hasRequiredFields = false;
 
   RetrieveDomainVerificationRecordResponse._() : super();
