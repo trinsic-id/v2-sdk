@@ -36,10 +36,6 @@ type ProviderService interface {
 	GetOberonKey(userContext context.Context) (*provider.GetOberonKeyResponse, error)
 	// UpgradeDID  Upgrade a wallet's DID from `did:key` to another method
 	UpgradeDID(userContext context.Context, request *provider.UpgradeDidRequest) (*provider.UpgradeDidResponse, error)
-	// RetrieveDomainVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
-	RetrieveDomainVerificationRecord(userContext context.Context) (*provider.RetrieveDomainVerificationRecordResponse, error)
-	// RefreshDomainVerificationStatus  Call to verify domain
-	RefreshDomainVerificationStatus(userContext context.Context) (*provider.RefreshDomainVerificationStatusResponse, error)
 	// SearchWalletConfigurations  Search for issuers/providers/verifiers in the current ecosystem
 	SearchWalletConfigurations(userContext context.Context, request *provider.SearchWalletConfigurationsRequest) (*provider.SearchWalletConfigurationResponse, error)
 
@@ -119,34 +115,6 @@ func (p *providerBase) UpgradeDID(userContext context.Context, request *provider
 		return nil, err
 	}
 	response, err := p.client.UpgradeDID(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// RetrieveDomainVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
-func (p *providerBase) RetrieveDomainVerificationRecord(userContext context.Context) (*provider.RetrieveDomainVerificationRecordResponse, error) {
-	request := &provider.RetrieveDomainVerificationRecordRequest{}
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.RetrieveDomainVerificationRecord(md, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-// RefreshDomainVerificationStatus  Call to verify domain
-func (p *providerBase) RefreshDomainVerificationStatus(userContext context.Context) (*provider.RefreshDomainVerificationStatusResponse, error) {
-	request := &provider.RefreshDomainVerificationStatusRequest{}
-	md, err := p.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := p.client.RefreshDomainVerificationStatus(md, request)
 	if err != nil {
 		return nil, err
 	}

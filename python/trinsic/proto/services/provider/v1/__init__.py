@@ -558,38 +558,6 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def retrieve_domain_verification_record(
-        self,
-        retrieve_domain_verification_record_request: "RetrieveDomainVerificationRecordRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "RetrieveDomainVerificationRecordResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/RetrieveDomainVerificationRecord",
-            retrieve_domain_verification_record_request,
-            RetrieveDomainVerificationRecordResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def refresh_domain_verification_status(
-        self,
-        refresh_domain_verification_status_request: "RefreshDomainVerificationStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "RefreshDomainVerificationStatusResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/RefreshDomainVerificationStatus",
-            refresh_domain_verification_status_request,
-            RefreshDomainVerificationStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def search_wallet_configurations(
         self,
         search_wallet_configurations_request: "SearchWalletConfigurationsRequest",
@@ -694,18 +662,6 @@ class ProviderBase(ServiceBase):
     ) -> "UpgradeDidResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def retrieve_domain_verification_record(
-        self,
-        retrieve_domain_verification_record_request: "RetrieveDomainVerificationRecordRequest",
-    ) -> "RetrieveDomainVerificationRecordResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def refresh_domain_verification_status(
-        self,
-        refresh_domain_verification_status_request: "RefreshDomainVerificationStatusRequest",
-    ) -> "RefreshDomainVerificationStatusResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def search_wallet_configurations(
         self, search_wallet_configurations_request: "SearchWalletConfigurationsRequest"
     ) -> "SearchWalletConfigurationResponse":
@@ -729,20 +685,6 @@ class ProviderBase(ServiceBase):
     async def __rpc_upgrade_did(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.upgrade_did(request)
-        await stream.send_message(response)
-
-    async def __rpc_retrieve_domain_verification_record(
-        self, stream: grpclib.server.Stream
-    ) -> None:
-        request = await stream.recv_message()
-        response = await self.retrieve_domain_verification_record(request)
-        await stream.send_message(response)
-
-    async def __rpc_refresh_domain_verification_status(
-        self, stream: grpclib.server.Stream
-    ) -> None:
-        request = await stream.recv_message()
-        response = await self.refresh_domain_verification_status(request)
         await stream.send_message(response)
 
     async def __rpc_search_wallet_configurations(
@@ -777,18 +719,6 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 UpgradeDidRequest,
                 UpgradeDidResponse,
-            ),
-            "/services.provider.v1.Provider/RetrieveDomainVerificationRecord": grpclib.const.Handler(
-                self.__rpc_retrieve_domain_verification_record,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RetrieveDomainVerificationRecordRequest,
-                RetrieveDomainVerificationRecordResponse,
-            ),
-            "/services.provider.v1.Provider/RefreshDomainVerificationStatus": grpclib.const.Handler(
-                self.__rpc_refresh_domain_verification_status,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RefreshDomainVerificationStatusRequest,
-                RefreshDomainVerificationStatusResponse,
             ),
             "/services.provider.v1.Provider/SearchWalletConfigurations": grpclib.const.Handler(
                 self.__rpc_search_wallet_configurations,
