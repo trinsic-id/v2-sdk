@@ -9,6 +9,36 @@
 import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class IdentityProvider extends $pb.ProtobufEnum {
+  static const IdentityProvider Unknown = IdentityProvider._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'Unknown');
+  static const IdentityProvider Email = IdentityProvider._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'Email');
+  static const IdentityProvider Phone = IdentityProvider._(
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'Phone');
+
+  static const $core.List<IdentityProvider> values = <IdentityProvider>[
+    Unknown,
+    Email,
+    Phone,
+  ];
+
+  static final $core.Map<$core.int, IdentityProvider> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static IdentityProvider? valueOf($core.int value) => _byValue[value];
+
+  const IdentityProvider._($core.int v, $core.String n) : super(v, n);
+}
+
 class IonOptions_IonNetwork extends $pb.ProtobufEnum {
   static const IonOptions_IonNetwork TestNet = IonOptions_IonNetwork._(
       0,

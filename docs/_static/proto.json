@@ -966,6 +966,30 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.GetOberonKeyResponse"
     },
+    "services.provider.v1.IdentityProvider": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.IdentityProvider.Email": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IdentityProvider"
+    },
+    "services.provider.v1.IdentityProvider.Phone": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IdentityProvider"
+    },
+    "services.provider.v1.IdentityProvider.Unknown": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IdentityProvider"
+    },
     "services.provider.v1.IndyOptions": {
       "type": "message",
       "collection": "messages",
@@ -2129,30 +2153,6 @@
       "collection": "fields",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.GetWalletInfoResponse"
-    },
-    "services.universalwallet.v1.IdentityProvider": {
-      "type": "enum",
-      "collection": "enums",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": ""
-    },
-    "services.universalwallet.v1.IdentityProvider.EMAIL": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": "services.universalwallet.v1.IdentityProvider"
-    },
-    "services.universalwallet.v1.IdentityProvider.PHONE": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": "services.universalwallet.v1.IdentityProvider"
-    },
-    "services.universalwallet.v1.IdentityProvider.UNKNOWN": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": "services.universalwallet.v1.IdentityProvider"
     },
     "services.universalwallet.v1.InsertItemRequest": {
       "type": "message",
@@ -3783,7 +3783,8 @@
       ],
       "enums": [
         "services.provider.v1.IonOptions.IonNetwork",
-        "services.provider.v1.IndyOptions.IndyNetwork"
+        "services.provider.v1.IndyOptions.IndyNetwork",
+        "services.provider.v1.IdentityProvider"
       ],
       "enum_values": [
         "services.provider.v1.IonOptions.IonNetwork.TestNet",
@@ -3796,7 +3797,10 @@
         "services.provider.v1.IndyOptions.IndyNetwork.IdUnion",
         "services.provider.v1.IndyOptions.IndyNetwork.IndicioTest",
         "services.provider.v1.IndyOptions.IndyNetwork.IndicioDemo",
-        "services.provider.v1.IndyOptions.IndyNetwork.Indicio"
+        "services.provider.v1.IndyOptions.IndyNetwork.Indicio",
+        "services.provider.v1.IdentityProvider.Unknown",
+        "services.provider.v1.IdentityProvider.Email",
+        "services.provider.v1.IdentityProvider.Phone"
       ]
     },
     "services/trust-registry/v1/trust-registry.proto": {
@@ -3987,14 +3991,8 @@
         "services.universalwallet.v1.AuthenticateConfirmRequest.response",
         "services.universalwallet.v1.AuthenticateConfirmResponse.auth_token"
       ],
-      "enums": [
-        "services.universalwallet.v1.IdentityProvider"
-      ],
-      "enum_values": [
-        "services.universalwallet.v1.IdentityProvider.UNKNOWN",
-        "services.universalwallet.v1.IdentityProvider.EMAIL",
-        "services.universalwallet.v1.IdentityProvider.PHONE"
-      ]
+      "enums": [],
+      "enum_values": []
     },
     "services/verifiable-credentials/templates/v1/templates.proto": {
       "name": "services/verifiable-credentials/templates/v1/templates.proto",
@@ -7805,7 +7803,7 @@
       "full_name": "services.universalwallet.v1.AddExternalIdentityInitRequest.provider",
       "label": "LABEL_OPTIONAL",
       "type": "IdentityProvider",
-      "full_type": "services.universalwallet.v1.IdentityProvider",
+      "full_type": "services.provider.v1.IdentityProvider",
       "description": "The type of identity provider, like EMAIL or PHONE"
     },
     "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge": {
@@ -7861,7 +7859,7 @@
       "full_name": "services.universalwallet.v1.AuthenticateInitRequest.provider",
       "label": "LABEL_OPTIONAL",
       "type": "IdentityProvider",
-      "full_type": "services.universalwallet.v1.IdentityProvider",
+      "full_type": "services.provider.v1.IdentityProvider",
       "description": "Identity provider"
     },
     "services.universalwallet.v1.AuthenticateInitResponse.challenge": {
@@ -9045,6 +9043,16 @@
         "services.common.v1.SupportedDidMethod.INDY"
       ]
     },
+    "services.provider.v1.IdentityProvider": {
+      "name": "IdentityProvider",
+      "full_name": "services.provider.v1.IdentityProvider",
+      "description": "",
+      "values": [
+        "services.provider.v1.IdentityProvider.Unknown",
+        "services.provider.v1.IdentityProvider.Email",
+        "services.provider.v1.IdentityProvider.Phone"
+      ]
+    },
     "services.provider.v1.IndyOptions.IndyNetwork": {
       "name": "IndyNetwork",
       "full_name": "services.provider.v1.IndyOptions.IndyNetwork",
@@ -9080,16 +9088,6 @@
         "services.trustregistry.v1.RegistrationStatus.TERMINATED",
         "services.trustregistry.v1.RegistrationStatus.REVOKED",
         "services.trustregistry.v1.RegistrationStatus.NOT_FOUND"
-      ]
-    },
-    "services.universalwallet.v1.IdentityProvider": {
-      "name": "IdentityProvider",
-      "full_name": "services.universalwallet.v1.IdentityProvider",
-      "description": "",
-      "values": [
-        "services.universalwallet.v1.IdentityProvider.UNKNOWN",
-        "services.universalwallet.v1.IdentityProvider.EMAIL",
-        "services.universalwallet.v1.IdentityProvider.PHONE"
       ]
     },
     "services.verifiablecredentials.templates.v1.FieldType": {
@@ -9200,6 +9198,24 @@
       "description": "The did:key method -- all wallets use this by default",
       "value": 0
     },
+    "services.provider.v1.IdentityProvider.Email": {
+      "name": "Email",
+      "full_name": "services.provider.v1.IdentityProvider.Email",
+      "description": "Identity provider is email",
+      "value": 1
+    },
+    "services.provider.v1.IdentityProvider.Phone": {
+      "name": "Phone",
+      "full_name": "services.provider.v1.IdentityProvider.Phone",
+      "description": "Identity provider is phone",
+      "value": 2
+    },
+    "services.provider.v1.IdentityProvider.Unknown": {
+      "name": "Unknown",
+      "full_name": "services.provider.v1.IdentityProvider.Unknown",
+      "description": "Identity provider is unknown",
+      "value": 0
+    },
     "services.provider.v1.IndyOptions.IndyNetwork.Danube": {
       "name": "Danube",
       "full_name": "services.provider.v1.IndyOptions.IndyNetwork.Danube",
@@ -9295,24 +9311,6 @@
       "full_name": "services.trustregistry.v1.RegistrationStatus.TERMINATED",
       "description": "Member has voluntarily ceased Issuer role under the specific EGF",
       "value": 2
-    },
-    "services.universalwallet.v1.IdentityProvider.EMAIL": {
-      "name": "EMAIL",
-      "full_name": "services.universalwallet.v1.IdentityProvider.EMAIL",
-      "description": "Identity provider is email",
-      "value": 1
-    },
-    "services.universalwallet.v1.IdentityProvider.PHONE": {
-      "name": "PHONE",
-      "full_name": "services.universalwallet.v1.IdentityProvider.PHONE",
-      "description": "Identity provider is phone",
-      "value": 2
-    },
-    "services.universalwallet.v1.IdentityProvider.UNKNOWN": {
-      "name": "UNKNOWN",
-      "full_name": "services.universalwallet.v1.IdentityProvider.UNKNOWN",
-      "description": "Identity provider is unknown",
-      "value": 0
     },
     "services.verifiablecredentials.templates.v1.FieldType.BOOL": {
       "name": "BOOL",

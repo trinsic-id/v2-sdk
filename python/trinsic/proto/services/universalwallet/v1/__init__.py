@@ -21,17 +21,6 @@ if TYPE_CHECKING:
     from grpclib.metadata import Deadline
 
 
-class IdentityProvider(betterproto.Enum):
-    UNKNOWN = 0
-    """Identity provider is unknown"""
-
-    EMAIL = 1
-    """Identity provider is email"""
-
-    PHONE = 2
-    """Identity provider is phone"""
-
-
 @dataclass(eq=False, repr=False)
 class SearchRequest(betterproto.Message):
     """Request to search items in wallet"""
@@ -274,7 +263,7 @@ class AddExternalIdentityInitRequest(betterproto.Message):
     phone number (formatted as +[country code][phone number])
     """
 
-    provider: "IdentityProvider" = betterproto.enum_field(2)
+    provider: "__provider_v1__.IdentityProvider" = betterproto.enum_field(2)
     """The type of identity provider, like EMAIL or PHONE"""
 
 
@@ -323,7 +312,7 @@ class AuthenticateInitRequest(betterproto.Message):
     identity: str = betterproto.string_field(1)
     """Identity to add to the wallet"""
 
-    provider: "IdentityProvider" = betterproto.enum_field(2)
+    provider: "__provider_v1__.IdentityProvider" = betterproto.enum_field(2)
     """Identity provider"""
 
     ecosystem_id: str = betterproto.string_field(3)

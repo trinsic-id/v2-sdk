@@ -9,19 +9,6 @@ import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use identityProviderDescriptor instead')
-const IdentityProvider$json = const {
-  '1': 'IdentityProvider',
-  '2': const [
-    const {'1': 'UNKNOWN', '2': 0},
-    const {'1': 'EMAIL', '2': 1},
-    const {'1': 'PHONE', '2': 2},
-  ],
-};
-
-/// Descriptor for `IdentityProvider`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List identityProviderDescriptor = $convert.base64Decode(
-    'ChBJZGVudGl0eVByb3ZpZGVyEgsKB1VOS05PV04QABIJCgVFTUFJTBABEgkKBVBIT05FEAI=');
 @$core.Deprecated('Use searchRequestDescriptor instead')
 const SearchRequest$json = const {
   '1': 'SearchRequest',
@@ -386,7 +373,7 @@ const AddExternalIdentityInitRequest$json = const {
       '3': 2,
       '4': 1,
       '5': 14,
-      '6': '.services.universalwallet.v1.IdentityProvider',
+      '6': '.services.provider.v1.IdentityProvider',
       '10': 'provider'
     },
   ],
@@ -395,7 +382,7 @@ const AddExternalIdentityInitRequest$json = const {
 /// Descriptor for `AddExternalIdentityInitRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List addExternalIdentityInitRequestDescriptor =
     $convert.base64Decode(
-        'Ch5BZGRFeHRlcm5hbElkZW50aXR5SW5pdFJlcXVlc3QSGgoIaWRlbnRpdHkYASABKAlSCGlkZW50aXR5EkkKCHByb3ZpZGVyGAIgASgOMi0uc2VydmljZXMudW5pdmVyc2Fsd2FsbGV0LnYxLklkZW50aXR5UHJvdmlkZXJSCHByb3ZpZGVy');
+        'Ch5BZGRFeHRlcm5hbElkZW50aXR5SW5pdFJlcXVlc3QSGgoIaWRlbnRpdHkYASABKAlSCGlkZW50aXR5EkIKCHByb3ZpZGVyGAIgASgOMiYuc2VydmljZXMucHJvdmlkZXIudjEuSWRlbnRpdHlQcm92aWRlclIIcHJvdmlkZXI=');
 @$core.Deprecated('Use addExternalIdentityInitResponseDescriptor instead')
 const AddExternalIdentityInitResponse$json = const {
   '1': 'AddExternalIdentityInitResponse',
@@ -459,7 +446,7 @@ const AuthenticateInitRequest$json = const {
       '3': 2,
       '4': 1,
       '5': 14,
-      '6': '.services.universalwallet.v1.IdentityProvider',
+      '6': '.services.provider.v1.IdentityProvider',
       '10': 'provider'
     },
     const {'1': 'ecosystem_id', '3': 3, '4': 1, '5': 9, '10': 'ecosystemId'},
@@ -469,7 +456,7 @@ const AuthenticateInitRequest$json = const {
 /// Descriptor for `AuthenticateInitRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List authenticateInitRequestDescriptor =
     $convert.base64Decode(
-        'ChdBdXRoZW50aWNhdGVJbml0UmVxdWVzdBIaCghpZGVudGl0eRgBIAEoCVIIaWRlbnRpdHkSSQoIcHJvdmlkZXIYAiABKA4yLS5zZXJ2aWNlcy51bml2ZXJzYWx3YWxsZXQudjEuSWRlbnRpdHlQcm92aWRlclIIcHJvdmlkZXISIQoMZWNvc3lzdGVtX2lkGAMgASgJUgtlY29zeXN0ZW1JZA==');
+        'ChdBdXRoZW50aWNhdGVJbml0UmVxdWVzdBIaCghpZGVudGl0eRgBIAEoCVIIaWRlbnRpdHkSQgoIcHJvdmlkZXIYAiABKA4yJi5zZXJ2aWNlcy5wcm92aWRlci52MS5JZGVudGl0eVByb3ZpZGVyUghwcm92aWRlchIhCgxlY29zeXN0ZW1faWQYAyABKAlSC2Vjb3N5c3RlbUlk');
 @$core.Deprecated('Use authenticateInitResponseDescriptor instead')
 const AuthenticateInitResponse$json = const {
   '1': 'AuthenticateInitResponse',

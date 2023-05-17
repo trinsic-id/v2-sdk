@@ -23,6 +23,17 @@ if TYPE_CHECKING:
     from grpclib.metadata import Deadline
 
 
+class IdentityProvider(betterproto.Enum):
+    Unknown = 0
+    """Identity provider is unknown"""
+
+    Email = 1
+    """Identity provider is email"""
+
+    Phone = 2
+    """Identity provider is phone"""
+
+
 class IonOptionsIonNetwork(betterproto.Enum):
     TestNet = 0
     MainNet = 1
