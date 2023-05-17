@@ -592,7 +592,7 @@ Service for managing wallets
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | identity | [string](/reference/proto#string) | The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
-| provider | [IdentityProvider](/reference/proto#services-universalwallet-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
+| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
 
 
 
@@ -654,7 +654,7 @@ Service for managing wallets
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | identity | [string](/reference/proto#string) | Identity to add to the wallet |
-| provider | [IdentityProvider](/reference/proto#services-universalwallet-v1-IdentityProvider) | Identity provider |
+| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | Identity provider |
 | ecosystem_id | [string](/reference/proto#string) | Ecosystem ID to which the wallet belongs |
 
 
@@ -1076,19 +1076,6 @@ Response to `UpdateItemRequest`
 
 
  <!-- end messages -->
-
-
-<a name="services-universalwallet-v1-IdentityProvider"></a>
-
-### IdentityProvider
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| UNKNOWN | 0 | Identity provider is unknown |
-| EMAIL | 1 | Identity provider is email |
-| PHONE | 2 | Identity provider is phone |
-
 
  <!-- end enums -->
 
@@ -1642,6 +1629,19 @@ Strongly typed information about wallet configurations
 
 
  <!-- end messages -->
+
+
+<a name="services-provider-v1-IdentityProvider"></a>
+
+### IdentityProvider
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Unknown | 0 | Identity provider is unknown |
+| Email | 1 | Identity provider is email |
+| Phone | 2 | Identity provider is phone |
+
 
 
 <a name="services-provider-v1-IndyOptions-IndyNetwork"></a>

@@ -9,6 +9,19 @@ import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use identityProviderDescriptor instead')
+const IdentityProvider$json = const {
+  '1': 'IdentityProvider',
+  '2': const [
+    const {'1': 'Unknown', '2': 0},
+    const {'1': 'Email', '2': 1},
+    const {'1': 'Phone', '2': 2},
+  ],
+};
+
+/// Descriptor for `IdentityProvider`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List identityProviderDescriptor = $convert.base64Decode(
+    'ChBJZGVudGl0eVByb3ZpZGVyEgsKB1Vua25vd24QABIJCgVFbWFpbBABEgkKBVBob25lEAI=');
 @$core.Deprecated('Use ecosystemDescriptor instead')
 const Ecosystem$json = const {
   '1': 'Ecosystem',

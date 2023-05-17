@@ -11,9 +11,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../provider/v1/provider.pb.dart' as $2;
 
-import 'universal-wallet.pbenum.dart';
-
-export 'universal-wallet.pbenum.dart';
+import '../../provider/v1/provider.pbenum.dart' as $2;
 
 class SearchRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -1827,21 +1825,21 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'identity')
-    ..e<IdentityProvider>(
+    ..e<$2.IdentityProvider>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'provider',
         $pb.PbFieldType.OE,
-        defaultOrMaker: IdentityProvider.UNKNOWN,
-        valueOf: IdentityProvider.valueOf,
-        enumValues: IdentityProvider.values)
+        defaultOrMaker: $2.IdentityProvider.Unknown,
+        valueOf: $2.IdentityProvider.valueOf,
+        enumValues: $2.IdentityProvider.values)
     ..hasRequiredFields = false;
 
   AddExternalIdentityInitRequest._() : super();
   factory AddExternalIdentityInitRequest({
     $core.String? identity,
-    IdentityProvider? provider,
+    $2.IdentityProvider? provider,
   }) {
     final _result = create();
     if (identity != null) {
@@ -1896,9 +1894,9 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  IdentityProvider get provider => $_getN(1);
+  $2.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider(IdentityProvider v) {
+  set provider($2.IdentityProvider v) {
     setField(2, v);
   }
 
@@ -2252,15 +2250,15 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'identity')
-    ..e<IdentityProvider>(
+    ..e<$2.IdentityProvider>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'provider',
         $pb.PbFieldType.OE,
-        defaultOrMaker: IdentityProvider.UNKNOWN,
-        valueOf: IdentityProvider.valueOf,
-        enumValues: IdentityProvider.values)
+        defaultOrMaker: $2.IdentityProvider.Unknown,
+        valueOf: $2.IdentityProvider.valueOf,
+        enumValues: $2.IdentityProvider.values)
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2271,7 +2269,7 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
   AuthenticateInitRequest._() : super();
   factory AuthenticateInitRequest({
     $core.String? identity,
-    IdentityProvider? provider,
+    $2.IdentityProvider? provider,
     $core.String? ecosystemId,
   }) {
     final _result = create();
@@ -2328,9 +2326,9 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  IdentityProvider get provider => $_getN(1);
+  $2.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider(IdentityProvider v) {
+  set provider($2.IdentityProvider v) {
     setField(2, v);
   }
 

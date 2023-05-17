@@ -106,7 +106,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
    * The type of identity provider, like EMAIL or PHONE
    * </pre>
    *
-   * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+   * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
    *
    * @return The enum numeric value on the wire for provider.
    */
@@ -121,18 +121,16 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
    * The type of identity provider, like EMAIL or PHONE
    * </pre>
    *
-   * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+   * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
    *
    * @return The provider.
    */
   @java.lang.Override
-  public trinsic.services.universalwallet.v1.IdentityProvider getProvider() {
+  public trinsic.services.provider.v1.IdentityProvider getProvider() {
     @SuppressWarnings("deprecation")
-    trinsic.services.universalwallet.v1.IdentityProvider result =
-        trinsic.services.universalwallet.v1.IdentityProvider.valueOf(provider_);
-    return result == null
-        ? trinsic.services.universalwallet.v1.IdentityProvider.UNRECOGNIZED
-        : result;
+    trinsic.services.provider.v1.IdentityProvider result =
+        trinsic.services.provider.v1.IdentityProvider.valueOf(provider_);
+    return result == null ? trinsic.services.provider.v1.IdentityProvider.UNRECOGNIZED : result;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -152,7 +150,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(identity_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, identity_);
     }
-    if (provider_ != trinsic.services.universalwallet.v1.IdentityProvider.UNKNOWN.getNumber()) {
+    if (provider_ != trinsic.services.provider.v1.IdentityProvider.Unknown.getNumber()) {
       output.writeEnum(2, provider_);
     }
     getUnknownFields().writeTo(output);
@@ -167,7 +165,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(identity_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, identity_);
     }
-    if (provider_ != trinsic.services.universalwallet.v1.IdentityProvider.UNKNOWN.getNumber()) {
+    if (provider_ != trinsic.services.provider.v1.IdentityProvider.Unknown.getNumber()) {
       size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, provider_);
     }
     size += getUnknownFields().getSerializedSize();
@@ -605,7 +603,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      * The type of identity provider, like EMAIL or PHONE
      * </pre>
      *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
      *
      * @return The enum numeric value on the wire for provider.
      */
@@ -620,7 +618,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      * The type of identity provider, like EMAIL or PHONE
      * </pre>
      *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
      *
      * @param value The enum numeric value on the wire for provider to set.
      * @return This builder for chaining.
@@ -638,18 +636,16 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      * The type of identity provider, like EMAIL or PHONE
      * </pre>
      *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
      *
      * @return The provider.
      */
     @java.lang.Override
-    public trinsic.services.universalwallet.v1.IdentityProvider getProvider() {
+    public trinsic.services.provider.v1.IdentityProvider getProvider() {
       @SuppressWarnings("deprecation")
-      trinsic.services.universalwallet.v1.IdentityProvider result =
-          trinsic.services.universalwallet.v1.IdentityProvider.valueOf(provider_);
-      return result == null
-          ? trinsic.services.universalwallet.v1.IdentityProvider.UNRECOGNIZED
-          : result;
+      trinsic.services.provider.v1.IdentityProvider result =
+          trinsic.services.provider.v1.IdentityProvider.valueOf(provider_);
+      return result == null ? trinsic.services.provider.v1.IdentityProvider.UNRECOGNIZED : result;
     }
     /**
      *
@@ -658,12 +654,12 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      * The type of identity provider, like EMAIL or PHONE
      * </pre>
      *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
      *
      * @param value The provider to set.
      * @return This builder for chaining.
      */
-    public Builder setProvider(trinsic.services.universalwallet.v1.IdentityProvider value) {
+    public Builder setProvider(trinsic.services.provider.v1.IdentityProvider value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -679,7 +675,7 @@ public final class AddExternalIdentityInitRequest extends com.google.protobuf.Ge
      * The type of identity provider, like EMAIL or PHONE
      * </pre>
      *
-     * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
      *
      * @return This builder for chaining.
      */

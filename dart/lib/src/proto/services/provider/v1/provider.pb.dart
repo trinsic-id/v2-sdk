@@ -459,7 +459,7 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
     $core.String? description,
     $core.String? domain,
     @$core.Deprecated('This field is deprecated.')
-        EcosystemDisplayRequest? display,
+    EcosystemDisplayRequest? display,
   }) {
     final _result = create();
     if (description != null) {

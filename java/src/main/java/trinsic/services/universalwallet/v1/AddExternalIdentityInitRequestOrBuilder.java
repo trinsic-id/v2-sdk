@@ -42,7 +42,7 @@ public interface AddExternalIdentityInitRequestOrBuilder
    * The type of identity provider, like EMAIL or PHONE
    * </pre>
    *
-   * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+   * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
    *
    * @return The enum numeric value on the wire for provider.
    */
@@ -54,9 +54,9 @@ public interface AddExternalIdentityInitRequestOrBuilder
    * The type of identity provider, like EMAIL or PHONE
    * </pre>
    *
-   * <code>.services.universalwallet.v1.IdentityProvider provider = 2;</code>
+   * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
    *
    * @return The provider.
    */
-  trinsic.services.universalwallet.v1.IdentityProvider getProvider();
+  trinsic.services.provider.v1.IdentityProvider getProvider();
 }

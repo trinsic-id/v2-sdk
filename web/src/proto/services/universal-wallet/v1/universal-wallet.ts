@@ -1,48 +1,11 @@
 /* eslint-disable */
 import _m0 from "protobufjs/minimal";
-import { WalletConfiguration } from "../../provider/v1/provider";
-
-export enum IdentityProvider {
-  /** UNKNOWN - Identity provider is unknown */
-  UNKNOWN = 0,
-  /** EMAIL - Identity provider is email */
-  EMAIL = 1,
-  /** PHONE - Identity provider is phone */
-  PHONE = 2,
-  UNRECOGNIZED = -1,
-}
-
-export function identityProviderFromJSON(object: any): IdentityProvider {
-  switch (object) {
-    case 0:
-    case "UNKNOWN":
-      return IdentityProvider.UNKNOWN;
-    case 1:
-    case "EMAIL":
-      return IdentityProvider.EMAIL;
-    case 2:
-    case "PHONE":
-      return IdentityProvider.PHONE;
-    case -1:
-    case "UNRECOGNIZED":
-    default:
-      return IdentityProvider.UNRECOGNIZED;
-  }
-}
-
-export function identityProviderToJSON(object: IdentityProvider): string {
-  switch (object) {
-    case IdentityProvider.UNKNOWN:
-      return "UNKNOWN";
-    case IdentityProvider.EMAIL:
-      return "EMAIL";
-    case IdentityProvider.PHONE:
-      return "PHONE";
-    case IdentityProvider.UNRECOGNIZED:
-    default:
-      return "UNRECOGNIZED";
-  }
-}
+import {
+  IdentityProvider,
+  identityProviderFromJSON,
+  identityProviderToJSON,
+  WalletConfiguration,
+} from "../../provider/v1/provider";
 
 /** Request to search items in wallet */
 export interface SearchRequest {

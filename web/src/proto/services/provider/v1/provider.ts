@@ -10,6 +10,48 @@ import {
 } from "../../account/v1/account";
 import { SupportedDidMethod, supportedDidMethodFromJSON, supportedDidMethodToJSON } from "../../common/v1/common";
 
+export enum IdentityProvider {
+  /** Unknown - Identity provider is unknown */
+  Unknown = 0,
+  /** Email - Identity provider is email */
+  Email = 1,
+  /** Phone - Identity provider is phone */
+  Phone = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function identityProviderFromJSON(object: any): IdentityProvider {
+  switch (object) {
+    case 0:
+    case "Unknown":
+      return IdentityProvider.Unknown;
+    case 1:
+    case "Email":
+      return IdentityProvider.Email;
+    case 2:
+    case "Phone":
+      return IdentityProvider.Phone;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return IdentityProvider.UNRECOGNIZED;
+  }
+}
+
+export function identityProviderToJSON(object: IdentityProvider): string {
+  switch (object) {
+    case IdentityProvider.Unknown:
+      return "Unknown";
+    case IdentityProvider.Email:
+      return "Email";
+    case IdentityProvider.Phone:
+      return "Phone";
+    case IdentityProvider.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** Details of an ecosystem */
 export interface Ecosystem {
   /** URN of the ecosystem */

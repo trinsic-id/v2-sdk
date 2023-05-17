@@ -242,20 +242,11 @@ message AddExternalIdentityInitRequest {
   // This can be an email address or phone number (formatted as +[country code][phone number])
   string identity = 1;
   // The type of identity provider, like EMAIL or PHONE
-  IdentityProvider provider = 2;
+  services.provider.v1.IdentityProvider provider = 2;
 }
 message AddExternalIdentityInitResponse {
   // Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
   string challenge = 1;
-}
-
-enum IdentityProvider {
-  // Identity provider is unknown
-  UNKNOWN = 0;
-  // Identity provider is email
-  EMAIL = 1;
-  // Identity provider is phone
-  PHONE = 2;
 }
 
 message AddExternalIdentityConfirmRequest {
@@ -278,7 +269,7 @@ message AuthenticateInitRequest {
   // Identity to add to the wallet
   string identity = 1;
   // Identity provider
-  IdentityProvider provider = 2;
+  services.provider.v1.IdentityProvider provider = 2;
   // Ecosystem ID to which the wallet belongs
   string ecosystem_id = 3;
 }
