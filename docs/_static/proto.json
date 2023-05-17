@@ -1164,18 +1164,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.Provider.RefreshDomainVerificationStatus": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
     "services.provider.v1.Provider.SearchWalletConfigurations": {
       "type": "method",
       "collection": "methods",
@@ -3696,8 +3684,6 @@
         "services.provider.v1.Provider.UpdateEcosystem",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.UpgradeDID",
-        "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
-        "services.provider.v1.Provider.RefreshDomainVerificationStatus",
         "services.provider.v1.Provider.SearchWalletConfigurations"
       ],
       "messages": [
@@ -4241,8 +4227,6 @@
         "services.provider.v1.Provider.UpdateEcosystem",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.UpgradeDID",
-        "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
-        "services.provider.v1.Provider.RefreshDomainVerificationStatus",
         "services.provider.v1.Provider.SearchWalletConfigurations"
       ]
     },
@@ -4463,26 +4447,6 @@
       "input_type": "services.provider.v1.GetOberonKeyRequest",
       "output_type": "services.provider.v1.GetOberonKeyResponse",
       "description": "Returns the public key being used to create/verify oberon tokens",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.provider.v1.Provider.RefreshDomainVerificationStatus": {
-      "name": "RefreshDomainVerificationStatus",
-      "full_name": "services.provider.v1.Provider.RefreshDomainVerificationStatus",
-      "input_type": "services.provider.v1.RefreshDomainVerificationStatusRequest",
-      "output_type": "services.provider.v1.RefreshDomainVerificationStatusResponse",
-      "description": "Call to verify domain",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
-      "name": "RetrieveDomainVerificationRecord",
-      "full_name": "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
-      "input_type": "services.provider.v1.RetrieveDomainVerificationRecordRequest",
-      "output_type": "services.provider.v1.RetrieveDomainVerificationRecordResponse",
-      "description": "Retrieve a random hash TXT that can be used to verify domain ownership",
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }

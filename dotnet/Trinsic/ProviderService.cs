@@ -110,42 +110,6 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
-    /// Retrieve a random hash TXT that can be used to verify domain ownership
-    /// </summary>
-    
-    public RetrieveDomainVerificationRecordResponse RetrieveDomainVerificationRecord() {
-        var request = new RetrieveDomainVerificationRecordRequest();
-        return Client.RetrieveDomainVerificationRecord(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Retrieve a random hash TXT that can be used to verify domain ownership
-    /// </summary>
-    
-    public async Task<RetrieveDomainVerificationRecordResponse> RetrieveDomainVerificationRecordAsync() {
-        var request = new RetrieveDomainVerificationRecordRequest();
-        return await Client.RetrieveDomainVerificationRecordAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
-    /// Call to verify domain
-    /// </summary>
-    
-    public RefreshDomainVerificationStatusResponse RefreshDomainVerificationStatus() {
-        var request = new RefreshDomainVerificationStatusRequest();
-        return Client.RefreshDomainVerificationStatus(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Call to verify domain
-    /// </summary>
-    
-    public async Task<RefreshDomainVerificationStatusResponse> RefreshDomainVerificationStatusAsync() {
-        var request = new RefreshDomainVerificationStatusRequest();
-        return await Client.RefreshDomainVerificationStatusAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Search for issuers/providers/verifiers in the current ecosystem
     /// </summary>
     

@@ -2324,24 +2324,6 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Retrieve a random hash TXT that can be used to verify domain ownership */
-    retrieveDomainVerificationRecord: {
-      name: "RetrieveDomainVerificationRecord",
-      requestType: RetrieveDomainVerificationRecordRequest,
-      requestStream: false,
-      responseType: RetrieveDomainVerificationRecordResponse,
-      responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] } },
-    },
-    /** Call to verify domain */
-    refreshDomainVerificationStatus: {
-      name: "RefreshDomainVerificationStatus",
-      requestType: RefreshDomainVerificationStatusRequest,
-      requestStream: false,
-      responseType: RefreshDomainVerificationStatusResponse,
-      responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] } },
-    },
     /** Search for issuers/providers/verifiers in the current ecosystem */
     searchWalletConfigurations: {
       name: "SearchWalletConfigurations",
