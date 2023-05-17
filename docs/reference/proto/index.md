@@ -1244,8 +1244,6 @@ Request to fetch the list of roles assigned to the current account
 | UpdateEcosystem | [UpdateEcosystemRequest](/reference/proto#services-provider-v1-UpdateEcosystemRequest) | [UpdateEcosystemResponse](/reference/proto#services-provider-v1-UpdateEcosystemResponse) | The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023 |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
-| RetrieveDomainVerificationRecord | [RetrieveDomainVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest) | [RetrieveDomainVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
-| RefreshDomainVerificationStatus | [RefreshDomainVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest) | [RefreshDomainVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse) | Call to verify domain |
 | SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
 
  <!-- end services -->
@@ -1297,71 +1295,6 @@ Details of an ecosystem
 | id | [string](/reference/proto#string) | URN of the ecosystem |
 | name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
 | description | [string](/reference/proto#string) | Ecosystem description |
-| display | [EcosystemDisplay](/reference/proto#services-provider-v1-EcosystemDisplay) | Display details |
-| domain | [string](/reference/proto#string) | Domain |
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemDisplay"></a>
-
-### EcosystemDisplay
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| light | [EcosystemDisplayDetails](/reference/proto#services-provider-v1-EcosystemDisplayDetails) | Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform. |
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemDisplayDetails"></a>
-
-### EcosystemDisplayDetails
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| logo_url | [string](/reference/proto#string) |  |
-| color | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemDisplayDetailsRequest"></a>
-
-### EcosystemDisplayDetailsRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| color | [string](/reference/proto#string) |  |
-| logo_data | [bytes](/reference/proto#bytes) |  |
-| logo_format | [string](/reference/proto#string) | MIME type of the file |
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemDisplayRequest"></a>
-
-### EcosystemDisplayRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| light | [EcosystemDisplayDetailsRequest](/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest) | Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform. EcosystemDisplayDetailsRequest dark = 1; |
 
 
 
@@ -1498,7 +1431,7 @@ DEPRECATED, will be removed June 1st 2023
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | verification_record_name | [string](/reference/proto#string) | TXT record name to use for domain verification |
-| verification_record_Value | [string](/reference/proto#string) | TXT code for domain verification |
+| verification_record_value | [string](/reference/proto#string) | TXT code for domain verification |
 
 
 
@@ -1547,8 +1480,6 @@ Request to update an ecosystem's metadata
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | description | [string](/reference/proto#string) | New description of the ecosystem |
-| domain | [string](/reference/proto#string) | New domain URL |
-| display | [EcosystemDisplayRequest](/reference/proto#services-provider-v1-EcosystemDisplayRequest) | **Deprecated.** Display details |
 
 
 

@@ -26,7 +26,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     id_ = "";
     name_ = "";
     description_ = "";
-    domain_ = "";
   }
 
   @java.lang.Override
@@ -202,103 +201,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
-  public static final int DISPLAY_FIELD_NUMBER = 6;
-  private trinsic.services.provider.v1.EcosystemDisplay display_;
-  /**
-   *
-   *
-   * <pre>
-   * Display details
-   * </pre>
-   *
-   * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-   *
-   * @return Whether the display field is set.
-   */
-  @java.lang.Override
-  public boolean hasDisplay() {
-    return display_ != null;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Display details
-   * </pre>
-   *
-   * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-   *
-   * @return The display.
-   */
-  @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemDisplay getDisplay() {
-    return display_ == null
-        ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
-        : display_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Display details
-   * </pre>
-   *
-   * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-   */
-  @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder() {
-    return getDisplay();
-  }
-
-  public static final int DOMAIN_FIELD_NUMBER = 7;
-  private volatile java.lang.Object domain_;
-  /**
-   *
-   *
-   * <pre>
-   * Domain
-   * </pre>
-   *
-   * <code>string domain = 7;</code>
-   *
-   * @return The domain.
-   */
-  @java.lang.Override
-  public java.lang.String getDomain() {
-    java.lang.Object ref = domain_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      domain_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Domain
-   * </pre>
-   *
-   * <code>string domain = 7;</code>
-   *
-   * @return The bytes for domain.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getDomainBytes() {
-    java.lang.Object ref = domain_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      domain_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -322,12 +224,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
     }
-    if (display_ != null) {
-      output.writeMessage(6, getDisplay());
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, domain_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -345,12 +241,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
-    }
-    if (display_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, getDisplay());
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, domain_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -370,11 +260,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     if (!getId().equals(other.getId())) return false;
     if (!getName().equals(other.getName())) return false;
     if (!getDescription().equals(other.getDescription())) return false;
-    if (hasDisplay() != other.hasDisplay()) return false;
-    if (hasDisplay()) {
-      if (!getDisplay().equals(other.getDisplay())) return false;
-    }
-    if (!getDomain().equals(other.getDomain())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -392,12 +277,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    if (hasDisplay()) {
-      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
-      hash = (53 * hash) + getDisplay().hashCode();
-    }
-    hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
-    hash = (53 * hash) + getDomain().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -542,14 +421,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
 
       description_ = "";
 
-      if (displayBuilder_ == null) {
-        display_ = null;
-      } else {
-        display_ = null;
-        displayBuilder_ = null;
-      }
-      domain_ = "";
-
       return this;
     }
 
@@ -580,12 +451,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
       result.id_ = id_;
       result.name_ = name_;
       result.description_ = description_;
-      if (displayBuilder_ == null) {
-        result.display_ = display_;
-      } else {
-        result.display_ = displayBuilder_.build();
-      }
-      result.domain_ = domain_;
       onBuilt();
       return result;
     }
@@ -647,13 +512,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
         description_ = other.description_;
         onChanged();
       }
-      if (other.hasDisplay()) {
-        mergeDisplay(other.getDisplay());
-      }
-      if (!other.getDomain().isEmpty()) {
-        domain_ = other.domain_;
-        onChanged();
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -698,18 +556,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 26
-            case 50:
-              {
-                input.readMessage(getDisplayFieldBuilder().getBuilder(), extensionRegistry);
-
-                break;
-              } // case 50
-            case 58:
-              {
-                domain_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 58
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1041,298 +887,6 @@ public final class Ecosystem extends com.google.protobuf.GeneratedMessageV3
       checkByteStringIsUtf8(value);
 
       description_ = value;
-      onChanged();
-      return this;
-    }
-
-    private trinsic.services.provider.v1.EcosystemDisplay display_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplay,
-            trinsic.services.provider.v1.EcosystemDisplay.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
-        displayBuilder_;
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     *
-     * @return Whether the display field is set.
-     */
-    public boolean hasDisplay() {
-      return displayBuilder_ != null || display_ != null;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     *
-     * @return The display.
-     */
-    public trinsic.services.provider.v1.EcosystemDisplay getDisplay() {
-      if (displayBuilder_ == null) {
-        return display_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
-            : display_;
-      } else {
-        return displayBuilder_.getMessage();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     */
-    public Builder setDisplay(trinsic.services.provider.v1.EcosystemDisplay value) {
-      if (displayBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        display_ = value;
-        onChanged();
-      } else {
-        displayBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     */
-    public Builder setDisplay(
-        trinsic.services.provider.v1.EcosystemDisplay.Builder builderForValue) {
-      if (displayBuilder_ == null) {
-        display_ = builderForValue.build();
-        onChanged();
-      } else {
-        displayBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     */
-    public Builder mergeDisplay(trinsic.services.provider.v1.EcosystemDisplay value) {
-      if (displayBuilder_ == null) {
-        if (display_ != null) {
-          display_ =
-              trinsic.services.provider.v1.EcosystemDisplay.newBuilder(display_)
-                  .mergeFrom(value)
-                  .buildPartial();
-        } else {
-          display_ = value;
-        }
-        onChanged();
-      } else {
-        displayBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     */
-    public Builder clearDisplay() {
-      if (displayBuilder_ == null) {
-        display_ = null;
-        onChanged();
-      } else {
-        display_ = null;
-        displayBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     */
-    public trinsic.services.provider.v1.EcosystemDisplay.Builder getDisplayBuilder() {
-
-      onChanged();
-      return getDisplayFieldBuilder().getBuilder();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     */
-    public trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder() {
-      if (displayBuilder_ != null) {
-        return displayBuilder_.getMessageOrBuilder();
-      } else {
-        return display_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
-            : display_;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Display details
-     * </pre>
-     *
-     * <code>.services.provider.v1.EcosystemDisplay display = 6;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplay,
-            trinsic.services.provider.v1.EcosystemDisplay.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
-        getDisplayFieldBuilder() {
-      if (displayBuilder_ == null) {
-        displayBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.provider.v1.EcosystemDisplay,
-                trinsic.services.provider.v1.EcosystemDisplay.Builder,
-                trinsic.services.provider.v1.EcosystemDisplayOrBuilder>(
-                getDisplay(), getParentForChildren(), isClean());
-        display_ = null;
-      }
-      return displayBuilder_;
-    }
-
-    private java.lang.Object domain_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Domain
-     * </pre>
-     *
-     * <code>string domain = 7;</code>
-     *
-     * @return The domain.
-     */
-    public java.lang.String getDomain() {
-      java.lang.Object ref = domain_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        domain_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Domain
-     * </pre>
-     *
-     * <code>string domain = 7;</code>
-     *
-     * @return The bytes for domain.
-     */
-    public com.google.protobuf.ByteString getDomainBytes() {
-      java.lang.Object ref = domain_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        domain_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Domain
-     * </pre>
-     *
-     * <code>string domain = 7;</code>
-     *
-     * @param value The domain to set.
-     * @return This builder for chaining.
-     */
-    public Builder setDomain(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      domain_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Domain
-     * </pre>
-     *
-     * <code>string domain = 7;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearDomain() {
-
-      domain_ = getDefaultInstance().getDomain();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Domain
-     * </pre>
-     *
-     * <code>string domain = 7;</code>
-     *
-     * @param value The bytes for domain to set.
-     * @return This builder for chaining.
-     */
-    public Builder setDomainBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      domain_ = value;
       onChanged();
       return this;
     }

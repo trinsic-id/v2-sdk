@@ -58,20 +58,6 @@ export class ProviderService extends ServiceBase {
       metadata: await this.buildMetadata(proto.UpgradeDidRequest.encode(request).finish())
     });
   }
-  /** Retrieve a random hash TXT that can be used to verify domain ownership */
-  public async retrieveDomainVerificationRecord(): Promise<proto.RetrieveDomainVerificationRecordResponse> {
-    let request = proto.RetrieveDomainVerificationRecordRequest.fromPartial({});
-    return this.client.retrieveDomainVerificationRecord(request, {
-      metadata: await this.buildMetadata(proto.RetrieveDomainVerificationRecordRequest.encode(request).finish())
-    });
-  }
-  /** Call to verify domain */
-  public async refreshDomainVerificationStatus(): Promise<proto.RefreshDomainVerificationStatusResponse> {
-    let request = proto.RefreshDomainVerificationStatusRequest.fromPartial({});
-    return this.client.refreshDomainVerificationStatus(request, {
-      metadata: await this.buildMetadata(proto.RefreshDomainVerificationStatusRequest.encode(request).finish())
-    });
-  }
   /** Search for issuers/providers/verifiers in the current ecosystem */
   public async searchWalletConfigurations(request: proto.SearchWalletConfigurationsRequest): Promise<proto.SearchWalletConfigurationResponse> {
     

@@ -197,110 +197,6 @@ public final class ProviderGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest,
-          trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
-      getRetrieveDomainVerificationRecordMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "RetrieveDomainVerificationRecord",
-      requestType = trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest.class,
-      responseType = trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest,
-          trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
-      getRetrieveDomainVerificationRecordMethod() {
-    io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest,
-            trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
-        getRetrieveDomainVerificationRecordMethod;
-    if ((getRetrieveDomainVerificationRecordMethod =
-            ProviderGrpc.getRetrieveDomainVerificationRecordMethod)
-        == null) {
-      synchronized (ProviderGrpc.class) {
-        if ((getRetrieveDomainVerificationRecordMethod =
-                ProviderGrpc.getRetrieveDomainVerificationRecordMethod)
-            == null) {
-          ProviderGrpc.getRetrieveDomainVerificationRecordMethod =
-              getRetrieveDomainVerificationRecordMethod =
-                  io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest,
-                          trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
-                          newBuilder()
-                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(
-                          generateFullMethodName(SERVICE_NAME, "RetrieveDomainVerificationRecord"))
-                      .setSampledToLocalTracing(true)
-                      .setRequestMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest
-                                  .getDefaultInstance()))
-                      .setResponseMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse
-                                  .getDefaultInstance()))
-                      .setSchemaDescriptor(
-                          new ProviderMethodDescriptorSupplier("RetrieveDomainVerificationRecord"))
-                      .build();
-        }
-      }
-    }
-    return getRetrieveDomainVerificationRecordMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest,
-          trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>
-      getRefreshDomainVerificationStatusMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "RefreshDomainVerificationStatus",
-      requestType = trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest.class,
-      responseType = trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest,
-          trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>
-      getRefreshDomainVerificationStatusMethod() {
-    io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest,
-            trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>
-        getRefreshDomainVerificationStatusMethod;
-    if ((getRefreshDomainVerificationStatusMethod =
-            ProviderGrpc.getRefreshDomainVerificationStatusMethod)
-        == null) {
-      synchronized (ProviderGrpc.class) {
-        if ((getRefreshDomainVerificationStatusMethod =
-                ProviderGrpc.getRefreshDomainVerificationStatusMethod)
-            == null) {
-          ProviderGrpc.getRefreshDomainVerificationStatusMethod =
-              getRefreshDomainVerificationStatusMethod =
-                  io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest,
-                          trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>
-                          newBuilder()
-                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(
-                          generateFullMethodName(SERVICE_NAME, "RefreshDomainVerificationStatus"))
-                      .setSampledToLocalTracing(true)
-                      .setRequestMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
-                                  .getDefaultInstance()))
-                      .setResponseMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse
-                                  .getDefaultInstance()))
-                      .setSchemaDescriptor(
-                          new ProviderMethodDescriptorSupplier("RefreshDomainVerificationStatus"))
-                      .build();
-        }
-      }
-    }
-    return getRefreshDomainVerificationStatusMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.provider.v1.SearchWalletConfigurationsRequest,
           trinsic.services.provider.v1.SearchWalletConfigurationResponse>
       getSearchWalletConfigurationsMethod;
@@ -458,38 +354,6 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Retrieve a random hash TXT that can be used to verify domain ownership
-     * </pre>
-     */
-    public void retrieveDomainVerificationRecord(
-        trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
-            responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
-          getRetrieveDomainVerificationRecordMethod(), responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Call to verify domain
-     * </pre>
-     */
-    public void refreshDomainVerificationStatus(
-        trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>
-            responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
-          getRefreshDomainVerificationStatusMethod(), responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Search for issuers/providers/verifiers in the current ecosystem
      * </pre>
      */
@@ -531,20 +395,6 @@ public final class ProviderGrpc {
                   new MethodHandlers<
                       trinsic.services.provider.v1.UpgradeDidRequest,
                       trinsic.services.provider.v1.UpgradeDidResponse>(this, METHODID_UPGRADE_DID)))
-          .addMethod(
-              getRetrieveDomainVerificationRecordMethod(),
-              io.grpc.stub.ServerCalls.asyncUnaryCall(
-                  new MethodHandlers<
-                      trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest,
-                      trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>(
-                      this, METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD)))
-          .addMethod(
-              getRefreshDomainVerificationStatusMethod(),
-              io.grpc.stub.ServerCalls.asyncUnaryCall(
-                  new MethodHandlers<
-                      trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest,
-                      trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>(
-                      this, METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS)))
           .addMethod(
               getSearchWalletConfigurationsMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -639,42 +489,6 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Retrieve a random hash TXT that can be used to verify domain ownership
-     * </pre>
-     */
-    public void retrieveDomainVerificationRecord(
-        trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
-            responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRetrieveDomainVerificationRecordMethod(), getCallOptions()),
-          request,
-          responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Call to verify domain
-     * </pre>
-     */
-    public void refreshDomainVerificationStatus(
-        trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>
-            responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRefreshDomainVerificationStatusMethod(), getCallOptions()),
-          request,
-          responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Search for issuers/providers/verifiers in the current ecosystem
      * </pre>
      */
@@ -753,34 +567,6 @@ public final class ProviderGrpc {
         trinsic.services.provider.v1.UpgradeDidRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpgradeDIDMethod(), getCallOptions(), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Retrieve a random hash TXT that can be used to verify domain ownership
-     * </pre>
-     */
-    public trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse
-        retrieveDomainVerificationRecord(
-            trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRetrieveDomainVerificationRecordMethod(), getCallOptions(), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Call to verify domain
-     * </pre>
-     */
-    public trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse
-        refreshDomainVerificationStatus(
-            trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRefreshDomainVerificationStatusMethod(), getCallOptions(), request);
     }
 
     /**
@@ -872,38 +658,6 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Retrieve a random hash TXT that can be used to verify domain ownership
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
-        retrieveDomainVerificationRecord(
-            trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRetrieveDomainVerificationRecordMethod(), getCallOptions()),
-          request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Call to verify domain
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>
-        refreshDomainVerificationStatus(
-            trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRefreshDomainVerificationStatusMethod(), getCallOptions()),
-          request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Search for issuers/providers/verifiers in the current ecosystem
      * </pre>
      */
@@ -920,9 +674,7 @@ public final class ProviderGrpc {
   private static final int METHODID_UPDATE_ECOSYSTEM = 1;
   private static final int METHODID_GET_OBERON_KEY = 2;
   private static final int METHODID_UPGRADE_DID = 3;
-  private static final int METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD = 4;
-  private static final int METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS = 5;
-  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 6;
+  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 4;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -963,20 +715,6 @@ public final class ProviderGrpc {
           serviceImpl.upgradeDID(
               (trinsic.services.provider.v1.UpgradeDidRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDidResponse>)
-                  responseObserver);
-          break;
-        case METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD:
-          serviceImpl.retrieveDomainVerificationRecord(
-              (trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest) request,
-              (io.grpc.stub.StreamObserver<
-                      trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>)
-                  responseObserver);
-          break;
-        case METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS:
-          serviceImpl.refreshDomainVerificationStatus(
-              (trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest) request,
-              (io.grpc.stub.StreamObserver<
-                      trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>)
                   responseObserver);
           break;
         case METHODID_SEARCH_WALLET_CONFIGURATIONS:
@@ -1052,8 +790,6 @@ public final class ProviderGrpc {
                       .addMethod(getUpdateEcosystemMethod())
                       .addMethod(getGetOberonKeyMethod())
                       .addMethod(getUpgradeDIDMethod())
-                      .addMethod(getRetrieveDomainVerificationRecordMethod())
-                      .addMethod(getRefreshDomainVerificationStatusMethod())
                       .addMethod(getSearchWalletConfigurationsMethod())
                       .build();
         }

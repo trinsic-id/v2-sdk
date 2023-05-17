@@ -65,18 +65,6 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).upgradeDID(request);
   }
-  /** Retrieve a random hash TXT that can be used to verify domain ownership */
-  public ListenableFuture<RetrieveDomainVerificationRecordResponse>
-      retrieveDomainVerificationRecord() throws InvalidProtocolBufferException {
-    var request = RetrieveDomainVerificationRecordRequest.newBuilder().build();
-    return withMetadata(stub, request).retrieveDomainVerificationRecord(request);
-  }
-  /** Call to verify domain */
-  public ListenableFuture<RefreshDomainVerificationStatusResponse> refreshDomainVerificationStatus()
-      throws InvalidProtocolBufferException {
-    var request = RefreshDomainVerificationStatusRequest.newBuilder().build();
-    return withMetadata(stub, request).refreshDomainVerificationStatus(request);
-  }
   /** Search for issuers/providers/verifiers in the current ecosystem */
   public ListenableFuture<SearchWalletConfigurationResponse> searchWalletConfigurations(
       SearchWalletConfigurationsRequest request) throws InvalidProtocolBufferException {

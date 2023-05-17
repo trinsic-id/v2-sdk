@@ -45,18 +45,6 @@ class ProviderServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).upgradeDID(request)
   }
   @Throws(InvalidProtocolBufferException::class)
-  suspend fun retrieveDomainVerificationRecord(): RetrieveDomainVerificationRecordResponse {
-    /** Retrieve a random hash TXT that can be used to verify domain ownership */
-    val request = RetrieveDomainVerificationRecordRequest.newBuilder().build()
-    return withMetadata(stub, request).retrieveDomainVerificationRecord(request)
-  }
-  @Throws(InvalidProtocolBufferException::class)
-  suspend fun refreshDomainVerificationStatus(): RefreshDomainVerificationStatusResponse {
-    /** Call to verify domain */
-    val request = RefreshDomainVerificationStatusRequest.newBuilder().build()
-    return withMetadata(stub, request).refreshDomainVerificationStatus(request)
-  }
-  @Throws(InvalidProtocolBufferException::class)
   suspend fun searchWalletConfigurations(
       request: SearchWalletConfigurationsRequest
   ): SearchWalletConfigurationResponse {
