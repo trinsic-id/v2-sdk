@@ -209,6 +209,15 @@ message WalletConfiguration {
   string description = 10;
 }
 
+enum IdentityProvider {
+  // Identity provider is unknown
+  Unknown = 0;
+  // Identity provider is email
+  Email = 1;
+  // Identity provider is phone
+  Phone = 2;
+}
+
 // Options for creation of DID on the ION network
 message IonOptions {
   enum IonNetwork {
