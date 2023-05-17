@@ -21,7 +21,6 @@ func TestEcosystemUpdateInfo(t *testing.T) {
 	// updateEcosystem() {
 	updateRequest := &provider.UpdateEcosystemRequest{
 		Description: "My new description",
-		Domain:      "https://new-example.com",
 	}
 
 	updateResponse, err := trinsic.Provider().UpdateEcosystem(context.Background(), updateRequest)

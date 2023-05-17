@@ -12,7 +12,7 @@ async def ecosystem_demo():
     # createEcosystem() {
     actual_create = await trinsic_service.provider.create_ecosystem(
         request=CreateEcosystemRequest(
-            description="My ecosystem", domain="https://example.com"
+            description="My ecosystem"
         )
     )
     # }
