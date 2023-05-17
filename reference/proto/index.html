@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11+insiders-4.33.1">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13+insiders-4.34.1">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.938f8e87.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.14411569.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.df142b89.min.css">
@@ -2908,17 +2908,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#identityprovider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IdentityProvider
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3321,6 +3310,17 @@
     <span class="md-ellipsis">
       
         WalletConfiguration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identityprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IdentityProvider
       
     </span>
   </a>
@@ -5155,7 +5155,7 @@ like email, SMS, etc.</p>
 </tr>
 <tr>
 <td>provider</td>
-<td><a href="/reference/proto#services-universalwallet-v1-IdentityProvider">IdentityProvider</a></td>
+<td><a href="/reference/proto#services-provider-v1-IdentityProvider">services.provider.v1.IdentityProvider</a></td>
 <td>The type of identity provider, like EMAIL or PHONE</td>
 </tr>
 </tbody>
@@ -5237,7 +5237,7 @@ like email, SMS, etc.</p>
 </tr>
 <tr>
 <td>provider</td>
-<td><a href="/reference/proto#services-universalwallet-v1-IdentityProvider">IdentityProvider</a></td>
+<td><a href="/reference/proto#services-provider-v1-IdentityProvider">services.provider.v1.IdentityProvider</a></td>
 <td>Identity provider</td>
 </tr>
 <tr>
@@ -5746,34 +5746,6 @@ like email, SMS, etc.</p>
 <p>Response to <code>UpdateItemRequest</code></p>
 <!-- end messages -->
 
-<p><a name="services-universalwallet-v1-IdentityProvider"></a></p>
-<h3 id="identityprovider">IdentityProvider<a class="headerlink" href="#identityprovider" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UNKNOWN</td>
-<td>0</td>
-<td>Identity provider is unknown</td>
-</tr>
-<tr>
-<td>EMAIL</td>
-<td>1</td>
-<td>Identity provider is email</td>
-</tr>
-<tr>
-<td>PHONE</td>
-<td>2</td>
-<td>Identity provider is phone</td>
-</tr>
-</tbody>
-</table>
 <!-- end enums -->
 
 <!-- end HasExtensions -->
@@ -6590,6 +6562,34 @@ DEPRECATED, will be removed June 1st 2023</p>
 </table>
 <!-- end messages -->
 
+<p><a name="services-provider-v1-IdentityProvider"></a></p>
+<h3 id="identityprovider">IdentityProvider<a class="headerlink" href="#identityprovider" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unknown</td>
+<td>0</td>
+<td>Identity provider is unknown</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>1</td>
+<td>Identity provider is email</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>2</td>
+<td>Identity provider is phone</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-IndyOptions-IndyNetwork"></a></p>
 <h3 id="indyoptionsindynetwork">IndyOptions.IndyNetwork<a class="headerlink" href="#indyoptionsindynetwork" title="Permanent link">&para;</a></h3>
 <table>
@@ -8719,7 +8719,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.2047e101.min.js"></script>
+      <script src="../../assets/javascripts/bundle.10c6cd24.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
