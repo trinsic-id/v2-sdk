@@ -82,24 +82,6 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def retrieve_domain_verification_record(
-        self,
-    ) -> RetrieveDomainVerificationRecordResponse:
-        """Retrieve a random hash TXT that can be used to verify domain ownership"""
-        request = RetrieveDomainVerificationRecordRequest()
-        return await self.client.retrieve_domain_verification_record(
-            request, metadata=self.build_metadata(request)
-        )
-
-    async def refresh_domain_verification_status(
-        self,
-    ) -> RefreshDomainVerificationStatusResponse:
-        """Call to verify domain"""
-        request = RefreshDomainVerificationStatusRequest()
-        return await self.client.refresh_domain_verification_status(
-            request, metadata=self.build_metadata(request)
-        )
-
     async def search_wallet_configurations(
         self, *, request: SearchWalletConfigurationsRequest
     ) -> SearchWalletConfigurationResponse:

@@ -38,22 +38,6 @@ class ProviderClient extends $grpc.Client {
           ($2.UpgradeDidRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $2.UpgradeDidResponse.fromBuffer(value));
-  static final _$retrieveDomainVerificationRecord = $grpc.ClientMethod<
-          $2.RetrieveDomainVerificationRecordRequest,
-          $2.RetrieveDomainVerificationRecordResponse>(
-      '/services.provider.v1.Provider/RetrieveDomainVerificationRecord',
-      ($2.RetrieveDomainVerificationRecordRequest value) =>
-          value.writeToBuffer(),
-      ($core.List<$core.int> value) =>
-          $2.RetrieveDomainVerificationRecordResponse.fromBuffer(value));
-  static final _$refreshDomainVerificationStatus = $grpc.ClientMethod<
-          $2.RefreshDomainVerificationStatusRequest,
-          $2.RefreshDomainVerificationStatusResponse>(
-      '/services.provider.v1.Provider/RefreshDomainVerificationStatus',
-      ($2.RefreshDomainVerificationStatusRequest value) =>
-          value.writeToBuffer(),
-      ($core.List<$core.int> value) =>
-          $2.RefreshDomainVerificationStatusResponse.fromBuffer(value));
   static final _$searchWalletConfigurations = $grpc.ClientMethod<
           $2.SearchWalletConfigurationsRequest,
           $2.SearchWalletConfigurationResponse>(
@@ -89,22 +73,6 @@ class ProviderClient extends $grpc.Client {
       $2.UpgradeDidRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$upgradeDID, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$2.RetrieveDomainVerificationRecordResponse>
-      retrieveDomainVerificationRecord(
-          $2.RetrieveDomainVerificationRecordRequest request,
-          {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$retrieveDomainVerificationRecord, request,
-        options: options);
-  }
-
-  $grpc.ResponseFuture<$2.RefreshDomainVerificationStatusResponse>
-      refreshDomainVerificationStatus(
-          $2.RefreshDomainVerificationStatusRequest request,
-          {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$refreshDomainVerificationStatus, request,
-        options: options);
   }
 
   $grpc.ResponseFuture<$2.SearchWalletConfigurationResponse>
@@ -153,26 +121,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.UpgradeDidRequest.fromBuffer(value),
         ($2.UpgradeDidResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.RetrieveDomainVerificationRecordRequest,
-            $2.RetrieveDomainVerificationRecordResponse>(
-        'RetrieveDomainVerificationRecord',
-        retrieveDomainVerificationRecord_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $2.RetrieveDomainVerificationRecordRequest.fromBuffer(value),
-        ($2.RetrieveDomainVerificationRecordResponse value) =>
-            value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.RefreshDomainVerificationStatusRequest,
-            $2.RefreshDomainVerificationStatusResponse>(
-        'RefreshDomainVerificationStatus',
-        refreshDomainVerificationStatus_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $2.RefreshDomainVerificationStatusRequest.fromBuffer(value),
-        ($2.RefreshDomainVerificationStatusResponse value) =>
-            value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.SearchWalletConfigurationsRequest,
             $2.SearchWalletConfigurationResponse>(
         'SearchWalletConfigurations',
@@ -207,22 +155,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return upgradeDID(call, await request);
   }
 
-  $async.Future<$2.RetrieveDomainVerificationRecordResponse>
-      retrieveDomainVerificationRecord_Pre(
-          $grpc.ServiceCall call,
-          $async.Future<$2.RetrieveDomainVerificationRecordRequest>
-              request) async {
-    return retrieveDomainVerificationRecord(call, await request);
-  }
-
-  $async.Future<$2.RefreshDomainVerificationStatusResponse>
-      refreshDomainVerificationStatus_Pre(
-          $grpc.ServiceCall call,
-          $async.Future<$2.RefreshDomainVerificationStatusRequest>
-              request) async {
-    return refreshDomainVerificationStatus(call, await request);
-  }
-
   $async.Future<$2.SearchWalletConfigurationResponse>
       searchWalletConfigurations_Pre($grpc.ServiceCall call,
           $async.Future<$2.SearchWalletConfigurationsRequest> request) async {
@@ -237,12 +169,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $2.GetOberonKeyRequest request);
   $async.Future<$2.UpgradeDidResponse> upgradeDID(
       $grpc.ServiceCall call, $2.UpgradeDidRequest request);
-  $async.Future<$2.RetrieveDomainVerificationRecordResponse>
-      retrieveDomainVerificationRecord($grpc.ServiceCall call,
-          $2.RetrieveDomainVerificationRecordRequest request);
-  $async.Future<$2.RefreshDomainVerificationStatusResponse>
-      refreshDomainVerificationStatus($grpc.ServiceCall call,
-          $2.RefreshDomainVerificationStatusRequest request);
   $async.Future<$2.SearchWalletConfigurationResponse>
       searchWalletConfigurations(
           $grpc.ServiceCall call, $2.SearchWalletConfigurationsRequest request);

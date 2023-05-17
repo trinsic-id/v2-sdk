@@ -19,13 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Provider_CreateEcosystem_FullMethodName                  = "/services.provider.v1.Provider/CreateEcosystem"
-	Provider_UpdateEcosystem_FullMethodName                  = "/services.provider.v1.Provider/UpdateEcosystem"
-	Provider_GetOberonKey_FullMethodName                     = "/services.provider.v1.Provider/GetOberonKey"
-	Provider_UpgradeDID_FullMethodName                       = "/services.provider.v1.Provider/UpgradeDID"
-	Provider_RetrieveDomainVerificationRecord_FullMethodName = "/services.provider.v1.Provider/RetrieveDomainVerificationRecord"
-	Provider_RefreshDomainVerificationStatus_FullMethodName  = "/services.provider.v1.Provider/RefreshDomainVerificationStatus"
-	Provider_SearchWalletConfigurations_FullMethodName       = "/services.provider.v1.Provider/SearchWalletConfigurations"
+	Provider_CreateEcosystem_FullMethodName            = "/services.provider.v1.Provider/CreateEcosystem"
+	Provider_UpdateEcosystem_FullMethodName            = "/services.provider.v1.Provider/UpdateEcosystem"
+	Provider_GetOberonKey_FullMethodName               = "/services.provider.v1.Provider/GetOberonKey"
+	Provider_UpgradeDID_FullMethodName                 = "/services.provider.v1.Provider/UpgradeDID"
+	Provider_SearchWalletConfigurations_FullMethodName = "/services.provider.v1.Provider/SearchWalletConfigurations"
 )
 
 // ProviderClient is the client API for Provider service.
@@ -42,10 +40,6 @@ type ProviderClient interface {
 	GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
 	UpgradeDID(ctx context.Context, in *UpgradeDidRequest, opts ...grpc.CallOption) (*UpgradeDidResponse, error)
-	// Retrieve a random hash TXT that can be used to verify domain ownership
-	RetrieveDomainVerificationRecord(ctx context.Context, in *RetrieveDomainVerificationRecordRequest, opts ...grpc.CallOption) (*RetrieveDomainVerificationRecordResponse, error)
-	// Call to verify domain
-	RefreshDomainVerificationStatus(ctx context.Context, in *RefreshDomainVerificationStatusRequest, opts ...grpc.CallOption) (*RefreshDomainVerificationStatusResponse, error)
 	// Search for issuers/providers/verifiers in the current ecosystem
 	SearchWalletConfigurations(ctx context.Context, in *SearchWalletConfigurationsRequest, opts ...grpc.CallOption) (*SearchWalletConfigurationResponse, error)
 }
@@ -95,24 +89,6 @@ func (c *providerClient) UpgradeDID(ctx context.Context, in *UpgradeDidRequest, 
 	return out, nil
 }
 
-func (c *providerClient) RetrieveDomainVerificationRecord(ctx context.Context, in *RetrieveDomainVerificationRecordRequest, opts ...grpc.CallOption) (*RetrieveDomainVerificationRecordResponse, error) {
-	out := new(RetrieveDomainVerificationRecordResponse)
-	err := c.cc.Invoke(ctx, Provider_RetrieveDomainVerificationRecord_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *providerClient) RefreshDomainVerificationStatus(ctx context.Context, in *RefreshDomainVerificationStatusRequest, opts ...grpc.CallOption) (*RefreshDomainVerificationStatusResponse, error) {
-	out := new(RefreshDomainVerificationStatusResponse)
-	err := c.cc.Invoke(ctx, Provider_RefreshDomainVerificationStatus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *providerClient) SearchWalletConfigurations(ctx context.Context, in *SearchWalletConfigurationsRequest, opts ...grpc.CallOption) (*SearchWalletConfigurationResponse, error) {
 	out := new(SearchWalletConfigurationResponse)
 	err := c.cc.Invoke(ctx, Provider_SearchWalletConfigurations_FullMethodName, in, out, opts...)
@@ -136,10 +112,6 @@ type ProviderServer interface {
 	GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
 	UpgradeDID(context.Context, *UpgradeDidRequest) (*UpgradeDidResponse, error)
-	// Retrieve a random hash TXT that can be used to verify domain ownership
-	RetrieveDomainVerificationRecord(context.Context, *RetrieveDomainVerificationRecordRequest) (*RetrieveDomainVerificationRecordResponse, error)
-	// Call to verify domain
-	RefreshDomainVerificationStatus(context.Context, *RefreshDomainVerificationStatusRequest) (*RefreshDomainVerificationStatusResponse, error)
 	// Search for issuers/providers/verifiers in the current ecosystem
 	SearchWalletConfigurations(context.Context, *SearchWalletConfigurationsRequest) (*SearchWalletConfigurationResponse, error)
 	mustEmbedUnimplementedProviderServer()
@@ -160,12 +132,6 @@ func (UnimplementedProviderServer) GetOberonKey(context.Context, *GetOberonKeyRe
 }
 func (UnimplementedProviderServer) UpgradeDID(context.Context, *UpgradeDidRequest) (*UpgradeDidResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpgradeDID not implemented")
-}
-func (UnimplementedProviderServer) RetrieveDomainVerificationRecord(context.Context, *RetrieveDomainVerificationRecordRequest) (*RetrieveDomainVerificationRecordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RetrieveDomainVerificationRecord not implemented")
-}
-func (UnimplementedProviderServer) RefreshDomainVerificationStatus(context.Context, *RefreshDomainVerificationStatusRequest) (*RefreshDomainVerificationStatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RefreshDomainVerificationStatus not implemented")
 }
 func (UnimplementedProviderServer) SearchWalletConfigurations(context.Context, *SearchWalletConfigurationsRequest) (*SearchWalletConfigurationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchWalletConfigurations not implemented")
@@ -255,42 +221,6 @@ func _Provider_UpgradeDID_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Provider_RetrieveDomainVerificationRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RetrieveDomainVerificationRecordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).RetrieveDomainVerificationRecord(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_RetrieveDomainVerificationRecord_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).RetrieveDomainVerificationRecord(ctx, req.(*RetrieveDomainVerificationRecordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_RefreshDomainVerificationStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RefreshDomainVerificationStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).RefreshDomainVerificationStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_RefreshDomainVerificationStatus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).RefreshDomainVerificationStatus(ctx, req.(*RefreshDomainVerificationStatusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Provider_SearchWalletConfigurations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchWalletConfigurationsRequest)
 	if err := dec(in); err != nil {
@@ -331,14 +261,6 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpgradeDID",
 			Handler:    _Provider_UpgradeDID_Handler,
-		},
-		{
-			MethodName: "RetrieveDomainVerificationRecord",
-			Handler:    _Provider_RetrieveDomainVerificationRecord_Handler,
-		},
-		{
-			MethodName: "RefreshDomainVerificationStatus",
-			Handler:    _Provider_RefreshDomainVerificationStatus_Handler,
 		},
 		{
 			MethodName: "SearchWalletConfigurations",
