@@ -1770,22 +1770,6 @@
             Ecosystem description
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.Ecosystem.DisplayFieldNumber">
-            <summary>Field number for the "display" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.Ecosystem.Display">
-            <summary>
-            Display details
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.Ecosystem.DomainFieldNumber">
-            <summary>Field number for the "domain" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.Ecosystem.Domain">
-            <summary>
-            Domain
-            </summary>
-        </member>
         <member name="T:Trinsic.Services.Provider.V1.CreateEcosystemRequest">
             <summary>
             Request to create an ecosystem
@@ -1868,45 +1852,6 @@
             New description of the ecosystem
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.DomainFieldNumber">
-            <summary>Field number for the "domain" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.Domain">
-            <summary>
-            New domain URL
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.DisplayFieldNumber">
-            <summary>Field number for the "display" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.Display">
-            <summary>
-            Display details
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayRequest.LightFieldNumber">
-            <summary>Field number for the "light" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplayRequest.Light">
-             <summary>
-            Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-             EcosystemDisplayDetailsRequest dark = 1;
-             </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.ColorFieldNumber">
-            <summary>Field number for the "color" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.LogoDataFieldNumber">
-            <summary>Field number for the "logo_data" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.LogoFormatFieldNumber">
-            <summary>Field number for the "logo_format" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.LogoFormat">
-            <summary>
-            MIME type of the file
-            </summary>
-        </member>
         <member name="T:Trinsic.Services.Provider.V1.UpdateEcosystemResponse">
             <summary>
             Response to `UpdateEcosystemRequest`
@@ -1919,20 +1864,6 @@
             <summary>
             Current ecosystem metadata, post-update
             </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplay.LightFieldNumber">
-            <summary>Field number for the "light" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplay.Light">
-            <summary>
-               Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetails.LogoUrlFieldNumber">
-            <summary>Field number for the "logo_url" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetails.ColorFieldNumber">
-            <summary>Field number for the "color" field.</summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.EcosystemInfoRequest">
             <summary>
@@ -1992,7 +1923,7 @@
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationRecordValueFieldNumber">
-            <summary>Field number for the "verification_record_Value" field.</summary>
+            <summary>Field number for the "verification_record_value" field.</summary>
         </member>
         <member name="P:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationRecordValue">
             <summary>
@@ -2281,22 +2212,6 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RetrieveDomainVerificationRecord(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Retrieve a random hash TXT that can be used to verify domain ownership
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RefreshDomainVerificationStatus(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Call to verify domain
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.SearchWalletConfigurations(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Search for issuers/providers/verifiers in the current ecosystem
@@ -2466,78 +2381,6 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpgradeDIDAsync(Trinsic.Services.Provider.V1.UpgradeDidRequest,Grpc.Core.CallOptions)">
             <summary>
             Upgrade a wallet's DID from `did:key` to another method
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecord(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Retrieve a random hash TXT that can be used to verify domain ownership
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecord(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Retrieve a random hash TXT that can be used to verify domain ownership
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Retrieve a random hash TXT that can be used to verify domain ownership
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Retrieve a random hash TXT that can be used to verify domain ownership
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatus(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Call to verify domain
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatus(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Call to verify domain
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Call to verify domain
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Call to verify domain
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -6335,26 +6178,6 @@
         <member name="M:Trinsic.ProviderService.UpgradeDIDAsync(Trinsic.Services.Provider.V1.UpgradeDidRequest)">
             <summary>
             Upgrade a wallet's DID from `did:key` to another method
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.RetrieveDomainVerificationRecord">
-            <summary>
-            Retrieve a random hash TXT that can be used to verify domain ownership
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.RetrieveDomainVerificationRecordAsync">
-            <summary>
-            Retrieve a random hash TXT that can be used to verify domain ownership
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.RefreshDomainVerificationStatus">
-            <summary>
-            Call to verify domain
-            </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.RefreshDomainVerificationStatusAsync">
-            <summary>
-            Call to verify domain
             </summary>
         </member>
         <member name="M:Trinsic.ProviderService.SearchWalletConfigurations(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest)">
