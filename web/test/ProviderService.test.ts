@@ -34,7 +34,6 @@ describe("ProviderService Unit Tests", () => {
         let createResponse = await trinsic.provider().createEcosystem(
             CreateEcosystemRequest.fromPartial({
                 description: "Test ecosystem from Node",
-                domain: "https://example.com",
             })
         );
         // }
@@ -49,7 +48,6 @@ describe("ProviderService Unit Tests", () => {
         let updateResponse = await trinsic.provider().updateEcosystem(
             UpdateEcosystemRequest.fromPartial({
                 description: "New ecosystem description",
-                domain: "https://new-example.com",
             })
         );
         //}
