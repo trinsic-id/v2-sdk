@@ -26,10 +26,10 @@ message AccountDetails
 {
   // Account name
   string name = 1 [(options.optional) = true];
-  // Email address of account
-  string email = 2 [(options.optional) = true];
+  // Email address of account. 
+  string email = 2 [(options.optional) = true, deprecated = true];
   // SMS number including country code
-  string sms = 3 [(options.optional) = true];
+  string sms = 3 [(options.optional) = true, deprecated = true];
 }
 
 // Response for creating new account
@@ -156,7 +156,7 @@ message LoginConfirmResponse {
   AccountProfile profile = 1;
 }
 
-// Information about authenticaton tokens for a wallet
+// Information about authentication tokens for a wallet
 message WalletAuthToken {
   // Unique identifier for the token.
   // This field will match the `DeviceId` in the WalletAuthData

@@ -146,8 +146,10 @@ message SearchWalletConfigurationResponse {
 message WalletConfiguration {
   // Name/description of the wallet
   string name = 1;
-  string email = 2  [(options.optional) = true];
-  string sms = 3  [(options.optional) = true];
+  // Deprecated -- use external_identities
+  string email = 2  [(options.optional) = true, deprecated = true];
+  // Deprecated -- use external_identities
+  string sms = 3  [(options.optional) = true, deprecated = true];
   string wallet_id = 4;
   // The DID of the wallet
   string public_did = 5;
@@ -157,11 +159,24 @@ message WalletConfiguration {
   // This list does not contain the issued token, only metadata
   // such as ID, description, and creation date.
   repeated services.account.v1.WalletAuthToken auth_tokens = 7;
-  // List of external identities associated with this wallet.
-  repeated string external_identities = 8;
+  // List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+  // This is deprecated; use `external_identities` instead.
+  repeated string external_identity_ids = 8 [deprecated=true];
   // Ecosystem in which this wallet is contained.
   string ecosystem_id = 9;
   string description = 10;
+  
+  // List of external identities associated with this wallet.
+  repeated WalletExternalIdentity external_identities = 11;
+}
+
+// An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
+message WalletExternalIdentity {
+  // The type of this identity (whether this identity is an email address, phone number, etc.)
+  IdentityProvider provider = 1;
+  
+  // The actual email address/phone number/etc. for this identity
+  string id = 2;
 }
 
 enum IdentityProvider {
