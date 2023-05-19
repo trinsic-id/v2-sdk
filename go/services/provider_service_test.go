@@ -21,7 +21,6 @@ func TestEcosystemUpdateInfo(t *testing.T) {
 	// updateEcosystem() {
 	updateRequest := &provider.UpdateEcosystemRequest{
 		Description: "My new description",
-		Domain:      "https://new-example.com",
 	}
 
 	updateResponse, err := trinsic.Provider().UpdateEcosystem(context.Background(), updateRequest)
@@ -45,13 +44,13 @@ func TestEcosystemUpdateInfo(t *testing.T) {
 func TestUpgradeDid(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
+	trinsic, newEcosystem, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
 
 	createWallet, err := trinsic.Wallet().CreateWallet(context.Background(), &wallet.CreateWalletRequest{
-		EcosystemId: "default",
+		EcosystemId: newEcosystem.Id,
 		Description: nil,
 	})
 	if !assert2.Nil(err) {

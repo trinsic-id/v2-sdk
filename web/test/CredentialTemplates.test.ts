@@ -25,11 +25,15 @@ const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
 let trinsic: TrinsicService;
 let createdTemplate: CreateCredentialTemplateResponse;
 
+let ecosystemAuthToken: string;
+let ecosystemId: string;
 describe("Demo: Credential Templates", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(getTestServerOptions());
-        await trinsic.provider().createEcosystem({});
+        const createEcosystemResponse = await trinsic.provider().createEcosystem({});
+        ecosystemAuthToken = trinsic.options.authToken!;
+        ecosystemId = createEcosystemResponse.ecosystem?.id!;
     });
 
     it("should run create and delete credential templates", async () => {
@@ -48,23 +52,26 @@ describe("Demo: Credential Templates", () => {
     });
 
     it("Issue Credential From Template", async () => {
-        let response = JSON.parse(
+        let credential = JSON.parse(
             (await issueCredentialFromTemplate(trinsic)).documentJson!
         );
 
-        expect(response?.issuer).not.toBeNull();
-        expect(response?.id).not.toBeNull();
-        expect(response?.credentialSubject?.name).toBe("Alice");
-        expect(response?.credentialSubject?.numberOfBags).toBe(2);
+        expect(credential.issuer).not.toBeNull();
+        expect(credential.id).not.toBeNull();
+        expect(credential.credentialSubject?.name).toBe("Alice");
+        expect(credential.credentialSubject?.numberOfBags).toBe(2);
         expect(
-            new Date(response?.credentialSubject?.dateOfBirth).toISOString()
+            new Date(credential?.credentialSubject?.dateOfBirth).toISOString()
         ).toBe(new Date("1/1/2000").toISOString());
-        expect(response?.credentialSubject?.vaccinated).toBe(true);
+        expect(credential.credentialSubject?.vaccinated).toBe(true);
     });
 
     it("Verify Credential Issued from Template", async () => {
+        // Prevent "CreateWallet with an auth token, EcosystemId must be the same as the ecosystem of the auth token"
+        trinsic.options.authToken = ecosystemAuthToken;
         let response = await verifyCredential(
             trinsic,
+            ecosystemId,
             JSON.stringify(templateCertFrame)
         );
         expect(response).toBeTruthy();

@@ -57,14 +57,15 @@ export function createRequiredTestObjects() {
 
 export async function verifyCredential(
     trinsic: TrinsicService,
-    templateCertFrame: string
+    ecosystemId: string,
+    templateCertFrame: string,
 ): Promise<boolean> {
     const allison = await trinsic
         .wallet()
-        .createWallet({ ecosystemId: myEcosystemIdOrName() });
+        .createWallet({ ecosystemId: ecosystemId });
     const airline = await trinsic
         .wallet()
-        .createWallet({ ecosystemId: myEcosystemIdOrName() });
+        .createWallet({ ecosystemId: ecosystemId });
 
     trinsic.options.authToken = airline.authToken;
 

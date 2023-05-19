@@ -244,7 +244,6 @@ public class Tests
         // createEcosystem() {
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
-            Domain = "https://example.com"
         });
         // }
 
@@ -261,14 +260,12 @@ public class Tests
             // updateEcosystem() {
             var updateResult = await trinsic.Provider.UpdateEcosystemAsync(new() {
                 Description = "New ecosystem description",
-                Domain = "New ecosystem URI"
             });
             // }
 
             updateResult.Should().NotBeNull();
             updateResult.Ecosystem.Should().NotBeNull();
             updateResult.Ecosystem.Description.Should().Be("New ecosystem description");
-            updateResult.Ecosystem.Domain.Should().Be("New ecosystem URI");
         } catch { }
 
         // test get ecosystem info

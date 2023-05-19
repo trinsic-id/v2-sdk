@@ -27,9 +27,9 @@ async def wallet_demo():
     config = trinsic_config()
     trinsic = TrinsicService(server_config=config)
 
-    ecosystem = await trinsic.provider.create_ecosystem()
+    ecosystem_create = await trinsic.provider.create_ecosystem()
     wallet_response = await trinsic.wallet.create_wallet(
-        request=CreateWalletRequest(ecosystem_id="default")
+        request=CreateWalletRequest(ecosystem_id=ecosystem_create.ecosystem.id)
     )
     trinsic.set_auth_token(wallet_response.auth_token)
 

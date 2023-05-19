@@ -40,13 +40,14 @@ func TestVaccineDemo(t *testing.T) {
 
 	// setupActors() {
 	// Create an account for each participant in the scenario
-	allison, _ := trinsic.Account().LoginAnonymous(context.Background(), ecosystemId)
-	airline, _ := trinsic.Account().LoginAnonymous(context.Background(), ecosystemId)
-	clinic, _ := trinsic.Account().LoginAnonymous(context.Background(), ecosystemId)
+	createWallet := &wallet.CreateWalletRequest{EcosystemId: ecosystemId}
+	allison, _ := trinsic.Wallet().CreateWallet(context.Background(), createWallet)
+	airline, _ := trinsic.Wallet().CreateWallet(context.Background(), createWallet)
+	clinic, _ := trinsic.Wallet().CreateWallet(context.Background(), createWallet)
 	// }
 
-	trinsic.SetAuthToken(clinic)
-	info, _ := trinsic.Account().GetInfo(context.Background())
+	trinsic.SetAuthToken(clinic.AuthToken)
+	info, _ := trinsic.Wallet().GetMyInfo(context.Background())
 	fmt.Println("Account info:", info)
 
 	// Create a template
@@ -90,7 +91,7 @@ func TestVaccineDemo(t *testing.T) {
 
 	// storeCredential() {
 	// Allison stores the credential in her cloud wallet
-	trinsic.SetAuthToken(allison)
+	trinsic.SetAuthToken(allison.AuthToken)
 	insertResponse, _ := trinsic.Wallet().InsertItem(context.Background(), &wallet.InsertItemRequest{ItemJson: issuedCredential})
 
 	itemId := insertResponse.ItemId
@@ -99,7 +100,7 @@ func TestVaccineDemo(t *testing.T) {
 
 	// shareCredential() {
 	// Allison shares the credential with the airline
-	trinsic.SetAuthToken(allison)
+	trinsic.SetAuthToken(allison.AuthToken)
 	proofResponse, _ := trinsic.Credential().CreateProof(context.Background(), &credential.CreateProofRequest{
 		Proof: &credential.CreateProofRequest_ItemId{ItemId: itemId},
 	})
@@ -111,7 +112,7 @@ func TestVaccineDemo(t *testing.T) {
 
 	// verifyCredential() {
 	// The airline verifies the credential
-	trinsic.SetAuthToken(airline)
+	trinsic.SetAuthToken(airline.AuthToken)
 	verifyResult, _ := trinsic.Credential().VerifyProof(context.Background(), &credential.VerifyProofRequest{ProofDocumentJson: credentialProof})
 	valid := verifyResult.IsValid
 	// }
