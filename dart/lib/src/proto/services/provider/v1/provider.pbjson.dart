@@ -321,8 +321,22 @@ const WalletConfiguration$json = const {
   '1': 'WalletConfiguration',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'email', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'email'},
-    const {'1': 'sms', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'sms'},
+    const {
+      '1': 'email',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {'3': true},
+      '10': 'email',
+    },
+    const {
+      '1': 'sms',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '8': const {'3': true},
+      '10': 'sms',
+    },
     const {'1': 'wallet_id', '3': 4, '4': 1, '5': 9, '10': 'walletId'},
     const {'1': 'public_did', '3': 5, '4': 1, '5': 9, '10': 'publicDid'},
     const {'1': 'config_type', '3': 6, '4': 1, '5': 9, '10': 'configType'},
@@ -335,20 +349,49 @@ const WalletConfiguration$json = const {
       '10': 'authTokens'
     },
     const {
-      '1': 'external_identities',
+      '1': 'external_identity_ids',
       '3': 8,
       '4': 3,
       '5': 9,
-      '10': 'externalIdentities'
+      '8': const {'3': true},
+      '10': 'externalIdentityIds',
     },
     const {'1': 'ecosystem_id', '3': 9, '4': 1, '5': 9, '10': 'ecosystemId'},
     const {'1': 'description', '3': 10, '4': 1, '5': 9, '10': 'description'},
+    const {
+      '1': 'external_identities',
+      '3': 11,
+      '4': 3,
+      '5': 11,
+      '6': '.services.provider.v1.WalletExternalIdentity',
+      '10': 'externalIdentities'
+    },
   ],
 };
 
 /// Descriptor for `WalletConfiguration`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List walletConfigurationDescriptor = $convert.base64Decode(
-    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlkEh8KC2NvbmZpZ190eXBlGAYgASgJUgpjb25maWdUeXBlEkUKC2F1dGhfdG9rZW5zGAcgAygLMiQuc2VydmljZXMuYWNjb3VudC52MS5XYWxsZXRBdXRoVG9rZW5SCmF1dGhUb2tlbnMSLwoTZXh0ZXJuYWxfaWRlbnRpdGllcxgIIAMoCVISZXh0ZXJuYWxJZGVudGl0aWVzEiEKDGVjb3N5c3RlbV9pZBgJIAEoCVILZWNvc3lzdGVtSWQSIAoLZGVzY3JpcHRpb24YCiABKAlSC2Rlc2NyaXB0aW9u');
+    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSHAoFZW1haWwYAiABKAlCBhgBgKYdAVIFZW1haWwSGAoDc21zGAMgASgJQgYYAYCmHQFSA3NtcxIbCgl3YWxsZXRfaWQYBCABKAlSCHdhbGxldElkEh0KCnB1YmxpY19kaWQYBSABKAlSCXB1YmxpY0RpZBIfCgtjb25maWdfdHlwZRgGIAEoCVIKY29uZmlnVHlwZRJFCgthdXRoX3Rva2VucxgHIAMoCzIkLnNlcnZpY2VzLmFjY291bnQudjEuV2FsbGV0QXV0aFRva2VuUgphdXRoVG9rZW5zEjYKFWV4dGVybmFsX2lkZW50aXR5X2lkcxgIIAMoCUICGAFSE2V4dGVybmFsSWRlbnRpdHlJZHMSIQoMZWNvc3lzdGVtX2lkGAkgASgJUgtlY29zeXN0ZW1JZBIgCgtkZXNjcmlwdGlvbhgKIAEoCVILZGVzY3JpcHRpb24SXQoTZXh0ZXJuYWxfaWRlbnRpdGllcxgLIAMoCzIsLnNlcnZpY2VzLnByb3ZpZGVyLnYxLldhbGxldEV4dGVybmFsSWRlbnRpdHlSEmV4dGVybmFsSWRlbnRpdGllcw==');
+@$core.Deprecated('Use walletExternalIdentityDescriptor instead')
+const WalletExternalIdentity$json = const {
+  '1': 'WalletExternalIdentity',
+  '2': const [
+    const {
+      '1': 'provider',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.services.provider.v1.IdentityProvider',
+      '10': 'provider'
+    },
+    const {'1': 'id', '3': 2, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `WalletExternalIdentity`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List walletExternalIdentityDescriptor =
+    $convert.base64Decode(
+        'ChZXYWxsZXRFeHRlcm5hbElkZW50aXR5EkIKCHByb3ZpZGVyGAEgASgOMiYuc2VydmljZXMucHJvdmlkZXIudjEuSWRlbnRpdHlQcm92aWRlclIIcHJvdmlkZXISDgoCaWQYAiABKAlSAmlk');
 @$core.Deprecated('Use ionOptionsDescriptor instead')
 const IonOptions$json = const {
   '1': 'IonOptions',

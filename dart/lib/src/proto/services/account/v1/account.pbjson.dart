@@ -60,14 +60,28 @@ const AccountDetails$json = const {
   '1': 'AccountDetails',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'name'},
-    const {'1': 'email', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'email'},
-    const {'1': 'sms', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'sms'},
+    const {
+      '1': 'email',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {'3': true},
+      '10': 'email',
+    },
+    const {
+      '1': 'sms',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '8': const {'3': true},
+      '10': 'sms',
+    },
   ],
 };
 
 /// Descriptor for `AccountDetails`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountDetailsDescriptor = $convert.base64Decode(
-    'Cg5BY2NvdW50RGV0YWlscxIYCgRuYW1lGAEgASgJQgSAph0BUgRuYW1lEhoKBWVtYWlsGAIgASgJQgSAph0BUgVlbWFpbBIWCgNzbXMYAyABKAlCBICmHQFSA3Ntcw==');
+    'Cg5BY2NvdW50RGV0YWlscxIYCgRuYW1lGAEgASgJQgSAph0BUgRuYW1lEhwKBWVtYWlsGAIgASgJQgYYAYCmHQFSBWVtYWlsEhgKA3NtcxgDIAEoCUIGGAGAph0BUgNzbXM=');
 @$core.Deprecated('Use signInResponseDescriptor instead')
 const SignInResponse$json = const {
   '1': 'SignInResponse',
