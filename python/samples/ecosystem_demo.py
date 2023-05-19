@@ -11,9 +11,7 @@ async def ecosystem_demo():
     trinsic_service = TrinsicService(server_config=trinsic_config())
     # createEcosystem() {
     actual_create = await trinsic_service.provider.create_ecosystem(
-        request=CreateEcosystemRequest(
-            description="My ecosystem"
-        )
+        request=CreateEcosystemRequest(description="My ecosystem")
     )
     # }
     assert actual_create.ecosystem is not None
