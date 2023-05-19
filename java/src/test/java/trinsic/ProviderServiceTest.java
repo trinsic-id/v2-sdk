@@ -23,7 +23,10 @@ public class ProviderServiceTest {
     var account =
         trinsic
             .wallet()
-            .createWallet(CreateWalletRequest.newBuilder().setEcosystemId(ecoCreateResponse.getEcosystem().getId()).build())
+            .createWallet(
+                CreateWalletRequest.newBuilder()
+                    .setEcosystemId(ecoCreateResponse.getEcosystem().getId())
+                    .build())
             .get();
     trinsic.setAuthToken(account.getAuthToken());
 
