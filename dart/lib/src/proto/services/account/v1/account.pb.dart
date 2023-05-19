@@ -134,17 +134,19 @@ class AccountDetails extends $pb.GeneratedMessage {
   AccountDetails._() : super();
   factory AccountDetails({
     $core.String? name,
-    $core.String? email,
-    $core.String? sms,
+    @$core.Deprecated('This field is deprecated.') $core.String? email,
+    @$core.Deprecated('This field is deprecated.') $core.String? sms,
   }) {
     final _result = create();
     if (name != null) {
       _result.name = name;
     }
     if (email != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.email = email;
     }
     if (sms != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.sms = sms;
     }
     return _result;
@@ -188,27 +190,35 @@ class AccountDetails extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   set email($core.String v) {
     $_setString(1, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.bool hasEmail() => $_has(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   void clearEmail() => clearField(2);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.String get sms => $_getSZ(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   set sms($core.String v) {
     $_setString(2, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.bool hasSms() => $_has(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   void clearSms() => clearField(3);
 }

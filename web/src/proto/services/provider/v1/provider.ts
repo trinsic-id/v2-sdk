@@ -192,7 +192,17 @@ export interface SearchWalletConfigurationResponse {
 export interface WalletConfiguration {
   /** Name/description of the wallet */
   name?: string;
+  /**
+   * Deprecated -- use external_identities
+   *
+   * @deprecated
+   */
   email?: string;
+  /**
+   * Deprecated -- use external_identities
+   *
+   * @deprecated
+   */
   sms?: string;
   walletId?: string;
   /** The DID of the wallet */
@@ -204,11 +214,26 @@ export interface WalletConfiguration {
    * such as ID, description, and creation date.
    */
   authTokens?: WalletAuthToken[];
-  /** List of external identities associated with this wallet. */
-  externalIdentities?: string[];
+  /**
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
+   *
+   * @deprecated
+   */
+  externalIdentityIds?: string[];
   /** Ecosystem in which this wallet is contained. */
   ecosystemId?: string;
   description?: string;
+  /** List of external identities associated with this wallet. */
+  externalIdentities?: WalletExternalIdentity[];
+}
+
+/** An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes. */
+export interface WalletExternalIdentity {
+  /** The type of this identity (whether this identity is an email address, phone number, etc.) */
+  provider?: IdentityProvider;
+  /** The actual email address/phone number/etc. for this identity */
+  id?: string;
 }
 
 /** Options for creation of DID on the ION network */
@@ -1363,9 +1388,10 @@ function createBaseWalletConfiguration(): WalletConfiguration {
     publicDid: "",
     configType: "",
     authTokens: [],
-    externalIdentities: [],
+    externalIdentityIds: [],
     ecosystemId: "",
     description: "",
+    externalIdentities: [],
   };
 }
 
@@ -1394,8 +1420,8 @@ export const WalletConfiguration = {
         WalletAuthToken.encode(v!, writer.uint32(58).fork()).ldelim();
       }
     }
-    if (message.externalIdentities !== undefined && message.externalIdentities.length !== 0) {
-      for (const v of message.externalIdentities) {
+    if (message.externalIdentityIds !== undefined && message.externalIdentityIds.length !== 0) {
+      for (const v of message.externalIdentityIds) {
         writer.uint32(66).string(v!);
       }
     }
@@ -1404,6 +1430,11 @@ export const WalletConfiguration = {
     }
     if (message.description !== undefined && message.description !== "") {
       writer.uint32(82).string(message.description);
+    }
+    if (message.externalIdentities !== undefined && message.externalIdentities.length !== 0) {
+      for (const v of message.externalIdentities) {
+        WalletExternalIdentity.encode(v!, writer.uint32(90).fork()).ldelim();
+      }
     }
     return writer;
   },
@@ -1469,7 +1500,7 @@ export const WalletConfiguration = {
             break;
           }
 
-          message.externalIdentities!.push(reader.string());
+          message.externalIdentityIds!.push(reader.string());
           continue;
         case 9:
           if (tag != 74) {
@@ -1484,6 +1515,13 @@ export const WalletConfiguration = {
           }
 
           message.description = reader.string();
+          continue;
+        case 11:
+          if (tag != 90) {
+            break;
+          }
+
+          message.externalIdentities!.push(WalletExternalIdentity.decode(reader, reader.uint32()));
           continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
@@ -1505,11 +1543,14 @@ export const WalletConfiguration = {
       authTokens: Array.isArray(object?.authTokens)
         ? object.authTokens.map((e: any) => WalletAuthToken.fromJSON(e))
         : [],
-      externalIdentities: Array.isArray(object?.externalIdentities)
-        ? object.externalIdentities.map((e: any) => String(e))
+      externalIdentityIds: Array.isArray(object?.externalIdentityIds)
+        ? object.externalIdentityIds.map((e: any) => String(e))
         : [],
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       description: isSet(object.description) ? String(object.description) : "",
+      externalIdentities: Array.isArray(object?.externalIdentities)
+        ? object.externalIdentities.map((e: any) => WalletExternalIdentity.fromJSON(e))
+        : [],
     };
   },
 
@@ -1526,13 +1567,18 @@ export const WalletConfiguration = {
     } else {
       obj.authTokens = [];
     }
-    if (message.externalIdentities) {
-      obj.externalIdentities = message.externalIdentities.map((e) => e);
+    if (message.externalIdentityIds) {
+      obj.externalIdentityIds = message.externalIdentityIds.map((e) => e);
     } else {
-      obj.externalIdentities = [];
+      obj.externalIdentityIds = [];
     }
     message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
     message.description !== undefined && (obj.description = message.description);
+    if (message.externalIdentities) {
+      obj.externalIdentities = message.externalIdentities.map((e) => e ? WalletExternalIdentity.toJSON(e) : undefined);
+    } else {
+      obj.externalIdentities = [];
+    }
     return obj;
   },
 
@@ -1549,9 +1595,81 @@ export const WalletConfiguration = {
     message.publicDid = object.publicDid ?? "";
     message.configType = object.configType ?? "";
     message.authTokens = object.authTokens?.map((e) => WalletAuthToken.fromPartial(e)) || [];
-    message.externalIdentities = object.externalIdentities?.map((e) => e) || [];
+    message.externalIdentityIds = object.externalIdentityIds?.map((e) => e) || [];
     message.ecosystemId = object.ecosystemId ?? "";
     message.description = object.description ?? "";
+    message.externalIdentities = object.externalIdentities?.map((e) => WalletExternalIdentity.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseWalletExternalIdentity(): WalletExternalIdentity {
+  return { provider: 0, id: "" };
+}
+
+export const WalletExternalIdentity = {
+  encode(message: WalletExternalIdentity, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.provider !== undefined && message.provider !== 0) {
+      writer.uint32(8).int32(message.provider);
+    }
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(18).string(message.id);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): WalletExternalIdentity {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseWalletExternalIdentity();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 8) {
+            break;
+          }
+
+          message.provider = reader.int32() as any;
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.id = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): WalletExternalIdentity {
+    return {
+      provider: isSet(object.provider) ? identityProviderFromJSON(object.provider) : 0,
+      id: isSet(object.id) ? String(object.id) : "",
+    };
+  },
+
+  toJSON(message: WalletExternalIdentity): unknown {
+    const obj: any = {};
+    message.provider !== undefined && (obj.provider = identityProviderToJSON(message.provider));
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
+  create(base?: DeepPartial<WalletExternalIdentity>): WalletExternalIdentity {
+    return WalletExternalIdentity.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<WalletExternalIdentity>): WalletExternalIdentity {
+    const message = createBaseWalletExternalIdentity();
+    message.provider = object.provider ?? 0;
+    message.id = object.id ?? "";
     return message;
   },
 };
