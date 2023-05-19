@@ -22,9 +22,7 @@ async def provider_demo():
     trinsic.service_options.auth_token = auth_token
 
     # updateEcosystem() {
-    request = UpdateEcosystemRequest(
-        description="My new description"
-    )
+    request = UpdateEcosystemRequest(description="My new description")
     response = await trinsic.provider.update_ecosystem(request=request)
     # }
 

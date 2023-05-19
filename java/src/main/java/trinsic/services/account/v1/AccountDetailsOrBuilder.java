@@ -37,25 +37,31 @@ public interface AccountDetailsOrBuilder
    *
    *
    * <pre>
-   * Email address of account
+   * Email address of account.
    * </pre>
    *
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+   *     services/account/v1/account.proto;l=29
    * @return The email.
    */
+  @java.lang.Deprecated
   java.lang.String getEmail();
   /**
    *
    *
    * <pre>
-   * Email address of account
+   * Email address of account.
    * </pre>
    *
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+   *     services/account/v1/account.proto;l=29
    * @return The bytes for email.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getEmailBytes();
 
   /**
@@ -65,10 +71,13 @@ public interface AccountDetailsOrBuilder
    * SMS number including country code
    * </pre>
    *
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+   *     services/account/v1/account.proto;l=31
    * @return The sms.
    */
+  @java.lang.Deprecated
   java.lang.String getSms();
   /**
    *
@@ -77,9 +86,12 @@ public interface AccountDetailsOrBuilder
    * SMS number including country code
    * </pre>
    *
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+   *     services/account/v1/account.proto;l=31
    * @return The bytes for sms.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getSmsBytes();
 }

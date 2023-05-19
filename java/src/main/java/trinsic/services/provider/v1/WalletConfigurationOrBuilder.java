@@ -34,29 +34,65 @@ public interface WalletConfigurationOrBuilder
   com.google.protobuf.ByteString getNameBytes();
 
   /**
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+   *     services/provider/v1/provider.proto;l=149
    * @return The email.
    */
+  @java.lang.Deprecated
   java.lang.String getEmail();
   /**
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+   *     services/provider/v1/provider.proto;l=149
    * @return The bytes for email.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getEmailBytes();
 
   /**
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+   *     services/provider/v1/provider.proto;l=151
    * @return The sms.
    */
+  @java.lang.Deprecated
   java.lang.String getSms();
   /**
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+   *     services/provider/v1/provider.proto;l=151
    * @return The bytes for sms.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getSmsBytes();
 
   /**
@@ -176,52 +212,68 @@ public interface WalletConfigurationOrBuilder
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
-   * @return A list containing the externalIdentities.
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
+   * @return A list containing the externalIdentityIds.
    */
-  java.util.List<java.lang.String> getExternalIdentitiesList();
+  @java.lang.Deprecated
+  java.util.List<java.lang.String> getExternalIdentityIdsList();
   /**
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
-   * @return The count of externalIdentities.
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
+   * @return The count of externalIdentityIds.
    */
-  int getExternalIdentitiesCount();
+  @java.lang.Deprecated
+  int getExternalIdentityIdsCount();
   /**
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
    * @param index The index of the element to return.
-   * @return The externalIdentities at the given index.
+   * @return The externalIdentityIds at the given index.
    */
-  java.lang.String getExternalIdentities(int index);
+  @java.lang.Deprecated
+  java.lang.String getExternalIdentityIds(int index);
   /**
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
    * @param index The index of the value to return.
-   * @return The bytes of the externalIdentities at the given index.
+   * @return The bytes of the externalIdentityIds at the given index.
    */
-  com.google.protobuf.ByteString getExternalIdentitiesBytes(int index);
+  @java.lang.Deprecated
+  com.google.protobuf.ByteString getExternalIdentityIdsBytes(int index);
 
   /**
    *
@@ -260,4 +312,57 @@ public interface WalletConfigurationOrBuilder
    * @return The bytes for description.
    */
   com.google.protobuf.ByteString getDescriptionBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  java.util.List<trinsic.services.provider.v1.WalletExternalIdentity> getExternalIdentitiesList();
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  trinsic.services.provider.v1.WalletExternalIdentity getExternalIdentities(int index);
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  int getExternalIdentitiesCount();
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  java.util.List<? extends trinsic.services.provider.v1.WalletExternalIdentityOrBuilder>
+      getExternalIdentitiesOrBuilderList();
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  trinsic.services.provider.v1.WalletExternalIdentityOrBuilder getExternalIdentitiesOrBuilder(
+      int index);
 }

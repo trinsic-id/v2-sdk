@@ -311,8 +311,8 @@ Account registration details
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [string](/reference/proto#string) | Account name |
-| email | [string](/reference/proto#string) | Email address of account |
-| sms | [string](/reference/proto#string) | SMS number including country code |
+| email | [string](/reference/proto#string) | **Deprecated.** Email address of account. |
+| sms | [string](/reference/proto#string) | **Deprecated.** SMS number including country code |
 
 
 
@@ -485,7 +485,7 @@ Token protection info
 <a name="services-account-v1-WalletAuthToken"></a>
 
 ### WalletAuthToken
-Information about authenticaton tokens for a wallet
+Information about authentication tokens for a wallet
 
 
 | Field | Type | Description |
@@ -1545,15 +1545,32 @@ Strongly typed information about wallet configurations
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [string](/reference/proto#string) | Name/description of the wallet |
-| email | [string](/reference/proto#string) |  |
-| sms | [string](/reference/proto#string) |  |
+| email | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
+| sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
 | wallet_id | [string](/reference/proto#string) |  |
 | public_did | [string](/reference/proto#string) | The DID of the wallet |
 | config_type | [string](/reference/proto#string) |  |
 | auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
-| external_identities | [string](/reference/proto#string)[] | List of external identities associated with this wallet. |
+| external_identity_ids | [string](/reference/proto#string)[] | **Deprecated.** List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use `external_identities` instead. |
 | ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
 | description | [string](/reference/proto#string) |  |
+| external_identities | [WalletExternalIdentity](/reference/proto#services-provider-v1-WalletExternalIdentity)[] | List of external identities associated with this wallet. |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletExternalIdentity"></a>
+
+### WalletExternalIdentity
+An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| provider | [IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of this identity (whether this identity is an email address, phone number, etc.) |
+| id | [string](/reference/proto#string) | The actual email address/phone number/etc. for this identity |
 
 
 
