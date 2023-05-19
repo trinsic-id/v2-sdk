@@ -112,7 +112,7 @@ message DeleteWalletRequest {
 // Response to `DeleteWalletRequest`. Empty payload.
 message DeleteWalletResponse {}
 
-message CreateWalletRequest{
+message CreateWalletRequest {
   // Ecosystem ID of the wallet to create
   string ecosystem_id = 1;
   // Wallet name or description.
@@ -121,6 +121,7 @@ message CreateWalletRequest{
   // with this wallet. This field is searchable.
   optional string description = 2 [(options.optional) = true];
 }
+
 message CreateWalletResponse{
   // Auth token for the newly created wallet
   string auth_token = 2;
