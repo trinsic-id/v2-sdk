@@ -1350,6 +1350,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.WalletConfiguration"
     },
+    "services.provider.v1.WalletConfiguration.external_identity_ids": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
     "services.provider.v1.WalletConfiguration.name": {
       "type": "field",
       "collection": "fields",
@@ -1373,6 +1379,24 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.WalletConfiguration"
+    },
+    "services.provider.v1.WalletExternalIdentity": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.WalletExternalIdentity.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletExternalIdentity"
+    },
+    "services.provider.v1.WalletExternalIdentity.provider": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletExternalIdentity"
     },
     "services.trustregistry.v1.AddFrameworkRequest": {
       "type": "message",
@@ -3613,6 +3637,7 @@
         "services.provider.v1.SearchWalletConfigurationsRequest",
         "services.provider.v1.SearchWalletConfigurationResponse",
         "services.provider.v1.WalletConfiguration",
+        "services.provider.v1.WalletExternalIdentity",
         "services.provider.v1.IonOptions",
         "services.provider.v1.IndyOptions",
         "services.provider.v1.UpgradeDidRequest",
@@ -3649,9 +3674,12 @@
         "services.provider.v1.WalletConfiguration.public_did",
         "services.provider.v1.WalletConfiguration.config_type",
         "services.provider.v1.WalletConfiguration.auth_tokens",
-        "services.provider.v1.WalletConfiguration.external_identities",
+        "services.provider.v1.WalletConfiguration.external_identity_ids",
         "services.provider.v1.WalletConfiguration.ecosystem_id",
         "services.provider.v1.WalletConfiguration.description",
+        "services.provider.v1.WalletConfiguration.external_identities",
+        "services.provider.v1.WalletExternalIdentity.provider",
+        "services.provider.v1.WalletExternalIdentity.id",
         "services.provider.v1.IonOptions.network",
         "services.provider.v1.IndyOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
@@ -4778,7 +4806,7 @@
     "services.account.v1.WalletAuthToken": {
       "name": "WalletAuthToken",
       "full_name": "services.account.v1.WalletAuthToken",
-      "description": "Information about authenticaton tokens for a wallet",
+      "description": "Information about authentication tokens for a wallet",
       "fields": [
         "services.account.v1.WalletAuthToken.id",
         "services.account.v1.WalletAuthToken.description",
@@ -5258,9 +5286,21 @@
         "services.provider.v1.WalletConfiguration.public_did",
         "services.provider.v1.WalletConfiguration.config_type",
         "services.provider.v1.WalletConfiguration.auth_tokens",
-        "services.provider.v1.WalletConfiguration.external_identities",
+        "services.provider.v1.WalletConfiguration.external_identity_ids",
         "services.provider.v1.WalletConfiguration.ecosystem_id",
-        "services.provider.v1.WalletConfiguration.description"
+        "services.provider.v1.WalletConfiguration.description",
+        "services.provider.v1.WalletConfiguration.external_identities"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.WalletExternalIdentity": {
+      "name": "WalletExternalIdentity",
+      "full_name": "services.provider.v1.WalletExternalIdentity",
+      "description": "An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.",
+      "fields": [
+        "services.provider.v1.WalletExternalIdentity.provider",
+        "services.provider.v1.WalletExternalIdentity.id"
       ],
       "messages": [],
       "enums": []
@@ -6307,8 +6347,9 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email address of account",
+      "description": "Email address of account.",
       "options": {
+        "deprecated": true,
         "services.options.optional": true
       }
     },
@@ -6331,6 +6372,7 @@
       "full_type": "string",
       "description": "SMS number including country code",
       "options": {
+        "deprecated": true,
         "services.options.optional": true
       }
     },
@@ -7196,8 +7238,9 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "",
+      "description": "Deprecated -- use external_identities",
       "options": {
+        "deprecated": true,
         "services.options.optional": true
       }
     },
@@ -7205,9 +7248,20 @@
       "name": "external_identities",
       "full_name": "services.provider.v1.WalletConfiguration.external_identities",
       "label": "LABEL_REPEATED",
+      "type": "WalletExternalIdentity",
+      "full_type": "services.provider.v1.WalletExternalIdentity",
+      "description": "List of external identities associated with this wallet."
+    },
+    "services.provider.v1.WalletConfiguration.external_identity_ids": {
+      "name": "external_identity_ids",
+      "full_name": "services.provider.v1.WalletConfiguration.external_identity_ids",
+      "label": "LABEL_REPEATED",
       "type": "string",
       "full_type": "string",
-      "description": "List of external identities associated with this wallet."
+      "description": "List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.\nThis is deprecated; use `external_identities` instead.",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.provider.v1.WalletConfiguration.name": {
       "name": "name",
@@ -7231,8 +7285,9 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "",
+      "description": "Deprecated -- use external_identities",
       "options": {
+        "deprecated": true,
         "services.options.optional": true
       }
     },
@@ -7243,6 +7298,22 @@
       "type": "string",
       "full_type": "string",
       "description": ""
+    },
+    "services.provider.v1.WalletExternalIdentity.id": {
+      "name": "id",
+      "full_name": "services.provider.v1.WalletExternalIdentity.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The actual email address/phone number/etc. for this identity"
+    },
+    "services.provider.v1.WalletExternalIdentity.provider": {
+      "name": "provider",
+      "full_name": "services.provider.v1.WalletExternalIdentity.provider",
+      "label": "LABEL_OPTIONAL",
+      "type": "IdentityProvider",
+      "full_type": "services.provider.v1.IdentityProvider",
+      "description": "The type of this identity (whether this identity is an email address, phone number, etc.)"
     },
     "services.trustregistry.v1.AddFrameworkRequest.description": {
       "name": "description",

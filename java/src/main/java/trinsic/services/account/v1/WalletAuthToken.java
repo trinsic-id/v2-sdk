@@ -7,7 +7,7 @@ package trinsic.services.account.v1;
  *
  *
  * <pre>
- * Information about authenticaton tokens for a wallet
+ * Information about authentication tokens for a wallet
  * </pre>
  *
  * Protobuf type {@code services.account.v1.WalletAuthToken}
@@ -405,7 +405,7 @@ public final class WalletAuthToken extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Information about authenticaton tokens for a wallet
+   * Information about authentication tokens for a wallet
    * </pre>
    *
    * Protobuf type {@code services.account.v1.WalletAuthToken}

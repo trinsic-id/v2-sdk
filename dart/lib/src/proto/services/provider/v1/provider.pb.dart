@@ -1284,7 +1284,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
         8,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'externalIdentities')
+            : 'externalIdentityIds')
     ..aOS(
         9,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1295,29 +1295,40 @@ class WalletConfiguration extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
+    ..pc<WalletExternalIdentity>(
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'externalIdentities',
+        $pb.PbFieldType.PM,
+        subBuilder: WalletExternalIdentity.create)
     ..hasRequiredFields = false;
 
   WalletConfiguration._() : super();
   factory WalletConfiguration({
     $core.String? name,
-    $core.String? email,
-    $core.String? sms,
+    @$core.Deprecated('This field is deprecated.') $core.String? email,
+    @$core.Deprecated('This field is deprecated.') $core.String? sms,
     $core.String? walletId,
     $core.String? publicDid,
     $core.String? configType,
     $core.Iterable<$1.WalletAuthToken>? authTokens,
-    $core.Iterable<$core.String>? externalIdentities,
+    @$core.Deprecated('This field is deprecated.')
+    $core.Iterable<$core.String>? externalIdentityIds,
     $core.String? ecosystemId,
     $core.String? description,
+    $core.Iterable<WalletExternalIdentity>? externalIdentities,
   }) {
     final _result = create();
     if (name != null) {
       _result.name = name;
     }
     if (email != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.email = email;
     }
     if (sms != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.sms = sms;
     }
     if (walletId != null) {
@@ -1332,14 +1343,18 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     if (authTokens != null) {
       _result.authTokens.addAll(authTokens);
     }
-    if (externalIdentities != null) {
-      _result.externalIdentities.addAll(externalIdentities);
+    if (externalIdentityIds != null) {
+      // ignore: deprecated_member_use_from_same_package
+      _result.externalIdentityIds.addAll(externalIdentityIds);
     }
     if (ecosystemId != null) {
       _result.ecosystemId = ecosystemId;
     }
     if (description != null) {
       _result.description = description;
+    }
+    if (externalIdentities != null) {
+      _result.externalIdentities.addAll(externalIdentities);
     }
     return _result;
   }
@@ -1382,27 +1397,35 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   set email($core.String v) {
     $_setString(1, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.bool hasEmail() => $_has(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   void clearEmail() => clearField(2);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.String get sms => $_getSZ(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   set sms($core.String v) {
     $_setString(2, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.bool hasSms() => $_has(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   void clearSms() => clearField(3);
 
@@ -1445,8 +1468,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.List<$1.WalletAuthToken> get authTokens => $_getList(6);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(8)
-  $core.List<$core.String> get externalIdentities => $_getList(7);
+  $core.List<$core.String> get externalIdentityIds => $_getList(7);
 
   @$pb.TagNumber(9)
   $core.String get ecosystemId => $_getSZ(8);
@@ -1471,6 +1495,103 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   $core.bool hasDescription() => $_has(9);
   @$pb.TagNumber(10)
   void clearDescription() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.List<WalletExternalIdentity> get externalIdentities => $_getList(10);
+}
+
+class WalletExternalIdentity extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'WalletExternalIdentity',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..e<IdentityProvider>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'provider',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: IdentityProvider.Unknown,
+        valueOf: IdentityProvider.valueOf,
+        enumValues: IdentityProvider.values)
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'id')
+    ..hasRequiredFields = false;
+
+  WalletExternalIdentity._() : super();
+  factory WalletExternalIdentity({
+    IdentityProvider? provider,
+    $core.String? id,
+  }) {
+    final _result = create();
+    if (provider != null) {
+      _result.provider = provider;
+    }
+    if (id != null) {
+      _result.id = id;
+    }
+    return _result;
+  }
+  factory WalletExternalIdentity.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory WalletExternalIdentity.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  WalletExternalIdentity clone() =>
+      WalletExternalIdentity()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  WalletExternalIdentity copyWith(
+          void Function(WalletExternalIdentity) updates) =>
+      super.copyWith((message) => updates(message as WalletExternalIdentity))
+          as WalletExternalIdentity; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static WalletExternalIdentity create() => WalletExternalIdentity._();
+  WalletExternalIdentity createEmptyInstance() => create();
+  static $pb.PbList<WalletExternalIdentity> createRepeated() =>
+      $pb.PbList<WalletExternalIdentity>();
+  @$core.pragma('dart2js:noInline')
+  static WalletExternalIdentity getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WalletExternalIdentity>(create);
+  static WalletExternalIdentity? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  IdentityProvider get provider => $_getN(0);
+  @$pb.TagNumber(1)
+  set provider(IdentityProvider v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasProvider() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearProvider() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get id => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set id($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearId() => clearField(2);
 }
 
 class IonOptions extends $pb.GeneratedMessage {
