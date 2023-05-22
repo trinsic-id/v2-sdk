@@ -73,9 +73,17 @@ export interface SignInRequest {
 export interface AccountDetails {
   /** Account name */
   name?: string;
-  /** Email address of account */
+  /**
+   * Email address of account.
+   *
+   * @deprecated
+   */
   email?: string;
-  /** SMS number including country code */
+  /**
+   * SMS number including country code
+   *
+   * @deprecated
+   */
   sms?: string;
 }
 
@@ -203,7 +211,7 @@ export interface LoginConfirmResponse {
   profile?: AccountProfile;
 }
 
-/** Information about authenticaton tokens for a wallet */
+/** Information about authentication tokens for a wallet */
 export interface WalletAuthToken {
   /**
    * Unique identifier for the token.

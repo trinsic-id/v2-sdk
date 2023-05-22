@@ -109,14 +109,17 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email address of account
+   * Email address of account.
    * </pre>
    *
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+   *     services/account/v1/account.proto;l=29
    * @return The email.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getEmail() {
     java.lang.Object ref = email_;
     if (ref instanceof java.lang.String) {
@@ -132,14 +135,17 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email address of account
+   * Email address of account.
    * </pre>
    *
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+   *     services/account/v1/account.proto;l=29
    * @return The bytes for email.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getEmailBytes() {
     java.lang.Object ref = email_;
     if (ref instanceof java.lang.String) {
@@ -161,11 +167,14 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    * SMS number including country code
    * </pre>
    *
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+   *     services/account/v1/account.proto;l=31
    * @return The sms.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getSms() {
     java.lang.Object ref = sms_;
     if (ref instanceof java.lang.String) {
@@ -184,11 +193,14 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    * SMS number including country code
    * </pre>
    *
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+   *     services/account/v1/account.proto;l=31
    * @return The bytes for sms.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getSmsBytes() {
     java.lang.Object ref = sms_;
     if (ref instanceof java.lang.String) {
@@ -685,13 +697,16 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of account
+     * Email address of account.
      * </pre>
      *
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+     *     services/account/v1/account.proto;l=29
      * @return The email.
      */
+    @java.lang.Deprecated
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
       if (!(ref instanceof java.lang.String)) {
@@ -707,13 +722,16 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of account
+     * Email address of account.
      * </pre>
      *
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+     *     services/account/v1/account.proto;l=29
      * @return The bytes for email.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getEmailBytes() {
       java.lang.Object ref = email_;
       if (ref instanceof String) {
@@ -729,14 +747,17 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of account
+     * Email address of account.
      * </pre>
      *
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+     *     services/account/v1/account.proto;l=29
      * @param value The email to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setEmail(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -750,13 +771,16 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of account
+     * Email address of account.
      * </pre>
      *
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+     *     services/account/v1/account.proto;l=29
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearEmail() {
 
       email_ = getDefaultInstance().getEmail();
@@ -767,14 +791,17 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email address of account
+     * Email address of account.
      * </pre>
      *
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.email is deprecated. See
+     *     services/account/v1/account.proto;l=29
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setEmailBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
@@ -794,10 +821,13 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+     *     services/account/v1/account.proto;l=31
      * @return The sms.
      */
+    @java.lang.Deprecated
     public java.lang.String getSms() {
       java.lang.Object ref = sms_;
       if (!(ref instanceof java.lang.String)) {
@@ -816,10 +846,13 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+     *     services/account/v1/account.proto;l=31
      * @return The bytes for sms.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getSmsBytes() {
       java.lang.Object ref = sms_;
       if (ref instanceof String) {
@@ -838,11 +871,14 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+     *     services/account/v1/account.proto;l=31
      * @param value The sms to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setSms(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -859,10 +895,13 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+     *     services/account/v1/account.proto;l=31
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearSms() {
 
       sms_ = getDefaultInstance().getSms();
@@ -876,11 +915,14 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
+     *     services/account/v1/account.proto;l=31
      * @param value The bytes for sms to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setSmsBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();

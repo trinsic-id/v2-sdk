@@ -77,6 +77,10 @@ public final class ProviderOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_WalletExternalIdentity_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_WalletExternalIdentity_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_provider_v1_IonOptions_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_IonOptions_fieldAccessorTable;
@@ -145,27 +149,32 @@ public final class ProviderOuterClass {
           + "!SearchWalletConfigurationResponse\022:\n"
           + "\007results\030\001 \003(\0132).services.provider.v1.WalletConfiguration\022\030\n"
           + "\020has_more_results\030\002 \001(\010\022\032\n"
-          + "\022continuation_token\030\004 \001(\t\"\212\002\n"
+          + "\022continuation_token\030\004 \001(\t\"\337\002\n"
           + "\023WalletConfiguration\022\014\n"
-          + "\004name\030\001 \001(\t\022\023\n"
-          + "\005email\030\002 \001(\tB\004\200\246\035\001\022\021\n"
-          + "\003sms\030\003 \001(\tB\004\200\246\035\001\022\021\n"
+          + "\004name\030\001 \001(\t\022\025\n"
+          + "\005email\030\002 \001(\tB\006\030\001\200\246\035\001\022\023\n"
+          + "\003sms\030\003 \001(\tB\006\030\001\200\246\035\001\022\021\n"
           + "\twallet_id\030\004 \001(\t\022\022\n\n"
           + "public_did\030\005 \001(\t\022\023\n"
           + "\013config_type\030\006 \001(\t\0229\n"
-          + "\013auth_tokens\030\007 \003(\0132$.services.account.v1.WalletAuthToken\022\033\n"
-          + "\023external_identities\030\010 \003(\t\022\024\n"
+          + "\013auth_tokens\030\007 \003(\0132$.services.account.v1.WalletAuthToken\022!\n"
+          + "\025external_identity_ids\030\010 \003(\tB\002\030\001\022\024\n"
           + "\014ecosystem_id\030\t \001(\t\022\023\n"
           + "\013description\030\n"
-          + " \001(\t\"r\n\n"
+          + " \001(\t\022I\n"
+          + "\023external_identities\030\013"
+          + " \003(\0132,.services.provider.v1.WalletExternalIdentity\"^\n"
+          + "\026WalletExternalIdentity\0228\n"
+          + "\010provider\030\001 \001(\0162&.services.provider.v1.IdentityProvider\022\n\n"
+          + "\002id\030\002 \001(\t\"r\n\n"
           + "IonOptions\022<\n"
           + "\007network\030\001 \001(\0162+.services.provider.v1.IonOptions.IonNetwork\"&\n\n"
           + "IonNetwork\022\013\n"
           + "\007TestNet\020\000\022\013\n"
           + "\007MainNet\020\001\"\350\001\n"
           + "\013IndyOptions\022>\n"
-          + "\007network\030\001"
-          + " \001(\0162-.services.provider.v1.IndyOptions.IndyNetwork\"\230\001\n"
+          + "\007network\030\001 \001("
+          + "\0162-.services.provider.v1.IndyOptions.IndyNetwork\"\230\001\n"
           + "\013IndyNetwork\022\n\n"
           + "\006Danube\020\000\022\021\n\r"
           + "SovrinBuilder\020\001\022\021\n\r"
@@ -192,21 +201,20 @@ public final class ProviderOuterClass {
           + "\005Email\020\001\022\t\n"
           + "\005Phone\020\0022\212\005\n"
           + "\010Provider\022v\n"
-          + "\017CreateEcosystem\022,.services.provider.v1"
-          + ".CreateEcosystemRequest\032-.services.provi"
-          + "der.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022\236\001\n"
-          + "\017UpdateEcosystem\022,.services.provider.v"
-          + "1.UpdateEcosystemRequest\032-.services.prov"
-          + "ider.v1.UpdateEcosystemResponse\".\210\002\001\212\246\035\'*%\010\001\022!This will"
-          + " be removed June 1, 2023\022s\n"
-          + "\014GetOberonKey\022).services.provider.v1.G"
-          + "etOberonKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\014\212\246\035\002\010\001\212\246\035\002\030\001\022_\n\n"
-          + "UpgradeDID\022\'.services.provider.v1.Upgrad"
-          + "eDidRequest\032(.services.provider.v1.UpgradeDidResponse\022\216\001\n"
-          + "\032SearchWalletConfigurations\0227.services.provider.v1.SearchWallet"
-          + "ConfigurationsRequest\0327.services.provider.v1.SearchWalletConfigurationResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035servic"
-          + "es/provider/v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemReq"
+          + "uest\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022\236\001\n"
+          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosystemRe"
+          + "quest\032-.services.provider.v1.UpdateEcosystemResponse\".\210\002\001\212\246\035\'*%\010\001\022!This"
+          + " will be removed June 1, 2023\022s\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyRequest\032"
+          + "*.services.provider.v1.GetOberonKeyResponse\"\014\212\246\035\002\010\001\212\246\035\002\030\001\022_\n\n"
+          + "UpgradeDID\022\'.servic"
+          + "es.provider.v1.UpgradeDidRequest\032(.services.provider.v1.UpgradeDidResponse\022\216\001\n"
+          + "\032SearchWalletConfigurations\0227.services.pro"
+          + "vider.v1.SearchWalletConfigurationsReque"
+          + "st\0327.services.provider.v1.SearchWalletConfigurationResponseB^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/prov"
+          + "ider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -341,12 +349,21 @@ public final class ProviderOuterClass {
               "PublicDid",
               "ConfigType",
               "AuthTokens",
-              "ExternalIdentities",
+              "ExternalIdentityIds",
               "EcosystemId",
               "Description",
+              "ExternalIdentities",
+            });
+    internal_static_services_provider_v1_WalletExternalIdentity_descriptor =
+        getDescriptor().getMessageTypes().get(16);
+    internal_static_services_provider_v1_WalletExternalIdentity_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_WalletExternalIdentity_descriptor,
+            new java.lang.String[] {
+              "Provider", "Id",
             });
     internal_static_services_provider_v1_IonOptions_descriptor =
-        getDescriptor().getMessageTypes().get(16);
+        getDescriptor().getMessageTypes().get(17);
     internal_static_services_provider_v1_IonOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_IonOptions_descriptor,
@@ -354,7 +371,7 @@ public final class ProviderOuterClass {
               "Network",
             });
     internal_static_services_provider_v1_IndyOptions_descriptor =
-        getDescriptor().getMessageTypes().get(17);
+        getDescriptor().getMessageTypes().get(18);
     internal_static_services_provider_v1_IndyOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_IndyOptions_descriptor,
@@ -362,7 +379,7 @@ public final class ProviderOuterClass {
               "Network",
             });
     internal_static_services_provider_v1_UpgradeDidRequest_descriptor =
-        getDescriptor().getMessageTypes().get(18);
+        getDescriptor().getMessageTypes().get(19);
     internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpgradeDidRequest_descriptor,
@@ -377,7 +394,7 @@ public final class ProviderOuterClass {
               "Options",
             });
     internal_static_services_provider_v1_UpgradeDidResponse_descriptor =
-        getDescriptor().getMessageTypes().get(19);
+        getDescriptor().getMessageTypes().get(20);
     internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpgradeDidResponse_descriptor,

@@ -30,9 +30,10 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     publicDid_ = "";
     configType_ = "";
     authTokens_ = java.util.Collections.emptyList();
-    externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    externalIdentityIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     ecosystemId_ = "";
     description_ = "";
+    externalIdentities_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -113,11 +114,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
   public static final int EMAIL_FIELD_NUMBER = 2;
   private volatile java.lang.Object email_;
   /**
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+   *     services/provider/v1/provider.proto;l=149
    * @return The email.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getEmail() {
     java.lang.Object ref = email_;
     if (ref instanceof java.lang.String) {
@@ -130,11 +140,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
   /**
-   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+   *     services/provider/v1/provider.proto;l=149
    * @return The bytes for email.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getEmailBytes() {
     java.lang.Object ref = email_;
     if (ref instanceof java.lang.String) {
@@ -150,11 +169,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
   public static final int SMS_FIELD_NUMBER = 3;
   private volatile java.lang.Object sms_;
   /**
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+   *     services/provider/v1/provider.proto;l=151
    * @return The sms.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getSms() {
     java.lang.Object ref = sms_;
     if (ref instanceof java.lang.String) {
@@ -167,11 +195,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
   /**
-   * <code>string sms = 3 [(.services.options.optional) = true];</code>
    *
+   *
+   * <pre>
+   * Deprecated -- use external_identities
+   * </pre>
+   *
+   * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+   *
+   * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+   *     services/provider/v1/provider.proto;l=151
    * @return The bytes for sms.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getSmsBytes() {
     java.lang.Object ref = sms_;
     if (ref instanceof java.lang.String) {
@@ -386,65 +423,81 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     return authTokens_.get(index);
   }
 
-  public static final int EXTERNAL_IDENTITIES_FIELD_NUMBER = 8;
-  private com.google.protobuf.LazyStringList externalIdentities_;
+  public static final int EXTERNAL_IDENTITY_IDS_FIELD_NUMBER = 8;
+  private com.google.protobuf.LazyStringList externalIdentityIds_;
   /**
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
-   * @return A list containing the externalIdentities.
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
+   * @return A list containing the externalIdentityIds.
    */
-  public com.google.protobuf.ProtocolStringList getExternalIdentitiesList() {
-    return externalIdentities_;
+  @java.lang.Deprecated
+  public com.google.protobuf.ProtocolStringList getExternalIdentityIdsList() {
+    return externalIdentityIds_;
   }
   /**
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
-   * @return The count of externalIdentities.
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
+   * @return The count of externalIdentityIds.
    */
-  public int getExternalIdentitiesCount() {
-    return externalIdentities_.size();
+  @java.lang.Deprecated
+  public int getExternalIdentityIdsCount() {
+    return externalIdentityIds_.size();
   }
   /**
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
    * @param index The index of the element to return.
-   * @return The externalIdentities at the given index.
+   * @return The externalIdentityIds at the given index.
    */
-  public java.lang.String getExternalIdentities(int index) {
-    return externalIdentities_.get(index);
+  @java.lang.Deprecated
+  public java.lang.String getExternalIdentityIds(int index) {
+    return externalIdentityIds_.get(index);
   }
   /**
    *
    *
    * <pre>
-   * List of external identities associated with this wallet.
+   * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+   * This is deprecated; use `external_identities` instead.
    * </pre>
    *
-   * <code>repeated string external_identities = 8;</code>
+   * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+   *     services/provider/v1/provider.proto;l=163
    * @param index The index of the value to return.
-   * @return The bytes of the externalIdentities at the given index.
+   * @return The bytes of the externalIdentityIds at the given index.
    */
-  public com.google.protobuf.ByteString getExternalIdentitiesBytes(int index) {
-    return externalIdentities_.getByteString(index);
+  @java.lang.Deprecated
+  public com.google.protobuf.ByteString getExternalIdentityIdsBytes(int index) {
+    return externalIdentityIds_.getByteString(index);
   }
 
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 9;
@@ -533,6 +586,77 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
 
+  public static final int EXTERNAL_IDENTITIES_FIELD_NUMBER = 11;
+  private java.util.List<trinsic.services.provider.v1.WalletExternalIdentity> externalIdentities_;
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  @java.lang.Override
+  public java.util.List<trinsic.services.provider.v1.WalletExternalIdentity>
+      getExternalIdentitiesList() {
+    return externalIdentities_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends trinsic.services.provider.v1.WalletExternalIdentityOrBuilder>
+      getExternalIdentitiesOrBuilderList() {
+    return externalIdentities_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  @java.lang.Override
+  public int getExternalIdentitiesCount() {
+    return externalIdentities_.size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.WalletExternalIdentity getExternalIdentities(int index) {
+    return externalIdentities_.get(index);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * List of external identities associated with this wallet.
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.WalletExternalIdentityOrBuilder
+      getExternalIdentitiesOrBuilder(int index) {
+    return externalIdentities_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -568,14 +692,17 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     for (int i = 0; i < authTokens_.size(); i++) {
       output.writeMessage(7, authTokens_.get(i));
     }
-    for (int i = 0; i < externalIdentities_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, externalIdentities_.getRaw(i));
+    for (int i = 0; i < externalIdentityIds_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, externalIdentityIds_.getRaw(i));
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, ecosystemId_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, description_);
+    }
+    for (int i = 0; i < externalIdentities_.size(); i++) {
+      output.writeMessage(11, externalIdentities_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -609,17 +736,21 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
     {
       int dataSize = 0;
-      for (int i = 0; i < externalIdentities_.size(); i++) {
-        dataSize += computeStringSizeNoTag(externalIdentities_.getRaw(i));
+      for (int i = 0; i < externalIdentityIds_.size(); i++) {
+        dataSize += computeStringSizeNoTag(externalIdentityIds_.getRaw(i));
       }
       size += dataSize;
-      size += 1 * getExternalIdentitiesList().size();
+      size += 1 * getExternalIdentityIdsList().size();
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, ecosystemId_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, description_);
+    }
+    for (int i = 0; i < externalIdentities_.size(); i++) {
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(11, externalIdentities_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -644,9 +775,10 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!getPublicDid().equals(other.getPublicDid())) return false;
     if (!getConfigType().equals(other.getConfigType())) return false;
     if (!getAuthTokensList().equals(other.getAuthTokensList())) return false;
-    if (!getExternalIdentitiesList().equals(other.getExternalIdentitiesList())) return false;
+    if (!getExternalIdentityIdsList().equals(other.getExternalIdentityIdsList())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getDescription().equals(other.getDescription())) return false;
+    if (!getExternalIdentitiesList().equals(other.getExternalIdentitiesList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -674,14 +806,18 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       hash = (37 * hash) + AUTH_TOKENS_FIELD_NUMBER;
       hash = (53 * hash) + getAuthTokensList().hashCode();
     }
-    if (getExternalIdentitiesCount() > 0) {
-      hash = (37 * hash) + EXTERNAL_IDENTITIES_FIELD_NUMBER;
-      hash = (53 * hash) + getExternalIdentitiesList().hashCode();
+    if (getExternalIdentityIdsCount() > 0) {
+      hash = (37 * hash) + EXTERNAL_IDENTITY_IDS_FIELD_NUMBER;
+      hash = (53 * hash) + getExternalIdentityIdsList().hashCode();
     }
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
+    if (getExternalIdentitiesCount() > 0) {
+      hash = (37 * hash) + EXTERNAL_IDENTITIES_FIELD_NUMBER;
+      hash = (53 * hash) + getExternalIdentitiesList().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -839,12 +975,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         authTokensBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000001);
-      externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      externalIdentityIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000002);
       ecosystemId_ = "";
 
       description_ = "";
 
+      if (externalIdentitiesBuilder_ == null) {
+        externalIdentities_ = java.util.Collections.emptyList();
+      } else {
+        externalIdentities_ = null;
+        externalIdentitiesBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000004);
       return this;
     }
 
@@ -889,12 +1032,21 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         result.authTokens_ = authTokensBuilder_.build();
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        externalIdentities_ = externalIdentities_.getUnmodifiableView();
+        externalIdentityIds_ = externalIdentityIds_.getUnmodifiableView();
         bitField0_ = (bitField0_ & ~0x00000002);
       }
-      result.externalIdentities_ = externalIdentities_;
+      result.externalIdentityIds_ = externalIdentityIds_;
       result.ecosystemId_ = ecosystemId_;
       result.description_ = description_;
+      if (externalIdentitiesBuilder_ == null) {
+        if (((bitField0_ & 0x00000004) != 0)) {
+          externalIdentities_ = java.util.Collections.unmodifiableList(externalIdentities_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.externalIdentities_ = externalIdentities_;
+      } else {
+        result.externalIdentities_ = externalIdentitiesBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -996,13 +1148,13 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
           }
         }
       }
-      if (!other.externalIdentities_.isEmpty()) {
-        if (externalIdentities_.isEmpty()) {
-          externalIdentities_ = other.externalIdentities_;
+      if (!other.externalIdentityIds_.isEmpty()) {
+        if (externalIdentityIds_.isEmpty()) {
+          externalIdentityIds_ = other.externalIdentityIds_;
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          ensureExternalIdentitiesIsMutable();
-          externalIdentities_.addAll(other.externalIdentities_);
+          ensureExternalIdentityIdsIsMutable();
+          externalIdentityIds_.addAll(other.externalIdentityIds_);
         }
         onChanged();
       }
@@ -1013,6 +1165,33 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       if (!other.getDescription().isEmpty()) {
         description_ = other.description_;
         onChanged();
+      }
+      if (externalIdentitiesBuilder_ == null) {
+        if (!other.externalIdentities_.isEmpty()) {
+          if (externalIdentities_.isEmpty()) {
+            externalIdentities_ = other.externalIdentities_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureExternalIdentitiesIsMutable();
+            externalIdentities_.addAll(other.externalIdentities_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.externalIdentities_.isEmpty()) {
+          if (externalIdentitiesBuilder_.isEmpty()) {
+            externalIdentitiesBuilder_.dispose();
+            externalIdentitiesBuilder_ = null;
+            externalIdentities_ = other.externalIdentities_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+            externalIdentitiesBuilder_ =
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                    ? getExternalIdentitiesFieldBuilder()
+                    : null;
+          } else {
+            externalIdentitiesBuilder_.addAllMessages(other.externalIdentities_);
+          }
+        }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -1092,8 +1271,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
             case 66:
               {
                 java.lang.String s = input.readStringRequireUtf8();
-                ensureExternalIdentitiesIsMutable();
-                externalIdentities_.add(s);
+                ensureExternalIdentityIdsIsMutable();
+                externalIdentityIds_.add(s);
                 break;
               } // case 66
             case 74:
@@ -1108,6 +1287,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
                 break;
               } // case 82
+            case 90:
+              {
+                trinsic.services.provider.v1.WalletExternalIdentity m =
+                    input.readMessage(
+                        trinsic.services.provider.v1.WalletExternalIdentity.parser(),
+                        extensionRegistry);
+                if (externalIdentitiesBuilder_ == null) {
+                  ensureExternalIdentitiesIsMutable();
+                  externalIdentities_.add(m);
+                } else {
+                  externalIdentitiesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 90
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1235,10 +1428,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object email_ = "";
     /**
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+     *     services/provider/v1/provider.proto;l=149
      * @return The email.
      */
+    @java.lang.Deprecated
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
       if (!(ref instanceof java.lang.String)) {
@@ -1251,10 +1453,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+     *     services/provider/v1/provider.proto;l=149
      * @return The bytes for email.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getEmailBytes() {
       java.lang.Object ref = email_;
       if (ref instanceof String) {
@@ -1267,11 +1478,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+     *     services/provider/v1/provider.proto;l=149
      * @param value The email to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setEmail(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1282,10 +1502,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+     *     services/provider/v1/provider.proto;l=149
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearEmail() {
 
       email_ = getDefaultInstance().getEmail();
@@ -1293,11 +1522,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
-     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
+     *     services/provider/v1/provider.proto;l=149
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setEmailBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1311,10 +1549,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object sms_ = "";
     /**
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+     *     services/provider/v1/provider.proto;l=151
      * @return The sms.
      */
+    @java.lang.Deprecated
     public java.lang.String getSms() {
       java.lang.Object ref = sms_;
       if (!(ref instanceof java.lang.String)) {
@@ -1327,10 +1574,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+     *     services/provider/v1/provider.proto;l=151
      * @return The bytes for sms.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getSmsBytes() {
       java.lang.Object ref = sms_;
       if (ref instanceof String) {
@@ -1343,11 +1599,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+     *     services/provider/v1/provider.proto;l=151
      * @param value The sms to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setSms(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1358,10 +1623,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+     *     services/provider/v1/provider.proto;l=151
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearSms() {
 
       sms_ = getDefaultInstance().getSms();
@@ -1369,11 +1643,20 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
-     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      *
+     *
+     * <pre>
+     * Deprecated -- use external_identities
+     * </pre>
+     *
+     * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
+     *
+     * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
+     *     services/provider/v1/provider.proto;l=151
      * @param value The bytes for sms to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setSmsBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
@@ -2030,12 +2313,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       return authTokensBuilder_;
     }
 
-    private com.google.protobuf.LazyStringList externalIdentities_ =
+    private com.google.protobuf.LazyStringList externalIdentityIds_ =
         com.google.protobuf.LazyStringArrayList.EMPTY;
 
-    private void ensureExternalIdentitiesIsMutable() {
+    private void ensureExternalIdentityIdsIsMutable() {
       if (!((bitField0_ & 0x00000002) != 0)) {
-        externalIdentities_ = new com.google.protobuf.LazyStringArrayList(externalIdentities_);
+        externalIdentityIds_ = new com.google.protobuf.LazyStringArrayList(externalIdentityIds_);
         bitField0_ |= 0x00000002;
       }
     }
@@ -2043,79 +2326,99 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
-     * @return A list containing the externalIdentities.
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
+     * @return A list containing the externalIdentityIds.
      */
-    public com.google.protobuf.ProtocolStringList getExternalIdentitiesList() {
-      return externalIdentities_.getUnmodifiableView();
+    @java.lang.Deprecated
+    public com.google.protobuf.ProtocolStringList getExternalIdentityIdsList() {
+      return externalIdentityIds_.getUnmodifiableView();
     }
     /**
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
-     * @return The count of externalIdentities.
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
+     * @return The count of externalIdentityIds.
      */
-    public int getExternalIdentitiesCount() {
-      return externalIdentities_.size();
+    @java.lang.Deprecated
+    public int getExternalIdentityIdsCount() {
+      return externalIdentityIds_.size();
     }
     /**
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
      * @param index The index of the element to return.
-     * @return The externalIdentities at the given index.
+     * @return The externalIdentityIds at the given index.
      */
-    public java.lang.String getExternalIdentities(int index) {
-      return externalIdentities_.get(index);
+    @java.lang.Deprecated
+    public java.lang.String getExternalIdentityIds(int index) {
+      return externalIdentityIds_.get(index);
     }
     /**
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
      * @param index The index of the value to return.
-     * @return The bytes of the externalIdentities at the given index.
+     * @return The bytes of the externalIdentityIds at the given index.
      */
-    public com.google.protobuf.ByteString getExternalIdentitiesBytes(int index) {
-      return externalIdentities_.getByteString(index);
+    @java.lang.Deprecated
+    public com.google.protobuf.ByteString getExternalIdentityIdsBytes(int index) {
+      return externalIdentityIds_.getByteString(index);
     }
     /**
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
      * @param index The index to set the value at.
-     * @param value The externalIdentities to set.
+     * @param value The externalIdentityIds to set.
      * @return This builder for chaining.
      */
-    public Builder setExternalIdentities(int index, java.lang.String value) {
+    @java.lang.Deprecated
+    public Builder setExternalIdentityIds(int index, java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureExternalIdentitiesIsMutable();
-      externalIdentities_.set(index, value);
+      ensureExternalIdentityIdsIsMutable();
+      externalIdentityIds_.set(index, value);
       onChanged();
       return this;
     }
@@ -2123,20 +2426,24 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
-     * @param value The externalIdentities to add.
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
+     * @param value The externalIdentityIds to add.
      * @return This builder for chaining.
      */
-    public Builder addExternalIdentities(java.lang.String value) {
+    @java.lang.Deprecated
+    public Builder addExternalIdentityIds(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      ensureExternalIdentitiesIsMutable();
-      externalIdentities_.add(value);
+      ensureExternalIdentityIdsIsMutable();
+      externalIdentityIds_.add(value);
       onChanged();
       return this;
     }
@@ -2144,17 +2451,21 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
-     * @param values The externalIdentities to add.
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
+     * @param values The externalIdentityIds to add.
      * @return This builder for chaining.
      */
-    public Builder addAllExternalIdentities(java.lang.Iterable<java.lang.String> values) {
-      ensureExternalIdentitiesIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, externalIdentities_);
+    @java.lang.Deprecated
+    public Builder addAllExternalIdentityIds(java.lang.Iterable<java.lang.String> values) {
+      ensureExternalIdentityIdsIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, externalIdentityIds_);
       onChanged();
       return this;
     }
@@ -2162,15 +2473,19 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
      * @return This builder for chaining.
      */
-    public Builder clearExternalIdentities() {
-      externalIdentities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    @java.lang.Deprecated
+    public Builder clearExternalIdentityIds() {
+      externalIdentityIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000002);
       onChanged();
       return this;
@@ -2179,21 +2494,25 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * List of external identities associated with this wallet.
+     * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+     * This is deprecated; use `external_identities` instead.
      * </pre>
      *
-     * <code>repeated string external_identities = 8;</code>
+     * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
-     * @param value The bytes of the externalIdentities to add.
+     * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
+     *     services/provider/v1/provider.proto;l=163
+     * @param value The bytes of the externalIdentityIds to add.
      * @return This builder for chaining.
      */
-    public Builder addExternalIdentitiesBytes(com.google.protobuf.ByteString value) {
+    @java.lang.Deprecated
+    public Builder addExternalIdentityIdsBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
-      ensureExternalIdentitiesIsMutable();
-      externalIdentities_.add(value);
+      ensureExternalIdentityIdsIsMutable();
+      externalIdentityIds_.add(value);
       onChanged();
       return this;
     }
@@ -2378,6 +2697,370 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       description_ = value;
       onChanged();
       return this;
+    }
+
+    private java.util.List<trinsic.services.provider.v1.WalletExternalIdentity>
+        externalIdentities_ = java.util.Collections.emptyList();
+
+    private void ensureExternalIdentitiesIsMutable() {
+      if (!((bitField0_ & 0x00000004) != 0)) {
+        externalIdentities_ =
+            new java.util.ArrayList<trinsic.services.provider.v1.WalletExternalIdentity>(
+                externalIdentities_);
+        bitField0_ |= 0x00000004;
+      }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+            trinsic.services.provider.v1.WalletExternalIdentity,
+            trinsic.services.provider.v1.WalletExternalIdentity.Builder,
+            trinsic.services.provider.v1.WalletExternalIdentityOrBuilder>
+        externalIdentitiesBuilder_;
+
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public java.util.List<trinsic.services.provider.v1.WalletExternalIdentity>
+        getExternalIdentitiesList() {
+      if (externalIdentitiesBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(externalIdentities_);
+      } else {
+        return externalIdentitiesBuilder_.getMessageList();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public int getExternalIdentitiesCount() {
+      if (externalIdentitiesBuilder_ == null) {
+        return externalIdentities_.size();
+      } else {
+        return externalIdentitiesBuilder_.getCount();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public trinsic.services.provider.v1.WalletExternalIdentity getExternalIdentities(int index) {
+      if (externalIdentitiesBuilder_ == null) {
+        return externalIdentities_.get(index);
+      } else {
+        return externalIdentitiesBuilder_.getMessage(index);
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder setExternalIdentities(
+        int index, trinsic.services.provider.v1.WalletExternalIdentity value) {
+      if (externalIdentitiesBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureExternalIdentitiesIsMutable();
+        externalIdentities_.set(index, value);
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder setExternalIdentities(
+        int index, trinsic.services.provider.v1.WalletExternalIdentity.Builder builderForValue) {
+      if (externalIdentitiesBuilder_ == null) {
+        ensureExternalIdentitiesIsMutable();
+        externalIdentities_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder addExternalIdentities(
+        trinsic.services.provider.v1.WalletExternalIdentity value) {
+      if (externalIdentitiesBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureExternalIdentitiesIsMutable();
+        externalIdentities_.add(value);
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder addExternalIdentities(
+        int index, trinsic.services.provider.v1.WalletExternalIdentity value) {
+      if (externalIdentitiesBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureExternalIdentitiesIsMutable();
+        externalIdentities_.add(index, value);
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder addExternalIdentities(
+        trinsic.services.provider.v1.WalletExternalIdentity.Builder builderForValue) {
+      if (externalIdentitiesBuilder_ == null) {
+        ensureExternalIdentitiesIsMutable();
+        externalIdentities_.add(builderForValue.build());
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder addExternalIdentities(
+        int index, trinsic.services.provider.v1.WalletExternalIdentity.Builder builderForValue) {
+      if (externalIdentitiesBuilder_ == null) {
+        ensureExternalIdentitiesIsMutable();
+        externalIdentities_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder addAllExternalIdentities(
+        java.lang.Iterable<? extends trinsic.services.provider.v1.WalletExternalIdentity> values) {
+      if (externalIdentitiesBuilder_ == null) {
+        ensureExternalIdentitiesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, externalIdentities_);
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder clearExternalIdentities() {
+      if (externalIdentitiesBuilder_ == null) {
+        externalIdentities_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public Builder removeExternalIdentities(int index) {
+      if (externalIdentitiesBuilder_ == null) {
+        ensureExternalIdentitiesIsMutable();
+        externalIdentities_.remove(index);
+        onChanged();
+      } else {
+        externalIdentitiesBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public trinsic.services.provider.v1.WalletExternalIdentity.Builder getExternalIdentitiesBuilder(
+        int index) {
+      return getExternalIdentitiesFieldBuilder().getBuilder(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public trinsic.services.provider.v1.WalletExternalIdentityOrBuilder
+        getExternalIdentitiesOrBuilder(int index) {
+      if (externalIdentitiesBuilder_ == null) {
+        return externalIdentities_.get(index);
+      } else {
+        return externalIdentitiesBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public java.util.List<? extends trinsic.services.provider.v1.WalletExternalIdentityOrBuilder>
+        getExternalIdentitiesOrBuilderList() {
+      if (externalIdentitiesBuilder_ != null) {
+        return externalIdentitiesBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(externalIdentities_);
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public trinsic.services.provider.v1.WalletExternalIdentity.Builder
+        addExternalIdentitiesBuilder() {
+      return getExternalIdentitiesFieldBuilder()
+          .addBuilder(trinsic.services.provider.v1.WalletExternalIdentity.getDefaultInstance());
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public trinsic.services.provider.v1.WalletExternalIdentity.Builder addExternalIdentitiesBuilder(
+        int index) {
+      return getExternalIdentitiesFieldBuilder()
+          .addBuilder(
+              index, trinsic.services.provider.v1.WalletExternalIdentity.getDefaultInstance());
+    }
+    /**
+     *
+     *
+     * <pre>
+     * List of external identities associated with this wallet.
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.WalletExternalIdentity external_identities = 11;</code>
+     */
+    public java.util.List<trinsic.services.provider.v1.WalletExternalIdentity.Builder>
+        getExternalIdentitiesBuilderList() {
+      return getExternalIdentitiesFieldBuilder().getBuilderList();
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+            trinsic.services.provider.v1.WalletExternalIdentity,
+            trinsic.services.provider.v1.WalletExternalIdentity.Builder,
+            trinsic.services.provider.v1.WalletExternalIdentityOrBuilder>
+        getExternalIdentitiesFieldBuilder() {
+      if (externalIdentitiesBuilder_ == null) {
+        externalIdentitiesBuilder_ =
+            new com.google.protobuf.RepeatedFieldBuilderV3<
+                trinsic.services.provider.v1.WalletExternalIdentity,
+                trinsic.services.provider.v1.WalletExternalIdentity.Builder,
+                trinsic.services.provider.v1.WalletExternalIdentityOrBuilder>(
+                externalIdentities_,
+                ((bitField0_ & 0x00000004) != 0),
+                getParentForChildren(),
+                isClean());
+        externalIdentities_ = null;
+      }
+      return externalIdentitiesBuilder_;
     }
 
     @java.lang.Override
