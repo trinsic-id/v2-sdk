@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.13+insiders-4.34.1">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14+insiders-4.35.1">
     
     
       
@@ -3273,6 +3273,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#walletexternalidentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WalletExternalIdentity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#identityprovider" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4608,12 +4619,12 @@ https://docs.godiddy.com/en/supported-methods</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email address of account</td>
+<td><strong>Deprecated.</strong> Email address of account.</td>
 </tr>
 <tr>
 <td>sms</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>SMS number including country code</td>
+<td><strong>Deprecated.</strong> SMS number including country code</td>
 </tr>
 </tbody>
 </table>
@@ -4867,7 +4878,7 @@ like email, SMS, etc.</p>
 </table>
 <p><a name="services-account-v1-WalletAuthToken"></a></p>
 <h3 id="walletauthtoken">WalletAuthToken<a class="headerlink" href="#walletauthtoken" title="Permanent link">&para;</a></h3>
-<p>Information about authenticaton tokens for a wallet</p>
+<p>Information about authentication tokens for a wallet</p>
 <table>
 <thead>
 <tr>
@@ -6353,12 +6364,12 @@ DEPRECATED, will be removed June 1st 2023</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td><strong>Deprecated.</strong> Deprecated -- use external_identities</td>
 </tr>
 <tr>
 <td>sms</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td><strong>Deprecated.</strong> Deprecated -- use external_identities</td>
 </tr>
 <tr>
 <td>wallet_id</td>
@@ -6381,9 +6392,9 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date.</td>
 </tr>
 <tr>
-<td>external_identities</td>
+<td>external_identity_ids</td>
 <td><a href="/reference/proto#string">string</a>[]</td>
-<td>List of external identities associated with this wallet.</td>
+<td><strong>Deprecated.</strong> List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use <code>external_identities</code> instead.</td>
 </tr>
 <tr>
 <td>ecosystem_id</td>
@@ -6394,6 +6405,35 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td></td>
+</tr>
+<tr>
+<td>external_identities</td>
+<td><a href="/reference/proto#services-provider-v1-WalletExternalIdentity">WalletExternalIdentity</a>[]</td>
+<td>List of external identities associated with this wallet.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-WalletExternalIdentity"></a></p>
+<h3 id="walletexternalidentity">WalletExternalIdentity<a class="headerlink" href="#walletexternalidentity" title="Permanent link">&para;</a></h3>
+<p>An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>provider</td>
+<td><a href="/reference/proto#services-provider-v1-IdentityProvider">IdentityProvider</a></td>
+<td>The type of this identity (whether this identity is an email address, phone number, etc.)</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The actual email address/phone number/etc. for this identity</td>
 </tr>
 </tbody>
 </table>
