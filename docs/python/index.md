@@ -1,6 +1,6 @@
 # The Trinsic Python SDK
 
-The Trinsic Python SDK makes it easy to interact with the Trinsic API from any Python application. The most recent version of the library can be found on PyPi. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/python).
+The Trinsic Python SDK makes it easy to interact with the Trinsic API from any Python application. The most recent version of the library can be found on PyPi. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/python). Sample applications are located [on Github](https://github.com/trinsic-id/sdk/tree/main/python/samples)
 
 ## Installation and Configuration
 * Recommended: [Create a virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments)
