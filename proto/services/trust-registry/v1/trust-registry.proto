@@ -155,6 +155,44 @@ enum RegistrationStatus {
   NOT_FOUND = 10; // Member is not associated with given credential schema in the EGF
 }
 
+message ListAuthorizedMembersRequest {
+  // The ID of the ecosystem governance framework.
+  // This ID may be found in the 'trustRegistry' field in the
+  // verifiable credential model
+  string framework_id = 1;
+
+  // id of schema that needs to be checked
+  optional string schema_uri = 2;
+
+  // Token to fetch next set of results, from previous `SearchRegistryResponse`
+  optional string continuation_token = 3;
+}
+
+// Response to `ListAuthorizedMembersRequest`
+message ListAuthorizedMembersResponse {
+  // JSON string containing array of resultant objects
+  repeated AuthorizedMember authorized_members = 1;
+
+  // Whether more data is available to fetch for query
+  bool has_more_results = 2;
+
+  // Token to fetch next set of results via `ListAuthorizedMembersRequest`
+  string continuation_token = 3;
+}
+
+message AuthorizedMember{
+  string did = 1;
+  repeated AuthorizedMemberSchema authorized_member_schemas = 2;
+}
+
+message AuthorizedMemberSchema{
+  string schema_uri = 1;
+  string status = 2;
+  string status_details = 3;
+  uint64 valid_from = 4;
+  uint64 valid_until = 5;
+}
+
 service TrustRegistry {
   // Add a governance framework to the ecosystem
   rpc AddFramework(AddFrameworkRequest) returns (AddFrameworkResponse);
@@ -173,4 +211,7 @@ service TrustRegistry {
 
   // Fetch the membership status of an issuer for a given credential schema in a trust registry
   rpc GetMembershipStatus(GetMembershipStatusRequest) returns (GetMembershipStatusResponse);
+
+  // Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
+  rpc ListAuthorizedMembers(ListAuthorizedMembersRequest) returns (ListAuthorizedMembersResponse);
 }
