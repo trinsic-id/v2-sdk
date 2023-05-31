@@ -9,36 +9,6 @@ import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use issueRequestDescriptor instead')
-const IssueRequest$json = const {
-  '1': 'IssueRequest',
-  '2': const [
-    const {'1': 'document_json', '3': 1, '4': 1, '5': 9, '10': 'documentJson'},
-  ],
-  '7': const {'3': true},
-};
-
-/// Descriptor for `IssueRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List issueRequestDescriptor = $convert.base64Decode(
-    'CgxJc3N1ZVJlcXVlc3QSIwoNZG9jdW1lbnRfanNvbhgBIAEoCVIMZG9jdW1lbnRKc29uOgIYAQ==');
-@$core.Deprecated('Use issueResponseDescriptor instead')
-const IssueResponse$json = const {
-  '1': 'IssueResponse',
-  '2': const [
-    const {
-      '1': 'signed_document_json',
-      '3': 1,
-      '4': 1,
-      '5': 9,
-      '10': 'signedDocumentJson'
-    },
-  ],
-  '7': const {'3': true},
-};
-
-/// Descriptor for `IssueResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List issueResponseDescriptor = $convert.base64Decode(
-    'Cg1Jc3N1ZVJlc3BvbnNlEjAKFHNpZ25lZF9kb2N1bWVudF9qc29uGAEgASgJUhJzaWduZWREb2N1bWVudEpzb246AhgB');
 @$core.Deprecated('Use issueFromTemplateRequestDescriptor instead')
 const IssueFromTemplateRequest$json = const {
   '1': 'IssueFromTemplateRequest',
@@ -54,13 +24,20 @@ const IssueFromTemplateRequest$json = const {
       '10': 'frameworkId'
     },
     const {'1': 'save_copy', '3': 4, '4': 1, '5': 8, '10': 'saveCopy'},
+    const {
+      '1': 'expiration_date',
+      '3': 5,
+      '4': 1,
+      '5': 9,
+      '10': 'expirationDate'
+    },
   ],
 };
 
 /// Descriptor for `IssueFromTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List issueFromTemplateRequestDescriptor =
     $convert.base64Decode(
-        'ChhJc3N1ZUZyb21UZW1wbGF0ZVJlcXVlc3QSHwoLdGVtcGxhdGVfaWQYASABKAlSCnRlbXBsYXRlSWQSHwoLdmFsdWVzX2pzb24YAiABKAlSCnZhbHVlc0pzb24SJwoMZnJhbWV3b3JrX2lkGAMgASgJQgSAph0BUgtmcmFtZXdvcmtJZBIbCglzYXZlX2NvcHkYBCABKAhSCHNhdmVDb3B5');
+        'ChhJc3N1ZUZyb21UZW1wbGF0ZVJlcXVlc3QSHwoLdGVtcGxhdGVfaWQYASABKAlSCnRlbXBsYXRlSWQSHwoLdmFsdWVzX2pzb24YAiABKAlSCnZhbHVlc0pzb24SJwoMZnJhbWV3b3JrX2lkGAMgASgJQgSAph0BUgtmcmFtZXdvcmtJZBIbCglzYXZlX2NvcHkYBCABKAhSCHNhdmVDb3B5EicKD2V4cGlyYXRpb25fZGF0ZRgFIAEoCVIOZXhwaXJhdGlvbkRhdGU=');
 @$core.Deprecated('Use issueFromTemplateResponseDescriptor instead')
 const IssueFromTemplateResponse$json = const {
   '1': 'IssueFromTemplateResponse',

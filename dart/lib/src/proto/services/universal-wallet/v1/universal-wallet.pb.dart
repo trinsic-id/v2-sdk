@@ -916,6 +916,104 @@ class DeleteWalletResponse extends $pb.GeneratedMessage {
   static DeleteWalletResponse? _defaultInstance;
 }
 
+class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'CreateWalletRequest.ExternalIdentity',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.universalwallet.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'identity')
+    ..e<$2.IdentityProvider>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'provider',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: $2.IdentityProvider.Unknown,
+        valueOf: $2.IdentityProvider.valueOf,
+        enumValues: $2.IdentityProvider.values)
+    ..hasRequiredFields = false;
+
+  CreateWalletRequest_ExternalIdentity._() : super();
+  factory CreateWalletRequest_ExternalIdentity({
+    $core.String? identity,
+    $2.IdentityProvider? provider,
+  }) {
+    final _result = create();
+    if (identity != null) {
+      _result.identity = identity;
+    }
+    if (provider != null) {
+      _result.provider = provider;
+    }
+    return _result;
+  }
+  factory CreateWalletRequest_ExternalIdentity.fromBuffer(
+          $core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CreateWalletRequest_ExternalIdentity.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CreateWalletRequest_ExternalIdentity clone() =>
+      CreateWalletRequest_ExternalIdentity()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CreateWalletRequest_ExternalIdentity copyWith(
+          void Function(CreateWalletRequest_ExternalIdentity) updates) =>
+      super.copyWith((message) =>
+              updates(message as CreateWalletRequest_ExternalIdentity))
+          as CreateWalletRequest_ExternalIdentity; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateWalletRequest_ExternalIdentity create() =>
+      CreateWalletRequest_ExternalIdentity._();
+  CreateWalletRequest_ExternalIdentity createEmptyInstance() => create();
+  static $pb.PbList<CreateWalletRequest_ExternalIdentity> createRepeated() =>
+      $pb.PbList<CreateWalletRequest_ExternalIdentity>();
+  @$core.pragma('dart2js:noInline')
+  static CreateWalletRequest_ExternalIdentity getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          CreateWalletRequest_ExternalIdentity>(create);
+  static CreateWalletRequest_ExternalIdentity? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get identity => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set identity($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasIdentity() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIdentity() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $2.IdentityProvider get provider => $_getN(1);
+  @$pb.TagNumber(2)
+  set provider($2.IdentityProvider v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasProvider() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearProvider() => clearField(2);
+}
+
 class CreateWalletRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -936,12 +1034,19 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
+    ..aOM<CreateWalletRequest_ExternalIdentity>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'identity',
+        subBuilder: CreateWalletRequest_ExternalIdentity.create)
     ..hasRequiredFields = false;
 
   CreateWalletRequest._() : super();
   factory CreateWalletRequest({
     $core.String? ecosystemId,
     $core.String? description,
+    CreateWalletRequest_ExternalIdentity? identity,
   }) {
     final _result = create();
     if (ecosystemId != null) {
@@ -949,6 +1054,9 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
     }
     if (description != null) {
       _result.description = description;
+    }
+    if (identity != null) {
+      _result.identity = identity;
     }
     return _result;
   }
@@ -1002,6 +1110,20 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
   $core.bool hasDescription() => $_has(1);
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
+
+  @$pb.TagNumber(3)
+  CreateWalletRequest_ExternalIdentity get identity => $_getN(2);
+  @$pb.TagNumber(3)
+  set identity(CreateWalletRequest_ExternalIdentity v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasIdentity() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIdentity() => clearField(3);
+  @$pb.TagNumber(3)
+  CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(2);
 }
 
 class CreateWalletResponse extends $pb.GeneratedMessage {

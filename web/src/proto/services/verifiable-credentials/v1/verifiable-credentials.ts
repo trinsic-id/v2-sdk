@@ -1,29 +1,6 @@
 /* eslint-disable */
 import _m0 from "protobufjs/minimal";
 
-/**
- * DEPRECATED, will be removed May 1st 2023
- *
- * @deprecated
- */
-export interface IssueRequest {
-  /** Valid JSON-LD Credential document to be signed, in string form */
-  documentJson?: string;
-}
-
-/**
- * DEPRECATED, will be removed May 1st 2023
- *
- * @deprecated
- */
-export interface IssueResponse {
-  /**
-   * Verifiable Credential document, signed with public key
-   * tied to caller of `IssueRequest`
-   */
-  signedDocumentJson?: string;
-}
-
 /** Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller */
 export interface IssueFromTemplateRequest {
   /** ID of template to use */
@@ -45,6 +22,12 @@ export interface IssueFromTemplateRequest {
    * keep track of the details for revocation status.
    */
   saveCopy?: boolean;
+  /**
+   * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+   * If specified, the issued credential will contain an expiration date.
+   * https://www.w3.org/TR/vc-data-model/#expiration
+   */
+  expirationDate?: string;
 }
 
 /** Response to `IssueFromTemplateRequest` */
@@ -189,120 +172,8 @@ export interface CheckStatusResponse {
   revoked?: boolean;
 }
 
-function createBaseIssueRequest(): IssueRequest {
-  return { documentJson: "" };
-}
-
-export const IssueRequest = {
-  encode(message: IssueRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.documentJson !== undefined && message.documentJson !== "") {
-      writer.uint32(10).string(message.documentJson);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): IssueRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseIssueRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.documentJson = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): IssueRequest {
-    return { documentJson: isSet(object.documentJson) ? String(object.documentJson) : "" };
-  },
-
-  toJSON(message: IssueRequest): unknown {
-    const obj: any = {};
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
-    return obj;
-  },
-
-  create(base?: DeepPartial<IssueRequest>): IssueRequest {
-    return IssueRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<IssueRequest>): IssueRequest {
-    const message = createBaseIssueRequest();
-    message.documentJson = object.documentJson ?? "";
-    return message;
-  },
-};
-
-function createBaseIssueResponse(): IssueResponse {
-  return { signedDocumentJson: "" };
-}
-
-export const IssueResponse = {
-  encode(message: IssueResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.signedDocumentJson !== undefined && message.signedDocumentJson !== "") {
-      writer.uint32(10).string(message.signedDocumentJson);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): IssueResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseIssueResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.signedDocumentJson = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): IssueResponse {
-    return { signedDocumentJson: isSet(object.signedDocumentJson) ? String(object.signedDocumentJson) : "" };
-  },
-
-  toJSON(message: IssueResponse): unknown {
-    const obj: any = {};
-    message.signedDocumentJson !== undefined && (obj.signedDocumentJson = message.signedDocumentJson);
-    return obj;
-  },
-
-  create(base?: DeepPartial<IssueResponse>): IssueResponse {
-    return IssueResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<IssueResponse>): IssueResponse {
-    const message = createBaseIssueResponse();
-    message.signedDocumentJson = object.signedDocumentJson ?? "";
-    return message;
-  },
-};
-
 function createBaseIssueFromTemplateRequest(): IssueFromTemplateRequest {
-  return { templateId: "", valuesJson: "", frameworkId: "", saveCopy: false };
+  return { templateId: "", valuesJson: "", frameworkId: "", saveCopy: false, expirationDate: "" };
 }
 
 export const IssueFromTemplateRequest = {
@@ -318,6 +189,9 @@ export const IssueFromTemplateRequest = {
     }
     if (message.saveCopy === true) {
       writer.uint32(32).bool(message.saveCopy);
+    }
+    if (message.expirationDate !== undefined && message.expirationDate !== "") {
+      writer.uint32(42).string(message.expirationDate);
     }
     return writer;
   },
@@ -357,6 +231,13 @@ export const IssueFromTemplateRequest = {
 
           message.saveCopy = reader.bool();
           continue;
+        case 5:
+          if (tag != 42) {
+            break;
+          }
+
+          message.expirationDate = reader.string();
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -372,6 +253,7 @@ export const IssueFromTemplateRequest = {
       valuesJson: isSet(object.valuesJson) ? String(object.valuesJson) : "",
       frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
       saveCopy: isSet(object.saveCopy) ? Boolean(object.saveCopy) : false,
+      expirationDate: isSet(object.expirationDate) ? String(object.expirationDate) : "",
     };
   },
 
@@ -381,6 +263,7 @@ export const IssueFromTemplateRequest = {
     message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
     message.frameworkId !== undefined && (obj.frameworkId = message.frameworkId);
     message.saveCopy !== undefined && (obj.saveCopy = message.saveCopy);
+    message.expirationDate !== undefined && (obj.expirationDate = message.expirationDate);
     return obj;
   },
 
@@ -394,6 +277,7 @@ export const IssueFromTemplateRequest = {
     message.valuesJson = object.valuesJson ?? "";
     message.frameworkId = object.frameworkId ?? "";
     message.saveCopy = object.saveCopy ?? false;
+    message.expirationDate = object.expirationDate ?? "";
     return message;
   },
 };
@@ -1422,82 +1306,6 @@ export const VerifiableCredentialDefinition = {
   name: "VerifiableCredential",
   fullName: "services.verifiablecredentials.v1.VerifiableCredential",
   methods: {
-    /**
-     * Sign and issue a verifiable credential from a submitted document.
-     * The document must be a valid JSON-LD document.
-     * DEPRECATED, will be removed June 1st 2023
-     */
-    issue: {
-      name: "Issue",
-      requestType: IssueRequest,
-      requestStream: false,
-      responseType: IssueResponse,
-      responseStream: false,
-      options: {
-        _unknownFields: {
-          480010: [
-            new Uint8Array([
-              55,
-              42,
-              53,
-              8,
-              1,
-              18,
-              49,
-              84,
-              104,
-              105,
-              115,
-              32,
-              101,
-              110,
-              100,
-              112,
-              111,
-              105,
-              110,
-              116,
-              32,
-              119,
-              105,
-              108,
-              108,
-              32,
-              98,
-              101,
-              32,
-              114,
-              101,
-              109,
-              111,
-              118,
-              101,
-              100,
-              32,
-              97,
-              114,
-              111,
-              117,
-              110,
-              100,
-              32,
-              74,
-              117,
-              110,
-              101,
-              32,
-              49,
-              44,
-              32,
-              50,
-              48,
-              50,
-              51,
-            ]),
-          ],
-        },
-      },
-    },
     /**
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and

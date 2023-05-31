@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import (
     TYPE_CHECKING,
     Dict,
+    List,
     Optional,
 )
 
@@ -224,6 +225,60 @@ class GetMembershipStatusResponse(betterproto.Message):
     """Status of member for given credential schema"""
 
 
+@dataclass(eq=False, repr=False)
+class ListAuthorizedMembersRequest(betterproto.Message):
+    framework_id: str = betterproto.string_field(1)
+    """
+    The ID of the ecosystem governance framework. This ID may be found in the
+    'trustRegistry' field in the verifiable credential model
+    """
+
+    schema_uri: Optional[str] = betterproto.string_field(
+        2, optional=True, group="_schema_uri"
+    )
+    """id of schema that needs to be checked"""
+
+    continuation_token: Optional[str] = betterproto.string_field(
+        3, optional=True, group="_continuation_token"
+    )
+    """
+    Token to fetch next set of results, from previous `SearchRegistryResponse`
+    """
+
+
+@dataclass(eq=False, repr=False)
+class ListAuthorizedMembersResponse(betterproto.Message):
+    """Response to `ListAuthorizedMembersRequest`"""
+
+    authorized_members: List["AuthorizedMember"] = betterproto.message_field(1)
+    """JSON string containing array of resultant objects"""
+
+    has_more_results: bool = betterproto.bool_field(2)
+    """Whether more data is available to fetch for query"""
+
+    continuation_token: str = betterproto.string_field(3)
+    """
+    Token to fetch next set of results via `ListAuthorizedMembersRequest`
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizedMember(betterproto.Message):
+    did: str = betterproto.string_field(1)
+    authorized_member_schemas: List[
+        "AuthorizedMemberSchema"
+    ] = betterproto.message_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizedMemberSchema(betterproto.Message):
+    schema_uri: str = betterproto.string_field(1)
+    status: str = betterproto.string_field(2)
+    status_details: str = betterproto.string_field(3)
+    valid_from: int = betterproto.uint64_field(4)
+    valid_until: int = betterproto.uint64_field(5)
+
+
 class TrustRegistryStub(betterproto.ServiceStub):
     async def add_framework(
         self,
@@ -321,6 +376,22 @@ class TrustRegistryStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def list_authorized_members(
+        self,
+        list_authorized_members_request: "ListAuthorizedMembersRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListAuthorizedMembersResponse":
+        return await self._unary_unary(
+            "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers",
+            list_authorized_members_request,
+            ListAuthorizedMembersResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class TrustRegistryBase(ServiceBase):
     async def add_framework(
@@ -353,6 +424,11 @@ class TrustRegistryBase(ServiceBase):
     ) -> "GetMembershipStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def list_authorized_members(
+        self, list_authorized_members_request: "ListAuthorizedMembersRequest"
+    ) -> "ListAuthorizedMembersResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_add_framework(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.add_framework(request)
@@ -381,6 +457,13 @@ class TrustRegistryBase(ServiceBase):
     async def __rpc_get_membership_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.get_membership_status(request)
+        await stream.send_message(response)
+
+    async def __rpc_list_authorized_members(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.list_authorized_members(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -420,5 +503,11 @@ class TrustRegistryBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetMembershipStatusRequest,
                 GetMembershipStatusResponse,
+            ),
+            "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers": grpclib.const.Handler(
+                self.__rpc_list_authorized_members,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListAuthorizedMembersRequest,
+                ListAuthorizedMembersResponse,
             ),
         }

@@ -24,16 +24,6 @@ class ProviderServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/ProviderServiceKt.kt
 
   @Throws(InvalidProtocolBufferException::class)
-  @Deprecated("This will be removed June 1, 2023")
-  suspend fun updateEcosystem(request: UpdateEcosystemRequest): UpdateEcosystemResponse {
-    /**
-     * This will be removed June 1, 2023 The below display can be removed only once the Dashboard is
-     * updating this itself - currently it uses this request DEPRECATED, will be removed June 1st
-     * 2023
-     */
-    return withMetadata(stub, request).updateEcosystem(request)
-  }
-  @Throws(InvalidProtocolBufferException::class)
   suspend fun getOberonKey(): GetOberonKeyResponse {
     /** Returns the public key being used to create/verify oberon tokens */
     val request = GetOberonKeyRequest.newBuilder().build()

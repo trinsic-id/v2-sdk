@@ -14,10 +14,6 @@ import 'verifiable-credentials.pb.dart' as $6;
 export 'verifiable-credentials.pb.dart';
 
 class VerifiableCredentialClient extends $grpc.Client {
-  static final _$issue = $grpc.ClientMethod<$6.IssueRequest, $6.IssueResponse>(
-      '/services.verifiablecredentials.v1.VerifiableCredential/Issue',
-      ($6.IssueRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $6.IssueResponse.fromBuffer(value));
   static final _$issueFromTemplate = $grpc.ClientMethod<
           $6.IssueFromTemplateRequest, $6.IssueFromTemplateResponse>(
       '/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate',
@@ -57,11 +53,6 @@ class VerifiableCredentialClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
-
-  $grpc.ResponseFuture<$6.IssueResponse> issue($6.IssueRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$issue, request, options: options);
-  }
 
   $grpc.ResponseFuture<$6.IssueFromTemplateResponse> issueFromTemplate(
       $6.IssueFromTemplateRequest request,
@@ -104,13 +95,6 @@ abstract class VerifiableCredentialServiceBase extends $grpc.Service {
       'services.verifiablecredentials.v1.VerifiableCredential';
 
   VerifiableCredentialServiceBase() {
-    $addMethod($grpc.ServiceMethod<$6.IssueRequest, $6.IssueResponse>(
-        'Issue',
-        issue_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $6.IssueRequest.fromBuffer(value),
-        ($6.IssueResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$6.IssueFromTemplateRequest,
             $6.IssueFromTemplateResponse>(
         'IssueFromTemplate',
@@ -165,11 +149,6 @@ abstract class VerifiableCredentialServiceBase extends $grpc.Service {
         ($6.SendResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$6.IssueResponse> issue_Pre(
-      $grpc.ServiceCall call, $async.Future<$6.IssueRequest> request) async {
-    return issue(call, await request);
-  }
-
   $async.Future<$6.IssueFromTemplateResponse> issueFromTemplate_Pre(
       $grpc.ServiceCall call,
       $async.Future<$6.IssueFromTemplateRequest> request) async {
@@ -202,8 +181,6 @@ abstract class VerifiableCredentialServiceBase extends $grpc.Service {
     return send(call, await request);
   }
 
-  $async.Future<$6.IssueResponse> issue(
-      $grpc.ServiceCall call, $6.IssueRequest request);
   $async.Future<$6.IssueFromTemplateResponse> issueFromTemplate(
       $grpc.ServiceCall call, $6.IssueFromTemplateRequest request);
   $async.Future<$6.CheckStatusResponse> checkStatus(

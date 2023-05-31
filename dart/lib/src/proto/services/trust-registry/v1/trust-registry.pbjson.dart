@@ -257,3 +257,111 @@ const GetMembershipStatusResponse$json = const {
 final $typed_data.Uint8List getMembershipStatusResponseDescriptor =
     $convert.base64Decode(
         'ChtHZXRNZW1iZXJzaGlwU3RhdHVzUmVzcG9uc2USRQoGc3RhdHVzGAEgASgOMi0uc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5SZWdpc3RyYXRpb25TdGF0dXNSBnN0YXR1cw==');
+@$core.Deprecated('Use listAuthorizedMembersRequestDescriptor instead')
+const ListAuthorizedMembersRequest$json = const {
+  '1': 'ListAuthorizedMembersRequest',
+  '2': const [
+    const {'1': 'framework_id', '3': 1, '4': 1, '5': 9, '10': 'frameworkId'},
+    const {
+      '1': 'schema_uri',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'schemaUri',
+      '17': true
+    },
+    const {
+      '1': 'continuation_token',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '9': 1,
+      '10': 'continuationToken',
+      '17': true
+    },
+  ],
+  '8': const [
+    const {'1': '_schema_uri'},
+    const {'1': '_continuation_token'},
+  ],
+};
+
+/// Descriptor for `ListAuthorizedMembersRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listAuthorizedMembersRequestDescriptor =
+    $convert.base64Decode(
+        'ChxMaXN0QXV0aG9yaXplZE1lbWJlcnNSZXF1ZXN0EiEKDGZyYW1ld29ya19pZBgBIAEoCVILZnJhbWV3b3JrSWQSIgoKc2NoZW1hX3VyaRgCIAEoCUgAUglzY2hlbWFVcmmIAQESMgoSY29udGludWF0aW9uX3Rva2VuGAMgASgJSAFSEWNvbnRpbnVhdGlvblRva2VuiAEBQg0KC19zY2hlbWFfdXJpQhUKE19jb250aW51YXRpb25fdG9rZW4=');
+@$core.Deprecated('Use listAuthorizedMembersResponseDescriptor instead')
+const ListAuthorizedMembersResponse$json = const {
+  '1': 'ListAuthorizedMembersResponse',
+  '2': const [
+    const {
+      '1': 'authorized_members',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.services.trustregistry.v1.AuthorizedMember',
+      '10': 'authorizedMembers'
+    },
+    const {
+      '1': 'has_more_results',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '10': 'hasMoreResults'
+    },
+    const {
+      '1': 'continuation_token',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'continuationToken'
+    },
+  ],
+};
+
+/// Descriptor for `ListAuthorizedMembersResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listAuthorizedMembersResponseDescriptor =
+    $convert.base64Decode(
+        'Ch1MaXN0QXV0aG9yaXplZE1lbWJlcnNSZXNwb25zZRJaChJhdXRob3JpemVkX21lbWJlcnMYASADKAsyKy5zZXJ2aWNlcy50cnVzdHJlZ2lzdHJ5LnYxLkF1dGhvcml6ZWRNZW1iZXJSEWF1dGhvcml6ZWRNZW1iZXJzEigKEGhhc19tb3JlX3Jlc3VsdHMYAiABKAhSDmhhc01vcmVSZXN1bHRzEi0KEmNvbnRpbnVhdGlvbl90b2tlbhgDIAEoCVIRY29udGludWF0aW9uVG9rZW4=');
+@$core.Deprecated('Use authorizedMemberDescriptor instead')
+const AuthorizedMember$json = const {
+  '1': 'AuthorizedMember',
+  '2': const [
+    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
+    const {
+      '1': 'authorized_member_schemas',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.services.trustregistry.v1.AuthorizedMemberSchema',
+      '10': 'authorizedMemberSchemas'
+    },
+  ],
+};
+
+/// Descriptor for `AuthorizedMember`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizedMemberDescriptor = $convert.base64Decode(
+    'ChBBdXRob3JpemVkTWVtYmVyEhAKA2RpZBgBIAEoCVIDZGlkEm0KGWF1dGhvcml6ZWRfbWVtYmVyX3NjaGVtYXMYAiADKAsyMS5zZXJ2aWNlcy50cnVzdHJlZ2lzdHJ5LnYxLkF1dGhvcml6ZWRNZW1iZXJTY2hlbWFSF2F1dGhvcml6ZWRNZW1iZXJTY2hlbWFz');
+@$core.Deprecated('Use authorizedMemberSchemaDescriptor instead')
+const AuthorizedMemberSchema$json = const {
+  '1': 'AuthorizedMemberSchema',
+  '2': const [
+    const {'1': 'schema_uri', '3': 1, '4': 1, '5': 9, '10': 'schemaUri'},
+    const {'1': 'status', '3': 2, '4': 1, '5': 9, '10': 'status'},
+    const {
+      '1': 'status_details',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'statusDetails'
+    },
+    const {'1': 'valid_from', '3': 4, '4': 1, '5': 4, '10': 'validFrom'},
+    const {'1': 'valid_until', '3': 5, '4': 1, '5': 4, '10': 'validUntil'},
+  ],
+};
+
+/// Descriptor for `AuthorizedMemberSchema`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizedMemberSchemaDescriptor =
+    $convert.base64Decode(
+        'ChZBdXRob3JpemVkTWVtYmVyU2NoZW1hEh0KCnNjaGVtYV91cmkYASABKAlSCXNjaGVtYVVyaRIWCgZzdGF0dXMYAiABKAlSBnN0YXR1cxIlCg5zdGF0dXNfZGV0YWlscxgDIAEoCVINc3RhdHVzRGV0YWlscxIdCgp2YWxpZF9mcm9tGAQgASgEUgl2YWxpZEZyb20SHwoLdmFsaWRfdW50aWwYBSABKARSCnZhbGlkVW50aWw=');

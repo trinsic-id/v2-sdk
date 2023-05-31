@@ -12,7 +12,7 @@ public interface SearchWalletConfigurationsRequestOrBuilder
    *
    *
    * <pre>
-   * SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
+   * SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]`
    * </pre>
    *
    * <code>string query_filter = 1;</code>
@@ -24,7 +24,7 @@ public interface SearchWalletConfigurationsRequestOrBuilder
    *
    *
    * <pre>
-   * SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
+   * SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]`
    * </pre>
    *
    * <code>string query_filter = 1;</code>

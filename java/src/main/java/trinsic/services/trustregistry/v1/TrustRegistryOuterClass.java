@@ -64,6 +64,22 @@ public final class TrustRegistryOuterClass {
       internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_trustregistry_v1_ListAuthorizedMembersRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_trustregistry_v1_ListAuthorizedMembersRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_trustregistry_v1_ListAuthorizedMembersResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_trustregistry_v1_ListAuthorizedMembersResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_trustregistry_v1_AuthorizedMember_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_trustregistry_v1_AuthorizedMember_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_trustregistry_v1_AuthorizedMemberSchema_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_trustregistry_v1_AuthorizedMemberSchema_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -123,30 +139,54 @@ public final class TrustRegistryOuterClass {
           + "\007did_uri\030\002 \001(\t\022\022\n\n"
           + "schema_uri\030\004 \001(\t\"\\\n"
           + "\033GetMembershipStatusResponse\022=\n"
-          + "\006status\030\001 \001(\0162-.services.trustregistry.v1.RegistrationStatus*Z\n"
+          + "\006status\030\001 \001(\0162-.servic"
+          + "es.trustregistry.v1.RegistrationStatus\"\224\001\n"
+          + "\034ListAuthorizedMembersRequest\022\024\n"
+          + "\014framework_id\030\001 \001(\t\022\027\n\n"
+          + "schema_uri\030\002 \001(\tH\000\210\001\001\022\037\n"
+          + "\022continuation_token\030\003 \001(\tH\001\210\001\001B\r\n"
+          + "\013_schema_uriB\025\n"
+          + "\023_continuation_token\"\236\001\n"
+          + "\035ListAuthorizedMembersResponse\022G\n"
+          + "\022authorized_members\030\001"
+          + " \003(\0132+.services.trustregistry.v1.AuthorizedMember\022\030\n"
+          + "\020has_more_results\030\002 \001(\010\022\032\n"
+          + "\022continuation_token\030\003 \001(\t\"u\n"
+          + "\020AuthorizedMember\022\013\n"
+          + "\003did\030\001 \001(\t\022T\n"
+          + "\031authorized_member_schemas\030\002"
+          + " \003(\01321.services.trustregistry.v1.AuthorizedMemberSchema\"}\n"
+          + "\026AuthorizedMemberSchema\022\022\n\n"
+          + "schema_uri\030\001 \001(\t\022\016\n"
+          + "\006status\030\002 \001(\t\022\026\n"
+          + "\016status_details\030\003 \001(\t\022\022\n\n"
+          + "valid_from\030\004 \001(\004\022\023\n"
+          + "\013valid_until\030\005 \001(\004*Z\n"
           + "\022RegistrationStatus\022\013\n"
           + "\007CURRENT\020\000\022\013\n"
           + "\007EXPIRED\020\001\022\016\n\n"
           + "TERMINATED\020\002\022\013\n"
           + "\007REVOKED\020\003\022\r\n"
           + "\tNOT_FOUND\020\n"
-          + "2\354\005\n\r"
+          + "2\371\006\n\r"
           + "TrustRegistry\022o\n"
-          + "\014AddFramework\022..services.trustregistry.v1.AddFram"
-          + "eworkRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
-          + "\017RemoveFramework\0221.services.trustregistry.v1.RemoveFrame"
-          + "workRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
-          + "\016SearchRegistry\0220.services.trustregistry.v1.SearchRegi"
-          + "stryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
-          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMem"
-          + "berRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
-          + "\020UnregisterMember\0222.services.trustregistry.v1.Unregister"
-          + "MemberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
-          + "\023GetMembershipStatus\0225.services.trustregistry.v1.G"
-          + "etMembershipStatusRequest\0326.services.tru"
-          + "stregistry.v1.GetMembershipStatusResponseBr\n"
-          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustregistry/v1/trustregistr"
-          + "y\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
+          + "\014AddFramework\022..services.trustregistry.v1.AddFramew"
+          + "orkRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
+          + "\017RemoveFramework\0221.services.trustregistry.v1.RemoveFramewo"
+          + "rkRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
+          + "\016SearchRegistry\0220.services.trustregistry.v1.SearchRegist"
+          + "ryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
+          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMembe"
+          + "rRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
+          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterMe"
+          + "mberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
+          + "\023GetMembershipStatus\0225.services.trustregistry.v1.Get"
+          + "MembershipStatusRequest\0326.services.trust"
+          + "registry.v1.GetMembershipStatusResponse\022\212\001\n"
+          + "\025ListAuthorizedMembers\0227.services.trustregistry.v1.ListAuthorizedMembersReque"
+          + "st\0328.services.trustregistry.v1.ListAuthorizedMembersResponseBr\n"
+          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustregis"
+          + "try/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -258,6 +298,38 @@ public final class TrustRegistryOuterClass {
             internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor,
             new java.lang.String[] {
               "Status",
+            });
+    internal_static_services_trustregistry_v1_ListAuthorizedMembersRequest_descriptor =
+        getDescriptor().getMessageTypes().get(13);
+    internal_static_services_trustregistry_v1_ListAuthorizedMembersRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_trustregistry_v1_ListAuthorizedMembersRequest_descriptor,
+            new java.lang.String[] {
+              "FrameworkId", "SchemaUri", "ContinuationToken", "SchemaUri", "ContinuationToken",
+            });
+    internal_static_services_trustregistry_v1_ListAuthorizedMembersResponse_descriptor =
+        getDescriptor().getMessageTypes().get(14);
+    internal_static_services_trustregistry_v1_ListAuthorizedMembersResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_trustregistry_v1_ListAuthorizedMembersResponse_descriptor,
+            new java.lang.String[] {
+              "AuthorizedMembers", "HasMoreResults", "ContinuationToken",
+            });
+    internal_static_services_trustregistry_v1_AuthorizedMember_descriptor =
+        getDescriptor().getMessageTypes().get(15);
+    internal_static_services_trustregistry_v1_AuthorizedMember_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_trustregistry_v1_AuthorizedMember_descriptor,
+            new java.lang.String[] {
+              "Did", "AuthorizedMemberSchemas",
+            });
+    internal_static_services_trustregistry_v1_AuthorizedMemberSchema_descriptor =
+        getDescriptor().getMessageTypes().get(16);
+    internal_static_services_trustregistry_v1_AuthorizedMemberSchema_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_trustregistry_v1_AuthorizedMemberSchema_descriptor,
+            new java.lang.String[] {
+              "SchemaUri", "Status", "StatusDetails", "ValidFrom", "ValidUntil",
             });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();

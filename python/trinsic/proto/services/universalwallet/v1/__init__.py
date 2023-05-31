@@ -167,6 +167,27 @@ class CreateWalletRequest(betterproto.Message):
     searchable.
     """
 
+    identity: Optional[
+        "CreateWalletRequestExternalIdentity"
+    ] = betterproto.message_field(3, optional=True, group="_identity")
+    """
+    Optional identity to add to the wallet (email or sms).  Use this field when
+    inviting participants into an ecosystem. If this field is set, an auth
+    token will not be sent in the response.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class CreateWalletRequestExternalIdentity(betterproto.Message):
+    identity: str = betterproto.string_field(1)
+    """
+    The user identity to add to the wallet This can be an email address or
+    phone number (formatted as +[country code][phone number])
+    """
+
+    provider: "__provider_v1__.IdentityProvider" = betterproto.enum_field(2)
+    """The type of identity provider, like EMAIL or PHONE"""
+
 
 @dataclass(eq=False, repr=False)
 class CreateWalletResponse(betterproto.Message):
