@@ -103,4 +103,33 @@ public interface IssueFromTemplateRequestOrBuilder
    * @return The saveCopy.
    */
   boolean getSaveCopy();
+
+  /**
+   *
+   *
+   * <pre>
+   * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+   * If specified, the issued credential will contain an expiration date.
+   * https://www.w3.org/TR/vc-data-model/#expiration
+   * </pre>
+   *
+   * <code>string expiration_date = 5;</code>
+   *
+   * @return The expirationDate.
+   */
+  java.lang.String getExpirationDate();
+  /**
+   *
+   *
+   * <pre>
+   * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+   * If specified, the issued credential will contain an expiration date.
+   * https://www.w3.org/TR/vc-data-model/#expiration
+   * </pre>
+   *
+   * <code>string expiration_date = 5;</code>
+   *
+   * @return The bytes for expirationDate.
+   */
+  com.google.protobuf.ByteString getExpirationDateBytes();
 }

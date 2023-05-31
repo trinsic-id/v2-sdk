@@ -1310,3 +1310,461 @@ class GetMembershipStatusResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearStatus() => clearField(1);
 }
+
+class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ListAuthorizedMembersRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'frameworkId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'schemaUri')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  ListAuthorizedMembersRequest._() : super();
+  factory ListAuthorizedMembersRequest({
+    $core.String? frameworkId,
+    $core.String? schemaUri,
+    $core.String? continuationToken,
+  }) {
+    final _result = create();
+    if (frameworkId != null) {
+      _result.frameworkId = frameworkId;
+    }
+    if (schemaUri != null) {
+      _result.schemaUri = schemaUri;
+    }
+    if (continuationToken != null) {
+      _result.continuationToken = continuationToken;
+    }
+    return _result;
+  }
+  factory ListAuthorizedMembersRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListAuthorizedMembersRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ListAuthorizedMembersRequest clone() =>
+      ListAuthorizedMembersRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ListAuthorizedMembersRequest copyWith(
+          void Function(ListAuthorizedMembersRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as ListAuthorizedMembersRequest))
+          as ListAuthorizedMembersRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ListAuthorizedMembersRequest create() =>
+      ListAuthorizedMembersRequest._();
+  ListAuthorizedMembersRequest createEmptyInstance() => create();
+  static $pb.PbList<ListAuthorizedMembersRequest> createRepeated() =>
+      $pb.PbList<ListAuthorizedMembersRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ListAuthorizedMembersRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListAuthorizedMembersRequest>(create);
+  static ListAuthorizedMembersRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get frameworkId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set frameworkId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasFrameworkId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFrameworkId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get schemaUri => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set schemaUri($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasSchemaUri() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSchemaUri() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get continuationToken => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set continuationToken($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasContinuationToken() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearContinuationToken() => clearField(3);
+}
+
+class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ListAuthorizedMembersResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..pc<AuthorizedMember>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'authorizedMembers',
+        $pb.PbFieldType.PM,
+        subBuilder: AuthorizedMember.create)
+    ..aOB(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'hasMoreResults')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  ListAuthorizedMembersResponse._() : super();
+  factory ListAuthorizedMembersResponse({
+    $core.Iterable<AuthorizedMember>? authorizedMembers,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final _result = create();
+    if (authorizedMembers != null) {
+      _result.authorizedMembers.addAll(authorizedMembers);
+    }
+    if (hasMoreResults != null) {
+      _result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      _result.continuationToken = continuationToken;
+    }
+    return _result;
+  }
+  factory ListAuthorizedMembersResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListAuthorizedMembersResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ListAuthorizedMembersResponse clone() =>
+      ListAuthorizedMembersResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ListAuthorizedMembersResponse copyWith(
+          void Function(ListAuthorizedMembersResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as ListAuthorizedMembersResponse))
+          as ListAuthorizedMembersResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ListAuthorizedMembersResponse create() =>
+      ListAuthorizedMembersResponse._();
+  ListAuthorizedMembersResponse createEmptyInstance() => create();
+  static $pb.PbList<ListAuthorizedMembersResponse> createRepeated() =>
+      $pb.PbList<ListAuthorizedMembersResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ListAuthorizedMembersResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListAuthorizedMembersResponse>(create);
+  static ListAuthorizedMembersResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<AuthorizedMember> get authorizedMembers => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.bool get hasMoreResults => $_getBF(1);
+  @$pb.TagNumber(2)
+  set hasMoreResults($core.bool v) {
+    $_setBool(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasHasMoreResults() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearHasMoreResults() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get continuationToken => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set continuationToken($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasContinuationToken() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearContinuationToken() => clearField(3);
+}
+
+class AuthorizedMember extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AuthorizedMember',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'did')
+    ..pc<AuthorizedMemberSchema>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'authorizedMemberSchemas',
+        $pb.PbFieldType.PM,
+        subBuilder: AuthorizedMemberSchema.create)
+    ..hasRequiredFields = false;
+
+  AuthorizedMember._() : super();
+  factory AuthorizedMember({
+    $core.String? did,
+    $core.Iterable<AuthorizedMemberSchema>? authorizedMemberSchemas,
+  }) {
+    final _result = create();
+    if (did != null) {
+      _result.did = did;
+    }
+    if (authorizedMemberSchemas != null) {
+      _result.authorizedMemberSchemas.addAll(authorizedMemberSchemas);
+    }
+    return _result;
+  }
+  factory AuthorizedMember.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AuthorizedMember.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AuthorizedMember clone() => AuthorizedMember()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AuthorizedMember copyWith(void Function(AuthorizedMember) updates) =>
+      super.copyWith((message) => updates(message as AuthorizedMember))
+          as AuthorizedMember; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AuthorizedMember create() => AuthorizedMember._();
+  AuthorizedMember createEmptyInstance() => create();
+  static $pb.PbList<AuthorizedMember> createRepeated() =>
+      $pb.PbList<AuthorizedMember>();
+  @$core.pragma('dart2js:noInline')
+  static AuthorizedMember getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AuthorizedMember>(create);
+  static AuthorizedMember? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get did => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set did($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<AuthorizedMemberSchema> get authorizedMemberSchemas =>
+      $_getList(1);
+}
+
+class AuthorizedMemberSchema extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AuthorizedMemberSchema',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'schemaUri')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'status')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'statusDetails')
+    ..a<$fixnum.Int64>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'validFrom',
+        $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'validUntil',
+        $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
+  AuthorizedMemberSchema._() : super();
+  factory AuthorizedMemberSchema({
+    $core.String? schemaUri,
+    $core.String? status,
+    $core.String? statusDetails,
+    $fixnum.Int64? validFrom,
+    $fixnum.Int64? validUntil,
+  }) {
+    final _result = create();
+    if (schemaUri != null) {
+      _result.schemaUri = schemaUri;
+    }
+    if (status != null) {
+      _result.status = status;
+    }
+    if (statusDetails != null) {
+      _result.statusDetails = statusDetails;
+    }
+    if (validFrom != null) {
+      _result.validFrom = validFrom;
+    }
+    if (validUntil != null) {
+      _result.validUntil = validUntil;
+    }
+    return _result;
+  }
+  factory AuthorizedMemberSchema.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AuthorizedMemberSchema.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AuthorizedMemberSchema clone() =>
+      AuthorizedMemberSchema()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AuthorizedMemberSchema copyWith(
+          void Function(AuthorizedMemberSchema) updates) =>
+      super.copyWith((message) => updates(message as AuthorizedMemberSchema))
+          as AuthorizedMemberSchema; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AuthorizedMemberSchema create() => AuthorizedMemberSchema._();
+  AuthorizedMemberSchema createEmptyInstance() => create();
+  static $pb.PbList<AuthorizedMemberSchema> createRepeated() =>
+      $pb.PbList<AuthorizedMemberSchema>();
+  @$core.pragma('dart2js:noInline')
+  static AuthorizedMemberSchema getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AuthorizedMemberSchema>(create);
+  static AuthorizedMemberSchema? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get schemaUri => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set schemaUri($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasSchemaUri() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSchemaUri() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get status => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set status($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasStatus() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearStatus() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get statusDetails => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set statusDetails($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasStatusDetails() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearStatusDetails() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get validFrom => $_getI64(3);
+  @$pb.TagNumber(4)
+  set validFrom($fixnum.Int64 v) {
+    $_setInt64(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasValidFrom() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearValidFrom() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $fixnum.Int64 get validUntil => $_getI64(4);
+  @$pb.TagNumber(5)
+  set validUntil($fixnum.Int64 v) {
+    $_setInt64(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasValidUntil() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearValidUntil() => clearField(5);
+}

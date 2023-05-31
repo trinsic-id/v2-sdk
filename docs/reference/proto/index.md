@@ -712,6 +712,23 @@ Service for managing wallets
 | ----- | ---- | ----------- |
 | ecosystem_id | [string](/reference/proto#string) | Ecosystem ID of the wallet to create |
 | description | [string](/reference/proto#string) | Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, or anything you'd like to associate with this wallet. This field is searchable. |
+| identity | [CreateWalletRequest.ExternalIdentity](/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity) | Optional identity to add to the wallet (email or sms). Use this field when inviting participants into an ecosystem. If this field is set, an auth token will not be sent in the response. |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-CreateWalletRequest-ExternalIdentity"></a>
+
+### CreateWalletRequest.ExternalIdentity
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
+| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
 
 
 
@@ -1241,7 +1258,6 @@ Request to fetch the list of roles assigned to the current account
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
-| UpdateEcosystem | [UpdateEcosystemRequest](/reference/proto#services-provider-v1-UpdateEcosystemRequest) | [UpdateEcosystemResponse](/reference/proto#services-provider-v1-UpdateEcosystemResponse) | The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023 |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
 | SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
@@ -1463,38 +1479,8 @@ Search for issuers/holders/verifiers
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]` |
+| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` |
 | continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-provider-v1-UpdateEcosystemRequest"></a>
-
-### UpdateEcosystemRequest
-Request to update an ecosystem's metadata
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| description | [string](/reference/proto#string) | New description of the ecosystem |
-
-
-
-
-
-
-<a name="services-provider-v1-UpdateEcosystemResponse"></a>
-
-### UpdateEcosystemResponse
-Response to `UpdateEcosystemRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| Ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Current ecosystem metadata, post-update |
 
 
 
@@ -1545,7 +1531,7 @@ Strongly typed information about wallet configurations
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [string](/reference/proto#string) | Name/description of the wallet |
-| email | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
+| email | [string](/reference/proto#string) | **Deprecated.** Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in `external_identities`, if any. |
 | sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
 | wallet_id | [string](/reference/proto#string) |  |
 | public_did | [string](/reference/proto#string) | The DID of the wallet |
@@ -1648,6 +1634,7 @@ An external identity (email address, phone number, etc.) associated with a walle
 | RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
 | UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
 | GetMembershipStatus | [GetMembershipStatusRequest](/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest) | [GetMembershipStatusResponse](/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse) | Fetch the membership status of an issuer for a given credential schema in a trust registry |
+| ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
 
  <!-- end services -->
 
@@ -1680,6 +1667,41 @@ Response to `AddFrameworkRequest`
 | id | [string](/reference/proto#string) | Unique framework identifier |
 | governing_authority | [string](/reference/proto#string) | DID URI of Trinsic account which created the governance framework |
 | trust_registry | [string](/reference/proto#string) | URN of trust registry for governance framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-AuthorizedMember"></a>
+
+### AuthorizedMember
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did | [string](/reference/proto#string) |  |
+| authorized_member_schemas | [AuthorizedMemberSchema](/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema)[] |  |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-AuthorizedMemberSchema"></a>
+
+### AuthorizedMemberSchema
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schema_uri | [string](/reference/proto#string) |  |
+| status | [string](/reference/proto#string) |  |
+| status_details | [string](/reference/proto#string) |  |
+| valid_from | [uint64](/reference/proto#uint64) |  |
+| valid_until | [uint64](/reference/proto#uint64) |  |
 
 
 
@@ -1729,6 +1751,40 @@ Ecosystem Governance Framework
 | governance_framework_uri | [string](/reference/proto#string) | URI of governance framework organization |
 | trust_registry_uri | [string](/reference/proto#string) | URI of trust registry associated with governance framework |
 | description | [string](/reference/proto#string) | Description of governance framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a>
+
+### ListAuthorizedMembersRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
+| schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `SearchRegistryResponse` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a>
+
+### ListAuthorizedMembersResponse
+Response to `ListAuthorizedMembersRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_members | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember)[] | JSON string containing array of resultant objects |
+| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListAuthorizedMembersRequest` |
 
 
 
@@ -1891,7 +1947,6 @@ Response to `UnregisterMemberRequest`
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Issue | [IssueRequest](/reference/proto#services-verifiablecredentials-v1-IssueRequest) | [IssueResponse](/reference/proto#services-verifiablecredentials-v1-IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. DEPRECATED, will be removed June 1st 2023 |
 | IssueFromTemplate | [IssueFromTemplateRequest](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest) | [IssueFromTemplateResponse](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry values to the credential. |
 | CheckStatus | [CheckStatusRequest](/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status in the revocation registry |
 | UpdateStatus | [UpdateStatusRequest](/reference/proto#services-verifiablecredentials-v1-UpdateStatusRequest) | [UpdateStatusResponse](/reference/proto#services-verifiablecredentials-v1-UpdateStatusResponse) | Update credential status by setting the revocation value |
@@ -1980,6 +2035,7 @@ Request to create and sign a JSON-LD Verifiable Credential from a template using
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | framework_id | [string](/reference/proto#string) | Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF) |
 | save_copy | [bool](/reference/proto#bool) | Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status. |
+| expiration_date | [string](/reference/proto#string) | The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration |
 
 
 
@@ -1995,36 +2051,6 @@ Response to `IssueFromTemplateRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | document_json | [string](/reference/proto#string) | Verifiable Credential document, in JSON-LD form, constructed from the specified template and values; signed with public key tied to caller of `IssueFromTemplateRequest` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueRequest"></a>
-
-### IssueRequest
-DEPRECATED, will be removed May 1st 2023
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| document_json | [string](/reference/proto#string) | Valid JSON-LD Credential document to be signed, in string form |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueResponse"></a>
-
-### IssueResponse
-DEPRECATED, will be removed May 1st 2023
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| signed_document_json | [string](/reference/proto#string) | Verifiable Credential document, signed with public key tied to caller of `IssueRequest` |
 
 
 

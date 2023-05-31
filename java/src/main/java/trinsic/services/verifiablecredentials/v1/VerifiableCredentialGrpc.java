@@ -16,53 +16,6 @@ public final class VerifiableCredentialGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.IssueRequest,
-          trinsic.services.verifiablecredentials.v1.IssueResponse>
-      getIssueMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Issue",
-      requestType = trinsic.services.verifiablecredentials.v1.IssueRequest.class,
-      responseType = trinsic.services.verifiablecredentials.v1.IssueResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.IssueRequest,
-          trinsic.services.verifiablecredentials.v1.IssueResponse>
-      getIssueMethod() {
-    io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.IssueRequest,
-            trinsic.services.verifiablecredentials.v1.IssueResponse>
-        getIssueMethod;
-    if ((getIssueMethod = VerifiableCredentialGrpc.getIssueMethod) == null) {
-      synchronized (VerifiableCredentialGrpc.class) {
-        if ((getIssueMethod = VerifiableCredentialGrpc.getIssueMethod) == null) {
-          VerifiableCredentialGrpc.getIssueMethod =
-              getIssueMethod =
-                  io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.IssueRequest,
-                          trinsic.services.verifiablecredentials.v1.IssueResponse>
-                          newBuilder()
-                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Issue"))
-                      .setSampledToLocalTracing(true)
-                      .setRequestMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.IssueRequest
-                                  .getDefaultInstance()))
-                      .setResponseMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.IssueResponse
-                                  .getDefaultInstance()))
-                      .setSchemaDescriptor(
-                          new VerifiableCredentialMethodDescriptorSupplier("Issue"))
-                      .build();
-        }
-      }
-    }
-    return getIssueMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest,
           trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
       getIssueFromTemplateMethod;
@@ -393,22 +346,6 @@ public final class VerifiableCredentialGrpc {
      *
      *
      * <pre>
-     * Sign and issue a verifiable credential from a submitted document.
-     * The document must be a valid JSON-LD document.
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    public void issue(
-        trinsic.services.verifiablecredentials.v1.IssueRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.IssueResponse>
-            responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getIssueMethod(), responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
      * revocation registry values to the credential.
@@ -503,13 +440,6 @@ public final class VerifiableCredentialGrpc {
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-              getIssueMethod(),
-              io.grpc.stub.ServerCalls.asyncUnaryCall(
-                  new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.IssueRequest,
-                      trinsic.services.verifiablecredentials.v1.IssueResponse>(
-                      this, METHODID_ISSUE)))
-          .addMethod(
               getIssueFromTemplateMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
@@ -565,23 +495,6 @@ public final class VerifiableCredentialGrpc {
     protected VerifiableCredentialStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new VerifiableCredentialStub(channel, callOptions);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Sign and issue a verifiable credential from a submitted document.
-     * The document must be a valid JSON-LD document.
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    public void issue(
-        trinsic.services.verifiablecredentials.v1.IssueRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.IssueResponse>
-            responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getIssueMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -708,21 +621,6 @@ public final class VerifiableCredentialGrpc {
      *
      *
      * <pre>
-     * Sign and issue a verifiable credential from a submitted document.
-     * The document must be a valid JSON-LD document.
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    public trinsic.services.verifiablecredentials.v1.IssueResponse issue(
-        trinsic.services.verifiablecredentials.v1.IssueRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getIssueMethod(), getCallOptions(), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
      * revocation registry values to the credential.
@@ -820,22 +718,6 @@ public final class VerifiableCredentialGrpc {
      *
      *
      * <pre>
-     * Sign and issue a verifiable credential from a submitted document.
-     * The document must be a valid JSON-LD document.
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.IssueResponse>
-        issue(trinsic.services.verifiablecredentials.v1.IssueRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getIssueMethod(), getCallOptions()), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
      * revocation registry values to the credential.
@@ -922,13 +804,12 @@ public final class VerifiableCredentialGrpc {
     }
   }
 
-  private static final int METHODID_ISSUE = 0;
-  private static final int METHODID_ISSUE_FROM_TEMPLATE = 1;
-  private static final int METHODID_CHECK_STATUS = 2;
-  private static final int METHODID_UPDATE_STATUS = 3;
-  private static final int METHODID_CREATE_PROOF = 4;
-  private static final int METHODID_VERIFY_PROOF = 5;
-  private static final int METHODID_SEND = 6;
+  private static final int METHODID_ISSUE_FROM_TEMPLATE = 0;
+  private static final int METHODID_CHECK_STATUS = 1;
+  private static final int METHODID_UPDATE_STATUS = 2;
+  private static final int METHODID_CREATE_PROOF = 3;
+  private static final int METHODID_VERIFY_PROOF = 4;
+  private static final int METHODID_SEND = 5;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -947,12 +828,6 @@ public final class VerifiableCredentialGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_ISSUE:
-          serviceImpl.issue(
-              (trinsic.services.verifiablecredentials.v1.IssueRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.IssueResponse>)
-                  responseObserver);
-          break;
         case METHODID_ISSUE_FROM_TEMPLATE:
           serviceImpl.issueFromTemplate(
               (trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest) request,
@@ -1058,7 +933,6 @@ public final class VerifiableCredentialGrpc {
               result =
                   io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
                       .setSchemaDescriptor(new VerifiableCredentialFileDescriptorSupplier())
-                      .addMethod(getIssueMethod())
                       .addMethod(getIssueFromTemplateMethod())
                       .addMethod(getCheckStatusMethod())
                       .addMethod(getUpdateStatusMethod())

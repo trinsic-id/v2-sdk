@@ -89,18 +89,6 @@ export interface CreateEcosystemResponse {
   confirmationMethod?: ConfirmationMethod;
 }
 
-/** Request to update an ecosystem's metadata */
-export interface UpdateEcosystemRequest {
-  /** New description of the ecosystem */
-  description?: string;
-}
-
-/** Response to `UpdateEcosystemRequest` */
-export interface UpdateEcosystemResponse {
-  /** Current ecosystem metadata, post-update */
-  Ecosystem?: Ecosystem;
-}
-
 /** Request to fetch information about an ecosystem */
 export interface EcosystemInfoRequest {
 }
@@ -170,7 +158,7 @@ export interface RefreshDomainVerificationStatusResponse {
 
 /** Search for issuers/holders/verifiers */
 export interface SearchWalletConfigurationsRequest {
-  /** SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]` */
+  /** SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` */
   queryFilter?: string;
   /**
    * Token provided by previous `SearchResponse`
@@ -193,7 +181,8 @@ export interface WalletConfiguration {
   /** Name/description of the wallet */
   name?: string;
   /**
-   * Deprecated -- use external_identities
+   * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+   * This field is set to the first email address present in `external_identities`, if any.
    *
    * @deprecated
    */
@@ -666,121 +655,6 @@ export const CreateEcosystemResponse = {
       ? AccountProfile.fromPartial(object.profile)
       : undefined;
     message.confirmationMethod = object.confirmationMethod ?? 0;
-    return message;
-  },
-};
-
-function createBaseUpdateEcosystemRequest(): UpdateEcosystemRequest {
-  return { description: "" };
-}
-
-export const UpdateEcosystemRequest = {
-  encode(message: UpdateEcosystemRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.description !== undefined && message.description !== "") {
-      writer.uint32(10).string(message.description);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateEcosystemRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpdateEcosystemRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.description = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UpdateEcosystemRequest {
-    return { description: isSet(object.description) ? String(object.description) : "" };
-  },
-
-  toJSON(message: UpdateEcosystemRequest): unknown {
-    const obj: any = {};
-    message.description !== undefined && (obj.description = message.description);
-    return obj;
-  },
-
-  create(base?: DeepPartial<UpdateEcosystemRequest>): UpdateEcosystemRequest {
-    return UpdateEcosystemRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<UpdateEcosystemRequest>): UpdateEcosystemRequest {
-    const message = createBaseUpdateEcosystemRequest();
-    message.description = object.description ?? "";
-    return message;
-  },
-};
-
-function createBaseUpdateEcosystemResponse(): UpdateEcosystemResponse {
-  return { Ecosystem: undefined };
-}
-
-export const UpdateEcosystemResponse = {
-  encode(message: UpdateEcosystemResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.Ecosystem !== undefined) {
-      Ecosystem.encode(message.Ecosystem, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateEcosystemResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpdateEcosystemResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.Ecosystem = Ecosystem.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UpdateEcosystemResponse {
-    return { Ecosystem: isSet(object.Ecosystem) ? Ecosystem.fromJSON(object.Ecosystem) : undefined };
-  },
-
-  toJSON(message: UpdateEcosystemResponse): unknown {
-    const obj: any = {};
-    message.Ecosystem !== undefined &&
-      (obj.Ecosystem = message.Ecosystem ? Ecosystem.toJSON(message.Ecosystem) : undefined);
-    return obj;
-  },
-
-  create(base?: DeepPartial<UpdateEcosystemResponse>): UpdateEcosystemResponse {
-    return UpdateEcosystemResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<UpdateEcosystemResponse>): UpdateEcosystemResponse {
-    const message = createBaseUpdateEcosystemResponse();
-    message.Ecosystem = (object.Ecosystem !== undefined && object.Ecosystem !== null)
-      ? Ecosystem.fromPartial(object.Ecosystem)
-      : undefined;
     return message;
   },
 };
@@ -1991,67 +1865,6 @@ export const ProviderDefinition = {
       responseType: CreateEcosystemResponse,
       responseStream: false,
       options: { _unknownFields: { 480010: [new Uint8Array([2, 16, 1])] } },
-    },
-    /**
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed June 1st 2023
-     *
-     * @deprecated
-     */
-    updateEcosystem: {
-      name: "UpdateEcosystem",
-      requestType: UpdateEcosystemRequest,
-      requestStream: false,
-      responseType: UpdateEcosystemResponse,
-      responseStream: false,
-      options: {
-        _unknownFields: {
-          480010: [
-            new Uint8Array([
-              39,
-              42,
-              37,
-              8,
-              1,
-              18,
-              33,
-              84,
-              104,
-              105,
-              115,
-              32,
-              119,
-              105,
-              108,
-              108,
-              32,
-              98,
-              101,
-              32,
-              114,
-              101,
-              109,
-              111,
-              118,
-              101,
-              100,
-              32,
-              74,
-              117,
-              110,
-              101,
-              32,
-              49,
-              44,
-              32,
-              50,
-              48,
-              50,
-              51,
-            ]),
-          ],
-        },
-      },
     },
     /** Returns the public key being used to create/verify oberon tokens */
     getOberonKey: {

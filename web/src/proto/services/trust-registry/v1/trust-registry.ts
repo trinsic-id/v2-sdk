@@ -194,6 +194,44 @@ export interface GetMembershipStatusResponse {
   status?: RegistrationStatus;
 }
 
+export interface ListAuthorizedMembersRequest {
+  /**
+   * The ID of the ecosystem governance framework.
+   * This ID may be found in the 'trustRegistry' field in the
+   * verifiable credential model
+   */
+  frameworkId?: string;
+  /** id of schema that needs to be checked */
+  schemaUri?:
+    | string
+    | undefined;
+  /** Token to fetch next set of results, from previous `SearchRegistryResponse` */
+  continuationToken?: string | undefined;
+}
+
+/** Response to `ListAuthorizedMembersRequest` */
+export interface ListAuthorizedMembersResponse {
+  /** JSON string containing array of resultant objects */
+  authorizedMembers?: AuthorizedMember[];
+  /** Whether more data is available to fetch for query */
+  hasMoreResults?: boolean;
+  /** Token to fetch next set of results via `ListAuthorizedMembersRequest` */
+  continuationToken?: string;
+}
+
+export interface AuthorizedMember {
+  did?: string;
+  authorizedMemberSchemas?: AuthorizedMemberSchema[];
+}
+
+export interface AuthorizedMemberSchema {
+  schemaUri?: string;
+  status?: string;
+  statusDetails?: string;
+  validFrom?: number;
+  validUntil?: number;
+}
+
 function createBaseAddFrameworkRequest(): AddFrameworkRequest {
   return { governanceFrameworkUri: "", name: "", description: "" };
 }
@@ -1183,6 +1221,374 @@ export const GetMembershipStatusResponse = {
   },
 };
 
+function createBaseListAuthorizedMembersRequest(): ListAuthorizedMembersRequest {
+  return { frameworkId: "", schemaUri: undefined, continuationToken: undefined };
+}
+
+export const ListAuthorizedMembersRequest = {
+  encode(message: ListAuthorizedMembersRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.frameworkId !== undefined && message.frameworkId !== "") {
+      writer.uint32(10).string(message.frameworkId);
+    }
+    if (message.schemaUri !== undefined) {
+      writer.uint32(18).string(message.schemaUri);
+    }
+    if (message.continuationToken !== undefined) {
+      writer.uint32(26).string(message.continuationToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListAuthorizedMembersRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListAuthorizedMembersRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.frameworkId = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.schemaUri = reader.string();
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListAuthorizedMembersRequest {
+    return {
+      frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
+      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : undefined,
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : undefined,
+    };
+  },
+
+  toJSON(message: ListAuthorizedMembersRequest): unknown {
+    const obj: any = {};
+    message.frameworkId !== undefined && (obj.frameworkId = message.frameworkId);
+    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
+    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListAuthorizedMembersRequest>): ListAuthorizedMembersRequest {
+    return ListAuthorizedMembersRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ListAuthorizedMembersRequest>): ListAuthorizedMembersRequest {
+    const message = createBaseListAuthorizedMembersRequest();
+    message.frameworkId = object.frameworkId ?? "";
+    message.schemaUri = object.schemaUri ?? undefined;
+    message.continuationToken = object.continuationToken ?? undefined;
+    return message;
+  },
+};
+
+function createBaseListAuthorizedMembersResponse(): ListAuthorizedMembersResponse {
+  return { authorizedMembers: [], hasMoreResults: false, continuationToken: "" };
+}
+
+export const ListAuthorizedMembersResponse = {
+  encode(message: ListAuthorizedMembersResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.authorizedMembers !== undefined && message.authorizedMembers.length !== 0) {
+      for (const v of message.authorizedMembers) {
+        AuthorizedMember.encode(v!, writer.uint32(10).fork()).ldelim();
+      }
+    }
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      writer.uint32(26).string(message.continuationToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListAuthorizedMembersResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListAuthorizedMembersResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.authorizedMembers!.push(AuthorizedMember.decode(reader, reader.uint32()));
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.hasMoreResults = reader.bool();
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListAuthorizedMembersResponse {
+    return {
+      authorizedMembers: Array.isArray(object?.authorizedMembers)
+        ? object.authorizedMembers.map((e: any) => AuthorizedMember.fromJSON(e))
+        : [],
+      hasMoreResults: isSet(object.hasMoreResults) ? Boolean(object.hasMoreResults) : false,
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
+    };
+  },
+
+  toJSON(message: ListAuthorizedMembersResponse): unknown {
+    const obj: any = {};
+    if (message.authorizedMembers) {
+      obj.authorizedMembers = message.authorizedMembers.map((e) => e ? AuthorizedMember.toJSON(e) : undefined);
+    } else {
+      obj.authorizedMembers = [];
+    }
+    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
+    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListAuthorizedMembersResponse>): ListAuthorizedMembersResponse {
+    return ListAuthorizedMembersResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ListAuthorizedMembersResponse>): ListAuthorizedMembersResponse {
+    const message = createBaseListAuthorizedMembersResponse();
+    message.authorizedMembers = object.authorizedMembers?.map((e) => AuthorizedMember.fromPartial(e)) || [];
+    message.hasMoreResults = object.hasMoreResults ?? false;
+    message.continuationToken = object.continuationToken ?? "";
+    return message;
+  },
+};
+
+function createBaseAuthorizedMember(): AuthorizedMember {
+  return { did: "", authorizedMemberSchemas: [] };
+}
+
+export const AuthorizedMember = {
+  encode(message: AuthorizedMember, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.did !== undefined && message.did !== "") {
+      writer.uint32(10).string(message.did);
+    }
+    if (message.authorizedMemberSchemas !== undefined && message.authorizedMemberSchemas.length !== 0) {
+      for (const v of message.authorizedMemberSchemas) {
+        AuthorizedMemberSchema.encode(v!, writer.uint32(18).fork()).ldelim();
+      }
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AuthorizedMember {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthorizedMember();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.did = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.authorizedMemberSchemas!.push(AuthorizedMemberSchema.decode(reader, reader.uint32()));
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthorizedMember {
+    return {
+      did: isSet(object.did) ? String(object.did) : "",
+      authorizedMemberSchemas: Array.isArray(object?.authorizedMemberSchemas)
+        ? object.authorizedMemberSchemas.map((e: any) => AuthorizedMemberSchema.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: AuthorizedMember): unknown {
+    const obj: any = {};
+    message.did !== undefined && (obj.did = message.did);
+    if (message.authorizedMemberSchemas) {
+      obj.authorizedMemberSchemas = message.authorizedMemberSchemas.map((e) =>
+        e ? AuthorizedMemberSchema.toJSON(e) : undefined
+      );
+    } else {
+      obj.authorizedMemberSchemas = [];
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<AuthorizedMember>): AuthorizedMember {
+    return AuthorizedMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<AuthorizedMember>): AuthorizedMember {
+    const message = createBaseAuthorizedMember();
+    message.did = object.did ?? "";
+    message.authorizedMemberSchemas =
+      object.authorizedMemberSchemas?.map((e) => AuthorizedMemberSchema.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseAuthorizedMemberSchema(): AuthorizedMemberSchema {
+  return { schemaUri: "", status: "", statusDetails: "", validFrom: 0, validUntil: 0 };
+}
+
+export const AuthorizedMemberSchema = {
+  encode(message: AuthorizedMemberSchema, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.schemaUri !== undefined && message.schemaUri !== "") {
+      writer.uint32(10).string(message.schemaUri);
+    }
+    if (message.status !== undefined && message.status !== "") {
+      writer.uint32(18).string(message.status);
+    }
+    if (message.statusDetails !== undefined && message.statusDetails !== "") {
+      writer.uint32(26).string(message.statusDetails);
+    }
+    if (message.validFrom !== undefined && message.validFrom !== 0) {
+      writer.uint32(32).uint64(message.validFrom);
+    }
+    if (message.validUntil !== undefined && message.validUntil !== 0) {
+      writer.uint32(40).uint64(message.validUntil);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AuthorizedMemberSchema {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthorizedMemberSchema();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.schemaUri = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.status = reader.string();
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.statusDetails = reader.string();
+          continue;
+        case 4:
+          if (tag != 32) {
+            break;
+          }
+
+          message.validFrom = longToNumber(reader.uint64() as Long);
+          continue;
+        case 5:
+          if (tag != 40) {
+            break;
+          }
+
+          message.validUntil = longToNumber(reader.uint64() as Long);
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthorizedMemberSchema {
+    return {
+      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
+      status: isSet(object.status) ? String(object.status) : "",
+      statusDetails: isSet(object.statusDetails) ? String(object.statusDetails) : "",
+      validFrom: isSet(object.validFrom) ? Number(object.validFrom) : 0,
+      validUntil: isSet(object.validUntil) ? Number(object.validUntil) : 0,
+    };
+  },
+
+  toJSON(message: AuthorizedMemberSchema): unknown {
+    const obj: any = {};
+    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
+    message.status !== undefined && (obj.status = message.status);
+    message.statusDetails !== undefined && (obj.statusDetails = message.statusDetails);
+    message.validFrom !== undefined && (obj.validFrom = Math.round(message.validFrom));
+    message.validUntil !== undefined && (obj.validUntil = Math.round(message.validUntil));
+    return obj;
+  },
+
+  create(base?: DeepPartial<AuthorizedMemberSchema>): AuthorizedMemberSchema {
+    return AuthorizedMemberSchema.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<AuthorizedMemberSchema>): AuthorizedMemberSchema {
+    const message = createBaseAuthorizedMemberSchema();
+    message.schemaUri = object.schemaUri ?? "";
+    message.status = object.status ?? "";
+    message.statusDetails = object.statusDetails ?? "";
+    message.validFrom = object.validFrom ?? 0;
+    message.validUntil = object.validUntil ?? 0;
+    return message;
+  },
+};
+
 export type TrustRegistryDefinition = typeof TrustRegistryDefinition;
 export const TrustRegistryDefinition = {
   name: "TrustRegistry",
@@ -1239,6 +1645,15 @@ export const TrustRegistryDefinition = {
       requestType: GetMembershipStatusRequest,
       requestStream: false,
       responseType: GetMembershipStatusResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Fetch the ecosystem's authorized issuers and the respective templates against which it can issue */
+    listAuthorizedMembers: {
+      name: "ListAuthorizedMembers",
+      requestType: ListAuthorizedMembersRequest,
+      requestStream: false,
+      responseType: ListAuthorizedMembersResponse,
       responseStream: false,
       options: {},
     },

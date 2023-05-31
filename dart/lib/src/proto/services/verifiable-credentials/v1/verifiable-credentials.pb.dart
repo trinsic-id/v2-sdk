@@ -9,140 +9,6 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class IssueRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'IssueRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'documentJson')
-    ..hasRequiredFields = false;
-
-  IssueRequest._() : super();
-  factory IssueRequest({
-    $core.String? documentJson,
-  }) {
-    final _result = create();
-    if (documentJson != null) {
-      _result.documentJson = documentJson;
-    }
-    return _result;
-  }
-  factory IssueRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory IssueRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  IssueRequest clone() => IssueRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  IssueRequest copyWith(void Function(IssueRequest) updates) =>
-      super.copyWith((message) => updates(message as IssueRequest))
-          as IssueRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static IssueRequest create() => IssueRequest._();
-  IssueRequest createEmptyInstance() => create();
-  static $pb.PbList<IssueRequest> createRepeated() =>
-      $pb.PbList<IssueRequest>();
-  @$core.pragma('dart2js:noInline')
-  static IssueRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<IssueRequest>(create);
-  static IssueRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get documentJson => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set documentJson($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasDocumentJson() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearDocumentJson() => clearField(1);
-}
-
-class IssueResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'IssueResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'signedDocumentJson')
-    ..hasRequiredFields = false;
-
-  IssueResponse._() : super();
-  factory IssueResponse({
-    $core.String? signedDocumentJson,
-  }) {
-    final _result = create();
-    if (signedDocumentJson != null) {
-      _result.signedDocumentJson = signedDocumentJson;
-    }
-    return _result;
-  }
-  factory IssueResponse.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory IssueResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  IssueResponse clone() => IssueResponse()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  IssueResponse copyWith(void Function(IssueResponse) updates) =>
-      super.copyWith((message) => updates(message as IssueResponse))
-          as IssueResponse; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static IssueResponse create() => IssueResponse._();
-  IssueResponse createEmptyInstance() => create();
-  static $pb.PbList<IssueResponse> createRepeated() =>
-      $pb.PbList<IssueResponse>();
-  @$core.pragma('dart2js:noInline')
-  static IssueResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<IssueResponse>(create);
-  static IssueResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get signedDocumentJson => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set signedDocumentJson($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasSignedDocumentJson() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearSignedDocumentJson() => clearField(1);
-}
-
 class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -173,6 +39,11 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'saveCopy')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'expirationDate')
     ..hasRequiredFields = false;
 
   IssueFromTemplateRequest._() : super();
@@ -181,6 +52,7 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
     $core.String? valuesJson,
     $core.String? frameworkId,
     $core.bool? saveCopy,
+    $core.String? expirationDate,
   }) {
     final _result = create();
     if (templateId != null) {
@@ -194,6 +66,9 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
     }
     if (saveCopy != null) {
       _result.saveCopy = saveCopy;
+    }
+    if (expirationDate != null) {
+      _result.expirationDate = expirationDate;
     }
     return _result;
   }
@@ -273,6 +148,18 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   $core.bool hasSaveCopy() => $_has(3);
   @$pb.TagNumber(4)
   void clearSaveCopy() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get expirationDate => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set expirationDate($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasExpirationDate() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearExpirationDate() => clearField(5);
 }
 
 class IssueFromTemplateResponse extends $pb.GeneratedMessage {

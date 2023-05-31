@@ -26,6 +26,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     templateId_ = "";
     valuesJson_ = "";
     frameworkId_ = "";
+    expirationDate_ = "";
   }
 
   @java.lang.Override
@@ -227,6 +228,59 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     return saveCopy_;
   }
 
+  public static final int EXPIRATION_DATE_FIELD_NUMBER = 5;
+  private volatile java.lang.Object expirationDate_;
+  /**
+   *
+   *
+   * <pre>
+   * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+   * If specified, the issued credential will contain an expiration date.
+   * https://www.w3.org/TR/vc-data-model/#expiration
+   * </pre>
+   *
+   * <code>string expiration_date = 5;</code>
+   *
+   * @return The expirationDate.
+   */
+  @java.lang.Override
+  public java.lang.String getExpirationDate() {
+    java.lang.Object ref = expirationDate_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      expirationDate_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+   * If specified, the issued credential will contain an expiration date.
+   * https://www.w3.org/TR/vc-data-model/#expiration
+   * </pre>
+   *
+   * <code>string expiration_date = 5;</code>
+   *
+   * @return The bytes for expirationDate.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getExpirationDateBytes() {
+    java.lang.Object ref = expirationDate_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      expirationDate_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -253,6 +307,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (saveCopy_ != false) {
       output.writeBool(4, saveCopy_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expirationDate_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, expirationDate_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -274,6 +331,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (saveCopy_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, saveCopy_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expirationDate_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, expirationDate_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -294,6 +354,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (!getValuesJson().equals(other.getValuesJson())) return false;
     if (!getFrameworkId().equals(other.getFrameworkId())) return false;
     if (getSaveCopy() != other.getSaveCopy()) return false;
+    if (!getExpirationDate().equals(other.getExpirationDate())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -313,6 +374,8 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     hash = (53 * hash) + getFrameworkId().hashCode();
     hash = (37 * hash) + SAVE_COPY_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getSaveCopy());
+    hash = (37 * hash) + EXPIRATION_DATE_FIELD_NUMBER;
+    hash = (53 * hash) + getExpirationDate().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -462,6 +525,8 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
       saveCopy_ = false;
 
+      expirationDate_ = "";
+
       return this;
     }
 
@@ -495,6 +560,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       result.valuesJson_ = valuesJson_;
       result.frameworkId_ = frameworkId_;
       result.saveCopy_ = saveCopy_;
+      result.expirationDate_ = expirationDate_;
       onBuilt();
       return result;
     }
@@ -563,6 +629,10 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       if (other.getSaveCopy() != false) {
         setSaveCopy(other.getSaveCopy());
       }
+      if (!other.getExpirationDate().isEmpty()) {
+        expirationDate_ = other.expirationDate_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -613,6 +683,12 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
                 break;
               } // case 32
+            case 42:
+              {
+                expirationDate_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 42
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1017,6 +1093,122 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     public Builder clearSaveCopy() {
 
       saveCopy_ = false;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object expirationDate_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+     * If specified, the issued credential will contain an expiration date.
+     * https://www.w3.org/TR/vc-data-model/#expiration
+     * </pre>
+     *
+     * <code>string expiration_date = 5;</code>
+     *
+     * @return The expirationDate.
+     */
+    public java.lang.String getExpirationDate() {
+      java.lang.Object ref = expirationDate_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        expirationDate_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+     * If specified, the issued credential will contain an expiration date.
+     * https://www.w3.org/TR/vc-data-model/#expiration
+     * </pre>
+     *
+     * <code>string expiration_date = 5;</code>
+     *
+     * @return The bytes for expirationDate.
+     */
+    public com.google.protobuf.ByteString getExpirationDateBytes() {
+      java.lang.Object ref = expirationDate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        expirationDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+     * If specified, the issued credential will contain an expiration date.
+     * https://www.w3.org/TR/vc-data-model/#expiration
+     * </pre>
+     *
+     * <code>string expiration_date = 5;</code>
+     *
+     * @param value The expirationDate to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExpirationDate(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      expirationDate_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+     * If specified, the issued credential will contain an expiration date.
+     * https://www.w3.org/TR/vc-data-model/#expiration
+     * </pre>
+     *
+     * <code>string expiration_date = 5;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearExpirationDate() {
+
+      expirationDate_ = getDefaultInstance().getExpirationDate();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+     * If specified, the issued credential will contain an expiration date.
+     * https://www.w3.org/TR/vc-data-model/#expiration
+     * </pre>
+     *
+     * <code>string expiration_date = 5;</code>
+     *
+     * @param value The bytes for expirationDate to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExpirationDateBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      expirationDate_ = value;
       onChanged();
       return this;
     }

@@ -117,13 +117,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Deprecated -- use external_identities
+   * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+   * This field is set to the first email address present in `external_identities`, if any.
    * </pre>
    *
    * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
-   *     services/provider/v1/provider.proto;l=149
+   *     services/provider/v1/provider.proto;l=135
    * @return The email.
    */
   @java.lang.Override
@@ -143,13 +144,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Deprecated -- use external_identities
+   * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+   * This field is set to the first email address present in `external_identities`, if any.
    * </pre>
    *
    * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
-   *     services/provider/v1/provider.proto;l=149
+   *     services/provider/v1/provider.proto;l=135
    * @return The bytes for email.
    */
   @java.lang.Override
@@ -178,7 +180,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
-   *     services/provider/v1/provider.proto;l=151
+   *     services/provider/v1/provider.proto;l=137
    * @return The sms.
    */
   @java.lang.Override
@@ -204,7 +206,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
-   *     services/provider/v1/provider.proto;l=151
+   *     services/provider/v1/provider.proto;l=137
    * @return The bytes for sms.
    */
   @java.lang.Override
@@ -436,7 +438,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-   *     services/provider/v1/provider.proto;l=163
+   *     services/provider/v1/provider.proto;l=149
    * @return A list containing the externalIdentityIds.
    */
   @java.lang.Deprecated
@@ -454,7 +456,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-   *     services/provider/v1/provider.proto;l=163
+   *     services/provider/v1/provider.proto;l=149
    * @return The count of externalIdentityIds.
    */
   @java.lang.Deprecated
@@ -472,7 +474,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-   *     services/provider/v1/provider.proto;l=163
+   *     services/provider/v1/provider.proto;l=149
    * @param index The index of the element to return.
    * @return The externalIdentityIds at the given index.
    */
@@ -491,7 +493,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
    * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-   *     services/provider/v1/provider.proto;l=163
+   *     services/provider/v1/provider.proto;l=149
    * @param index The index of the value to return.
    * @return The bytes of the externalIdentityIds at the given index.
    */
@@ -1431,13 +1433,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Deprecated -- use external_identities
+     * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+     * This field is set to the first email address present in `external_identities`, if any.
      * </pre>
      *
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
-     *     services/provider/v1/provider.proto;l=149
+     *     services/provider/v1/provider.proto;l=135
      * @return The email.
      */
     @java.lang.Deprecated
@@ -1456,13 +1459,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Deprecated -- use external_identities
+     * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+     * This field is set to the first email address present in `external_identities`, if any.
      * </pre>
      *
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
-     *     services/provider/v1/provider.proto;l=149
+     *     services/provider/v1/provider.proto;l=135
      * @return The bytes for email.
      */
     @java.lang.Deprecated
@@ -1481,13 +1485,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Deprecated -- use external_identities
+     * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+     * This field is set to the first email address present in `external_identities`, if any.
      * </pre>
      *
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
-     *     services/provider/v1/provider.proto;l=149
+     *     services/provider/v1/provider.proto;l=135
      * @param value The email to set.
      * @return This builder for chaining.
      */
@@ -1505,13 +1510,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Deprecated -- use external_identities
+     * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+     * This field is set to the first email address present in `external_identities`, if any.
      * </pre>
      *
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
-     *     services/provider/v1/provider.proto;l=149
+     *     services/provider/v1/provider.proto;l=135
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -1525,13 +1531,14 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Deprecated -- use external_identities
+     * Deprecated and will be removed on August 1, 2023 -- use external_identities.
+     * This field is set to the first email address present in `external_identities`, if any.
      * </pre>
      *
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.email is deprecated. See
-     *     services/provider/v1/provider.proto;l=149
+     *     services/provider/v1/provider.proto;l=135
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
@@ -1558,7 +1565,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
-     *     services/provider/v1/provider.proto;l=151
+     *     services/provider/v1/provider.proto;l=137
      * @return The sms.
      */
     @java.lang.Deprecated
@@ -1583,7 +1590,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
-     *     services/provider/v1/provider.proto;l=151
+     *     services/provider/v1/provider.proto;l=137
      * @return The bytes for sms.
      */
     @java.lang.Deprecated
@@ -1608,7 +1615,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
-     *     services/provider/v1/provider.proto;l=151
+     *     services/provider/v1/provider.proto;l=137
      * @param value The sms to set.
      * @return This builder for chaining.
      */
@@ -1632,7 +1639,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
-     *     services/provider/v1/provider.proto;l=151
+     *     services/provider/v1/provider.proto;l=137
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -1652,7 +1659,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.sms is deprecated. See
-     *     services/provider/v1/provider.proto;l=151
+     *     services/provider/v1/provider.proto;l=137
      * @param value The bytes for sms to set.
      * @return This builder for chaining.
      */
@@ -2333,7 +2340,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @return A list containing the externalIdentityIds.
      */
     @java.lang.Deprecated
@@ -2351,7 +2358,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @return The count of externalIdentityIds.
      */
     @java.lang.Deprecated
@@ -2369,7 +2376,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @param index The index of the element to return.
      * @return The externalIdentityIds at the given index.
      */
@@ -2388,7 +2395,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @param index The index of the value to return.
      * @return The bytes of the externalIdentityIds at the given index.
      */
@@ -2407,7 +2414,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @param index The index to set the value at.
      * @param value The externalIdentityIds to set.
      * @return This builder for chaining.
@@ -2433,7 +2440,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @param value The externalIdentityIds to add.
      * @return This builder for chaining.
      */
@@ -2458,7 +2465,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @param values The externalIdentityIds to add.
      * @return This builder for chaining.
      */
@@ -2480,7 +2487,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -2501,7 +2508,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
      * <code>repeated string external_identity_ids = 8 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.WalletConfiguration.external_identity_ids is deprecated. See
-     *     services/provider/v1/provider.proto;l=163
+     *     services/provider/v1/provider.proto;l=149
      * @param value The bytes of the externalIdentityIds to add.
      * @return This builder for chaining.
      */
