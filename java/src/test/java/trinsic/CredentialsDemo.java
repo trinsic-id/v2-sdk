@@ -4,10 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
+
+import com.google.gson.Gson;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
+import trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest;
+import trinsic.services.verifiablecredentials.templates.v1.TemplateField;
 import trinsic.services.verifiablecredentials.v1.*;
 
 public class CredentialsDemo {
@@ -45,17 +50,41 @@ public class CredentialsDemo {
 
     trinsic.setAuthToken(issuerVerifier.getAuthToken());
 
-    // issueCredentialSample() {
+    var template =
+        trinsic
+            .template()
+            .create(CreateCredentialTemplateRequest
+                    .newBuilder()
+                    .setName("Credential Service Test Java")
+                    .putFields(
+                            "firstName",
+                            TemplateField.newBuilder()
+                                    .setTitle("First Name")
+                                    .build())
+                    .putFields(
+                            "lastName",
+                            TemplateField.newBuilder()
+                                    .setTitle("Last Name")
+                                    .build())
+                    .build())
+            .get();
+
+    var valuesMap = new HashMap<String, Object>();
+    valuesMap.put("firstName", "Jane");
+    valuesMap.put("lastName", "Doe");
+    var valuesJson = new Gson().toJson(valuesMap);
+
     var issueResult =
         trinsic
             .credential()
-            .issue(IssueRequest.newBuilder().setDocumentJson(unsignedCredential).build())
+            .issueFromTemplate(IssueFromTemplateRequest
+                    .newBuilder()
+                    .setTemplateId(template.getData().getId())
+                    .setValuesJson(valuesJson)
+                    .build())
             .get();
 
-    var signedCredentialJson = issueResult.getSignedDocumentJson();
-    // }
-
-    System.out.println("Credential: " + signedCredentialJson);
+    var signedCredentialJson = issueResult.getDocumentJson();
 
     trinsic.setAuthToken(holder.getAuthToken());
     // createProof() {
@@ -65,7 +94,6 @@ public class CredentialsDemo {
             .createProof(
                 CreateProofRequest.newBuilder()
                     .setDocumentJson(signedCredentialJson)
-                    .setRevealDocumentJson(proofRequestJson)
                     .build())
             .get();
 
