@@ -40,18 +40,6 @@ func TestIssueAndVerify(t *testing.T) {
 	assert2.Nil(err)
 	assert2.NotNil(issueTemplateResponse)
 
-	// Issue (not from template) -- can just be any JSON blob
-	unsignedCredential := valuesJson
-
-	// issueCredential() {
-	issueResponse, err := trinsic.Credential().Issue(context.Background(),
-		&credential.IssueRequest{
-			DocumentJson: unsignedCredential,
-		})
-	// }
-
-	assert2.NotNil(issueResponse)
-
 	// Create a proof
 	// createProof() {
 	request := &credential.CreateProofRequest{
