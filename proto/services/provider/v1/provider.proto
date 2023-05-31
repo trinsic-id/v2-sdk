@@ -57,21 +57,6 @@ message CreateEcosystemResponse {
   services.account.v1.ConfirmationMethod confirmation_method = 3;
 }
 
-// Request to update an ecosystem's metadata
-message UpdateEcosystemRequest {
-  // New description of the ecosystem
-  string description = 1;
-
-  reserved 2, 3, 4, 5;
-  reserved "uri", "name", "display", "domain";
-}
-
-// Response to `UpdateEcosystemRequest`
-message UpdateEcosystemResponse {
-  // Current ecosystem metadata, post-update
-  Ecosystem Ecosystem = 1;
-}
-
 // Request to fetch information about an ecosystem
 message EcosystemInfoRequest {
 }
@@ -126,7 +111,7 @@ message RefreshDomainVerificationStatusResponse {
 
 // Search for issuers/holders/verifiers
 message SearchWalletConfigurationsRequest {
-  // SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
+  // SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]`
   string query_filter = 1;
   // Token provided by previous `SearchResponse`
   // if more data is available for query
@@ -146,7 +131,8 @@ message SearchWalletConfigurationResponse {
 message WalletConfiguration {
   // Name/description of the wallet
   string name = 1;
-  // Deprecated -- use external_identities
+  // Deprecated and will be removed on August 1, 2023 -- use external_identities. 
+  // This field is set to the first email address present in `external_identities`, if any.
   string email = 2  [(options.optional) = true, deprecated = true];
   // Deprecated -- use external_identities
   string sms = 3  [(options.optional) = true, deprecated = true];
@@ -254,13 +240,6 @@ service Provider {
   // Create new ecosystem and assign the authenticated user as owner
   rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse) {
     option (options.sdk_template_option).ignore = true;
-  }
-
-  // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-  // DEPRECATED, will be removed June 1st 2023
-  rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse) {
-    option deprecated = true;
-    option (options.sdk_template_option).deprecated = {active: true, message: "This will be removed June 1, 2023"};
   }
 
   // Returns the public key being used to create/verify oberon tokens

@@ -120,6 +120,17 @@ message CreateWalletRequest {
   // such as email, phone, internal ID, or anything you'd like to associate
   // with this wallet. This field is searchable.
   optional string description = 2 [(options.optional) = true];
+  // Optional identity to add to the wallet (email or sms). 
+  // Use this field when inviting participants into an ecosystem.
+  // If this field is set, an auth token will not be sent in the response.
+  optional ExternalIdentity identity = 3 [(options.optional) = true];
+  message ExternalIdentity {
+    // The user identity to add to the wallet
+    // This can be an email address or phone number (formatted as +[country code][phone number])
+    string identity = 1;
+    // The type of identity provider, like EMAIL or PHONE
+    services.provider.v1.IdentityProvider provider = 2;
+  }
 }
 
 message CreateWalletResponse{
