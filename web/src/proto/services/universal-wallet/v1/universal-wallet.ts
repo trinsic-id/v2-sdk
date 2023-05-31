@@ -114,7 +114,25 @@ export interface CreateWalletRequest {
    * such as email, phone, internal ID, or anything you'd like to associate
    * with this wallet. This field is searchable.
    */
-  description?: string | undefined;
+  description?:
+    | string
+    | undefined;
+  /**
+   * Optional identity to add to the wallet (email or sms).
+   * Use this field when inviting participants into an ecosystem.
+   * If this field is set, an auth token will not be sent in the response.
+   */
+  identity?: CreateWalletRequest_ExternalIdentity | undefined;
+}
+
+export interface CreateWalletRequest_ExternalIdentity {
+  /**
+   * The user identity to add to the wallet
+   * This can be an email address or phone number (formatted as +[country code][phone number])
+   */
+  identity?: string;
+  /** The type of identity provider, like EMAIL or PHONE */
+  provider?: IdentityProvider;
 }
 
 export interface CreateWalletResponse {
@@ -1015,7 +1033,7 @@ export const DeleteWalletResponse = {
 };
 
 function createBaseCreateWalletRequest(): CreateWalletRequest {
-  return { ecosystemId: "", description: undefined };
+  return { ecosystemId: "", description: undefined, identity: undefined };
 }
 
 export const CreateWalletRequest = {
@@ -1025,6 +1043,9 @@ export const CreateWalletRequest = {
     }
     if (message.description !== undefined) {
       writer.uint32(18).string(message.description);
+    }
+    if (message.identity !== undefined) {
+      CreateWalletRequest_ExternalIdentity.encode(message.identity, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
@@ -1050,6 +1071,13 @@ export const CreateWalletRequest = {
 
           message.description = reader.string();
           continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.identity = CreateWalletRequest_ExternalIdentity.decode(reader, reader.uint32());
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -1063,6 +1091,7 @@ export const CreateWalletRequest = {
     return {
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       description: isSet(object.description) ? String(object.description) : undefined,
+      identity: isSet(object.identity) ? CreateWalletRequest_ExternalIdentity.fromJSON(object.identity) : undefined,
     };
   },
 
@@ -1070,6 +1099,8 @@ export const CreateWalletRequest = {
     const obj: any = {};
     message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
     message.description !== undefined && (obj.description = message.description);
+    message.identity !== undefined &&
+      (obj.identity = message.identity ? CreateWalletRequest_ExternalIdentity.toJSON(message.identity) : undefined);
     return obj;
   },
 
@@ -1081,6 +1112,80 @@ export const CreateWalletRequest = {
     const message = createBaseCreateWalletRequest();
     message.ecosystemId = object.ecosystemId ?? "";
     message.description = object.description ?? undefined;
+    message.identity = (object.identity !== undefined && object.identity !== null)
+      ? CreateWalletRequest_ExternalIdentity.fromPartial(object.identity)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCreateWalletRequest_ExternalIdentity(): CreateWalletRequest_ExternalIdentity {
+  return { identity: "", provider: 0 };
+}
+
+export const CreateWalletRequest_ExternalIdentity = {
+  encode(message: CreateWalletRequest_ExternalIdentity, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.identity !== undefined && message.identity !== "") {
+      writer.uint32(10).string(message.identity);
+    }
+    if (message.provider !== undefined && message.provider !== 0) {
+      writer.uint32(16).int32(message.provider);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateWalletRequest_ExternalIdentity {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateWalletRequest_ExternalIdentity();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.identity = reader.string();
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.provider = reader.int32() as any;
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateWalletRequest_ExternalIdentity {
+    return {
+      identity: isSet(object.identity) ? String(object.identity) : "",
+      provider: isSet(object.provider) ? identityProviderFromJSON(object.provider) : 0,
+    };
+  },
+
+  toJSON(message: CreateWalletRequest_ExternalIdentity): unknown {
+    const obj: any = {};
+    message.identity !== undefined && (obj.identity = message.identity);
+    message.provider !== undefined && (obj.provider = identityProviderToJSON(message.provider));
+    return obj;
+  },
+
+  create(base?: DeepPartial<CreateWalletRequest_ExternalIdentity>): CreateWalletRequest_ExternalIdentity {
+    return CreateWalletRequest_ExternalIdentity.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CreateWalletRequest_ExternalIdentity>): CreateWalletRequest_ExternalIdentity {
+    const message = createBaseCreateWalletRequest_ExternalIdentity();
+    message.identity = object.identity ?? "";
+    message.provider = object.provider ?? 0;
     return message;
   },
 };

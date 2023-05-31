@@ -45,6 +45,828 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
             trinsic.services.universalwallet.v1.CreateWalletRequest.Builder.class);
   }
 
+  public interface ExternalIdentityOrBuilder
+      extends
+      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.CreateWalletRequest.ExternalIdentity)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     *
+     *
+     * <pre>
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
+     * </pre>
+     *
+     * <code>string identity = 1;</code>
+     *
+     * @return The identity.
+     */
+    java.lang.String getIdentity();
+    /**
+     *
+     *
+     * <pre>
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
+     * </pre>
+     *
+     * <code>string identity = 1;</code>
+     *
+     * @return The bytes for identity.
+     */
+    com.google.protobuf.ByteString getIdentityBytes();
+
+    /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+     *
+     * @return The enum numeric value on the wire for provider.
+     */
+    int getProviderValue();
+    /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+     *
+     * @return The provider.
+     */
+    trinsic.services.provider.v1.IdentityProvider getProvider();
+  }
+  /** Protobuf type {@code services.universalwallet.v1.CreateWalletRequest.ExternalIdentity} */
+  public static final class ExternalIdentity extends com.google.protobuf.GeneratedMessageV3
+      implements
+      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.CreateWalletRequest.ExternalIdentity)
+      ExternalIdentityOrBuilder {
+    private static final long serialVersionUID = 0L;
+    // Use ExternalIdentity.newBuilder() to construct.
+    private ExternalIdentity(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+
+    private ExternalIdentity() {
+      identity_ = "";
+      provider_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+      return new ExternalIdentity();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+      return this.unknownFields;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+          .internal_static_services_universalwallet_v1_CreateWalletRequest_ExternalIdentity_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+          .internal_static_services_universalwallet_v1_CreateWalletRequest_ExternalIdentity_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.class,
+              trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.Builder
+                  .class);
+    }
+
+    public static final int IDENTITY_FIELD_NUMBER = 1;
+    private volatile java.lang.Object identity_;
+    /**
+     *
+     *
+     * <pre>
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
+     * </pre>
+     *
+     * <code>string identity = 1;</code>
+     *
+     * @return The identity.
+     */
+    @java.lang.Override
+    public java.lang.String getIdentity() {
+      java.lang.Object ref = identity_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        identity_ = s;
+        return s;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The user identity to add to the wallet
+     * This can be an email address or phone number (formatted as +[country code][phone number])
+     * </pre>
+     *
+     * <code>string identity = 1;</code>
+     *
+     * @return The bytes for identity.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getIdentityBytes() {
+      java.lang.Object ref = identity_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        identity_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PROVIDER_FIELD_NUMBER = 2;
+    private int provider_;
+    /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+     *
+     * @return The enum numeric value on the wire for provider.
+     */
+    @java.lang.Override
+    public int getProviderValue() {
+      return provider_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The type of identity provider, like EMAIL or PHONE
+     * </pre>
+     *
+     * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+     *
+     * @return The provider.
+     */
+    @java.lang.Override
+    public trinsic.services.provider.v1.IdentityProvider getProvider() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.provider.v1.IdentityProvider result =
+          trinsic.services.provider.v1.IdentityProvider.valueOf(provider_);
+      return result == null ? trinsic.services.provider.v1.IdentityProvider.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(identity_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, identity_);
+      }
+      if (provider_ != trinsic.services.provider.v1.IdentityProvider.Unknown.getNumber()) {
+        output.writeEnum(2, provider_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(identity_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, identity_);
+      }
+      if (provider_ != trinsic.services.provider.v1.IdentityProvider.Unknown.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, provider_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj
+          instanceof trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity)) {
+        return super.equals(obj);
+      }
+      trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity other =
+          (trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity) obj;
+
+      if (!getIdentity().equals(other.getIdentity())) return false;
+      if (provider_ != other.provider_) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + IDENTITY_FIELD_NUMBER;
+      hash = (53 * hash) + getIdentity().hashCode();
+      hash = (37 * hash) + PROVIDER_FIELD_NUMBER;
+      hash = (53 * hash) + provider_;
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+
+    public static Builder newBuilder(
+        trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /** Protobuf type {@code services.universalwallet.v1.CreateWalletRequest.ExternalIdentity} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
+        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.CreateWalletRequest.ExternalIdentity)
+        trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentityOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+            .internal_static_services_universalwallet_v1_CreateWalletRequest_ExternalIdentity_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+            .internal_static_services_universalwallet_v1_CreateWalletRequest_ExternalIdentity_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.class,
+                trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.Builder
+                    .class);
+      }
+
+      // Construct using
+      // trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.newBuilder()
+      private Builder() {}
+
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+      }
+
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        identity_ = "";
+
+        provider_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+            .internal_static_services_universalwallet_v1_CreateWalletRequest_ExternalIdentity_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+          getDefaultInstanceForType() {
+        return trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+            .getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity build() {
+        trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity result =
+            buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+          buildPartial() {
+        trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity result =
+            new trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity(this);
+        result.identity_ = identity_;
+        result.provider_ = provider_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        return super.setField(field, value);
+      }
+
+      @java.lang.Override
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+
+      @java.lang.Override
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index,
+          java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other
+            instanceof trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity) {
+          return mergeFrom(
+              (trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity) other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(
+          trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity other) {
+        if (other
+            == trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+                .getDefaultInstance()) return this;
+        if (!other.getIdentity().isEmpty()) {
+          identity_ = other.identity_;
+          onChanged();
+        }
+        if (other.provider_ != 0) {
+          setProviderValue(other.getProviderValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10:
+                {
+                  identity_ = input.readStringRequireUtf8();
+
+                  break;
+                } // case 10
+              case 16:
+                {
+                  provider_ = input.readEnum();
+
+                  break;
+                } // case 16
+              default:
+                {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+
+      private java.lang.Object identity_ = "";
+      /**
+       *
+       *
+       * <pre>
+       * The user identity to add to the wallet
+       * This can be an email address or phone number (formatted as +[country code][phone number])
+       * </pre>
+       *
+       * <code>string identity = 1;</code>
+       *
+       * @return The identity.
+       */
+      public java.lang.String getIdentity() {
+        java.lang.Object ref = identity_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          identity_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The user identity to add to the wallet
+       * This can be an email address or phone number (formatted as +[country code][phone number])
+       * </pre>
+       *
+       * <code>string identity = 1;</code>
+       *
+       * @return The bytes for identity.
+       */
+      public com.google.protobuf.ByteString getIdentityBytes() {
+        java.lang.Object ref = identity_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+          identity_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The user identity to add to the wallet
+       * This can be an email address or phone number (formatted as +[country code][phone number])
+       * </pre>
+       *
+       * <code>string identity = 1;</code>
+       *
+       * @param value The identity to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdentity(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        identity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The user identity to add to the wallet
+       * This can be an email address or phone number (formatted as +[country code][phone number])
+       * </pre>
+       *
+       * <code>string identity = 1;</code>
+       *
+       * @return This builder for chaining.
+       */
+      public Builder clearIdentity() {
+
+        identity_ = getDefaultInstance().getIdentity();
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The user identity to add to the wallet
+       * This can be an email address or phone number (formatted as +[country code][phone number])
+       * </pre>
+       *
+       * <code>string identity = 1;</code>
+       *
+       * @param value The bytes for identity to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdentityBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        identity_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int provider_ = 0;
+      /**
+       *
+       *
+       * <pre>
+       * The type of identity provider, like EMAIL or PHONE
+       * </pre>
+       *
+       * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+       *
+       * @return The enum numeric value on the wire for provider.
+       */
+      @java.lang.Override
+      public int getProviderValue() {
+        return provider_;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of identity provider, like EMAIL or PHONE
+       * </pre>
+       *
+       * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+       *
+       * @param value The enum numeric value on the wire for provider to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProviderValue(int value) {
+
+        provider_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of identity provider, like EMAIL or PHONE
+       * </pre>
+       *
+       * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+       *
+       * @return The provider.
+       */
+      @java.lang.Override
+      public trinsic.services.provider.v1.IdentityProvider getProvider() {
+        @SuppressWarnings("deprecation")
+        trinsic.services.provider.v1.IdentityProvider result =
+            trinsic.services.provider.v1.IdentityProvider.valueOf(provider_);
+        return result == null ? trinsic.services.provider.v1.IdentityProvider.UNRECOGNIZED : result;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of identity provider, like EMAIL or PHONE
+       * </pre>
+       *
+       * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+       *
+       * @param value The provider to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProvider(trinsic.services.provider.v1.IdentityProvider value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        provider_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of identity provider, like EMAIL or PHONE
+       * </pre>
+       *
+       * <code>.services.provider.v1.IdentityProvider provider = 2;</code>
+       *
+       * @return This builder for chaining.
+       */
+      public Builder clearProvider() {
+
+        provider_ = 0;
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.CreateWalletRequest.ExternalIdentity)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.CreateWalletRequest.ExternalIdentity)
+    private static final trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        DEFAULT_INSTANCE;
+
+    static {
+      DEFAULT_INSTANCE =
+          new trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity();
+    }
+
+    public static trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ExternalIdentity> PARSER =
+        new com.google.protobuf.AbstractParser<ExternalIdentity>() {
+          @java.lang.Override
+          public ExternalIdentity parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException()
+                  .setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
+
+    public static com.google.protobuf.Parser<ExternalIdentity> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ExternalIdentity> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+        getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+  }
+
   private int bitField0_;
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object ecosystemId_;
@@ -168,6 +990,71 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     }
   }
 
+  public static final int IDENTITY_FIELD_NUMBER = 3;
+  private trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity_;
+  /**
+   *
+   *
+   * <pre>
+   * Optional identity to add to the wallet (email or sms).
+   * Use this field when inviting participants into an ecosystem.
+   * If this field is set, an auth token will not be sent in the response.
+   * </pre>
+   *
+   * <code>
+   * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+   * </code>
+   *
+   * @return Whether the identity field is set.
+   */
+  @java.lang.Override
+  public boolean hasIdentity() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional identity to add to the wallet (email or sms).
+   * Use this field when inviting participants into an ecosystem.
+   * If this field is set, an auth token will not be sent in the response.
+   * </pre>
+   *
+   * <code>
+   * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+   * </code>
+   *
+   * @return The identity.
+   */
+  @java.lang.Override
+  public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity getIdentity() {
+    return identity_ == null
+        ? trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+            .getDefaultInstance()
+        : identity_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional identity to add to the wallet (email or sms).
+   * Use this field when inviting participants into an ecosystem.
+   * If this field is set, an auth token will not be sent in the response.
+   * </pre>
+   *
+   * <code>
+   * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentityOrBuilder
+      getIdentityOrBuilder() {
+    return identity_ == null
+        ? trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+            .getDefaultInstance()
+        : identity_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -188,6 +1075,9 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
     }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeMessage(3, getIdentity());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -202,6 +1092,9 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     }
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getIdentity());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -224,6 +1117,10 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     if (hasDescription()) {
       if (!getDescription().equals(other.getDescription())) return false;
     }
+    if (hasIdentity() != other.hasIdentity()) return false;
+    if (hasIdentity()) {
+      if (!getIdentity().equals(other.getIdentity())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -240,6 +1137,10 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     if (hasDescription()) {
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
+    }
+    if (hasIdentity()) {
+      hash = (37 * hash) + IDENTITY_FIELD_NUMBER;
+      hash = (53 * hash) + getIdentity().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -363,10 +1264,19 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
     }
 
     // Construct using trinsic.services.universalwallet.v1.CreateWalletRequest.newBuilder()
-    private Builder() {}
+    private Builder() {
+      maybeForceBuilderInitialization();
+    }
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
+      maybeForceBuilderInitialization();
+    }
+
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+        getIdentityFieldBuilder();
+      }
     }
 
     @java.lang.Override
@@ -376,6 +1286,12 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
 
       description_ = "";
       bitField0_ = (bitField0_ & ~0x00000001);
+      if (identityBuilder_ == null) {
+        identity_ = null;
+      } else {
+        identityBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -410,6 +1326,14 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
         to_bitField0_ |= 0x00000001;
       }
       result.description_ = description_;
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        if (identityBuilder_ == null) {
+          result.identity_ = identity_;
+        } else {
+          result.identity_ = identityBuilder_.build();
+        }
+        to_bitField0_ |= 0x00000002;
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -470,6 +1394,9 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
         description_ = other.description_;
         onChanged();
       }
+      if (other.hasIdentity()) {
+        mergeIdentity(other.getIdentity());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -508,6 +1435,12 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
                 bitField0_ |= 0x00000001;
                 break;
               } // case 18
+            case 26:
+              {
+                input.readMessage(getIdentityFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 26
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -769,6 +1702,239 @@ public final class CreateWalletRequest extends com.google.protobuf.GeneratedMess
       description_ = value;
       onChanged();
       return this;
+    }
+
+    private trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity,
+            trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.Builder,
+            trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentityOrBuilder>
+        identityBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     *
+     * @return Whether the identity field is set.
+     */
+    public boolean hasIdentity() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     *
+     * @return The identity.
+     */
+    public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity getIdentity() {
+      if (identityBuilder_ == null) {
+        return identity_ == null
+            ? trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+                .getDefaultInstance()
+            : identity_;
+      } else {
+        return identityBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     */
+    public Builder setIdentity(
+        trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity value) {
+      if (identityBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        identity_ = value;
+        onChanged();
+      } else {
+        identityBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     */
+    public Builder setIdentity(
+        trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.Builder
+            builderForValue) {
+      if (identityBuilder_ == null) {
+        identity_ = builderForValue.build();
+        onChanged();
+      } else {
+        identityBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     */
+    public Builder mergeIdentity(
+        trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity value) {
+      if (identityBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) != 0)
+            && identity_ != null
+            && identity_
+                != trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+                    .getDefaultInstance()) {
+          identity_ =
+              trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.newBuilder(
+                      identity_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          identity_ = value;
+        }
+        onChanged();
+      } else {
+        identityBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     */
+    public Builder clearIdentity() {
+      if (identityBuilder_ == null) {
+        identity_ = null;
+        onChanged();
+      } else {
+        identityBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     */
+    public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.Builder
+        getIdentityBuilder() {
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return getIdentityFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     */
+    public trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentityOrBuilder
+        getIdentityOrBuilder() {
+      if (identityBuilder_ != null) {
+        return identityBuilder_.getMessageOrBuilder();
+      } else {
+        return identity_ == null
+            ? trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity
+                .getDefaultInstance()
+            : identity_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional identity to add to the wallet (email or sms).
+     * Use this field when inviting participants into an ecosystem.
+     * If this field is set, an auth token will not be sent in the response.
+     * </pre>
+     *
+     * <code>
+     * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity,
+            trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.Builder,
+            trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentityOrBuilder>
+        getIdentityFieldBuilder() {
+      if (identityBuilder_ == null) {
+        identityBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity,
+                trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.Builder,
+                trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentityOrBuilder>(
+                getIdentity(), getParentForChildren(), isClean());
+        identity_ = null;
+      }
+      return identityBuilder_;
     }
 
     @java.lang.Override

@@ -19,7 +19,6 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	VerifiableCredential_Issue_FullMethodName             = "/services.verifiablecredentials.v1.VerifiableCredential/Issue"
 	VerifiableCredential_IssueFromTemplate_FullMethodName = "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate"
 	VerifiableCredential_CheckStatus_FullMethodName       = "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus"
 	VerifiableCredential_UpdateStatus_FullMethodName      = "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus"
@@ -32,10 +31,6 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type VerifiableCredentialClient interface {
-	// Sign and issue a verifiable credential from a submitted document.
-	// The document must be a valid JSON-LD document.
-	// DEPRECATED, will be removed June 1st 2023
-	Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
 	// Sign and issue a verifiable credential from a pre-defined template.
 	// This process will also add schema validation and
 	// revocation registry values to the credential.
@@ -60,15 +55,6 @@ type verifiableCredentialClient struct {
 
 func NewVerifiableCredentialClient(cc grpc.ClientConnInterface) VerifiableCredentialClient {
 	return &verifiableCredentialClient{cc}
-}
-
-func (c *verifiableCredentialClient) Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
-	out := new(IssueResponse)
-	err := c.cc.Invoke(ctx, VerifiableCredential_Issue_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *verifiableCredentialClient) IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error) {
@@ -129,10 +115,6 @@ func (c *verifiableCredentialClient) Send(ctx context.Context, in *SendRequest, 
 // All implementations must embed UnimplementedVerifiableCredentialServer
 // for forward compatibility
 type VerifiableCredentialServer interface {
-	// Sign and issue a verifiable credential from a submitted document.
-	// The document must be a valid JSON-LD document.
-	// DEPRECATED, will be removed June 1st 2023
-	Issue(context.Context, *IssueRequest) (*IssueResponse, error)
 	// Sign and issue a verifiable credential from a pre-defined template.
 	// This process will also add schema validation and
 	// revocation registry values to the credential.
@@ -156,9 +138,6 @@ type VerifiableCredentialServer interface {
 type UnimplementedVerifiableCredentialServer struct {
 }
 
-func (UnimplementedVerifiableCredentialServer) Issue(context.Context, *IssueRequest) (*IssueResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Issue not implemented")
-}
 func (UnimplementedVerifiableCredentialServer) IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IssueFromTemplate not implemented")
 }
@@ -188,24 +167,6 @@ type UnsafeVerifiableCredentialServer interface {
 
 func RegisterVerifiableCredentialServer(s grpc.ServiceRegistrar, srv VerifiableCredentialServer) {
 	s.RegisterService(&VerifiableCredential_ServiceDesc, srv)
-}
-
-func _VerifiableCredential_Issue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(IssueRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VerifiableCredentialServer).Issue(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VerifiableCredential_Issue_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VerifiableCredentialServer).Issue(ctx, req.(*IssueRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _VerifiableCredential_IssueFromTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -323,10 +284,6 @@ var VerifiableCredential_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "services.verifiablecredentials.v1.VerifiableCredential",
 	HandlerType: (*VerifiableCredentialServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Issue",
-			Handler:    _VerifiableCredential_Issue_Handler,
-		},
 		{
 			MethodName: "IssueFromTemplate",
 			Handler:    _VerifiableCredential_IssueFromTemplate_Handler,

@@ -20,33 +20,6 @@ if TYPE_CHECKING:
 
 
 @dataclass(eq=False, repr=False)
-class IssueRequest(betterproto.Message):
-    """DEPRECATED, will be removed May 1st 2023"""
-
-    document_json: str = betterproto.string_field(1)
-    """Valid JSON-LD Credential document to be signed, in string form"""
-
-    def __post_init__(self) -> None:
-        warnings.warn("IssueRequest is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class IssueResponse(betterproto.Message):
-    """DEPRECATED, will be removed May 1st 2023"""
-
-    signed_document_json: str = betterproto.string_field(1)
-    """
-    Verifiable Credential document, signed with public key tied to caller of
-    `IssueRequest`
-    """
-
-    def __post_init__(self) -> None:
-        warnings.warn("IssueResponse is deprecated", DeprecationWarning)
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
 class IssueFromTemplateRequest(betterproto.Message):
     """
     Request to create and sign a JSON-LD Verifiable Credential from a template
@@ -74,6 +47,13 @@ class IssueFromTemplateRequest(betterproto.Message):
     Save a copy of the issued credential to this user's wallet. This copy will
     only contain the credential data, but not the secret proof value. Issuers
     may use this data to keep track of the details for revocation status.
+    """
+
+    expiration_date: str = betterproto.string_field(5)
+    """
+    The ISO8601 expiration UTC date of the credential. This is a reserved field
+    in the VC specification. If specified, the issued credential will contain
+    an expiration date. https://www.w3.org/TR/vc-data-model/#expiration
     """
 
 
@@ -252,22 +232,6 @@ class CheckStatusResponse(betterproto.Message):
 
 
 class VerifiableCredentialStub(betterproto.ServiceStub):
-    async def issue(
-        self,
-        issue_request: "IssueRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "IssueResponse":
-        return await self._unary_unary(
-            "/services.verifiablecredentials.v1.VerifiableCredential/Issue",
-            issue_request,
-            IssueResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def issue_from_template(
         self,
         issue_from_template_request: "IssueFromTemplateRequest",
@@ -366,9 +330,6 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
 
 
 class VerifiableCredentialBase(ServiceBase):
-    async def issue(self, issue_request: "IssueRequest") -> "IssueResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def issue_from_template(
         self, issue_from_template_request: "IssueFromTemplateRequest"
     ) -> "IssueFromTemplateResponse":
@@ -396,11 +357,6 @@ class VerifiableCredentialBase(ServiceBase):
 
     async def send(self, send_request: "SendRequest") -> "SendResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def __rpc_issue(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.issue(request)
-        await stream.send_message(response)
 
     async def __rpc_issue_from_template(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
@@ -434,12 +390,6 @@ class VerifiableCredentialBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.verifiablecredentials.v1.VerifiableCredential/Issue": grpclib.const.Handler(
-                self.__rpc_issue,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                IssueRequest,
-                IssueResponse,
-            ),
             "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate": grpclib.const.Handler(
                 self.__rpc_issue_from_template,
                 grpclib.const.Cardinality.UNARY_UNARY,

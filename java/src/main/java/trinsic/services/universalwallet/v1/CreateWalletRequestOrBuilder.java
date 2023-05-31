@@ -78,4 +78,52 @@ public interface CreateWalletRequestOrBuilder
    * @return The bytes for description.
    */
   com.google.protobuf.ByteString getDescriptionBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Optional identity to add to the wallet (email or sms).
+   * Use this field when inviting participants into an ecosystem.
+   * If this field is set, an auth token will not be sent in the response.
+   * </pre>
+   *
+   * <code>
+   * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+   * </code>
+   *
+   * @return Whether the identity field is set.
+   */
+  boolean hasIdentity();
+  /**
+   *
+   *
+   * <pre>
+   * Optional identity to add to the wallet (email or sms).
+   * Use this field when inviting participants into an ecosystem.
+   * If this field is set, an auth token will not be sent in the response.
+   * </pre>
+   *
+   * <code>
+   * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+   * </code>
+   *
+   * @return The identity.
+   */
+  trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity getIdentity();
+  /**
+   *
+   *
+   * <pre>
+   * Optional identity to add to the wallet (email or sms).
+   * Use this field when inviting participants into an ecosystem.
+   * If this field is set, an auth token will not be sent in the response.
+   * </pre>
+   *
+   * <code>
+   * optional .services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 3 [(.services.options.optional) = true];
+   * </code>
+   */
+  trinsic.services.universalwallet.v1.CreateWalletRequest.ExternalIdentityOrBuilder
+      getIdentityOrBuilder();
 }

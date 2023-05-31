@@ -102,22 +102,6 @@ class CreateEcosystemResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class UpdateEcosystemRequest(betterproto.Message):
-    """Request to update an ecosystem's metadata"""
-
-    description: str = betterproto.string_field(1)
-    """New description of the ecosystem"""
-
-
-@dataclass(eq=False, repr=False)
-class UpdateEcosystemResponse(betterproto.Message):
-    """Response to `UpdateEcosystemRequest`"""
-
-    ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Current ecosystem metadata, post-update"""
-
-
-@dataclass(eq=False, repr=False)
 class EcosystemInfoRequest(betterproto.Message):
     """Request to fetch information about an ecosystem"""
 
@@ -231,7 +215,7 @@ class SearchWalletConfigurationsRequest(betterproto.Message):
     """Search for issuers/holders/verifiers"""
 
     query_filter: str = betterproto.string_field(1)
-    """SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`"""
+    """SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]`"""
 
     continuation_token: str = betterproto.string_field(2)
     """
@@ -262,7 +246,11 @@ class WalletConfiguration(betterproto.Message):
     """Name/description of the wallet"""
 
     email: str = betterproto.string_field(2)
-    """Deprecated -- use external_identities"""
+    """
+    Deprecated and will be removed on August 1, 2023 -- use
+    external_identities.  This field is set to the first email address present
+    in `external_identities`, if any.
+    """
 
     sms: str = betterproto.string_field(3)
     """Deprecated -- use external_identities"""
@@ -498,22 +486,6 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def update_ecosystem(
-        self,
-        update_ecosystem_request: "UpdateEcosystemRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "UpdateEcosystemResponse":
-        return await self._unary_unary(
-            "/services.provider.v1.Provider/UpdateEcosystem",
-            update_ecosystem_request,
-            UpdateEcosystemResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def get_oberon_key(
         self,
         get_oberon_key_request: "GetOberonKeyRequest",
@@ -635,11 +607,6 @@ class ProviderBase(ServiceBase):
     ) -> "CreateEcosystemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def update_ecosystem(
-        self, update_ecosystem_request: "UpdateEcosystemRequest"
-    ) -> "UpdateEcosystemResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def get_oberon_key(
         self, get_oberon_key_request: "GetOberonKeyRequest"
     ) -> "GetOberonKeyResponse":
@@ -658,11 +625,6 @@ class ProviderBase(ServiceBase):
     async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.create_ecosystem(request)
-        await stream.send_message(response)
-
-    async def __rpc_update_ecosystem(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.update_ecosystem(request)
         await stream.send_message(response)
 
     async def __rpc_get_oberon_key(self, stream: grpclib.server.Stream) -> None:
@@ -689,12 +651,6 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 CreateEcosystemRequest,
                 CreateEcosystemResponse,
-            ),
-            "/services.provider.v1.Provider/UpdateEcosystem": grpclib.const.Handler(
-                self.__rpc_update_ecosystem,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                UpdateEcosystemRequest,
-                UpdateEcosystemResponse,
             ),
             "/services.provider.v1.Provider/GetOberonKey": grpclib.const.Handler(
                 self.__rpc_get_oberon_key,

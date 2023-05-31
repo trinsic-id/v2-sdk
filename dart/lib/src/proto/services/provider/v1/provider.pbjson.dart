@@ -110,44 +110,6 @@ const CreateEcosystemResponse$json = const {
 final $typed_data.Uint8List createEcosystemResponseDescriptor =
     $convert.base64Decode(
         'ChdDcmVhdGVFY29zeXN0ZW1SZXNwb25zZRI9CgllY29zeXN0ZW0YASABKAsyHy5zZXJ2aWNlcy5wcm92aWRlci52MS5FY29zeXN0ZW1SCWVjb3N5c3RlbRI9Cgdwcm9maWxlGAIgASgLMiMuc2VydmljZXMuYWNjb3VudC52MS5BY2NvdW50UHJvZmlsZVIHcHJvZmlsZRJYChNjb25maXJtYXRpb25fbWV0aG9kGAMgASgOMicuc2VydmljZXMuYWNjb3VudC52MS5Db25maXJtYXRpb25NZXRob2RSEmNvbmZpcm1hdGlvbk1ldGhvZA==');
-@$core.Deprecated('Use updateEcosystemRequestDescriptor instead')
-const UpdateEcosystemRequest$json = const {
-  '1': 'UpdateEcosystemRequest',
-  '2': const [
-    const {'1': 'description', '3': 1, '4': 1, '5': 9, '10': 'description'},
-  ],
-  '9': const [
-    const {'1': 2, '2': 3},
-    const {'1': 3, '2': 4},
-    const {'1': 4, '2': 5},
-    const {'1': 5, '2': 6},
-  ],
-  '10': const ['uri', 'name', 'display', 'domain'],
-};
-
-/// Descriptor for `UpdateEcosystemRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateEcosystemRequestDescriptor =
-    $convert.base64Decode(
-        'ChZVcGRhdGVFY29zeXN0ZW1SZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbkoECAIQA0oECAMQBEoECAQQBUoECAUQBlIDdXJpUgRuYW1lUgdkaXNwbGF5UgZkb21haW4=');
-@$core.Deprecated('Use updateEcosystemResponseDescriptor instead')
-const UpdateEcosystemResponse$json = const {
-  '1': 'UpdateEcosystemResponse',
-  '2': const [
-    const {
-      '1': 'Ecosystem',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.services.provider.v1.Ecosystem',
-      '10': 'Ecosystem'
-    },
-  ],
-};
-
-/// Descriptor for `UpdateEcosystemResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateEcosystemResponseDescriptor =
-    $convert.base64Decode(
-        'ChdVcGRhdGVFY29zeXN0ZW1SZXNwb25zZRI9CglFY29zeXN0ZW0YASABKAsyHy5zZXJ2aWNlcy5wcm92aWRlci52MS5FY29zeXN0ZW1SCUVjb3N5c3RlbQ==');
 @$core.Deprecated('Use ecosystemInfoRequestDescriptor instead')
 const EcosystemInfoRequest$json = const {
   '1': 'EcosystemInfoRequest',

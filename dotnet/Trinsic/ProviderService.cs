@@ -52,28 +52,6 @@ public class ProviderService : ServiceBase
 // target: /home/runner/work/sdk/sdk/dotnet/Trinsic/ProviderService.cs
 
 	/// <summary>
-    ///This will be removed June 1, 2023
-    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-    ///  DEPRECATED, will be removed June 1st 2023
-    /// </summary>
-    [Obsolete("This will be removed June 1, 2023")]
-    public UpdateEcosystemResponse UpdateEcosystem(UpdateEcosystemRequest request) {
-        
-        return Client.UpdateEcosystem(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    ///This will be removed June 1, 2023
-    ///  The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-    ///  DEPRECATED, will be removed June 1st 2023
-    /// </summary>
-    [Obsolete("This will be removed June 1, 2023")]
-    public async Task<UpdateEcosystemResponse> UpdateEcosystemAsync(UpdateEcosystemRequest request) {
-        
-        return await Client.UpdateEcosystemAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Returns the public key being used to create/verify oberon tokens
     /// </summary>
     

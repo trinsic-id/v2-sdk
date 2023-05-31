@@ -192,15 +192,44 @@ const CreateWalletRequest$json = const {
       '10': 'description',
       '17': true
     },
+    const {
+      '1': 'identity',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity',
+      '8': const {},
+      '9': 1,
+      '10': 'identity',
+      '17': true
+    },
   ],
+  '3': const [CreateWalletRequest_ExternalIdentity$json],
   '8': const [
     const {'1': '_description'},
+    const {'1': '_identity'},
+  ],
+};
+
+@$core.Deprecated('Use createWalletRequestDescriptor instead')
+const CreateWalletRequest_ExternalIdentity$json = const {
+  '1': 'ExternalIdentity',
+  '2': const [
+    const {'1': 'identity', '3': 1, '4': 1, '5': 9, '10': 'identity'},
+    const {
+      '1': 'provider',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.services.provider.v1.IdentityProvider',
+      '10': 'provider'
+    },
   ],
 };
 
 /// Descriptor for `CreateWalletRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createWalletRequestDescriptor = $convert.base64Decode(
-    'ChNDcmVhdGVXYWxsZXRSZXF1ZXN0EiEKDGVjb3N5c3RlbV9pZBgBIAEoCVILZWNvc3lzdGVtSWQSKwoLZGVzY3JpcHRpb24YAiABKAlCBICmHQFIAFILZGVzY3JpcHRpb26IAQFCDgoMX2Rlc2NyaXB0aW9u');
+    'ChNDcmVhdGVXYWxsZXRSZXF1ZXN0EiEKDGVjb3N5c3RlbV9pZBgBIAEoCVILZWNvc3lzdGVtSWQSKwoLZGVzY3JpcHRpb24YAiABKAlCBICmHQFIAFILZGVzY3JpcHRpb26IAQESaAoIaWRlbnRpdHkYAyABKAsyQS5zZXJ2aWNlcy51bml2ZXJzYWx3YWxsZXQudjEuQ3JlYXRlV2FsbGV0UmVxdWVzdC5FeHRlcm5hbElkZW50aXR5QgSAph0BSAFSCGlkZW50aXR5iAEBGnIKEEV4dGVybmFsSWRlbnRpdHkSGgoIaWRlbnRpdHkYASABKAlSCGlkZW50aXR5EkIKCHByb3ZpZGVyGAIgASgOMiYuc2VydmljZXMucHJvdmlkZXIudjEuSWRlbnRpdHlQcm92aWRlclIIcHJvdmlkZXJCDgoMX2Rlc2NyaXB0aW9uQgsKCV9pZGVudGl0eQ==');
 @$core.Deprecated('Use createWalletResponseDescriptor instead')
 const CreateWalletResponse$json = const {
   '1': 'CreateWalletResponse',

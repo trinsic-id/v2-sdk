@@ -20,12 +20,6 @@ class ProviderClient extends $grpc.Client {
           ($2.CreateEcosystemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $2.CreateEcosystemResponse.fromBuffer(value));
-  static final _$updateEcosystem =
-      $grpc.ClientMethod<$2.UpdateEcosystemRequest, $2.UpdateEcosystemResponse>(
-          '/services.provider.v1.Provider/UpdateEcosystem',
-          ($2.UpdateEcosystemRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $2.UpdateEcosystemResponse.fromBuffer(value));
   static final _$getOberonKey =
       $grpc.ClientMethod<$2.GetOberonKeyRequest, $2.GetOberonKeyResponse>(
           '/services.provider.v1.Provider/GetOberonKey',
@@ -55,12 +49,6 @@ class ProviderClient extends $grpc.Client {
       $2.CreateEcosystemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createEcosystem, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$2.UpdateEcosystemResponse> updateEcosystem(
-      $2.UpdateEcosystemRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$updateEcosystem, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.GetOberonKeyResponse> getOberonKey(
@@ -96,15 +84,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $2.CreateEcosystemRequest.fromBuffer(value),
         ($2.CreateEcosystemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.UpdateEcosystemRequest,
-            $2.UpdateEcosystemResponse>(
-        'UpdateEcosystem',
-        updateEcosystem_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $2.UpdateEcosystemRequest.fromBuffer(value),
-        ($2.UpdateEcosystemResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$2.GetOberonKeyRequest, $2.GetOberonKeyResponse>(
             'GetOberonKey',
@@ -138,12 +117,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return createEcosystem(call, await request);
   }
 
-  $async.Future<$2.UpdateEcosystemResponse> updateEcosystem_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$2.UpdateEcosystemRequest> request) async {
-    return updateEcosystem(call, await request);
-  }
-
   $async.Future<$2.GetOberonKeyResponse> getOberonKey_Pre(
       $grpc.ServiceCall call,
       $async.Future<$2.GetOberonKeyRequest> request) async {
@@ -163,8 +136,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
 
   $async.Future<$2.CreateEcosystemResponse> createEcosystem(
       $grpc.ServiceCall call, $2.CreateEcosystemRequest request);
-  $async.Future<$2.UpdateEcosystemResponse> updateEcosystem(
-      $grpc.ServiceCall call, $2.UpdateEcosystemRequest request);
   $async.Future<$2.GetOberonKeyResponse> getOberonKey(
       $grpc.ServiceCall call, $2.GetOberonKeyRequest request);
   $async.Future<$2.UpgradeDidResponse> upgradeDID(

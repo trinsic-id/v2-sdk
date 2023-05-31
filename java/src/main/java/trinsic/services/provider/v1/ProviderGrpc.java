@@ -61,52 +61,6 @@ public final class ProviderGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.UpdateEcosystemRequest,
-          trinsic.services.provider.v1.UpdateEcosystemResponse>
-      getUpdateEcosystemMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "UpdateEcosystem",
-      requestType = trinsic.services.provider.v1.UpdateEcosystemRequest.class,
-      responseType = trinsic.services.provider.v1.UpdateEcosystemResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.UpdateEcosystemRequest,
-          trinsic.services.provider.v1.UpdateEcosystemResponse>
-      getUpdateEcosystemMethod() {
-    io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.UpdateEcosystemRequest,
-            trinsic.services.provider.v1.UpdateEcosystemResponse>
-        getUpdateEcosystemMethod;
-    if ((getUpdateEcosystemMethod = ProviderGrpc.getUpdateEcosystemMethod) == null) {
-      synchronized (ProviderGrpc.class) {
-        if ((getUpdateEcosystemMethod = ProviderGrpc.getUpdateEcosystemMethod) == null) {
-          ProviderGrpc.getUpdateEcosystemMethod =
-              getUpdateEcosystemMethod =
-                  io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.UpdateEcosystemRequest,
-                          trinsic.services.provider.v1.UpdateEcosystemResponse>
-                          newBuilder()
-                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateEcosystem"))
-                      .setSampledToLocalTracing(true)
-                      .setRequestMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.UpdateEcosystemRequest
-                                  .getDefaultInstance()))
-                      .setResponseMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.UpdateEcosystemResponse
-                                  .getDefaultInstance()))
-                      .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("UpdateEcosystem"))
-                      .build();
-        }
-      }
-    }
-    return getUpdateEcosystemMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.provider.v1.GetOberonKeyRequest,
           trinsic.services.provider.v1.GetOberonKeyResponse>
       getGetOberonKeyMethod;
@@ -308,23 +262,6 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public void updateEcosystem(
-        trinsic.services.provider.v1.UpdateEcosystemRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpdateEcosystemResponse>
-            responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
-          getUpdateEcosystemMethod(), responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Returns the public key being used to create/verify oberon tokens
      * </pre>
      */
@@ -376,13 +313,6 @@ public final class ProviderGrpc {
                       trinsic.services.provider.v1.CreateEcosystemResponse>(
                       this, METHODID_CREATE_ECOSYSTEM)))
           .addMethod(
-              getUpdateEcosystemMethod(),
-              io.grpc.stub.ServerCalls.asyncUnaryCall(
-                  new MethodHandlers<
-                      trinsic.services.provider.v1.UpdateEcosystemRequest,
-                      trinsic.services.provider.v1.UpdateEcosystemResponse>(
-                      this, METHODID_UPDATE_ECOSYSTEM)))
-          .addMethod(
               getGetOberonKeyMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
@@ -430,25 +360,6 @@ public final class ProviderGrpc {
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateEcosystemMethod(), getCallOptions()),
-          request,
-          responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public void updateEcosystem(
-        trinsic.services.provider.v1.UpdateEcosystemRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpdateEcosystemResponse>
-            responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getUpdateEcosystemMethod(), getCallOptions()),
           request,
           responseObserver);
     }
@@ -532,21 +443,6 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.provider.v1.UpdateEcosystemResponse updateEcosystem(
-        trinsic.services.provider.v1.UpdateEcosystemRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getUpdateEcosystemMethod(), getCallOptions(), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Returns the public key being used to create/verify oberon tokens
      * </pre>
      */
@@ -614,22 +510,6 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-     * DEPRECATED, will be removed June 1st 2023
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.UpdateEcosystemResponse>
-        updateEcosystem(trinsic.services.provider.v1.UpdateEcosystemRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getUpdateEcosystemMethod(), getCallOptions()), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Returns the public key being used to create/verify oberon tokens
      * </pre>
      */
@@ -671,10 +551,9 @@ public final class ProviderGrpc {
   }
 
   private static final int METHODID_CREATE_ECOSYSTEM = 0;
-  private static final int METHODID_UPDATE_ECOSYSTEM = 1;
-  private static final int METHODID_GET_OBERON_KEY = 2;
-  private static final int METHODID_UPGRADE_DID = 3;
-  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 4;
+  private static final int METHODID_GET_OBERON_KEY = 1;
+  private static final int METHODID_UPGRADE_DID = 2;
+  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 3;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -697,12 +576,6 @@ public final class ProviderGrpc {
           serviceImpl.createEcosystem(
               (trinsic.services.provider.v1.CreateEcosystemRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.CreateEcosystemResponse>)
-                  responseObserver);
-          break;
-        case METHODID_UPDATE_ECOSYSTEM:
-          serviceImpl.updateEcosystem(
-              (trinsic.services.provider.v1.UpdateEcosystemRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpdateEcosystemResponse>)
                   responseObserver);
           break;
         case METHODID_GET_OBERON_KEY:
@@ -787,7 +660,6 @@ public final class ProviderGrpc {
                   io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
                       .setSchemaDescriptor(new ProviderFileDescriptorSupplier())
                       .addMethod(getCreateEcosystemMethod())
-                      .addMethod(getUpdateEcosystemMethod())
                       .addMethod(getGetOberonKeyMethod())
                       .addMethod(getUpgradeDIDMethod())
                       .addMethod(getSearchWalletConfigurationsMethod())

@@ -20,7 +20,6 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Provider_CreateEcosystem_FullMethodName            = "/services.provider.v1.Provider/CreateEcosystem"
-	Provider_UpdateEcosystem_FullMethodName            = "/services.provider.v1.Provider/UpdateEcosystem"
 	Provider_GetOberonKey_FullMethodName               = "/services.provider.v1.Provider/GetOberonKey"
 	Provider_UpgradeDID_FullMethodName                 = "/services.provider.v1.Provider/UpgradeDID"
 	Provider_SearchWalletConfigurations_FullMethodName = "/services.provider.v1.Provider/SearchWalletConfigurations"
@@ -32,10 +31,6 @@ const (
 type ProviderClient interface {
 	// Create new ecosystem and assign the authenticated user as owner
 	CreateEcosystem(ctx context.Context, in *CreateEcosystemRequest, opts ...grpc.CallOption) (*CreateEcosystemResponse, error)
-	// Deprecated: Do not use.
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
@@ -55,16 +50,6 @@ func NewProviderClient(cc grpc.ClientConnInterface) ProviderClient {
 func (c *providerClient) CreateEcosystem(ctx context.Context, in *CreateEcosystemRequest, opts ...grpc.CallOption) (*CreateEcosystemResponse, error) {
 	out := new(CreateEcosystemResponse)
 	err := c.cc.Invoke(ctx, Provider_CreateEcosystem_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// Deprecated: Do not use.
-func (c *providerClient) UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error) {
-	out := new(UpdateEcosystemResponse)
-	err := c.cc.Invoke(ctx, Provider_UpdateEcosystem_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -104,10 +89,6 @@ func (c *providerClient) SearchWalletConfigurations(ctx context.Context, in *Sea
 type ProviderServer interface {
 	// Create new ecosystem and assign the authenticated user as owner
 	CreateEcosystem(context.Context, *CreateEcosystemRequest) (*CreateEcosystemResponse, error)
-	// Deprecated: Do not use.
-	// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-	// DEPRECATED, will be removed June 1st 2023
-	UpdateEcosystem(context.Context, *UpdateEcosystemRequest) (*UpdateEcosystemResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
@@ -123,9 +104,6 @@ type UnimplementedProviderServer struct {
 
 func (UnimplementedProviderServer) CreateEcosystem(context.Context, *CreateEcosystemRequest) (*CreateEcosystemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateEcosystem not implemented")
-}
-func (UnimplementedProviderServer) UpdateEcosystem(context.Context, *UpdateEcosystemRequest) (*UpdateEcosystemResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateEcosystem not implemented")
 }
 func (UnimplementedProviderServer) GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOberonKey not implemented")
@@ -163,24 +141,6 @@ func _Provider_CreateEcosystem_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProviderServer).CreateEcosystem(ctx, req.(*CreateEcosystemRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Provider_UpdateEcosystem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateEcosystemRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProviderServer).UpdateEcosystem(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Provider_UpdateEcosystem_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).UpdateEcosystem(ctx, req.(*UpdateEcosystemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -249,10 +209,6 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateEcosystem",
 			Handler:    _Provider_CreateEcosystem_Handler,
-		},
-		{
-			MethodName: "UpdateEcosystem",
-			Handler:    _Provider_UpdateEcosystem_Handler,
 		},
 		{
 			MethodName: "GetOberonKey",
