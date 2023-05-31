@@ -64,16 +64,16 @@ describe("WalletService Unit Tests", () => {
 
     it("Demo: create wallet, set profile, search records, issue credential", async () => {
         trinsic.options = clinic;
-
-        const credential = JSON.stringify({
-            type: ["VerifiableCredential", "NonExistentSchema"],
+        let issueResponse = await trinsic.credential().issue({
+            documentJson: JSON.stringify(vaccineCertUnsigned),
         });
+        expect(issueResponse).not.toBeNull();
 
         trinsic.options = allison;
         // insertItemWallet() {
         let insertItemResponse = await trinsic.wallet().insertItem(
             InsertItemRequest.fromPartial({
-                itemJson: credential,
+                itemJson: issueResponse.signedDocumentJson,
             })
         );
         // }
