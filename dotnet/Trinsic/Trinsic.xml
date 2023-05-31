@@ -45,22 +45,6 @@
               List the role assignments for the given account
              </summary>
         </member>
-        <member name="M:Trinsic.CredentialService.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest)">
-             <summary>
-            This endpoint will be removed around June 1, 2023
-              Sign and issue a verifiable credential from a submitted document.
-              The document must be a valid JSON-LD document.
-              DEPRECATED, will be removed June 1st 2023
-             </summary>
-        </member>
-        <member name="M:Trinsic.CredentialService.IssueAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest)">
-             <summary>
-            This endpoint will be removed around June 1, 2023
-              Sign and issue a verifiable credential from a submitted document.
-              The document must be a valid JSON-LD document.
-              DEPRECATED, will be removed June 1st 2023
-             </summary>
-        </member>
         <member name="M:Trinsic.CredentialService.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
@@ -303,7 +287,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.AccountDetails.Email">
             <summary>
-            Email address of account
+            Email address of account. 
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.AccountDetails.SmsFieldNumber">
@@ -552,7 +536,7 @@
         </member>
         <member name="T:Trinsic.Services.Account.V1.WalletAuthToken">
             <summary>
-            Information about authenticaton tokens for a wallet
+            Information about authentication tokens for a wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.WalletAuthToken.IdFieldNumber">
@@ -1839,32 +1823,6 @@
             Indicates if confirmation of account is required.
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Provider.V1.UpdateEcosystemRequest">
-            <summary>
-            Request to update an ecosystem's metadata
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.DescriptionFieldNumber">
-            <summary>Field number for the "description" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.Description">
-            <summary>
-            New description of the ecosystem
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.UpdateEcosystemResponse">
-            <summary>
-            Response to `UpdateEcosystemRequest`
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemResponse.EcosystemFieldNumber">
-            <summary>Field number for the "Ecosystem" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemResponse.Ecosystem">
-            <summary>
-            Current ecosystem metadata, post-update
-            </summary>
-        </member>
         <member name="T:Trinsic.Services.Provider.V1.EcosystemInfoRequest">
             <summary>
             Request to fetch information about an ecosystem
@@ -1968,7 +1926,7 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest.QueryFilter">
             <summary>
-            SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
+            SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]`
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest.ContinuationTokenFieldNumber">
@@ -2020,8 +1978,19 @@
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.EmailFieldNumber">
             <summary>Field number for the "email" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.Provider.V1.WalletConfiguration.Email">
+            <summary>
+            Deprecated and will be removed on August 1, 2023 -- use external_identities. 
+            This field is set to the first email address present in `external_identities`, if any.
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.SmsFieldNumber">
             <summary>Field number for the "sms" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.WalletConfiguration.Sms">
+            <summary>
+            Deprecated -- use external_identities
+            </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.WalletIdFieldNumber">
             <summary>Field number for the "wallet_id" field.</summary>
@@ -2047,12 +2016,13 @@
             such as ID, description, and creation date.
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.ExternalIdentitiesFieldNumber">
-            <summary>Field number for the "external_identities" field.</summary>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.ExternalIdentityIdsFieldNumber">
+            <summary>Field number for the "external_identity_ids" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Provider.V1.WalletConfiguration.ExternalIdentities">
+        <member name="P:Trinsic.Services.Provider.V1.WalletConfiguration.ExternalIdentityIds">
             <summary>
-            List of external identities associated with this wallet.
+            List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+            This is deprecated; use `external_identities` instead.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.EcosystemIdFieldNumber">
@@ -2065,6 +2035,35 @@
         </member>
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.DescriptionFieldNumber">
             <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.ExternalIdentitiesFieldNumber">
+            <summary>Field number for the "external_identities" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.WalletConfiguration.ExternalIdentities">
+            <summary>
+            List of external identities associated with this wallet.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.WalletExternalIdentity">
+            <summary>
+            An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletExternalIdentity.ProviderFieldNumber">
+            <summary>Field number for the "provider" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.WalletExternalIdentity.Provider">
+            <summary>
+            The type of this identity (whether this identity is an email address, phone number, etc.)
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletExternalIdentity.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.WalletExternalIdentity.Id">
+            <summary>
+            The actual email address/phone number/etc. for this identity
+            </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.IonOptions">
             <summary>
@@ -2187,15 +2186,6 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetOberonKey(Trinsic.Services.Provider.V1.GetOberonKeyRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Returns the public key being used to create/verify oberon tokens
@@ -2269,46 +2259,6 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest,Grpc.Core.CallOptions)">
             <summary>
             Create new ecosystem and assign the authenticated user as owner
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.CallOptions)">
-            <summary>
-            The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.CallOptions)">
-            <summary>
-            The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-            DEPRECATED, will be removed June 1st 2023
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -2789,6 +2739,94 @@
             Status of member for given credential schema
             </summary>
         </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.FrameworkIdFieldNumber">
+            <summary>Field number for the "framework_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.FrameworkId">
+            <summary>
+            The ID of the ecosystem governance framework.
+            This ID may be found in the 'trustRegistry' field in the
+            verifiable credential model
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.SchemaUriFieldNumber">
+            <summary>Field number for the "schema_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.SchemaUri">
+            <summary>
+            id of schema that needs to be checked
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.HasSchemaUri">
+            <summary>Gets whether the "schema_uri" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.ClearSchemaUri">
+            <summary>Clears the value of the "schema_uri" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.ContinuationToken">
+            <summary>
+            Token to fetch next set of results, from previous `SearchRegistryResponse`
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.HasContinuationToken">
+            <summary>Gets whether the "continuation_token" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest.ClearContinuationToken">
+            <summary>Clears the value of the "continuation_token" field</summary>
+        </member>
+        <member name="T:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersResponse">
+            <summary>
+            Response to `ListAuthorizedMembersRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersResponse.AuthorizedMembersFieldNumber">
+            <summary>Field number for the "authorized_members" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersResponse.AuthorizedMembers">
+            <summary>
+            JSON string containing array of resultant objects
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersResponse.HasMoreResults">
+            <summary>
+            Whether more data is available to fetch for query
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersResponse.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersResponse.ContinuationToken">
+            <summary>
+            Token to fetch next set of results via `ListAuthorizedMembersRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AuthorizedMember.DidFieldNumber">
+            <summary>Field number for the "did" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AuthorizedMember.AuthorizedMemberSchemasFieldNumber">
+            <summary>Field number for the "authorized_member_schemas" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AuthorizedMemberSchema.SchemaUriFieldNumber">
+            <summary>Field number for the "schema_uri" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AuthorizedMemberSchema.StatusFieldNumber">
+            <summary>Field number for the "status" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AuthorizedMemberSchema.StatusDetailsFieldNumber">
+            <summary>Field number for the "status_details" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AuthorizedMemberSchema.ValidFromFieldNumber">
+            <summary>Field number for the "valid_from" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AuthorizedMemberSchema.ValidUntilFieldNumber">
+            <summary>Field number for the "valid_until" field.</summary>
+        </member>
         <member name="P:Trinsic.Services.TrustRegistry.V1.TrustRegistry.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -2838,6 +2876,14 @@
         <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.GetMembershipStatus(Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Fetch the membership status of an issuer for a given credential schema in a trust registry
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.ListAuthorizedMembers(Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -3072,6 +3118,42 @@
         <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.GetMembershipStatusAsync(Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest,Grpc.Core.CallOptions)">
             <summary>
             Fetch the membership status of an issuer for a given credential schema in a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.ListAuthorizedMembers(Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.ListAuthorizedMembers(Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.ListAuthorizedMembersAsync(Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.ListAuthorizedMembersAsync(Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -3323,6 +3405,36 @@
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.ClearDescription">
             <summary>Clears the value of the "description" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.IdentityFieldNumber">
+            <summary>Field number for the "identity" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Identity">
+            <summary>
+            Optional identity to add to the wallet (email or sms). 
+            Use this field when inviting participants into an ecosystem.
+            If this field is set, an auth token will not be sent in the response.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Types">
+            <summary>Container for nested types declared in the CreateWalletRequest message type.</summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Types.ExternalIdentity.IdentityFieldNumber">
+            <summary>Field number for the "identity" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Types.ExternalIdentity.Identity">
+            <summary>
+            The user identity to add to the wallet
+            This can be an email address or phone number (formatted as +[country code][phone number])
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Types.ExternalIdentity.ProviderFieldNumber">
+            <summary>Field number for the "provider" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Types.ExternalIdentity.Provider">
+            <summary>
+            The type of identity provider, like EMAIL or PHONE
+            </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.AuthTokenFieldNumber">
             <summary>Field number for the "auth_token" field.</summary>
@@ -5352,33 +5464,6 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredentialsReflection.Descriptor">
             <summary>File descriptor for services/verifiable-credentials/v1/verifiable-credentials.proto</summary>
         </member>
-        <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueRequest">
-            <summary>
-            DEPRECATED, will be removed May 1st 2023
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueRequest.DocumentJsonFieldNumber">
-            <summary>Field number for the "document_json" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueRequest.DocumentJson">
-            <summary>
-            Valid JSON-LD Credential document to be signed, in string form
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueResponse">
-            <summary>
-            DEPRECATED, will be removed May 1st 2023
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueResponse.SignedDocumentJsonFieldNumber">
-            <summary>Field number for the "signed_document_json" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueResponse.SignedDocumentJson">
-            <summary>
-            Verifiable Credential document, signed with public key
-            tied to caller of `IssueRequest`
-            </summary>
-        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest">
             <summary>
             Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
@@ -5419,6 +5504,16 @@
             Save a copy of the issued credential to this user's wallet. This copy will only contain
             the credential data, but not the secret proof value. Issuers may use this data to
             keep track of the details for revocation status.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.ExpirationDateFieldNumber">
+            <summary>Field number for the "expiration_date" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.ExpirationDate">
+            <summary>
+            The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+            If specified, the issued credential will contain an expiration date.
+            https://www.w3.org/TR/vc-data-model/#expiration
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse">
@@ -5698,16 +5793,6 @@
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase">
             <summary>Base class for server-side implementations of VerifiableCredential</summary>
         </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Sign and issue a verifiable credential from a submitted document.
-            The document must be a valid JSON-LD document.
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
@@ -5777,50 +5862,6 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Protected constructor to allow creation of configured clients.</summary>
             <param name="configuration">The client configuration.</param>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Sign and issue a verifiable credential from a submitted document.
-            The document must be a valid JSON-LD document.
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Sign and issue a verifiable credential from a submitted document.
-            The document must be a valid JSON-LD document.
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Sign and issue a verifiable credential from a submitted document.
-            The document must be a valid JSON-LD document.
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Sign and issue a verifiable credential from a submitted document.
-            The document must be a valid JSON-LD document.
-            DEPRECATED, will be removed June 1st 2023
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
@@ -6146,20 +6187,6 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.ProviderService.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
-             <summary>
-            This will be removed June 1, 2023
-              The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-              DEPRECATED, will be removed June 1st 2023
-             </summary>
-        </member>
-        <member name="M:Trinsic.ProviderService.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
-             <summary>
-            This will be removed June 1, 2023
-              The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-              DEPRECATED, will be removed June 1st 2023
-             </summary>
-        </member>
         <member name="M:Trinsic.ProviderService.GetOberonKey">
             <summary>
             Returns the public key being used to create/verify oberon tokens
@@ -6385,6 +6412,16 @@
         <member name="M:Trinsic.TrustRegistryService.GetMembershipStatusAsync(Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest)">
             <summary>
             Fetch the membership status of an issuer for a given credential schema in a trust registry
+            </summary>
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.ListAuthorizedMembers(Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest)">
+            <summary>
+            Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
+            </summary>
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.ListAuthorizedMembersAsync(Trinsic.Services.TrustRegistry.V1.ListAuthorizedMembersRequest)">
+            <summary>
+            Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
             </summary>
         </member>
         <member name="M:Trinsic.WalletService.SearchWalletAsync(Trinsic.Services.UniversalWallet.V1.SearchRequest)">
