@@ -1,14 +1,15 @@
 import asyncio
+import json
 from os.path import abspath, join, dirname
 
-from trinsic.proto.services.universalwallet.v1 import CreateWalletRequest
 from trinsic.proto.services.verifiablecredentials.v1 import (
-    IssueRequest,
     CreateProofRequest,
     VerifyProofRequest,
     SendRequest,
-    RevealTemplateAttributes,
+    RevealTemplateAttributes, IssueFromTemplateRequest,
 )
+from trinsic.proto.services.verifiablecredentials.templates.v1 import (CreateCredentialTemplateRequest, TemplateField,
+                                                                       FieldType)
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
@@ -29,23 +30,31 @@ async def credential_demo():
     config = trinsic_config()
     trinsic_service = TrinsicService(server_config=config)
 
-    wallet_response = await trinsic_service.wallet.create_wallet(
-        request=CreateWalletRequest(ecosystem_id="default")
-    )
-    config.auth_token = wallet_response.auth_token
-
     ecosystem = await trinsic_service.provider.create_ecosystem()
-
-    # Sign a credential as the clinic and send it to Allison
-    with open(_vaccine_cert_unsigned_path(), "r") as fid:
-        credential_json = "\n".join(fid.readlines())
-
-    # issueCredential() {
-    issue_response = await trinsic_service.credential.issue(
-        request=IssueRequest(document_json=credential_json)
+    create_request = CreateCredentialTemplateRequest(
+        name=f"Credential Service Test Python",
+        fields={
+            "firstName": TemplateField(
+                type=FieldType.STRING
+            ),
+            "lastName": TemplateField(
+                type=FieldType.STRING
+            ),
+        },
     )
-    # }
-    credential_json = issue_response.signed_document_json
+    create_response = await trinsic_service.template.create(request=create_request)
+    template = create_response.data
+
+    values = json.dumps(
+        {
+            "firstName": "Allison",
+            "lastName": "Allisonne"
+        }
+    )
+    issue_response = await trinsic_service.credential.issue_from_template(
+        request=IssueFromTemplateRequest(template_id=template.id, values_json=values)
+    )
+    credential_json = issue_response.document_json
     print(f"Credential: {credential_json}")
 
     try:
@@ -60,22 +69,18 @@ async def credential_demo():
         pass
 
     # Allison shares the credential with the venue.
-    # The venue has communicated with Allison the details of the credential
-    # that they require expressed as a JSON-LD frame.
-    with open(_vaccine_cert_frame_path(), "r") as fid2:
-        proof_request_json = "\n".join(fid2.readlines())
 
     # createProof() {
     proof_response = await trinsic_service.credential.create_proof(
         request=CreateProofRequest(
-            reveal_document_json=proof_request_json, document_json=credential_json
+            document_json=credential_json
         )
     )
     selective_proof_response = await trinsic_service.credential.create_proof(
         request=CreateProofRequest(
             document_json=credential_json,
             reveal_template=RevealTemplateAttributes(
-                template_attributes=["firstName", "lastName"]
+                template_attributes=["firstName"]
             ),
         )
     )
