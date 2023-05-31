@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14+insiders-4.35.1">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15+insiders-4.35.2">
     
     
       
@@ -25,10 +25,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.14411569.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cac7c1ad.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.df142b89.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc776e4.min.css">
       
       
 
@@ -2634,6 +2634,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#createwalletrequestexternalidentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CreateWalletRequest.ExternalIdentity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#createwalletresponse" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3218,28 +3229,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#updateecosystemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        UpdateEcosystemRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateecosystemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        UpdateEcosystemResponse
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#upgradedidrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3367,6 +3356,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#authorizedmember" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AuthorizedMember
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizedmemberschema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AuthorizedMemberSchema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#getmembershipstatusrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3393,6 +3404,28 @@
     <span class="md-ellipsis">
       
         GovernanceFramework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listauthorizedmembersrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ListAuthorizedMembersRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listauthorizedmembersresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ListAuthorizedMembersResponse
       
     </span>
   </a>
@@ -3586,28 +3619,6 @@
     <span class="md-ellipsis">
       
         IssueFromTemplateResponse
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#issuerequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IssueRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#issueresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IssueResponse
       
     </span>
   </a>
@@ -5273,6 +5284,34 @@ like email, SMS, etc.</p>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, or anything you'd like to associate with this wallet. This field is searchable.</td>
 </tr>
+<tr>
+<td>identity</td>
+<td><a href="/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity">CreateWalletRequest.ExternalIdentity</a></td>
+<td>Optional identity to add to the wallet (email or sms). Use this field when inviting participants into an ecosystem. If this field is set, an auth token will not be sent in the response.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-CreateWalletRequest-ExternalIdentity"></a></p>
+<h3 id="createwalletrequestexternalidentity">CreateWalletRequest.ExternalIdentity<a class="headerlink" href="#createwalletrequestexternalidentity" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>identity</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number])</td>
+</tr>
+<tr>
+<td>provider</td>
+<td><a href="/reference/proto#services-provider-v1-IdentityProvider">services.provider.v1.IdentityProvider</a></td>
+<td>The type of identity provider, like EMAIL or PHONE</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-universalwallet-v1-CreateWalletResponse"></a></p>
@@ -5931,12 +5970,6 @@ such by assigning roles and permissions to wallet accounts</p>
 <td>Create new ecosystem and assign the authenticated user as owner</td>
 </tr>
 <tr>
-<td>UpdateEcosystem</td>
-<td><a href="/reference/proto#services-provider-v1-UpdateEcosystemRequest">UpdateEcosystemRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-UpdateEcosystemResponse">UpdateEcosystemResponse</a></td>
-<td>The below display can be removed only once the Dashboard is updating this itself - currently it uses this request DEPRECATED, will be removed June 1st 2023</td>
-</tr>
-<tr>
 <td>GetOberonKey</td>
 <td><a href="/reference/proto#services-provider-v1-GetOberonKeyRequest">GetOberonKeyRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-GetOberonKeyResponse">GetOberonKeyResponse</a></td>
@@ -6234,50 +6267,12 @@ DEPRECATED, will be removed June 1st 2023</p>
 <tr>
 <td>query_filter</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>SQL filter to execute. <code>SELECT * FROM _ WHERE [**queryFilter**]</code></td>
+<td>SQL filter to execute. <code>SELECT * FROM c WHERE [**queryFilter**]</code></td>
 </tr>
 <tr>
 <td>continuation_token</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Token provided by previous <code>SearchResponse</code> if more data is available for query</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-UpdateEcosystemRequest"></a></p>
-<h3 id="updateecosystemrequest">UpdateEcosystemRequest<a class="headerlink" href="#updateecosystemrequest" title="Permanent link">&para;</a></h3>
-<p>Request to update an ecosystem's metadata</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>New description of the ecosystem</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-UpdateEcosystemResponse"></a></p>
-<h3 id="updateecosystemresponse">UpdateEcosystemResponse<a class="headerlink" href="#updateecosystemresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>UpdateEcosystemRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ecosystem</td>
-<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Current ecosystem metadata, post-update</td>
 </tr>
 </tbody>
 </table>
@@ -6364,7 +6359,7 @@ DEPRECATED, will be removed June 1st 2023</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td><strong>Deprecated.</strong> Deprecated -- use external_identities</td>
+<td><strong>Deprecated.</strong> Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in <code>external_identities</code>, if any.</td>
 </tr>
 <tr>
 <td>sms</td>
@@ -6604,6 +6599,12 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse">GetMembershipStatusResponse</a></td>
 <td>Fetch the membership status of an issuer for a given credential schema in a trust registry</td>
 </tr>
+<tr>
+<td>ListAuthorizedMembers</td>
+<td><a href="/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest">ListAuthorizedMembersRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse">ListAuthorizedMembersResponse</a></td>
+<td>Fetch the ecosystem's authorized issuers and the respective templates against which it can issue</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
@@ -6663,6 +6664,67 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>trust_registry</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>URN of trust registry for governance framework</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-AuthorizedMember"></a></p>
+<h3 id="authorizedmember">AuthorizedMember<a class="headerlink" href="#authorizedmember" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>did</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>authorized_member_schemas</td>
+<td><a href="/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema">AuthorizedMemberSchema</a>[]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-AuthorizedMemberSchema"></a></p>
+<h3 id="authorizedmemberschema">AuthorizedMemberSchema<a class="headerlink" href="#authorizedmemberschema" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>status_details</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>valid_from</td>
+<td><a href="/reference/proto#uint64">uint64</a></td>
+<td></td>
+</tr>
+<tr>
+<td>valid_until</td>
+<td><a href="/reference/proto#uint64">uint64</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -6740,6 +6802,63 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Description of governance framework</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a></p>
+<h3 id="listauthorizedmembersrequest">ListAuthorizedMembersRequest<a class="headerlink" href="#listauthorizedmembersrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>framework_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model</td>
+</tr>
+<tr>
+<td>schema_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>id of schema that needs to be checked</td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Token to fetch next set of results, from previous <code>SearchRegistryResponse</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a></p>
+<h3 id="listauthorizedmembersresponse">ListAuthorizedMembersResponse<a class="headerlink" href="#listauthorizedmembersresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>ListAuthorizedMembersRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>authorized_members</td>
+<td><a href="/reference/proto#services-trustregistry-v1-AuthorizedMember">AuthorizedMember</a>[]</td>
+<td>JSON string containing array of resultant objects</td>
+</tr>
+<tr>
+<td>has_more_results</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Whether more data is available to fetch for query</td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Token to fetch next set of results via <code>ListAuthorizedMembersRequest</code></td>
 </tr>
 </tbody>
 </table>
@@ -6975,12 +7094,6 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
 </thead>
 <tbody>
 <tr>
-<td>Issue</td>
-<td><a href="/reference/proto#services-verifiablecredentials-v1-IssueRequest">IssueRequest</a></td>
-<td><a href="/reference/proto#services-verifiablecredentials-v1-IssueResponse">IssueResponse</a></td>
-<td>Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. DEPRECATED, will be removed June 1st 2023</td>
-</tr>
-<tr>
 <td>IssueFromTemplate</td>
 <td><a href="/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest">IssueFromTemplateRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse">IssueFromTemplateResponse</a></td>
@@ -7154,6 +7267,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status.</td>
 </tr>
+<tr>
+<td>expiration_date</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-verifiablecredentials-v1-IssueFromTemplateResponse"></a></p>
@@ -7172,44 +7290,6 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Verifiable Credential document, in JSON-LD form, constructed from the specified template and values; signed with public key tied to caller of <code>IssueFromTemplateRequest</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-v1-IssueRequest"></a></p>
-<h3 id="issuerequest">IssueRequest<a class="headerlink" href="#issuerequest" title="Permanent link">&para;</a></h3>
-<p>DEPRECATED, will be removed May 1st 2023</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>document_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Valid JSON-LD Credential document to be signed, in string form</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-v1-IssueResponse"></a></p>
-<h3 id="issueresponse">IssueResponse<a class="headerlink" href="#issueresponse" title="Permanent link">&para;</a></h3>
-<p>DEPRECATED, will be removed May 1st 2023</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>signed_document_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Verifiable Credential document, signed with public key tied to caller of <code>IssueRequest</code></td>
 </tr>
 </tbody>
 </table>

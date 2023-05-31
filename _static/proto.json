@@ -1092,12 +1092,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.Provider.UpdateEcosystem": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
     "services.provider.v1.Provider.UpgradeDID": {
       "type": "method",
       "collection": "methods",
@@ -1229,30 +1223,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.SearchWalletConfigurationsRequest"
-    },
-    "services.provider.v1.UpdateEcosystemRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.UpdateEcosystemRequest.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpdateEcosystemRequest"
-    },
-    "services.provider.v1.UpdateEcosystemResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.UpdateEcosystemResponse.Ecosystem": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpdateEcosystemResponse"
     },
     "services.provider.v1.UpgradeDidRequest": {
       "type": "message",
@@ -1446,6 +1416,60 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.AddFrameworkResponse"
     },
+    "services.trustregistry.v1.AuthorizedMember": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.AuthorizedMember.authorized_member_schemas": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.AuthorizedMember"
+    },
+    "services.trustregistry.v1.AuthorizedMember.did": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.AuthorizedMember"
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.schema_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.AuthorizedMemberSchema"
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.status": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.AuthorizedMemberSchema"
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.status_details": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.AuthorizedMemberSchema"
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.valid_from": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.AuthorizedMemberSchema"
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.valid_until": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.AuthorizedMemberSchema"
+    },
     "services.trustregistry.v1.GetMembershipStatusRequest": {
       "type": "message",
       "collection": "messages",
@@ -1505,6 +1529,54 @@
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.GovernanceFramework"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.ListAuthorizedMembersRequest"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest.framework_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.ListAuthorizedMembersRequest"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest.schema_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.ListAuthorizedMembersRequest"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse.authorized_members": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.ListAuthorizedMembersResponse"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.ListAuthorizedMembersResponse"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse.has_more_results": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.ListAuthorizedMembersResponse"
     },
     "services.trustregistry.v1.RegisterMemberRequest": {
       "type": "message",
@@ -1669,6 +1741,12 @@
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.GetMembershipStatus": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers": {
       "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -1884,6 +1962,24 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
+    "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletRequest"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.identity": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.provider": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity"
+    },
     "services.universalwallet.v1.CreateWalletRequest.description": {
       "type": "field",
       "collection": "fields",
@@ -1891,6 +1987,12 @@
       "parent": "services.universalwallet.v1.CreateWalletRequest"
     },
     "services.universalwallet.v1.CreateWalletRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.CreateWalletRequest"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.identity": {
       "type": "field",
       "collection": "fields",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -3114,6 +3216,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
+    "services.verifiablecredentials.v1.IssueFromTemplateRequest.expiration_date": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.IssueFromTemplateRequest"
+    },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id": {
       "type": "field",
       "collection": "fields",
@@ -3149,30 +3257,6 @@
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.IssueFromTemplateResponse"
-    },
-    "services.verifiablecredentials.v1.IssueRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": ""
-    },
-    "services.verifiablecredentials.v1.IssueRequest.document_json": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": "services.verifiablecredentials.v1.IssueRequest"
-    },
-    "services.verifiablecredentials.v1.IssueResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": ""
-    },
-    "services.verifiablecredentials.v1.IssueResponse.signed_document_json": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": "services.verifiablecredentials.v1.IssueResponse"
     },
     "services.verifiablecredentials.v1.RevealTemplateAttributes": {
       "type": "message",
@@ -3289,12 +3373,6 @@
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CreateProof": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
-      "parent": ""
-    },
-    "services.verifiablecredentials.v1.VerifiableCredential.Issue": {
       "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -3615,7 +3693,6 @@
       ],
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
-        "services.provider.v1.Provider.UpdateEcosystem",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.SearchWalletConfigurations"
@@ -3624,8 +3701,6 @@
         "services.provider.v1.Ecosystem",
         "services.provider.v1.CreateEcosystemRequest",
         "services.provider.v1.CreateEcosystemResponse",
-        "services.provider.v1.UpdateEcosystemRequest",
-        "services.provider.v1.UpdateEcosystemResponse",
         "services.provider.v1.EcosystemInfoRequest",
         "services.provider.v1.EcosystemInfoResponse",
         "services.provider.v1.GetOberonKeyRequest",
@@ -3654,8 +3729,6 @@
         "services.provider.v1.CreateEcosystemResponse.ecosystem",
         "services.provider.v1.CreateEcosystemResponse.profile",
         "services.provider.v1.CreateEcosystemResponse.confirmation_method",
-        "services.provider.v1.UpdateEcosystemRequest.description",
-        "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
         "services.provider.v1.EcosystemInfoResponse.ecosystem",
         "services.provider.v1.GetOberonKeyResponse.key",
         "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
@@ -3725,7 +3798,8 @@
         "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
-        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus"
+        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
+        "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers"
       ],
       "messages": [
         "services.trustregistry.v1.AddFrameworkRequest",
@@ -3740,7 +3814,11 @@
         "services.trustregistry.v1.UnregisterMemberRequest",
         "services.trustregistry.v1.UnregisterMemberResponse",
         "services.trustregistry.v1.GetMembershipStatusRequest",
-        "services.trustregistry.v1.GetMembershipStatusResponse"
+        "services.trustregistry.v1.GetMembershipStatusResponse",
+        "services.trustregistry.v1.ListAuthorizedMembersRequest",
+        "services.trustregistry.v1.ListAuthorizedMembersResponse",
+        "services.trustregistry.v1.AuthorizedMember",
+        "services.trustregistry.v1.AuthorizedMemberSchema"
       ],
       "fields": [
         "services.trustregistry.v1.AddFrameworkRequest.governance_framework_uri",
@@ -3773,7 +3851,20 @@
         "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
         "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri",
-        "services.trustregistry.v1.GetMembershipStatusResponse.status"
+        "services.trustregistry.v1.GetMembershipStatusResponse.status",
+        "services.trustregistry.v1.ListAuthorizedMembersRequest.framework_id",
+        "services.trustregistry.v1.ListAuthorizedMembersRequest.schema_uri",
+        "services.trustregistry.v1.ListAuthorizedMembersRequest.continuation_token",
+        "services.trustregistry.v1.ListAuthorizedMembersResponse.authorized_members",
+        "services.trustregistry.v1.ListAuthorizedMembersResponse.has_more_results",
+        "services.trustregistry.v1.ListAuthorizedMembersResponse.continuation_token",
+        "services.trustregistry.v1.AuthorizedMember.did",
+        "services.trustregistry.v1.AuthorizedMember.authorized_member_schemas",
+        "services.trustregistry.v1.AuthorizedMemberSchema.schema_uri",
+        "services.trustregistry.v1.AuthorizedMemberSchema.status",
+        "services.trustregistry.v1.AuthorizedMemberSchema.status_details",
+        "services.trustregistry.v1.AuthorizedMemberSchema.valid_from",
+        "services.trustregistry.v1.AuthorizedMemberSchema.valid_until"
       ],
       "enums": [
         "services.trustregistry.v1.RegistrationStatus"
@@ -3827,6 +3918,7 @@
         "services.universalwallet.v1.DeleteWalletRequest",
         "services.universalwallet.v1.DeleteWalletResponse",
         "services.universalwallet.v1.CreateWalletRequest",
+        "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity",
         "services.universalwallet.v1.CreateWalletResponse",
         "services.universalwallet.v1.GenerateAuthTokenRequest",
         "services.universalwallet.v1.GenerateAuthTokenResponse",
@@ -3871,6 +3963,9 @@
         "services.universalwallet.v1.DeleteWalletRequest.did_uri",
         "services.universalwallet.v1.CreateWalletRequest.ecosystem_id",
         "services.universalwallet.v1.CreateWalletRequest.description",
+        "services.universalwallet.v1.CreateWalletRequest.identity",
+        "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.identity",
+        "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.provider",
         "services.universalwallet.v1.CreateWalletResponse.auth_token",
         "services.universalwallet.v1.CreateWalletResponse.token_id",
         "services.universalwallet.v1.CreateWalletResponse.wallet",
@@ -4041,7 +4136,6 @@
         "services.verifiablecredentials.v1.VerifiableCredential"
       ],
       "methods": [
-        "services.verifiablecredentials.v1.VerifiableCredential.Issue",
         "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate",
         "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus",
         "services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus",
@@ -4050,8 +4144,6 @@
         "services.verifiablecredentials.v1.VerifiableCredential.Send"
       ],
       "messages": [
-        "services.verifiablecredentials.v1.IssueRequest",
-        "services.verifiablecredentials.v1.IssueResponse",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest",
         "services.verifiablecredentials.v1.IssueFromTemplateResponse",
         "services.verifiablecredentials.v1.CreateProofRequest",
@@ -4069,12 +4161,11 @@
         "services.verifiablecredentials.v1.CheckStatusResponse"
       ],
       "fields": [
-        "services.verifiablecredentials.v1.IssueRequest.document_json",
-        "services.verifiablecredentials.v1.IssueResponse.signed_document_json",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.values_json",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy",
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.expiration_date",
         "services.verifiablecredentials.v1.IssueFromTemplateResponse.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
@@ -4147,7 +4238,6 @@
       "description": "",
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
-        "services.provider.v1.Provider.UpdateEcosystem",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.UpgradeDID",
         "services.provider.v1.Provider.SearchWalletConfigurations"
@@ -4163,7 +4253,8 @@
         "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
-        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus"
+        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
+        "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers"
       ]
     },
     "services.universalwallet.v1.UniversalWallet": {
@@ -4209,7 +4300,6 @@
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential",
       "description": "",
       "methods": [
-        "services.verifiablecredentials.v1.VerifiableCredential.Issue",
         "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate",
         "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus",
         "services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus",
@@ -4381,17 +4471,6 @@
       "output_type": "services.provider.v1.SearchWalletConfigurationResponse",
       "description": "Search for issuers/providers/verifiers in the current ecosystem"
     },
-    "services.provider.v1.Provider.UpdateEcosystem": {
-      "name": "UpdateEcosystem",
-      "full_name": "services.provider.v1.Provider.UpdateEcosystem",
-      "input_type": "services.provider.v1.UpdateEcosystemRequest",
-      "output_type": "services.provider.v1.UpdateEcosystemResponse",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
     "services.provider.v1.Provider.UpgradeDID": {
       "name": "UpgradeDID",
       "full_name": "services.provider.v1.Provider.UpgradeDID",
@@ -4412,6 +4491,13 @@
       "input_type": "services.trustregistry.v1.GetMembershipStatusRequest",
       "output_type": "services.trustregistry.v1.GetMembershipStatusResponse",
       "description": "Fetch the membership status of an issuer for a given credential schema in a trust registry"
+    },
+    "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers": {
+      "name": "ListAuthorizedMembers",
+      "full_name": "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers",
+      "input_type": "services.trustregistry.v1.ListAuthorizedMembersRequest",
+      "output_type": "services.trustregistry.v1.ListAuthorizedMembersResponse",
+      "description": "Fetch the ecosystem's authorized issuers and the respective templates against which it can issue"
     },
     "services.trustregistry.v1.TrustRegistry.RegisterMember": {
       "name": "RegisterMember",
@@ -4625,16 +4711,6 @@
       "input_type": "services.verifiablecredentials.v1.CreateProofRequest",
       "output_type": "services.verifiablecredentials.v1.CreateProofResponse",
       "description": "Create a proof from a signed document that is a valid\nverifiable credential and contains a signature from which a proof can be derived."
-    },
-    "services.verifiablecredentials.v1.VerifiableCredential.Issue": {
-      "name": "Issue",
-      "full_name": "services.verifiablecredentials.v1.VerifiableCredential.Issue",
-      "input_type": "services.verifiablecredentials.v1.IssueRequest",
-      "output_type": "services.verifiablecredentials.v1.IssueResponse",
-      "description": "Sign and issue a verifiable credential from a submitted document.\nThe document must be a valid JSON-LD document.\nDEPRECATED, will be removed June 1st 2023",
-      "options": {
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate": {
       "name": "IssueFromTemplate",
@@ -5229,26 +5305,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.UpdateEcosystemRequest": {
-      "name": "UpdateEcosystemRequest",
-      "full_name": "services.provider.v1.UpdateEcosystemRequest",
-      "description": "Request to update an ecosystem's metadata",
-      "fields": [
-        "services.provider.v1.UpdateEcosystemRequest.description"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.UpdateEcosystemResponse": {
-      "name": "UpdateEcosystemResponse",
-      "full_name": "services.provider.v1.UpdateEcosystemResponse",
-      "description": "Response to `UpdateEcosystemRequest`",
-      "fields": [
-        "services.provider.v1.UpdateEcosystemResponse.Ecosystem"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.UpgradeDidRequest": {
       "name": "UpgradeDidRequest",
       "full_name": "services.provider.v1.UpgradeDidRequest",
@@ -5329,6 +5385,31 @@
       "messages": [],
       "enums": []
     },
+    "services.trustregistry.v1.AuthorizedMember": {
+      "name": "AuthorizedMember",
+      "full_name": "services.trustregistry.v1.AuthorizedMember",
+      "description": "",
+      "fields": [
+        "services.trustregistry.v1.AuthorizedMember.did",
+        "services.trustregistry.v1.AuthorizedMember.authorized_member_schemas"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema": {
+      "name": "AuthorizedMemberSchema",
+      "full_name": "services.trustregistry.v1.AuthorizedMemberSchema",
+      "description": "",
+      "fields": [
+        "services.trustregistry.v1.AuthorizedMemberSchema.schema_uri",
+        "services.trustregistry.v1.AuthorizedMemberSchema.status",
+        "services.trustregistry.v1.AuthorizedMemberSchema.status_details",
+        "services.trustregistry.v1.AuthorizedMemberSchema.valid_from",
+        "services.trustregistry.v1.AuthorizedMemberSchema.valid_until"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.trustregistry.v1.GetMembershipStatusRequest": {
       "name": "GetMembershipStatusRequest",
       "full_name": "services.trustregistry.v1.GetMembershipStatusRequest",
@@ -5359,6 +5440,30 @@
         "services.trustregistry.v1.GovernanceFramework.governance_framework_uri",
         "services.trustregistry.v1.GovernanceFramework.trust_registry_uri",
         "services.trustregistry.v1.GovernanceFramework.description"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest": {
+      "name": "ListAuthorizedMembersRequest",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersRequest",
+      "description": "",
+      "fields": [
+        "services.trustregistry.v1.ListAuthorizedMembersRequest.framework_id",
+        "services.trustregistry.v1.ListAuthorizedMembersRequest.schema_uri",
+        "services.trustregistry.v1.ListAuthorizedMembersRequest.continuation_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse": {
+      "name": "ListAuthorizedMembersResponse",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersResponse",
+      "description": "Response to `ListAuthorizedMembersRequest`",
+      "fields": [
+        "services.trustregistry.v1.ListAuthorizedMembersResponse.authorized_members",
+        "services.trustregistry.v1.ListAuthorizedMembersResponse.has_more_results",
+        "services.trustregistry.v1.ListAuthorizedMembersResponse.continuation_token"
       ],
       "messages": [],
       "enums": []
@@ -5557,7 +5662,21 @@
       "description": "",
       "fields": [
         "services.universalwallet.v1.CreateWalletRequest.ecosystem_id",
-        "services.universalwallet.v1.CreateWalletRequest.description"
+        "services.universalwallet.v1.CreateWalletRequest.description",
+        "services.universalwallet.v1.CreateWalletRequest.identity"
+      ],
+      "messages": [
+        "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity"
+      ],
+      "enums": []
+    },
+    "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity": {
+      "name": "ExternalIdentity",
+      "full_name": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.identity",
+        "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.provider"
       ],
       "messages": [],
       "enums": []
@@ -6168,7 +6287,8 @@
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.values_json",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id",
-        "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy"
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy",
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.expiration_date"
       ],
       "messages": [],
       "enums": []
@@ -6179,32 +6299,6 @@
       "description": "Response to `IssueFromTemplateRequest`",
       "fields": [
         "services.verifiablecredentials.v1.IssueFromTemplateResponse.document_json"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.verifiablecredentials.v1.IssueRequest": {
-      "name": "IssueRequest",
-      "full_name": "services.verifiablecredentials.v1.IssueRequest",
-      "description": "DEPRECATED, will be removed May 1st 2023",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.verifiablecredentials.v1.IssueRequest.document_json"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.verifiablecredentials.v1.IssueResponse": {
-      "name": "IssueResponse",
-      "full_name": "services.verifiablecredentials.v1.IssueResponse",
-      "description": "DEPRECATED, will be removed May 1st 2023",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.verifiablecredentials.v1.IssueResponse.signed_document_json"
       ],
       "messages": [],
       "enums": []
@@ -7126,23 +7220,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`"
-    },
-    "services.provider.v1.UpdateEcosystemRequest.description": {
-      "name": "description",
-      "full_name": "services.provider.v1.UpdateEcosystemRequest.description",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "New description of the ecosystem"
-    },
-    "services.provider.v1.UpdateEcosystemResponse.Ecosystem": {
-      "name": "Ecosystem",
-      "full_name": "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
-      "label": "LABEL_OPTIONAL",
-      "type": "Ecosystem",
-      "full_type": "services.provider.v1.Ecosystem",
-      "description": "Current ecosystem metadata, post-update"
+      "description": "SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]`"
     },
     "services.provider.v1.UpgradeDidRequest.did_uri": {
       "name": "did_uri",
@@ -7238,7 +7316,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Deprecated -- use external_identities",
+      "description": "Deprecated and will be removed on August 1, 2023 -- use external_identities. \nThis field is set to the first email address present in `external_identities`, if any.",
       "options": {
         "deprecated": true,
         "services.options.optional": true
@@ -7363,6 +7441,62 @@
       "full_type": "string",
       "description": "URN of trust registry for governance framework"
     },
+    "services.trustregistry.v1.AuthorizedMember.authorized_member_schemas": {
+      "name": "authorized_member_schemas",
+      "full_name": "services.trustregistry.v1.AuthorizedMember.authorized_member_schemas",
+      "label": "LABEL_REPEATED",
+      "type": "AuthorizedMemberSchema",
+      "full_type": "services.trustregistry.v1.AuthorizedMemberSchema",
+      "description": ""
+    },
+    "services.trustregistry.v1.AuthorizedMember.did": {
+      "name": "did",
+      "full_name": "services.trustregistry.v1.AuthorizedMember.did",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.schema_uri": {
+      "name": "schema_uri",
+      "full_name": "services.trustregistry.v1.AuthorizedMemberSchema.schema_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.status": {
+      "name": "status",
+      "full_name": "services.trustregistry.v1.AuthorizedMemberSchema.status",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.status_details": {
+      "name": "status_details",
+      "full_name": "services.trustregistry.v1.AuthorizedMemberSchema.status_details",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.valid_from": {
+      "name": "valid_from",
+      "full_name": "services.trustregistry.v1.AuthorizedMemberSchema.valid_from",
+      "label": "LABEL_OPTIONAL",
+      "type": "uint64",
+      "full_type": "uint64",
+      "description": ""
+    },
+    "services.trustregistry.v1.AuthorizedMemberSchema.valid_until": {
+      "name": "valid_until",
+      "full_name": "services.trustregistry.v1.AuthorizedMemberSchema.valid_until",
+      "label": "LABEL_OPTIONAL",
+      "type": "uint64",
+      "full_type": "uint64",
+      "description": ""
+    },
     "services.trustregistry.v1.GetMembershipStatusRequest.did_uri": {
       "name": "did_uri",
       "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
@@ -7418,6 +7552,54 @@
       "type": "string",
       "full_type": "string",
       "description": "URI of trust registry associated with governance framework"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersRequest.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token to fetch next set of results, from previous `SearchRegistryResponse`"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest.framework_id": {
+      "name": "framework_id",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersRequest.framework_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the ecosystem governance framework.\nThis ID may be found in the 'trustRegistry' field in the\nverifiable credential model"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersRequest.schema_uri": {
+      "name": "schema_uri",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersRequest.schema_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "id of schema that needs to be checked"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse.authorized_members": {
+      "name": "authorized_members",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersResponse.authorized_members",
+      "label": "LABEL_REPEATED",
+      "type": "AuthorizedMember",
+      "full_type": "services.trustregistry.v1.AuthorizedMember",
+      "description": "JSON string containing array of resultant objects"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersResponse.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token to fetch next set of results via `ListAuthorizedMembersRequest`"
+    },
+    "services.trustregistry.v1.ListAuthorizedMembersResponse.has_more_results": {
+      "name": "has_more_results",
+      "full_name": "services.trustregistry.v1.ListAuthorizedMembersResponse.has_more_results",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether more data is available to fetch for query"
     },
     "services.trustregistry.v1.RegisterMemberRequest.did_uri": {
       "name": "did_uri",
@@ -7670,6 +7852,22 @@
       "full_type": "string",
       "description": "Challenge for the code you want resent."
     },
+    "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.identity": {
+      "name": "identity",
+      "full_name": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.identity",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The user identity to add to the wallet\nThis can be an email address or phone number (formatted as +[country code][phone number])"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.provider": {
+      "name": "provider",
+      "full_name": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.provider",
+      "label": "LABEL_OPTIONAL",
+      "type": "IdentityProvider",
+      "full_type": "services.provider.v1.IdentityProvider",
+      "description": "The type of identity provider, like EMAIL or PHONE"
+    },
     "services.universalwallet.v1.CreateWalletRequest.description": {
       "name": "description",
       "full_name": "services.universalwallet.v1.CreateWalletRequest.description",
@@ -7688,6 +7886,17 @@
       "type": "string",
       "full_type": "string",
       "description": "Ecosystem ID of the wallet to create"
+    },
+    "services.universalwallet.v1.CreateWalletRequest.identity": {
+      "name": "identity",
+      "full_name": "services.universalwallet.v1.CreateWalletRequest.identity",
+      "label": "LABEL_OPTIONAL",
+      "type": "ExternalIdentity",
+      "full_type": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity",
+      "description": "Optional identity to add to the wallet (email or sms). \nUse this field when inviting participants into an ecosystem.\nIf this field is set, an auth token will not be sent in the response.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.universalwallet.v1.CreateWalletResponse.auth_token": {
       "name": "auth_token",
@@ -8611,6 +8820,14 @@
       "full_type": "string",
       "description": "Valid JSON-LD proof for the specified credential"
     },
+    "services.verifiablecredentials.v1.IssueFromTemplateRequest.expiration_date": {
+      "name": "expiration_date",
+      "full_name": "services.verifiablecredentials.v1.IssueFromTemplateRequest.expiration_date",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.\nIf specified, the issued credential will contain an expiration date.\nhttps://www.w3.org/TR/vc-data-model/#expiration"
+    },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id": {
       "name": "framework_id",
       "full_name": "services.verifiablecredentials.v1.IssueFromTemplateRequest.framework_id",
@@ -8653,22 +8870,6 @@
       "type": "string",
       "full_type": "string",
       "description": "Verifiable Credential document, in JSON-LD form,\nconstructed from the specified template and values; signed\nwith public key tied to caller of `IssueFromTemplateRequest`"
-    },
-    "services.verifiablecredentials.v1.IssueRequest.document_json": {
-      "name": "document_json",
-      "full_name": "services.verifiablecredentials.v1.IssueRequest.document_json",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Valid JSON-LD Credential document to be signed, in string form"
-    },
-    "services.verifiablecredentials.v1.IssueResponse.signed_document_json": {
-      "name": "signed_document_json",
-      "full_name": "services.verifiablecredentials.v1.IssueResponse.signed_document_json",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Verifiable Credential document, signed with public key\ntied to caller of `IssueRequest`"
     },
     "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes": {
       "name": "template_attributes",
