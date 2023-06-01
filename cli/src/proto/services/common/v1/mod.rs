@@ -1,12 +1,13 @@
 /// Nonce used to generate an oberon proof
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Nonce {
     /// UTC unix millisecond timestamp the request was made
-    #[prost(int64, tag="1")]
+    #[prost(int64, tag = "1")]
     pub timestamp: i64,
     /// blake3256 hash of the request body
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes = "vec", tag = "2")]
     pub request_hash: ::prost::alloc::vec::Vec<u8>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -35,6 +36,18 @@ impl ResponseStatus {
             ResponseStatus::UnknownError => "UNKNOWN_ERROR",
         }
     }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "SUCCESS" => Some(Self::Success),
+            "WALLET_ACCESS_DENIED" => Some(Self::WalletAccessDenied),
+            "WALLET_EXISTS" => Some(Self::WalletExists),
+            "ITEM_NOT_FOUND" => Some(Self::ItemNotFound),
+            "SERIALIZATION_ERROR" => Some(Self::SerializationError),
+            "UNKNOWN_ERROR" => Some(Self::UnknownError),
+            _ => None,
+        }
+    }
 }
 /// Enum of all supported DID Methods
 /// <https://docs.godiddy.com/en/supported-methods>
@@ -59,6 +72,15 @@ impl SupportedDidMethod {
             SupportedDidMethod::Key => "KEY",
             SupportedDidMethod::Ion => "ION",
             SupportedDidMethod::Indy => "INDY",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "KEY" => Some(Self::Key),
+            "ION" => Some(Self::Ion),
+            "INDY" => Some(Self::Indy),
+            _ => None,
         }
     }
 }

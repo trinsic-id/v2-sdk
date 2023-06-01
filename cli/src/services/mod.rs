@@ -29,7 +29,7 @@ pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<Output, Error
 pub(crate) enum Service<'a> {
     Wallet(crate::parser::wallet::Command<'a>),
     VerifiableCredential(crate::parser::vc::Command<'a>),
-    Provider(crate::parser::provider::Command<'a>),
+    Provider(crate::parser::provider::Command),
     Config(crate::parser::config::ConfigCommand),
     TrustRegistry(crate::parser::trustregistry::TrustRegistryCommand),
     Template(crate::parser::template::TemplateCommand),

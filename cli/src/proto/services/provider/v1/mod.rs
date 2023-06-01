@@ -1,448 +1,228 @@
-/// Request to invite a participant to an ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InviteRequest {
-    /// Type of participant being invited (individual/organization)
-    #[prost(enumeration="ParticipantType", tag="1")]
-    pub participant: i32,
-    /// Description of invitation
-    #[prost(string, tag="2")]
-    pub description: ::prost::alloc::string::String,
-    /// Account details of invitee
-    #[prost(message, optional, tag="3")]
-    pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
-}
-/// Nested message and enum types in `InviteRequest`.
-pub mod invite_request {
-    #[derive(::serde::Serialize, ::serde::Deserialize)]
-    #[derive(Clone, PartialEq, ::prost::Message)]
-    pub struct DidCommInvitation {
-    }
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Response to `InviteRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InviteResponse {
-    /// ID of created invitation
-    #[prost(string, tag="10")]
-    pub invitation_id: ::prost::alloc::string::String,
-    /// Invitation code -- must be passed back in `LoginRequest`
-    #[prost(string, tag="11")]
-    pub invitation_code: ::prost::alloc::string::String,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Request details for the status of an invitation
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InvitationStatusRequest {
-    /// ID of invitation, received from `InviteResponse`
-    #[prost(string, tag="1")]
-    pub invitation_id: ::prost::alloc::string::String,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Response to `InvitationStatusRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InvitationStatusResponse {
-    /// Status of invitation
-    #[prost(enumeration="invitation_status_response::Status", tag="1")]
-    pub status: i32,
-    /// Human-readable string with details about invitation status
-    #[prost(string, tag="2")]
-    pub status_details: ::prost::alloc::string::String,
-}
-/// Nested message and enum types in `InvitationStatusResponse`.
-pub mod invitation_status_response {
-    #[derive(::serde::Serialize, ::serde::Deserialize)]
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
-    #[repr(i32)]
-    pub enum Status {
-        /// Onboarding resulted in error
-        Error = 0,
-        /// The participant has been invited
-        InvitationSent = 1,
-        /// The participant has been onboarded
-        Completed = 2,
-        /// The invite has expired
-        Expired = 3,
-    }
-    impl Status {
-        /// String value of the enum field names used in the ProtoBuf definition.
-        ///
-        /// The values are not transformed in any way and thus are considered stable
-        /// (if the ProtoBuf definition does not change) and safe for programmatic use.
-        pub fn as_str_name(&self) -> &'static str {
-            match self {
-                Status::Error => "Error",
-                Status::InvitationSent => "InvitationSent",
-                Status::Completed => "Completed",
-                Status::Expired => "Expired",
-            }
-        }
-    }
-}
 /// Details of an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Ecosystem {
     /// URN of the ecosystem
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
     /// Globally unique name for the ecosystem
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub name: ::prost::alloc::string::String,
     /// Ecosystem description
-    #[prost(string, tag="3")]
+    #[prost(string, tag = "3")]
     pub description: ::prost::alloc::string::String,
-    /// DEPRECATED, will be removed April 1st 2023
-    /// External URL associated with the organization or ecosystem entity
-    #[deprecated]
-    #[prost(string, tag="4")]
-    pub uri: ::prost::alloc::string::String,
-    /// Display details
-    #[prost(message, optional, tag="6")]
-    pub display: ::core::option::Option<EcosystemDisplay>,
-    /// Domain
-    #[prost(string, tag="7")]
-    pub domain: ::prost::alloc::string::String,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Webhook configured on an ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct WebhookConfig {
-    /// UUID of the webhook
-    #[prost(string, tag="1")]
-    pub id: ::prost::alloc::string::String,
-    /// HTTPS URL to POST webhook calls to
-    #[prost(string, tag="2")]
-    pub destination_url: ::prost::alloc::string::String,
-    /// Events the webhook is subscribed to
-    #[prost(string, repeated, tag="4")]
-    pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// Last known status of webhook (whether or not Trinsic can successfully reach destination)
-    #[prost(string, tag="5")]
-    pub status: ::prost::alloc::string::String,
 }
 /// Request to create an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
     /// Globally unique name for the Ecosystem. This name will be
     /// part of the ecosystem-specific URLs and namespaces.
     /// Allowed characters are lowercase letters, numbers, underscore and hyphen.
     /// If not passed, ecosystem name will be auto-generated.
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
     /// Ecosystem description
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
-    /// DEPRECATED, will be removed April 1st 2023
-    /// External URL associated with your organization or ecosystem entity
-    #[deprecated]
-    #[prost(string, tag="3")]
-    pub uri: ::prost::alloc::string::String,
     /// The account details of the owner of the ecosystem
-    #[prost(message, optional, tag="4")]
+    #[prost(message, optional, tag = "4")]
     pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
     /// New domain URL
-    #[prost(string, tag="5")]
+    #[prost(string, tag = "5")]
     pub domain: ::prost::alloc::string::String,
 }
 /// Response to `CreateEcosystemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemResponse {
     /// Details of the created ecosystem
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
     /// Account profile for auth of the owner of the ecosystem
-    #[prost(message, optional, tag="2")]
+    #[prost(message, optional, tag = "2")]
     pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
     /// Indicates if confirmation of account is required.
-    #[prost(enumeration="super::super::account::v1::ConfirmationMethod", tag="3")]
+    #[prost(enumeration = "super::super::account::v1::ConfirmationMethod", tag = "3")]
     pub confirmation_method: i32,
-}
-/// Request to update an ecosystem's metadata
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UpdateEcosystemRequest {
-    /// New description of the ecosystem
-    #[prost(string, tag="1")]
-    pub description: ::prost::alloc::string::String,
-    /// DEPRECATED, will be removed April 1st 2023
-    /// New external URL associated with the organization or ecosystem entity
-    #[deprecated]
-    #[prost(string, tag="2")]
-    pub uri: ::prost::alloc::string::String,
-    /// New domain URL
-    #[prost(string, tag="3")]
-    pub domain: ::prost::alloc::string::String,
-    // The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-    // DEPRECATED, will be removed June 1st 2023
-
-    /// Display details
-    #[deprecated]
-    #[prost(message, optional, tag="5")]
-    pub display: ::core::option::Option<EcosystemDisplayRequest>,
-}
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct EcosystemDisplayRequest {
-    /// Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-    /// EcosystemDisplayDetailsRequest dark = 1;
-    #[prost(message, optional, tag="2")]
-    pub light: ::core::option::Option<EcosystemDisplayDetailsRequest>,
-}
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct EcosystemDisplayDetailsRequest {
-    #[prost(string, tag="4")]
-    pub color: ::prost::alloc::string::String,
-    #[prost(bytes="vec", tag="5")]
-    pub logo_data: ::prost::alloc::vec::Vec<u8>,
-    /// MIME type of the file
-    #[prost(string, tag="6")]
-    pub logo_format: ::prost::alloc::string::String,
-}
-/// Response to `UpdateEcosystemRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UpdateEcosystemResponse {
-    /// Current ecosystem metadata, post-update
-    #[prost(message, optional, tag="1")]
-    pub ecosystem: ::core::option::Option<Ecosystem>,
-}
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct EcosystemDisplay {
-    ///     Removed the Dark after discussion with team, as we don't provide a dark UI anywhere (yet) in our platform.
-    ///     EcosystemDisplayDetails dark = 1;
-    #[prost(message, optional, tag="2")]
-    pub light: ::core::option::Option<EcosystemDisplayDetails>,
-}
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct EcosystemDisplayDetails {
-    #[prost(string, tag="3")]
-    pub logo_url: ::prost::alloc::string::String,
-    #[prost(string, tag="4")]
-    pub color: ::prost::alloc::string::String,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Request to add a webhook to an ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AddWebhookRequest {
-    /// Destination to post webhook calls to.
-    /// Must be a reachable HTTPS URL.
-    #[prost(string, tag="1")]
-    pub destination_url: ::prost::alloc::string::String,
-    /// Secret string used for HMAC-SHA256 signing of webhook payloads
-    /// to verify that a webhook comes from Trinsic
-    #[prost(string, tag="2")]
-    pub secret: ::prost::alloc::string::String,
-    /// Events to subscribe to. Default is "*" (all events)
-    #[prost(string, repeated, tag="3")]
-    pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Response to `AddWebhookRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AddWebhookResponse {
-    /// Ecosystem data with new webhook
-    #[prost(message, optional, tag="1")]
-    pub ecosystem: ::core::option::Option<Ecosystem>,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Request to delete a webhook from an ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct DeleteWebhookRequest {
-    /// ID of webhook to delete
-    #[prost(string, tag="1")]
-    pub webhook_id: ::prost::alloc::string::String,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Response to `DeleteWebhookRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct DeleteWebhookResponse {
-    /// Ecosystem data after removal of webhook
-    #[prost(message, optional, tag="1")]
-    pub ecosystem: ::core::option::Option<Ecosystem>,
 }
 /// Request to fetch information about an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct EcosystemInfoRequest {
-}
+pub struct EcosystemInfoRequest {}
 /// Response to `InfoRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EcosystemInfoResponse {
     /// Ecosystem corresponding to current ecosystem in the account token
-    #[prost(message, optional, tag="1")]
+    #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Request to fetch information about an ecosystem
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetPublicEcosystemInfoRequest {
-    #[prost(string, tag="1")]
-    pub ecosystem_id: ::prost::alloc::string::String,
-}
-/// DEPRECATED, will be removed April 1st 2023
-/// Response to `InfoRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetPublicEcosystemInfoResponse {
-    /// Ecosystem corresponding to requested `ecosystem_id`
-    #[prost(message, optional, tag="1")]
-    pub ecosystem: ::core::option::Option<PublicEcosystemInformation>,
-}
-/// DEPRECATED, will be removed April 1st 2023
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PublicEcosystemInformation {
-    /// Public name of this ecosystem
-    #[prost(string, tag="1")]
-    pub name: ::prost::alloc::string::String,
-    /// Public domain for the owner of this ecosystem
-    #[prost(string, tag="2")]
-    pub domain: ::prost::alloc::string::String,
-    /// Trinsic verified the domain is owned by the owner of this ecosystem
-    #[prost(bool, tag="3")]
-    pub domain_verified: bool,
-    /// Style display information
-    #[prost(message, optional, tag="4")]
-    pub style_display: ::core::option::Option<EcosystemDisplay>,
-    /// Description of the ecosystem
-    #[prost(string, tag="5")]
-    pub description: ::prost::alloc::string::String,
 }
 /// Request to fetch the Trinsic public key used
 /// to verify authentication token validity
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetOberonKeyRequest {
-}
+pub struct GetOberonKeyRequest {}
 /// Response to `GetOberonKeyRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetOberonKeyResponse {
     /// Oberon Public Key as RAW base64-url encoded string
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
 }
 /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 /// DEPRECATED, will be removed June 1st 2023
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RetrieveDomainVerificationRecordRequest {
-}
+pub struct RetrieveDomainVerificationRecordRequest {}
 /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 /// DEPRECATED, will be removed June 1st 2023
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RetrieveDomainVerificationRecordResponse {
     /// TXT record name to use for domain verification
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub verification_record_name: ::prost::alloc::string::String,
     /// TXT code for domain verification
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub verification_record_value: ::prost::alloc::string::String,
 }
 /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 /// DEPRECATED, will be removed June 1st 2023
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RefreshDomainVerificationStatusRequest {
-}
+pub struct RefreshDomainVerificationStatusRequest {}
 /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
 /// DEPRECATED, will be removed June 1st 2023
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RefreshDomainVerificationStatusResponse {
     /// Domain URL verified
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub domain: ::prost::alloc::string::String,
     /// Specifies if the above `domain` was successfully verified
-    #[prost(bool, tag="2")]
+    #[prost(bool, tag = "2")]
     pub domain_verified: bool,
 }
 /// Search for issuers/holders/verifiers
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchWalletConfigurationsRequest {
-    /// SQL filter to execute. `SELECT * FROM _ WHERE \[**queryFilter**\]`
-    #[prost(string, tag="1")]
+    /// SQL filter to execute. `SELECT * FROM c WHERE \[**queryFilter**\]`
+    #[prost(string, tag = "1")]
     pub query_filter: ::prost::alloc::string::String,
     /// Token provided by previous `SearchResponse`
     /// if more data is available for query
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchWalletConfigurationResponse {
     /// Results matching the search query
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub results: ::prost::alloc::vec::Vec<WalletConfiguration>,
     /// Whether more results are available for this query via `continuation_token`
-    #[prost(bool, tag="2")]
+    #[prost(bool, tag = "2")]
     pub has_more_results: bool,
     /// Token to fetch next set of results via `SearchRequest`
-    #[prost(string, tag="4")]
+    #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
 }
 /// Strongly typed information about wallet configurations
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WalletConfiguration {
     /// Name/description of the wallet
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
-    #[prost(string, tag="2")]
+    /// Deprecated and will be removed on August 1, 2023 -- use external_identities.
+    /// This field is set to the first email address present in `external_identities`, if any.
+    #[deprecated]
+    #[prost(string, tag = "2")]
     pub email: ::prost::alloc::string::String,
-    #[prost(string, tag="3")]
+    /// Deprecated -- use external_identities
+    #[deprecated]
+    #[prost(string, tag = "3")]
     pub sms: ::prost::alloc::string::String,
-    #[prost(string, tag="4")]
+    #[prost(string, tag = "4")]
     pub wallet_id: ::prost::alloc::string::String,
     /// The DID of the wallet
-    #[prost(string, tag="5")]
+    #[prost(string, tag = "5")]
     pub public_did: ::prost::alloc::string::String,
-    #[prost(string, tag="6")]
+    #[prost(string, tag = "6")]
     pub config_type: ::prost::alloc::string::String,
     /// List of active authentication tokens for this wallet.
     /// This list does not contain the issued token, only metadata
     /// such as ID, description, and creation date.
-    #[prost(message, repeated, tag="7")]
-    pub auth_tokens: ::prost::alloc::vec::Vec<super::super::account::v1::WalletAuthToken>,
-    /// List of external identities associated with this wallet.
-    #[prost(string, repeated, tag="8")]
-    pub external_identities: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(message, repeated, tag = "7")]
+    pub auth_tokens: ::prost::alloc::vec::Vec<
+        super::super::account::v1::WalletAuthToken,
+    >,
+    /// List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+    /// This is deprecated; use `external_identities` instead.
+    #[deprecated]
+    #[prost(string, repeated, tag = "8")]
+    pub external_identity_ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// Ecosystem in which this wallet is contained.
-    #[prost(string, tag="9")]
+    #[prost(string, tag = "9")]
     pub ecosystem_id: ::prost::alloc::string::String,
-    #[prost(string, tag="10")]
+    #[prost(string, tag = "10")]
     pub description: ::prost::alloc::string::String,
+    /// List of external identities associated with this wallet.
+    #[prost(message, repeated, tag = "11")]
+    pub external_identities: ::prost::alloc::vec::Vec<WalletExternalIdentity>,
+}
+/// An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct WalletExternalIdentity {
+    /// The type of this identity (whether this identity is an email address, phone number, etc.)
+    #[prost(enumeration = "IdentityProvider", tag = "1")]
+    pub provider: i32,
+    /// The actual email address/phone number/etc. for this identity
+    #[prost(string, tag = "2")]
+    pub id: ::prost::alloc::string::String,
 }
 /// Options for creation of DID on the ION network
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IonOptions {
     /// ION network on which DID should be published
-    #[prost(enumeration="ion_options::IonNetwork", tag="1")]
+    #[prost(enumeration = "ion_options::IonNetwork", tag = "1")]
     pub network: i32,
 }
 /// Nested message and enum types in `IonOptions`.
 pub mod ion_options {
     #[derive(::serde::Serialize, ::serde::Deserialize)]
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum IonNetwork {
         TestNet = 0,
@@ -459,20 +239,39 @@ pub mod ion_options {
                 IonNetwork::MainNet => "MainNet",
             }
         }
+        /// Creates an enum from field names used in the ProtoBuf definition.
+        pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+            match value {
+                "TestNet" => Some(Self::TestNet),
+                "MainNet" => Some(Self::MainNet),
+                _ => None,
+            }
+        }
     }
 }
 /// Options for creation of DID on the SOV network
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IndyOptions {
     /// SOV network on which DID should be published
-    #[prost(enumeration="indy_options::IndyNetwork", tag="1")]
+    #[prost(enumeration = "indy_options::IndyNetwork", tag = "1")]
     pub network: i32,
 }
 /// Nested message and enum types in `IndyOptions`.
 pub mod indy_options {
     #[derive(::serde::Serialize, ::serde::Deserialize)]
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum IndyNetwork {
         Danube = 0,
@@ -503,77 +302,106 @@ pub mod indy_options {
                 IndyNetwork::Indicio => "Indicio",
             }
         }
+        /// Creates an enum from field names used in the ProtoBuf definition.
+        pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+            match value {
+                "Danube" => Some(Self::Danube),
+                "SovrinBuilder" => Some(Self::SovrinBuilder),
+                "SovrinStaging" => Some(Self::SovrinStaging),
+                "Sovrin" => Some(Self::Sovrin),
+                "IdUnionTest" => Some(Self::IdUnionTest),
+                "IdUnion" => Some(Self::IdUnion),
+                "IndicioTest" => Some(Self::IndicioTest),
+                "IndicioDemo" => Some(Self::IndicioDemo),
+                "Indicio" => Some(Self::Indicio),
+                _ => None,
+            }
+        }
     }
 }
 /// Request to upgrade a wallet
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpgradeDidRequest {
     /// DID Method to which wallet should be upgraded
-    #[prost(enumeration="super::super::common::v1::SupportedDidMethod", tag="3")]
+    #[prost(enumeration = "super::super::common::v1::SupportedDidMethod", tag = "3")]
     pub method: i32,
-    #[prost(oneof="upgrade_did_request::Account", tags="1, 2, 6")]
+    #[prost(oneof = "upgrade_did_request::Account", tags = "1, 2, 6")]
     pub account: ::core::option::Option<upgrade_did_request::Account>,
-    #[prost(oneof="upgrade_did_request::Options", tags="4, 5")]
+    #[prost(oneof = "upgrade_did_request::Options", tags = "4, 5")]
     pub options: ::core::option::Option<upgrade_did_request::Options>,
 }
 /// Nested message and enum types in `UpgradeDidRequest`.
 pub mod upgrade_did_request {
     #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Account {
         /// Email address of account to upgrade.
         /// Mutually exclusive with `walletId` and `didUri`.
-        #[prost(string, tag="1")]
+        #[prost(string, tag = "1")]
         Email(::prost::alloc::string::String),
         /// Wallet ID of account to upgrade.
         /// Mutually exclusive with `email` and `didUri`.
-        #[prost(string, tag="2")]
+        #[prost(string, tag = "2")]
         WalletId(::prost::alloc::string::String),
         /// DID URI of the account to upgrade.
         /// Mutually exclusive with `email` and `walletId`.
-        #[prost(string, tag="6")]
+        #[prost(string, tag = "6")]
         DidUri(::prost::alloc::string::String),
     }
     #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Options {
         /// Configuration for creation of DID on ION network
-        #[prost(message, tag="4")]
+        #[prost(message, tag = "4")]
         IonOptions(super::IonOptions),
         /// Configuration for creation of DID on INDY network
-        #[prost(message, tag="5")]
+        #[prost(message, tag = "5")]
         IndyOptions(super::IndyOptions),
     }
 }
 /// Response to `UpgradeDIDRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpgradeDidResponse {
     /// New DID of wallet
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub did: ::prost::alloc::string::String,
 }
-/// DEPRECATED, will be removed April 1st 2023
-/// Type of participant being invited to ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
-pub enum ParticipantType {
-    /// Participant is an individual
-    Individual = 0,
-    /// Participant is an organization
-    Organization = 1,
+pub enum IdentityProvider {
+    /// Identity provider is unknown
+    Unknown = 0,
+    /// Identity provider is email
+    Email = 1,
+    /// Identity provider is phone
+    Phone = 2,
 }
-impl ParticipantType {
+impl IdentityProvider {
     /// String value of the enum field names used in the ProtoBuf definition.
     ///
     /// The values are not transformed in any way and thus are considered stable
     /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
-            ParticipantType::Individual => "participant_type_individual",
-            ParticipantType::Organization => "participant_type_organization",
+            IdentityProvider::Unknown => "Unknown",
+            IdentityProvider::Email => "Email",
+            IdentityProvider::Phone => "Phone",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "Unknown" => Some(Self::Unknown),
+            "Email" => Some(Self::Email),
+            "Phone" => Some(Self::Phone),
+            _ => None,
         }
     }
 }
@@ -666,154 +494,6 @@ pub mod provider_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
-        /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-        /// DEPRECATED, will be removed June 1st 2023
-        pub async fn update_ecosystem(
-            &mut self,
-            request: impl tonic::IntoRequest<super::UpdateEcosystemRequest>,
-        ) -> Result<tonic::Response<super::UpdateEcosystemResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/UpdateEcosystem",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-        /// DEPRECATED, will be removed April 1st 2023
-        pub async fn add_webhook(
-            &mut self,
-            request: impl tonic::IntoRequest<super::AddWebhookRequest>,
-        ) -> Result<tonic::Response<super::AddWebhookResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/AddWebhook",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-        /// DEPRECATED, will be removed April 1st 2023
-        pub async fn delete_webhook(
-            &mut self,
-            request: impl tonic::IntoRequest<super::DeleteWebhookRequest>,
-        ) -> Result<tonic::Response<super::DeleteWebhookResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/DeleteWebhook",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-        /// DEPRECATED, will be removed June 1st 2023
-        pub async fn ecosystem_info(
-            &mut self,
-            request: impl tonic::IntoRequest<super::EcosystemInfoRequest>,
-        ) -> Result<tonic::Response<super::EcosystemInfoResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/EcosystemInfo",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-        /// DEPRECATED, will be removed June 1st 2023
-        pub async fn get_public_ecosystem_info(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GetPublicEcosystemInfoRequest>,
-        ) -> Result<
-            tonic::Response<super::GetPublicEcosystemInfoResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/GetPublicEcosystemInfo",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// DEPRECATED, will be removed April 1st 2023
-        pub async fn invite(
-            &mut self,
-            request: impl tonic::IntoRequest<super::InviteRequest>,
-        ) -> Result<tonic::Response<super::InviteResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/Invite",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// DEPRECATED, will be removed April 1st 2023
-        pub async fn invitation_status(
-            &mut self,
-            request: impl tonic::IntoRequest<super::InvitationStatusRequest>,
-        ) -> Result<tonic::Response<super::InvitationStatusResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/InvitationStatus",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
         /// Returns the public key being used to create/verify oberon tokens
         pub async fn get_oberon_key(
             &mut self,
@@ -851,56 +531,6 @@ pub mod provider_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.provider.v1.Provider/UpgradeDID",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// Retrieve a random hash TXT that can be used to verify domain ownership
-        pub async fn retrieve_domain_verification_record(
-            &mut self,
-            request: impl tonic::IntoRequest<
-                super::RetrieveDomainVerificationRecordRequest,
-            >,
-        ) -> Result<
-            tonic::Response<super::RetrieveDomainVerificationRecordResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/RetrieveDomainVerificationRecord",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        /// Call to verify domain
-        pub async fn refresh_domain_verification_status(
-            &mut self,
-            request: impl tonic::IntoRequest<
-                super::RefreshDomainVerificationStatusRequest,
-            >,
-        ) -> Result<
-            tonic::Response<super::RefreshDomainVerificationStatusResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/RefreshDomainVerificationStatus",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }

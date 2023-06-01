@@ -7,8 +7,6 @@ pub enum TrustRegistryCommand {
     Search(SearchArgs),
     RegisterMember(RegisterMemberArgs),
     UnregisterMember(UnregisterMemberArgs),
-    AddFramework(AddFrameworkArgs),
-    RemoveFramework(RemoveFrameworkArgs),
     GetMembershipStatus(GetMembershipStatusArgs),
     FetchData(FetchDataArgs),
 }
@@ -56,18 +54,6 @@ pub struct GovernanceFrameworkArgs {
 }
 
 #[derive(Debug, PartialEq, Default)]
-pub struct AddFrameworkArgs {
-    pub governance_framework_uri: String,
-    pub description: Option<String>,
-    pub name: String,
-}
-
-#[derive(Debug, PartialEq, Default)]
-pub struct RemoveFrameworkArgs {
-    pub framework_id: String,
-}
-
-#[derive(Debug, PartialEq, Default)]
 pub struct GetMembershipStatusArgs {
     pub did_uri: String,
     pub schema_uri: String,
@@ -86,10 +72,6 @@ pub(crate) fn parse(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
         unregister_member(&args.subcommand_matches("unregister-member").expect("Error parsing request"))
     } else if args.subcommand_matches("get-membership-status").is_some() {
         get_status(&args.subcommand_matches("get-membership-status").expect("Error parsing request"))
-    } else if args.subcommand_matches("add-framework").is_some() {
-        add_framework(&args.subcommand_matches("add-framework").expect("Error parsing request"))
-    } else if args.subcommand_matches("remove-framework").is_some() {
-        remove_framework(&args.subcommand_matches("remove-framework").expect("Error parsing request"))
     } else {
         Err(Error::MissingArguments)
     }
@@ -155,40 +137,10 @@ fn get_status(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
     }))
 }
 
-fn add_framework(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
-    Ok(TrustRegistryCommand::AddFramework(AddFrameworkArgs {
-        name: args.value_of("name").map(|x| x.into()).ok_or(Error::MissingArguments)?,
-        governance_framework_uri: args.value_of("uri").map(|q| q.into()).ok_or(Error::MissingArguments)?,
-        description: args.value_of("description").map(|x| x.into()),
-    }))
-}
-
-fn remove_framework(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
-    Ok(TrustRegistryCommand::RemoveFramework(RemoveFrameworkArgs {
-        framework_id: args.value_of("framework-id").map(|x| x.into()).ok_or(Error::MissingArguments)?,
-    }))
-}
-
 pub(crate) fn subcommand<'a, 'b>() -> App<'a> {
     SubCommand::with_name("trust-registry")
         .about("Manage Trust Registry membership and governance")
         .setting(AppSettings::SubcommandRequiredElseHelp)
-        .subcommand(
-            SubCommand::with_name("add-framework")
-            .setting(AppSettings::ArgRequiredElseHelp)
-            .about("Add new Ecosystem Governenace Framework (EGF)")
-            .after_help("EXAMPLES:\r\n\ttrinsic trust-registry add-framework --name 'Example EGF' --uri 'https://example.com/governance'")
-            .arg(Arg::from_usage("-n --name <NAME> 'Name of the ecosystem governance framework'").required(true))
-            .arg(Arg::from_usage("-u --uri <URI> 'Governance framework URI'").required(true))
-            .arg(Arg::from_usage("-d --description <DESCRIPTION> 'Description of the governance framework'").required(false)),
-        )
-        .subcommand(
-            SubCommand::with_name("remove-framework")
-            .setting(AppSettings::ArgRequiredElseHelp)
-            .about("Remove an Ecosystem Governenace Framework (EGF)")
-            .after_help("EXAMPLES:\r\n\ttrinsic trust-registry remove-framework --framework-id 'urn:egf:example'")
-            .arg(Arg::from_usage("-f --framework-id <URI> 'Governance framework URI'").required(true)),
-        )
         .subcommand(
             SubCommand::with_name("register-member")
             .setting(AppSettings::ArgRequiredElseHelp)

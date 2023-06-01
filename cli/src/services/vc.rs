@@ -6,7 +6,7 @@ use crate::{
     parser::vc::{IssueFromTemplateArgs, UpdateStatusArgs},
     proto::services::verifiablecredentials::v1::{
         create_proof_request::Proof, verifiable_credential_client::VerifiableCredentialClient, CheckStatusRequest, CreateProofRequest,
-        IssueFromTemplateRequest, IssueRequest, UpdateStatusRequest, VerifyProofRequest,
+        IssueFromTemplateRequest, UpdateStatusRequest, VerifyProofRequest,
     },
     utils::{prettify_json, read_file, to_value, write_file},
     *,
@@ -15,37 +15,12 @@ use tonic::transport::Channel;
 
 pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error> {
     match args {
-        Command::Issue(args) => issue(args, config),
         Command::CreateProof(args) => create_proof(args, config),
         Command::VerifyProof(args) => verify_proof(args, config),
         Command::IssueFromTemplate(args) => issue_from_template(args, config),
         Command::GetStatus(args) => get_status(args, config),
         Command::UpdateStatus(args) => update_status(args, config),
     }
-}
-
-#[tokio::main]
-async fn issue(args: &IssueArgs, config: CliConfig) -> Result<Output, Error> {
-    let document_json = read_file(
-        args.document
-            .as_ref()
-            .ok_or(Error::InvalidArgument("missing document file".to_string()))?,
-    )?;
-
-    let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
-
-    let request = tonic::Request::new(IssueRequest { document_json });
-
-    let response = client.issue(request).await?.into_inner();
-
-    match &args.out {
-        Some(file) => write_file(file, &prettify_json(&response.signed_document_json)?.as_bytes())?,
-        None => (),
-    }
-
-    Ok(dict! {
-        "signed document".into() => Item::Json(to_value(&response.signed_document_json)?)
-    })
 }
 
 #[tokio::main]
