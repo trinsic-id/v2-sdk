@@ -1,5 +1,5 @@
 import {
-    CreateCredentialTemplateRequest, CreateEcosystemRequest,
+    CreateCredentialTemplateRequest, CreateCredentialTemplateResponse, CreateEcosystemRequest,
     CreateProofRequest,
     FieldType,
     InsertItemRequest,
@@ -13,7 +13,6 @@ import {
     setTestTimeout,
 } from "./env";
 import { v4 as uuid } from "uuid";
-import {CreateCredentialTemplateResponse} from "../lib";
 
 const options = getTestServerOptions();
 const root = getTestServerOptions();
