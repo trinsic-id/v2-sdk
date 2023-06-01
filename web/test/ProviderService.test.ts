@@ -1,11 +1,9 @@
 import {
     CreateEcosystemRequest,
-    EcosystemInfoRequest,
     IonOptions,
     IonOptions_IonNetwork,
     SupportedDidMethod,
     TrinsicService,
-    UpdateEcosystemRequest,
     UpgradeDidRequest,
 } from "../src";
 
@@ -43,20 +41,6 @@ describe("ProviderService Unit Tests", () => {
         expect(
             createResponse.ecosystem!.id!.startsWith("urn:trinsic:ecosystems:")
         ).toBeTruthy();
-
-        // updateEcosystem() {
-        let updateResponse = await trinsic.provider().updateEcosystem(
-            UpdateEcosystemRequest.fromPartial({
-                description: "New ecosystem description",
-            })
-        );
-        //}
-
-        expect(updateResponse).not.toBeNull();
-        expect(updateResponse.Ecosystem).not.toBeNull();
-        expect(updateResponse.Ecosystem?.description).toBe(
-            "New ecosystem description"
-        );
 
         // ecosystemInfo() {
         //}

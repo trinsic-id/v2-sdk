@@ -94,17 +94,6 @@ def define_env(env):
         return print_enum(name).replace("\n", "").replace("\r", "")
 
     @env.macro
-    def proto_event(name: str):
-        """
-        Generates the documentation for a specific protobuf event.
-
-        A "protobuf event" is a protobuf message which is used as the payload
-        for a webhook (EGFCreated, Ping, etc.)
-        """
-
-        return print_event(name).replace("\n", "").replace("\r", "")
-
-    @env.macro
     def all_proto_objs():
         """
         Prints all protobuf objects in file order
@@ -115,36 +104,6 @@ def define_env(env):
 
         for messageName in proto_json["messages"]:
             ret += print_message(messageName)
-            # ret += "<br/>"
-
-        return ret
-
-    @env.macro
-    def all_proto_events():
-        """
-        Prints all protobuf events -- intended for usage in the Events Reference docs page
-        """
-        IGNORE_MESSAGES = [
-            "trinsic.services.event.Event",
-            "trinsic.services.event.APICall",
-        ]
-
-        proto_json = get_proto_json()
-        file = proto_json["files"]["services/event/v1/event.proto"]
-        messages = file["messages"]
-
-        ret = ""
-
-        for messageName in messages:
-            if messageName in IGNORE_MESSAGES:
-                continue
-
-            message = get_entity(messageName)
-            shortName = get_event_canonical_name(messageName)
-            ret += "\n"
-            ret += f"### {shortName}"
-            ret += "\n"
-            ret += print_event(messageName)
             # ret += "<br/>"
 
         return ret
@@ -215,41 +174,6 @@ def print_enum_values(enumName: str):
     fields += "</div>"
 
     return fields
-
-
-def print_event(messageName: str, context: str = None):
-    """
-    Generates the HTML for a protobuf event's documentation
-    """
-
-    try:
-        # Fetch the protobuf message by name
-        entity = get_entity(messageName)
-
-        # Replace newlines in the comments of the message with spaces
-        message_desc = entity["description"].replace("\n", " ").replace("\r", " ")
-        event_name = get_event_canonical_name(messageName)
-
-        ret = (
-            f"<div class='proto-obj-container'data-proto-name='{entity['full_name']}'>"
-            f"<div class='proto-obj-name'><a name='{entity['full_name']}' href='/reference/proto#{entity['full_name']}'>{entity['name']}</a></div>"
-            f"<div class='proto-obj-description'>"
-            f"Event name: <code>{event_name}</code><br/>"
-            f"{message_desc}"
-            "</div>"
-        )
-
-        if len(entity["fields"]) > 0:
-            ret += print_message_fields(messageName, context)
-        else:
-            ret += "<i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i>"
-
-        ret += "</div>"
-
-        return ret
-    except Exception as e:
-        return f"Cannot print proto message: {e}"
-
 
 def print_message(messageName: str, context: str = None):
     """

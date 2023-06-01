@@ -6,7 +6,6 @@ import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
-import trinsic.services.provider.v1.UpdateEcosystemRequest;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
 
 public class EcosystemsDemo {
@@ -42,17 +41,6 @@ public class EcosystemsDemo {
     var profileBase64 = Base64.getUrlEncoder().encodeToString(response.getProfile().toByteArray());
 
     trinsic.setAuthToken(profileBase64);
-
-    // updateEcosystem() {
-    var updateResponse =
-        trinsic
-            .provider()
-            .updateEcosystem(
-                UpdateEcosystemRequest.newBuilder().setDescription("My updated ecosystem").build())
-            .get();
-    // }
-
-    Assertions.assertNotNull(updateResponse.getEcosystem());
 
     // ecosystemInfo() {
     // }

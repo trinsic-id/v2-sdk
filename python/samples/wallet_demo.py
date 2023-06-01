@@ -10,7 +10,6 @@ from trinsic.proto.services.universalwallet.v1 import (
     SearchRequest,
     CreateWalletRequest,
 )
-from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
@@ -35,14 +34,9 @@ async def wallet_demo():
 
     wallet_id = wallet_response.wallet.wallet_id
 
-    # Sign a credential as the clinic and send it to Allison
-    with open(_vaccine_cert_unsigned_path(), "r") as fid:
-        credential_json = "\n".join(fid.readlines())
-
-    issue_response = await trinsic.credential.issue(
-        request=IssueRequest(document_json=credential_json)
-    )
-    credential = issue_response.signed_document_json
+    credential = json.dumps({
+        "type": ["VerifiableCredential", "NonExistentSchema"],
+    })
     print(f"Credential: {credential}")
 
     # insertItemWallet() {

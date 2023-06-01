@@ -7,66 +7,7 @@ The Credential Service exposes functionality for issuance, proof generation, ver
     The Credential service currently supports [BBS+ Signatures <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}, which enable selective disclosure of credential fields during proof generation.
 
     Credentials are signed, and proofs are created, using a key pair unique to the signing / holding wallet. This key pair is created and managed by Trinsic upon account creation.
-
----
-
-## Issue Credential
-
-!!! warning "Deprecation Notice"
-    This endpoint is deprecated, and will be removed on May 1, 2023. Please call [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
-
-Issues a credential from a valid JSON-LD document. Issued credentials are not automatically stored in any wallet.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [Issue Credential](../../../web/test/CredentialService.test.ts) inside_block:issueCredentialSample
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [Issue Credential](../../../dotnet/Tests/Tests.cs) inside_block:issueCredentialSample
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Issue Credential](../../../python/samples/credential_demo.py) inside_block:issueCredential
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [VerifyProof](../../../go/services/credential_service_test.go) inside_block:issueCredential
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:issueCredentialSample
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
-
-!!! warning "`Issue` vs `IssueFromTemplate`"
-    **`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
-
-    When provided a valid credential, this endpoint creates and appends the `proof` object, using a key pair tied to the issuing Trinsic account.
-
-    You can learn more about how to create these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/).
-
+    
 ---
 
 ## Issue Credential from Template

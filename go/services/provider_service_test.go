@@ -10,37 +10,6 @@ import (
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 )
 
-func TestEcosystemUpdateInfo(t *testing.T) {
-	assert2 := assert.New(t)
-
-	trinsic, _, err := CreateTestTrinsicWithNewEcosystem()
-	if !assert2.Nil(err) {
-		return
-	}
-
-	// updateEcosystem() {
-	updateRequest := &provider.UpdateEcosystemRequest{
-		Description: "My new description",
-	}
-
-	updateResponse, err := trinsic.Provider().UpdateEcosystem(context.Background(), updateRequest)
-	// }
-	if !assert2.Nil(err) || !assert2.NotNil(updateResponse) {
-		return
-	}
-
-	if !assert2.Equal(updateResponse.Ecosystem.Description, "My new description") {
-		return
-	}
-
-	// ecosystemInfo() {
-	// }
-
-	if !assert2.Nil(err) || !assert2.NotNil(updateResponse) {
-		return
-	}
-}
-
 func TestUpgradeDid(t *testing.T) {
 	assert2 := assert.New(t)
 
