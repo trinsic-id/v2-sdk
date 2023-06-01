@@ -70,13 +70,13 @@ $PublicDid = Invoke-Expression "$trinsic wallet my-info"
 | ForEach-Object { $_.wallet.public_did }
 Stop-OnError
 
-Invoke-Expression "$trinsic trust-registry register-member --schema $($Template.SchemaUri) --framework-id $FrameworkId --did $PublicDid" | Out-Null
+Invoke-Expression "$trinsic trust-registry register-member --schema $($Template.SchemaUri) --did $PublicDid" | Out-Null
 Stop-OnError
 
 #>
 
 Write-Output "✅ Issuing credential for drivers license"
-Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --framework-id $FrameworkId --values-file $PSScriptRoot/state-id-values.json"
+Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --values-file $PSScriptRoot/state-id-values.json" #--use-trust-registry
 | ConvertFrom-Json
 | ForEach-Object { $_.'signed document' }
 | Set-Content -Path $PSScriptRoot/state-id-signed-document.json
