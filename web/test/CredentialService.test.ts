@@ -24,4 +24,8 @@ describe("CredentialService Unit Tests", () => {
             .createWallet({ ecosystemId: myEcosystemIdOrName() });
         trinsic.options.authToken = response.authToken;
     });
+
+    it("is an empty test suite", () => {
+        expect(true).toBe(true);
+    })
 });

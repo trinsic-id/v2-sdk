@@ -1,5 +1,5 @@
 import {
-    CreateCredentialTemplateRequest,
+    CreateCredentialTemplateRequest, CreateEcosystemRequest,
     CreateProofRequest,
     FieldType,
     InsertItemRequest,
@@ -8,41 +8,67 @@ import {
     TrinsicService,
 } from "../src";
 
-// @ts-ignore
-import vaccineCertFrame from "./data/vaccination-certificate-frame.json";
-// @ts-ignore
-import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
-
 import {
     getTestServerOptions,
-    myEcosystemIdOrName,
     setTestTimeout,
 } from "./env";
 import { v4 as uuid } from "uuid";
+import {CreateCredentialTemplateResponse} from "../lib";
 
 const options = getTestServerOptions();
+const root = getTestServerOptions();
 const allison = getTestServerOptions();
 const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
 let trinsic = new TrinsicService(options);
 
+let ecosystemId: string;
+let template: CreateCredentialTemplateResponse;
+
 describe("WalletService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
+        let createResponse = await trinsic.provider().createEcosystem(
+            CreateEcosystemRequest.fromPartial({
+                description: "Test ecosystem from Node for Wallet Service",
+            })
+        );
+
+        ecosystemId = createResponse.ecosystem!.id!;
+        root.authToken = trinsic.provider().options.authToken;
+
         var response = await trinsic
             .wallet()
-            .createWallet({ ecosystemId: myEcosystemIdOrName() });
+            .createWallet({ ecosystemId: ecosystemId });
         allison.authToken = response.authToken;
 
         response = await trinsic
             .wallet()
-            .createWallet({ ecosystemId: myEcosystemIdOrName() });
+            .createWallet({ ecosystemId: ecosystemId });
         clinic.authToken = response.authToken;
 
         response = await trinsic
             .wallet()
-            .createWallet({ ecosystemId: myEcosystemIdOrName() });
+            .createWallet({ ecosystemId: ecosystemId });
         airline.authToken = response.authToken;
+
+        // Create template used by multiple tests
+        let templateRequest = CreateCredentialTemplateRequest.fromPartial({
+            name: `My Example Credential-${uuid()}`,
+            allowAdditionalFields: false,
+            fields: {
+                firstName: TemplateField.fromPartial({
+                    description: "Given name",
+                }),
+                lastName: TemplateField.fromPartial({}),
+                age: TemplateField.fromPartial({
+                    type: FieldType.NUMBER,
+                    optional: true,
+                }),
+            },
+        });
+
+        template = await trinsic.template().create(templateRequest);
     });
 
     it("get account info", async () => {
@@ -56,7 +82,7 @@ describe("WalletService Unit Tests", () => {
     it("create new account", async () => {
         let response = await trinsic
             .wallet()
-            .createWallet({ ecosystemId: myEcosystemIdOrName() });
+            .createWallet({ ecosystemId: ecosystemId });
 
         expect(response).not.toBeNull();
         expect(response.authToken).not.toBe("");
@@ -64,16 +90,24 @@ describe("WalletService Unit Tests", () => {
 
     it("Demo: create wallet, set profile, search records, issue credential", async () => {
         trinsic.options = clinic;
-        let issueResponse = await trinsic.credential().issue({
-            documentJson: JSON.stringify(vaccineCertUnsigned),
+        let values = JSON.stringify({
+            firstName: "Jane",
+            lastName: "Doe",
+            age: 42,
         });
+
+        let issueResponse = await trinsic.credential().issueFromTemplate({
+            templateId: template!.data!.id,
+            valuesJson: values,
+        });
+
         expect(issueResponse).not.toBeNull();
 
         trinsic.options = allison;
         // insertItemWallet() {
         let insertItemResponse = await trinsic.wallet().insertItem(
             InsertItemRequest.fromPartial({
-                itemJson: issueResponse.signedDocumentJson,
+                itemJson: issueResponse.documentJson,
             })
         );
         // }
@@ -110,8 +144,7 @@ describe("WalletService Unit Tests", () => {
         // createProof() {
         let proof = await trinsic.credential().createProof(
             CreateProofRequest.fromPartial({
-                itemId: insertItemResponse.itemId,
-                revealDocumentJson: JSON.stringify(vaccineCertFrame),
+                itemId: insertItemResponse.itemId
             })
         );
         let selectiveProof = await trinsic.credential().createProof(
@@ -156,26 +189,8 @@ describe("WalletService Unit Tests", () => {
     it("Demo: template management and credential issuance from template", async () => {
         let response = await trinsic
             .wallet()
-            .createWallet({ ecosystemId: myEcosystemIdOrName() });
+            .createWallet({ ecosystemId: ecosystemId });
         trinsic.options.authToken = response.authToken;
-
-        // create example template
-        let templateRequest = CreateCredentialTemplateRequest.fromPartial({
-            name: `My Example Credential-${uuid()}`,
-            allowAdditionalFields: false,
-            fields: {
-                firstName: TemplateField.fromPartial({
-                    description: "Given name",
-                }),
-                lastName: TemplateField.fromPartial({}),
-                age: TemplateField.fromPartial({
-                    type: FieldType.NUMBER,
-                    optional: true,
-                }),
-            },
-        });
-
-        let template = await trinsic.template().create(templateRequest);
 
         expect(template).not.toBeNull();
         expect(template!.data).not.toBeNull();
@@ -203,7 +218,7 @@ describe("WalletService Unit Tests", () => {
     it("Delete wallet functions", async () => {
         let response = await trinsic
             .wallet()
-            .createWallet({ ecosystemId: myEcosystemIdOrName() });
+            .createWallet({ ecosystemId: ecosystemId });
         trinsic.options.authToken = response.authToken;
         let accountInfo = await trinsic.wallet().getMyInfo();
 
