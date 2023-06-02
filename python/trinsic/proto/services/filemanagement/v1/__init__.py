@@ -117,7 +117,7 @@ class ListFilesResponse(betterproto.Message):
     """
 
     continuation_token: str = betterproto.string_field(3)
-    """Token to fetch next set of resuts via `ListFilesRequest`"""
+    """Token to fetch next set of results via `ListFilesRequest`"""
 
 
 @dataclass(eq=False, repr=False)

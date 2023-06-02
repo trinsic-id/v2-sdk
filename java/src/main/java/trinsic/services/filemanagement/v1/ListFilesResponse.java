@@ -146,7 +146,7 @@ public final class ListFilesResponse extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListFilesRequest`
+   * Token to fetch next set of results via `ListFilesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
@@ -169,7 +169,7 @@ public final class ListFilesResponse extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListFilesRequest`
+   * Token to fetch next set of results via `ListFilesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
@@ -1015,7 +1015,7 @@ public final class ListFilesResponse extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListFilesRequest`
+     * Token to fetch next set of results via `ListFilesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1037,7 +1037,7 @@ public final class ListFilesResponse extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListFilesRequest`
+     * Token to fetch next set of results via `ListFilesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1059,7 +1059,7 @@ public final class ListFilesResponse extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListFilesRequest`
+     * Token to fetch next set of results via `ListFilesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1080,7 +1080,7 @@ public final class ListFilesResponse extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListFilesRequest`
+     * Token to fetch next set of results via `ListFilesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1097,7 +1097,7 @@ public final class ListFilesResponse extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListFilesRequest`
+     * Token to fetch next set of results via `ListFilesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>

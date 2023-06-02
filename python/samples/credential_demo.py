@@ -6,10 +6,14 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     CreateProofRequest,
     VerifyProofRequest,
     SendRequest,
-    RevealTemplateAttributes, IssueFromTemplateRequest,
+    RevealTemplateAttributes,
+    IssueFromTemplateRequest,
 )
-from trinsic.proto.services.verifiablecredentials.templates.v1 import (CreateCredentialTemplateRequest, TemplateField,
-                                                                       FieldType)
+from trinsic.proto.services.verifiablecredentials.templates.v1 import (
+    CreateCredentialTemplateRequest,
+    TemplateField,
+    FieldType,
+)
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
@@ -34,23 +38,14 @@ async def credential_demo():
     create_request = CreateCredentialTemplateRequest(
         name=f"Credential Service Test Python",
         fields={
-            "firstName": TemplateField(
-                type=FieldType.STRING
-            ),
-            "lastName": TemplateField(
-                type=FieldType.STRING
-            ),
+            "firstName": TemplateField(type=FieldType.STRING),
+            "lastName": TemplateField(type=FieldType.STRING),
         },
     )
     create_response = await trinsic_service.template.create(request=create_request)
     template = create_response.data
 
-    values = json.dumps(
-        {
-            "firstName": "Allison",
-            "lastName": "Allisonne"
-        }
-    )
+    values = json.dumps({"firstName": "Allison", "lastName": "Allisonne"})
     issue_response = await trinsic_service.credential.issue_from_template(
         request=IssueFromTemplateRequest(template_id=template.id, values_json=values)
     )
@@ -72,16 +67,12 @@ async def credential_demo():
 
     # createProof() {
     proof_response = await trinsic_service.credential.create_proof(
-        request=CreateProofRequest(
-            document_json=credential_json
-        )
+        request=CreateProofRequest(document_json=credential_json)
     )
     selective_proof_response = await trinsic_service.credential.create_proof(
         request=CreateProofRequest(
             document_json=credential_json,
-            reveal_template=RevealTemplateAttributes(
-                template_attributes=["firstName"]
-            ),
+            reveal_template=RevealTemplateAttributes(template_attributes=["firstName"]),
         )
     )
     # }

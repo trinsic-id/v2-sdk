@@ -6811,7 +6811,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Token to fetch next set of resuts via `ListFilesRequest`"
+      "description": "Token to fetch next set of results via `ListFilesRequest`"
     },
     "services.filemanagement.v1.ListFilesResponse.files": {
       "name": "files",
