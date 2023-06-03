@@ -129,20 +129,20 @@ message UnregisterMemberRequest {
 // Response to `UnregisterMemberRequest`
 message UnregisterMemberResponse {}
 
-// Request to fetch membership status in governance framework for a specific credential schema.
-message GetMembershipStatusRequest {
+// Request to fetch member status in governance framework for a specific credential schema.
+message GetMemberAuthorizationStatusRequest {
   // The ID of the ecosystem governance framework.
   // This ID may be found in the 'trustRegistry' field in the
   // verifiable credential model
   string framework_id = 1;
   // DID URI of member
   string did_uri = 2;
-  // URI of credential schema associated with membership
+  // URI of credential schema associated with member
   string schema_uri = 4;
 }
 
-// Response to `GetMembershipStatusRequest`
-message GetMembershipStatusResponse {
+// Response to `GetMemberAuthorizationStatusRequest`
+message GetMemberAuthorizationStatusResponse {
   // Status of member for given credential schema
   RegistrationStatus status = 1;
 }
@@ -193,6 +193,30 @@ message AuthorizedMemberSchema{
   uint64 valid_until = 5;
 }
 
+// Request to get a member of the governance framework
+message GetMemberRequest {
+  oneof member {
+    // DID URI of member to get
+    string did_uri = 1;
+
+    // Trinsic Wallet ID of member to get
+    string wallet_id = 3;
+
+    // Email address of member to get. Must be associated with an existing Trinsic account.
+    string email = 4;
+  }
+  // The ID of the ecosystem governance framework.
+  // This ID may be found in the 'trustRegistry' field in the
+  // verifiable credential model
+  string framework_id = 5;
+}
+
+// Response to `GetMemberAuthorizationStatusRequest`
+message GetMemberResponse {
+  // Member for given did in given framework
+  AuthorizedMember authorized_member = 1;
+}
+
 service TrustRegistry {
   // Add a governance framework to the ecosystem
   rpc AddFramework(AddFrameworkRequest) returns (AddFrameworkResponse);
@@ -209,9 +233,13 @@ service TrustRegistry {
   // Removes an authoritative issuer for a credential schema from the trust registry
   rpc UnregisterMember(UnregisterMemberRequest) returns (UnregisterMemberResponse);
 
-  // Fetch the membership status of an issuer for a given credential schema in a trust registry
-  rpc GetMembershipStatus(GetMembershipStatusRequest) returns (GetMembershipStatusResponse);
+  // Fetch the status of a member for a given credential schema in a trust registry
+  rpc GetMemberAuthorizationStatus(GetMemberAuthorizationStatusRequest) returns (GetMemberAuthorizationStatusResponse);
 
   // Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
   rpc ListAuthorizedMembers(ListAuthorizedMembersRequest) returns (ListAuthorizedMembersResponse);
+
+  // Get member for a given did in a trust registry
+  rpc GetMember(GetMemberRequest) returns (GetMemberResponse);
+
 }
