@@ -250,52 +250,55 @@ public final class TrustRegistryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
-          trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
-      getGetMembershipStatusMethod;
+          trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest,
+          trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>
+      getGetMemberAuthorizationStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetMembershipStatus",
-      requestType = trinsic.services.trustregistry.v1.GetMembershipStatusRequest.class,
-      responseType = trinsic.services.trustregistry.v1.GetMembershipStatusResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetMemberAuthorizationStatus",
+      requestType = trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest.class,
+      responseType = trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
-          trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
-      getGetMembershipStatusMethod() {
+          trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest,
+          trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>
+      getGetMemberAuthorizationStatusMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
-            trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
-        getGetMembershipStatusMethod;
-    if ((getGetMembershipStatusMethod = TrustRegistryGrpc.getGetMembershipStatusMethod) == null) {
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest,
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>
+        getGetMemberAuthorizationStatusMethod;
+    if ((getGetMemberAuthorizationStatusMethod =
+            TrustRegistryGrpc.getGetMemberAuthorizationStatusMethod)
+        == null) {
       synchronized (TrustRegistryGrpc.class) {
-        if ((getGetMembershipStatusMethod = TrustRegistryGrpc.getGetMembershipStatusMethod)
+        if ((getGetMemberAuthorizationStatusMethod =
+                TrustRegistryGrpc.getGetMemberAuthorizationStatusMethod)
             == null) {
-          TrustRegistryGrpc.getGetMembershipStatusMethod =
-              getGetMembershipStatusMethod =
+          TrustRegistryGrpc.getGetMemberAuthorizationStatusMethod =
+              getGetMemberAuthorizationStatusMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
-                          trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
+                      .<trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest,
+                          trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(
-                          generateFullMethodName(SERVICE_NAME, "GetMembershipStatus"))
+                          generateFullMethodName(SERVICE_NAME, "GetMemberAuthorizationStatus"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.GetMembershipStatusRequest
+                              trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
                                   .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.GetMembershipStatusResponse
+                              trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
                                   .getDefaultInstance()))
                       .setSchemaDescriptor(
-                          new TrustRegistryMethodDescriptorSupplier("GetMembershipStatus"))
+                          new TrustRegistryMethodDescriptorSupplier("GetMemberAuthorizationStatus"))
                       .build();
         }
       }
     }
-    return getGetMembershipStatusMethod;
+    return getGetMemberAuthorizationStatusMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<
@@ -346,6 +349,52 @@ public final class TrustRegistryGrpc {
       }
     }
     return getListAuthorizedMembersMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.trustregistry.v1.GetMemberRequest,
+          trinsic.services.trustregistry.v1.GetMemberResponse>
+      getGetMemberMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetMember",
+      requestType = trinsic.services.trustregistry.v1.GetMemberRequest.class,
+      responseType = trinsic.services.trustregistry.v1.GetMemberResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.trustregistry.v1.GetMemberRequest,
+          trinsic.services.trustregistry.v1.GetMemberResponse>
+      getGetMemberMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.trustregistry.v1.GetMemberRequest,
+            trinsic.services.trustregistry.v1.GetMemberResponse>
+        getGetMemberMethod;
+    if ((getGetMemberMethod = TrustRegistryGrpc.getGetMemberMethod) == null) {
+      synchronized (TrustRegistryGrpc.class) {
+        if ((getGetMemberMethod = TrustRegistryGrpc.getGetMemberMethod) == null) {
+          TrustRegistryGrpc.getGetMemberMethod =
+              getGetMemberMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.trustregistry.v1.GetMemberRequest,
+                          trinsic.services.trustregistry.v1.GetMemberResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMember"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.trustregistry.v1.GetMemberRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.trustregistry.v1.GetMemberResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("GetMember"))
+                      .build();
+        }
+      }
+    }
+    return getGetMemberMethod;
   }
 
   /** Creates a new async stub that supports all call types for the service */
@@ -471,15 +520,16 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * Fetch the status of a member for a given credential schema in a trust registry
      * </pre>
      */
-    public void getMembershipStatus(
-        trinsic.services.trustregistry.v1.GetMembershipStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
+    public void getMemberAuthorizationStatus(
+        trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
-          getGetMembershipStatusMethod(), responseObserver);
+          getGetMemberAuthorizationStatusMethod(), responseObserver);
     }
 
     /**
@@ -495,6 +545,20 @@ public final class TrustRegistryGrpc {
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getListAuthorizedMembersMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Get member for a given did in a trust registry
+     * </pre>
+     */
+    public void getMember(
+        trinsic.services.trustregistry.v1.GetMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMemberResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMemberMethod(), responseObserver);
     }
 
     @java.lang.Override
@@ -536,12 +600,12 @@ public final class TrustRegistryGrpc {
                       trinsic.services.trustregistry.v1.UnregisterMemberResponse>(
                       this, METHODID_UNREGISTER_MEMBER)))
           .addMethod(
-              getGetMembershipStatusMethod(),
+              getGetMemberAuthorizationStatusMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
-                      trinsic.services.trustregistry.v1.GetMembershipStatusResponse>(
-                      this, METHODID_GET_MEMBERSHIP_STATUS)))
+                      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest,
+                      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>(
+                      this, METHODID_GET_MEMBER_AUTHORIZATION_STATUS)))
           .addMethod(
               getListAuthorizedMembersMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -549,6 +613,13 @@ public final class TrustRegistryGrpc {
                       trinsic.services.trustregistry.v1.ListAuthorizedMembersRequest,
                       trinsic.services.trustregistry.v1.ListAuthorizedMembersResponse>(
                       this, METHODID_LIST_AUTHORIZED_MEMBERS)))
+          .addMethod(
+              getGetMemberMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.trustregistry.v1.GetMemberRequest,
+                      trinsic.services.trustregistry.v1.GetMemberResponse>(
+                      this, METHODID_GET_MEMBER)))
           .build();
     }
   }
@@ -654,15 +725,16 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * Fetch the status of a member for a given credential schema in a trust registry
      * </pre>
      */
-    public void getMembershipStatus(
-        trinsic.services.trustregistry.v1.GetMembershipStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
+    public void getMemberAuthorizationStatus(
+        trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetMembershipStatusMethod(), getCallOptions()),
+          getChannel().newCall(getGetMemberAuthorizationStatusMethod(), getCallOptions()),
           request,
           responseObserver);
     }
@@ -682,6 +754,21 @@ public final class TrustRegistryGrpc {
           getChannel().newCall(getListAuthorizedMembersMethod(), getCallOptions()),
           request,
           responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Get member for a given did in a trust registry
+     * </pre>
+     */
+    public void getMember(
+        trinsic.services.trustregistry.v1.GetMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMemberResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetMemberMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -767,13 +854,14 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * Fetch the status of a member for a given credential schema in a trust registry
      * </pre>
      */
-    public trinsic.services.trustregistry.v1.GetMembershipStatusResponse getMembershipStatus(
-        trinsic.services.trustregistry.v1.GetMembershipStatusRequest request) {
+    public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
+        getMemberAuthorizationStatus(
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetMembershipStatusMethod(), getCallOptions(), request);
+          getChannel(), getGetMemberAuthorizationStatusMethod(), getCallOptions(), request);
     }
 
     /**
@@ -787,6 +875,19 @@ public final class TrustRegistryGrpc {
         trinsic.services.trustregistry.v1.ListAuthorizedMembersRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListAuthorizedMembersMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Get member for a given did in a trust registry
+     * </pre>
+     */
+    public trinsic.services.trustregistry.v1.GetMemberResponse getMember(
+        trinsic.services.trustregistry.v1.GetMemberRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetMemberMethod(), getCallOptions(), request);
     }
   }
 
@@ -877,14 +978,15 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * Fetch the status of a member for a given credential schema in a trust registry
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
-        getMembershipStatus(trinsic.services.trustregistry.v1.GetMembershipStatusRequest request) {
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>
+        getMemberAuthorizationStatus(
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetMembershipStatusMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetMemberAuthorizationStatusMethod(), getCallOptions()), request);
     }
 
     /**
@@ -901,6 +1003,20 @@ public final class TrustRegistryGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListAuthorizedMembersMethod(), getCallOptions()), request);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * Get member for a given did in a trust registry
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.trustregistry.v1.GetMemberResponse>
+        getMember(trinsic.services.trustregistry.v1.GetMemberRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetMemberMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_FRAMEWORK = 0;
@@ -908,8 +1024,9 @@ public final class TrustRegistryGrpc {
   private static final int METHODID_SEARCH_REGISTRY = 2;
   private static final int METHODID_REGISTER_MEMBER = 3;
   private static final int METHODID_UNREGISTER_MEMBER = 4;
-  private static final int METHODID_GET_MEMBERSHIP_STATUS = 5;
+  private static final int METHODID_GET_MEMBER_AUTHORIZATION_STATUS = 5;
   private static final int METHODID_LIST_AUTHORIZED_MEMBERS = 6;
+  private static final int METHODID_GET_MEMBER = 7;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -962,11 +1079,11 @@ public final class TrustRegistryGrpc {
                       trinsic.services.trustregistry.v1.UnregisterMemberResponse>)
                   responseObserver);
           break;
-        case METHODID_GET_MEMBERSHIP_STATUS:
-          serviceImpl.getMembershipStatus(
-              (trinsic.services.trustregistry.v1.GetMembershipStatusRequest) request,
+        case METHODID_GET_MEMBER_AUTHORIZATION_STATUS:
+          serviceImpl.getMemberAuthorizationStatus(
+              (trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.GetMembershipStatusResponse>)
+                      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse>)
                   responseObserver);
           break;
         case METHODID_LIST_AUTHORIZED_MEMBERS:
@@ -974,6 +1091,12 @@ public final class TrustRegistryGrpc {
               (trinsic.services.trustregistry.v1.ListAuthorizedMembersRequest) request,
               (io.grpc.stub.StreamObserver<
                       trinsic.services.trustregistry.v1.ListAuthorizedMembersResponse>)
+                  responseObserver);
+          break;
+        case METHODID_GET_MEMBER:
+          serviceImpl.getMember(
+              (trinsic.services.trustregistry.v1.GetMemberRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMemberResponse>)
                   responseObserver);
           break;
         default:
@@ -1045,8 +1168,9 @@ public final class TrustRegistryGrpc {
                       .addMethod(getSearchRegistryMethod())
                       .addMethod(getRegisterMemberMethod())
                       .addMethod(getUnregisterMemberMethod())
-                      .addMethod(getGetMembershipStatusMethod())
+                      .addMethod(getGetMemberAuthorizationStatusMethod())
                       .addMethod(getListAuthorizedMembersMethod())
+                      .addMethod(getGetMemberMethod())
                       .build();
         }
       }

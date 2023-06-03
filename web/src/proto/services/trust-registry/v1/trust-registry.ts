@@ -174,8 +174,8 @@ export interface UnregisterMemberRequest {
 export interface UnregisterMemberResponse {
 }
 
-/** Request to fetch membership status in governance framework for a specific credential schema. */
-export interface GetMembershipStatusRequest {
+/** Request to fetch member status in governance framework for a specific credential schema. */
+export interface GetMemberAuthorizationStatusRequest {
   /**
    * The ID of the ecosystem governance framework.
    * This ID may be found in the 'trustRegistry' field in the
@@ -184,12 +184,12 @@ export interface GetMembershipStatusRequest {
   frameworkId?: string;
   /** DID URI of member */
   didUri?: string;
-  /** URI of credential schema associated with membership */
+  /** URI of credential schema associated with member */
   schemaUri?: string;
 }
 
-/** Response to `GetMembershipStatusRequest` */
-export interface GetMembershipStatusResponse {
+/** Response to `GetMemberAuthorizationStatusRequest` */
+export interface GetMemberAuthorizationStatusResponse {
   /** Status of member for given credential schema */
   status?: RegistrationStatus;
 }
@@ -230,6 +230,34 @@ export interface AuthorizedMemberSchema {
   statusDetails?: string;
   validFrom?: number;
   validUntil?: number;
+}
+
+/** Request to get a member of the governance framework */
+export interface GetMemberRequest {
+  /** DID URI of member to get */
+  didUri?:
+    | string
+    | undefined;
+  /** Trinsic Wallet ID of member to get */
+  walletId?:
+    | string
+    | undefined;
+  /** Email address of member to get. Must be associated with an existing Trinsic account. */
+  email?:
+    | string
+    | undefined;
+  /**
+   * The ID of the ecosystem governance framework.
+   * This ID may be found in the 'trustRegistry' field in the
+   * verifiable credential model
+   */
+  frameworkId?: string;
+}
+
+/** Response to `GetMemberAuthorizationStatusRequest` */
+export interface GetMemberResponse {
+  /** Member for given did in given framework */
+  authorizedMember?: AuthorizedMember;
 }
 
 function createBaseAddFrameworkRequest(): AddFrameworkRequest {
@@ -1081,12 +1109,12 @@ export const UnregisterMemberResponse = {
   },
 };
 
-function createBaseGetMembershipStatusRequest(): GetMembershipStatusRequest {
+function createBaseGetMemberAuthorizationStatusRequest(): GetMemberAuthorizationStatusRequest {
   return { frameworkId: "", didUri: "", schemaUri: "" };
 }
 
-export const GetMembershipStatusRequest = {
-  encode(message: GetMembershipStatusRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const GetMemberAuthorizationStatusRequest = {
+  encode(message: GetMemberAuthorizationStatusRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.frameworkId !== undefined && message.frameworkId !== "") {
       writer.uint32(10).string(message.frameworkId);
     }
@@ -1099,10 +1127,10 @@ export const GetMembershipStatusRequest = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetMembershipStatusRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetMemberAuthorizationStatusRequest {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetMembershipStatusRequest();
+    const message = createBaseGetMemberAuthorizationStatusRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1136,7 +1164,7 @@ export const GetMembershipStatusRequest = {
     return message;
   },
 
-  fromJSON(object: any): GetMembershipStatusRequest {
+  fromJSON(object: any): GetMemberAuthorizationStatusRequest {
     return {
       frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
       didUri: isSet(object.didUri) ? String(object.didUri) : "",
@@ -1144,7 +1172,7 @@ export const GetMembershipStatusRequest = {
     };
   },
 
-  toJSON(message: GetMembershipStatusRequest): unknown {
+  toJSON(message: GetMemberAuthorizationStatusRequest): unknown {
     const obj: any = {};
     message.frameworkId !== undefined && (obj.frameworkId = message.frameworkId);
     message.didUri !== undefined && (obj.didUri = message.didUri);
@@ -1152,12 +1180,12 @@ export const GetMembershipStatusRequest = {
     return obj;
   },
 
-  create(base?: DeepPartial<GetMembershipStatusRequest>): GetMembershipStatusRequest {
-    return GetMembershipStatusRequest.fromPartial(base ?? {});
+  create(base?: DeepPartial<GetMemberAuthorizationStatusRequest>): GetMemberAuthorizationStatusRequest {
+    return GetMemberAuthorizationStatusRequest.fromPartial(base ?? {});
   },
 
-  fromPartial(object: DeepPartial<GetMembershipStatusRequest>): GetMembershipStatusRequest {
-    const message = createBaseGetMembershipStatusRequest();
+  fromPartial(object: DeepPartial<GetMemberAuthorizationStatusRequest>): GetMemberAuthorizationStatusRequest {
+    const message = createBaseGetMemberAuthorizationStatusRequest();
     message.frameworkId = object.frameworkId ?? "";
     message.didUri = object.didUri ?? "";
     message.schemaUri = object.schemaUri ?? "";
@@ -1165,22 +1193,22 @@ export const GetMembershipStatusRequest = {
   },
 };
 
-function createBaseGetMembershipStatusResponse(): GetMembershipStatusResponse {
+function createBaseGetMemberAuthorizationStatusResponse(): GetMemberAuthorizationStatusResponse {
   return { status: 0 };
 }
 
-export const GetMembershipStatusResponse = {
-  encode(message: GetMembershipStatusResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const GetMemberAuthorizationStatusResponse = {
+  encode(message: GetMemberAuthorizationStatusResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.status !== undefined && message.status !== 0) {
       writer.uint32(8).int32(message.status);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetMembershipStatusResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetMemberAuthorizationStatusResponse {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetMembershipStatusResponse();
+    const message = createBaseGetMemberAuthorizationStatusResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1200,22 +1228,22 @@ export const GetMembershipStatusResponse = {
     return message;
   },
 
-  fromJSON(object: any): GetMembershipStatusResponse {
+  fromJSON(object: any): GetMemberAuthorizationStatusResponse {
     return { status: isSet(object.status) ? registrationStatusFromJSON(object.status) : 0 };
   },
 
-  toJSON(message: GetMembershipStatusResponse): unknown {
+  toJSON(message: GetMemberAuthorizationStatusResponse): unknown {
     const obj: any = {};
     message.status !== undefined && (obj.status = registrationStatusToJSON(message.status));
     return obj;
   },
 
-  create(base?: DeepPartial<GetMembershipStatusResponse>): GetMembershipStatusResponse {
-    return GetMembershipStatusResponse.fromPartial(base ?? {});
+  create(base?: DeepPartial<GetMemberAuthorizationStatusResponse>): GetMemberAuthorizationStatusResponse {
+    return GetMemberAuthorizationStatusResponse.fromPartial(base ?? {});
   },
 
-  fromPartial(object: DeepPartial<GetMembershipStatusResponse>): GetMembershipStatusResponse {
-    const message = createBaseGetMembershipStatusResponse();
+  fromPartial(object: DeepPartial<GetMemberAuthorizationStatusResponse>): GetMemberAuthorizationStatusResponse {
+    const message = createBaseGetMemberAuthorizationStatusResponse();
     message.status = object.status ?? 0;
     return message;
   },
@@ -1589,6 +1617,164 @@ export const AuthorizedMemberSchema = {
   },
 };
 
+function createBaseGetMemberRequest(): GetMemberRequest {
+  return { didUri: undefined, walletId: undefined, email: undefined, frameworkId: "" };
+}
+
+export const GetMemberRequest = {
+  encode(message: GetMemberRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.didUri !== undefined) {
+      writer.uint32(10).string(message.didUri);
+    }
+    if (message.walletId !== undefined) {
+      writer.uint32(26).string(message.walletId);
+    }
+    if (message.email !== undefined) {
+      writer.uint32(34).string(message.email);
+    }
+    if (message.frameworkId !== undefined && message.frameworkId !== "") {
+      writer.uint32(42).string(message.frameworkId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetMemberRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetMemberRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.didUri = reader.string();
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.walletId = reader.string();
+          continue;
+        case 4:
+          if (tag != 34) {
+            break;
+          }
+
+          message.email = reader.string();
+          continue;
+        case 5:
+          if (tag != 42) {
+            break;
+          }
+
+          message.frameworkId = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetMemberRequest {
+    return {
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      email: isSet(object.email) ? String(object.email) : undefined,
+      frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
+    };
+  },
+
+  toJSON(message: GetMemberRequest): unknown {
+    const obj: any = {};
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.email !== undefined && (obj.email = message.email);
+    message.frameworkId !== undefined && (obj.frameworkId = message.frameworkId);
+    return obj;
+  },
+
+  create(base?: DeepPartial<GetMemberRequest>): GetMemberRequest {
+    return GetMemberRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<GetMemberRequest>): GetMemberRequest {
+    const message = createBaseGetMemberRequest();
+    message.didUri = object.didUri ?? undefined;
+    message.walletId = object.walletId ?? undefined;
+    message.email = object.email ?? undefined;
+    message.frameworkId = object.frameworkId ?? "";
+    return message;
+  },
+};
+
+function createBaseGetMemberResponse(): GetMemberResponse {
+  return { authorizedMember: undefined };
+}
+
+export const GetMemberResponse = {
+  encode(message: GetMemberResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.authorizedMember !== undefined) {
+      AuthorizedMember.encode(message.authorizedMember, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetMemberResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetMemberResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.authorizedMember = AuthorizedMember.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetMemberResponse {
+    return {
+      authorizedMember: isSet(object.authorizedMember) ? AuthorizedMember.fromJSON(object.authorizedMember) : undefined,
+    };
+  },
+
+  toJSON(message: GetMemberResponse): unknown {
+    const obj: any = {};
+    message.authorizedMember !== undefined &&
+      (obj.authorizedMember = message.authorizedMember ? AuthorizedMember.toJSON(message.authorizedMember) : undefined);
+    return obj;
+  },
+
+  create(base?: DeepPartial<GetMemberResponse>): GetMemberResponse {
+    return GetMemberResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<GetMemberResponse>): GetMemberResponse {
+    const message = createBaseGetMemberResponse();
+    message.authorizedMember = (object.authorizedMember !== undefined && object.authorizedMember !== null)
+      ? AuthorizedMember.fromPartial(object.authorizedMember)
+      : undefined;
+    return message;
+  },
+};
+
 export type TrustRegistryDefinition = typeof TrustRegistryDefinition;
 export const TrustRegistryDefinition = {
   name: "TrustRegistry",
@@ -1639,12 +1825,12 @@ export const TrustRegistryDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Fetch the membership status of an issuer for a given credential schema in a trust registry */
-    getMembershipStatus: {
-      name: "GetMembershipStatus",
-      requestType: GetMembershipStatusRequest,
+    /** Fetch the status of a member for a given credential schema in a trust registry */
+    getMemberAuthorizationStatus: {
+      name: "GetMemberAuthorizationStatus",
+      requestType: GetMemberAuthorizationStatusRequest,
       requestStream: false,
-      responseType: GetMembershipStatusResponse,
+      responseType: GetMemberAuthorizationStatusResponse,
       responseStream: false,
       options: {},
     },
@@ -1654,6 +1840,15 @@ export const TrustRegistryDefinition = {
       requestType: ListAuthorizedMembersRequest,
       requestStream: false,
       responseType: ListAuthorizedMembersResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Get member for a given did in a trust registry */
+    getMember: {
+      name: "GetMember",
+      requestType: GetMemberRequest,
+      requestStream: false,
+      responseType: GetMemberResponse,
       responseStream: false,
       options: {},
     },

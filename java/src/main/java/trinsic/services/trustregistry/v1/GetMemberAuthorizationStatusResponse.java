@@ -7,29 +7,31 @@ package trinsic.services.trustregistry.v1;
  *
  *
  * <pre>
- * Response to `GetMembershipStatusRequest`
+ * Response to `GetMemberAuthorizationStatusRequest`
  * </pre>
  *
- * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse}
+ * Protobuf type {@code services.trustregistry.v1.GetMemberAuthorizationStatusResponse}
  */
-public final class GetMembershipStatusResponse extends com.google.protobuf.GeneratedMessageV3
+public final class GetMemberAuthorizationStatusResponse
+    extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMembershipStatusResponse)
-    GetMembershipStatusResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMemberAuthorizationStatusResponse)
+    GetMemberAuthorizationStatusResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use GetMembershipStatusResponse.newBuilder() to construct.
-  private GetMembershipStatusResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GetMemberAuthorizationStatusResponse.newBuilder() to construct.
+  private GetMemberAuthorizationStatusResponse(
+      com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private GetMembershipStatusResponse() {
+  private GetMemberAuthorizationStatusResponse() {
     status_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new GetMembershipStatusResponse();
+    return new GetMemberAuthorizationStatusResponse();
   }
 
   @java.lang.Override
@@ -39,17 +41,17 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
+        .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable
+        .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.GetMembershipStatusResponse.class,
-            trinsic.services.trustregistry.v1.GetMembershipStatusResponse.Builder.class);
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse.class,
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse.Builder.class);
   }
 
   public static final int STATUS_FIELD_NUMBER = 1;
@@ -129,11 +131,11 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.trustregistry.v1.GetMembershipStatusResponse)) {
+    if (!(obj instanceof trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.GetMembershipStatusResponse other =
-        (trinsic.services.trustregistry.v1.GetMembershipStatusResponse) obj;
+    trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse other =
+        (trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse) obj;
 
     if (status_ != other.status_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -154,71 +156,72 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
     return hash;
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
+      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
+      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
+      parseDelimitedFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -236,7 +239,7 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
   }
 
   public static Builder newBuilder(
-      trinsic.services.trustregistry.v1.GetMembershipStatusResponse prototype) {
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -254,31 +257,32 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Response to `GetMembershipStatusRequest`
+   * Response to `GetMemberAuthorizationStatusRequest`
    * </pre>
    *
-   * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse}
+   * Protobuf type {@code services.trustregistry.v1.GetMemberAuthorizationStatusResponse}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMembershipStatusResponse)
-      trinsic.services.trustregistry.v1.GetMembershipStatusResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMemberAuthorizationStatusResponse)
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
+          .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable
+          .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.GetMembershipStatusResponse.class,
-              trinsic.services.trustregistry.v1.GetMembershipStatusResponse.Builder.class);
+              trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse.class,
+              trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse.Builder.class);
     }
 
-    // Construct using trinsic.services.trustregistry.v1.GetMembershipStatusResponse.newBuilder()
+    // Construct using
+    // trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -296,18 +300,20 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
+          .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusResponse_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.GetMembershipStatusResponse
+    public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
         getDefaultInstanceForType() {
-      return trinsic.services.trustregistry.v1.GetMembershipStatusResponse.getDefaultInstance();
+      return trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
+          .getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.GetMembershipStatusResponse build() {
-      trinsic.services.trustregistry.v1.GetMembershipStatusResponse result = buildPartial();
+    public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse build() {
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse result =
+          buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -315,9 +321,9 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.GetMembershipStatusResponse buildPartial() {
-      trinsic.services.trustregistry.v1.GetMembershipStatusResponse result =
-          new trinsic.services.trustregistry.v1.GetMembershipStatusResponse(this);
+    public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse buildPartial() {
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse result =
+          new trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse(this);
       result.status_ = status_;
       onBuilt();
       return result;
@@ -358,18 +364,20 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.trustregistry.v1.GetMembershipStatusResponse) {
-        return mergeFrom((trinsic.services.trustregistry.v1.GetMembershipStatusResponse) other);
+      if (other instanceof trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse) {
+        return mergeFrom(
+            (trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.trustregistry.v1.GetMembershipStatusResponse other) {
+    public Builder mergeFrom(
+        trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse other) {
       if (other
-          == trinsic.services.trustregistry.v1.GetMembershipStatusResponse.getDefaultInstance())
-        return this;
+          == trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
+              .getDefaultInstance()) return this;
       if (other.status_ != 0) {
         setStatusValue(other.getStatusValue());
       }
@@ -526,25 +534,26 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.GetMembershipStatusResponse)
+    // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.GetMemberAuthorizationStatusResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:services.trustregistry.v1.GetMembershipStatusResponse)
-  private static final trinsic.services.trustregistry.v1.GetMembershipStatusResponse
+  // @@protoc_insertion_point(class_scope:services.trustregistry.v1.GetMemberAuthorizationStatusResponse)
+  private static final trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
       DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.GetMembershipStatusResponse();
+    DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse();
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusResponse getDefaultInstance() {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetMembershipStatusResponse> PARSER =
-      new com.google.protobuf.AbstractParser<GetMembershipStatusResponse>() {
+  private static final com.google.protobuf.Parser<GetMemberAuthorizationStatusResponse> PARSER =
+      new com.google.protobuf.AbstractParser<GetMemberAuthorizationStatusResponse>() {
         @java.lang.Override
-        public GetMembershipStatusResponse parsePartialFrom(
+        public GetMemberAuthorizationStatusResponse parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -563,17 +572,18 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
         }
       };
 
-  public static com.google.protobuf.Parser<GetMembershipStatusResponse> parser() {
+  public static com.google.protobuf.Parser<GetMemberAuthorizationStatusResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetMembershipStatusResponse> getParserForType() {
+  public com.google.protobuf.Parser<GetMemberAuthorizationStatusResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.trustregistry.v1.GetMembershipStatusResponse getDefaultInstanceForType() {
+  public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusResponse
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

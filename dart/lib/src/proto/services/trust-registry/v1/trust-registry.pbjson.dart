@@ -224,9 +224,9 @@ const UnregisterMemberResponse$json = const {
 /// Descriptor for `UnregisterMemberResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List unregisterMemberResponseDescriptor =
     $convert.base64Decode('ChhVbnJlZ2lzdGVyTWVtYmVyUmVzcG9uc2U=');
-@$core.Deprecated('Use getMembershipStatusRequestDescriptor instead')
-const GetMembershipStatusRequest$json = const {
-  '1': 'GetMembershipStatusRequest',
+@$core.Deprecated('Use getMemberAuthorizationStatusRequestDescriptor instead')
+const GetMemberAuthorizationStatusRequest$json = const {
+  '1': 'GetMemberAuthorizationStatusRequest',
   '2': const [
     const {'1': 'framework_id', '3': 1, '4': 1, '5': 9, '10': 'frameworkId'},
     const {'1': 'did_uri', '3': 2, '4': 1, '5': 9, '10': 'didUri'},
@@ -234,13 +234,13 @@ const GetMembershipStatusRequest$json = const {
   ],
 };
 
-/// Descriptor for `GetMembershipStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getMembershipStatusRequestDescriptor =
+/// Descriptor for `GetMemberAuthorizationStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getMemberAuthorizationStatusRequestDescriptor =
     $convert.base64Decode(
-        'ChpHZXRNZW1iZXJzaGlwU3RhdHVzUmVxdWVzdBIhCgxmcmFtZXdvcmtfaWQYASABKAlSC2ZyYW1ld29ya0lkEhcKB2RpZF91cmkYAiABKAlSBmRpZFVyaRIdCgpzY2hlbWFfdXJpGAQgASgJUglzY2hlbWFVcmk=');
-@$core.Deprecated('Use getMembershipStatusResponseDescriptor instead')
-const GetMembershipStatusResponse$json = const {
-  '1': 'GetMembershipStatusResponse',
+        'CiNHZXRNZW1iZXJBdXRob3JpemF0aW9uU3RhdHVzUmVxdWVzdBIhCgxmcmFtZXdvcmtfaWQYASABKAlSC2ZyYW1ld29ya0lkEhcKB2RpZF91cmkYAiABKAlSBmRpZFVyaRIdCgpzY2hlbWFfdXJpGAQgASgJUglzY2hlbWFVcmk=');
+@$core.Deprecated('Use getMemberAuthorizationStatusResponseDescriptor instead')
+const GetMemberAuthorizationStatusResponse$json = const {
+  '1': 'GetMemberAuthorizationStatusResponse',
   '2': const [
     const {
       '1': 'status',
@@ -253,10 +253,10 @@ const GetMembershipStatusResponse$json = const {
   ],
 };
 
-/// Descriptor for `GetMembershipStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getMembershipStatusResponseDescriptor =
+/// Descriptor for `GetMemberAuthorizationStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getMemberAuthorizationStatusResponseDescriptor =
     $convert.base64Decode(
-        'ChtHZXRNZW1iZXJzaGlwU3RhdHVzUmVzcG9uc2USRQoGc3RhdHVzGAEgASgOMi0uc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5SZWdpc3RyYXRpb25TdGF0dXNSBnN0YXR1cw==');
+        'CiRHZXRNZW1iZXJBdXRob3JpemF0aW9uU3RhdHVzUmVzcG9uc2USRQoGc3RhdHVzGAEgASgOMi0uc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5SZWdpc3RyYXRpb25TdGF0dXNSBnN0YXR1cw==');
 @$core.Deprecated('Use listAuthorizedMembersRequestDescriptor instead')
 const ListAuthorizedMembersRequest$json = const {
   '1': 'ListAuthorizedMembersRequest',
@@ -365,3 +365,38 @@ const AuthorizedMemberSchema$json = const {
 final $typed_data.Uint8List authorizedMemberSchemaDescriptor =
     $convert.base64Decode(
         'ChZBdXRob3JpemVkTWVtYmVyU2NoZW1hEh0KCnNjaGVtYV91cmkYASABKAlSCXNjaGVtYVVyaRIWCgZzdGF0dXMYAiABKAlSBnN0YXR1cxIlCg5zdGF0dXNfZGV0YWlscxgDIAEoCVINc3RhdHVzRGV0YWlscxIdCgp2YWxpZF9mcm9tGAQgASgEUgl2YWxpZEZyb20SHwoLdmFsaWRfdW50aWwYBSABKARSCnZhbGlkVW50aWw=');
+@$core.Deprecated('Use getMemberRequestDescriptor instead')
+const GetMemberRequest$json = const {
+  '1': 'GetMemberRequest',
+  '2': const [
+    const {'1': 'did_uri', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'email', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'framework_id', '3': 5, '4': 1, '5': 9, '10': 'frameworkId'},
+  ],
+  '8': const [
+    const {'1': 'member'},
+  ],
+};
+
+/// Descriptor for `GetMemberRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getMemberRequestDescriptor = $convert.base64Decode(
+    'ChBHZXRNZW1iZXJSZXF1ZXN0EhkKB2RpZF91cmkYASABKAlIAFIGZGlkVXJpEh0KCXdhbGxldF9pZBgDIAEoCUgAUgh3YWxsZXRJZBIWCgVlbWFpbBgEIAEoCUgAUgVlbWFpbBIhCgxmcmFtZXdvcmtfaWQYBSABKAlSC2ZyYW1ld29ya0lkQggKBm1lbWJlcg==');
+@$core.Deprecated('Use getMemberResponseDescriptor instead')
+const GetMemberResponse$json = const {
+  '1': 'GetMemberResponse',
+  '2': const [
+    const {
+      '1': 'authorized_member',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.trustregistry.v1.AuthorizedMember',
+      '10': 'authorizedMember'
+    },
+  ],
+};
+
+/// Descriptor for `GetMemberResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getMemberResponseDescriptor = $convert.base64Decode(
+    'ChFHZXRNZW1iZXJSZXNwb25zZRJYChFhdXRob3JpemVkX21lbWJlchgBIAEoCzIrLnNlcnZpY2VzLnRydXN0cmVnaXN0cnkudjEuQXV0aG9yaXplZE1lbWJlclIQYXV0aG9yaXplZE1lbWJlcg==');

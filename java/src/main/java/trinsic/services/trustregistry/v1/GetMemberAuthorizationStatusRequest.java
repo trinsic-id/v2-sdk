@@ -7,22 +7,24 @@ package trinsic.services.trustregistry.v1;
  *
  *
  * <pre>
- * Request to fetch membership status in governance framework for a specific credential schema.
+ * Request to fetch member status in governance framework for a specific credential schema.
  * </pre>
  *
- * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
+ * Protobuf type {@code services.trustregistry.v1.GetMemberAuthorizationStatusRequest}
  */
-public final class GetMembershipStatusRequest extends com.google.protobuf.GeneratedMessageV3
+public final class GetMemberAuthorizationStatusRequest
+    extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMembershipStatusRequest)
-    GetMembershipStatusRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMemberAuthorizationStatusRequest)
+    GetMemberAuthorizationStatusRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use GetMembershipStatusRequest.newBuilder() to construct.
-  private GetMembershipStatusRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GetMemberAuthorizationStatusRequest.newBuilder() to construct.
+  private GetMemberAuthorizationStatusRequest(
+      com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private GetMembershipStatusRequest() {
+  private GetMemberAuthorizationStatusRequest() {
     frameworkId_ = "";
     didUri_ = "";
     schemaUri_ = "";
@@ -31,7 +33,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new GetMembershipStatusRequest();
+    return new GetMemberAuthorizationStatusRequest();
   }
 
   @java.lang.Override
@@ -41,17 +43,17 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
+        .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable
+        .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.GetMembershipStatusRequest.class,
-            trinsic.services.trustregistry.v1.GetMembershipStatusRequest.Builder.class);
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest.class,
+            trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest.Builder.class);
   }
 
   public static final int FRAMEWORK_ID_FIELD_NUMBER = 1;
@@ -162,7 +164,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * URI of credential schema associated with membership
+   * URI of credential schema associated with member
    * </pre>
    *
    * <code>string schema_uri = 4;</code>
@@ -185,7 +187,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * URI of credential schema associated with membership
+   * URI of credential schema associated with member
    * </pre>
    *
    * <code>string schema_uri = 4;</code>
@@ -256,11 +258,11 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.trustregistry.v1.GetMembershipStatusRequest)) {
+    if (!(obj instanceof trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.GetMembershipStatusRequest other =
-        (trinsic.services.trustregistry.v1.GetMembershipStatusRequest) obj;
+    trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest other =
+        (trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest) obj;
 
     if (!getFrameworkId().equals(other.getFrameworkId())) return false;
     if (!getDidUri().equals(other.getDidUri())) return false;
@@ -287,71 +289,72 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     return hash;
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
+      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
+      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
+      parseDelimitedFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -369,7 +372,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
   }
 
   public static Builder newBuilder(
-      trinsic.services.trustregistry.v1.GetMembershipStatusRequest prototype) {
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -387,31 +390,32 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * Request to fetch membership status in governance framework for a specific credential schema.
+   * Request to fetch member status in governance framework for a specific credential schema.
    * </pre>
    *
-   * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
+   * Protobuf type {@code services.trustregistry.v1.GetMemberAuthorizationStatusRequest}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMembershipStatusRequest)
-      trinsic.services.trustregistry.v1.GetMembershipStatusRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMemberAuthorizationStatusRequest)
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
+          .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable
+          .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.GetMembershipStatusRequest.class,
-              trinsic.services.trustregistry.v1.GetMembershipStatusRequest.Builder.class);
+              trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest.class,
+              trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest.Builder.class);
     }
 
-    // Construct using trinsic.services.trustregistry.v1.GetMembershipStatusRequest.newBuilder()
+    // Construct using
+    // trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -433,18 +437,19 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
+          .internal_static_services_trustregistry_v1_GetMemberAuthorizationStatusRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.GetMembershipStatusRequest
+    public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
         getDefaultInstanceForType() {
-      return trinsic.services.trustregistry.v1.GetMembershipStatusRequest.getDefaultInstance();
+      return trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
+          .getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.GetMembershipStatusRequest build() {
-      trinsic.services.trustregistry.v1.GetMembershipStatusRequest result = buildPartial();
+    public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest build() {
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -452,9 +457,9 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.GetMembershipStatusRequest buildPartial() {
-      trinsic.services.trustregistry.v1.GetMembershipStatusRequest result =
-          new trinsic.services.trustregistry.v1.GetMembershipStatusRequest(this);
+    public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest buildPartial() {
+      trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest result =
+          new trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest(this);
       result.frameworkId_ = frameworkId_;
       result.didUri_ = didUri_;
       result.schemaUri_ = schemaUri_;
@@ -497,18 +502,20 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.trustregistry.v1.GetMembershipStatusRequest) {
-        return mergeFrom((trinsic.services.trustregistry.v1.GetMembershipStatusRequest) other);
+      if (other instanceof trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest) {
+        return mergeFrom(
+            (trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.trustregistry.v1.GetMembershipStatusRequest other) {
+    public Builder mergeFrom(
+        trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest other) {
       if (other
-          == trinsic.services.trustregistry.v1.GetMembershipStatusRequest.getDefaultInstance())
-        return this;
+          == trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
+              .getDefaultInstance()) return this;
       if (!other.getFrameworkId().isEmpty()) {
         frameworkId_ = other.frameworkId_;
         onChanged();
@@ -809,7 +816,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of credential schema associated with membership
+     * URI of credential schema associated with member
      * </pre>
      *
      * <code>string schema_uri = 4;</code>
@@ -831,7 +838,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of credential schema associated with membership
+     * URI of credential schema associated with member
      * </pre>
      *
      * <code>string schema_uri = 4;</code>
@@ -853,7 +860,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of credential schema associated with membership
+     * URI of credential schema associated with member
      * </pre>
      *
      * <code>string schema_uri = 4;</code>
@@ -874,7 +881,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of credential schema associated with membership
+     * URI of credential schema associated with member
      * </pre>
      *
      * <code>string schema_uri = 4;</code>
@@ -891,7 +898,7 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * URI of credential schema associated with membership
+     * URI of credential schema associated with member
      * </pre>
      *
      * <code>string schema_uri = 4;</code>
@@ -921,25 +928,26 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.GetMembershipStatusRequest)
+    // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.GetMemberAuthorizationStatusRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:services.trustregistry.v1.GetMembershipStatusRequest)
-  private static final trinsic.services.trustregistry.v1.GetMembershipStatusRequest
+  // @@protoc_insertion_point(class_scope:services.trustregistry.v1.GetMemberAuthorizationStatusRequest)
+  private static final trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
       DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.GetMembershipStatusRequest();
+    DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest();
   }
 
-  public static trinsic.services.trustregistry.v1.GetMembershipStatusRequest getDefaultInstance() {
+  public static trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetMembershipStatusRequest> PARSER =
-      new com.google.protobuf.AbstractParser<GetMembershipStatusRequest>() {
+  private static final com.google.protobuf.Parser<GetMemberAuthorizationStatusRequest> PARSER =
+      new com.google.protobuf.AbstractParser<GetMemberAuthorizationStatusRequest>() {
         @java.lang.Override
-        public GetMembershipStatusRequest parsePartialFrom(
+        public GetMemberAuthorizationStatusRequest parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -958,17 +966,18 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
         }
       };
 
-  public static com.google.protobuf.Parser<GetMembershipStatusRequest> parser() {
+  public static com.google.protobuf.Parser<GetMemberAuthorizationStatusRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetMembershipStatusRequest> getParserForType() {
+  public com.google.protobuf.Parser<GetMemberAuthorizationStatusRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.trustregistry.v1.GetMembershipStatusRequest getDefaultInstanceForType() {
+  public trinsic.services.trustregistry.v1.GetMemberAuthorizationStatusRequest
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

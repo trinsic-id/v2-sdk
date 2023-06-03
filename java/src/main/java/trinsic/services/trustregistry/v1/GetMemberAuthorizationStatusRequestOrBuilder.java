@@ -3,9 +3,9 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface GetMembershipStatusRequestOrBuilder
+public interface GetMemberAuthorizationStatusRequestOrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMembershipStatusRequest)
+    // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMemberAuthorizationStatusRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -66,7 +66,7 @@ public interface GetMembershipStatusRequestOrBuilder
    *
    *
    * <pre>
-   * URI of credential schema associated with membership
+   * URI of credential schema associated with member
    * </pre>
    *
    * <code>string schema_uri = 4;</code>
@@ -78,7 +78,7 @@ public interface GetMembershipStatusRequestOrBuilder
    *
    *
    * <pre>
-   * URI of credential schema associated with membership
+   * URI of credential schema associated with member
    * </pre>
    *
    * <code>string schema_uri = 4;</code>

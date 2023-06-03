@@ -19,13 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TrustRegistry_AddFramework_FullMethodName          = "/services.trustregistry.v1.TrustRegistry/AddFramework"
-	TrustRegistry_RemoveFramework_FullMethodName       = "/services.trustregistry.v1.TrustRegistry/RemoveFramework"
-	TrustRegistry_SearchRegistry_FullMethodName        = "/services.trustregistry.v1.TrustRegistry/SearchRegistry"
-	TrustRegistry_RegisterMember_FullMethodName        = "/services.trustregistry.v1.TrustRegistry/RegisterMember"
-	TrustRegistry_UnregisterMember_FullMethodName      = "/services.trustregistry.v1.TrustRegistry/UnregisterMember"
-	TrustRegistry_GetMembershipStatus_FullMethodName   = "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus"
-	TrustRegistry_ListAuthorizedMembers_FullMethodName = "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers"
+	TrustRegistry_AddFramework_FullMethodName                 = "/services.trustregistry.v1.TrustRegistry/AddFramework"
+	TrustRegistry_RemoveFramework_FullMethodName              = "/services.trustregistry.v1.TrustRegistry/RemoveFramework"
+	TrustRegistry_SearchRegistry_FullMethodName               = "/services.trustregistry.v1.TrustRegistry/SearchRegistry"
+	TrustRegistry_RegisterMember_FullMethodName               = "/services.trustregistry.v1.TrustRegistry/RegisterMember"
+	TrustRegistry_UnregisterMember_FullMethodName             = "/services.trustregistry.v1.TrustRegistry/UnregisterMember"
+	TrustRegistry_GetMemberAuthorizationStatus_FullMethodName = "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus"
+	TrustRegistry_ListAuthorizedMembers_FullMethodName        = "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers"
+	TrustRegistry_GetMember_FullMethodName                    = "/services.trustregistry.v1.TrustRegistry/GetMember"
 )
 
 // TrustRegistryClient is the client API for TrustRegistry service.
@@ -42,10 +43,12 @@ type TrustRegistryClient interface {
 	RegisterMember(ctx context.Context, in *RegisterMemberRequest, opts ...grpc.CallOption) (*RegisterMemberResponse, error)
 	// Removes an authoritative issuer for a credential schema from the trust registry
 	UnregisterMember(ctx context.Context, in *UnregisterMemberRequest, opts ...grpc.CallOption) (*UnregisterMemberResponse, error)
-	// Fetch the membership status of an issuer for a given credential schema in a trust registry
-	GetMembershipStatus(ctx context.Context, in *GetMembershipStatusRequest, opts ...grpc.CallOption) (*GetMembershipStatusResponse, error)
+	// Fetch the status of a member for a given credential schema in a trust registry
+	GetMemberAuthorizationStatus(ctx context.Context, in *GetMemberAuthorizationStatusRequest, opts ...grpc.CallOption) (*GetMemberAuthorizationStatusResponse, error)
 	// Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
 	ListAuthorizedMembers(ctx context.Context, in *ListAuthorizedMembersRequest, opts ...grpc.CallOption) (*ListAuthorizedMembersResponse, error)
+	// Get member for a given did in a trust registry
+	GetMember(ctx context.Context, in *GetMemberRequest, opts ...grpc.CallOption) (*GetMemberResponse, error)
 }
 
 type trustRegistryClient struct {
@@ -101,9 +104,9 @@ func (c *trustRegistryClient) UnregisterMember(ctx context.Context, in *Unregist
 	return out, nil
 }
 
-func (c *trustRegistryClient) GetMembershipStatus(ctx context.Context, in *GetMembershipStatusRequest, opts ...grpc.CallOption) (*GetMembershipStatusResponse, error) {
-	out := new(GetMembershipStatusResponse)
-	err := c.cc.Invoke(ctx, TrustRegistry_GetMembershipStatus_FullMethodName, in, out, opts...)
+func (c *trustRegistryClient) GetMemberAuthorizationStatus(ctx context.Context, in *GetMemberAuthorizationStatusRequest, opts ...grpc.CallOption) (*GetMemberAuthorizationStatusResponse, error) {
+	out := new(GetMemberAuthorizationStatusResponse)
+	err := c.cc.Invoke(ctx, TrustRegistry_GetMemberAuthorizationStatus_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,6 +116,15 @@ func (c *trustRegistryClient) GetMembershipStatus(ctx context.Context, in *GetMe
 func (c *trustRegistryClient) ListAuthorizedMembers(ctx context.Context, in *ListAuthorizedMembersRequest, opts ...grpc.CallOption) (*ListAuthorizedMembersResponse, error) {
 	out := new(ListAuthorizedMembersResponse)
 	err := c.cc.Invoke(ctx, TrustRegistry_ListAuthorizedMembers_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *trustRegistryClient) GetMember(ctx context.Context, in *GetMemberRequest, opts ...grpc.CallOption) (*GetMemberResponse, error) {
+	out := new(GetMemberResponse)
+	err := c.cc.Invoke(ctx, TrustRegistry_GetMember_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -133,10 +145,12 @@ type TrustRegistryServer interface {
 	RegisterMember(context.Context, *RegisterMemberRequest) (*RegisterMemberResponse, error)
 	// Removes an authoritative issuer for a credential schema from the trust registry
 	UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error)
-	// Fetch the membership status of an issuer for a given credential schema in a trust registry
-	GetMembershipStatus(context.Context, *GetMembershipStatusRequest) (*GetMembershipStatusResponse, error)
+	// Fetch the status of a member for a given credential schema in a trust registry
+	GetMemberAuthorizationStatus(context.Context, *GetMemberAuthorizationStatusRequest) (*GetMemberAuthorizationStatusResponse, error)
 	// Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
 	ListAuthorizedMembers(context.Context, *ListAuthorizedMembersRequest) (*ListAuthorizedMembersResponse, error)
+	// Get member for a given did in a trust registry
+	GetMember(context.Context, *GetMemberRequest) (*GetMemberResponse, error)
 	mustEmbedUnimplementedTrustRegistryServer()
 }
 
@@ -159,11 +173,14 @@ func (UnimplementedTrustRegistryServer) RegisterMember(context.Context, *Registe
 func (UnimplementedTrustRegistryServer) UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnregisterMember not implemented")
 }
-func (UnimplementedTrustRegistryServer) GetMembershipStatus(context.Context, *GetMembershipStatusRequest) (*GetMembershipStatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMembershipStatus not implemented")
+func (UnimplementedTrustRegistryServer) GetMemberAuthorizationStatus(context.Context, *GetMemberAuthorizationStatusRequest) (*GetMemberAuthorizationStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMemberAuthorizationStatus not implemented")
 }
 func (UnimplementedTrustRegistryServer) ListAuthorizedMembers(context.Context, *ListAuthorizedMembersRequest) (*ListAuthorizedMembersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAuthorizedMembers not implemented")
+}
+func (UnimplementedTrustRegistryServer) GetMember(context.Context, *GetMemberRequest) (*GetMemberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMember not implemented")
 }
 func (UnimplementedTrustRegistryServer) mustEmbedUnimplementedTrustRegistryServer() {}
 
@@ -268,20 +285,20 @@ func _TrustRegistry_UnregisterMember_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrustRegistry_GetMembershipStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMembershipStatusRequest)
+func _TrustRegistry_GetMemberAuthorizationStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMemberAuthorizationStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrustRegistryServer).GetMembershipStatus(ctx, in)
+		return srv.(TrustRegistryServer).GetMemberAuthorizationStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrustRegistry_GetMembershipStatus_FullMethodName,
+		FullMethod: TrustRegistry_GetMemberAuthorizationStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).GetMembershipStatus(ctx, req.(*GetMembershipStatusRequest))
+		return srv.(TrustRegistryServer).GetMemberAuthorizationStatus(ctx, req.(*GetMemberAuthorizationStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -300,6 +317,24 @@ func _TrustRegistry_ListAuthorizedMembers_Handler(srv interface{}, ctx context.C
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).ListAuthorizedMembers(ctx, req.(*ListAuthorizedMembersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrustRegistry_GetMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrustRegistryServer).GetMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrustRegistry_GetMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrustRegistryServer).GetMember(ctx, req.(*GetMemberRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -332,12 +367,16 @@ var TrustRegistry_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TrustRegistry_UnregisterMember_Handler,
 		},
 		{
-			MethodName: "GetMembershipStatus",
-			Handler:    _TrustRegistry_GetMembershipStatus_Handler,
+			MethodName: "GetMemberAuthorizationStatus",
+			Handler:    _TrustRegistry_GetMemberAuthorizationStatus_Handler,
 		},
 		{
 			MethodName: "ListAuthorizedMembers",
 			Handler:    _TrustRegistry_ListAuthorizedMembers_Handler,
+		},
+		{
+			MethodName: "GetMember",
+			Handler:    _TrustRegistry_GetMember_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

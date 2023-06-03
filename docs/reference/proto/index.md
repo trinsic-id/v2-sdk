@@ -8,61 +8,35 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 
 
 
-<a name="services_common_v1_common-proto"></a>
+<a name="sdk_options_v1_options-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/common/v1/common.proto
+## sdk/options/v1/options.proto
 
 
  <!-- end services -->
 
 
-<a name="services-common-v1-Nonce"></a>
+<a name="sdk-options-v1-TrinsicOptions"></a>
 
-### Nonce
-Nonce used to generate an oberon proof
+### TrinsicOptions
+Configuration for Trinsic SDK Services
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
+| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
+| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
+
+Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
 
 
 
 
 
  <!-- end messages -->
-
-
-<a name="services-common-v1-ResponseStatus"></a>
-
-### ResponseStatus
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| SUCCESS | 0 |  |
-| WALLET_ACCESS_DENIED | 10 |  |
-| WALLET_EXISTS | 11 |  |
-| ITEM_NOT_FOUND | 20 |  |
-| SERIALIZATION_ERROR | 200 |  |
-| UNKNOWN_ERROR | 100 |  |
-
-
-
-<a name="services-common-v1-SupportedDidMethod"></a>
-
-### SupportedDidMethod
-Enum of all supported DID Methods
-https://docs.godiddy.com/en/supported-methods
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| KEY | 0 | The did:key method -- all wallets use this by default |
-| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
-| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
-
 
  <!-- end enums -->
 
@@ -219,7 +193,7 @@ Response to `ListFilesRequest`
 | ----- | ---- | ----------- |
 | files | [File](/reference/proto#services-filemanagement-v1-File)[] | Files found by query |
 | has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of resuts via `ListFilesRequest` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListFilesRequest` |
 
 
 
@@ -521,572 +495,44 @@ Confirmation method type for two-factor workflows
 
 
 
-<a name="services_universal-wallet_v1_universal-wallet-proto"></a>
+<a name="services_options_field-options-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/universal-wallet/v1/universal-wallet.proto
+## services/options/field-options.proto
 
-
-
-<a name="services-universalwallet-v1-UniversalWallet"></a>
-
-### Service - UniversalWallet
-Service for managing wallets
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| GetItem | [GetItemRequest](/reference/proto#services-universalwallet-v1-GetItemRequest) | [GetItemResponse](/reference/proto#services-universalwallet-v1-GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
-| Search | [SearchRequest](/reference/proto#services-universalwallet-v1-SearchRequest) | [SearchResponse](/reference/proto#services-universalwallet-v1-SearchResponse) | Search the wallet using a SQL syntax |
-| InsertItem | [InsertItemRequest](/reference/proto#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](/reference/proto#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
-| UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
-| DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
-| DeleteWallet | [DeleteWalletRequest](/reference/proto#services-universalwallet-v1-DeleteWalletRequest) | [DeleteWalletResponse](/reference/proto#services-universalwallet-v1-DeleteWalletResponse) | Delete a wallet and its credentials |
-| CreateWallet | [CreateWalletRequest](/reference/proto#services-universalwallet-v1-CreateWalletRequest) | [CreateWalletResponse](/reference/proto#services-universalwallet-v1-CreateWalletResponse) | Create a new wallet and generate an auth token for access |
-| GetWalletInfo | [GetWalletInfoRequest](/reference/proto#services-universalwallet-v1-GetWalletInfoRequest) | [GetWalletInfoResponse](/reference/proto#services-universalwallet-v1-GetWalletInfoResponse) | Retrieve wallet details and configuration |
-| GetMyInfo | [GetMyInfoRequest](/reference/proto#services-universalwallet-v1-GetMyInfoRequest) | [GetMyInfoResponse](/reference/proto#services-universalwallet-v1-GetMyInfoResponse) | Retrieve wallet details and configuration about the currently authenticated wallet |
-| GenerateAuthToken | [GenerateAuthTokenRequest](/reference/proto#services-universalwallet-v1-GenerateAuthTokenRequest) | [GenerateAuthTokenResponse](/reference/proto#services-universalwallet-v1-GenerateAuthTokenResponse) | Generate new token for a given wallet and add it to the collection of known auth tokens. This endpoint requires authentication and will return a new token ID and auth token. Use this endpoint if you want to authorize another device, without having to share your existing auth token. |
-| RevokeAuthToken | [RevokeAuthTokenRequest](/reference/proto#services-universalwallet-v1-RevokeAuthTokenRequest) | [RevokeAuthTokenResponse](/reference/proto#services-universalwallet-v1-RevokeAuthTokenResponse) | Revokes a previously issued auth token and updates the collection of known auth tokens. This endpoint requires authentication. |
-| AddExternalIdentityInit | [AddExternalIdentityInitRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitRequest) | [AddExternalIdentityInitResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitResponse) | Add new external identity to the current wallet, such as email, sms, ethereum address, etc. This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc. |
-| AddExternalIdentityConfirm | [AddExternalIdentityConfirmRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmRequest) | [AddExternalIdentityConfirmResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmResponse) | Confirm identity added to the current wallet using `AddExternalIdentityInit` |
-| RemoveExternalIdentity | [RemoveExternalIdentityRequest](/reference/proto#services-universalwallet-v1-RemoveExternalIdentityRequest) | [RemoveExternalIdentityResponse](/reference/proto#services-universalwallet-v1-RemoveExternalIdentityResponse) | Remove an external identity from the current wallet |
-| AuthenticateInit | [AuthenticateInitRequest](/reference/proto#services-universalwallet-v1-AuthenticateInitRequest) | [AuthenticateInitResponse](/reference/proto#services-universalwallet-v1-AuthenticateInitResponse) | Sign-in to an already existing wallet, using an identity added that was previously registered This endpoint does not require authentication, and will return a challenge to be signed or verified |
-| AuthenticateConfirm | [AuthenticateConfirmRequest](/reference/proto#services-universalwallet-v1-AuthenticateConfirmRequest) | [AuthenticateConfirmResponse](/reference/proto#services-universalwallet-v1-AuthenticateConfirmResponse) | Confirm sign-in to an already existing wallet and return authentication token |
-| AuthenticateResendCode | [AuthenticateResendCodeRequest](/reference/proto#services-universalwallet-v1-AuthenticateResendCodeRequest) | [AuthenticateResendCodeResponse](/reference/proto#services-universalwallet-v1-AuthenticateResendCodeResponse) | Resend previous authentication code |
-| ListWallets | [ListWalletsRequest](/reference/proto#services-universalwallet-v1-ListWalletsRequest) | [ListWalletsResponse](/reference/proto#services-universalwallet-v1-ListWalletsResponse) | List all wallets in the ecosystem |
 
  <!-- end services -->
 
 
-<a name="services-universalwallet-v1-AddExternalIdentityConfirmRequest"></a>
+<a name="services-options-AnnotationOption"></a>
 
-### AddExternalIdentityConfirmRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| challenge | [string](/reference/proto#string) | The challenge received from the `AddExternalIdentityInit` endpoint |
-| response | [string](/reference/proto#string) | The response to the challenge. If using Email or Phone, this is the OTP code sent to the user's email or phone |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AddExternalIdentityConfirmResponse"></a>
-
-### AddExternalIdentityConfirmResponse
-
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AddExternalIdentityInitRequest"></a>
-
-### AddExternalIdentityInitRequest
+### AnnotationOption
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| identity | [string](/reference/proto#string) | The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
-| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
+| active | [bool](/reference/proto#bool) | Is this annotation active |
+| message | [string](/reference/proto#string) | Custom annotation message to provide |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-AddExternalIdentityInitResponse"></a>
+<a name="services-options-SdkTemplateOption"></a>
 
-### AddExternalIdentityInitResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| challenge | [string](/reference/proto#string) | Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AuthenticateConfirmRequest"></a>
-
-### AuthenticateConfirmRequest
+### SdkTemplateOption
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| challenge | [string](/reference/proto#string) | The challenge received from the `AcquireAuthTokenInit` endpoint |
-| response | [string](/reference/proto#string) | The response to the challenge. If using Email or Phone, this is the OTP code sent to the user's email or phone |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AuthenticateConfirmResponse"></a>
-
-### AuthenticateConfirmResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| auth_token | [string](/reference/proto#string) | Auth token for the wallet |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AuthenticateInitRequest"></a>
-
-### AuthenticateInitRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| identity | [string](/reference/proto#string) | Identity to add to the wallet |
-| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | Identity provider |
-| ecosystem_id | [string](/reference/proto#string) | Ecosystem ID to which the wallet belongs |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AuthenticateInitResponse"></a>
-
-### AuthenticateInitResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| challenge | [string](/reference/proto#string) | The challenge received from the `AcquireAuthTokenInit` endpoint Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AuthenticateResendCodeRequest"></a>
-
-### AuthenticateResendCodeRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| challenge | [string](/reference/proto#string) | Challenge for the code you want resent. |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-AuthenticateResendCodeResponse"></a>
-
-### AuthenticateResendCodeResponse
-
-
-
-
-
-
-
-<a name="services-universalwallet-v1-CreateWalletRequest"></a>
-
-### CreateWalletRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem_id | [string](/reference/proto#string) | Ecosystem ID of the wallet to create |
-| description | [string](/reference/proto#string) | Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, or anything you'd like to associate with this wallet. This field is searchable. |
-| identity | [CreateWalletRequest.ExternalIdentity](/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity) | Optional identity to add to the wallet (email or sms). Use this field when inviting participants into an ecosystem. If this field is set, an auth token will not be sent in the response. |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-CreateWalletRequest-ExternalIdentity"></a>
-
-### CreateWalletRequest.ExternalIdentity
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| identity | [string](/reference/proto#string) | The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
-| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-CreateWalletResponse"></a>
-
-### CreateWalletResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| auth_token | [string](/reference/proto#string) | Auth token for the newly created wallet |
-| token_id | [string](/reference/proto#string) | Token ID of the newly generated token |
-| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteItemRequest"></a>
-
-### DeleteItemRequest
-Request to delete an item in a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item to delete |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteItemResponse"></a>
-
-### DeleteItemResponse
-Response to `DeleteItemRequest`
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteWalletRequest"></a>
-
-### DeleteWalletRequest
-Request to delete a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to delete. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to delete. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to delete. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteWalletResponse"></a>
-
-### DeleteWalletResponse
-Response to `DeleteWalletRequest`. Empty payload.
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GenerateAuthTokenRequest"></a>
-
-### GenerateAuthTokenRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| wallet_id | [string](/reference/proto#string) |  |
-| token_description | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GenerateAuthTokenResponse"></a>
-
-### GenerateAuthTokenResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| token_id | [string](/reference/proto#string) |  |
-| auth_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetItemRequest"></a>
-
-### GetItemRequest
-Request to fetch an item from wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item in wallet |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetItemResponse"></a>
-
-### GetItemResponse
-Response to `GetItemRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | Item data as a JSON string |
-| item_type | [string](/reference/proto#string) | Type of item specified when item was inserted into wallet |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetMyInfoRequest"></a>
-
-### GetMyInfoRequest
-Request to retrieve wallet information about the currently authenticated wallet
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetMyInfoResponse"></a>
-
-### GetMyInfoResponse
-Response to `GetMyInfoRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetWalletInfoRequest"></a>
-
-### GetWalletInfoRequest
-Request to retrieve wallet information about a given wallet identified by its wallet ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of the wallet to retrieve |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetWalletInfoResponse"></a>
-
-### GetWalletInfoResponse
-Response to `GetWalletInfoRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-InsertItemRequest"></a>
-
-### InsertItemRequest
-Request to insert a JSON document into a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | Document to insert; must be stringified JSON |
-| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-InsertItemResponse"></a>
-
-### InsertItemResponse
-Response to `InsertItemRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item inserted into wallet |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-ListWalletsRequest"></a>
-
-### ListWalletsRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| filter | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-ListWalletsResponse"></a>
-
-### ListWalletsResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| wallets | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] |  |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-RemoveExternalIdentityRequest"></a>
-
-### RemoveExternalIdentityRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| identity | [string](/reference/proto#string) | The user identity to remove from the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-RemoveExternalIdentityResponse"></a>
-
-### RemoveExternalIdentityResponse
-
-
-
-
-
-
-
-<a name="services-universalwallet-v1-RevokeAuthTokenRequest"></a>
-
-### RevokeAuthTokenRequest
-Request to revoke a previously issued auth token
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of the wallet to from which to revoke the token |
-| token_id | [string](/reference/proto#string) | Token ID of the token to revoke |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-RevokeAuthTokenResponse"></a>
-
-### RevokeAuthTokenResponse
-
-
-
-
-
-
-
-<a name="services-universalwallet-v1-SearchRequest"></a>
-
-### SearchRequest
-Request to search items in wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL Query to execute against items in wallet |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-SearchResponse"></a>
-
-### SearchResponse
-Response to `SearchRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| items | [string](/reference/proto#string)[] | Array of query results, as JSON strings |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-UpdateItemRequest"></a>
-
-### UpdateItemRequest
-Request to update item in wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item in wallet |
-| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-UpdateItemResponse"></a>
-
-### UpdateItemResponse
-Response to `UpdateItemRequest`
+| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
+| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
+| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
+| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
+| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
 
 
 
@@ -1096,838 +542,14 @@ Response to `UpdateItemRequest`
 
  <!-- end enums -->
 
- <!-- end HasExtensions -->
 
+<a name="services_options_field-options-proto-extensions"></a>
 
-
-<a name="services_provider_v1_access-management-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/provider/v1/access-management.proto
-
-
-
-<a name="services-provider-v1-AccessManagement"></a>
-
-### Service - AccessManagement
-Access Management service provides methods to manage access to ecosystem resources
-such by assigning roles and permissions to wallet accounts
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
-| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
-| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
-| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
-
- <!-- end services -->
-
-
-<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
-
-### AddRoleAssignmentRequest
-Role management
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| role | [string](/reference/proto#string) | Role to assign |
-| email | [string](/reference/proto#string) | Email address of account to assign role. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to assign role. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
-
-### AddRoleAssignmentResponse
-
-
-
-
-
-
-
-<a name="services-provider-v1-ListAvailableRolesRequest"></a>
-
-### ListAvailableRolesRequest
-Request to fetch the available roles in the current ecosystem
-
-
-
-
-
-
-<a name="services-provider-v1-ListAvailableRolesResponse"></a>
-
-### ListAvailableRolesResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| roles | [string](/reference/proto#string)[] | List of roles |
-
-
-
-
-
-
-<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
-
-### ListRoleAssignmentsRequest
-Request to fetch the list of roles assigned to the current account
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to list roles. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to list roles. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to list roles. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
-
-### ListRoleAssignmentsResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| roles | [string](/reference/proto#string)[] | List of roles |
-
-
-
-
-
-
-<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
-
-### RemoveRoleAssignmentRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| role | [string](/reference/proto#string) | Role to unassign |
-| email | [string](/reference/proto#string) | Email address of account to unassign role. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to unassign role. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
-
-### RemoveRoleAssignmentResponse
-
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_provider_v1_provider-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/provider/v1/provider.proto
-
-
-
-<a name="services-provider-v1-Provider"></a>
-
-### Service - Provider
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
-| GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
-| UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
-| SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
-
- <!-- end services -->
-
-
-<a name="services-provider-v1-CreateEcosystemRequest"></a>
-
-### CreateEcosystemRequest
-Request to create an ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
-| description | [string](/reference/proto#string) | Ecosystem description |
-| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
-| domain | [string](/reference/proto#string) | New domain URL |
-
-
-
-
-
-
-<a name="services-provider-v1-CreateEcosystemResponse"></a>
-
-### CreateEcosystemResponse
-Response to `CreateEcosystemRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Details of the created ecosystem |
-| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
-| confirmation_method | [services.account.v1.ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. |
-
-
-
-
-
-
-<a name="services-provider-v1-Ecosystem"></a>
-
-### Ecosystem
-Details of an ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | URN of the ecosystem |
-| name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
-| description | [string](/reference/proto#string) | Ecosystem description |
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemInfoRequest"></a>
-
-### EcosystemInfoRequest
-Request to fetch information about an ecosystem
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemInfoResponse"></a>
-
-### EcosystemInfoResponse
-Response to `InfoRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to current ecosystem in the account token |
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyRequest"></a>
-
-### GetOberonKeyRequest
-Request to fetch the Trinsic public key used
-to verify authentication token validity
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyResponse"></a>
-
-### GetOberonKeyResponse
-Response to `GetOberonKeyRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64-url encoded string |
-
-
-
-
-
-
-<a name="services-provider-v1-IndyOptions"></a>
-
-### IndyOptions
-Options for creation of DID on the SOV network
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| network | [IndyOptions.IndyNetwork](/reference/proto#services-provider-v1-IndyOptions-IndyNetwork) | SOV network on which DID should be published |
-
-
-
-
-
-
-<a name="services-provider-v1-IonOptions"></a>
-
-### IonOptions
-Options for creation of DID on the ION network
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| network | [IonOptions.IonNetwork](/reference/proto#services-provider-v1-IonOptions-IonNetwork) | ION network on which DID should be published |
-
-
-
-
-
-
-<a name="services-provider-v1-RefreshDomainVerificationStatusRequest"></a>
-
-### RefreshDomainVerificationStatusRequest
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-
-
-
-
-<a name="services-provider-v1-RefreshDomainVerificationStatusResponse"></a>
-
-### RefreshDomainVerificationStatusResponse
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| domain | [string](/reference/proto#string) | Domain URL verified |
-| domain_verified | [bool](/reference/proto#bool) | Specifies if the above `domain` was successfully verified |
-
-
-
-
-
-
-<a name="services-provider-v1-RetrieveDomainVerificationRecordRequest"></a>
-
-### RetrieveDomainVerificationRecordRequest
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-
-
-
-
-<a name="services-provider-v1-RetrieveDomainVerificationRecordResponse"></a>
-
-### RetrieveDomainVerificationRecordResponse
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| verification_record_name | [string](/reference/proto#string) | TXT record name to use for domain verification |
-| verification_record_value | [string](/reference/proto#string) | TXT code for domain verification |
-
-
-
-
-
-
-<a name="services-provider-v1-SearchWalletConfigurationResponse"></a>
-
-### SearchWalletConfigurationResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| results | [WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] | Results matching the search query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
-
-
-
-
-
-
-<a name="services-provider-v1-SearchWalletConfigurationsRequest"></a>
-
-### SearchWalletConfigurationsRequest
-Search for issuers/holders/verifiers
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-provider-v1-UpgradeDidRequest"></a>
-
-### UpgradeDidRequest
-Request to upgrade a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to upgrade. Mutually exclusive with `email` and `walletId`. |
-| method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
-| ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
-| indy_options | [IndyOptions](/reference/proto#services-provider-v1-IndyOptions) | Configuration for creation of DID on INDY network |
-
-
-
-
-
-
-<a name="services-provider-v1-UpgradeDidResponse"></a>
-
-### UpgradeDidResponse
-Response to `UpgradeDIDRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did | [string](/reference/proto#string) | New DID of wallet |
-
-
-
-
-
-
-<a name="services-provider-v1-WalletConfiguration"></a>
-
-### WalletConfiguration
-Strongly typed information about wallet configurations
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Name/description of the wallet |
-| email | [string](/reference/proto#string) | **Deprecated.** Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in `external_identities`, if any. |
-| sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
-| wallet_id | [string](/reference/proto#string) |  |
-| public_did | [string](/reference/proto#string) | The DID of the wallet |
-| config_type | [string](/reference/proto#string) |  |
-| auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
-| external_identity_ids | [string](/reference/proto#string)[] | **Deprecated.** List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use `external_identities` instead. |
-| ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
-| description | [string](/reference/proto#string) |  |
-| external_identities | [WalletExternalIdentity](/reference/proto#services-provider-v1-WalletExternalIdentity)[] | List of external identities associated with this wallet. |
-
-
-
-
-
-
-<a name="services-provider-v1-WalletExternalIdentity"></a>
-
-### WalletExternalIdentity
-An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| provider | [IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of this identity (whether this identity is an email address, phone number, etc.) |
-| id | [string](/reference/proto#string) | The actual email address/phone number/etc. for this identity |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-provider-v1-IdentityProvider"></a>
-
-### IdentityProvider
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| Unknown | 0 | Identity provider is unknown |
-| Email | 1 | Identity provider is email |
-| Phone | 2 | Identity provider is phone |
-
-
-
-<a name="services-provider-v1-IndyOptions-IndyNetwork"></a>
-
-### IndyOptions.IndyNetwork
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| Danube | 0 |  |
-| SovrinBuilder | 1 |  |
-| SovrinStaging | 2 |  |
-| Sovrin | 3 |  |
-| IdUnionTest | 4 |  |
-| IdUnion | 5 |  |
-| IndicioTest | 6 |  |
-| IndicioDemo | 7 |  |
-| Indicio | 8 |  |
-
-
-
-<a name="services-provider-v1-IonOptions-IonNetwork"></a>
-
-### IonOptions.IonNetwork
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| TestNet | 0 |  |
-| MainNet | 1 |  |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_trust-registry_v1_trust-registry-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/trust-registry/v1/trust-registry.proto
-
-
-
-<a name="services-trustregistry-v1-TrustRegistry"></a>
-
-### Service - TrustRegistry
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| AddFramework | [AddFrameworkRequest](/reference/proto#services-trustregistry-v1-AddFrameworkRequest) | [AddFrameworkResponse](/reference/proto#services-trustregistry-v1-AddFrameworkResponse) | Add a governance framework to the ecosystem |
-| RemoveFramework | [RemoveFrameworkRequest](/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest) | [RemoveFrameworkResponse](/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse) | Remove a governance framework from the ecosystem |
-| SearchRegistry | [SearchRegistryRequest](/reference/proto#services-trustregistry-v1-SearchRegistryRequest) | [SearchRegistryResponse](/reference/proto#services-trustregistry-v1-SearchRegistryResponse) | Search the ecosystem's governance frameworks |
-| RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
-| UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
-| GetMembershipStatus | [GetMembershipStatusRequest](/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest) | [GetMembershipStatusResponse](/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse) | Fetch the membership status of an issuer for a given credential schema in a trust registry |
-| ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
-
- <!-- end services -->
-
-
-<a name="services-trustregistry-v1-AddFrameworkRequest"></a>
-
-### AddFrameworkRequest
-Request to register a new ecosystem governance framework in the current ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework organization |
-| name | [string](/reference/proto#string) | Name of governance framework organization |
-| description | [string](/reference/proto#string) | Description of governance framework |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-AddFrameworkResponse"></a>
-
-### AddFrameworkResponse
-Response to `AddFrameworkRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | Unique framework identifier |
-| governing_authority | [string](/reference/proto#string) | DID URI of Trinsic account which created the governance framework |
-| trust_registry | [string](/reference/proto#string) | URN of trust registry for governance framework |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-AuthorizedMember"></a>
-
-### AuthorizedMember
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did | [string](/reference/proto#string) |  |
-| authorized_member_schemas | [AuthorizedMemberSchema](/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema)[] |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-AuthorizedMemberSchema"></a>
-
-### AuthorizedMemberSchema
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| schema_uri | [string](/reference/proto#string) |  |
-| status | [string](/reference/proto#string) |  |
-| status_details | [string](/reference/proto#string) |  |
-| valid_from | [uint64](/reference/proto#uint64) |  |
-| valid_until | [uint64](/reference/proto#uint64) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GetMembershipStatusRequest"></a>
-
-### GetMembershipStatusRequest
-Request to fetch membership status in governance framework for a specific credential schema.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
-| did_uri | [string](/reference/proto#string) | DID URI of member |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with membership |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GetMembershipStatusResponse"></a>
-
-### GetMembershipStatusResponse
-Response to `GetMembershipStatusRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) | Status of member for given credential schema |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GovernanceFramework"></a>
-
-### GovernanceFramework
-Ecosystem Governance Framework
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework organization |
-| trust_registry_uri | [string](/reference/proto#string) | URI of trust registry associated with governance framework |
-| description | [string](/reference/proto#string) | Description of governance framework |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a>
-
-### ListAuthorizedMembersRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
-| schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `SearchRegistryResponse` |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a>
-
-### ListAuthorizedMembersResponse
-Response to `ListAuthorizedMembersRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| authorized_members | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember)[] | JSON string containing array of resultant objects |
-| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListAuthorizedMembersRequest` |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterMemberRequest"></a>
-
-### RegisterMemberRequest
-Request to register a member as a valid issuer of a specific credential schema.
-Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to register |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to register |
-| email | [string](/reference/proto#string) | Email address of member to register. Must be associated with an existing Trinsic account. |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema to register member as authorized issuer of |
-| valid_from_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. |
-| valid_until_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. |
-| framework_id | [string](/reference/proto#string) | ID of the governance framework that member is being added to |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterMemberResponse"></a>
-
-### RegisterMemberResponse
-Response to `RegisterMemberRequest`
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RemoveFrameworkRequest"></a>
-
-### RemoveFrameworkRequest
-Request to remove a governance framework from the current ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of governance framework to remove |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RemoveFrameworkResponse"></a>
-
-### RemoveFrameworkResponse
-Response to `RemoveFrameworkRequest`
-
-
-
-
-
-
-<a name="services-trustregistry-v1-SearchRegistryRequest"></a>
-
-### SearchRegistryRequest
-Request to search all governance frameworks within ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `SearchRegistryResponse` |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-SearchRegistryResponse"></a>
-
-### SearchRegistryResponse
-Response to `SearchRegistryRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| items_json | [string](/reference/proto#string) | JSON string containing array of resultant objects |
-| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRegistryRequest` |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterMemberRequest"></a>
-
-### UnregisterMemberRequest
-Request to unregister a member as a valid issuer of a specific credential schema.
-Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to unregister |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to unregister |
-| email | [string](/reference/proto#string) | Email address of member to unregister. Must be associated with an existing Trinsic account. |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema to unregister member as authorized issuer of |
-| framework_id | [string](/reference/proto#string) | ID of the governance framework that member is being removed from |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterMemberResponse"></a>
-
-### UnregisterMemberResponse
-Response to `UnregisterMemberRequest`
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-trustregistry-v1-RegistrationStatus"></a>
-
-### RegistrationStatus
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| CURRENT | 0 | Member is currently authorized, as of the time of the query |
-| EXPIRED | 1 | Member's authorization has expired |
-| TERMINATED | 2 | Member has voluntarily ceased Issuer role under the specific EGF |
-| REVOKED | 3 | Member authority under specific EGF was terminated by the governing authority |
-| NOT_FOUND | 10 | Member is not associated with given credential schema in the EGF |
-
-
- <!-- end enums -->
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
 
  <!-- end HasExtensions -->
 
@@ -2661,44 +1283,507 @@ How to display a URI value when rendering a credential.
 
 
 
-<a name="services_options_field-options-proto"></a>
+<a name="services_provider_v1_provider-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/options/field-options.proto
+## services/provider/v1/provider.proto
 
+
+
+<a name="services-provider-v1-Provider"></a>
+
+### Service - Provider
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
+| GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
+| UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
+| SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
 
  <!-- end services -->
 
 
-<a name="services-options-AnnotationOption"></a>
+<a name="services-provider-v1-CreateEcosystemRequest"></a>
 
-### AnnotationOption
+### CreateEcosystemRequest
+Request to create an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
+| description | [string](/reference/proto#string) | Ecosystem description |
+| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
+| domain | [string](/reference/proto#string) | New domain URL |
+
+
+
+
+
+
+<a name="services-provider-v1-CreateEcosystemResponse"></a>
+
+### CreateEcosystemResponse
+Response to `CreateEcosystemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Details of the created ecosystem |
+| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
+| confirmation_method | [services.account.v1.ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. |
+
+
+
+
+
+
+<a name="services-provider-v1-Ecosystem"></a>
+
+### Ecosystem
+Details of an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | URN of the ecosystem |
+| name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
+| description | [string](/reference/proto#string) | Ecosystem description |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoRequest"></a>
+
+### EcosystemInfoRequest
+Request to fetch information about an ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoResponse"></a>
+
+### EcosystemInfoResponse
+Response to `InfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to current ecosystem in the account token |
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyRequest"></a>
+
+### GetOberonKeyRequest
+Request to fetch the Trinsic public key used
+to verify authentication token validity
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyResponse"></a>
+
+### GetOberonKeyResponse
+Response to `GetOberonKeyRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64-url encoded string |
+
+
+
+
+
+
+<a name="services-provider-v1-IndyOptions"></a>
+
+### IndyOptions
+Options for creation of DID on the SOV network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IndyOptions.IndyNetwork](/reference/proto#services-provider-v1-IndyOptions-IndyNetwork) | SOV network on which DID should be published |
+
+
+
+
+
+
+<a name="services-provider-v1-IonOptions"></a>
+
+### IonOptions
+Options for creation of DID on the ION network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IonOptions.IonNetwork](/reference/proto#services-provider-v1-IonOptions-IonNetwork) | ION network on which DID should be published |
+
+
+
+
+
+
+<a name="services-provider-v1-RefreshDomainVerificationStatusRequest"></a>
+
+### RefreshDomainVerificationStatusRequest
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+
+
+
+
+<a name="services-provider-v1-RefreshDomainVerificationStatusResponse"></a>
+
+### RefreshDomainVerificationStatusResponse
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| domain | [string](/reference/proto#string) | Domain URL verified |
+| domain_verified | [bool](/reference/proto#bool) | Specifies if the above `domain` was successfully verified |
+
+
+
+
+
+
+<a name="services-provider-v1-RetrieveDomainVerificationRecordRequest"></a>
+
+### RetrieveDomainVerificationRecordRequest
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+
+
+
+
+<a name="services-provider-v1-RetrieveDomainVerificationRecordResponse"></a>
+
+### RetrieveDomainVerificationRecordResponse
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| verification_record_name | [string](/reference/proto#string) | TXT record name to use for domain verification |
+| verification_record_value | [string](/reference/proto#string) | TXT code for domain verification |
+
+
+
+
+
+
+<a name="services-provider-v1-SearchWalletConfigurationResponse"></a>
+
+### SearchWalletConfigurationResponse
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| active | [bool](/reference/proto#bool) | Is this annotation active |
-| message | [string](/reference/proto#string) | Custom annotation message to provide |
+| results | [WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] | Results matching the search query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
 
 
 
 
 
 
-<a name="services-options-SdkTemplateOption"></a>
+<a name="services-provider-v1-SearchWalletConfigurationsRequest"></a>
 
-### SdkTemplateOption
+### SearchWalletConfigurationsRequest
+Search for issuers/holders/verifiers
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-provider-v1-UpgradeDidRequest"></a>
+
+### UpgradeDidRequest
+Request to upgrade a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to upgrade. Mutually exclusive with `email` and `walletId`. |
+| method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
+| ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
+| indy_options | [IndyOptions](/reference/proto#services-provider-v1-IndyOptions) | Configuration for creation of DID on INDY network |
+
+
+
+
+
+
+<a name="services-provider-v1-UpgradeDidResponse"></a>
+
+### UpgradeDidResponse
+Response to `UpgradeDIDRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did | [string](/reference/proto#string) | New DID of wallet |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletConfiguration"></a>
+
+### WalletConfiguration
+Strongly typed information about wallet configurations
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Name/description of the wallet |
+| email | [string](/reference/proto#string) | **Deprecated.** Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in `external_identities`, if any. |
+| sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
+| wallet_id | [string](/reference/proto#string) |  |
+| public_did | [string](/reference/proto#string) | The DID of the wallet |
+| config_type | [string](/reference/proto#string) |  |
+| auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
+| external_identity_ids | [string](/reference/proto#string)[] | **Deprecated.** List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use `external_identities` instead. |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
+| description | [string](/reference/proto#string) |  |
+| external_identities | [WalletExternalIdentity](/reference/proto#services-provider-v1-WalletExternalIdentity)[] | List of external identities associated with this wallet. |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletExternalIdentity"></a>
+
+### WalletExternalIdentity
+An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| provider | [IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of this identity (whether this identity is an email address, phone number, etc.) |
+| id | [string](/reference/proto#string) | The actual email address/phone number/etc. for this identity |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-provider-v1-IdentityProvider"></a>
+
+### IdentityProvider
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Unknown | 0 | Identity provider is unknown |
+| Email | 1 | Identity provider is email |
+| Phone | 2 | Identity provider is phone |
+
+
+
+<a name="services-provider-v1-IndyOptions-IndyNetwork"></a>
+
+### IndyOptions.IndyNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Danube | 0 |  |
+| SovrinBuilder | 1 |  |
+| SovrinStaging | 2 |  |
+| Sovrin | 3 |  |
+| IdUnionTest | 4 |  |
+| IdUnion | 5 |  |
+| IndicioTest | 6 |  |
+| IndicioDemo | 7 |  |
+| Indicio | 8 |  |
+
+
+
+<a name="services-provider-v1-IonOptions-IonNetwork"></a>
+
+### IonOptions.IonNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TestNet | 0 |  |
+| MainNet | 1 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_provider_v1_access-management-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/provider/v1/access-management.proto
+
+
+
+<a name="services-provider-v1-AccessManagement"></a>
+
+### Service - AccessManagement
+Access Management service provides methods to manage access to ecosystem resources
+such by assigning roles and permissions to wallet accounts
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
+| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
+| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
+| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
+
+ <!-- end services -->
+
+
+<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
+
+### AddRoleAssignmentRequest
+Role management
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to assign |
+| email | [string](/reference/proto#string) | Email address of account to assign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to assign role. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
+
+### AddRoleAssignmentResponse
+
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesRequest"></a>
+
+### ListAvailableRolesRequest
+Request to fetch the available roles in the current ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesResponse"></a>
+
+### ListAvailableRolesResponse
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
-| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
-| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
-| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
-| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
+
+### ListRoleAssignmentsRequest
+Request to fetch the list of roles assigned to the current account
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to list roles. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to list roles. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to list roles. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
+
+### ListRoleAssignmentsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
+
+### RemoveRoleAssignmentRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to unassign |
+| email | [string](/reference/proto#string) | Email address of account to unassign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to unassign role. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
+
+### RemoveRoleAssignmentResponse
+
 
 
 
@@ -2708,48 +1793,997 @@ How to display a URI value when rendering a credential.
 
  <!-- end enums -->
 
-
-<a name="services_options_field-options-proto-extensions"></a>
-
-### File-level Extensions
-| Extension | Type | Base | Number | Description |
-| --------- | ---- | ---- | ------ | ----------- |
-| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
-| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
-
  <!-- end HasExtensions -->
 
 
 
-<a name="sdk_options_v1_options-proto"></a>
+<a name="services_universal-wallet_v1_universal-wallet-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## sdk/options/v1/options.proto
+## services/universal-wallet/v1/universal-wallet.proto
 
+
+
+<a name="services-universalwallet-v1-UniversalWallet"></a>
+
+### Service - UniversalWallet
+Service for managing wallets
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetItem | [GetItemRequest](/reference/proto#services-universalwallet-v1-GetItemRequest) | [GetItemResponse](/reference/proto#services-universalwallet-v1-GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
+| Search | [SearchRequest](/reference/proto#services-universalwallet-v1-SearchRequest) | [SearchResponse](/reference/proto#services-universalwallet-v1-SearchResponse) | Search the wallet using a SQL syntax |
+| InsertItem | [InsertItemRequest](/reference/proto#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](/reference/proto#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
+| UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
+| DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
+| DeleteWallet | [DeleteWalletRequest](/reference/proto#services-universalwallet-v1-DeleteWalletRequest) | [DeleteWalletResponse](/reference/proto#services-universalwallet-v1-DeleteWalletResponse) | Delete a wallet and its credentials |
+| CreateWallet | [CreateWalletRequest](/reference/proto#services-universalwallet-v1-CreateWalletRequest) | [CreateWalletResponse](/reference/proto#services-universalwallet-v1-CreateWalletResponse) | Create a new wallet and generate an auth token for access |
+| GetWalletInfo | [GetWalletInfoRequest](/reference/proto#services-universalwallet-v1-GetWalletInfoRequest) | [GetWalletInfoResponse](/reference/proto#services-universalwallet-v1-GetWalletInfoResponse) | Retrieve wallet details and configuration |
+| GetMyInfo | [GetMyInfoRequest](/reference/proto#services-universalwallet-v1-GetMyInfoRequest) | [GetMyInfoResponse](/reference/proto#services-universalwallet-v1-GetMyInfoResponse) | Retrieve wallet details and configuration about the currently authenticated wallet |
+| GenerateAuthToken | [GenerateAuthTokenRequest](/reference/proto#services-universalwallet-v1-GenerateAuthTokenRequest) | [GenerateAuthTokenResponse](/reference/proto#services-universalwallet-v1-GenerateAuthTokenResponse) | Generate new token for a given wallet and add it to the collection of known auth tokens. This endpoint requires authentication and will return a new token ID and auth token. Use this endpoint if you want to authorize another device, without having to share your existing auth token. |
+| RevokeAuthToken | [RevokeAuthTokenRequest](/reference/proto#services-universalwallet-v1-RevokeAuthTokenRequest) | [RevokeAuthTokenResponse](/reference/proto#services-universalwallet-v1-RevokeAuthTokenResponse) | Revokes a previously issued auth token and updates the collection of known auth tokens. This endpoint requires authentication. |
+| AddExternalIdentityInit | [AddExternalIdentityInitRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitRequest) | [AddExternalIdentityInitResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityInitResponse) | Add new external identity to the current wallet, such as email, sms, ethereum address, etc. This identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc. |
+| AddExternalIdentityConfirm | [AddExternalIdentityConfirmRequest](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmRequest) | [AddExternalIdentityConfirmResponse](/reference/proto#services-universalwallet-v1-AddExternalIdentityConfirmResponse) | Confirm identity added to the current wallet using `AddExternalIdentityInit` |
+| RemoveExternalIdentity | [RemoveExternalIdentityRequest](/reference/proto#services-universalwallet-v1-RemoveExternalIdentityRequest) | [RemoveExternalIdentityResponse](/reference/proto#services-universalwallet-v1-RemoveExternalIdentityResponse) | Remove an external identity from the current wallet |
+| AuthenticateInit | [AuthenticateInitRequest](/reference/proto#services-universalwallet-v1-AuthenticateInitRequest) | [AuthenticateInitResponse](/reference/proto#services-universalwallet-v1-AuthenticateInitResponse) | Sign-in to an already existing wallet, using an identity added that was previously registered This endpoint does not require authentication, and will return a challenge to be signed or verified |
+| AuthenticateConfirm | [AuthenticateConfirmRequest](/reference/proto#services-universalwallet-v1-AuthenticateConfirmRequest) | [AuthenticateConfirmResponse](/reference/proto#services-universalwallet-v1-AuthenticateConfirmResponse) | Confirm sign-in to an already existing wallet and return authentication token |
+| AuthenticateResendCode | [AuthenticateResendCodeRequest](/reference/proto#services-universalwallet-v1-AuthenticateResendCodeRequest) | [AuthenticateResendCodeResponse](/reference/proto#services-universalwallet-v1-AuthenticateResendCodeResponse) | Resend previous authentication code |
+| ListWallets | [ListWalletsRequest](/reference/proto#services-universalwallet-v1-ListWalletsRequest) | [ListWalletsResponse](/reference/proto#services-universalwallet-v1-ListWalletsResponse) | List all wallets in the ecosystem |
 
  <!-- end services -->
 
 
-<a name="sdk-options-v1-TrinsicOptions"></a>
+<a name="services-universalwallet-v1-AddExternalIdentityConfirmRequest"></a>
 
-### TrinsicOptions
-Configuration for Trinsic SDK Services
+### AddExternalIdentityConfirmRequest
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
-| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
-| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
-| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
+| challenge | [string](/reference/proto#string) | The challenge received from the `AddExternalIdentityInit` endpoint |
+| response | [string](/reference/proto#string) | The response to the challenge. If using Email or Phone, this is the OTP code sent to the user's email or phone |
 
-Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
+
+
+
+
+
+<a name="services-universalwallet-v1-AddExternalIdentityConfirmResponse"></a>
+
+### AddExternalIdentityConfirmResponse
+
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AddExternalIdentityInitRequest"></a>
+
+### AddExternalIdentityInitRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
+| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AddExternalIdentityInitResponse"></a>
+
+### AddExternalIdentityInitResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateConfirmRequest"></a>
+
+### AuthenticateConfirmRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | The challenge received from the `AcquireAuthTokenInit` endpoint |
+| response | [string](/reference/proto#string) | The response to the challenge. If using Email or Phone, this is the OTP code sent to the user's email or phone |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateConfirmResponse"></a>
+
+### AuthenticateConfirmResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| auth_token | [string](/reference/proto#string) | Auth token for the wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateInitRequest"></a>
+
+### AuthenticateInitRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | Identity to add to the wallet |
+| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | Identity provider |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem ID to which the wallet belongs |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateInitResponse"></a>
+
+### AuthenticateInitResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | The challenge received from the `AcquireAuthTokenInit` endpoint Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateResendCodeRequest"></a>
+
+### AuthenticateResendCodeRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [string](/reference/proto#string) | Challenge for the code you want resent. |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-AuthenticateResendCodeResponse"></a>
+
+### AuthenticateResendCodeResponse
+
+
+
+
+
+
+
+<a name="services-universalwallet-v1-CreateWalletRequest"></a>
+
+### CreateWalletRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem ID of the wallet to create |
+| description | [string](/reference/proto#string) | Wallet name or description. Use this field to add vendor specific information about this wallet, such as email, phone, internal ID, or anything you'd like to associate with this wallet. This field is searchable. |
+| identity | [CreateWalletRequest.ExternalIdentity](/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity) | Optional identity to add to the wallet (email or sms). Use this field when inviting participants into an ecosystem. If this field is set, an auth token will not be sent in the response. |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-CreateWalletRequest-ExternalIdentity"></a>
+
+### CreateWalletRequest.ExternalIdentity
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | The user identity to add to the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
+| provider | [services.provider.v1.IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of identity provider, like EMAIL or PHONE |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-CreateWalletResponse"></a>
+
+### CreateWalletResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| auth_token | [string](/reference/proto#string) | Auth token for the newly created wallet |
+| token_id | [string](/reference/proto#string) | Token ID of the newly generated token |
+| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteItemRequest"></a>
+
+### DeleteItemRequest
+Request to delete an item in a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item to delete |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteItemResponse"></a>
+
+### DeleteItemResponse
+Response to `DeleteItemRequest`
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteWalletRequest"></a>
+
+### DeleteWalletRequest
+Request to delete a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to delete. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to delete. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to delete. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteWalletResponse"></a>
+
+### DeleteWalletResponse
+Response to `DeleteWalletRequest`. Empty payload.
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GenerateAuthTokenRequest"></a>
+
+### GenerateAuthTokenRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet_id | [string](/reference/proto#string) |  |
+| token_description | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GenerateAuthTokenResponse"></a>
+
+### GenerateAuthTokenResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token_id | [string](/reference/proto#string) |  |
+| auth_token | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetItemRequest"></a>
+
+### GetItemRequest
+Request to fetch an item from wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item in wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetItemResponse"></a>
+
+### GetItemResponse
+Response to `GetItemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](/reference/proto#string) | Item data as a JSON string |
+| item_type | [string](/reference/proto#string) | Type of item specified when item was inserted into wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetMyInfoRequest"></a>
+
+### GetMyInfoRequest
+Request to retrieve wallet information about the currently authenticated wallet
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetMyInfoResponse"></a>
+
+### GetMyInfoResponse
+Response to `GetMyInfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetWalletInfoRequest"></a>
+
+### GetWalletInfoRequest
+Request to retrieve wallet information about a given wallet identified by its wallet ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the wallet to retrieve |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetWalletInfoResponse"></a>
+
+### GetWalletInfoResponse
+Response to `GetWalletInfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration) | Wallet configuration |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-InsertItemRequest"></a>
+
+### InsertItemRequest
+Request to insert a JSON document into a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](/reference/proto#string) | Document to insert; must be stringified JSON |
+| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-InsertItemResponse"></a>
+
+### InsertItemResponse
+Response to `InsertItemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item inserted into wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-ListWalletsRequest"></a>
+
+### ListWalletsRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| filter | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-ListWalletsResponse"></a>
+
+### ListWalletsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallets | [services.provider.v1.WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] |  |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RemoveExternalIdentityRequest"></a>
+
+### RemoveExternalIdentityRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [string](/reference/proto#string) | The user identity to remove from the wallet This can be an email address or phone number (formatted as +[country code][phone number]) |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RemoveExternalIdentityResponse"></a>
+
+### RemoveExternalIdentityResponse
+
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RevokeAuthTokenRequest"></a>
+
+### RevokeAuthTokenRequest
+Request to revoke a previously issued auth token
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the wallet to from which to revoke the token |
+| token_id | [string](/reference/proto#string) | Token ID of the token to revoke |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-RevokeAuthTokenResponse"></a>
+
+### RevokeAuthTokenResponse
+
+
+
+
+
+
+
+<a name="services-universalwallet-v1-SearchRequest"></a>
+
+### SearchRequest
+Request to search items in wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL Query to execute against items in wallet |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-SearchResponse"></a>
+
+### SearchResponse
+Response to `SearchRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items | [string](/reference/proto#string)[] | Array of query results, as JSON strings |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-UpdateItemRequest"></a>
+
+### UpdateItemRequest
+Request to update item in wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item in wallet |
+| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-UpdateItemResponse"></a>
+
+### UpdateItemResponse
+Response to `UpdateItemRequest`
 
 
 
 
 
  <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_trust-registry_v1_trust-registry-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/trust-registry/v1/trust-registry.proto
+
+
+
+<a name="services-trustregistry-v1-TrustRegistry"></a>
+
+### Service - TrustRegistry
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| AddFramework | [AddFrameworkRequest](/reference/proto#services-trustregistry-v1-AddFrameworkRequest) | [AddFrameworkResponse](/reference/proto#services-trustregistry-v1-AddFrameworkResponse) | Add a governance framework to the ecosystem |
+| RemoveFramework | [RemoveFrameworkRequest](/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest) | [RemoveFrameworkResponse](/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse) | Remove a governance framework from the ecosystem |
+| SearchRegistry | [SearchRegistryRequest](/reference/proto#services-trustregistry-v1-SearchRegistryRequest) | [SearchRegistryResponse](/reference/proto#services-trustregistry-v1-SearchRegistryResponse) | Search the ecosystem's governance frameworks |
+| RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
+| UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
+| GetMemberAuthorizationStatus | [GetMemberAuthorizationStatusRequest](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusRequest) | [GetMemberAuthorizationStatusResponse](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusResponse) | Fetch the status of a member for a given credential schema in a trust registry |
+| ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
+| GetMember | [GetMemberRequest](/reference/proto#services-trustregistry-v1-GetMemberRequest) | [GetMemberResponse](/reference/proto#services-trustregistry-v1-GetMemberResponse) | Get member for a given did in a trust registry |
+
+ <!-- end services -->
+
+
+<a name="services-trustregistry-v1-AddFrameworkRequest"></a>
+
+### AddFrameworkRequest
+Request to register a new ecosystem governance framework in the current ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework organization |
+| name | [string](/reference/proto#string) | Name of governance framework organization |
+| description | [string](/reference/proto#string) | Description of governance framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-AddFrameworkResponse"></a>
+
+### AddFrameworkResponse
+Response to `AddFrameworkRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | Unique framework identifier |
+| governing_authority | [string](/reference/proto#string) | DID URI of Trinsic account which created the governance framework |
+| trust_registry | [string](/reference/proto#string) | URN of trust registry for governance framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-AuthorizedMember"></a>
+
+### AuthorizedMember
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did | [string](/reference/proto#string) |  |
+| authorized_member_schemas | [AuthorizedMemberSchema](/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema)[] |  |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-AuthorizedMemberSchema"></a>
+
+### AuthorizedMemberSchema
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schema_uri | [string](/reference/proto#string) |  |
+| status | [string](/reference/proto#string) |  |
+| status_details | [string](/reference/proto#string) |  |
+| valid_from | [uint64](/reference/proto#uint64) |  |
+| valid_until | [uint64](/reference/proto#uint64) |  |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
+
+### GetMemberAuthorizationStatusRequest
+Request to fetch member status in governance framework for a specific credential schema.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
+| did_uri | [string](/reference/proto#string) | DID URI of member |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with member |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusResponse"></a>
+
+### GetMemberAuthorizationStatusResponse
+Response to `GetMemberAuthorizationStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) | Status of member for given credential schema |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberRequest"></a>
+
+### GetMemberRequest
+Request to get a member of the governance framework
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to get |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to get |
+| email | [string](/reference/proto#string) | Email address of member to get. Must be associated with an existing Trinsic account. |
+| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberResponse"></a>
+
+### GetMemberResponse
+Response to `GetMemberAuthorizationStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_member | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember) | Member for given did in given framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GovernanceFramework"></a>
+
+### GovernanceFramework
+Ecosystem Governance Framework
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework organization |
+| trust_registry_uri | [string](/reference/proto#string) | URI of trust registry associated with governance framework |
+| description | [string](/reference/proto#string) | Description of governance framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a>
+
+### ListAuthorizedMembersRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
+| schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `SearchRegistryResponse` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a>
+
+### ListAuthorizedMembersResponse
+Response to `ListAuthorizedMembersRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_members | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember)[] | JSON string containing array of resultant objects |
+| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListAuthorizedMembersRequest` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RegisterMemberRequest"></a>
+
+### RegisterMemberRequest
+Request to register a member as a valid issuer of a specific credential schema.
+Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to register |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to register |
+| email | [string](/reference/proto#string) | Email address of member to register. Must be associated with an existing Trinsic account. |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema to register member as authorized issuer of |
+| valid_from_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. |
+| valid_until_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. |
+| framework_id | [string](/reference/proto#string) | ID of the governance framework that member is being added to |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RegisterMemberResponse"></a>
+
+### RegisterMemberResponse
+Response to `RegisterMemberRequest`
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RemoveFrameworkRequest"></a>
+
+### RemoveFrameworkRequest
+Request to remove a governance framework from the current ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of governance framework to remove |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RemoveFrameworkResponse"></a>
+
+### RemoveFrameworkResponse
+Response to `RemoveFrameworkRequest`
+
+
+
+
+
+
+<a name="services-trustregistry-v1-SearchRegistryRequest"></a>
+
+### SearchRegistryRequest
+Request to search all governance frameworks within ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `SearchRegistryResponse` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-SearchRegistryResponse"></a>
+
+### SearchRegistryResponse
+Response to `SearchRegistryRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items_json | [string](/reference/proto#string) | JSON string containing array of resultant objects |
+| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRegistryRequest` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-UnregisterMemberRequest"></a>
+
+### UnregisterMemberRequest
+Request to unregister a member as a valid issuer of a specific credential schema.
+Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to unregister |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to unregister |
+| email | [string](/reference/proto#string) | Email address of member to unregister. Must be associated with an existing Trinsic account. |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema to unregister member as authorized issuer of |
+| framework_id | [string](/reference/proto#string) | ID of the governance framework that member is being removed from |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-UnregisterMemberResponse"></a>
+
+### UnregisterMemberResponse
+Response to `UnregisterMemberRequest`
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-trustregistry-v1-RegistrationStatus"></a>
+
+### RegistrationStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CURRENT | 0 | Member is currently authorized, as of the time of the query |
+| EXPIRED | 1 | Member's authorization has expired |
+| TERMINATED | 2 | Member has voluntarily ceased Issuer role under the specific EGF |
+| REVOKED | 3 | Member authority under specific EGF was terminated by the governing authority |
+| NOT_FOUND | 10 | Member is not associated with given credential schema in the EGF |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_common_v1_common-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/common/v1/common.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-common-v1-Nonce"></a>
+
+### Nonce
+Nonce used to generate an oberon proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
+| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-common-v1-ResponseStatus"></a>
+
+### ResponseStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SUCCESS | 0 |  |
+| WALLET_ACCESS_DENIED | 10 |  |
+| WALLET_EXISTS | 11 |  |
+| ITEM_NOT_FOUND | 20 |  |
+| SERIALIZATION_ERROR | 200 |  |
+| UNKNOWN_ERROR | 100 |  |
+
+
+
+<a name="services-common-v1-SupportedDidMethod"></a>
+
+### SupportedDidMethod
+Enum of all supported DID Methods
+https://docs.godiddy.com/en/supported-methods
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| KEY | 0 | The did:key method -- all wallets use this by default |
+| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
+| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
+
 
  <!-- end enums -->
 

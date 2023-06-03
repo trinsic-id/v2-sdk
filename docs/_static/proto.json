@@ -1470,41 +1470,83 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.AuthorizedMemberSchema"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest": {
       "type": "message",
       "collection": "messages",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.did_uri": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
+      "parent": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.framework_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
+      "parent": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.GetMembershipStatusRequest"
+      "parent": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest"
     },
-    "services.trustregistry.v1.GetMembershipStatusResponse": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusResponse": {
       "type": "message",
       "collection": "messages",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
-    "services.trustregistry.v1.GetMembershipStatusResponse.status": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusResponse.status": {
       "type": "field",
       "collection": "fields",
       "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.GetMembershipStatusResponse"
+      "parent": "services.trustregistry.v1.GetMemberAuthorizationStatusResponse"
+    },
+    "services.trustregistry.v1.GetMemberRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.GetMemberRequest.did_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.GetMemberRequest"
+    },
+    "services.trustregistry.v1.GetMemberRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.GetMemberRequest"
+    },
+    "services.trustregistry.v1.GetMemberRequest.framework_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.GetMemberRequest"
+    },
+    "services.trustregistry.v1.GetMemberRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.GetMemberRequest"
+    },
+    "services.trustregistry.v1.GetMemberResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.GetMemberResponse.authorized_member": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": "services.trustregistry.v1.GetMemberResponse"
     },
     "services.trustregistry.v1.GovernanceFramework": {
       "type": "message",
@@ -1740,7 +1782,13 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
-    "services.trustregistry.v1.TrustRegistry.GetMembershipStatus": {
+    "services.trustregistry.v1.TrustRegistry.GetMember": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/trust-registry/v1/trust-registry.proto",
+      "parent": ""
+    },
+    "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus": {
       "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -3798,8 +3846,9 @@
         "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
-        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
-        "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers"
+        "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus",
+        "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers",
+        "services.trustregistry.v1.TrustRegistry.GetMember"
       ],
       "messages": [
         "services.trustregistry.v1.AddFrameworkRequest",
@@ -3813,12 +3862,14 @@
         "services.trustregistry.v1.RegisterMemberResponse",
         "services.trustregistry.v1.UnregisterMemberRequest",
         "services.trustregistry.v1.UnregisterMemberResponse",
-        "services.trustregistry.v1.GetMembershipStatusRequest",
-        "services.trustregistry.v1.GetMembershipStatusResponse",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusResponse",
         "services.trustregistry.v1.ListAuthorizedMembersRequest",
         "services.trustregistry.v1.ListAuthorizedMembersResponse",
         "services.trustregistry.v1.AuthorizedMember",
-        "services.trustregistry.v1.AuthorizedMemberSchema"
+        "services.trustregistry.v1.AuthorizedMemberSchema",
+        "services.trustregistry.v1.GetMemberRequest",
+        "services.trustregistry.v1.GetMemberResponse"
       ],
       "fields": [
         "services.trustregistry.v1.AddFrameworkRequest.governance_framework_uri",
@@ -3848,10 +3899,10 @@
         "services.trustregistry.v1.UnregisterMemberRequest.email",
         "services.trustregistry.v1.UnregisterMemberRequest.schema_uri",
         "services.trustregistry.v1.UnregisterMemberRequest.framework_id",
-        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
-        "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri",
-        "services.trustregistry.v1.GetMembershipStatusResponse.status",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.framework_id",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusResponse.status",
         "services.trustregistry.v1.ListAuthorizedMembersRequest.framework_id",
         "services.trustregistry.v1.ListAuthorizedMembersRequest.schema_uri",
         "services.trustregistry.v1.ListAuthorizedMembersRequest.continuation_token",
@@ -3864,7 +3915,12 @@
         "services.trustregistry.v1.AuthorizedMemberSchema.status",
         "services.trustregistry.v1.AuthorizedMemberSchema.status_details",
         "services.trustregistry.v1.AuthorizedMemberSchema.valid_from",
-        "services.trustregistry.v1.AuthorizedMemberSchema.valid_until"
+        "services.trustregistry.v1.AuthorizedMemberSchema.valid_until",
+        "services.trustregistry.v1.GetMemberRequest.did_uri",
+        "services.trustregistry.v1.GetMemberRequest.wallet_id",
+        "services.trustregistry.v1.GetMemberRequest.email",
+        "services.trustregistry.v1.GetMemberRequest.framework_id",
+        "services.trustregistry.v1.GetMemberResponse.authorized_member"
       ],
       "enums": [
         "services.trustregistry.v1.RegistrationStatus"
@@ -4253,8 +4309,9 @@
         "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
-        "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
-        "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers"
+        "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus",
+        "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers",
+        "services.trustregistry.v1.TrustRegistry.GetMember"
       ]
     },
     "services.universalwallet.v1.UniversalWallet": {
@@ -4485,12 +4542,19 @@
       "output_type": "services.trustregistry.v1.AddFrameworkResponse",
       "description": "Add a governance framework to the ecosystem"
     },
-    "services.trustregistry.v1.TrustRegistry.GetMembershipStatus": {
-      "name": "GetMembershipStatus",
-      "full_name": "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
-      "input_type": "services.trustregistry.v1.GetMembershipStatusRequest",
-      "output_type": "services.trustregistry.v1.GetMembershipStatusResponse",
-      "description": "Fetch the membership status of an issuer for a given credential schema in a trust registry"
+    "services.trustregistry.v1.TrustRegistry.GetMember": {
+      "name": "GetMember",
+      "full_name": "services.trustregistry.v1.TrustRegistry.GetMember",
+      "input_type": "services.trustregistry.v1.GetMemberRequest",
+      "output_type": "services.trustregistry.v1.GetMemberResponse",
+      "description": "Get member for a given did in a trust registry"
+    },
+    "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus": {
+      "name": "GetMemberAuthorizationStatus",
+      "full_name": "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus",
+      "input_type": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
+      "output_type": "services.trustregistry.v1.GetMemberAuthorizationStatusResponse",
+      "description": "Fetch the status of a member for a given credential schema in a trust registry"
     },
     "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers": {
       "name": "ListAuthorizedMembers",
@@ -5410,24 +5474,47 @@
       "messages": [],
       "enums": []
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest": {
-      "name": "GetMembershipStatusRequest",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest",
-      "description": "Request to fetch membership status in governance framework for a specific credential schema.",
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest": {
+      "name": "GetMemberAuthorizationStatusRequest",
+      "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
+      "description": "Request to fetch member status in governance framework for a specific credential schema.",
       "fields": [
-        "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
-        "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
-        "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri"
+        "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.framework_id",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri",
+        "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri"
       ],
       "messages": [],
       "enums": []
     },
-    "services.trustregistry.v1.GetMembershipStatusResponse": {
-      "name": "GetMembershipStatusResponse",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusResponse",
-      "description": "Response to `GetMembershipStatusRequest`",
+    "services.trustregistry.v1.GetMemberAuthorizationStatusResponse": {
+      "name": "GetMemberAuthorizationStatusResponse",
+      "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusResponse",
+      "description": "Response to `GetMemberAuthorizationStatusRequest`",
       "fields": [
-        "services.trustregistry.v1.GetMembershipStatusResponse.status"
+        "services.trustregistry.v1.GetMemberAuthorizationStatusResponse.status"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.trustregistry.v1.GetMemberRequest": {
+      "name": "GetMemberRequest",
+      "full_name": "services.trustregistry.v1.GetMemberRequest",
+      "description": "Request to get a member of the governance framework",
+      "fields": [
+        "services.trustregistry.v1.GetMemberRequest.did_uri",
+        "services.trustregistry.v1.GetMemberRequest.wallet_id",
+        "services.trustregistry.v1.GetMemberRequest.email",
+        "services.trustregistry.v1.GetMemberRequest.framework_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.trustregistry.v1.GetMemberResponse": {
+      "name": "GetMemberResponse",
+      "full_name": "services.trustregistry.v1.GetMemberResponse",
+      "description": "Response to `GetMemberAuthorizationStatusRequest`",
+      "fields": [
+        "services.trustregistry.v1.GetMemberResponse.authorized_member"
       ],
       "messages": [],
       "enums": []
@@ -6811,7 +6898,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Token to fetch next set of resuts via `ListFilesRequest`"
+      "description": "Token to fetch next set of results via `ListFilesRequest`"
     },
     "services.filemanagement.v1.ListFilesResponse.files": {
       "name": "files",
@@ -7497,37 +7584,77 @@
       "full_type": "uint64",
       "description": ""
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.did_uri": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri": {
       "name": "did_uri",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
+      "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "DID URI of member"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.framework_id": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.framework_id": {
       "name": "framework_id",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.framework_id",
+      "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.framework_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "The ID of the ecosystem governance framework.\nThis ID may be found in the 'trustRegistry' field in the\nverifiable credential model"
     },
-    "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri": {
       "name": "schema_uri",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri",
+      "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "URI of credential schema associated with membership"
+      "description": "URI of credential schema associated with member"
     },
-    "services.trustregistry.v1.GetMembershipStatusResponse.status": {
+    "services.trustregistry.v1.GetMemberAuthorizationStatusResponse.status": {
       "name": "status",
-      "full_name": "services.trustregistry.v1.GetMembershipStatusResponse.status",
+      "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusResponse.status",
       "label": "LABEL_OPTIONAL",
       "type": "RegistrationStatus",
       "full_type": "services.trustregistry.v1.RegistrationStatus",
       "description": "Status of member for given credential schema"
+    },
+    "services.trustregistry.v1.GetMemberRequest.did_uri": {
+      "name": "did_uri",
+      "full_name": "services.trustregistry.v1.GetMemberRequest.did_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "DID URI of member to get"
+    },
+    "services.trustregistry.v1.GetMemberRequest.email": {
+      "name": "email",
+      "full_name": "services.trustregistry.v1.GetMemberRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Email address of member to get. Must be associated with an existing Trinsic account."
+    },
+    "services.trustregistry.v1.GetMemberRequest.framework_id": {
+      "name": "framework_id",
+      "full_name": "services.trustregistry.v1.GetMemberRequest.framework_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the ecosystem governance framework.\nThis ID may be found in the 'trustRegistry' field in the\nverifiable credential model"
+    },
+    "services.trustregistry.v1.GetMemberRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.trustregistry.v1.GetMemberRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Trinsic Wallet ID of member to get"
+    },
+    "services.trustregistry.v1.GetMemberResponse.authorized_member": {
+      "name": "authorized_member",
+      "full_name": "services.trustregistry.v1.GetMemberResponse.authorized_member",
+      "label": "LABEL_OPTIONAL",
+      "type": "AuthorizedMember",
+      "full_type": "services.trustregistry.v1.AuthorizedMember",
+      "description": "Member for given did in given framework"
     },
     "services.trustregistry.v1.GovernanceFramework.description": {
       "name": "description",

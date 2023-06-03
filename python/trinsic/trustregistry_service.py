@@ -78,12 +78,12 @@ class TrustRegistryService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def get_membership_status(
-        self, *, request: GetMembershipStatusRequest
-    ) -> GetMembershipStatusResponse:
-        """Fetch the membership status of an issuer for a given credential schema in a trust registry"""
+    async def get_member_authorization_status(
+        self, *, request: GetMemberAuthorizationStatusRequest
+    ) -> GetMemberAuthorizationStatusResponse:
+        """Fetch the status of a member for a given credential schema in a trust registry"""
 
-        return await self.client.get_membership_status(
+        return await self.client.get_member_authorization_status(
             request, metadata=self.build_metadata(request)
         )
 
@@ -93,6 +93,13 @@ class TrustRegistryService(ServiceBase):
         """Fetch the ecosystem's authorized issuers and the respective templates against which it can issue"""
 
         return await self.client.list_authorized_members(
+            request, metadata=self.build_metadata(request)
+        )
+
+    async def get_member(self, *, request: GetMemberRequest) -> GetMemberResponse:
+        """Get member for a given did in a trust registry"""
+
+        return await self.client.get_member(
             request, metadata=self.build_metadata(request)
         )
 

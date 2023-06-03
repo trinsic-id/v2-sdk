@@ -198,9 +198,9 @@ class UnregisterMemberResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class GetMembershipStatusRequest(betterproto.Message):
+class GetMemberAuthorizationStatusRequest(betterproto.Message):
     """
-    Request to fetch membership status in governance framework for a specific
+    Request to fetch member status in governance framework for a specific
     credential schema.
     """
 
@@ -214,12 +214,12 @@ class GetMembershipStatusRequest(betterproto.Message):
     """DID URI of member"""
 
     schema_uri: str = betterproto.string_field(4)
-    """URI of credential schema associated with membership"""
+    """URI of credential schema associated with member"""
 
 
 @dataclass(eq=False, repr=False)
-class GetMembershipStatusResponse(betterproto.Message):
-    """Response to `GetMembershipStatusRequest`"""
+class GetMemberAuthorizationStatusResponse(betterproto.Message):
+    """Response to `GetMemberAuthorizationStatusRequest`"""
 
     status: "RegistrationStatus" = betterproto.enum_field(1)
     """Status of member for given credential schema"""
@@ -277,6 +277,37 @@ class AuthorizedMemberSchema(betterproto.Message):
     status_details: str = betterproto.string_field(3)
     valid_from: int = betterproto.uint64_field(4)
     valid_until: int = betterproto.uint64_field(5)
+
+
+@dataclass(eq=False, repr=False)
+class GetMemberRequest(betterproto.Message):
+    """Request to get a member of the governance framework"""
+
+    did_uri: str = betterproto.string_field(1, group="member")
+    """DID URI of member to get"""
+
+    wallet_id: str = betterproto.string_field(3, group="member")
+    """Trinsic Wallet ID of member to get"""
+
+    email: str = betterproto.string_field(4, group="member")
+    """
+    Email address of member to get. Must be associated with an existing Trinsic
+    account.
+    """
+
+    framework_id: str = betterproto.string_field(5)
+    """
+    The ID of the ecosystem governance framework. This ID may be found in the
+    'trustRegistry' field in the verifiable credential model
+    """
+
+
+@dataclass(eq=False, repr=False)
+class GetMemberResponse(betterproto.Message):
+    """Response to `GetMemberAuthorizationStatusRequest`"""
+
+    authorized_member: "AuthorizedMember" = betterproto.message_field(1)
+    """Member for given did in given framework"""
 
 
 class TrustRegistryStub(betterproto.ServiceStub):
@@ -360,17 +391,17 @@ class TrustRegistryStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def get_membership_status(
+    async def get_member_authorization_status(
         self,
-        get_membership_status_request: "GetMembershipStatusRequest",
+        get_member_authorization_status_request: "GetMemberAuthorizationStatusRequest",
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["_MetadataLike"] = None,
-    ) -> "GetMembershipStatusResponse":
+    ) -> "GetMemberAuthorizationStatusResponse":
         return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus",
-            get_membership_status_request,
-            GetMembershipStatusResponse,
+            "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus",
+            get_member_authorization_status_request,
+            GetMemberAuthorizationStatusResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -387,6 +418,22 @@ class TrustRegistryStub(betterproto.ServiceStub):
             "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers",
             list_authorized_members_request,
             ListAuthorizedMembersResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def get_member(
+        self,
+        get_member_request: "GetMemberRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetMemberResponse":
+        return await self._unary_unary(
+            "/services.trustregistry.v1.TrustRegistry/GetMember",
+            get_member_request,
+            GetMemberResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -419,14 +466,20 @@ class TrustRegistryBase(ServiceBase):
     ) -> "UnregisterMemberResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def get_membership_status(
-        self, get_membership_status_request: "GetMembershipStatusRequest"
-    ) -> "GetMembershipStatusResponse":
+    async def get_member_authorization_status(
+        self,
+        get_member_authorization_status_request: "GetMemberAuthorizationStatusRequest",
+    ) -> "GetMemberAuthorizationStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def list_authorized_members(
         self, list_authorized_members_request: "ListAuthorizedMembersRequest"
     ) -> "ListAuthorizedMembersResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def get_member(
+        self, get_member_request: "GetMemberRequest"
+    ) -> "GetMemberResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_add_framework(self, stream: grpclib.server.Stream) -> None:
@@ -454,9 +507,11 @@ class TrustRegistryBase(ServiceBase):
         response = await self.unregister_member(request)
         await stream.send_message(response)
 
-    async def __rpc_get_membership_status(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_get_member_authorization_status(
+        self, stream: grpclib.server.Stream
+    ) -> None:
         request = await stream.recv_message()
-        response = await self.get_membership_status(request)
+        response = await self.get_member_authorization_status(request)
         await stream.send_message(response)
 
     async def __rpc_list_authorized_members(
@@ -464,6 +519,11 @@ class TrustRegistryBase(ServiceBase):
     ) -> None:
         request = await stream.recv_message()
         response = await self.list_authorized_members(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_member(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.get_member(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -498,16 +558,22 @@ class TrustRegistryBase(ServiceBase):
                 UnregisterMemberRequest,
                 UnregisterMemberResponse,
             ),
-            "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus": grpclib.const.Handler(
-                self.__rpc_get_membership_status,
+            "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus": grpclib.const.Handler(
+                self.__rpc_get_member_authorization_status,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                GetMembershipStatusRequest,
-                GetMembershipStatusResponse,
+                GetMemberAuthorizationStatusRequest,
+                GetMemberAuthorizationStatusResponse,
             ),
             "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers": grpclib.const.Handler(
                 self.__rpc_list_authorized_members,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 ListAuthorizedMembersRequest,
                 ListAuthorizedMembersResponse,
+            ),
+            "/services.trustregistry.v1.TrustRegistry/GetMember": grpclib.const.Handler(
+                self.__rpc_get_member,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetMemberRequest,
+                GetMemberResponse,
             ),
         }
