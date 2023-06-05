@@ -4,10 +4,7 @@ import 'package:uuid/uuid.dart';
 
 Future runTrustRegistryDemo() async {
   var trinsic = TrinsicService(trinsicConfig());
-  var newWallet = await trinsic
-      .wallet()
-      .createWallet(CreateWalletRequest(ecosystemId: "default"));
-  trinsic.serviceOptions.authToken = newWallet.authToken;
+  var ecosystem = await trinsic.provider().createEcosystem();
 
   var uuid = Uuid();
 

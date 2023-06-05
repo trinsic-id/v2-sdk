@@ -11,6 +11,7 @@ import {
     myEcosystemIdOrName,
     setTestTimeout,
 } from "./env";
+import {CreateEcosystemRequest} from "../lib";
 
 const options = getTestServerOptions();
 let trinsic: TrinsicService;
@@ -19,16 +20,13 @@ describe("TrustRegistryService Unit Tests", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
-        const response = await trinsic
-            .wallet()
-            .createWallet({ ecosystemId: myEcosystemIdOrName() });
-        trinsic.options.authToken = response.authToken;
+        await trinsic
+            .provider().createEcosystem(CreateEcosystemRequest.fromPartial({}));
     });
 
     it("Demo: Trust Registry", async () => {
         const didUri = "did:example:test";
         const schemaUri = "https://schema.org/Card";
-
 
         // registerMemberSample() {
         let response = await trinsic.trustRegistry().registerMember(
