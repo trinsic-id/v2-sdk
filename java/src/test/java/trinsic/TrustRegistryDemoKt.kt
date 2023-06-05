@@ -6,7 +6,6 @@ import trinsic.TrinsicUtilities
 import trinsic.services.TrinsicServiceKt
 import trinsic.services.provider.v1.CreateEcosystemRequest
 import trinsic.services.trustregistry.v1.*
-import trinsic.services.universalwallet.v1.CreateWalletRequest
 
 @Throws(IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun main() {

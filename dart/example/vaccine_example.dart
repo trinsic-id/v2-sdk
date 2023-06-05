@@ -44,7 +44,7 @@ Future runVaccineDemo() async {
       .createWallet(CreateWalletRequest(ecosystemId: ecosystemId));
   // }
 
-  trinsic.serviceOptions.authToken = clinic.authToken; 
+  trinsic.serviceOptions.authToken = clinic.authToken;
 
   // storeAndRecallProfile() {
   // Store profile for later use
