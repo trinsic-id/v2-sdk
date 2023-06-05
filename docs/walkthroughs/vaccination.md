@@ -567,37 +567,12 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 
 ## Governance Setup
 
-Before we begin, you'll need an [trust registry](/learn/concepts/trust-registries) -- somewhere for the governance to be defined (which issuer is allowed to issue a vaccine credential).
+Before we begin, you'll need to prepare your [trust registry](/learn/concepts/trust-registries). This defines who is an authorized issuer of your vaccine card.
 
-
-### Create New Governance
-
-You can create a governance framework through the [Trinsic dashboard](https://dashboard.trinsic.id/ecosystem/governance){target:_blank} by clicking on the 'Governance' tab in the nav bar.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic trust-registry add-framework --name "Vaccine Governance" --uri "https://vaccines.trinsic.id"
-        ```
-
-        The response should look like:
-        ```js
-        {
-            "governing_authority":"did:key:xxxxxxxxxxx........",
-            "id": "xxxxxx.....", // <framework_id>
-            "trust_registry": "urn:egf:..." 
-        }
-        ```
-
-{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.AddFramework") }}
-
-The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
-
----
 
 ### Register Issuer
 
-First lets grab our account info. You can use an email address, walletId or PublicDID as identifiers for a wallet. We will use publicDID.
+First, let's grab our account info. You can use an email address, walletId or PublicDID as identifiers for a wallet. We will use publicDID.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -654,7 +629,7 @@ Check the status of an issuer for a specific credential type using the public_di
         ```
 
 
-{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus") }}
 
 
 ---
@@ -664,7 +639,7 @@ Check the status of an issuer for a specific credential type using the public_di
 
 We need to prepare a credential with a governance framework specified. This will consist of:
 
-1. Issuing the credential with framework-id specified
+1. Issuing the credential with governance enabled
 2. Inserting the credential into your wallet
 3. Deriving a proof of the credential
 
@@ -684,7 +659,7 @@ We need to prepare a credential with a governance framework specified. This will
     Then issue the credential:
 
     ```bash
-    trinsic vc issue-from-template --framework-id <framework_id> --template-id <template_id> --values-file values.json --out credential.json
+    trinsic vc issue-from-template --template-id <template_id> --values-file values.json --out credential.json
     ```
 
     ```bash
@@ -750,7 +725,6 @@ Revoke the status of an issuer for a specific credential type using the public_d
     === "Trinsic CLI"
         ```bash
         trinsic trust-registry unregister-member \
-            --framework-id <framework_id> \
             --schema <template_uri> \
             --did <public_did>
         ```

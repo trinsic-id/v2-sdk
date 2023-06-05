@@ -161,7 +161,7 @@ Check the status of an issuer for a specific credential type.
         ```
         <!--/codeinclude-->
 
-{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus") }}
 
 ---
 
