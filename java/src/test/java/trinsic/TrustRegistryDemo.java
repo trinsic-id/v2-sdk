@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.trustregistry.v1.*;
-import trinsic.services.universalwallet.v1.CreateWalletRequest;
 
 public class TrustRegistryDemo {
   private static String myEcosystemIdOrName = "default";
