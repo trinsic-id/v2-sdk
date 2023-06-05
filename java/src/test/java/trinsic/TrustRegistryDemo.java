@@ -27,20 +27,7 @@ public class TrustRegistryDemo {
     trinsic.setAuthToken(account.getAuthToken());
 
     var didUri = "did:example:test";
-    var frameworkUri = "https://example.com/" + UUID.randomUUID();
     var typeUri = "https://schema.org/Card";
-
-    // addFramework() {
-    var frameworkResponse =
-        trinsic
-            .trustRegistry()
-            .addFramework(
-                AddFrameworkRequest.newBuilder()
-                    .setGovernanceFrameworkUri(frameworkUri)
-                    .setName("Example Framework" + UUID.randomUUID())
-                    .build())
-            .get();
-    // }
 
     // registerIssuerSample() {
     var memberResponse =
@@ -49,38 +36,29 @@ public class TrustRegistryDemo {
             .registerMember(
                 RegisterMemberRequest.newBuilder()
                     .setDidUri(didUri)
-                    .setFrameworkId(frameworkResponse.getId())
                     .setSchemaUri(typeUri)
                     .build())
             .get();
     // }
+
     // checkIssuerStatus() {
     var issuerStatus =
         trinsic
             .trustRegistry()
-            .getMembershipStatus(
-                GetMembershipStatusRequest.newBuilder()
+            .getMemberAuthorizationStatus(
+                GetMemberAuthorizationStatusRequest.newBuilder()
                     .setDidUri(didUri)
-                    .setFrameworkId(frameworkResponse.getId())
                     .setSchemaUri(typeUri)
                     .build())
             .get();
     // }
     Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
-    // searchTrustRegistry() {
-    var searchResult = trinsic.trustRegistry().search().get();
-    // }
-    Assertions.assertNotNull(searchResult);
-    Assertions.assertNotNull(searchResult.getItemsJson());
-    Assertions.assertTrue(searchResult.getItemsJson().length() > 0);
-
     // unregisterIssuer() {
     trinsic
         .trustRegistry()
         .unregisterMember(
             UnregisterMemberRequest.newBuilder()
-                .setFrameworkId(frameworkResponse.getId())
                 .setDidUri(didUri)
                 .setSchemaUri(typeUri)
                 .build());

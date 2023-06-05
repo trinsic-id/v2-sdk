@@ -23,25 +23,7 @@ suspend fun runTrustRegistryDemo() {
   trinsic.setAuthToken(createWallet.authToken)
 
   val didUri = "did:example:test"
-  val frameworkUri = "https://example.com/" + UUID.randomUUID()
   val typeUri = "https://schema.org/Card"
-
-  // addFramework() {
-
-  // addFramework() {
-  val frameworkResponse =
-      trinsic
-          .trustRegistry()
-          .addFramework(
-              AddFrameworkRequest.newBuilder()
-                  .setGovernanceFrameworkUri(frameworkUri)
-                  .setName("Example Framework" + UUID.randomUUID())
-                  .build())
-
-  // }
-
-  // registerIssuerSample() {
-  // }
 
   // registerIssuerSample() {
   val memberResponse =
@@ -50,46 +32,27 @@ suspend fun runTrustRegistryDemo() {
           .registerMember(
               RegisterMemberRequest.newBuilder()
                   .setDidUri(didUri)
-                  .setFrameworkId(frameworkResponse.id)
                   .setSchemaUri(typeUri)
                   .build())
-
-  // }
-  // checkIssuerStatus() {
   // }
   // checkIssuerStatus() {
   val issuerStatus =
       trinsic
           .trustRegistry()
-          .getMembershipStatus(
-              GetMembershipStatusRequest.newBuilder()
+          .getMemberAuthorizationStatus(
+              GetMemberAuthorizationStatusRequest.newBuilder()
                   .setDidUri(didUri)
-                  .setFrameworkId(frameworkResponse.id)
                   .setSchemaUri(typeUri)
                   .build())
 
   // }
-  // }
   Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.status)
-
-  // searchTrustRegistry() {
-
-  // searchTrustRegistry() {
-  val searchResult = trinsic.trustRegistry().search()
-  // }
-  // }
-  Assertions.assertNotNull(searchResult)
-  Assertions.assertNotNull(searchResult.itemsJson)
-  Assertions.assertTrue(searchResult.itemsJson.isNotEmpty())
-
-  // unregisterIssuer() {
 
   // unregisterIssuer() {
   trinsic
       .trustRegistry()
       .unregisterMember(
           UnregisterMemberRequest.newBuilder()
-              .setFrameworkId(frameworkResponse.id)
               .setDidUri(didUri)
               .setSchemaUri(typeUri)
               .build())
