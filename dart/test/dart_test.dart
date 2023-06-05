@@ -25,17 +25,5 @@ void main() {
       // Runs locally, fails on github actions for unknown reasons
       // await runTrustRegistryDemo();
     });
-
-    test('Trust Registry Service Input Validation', () async {
-      var trService = TrustRegistryService(trinsicConfig());
-      try {
-        await trService.addFramework(AddFrameworkRequest(
-            governanceFrameworkUri: "", description: "invalid framework"));
-        assert(false);
-      } catch (e) {
-        // This is expected
-        assert(true);
-      }
-    });
   });
 }

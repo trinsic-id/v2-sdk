@@ -1,8 +1,8 @@
 import {
     GetMemberAuthorizationStatusRequest,
     RegisterMemberRequest,
+    CreateEcosystemRequest,
     RegistrationStatus,
-    SignInRequest,
     TrinsicService,
 } from "../src";
 import { v4 as uuid } from "uuid";
@@ -11,7 +11,6 @@ import {
     myEcosystemIdOrName,
     setTestTimeout,
 } from "./env";
-import {CreateEcosystemRequest} from "../lib";
 
 const options = getTestServerOptions();
 let trinsic: TrinsicService;
