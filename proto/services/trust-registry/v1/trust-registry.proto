@@ -8,39 +8,59 @@ option java_multiple_files = true;
 
 import "services/options/field-options.proto";
 
-// Request to register a new ecosystem governance framework in the current ecosystem
-message AddFrameworkRequest {
-  // URI of governance framework organization
-  string governance_framework_uri = 1;
+// Request to register a member as a valid issuer of a specific credential schema.
+// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+message RegisterMemberRequest {
+  reserved 30;
+  reserved "framework_id";
+  
+  oneof member {
+    // DID URI of member to register
+    string did_uri = 1;
 
-  // Name of governance framework organization
-  string name = 2;
+    // Trinsic Wallet ID of member to register
+    string wallet_id = 3;
 
-  // Description of governance framework
-  string description = 3;
+    // Email address of member to register. Must be associated with an existing Trinsic account.
+    string email = 4;
+  }
+
+  // URI of credential schema to register member as authorized issuer of
+  string schema_uri = 10;
+
+  // Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
+  uint64 valid_from_utc = 11;
+
+  // Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
+  uint64 valid_until_utc = 12;
 }
 
-// Response to `AddFrameworkRequest`
-message AddFrameworkResponse {
-  // Unique framework identifier
-  string id = 1;
+// Response to `RegisterMemberRequest`
+message RegisterMemberResponse {}
 
-  // DID URI of Trinsic account which created the governance framework
-  string governing_authority = 2;
+// Request to unregister a member as a valid issuer of a specific credential schema.
+// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+message UnregisterMemberRequest {
+  reserved 20;
+  reserved "framework_id";
+  
+  oneof member {
+    // DID URI of member to unregister
+    string did_uri = 1;
 
-  // URN of trust registry for governance framework
-  string trust_registry = 3;
+    // Trinsic Wallet ID of member to unregister
+    string wallet_id = 3;
+
+    // Email address of member to unregister. Must be associated with an existing Trinsic account.
+    string email = 4;
+  }
+
+  // URI of credential schema to unregister member as authorized issuer of
+  string schema_uri = 10;
 }
 
-
-// Request to remove a governance framework from the current ecosystem
-message RemoveFrameworkRequest {
-  // ID of governance framework to remove
-  string id = 1;
-}
-
-// Response to `RemoveFrameworkRequest`
-message RemoveFrameworkResponse {}
+// Response to `UnregisterMemberRequest`
+message UnregisterMemberResponse {}
 
 // Request to search all governance frameworks within ecosystem
 message SearchRegistryRequest {
@@ -63,86 +83,16 @@ message SearchRegistryResponse {
   string continuation_token = 4;
 }
 
-// Ecosystem Governance Framework
-message GovernanceFramework {
-  // URI of governance framework organization
-  string governance_framework_uri = 1;
-
-  // URI of trust registry associated with governance framework
-  string trust_registry_uri = 2;
-
-  // Description of governance framework
-  string description = 3;
-}
-
-// Request to register a member as a valid issuer of a specific credential schema.
-// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-message RegisterMemberRequest {
-  oneof member {
-    // DID URI of member to register
-    string did_uri = 1;
-
-    // Trinsic Wallet ID of member to register
-    string wallet_id = 3;
-
-    // Email address of member to register. Must be associated with an existing Trinsic account.
-    string email = 4;
-  }
-
-  // URI of credential schema to register member as authorized issuer of
-  string schema_uri = 10;
-
-  // Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
-  uint64 valid_from_utc = 11;
-
-  // Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
-  uint64 valid_until_utc = 12;
-
-  // ID of the governance framework that member is being added to
-  string framework_id = 30;
-}
-
-// Response to `RegisterMemberRequest`
-message RegisterMemberResponse {}
-
-// Request to unregister a member as a valid issuer of a specific credential schema.
-// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-message UnregisterMemberRequest {
-  oneof member {
-    // DID URI of member to unregister
-    string did_uri = 1;
-
-    // Trinsic Wallet ID of member to unregister
-    string wallet_id = 3;
-
-    // Email address of member to unregister. Must be associated with an existing Trinsic account.
-    string email = 4;
-  }
-
-  // URI of credential schema to unregister member as authorized issuer of
-  string schema_uri = 10;
-
-  // ID of the governance framework that member is being removed from
-  string framework_id = 20;
-}
-
-// Response to `UnregisterMemberRequest`
-message UnregisterMemberResponse {}
-
-// Request to fetch membership status in governance framework for a specific credential schema.
-message GetMembershipStatusRequest {
-  // The ID of the ecosystem governance framework.
-  // This ID may be found in the 'trustRegistry' field in the
-  // verifiable credential model
-  string framework_id = 1;
+// Request to fetch member status in governance framework for a specific credential schema.
+message GetMemberAuthorizationStatusRequest {
   // DID URI of member
-  string did_uri = 2;
-  // URI of credential schema associated with membership
-  string schema_uri = 4;
+  string did_uri = 1;
+  // URI of credential schema associated with member
+  string schema_uri = 2;
 }
 
-// Response to `GetMembershipStatusRequest`
-message GetMembershipStatusResponse {
+// Response to `GetMemberAuthorizationStatusRequest`
+message GetMemberAuthorizationStatusResponse {
   // Status of member for given credential schema
   RegistrationStatus status = 1;
 }
@@ -156,16 +106,11 @@ enum RegistrationStatus {
 }
 
 message ListAuthorizedMembersRequest {
-  // The ID of the ecosystem governance framework.
-  // This ID may be found in the 'trustRegistry' field in the
-  // verifiable credential model
-  string framework_id = 1;
-
   // id of schema that needs to be checked
-  optional string schema_uri = 2;
+  optional string schema_uri = 1;
 
-  // Token to fetch next set of results, from previous `SearchRegistryResponse`
-  optional string continuation_token = 3;
+  // Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
+  optional string continuation_token = 2;
 }
 
 // Response to `ListAuthorizedMembersRequest`
@@ -193,25 +138,42 @@ message AuthorizedMemberSchema{
   uint64 valid_until = 5;
 }
 
+// Request to get a member of the governance framework
+message GetMemberRequest {
+  oneof member {
+    // DID URI of member to get
+    string did_uri = 1;
+
+    // Trinsic Wallet ID of member to get
+    string wallet_id = 3;
+
+    // Email address of member to get. Must be associated with an existing Trinsic account.
+    string email = 4;
+  }
+}
+
+// Response to `GetMemberAuthorizationStatusRequest`
+message GetMemberResponse {
+  // Member for given did in given framework
+  AuthorizedMember authorized_member = 1;
+}
+
 service TrustRegistry {
-  // Add a governance framework to the ecosystem
-  rpc AddFramework(AddFrameworkRequest) returns (AddFrameworkResponse);
-
-  // Remove a governance framework from the ecosystem
-  rpc RemoveFramework(RemoveFrameworkRequest) returns (RemoveFrameworkResponse);
-
-  // Search the ecosystem's governance frameworks
+  // Search the ecosystem's governance framework
   rpc SearchRegistry(SearchRegistryRequest) returns (SearchRegistryResponse);
-
+  
   // Register an authoritative issuer for a credential schema
   rpc RegisterMember(RegisterMemberRequest) returns (RegisterMemberResponse);
 
   // Removes an authoritative issuer for a credential schema from the trust registry
   rpc UnregisterMember(UnregisterMemberRequest) returns (UnregisterMemberResponse);
 
-  // Fetch the membership status of an issuer for a given credential schema in a trust registry
-  rpc GetMembershipStatus(GetMembershipStatusRequest) returns (GetMembershipStatusResponse);
+  // Fetch the status of a member for a given credential schema in a trust registry
+  rpc GetMemberAuthorizationStatus(GetMemberAuthorizationStatusRequest) returns (GetMemberAuthorizationStatusResponse);
 
   // Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
   rpc ListAuthorizedMembers(ListAuthorizedMembersRequest) returns (ListAuthorizedMembersResponse);
+
+  // Get member for a given did in a trust registry
+  rpc GetMember(GetMemberRequest) returns (GetMemberResponse);
 }

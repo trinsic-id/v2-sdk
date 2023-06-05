@@ -75,7 +75,7 @@ message ListFilesResponse {
   // Whether more results are available for this query via `continuation_token`
   bool has_more_results = 2;
 
-  // Token to fetch next set of resuts via `ListFilesRequest`
+  // Token to fetch next set of results via `ListFilesRequest`
   string continuation_token = 3;
 }
 
