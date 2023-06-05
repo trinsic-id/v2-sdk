@@ -2649,16 +2649,12 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span>
-        <span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span>
-    <span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span><span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">selective_proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span>
         <span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span><span class="p">,</span>
-        <span class="n">reveal_template</span><span class="o">=</span><span class="n">RevealTemplateAttributes</span><span class="p">(</span>
-            <span class="n">template_attributes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">]</span>
-        <span class="p">),</span>
+        <span class="n">reveal_template</span><span class="o">=</span><span class="n">RevealTemplateAttributes</span><span class="p">(</span><span class="n">template_attributes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">]),</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2687,9 +2683,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <span class="w">    </span><span class="n">trinsic</span>
 <span class="w">        </span><span class="p">.</span><span class="na">credential</span><span class="p">()</span>
 <span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span>
-<span class="w">            </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">            </span><span class="n">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span>
