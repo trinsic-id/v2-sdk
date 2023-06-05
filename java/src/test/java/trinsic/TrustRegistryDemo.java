@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.trustregistry.v1.*;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
 
@@ -17,13 +18,7 @@ public class TrustRegistryDemo {
 
   public static void run() throws IOException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
-    var account =
-        trinsic
-            .wallet()
-            .createWallet(
-                CreateWalletRequest.newBuilder().setEcosystemId(myEcosystemIdOrName).build())
-            .get();
-    trinsic.setAuthToken(account.getAuthToken());
+    var eco = trinsic.provider().createEcosystem(CreateEcosystemRequest.newBuilder().build()).get();
 
     var didUri = "did:example:test";
     var typeUri = "https://schema.org/Card";

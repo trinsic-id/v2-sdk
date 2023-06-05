@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutionException
 import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
 import trinsic.services.TrinsicServiceKt
+import trinsic.services.provider.v1.CreateEcosystemRequest
 import trinsic.services.trustregistry.v1.*
 import trinsic.services.universalwallet.v1.CreateWalletRequest
 
@@ -16,11 +17,7 @@ suspend fun main() {
 @Throws(IOException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
   val trinsic = TrinsicServiceKt(TrinsicUtilities.getTrinsicTrinsicOptions())
-  var createWallet =
-      trinsic
-          .wallet()
-          .createWallet(CreateWalletRequest.newBuilder().setEcosystemId("default").build())
-  trinsic.setAuthToken(createWallet.authToken)
+  var eco = trinsic.provider().createEcosystem(CreateEcosystemRequest.newBuilder().build())
 
   val didUri = "did:example:test"
   val typeUri = "https://schema.org/Card"
