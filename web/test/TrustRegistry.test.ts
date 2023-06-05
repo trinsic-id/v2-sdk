@@ -1,6 +1,5 @@
 import {
-    AddFrameworkRequest,
-    GetMembershipStatusRequest,
+    GetMemberAuthorizationStatusRequest,
     RegisterMemberRequest,
     RegistrationStatus,
     SignInRequest,
@@ -26,47 +25,15 @@ describe("TrustRegistryService Unit Tests", () => {
         trinsic.options.authToken = response.authToken;
     });
 
-    it("add governance framework", async () => {
-        let response = await trinsic.trustRegistry().addFramework(
-            AddFrameworkRequest.fromPartial({
-                governanceFrameworkUri: `https://example.com/${uuid()}`,
-                name: `Test Governance Framework - ${uuid()}`,
-            })
-        );
-        expect(response).not.toBeNull();
-    });
-
-    it("add governance framework - invalid uri", async () => {
-        try {
-            await trinsic
-                .trustRegistry()
-                .addFramework(AddFrameworkRequest.fromPartial({}));
-            // This is a failure case since jest doesn't have expect().toThrow()
-            expect(false).toBeTruthy();
-        } catch (e) {
-            // This is expected, pass
-        }
-    });
-
     it("Demo: Trust Registry", async () => {
-        // registerGovernanceFramework() {
         const didUri = "did:example:test";
-        const frameworkUri = `https://example.com/${uuid()}`;
         const schemaUri = "https://schema.org/Card";
 
-        let frameworkResponse = await trinsic.trustRegistry().addFramework(
-            AddFrameworkRequest.fromPartial({
-                governanceFrameworkUri: frameworkUri,
-                name: `Test Governance Framework - ${uuid()}`,
-            })
-        );
-        // }
 
         // registerMemberSample() {
         let response = await trinsic.trustRegistry().registerMember(
             RegisterMemberRequest.fromPartial({
                 didUri: didUri,
-                frameworkId: frameworkResponse.id,
                 schemaUri: schemaUri,
             })
         );
@@ -75,16 +42,14 @@ describe("TrustRegistryService Unit Tests", () => {
         let response2 = await trinsic.trustRegistry().registerMember(
             RegisterMemberRequest.fromPartial({
                 didUri: didUri,
-                frameworkId: frameworkResponse.id,
                 schemaUri: schemaUri,
             })
         );
         expect(response2).not.toBeNull();
         // getMembershipStatus() {
-        let issuerStatus = await trinsic.trustRegistry().getMembershipStatus(
-            GetMembershipStatusRequest.fromPartial({
+        let issuerStatus = await trinsic.trustRegistry().getMemberAuthorizationStatus(
+            GetMemberAuthorizationStatusRequest.fromPartial({
                 didUri: didUri,
-                frameworkId: frameworkResponse.id,
                 schemaUri: schemaUri,
             })
         );
@@ -92,26 +57,9 @@ describe("TrustRegistryService Unit Tests", () => {
         expect(issuerStatus).not.toBeNull();
         expect(issuerStatus.status).toBe(RegistrationStatus.CURRENT);
 
-        let verifierStatus = await trinsic.trustRegistry().getMembershipStatus(
-            GetMembershipStatusRequest.fromPartial({
-                didUri: didUri,
-                frameworkId: frameworkResponse.id,
-                schemaUri: schemaUri,
-            })
-        );
-        expect(verifierStatus).not.toBeNull();
-        expect(verifierStatus.status).toBe(RegistrationStatus.CURRENT);
-        // searchTrustRegistry() {
-        let searchResult = await trinsic.trustRegistry().search();
-        // }
-        expect(searchResult).not.toBeNull();
-        expect(searchResult.itemsJson).not.toBeNull();
-        expect(searchResult.itemsJson!.length > 0).toBeTruthy();
-
         // unregisterMember() {
         let unregisterResult = await  trinsic.trustRegistry().unregisterMember({
             didUri: didUri,
-            frameworkId: frameworkResponse.id,
             schemaUri: schemaUri
         })
         // }
