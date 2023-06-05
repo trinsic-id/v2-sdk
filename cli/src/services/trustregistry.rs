@@ -15,8 +15,6 @@ pub(crate) fn execute(args: &TrustRegistryCommand, config: &CliConfig) -> Result
         TrustRegistryCommand::RegisterMember(args) => register_member(args, config),
         TrustRegistryCommand::UnregisterMember(args) => unregister_member(args, config),
         TrustRegistryCommand::GetMembershipStatus(args) => get_status(args, config),
-        TrustRegistryCommand::AddFramework(args) => add_framework(args, config),
-        TrustRegistryCommand::RemoveFramework(args) => remove_framework(args, config),
         TrustRegistryCommand::FetchData(args) => fetch_data(args, config),
     }
 }
@@ -122,34 +120,4 @@ async fn get_status(args: &GetMembershipStatusArgs, config: &CliConfig) -> Resul
     Ok(dict! {
         "status".into() => Item::String(format!("{:?}", RegistrationStatus::from_i32(response.status).ok_or(Error::SerializationError)?)),
     })
-}
-
-#[tokio::main]
-async fn add_framework(args: &AddFrameworkArgs, config: &CliConfig) -> Result<Output, Error> {
-    let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
-
-    let request = tonic::Request::new(AddFrameworkRequest {
-        governance_framework_uri: args.governance_framework_uri.clone(),
-        description: args.description.clone().unwrap_or_default(),
-        name: args.name.clone(),
-    });
-
-    let response = client.add_framework(request).await?.into_inner();
-
-    Ok(dict! {
-        "response".into() => Item::Json(to_value(&response)?)
-    })
-}
-
-#[tokio::main]
-async fn remove_framework(args: &RemoveFrameworkArgs, config: &CliConfig) -> Result<Output, Error> {
-    let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
-
-    let request = tonic::Request::new(RemoveFrameworkRequest {
-        id: args.framework_id.clone(),
-    });
-
-    let _response = client.remove_framework(request).await?.into_inner();
-
-    Ok(Output::new())
 }

@@ -2,9 +2,7 @@ use crate::error::Error;
 use clap::ArgMatches;
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
-    if args.subcommand_matches("issue").is_some() {
-        issue(&args.subcommand_matches("issue").expect("Error parsing request"))
-    } else if args.subcommand_matches("issue-from-template").is_some() {
+    if args.subcommand_matches("issue-from-template").is_some() {
         issue_from_template(&args.subcommand_matches("issue-from-template").expect("Error parsing request"))
     } else if args.subcommand_matches("get-status").is_some() {
         get_status(&args.subcommand_matches("get-status").expect("Error parsing request"))
@@ -17,13 +15,6 @@ pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
     } else {
         Err(Error::MissingArguments)
     }
-}
-
-fn issue(args: &ArgMatches) -> Result<Command, Error> {
-    Ok(Command::Issue(IssueArgs {
-        document: args.value_of("document").map(|x| x.into()),
-        out: args.value_of("out").map(|x| x.into()),
-    }))
 }
 
 fn issue_from_template(args: &ArgMatches) -> Result<Command, Error> {
@@ -66,18 +57,11 @@ fn verify_proof(args: &ArgMatches) -> Result<Command, Error> {
 
 #[derive(Debug, PartialEq)]
 pub(crate) enum Command<'a> {
-    Issue(IssueArgs),
     IssueFromTemplate(IssueFromTemplateArgs),
     GetStatus(GetStatusArgs),
     UpdateStatus(UpdateStatusArgs),
     CreateProof(CreateProofArgs),
     VerifyProof(VerifyProofArgs<'a>),
-}
-
-#[derive(Debug, PartialEq)]
-pub struct IssueArgs {
-    pub document: Option<String>,
-    pub out: Option<String>,
 }
 
 #[derive(Debug, PartialEq)]
