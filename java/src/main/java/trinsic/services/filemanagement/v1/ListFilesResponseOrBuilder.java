@@ -77,7 +77,7 @@ public interface ListFilesResponseOrBuilder
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListFilesRequest`
+   * Token to fetch next set of results via `ListFilesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
@@ -89,7 +89,7 @@ public interface ListFilesResponseOrBuilder
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListFilesRequest`
+   * Token to fetch next set of results via `ListFilesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>

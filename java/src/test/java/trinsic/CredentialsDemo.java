@@ -1,13 +1,12 @@
 package trinsic;
 
+import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
-
-import com.google.gson.Gson;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.CreateWalletRequest;
@@ -53,19 +52,12 @@ public class CredentialsDemo {
     var template =
         trinsic
             .template()
-            .create(CreateCredentialTemplateRequest
-                    .newBuilder()
+            .create(
+                CreateCredentialTemplateRequest.newBuilder()
                     .setName("Credential Service Test Java")
                     .putFields(
-                            "firstName",
-                            TemplateField.newBuilder()
-                                    .setTitle("First Name")
-                                    .build())
-                    .putFields(
-                            "lastName",
-                            TemplateField.newBuilder()
-                                    .setTitle("Last Name")
-                                    .build())
+                        "firstName", TemplateField.newBuilder().setTitle("First Name").build())
+                    .putFields("lastName", TemplateField.newBuilder().setTitle("Last Name").build())
                     .build())
             .get();
 
@@ -77,8 +69,8 @@ public class CredentialsDemo {
     var issueResult =
         trinsic
             .credential()
-            .issueFromTemplate(IssueFromTemplateRequest
-                    .newBuilder()
+            .issueFromTemplate(
+                IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(template.getData().getId())
                     .setValuesJson(valuesJson)
                     .build())
@@ -92,9 +84,7 @@ public class CredentialsDemo {
         trinsic
             .credential()
             .createProof(
-                CreateProofRequest.newBuilder()
-                    .setDocumentJson(signedCredentialJson)
-                    .build())
+                CreateProofRequest.newBuilder().setDocumentJson(signedCredentialJson).build())
             .get();
 
     var credentialProof = createProofResponse.getProofDocumentJson();

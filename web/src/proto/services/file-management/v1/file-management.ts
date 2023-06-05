@@ -79,7 +79,7 @@ export interface ListFilesResponse {
   files?: File[];
   /** Whether more results are available for this query via `continuation_token` */
   hasMoreResults?: boolean;
-  /** Token to fetch next set of resuts via `ListFilesRequest` */
+  /** Token to fetch next set of results via `ListFilesRequest` */
   continuationToken?: string;
 }
 

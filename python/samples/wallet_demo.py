@@ -34,9 +34,11 @@ async def wallet_demo():
 
     wallet_id = wallet_response.wallet.wallet_id
 
-    credential = json.dumps({
-        "type": ["VerifiableCredential", "NonExistentSchema"],
-    })
+    credential = json.dumps(
+        {
+            "type": ["VerifiableCredential", "NonExistentSchema"],
+        }
+    )
     print(f"Credential: {credential}")
 
     # insertItemWallet() {
