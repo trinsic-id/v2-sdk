@@ -1,6 +1,7 @@
 import asyncio
 import uuid
 
+from trinsic.proto.services.provider.v1 import CreateEcosystemRequest
 from trinsic.proto.services.trustregistry.v1 import (
     RegistrationStatus,
     UnregisterMemberRequest,
@@ -15,10 +16,9 @@ from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 async def trustregistry_demo():
     # setup
     trinsic_service = TrinsicService(server_config=trinsic_config())
-    wallet_response = await trinsic_service.wallet.create_wallet(
-        request=CreateWalletRequest(ecosystem_id="default")
+    ecosystem_response = await trinsic_service.provider.create_ecosystem(
+        request=CreateEcosystemRequest()
     )
-    trinsic_service.service_options.auth_token = wallet_response.auth_token
 
     # data
     https_schema_org = "https://schema.org/Card"
