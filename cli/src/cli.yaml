@@ -105,19 +105,6 @@ subcommands:
   - vc:
       about: Verifiable Credentials Service
       subcommands:
-        - issue:
-            about: Issue a credential
-            args:
-              - document:
-                  long: document
-                  value_name: FILE
-                  help: Json document to sign
-                  takes_value: true
-              - out:
-                  long: out
-                  value_name: FILE
-                  help: output location for issue response
-                  takes_value: true
         - issue-from-template:
             about: Issue a credential from template
             args:
@@ -232,78 +219,6 @@ subcommands:
                   help: Alias to use with this authentication profile
                   takes_value: true
                   required: false
-        - update-ecosystem:
-            about: Updates ecosystem description or URI
-            args:
-              - description:
-                  long: description
-                  help: New description for the ecosystem
-                  takes_value: true
-                  required: false
-              - uri:
-                  long: uri
-                  help: New URI for the ecosystem
-                  takes_value: true
-                  required: false
-        - ecosystem-info:
-            about: Fetches information about the current ecosystem
-        - add-webhook:
-            about: Adds a webhook to the ecosystem
-            args:
-              - url:
-                  long: url
-                  help: Destination URL of webhook
-                  takes_value: true
-                  required: true
-              - secret:
-                  long: secret
-                  help: Secret phrase used to sign and verify webhook payloads
-                  takes_value: true
-                  required: true
-              - events:
-                  long: events
-                  help: Comma-separated list of events webhook should receive, or "*" for all (default "*")
-                  takes_value: true
-                  required: false
-        - delete-webhook:
-            about: Deletes a webhook from the ecosystem
-            args:
-              - webhook-id:
-                  long: webhook-id
-                  help: ID of webhook to delete
-                  takes_value: true
-                  required: true
-        - invite:
-            about: Send an invitation
-            args:
-              - description:
-                  long: description
-                  value_name: STRING
-                  help: Description
-                  takes_value: true
-                  required: false
-              - method-email:
-                  long: method-email
-                  value_name: EMAIL
-                  help: send invitation via email
-                  takes_value: true
-                  required: false
-              - method-sms:
-                  long: method-sms
-                  value_name: PHONE
-                  help: send invitation via sms
-                  takes_value: true
-                  required: false
-              - individual:
-                  long: individual
-                  help: (Default) Invite participant as individual
-                  required: false
-              - organization:
-                  long: organization
-                  help: Invite participant as organization
-                  required: false
-        - invitation_status:
-            about: Check invitation status
         - upgrade-did:
             about: Upgrade a public DID to a different method
             args:
@@ -327,8 +242,6 @@ subcommands:
                   help: "DID method options (ex: 'mainnet', 'testnet')"
                   takes_value: true
                   required: false
-
-
 args:
   - json:
       long: json

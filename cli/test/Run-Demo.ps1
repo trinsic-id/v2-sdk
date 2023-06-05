@@ -63,23 +63,20 @@ Write-Output "`tTemplate ID = $($Template.Id)"
 Write-Output "`tSchema URI = $($Template.SchemaUri)"
 Write-Output "`tContext URI = $($Template.ContextUri)"
 
-Write-Output "✅ Create trust registry for authorized issuers"
-$FrameworkId = Invoke-Expression "$trinsic trust-registry add-framework --name 'Authorized State ID Issuers' --uri 'https://state.gov/authorized-issuers'"
-| ConvertFrom-Json
-| ForEach-Object { $_.response.id }
-Stop-OnError
-
+<#
 Write-Output "✅ Adding trusted issuer to framework"
 $PublicDid = Invoke-Expression "$trinsic wallet my-info"
 | ConvertFrom-Json
 | ForEach-Object { $_.wallet.public_did }
 Stop-OnError
 
-Invoke-Expression "$trinsic trust-registry register-member --schema $($Template.SchemaUri) --framework-id $FrameworkId --did $PublicDid" | Out-Null
+Invoke-Expression "$trinsic trust-registry register-member --schema $($Template.SchemaUri) --did $PublicDid" | Out-Null
 Stop-OnError
 
+#>
+
 Write-Output "✅ Issuing credential for drivers license"
-Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --framework-id $FrameworkId --values-file $PSScriptRoot/state-id-values.json"
+Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --values-file $PSScriptRoot/state-id-values.json" #--use-trust-registry
 | ConvertFrom-Json
 | ForEach-Object { $_.'signed document' }
 | Set-Content -Path $PSScriptRoot/state-id-signed-document.json
@@ -104,6 +101,7 @@ Invoke-Expression "$trinsic vc verify-proof --proof-document $PSScriptRoot/state
 | Format-List
 Stop-OnError
 
+<#
 Write-Output "✅ Remove trusted issuer from framework"
 Invoke-Expression "$trinsic trust-registry unregister-member --schema $($Template.SchemaUri) --framework-id $FrameworkId --did $PublicDid" | Out-Null
 Stop-OnError
@@ -114,5 +112,7 @@ Invoke-Expression "$trinsic vc verify-proof --proof-document $PSScriptRoot/state
 | Select-Object -ExpandProperty 'validation results'
 | Format-List
 Stop-OnError
+
+#>
 
 Write-Output "🎉 Demo complete!"

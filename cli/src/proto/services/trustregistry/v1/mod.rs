@@ -1,182 +1,249 @@
 /// Request to register a new ecosystem governance framework in the current ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AddFrameworkRequest {
     /// URI of governance framework organization
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub governance_framework_uri: ::prost::alloc::string::String,
     /// Name of governance framework organization
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub name: ::prost::alloc::string::String,
     /// Description of governance framework
-    #[prost(string, tag="3")]
+    #[prost(string, tag = "3")]
     pub description: ::prost::alloc::string::String,
 }
 /// Response to `AddFrameworkRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AddFrameworkResponse {
     /// Unique framework identifier
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
     /// DID URI of Trinsic account which created the governance framework
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub governing_authority: ::prost::alloc::string::String,
     /// URN of trust registry for governance framework
-    #[prost(string, tag="3")]
+    #[prost(string, tag = "3")]
     pub trust_registry: ::prost::alloc::string::String,
 }
 /// Request to remove a governance framework from the current ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RemoveFrameworkRequest {
     /// ID of governance framework to remove
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
 }
 /// Response to `RemoveFrameworkRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RemoveFrameworkResponse {
-}
+pub struct RemoveFrameworkResponse {}
 /// Request to search all governance frameworks within ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchRegistryRequest {
     /// SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub query: ::prost::alloc::string::String,
     /// Token to fetch next set of results, from previous `SearchRegistryResponse`
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
 }
 /// Response to `SearchRegistryRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchRegistryResponse {
     /// JSON string containing array of resultant objects
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub items_json: ::prost::alloc::string::String,
     /// Whether more data is available to fetch for query
-    #[prost(bool, tag="2")]
+    #[prost(bool, tag = "2")]
     pub has_more_results: bool,
     /// Token to fetch next set of results via `SearchRegistryRequest`
-    #[prost(string, tag="4")]
+    #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
 }
 /// Ecosystem Governance Framework
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GovernanceFramework {
     /// URI of governance framework organization
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub governance_framework_uri: ::prost::alloc::string::String,
     /// URI of trust registry associated with governance framework
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub trust_registry_uri: ::prost::alloc::string::String,
     /// Description of governance framework
-    #[prost(string, tag="3")]
+    #[prost(string, tag = "3")]
     pub description: ::prost::alloc::string::String,
 }
 /// Request to register a member as a valid issuer of a specific credential schema.
 /// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RegisterMemberRequest {
     /// URI of credential schema to register member as authorized issuer of
-    #[prost(string, tag="10")]
+    #[prost(string, tag = "10")]
     pub schema_uri: ::prost::alloc::string::String,
     /// Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
-    #[prost(uint64, tag="11")]
+    #[prost(uint64, tag = "11")]
     pub valid_from_utc: u64,
     /// Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
-    #[prost(uint64, tag="12")]
+    #[prost(uint64, tag = "12")]
     pub valid_until_utc: u64,
     /// ID of the governance framework that member is being added to
-    #[prost(string, tag="30")]
+    #[prost(string, tag = "30")]
     pub framework_id: ::prost::alloc::string::String,
-    #[prost(oneof="register_member_request::Member", tags="1, 3, 4")]
+    #[prost(oneof = "register_member_request::Member", tags = "1, 3, 4")]
     pub member: ::core::option::Option<register_member_request::Member>,
 }
 /// Nested message and enum types in `RegisterMemberRequest`.
 pub mod register_member_request {
     #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Member {
         /// DID URI of member to register
-        #[prost(string, tag="1")]
+        #[prost(string, tag = "1")]
         DidUri(::prost::alloc::string::String),
         /// Trinsic Wallet ID of member to register
-        #[prost(string, tag="3")]
+        #[prost(string, tag = "3")]
         WalletId(::prost::alloc::string::String),
         /// Email address of member to register. Must be associated with an existing Trinsic account.
-        #[prost(string, tag="4")]
+        #[prost(string, tag = "4")]
         Email(::prost::alloc::string::String),
     }
 }
 /// Response to `RegisterMemberRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RegisterMemberResponse {
-}
+pub struct RegisterMemberResponse {}
 /// Request to unregister a member as a valid issuer of a specific credential schema.
 /// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterMemberRequest {
     /// URI of credential schema to unregister member as authorized issuer of
-    #[prost(string, tag="10")]
+    #[prost(string, tag = "10")]
     pub schema_uri: ::prost::alloc::string::String,
     /// ID of the governance framework that member is being removed from
-    #[prost(string, tag="20")]
+    #[prost(string, tag = "20")]
     pub framework_id: ::prost::alloc::string::String,
-    #[prost(oneof="unregister_member_request::Member", tags="1, 3, 4")]
+    #[prost(oneof = "unregister_member_request::Member", tags = "1, 3, 4")]
     pub member: ::core::option::Option<unregister_member_request::Member>,
 }
 /// Nested message and enum types in `UnregisterMemberRequest`.
 pub mod unregister_member_request {
     #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Member {
         /// DID URI of member to unregister
-        #[prost(string, tag="1")]
+        #[prost(string, tag = "1")]
         DidUri(::prost::alloc::string::String),
         /// Trinsic Wallet ID of member to unregister
-        #[prost(string, tag="3")]
+        #[prost(string, tag = "3")]
         WalletId(::prost::alloc::string::String),
         /// Email address of member to unregister. Must be associated with an existing Trinsic account.
-        #[prost(string, tag="4")]
+        #[prost(string, tag = "4")]
         Email(::prost::alloc::string::String),
     }
 }
 /// Response to `UnregisterMemberRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UnregisterMemberResponse {
-}
+pub struct UnregisterMemberResponse {}
 /// Request to fetch membership status in governance framework for a specific credential schema.
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetMembershipStatusRequest {
     /// The ID of the ecosystem governance framework.
     /// This ID may be found in the 'trustRegistry' field in the
     /// verifiable credential model
-    #[prost(string, tag="1")]
+    #[prost(string, tag = "1")]
     pub framework_id: ::prost::alloc::string::String,
     /// DID URI of member
-    #[prost(string, tag="2")]
+    #[prost(string, tag = "2")]
     pub did_uri: ::prost::alloc::string::String,
     /// URI of credential schema associated with membership
-    #[prost(string, tag="4")]
+    #[prost(string, tag = "4")]
     pub schema_uri: ::prost::alloc::string::String,
 }
 /// Response to `GetMembershipStatusRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetMembershipStatusResponse {
     /// Status of member for given credential schema
-    #[prost(enumeration="RegistrationStatus", tag="1")]
+    #[prost(enumeration = "RegistrationStatus", tag = "1")]
     pub status: i32,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListAuthorizedMembersRequest {
+    /// The ID of the ecosystem governance framework.
+    /// This ID may be found in the 'trustRegistry' field in the
+    /// verifiable credential model
+    #[prost(string, tag = "1")]
+    pub framework_id: ::prost::alloc::string::String,
+    /// id of schema that needs to be checked
+    #[prost(string, optional, tag = "2")]
+    pub schema_uri: ::core::option::Option<::prost::alloc::string::String>,
+    /// Token to fetch next set of results, from previous `SearchRegistryResponse`
+    #[prost(string, optional, tag = "3")]
+    pub continuation_token: ::core::option::Option<::prost::alloc::string::String>,
+}
+/// Response to `ListAuthorizedMembersRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListAuthorizedMembersResponse {
+    /// JSON string containing array of resultant objects
+    #[prost(message, repeated, tag = "1")]
+    pub authorized_members: ::prost::alloc::vec::Vec<AuthorizedMember>,
+    /// Whether more data is available to fetch for query
+    #[prost(bool, tag = "2")]
+    pub has_more_results: bool,
+    /// Token to fetch next set of results via `ListAuthorizedMembersRequest`
+    #[prost(string, tag = "3")]
+    pub continuation_token: ::prost::alloc::string::String,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AuthorizedMember {
+    #[prost(string, tag = "1")]
+    pub did: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag = "2")]
+    pub authorized_member_schemas: ::prost::alloc::vec::Vec<AuthorizedMemberSchema>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AuthorizedMemberSchema {
+    #[prost(string, tag = "1")]
+    pub schema_uri: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub status: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub status_details: ::prost::alloc::string::String,
+    #[prost(uint64, tag = "4")]
+    pub valid_from: u64,
+    #[prost(uint64, tag = "5")]
+    pub valid_until: u64,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -205,6 +272,17 @@ impl RegistrationStatus {
             RegistrationStatus::Terminated => "TERMINATED",
             RegistrationStatus::Revoked => "REVOKED",
             RegistrationStatus::NotFound => "NOT_FOUND",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "CURRENT" => Some(Self::Current),
+            "EXPIRED" => Some(Self::Expired),
+            "TERMINATED" => Some(Self::Terminated),
+            "REVOKED" => Some(Self::Revoked),
+            "NOT_FOUND" => Some(Self::NotFound),
+            _ => None,
         }
     }
 }
@@ -394,6 +472,29 @@ pub mod trust_registry_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
+        pub async fn list_authorized_members(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ListAuthorizedMembersRequest>,
+        ) -> Result<
+            tonic::Response<super::ListAuthorizedMembersResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
