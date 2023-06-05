@@ -25,7 +25,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   private IssueFromTemplateRequest() {
     templateId_ = "";
     valuesJson_ = "";
-    frameworkId_ = "";
     expirationDate_ = "";
   }
 
@@ -155,59 +154,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     }
   }
 
-  public static final int FRAMEWORK_ID_FIELD_NUMBER = 3;
-  private volatile java.lang.Object frameworkId_;
-  /**
-   *
-   *
-   * <pre>
-   * Governance framework ID to use with issuance of this credential.
-   * If specified, the issued credential will contain extended issuer
-   * metadata with membership info for the given ecosystem governance framework (EGF)
-   * </pre>
-   *
-   * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-   *
-   * @return The frameworkId.
-   */
-  @java.lang.Override
-  public java.lang.String getFrameworkId() {
-    java.lang.Object ref = frameworkId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      frameworkId_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Governance framework ID to use with issuance of this credential.
-   * If specified, the issued credential will contain extended issuer
-   * metadata with membership info for the given ecosystem governance framework (EGF)
-   * </pre>
-   *
-   * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-   *
-   * @return The bytes for frameworkId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getFrameworkIdBytes() {
-    java.lang.Object ref = frameworkId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      frameworkId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int SAVE_COPY_FIELD_NUMBER = 4;
   private boolean saveCopy_;
   /**
@@ -281,6 +227,25 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     }
   }
 
+  public static final int INCLUDE_GOVERNANCE_FIELD_NUMBER = 6;
+  private boolean includeGovernance_;
+  /**
+   *
+   *
+   * <pre>
+   * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+   * governance framework.
+   * </pre>
+   *
+   * <code>bool include_governance = 6;</code>
+   *
+   * @return The includeGovernance.
+   */
+  @java.lang.Override
+  public boolean getIncludeGovernance() {
+    return includeGovernance_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -301,14 +266,14 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(valuesJson_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, valuesJson_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, frameworkId_);
-    }
     if (saveCopy_ != false) {
       output.writeBool(4, saveCopy_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expirationDate_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, expirationDate_);
+    }
+    if (includeGovernance_ != false) {
+      output.writeBool(6, includeGovernance_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -325,14 +290,14 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(valuesJson_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, valuesJson_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, frameworkId_);
-    }
     if (saveCopy_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, saveCopy_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expirationDate_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, expirationDate_);
+    }
+    if (includeGovernance_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(6, includeGovernance_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -352,9 +317,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
     if (!getTemplateId().equals(other.getTemplateId())) return false;
     if (!getValuesJson().equals(other.getValuesJson())) return false;
-    if (!getFrameworkId().equals(other.getFrameworkId())) return false;
     if (getSaveCopy() != other.getSaveCopy()) return false;
     if (!getExpirationDate().equals(other.getExpirationDate())) return false;
+    if (getIncludeGovernance() != other.getIncludeGovernance()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -370,12 +335,12 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     hash = (53 * hash) + getTemplateId().hashCode();
     hash = (37 * hash) + VALUES_JSON_FIELD_NUMBER;
     hash = (53 * hash) + getValuesJson().hashCode();
-    hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getFrameworkId().hashCode();
     hash = (37 * hash) + SAVE_COPY_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getSaveCopy());
     hash = (37 * hash) + EXPIRATION_DATE_FIELD_NUMBER;
     hash = (53 * hash) + getExpirationDate().hashCode();
+    hash = (37 * hash) + INCLUDE_GOVERNANCE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIncludeGovernance());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -521,11 +486,11 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
       valuesJson_ = "";
 
-      frameworkId_ = "";
-
       saveCopy_ = false;
 
       expirationDate_ = "";
+
+      includeGovernance_ = false;
 
       return this;
     }
@@ -558,9 +523,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
           new trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest(this);
       result.templateId_ = templateId_;
       result.valuesJson_ = valuesJson_;
-      result.frameworkId_ = frameworkId_;
       result.saveCopy_ = saveCopy_;
       result.expirationDate_ = expirationDate_;
+      result.includeGovernance_ = includeGovernance_;
       onBuilt();
       return result;
     }
@@ -622,16 +587,15 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
         valuesJson_ = other.valuesJson_;
         onChanged();
       }
-      if (!other.getFrameworkId().isEmpty()) {
-        frameworkId_ = other.frameworkId_;
-        onChanged();
-      }
       if (other.getSaveCopy() != false) {
         setSaveCopy(other.getSaveCopy());
       }
       if (!other.getExpirationDate().isEmpty()) {
         expirationDate_ = other.expirationDate_;
         onChanged();
+      }
+      if (other.getIncludeGovernance() != false) {
+        setIncludeGovernance(other.getIncludeGovernance());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -671,12 +635,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
                 break;
               } // case 18
-            case 26:
-              {
-                frameworkId_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 26
             case 32:
               {
                 saveCopy_ = input.readBool();
@@ -689,6 +647,12 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
                 break;
               } // case 42
+            case 48:
+              {
+                includeGovernance_ = input.readBool();
+
+                break;
+              } // case 48
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -923,122 +887,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       return this;
     }
 
-    private java.lang.Object frameworkId_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Governance framework ID to use with issuance of this credential.
-     * If specified, the issued credential will contain extended issuer
-     * metadata with membership info for the given ecosystem governance framework (EGF)
-     * </pre>
-     *
-     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
-     * @return The frameworkId.
-     */
-    public java.lang.String getFrameworkId() {
-      java.lang.Object ref = frameworkId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        frameworkId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Governance framework ID to use with issuance of this credential.
-     * If specified, the issued credential will contain extended issuer
-     * metadata with membership info for the given ecosystem governance framework (EGF)
-     * </pre>
-     *
-     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
-     * @return The bytes for frameworkId.
-     */
-    public com.google.protobuf.ByteString getFrameworkIdBytes() {
-      java.lang.Object ref = frameworkId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        frameworkId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Governance framework ID to use with issuance of this credential.
-     * If specified, the issued credential will contain extended issuer
-     * metadata with membership info for the given ecosystem governance framework (EGF)
-     * </pre>
-     *
-     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
-     * @param value The frameworkId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFrameworkId(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      frameworkId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Governance framework ID to use with issuance of this credential.
-     * If specified, the issued credential will contain extended issuer
-     * metadata with membership info for the given ecosystem governance framework (EGF)
-     * </pre>
-     *
-     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearFrameworkId() {
-
-      frameworkId_ = getDefaultInstance().getFrameworkId();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Governance framework ID to use with issuance of this credential.
-     * If specified, the issued credential will contain extended issuer
-     * metadata with membership info for the given ecosystem governance framework (EGF)
-     * </pre>
-     *
-     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
-     * @param value The bytes for frameworkId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFrameworkIdBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      frameworkId_ = value;
-      onChanged();
-      return this;
-    }
-
     private boolean saveCopy_;
     /**
      *
@@ -1209,6 +1057,61 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       checkByteStringIsUtf8(value);
 
       expirationDate_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean includeGovernance_;
+    /**
+     *
+     *
+     * <pre>
+     * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+     * governance framework.
+     * </pre>
+     *
+     * <code>bool include_governance = 6;</code>
+     *
+     * @return The includeGovernance.
+     */
+    @java.lang.Override
+    public boolean getIncludeGovernance() {
+      return includeGovernance_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+     * governance framework.
+     * </pre>
+     *
+     * <code>bool include_governance = 6;</code>
+     *
+     * @param value The includeGovernance to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIncludeGovernance(boolean value) {
+
+      includeGovernance_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+     * governance framework.
+     * </pre>
+     *
+     * <code>bool include_governance = 6;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearIncludeGovernance() {
+
+      includeGovernance_ = false;
       onChanged();
       return this;
     }

@@ -3,9 +3,9 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface GetMembershipStatusResponseOrBuilder
+public interface GetMemberAuthorizationStatusResponseOrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMembershipStatusResponse)
+    // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMemberAuthorizationStatusResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

@@ -15,14 +15,6 @@ const IssueFromTemplateRequest$json = const {
   '2': const [
     const {'1': 'template_id', '3': 1, '4': 1, '5': 9, '10': 'templateId'},
     const {'1': 'values_json', '3': 2, '4': 1, '5': 9, '10': 'valuesJson'},
-    const {
-      '1': 'framework_id',
-      '3': 3,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'frameworkId'
-    },
     const {'1': 'save_copy', '3': 4, '4': 1, '5': 8, '10': 'saveCopy'},
     const {
       '1': 'expiration_date',
@@ -31,13 +23,24 @@ const IssueFromTemplateRequest$json = const {
       '5': 9,
       '10': 'expirationDate'
     },
+    const {
+      '1': 'include_governance',
+      '3': 6,
+      '4': 1,
+      '5': 8,
+      '10': 'includeGovernance'
+    },
   ],
+  '9': const [
+    const {'1': 3, '2': 4},
+  ],
+  '10': const ['framework_id'],
 };
 
 /// Descriptor for `IssueFromTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List issueFromTemplateRequestDescriptor =
     $convert.base64Decode(
-        'ChhJc3N1ZUZyb21UZW1wbGF0ZVJlcXVlc3QSHwoLdGVtcGxhdGVfaWQYASABKAlSCnRlbXBsYXRlSWQSHwoLdmFsdWVzX2pzb24YAiABKAlSCnZhbHVlc0pzb24SJwoMZnJhbWV3b3JrX2lkGAMgASgJQgSAph0BUgtmcmFtZXdvcmtJZBIbCglzYXZlX2NvcHkYBCABKAhSCHNhdmVDb3B5EicKD2V4cGlyYXRpb25fZGF0ZRgFIAEoCVIOZXhwaXJhdGlvbkRhdGU=');
+        'ChhJc3N1ZUZyb21UZW1wbGF0ZVJlcXVlc3QSHwoLdGVtcGxhdGVfaWQYASABKAlSCnRlbXBsYXRlSWQSHwoLdmFsdWVzX2pzb24YAiABKAlSCnZhbHVlc0pzb24SGwoJc2F2ZV9jb3B5GAQgASgIUghzYXZlQ29weRInCg9leHBpcmF0aW9uX2RhdGUYBSABKAlSDmV4cGlyYXRpb25EYXRlEi0KEmluY2x1ZGVfZ292ZXJuYW5jZRgGIAEoCFIRaW5jbHVkZUdvdmVybmFuY2VKBAgDEARSDGZyYW1ld29ya19pZA==');
 @$core.Deprecated('Use issueFromTemplateResponseDescriptor instead')
 const IssueFromTemplateResponse$json = const {
   '1': 'IssueFromTemplateResponse',

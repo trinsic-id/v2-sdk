@@ -1,12 +1,11 @@
 package trinsic;
 
 import java.io.IOException;
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.trustregistry.v1.*;
-import trinsic.services.universalwallet.v1.CreateWalletRequest;
 
 public class TrustRegistryDemo {
   private static String myEcosystemIdOrName = "default";
@@ -18,72 +17,38 @@ public class TrustRegistryDemo {
 
   public static void run() throws IOException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicTrinsicOptions());
-    var account =
-        trinsic
-            .wallet()
-            .createWallet(
-                CreateWalletRequest.newBuilder().setEcosystemId(myEcosystemIdOrName).build())
-            .get();
-    trinsic.setAuthToken(account.getAuthToken());
+    var eco = trinsic.provider().createEcosystem(CreateEcosystemRequest.newBuilder().build()).get();
 
     var didUri = "did:example:test";
-    var frameworkUri = "https://example.com/" + UUID.randomUUID();
     var typeUri = "https://schema.org/Card";
-
-    // addFramework() {
-    var frameworkResponse =
-        trinsic
-            .trustRegistry()
-            .addFramework(
-                AddFrameworkRequest.newBuilder()
-                    .setGovernanceFrameworkUri(frameworkUri)
-                    .setName("Example Framework" + UUID.randomUUID())
-                    .build())
-            .get();
-    // }
 
     // registerIssuerSample() {
     var memberResponse =
         trinsic
             .trustRegistry()
             .registerMember(
-                RegisterMemberRequest.newBuilder()
-                    .setDidUri(didUri)
-                    .setFrameworkId(frameworkResponse.getId())
-                    .setSchemaUri(typeUri)
-                    .build())
+                RegisterMemberRequest.newBuilder().setDidUri(didUri).setSchemaUri(typeUri).build())
             .get();
     // }
+
     // checkIssuerStatus() {
     var issuerStatus =
         trinsic
             .trustRegistry()
-            .getMembershipStatus(
-                GetMembershipStatusRequest.newBuilder()
+            .getMemberAuthorizationStatus(
+                GetMemberAuthorizationStatusRequest.newBuilder()
                     .setDidUri(didUri)
-                    .setFrameworkId(frameworkResponse.getId())
                     .setSchemaUri(typeUri)
                     .build())
             .get();
     // }
     Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
-    // searchTrustRegistry() {
-    var searchResult = trinsic.trustRegistry().search().get();
-    // }
-    Assertions.assertNotNull(searchResult);
-    Assertions.assertNotNull(searchResult.getItemsJson());
-    Assertions.assertTrue(searchResult.getItemsJson().length() > 0);
-
     // unregisterIssuer() {
     trinsic
         .trustRegistry()
         .unregisterMember(
-            UnregisterMemberRequest.newBuilder()
-                .setFrameworkId(frameworkResponse.getId())
-                .setDidUri(didUri)
-                .setSchemaUri(typeUri)
-                .build());
+            UnregisterMemberRequest.newBuilder().setDidUri(didUri).setSchemaUri(typeUri).build());
     // }
     trinsic.shutdown();
   }

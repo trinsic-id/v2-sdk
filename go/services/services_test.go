@@ -2,12 +2,10 @@ package services
 
 import (
 	"context"
-	"fmt"
 	"path/filepath"
 	"runtime"
 	"testing"
 
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
@@ -86,23 +84,11 @@ func TestTrustRegistryDemo(t *testing.T) {
 	// register issuer
 	didURI := "did:example:test"
 	schemaURI := "https://schema.org/Card"
-	frameworkURI := fmt.Sprintf("https://example.com/%s", uuid.New())
-
-	// registerGovernanceFramework() {
-	newFramework, err := trinsic.TrustRegistry().AddFramework(context.Background(), &trustregistry.AddFrameworkRequest{
-		GovernanceFrameworkUri: frameworkURI,
-		Name:                   fmt.Sprintf("Example Framework - %s", uuid.New()),
-	})
-	// }
-	if !assert2.Nil(err) {
-		return
-	}
 
 	// registerMemberSample() {
 	registerMemberResponse, err := trinsic.TrustRegistry().RegisterMember(context.Background(), &trustregistry.RegisterMemberRequest{
-		FrameworkId: newFramework.Id,
-		SchemaUri:   schemaURI,
-		Member:      &trustregistry.RegisterMemberRequest_DidUri{DidUri: didURI},
+		SchemaUri: schemaURI,
+		Member:    &trustregistry.RegisterMemberRequest_DidUri{DidUri: didURI},
 	})
 	// }
 	if !assert2.Nil(err) {
@@ -110,10 +96,9 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// getMembershipStatus() {
-	getMembershipStatusResponse, err := trinsic.TrustRegistry().GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
-		FrameworkId: frameworkURI,
-		DidUri:      didURI,
-		SchemaUri:   schemaURI,
+	getMembershipStatusResponse, err := trinsic.TrustRegistry().GetMemberAuthorizationStatus(context.Background(), &trustregistry.GetMemberAuthorizationStatusRequest{
+		DidUri:    didURI,
+		SchemaUri: schemaURI,
 	})
 	// }
 	if !assert2.Nil(err) {
@@ -121,19 +106,9 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 	assert2.Equal(trustregistry.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
 
-	// searchTrustRegistry() {
-	ecosystemList, err := trinsic.TrustRegistry().Search(context.Background(), nil)
-	// }
-	if !assert2.Nil(err) {
-		return
-	}
-	assert2.NotNil(ecosystemList)
-	assert2.NotEmpty(ecosystemList)
-
 	// unregisterMember() {
 	unregisterMemberResponse, err := trinsic.TrustRegistry().UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
-		SchemaUri:   schemaURI,
-		FrameworkId: newFramework.Id,
+		SchemaUri: schemaURI,
 	})
 	// }
 

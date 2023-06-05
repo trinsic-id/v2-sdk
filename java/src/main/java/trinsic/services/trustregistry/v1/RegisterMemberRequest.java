@@ -25,7 +25,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
 
   private RegisterMemberRequest() {
     schemaUri_ = "";
-    frameworkId_ = "";
   }
 
   @java.lang.Override
@@ -399,55 +398,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
     return validUntilUtc_;
   }
 
-  public static final int FRAMEWORK_ID_FIELD_NUMBER = 30;
-  private volatile java.lang.Object frameworkId_;
-  /**
-   *
-   *
-   * <pre>
-   * ID of the governance framework that member is being added to
-   * </pre>
-   *
-   * <code>string framework_id = 30;</code>
-   *
-   * @return The frameworkId.
-   */
-  @java.lang.Override
-  public java.lang.String getFrameworkId() {
-    java.lang.Object ref = frameworkId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      frameworkId_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * ID of the governance framework that member is being added to
-   * </pre>
-   *
-   * <code>string framework_id = 30;</code>
-   *
-   * @return The bytes for frameworkId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getFrameworkIdBytes() {
-    java.lang.Object ref = frameworkId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      frameworkId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -480,9 +430,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
     if (validUntilUtc_ != 0L) {
       output.writeUInt64(12, validUntilUtc_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 30, frameworkId_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -510,9 +457,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
     if (validUntilUtc_ != 0L) {
       size += com.google.protobuf.CodedOutputStream.computeUInt64Size(12, validUntilUtc_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(30, frameworkId_);
-    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -532,7 +476,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
     if (!getSchemaUri().equals(other.getSchemaUri())) return false;
     if (getValidFromUtc() != other.getValidFromUtc()) return false;
     if (getValidUntilUtc() != other.getValidUntilUtc()) return false;
-    if (!getFrameworkId().equals(other.getFrameworkId())) return false;
     if (!getMemberCase().equals(other.getMemberCase())) return false;
     switch (memberCase_) {
       case 1:
@@ -564,8 +507,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getValidFromUtc());
     hash = (37 * hash) + VALID_UNTIL_UTC_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getValidUntilUtc());
-    hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getFrameworkId().hashCode();
     switch (memberCase_) {
       case 1:
         hash = (37 * hash) + DID_URI_FIELD_NUMBER;
@@ -728,8 +669,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
 
       validUntilUtc_ = 0L;
 
-      frameworkId_ = "";
-
       memberCase_ = 0;
       member_ = null;
       return this;
@@ -771,7 +710,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
       result.schemaUri_ = schemaUri_;
       result.validFromUtc_ = validFromUtc_;
       result.validUntilUtc_ = validUntilUtc_;
-      result.frameworkId_ = frameworkId_;
       result.memberCase_ = memberCase_;
       onBuilt();
       return result;
@@ -832,10 +770,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
       }
       if (other.getValidUntilUtc() != 0L) {
         setValidUntilUtc(other.getValidUntilUtc());
-      }
-      if (!other.getFrameworkId().isEmpty()) {
-        frameworkId_ = other.frameworkId_;
-        onChanged();
       }
       switch (other.getMemberCase()) {
         case DID_URI:
@@ -929,12 +863,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
 
                 break;
               } // case 96
-            case 242:
-              {
-                frameworkId_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 242
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1574,112 +1502,6 @@ public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMe
     public Builder clearValidUntilUtc() {
 
       validUntilUtc_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object frameworkId_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * ID of the governance framework that member is being added to
-     * </pre>
-     *
-     * <code>string framework_id = 30;</code>
-     *
-     * @return The frameworkId.
-     */
-    public java.lang.String getFrameworkId() {
-      java.lang.Object ref = frameworkId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        frameworkId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of the governance framework that member is being added to
-     * </pre>
-     *
-     * <code>string framework_id = 30;</code>
-     *
-     * @return The bytes for frameworkId.
-     */
-    public com.google.protobuf.ByteString getFrameworkIdBytes() {
-      java.lang.Object ref = frameworkId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        frameworkId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of the governance framework that member is being added to
-     * </pre>
-     *
-     * <code>string framework_id = 30;</code>
-     *
-     * @param value The frameworkId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFrameworkId(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      frameworkId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of the governance framework that member is being added to
-     * </pre>
-     *
-     * <code>string framework_id = 30;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearFrameworkId() {
-
-      frameworkId_ = getDefaultInstance().getFrameworkId();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of the governance framework that member is being added to
-     * </pre>
-     *
-     * <code>string framework_id = 30;</code>
-     *
-     * @param value The bytes for frameworkId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFrameworkIdBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      frameworkId_ = value;
       onChanged();
       return this;
     }

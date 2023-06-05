@@ -34,12 +34,6 @@ object TrustRegistryGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = TrustRegistryGrpc.getServiceDescriptor()
 
-  val addFrameworkMethod: MethodDescriptor<AddFrameworkRequest, AddFrameworkResponse>
-    @JvmStatic get() = TrustRegistryGrpc.getAddFrameworkMethod()
-
-  val removeFrameworkMethod: MethodDescriptor<RemoveFrameworkRequest, RemoveFrameworkResponse>
-    @JvmStatic get() = TrustRegistryGrpc.getRemoveFrameworkMethod()
-
   val searchRegistryMethod: MethodDescriptor<SearchRegistryRequest, SearchRegistryResponse>
     @JvmStatic get() = TrustRegistryGrpc.getSearchRegistryMethod()
 
@@ -49,13 +43,16 @@ object TrustRegistryGrpcKt {
   val unregisterMemberMethod: MethodDescriptor<UnregisterMemberRequest, UnregisterMemberResponse>
     @JvmStatic get() = TrustRegistryGrpc.getUnregisterMemberMethod()
 
-  val getMembershipStatusMethod:
-      MethodDescriptor<GetMembershipStatusRequest, GetMembershipStatusResponse>
-    @JvmStatic get() = TrustRegistryGrpc.getGetMembershipStatusMethod()
+  val getMemberAuthorizationStatusMethod:
+      MethodDescriptor<GetMemberAuthorizationStatusRequest, GetMemberAuthorizationStatusResponse>
+    @JvmStatic get() = TrustRegistryGrpc.getGetMemberAuthorizationStatusMethod()
 
   val listAuthorizedMembersMethod:
       MethodDescriptor<ListAuthorizedMembersRequest, ListAuthorizedMembersResponse>
     @JvmStatic get() = TrustRegistryGrpc.getListAuthorizedMembersMethod()
+
+  val getMemberMethod: MethodDescriptor<GetMemberRequest, GetMemberResponse>
+    @JvmStatic get() = TrustRegistryGrpc.getGetMemberMethod()
 
   /**
    * A stub for issuing RPCs to a(n) services.trustregistry.v1.TrustRegistry service as suspending
@@ -69,41 +66,6 @@ object TrustRegistryGrpcKt {
     override fun build(channel: Channel, callOptions: CallOptions): TrustRegistryCoroutineStub =
         TrustRegistryCoroutineStub(channel, callOptions)
 
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun addFramework(
-        request: AddFrameworkRequest,
-        headers: Metadata = Metadata()
-    ): AddFrameworkResponse =
-        unaryRpc(channel, TrustRegistryGrpc.getAddFrameworkMethod(), request, callOptions, headers)
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun removeFramework(
-        request: RemoveFrameworkRequest,
-        headers: Metadata = Metadata()
-    ): RemoveFrameworkResponse =
-        unaryRpc(
-            channel, TrustRegistryGrpc.getRemoveFrameworkMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
      * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
@@ -170,13 +132,13 @@ object TrustRegistryGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun getMembershipStatus(
-        request: GetMembershipStatusRequest,
+    suspend fun getMemberAuthorizationStatus(
+        request: GetMemberAuthorizationStatusRequest,
         headers: Metadata = Metadata()
-    ): GetMembershipStatusResponse =
+    ): GetMemberAuthorizationStatusResponse =
         unaryRpc(
             channel,
-            TrustRegistryGrpc.getGetMembershipStatusMethod(),
+            TrustRegistryGrpc.getGetMemberAuthorizationStatusMethod(),
             request,
             callOptions,
             headers)
@@ -202,6 +164,23 @@ object TrustRegistryGrpcKt {
             request,
             callOptions,
             headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun getMember(
+        request: GetMemberRequest,
+        headers: Metadata = Metadata()
+    ): GetMemberResponse =
+        unaryRpc(channel, TrustRegistryGrpc.getGetMemberMethod(), request, callOptions, headers)
   }
 
   /**
@@ -211,36 +190,6 @@ object TrustRegistryGrpcKt {
   abstract class TrustRegistryCoroutineImplBase(
       coroutineContext: CoroutineContext = EmptyCoroutineContext
   ) : AbstractCoroutineServerImpl(coroutineContext) {
-    /**
-     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.AddFramework.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun addFramework(request: AddFrameworkRequest): AddFrameworkResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.trustregistry.v1.TrustRegistry.AddFramework is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.RemoveFramework.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun removeFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.trustregistry.v1.TrustRegistry.RemoveFramework is unimplemented"))
-
     /**
      * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.SearchRegistry.
      *
@@ -288,7 +237,7 @@ object TrustRegistryGrpcKt {
 
     /**
      * Returns the response to an RPC for
-     * services.trustregistry.v1.TrustRegistry.GetMembershipStatus.
+     * services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -297,12 +246,12 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun getMembershipStatus(
-        request: GetMembershipStatusRequest
-    ): GetMembershipStatusResponse =
+    open suspend fun getMemberAuthorizationStatus(
+        request: GetMemberAuthorizationStatusRequest
+    ): GetMemberAuthorizationStatusResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
-                "Method services.trustregistry.v1.TrustRegistry.GetMembershipStatus is unimplemented"))
+                "Method services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus is unimplemented"))
 
     /**
      * Returns the response to an RPC for
@@ -322,18 +271,23 @@ object TrustRegistryGrpcKt {
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers is unimplemented"))
 
+    /**
+     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.GetMember.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun getMember(request: GetMemberRequest): GetMemberResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.trustregistry.v1.TrustRegistry.GetMember is unimplemented"))
+
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
-                    descriptor = TrustRegistryGrpc.getAddFrameworkMethod(),
-                    implementation = ::addFramework))
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
-                    descriptor = TrustRegistryGrpc.getRemoveFrameworkMethod(),
-                    implementation = ::removeFramework))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
@@ -352,13 +306,18 @@ object TrustRegistryGrpcKt {
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
-                    descriptor = TrustRegistryGrpc.getGetMembershipStatusMethod(),
-                    implementation = ::getMembershipStatus))
+                    descriptor = TrustRegistryGrpc.getGetMemberAuthorizationStatusMethod(),
+                    implementation = ::getMemberAuthorizationStatus))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
                     descriptor = TrustRegistryGrpc.getListAuthorizedMembersMethod(),
                     implementation = ::listAuthorizedMembers))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = TrustRegistryGrpc.getGetMemberMethod(),
+                    implementation = ::getMember))
             .build()
   }
 }

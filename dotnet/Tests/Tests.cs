@@ -225,51 +225,32 @@ public class Tests
         trinsic = new TrinsicService(_options.CloneWithAuthToken(authToken));
         // }
 
-        // registerGovernanceFramework() {
         var schemaUri = "https://schema.org/Card";
-        var frameworkUri = "https://example.com";
-        var registerFrameworkResponse = await trinsic.TrustRegistry.AddFrameworkAsync(new()
-        {
-            Name = "Demo framework",
-            Description = "My governance framework",
-            GovernanceFrameworkUri = frameworkUri
-        });
-        // }
 
         // registerIssuerSample() {
         var didUri = "did:example:test";
         _ = await trinsic.TrustRegistry.RegisterMemberAsync(new()
         {
             DidUri = didUri,
-            FrameworkId = registerFrameworkResponse.Id,
             SchemaUri = schemaUri
         });
         // }
 
         // checkIssuerStatus() {
-        var issuerStatus = await trinsic.TrustRegistry.GetMembershipStatusAsync(new()
+        var issuerStatus = await trinsic.TrustRegistry.GetMemberAuthorizationStatusAsync(new()
         {
             DidUri = didUri,
-            FrameworkId = frameworkUri,
             SchemaUri = schemaUri
         });
         // }
 
         issuerStatus.Should().NotBeNull();
         issuerStatus.Status.Should().Be(RegistrationStatus.Current);
-
-        // searchTrustRegistry() {
-        var searchResult = await trinsic.TrustRegistry.SearchAsync(new());
-        // }
-
-        searchResult.Should().NotBeNull();
-        searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
-
+        
         // unregisterIssuer() {
         _ = await trinsic.TrustRegistry.UnregisterMemberAsync(new()
         {
             DidUri = didUri,
-            FrameworkId = registerFrameworkResponse.Id,
             SchemaUri = schemaUri
         });
         // }
@@ -328,23 +309,6 @@ public class Tests
         {
             e.StatusCode.Should().Be(StatusCode.PermissionDenied);
         }
-    }
-
-    [Fact]
-    public async Task TestGovernanceFrameworkUriParse()
-    {
-        var myEcosystemId = "default";
-        var trinsic = new TrinsicService(_options);
-        var myProfile = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = myEcosystemId });
-        Assert.NotNull(myProfile);
-
-        trinsic = new TrinsicService(_options.CloneWithAuthToken(myProfile.AuthToken));
-
-        await Assert.ThrowsAsync<RpcException>(async () => await trinsic.TrustRegistry.AddFrameworkAsync(new()
-        {
-            Description = "invalid uri",
-            GovernanceFrameworkUri = ""
-        }));
     }
 
     [Fact(DisplayName = "Demo: template management and credential issuance from template")]

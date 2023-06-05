@@ -28,47 +28,75 @@ class RegistrationStatus(betterproto.Enum):
 
 
 @dataclass(eq=False, repr=False)
-class AddFrameworkRequest(betterproto.Message):
+class RegisterMemberRequest(betterproto.Message):
     """
-    Request to register a new ecosystem governance framework in the current
-    ecosystem
+    Request to register a member as a valid issuer of a specific credential
+    schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
     """
 
-    governance_framework_uri: str = betterproto.string_field(1)
-    """URI of governance framework organization"""
+    did_uri: str = betterproto.string_field(1, group="member")
+    """DID URI of member to register"""
 
-    name: str = betterproto.string_field(2)
-    """Name of governance framework organization"""
+    wallet_id: str = betterproto.string_field(3, group="member")
+    """Trinsic Wallet ID of member to register"""
 
-    description: str = betterproto.string_field(3)
-    """Description of governance framework"""
+    email: str = betterproto.string_field(4, group="member")
+    """
+    Email address of member to register. Must be associated with an existing
+    Trinsic account.
+    """
 
+    schema_uri: str = betterproto.string_field(10)
+    """URI of credential schema to register member as authorized issuer of"""
 
-@dataclass(eq=False, repr=False)
-class AddFrameworkResponse(betterproto.Message):
-    """Response to `AddFrameworkRequest`"""
+    valid_from_utc: int = betterproto.uint64_field(11)
+    """
+    Unix Timestamp member is valid from. Member will not be considered valid
+    before this timestamp.
+    """
 
-    id: str = betterproto.string_field(1)
-    """Unique framework identifier"""
-
-    governing_authority: str = betterproto.string_field(2)
-    """DID URI of Trinsic account which created the governance framework"""
-
-    trust_registry: str = betterproto.string_field(3)
-    """URN of trust registry for governance framework"""
-
-
-@dataclass(eq=False, repr=False)
-class RemoveFrameworkRequest(betterproto.Message):
-    """Request to remove a governance framework from the current ecosystem"""
-
-    id: str = betterproto.string_field(1)
-    """ID of governance framework to remove"""
+    valid_until_utc: int = betterproto.uint64_field(12)
+    """
+    Unix Timestamp member is valid until. Member will not be considered valid
+    after this timestamp.
+    """
 
 
 @dataclass(eq=False, repr=False)
-class RemoveFrameworkResponse(betterproto.Message):
-    """Response to `RemoveFrameworkRequest`"""
+class RegisterMemberResponse(betterproto.Message):
+    """Response to `RegisterMemberRequest`"""
+
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class UnregisterMemberRequest(betterproto.Message):
+    """
+    Request to unregister a member as a valid issuer of a specific credential
+    schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+    """
+
+    did_uri: str = betterproto.string_field(1, group="member")
+    """DID URI of member to unregister"""
+
+    wallet_id: str = betterproto.string_field(3, group="member")
+    """Trinsic Wallet ID of member to unregister"""
+
+    email: str = betterproto.string_field(4, group="member")
+    """
+    Email address of member to unregister. Must be associated with an existing
+    Trinsic account.
+    """
+
+    schema_uri: str = betterproto.string_field(10)
+    """
+    URI of credential schema to unregister member as authorized issuer of
+    """
+
+
+@dataclass(eq=False, repr=False)
+class UnregisterMemberResponse(betterproto.Message):
+    """Response to `UnregisterMemberRequest`"""
 
     pass
 
@@ -104,122 +132,22 @@ class SearchRegistryResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class GovernanceFramework(betterproto.Message):
-    """Ecosystem Governance Framework"""
-
-    governance_framework_uri: str = betterproto.string_field(1)
-    """URI of governance framework organization"""
-
-    trust_registry_uri: str = betterproto.string_field(2)
-    """URI of trust registry associated with governance framework"""
-
-    description: str = betterproto.string_field(3)
-    """Description of governance framework"""
-
-
-@dataclass(eq=False, repr=False)
-class RegisterMemberRequest(betterproto.Message):
+class GetMemberAuthorizationStatusRequest(betterproto.Message):
     """
-    Request to register a member as a valid issuer of a specific credential
-    schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-    """
-
-    did_uri: str = betterproto.string_field(1, group="member")
-    """DID URI of member to register"""
-
-    wallet_id: str = betterproto.string_field(3, group="member")
-    """Trinsic Wallet ID of member to register"""
-
-    email: str = betterproto.string_field(4, group="member")
-    """
-    Email address of member to register. Must be associated with an existing
-    Trinsic account.
-    """
-
-    schema_uri: str = betterproto.string_field(10)
-    """URI of credential schema to register member as authorized issuer of"""
-
-    valid_from_utc: int = betterproto.uint64_field(11)
-    """
-    Unix Timestamp member is valid from. Member will not be considered valid
-    before this timestamp.
-    """
-
-    valid_until_utc: int = betterproto.uint64_field(12)
-    """
-    Unix Timestamp member is valid until. Member will not be considered valid
-    after this timestamp.
-    """
-
-    framework_id: str = betterproto.string_field(30)
-    """ID of the governance framework that member is being added to"""
-
-
-@dataclass(eq=False, repr=False)
-class RegisterMemberResponse(betterproto.Message):
-    """Response to `RegisterMemberRequest`"""
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class UnregisterMemberRequest(betterproto.Message):
-    """
-    Request to unregister a member as a valid issuer of a specific credential
-    schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-    """
-
-    did_uri: str = betterproto.string_field(1, group="member")
-    """DID URI of member to unregister"""
-
-    wallet_id: str = betterproto.string_field(3, group="member")
-    """Trinsic Wallet ID of member to unregister"""
-
-    email: str = betterproto.string_field(4, group="member")
-    """
-    Email address of member to unregister. Must be associated with an existing
-    Trinsic account.
-    """
-
-    schema_uri: str = betterproto.string_field(10)
-    """
-    URI of credential schema to unregister member as authorized issuer of
-    """
-
-    framework_id: str = betterproto.string_field(20)
-    """ID of the governance framework that member is being removed from"""
-
-
-@dataclass(eq=False, repr=False)
-class UnregisterMemberResponse(betterproto.Message):
-    """Response to `UnregisterMemberRequest`"""
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class GetMembershipStatusRequest(betterproto.Message):
-    """
-    Request to fetch membership status in governance framework for a specific
+    Request to fetch member status in governance framework for a specific
     credential schema.
     """
 
-    framework_id: str = betterproto.string_field(1)
-    """
-    The ID of the ecosystem governance framework. This ID may be found in the
-    'trustRegistry' field in the verifiable credential model
-    """
-
-    did_uri: str = betterproto.string_field(2)
+    did_uri: str = betterproto.string_field(1)
     """DID URI of member"""
 
-    schema_uri: str = betterproto.string_field(4)
-    """URI of credential schema associated with membership"""
+    schema_uri: str = betterproto.string_field(2)
+    """URI of credential schema associated with member"""
 
 
 @dataclass(eq=False, repr=False)
-class GetMembershipStatusResponse(betterproto.Message):
-    """Response to `GetMembershipStatusRequest`"""
+class GetMemberAuthorizationStatusResponse(betterproto.Message):
+    """Response to `GetMemberAuthorizationStatusRequest`"""
 
     status: "RegistrationStatus" = betterproto.enum_field(1)
     """Status of member for given credential schema"""
@@ -227,22 +155,17 @@ class GetMembershipStatusResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class ListAuthorizedMembersRequest(betterproto.Message):
-    framework_id: str = betterproto.string_field(1)
-    """
-    The ID of the ecosystem governance framework. This ID may be found in the
-    'trustRegistry' field in the verifiable credential model
-    """
-
     schema_uri: Optional[str] = betterproto.string_field(
-        2, optional=True, group="_schema_uri"
+        1, optional=True, group="_schema_uri"
     )
     """id of schema that needs to be checked"""
 
     continuation_token: Optional[str] = betterproto.string_field(
-        3, optional=True, group="_continuation_token"
+        2, optional=True, group="_continuation_token"
     )
     """
-    Token to fetch next set of results, from previous `SearchRegistryResponse`
+    Token to fetch next set of results, from previous
+    `ListAuthorizedMembersResponse`
     """
 
 
@@ -279,39 +202,32 @@ class AuthorizedMemberSchema(betterproto.Message):
     valid_until: int = betterproto.uint64_field(5)
 
 
+@dataclass(eq=False, repr=False)
+class GetMemberRequest(betterproto.Message):
+    """Request to get a member of the governance framework"""
+
+    did_uri: str = betterproto.string_field(1, group="member")
+    """DID URI of member to get"""
+
+    wallet_id: str = betterproto.string_field(3, group="member")
+    """Trinsic Wallet ID of member to get"""
+
+    email: str = betterproto.string_field(4, group="member")
+    """
+    Email address of member to get. Must be associated with an existing Trinsic
+    account.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class GetMemberResponse(betterproto.Message):
+    """Response to `GetMemberAuthorizationStatusRequest`"""
+
+    authorized_member: "AuthorizedMember" = betterproto.message_field(1)
+    """Member for given did in given framework"""
+
+
 class TrustRegistryStub(betterproto.ServiceStub):
-    async def add_framework(
-        self,
-        add_framework_request: "AddFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "AddFrameworkResponse":
-        return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/AddFramework",
-            add_framework_request,
-            AddFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-    async def remove_framework(
-        self,
-        remove_framework_request: "RemoveFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "RemoveFrameworkResponse":
-        return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/RemoveFramework",
-            remove_framework_request,
-            RemoveFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def search_registry(
         self,
         search_registry_request: "SearchRegistryRequest",
@@ -360,17 +276,17 @@ class TrustRegistryStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def get_membership_status(
+    async def get_member_authorization_status(
         self,
-        get_membership_status_request: "GetMembershipStatusRequest",
+        get_member_authorization_status_request: "GetMemberAuthorizationStatusRequest",
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["_MetadataLike"] = None,
-    ) -> "GetMembershipStatusResponse":
+    ) -> "GetMemberAuthorizationStatusResponse":
         return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus",
-            get_membership_status_request,
-            GetMembershipStatusResponse,
+            "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus",
+            get_member_authorization_status_request,
+            GetMemberAuthorizationStatusResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -392,18 +308,24 @@ class TrustRegistryStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def get_member(
+        self,
+        get_member_request: "GetMemberRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetMemberResponse":
+        return await self._unary_unary(
+            "/services.trustregistry.v1.TrustRegistry/GetMember",
+            get_member_request,
+            GetMemberResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class TrustRegistryBase(ServiceBase):
-    async def add_framework(
-        self, add_framework_request: "AddFrameworkRequest"
-    ) -> "AddFrameworkResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def remove_framework(
-        self, remove_framework_request: "RemoveFrameworkRequest"
-    ) -> "RemoveFrameworkResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def search_registry(
         self, search_registry_request: "SearchRegistryRequest"
     ) -> "SearchRegistryResponse":
@@ -419,9 +341,10 @@ class TrustRegistryBase(ServiceBase):
     ) -> "UnregisterMemberResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def get_membership_status(
-        self, get_membership_status_request: "GetMembershipStatusRequest"
-    ) -> "GetMembershipStatusResponse":
+    async def get_member_authorization_status(
+        self,
+        get_member_authorization_status_request: "GetMemberAuthorizationStatusRequest",
+    ) -> "GetMemberAuthorizationStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def list_authorized_members(
@@ -429,15 +352,10 @@ class TrustRegistryBase(ServiceBase):
     ) -> "ListAuthorizedMembersResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def __rpc_add_framework(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.add_framework(request)
-        await stream.send_message(response)
-
-    async def __rpc_remove_framework(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.remove_framework(request)
-        await stream.send_message(response)
+    async def get_member(
+        self, get_member_request: "GetMemberRequest"
+    ) -> "GetMemberResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_search_registry(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
@@ -454,9 +372,11 @@ class TrustRegistryBase(ServiceBase):
         response = await self.unregister_member(request)
         await stream.send_message(response)
 
-    async def __rpc_get_membership_status(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_get_member_authorization_status(
+        self, stream: grpclib.server.Stream
+    ) -> None:
         request = await stream.recv_message()
-        response = await self.get_membership_status(request)
+        response = await self.get_member_authorization_status(request)
         await stream.send_message(response)
 
     async def __rpc_list_authorized_members(
@@ -466,20 +386,13 @@ class TrustRegistryBase(ServiceBase):
         response = await self.list_authorized_members(request)
         await stream.send_message(response)
 
+    async def __rpc_get_member(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.get_member(request)
+        await stream.send_message(response)
+
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.trustregistry.v1.TrustRegistry/AddFramework": grpclib.const.Handler(
-                self.__rpc_add_framework,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                AddFrameworkRequest,
-                AddFrameworkResponse,
-            ),
-            "/services.trustregistry.v1.TrustRegistry/RemoveFramework": grpclib.const.Handler(
-                self.__rpc_remove_framework,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RemoveFrameworkRequest,
-                RemoveFrameworkResponse,
-            ),
             "/services.trustregistry.v1.TrustRegistry/SearchRegistry": grpclib.const.Handler(
                 self.__rpc_search_registry,
                 grpclib.const.Cardinality.UNARY_UNARY,
@@ -498,16 +411,22 @@ class TrustRegistryBase(ServiceBase):
                 UnregisterMemberRequest,
                 UnregisterMemberResponse,
             ),
-            "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus": grpclib.const.Handler(
-                self.__rpc_get_membership_status,
+            "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus": grpclib.const.Handler(
+                self.__rpc_get_member_authorization_status,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                GetMembershipStatusRequest,
-                GetMembershipStatusResponse,
+                GetMemberAuthorizationStatusRequest,
+                GetMemberAuthorizationStatusResponse,
             ),
             "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers": grpclib.const.Handler(
                 self.__rpc_list_authorized_members,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 ListAuthorizedMembersRequest,
                 ListAuthorizedMembersResponse,
+            ),
+            "/services.trustregistry.v1.TrustRegistry/GetMember": grpclib.const.Handler(
+                self.__rpc_get_member,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetMemberRequest,
+                GetMemberResponse,
             ),
         }

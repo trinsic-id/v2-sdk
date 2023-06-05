@@ -655,9 +655,9 @@ Request to create and sign a JSON-LD Verifiable Credential from a template using
 | ----- | ---- | ----------- |
 | template_id | [string](/reference/proto#string) | ID of template to use |
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
-| framework_id | [string](/reference/proto#string) | Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF) |
 | save_copy | [bool](/reference/proto#bool) | Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status. |
 | expiration_date | [string](/reference/proto#string) | The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework. |
 
 
 
@@ -2390,49 +2390,14 @@ Response to `UpdateItemRequest`
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| AddFramework | [AddFrameworkRequest](/reference/proto#services-trustregistry-v1-AddFrameworkRequest) | [AddFrameworkResponse](/reference/proto#services-trustregistry-v1-AddFrameworkResponse) | Add a governance framework to the ecosystem |
-| RemoveFramework | [RemoveFrameworkRequest](/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest) | [RemoveFrameworkResponse](/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse) | Remove a governance framework from the ecosystem |
-| SearchRegistry | [SearchRegistryRequest](/reference/proto#services-trustregistry-v1-SearchRegistryRequest) | [SearchRegistryResponse](/reference/proto#services-trustregistry-v1-SearchRegistryResponse) | Search the ecosystem's governance frameworks |
+| SearchRegistry | [SearchRegistryRequest](/reference/proto#services-trustregistry-v1-SearchRegistryRequest) | [SearchRegistryResponse](/reference/proto#services-trustregistry-v1-SearchRegistryResponse) | Search the ecosystem's governance framework |
 | RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
 | UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
-| GetMembershipStatus | [GetMembershipStatusRequest](/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest) | [GetMembershipStatusResponse](/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse) | Fetch the membership status of an issuer for a given credential schema in a trust registry |
+| GetMemberAuthorizationStatus | [GetMemberAuthorizationStatusRequest](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusRequest) | [GetMemberAuthorizationStatusResponse](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusResponse) | Fetch the status of a member for a given credential schema in a trust registry |
 | ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
+| GetMember | [GetMemberRequest](/reference/proto#services-trustregistry-v1-GetMemberRequest) | [GetMemberResponse](/reference/proto#services-trustregistry-v1-GetMemberResponse) | Get member for a given did in a trust registry |
 
  <!-- end services -->
-
-
-<a name="services-trustregistry-v1-AddFrameworkRequest"></a>
-
-### AddFrameworkRequest
-Request to register a new ecosystem governance framework in the current ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework organization |
-| name | [string](/reference/proto#string) | Name of governance framework organization |
-| description | [string](/reference/proto#string) | Description of governance framework |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-AddFrameworkResponse"></a>
-
-### AddFrameworkResponse
-Response to `AddFrameworkRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | Unique framework identifier |
-| governing_authority | [string](/reference/proto#string) | DID URI of Trinsic account which created the governance framework |
-| trust_registry | [string](/reference/proto#string) | URN of trust registry for governance framework |
-
-
-
-
 
 
 <a name="services-trustregistry-v1-AuthorizedMember"></a>
@@ -2470,27 +2435,26 @@ Response to `AddFrameworkRequest`
 
 
 
-<a name="services-trustregistry-v1-GetMembershipStatusRequest"></a>
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
 
-### GetMembershipStatusRequest
-Request to fetch membership status in governance framework for a specific credential schema.
+### GetMemberAuthorizationStatusRequest
+Request to fetch member status in governance framework for a specific credential schema.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
 | did_uri | [string](/reference/proto#string) | DID URI of member |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with membership |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with member |
 
 
 
 
 
 
-<a name="services-trustregistry-v1-GetMembershipStatusResponse"></a>
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusResponse"></a>
 
-### GetMembershipStatusResponse
-Response to `GetMembershipStatusRequest`
+### GetMemberAuthorizationStatusResponse
+Response to `GetMemberAuthorizationStatusRequest`
 
 
 | Field | Type | Description |
@@ -2502,17 +2466,32 @@ Response to `GetMembershipStatusRequest`
 
 
 
-<a name="services-trustregistry-v1-GovernanceFramework"></a>
+<a name="services-trustregistry-v1-GetMemberRequest"></a>
 
-### GovernanceFramework
-Ecosystem Governance Framework
+### GetMemberRequest
+Request to get a member of the governance framework
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) | URI of governance framework organization |
-| trust_registry_uri | [string](/reference/proto#string) | URI of trust registry associated with governance framework |
-| description | [string](/reference/proto#string) | Description of governance framework |
+| did_uri | [string](/reference/proto#string) | DID URI of member to get |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to get |
+| email | [string](/reference/proto#string) | Email address of member to get. Must be associated with an existing Trinsic account. |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberResponse"></a>
+
+### GetMemberResponse
+Response to `GetMemberAuthorizationStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_member | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember) | Member for given did in given framework |
 
 
 
@@ -2527,9 +2506,8 @@ Ecosystem Governance Framework
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| framework_id | [string](/reference/proto#string) | The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model |
 | schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `SearchRegistryResponse` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `ListAuthorizedMembersResponse` |
 
 
 
@@ -2568,7 +2546,6 @@ Only one of `did_uri`, `wallet_id`, or `email` may be specified.
 | schema_uri | [string](/reference/proto#string) | URI of credential schema to register member as authorized issuer of |
 | valid_from_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. |
 | valid_until_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. |
-| framework_id | [string](/reference/proto#string) | ID of the governance framework that member is being added to |
 
 
 
@@ -2579,31 +2556,6 @@ Only one of `did_uri`, `wallet_id`, or `email` may be specified.
 
 ### RegisterMemberResponse
 Response to `RegisterMemberRequest`
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RemoveFrameworkRequest"></a>
-
-### RemoveFrameworkRequest
-Request to remove a governance framework from the current ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of governance framework to remove |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RemoveFrameworkResponse"></a>
-
-### RemoveFrameworkResponse
-Response to `RemoveFrameworkRequest`
 
 
 
@@ -2656,7 +2608,6 @@ Only one of `did_uri`, `wallet_id`, or `email` may be specified.
 | wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to unregister |
 | email | [string](/reference/proto#string) | Email address of member to unregister. Must be associated with an existing Trinsic account. |
 | schema_uri | [string](/reference/proto#string) | URI of credential schema to unregister member as authorized issuer of |
-| framework_id | [string](/reference/proto#string) | ID of the governance framework that member is being removed from |
 
 
 

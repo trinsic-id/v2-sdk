@@ -35,13 +35,6 @@ class IssueFromTemplateRequest(betterproto.Message):
     referenced by `template_id`
     """
 
-    framework_id: str = betterproto.string_field(3)
-    """
-    Governance framework ID to use with issuance of this credential. If
-    specified, the issued credential will contain extended issuer metadata with
-    membership info for the given ecosystem governance framework (EGF)
-    """
-
     save_copy: bool = betterproto.bool_field(4)
     """
     Save a copy of the issued credential to this user's wallet. This copy will
@@ -54,6 +47,12 @@ class IssueFromTemplateRequest(betterproto.Message):
     The ISO8601 expiration UTC date of the credential. This is a reserved field
     in the VC specification. If specified, the issued credential will contain
     an expiration date. https://www.w3.org/TR/vc-data-model/#expiration
+    """
+
+    include_governance: bool = betterproto.bool_field(6)
+    """
+    If true, the issued credential will contain an attestation of the issuer's
+    membership in the ecosystem's governance framework.
     """
 
 

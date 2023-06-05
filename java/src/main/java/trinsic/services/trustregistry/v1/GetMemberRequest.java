@@ -7,30 +7,27 @@ package trinsic.services.trustregistry.v1;
  *
  *
  * <pre>
- * Request to unregister a member as a valid issuer of a specific credential schema.
- * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+ * Request to get a member of the governance framework
  * </pre>
  *
- * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
+ * Protobuf type {@code services.trustregistry.v1.GetMemberRequest}
  */
-public final class UnregisterMemberRequest extends com.google.protobuf.GeneratedMessageV3
+public final class GetMemberRequest extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterMemberRequest)
-    UnregisterMemberRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMemberRequest)
+    GetMemberRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use UnregisterMemberRequest.newBuilder() to construct.
-  private UnregisterMemberRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GetMemberRequest.newBuilder() to construct.
+  private GetMemberRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private UnregisterMemberRequest() {
-    schemaUri_ = "";
-  }
+  private GetMemberRequest() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new UnregisterMemberRequest();
+    return new GetMemberRequest();
   }
 
   @java.lang.Override
@@ -40,17 +37,17 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
+        .internal_static_services_trustregistry_v1_GetMemberRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable
+        .internal_static_services_trustregistry_v1_GetMemberRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.UnregisterMemberRequest.class,
-            trinsic.services.trustregistry.v1.UnregisterMemberRequest.Builder.class);
+            trinsic.services.trustregistry.v1.GetMemberRequest.class,
+            trinsic.services.trustregistry.v1.GetMemberRequest.Builder.class);
   }
 
   private int memberCase_ = 0;
@@ -108,7 +105,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * DID URI of member to unregister
+   * DID URI of member to get
    * </pre>
    *
    * <code>string did_uri = 1;</code>
@@ -122,7 +119,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * DID URI of member to unregister
+   * DID URI of member to get
    * </pre>
    *
    * <code>string did_uri = 1;</code>
@@ -149,7 +146,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * DID URI of member to unregister
+   * DID URI of member to get
    * </pre>
    *
    * <code>string did_uri = 1;</code>
@@ -178,7 +175,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Trinsic Wallet ID of member to unregister
+   * Trinsic Wallet ID of member to get
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -192,7 +189,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Trinsic Wallet ID of member to unregister
+   * Trinsic Wallet ID of member to get
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -219,7 +216,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Trinsic Wallet ID of member to unregister
+   * Trinsic Wallet ID of member to get
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -248,7 +245,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * Email address of member to get. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
@@ -262,7 +259,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * Email address of member to get. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
@@ -289,7 +286,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * Email address of member to get. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
@@ -307,55 +304,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       if (memberCase_ == 4) {
         member_ = b;
       }
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int SCHEMA_URI_FIELD_NUMBER = 10;
-  private volatile java.lang.Object schemaUri_;
-  /**
-   *
-   *
-   * <pre>
-   * URI of credential schema to unregister member as authorized issuer of
-   * </pre>
-   *
-   * <code>string schema_uri = 10;</code>
-   *
-   * @return The schemaUri.
-   */
-  @java.lang.Override
-  public java.lang.String getSchemaUri() {
-    java.lang.Object ref = schemaUri_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      schemaUri_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * URI of credential schema to unregister member as authorized issuer of
-   * </pre>
-   *
-   * <code>string schema_uri = 10;</code>
-   *
-   * @return The bytes for schemaUri.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getSchemaUriBytes() {
-    java.lang.Object ref = schemaUri_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      schemaUri_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -385,9 +333,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     if (memberCase_ == 4) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, member_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, schemaUri_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -406,9 +351,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     if (memberCase_ == 4) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, member_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, schemaUri_);
-    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -419,13 +361,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.trustregistry.v1.UnregisterMemberRequest)) {
+    if (!(obj instanceof trinsic.services.trustregistry.v1.GetMemberRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.UnregisterMemberRequest other =
-        (trinsic.services.trustregistry.v1.UnregisterMemberRequest) obj;
+    trinsic.services.trustregistry.v1.GetMemberRequest other =
+        (trinsic.services.trustregistry.v1.GetMemberRequest) obj;
 
-    if (!getSchemaUri().equals(other.getSchemaUri())) return false;
     if (!getMemberCase().equals(other.getMemberCase())) return false;
     switch (memberCase_) {
       case 1:
@@ -451,8 +392,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
-    hash = (53 * hash) + getSchemaUri().hashCode();
     switch (memberCase_) {
       case 1:
         hash = (37 * hash) + DID_URI_FIELD_NUMBER;
@@ -474,71 +413,71 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     return hash;
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(byte[] data)
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseDelimitedFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseDelimitedFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseDelimitedFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest parseFrom(
+  public static trinsic.services.trustregistry.v1.GetMemberRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -555,8 +494,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(
-      trinsic.services.trustregistry.v1.UnregisterMemberRequest prototype) {
+  public static Builder newBuilder(trinsic.services.trustregistry.v1.GetMemberRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -574,32 +512,31 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Request to unregister a member as a valid issuer of a specific credential schema.
-   * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+   * Request to get a member of the governance framework
    * </pre>
    *
-   * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
+   * Protobuf type {@code services.trustregistry.v1.GetMemberRequest}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterMemberRequest)
-      trinsic.services.trustregistry.v1.UnregisterMemberRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMemberRequest)
+      trinsic.services.trustregistry.v1.GetMemberRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
+          .internal_static_services_trustregistry_v1_GetMemberRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable
+          .internal_static_services_trustregistry_v1_GetMemberRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.UnregisterMemberRequest.class,
-              trinsic.services.trustregistry.v1.UnregisterMemberRequest.Builder.class);
+              trinsic.services.trustregistry.v1.GetMemberRequest.class,
+              trinsic.services.trustregistry.v1.GetMemberRequest.Builder.class);
     }
 
-    // Construct using trinsic.services.trustregistry.v1.UnregisterMemberRequest.newBuilder()
+    // Construct using trinsic.services.trustregistry.v1.GetMemberRequest.newBuilder()
     private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
@@ -609,8 +546,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      schemaUri_ = "";
-
       memberCase_ = 0;
       member_ = null;
       return this;
@@ -619,17 +554,17 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
+          .internal_static_services_trustregistry_v1_GetMemberRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.UnregisterMemberRequest getDefaultInstanceForType() {
-      return trinsic.services.trustregistry.v1.UnregisterMemberRequest.getDefaultInstance();
+    public trinsic.services.trustregistry.v1.GetMemberRequest getDefaultInstanceForType() {
+      return trinsic.services.trustregistry.v1.GetMemberRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.UnregisterMemberRequest build() {
-      trinsic.services.trustregistry.v1.UnregisterMemberRequest result = buildPartial();
+    public trinsic.services.trustregistry.v1.GetMemberRequest build() {
+      trinsic.services.trustregistry.v1.GetMemberRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -637,9 +572,9 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.UnregisterMemberRequest buildPartial() {
-      trinsic.services.trustregistry.v1.UnregisterMemberRequest result =
-          new trinsic.services.trustregistry.v1.UnregisterMemberRequest(this);
+    public trinsic.services.trustregistry.v1.GetMemberRequest buildPartial() {
+      trinsic.services.trustregistry.v1.GetMemberRequest result =
+          new trinsic.services.trustregistry.v1.GetMemberRequest(this);
       if (memberCase_ == 1) {
         result.member_ = member_;
       }
@@ -649,7 +584,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       if (memberCase_ == 4) {
         result.member_ = member_;
       }
-      result.schemaUri_ = schemaUri_;
       result.memberCase_ = memberCase_;
       onBuilt();
       return result;
@@ -690,21 +624,17 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.trustregistry.v1.UnregisterMemberRequest) {
-        return mergeFrom((trinsic.services.trustregistry.v1.UnregisterMemberRequest) other);
+      if (other instanceof trinsic.services.trustregistry.v1.GetMemberRequest) {
+        return mergeFrom((trinsic.services.trustregistry.v1.GetMemberRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.trustregistry.v1.UnregisterMemberRequest other) {
-      if (other == trinsic.services.trustregistry.v1.UnregisterMemberRequest.getDefaultInstance())
+    public Builder mergeFrom(trinsic.services.trustregistry.v1.GetMemberRequest other) {
+      if (other == trinsic.services.trustregistry.v1.GetMemberRequest.getDefaultInstance())
         return this;
-      if (!other.getSchemaUri().isEmpty()) {
-        schemaUri_ = other.schemaUri_;
-        onChanged();
-      }
       switch (other.getMemberCase()) {
         case DID_URI:
           {
@@ -779,12 +709,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
                 member_ = s;
                 break;
               } // case 34
-            case 82:
-              {
-                schemaUri_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 82
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -820,7 +744,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * DID URI of member to unregister
+     * DID URI of member to get
      * </pre>
      *
      * <code>string did_uri = 1;</code>
@@ -835,7 +759,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * DID URI of member to unregister
+     * DID URI of member to get
      * </pre>
      *
      * <code>string did_uri = 1;</code>
@@ -863,7 +787,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * DID URI of member to unregister
+     * DID URI of member to get
      * </pre>
      *
      * <code>string did_uri = 1;</code>
@@ -891,7 +815,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * DID URI of member to unregister
+     * DID URI of member to get
      * </pre>
      *
      * <code>string did_uri = 1;</code>
@@ -912,7 +836,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * DID URI of member to unregister
+     * DID URI of member to get
      * </pre>
      *
      * <code>string did_uri = 1;</code>
@@ -931,7 +855,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * DID URI of member to unregister
+     * DID URI of member to get
      * </pre>
      *
      * <code>string did_uri = 1;</code>
@@ -954,7 +878,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Trinsic Wallet ID of member to unregister
+     * Trinsic Wallet ID of member to get
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -969,7 +893,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Trinsic Wallet ID of member to unregister
+     * Trinsic Wallet ID of member to get
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -997,7 +921,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Trinsic Wallet ID of member to unregister
+     * Trinsic Wallet ID of member to get
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1025,7 +949,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Trinsic Wallet ID of member to unregister
+     * Trinsic Wallet ID of member to get
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1046,7 +970,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Trinsic Wallet ID of member to unregister
+     * Trinsic Wallet ID of member to get
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1065,7 +989,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Trinsic Wallet ID of member to unregister
+     * Trinsic Wallet ID of member to get
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -1088,7 +1012,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * Email address of member to get. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
@@ -1103,7 +1027,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * Email address of member to get. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
@@ -1131,7 +1055,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * Email address of member to get. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
@@ -1159,7 +1083,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * Email address of member to get. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
@@ -1180,7 +1104,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * Email address of member to get. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
@@ -1199,7 +1123,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * Email address of member to get. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
@@ -1218,112 +1142,6 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
 
-    private java.lang.Object schemaUri_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * URI of credential schema to unregister member as authorized issuer of
-     * </pre>
-     *
-     * <code>string schema_uri = 10;</code>
-     *
-     * @return The schemaUri.
-     */
-    public java.lang.String getSchemaUri() {
-      java.lang.Object ref = schemaUri_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        schemaUri_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI of credential schema to unregister member as authorized issuer of
-     * </pre>
-     *
-     * <code>string schema_uri = 10;</code>
-     *
-     * @return The bytes for schemaUri.
-     */
-    public com.google.protobuf.ByteString getSchemaUriBytes() {
-      java.lang.Object ref = schemaUri_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        schemaUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI of credential schema to unregister member as authorized issuer of
-     * </pre>
-     *
-     * <code>string schema_uri = 10;</code>
-     *
-     * @param value The schemaUri to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSchemaUri(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      schemaUri_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI of credential schema to unregister member as authorized issuer of
-     * </pre>
-     *
-     * <code>string schema_uri = 10;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearSchemaUri() {
-
-      schemaUri_ = getDefaultInstance().getSchemaUri();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI of credential schema to unregister member as authorized issuer of
-     * </pre>
-     *
-     * <code>string schema_uri = 10;</code>
-     *
-     * @param value The bytes for schemaUri to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSchemaUriBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      schemaUri_ = value;
-      onChanged();
-      return this;
-    }
-
     @java.lang.Override
     public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
@@ -1335,24 +1153,24 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.UnregisterMemberRequest)
+    // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.GetMemberRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:services.trustregistry.v1.UnregisterMemberRequest)
-  private static final trinsic.services.trustregistry.v1.UnregisterMemberRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:services.trustregistry.v1.GetMemberRequest)
+  private static final trinsic.services.trustregistry.v1.GetMemberRequest DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.UnregisterMemberRequest();
+    DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.GetMemberRequest();
   }
 
-  public static trinsic.services.trustregistry.v1.UnregisterMemberRequest getDefaultInstance() {
+  public static trinsic.services.trustregistry.v1.GetMemberRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UnregisterMemberRequest> PARSER =
-      new com.google.protobuf.AbstractParser<UnregisterMemberRequest>() {
+  private static final com.google.protobuf.Parser<GetMemberRequest> PARSER =
+      new com.google.protobuf.AbstractParser<GetMemberRequest>() {
         @java.lang.Override
-        public UnregisterMemberRequest parsePartialFrom(
+        public GetMemberRequest parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1371,17 +1189,17 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
         }
       };
 
-  public static com.google.protobuf.Parser<UnregisterMemberRequest> parser() {
+  public static com.google.protobuf.Parser<GetMemberRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<UnregisterMemberRequest> getParserForType() {
+  public com.google.protobuf.Parser<GetMemberRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.trustregistry.v1.UnregisterMemberRequest getDefaultInstanceForType() {
+  public trinsic.services.trustregistry.v1.GetMemberRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

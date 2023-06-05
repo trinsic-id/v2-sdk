@@ -12,39 +12,10 @@ public interface ListAuthorizedMembersRequestOrBuilder
    *
    *
    * <pre>
-   * The ID of the ecosystem governance framework.
-   * This ID may be found in the 'trustRegistry' field in the
-   * verifiable credential model
-   * </pre>
-   *
-   * <code>string framework_id = 1;</code>
-   *
-   * @return The frameworkId.
-   */
-  java.lang.String getFrameworkId();
-  /**
-   *
-   *
-   * <pre>
-   * The ID of the ecosystem governance framework.
-   * This ID may be found in the 'trustRegistry' field in the
-   * verifiable credential model
-   * </pre>
-   *
-   * <code>string framework_id = 1;</code>
-   *
-   * @return The bytes for frameworkId.
-   */
-  com.google.protobuf.ByteString getFrameworkIdBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * id of schema that needs to be checked
    * </pre>
    *
-   * <code>optional string schema_uri = 2;</code>
+   * <code>optional string schema_uri = 1;</code>
    *
    * @return Whether the schemaUri field is set.
    */
@@ -56,7 +27,7 @@ public interface ListAuthorizedMembersRequestOrBuilder
    * id of schema that needs to be checked
    * </pre>
    *
-   * <code>optional string schema_uri = 2;</code>
+   * <code>optional string schema_uri = 1;</code>
    *
    * @return The schemaUri.
    */
@@ -68,7 +39,7 @@ public interface ListAuthorizedMembersRequestOrBuilder
    * id of schema that needs to be checked
    * </pre>
    *
-   * <code>optional string schema_uri = 2;</code>
+   * <code>optional string schema_uri = 1;</code>
    *
    * @return The bytes for schemaUri.
    */
@@ -78,10 +49,10 @@ public interface ListAuthorizedMembersRequestOrBuilder
    *
    *
    * <pre>
-   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
    * </pre>
    *
-   * <code>optional string continuation_token = 3;</code>
+   * <code>optional string continuation_token = 2;</code>
    *
    * @return Whether the continuationToken field is set.
    */
@@ -90,10 +61,10 @@ public interface ListAuthorizedMembersRequestOrBuilder
    *
    *
    * <pre>
-   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
    * </pre>
    *
-   * <code>optional string continuation_token = 3;</code>
+   * <code>optional string continuation_token = 2;</code>
    *
    * @return The continuationToken.
    */
@@ -102,10 +73,10 @@ public interface ListAuthorizedMembersRequestOrBuilder
    *
    *
    * <pre>
-   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
    * </pre>
    *
-   * <code>optional string continuation_token = 3;</code>
+   * <code>optional string continuation_token = 2;</code>
    *
    * @return The bytes for continuationToken.
    */

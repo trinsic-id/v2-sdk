@@ -9,55 +9,6 @@ The Trust Registry Service exposes functionality for managing [Trust Registries]
 
 ---
 
-## Create Governance Framework
-
-Creates a Governance Framework and attaches it to the current ecosystem.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic trust-registry add-framework --name 'Example EGF' --uri 'https://example.com/governance'
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [RegisterGovernanceFramework](../../../web/test/TrustRegistry.test.ts) inside_block:registerGovernanceFramework
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [RegisterGovernanceFramework](../../../dotnet/Tests/Tests.cs) inside_block:registerGovernanceFramework
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [RegisterGovernanceFramework](../../../python/samples/trustregistry_demo.py) inside_block:registerGovernanceFramework
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [RegisterGovernanceFramework](../../../go/services/services_test.go) inside_block:registerGovernanceFramework
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [RegisterGovernanceFramework](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:addFramework
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.AddFramework") }}
-
----
-
 ## Register Issuer
 
 Registers an authorized issuer for a specific credential type (identified by its `schema_uri`).
@@ -210,56 +161,7 @@ Check the status of an issuer for a specific credential type.
         ```
         <!--/codeinclude-->
 
-{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
-
----
-
-## Search
-Search the registry for registered issuers using a SQL query.
-
-{{ proto_sample_start() }}
-
-    === "Trinsic CLI"
-        ```bash
-        trinsic trust-registry search --query <SQL query>
-        ```
-
-    === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [SearchTrustRegistry](../../../web/test/TrustRegistry.test.ts) inside_block:searchTrustRegistry
-        ```
-        <!--/codeinclude-->
-
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchTrustRegistry
-        ```
-        <!--/codeinclude-->
-
-    === "Python"
-        <!--codeinclude-->
-        ```python
-        [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:searchTrustRegistry
-        ```
-        <!--/codeinclude-->
-
-    === "Go"
-        <!--codeinclude-->
-        ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchTrustRegistry
-        ```
-        <!--/codeinclude-->
-
-    === "Java"
-        <!--codeinclude-->
-        ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:searchTrustRegistry
-        ```
-        <!--/codeinclude-->
-    
-{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.SearchRegistry") }}
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus") }}
 
 ---
 
