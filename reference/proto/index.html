@@ -3869,28 +3869,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#addframeworkrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AddFrameworkRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addframeworkresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AddFrameworkResponse
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#authorizedmember" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3913,10 +3891,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#getmembershipstatusrequest" class="md-nav__link">
+  <a href="#getmemberauthorizationstatusrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GetMembershipStatusRequest
+        GetMemberAuthorizationStatusRequest
       
     </span>
   </a>
@@ -3924,10 +3902,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#getmembershipstatusresponse" class="md-nav__link">
+  <a href="#getmemberauthorizationstatusresponse" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GetMembershipStatusResponse
+        GetMemberAuthorizationStatusResponse
       
     </span>
   </a>
@@ -3935,10 +3913,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#governanceframework" class="md-nav__link">
+  <a href="#getmemberrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GovernanceFramework
+        GetMemberRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmemberresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetMemberResponse
       
     </span>
   </a>
@@ -3983,28 +3972,6 @@
     <span class="md-ellipsis">
       
         RegisterMemberResponse
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeframeworkrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RemoveFrameworkRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeframeworkresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RemoveFrameworkResponse
       
     </span>
   </a>
@@ -5182,11 +5149,6 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>JSON document string with keys corresponding to the fields of the template referenced by <code>template_id</code></td>
 </tr>
 <tr>
-<td>framework_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF)</td>
-</tr>
-<tr>
 <td>save_copy</td>
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status.</td>
@@ -5195,6 +5157,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>expiration_date</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration</td>
+</tr>
+<tr>
+<td>include_governance</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
 </tr>
 </tbody>
 </table>
@@ -7817,22 +7784,10 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>AddFramework</td>
-<td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkRequest">AddFrameworkRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkResponse">AddFrameworkResponse</a></td>
-<td>Add a governance framework to the ecosystem</td>
-</tr>
-<tr>
-<td>RemoveFramework</td>
-<td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest">RemoveFrameworkRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse">RemoveFrameworkResponse</a></td>
-<td>Remove a governance framework from the ecosystem</td>
-</tr>
-<tr>
 <td>SearchRegistry</td>
 <td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryRequest">SearchRegistryRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryResponse">SearchRegistryResponse</a></td>
-<td>Search the ecosystem's governance frameworks</td>
+<td>Search the ecosystem's governance framework</td>
 </tr>
 <tr>
 <td>RegisterMember</td>
@@ -7847,10 +7802,10 @@ such by assigning roles and permissions to wallet accounts</p>
 <td>Removes an authoritative issuer for a credential schema from the trust registry</td>
 </tr>
 <tr>
-<td>GetMembershipStatus</td>
-<td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest">GetMembershipStatusRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse">GetMembershipStatusResponse</a></td>
-<td>Fetch the membership status of an issuer for a given credential schema in a trust registry</td>
+<td>GetMemberAuthorizationStatus</td>
+<td><a href="/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusRequest">GetMemberAuthorizationStatusRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusResponse">GetMemberAuthorizationStatusResponse</a></td>
+<td>Fetch the status of a member for a given credential schema in a trust registry</td>
 </tr>
 <tr>
 <td>ListAuthorizedMembers</td>
@@ -7858,68 +7813,16 @@ such by assigning roles and permissions to wallet accounts</p>
 <td><a href="/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse">ListAuthorizedMembersResponse</a></td>
 <td>Fetch the ecosystem's authorized issuers and the respective templates against which it can issue</td>
 </tr>
+<tr>
+<td>GetMember</td>
+<td><a href="/reference/proto#services-trustregistry-v1-GetMemberRequest">GetMemberRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-GetMemberResponse">GetMemberResponse</a></td>
+<td>Get member for a given did in a trust registry</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
 
-<p><a name="services-trustregistry-v1-AddFrameworkRequest"></a></p>
-<h3 id="addframeworkrequest">AddFrameworkRequest<a class="headerlink" href="#addframeworkrequest" title="Permanent link">&para;</a></h3>
-<p>Request to register a new ecosystem governance framework in the current ecosystem</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>governance_framework_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>URI of governance framework organization</td>
-</tr>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Name of governance framework organization</td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Description of governance framework</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-AddFrameworkResponse"></a></p>
-<h3 id="addframeworkresponse">AddFrameworkResponse<a class="headerlink" href="#addframeworkresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>AddFrameworkRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Unique framework identifier</td>
-</tr>
-<tr>
-<td>governing_authority</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>DID URI of Trinsic account which created the governance framework</td>
-</tr>
-<tr>
-<td>trust_registry</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>URN of trust registry for governance framework</td>
-</tr>
-</tbody>
-</table>
 <p><a name="services-trustregistry-v1-AuthorizedMember"></a></p>
 <h3 id="authorizedmember">AuthorizedMember<a class="headerlink" href="#authorizedmember" title="Permanent link">&para;</a></h3>
 <table>
@@ -7981,9 +7884,9 @@ such by assigning roles and permissions to wallet accounts</p>
 </tr>
 </tbody>
 </table>
-<p><a name="services-trustregistry-v1-GetMembershipStatusRequest"></a></p>
-<h3 id="getmembershipstatusrequest">GetMembershipStatusRequest<a class="headerlink" href="#getmembershipstatusrequest" title="Permanent link">&para;</a></h3>
-<p>Request to fetch membership status in governance framework for a specific credential schema.</p>
+<p><a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a></p>
+<h3 id="getmemberauthorizationstatusrequest">GetMemberAuthorizationStatusRequest<a class="headerlink" href="#getmemberauthorizationstatusrequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch member status in governance framework for a specific credential schema.</p>
 <table>
 <thead>
 <tr>
@@ -7994,11 +7897,6 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>framework_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model</td>
-</tr>
-<tr>
 <td>did_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>DID URI of member</td>
@@ -8006,13 +7904,13 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>schema_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>URI of credential schema associated with membership</td>
+<td>URI of credential schema associated with member</td>
 </tr>
 </tbody>
 </table>
-<p><a name="services-trustregistry-v1-GetMembershipStatusResponse"></a></p>
-<h3 id="getmembershipstatusresponse">GetMembershipStatusResponse<a class="headerlink" href="#getmembershipstatusresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>GetMembershipStatusRequest</code></p>
+<p><a name="services-trustregistry-v1-GetMemberAuthorizationStatusResponse"></a></p>
+<h3 id="getmemberauthorizationstatusresponse">GetMemberAuthorizationStatusResponse<a class="headerlink" href="#getmemberauthorizationstatusresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetMemberAuthorizationStatusRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -8029,9 +7927,9 @@ such by assigning roles and permissions to wallet accounts</p>
 </tr>
 </tbody>
 </table>
-<p><a name="services-trustregistry-v1-GovernanceFramework"></a></p>
-<h3 id="governanceframework">GovernanceFramework<a class="headerlink" href="#governanceframework" title="Permanent link">&para;</a></h3>
-<p>Ecosystem Governance Framework</p>
+<p><a name="services-trustregistry-v1-GetMemberRequest"></a></p>
+<h3 id="getmemberrequest">GetMemberRequest<a class="headerlink" href="#getmemberrequest" title="Permanent link">&para;</a></h3>
+<p>Request to get a member of the governance framework</p>
 <table>
 <thead>
 <tr>
@@ -8042,19 +7940,38 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>governance_framework_uri</td>
+<td>did_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>URI of governance framework organization</td>
+<td>DID URI of member to get</td>
 </tr>
 <tr>
-<td>trust_registry_uri</td>
+<td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>URI of trust registry associated with governance framework</td>
+<td>Trinsic Wallet ID of member to get</td>
 </tr>
 <tr>
-<td>description</td>
+<td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Description of governance framework</td>
+<td>Email address of member to get. Must be associated with an existing Trinsic account.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-GetMemberResponse"></a></p>
+<h3 id="getmemberresponse">GetMemberResponse<a class="headerlink" href="#getmemberresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetMemberAuthorizationStatusRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>authorized_member</td>
+<td><a href="/reference/proto#services-trustregistry-v1-AuthorizedMember">AuthorizedMember</a></td>
+<td>Member for given did in given framework</td>
 </tr>
 </tbody>
 </table>
@@ -8070,11 +7987,6 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>framework_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model</td>
-</tr>
-<tr>
 <td>schema_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>id of schema that needs to be checked</td>
@@ -8082,7 +7994,7 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>continuation_token</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Token to fetch next set of results, from previous <code>SearchRegistryResponse</code></td>
+<td>Token to fetch next set of results, from previous <code>ListAuthorizedMembersResponse</code></td>
 </tr>
 </tbody>
 </table>
@@ -8158,38 +8070,11 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
 <td><a href="/reference/proto#uint64">uint64</a></td>
 <td>Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.</td>
 </tr>
-<tr>
-<td>framework_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of the governance framework that member is being added to</td>
-</tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-RegisterMemberResponse"></a></p>
 <h3 id="registermemberresponse">RegisterMemberResponse<a class="headerlink" href="#registermemberresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>RegisterMemberRequest</code></p>
-<p><a name="services-trustregistry-v1-RemoveFrameworkRequest"></a></p>
-<h3 id="removeframeworkrequest">RemoveFrameworkRequest<a class="headerlink" href="#removeframeworkrequest" title="Permanent link">&para;</a></h3>
-<p>Request to remove a governance framework from the current ecosystem</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of governance framework to remove</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-RemoveFrameworkResponse"></a></p>
-<h3 id="removeframeworkresponse">RemoveFrameworkResponse<a class="headerlink" href="#removeframeworkresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>RemoveFrameworkRequest</code></p>
 <p><a name="services-trustregistry-v1-SearchRegistryRequest"></a></p>
 <h3 id="searchregistryrequest">SearchRegistryRequest<a class="headerlink" href="#searchregistryrequest" title="Permanent link">&para;</a></h3>
 <p>Request to search all governance frameworks within ecosystem</p>
@@ -8275,11 +8160,6 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
 <td>schema_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>URI of credential schema to unregister member as authorized issuer of</td>
-</tr>
-<tr>
-<td>framework_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of the governance framework that member is being removed from</td>
 </tr>
 </tbody>
 </table>

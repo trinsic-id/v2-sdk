@@ -1848,17 +1848,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-governance-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Governance Framework
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#register-issuer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1885,17 +1874,6 @@
     <span class="md-ellipsis">
       
         Check Issuer Status
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#search" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Search
       
     </span>
   </a>
@@ -2227,17 +2205,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-governance-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Governance Framework
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#register-issuer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2264,17 +2231,6 @@
     <span class="md-ellipsis">
       
         Check Issuer Status
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#search" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Search
       
     </span>
   </a>
@@ -2320,90 +2276,13 @@
 <p>We are working to define exactly how Trust Registries will be implemented within our platform; this page and API may change as we do so.</p>
 </div>
 <hr />
-<h2 id="create-governance-framework">Create Governance Framework<a class="headerlink" href="#create-governance-framework" title="Permanent link">&para;</a></h2>
-<p>Creates a Governance Framework and attaches it to the current ecosystem.</p>
+<h2 id="register-issuer">Register Issuer<a class="headerlink" href="#register-issuer" title="Permanent link">&para;</a></h2>
+<p>Registers an authorized issuer for a specific credential type (identified by its <code>schema_uri</code>).</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>add-framework<span class="w"> </span>--name<span class="w"> </span><span class="s1">&#39;Example EGF&#39;</span><span class="w"> </span>--uri<span class="w"> </span><span class="s1">&#39;https://example.com/governance&#39;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">didUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;did:example:test&quot;</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">frameworkUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://example.com/</span><span class="si">${</span><span class="nx">uuid</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">schemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://schema.org/Card&quot;</span><span class="p">;</span>
-
-<span class="kd">let</span><span class="w"> </span><span class="nx">frameworkResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">addFramework</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">AddFrameworkRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">governanceFrameworkUri</span><span class="o">:</span><span class="w"> </span><span class="kt">frameworkUri</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="sb">`Test Governance Framework - </span><span class="si">${</span><span class="nx">uuid</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="p">);</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">schemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="p">;</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">frameworkUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">;</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">AddFrameworkAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Demo framework&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My governance framework&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frameworkUri</span>
-<span class="p">});</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">register_framework_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">add_framework</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">AddFrameworkRequest</span><span class="p">(</span>
-        <span class="n">governance_framework_uri</span><span class="o">=</span><span class="n">https_example_com</span><span class="p">,</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Demo framework&quot;</span><span class="p">,</span>
-        <span class="n">name</span><span class="o">=</span><span class="n">framework_name</span><span class="p">,</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">newFramework</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">AddFramework</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">AddFrameworkRequest</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">Name</span><span class="p">:</span><span class="w">                   </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Example Framework - %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">New</span><span class="p">()),</span>
-<span class="p">})</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">frameworkResponse</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">trinsic</span>
-<span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">addFramework</span><span class="p">(</span>
-<span class="w">            </span><span class="n">AddFrameworkRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Example Framework&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">())</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.AddFrameworkRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.AddFrameworkRequest' href='/reference/proto#services.trustregistry.v1.AddFrameworkRequest'>AddFrameworkRequest</a></div><div class='proto-obj-description'>Request to register a new ecosystem governance framework in the current ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>governance_framework_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of governance framework organization</div></div><div class='proto-field'><div class='proto-field-name'>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Name of governance framework organization</div></div><div class='proto-field'><div class='proto-field-name'>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Description of governance framework</div></div></div></div></p>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.AddFrameworkResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.AddFrameworkResponse' href='/reference/proto#services.trustregistry.v1.AddFrameworkResponse'>AddFrameworkResponse</a></div><div class='proto-obj-description'>Response to <code>AddFrameworkRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Unique framework identifier</div></div><div class='proto-field'><div class='proto-field-name'>governing_authority</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of Trinsic account which created the governance framework</div></div><div class='proto-field'><div class='proto-field-name'>trust_registry</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of trust registry for governance framework</div></div></div></div></p>
-</div>
-</div>
-</div>
-<hr />
-<h2 id="register-issuer">Register Issuer<a class="headerlink" href="#register-issuer" title="Permanent link">&para;</a></h2>
-<p>Registers an authorized issuer for a specific credential type (identified by its <code>schema_uri</code>).</p>
-<div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>register-member<span class="w"> </span><span class="se">\</span>
@@ -2416,7 +2295,6 @@
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">registerMember</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">RegisterMemberRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">frameworkId</span><span class="o">:</span><span class="w"> </span><span class="kt">frameworkResponse.id</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="p">);</span>
@@ -2427,7 +2305,6 @@
 <span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">RegisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FrameworkId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2436,7 +2313,6 @@
 <div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">register_member</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">RegisterMemberRequest</span><span class="p">(</span>
         <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">,</span>
-        <span class="n">framework_id</span><span class="o">=</span><span class="n">register_framework_response</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
         <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -2444,9 +2320,8 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">registerMemberResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">RegisterMember</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">RegisterMemberRequest</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">FrameworkId</span><span class="p">:</span><span class="w"> </span><span class="nx">newFramework</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w">   </span><span class="nx">schemaURI</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">Member</span><span class="p">:</span><span class="w">      </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">RegisterMemberRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span>
+<span class="w">    </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w"> </span><span class="nx">schemaURI</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Member</span><span class="p">:</span><span class="w">    </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">RegisterMemberRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span>
 <span class="p">})</span>
 </code></pre></div>
 </div>
@@ -2455,11 +2330,7 @@
 <span class="w">    </span><span class="n">trinsic</span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
 <span class="w">        </span><span class="p">.</span><span class="na">registerMember</span><span class="p">(</span>
-<span class="w">            </span><span class="n">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">            </span><span class="n">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
@@ -2467,7 +2338,7 @@
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberRequest' href='/reference/proto#services.trustregistry.v1.RegisterMemberRequest'>RegisterMemberRequest</a></div><div class='proto-obj-description'>Request to register a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to register</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to register</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to register. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to register member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>valid_from_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>valid_until_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the governance framework that member is being added to</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberRequest' href='/reference/proto#services.trustregistry.v1.RegisterMemberRequest'>RegisterMemberRequest</a></div><div class='proto-obj-description'>Request to register a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to register</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to register</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to register. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to register member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>valid_from_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.</div></div><div class='proto-field'><div class='proto-field-name'>valid_until_utc</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'>Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.RegisterMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.RegisterMemberResponse' href='/reference/proto#services.trustregistry.v1.RegisterMemberResponse'>RegisterMemberResponse</a></div><div class='proto-obj-description'>Response to <code>RegisterMemberRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
@@ -2478,10 +2349,10 @@
 <h2 id="unregister-issuer">Unregister Issuer<a class="headerlink" href="#unregister-issuer" title="Permanent link">&para;</a></h2>
 <p>Unregisters an issuer for a specific credential type (identified by its <code>schema_uri</code>).</p>
 <div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>unregister-issuer<span class="w"> </span><span class="se">\</span>
@@ -2493,7 +2364,6 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">unregisterResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w">  </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">unregisterMember</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">frameworkId</span><span class="o">:</span><span class="w"> </span><span class="kt">frameworkResponse.id</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span>
 <span class="p">})</span>
 </code></pre></div>
@@ -2502,7 +2372,6 @@
 <div class="highlight"><pre><span></span><code><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">UnregisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FrameworkId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2510,7 +2379,6 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">unregister_issuer_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">unregister_member</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">UnregisterMemberRequest</span><span class="p">(</span>
-        <span class="n">framework_id</span><span class="o">=</span><span class="n">register_framework_response</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
         <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">,</span>
         <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">,</span>
     <span class="p">)</span>
@@ -2519,8 +2387,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">unregisterMemberResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">UnregisterMember</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">UnregisterMemberRequest</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w">   </span><span class="nx">schemaURI</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">FrameworkId</span><span class="p">:</span><span class="w"> </span><span class="nx">newFramework</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w"> </span><span class="nx">schemaURI</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w"> </span><span class="err">⋯</span>
@@ -2532,18 +2399,14 @@
 <div class="highlight"><pre><span></span><code><span class="n">trinsic</span>
 <span class="w">    </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="na">unregisterMember</span><span class="p">(</span>
-<span class="w">        </span><span class="n">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
+<span class="w">        </span><span class="n">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.UnregisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.UnregisterMemberRequest' href='/reference/proto#services.trustregistry.v1.UnregisterMemberRequest'>UnregisterMemberRequest</a></div><div class='proto-obj-description'>Request to unregister a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to unregister. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to unregister member as authorized issuer of</div></div><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the governance framework that member is being removed from</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.UnregisterMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.UnregisterMemberRequest' href='/reference/proto#services.trustregistry.v1.UnregisterMemberRequest'>UnregisterMemberRequest</a></div><div class='proto-obj-description'>Request to unregister a member as a valid issuer of a specific credential schema. Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to unregister</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to unregister. Must be associated with an existing Trinsic account.</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema to unregister member as authorized issuer of</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.UnregisterMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.UnregisterMemberResponse' href='/reference/proto#services.trustregistry.v1.UnregisterMemberResponse'>UnregisterMemberResponse</a></div><div class='proto-obj-description'>Response to <code>UnregisterMemberRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
@@ -2554,10 +2417,10 @@
 <h2 id="check-issuer-status">Check Issuer Status<a class="headerlink" href="#check-issuer-status" title="Permanent link">&para;</a></h2>
 <p>Check the status of an issuer for a specific credential type.</p>
 <div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Go</label><label for="__tabbed_8_6">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>check-issuer<span class="w"> </span><span class="se">\</span>
@@ -2567,39 +2430,37 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">getMembershipStatus</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">GetMembershipStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">getMemberAuthorizationStatus</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">GetMemberAuthorizationStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">frameworkId</span><span class="o">:</span><span class="w"> </span><span class="kt">frameworkResponse.id</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMembershipStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMemberAuthorizationStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="n">FrameworkId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frameworkUri</span><span class="p">,</span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
 <span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">check_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">get_membership_status</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">GetMembershipStatusRequest</span><span class="p">(</span>
-        <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">,</span>
-        <span class="n">framework_id</span><span class="o">=</span><span class="n">register_framework_response</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-        <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">check_response</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">get_member_authorization_status</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">GetMemberAuthorizationStatusRequest</span><span class="p">(</span>
+            <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">,</span>
+            <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">,</span>
+        <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">getMembershipStatusResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">GetMembershipStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMembershipStatusRequest</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">FrameworkId</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">DidUri</span><span class="p">:</span><span class="w">      </span><span class="nx">didURI</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w">   </span><span class="nx">schemaURI</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">getMembershipStatusResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">GetMemberAuthorizationStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMemberAuthorizationStatusRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">DidUri</span><span class="p">:</span><span class="w">    </span><span class="nx">didURI</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w"> </span><span class="nx">schemaURI</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w"> </span><span class="err">⋯</span>
@@ -2611,10 +2472,9 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">trinsic</span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">getMembershipStatus</span><span class="p">(</span>
-<span class="w">            </span><span class="n">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">getMemberAuthorizationStatus</span><span class="p">(</span>
+<span class="w">            </span><span class="n">GetMemberAuthorizationStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span>
 <span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
 <span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
@@ -2624,60 +2484,16 @@
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMembershipStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMembershipStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMembershipStatusRequest'>GetMembershipStatusRequest</a></div><div class='proto-obj-description'>Request to fetch membership status in governance framework for a specific credential schema.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>framework_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The ID of the ecosystem governance framework. This ID may be found in the 'trustRegistry' field in the verifiable credential model</div></div><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with membership</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusRequest'>GetMemberAuthorizationStatusRequest</a></div><div class='proto-obj-description'>Request to fetch member status in governance framework for a specific credential schema.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with member</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMembershipStatusResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMembershipStatusResponse' href='/reference/proto#services.trustregistry.v1.GetMembershipStatusResponse'>GetMembershipStatusResponse</a></div><div class='proto-obj-description'>Response to <code>GetMembershipStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>status</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.RegistrationStatus'>RegistrationStatus</a></div><div class='proto-field-description'>Status of member for given credential schema</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>CURRENT</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>Member is currently authorized, as of the time of the query</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>EXPIRED</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Member's authorization has expired</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>TERMINATED</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>Member has voluntarily ceased Issuer role under the specific EGF</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>REVOKED</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Member authority under specific EGF was terminated by the governing authority</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>NOT_FOUND</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Member is not associated with given credential schema in the EGF</div></div></div></div></div></div></div></p>
-</div>
-</div>
-</div>
-<hr />
-<h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h2>
-<p>Search the registry for registered issuers using a SQL query.</p>
-<div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_9_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_9_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label><label for="__tabbed_10_6">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>search<span class="w"> </span>--query<span class="w"> </span>&lt;SQL<span class="w"> </span>query&gt;
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">search</span><span class="p">();</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">search_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">().</span><span class="na">search</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.SearchRegistryRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.SearchRegistryRequest' href='/reference/proto#services.trustregistry.v1.SearchRegistryRequest'>SearchRegistryRequest</a></div><div class='proto-obj-description'>Request to search all governance frameworks within ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>query</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>SQL query to execute against frameworks. Example: <code>SELECT c from c where c.type == 'GovernanceFramework'</code></div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Token to fetch next set of results, from previous <code>SearchRegistryResponse</code></div></div></div></div></p>
-</div>
-<div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.SearchRegistryResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.SearchRegistryResponse' href='/reference/proto#services.trustregistry.v1.SearchRegistryResponse'>SearchRegistryResponse</a></div><div class='proto-obj-description'>Response to <code>SearchRegistryRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>items_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>JSON string containing array of resultant objects</div></div><div class='proto-field'><div class='proto-field-name'>has_more_results</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether more data is available to fetch for query</div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Token to fetch next set of results via <code>SearchRegistryRequest</code></div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusResponse' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusResponse'>GetMemberAuthorizationStatusResponse</a></div><div class='proto-obj-description'>Response to <code>GetMemberAuthorizationStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>status</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.RegistrationStatus'>RegistrationStatus</a></div><div class='proto-field-description'>Status of member for given credential schema</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>CURRENT</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>Member is currently authorized, as of the time of the query</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>EXPIRED</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Member's authorization has expired</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>TERMINATED</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>Member has voluntarily ceased Issuer role under the specific EGF</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>REVOKED</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Member authority under specific EGF was terminated by the governing authority</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>NOT_FOUND</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Member is not associated with given credential schema in the EGF</div></div></div></div></div></div></div></p>
 </div>
 </div>
 </div>
 <hr />
 <h2 id="cache-offline-registry-file">Cache Offline Registry File<a class="headerlink" href="#cache-offline-registry-file" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>download<span class="w"> </span>
