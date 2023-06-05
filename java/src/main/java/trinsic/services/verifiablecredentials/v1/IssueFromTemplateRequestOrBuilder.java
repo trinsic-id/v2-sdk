@@ -64,35 +64,6 @@ public interface IssueFromTemplateRequestOrBuilder
    *
    *
    * <pre>
-   * Governance framework ID to use with issuance of this credential.
-   * If specified, the issued credential will contain extended issuer
-   * metadata with membership info for the given ecosystem governance framework (EGF)
-   * </pre>
-   *
-   * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-   *
-   * @return The frameworkId.
-   */
-  java.lang.String getFrameworkId();
-  /**
-   *
-   *
-   * <pre>
-   * Governance framework ID to use with issuance of this credential.
-   * If specified, the issued credential will contain extended issuer
-   * metadata with membership info for the given ecosystem governance framework (EGF)
-   * </pre>
-   *
-   * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-   *
-   * @return The bytes for frameworkId.
-   */
-  com.google.protobuf.ByteString getFrameworkIdBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * Save a copy of the issued credential to this user's wallet. This copy will only contain
    * the credential data, but not the secret proof value. Issuers may use this data to
    * keep track of the details for revocation status.
@@ -132,4 +103,18 @@ public interface IssueFromTemplateRequestOrBuilder
    * @return The bytes for expirationDate.
    */
   com.google.protobuf.ByteString getExpirationDateBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+   * governance framework.
+   * </pre>
+   *
+   * <code>bool include_governance = 6;</code>
+   *
+   * @return The includeGovernance.
+   */
+  boolean getIncludeGovernance();
 }

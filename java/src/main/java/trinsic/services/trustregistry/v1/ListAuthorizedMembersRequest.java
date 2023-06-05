@@ -15,7 +15,6 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
   }
 
   private ListAuthorizedMembersRequest() {
-    frameworkId_ = "";
     schemaUri_ = "";
     continuationToken_ = "";
   }
@@ -47,60 +46,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
   }
 
   private int bitField0_;
-  public static final int FRAMEWORK_ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object frameworkId_;
-  /**
-   *
-   *
-   * <pre>
-   * The ID of the ecosystem governance framework.
-   * This ID may be found in the 'trustRegistry' field in the
-   * verifiable credential model
-   * </pre>
-   *
-   * <code>string framework_id = 1;</code>
-   *
-   * @return The frameworkId.
-   */
-  @java.lang.Override
-  public java.lang.String getFrameworkId() {
-    java.lang.Object ref = frameworkId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      frameworkId_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The ID of the ecosystem governance framework.
-   * This ID may be found in the 'trustRegistry' field in the
-   * verifiable credential model
-   * </pre>
-   *
-   * <code>string framework_id = 1;</code>
-   *
-   * @return The bytes for frameworkId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getFrameworkIdBytes() {
-    java.lang.Object ref = frameworkId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      frameworkId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int SCHEMA_URI_FIELD_NUMBER = 2;
+  public static final int SCHEMA_URI_FIELD_NUMBER = 1;
   private volatile java.lang.Object schemaUri_;
   /**
    *
@@ -109,7 +55,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
    * id of schema that needs to be checked
    * </pre>
    *
-   * <code>optional string schema_uri = 2;</code>
+   * <code>optional string schema_uri = 1;</code>
    *
    * @return Whether the schemaUri field is set.
    */
@@ -124,7 +70,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
    * id of schema that needs to be checked
    * </pre>
    *
-   * <code>optional string schema_uri = 2;</code>
+   * <code>optional string schema_uri = 1;</code>
    *
    * @return The schemaUri.
    */
@@ -147,7 +93,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
    * id of schema that needs to be checked
    * </pre>
    *
-   * <code>optional string schema_uri = 2;</code>
+   * <code>optional string schema_uri = 1;</code>
    *
    * @return The bytes for schemaUri.
    */
@@ -164,16 +110,16 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
     }
   }
 
-  public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 3;
+  public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
   private volatile java.lang.Object continuationToken_;
   /**
    *
    *
    * <pre>
-   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
    * </pre>
    *
-   * <code>optional string continuation_token = 3;</code>
+   * <code>optional string continuation_token = 2;</code>
    *
    * @return Whether the continuationToken field is set.
    */
@@ -185,10 +131,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
    *
    *
    * <pre>
-   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
    * </pre>
    *
-   * <code>optional string continuation_token = 3;</code>
+   * <code>optional string continuation_token = 2;</code>
    *
    * @return The continuationToken.
    */
@@ -208,10 +154,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
    *
    *
    * <pre>
-   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
    * </pre>
    *
-   * <code>optional string continuation_token = 3;</code>
+   * <code>optional string continuation_token = 2;</code>
    *
    * @return The bytes for continuationToken.
    */
@@ -242,14 +188,11 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, frameworkId_);
-    }
     if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, schemaUri_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, schemaUri_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, continuationToken_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, continuationToken_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -260,14 +203,11 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, frameworkId_);
-    }
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, schemaUri_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, schemaUri_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, continuationToken_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, continuationToken_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -285,7 +225,6 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
     trinsic.services.trustregistry.v1.ListAuthorizedMembersRequest other =
         (trinsic.services.trustregistry.v1.ListAuthorizedMembersRequest) obj;
 
-    if (!getFrameworkId().equals(other.getFrameworkId())) return false;
     if (hasSchemaUri() != other.hasSchemaUri()) return false;
     if (hasSchemaUri()) {
       if (!getSchemaUri().equals(other.getSchemaUri())) return false;
@@ -305,8 +244,6 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getFrameworkId().hashCode();
     if (hasSchemaUri()) {
       hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
       hash = (53 * hash) + getSchemaUri().hashCode();
@@ -446,8 +383,6 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      frameworkId_ = "";
-
       schemaUri_ = "";
       bitField0_ = (bitField0_ & ~0x00000001);
       continuationToken_ = "";
@@ -482,7 +417,6 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
           new trinsic.services.trustregistry.v1.ListAuthorizedMembersRequest(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
-      result.frameworkId_ = frameworkId_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         to_bitField0_ |= 0x00000001;
       }
@@ -543,10 +477,6 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
       if (other
           == trinsic.services.trustregistry.v1.ListAuthorizedMembersRequest.getDefaultInstance())
         return this;
-      if (!other.getFrameworkId().isEmpty()) {
-        frameworkId_ = other.frameworkId_;
-        onChanged();
-      }
       if (other.hasSchemaUri()) {
         bitField0_ |= 0x00000001;
         schemaUri_ = other.schemaUri_;
@@ -585,22 +515,16 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
               break;
             case 10:
               {
-                frameworkId_ = input.readStringRequireUtf8();
-
+                schemaUri_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
                 break;
               } // case 10
             case 18:
               {
-                schemaUri_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 18
-            case 26:
-              {
                 continuationToken_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000002;
                 break;
-              } // case 26
+              } // case 18
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -620,122 +544,6 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
 
     private int bitField0_;
 
-    private java.lang.Object frameworkId_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * The ID of the ecosystem governance framework.
-     * This ID may be found in the 'trustRegistry' field in the
-     * verifiable credential model
-     * </pre>
-     *
-     * <code>string framework_id = 1;</code>
-     *
-     * @return The frameworkId.
-     */
-    public java.lang.String getFrameworkId() {
-      java.lang.Object ref = frameworkId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        frameworkId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The ID of the ecosystem governance framework.
-     * This ID may be found in the 'trustRegistry' field in the
-     * verifiable credential model
-     * </pre>
-     *
-     * <code>string framework_id = 1;</code>
-     *
-     * @return The bytes for frameworkId.
-     */
-    public com.google.protobuf.ByteString getFrameworkIdBytes() {
-      java.lang.Object ref = frameworkId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        frameworkId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The ID of the ecosystem governance framework.
-     * This ID may be found in the 'trustRegistry' field in the
-     * verifiable credential model
-     * </pre>
-     *
-     * <code>string framework_id = 1;</code>
-     *
-     * @param value The frameworkId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFrameworkId(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      frameworkId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The ID of the ecosystem governance framework.
-     * This ID may be found in the 'trustRegistry' field in the
-     * verifiable credential model
-     * </pre>
-     *
-     * <code>string framework_id = 1;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearFrameworkId() {
-
-      frameworkId_ = getDefaultInstance().getFrameworkId();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The ID of the ecosystem governance framework.
-     * This ID may be found in the 'trustRegistry' field in the
-     * verifiable credential model
-     * </pre>
-     *
-     * <code>string framework_id = 1;</code>
-     *
-     * @param value The bytes for frameworkId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFrameworkIdBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      frameworkId_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object schemaUri_ = "";
     /**
      *
@@ -744,7 +552,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      * id of schema that needs to be checked
      * </pre>
      *
-     * <code>optional string schema_uri = 2;</code>
+     * <code>optional string schema_uri = 1;</code>
      *
      * @return Whether the schemaUri field is set.
      */
@@ -758,7 +566,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      * id of schema that needs to be checked
      * </pre>
      *
-     * <code>optional string schema_uri = 2;</code>
+     * <code>optional string schema_uri = 1;</code>
      *
      * @return The schemaUri.
      */
@@ -780,7 +588,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      * id of schema that needs to be checked
      * </pre>
      *
-     * <code>optional string schema_uri = 2;</code>
+     * <code>optional string schema_uri = 1;</code>
      *
      * @return The bytes for schemaUri.
      */
@@ -802,7 +610,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      * id of schema that needs to be checked
      * </pre>
      *
-     * <code>optional string schema_uri = 2;</code>
+     * <code>optional string schema_uri = 1;</code>
      *
      * @param value The schemaUri to set.
      * @return This builder for chaining.
@@ -823,7 +631,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      * id of schema that needs to be checked
      * </pre>
      *
-     * <code>optional string schema_uri = 2;</code>
+     * <code>optional string schema_uri = 1;</code>
      *
      * @return This builder for chaining.
      */
@@ -840,7 +648,7 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      * id of schema that needs to be checked
      * </pre>
      *
-     * <code>optional string schema_uri = 2;</code>
+     * <code>optional string schema_uri = 1;</code>
      *
      * @param value The bytes for schemaUri to set.
      * @return This builder for chaining.
@@ -861,10 +669,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
-     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
      * </pre>
      *
-     * <code>optional string continuation_token = 3;</code>
+     * <code>optional string continuation_token = 2;</code>
      *
      * @return Whether the continuationToken field is set.
      */
@@ -875,10 +683,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
-     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
      * </pre>
      *
-     * <code>optional string continuation_token = 3;</code>
+     * <code>optional string continuation_token = 2;</code>
      *
      * @return The continuationToken.
      */
@@ -897,10 +705,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
-     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
      * </pre>
      *
-     * <code>optional string continuation_token = 3;</code>
+     * <code>optional string continuation_token = 2;</code>
      *
      * @return The bytes for continuationToken.
      */
@@ -919,10 +727,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
-     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
      * </pre>
      *
-     * <code>optional string continuation_token = 3;</code>
+     * <code>optional string continuation_token = 2;</code>
      *
      * @param value The continuationToken to set.
      * @return This builder for chaining.
@@ -940,10 +748,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
-     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
      * </pre>
      *
-     * <code>optional string continuation_token = 3;</code>
+     * <code>optional string continuation_token = 2;</code>
      *
      * @return This builder for chaining.
      */
@@ -957,10 +765,10 @@ public final class ListAuthorizedMembersRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
-     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
      * </pre>
      *
-     * <code>optional string continuation_token = 3;</code>
+     * <code>optional string continuation_token = 2;</code>
      *
      * @param value The bytes for continuationToken to set.
      * @return This builder for chaining.

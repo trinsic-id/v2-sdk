@@ -11,12 +11,6 @@ export interface IssueFromTemplateRequest {
    */
   valuesJson?: string;
   /**
-   * Governance framework ID to use with issuance of this credential.
-   * If specified, the issued credential will contain extended issuer
-   * metadata with membership info for the given ecosystem governance framework (EGF)
-   */
-  frameworkId?: string;
-  /**
    * Save a copy of the issued credential to this user's wallet. This copy will only contain
    * the credential data, but not the secret proof value. Issuers may use this data to
    * keep track of the details for revocation status.
@@ -28,6 +22,11 @@ export interface IssueFromTemplateRequest {
    * https://www.w3.org/TR/vc-data-model/#expiration
    */
   expirationDate?: string;
+  /**
+   * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+   * governance framework.
+   */
+  includeGovernance?: boolean;
 }
 
 /** Response to `IssueFromTemplateRequest` */
@@ -173,7 +172,7 @@ export interface CheckStatusResponse {
 }
 
 function createBaseIssueFromTemplateRequest(): IssueFromTemplateRequest {
-  return { templateId: "", valuesJson: "", frameworkId: "", saveCopy: false, expirationDate: "" };
+  return { templateId: "", valuesJson: "", saveCopy: false, expirationDate: "", includeGovernance: false };
 }
 
 export const IssueFromTemplateRequest = {
@@ -184,14 +183,14 @@ export const IssueFromTemplateRequest = {
     if (message.valuesJson !== undefined && message.valuesJson !== "") {
       writer.uint32(18).string(message.valuesJson);
     }
-    if (message.frameworkId !== undefined && message.frameworkId !== "") {
-      writer.uint32(26).string(message.frameworkId);
-    }
     if (message.saveCopy === true) {
       writer.uint32(32).bool(message.saveCopy);
     }
     if (message.expirationDate !== undefined && message.expirationDate !== "") {
       writer.uint32(42).string(message.expirationDate);
+    }
+    if (message.includeGovernance === true) {
+      writer.uint32(48).bool(message.includeGovernance);
     }
     return writer;
   },
@@ -217,13 +216,6 @@ export const IssueFromTemplateRequest = {
 
           message.valuesJson = reader.string();
           continue;
-        case 3:
-          if (tag != 26) {
-            break;
-          }
-
-          message.frameworkId = reader.string();
-          continue;
         case 4:
           if (tag != 32) {
             break;
@@ -238,6 +230,13 @@ export const IssueFromTemplateRequest = {
 
           message.expirationDate = reader.string();
           continue;
+        case 6:
+          if (tag != 48) {
+            break;
+          }
+
+          message.includeGovernance = reader.bool();
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -251,9 +250,9 @@ export const IssueFromTemplateRequest = {
     return {
       templateId: isSet(object.templateId) ? String(object.templateId) : "",
       valuesJson: isSet(object.valuesJson) ? String(object.valuesJson) : "",
-      frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
       saveCopy: isSet(object.saveCopy) ? Boolean(object.saveCopy) : false,
       expirationDate: isSet(object.expirationDate) ? String(object.expirationDate) : "",
+      includeGovernance: isSet(object.includeGovernance) ? Boolean(object.includeGovernance) : false,
     };
   },
 
@@ -261,9 +260,9 @@ export const IssueFromTemplateRequest = {
     const obj: any = {};
     message.templateId !== undefined && (obj.templateId = message.templateId);
     message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
-    message.frameworkId !== undefined && (obj.frameworkId = message.frameworkId);
     message.saveCopy !== undefined && (obj.saveCopy = message.saveCopy);
     message.expirationDate !== undefined && (obj.expirationDate = message.expirationDate);
+    message.includeGovernance !== undefined && (obj.includeGovernance = message.includeGovernance);
     return obj;
   },
 
@@ -275,9 +274,9 @@ export const IssueFromTemplateRequest = {
     const message = createBaseIssueFromTemplateRequest();
     message.templateId = object.templateId ?? "";
     message.valuesJson = object.valuesJson ?? "";
-    message.frameworkId = object.frameworkId ?? "";
     message.saveCopy = object.saveCopy ?? false;
     message.expirationDate = object.expirationDate ?? "";
+    message.includeGovernance = object.includeGovernance ?? false;
     return message;
   },
 };

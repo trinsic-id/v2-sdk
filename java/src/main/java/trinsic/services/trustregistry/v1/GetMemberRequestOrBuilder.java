@@ -3,16 +3,16 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface UnregisterMemberRequestOrBuilder
+public interface GetMemberRequestOrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterMemberRequest)
+    // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMemberRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    *
    *
    * <pre>
-   * DID URI of member to unregister
+   * DID URI of member to get
    * </pre>
    *
    * <code>string did_uri = 1;</code>
@@ -24,7 +24,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * DID URI of member to unregister
+   * DID URI of member to get
    * </pre>
    *
    * <code>string did_uri = 1;</code>
@@ -36,7 +36,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * DID URI of member to unregister
+   * DID URI of member to get
    * </pre>
    *
    * <code>string did_uri = 1;</code>
@@ -49,7 +49,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * Trinsic Wallet ID of member to unregister
+   * Trinsic Wallet ID of member to get
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -61,7 +61,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * Trinsic Wallet ID of member to unregister
+   * Trinsic Wallet ID of member to get
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -73,7 +73,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * Trinsic Wallet ID of member to unregister
+   * Trinsic Wallet ID of member to get
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
@@ -86,7 +86,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * Email address of member to get. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
@@ -98,7 +98,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * Email address of member to get. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
@@ -110,7 +110,7 @@ public interface UnregisterMemberRequestOrBuilder
    *
    *
    * <pre>
-   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * Email address of member to get. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
@@ -119,30 +119,5 @@ public interface UnregisterMemberRequestOrBuilder
    */
   com.google.protobuf.ByteString getEmailBytes();
 
-  /**
-   *
-   *
-   * <pre>
-   * URI of credential schema to unregister member as authorized issuer of
-   * </pre>
-   *
-   * <code>string schema_uri = 10;</code>
-   *
-   * @return The schemaUri.
-   */
-  java.lang.String getSchemaUri();
-  /**
-   *
-   *
-   * <pre>
-   * URI of credential schema to unregister member as authorized issuer of
-   * </pre>
-   *
-   * <code>string schema_uri = 10;</code>
-   *
-   * @return The bytes for schemaUri.
-   */
-  com.google.protobuf.ByteString getSchemaUriBytes();
-
-  public trinsic.services.trustregistry.v1.UnregisterMemberRequest.MemberCase getMemberCase();
+  public trinsic.services.trustregistry.v1.GetMemberRequest.MemberCase getMemberCase();
 }

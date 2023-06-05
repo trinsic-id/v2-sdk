@@ -170,30 +170,5 @@ public interface RegisterMemberRequestOrBuilder
    */
   long getValidUntilUtc();
 
-  /**
-   *
-   *
-   * <pre>
-   * ID of the governance framework that member is being added to
-   * </pre>
-   *
-   * <code>string framework_id = 30;</code>
-   *
-   * @return The frameworkId.
-   */
-  java.lang.String getFrameworkId();
-  /**
-   *
-   *
-   * <pre>
-   * ID of the governance framework that member is being added to
-   * </pre>
-   *
-   * <code>string framework_id = 30;</code>
-   *
-   * @return The bytes for frameworkId.
-   */
-  com.google.protobuf.ByteString getFrameworkIdBytes();
-
   public trinsic.services.trustregistry.v1.RegisterMemberRequest.MemberCase getMemberCase();
 }

@@ -523,7 +523,7 @@ type ListFilesResponse struct {
 	Files []*File `protobuf:"bytes,1,rep,name=files,proto3" json:"files,omitempty"`
 	// Whether more results are available for this query via `continuation_token`
 	HasMoreResults bool `protobuf:"varint,2,opt,name=has_more_results,json=hasMoreResults,proto3" json:"has_more_results,omitempty"`
-	// Token to fetch next set of resuts via `ListFilesRequest`
+	// Token to fetch next set of results via `ListFilesRequest`
 	ContinuationToken string `protobuf:"bytes,3,opt,name=continuation_token,json=continuationToken,proto3" json:"continuation_token,omitempty"`
 }
 

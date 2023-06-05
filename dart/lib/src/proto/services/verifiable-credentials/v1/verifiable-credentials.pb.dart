@@ -29,11 +29,6 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'valuesJson')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'frameworkId')
     ..aOB(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -44,15 +39,20 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'expirationDate')
+    ..aOB(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'includeGovernance')
     ..hasRequiredFields = false;
 
   IssueFromTemplateRequest._() : super();
   factory IssueFromTemplateRequest({
     $core.String? templateId,
     $core.String? valuesJson,
-    $core.String? frameworkId,
     $core.bool? saveCopy,
     $core.String? expirationDate,
+    $core.bool? includeGovernance,
   }) {
     final _result = create();
     if (templateId != null) {
@@ -61,14 +61,14 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
     if (valuesJson != null) {
       _result.valuesJson = valuesJson;
     }
-    if (frameworkId != null) {
-      _result.frameworkId = frameworkId;
-    }
     if (saveCopy != null) {
       _result.saveCopy = saveCopy;
     }
     if (expirationDate != null) {
       _result.expirationDate = expirationDate;
+    }
+    if (includeGovernance != null) {
+      _result.includeGovernance = includeGovernance;
     }
     return _result;
   }
@@ -125,41 +125,41 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearValuesJson() => clearField(2);
 
-  @$pb.TagNumber(3)
-  $core.String get frameworkId => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set frameworkId($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasFrameworkId() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearFrameworkId() => clearField(3);
-
   @$pb.TagNumber(4)
-  $core.bool get saveCopy => $_getBF(3);
+  $core.bool get saveCopy => $_getBF(2);
   @$pb.TagNumber(4)
   set saveCopy($core.bool v) {
-    $_setBool(3, v);
+    $_setBool(2, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasSaveCopy() => $_has(3);
+  $core.bool hasSaveCopy() => $_has(2);
   @$pb.TagNumber(4)
   void clearSaveCopy() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get expirationDate => $_getSZ(4);
+  $core.String get expirationDate => $_getSZ(3);
   @$pb.TagNumber(5)
   set expirationDate($core.String v) {
-    $_setString(4, v);
+    $_setString(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasExpirationDate() => $_has(4);
+  $core.bool hasExpirationDate() => $_has(3);
   @$pb.TagNumber(5)
   void clearExpirationDate() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.bool get includeGovernance => $_getBF(4);
+  @$pb.TagNumber(6)
+  set includeGovernance($core.bool v) {
+    $_setBool(4, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasIncludeGovernance() => $_has(4);
+  @$pb.TagNumber(6)
+  void clearIncludeGovernance() => clearField(6);
 }
 
 class IssueFromTemplateResponse extends $pb.GeneratedMessage {
