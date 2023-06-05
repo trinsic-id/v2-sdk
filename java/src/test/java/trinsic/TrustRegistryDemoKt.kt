@@ -30,10 +30,7 @@ suspend fun runTrustRegistryDemo() {
       trinsic
           .trustRegistry()
           .registerMember(
-              RegisterMemberRequest.newBuilder()
-                  .setDidUri(didUri)
-                  .setSchemaUri(typeUri)
-                  .build())
+              RegisterMemberRequest.newBuilder().setDidUri(didUri).setSchemaUri(typeUri).build())
   // }
   // checkIssuerStatus() {
   val issuerStatus =
@@ -52,10 +49,7 @@ suspend fun runTrustRegistryDemo() {
   trinsic
       .trustRegistry()
       .unregisterMember(
-          UnregisterMemberRequest.newBuilder()
-              .setDidUri(didUri)
-              .setSchemaUri(typeUri)
-              .build())
+          UnregisterMemberRequest.newBuilder().setDidUri(didUri).setSchemaUri(typeUri).build())
   // }
   trinsic.shutdown()
 }

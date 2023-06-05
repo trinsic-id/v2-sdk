@@ -1,7 +1,6 @@
 package trinsic;
 
 import java.io.IOException;
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
@@ -34,10 +33,7 @@ public class TrustRegistryDemo {
         trinsic
             .trustRegistry()
             .registerMember(
-                RegisterMemberRequest.newBuilder()
-                    .setDidUri(didUri)
-                    .setSchemaUri(typeUri)
-                    .build())
+                RegisterMemberRequest.newBuilder().setDidUri(didUri).setSchemaUri(typeUri).build())
             .get();
     // }
 
@@ -58,10 +54,7 @@ public class TrustRegistryDemo {
     trinsic
         .trustRegistry()
         .unregisterMember(
-            UnregisterMemberRequest.newBuilder()
-                .setDidUri(didUri)
-                .setSchemaUri(typeUri)
-                .build());
+            UnregisterMemberRequest.newBuilder().setDidUri(didUri).setSchemaUri(typeUri).build());
     // }
     trinsic.shutdown();
   }

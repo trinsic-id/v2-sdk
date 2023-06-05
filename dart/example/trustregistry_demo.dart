@@ -17,18 +17,16 @@ Future runTrustRegistryDemo() async {
 
   // registerIssuerSample() {
   var registerMemberResponse = await trinsic.trustRegistry().registerMember(
-      RegisterMemberRequest(
-          didUri: didExampleTest,
-          schemaUri: httpsSchemaOrg));
+      RegisterMemberRequest(didUri: didExampleTest, schemaUri: httpsSchemaOrg));
   // }
 
   print("Member registered: $registerMemberResponse");
 
   // checkIssuerStatus() {
-  var checkResponse = await trinsic.trustRegistry().getMemberAuthorizationStatus(
-      GetMemberAuthorizationStatusRequest(
-          didUri: didExampleTest,
-          schemaUri: httpsSchemaOrg));
+  var checkResponse = await trinsic
+      .trustRegistry()
+      .getMemberAuthorizationStatus(GetMemberAuthorizationStatusRequest(
+          didUri: didExampleTest, schemaUri: httpsSchemaOrg));
   // }
 
   print("Member Status: $checkResponse");
@@ -37,8 +35,7 @@ Future runTrustRegistryDemo() async {
   // unregisterIssuer() {
   var unregisterIssuerResponse = await trinsic.trustRegistry().unregisterMember(
       UnregisterMemberRequest(
-          schemaUri: httpsSchemaOrg,
-          didUri: didExampleTest));
+          schemaUri: httpsSchemaOrg, didUri: didExampleTest));
   // }
 }
 

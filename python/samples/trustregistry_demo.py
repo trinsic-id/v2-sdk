@@ -34,10 +34,12 @@ async def trustregistry_demo():
     # }
 
     # checkIssuerStatus() {
-    check_response = await trinsic_service.trust_registry.get_member_authorization_status(
-        request=GetMemberAuthorizationStatusRequest(
-            did_uri=did_example_test,
-            schema_uri=https_schema_org,
+    check_response = (
+        await trinsic_service.trust_registry.get_member_authorization_status(
+            request=GetMemberAuthorizationStatusRequest(
+                did_uri=did_example_test,
+                schema_uri=https_schema_org,
+            )
         )
     )
     # }
