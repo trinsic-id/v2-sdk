@@ -97,51 +97,6 @@ const UnregisterMemberResponse$json = const {
 /// Descriptor for `UnregisterMemberResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List unregisterMemberResponseDescriptor =
     $convert.base64Decode('ChhVbnJlZ2lzdGVyTWVtYmVyUmVzcG9uc2U=');
-@$core.Deprecated('Use searchRegistryRequestDescriptor instead')
-const SearchRegistryRequest$json = const {
-  '1': 'SearchRegistryRequest',
-  '2': const [
-    const {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
-    const {
-      '1': 'continuation_token',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'continuationToken'
-    },
-  ],
-};
-
-/// Descriptor for `SearchRegistryRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List searchRegistryRequestDescriptor = $convert.base64Decode(
-    'ChVTZWFyY2hSZWdpc3RyeVJlcXVlc3QSFAoFcXVlcnkYASABKAlSBXF1ZXJ5EjMKEmNvbnRpbnVhdGlvbl90b2tlbhgCIAEoCUIEgKYdAVIRY29udGludWF0aW9uVG9rZW4=');
-@$core.Deprecated('Use searchRegistryResponseDescriptor instead')
-const SearchRegistryResponse$json = const {
-  '1': 'SearchRegistryResponse',
-  '2': const [
-    const {'1': 'items_json', '3': 1, '4': 1, '5': 9, '10': 'itemsJson'},
-    const {
-      '1': 'has_more_results',
-      '3': 2,
-      '4': 1,
-      '5': 8,
-      '10': 'hasMoreResults'
-    },
-    const {
-      '1': 'continuation_token',
-      '3': 4,
-      '4': 1,
-      '5': 9,
-      '10': 'continuationToken'
-    },
-  ],
-};
-
-/// Descriptor for `SearchRegistryResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List searchRegistryResponseDescriptor =
-    $convert.base64Decode(
-        'ChZTZWFyY2hSZWdpc3RyeVJlc3BvbnNlEh0KCml0ZW1zX2pzb24YASABKAlSCWl0ZW1zSnNvbhIoChBoYXNfbW9yZV9yZXN1bHRzGAIgASgIUg5oYXNNb3JlUmVzdWx0cxItChJjb250aW51YXRpb25fdG9rZW4YBCABKAlSEWNvbnRpbnVhdGlvblRva2Vu');
 @$core.Deprecated('Use getMemberAuthorizationStatusRequestDescriptor instead')
 const GetMemberAuthorizationStatusRequest$json = const {
   '1': 'GetMemberAuthorizationStatusRequest',

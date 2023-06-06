@@ -62,27 +62,6 @@ message UnregisterMemberRequest {
 // Response to `UnregisterMemberRequest`
 message UnregisterMemberResponse {}
 
-// Request to search all governance frameworks within ecosystem
-message SearchRegistryRequest {
-  // SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
-  string query = 1;
-
-  // Token to fetch next set of results, from previous `SearchRegistryResponse`
-  string continuation_token = 2 [(options.optional) = true];
-}
-
-// Response to `SearchRegistryRequest`
-message SearchRegistryResponse {
-  // JSON string containing array of resultant objects
-  string items_json = 1;
-
-  // Whether more data is available to fetch for query
-  bool has_more_results = 2;
-
-  // Token to fetch next set of results via `SearchRegistryRequest`
-  string continuation_token = 4;
-}
-
 // Request to fetch member status in governance framework for a specific credential schema.
 message GetMemberAuthorizationStatusRequest {
   // DID URI of member
@@ -159,9 +138,6 @@ message GetMemberResponse {
 }
 
 service TrustRegistry {
-  // Search the ecosystem's governance framework
-  rpc SearchRegistry(SearchRegistryRequest) returns (SearchRegistryResponse);
-  
   // Register an authoritative issuer for a credential schema
   rpc RegisterMember(RegisterMemberRequest) returns (RegisterMemberResponse);
 

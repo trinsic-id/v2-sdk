@@ -14,12 +14,6 @@ import 'trust-registry.pb.dart' as $7;
 export 'trust-registry.pb.dart';
 
 class TrustRegistryClient extends $grpc.Client {
-  static final _$searchRegistry =
-      $grpc.ClientMethod<$7.SearchRegistryRequest, $7.SearchRegistryResponse>(
-          '/services.trustregistry.v1.TrustRegistry/SearchRegistry',
-          ($7.SearchRegistryRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $7.SearchRegistryResponse.fromBuffer(value));
   static final _$registerMember =
       $grpc.ClientMethod<$7.RegisterMemberRequest, $7.RegisterMemberResponse>(
           '/services.trustregistry.v1.TrustRegistry/RegisterMember',
@@ -56,12 +50,6 @@ class TrustRegistryClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
-
-  $grpc.ResponseFuture<$7.SearchRegistryResponse> searchRegistry(
-      $7.SearchRegistryRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$searchRegistry, request, options: options);
-  }
 
   $grpc.ResponseFuture<$7.RegisterMemberResponse> registerMember(
       $7.RegisterMemberRequest request,
@@ -100,15 +88,6 @@ abstract class TrustRegistryServiceBase extends $grpc.Service {
   $core.String get $name => 'services.trustregistry.v1.TrustRegistry';
 
   TrustRegistryServiceBase() {
-    $addMethod($grpc.ServiceMethod<$7.SearchRegistryRequest,
-            $7.SearchRegistryResponse>(
-        'SearchRegistry',
-        searchRegistry_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $7.SearchRegistryRequest.fromBuffer(value),
-        ($7.SearchRegistryResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$7.RegisterMemberRequest,
             $7.RegisterMemberResponse>(
         'RegisterMember',
@@ -155,12 +134,6 @@ abstract class TrustRegistryServiceBase extends $grpc.Service {
         ($7.GetMemberResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$7.SearchRegistryResponse> searchRegistry_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$7.SearchRegistryRequest> request) async {
-    return searchRegistry(call, await request);
-  }
-
   $async.Future<$7.RegisterMemberResponse> registerMember_Pre(
       $grpc.ServiceCall call,
       $async.Future<$7.RegisterMemberRequest> request) async {
@@ -190,8 +163,6 @@ abstract class TrustRegistryServiceBase extends $grpc.Service {
     return getMember(call, await request);
   }
 
-  $async.Future<$7.SearchRegistryResponse> searchRegistry(
-      $grpc.ServiceCall call, $7.SearchRegistryRequest request);
   $async.Future<$7.RegisterMemberResponse> registerMember(
       $grpc.ServiceCall call, $7.RegisterMemberRequest request);
   $async.Future<$7.UnregisterMemberResponse> unregisterMember(

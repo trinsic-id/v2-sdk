@@ -44,6 +44,28 @@ public class TrustRegistryDemo {
     // }
     Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
+    // listMembers() {
+    var members =
+        trinsic
+            .trustRegistry()
+            .listAuthorizedMembers(
+                ListAuthorizedMembersRequest.newBuilder()
+                    .setSchemaUri(typeUri)
+                    .build())
+            .get();
+    // }
+
+    // getMember() {
+    var member =
+        trinsic
+            .trustRegistry()
+            .getMember(
+                GetMemberRequest.newBuilder()
+                    .setDidUri(typeUri)
+                    .build())
+            .get();
+    // }
+
     // unregisterIssuer() {
     trinsic
         .trustRegistry()

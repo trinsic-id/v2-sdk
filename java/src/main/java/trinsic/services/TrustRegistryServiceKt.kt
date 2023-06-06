@@ -28,11 +28,6 @@ class TrustRegistryServiceKt(options: Options.TrinsicOptions.Builder?) : Service
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/TrustRegistryServiceKt.kt
 
   @Throws(InvalidProtocolBufferException::class)
-  suspend fun searchRegistry(request: SearchRegistryRequest): SearchRegistryResponse {
-    /** Search the ecosystem's governance framework */
-    return withMetadata(stub, request).searchRegistry(request)
-  }
-  @Throws(InvalidProtocolBufferException::class)
   suspend fun registerMember(request: RegisterMemberRequest): RegisterMemberResponse {
     /** Register an authoritative issuer for a credential schema */
     return withMetadata(stub, request).registerMember(request)

@@ -102,36 +102,6 @@ class UnregisterMemberResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class SearchRegistryRequest(betterproto.Message):
-    """Request to search all governance frameworks within ecosystem"""
-
-    query: str = betterproto.string_field(1)
-    """
-    SQL query to execute against frameworks. Example: `SELECT c from c where
-    c.type == 'GovernanceFramework'`
-    """
-
-    continuation_token: str = betterproto.string_field(2)
-    """
-    Token to fetch next set of results, from previous `SearchRegistryResponse`
-    """
-
-
-@dataclass(eq=False, repr=False)
-class SearchRegistryResponse(betterproto.Message):
-    """Response to `SearchRegistryRequest`"""
-
-    items_json: str = betterproto.string_field(1)
-    """JSON string containing array of resultant objects"""
-
-    has_more_results: bool = betterproto.bool_field(2)
-    """Whether more data is available to fetch for query"""
-
-    continuation_token: str = betterproto.string_field(4)
-    """Token to fetch next set of results via `SearchRegistryRequest`"""
-
-
-@dataclass(eq=False, repr=False)
 class GetMemberAuthorizationStatusRequest(betterproto.Message):
     """
     Request to fetch member status in governance framework for a specific
@@ -228,22 +198,6 @@ class GetMemberResponse(betterproto.Message):
 
 
 class TrustRegistryStub(betterproto.ServiceStub):
-    async def search_registry(
-        self,
-        search_registry_request: "SearchRegistryRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "SearchRegistryResponse":
-        return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/SearchRegistry",
-            search_registry_request,
-            SearchRegistryResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def register_member(
         self,
         register_member_request: "RegisterMemberRequest",
@@ -326,11 +280,6 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
 
 class TrustRegistryBase(ServiceBase):
-    async def search_registry(
-        self, search_registry_request: "SearchRegistryRequest"
-    ) -> "SearchRegistryResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def register_member(
         self, register_member_request: "RegisterMemberRequest"
     ) -> "RegisterMemberResponse":
@@ -356,11 +305,6 @@ class TrustRegistryBase(ServiceBase):
         self, get_member_request: "GetMemberRequest"
     ) -> "GetMemberResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def __rpc_search_registry(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.search_registry(request)
-        await stream.send_message(response)
 
     async def __rpc_register_member(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
@@ -393,12 +337,6 @@ class TrustRegistryBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.trustregistry.v1.TrustRegistry/SearchRegistry": grpclib.const.Handler(
-                self.__rpc_search_registry,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                SearchRegistryRequest,
-                SearchRegistryResponse,
-            ),
             "/services.trustregistry.v1.TrustRegistry/RegisterMember": grpclib.const.Handler(
                 self.__rpc_register_member,
                 grpclib.const.Cardinality.UNARY_UNARY,

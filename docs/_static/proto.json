@@ -1614,48 +1614,6 @@
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": "services.trustregistry.v1.RegistrationStatus"
     },
-    "services.trustregistry.v1.SearchRegistryRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": ""
-    },
-    "services.trustregistry.v1.SearchRegistryRequest.continuation_token": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.SearchRegistryRequest"
-    },
-    "services.trustregistry.v1.SearchRegistryRequest.query": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.SearchRegistryRequest"
-    },
-    "services.trustregistry.v1.SearchRegistryResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": ""
-    },
-    "services.trustregistry.v1.SearchRegistryResponse.continuation_token": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.SearchRegistryResponse"
-    },
-    "services.trustregistry.v1.SearchRegistryResponse.has_more_results": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.SearchRegistryResponse"
-    },
-    "services.trustregistry.v1.SearchRegistryResponse.items_json": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": "services.trustregistry.v1.SearchRegistryResponse"
-    },
     "services.trustregistry.v1.TrustRegistry": {
       "type": "service",
       "collection": "services",
@@ -1681,12 +1639,6 @@
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.RegisterMember": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/trust-registry/v1/trust-registry.proto",
-      "parent": ""
-    },
-    "services.trustregistry.v1.TrustRegistry.SearchRegistry": {
       "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
@@ -3709,7 +3661,6 @@
         "services.trustregistry.v1.TrustRegistry"
       ],
       "methods": [
-        "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
         "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus",
@@ -3721,8 +3672,6 @@
         "services.trustregistry.v1.RegisterMemberResponse",
         "services.trustregistry.v1.UnregisterMemberRequest",
         "services.trustregistry.v1.UnregisterMemberResponse",
-        "services.trustregistry.v1.SearchRegistryRequest",
-        "services.trustregistry.v1.SearchRegistryResponse",
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
         "services.trustregistry.v1.GetMemberAuthorizationStatusResponse",
         "services.trustregistry.v1.ListAuthorizedMembersRequest",
@@ -3743,11 +3692,6 @@
         "services.trustregistry.v1.UnregisterMemberRequest.wallet_id",
         "services.trustregistry.v1.UnregisterMemberRequest.email",
         "services.trustregistry.v1.UnregisterMemberRequest.schema_uri",
-        "services.trustregistry.v1.SearchRegistryRequest.query",
-        "services.trustregistry.v1.SearchRegistryRequest.continuation_token",
-        "services.trustregistry.v1.SearchRegistryResponse.items_json",
-        "services.trustregistry.v1.SearchRegistryResponse.has_more_results",
-        "services.trustregistry.v1.SearchRegistryResponse.continuation_token",
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri",
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri",
         "services.trustregistry.v1.GetMemberAuthorizationStatusResponse.status",
@@ -4150,7 +4094,6 @@
       "full_name": "services.trustregistry.v1.TrustRegistry",
       "description": "",
       "methods": [
-        "services.trustregistry.v1.TrustRegistry.SearchRegistry",
         "services.trustregistry.v1.TrustRegistry.RegisterMember",
         "services.trustregistry.v1.TrustRegistry.UnregisterMember",
         "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus",
@@ -4406,13 +4349,6 @@
       "input_type": "services.trustregistry.v1.RegisterMemberRequest",
       "output_type": "services.trustregistry.v1.RegisterMemberResponse",
       "description": "Register an authoritative issuer for a credential schema"
-    },
-    "services.trustregistry.v1.TrustRegistry.SearchRegistry": {
-      "name": "SearchRegistry",
-      "full_name": "services.trustregistry.v1.TrustRegistry.SearchRegistry",
-      "input_type": "services.trustregistry.v1.SearchRegistryRequest",
-      "output_type": "services.trustregistry.v1.SearchRegistryResponse",
-      "description": "Search the ecosystem's governance framework"
     },
     "services.trustregistry.v1.TrustRegistry.UnregisterMember": {
       "name": "UnregisterMember",
@@ -5366,29 +5302,6 @@
       "full_name": "services.trustregistry.v1.RegisterMemberResponse",
       "description": "Response to `RegisterMemberRequest`",
       "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.trustregistry.v1.SearchRegistryRequest": {
-      "name": "SearchRegistryRequest",
-      "full_name": "services.trustregistry.v1.SearchRegistryRequest",
-      "description": "Request to search all governance frameworks within ecosystem",
-      "fields": [
-        "services.trustregistry.v1.SearchRegistryRequest.query",
-        "services.trustregistry.v1.SearchRegistryRequest.continuation_token"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.trustregistry.v1.SearchRegistryResponse": {
-      "name": "SearchRegistryResponse",
-      "full_name": "services.trustregistry.v1.SearchRegistryResponse",
-      "description": "Response to `SearchRegistryRequest`",
-      "fields": [
-        "services.trustregistry.v1.SearchRegistryResponse.items_json",
-        "services.trustregistry.v1.SearchRegistryResponse.has_more_results",
-        "services.trustregistry.v1.SearchRegistryResponse.continuation_token"
-      ],
       "messages": [],
       "enums": []
     },
@@ -7450,49 +7363,6 @@
       "type": "string",
       "full_type": "string",
       "description": "Trinsic Wallet ID of member to register"
-    },
-    "services.trustregistry.v1.SearchRegistryRequest.continuation_token": {
-      "name": "continuation_token",
-      "full_name": "services.trustregistry.v1.SearchRegistryRequest.continuation_token",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Token to fetch next set of results, from previous `SearchRegistryResponse`",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.trustregistry.v1.SearchRegistryRequest.query": {
-      "name": "query",
-      "full_name": "services.trustregistry.v1.SearchRegistryRequest.query",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`"
-    },
-    "services.trustregistry.v1.SearchRegistryResponse.continuation_token": {
-      "name": "continuation_token",
-      "full_name": "services.trustregistry.v1.SearchRegistryResponse.continuation_token",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Token to fetch next set of results via `SearchRegistryRequest`"
-    },
-    "services.trustregistry.v1.SearchRegistryResponse.has_more_results": {
-      "name": "has_more_results",
-      "full_name": "services.trustregistry.v1.SearchRegistryResponse.has_more_results",
-      "label": "LABEL_OPTIONAL",
-      "type": "bool",
-      "full_type": "bool",
-      "description": "Whether more data is available to fetch for query"
-    },
-    "services.trustregistry.v1.SearchRegistryResponse.items_json": {
-      "name": "items_json",
-      "full_name": "services.trustregistry.v1.SearchRegistryResponse.items_json",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "JSON string containing array of resultant objects"
     },
     "services.trustregistry.v1.UnregisterMemberRequest.did_uri": {
       "name": "did_uri",

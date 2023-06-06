@@ -112,24 +112,6 @@ export interface UnregisterMemberRequest {
 export interface UnregisterMemberResponse {
 }
 
-/** Request to search all governance frameworks within ecosystem */
-export interface SearchRegistryRequest {
-  /** SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'` */
-  query?: string;
-  /** Token to fetch next set of results, from previous `SearchRegistryResponse` */
-  continuationToken?: string;
-}
-
-/** Response to `SearchRegistryRequest` */
-export interface SearchRegistryResponse {
-  /** JSON string containing array of resultant objects */
-  itemsJson?: string;
-  /** Whether more data is available to fetch for query */
-  hasMoreResults?: boolean;
-  /** Token to fetch next set of results via `SearchRegistryRequest` */
-  continuationToken?: string;
-}
-
 /** Request to fetch member status in governance framework for a specific credential schema. */
 export interface GetMemberAuthorizationStatusRequest {
   /** DID URI of member */
@@ -500,161 +482,6 @@ export const UnregisterMemberResponse = {
 
   fromPartial(_: DeepPartial<UnregisterMemberResponse>): UnregisterMemberResponse {
     const message = createBaseUnregisterMemberResponse();
-    return message;
-  },
-};
-
-function createBaseSearchRegistryRequest(): SearchRegistryRequest {
-  return { query: "", continuationToken: "" };
-}
-
-export const SearchRegistryRequest = {
-  encode(message: SearchRegistryRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.query !== undefined && message.query !== "") {
-      writer.uint32(10).string(message.query);
-    }
-    if (message.continuationToken !== undefined && message.continuationToken !== "") {
-      writer.uint32(18).string(message.continuationToken);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): SearchRegistryRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSearchRegistryRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.query = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.continuationToken = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): SearchRegistryRequest {
-    return {
-      query: isSet(object.query) ? String(object.query) : "",
-      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
-    };
-  },
-
-  toJSON(message: SearchRegistryRequest): unknown {
-    const obj: any = {};
-    message.query !== undefined && (obj.query = message.query);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
-    return obj;
-  },
-
-  create(base?: DeepPartial<SearchRegistryRequest>): SearchRegistryRequest {
-    return SearchRegistryRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<SearchRegistryRequest>): SearchRegistryRequest {
-    const message = createBaseSearchRegistryRequest();
-    message.query = object.query ?? "";
-    message.continuationToken = object.continuationToken ?? "";
-    return message;
-  },
-};
-
-function createBaseSearchRegistryResponse(): SearchRegistryResponse {
-  return { itemsJson: "", hasMoreResults: false, continuationToken: "" };
-}
-
-export const SearchRegistryResponse = {
-  encode(message: SearchRegistryResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.itemsJson !== undefined && message.itemsJson !== "") {
-      writer.uint32(10).string(message.itemsJson);
-    }
-    if (message.hasMoreResults === true) {
-      writer.uint32(16).bool(message.hasMoreResults);
-    }
-    if (message.continuationToken !== undefined && message.continuationToken !== "") {
-      writer.uint32(34).string(message.continuationToken);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): SearchRegistryResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSearchRegistryResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.itemsJson = reader.string();
-          continue;
-        case 2:
-          if (tag != 16) {
-            break;
-          }
-
-          message.hasMoreResults = reader.bool();
-          continue;
-        case 4:
-          if (tag != 34) {
-            break;
-          }
-
-          message.continuationToken = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): SearchRegistryResponse {
-    return {
-      itemsJson: isSet(object.itemsJson) ? String(object.itemsJson) : "",
-      hasMoreResults: isSet(object.hasMoreResults) ? Boolean(object.hasMoreResults) : false,
-      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
-    };
-  },
-
-  toJSON(message: SearchRegistryResponse): unknown {
-    const obj: any = {};
-    message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
-    return obj;
-  },
-
-  create(base?: DeepPartial<SearchRegistryResponse>): SearchRegistryResponse {
-    return SearchRegistryResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<SearchRegistryResponse>): SearchRegistryResponse {
-    const message = createBaseSearchRegistryResponse();
-    message.itemsJson = object.itemsJson ?? "";
-    message.hasMoreResults = object.hasMoreResults ?? false;
-    message.continuationToken = object.continuationToken ?? "";
     return message;
   },
 };
@@ -1291,15 +1118,6 @@ export const TrustRegistryDefinition = {
   name: "TrustRegistry",
   fullName: "services.trustregistry.v1.TrustRegistry",
   methods: {
-    /** Search the ecosystem's governance framework */
-    searchRegistry: {
-      name: "SearchRegistry",
-      requestType: SearchRegistryRequest,
-      requestStream: false,
-      responseType: SearchRegistryResponse,
-      responseStream: false,
-      options: {},
-    },
     /** Register an authoritative issuer for a credential schema */
     registerMember: {
       name: "RegisterMember",

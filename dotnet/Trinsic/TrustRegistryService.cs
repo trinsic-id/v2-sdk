@@ -39,24 +39,6 @@ public class TrustRegistryService : ServiceBase
 // target: /home/runner/work/sdk/sdk/dotnet/Trinsic/TrustRegistryService.cs
 
 	/// <summary>
-    /// Search the ecosystem's governance framework
-    /// </summary>
-    
-    public SearchRegistryResponse SearchRegistry(SearchRegistryRequest request) {
-        
-        return Client.SearchRegistry(request, BuildMetadata(request));
-    }
-	
-	/// <summary>
-    /// Search the ecosystem's governance framework
-    /// </summary>
-    
-    public async Task<SearchRegistryResponse> SearchRegistryAsync(SearchRegistryRequest request) {
-        
-        return await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
-    }
-
-	/// <summary>
     /// Register an authoritative issuer for a credential schema
     /// </summary>
     
