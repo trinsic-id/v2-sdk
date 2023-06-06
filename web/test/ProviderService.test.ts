@@ -10,6 +10,7 @@ import {
 } from "../src";
 
 import {
+    getLocalServerOptions,
     getTestServerOptions,
     myEcosystemIdOrName,
     setTestTimeout,

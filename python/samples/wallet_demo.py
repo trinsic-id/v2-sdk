@@ -2,13 +2,14 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
+from trinsic.proto.sdk.options.v1 import TrinsicOptions
 from trinsic.proto.services.universalwallet.v1 import (
     DeleteItemRequest,
     DeleteWalletRequest,
     GetItemRequest,
     InsertItemRequest,
     SearchRequest,
-    CreateWalletRequest,
+    CreateWalletRequest, AddExternalIdentityConfirmRequest, AddExternalIdentityInitRequest, IdentityProvider,
 )
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
@@ -21,6 +22,15 @@ def _base_data_path() -> str:
 
 def _vaccine_cert_unsigned_path() -> str:
     return abspath(join(_base_data_path(), "vaccination-certificate-unsigned.jsonld"))
+
+
+async def confirm_unauthenticated_call():
+    config = TrinsicOptions(server_port=5000, server_use_tls=False, server_endpoint="localhost")
+    trinsic = TrinsicService(server_config=config)
+    result = await trinsic.wallet.add_external_identity_init(request=AddExternalIdentityInitRequest(
+        identity="mewmba@trinsic.id", provider=IdentityProvider.EMAIL
+    ))
+    print(result)
 
 
 async def wallet_demo():
@@ -90,4 +100,4 @@ async def wallet_demo():
 
 if __name__ == "__main__":
     set_eventloop_policy()
-    asyncio.run(wallet_demo())
+    asyncio.run(confirm_unauthenticated_call())
