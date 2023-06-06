@@ -34,9 +34,6 @@ object TrustRegistryGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = TrustRegistryGrpc.getServiceDescriptor()
 
-  val searchRegistryMethod: MethodDescriptor<SearchRegistryRequest, SearchRegistryResponse>
-    @JvmStatic get() = TrustRegistryGrpc.getSearchRegistryMethod()
-
   val registerMemberMethod: MethodDescriptor<RegisterMemberRequest, RegisterMemberResponse>
     @JvmStatic get() = TrustRegistryGrpc.getRegisterMemberMethod()
 
@@ -66,24 +63,6 @@ object TrustRegistryGrpcKt {
     override fun build(channel: Channel, callOptions: CallOptions): TrustRegistryCoroutineStub =
         TrustRegistryCoroutineStub(channel, callOptions)
 
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes with
-     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
-     * the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request. Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun searchRegistry(
-        request: SearchRegistryRequest,
-        headers: Metadata = Metadata()
-    ): SearchRegistryResponse =
-        unaryRpc(
-            channel, TrustRegistryGrpc.getSearchRegistryMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
      * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
@@ -191,21 +170,6 @@ object TrustRegistryGrpcKt {
       coroutineContext: CoroutineContext = EmptyCoroutineContext
   ) : AbstractCoroutineServerImpl(coroutineContext) {
     /**
-     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.SearchRegistry.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
-     * will fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun searchRegistry(request: SearchRegistryRequest): SearchRegistryResponse =
-        throw StatusException(
-            UNIMPLEMENTED.withDescription(
-                "Method services.trustregistry.v1.TrustRegistry.SearchRegistry is unimplemented"))
-
-    /**
      * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.RegisterMember.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -288,11 +252,6 @@ object TrustRegistryGrpcKt {
 
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
-            .addMethod(
-                unaryServerMethodDefinition(
-                    context = this.context,
-                    descriptor = TrustRegistryGrpc.getSearchRegistryMethod(),
-                    implementation = ::searchRegistry))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,

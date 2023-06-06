@@ -19,7 +19,6 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TrustRegistry_SearchRegistry_FullMethodName               = "/services.trustregistry.v1.TrustRegistry/SearchRegistry"
 	TrustRegistry_RegisterMember_FullMethodName               = "/services.trustregistry.v1.TrustRegistry/RegisterMember"
 	TrustRegistry_UnregisterMember_FullMethodName             = "/services.trustregistry.v1.TrustRegistry/UnregisterMember"
 	TrustRegistry_GetMemberAuthorizationStatus_FullMethodName = "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus"
@@ -31,8 +30,6 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TrustRegistryClient interface {
-	// Search the ecosystem's governance framework
-	SearchRegistry(ctx context.Context, in *SearchRegistryRequest, opts ...grpc.CallOption) (*SearchRegistryResponse, error)
 	// Register an authoritative issuer for a credential schema
 	RegisterMember(ctx context.Context, in *RegisterMemberRequest, opts ...grpc.CallOption) (*RegisterMemberResponse, error)
 	// Removes an authoritative issuer for a credential schema from the trust registry
@@ -51,15 +48,6 @@ type trustRegistryClient struct {
 
 func NewTrustRegistryClient(cc grpc.ClientConnInterface) TrustRegistryClient {
 	return &trustRegistryClient{cc}
-}
-
-func (c *trustRegistryClient) SearchRegistry(ctx context.Context, in *SearchRegistryRequest, opts ...grpc.CallOption) (*SearchRegistryResponse, error) {
-	out := new(SearchRegistryResponse)
-	err := c.cc.Invoke(ctx, TrustRegistry_SearchRegistry_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *trustRegistryClient) RegisterMember(ctx context.Context, in *RegisterMemberRequest, opts ...grpc.CallOption) (*RegisterMemberResponse, error) {
@@ -111,8 +99,6 @@ func (c *trustRegistryClient) GetMember(ctx context.Context, in *GetMemberReques
 // All implementations must embed UnimplementedTrustRegistryServer
 // for forward compatibility
 type TrustRegistryServer interface {
-	// Search the ecosystem's governance framework
-	SearchRegistry(context.Context, *SearchRegistryRequest) (*SearchRegistryResponse, error)
 	// Register an authoritative issuer for a credential schema
 	RegisterMember(context.Context, *RegisterMemberRequest) (*RegisterMemberResponse, error)
 	// Removes an authoritative issuer for a credential schema from the trust registry
@@ -130,9 +116,6 @@ type TrustRegistryServer interface {
 type UnimplementedTrustRegistryServer struct {
 }
 
-func (UnimplementedTrustRegistryServer) SearchRegistry(context.Context, *SearchRegistryRequest) (*SearchRegistryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchRegistry not implemented")
-}
 func (UnimplementedTrustRegistryServer) RegisterMember(context.Context, *RegisterMemberRequest) (*RegisterMemberResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterMember not implemented")
 }
@@ -159,24 +142,6 @@ type UnsafeTrustRegistryServer interface {
 
 func RegisterTrustRegistryServer(s grpc.ServiceRegistrar, srv TrustRegistryServer) {
 	s.RegisterService(&TrustRegistry_ServiceDesc, srv)
-}
-
-func _TrustRegistry_SearchRegistry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchRegistryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TrustRegistryServer).SearchRegistry(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TrustRegistry_SearchRegistry_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).SearchRegistry(ctx, req.(*SearchRegistryRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _TrustRegistry_RegisterMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -276,10 +241,6 @@ var TrustRegistry_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "services.trustregistry.v1.TrustRegistry",
 	HandlerType: (*TrustRegistryServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "SearchRegistry",
-			Handler:    _TrustRegistry_SearchRegistry_Handler,
-		},
 		{
 			MethodName: "RegisterMember",
 			Handler:    _TrustRegistry_RegisterMember_Handler,
