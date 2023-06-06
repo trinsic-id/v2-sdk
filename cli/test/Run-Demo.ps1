@@ -76,7 +76,7 @@ Stop-OnError
 #>
 
 Write-Output "✅ Issuing credential for drivers license"
-Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --values-file $PSScriptRoot/state-id-values.json" #--use-trust-registry
+Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --values-file $PSScriptRoot/state-id-values.json --include-governance"
 | ConvertFrom-Json
 | ForEach-Object { $_.'signed document' }
 | Set-Content -Path $PSScriptRoot/state-id-signed-document.json
@@ -103,7 +103,7 @@ Stop-OnError
 
 <#
 Write-Output "✅ Remove trusted issuer from framework"
-Invoke-Expression "$trinsic trust-registry unregister-member --schema $($Template.SchemaUri) --framework-id $FrameworkId --did $PublicDid" | Out-Null
+Invoke-Expression "$trinsic trust-registry unregister-member --schema $($Template.SchemaUri) --did $PublicDid" | Out-Null
 Stop-OnError
 
 Write-Output "✅ Verify proof of credential (should fail 'TrustRegistryMembership' policy)"
