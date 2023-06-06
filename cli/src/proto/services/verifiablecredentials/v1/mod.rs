@@ -10,11 +10,6 @@ pub struct IssueFromTemplateRequest {
     /// the template referenced by `template_id`
     #[prost(string, tag = "2")]
     pub values_json: ::prost::alloc::string::String,
-    /// Governance framework ID to use with issuance of this credential.
-    /// If specified, the issued credential will contain extended issuer
-    /// metadata with membership info for the given ecosystem governance framework (EGF)
-    #[prost(string, tag = "3")]
-    pub framework_id: ::prost::alloc::string::String,
     /// Save a copy of the issued credential to this user's wallet. This copy will only contain
     /// the credential data, but not the secret proof value. Issuers may use this data to
     /// keep track of the details for revocation status.
@@ -25,6 +20,10 @@ pub struct IssueFromTemplateRequest {
     /// <https://www.w3.org/TR/vc-data-model/#expiration>
     #[prost(string, tag = "5")]
     pub expiration_date: ::prost::alloc::string::String,
+    /// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+    /// governance framework.
+    #[prost(bool, tag = "6")]
+    pub include_governance: bool,
 }
 /// Response to `IssueFromTemplateRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
