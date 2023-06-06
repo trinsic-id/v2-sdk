@@ -8,7 +8,7 @@ pub enum TrustRegistryCommand {
     UnregisterMember(UnregisterMemberArgs),
     GetMember(GetMemberArgs),
     GetMembershipStatus(GetMembershipStatusArgs),
-    ListMembers(ListMembersArgs)
+    ListMembers(ListMembersArgs),
 }
 
 #[derive(Debug, PartialEq, Clone)]
@@ -114,7 +114,7 @@ fn unregister_member(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
 }
 
 fn get_member(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
-    Ok(TrustRegistryCommand::GetMember(GetMemberArgs{
+    Ok(TrustRegistryCommand::GetMember(GetMemberArgs {
         member_id: parse_member_id(args)?,
     }))
 }
@@ -170,7 +170,7 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a> {
                 .setting(AppSettings::ArgRequiredElseHelp)
                 .about("Get the membership status (authorized / not authorized) of a given DID for a given schema")
                 .arg(Arg::from_usage("-d --did <DID> 'The DID of the member'"))
-                .arg(Arg::from_usage("-s --schema <SCHEMA_URI> 'The schema URI'"))
+                .arg(Arg::from_usage("-s --schema <SCHEMA_URI> 'The schema URI'")),
         )
         .subcommand(
             SubCommand::with_name("list-members")

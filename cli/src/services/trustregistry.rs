@@ -15,7 +15,7 @@ pub(crate) fn execute(args: &TrustRegistryCommand, config: &CliConfig) -> Result
         TrustRegistryCommand::UnregisterMember(args) => unregister_member(args, config),
         TrustRegistryCommand::GetMember(args) => get_member(args, config),
         TrustRegistryCommand::GetMembershipStatus(args) => get_status(args, config),
-        TrustRegistryCommand::ListMembers(args) => list_members(args, config)
+        TrustRegistryCommand::ListMembers(args) => list_members(args, config),
     }
 }
 
@@ -118,7 +118,7 @@ async fn get_member(args: &GetMemberArgs, config: &CliConfig) -> Result<Output, 
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(GetMemberRequest {
-        member: Some(args.member_id.clone().try_into()?)
+        member: Some(args.member_id.clone().try_into()?),
     });
 
     let response = client.get_member(request).await?.into_inner();
