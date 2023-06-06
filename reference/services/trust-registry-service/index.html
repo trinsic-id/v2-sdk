@@ -1870,10 +1870,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-issuer-status" class="md-nav__link">
+  <a href="#list-issuers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check Issuer Status
+        List Issuers
       
     </span>
   </a>
@@ -1881,10 +1881,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cache-offline-registry-file" class="md-nav__link">
+  <a href="#get-issuer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cache Offline Registry File
+        Get Issuer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-issuer-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Issuer Status
       
     </span>
   </a>
@@ -2227,10 +2238,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-issuer-status" class="md-nav__link">
+  <a href="#list-issuers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check Issuer Status
+        List Issuers
       
     </span>
   </a>
@@ -2238,10 +2249,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cache-offline-registry-file" class="md-nav__link">
+  <a href="#get-issuer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cache Offline Registry File
+        Get Issuer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-issuer-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Issuer Status
       
     </span>
   </a>
@@ -2362,7 +2384,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">unregisterResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w">  </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">unregisterMember</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">unregisterResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">unregisterMember</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span>
 <span class="p">})</span>
@@ -2414,27 +2436,145 @@
 </div>
 </div>
 <hr />
-<h2 id="check-issuer-status">Check Issuer Status<a class="headerlink" href="#check-issuer-status" title="Permanent link">&para;</a></h2>
-<p>Check the status of an issuer for a specific credential type.</p>
+<h2 id="list-issuers">List Issuers<a class="headerlink" href="#list-issuers" title="Permanent link">&para;</a></h2>
+<p>Lists all issuers that are authorized within the ecosystem, optionally filtering against a specific credential type.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">TypeScript</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">listAuthorizedMembers</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">ListAuthorizedMembersAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">list_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">list_authorized_members</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">ListAuthorizedMembersRequest</span><span class="p">(</span>
+        <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">listMembersResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">ListAuthorizedMembers</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">ListAuthorizedMembersRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">schemaURI</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">members</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">listAuthorizedMembers</span><span class="p">(</span>
+<span class="w">            </span><span class="n">ListAuthorizedMembersRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.ListAuthorizedMembersRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.ListAuthorizedMembersRequest' href='/reference/proto#services.trustregistry.v1.ListAuthorizedMembersRequest'>ListAuthorizedMembersRequest</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>id of schema that needs to be checked</div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Token to fetch next set of results, from previous <code>ListAuthorizedMembersResponse</code></div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.ListAuthorizedMembersResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.ListAuthorizedMembersResponse' href='/reference/proto#services.trustregistry.v1.ListAuthorizedMembersResponse'>ListAuthorizedMembersResponse</a></div><div class='proto-obj-description'>Response to <code>ListAuthorizedMembersRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>authorized_members</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.AuthorizedMember'>AuthorizedMember</a>[]</div><div class='proto-field-description'>JSON string containing array of resultant objects</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_members[<span class='proto-context-array-key'>i</span>].</span>did</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_members[<span class='proto-context-array-key'>i</span>].</span>authorized_member_schemas</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.AuthorizedMemberSchema'>AuthorizedMemberSchema</a>[]</div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_members[<span class='proto-context-array-key'>i</span>].authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_members[<span class='proto-context-array-key'>i</span>].authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_members[<span class='proto-context-array-key'>i</span>].authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>status_details</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_members[<span class='proto-context-array-key'>i</span>].authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>valid_from</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_members[<span class='proto-context-array-key'>i</span>].authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>valid_until</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>has_more_results</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether more data is available to fetch for query</div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Token to fetch next set of results via <code>ListAuthorizedMembersRequest</code></div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="get-issuer">Get Issuer<a class="headerlink" href="#get-issuer" title="Permanent link">&para;</a></h2>
+<p>Gets an issuer's entry in the ecosystem's trust registry.</p>
+<p>This call returns data regarding every credential the issuer is registered to issue for. </p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">TypeScript</label><label for="__tabbed_8_2">C#</label><label for="__tabbed_8_3">Python</label><label for="__tabbed_8_4">Go</label><label for="__tabbed_8_5">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">getMember</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">get_member_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">get_member</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">GetMemberRequest</span><span class="p">(</span>
+        <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">getMemberResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">GetMember</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMemberRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Member</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMemberRequest_DidUri</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">})</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">getMember</span><span class="p">(</span>
+<span class="w">            </span><span class="n">GetMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberRequest' href='/reference/proto#services.trustregistry.v1.GetMemberRequest'>GetMemberRequest</a></div><div class='proto-obj-description'>Request to get a member of the governance framework</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to get</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to get</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to get. Must be associated with an existing Trinsic account.</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberResponse' href='/reference/proto#services.trustregistry.v1.GetMemberResponse'>GetMemberResponse</a></div><div class='proto-obj-description'>Response to <code>GetMemberAuthorizationStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>authorized_member</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.AuthorizedMember'>AuthorizedMember</a></div><div class='proto-field-description'>Member for given did in given framework</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.</span>did</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.</span>authorized_member_schemas</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.AuthorizedMemberSchema'>AuthorizedMemberSchema</a>[]</div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>status_details</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>valid_from</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>valid_until</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'></div></div></div></div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="check-issuer-status">Check Issuer Status<a class="headerlink" href="#check-issuer-status" title="Permanent link">&para;</a></h2>
+<p>Checks the authorization status of an issuer for a specific credential type.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_9_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_9_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label><label for="__tabbed_10_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>check-issuer<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--egf<span class="w"> </span>http://hl7.org/fhir<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--credential-type<span class="w"> </span>https://w3id.org/vaccination#VaccinationCertificate<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--did<span class="w"> </span>did:example:fabre
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">getMemberAuthorizationStatus</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">GetMemberAuthorizationStatusRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">getMemberAuthorizationStatus</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2458,14 +2598,10 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">getMembershipStatusResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">GetMemberAuthorizationStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMemberAuthorizationStatusRequest</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">DidUri</span><span class="p">:</span><span class="w">    </span><span class="nx">didURI</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w"> </span><span class="nx">schemaURI</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
-
-<span class="w"> </span><span class="err">⋯</span>
-
-<span class="w">        </span><span class="c1">// Do absolutely nothing</span>
+<div class="highlight"><pre><span></span><code><span class="nx">getMembershipStatusResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">GetMemberAuthorizationStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">GetMemberAuthorizationStatusRequest</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">DidUri</span><span class="p">:</span><span class="w">    </span><span class="nx">didURI</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">SchemaUri</span><span class="p">:</span><span class="w"> </span><span class="nx">schemaURI</span><span class="p">,</span>
+<span class="p">})</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2492,15 +2628,13 @@
 </div>
 </div>
 <hr />
-<h2 id="cache-offline-registry-file">Cache Offline Registry File<a class="headerlink" href="#cache-offline-registry-file" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>download<span class="w"> </span>
+<!--
+## Cache Offline Registry File
+
+=== "Trinsic CLI"
+    <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>trust-registry<span class="w"> </span>download<span class="w"> </span>
 </code></pre></div>
-</div>
-</div>
-</div>
+-->
 
 
 

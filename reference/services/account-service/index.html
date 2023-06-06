@@ -2584,6 +2584,25 @@
 <span class="w">        </span><span class="n">issuerStatus</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span>
 <span class="w">        </span><span class="n">issuerStatus</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">Be</span><span class="p">(</span><span class="n">RegistrationStatus</span><span class="p">.</span><span class="n">Current</span><span class="p">);</span>
 
+<span class="w">        </span><span class="c1">// getMember() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">member</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span>
+<span class="w">        </span><span class="n">member</span><span class="p">.</span><span class="n">AuthorizedMember</span><span class="p">.</span><span class="n">Did</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">Be</span><span class="p">(</span><span class="n">didUri</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// listMembers() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">ListAuthorizedMembersAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">members</span><span class="p">.</span><span class="n">AuthorizedMembers</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Should</span><span class="p">().</span><span class="n">Be</span><span class="p">(</span><span class="n">member</span><span class="p">.</span><span class="n">AuthorizedMember</span><span class="p">);</span>
+
 <span class="w">        </span><span class="c1">// unregisterIssuer() {</span>
 <span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">UnregisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
 <span class="w">        </span><span class="p">{</span>
