@@ -3979,28 +3979,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#searchregistryrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SearchRegistryRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchregistryresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SearchRegistryResponse
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#unregistermemberrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7784,12 +7762,6 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>SearchRegistry</td>
-<td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryRequest">SearchRegistryRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryResponse">SearchRegistryResponse</a></td>
-<td>Search the ecosystem's governance framework</td>
-</tr>
-<tr>
 <td>RegisterMember</td>
 <td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberRequest">RegisterMemberRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberResponse">RegisterMemberResponse</a></td>
@@ -8075,59 +8047,6 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
 <p><a name="services-trustregistry-v1-RegisterMemberResponse"></a></p>
 <h3 id="registermemberresponse">RegisterMemberResponse<a class="headerlink" href="#registermemberresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>RegisterMemberRequest</code></p>
-<p><a name="services-trustregistry-v1-SearchRegistryRequest"></a></p>
-<h3 id="searchregistryrequest">SearchRegistryRequest<a class="headerlink" href="#searchregistryrequest" title="Permanent link">&para;</a></h3>
-<p>Request to search all governance frameworks within ecosystem</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>query</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>SQL query to execute against frameworks. Example: <code>SELECT c from c where c.type == 'GovernanceFramework'</code></td>
-</tr>
-<tr>
-<td>continuation_token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Token to fetch next set of results, from previous <code>SearchRegistryResponse</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-SearchRegistryResponse"></a></p>
-<h3 id="searchregistryresponse">SearchRegistryResponse<a class="headerlink" href="#searchregistryresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>SearchRegistryRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>items_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>JSON string containing array of resultant objects</td>
-</tr>
-<tr>
-<td>has_more_results</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td>Whether more data is available to fetch for query</td>
-</tr>
-<tr>
-<td>continuation_token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Token to fetch next set of results via <code>SearchRegistryRequest</code></td>
-</tr>
-</tbody>
-</table>
 <p><a name="services-trustregistry-v1-UnregisterMemberRequest"></a></p>
 <h3 id="unregistermemberrequest">UnregisterMemberRequest<a class="headerlink" href="#unregistermemberrequest" title="Permanent link">&para;</a></h3>
 <p>Request to unregister a member as a valid issuer of a specific credential schema.
