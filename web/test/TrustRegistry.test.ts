@@ -61,7 +61,7 @@ describe("TrustRegistryService Unit Tests", () => {
             didUri: didUri
         });
         // }
-        expect(member.authorizedMember).toBe(members.authorizedMembers![0]);
+        expect(member.authorizedMember).toEqual(members.authorizedMembers![0]);
 
         // unregisterMember() {
         let unregisterResult = await trinsic.trustRegistry().unregisterMember({
