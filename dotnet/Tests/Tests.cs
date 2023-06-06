@@ -264,7 +264,7 @@ public class Tests
         });
         // }
 
-        members.AuthorizedMembers[0].Should().Be(member);
+        members.AuthorizedMembers[0].Should().Be(member.AuthorizedMember);
         
         // unregisterIssuer() {
         _ = await trinsic.TrustRegistry.UnregisterMemberAsync(new()
