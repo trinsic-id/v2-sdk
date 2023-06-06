@@ -76,7 +76,7 @@ Stop-OnError
 #>
 
 Write-Output "✅ Issuing credential for drivers license"
-Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --values-file $PSScriptRoot/state-id-values.json --include-governance"
+Invoke-Expression "$trinsic vc issue-from-template --template-id $($Template.Id) --values-file $PSScriptRoot/state-id-values.json" #--include-governance
 | ConvertFrom-Json
 | ForEach-Object { $_.'signed document' }
 | Set-Content -Path $PSScriptRoot/state-id-signed-document.json
