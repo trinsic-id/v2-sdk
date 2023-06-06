@@ -114,14 +114,103 @@ Unregisters an issuer for a specific credential type (identified by its `schema_
 
 ---
 
+## List Issuers
+
+Lists all issuers that are authorized within the ecosystem, optionally filtering against a specific credential type.
+
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [GetMembershipStatus](../../../web/test/TrustRegistry.test.ts) inside_block:listMembers
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [GetMembershipStatus](../../../dotnet/Tests/Tests.cs) inside_block:listMembers
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [GetMembershipStatus](../../../python/samples/trustregistry_demo.py) inside_block:listMembers
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [GetMembershipStatus](../../../go/services/services_test.go) inside_block:listMembers
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [GetMembershipStatus](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:listMembers
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers") }}
+
+---
+
+## Get Issuer
+
+Gets an issuer's entry in the ecosystem's trust registry.
+
+This call returns data regarding every credential the issuer is registered to issue for. 
+
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [GetMembershipStatus](../../../web/test/TrustRegistry.test.ts) inside_block:getMemberSample
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [GetMembershipStatus](../../../dotnet/Tests/Tests.cs) inside_block:getMember
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [GetMembershipStatus](../../../python/samples/trustregistry_demo.py) inside_block:getMember
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [GetMembershipStatus](../../../go/services/services_test.go) inside_block:getMemberSample
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [GetMembershipStatus](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:getMember
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMember") }}
+
+---
+
 ## Check Issuer Status
-Check the status of an issuer for a specific credential type.
+Checks the authorization status of an issuer for a specific credential type.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
         trinsic trust-registry check-issuer \
-            --egf http://hl7.org/fhir \
             --credential-type https://w3id.org/vaccination#VaccinationCertificate \
             --did did:example:fabre
         ```
@@ -129,35 +218,35 @@ Check the status of an issuer for a specific credential type.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [GetMembershipStatus](../../../web/test/TrustRegistry.test.ts) inside_block:getMembershipStatus
+        [GetMembershipStatus](../../../web/test/TrustRegistry.test.ts) inside_block:checkIssuerStatus
         ```
         <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:checkIssuerStatus
+        [GetMembershipStatus](../../../dotnet/Tests/Tests.cs) inside_block:checkIssuerStatus
         ```
         <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:checkIssuerStatus
+        [GetMembershipStatus](../../../python/samples/trustregistry_demo.py) inside_block:checkIssuerStatus
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:getMembershipStatus
+        [GetMembershipStatus](../../../go/services/services_test.go) inside_block:checkIssuerStatus
         ```
         <!--/codeinclude-->
 
     === "Java"
         <!--codeinclude-->
         ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:checkIssuerStatus
+        [GetMembershipStatus](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:checkIssuerStatus
         ```
         <!--/codeinclude-->
 
@@ -165,9 +254,11 @@ Check the status of an issuer for a specific credential type.
 
 ---
 
+<!--
 ## Cache Offline Registry File
 
 === "Trinsic CLI"
     ```bash
     trinsic trust-registry download 
     ```
+-->
