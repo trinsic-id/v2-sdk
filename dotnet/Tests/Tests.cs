@@ -247,6 +247,25 @@ public class Tests
         issuerStatus.Should().NotBeNull();
         issuerStatus.Status.Should().Be(RegistrationStatus.Current);
         
+        // getMember() {
+        var member = await trinsic.TrustRegistry.GetMemberAsync(new()
+        {
+            DidUri = didUri
+        });
+        // }
+        
+        member.Should().NotBeNull();
+        member.AuthorizedMember.Did.Should().Be(didUri);
+        
+        // listMembers() {
+        var members = await trinsic.TrustRegistry.ListAuthorizedMembersAsync(new()
+        {
+            SchemaUri = schemaUri
+        });
+        // }
+
+        members.AuthorizedMembers[0].Should().Be(member.AuthorizedMember);
+        
         // unregisterIssuer() {
         _ = await trinsic.TrustRegistry.UnregisterMemberAsync(new()
         {

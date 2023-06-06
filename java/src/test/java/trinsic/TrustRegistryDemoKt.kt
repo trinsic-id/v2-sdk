@@ -41,6 +41,26 @@ suspend fun runTrustRegistryDemo() {
   // }
   Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.status)
 
+  // listMembers() {
+  val members =
+      trinsic
+          .trustRegistry()
+          .listAuthorizedMembers(
+              ListAuthorizedMembersRequest.newBuilder()
+                  .setSchemaUri(typeUri)
+                  .build())
+  // }
+
+  // getMember() {
+  val member =
+      trinsic
+          .trustRegistry()
+          .getMember(
+              GetMemberRequest.newBuilder()
+                  .setDidUri(typeUri)
+                  .build())
+  // }
+
   // unregisterIssuer() {
   trinsic
       .trustRegistry()
