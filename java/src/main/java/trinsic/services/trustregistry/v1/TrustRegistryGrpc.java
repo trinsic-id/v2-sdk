@@ -15,53 +15,6 @@ public final class TrustRegistryGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.SearchRegistryRequest,
-          trinsic.services.trustregistry.v1.SearchRegistryResponse>
-      getSearchRegistryMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "SearchRegistry",
-      requestType = trinsic.services.trustregistry.v1.SearchRegistryRequest.class,
-      responseType = trinsic.services.trustregistry.v1.SearchRegistryResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.SearchRegistryRequest,
-          trinsic.services.trustregistry.v1.SearchRegistryResponse>
-      getSearchRegistryMethod() {
-    io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.SearchRegistryRequest,
-            trinsic.services.trustregistry.v1.SearchRegistryResponse>
-        getSearchRegistryMethod;
-    if ((getSearchRegistryMethod = TrustRegistryGrpc.getSearchRegistryMethod) == null) {
-      synchronized (TrustRegistryGrpc.class) {
-        if ((getSearchRegistryMethod = TrustRegistryGrpc.getSearchRegistryMethod) == null) {
-          TrustRegistryGrpc.getSearchRegistryMethod =
-              getSearchRegistryMethod =
-                  io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.SearchRegistryRequest,
-                          trinsic.services.trustregistry.v1.SearchRegistryResponse>
-                          newBuilder()
-                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SearchRegistry"))
-                      .setSampledToLocalTracing(true)
-                      .setRequestMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.SearchRegistryRequest
-                                  .getDefaultInstance()))
-                      .setResponseMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.SearchRegistryResponse
-                                  .getDefaultInstance()))
-                      .setSchemaDescriptor(
-                          new TrustRegistryMethodDescriptorSupplier("SearchRegistry"))
-                      .build();
-        }
-      }
-    }
-    return getSearchRegistryMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.trustregistry.v1.RegisterMemberRequest,
           trinsic.services.trustregistry.v1.RegisterMemberResponse>
       getRegisterMemberMethod;
@@ -351,21 +304,6 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Search the ecosystem's governance framework
-     * </pre>
-     */
-    public void searchRegistry(
-        trinsic.services.trustregistry.v1.SearchRegistryRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.SearchRegistryResponse>
-            responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
-          getSearchRegistryMethod(), responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Register an authoritative issuer for a credential schema
      * </pre>
      */
@@ -441,13 +379,6 @@ public final class TrustRegistryGrpc {
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-              getSearchRegistryMethod(),
-              io.grpc.stub.ServerCalls.asyncUnaryCall(
-                  new MethodHandlers<
-                      trinsic.services.trustregistry.v1.SearchRegistryRequest,
-                      trinsic.services.trustregistry.v1.SearchRegistryResponse>(
-                      this, METHODID_SEARCH_REGISTRY)))
-          .addMethod(
               getRegisterMemberMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
@@ -496,23 +427,6 @@ public final class TrustRegistryGrpc {
     @java.lang.Override
     protected TrustRegistryStub build(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new TrustRegistryStub(channel, callOptions);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Search the ecosystem's governance framework
-     * </pre>
-     */
-    public void searchRegistry(
-        trinsic.services.trustregistry.v1.SearchRegistryRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.SearchRegistryResponse>
-            responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getSearchRegistryMethod(), getCallOptions()),
-          request,
-          responseObserver);
     }
 
     /**
@@ -617,19 +531,6 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Search the ecosystem's governance framework
-     * </pre>
-     */
-    public trinsic.services.trustregistry.v1.SearchRegistryResponse searchRegistry(
-        trinsic.services.trustregistry.v1.SearchRegistryRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getSearchRegistryMethod(), getCallOptions(), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Register an authoritative issuer for a credential schema
      * </pre>
      */
@@ -710,20 +611,6 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Search the ecosystem's governance framework
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.SearchRegistryResponse>
-        searchRegistry(trinsic.services.trustregistry.v1.SearchRegistryRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getSearchRegistryMethod(), getCallOptions()), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Register an authoritative issuer for a credential schema
      * </pre>
      */
@@ -793,12 +680,11 @@ public final class TrustRegistryGrpc {
     }
   }
 
-  private static final int METHODID_SEARCH_REGISTRY = 0;
-  private static final int METHODID_REGISTER_MEMBER = 1;
-  private static final int METHODID_UNREGISTER_MEMBER = 2;
-  private static final int METHODID_GET_MEMBER_AUTHORIZATION_STATUS = 3;
-  private static final int METHODID_LIST_AUTHORIZED_MEMBERS = 4;
-  private static final int METHODID_GET_MEMBER = 5;
+  private static final int METHODID_REGISTER_MEMBER = 0;
+  private static final int METHODID_UNREGISTER_MEMBER = 1;
+  private static final int METHODID_GET_MEMBER_AUTHORIZATION_STATUS = 2;
+  private static final int METHODID_LIST_AUTHORIZED_MEMBERS = 3;
+  private static final int METHODID_GET_MEMBER = 4;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -817,13 +703,6 @@ public final class TrustRegistryGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SEARCH_REGISTRY:
-          serviceImpl.searchRegistry(
-              (trinsic.services.trustregistry.v1.SearchRegistryRequest) request,
-              (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.SearchRegistryResponse>)
-                  responseObserver);
-          break;
         case METHODID_REGISTER_MEMBER:
           serviceImpl.registerMember(
               (trinsic.services.trustregistry.v1.RegisterMemberRequest) request,
@@ -922,7 +801,6 @@ public final class TrustRegistryGrpc {
               result =
                   io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
                       .setSchemaDescriptor(new TrustRegistryFileDescriptorSupplier())
-                      .addMethod(getSearchRegistryMethod())
                       .addMethod(getRegisterMemberMethod())
                       .addMethod(getUnregisterMemberMethod())
                       .addMethod(getGetMemberAuthorizationStatusMethod())
