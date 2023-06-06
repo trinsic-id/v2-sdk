@@ -1,11 +1,15 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
-import 'package:trinsic_dart/src/proto/services/account/v1/account.pbgrpc.dart';
+import 'package:uuid/uuid.dart';
 import 'package:trinsic_dart/src/proto/services/universal-wallet/v1/universal-wallet.pbgrpc.dart';
+import 'package:trinsic_dart/src/proto/services/verifiable-credentials/templates/v1/templates.pb.dart';
 import 'package:trinsic_dart/src/proto/services/verifiable-credentials/v1/verifiable-credentials.pbgrpc.dart';
 import 'package:trinsic_dart/src/trinsic_service.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
+
+var uuid = Uuid();
 
 String baseDataPath() {
   return path.join(path.current, "..", "devops", "testdata");
@@ -59,13 +63,34 @@ Future runVaccineDemo() async {
   var vaccineCertFile = File(vaccineCertUnsignedPath());
   var credentialJson = await vaccineCertFile.readAsString();
 
-  // issueCredential() {
-  var issueResponse = await trinsic
-      .credential()
-      .issue(IssueRequest(documentJson: credentialJson));
+  // createCredentialTemplate() {
+  var credentialTemplateResponse = await trinsic.template().create(
+      CreateCredentialTemplateRequest(name: "Vaccination-Certificate-${uuid.v4()}", fields: {
+        "firstName": TemplateField(description: "First name"),
+        "lastName": TemplateField(description: "Last name"),
+        "batchNumber": TemplateField(description: "Batch number of vaccine"),
+        "countryOfVaccination": TemplateField(description: "Country of vaccination"),
+      }));
+  var template = credentialTemplateResponse.data;
   // }
-  var credential = issueResponse.signedDocumentJson;
-  print("Credential: $credential");
+
+  // issueCredential() {
+  Map<String, dynamic> credentialValues = {
+    'firstName': 'Allison',
+    'lastName': 'Allisonne',
+    'batchNumber': '123454321',
+    'countryOfVaccination': 'US',
+  };
+
+  String jsonString = json.encode(credentialValues);
+  // Issue credential from the template above
+  trinsic.serviceOptions.authToken = clinic.authToken;
+  var issueResponse = await trinsic.credential().issueFromTemplate(
+      IssueFromTemplateRequest(
+          templateId: template.id, valuesJson: jsonString));
+  var credential = issueResponse.documentJson;
+  // }
+
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
