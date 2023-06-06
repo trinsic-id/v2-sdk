@@ -29,6 +29,17 @@ Future runTrustRegistryDemo() async {
   print("Member Status: $checkResponse");
 
   assert(checkResponse.status == RegistrationStatus.CURRENT);
+
+  // getMember() {
+  var getMemberResponse = await trinsic.trustRegistry().getMember(
+      GetMemberRequest(didUri: didExampleTest));
+  // }
+
+  // listMembers() {
+  var listMembersResponse = await trinsic.trustRegistry().listMembers(
+    ListMembersRequest(schemaUri: httpsSchemaOrg));
+  //}
+
   // unregisterIssuer() {
   var unregisterIssuerResponse = await trinsic.trustRegistry().unregisterMember(
       UnregisterMemberRequest(

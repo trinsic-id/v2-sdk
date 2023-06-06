@@ -95,7 +95,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 		return
 	}
 
-	// getMembershipStatus() {
+	// checkIssuerStatus() {
 	getMembershipStatusResponse, err := trinsic.TrustRegistry().GetMemberAuthorizationStatus(context.Background(), &trustregistry.GetMemberAuthorizationStatusRequest{
 		DidUri:    didURI,
 		SchemaUri: schemaURI,
@@ -105,6 +105,28 @@ func TestTrustRegistryDemo(t *testing.T) {
 		return
 	}
 	assert2.Equal(trustregistry.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
+
+	// listMembers() {
+	listMembersResponse, err := trinsic.TrustRegistry().ListAuthorizedMembers(context.Background(), &trustregistry.ListAuthorizedMembersRequest{
+		SchemaUri: &schemaURI,
+	})
+	// }
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(listMembersResponse)
+
+	// getMemberSample() {
+	getMemberResponse, err := trinsic.TrustRegistry().GetMember(context.Background(), &trustregistry.GetMemberRequest{
+		Member: &trustregistry.GetMemberRequest_DidUri{
+			DidUri: didURI,
+		},
+	})
+	// }
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.Equal(getMemberResponse.AuthorizedMember, listMembersResponse.AuthorizedMembers[0])
 
 	// unregisterMember() {
 	unregisterMemberResponse, err := trinsic.TrustRegistry().UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
