@@ -2,11 +2,6 @@
 
 The Trust Registry Service exposes functionality for managing [Trust Registries](/learn/concepts/trust-registries) -- lists of authorized issuers for the various credential types within an ecosystem.
 
-!!! warning "Under Construction"
-    This section -- and the underlying API -- is under active development.
-
-    We are working to define exactly how Trust Registries will be implemented within our platform; this page and API may change as we do so.
-
 ---
 
 ## Register Issuer
@@ -17,7 +12,6 @@ Registers an authorized issuer for a specific credential type (identified by its
     === "Trinsic CLI"
         ```bash
         trinsic trust-registry register-member \
-            --egf http://hl7.org/fhir \
             --schema https://w3id.org/vaccination#VaccinationCertificate \
             --did did:key:xxxxx.....
         ```
@@ -69,9 +63,8 @@ Unregisters an issuer for a specific credential type (identified by its `schema_
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
-        trinsic trust-registry unregister-issuer \
-            --egf http://hl7.org/fhir \
-            --credential-type https://w3id.org/vaccination#VaccinationCertificate \
+        trinsic trust-registry unregister-member \
+            --schema https://w3id.org/vaccination#VaccinationCertificate \
             --did did:example:fabre
         ```
 
@@ -119,6 +112,11 @@ Unregisters an issuer for a specific credential type (identified by its `schema_
 Lists all issuers that are authorized within the ecosystem, optionally filtering against a specific credential type.
 
 {{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry list-members
+        ```
+
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
@@ -165,6 +163,13 @@ Gets an issuer's entry in the ecosystem's trust registry.
 This call returns data regarding every credential the issuer is registered to issue for. 
 
 {{ proto_sample_start() }}
+        === "Trinsic CLI"
+        ```bash
+        trinsic trust-registry get-member \
+            --did did:example:fabre \  // OR
+            --email test@example.com \ // OR
+            --wallet urn:trinsic:wallets:example
+        ```
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
@@ -210,7 +215,7 @@ Checks the authorization status of an issuer for a specific credential type.
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         ```bash
-        trinsic trust-registry check-issuer \
+        trinsic trust-registry get-membership-status \
             --credential-type https://w3id.org/vaccination#VaccinationCertificate \
             --did did:example:fabre
         ```
@@ -251,14 +256,3 @@ Checks the authorization status of an issuer for a specific credential type.
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus") }}
-
----
-
-<!--
-## Cache Offline Registry File
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic trust-registry download 
-    ```
--->

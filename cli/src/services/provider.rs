@@ -2,9 +2,7 @@ use super::Output;
 use super::{super::parser::provider::*, Item};
 use crate::proto::services::common::v1::SupportedDidMethod;
 use crate::proto::services::provider::v1::ion_options::IonNetwork;
-use crate::proto::services::provider::v1::{
-    upgrade_did_request, IonOptions, UpgradeDidRequest,
-};
+use crate::proto::services::provider::v1::{upgrade_did_request, IonOptions, UpgradeDidRequest};
 use crate::utils::to_value;
 use crate::{
     dict,

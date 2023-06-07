@@ -1,5 +1,5 @@
 name: trinsic
-version: 1.0.0
+version: 1.1.0
 author: Trinsic Technologies Inc.
 about: |-
   ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
@@ -114,11 +114,10 @@ subcommands:
                   help: The template id to use for issuance
                   takes_value: true
                   required: true
-              - framework-id:
-                  long: framework-id
-                  value_name: FRAMEWORK_ID
-                  help: The ID of the governance framework to include in the VC issuer membership
-                  takes_value: true
+              - include-governance:
+                  long: include-governance
+                  help: If set, will include attestation of issuer's presence in ecosystem's trust registry as an authorized issuer of the credential type
+                  takes_value: false
                   required: false
               - values-data:
                   long: values-data
