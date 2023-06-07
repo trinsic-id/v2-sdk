@@ -19,10 +19,9 @@ You can get the CLI on homebrew or build the CLI from source on [Github](https:/
     ```
 
 === "Windows"
-    The CLI can be installed using [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/)
-    ```
-    winget install trinsic.cli
-    ```
+    Download the latest CLI installer from our [Releases <small>:material-open-in-new:</small>](https://github.com/trinsic-id/sdk/releases){target=_blank}.
+
+    Select the latest `trinsic-cli-X.YY.Z-x86_64.msi` and install it.
 
 === "From source"
     The CLI can also be built from source.
