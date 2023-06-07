@@ -84,7 +84,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./cli/target/debian/trinsic_${{ steps.setversion.outputs.packageVersion }}_amd64.deb
-          asset_name: trinsic_${{ steps.setversion.outputs.packageVersion }}_amd64.deb
+          asset_name: trinsic_cli_${{ steps.setversion.outputs.packageVersion }}_amd64.deb
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
           body: "Trinsic CLI Debian Package"
@@ -174,7 +174,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./cli/target/wix/trinsic-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
-          asset_name: trinsic-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
+          asset_name: trinsic-cli-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
           body: "trinsic cli bundle for windows installer"
