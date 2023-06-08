@@ -1,6 +1,6 @@
 # Trust Registry Service
 
-The Governance API exposes functionalities for managing [Trust Registries](/learn/concepts/trust-registries).
+The Governance API exposes functionality for managing your Ecosystem's [Trust Registry](/learn/concepts/trust-registries).
 
 A Trust Registry is a list of authorized issuers for the various credential types within an ecosystem. Each ecosystem has a Trust Registry and you can use the following API calls to manage its trusted members - register, unregister, list, check status.
 
