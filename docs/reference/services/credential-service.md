@@ -81,7 +81,7 @@ Here's an example of a VC with extended issuer information:
   }
 ```
 
-See [Trust Registry Service](/reference/services/trust-registry-service.md) for more information on using governance in your ecosystem.
+See [Trust Registry Service](/reference/services/trust-registry-service) for more information on managing your ecosystem's governance.
 
 ---
 
