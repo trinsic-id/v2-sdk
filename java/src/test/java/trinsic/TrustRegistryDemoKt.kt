@@ -46,19 +46,12 @@ suspend fun runTrustRegistryDemo() {
       trinsic
           .trustRegistry()
           .listAuthorizedMembers(
-              ListAuthorizedMembersRequest.newBuilder()
-                  .setSchemaUri(typeUri)
-                  .build())
+              ListAuthorizedMembersRequest.newBuilder().setSchemaUri(typeUri).build())
   // }
 
   // getMember() {
   val member =
-      trinsic
-          .trustRegistry()
-          .getMember(
-              GetMemberRequest.newBuilder()
-                  .setDidUri(typeUri)
-                  .build())
+      trinsic.trustRegistry().getMember(GetMemberRequest.newBuilder().setDidUri(typeUri).build())
   // }
 
   // unregisterIssuer() {

@@ -49,9 +49,7 @@ public class TrustRegistryDemo {
         trinsic
             .trustRegistry()
             .listAuthorizedMembers(
-                ListAuthorizedMembersRequest.newBuilder()
-                    .setSchemaUri(typeUri)
-                    .build())
+                ListAuthorizedMembersRequest.newBuilder().setSchemaUri(typeUri).build())
             .get();
     // }
 
@@ -59,10 +57,7 @@ public class TrustRegistryDemo {
     var member =
         trinsic
             .trustRegistry()
-            .getMember(
-                GetMemberRequest.newBuilder()
-                    .setDidUri(typeUri)
-                    .build())
+            .getMember(GetMemberRequest.newBuilder().setDidUri(typeUri).build())
             .get();
     // }
 

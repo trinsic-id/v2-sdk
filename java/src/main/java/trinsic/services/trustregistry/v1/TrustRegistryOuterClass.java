@@ -70,13 +70,11 @@ public final class TrustRegistryOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n"
-          + "/services/trust-registry/v1/trust-regis"
-          + "try.proto\022\031services.trustregistry.v1\032$services/options/field-options.proto\"\263\001\n"
+          + "/services/trust-registry/v1/trust-registry.proto\022\031services.trustregistry.v1\"\263\001\n"
           + "\025RegisterMemberRequest\022\021\n"
           + "\007did_uri\030\001 \001(\tH\000\022\023\n"
           + "\twallet_id\030\003 \001(\tH\000\022\017\n"
-          + "\005email\030\004 \001(\tH\000\022\022\n"
-          + "\n"
+          + "\005email\030\004 \001(\tH\000\022\022\n\n"
           + "schema_uri\030\n"
           + " \001(\t\022\026\n"
           + "\016valid_from_utc\030\013 \001(\004\022\027\n"
@@ -132,26 +130,24 @@ public final class TrustRegistryOuterClass {
           + "\tNOT_FOUND\020\n"
           + "2\232\005\n\r"
           + "TrustRegistry\022u\n"
-          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMemberRequest\0321."
-          + "services.trustregistry.v1.RegisterMemberResponse\022{\n"
-          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterMemberRequest"
-          + "\0323.services.trustregistry.v1.UnregisterMemberResponse\022\237\001\n"
-          + "\034GetMemberAuthorizationStatus\022>.services.trustregistry.v1.GetMe"
-          + "mberAuthorizationStatusRequest\032?.service"
-          + "s.trustregistry.v1.GetMemberAuthorizationStatusResponse\022\212\001\n"
-          + "\025ListAuthorizedMembers\0227.services.trustregistry.v1.ListAuthor"
-          + "izedMembersRequest\0328.services.trustregistry.v1.ListAuthorizedMembersResponse\022f\n"
-          + "\tGetMember\022+.services.trustregistry.v1.Ge"
-          + "tMemberRequest\032,.services.trustregistry.v1.GetMemberResponseBr\n"
-          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustregis"
-          + "try/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
+          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMemberRequest\032"
+          + "1.services.trustregistry.v1.RegisterMemberResponse\022{\n"
+          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterMemberReque"
+          + "st\0323.services.trustregistry.v1.UnregisterMemberResponse\022\237\001\n"
+          + "\034GetMemberAuthorizationStatus\022>.services.trustregistry.v1.Get"
+          + "MemberAuthorizationStatusRequest\032?.servi"
+          + "ces.trustregistry.v1.GetMemberAuthorizationStatusResponse\022\212\001\n"
+          + "\025ListAuthorizedMembers\0227.services.trustregistry.v1.ListAuth"
+          + "orizedMembersRequest\0328.services.trustreg"
+          + "istry.v1.ListAuthorizedMembersResponse\022f\n"
+          + "\tGetMember\022+.services.trustregistry.v1."
+          + "GetMemberRequest\032,.services.trustregistry.v1.GetMemberResponseBr\n"
+          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustreg"
+          + "istry/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData,
-            new com.google.protobuf.Descriptors.FileDescriptor[] {
-              trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
-            });
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
     internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor =
         getDescriptor().getMessageTypes().get(0);
     internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable =
@@ -244,7 +240,6 @@ public final class TrustRegistryOuterClass {
             new java.lang.String[] {
               "AuthorizedMember",
             });
-    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
