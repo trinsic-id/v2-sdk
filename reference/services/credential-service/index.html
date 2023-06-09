@@ -2474,9 +2474,9 @@
 </div>
 <h3 id="add-governance-information-to-issued-credential">Add governance information to issued credential<a class="headerlink" href="#add-governance-information-to-issued-credential" title="Permanent link">&para;</a></h3>
 <p>In order to attach governance information to the credential, issuers must request this explicitly by specifying the parameter
-<code>framework_id</code> in the above request. The framework identifier references the ecosystem governance framework that the issuer is authorized
-to issue credentials of the designated type (schema). This identifier has the format <code>urn:egf:&lt;ecosystem&gt;:&lt;type&gt;</code>.</p>
-<p>When this parameter is specified, the issued credential will contain extended information in the <code>issuer</code> field to assert authorization in
+<code>include_governance</code> to <code>true</code> in the above request. This will reference the ecosystem's governance framework that the issuer is authorized
+to issue credentials of the designated type (schema).</p>
+<p>When this parameter is set to <code>true</code>, the issued credential will contain extended information in the <code>issuer</code> field to assert authorization in
 the given governance framework. The framework identifier will be in the <code>issuer.trustRegistry</code> field.
 Here's an example of a VC with extended issuer information:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -2486,7 +2486,7 @@ Here's an example of a VC with extended issuer information:</p>
 <span class="w">    </span><span class="nt">&quot;trustRegistry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:egf:acme:92f21b4cb3bc48dd8bb19a872f03afca&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">}</span>
 </code></pre></div>
-<p>See <a href="/reference/services/trust-registry-service.md">Trust Registry Service</a> for more information on using governance in your ecosystem.</p>
+<p>See <a href="/reference/services/trust-registry-service">Trust Registry Service</a> for more information on managing your ecosystem's governance.</p>
 <hr />
 <h2 id="check-revocation-status">Check Revocation Status<a class="headerlink" href="#check-revocation-status" title="Permanent link">&para;</a></h2>
 <p>Checks a credential's revocation status by its <code>credential_status_id</code>.</p>
