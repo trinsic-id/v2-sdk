@@ -2457,9 +2457,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">list_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">list_authorized_members</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">ListAuthorizedMembersRequest</span><span class="p">(</span>
-        <span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span>
-    <span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">ListAuthorizedMembersRequest</span><span class="p">(</span><span class="n">schema_uri</span><span class="o">=</span><span class="n">https_schema_org</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
@@ -2474,9 +2472,7 @@
 <span class="w">    </span><span class="n">trinsic</span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
 <span class="w">        </span><span class="p">.</span><span class="na">listAuthorizedMembers</span><span class="p">(</span>
-<span class="w">            </span><span class="n">ListAuthorizedMembersRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">            </span><span class="n">ListAuthorizedMembersRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
@@ -2524,9 +2520,7 @@ trinsic trust-registry get-member \
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">get_member_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">get_member</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">GetMemberRequest</span><span class="p">(</span>
-        <span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span>
-    <span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">GetMemberRequest</span><span class="p">(</span><span class="n">did_uri</span><span class="o">=</span><span class="n">did_example_test</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
@@ -2542,10 +2536,7 @@ trinsic trust-registry get-member \
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">trinsic</span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">getMember</span><span class="p">(</span>
-<span class="w">            </span><span class="n">GetMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">getMember</span><span class="p">(</span><span class="n">GetMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
