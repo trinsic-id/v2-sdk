@@ -1287,3 +1287,590 @@ class CheckStatusResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearRevoked() => clearField(1);
 }
+
+class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'CreateCredentialOfferRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.verifiablecredentials.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'templateId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'valuesJson')
+    ..aOB(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'holderBinding')
+    ..aOB(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'includeGovernance')
+    ..aOB(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'generateShareUrl')
+    ..hasRequiredFields = false;
+
+  CreateCredentialOfferRequest._() : super();
+  factory CreateCredentialOfferRequest({
+    $core.String? templateId,
+    $core.String? valuesJson,
+    $core.bool? holderBinding,
+    $core.bool? includeGovernance,
+    $core.bool? generateShareUrl,
+  }) {
+    final _result = create();
+    if (templateId != null) {
+      _result.templateId = templateId;
+    }
+    if (valuesJson != null) {
+      _result.valuesJson = valuesJson;
+    }
+    if (holderBinding != null) {
+      _result.holderBinding = holderBinding;
+    }
+    if (includeGovernance != null) {
+      _result.includeGovernance = includeGovernance;
+    }
+    if (generateShareUrl != null) {
+      _result.generateShareUrl = generateShareUrl;
+    }
+    return _result;
+  }
+  factory CreateCredentialOfferRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CreateCredentialOfferRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CreateCredentialOfferRequest clone() =>
+      CreateCredentialOfferRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CreateCredentialOfferRequest copyWith(
+          void Function(CreateCredentialOfferRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as CreateCredentialOfferRequest))
+          as CreateCredentialOfferRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateCredentialOfferRequest create() =>
+      CreateCredentialOfferRequest._();
+  CreateCredentialOfferRequest createEmptyInstance() => create();
+  static $pb.PbList<CreateCredentialOfferRequest> createRepeated() =>
+      $pb.PbList<CreateCredentialOfferRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CreateCredentialOfferRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateCredentialOfferRequest>(create);
+  static CreateCredentialOfferRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get templateId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set templateId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasTemplateId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTemplateId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get valuesJson => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set valuesJson($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasValuesJson() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearValuesJson() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get holderBinding => $_getBF(2);
+  @$pb.TagNumber(3)
+  set holderBinding($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasHolderBinding() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearHolderBinding() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.bool get includeGovernance => $_getBF(3);
+  @$pb.TagNumber(4)
+  set includeGovernance($core.bool v) {
+    $_setBool(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasIncludeGovernance() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearIncludeGovernance() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.bool get generateShareUrl => $_getBF(4);
+  @$pb.TagNumber(5)
+  set generateShareUrl($core.bool v) {
+    $_setBool(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasGenerateShareUrl() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearGenerateShareUrl() => clearField(5);
+}
+
+class CreateCredentialOfferResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'CreateCredentialOfferResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.verifiablecredentials.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'documentJson')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'shareUrl')
+    ..hasRequiredFields = false;
+
+  CreateCredentialOfferResponse._() : super();
+  factory CreateCredentialOfferResponse({
+    $core.String? documentJson,
+    $core.String? shareUrl,
+  }) {
+    final _result = create();
+    if (documentJson != null) {
+      _result.documentJson = documentJson;
+    }
+    if (shareUrl != null) {
+      _result.shareUrl = shareUrl;
+    }
+    return _result;
+  }
+  factory CreateCredentialOfferResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CreateCredentialOfferResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CreateCredentialOfferResponse clone() =>
+      CreateCredentialOfferResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CreateCredentialOfferResponse copyWith(
+          void Function(CreateCredentialOfferResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as CreateCredentialOfferResponse))
+          as CreateCredentialOfferResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateCredentialOfferResponse create() =>
+      CreateCredentialOfferResponse._();
+  CreateCredentialOfferResponse createEmptyInstance() => create();
+  static $pb.PbList<CreateCredentialOfferResponse> createRepeated() =>
+      $pb.PbList<CreateCredentialOfferResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CreateCredentialOfferResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateCredentialOfferResponse>(create);
+  static CreateCredentialOfferResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get documentJson => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set documentJson($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDocumentJson() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDocumentJson() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get shareUrl => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set shareUrl($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasShareUrl() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearShareUrl() => clearField(2);
+}
+
+enum AcceptCredentialRequest_Offer { documentJson, itemId, notSet }
+
+class AcceptCredentialRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, AcceptCredentialRequest_Offer>
+      _AcceptCredentialRequest_OfferByTag = {
+    1: AcceptCredentialRequest_Offer.documentJson,
+    2: AcceptCredentialRequest_Offer.itemId,
+    0: AcceptCredentialRequest_Offer.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AcceptCredentialRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.verifiablecredentials.v1'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2])
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'documentJson')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemId')
+    ..hasRequiredFields = false;
+
+  AcceptCredentialRequest._() : super();
+  factory AcceptCredentialRequest({
+    $core.String? documentJson,
+    $core.String? itemId,
+  }) {
+    final _result = create();
+    if (documentJson != null) {
+      _result.documentJson = documentJson;
+    }
+    if (itemId != null) {
+      _result.itemId = itemId;
+    }
+    return _result;
+  }
+  factory AcceptCredentialRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AcceptCredentialRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AcceptCredentialRequest clone() =>
+      AcceptCredentialRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AcceptCredentialRequest copyWith(
+          void Function(AcceptCredentialRequest) updates) =>
+      super.copyWith((message) => updates(message as AcceptCredentialRequest))
+          as AcceptCredentialRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AcceptCredentialRequest create() => AcceptCredentialRequest._();
+  AcceptCredentialRequest createEmptyInstance() => create();
+  static $pb.PbList<AcceptCredentialRequest> createRepeated() =>
+      $pb.PbList<AcceptCredentialRequest>();
+  @$core.pragma('dart2js:noInline')
+  static AcceptCredentialRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AcceptCredentialRequest>(create);
+  static AcceptCredentialRequest? _defaultInstance;
+
+  AcceptCredentialRequest_Offer whichOffer() =>
+      _AcceptCredentialRequest_OfferByTag[$_whichOneof(0)]!;
+  void clearOffer() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  $core.String get documentJson => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set documentJson($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDocumentJson() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDocumentJson() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get itemId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set itemId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasItemId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearItemId() => clearField(2);
+}
+
+class AcceptCredentialResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AcceptCredentialResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.verifiablecredentials.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'documentJson')
+    ..hasRequiredFields = false;
+
+  AcceptCredentialResponse._() : super();
+  factory AcceptCredentialResponse({
+    $core.String? itemId,
+    $core.String? documentJson,
+  }) {
+    final _result = create();
+    if (itemId != null) {
+      _result.itemId = itemId;
+    }
+    if (documentJson != null) {
+      _result.documentJson = documentJson;
+    }
+    return _result;
+  }
+  factory AcceptCredentialResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AcceptCredentialResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AcceptCredentialResponse clone() =>
+      AcceptCredentialResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AcceptCredentialResponse copyWith(
+          void Function(AcceptCredentialResponse) updates) =>
+      super.copyWith((message) => updates(message as AcceptCredentialResponse))
+          as AcceptCredentialResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AcceptCredentialResponse create() => AcceptCredentialResponse._();
+  AcceptCredentialResponse createEmptyInstance() => create();
+  static $pb.PbList<AcceptCredentialResponse> createRepeated() =>
+      $pb.PbList<AcceptCredentialResponse>();
+  @$core.pragma('dart2js:noInline')
+  static AcceptCredentialResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AcceptCredentialResponse>(create);
+  static AcceptCredentialResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get itemId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set itemId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasItemId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearItemId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get documentJson => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set documentJson($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDocumentJson() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDocumentJson() => clearField(2);
+}
+
+enum RejectCredentialRequest_Offer { documentJson, itemId, notSet }
+
+class RejectCredentialRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, RejectCredentialRequest_Offer>
+      _RejectCredentialRequest_OfferByTag = {
+    1: RejectCredentialRequest_Offer.documentJson,
+    2: RejectCredentialRequest_Offer.itemId,
+    0: RejectCredentialRequest_Offer.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RejectCredentialRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.verifiablecredentials.v1'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2])
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'documentJson')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemId')
+    ..hasRequiredFields = false;
+
+  RejectCredentialRequest._() : super();
+  factory RejectCredentialRequest({
+    $core.String? documentJson,
+    $core.String? itemId,
+  }) {
+    final _result = create();
+    if (documentJson != null) {
+      _result.documentJson = documentJson;
+    }
+    if (itemId != null) {
+      _result.itemId = itemId;
+    }
+    return _result;
+  }
+  factory RejectCredentialRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RejectCredentialRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RejectCredentialRequest clone() =>
+      RejectCredentialRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RejectCredentialRequest copyWith(
+          void Function(RejectCredentialRequest) updates) =>
+      super.copyWith((message) => updates(message as RejectCredentialRequest))
+          as RejectCredentialRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RejectCredentialRequest create() => RejectCredentialRequest._();
+  RejectCredentialRequest createEmptyInstance() => create();
+  static $pb.PbList<RejectCredentialRequest> createRepeated() =>
+      $pb.PbList<RejectCredentialRequest>();
+  @$core.pragma('dart2js:noInline')
+  static RejectCredentialRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RejectCredentialRequest>(create);
+  static RejectCredentialRequest? _defaultInstance;
+
+  RejectCredentialRequest_Offer whichOffer() =>
+      _RejectCredentialRequest_OfferByTag[$_whichOneof(0)]!;
+  void clearOffer() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  $core.String get documentJson => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set documentJson($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDocumentJson() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDocumentJson() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get itemId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set itemId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasItemId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearItemId() => clearField(2);
+}
+
+class RejectCredentialResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RejectCredentialResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.verifiablecredentials.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  RejectCredentialResponse._() : super();
+  factory RejectCredentialResponse() => create();
+  factory RejectCredentialResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RejectCredentialResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RejectCredentialResponse clone() =>
+      RejectCredentialResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RejectCredentialResponse copyWith(
+          void Function(RejectCredentialResponse) updates) =>
+      super.copyWith((message) => updates(message as RejectCredentialResponse))
+          as RejectCredentialResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RejectCredentialResponse create() => RejectCredentialResponse._();
+  RejectCredentialResponse createEmptyInstance() => create();
+  static $pb.PbList<RejectCredentialResponse> createRepeated() =>
+      $pb.PbList<RejectCredentialResponse>();
+  @$core.pragma('dart2js:noInline')
+  static RejectCredentialResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RejectCredentialResponse>(create);
+  static RejectCredentialResponse? _defaultInstance;
+}

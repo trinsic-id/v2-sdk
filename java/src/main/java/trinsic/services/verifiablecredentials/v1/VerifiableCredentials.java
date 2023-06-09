@@ -72,6 +72,30 @@ public final class VerifiableCredentials {
       internal_static_services_verifiablecredentials_v1_CheckStatusResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_CheckStatusResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_v1_CreateCredentialOfferRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_CreateCredentialOfferRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_v1_CreateCredentialOfferResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_CreateCredentialOfferResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_v1_AcceptCredentialRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_AcceptCredentialRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_v1_AcceptCredentialResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_AcceptCredentialResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_v1_RejectCredentialRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_RejectCredentialRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_v1_RejectCredentialResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_RejectCredentialResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -137,25 +161,53 @@ public final class VerifiableCredentials {
           + "\022CheckStatusRequest\022\034\n"
           + "\024credential_status_id\030\001 \001(\t\"&\n"
           + "\023CheckStatusResponse\022\017\n"
-          + "\007revoked\030\001 \001(\0102\213\006\n"
+          + "\007revoked\030\001 \001(\010\"\230\001\n"
+          + "\034CreateCredentialOfferRequest\022\023\n"
+          + "\013template_id\030\001 \001(\t\022\023\n"
+          + "\013values_json\030\002 \001(\t\022\026\n"
+          + "\016holder_binding\030\003 \001(\010\022\032\n"
+          + "\022include_governance\030\004 \001(\010\022\032\n"
+          + "\022generate_share_url\030\005 \001(\010\"I\n"
+          + "\035CreateCredentialOfferResponse\022\025\n\r"
+          + "document_json\030\001 \001(\t\022\021\n"
+          + "\tshare_url\030\002 \001(\t\"N\n"
+          + "\027AcceptCredentialRequest\022\027\n\r"
+          + "document_json\030\001 \001(\tH\000\022\021\n"
+          + "\007item_id\030\002 \001(\tH\000B\007\n"
+          + "\005offer\"B\n"
+          + "\030AcceptCredentialResponse\022\017\n"
+          + "\007item_id\030\001 \001(\t\022\025\n\r"
+          + "document_json\030\002 \001(\t\"N\n"
+          + "\027RejectCredentialRequest\022\027\n\r"
+          + "document_json\030\001 \001(\tH\000\022\021\n"
+          + "\007item_id\030\002 \001(\tH\000B\007\n"
+          + "\005offer\"\032\n"
+          + "\030RejectCredentialResponse2\304\t\n"
           + "\024VerifiableCredential\022\216\001\n"
-          + "\021IssueFromTemplate\022;.services.verifiable"
-          + "credentials.v1.IssueFromTemplateRequest\032"
-          + "<.services.verifiablecredentials.v1.IssueFromTemplateResponse\022|\n"
-          + "\013CheckStatus\0225.services.verifiablecredentials.v1.CheckSt"
-          + "atusRequest\0326.services.verifiablecredentials.v1.CheckStatusResponse\022\177\n"
-          + "\014UpdateStatus\0226.services.verifiablecredentials.v1."
-          + "UpdateStatusRequest\0327.services.verifiablecredentials.v1.UpdateStatusResponse\022|\n"
-          + "\013CreateProof\0225.services.verifiablecredent"
-          + "ials.v1.CreateProofRequest\0326.services.ve"
-          + "rifiablecredentials.v1.CreateProofResponse\022|\n"
-          + "\013VerifyProof\0225.services.verifiablecredentials.v1.VerifyProofRequest\0326.servi"
-          + "ces.verifiablecredentials.v1.VerifyProofResponse\022g\n"
-          + "\004Send\022..services.verifiablecr"
-          + "edentials.v1.SendRequest\032/.services.verifiablecredentials.v1.SendResponseB\231\001\n"
-          + ")trinsic.services.verifiablecredentials.v1P\001Z,services/verifiablecredentials/v1/cre"
-          + "dential\242\002\017TrinsicServices\252\002)Trinsic.Serv"
-          + "ices.VerifiableCredentials.V1b\006proto3"
+          + "\021IssueFromTemplate\022;.services.verifiablecredentials.v1.IssueFromTemplateRe"
+          + "quest\032<.services.verifiablecredentials.v1.IssueFromTemplateResponse\022|\n"
+          + "\013CheckStatus\0225.services.verifiablecredentials.v1.C"
+          + "heckStatusRequest\0326.services.verifiablecredentials.v1.CheckStatusResponse\022\177\n"
+          + "\014UpdateStatus\0226.services.verifiablecredentia"
+          + "ls.v1.UpdateStatusRequest\0327.services.ver"
+          + "ifiablecredentials.v1.UpdateStatusResponse\022|\n"
+          + "\013CreateProof\0225.services.verifiablecredentials.v1.CreateProofRequest\0326.servi"
+          + "ces.verifiablecredentials.v1.CreateProofResponse\022|\n"
+          + "\013VerifyProof\0225.services.verifiablecredentials.v1.VerifyProofRequest\0326"
+          + ".services.verifiablecredentials.v1.VerifyProofResponse\022g\n"
+          + "\004Send\022..services.verifiablecredentials.v1.SendRequest\032/.service"
+          + "s.verifiablecredentials.v1.SendResponse\022\232\001\n"
+          + "\025CreateCredentialOffer\022?.services.verifiablecredentials.v1.CreateCredentialOf"
+          + "ferRequest\032@.services.verifiablecredentials.v1.CreateCredentialOfferResponse\022\213\001\n"
+          + "\020AcceptCredential\022:.services.verifiablec"
+          + "redentials.v1.AcceptCredentialRequest\032;."
+          + "services.verifiablecredentials.v1.AcceptCredentialResponse\022\213\001\n"
+          + "\020RejectCredential\022:.services.verifiablecredentials.v1.Reje"
+          + "ctCredentialRequest\032;.services.verifiabl"
+          + "ecredentials.v1.RejectCredentialResponseB\231\001\n"
+          + ")trinsic.services.verifiablecredentials.v1P\001Z,services/verifiablecredentials"
+          + "/v1/credential\242\002\017TrinsicServices\252\002)Trins"
+          + "ic.Services.VerifiableCredentials.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -294,6 +346,52 @@ public final class VerifiableCredentials {
             new java.lang.String[] {
               "Revoked",
             });
+    internal_static_services_verifiablecredentials_v1_CreateCredentialOfferRequest_descriptor =
+        getDescriptor().getMessageTypes().get(14);
+    internal_static_services_verifiablecredentials_v1_CreateCredentialOfferRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_CreateCredentialOfferRequest_descriptor,
+            new java.lang.String[] {
+              "TemplateId", "ValuesJson", "HolderBinding", "IncludeGovernance", "GenerateShareUrl",
+            });
+    internal_static_services_verifiablecredentials_v1_CreateCredentialOfferResponse_descriptor =
+        getDescriptor().getMessageTypes().get(15);
+    internal_static_services_verifiablecredentials_v1_CreateCredentialOfferResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_CreateCredentialOfferResponse_descriptor,
+            new java.lang.String[] {
+              "DocumentJson", "ShareUrl",
+            });
+    internal_static_services_verifiablecredentials_v1_AcceptCredentialRequest_descriptor =
+        getDescriptor().getMessageTypes().get(16);
+    internal_static_services_verifiablecredentials_v1_AcceptCredentialRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_AcceptCredentialRequest_descriptor,
+            new java.lang.String[] {
+              "DocumentJson", "ItemId", "Offer",
+            });
+    internal_static_services_verifiablecredentials_v1_AcceptCredentialResponse_descriptor =
+        getDescriptor().getMessageTypes().get(17);
+    internal_static_services_verifiablecredentials_v1_AcceptCredentialResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_AcceptCredentialResponse_descriptor,
+            new java.lang.String[] {
+              "ItemId", "DocumentJson",
+            });
+    internal_static_services_verifiablecredentials_v1_RejectCredentialRequest_descriptor =
+        getDescriptor().getMessageTypes().get(18);
+    internal_static_services_verifiablecredentials_v1_RejectCredentialRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_RejectCredentialRequest_descriptor,
+            new java.lang.String[] {
+              "DocumentJson", "ItemId", "Offer",
+            });
+    internal_static_services_verifiablecredentials_v1_RejectCredentialResponse_descriptor =
+        getDescriptor().getMessageTypes().get(19);
+    internal_static_services_verifiablecredentials_v1_RejectCredentialResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_RejectCredentialResponse_descriptor,
+            new java.lang.String[] {});
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);

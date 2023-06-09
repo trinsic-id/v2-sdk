@@ -48,6 +48,24 @@ class VerifiableCredentialClient extends $grpc.Client {
       '/services.verifiablecredentials.v1.VerifiableCredential/Send',
       ($2.SendRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.SendResponse.fromBuffer(value));
+  static final _$createCredentialOffer = $grpc.ClientMethod<
+          $2.CreateCredentialOfferRequest, $2.CreateCredentialOfferResponse>(
+      '/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer',
+      ($2.CreateCredentialOfferRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $2.CreateCredentialOfferResponse.fromBuffer(value));
+  static final _$acceptCredential = $grpc.ClientMethod<
+          $2.AcceptCredentialRequest, $2.AcceptCredentialResponse>(
+      '/services.verifiablecredentials.v1.VerifiableCredential/AcceptCredential',
+      ($2.AcceptCredentialRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $2.AcceptCredentialResponse.fromBuffer(value));
+  static final _$rejectCredential = $grpc.ClientMethod<
+          $2.RejectCredentialRequest, $2.RejectCredentialResponse>(
+      '/services.verifiablecredentials.v1.VerifiableCredential/RejectCredential',
+      ($2.RejectCredentialRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $2.RejectCredentialResponse.fromBuffer(value));
 
   VerifiableCredentialClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -87,6 +105,24 @@ class VerifiableCredentialClient extends $grpc.Client {
   $grpc.ResponseFuture<$2.SendResponse> send($2.SendRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$send, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.CreateCredentialOfferResponse> createCredentialOffer(
+      $2.CreateCredentialOfferRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$createCredentialOffer, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.AcceptCredentialResponse> acceptCredential(
+      $2.AcceptCredentialRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$acceptCredential, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.RejectCredentialResponse> rejectCredential(
+      $2.RejectCredentialRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$rejectCredential, request, options: options);
   }
 }
 
@@ -147,6 +183,33 @@ abstract class VerifiableCredentialServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.SendRequest.fromBuffer(value),
         ($2.SendResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.CreateCredentialOfferRequest,
+            $2.CreateCredentialOfferResponse>(
+        'CreateCredentialOffer',
+        createCredentialOffer_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $2.CreateCredentialOfferRequest.fromBuffer(value),
+        ($2.CreateCredentialOfferResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.AcceptCredentialRequest,
+            $2.AcceptCredentialResponse>(
+        'AcceptCredential',
+        acceptCredential_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $2.AcceptCredentialRequest.fromBuffer(value),
+        ($2.AcceptCredentialResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.RejectCredentialRequest,
+            $2.RejectCredentialResponse>(
+        'RejectCredential',
+        rejectCredential_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $2.RejectCredentialRequest.fromBuffer(value),
+        ($2.RejectCredentialResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$2.IssueFromTemplateResponse> issueFromTemplate_Pre(
@@ -181,6 +244,24 @@ abstract class VerifiableCredentialServiceBase extends $grpc.Service {
     return send(call, await request);
   }
 
+  $async.Future<$2.CreateCredentialOfferResponse> createCredentialOffer_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$2.CreateCredentialOfferRequest> request) async {
+    return createCredentialOffer(call, await request);
+  }
+
+  $async.Future<$2.AcceptCredentialResponse> acceptCredential_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$2.AcceptCredentialRequest> request) async {
+    return acceptCredential(call, await request);
+  }
+
+  $async.Future<$2.RejectCredentialResponse> rejectCredential_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$2.RejectCredentialRequest> request) async {
+    return rejectCredential(call, await request);
+  }
+
   $async.Future<$2.IssueFromTemplateResponse> issueFromTemplate(
       $grpc.ServiceCall call, $2.IssueFromTemplateRequest request);
   $async.Future<$2.CheckStatusResponse> checkStatus(
@@ -193,4 +274,10 @@ abstract class VerifiableCredentialServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $2.VerifyProofRequest request);
   $async.Future<$2.SendResponse> send(
       $grpc.ServiceCall call, $2.SendRequest request);
+  $async.Future<$2.CreateCredentialOfferResponse> createCredentialOffer(
+      $grpc.ServiceCall call, $2.CreateCredentialOfferRequest request);
+  $async.Future<$2.AcceptCredentialResponse> acceptCredential(
+      $grpc.ServiceCall call, $2.AcceptCredentialRequest request);
+  $async.Future<$2.RejectCredentialResponse> rejectCredential(
+      $grpc.ServiceCall call, $2.RejectCredentialRequest request);
 }

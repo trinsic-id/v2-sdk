@@ -98,7 +98,11 @@ class CreateProofRequest(betterproto.Message):
     """
 
     use_verifiable_presentation: bool = betterproto.bool_field(4)
-    """Wrap the output in a verifiable presentation"""
+    """
+    Wrap the output in a verifiable presentation. If the credential used in the
+    proof is bound to the holder DID, the output will always use a verifiable
+    presentation and this field will be ignored.
+    """
 
     nonce: bytes = betterproto.bytes_field(10)
     """
@@ -230,6 +234,85 @@ class CheckStatusResponse(betterproto.Message):
     """The credential's revocation status"""
 
 
+@dataclass(eq=False, repr=False)
+class CreateCredentialOfferRequest(betterproto.Message):
+    template_id: str = betterproto.string_field(1)
+    """ID of template to use"""
+
+    values_json: str = betterproto.string_field(2)
+    """
+    JSON document string with keys corresponding to the fields of the template
+    referenced by `template_id`
+    """
+
+    holder_binding: bool = betterproto.bool_field(3)
+    """
+    If true, the credential will be issued with holder binding by specifying
+    the holder DID in the credential subject
+    """
+
+    include_governance: bool = betterproto.bool_field(4)
+    """
+    If true, the issued credential will contain an attestation of the issuer's
+    membership in the ecosystem's governance framework.
+    """
+
+    generate_share_url: bool = betterproto.bool_field(5)
+    """
+    If true, a short URL link will be generated that can be used to share the
+    credential offer with the holder. This link will point to the credential
+    offer in the wallet app.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class CreateCredentialOfferResponse(betterproto.Message):
+    document_json: str = betterproto.string_field(1)
+    """The JSON document that contains the credential offer"""
+
+    share_url: str = betterproto.string_field(2)
+    """
+    If requested, a URL that can be used to share the credential offer with the
+    holder. This is a short URL that can be used in a QR code and will redirect
+    the  holder to the credential offer using the wallet app.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AcceptCredentialRequest(betterproto.Message):
+    document_json: str = betterproto.string_field(1, group="offer")
+    """The JSON document that contains the credential offer"""
+
+    item_id: str = betterproto.string_field(2, group="offer")
+    """The ID of the item in the wallet that contains the credential offer"""
+
+
+@dataclass(eq=False, repr=False)
+class AcceptCredentialResponse(betterproto.Message):
+    item_id: str = betterproto.string_field(1)
+    """The ID of the item in the wallet that contains the issued credential"""
+
+    document_json: str = betterproto.string_field(2)
+    """
+    The JSON document that contains the issued credential.  This item is
+    already stored in the wallet.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class RejectCredentialRequest(betterproto.Message):
+    document_json: str = betterproto.string_field(1, group="offer")
+    """The JSON document that contains the credential offer"""
+
+    item_id: str = betterproto.string_field(2, group="offer")
+    """The ID of the item in the wallet that contains the credential offer"""
+
+
+@dataclass(eq=False, repr=False)
+class RejectCredentialResponse(betterproto.Message):
+    pass
+
+
 class VerifiableCredentialStub(betterproto.ServiceStub):
     async def issue_from_template(
         self,
@@ -327,6 +410,54 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def create_credential_offer(
+        self,
+        create_credential_offer_request: "CreateCredentialOfferRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "CreateCredentialOfferResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer",
+            create_credential_offer_request,
+            CreateCredentialOfferResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def accept_credential(
+        self,
+        accept_credential_request: "AcceptCredentialRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AcceptCredentialResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.v1.VerifiableCredential/AcceptCredential",
+            accept_credential_request,
+            AcceptCredentialResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def reject_credential(
+        self,
+        reject_credential_request: "RejectCredentialRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "RejectCredentialResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.v1.VerifiableCredential/RejectCredential",
+            reject_credential_request,
+            RejectCredentialResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class VerifiableCredentialBase(ServiceBase):
     async def issue_from_template(
@@ -357,6 +488,21 @@ class VerifiableCredentialBase(ServiceBase):
     async def send(self, send_request: "SendRequest") -> "SendResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def create_credential_offer(
+        self, create_credential_offer_request: "CreateCredentialOfferRequest"
+    ) -> "CreateCredentialOfferResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def accept_credential(
+        self, accept_credential_request: "AcceptCredentialRequest"
+    ) -> "AcceptCredentialResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def reject_credential(
+        self, reject_credential_request: "RejectCredentialRequest"
+    ) -> "RejectCredentialResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_issue_from_template(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.issue_from_template(request)
@@ -385,6 +531,23 @@ class VerifiableCredentialBase(ServiceBase):
     async def __rpc_send(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.send(request)
+        await stream.send_message(response)
+
+    async def __rpc_create_credential_offer(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.create_credential_offer(request)
+        await stream.send_message(response)
+
+    async def __rpc_accept_credential(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.accept_credential(request)
+        await stream.send_message(response)
+
+    async def __rpc_reject_credential(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.reject_credential(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -424,5 +587,23 @@ class VerifiableCredentialBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 SendRequest,
                 SendResponse,
+            ),
+            "/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer": grpclib.const.Handler(
+                self.__rpc_create_credential_offer,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                CreateCredentialOfferRequest,
+                CreateCredentialOfferResponse,
+            ),
+            "/services.verifiablecredentials.v1.VerifiableCredential/AcceptCredential": grpclib.const.Handler(
+                self.__rpc_accept_credential,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AcceptCredentialRequest,
+                AcceptCredentialResponse,
+            ),
+            "/services.verifiablecredentials.v1.VerifiableCredential/RejectCredential": grpclib.const.Handler(
+                self.__rpc_reject_credential,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                RejectCredentialRequest,
+                RejectCredentialResponse,
             ),
         }

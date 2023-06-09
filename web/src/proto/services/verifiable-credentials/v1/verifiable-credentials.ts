@@ -68,7 +68,11 @@ export interface CreateProofRequest {
   documentJson?:
     | string
     | undefined;
-  /** Wrap the output in a verifiable presentation */
+  /**
+   * Wrap the output in a verifiable presentation.
+   * If the credential used in the proof is bound to the holder DID,
+   * the output will always use a verifiable presentation and this field will be ignored.
+   */
   useVerifiablePresentation?: boolean;
   /**
    * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
@@ -169,6 +173,73 @@ export interface CheckStatusRequest {
 export interface CheckStatusResponse {
   /** The credential's revocation status */
   revoked?: boolean;
+}
+
+export interface CreateCredentialOfferRequest {
+  /** ID of template to use */
+  templateId?: string;
+  /**
+   * JSON document string with keys corresponding to the fields of
+   * the template referenced by `template_id`
+   */
+  valuesJson?: string;
+  /**
+   * If true, the credential will be issued with holder binding by specifying
+   * the holder DID in the credential subject
+   */
+  holderBinding?: boolean;
+  /**
+   * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+   * governance framework.
+   */
+  includeGovernance?: boolean;
+  /**
+   * If true, a short URL link will be generated that can be used to share the credential offer with the holder.
+   * This link will point to the credential offer in the wallet app.
+   */
+  generateShareUrl?: boolean;
+}
+
+export interface CreateCredentialOfferResponse {
+  /** The JSON document that contains the credential offer */
+  documentJson?: string;
+  /**
+   * If requested, a URL that can be used to share the credential offer with the holder.
+   * This is a short URL that can be used in a QR code and will redirect the
+   * holder to the credential offer using the wallet app.
+   */
+  shareUrl?: string;
+}
+
+export interface AcceptCredentialRequest {
+  /** The JSON document that contains the credential offer */
+  documentJson?:
+    | string
+    | undefined;
+  /** The ID of the item in the wallet that contains the credential offer */
+  itemId?: string | undefined;
+}
+
+export interface AcceptCredentialResponse {
+  /** The ID of the item in the wallet that contains the issued credential */
+  itemId?: string;
+  /**
+   * The JSON document that contains the issued credential.
+   * This item is already stored in the wallet.
+   */
+  documentJson?: string;
+}
+
+export interface RejectCredentialRequest {
+  /** The JSON document that contains the credential offer */
+  documentJson?:
+    | string
+    | undefined;
+  /** The ID of the item in the wallet that contains the credential offer */
+  itemId?: string | undefined;
+}
+
+export interface RejectCredentialResponse {
 }
 
 function createBaseIssueFromTemplateRequest(): IssueFromTemplateRequest {
@@ -1300,6 +1371,444 @@ export const CheckStatusResponse = {
   },
 };
 
+function createBaseCreateCredentialOfferRequest(): CreateCredentialOfferRequest {
+  return { templateId: "", valuesJson: "", holderBinding: false, includeGovernance: false, generateShareUrl: false };
+}
+
+export const CreateCredentialOfferRequest = {
+  encode(message: CreateCredentialOfferRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.templateId !== undefined && message.templateId !== "") {
+      writer.uint32(10).string(message.templateId);
+    }
+    if (message.valuesJson !== undefined && message.valuesJson !== "") {
+      writer.uint32(18).string(message.valuesJson);
+    }
+    if (message.holderBinding === true) {
+      writer.uint32(24).bool(message.holderBinding);
+    }
+    if (message.includeGovernance === true) {
+      writer.uint32(32).bool(message.includeGovernance);
+    }
+    if (message.generateShareUrl === true) {
+      writer.uint32(40).bool(message.generateShareUrl);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateCredentialOfferRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateCredentialOfferRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.templateId = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.valuesJson = reader.string();
+          continue;
+        case 3:
+          if (tag != 24) {
+            break;
+          }
+
+          message.holderBinding = reader.bool();
+          continue;
+        case 4:
+          if (tag != 32) {
+            break;
+          }
+
+          message.includeGovernance = reader.bool();
+          continue;
+        case 5:
+          if (tag != 40) {
+            break;
+          }
+
+          message.generateShareUrl = reader.bool();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateCredentialOfferRequest {
+    return {
+      templateId: isSet(object.templateId) ? String(object.templateId) : "",
+      valuesJson: isSet(object.valuesJson) ? String(object.valuesJson) : "",
+      holderBinding: isSet(object.holderBinding) ? Boolean(object.holderBinding) : false,
+      includeGovernance: isSet(object.includeGovernance) ? Boolean(object.includeGovernance) : false,
+      generateShareUrl: isSet(object.generateShareUrl) ? Boolean(object.generateShareUrl) : false,
+    };
+  },
+
+  toJSON(message: CreateCredentialOfferRequest): unknown {
+    const obj: any = {};
+    message.templateId !== undefined && (obj.templateId = message.templateId);
+    message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
+    message.holderBinding !== undefined && (obj.holderBinding = message.holderBinding);
+    message.includeGovernance !== undefined && (obj.includeGovernance = message.includeGovernance);
+    message.generateShareUrl !== undefined && (obj.generateShareUrl = message.generateShareUrl);
+    return obj;
+  },
+
+  create(base?: DeepPartial<CreateCredentialOfferRequest>): CreateCredentialOfferRequest {
+    return CreateCredentialOfferRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CreateCredentialOfferRequest>): CreateCredentialOfferRequest {
+    const message = createBaseCreateCredentialOfferRequest();
+    message.templateId = object.templateId ?? "";
+    message.valuesJson = object.valuesJson ?? "";
+    message.holderBinding = object.holderBinding ?? false;
+    message.includeGovernance = object.includeGovernance ?? false;
+    message.generateShareUrl = object.generateShareUrl ?? false;
+    return message;
+  },
+};
+
+function createBaseCreateCredentialOfferResponse(): CreateCredentialOfferResponse {
+  return { documentJson: "", shareUrl: "" };
+}
+
+export const CreateCredentialOfferResponse = {
+  encode(message: CreateCredentialOfferResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.documentJson !== undefined && message.documentJson !== "") {
+      writer.uint32(10).string(message.documentJson);
+    }
+    if (message.shareUrl !== undefined && message.shareUrl !== "") {
+      writer.uint32(18).string(message.shareUrl);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateCredentialOfferResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateCredentialOfferResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.documentJson = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.shareUrl = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateCredentialOfferResponse {
+    return {
+      documentJson: isSet(object.documentJson) ? String(object.documentJson) : "",
+      shareUrl: isSet(object.shareUrl) ? String(object.shareUrl) : "",
+    };
+  },
+
+  toJSON(message: CreateCredentialOfferResponse): unknown {
+    const obj: any = {};
+    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
+    message.shareUrl !== undefined && (obj.shareUrl = message.shareUrl);
+    return obj;
+  },
+
+  create(base?: DeepPartial<CreateCredentialOfferResponse>): CreateCredentialOfferResponse {
+    return CreateCredentialOfferResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CreateCredentialOfferResponse>): CreateCredentialOfferResponse {
+    const message = createBaseCreateCredentialOfferResponse();
+    message.documentJson = object.documentJson ?? "";
+    message.shareUrl = object.shareUrl ?? "";
+    return message;
+  },
+};
+
+function createBaseAcceptCredentialRequest(): AcceptCredentialRequest {
+  return { documentJson: undefined, itemId: undefined };
+}
+
+export const AcceptCredentialRequest = {
+  encode(message: AcceptCredentialRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.documentJson !== undefined) {
+      writer.uint32(10).string(message.documentJson);
+    }
+    if (message.itemId !== undefined) {
+      writer.uint32(18).string(message.itemId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AcceptCredentialRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAcceptCredentialRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.documentJson = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.itemId = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AcceptCredentialRequest {
+    return {
+      documentJson: isSet(object.documentJson) ? String(object.documentJson) : undefined,
+      itemId: isSet(object.itemId) ? String(object.itemId) : undefined,
+    };
+  },
+
+  toJSON(message: AcceptCredentialRequest): unknown {
+    const obj: any = {};
+    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
+  },
+
+  create(base?: DeepPartial<AcceptCredentialRequest>): AcceptCredentialRequest {
+    return AcceptCredentialRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<AcceptCredentialRequest>): AcceptCredentialRequest {
+    const message = createBaseAcceptCredentialRequest();
+    message.documentJson = object.documentJson ?? undefined;
+    message.itemId = object.itemId ?? undefined;
+    return message;
+  },
+};
+
+function createBaseAcceptCredentialResponse(): AcceptCredentialResponse {
+  return { itemId: "", documentJson: "" };
+}
+
+export const AcceptCredentialResponse = {
+  encode(message: AcceptCredentialResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.itemId !== undefined && message.itemId !== "") {
+      writer.uint32(10).string(message.itemId);
+    }
+    if (message.documentJson !== undefined && message.documentJson !== "") {
+      writer.uint32(18).string(message.documentJson);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AcceptCredentialResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAcceptCredentialResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.itemId = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.documentJson = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AcceptCredentialResponse {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "",
+      documentJson: isSet(object.documentJson) ? String(object.documentJson) : "",
+    };
+  },
+
+  toJSON(message: AcceptCredentialResponse): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
+    return obj;
+  },
+
+  create(base?: DeepPartial<AcceptCredentialResponse>): AcceptCredentialResponse {
+    return AcceptCredentialResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<AcceptCredentialResponse>): AcceptCredentialResponse {
+    const message = createBaseAcceptCredentialResponse();
+    message.itemId = object.itemId ?? "";
+    message.documentJson = object.documentJson ?? "";
+    return message;
+  },
+};
+
+function createBaseRejectCredentialRequest(): RejectCredentialRequest {
+  return { documentJson: undefined, itemId: undefined };
+}
+
+export const RejectCredentialRequest = {
+  encode(message: RejectCredentialRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.documentJson !== undefined) {
+      writer.uint32(10).string(message.documentJson);
+    }
+    if (message.itemId !== undefined) {
+      writer.uint32(18).string(message.itemId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): RejectCredentialRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRejectCredentialRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.documentJson = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.itemId = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RejectCredentialRequest {
+    return {
+      documentJson: isSet(object.documentJson) ? String(object.documentJson) : undefined,
+      itemId: isSet(object.itemId) ? String(object.itemId) : undefined,
+    };
+  },
+
+  toJSON(message: RejectCredentialRequest): unknown {
+    const obj: any = {};
+    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
+  },
+
+  create(base?: DeepPartial<RejectCredentialRequest>): RejectCredentialRequest {
+    return RejectCredentialRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<RejectCredentialRequest>): RejectCredentialRequest {
+    const message = createBaseRejectCredentialRequest();
+    message.documentJson = object.documentJson ?? undefined;
+    message.itemId = object.itemId ?? undefined;
+    return message;
+  },
+};
+
+function createBaseRejectCredentialResponse(): RejectCredentialResponse {
+  return {};
+}
+
+export const RejectCredentialResponse = {
+  encode(_: RejectCredentialResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): RejectCredentialResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRejectCredentialResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(_: any): RejectCredentialResponse {
+    return {};
+  },
+
+  toJSON(_: RejectCredentialResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  create(base?: DeepPartial<RejectCredentialResponse>): RejectCredentialResponse {
+    return RejectCredentialResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<RejectCredentialResponse>): RejectCredentialResponse {
+    const message = createBaseRejectCredentialResponse();
+    return message;
+  },
+};
+
 export type VerifiableCredentialDefinition = typeof VerifiableCredentialDefinition;
 export const VerifiableCredentialDefinition = {
   name: "VerifiableCredential",
@@ -1366,6 +1875,33 @@ export const VerifiableCredentialDefinition = {
       requestType: SendRequest,
       requestStream: false,
       responseType: SendResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Create credential offer */
+    createCredentialOffer: {
+      name: "CreateCredentialOffer",
+      requestType: CreateCredentialOfferRequest,
+      requestStream: false,
+      responseType: CreateCredentialOfferResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Accept an offer to exchange a credential */
+    acceptCredential: {
+      name: "AcceptCredential",
+      requestType: AcceptCredentialRequest,
+      requestStream: false,
+      responseType: AcceptCredentialResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Reject an offer to exchange a credential */
+    rejectCredential: {
+      name: "RejectCredential",
+      requestType: RejectCredentialRequest,
+      requestStream: false,
+      responseType: RejectCredentialResponse,
       responseStream: false,
       options: {},
     },

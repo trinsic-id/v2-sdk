@@ -3000,6 +3000,42 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.UriRenderMethod"
     },
+    "services.verifiablecredentials.v1.AcceptCredentialRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.AcceptCredentialRequest"
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialRequest.item_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.AcceptCredentialRequest"
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialResponse.document_json": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.AcceptCredentialResponse"
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialResponse.item_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.AcceptCredentialResponse"
+    },
     "services.verifiablecredentials.v1.CheckStatusRequest": {
       "type": "message",
       "collection": "messages",
@@ -3023,6 +3059,60 @@
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.CheckStatusResponse"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferRequest"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferRequest"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferRequest"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferRequest"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.values_json": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferRequest"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferResponse.document_json": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferResponse"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferResponse.share_url": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferResponse"
     },
     "services.verifiablecredentials.v1.CreateProofRequest": {
       "type": "message",
@@ -3125,6 +3215,30 @@
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.IssueFromTemplateResponse"
+    },
+    "services.verifiablecredentials.v1.RejectCredentialRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.RejectCredentialRequest.document_json": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.RejectCredentialRequest"
+    },
+    "services.verifiablecredentials.v1.RejectCredentialRequest.item_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.RejectCredentialRequest"
+    },
+    "services.verifiablecredentials.v1.RejectCredentialResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
     },
     "services.verifiablecredentials.v1.RevealTemplateAttributes": {
       "type": "message",
@@ -3234,7 +3348,19 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
+    "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
     "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer": {
       "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -3247,6 +3373,12 @@
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.VerifiableCredential.RejectCredential": {
       "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -3987,7 +4119,10 @@
         "services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus",
         "services.verifiablecredentials.v1.VerifiableCredential.CreateProof",
         "services.verifiablecredentials.v1.VerifiableCredential.VerifyProof",
-        "services.verifiablecredentials.v1.VerifiableCredential.Send"
+        "services.verifiablecredentials.v1.VerifiableCredential.Send",
+        "services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer",
+        "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential",
+        "services.verifiablecredentials.v1.VerifiableCredential.RejectCredential"
       ],
       "messages": [
         "services.verifiablecredentials.v1.IssueFromTemplateRequest",
@@ -4004,7 +4139,13 @@
         "services.verifiablecredentials.v1.UpdateStatusRequest",
         "services.verifiablecredentials.v1.UpdateStatusResponse",
         "services.verifiablecredentials.v1.CheckStatusRequest",
-        "services.verifiablecredentials.v1.CheckStatusResponse"
+        "services.verifiablecredentials.v1.CheckStatusResponse",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest",
+        "services.verifiablecredentials.v1.CreateCredentialOfferResponse",
+        "services.verifiablecredentials.v1.AcceptCredentialRequest",
+        "services.verifiablecredentials.v1.AcceptCredentialResponse",
+        "services.verifiablecredentials.v1.RejectCredentialRequest",
+        "services.verifiablecredentials.v1.RejectCredentialResponse"
       ],
       "fields": [
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id",
@@ -4037,7 +4178,20 @@
         "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id",
         "services.verifiablecredentials.v1.UpdateStatusRequest.revoked",
         "services.verifiablecredentials.v1.CheckStatusRequest.credential_status_id",
-        "services.verifiablecredentials.v1.CheckStatusResponse.revoked"
+        "services.verifiablecredentials.v1.CheckStatusResponse.revoked",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.values_json",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url",
+        "services.verifiablecredentials.v1.CreateCredentialOfferResponse.document_json",
+        "services.verifiablecredentials.v1.CreateCredentialOfferResponse.share_url",
+        "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json",
+        "services.verifiablecredentials.v1.AcceptCredentialRequest.item_id",
+        "services.verifiablecredentials.v1.AcceptCredentialResponse.item_id",
+        "services.verifiablecredentials.v1.AcceptCredentialResponse.document_json",
+        "services.verifiablecredentials.v1.RejectCredentialRequest.document_json",
+        "services.verifiablecredentials.v1.RejectCredentialRequest.item_id"
       ],
       "enums": [],
       "enum_values": []
@@ -4149,7 +4303,10 @@
         "services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus",
         "services.verifiablecredentials.v1.VerifiableCredential.CreateProof",
         "services.verifiablecredentials.v1.VerifiableCredential.VerifyProof",
-        "services.verifiablecredentials.v1.VerifiableCredential.Send"
+        "services.verifiablecredentials.v1.VerifiableCredential.Send",
+        "services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer",
+        "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential",
+        "services.verifiablecredentials.v1.VerifiableCredential.RejectCredential"
       ]
     }
   },
@@ -4528,12 +4685,26 @@
       "output_type": "services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse",
       "description": "Update metadata of a template"
     },
+    "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential": {
+      "name": "AcceptCredential",
+      "full_name": "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential",
+      "input_type": "services.verifiablecredentials.v1.AcceptCredentialRequest",
+      "output_type": "services.verifiablecredentials.v1.AcceptCredentialResponse",
+      "description": "Accept an offer to exchange a credential"
+    },
     "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus": {
       "name": "CheckStatus",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus",
       "input_type": "services.verifiablecredentials.v1.CheckStatusRequest",
       "output_type": "services.verifiablecredentials.v1.CheckStatusResponse",
       "description": "Check credential status in the revocation registry"
+    },
+    "services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer": {
+      "name": "CreateCredentialOffer",
+      "full_name": "services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer",
+      "input_type": "services.verifiablecredentials.v1.CreateCredentialOfferRequest",
+      "output_type": "services.verifiablecredentials.v1.CreateCredentialOfferResponse",
+      "description": "Create credential offer"
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CreateProof": {
       "name": "CreateProof",
@@ -4548,6 +4719,13 @@
       "input_type": "services.verifiablecredentials.v1.IssueFromTemplateRequest",
       "output_type": "services.verifiablecredentials.v1.IssueFromTemplateResponse",
       "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and\nrevocation registry values to the credential."
+    },
+    "services.verifiablecredentials.v1.VerifiableCredential.RejectCredential": {
+      "name": "RejectCredential",
+      "full_name": "services.verifiablecredentials.v1.VerifiableCredential.RejectCredential",
+      "input_type": "services.verifiablecredentials.v1.RejectCredentialRequest",
+      "output_type": "services.verifiablecredentials.v1.RejectCredentialResponse",
+      "description": "Reject an offer to exchange a credential"
     },
     "services.verifiablecredentials.v1.VerifiableCredential.Send": {
       "name": "Send",
@@ -6005,6 +6183,28 @@
       "messages": [],
       "enums": []
     },
+    "services.verifiablecredentials.v1.AcceptCredentialRequest": {
+      "name": "AcceptCredentialRequest",
+      "full_name": "services.verifiablecredentials.v1.AcceptCredentialRequest",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json",
+        "services.verifiablecredentials.v1.AcceptCredentialRequest.item_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialResponse": {
+      "name": "AcceptCredentialResponse",
+      "full_name": "services.verifiablecredentials.v1.AcceptCredentialResponse",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.v1.AcceptCredentialResponse.item_id",
+        "services.verifiablecredentials.v1.AcceptCredentialResponse.document_json"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.verifiablecredentials.v1.CheckStatusRequest": {
       "name": "CheckStatusRequest",
       "full_name": "services.verifiablecredentials.v1.CheckStatusRequest",
@@ -6021,6 +6221,31 @@
       "description": "Response to `CheckStatusRequest`",
       "fields": [
         "services.verifiablecredentials.v1.CheckStatusResponse.revoked"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest": {
+      "name": "CreateCredentialOfferRequest",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferRequest",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.values_json",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferResponse": {
+      "name": "CreateCredentialOfferResponse",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferResponse",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.v1.CreateCredentialOfferResponse.document_json",
+        "services.verifiablecredentials.v1.CreateCredentialOfferResponse.share_url"
       ],
       "messages": [],
       "enums": []
@@ -6071,6 +6296,25 @@
       "fields": [
         "services.verifiablecredentials.v1.IssueFromTemplateResponse.document_json"
       ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.v1.RejectCredentialRequest": {
+      "name": "RejectCredentialRequest",
+      "full_name": "services.verifiablecredentials.v1.RejectCredentialRequest",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.v1.RejectCredentialRequest.document_json",
+        "services.verifiablecredentials.v1.RejectCredentialRequest.item_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.v1.RejectCredentialResponse": {
+      "name": "RejectCredentialResponse",
+      "full_name": "services.verifiablecredentials.v1.RejectCredentialResponse",
+      "description": "",
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -8393,6 +8637,38 @@
       "full_type": "services.verifiablecredentials.templates.v1.UriRenderMethod",
       "description": "How to display the URI value when rendering a credential."
     },
+    "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json": {
+      "name": "document_json",
+      "full_name": "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The JSON document that contains the credential offer"
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialRequest.item_id": {
+      "name": "item_id",
+      "full_name": "services.verifiablecredentials.v1.AcceptCredentialRequest.item_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the item in the wallet that contains the credential offer"
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialResponse.document_json": {
+      "name": "document_json",
+      "full_name": "services.verifiablecredentials.v1.AcceptCredentialResponse.document_json",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The JSON document that contains the issued credential. \nThis item is already stored in the wallet."
+    },
+    "services.verifiablecredentials.v1.AcceptCredentialResponse.item_id": {
+      "name": "item_id",
+      "full_name": "services.verifiablecredentials.v1.AcceptCredentialResponse.item_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the item in the wallet that contains the issued credential"
+    },
     "services.verifiablecredentials.v1.CheckStatusRequest.credential_status_id": {
       "name": "credential_status_id",
       "full_name": "services.verifiablecredentials.v1.CheckStatusRequest.credential_status_id",
@@ -8408,6 +8684,62 @@
       "type": "bool",
       "full_type": "bool",
       "description": "The credential's revocation status"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url": {
+      "name": "generate_share_url",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "If true, a short URL link will be generated that can be used to share the credential offer with the holder.\nThis link will point to the credential offer in the wallet app."
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding": {
+      "name": "holder_binding",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "If true, the credential will be issued with holder binding by specifying \nthe holder DID in the credential subject"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance": {
+      "name": "include_governance",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id": {
+      "name": "template_id",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of template to use"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.values_json": {
+      "name": "values_json",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferRequest.values_json",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "JSON document string with keys corresponding to the fields of\nthe template referenced by `template_id`"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferResponse.document_json": {
+      "name": "document_json",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferResponse.document_json",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The JSON document that contains the credential offer"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferResponse.share_url": {
+      "name": "share_url",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferResponse.share_url",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "If requested, a URL that can be used to share the credential offer with the holder.\nThis is a short URL that can be used in a QR code and will redirect the \nholder to the credential offer using the wallet app."
     },
     "services.verifiablecredentials.v1.CreateProofRequest.document_json": {
       "name": "document_json",
@@ -8458,7 +8790,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Wrap the output in a verifiable presentation"
+      "description": "Wrap the output in a verifiable presentation.\nIf the credential used in the proof is bound to the holder DID,\nthe output will always use a verifiable presentation and this field will be ignored."
     },
     "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json": {
       "name": "proof_document_json",
@@ -8515,6 +8847,22 @@
       "type": "string",
       "full_type": "string",
       "description": "Verifiable Credential document, in JSON-LD form,\nconstructed from the specified template and values; signed\nwith public key tied to caller of `IssueFromTemplateRequest`"
+    },
+    "services.verifiablecredentials.v1.RejectCredentialRequest.document_json": {
+      "name": "document_json",
+      "full_name": "services.verifiablecredentials.v1.RejectCredentialRequest.document_json",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The JSON document that contains the credential offer"
+    },
+    "services.verifiablecredentials.v1.RejectCredentialRequest.item_id": {
+      "name": "item_id",
+      "full_name": "services.verifiablecredentials.v1.RejectCredentialRequest.item_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the item in the wallet that contains the credential offer"
     },
     "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes": {
       "name": "template_attributes",

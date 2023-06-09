@@ -19,12 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	VerifiableCredential_IssueFromTemplate_FullMethodName = "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate"
-	VerifiableCredential_CheckStatus_FullMethodName       = "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus"
-	VerifiableCredential_UpdateStatus_FullMethodName      = "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus"
-	VerifiableCredential_CreateProof_FullMethodName       = "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof"
-	VerifiableCredential_VerifyProof_FullMethodName       = "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof"
-	VerifiableCredential_Send_FullMethodName              = "/services.verifiablecredentials.v1.VerifiableCredential/Send"
+	VerifiableCredential_IssueFromTemplate_FullMethodName     = "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate"
+	VerifiableCredential_CheckStatus_FullMethodName           = "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus"
+	VerifiableCredential_UpdateStatus_FullMethodName          = "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus"
+	VerifiableCredential_CreateProof_FullMethodName           = "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof"
+	VerifiableCredential_VerifyProof_FullMethodName           = "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof"
+	VerifiableCredential_Send_FullMethodName                  = "/services.verifiablecredentials.v1.VerifiableCredential/Send"
+	VerifiableCredential_CreateCredentialOffer_FullMethodName = "/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer"
+	VerifiableCredential_AcceptCredential_FullMethodName      = "/services.verifiablecredentials.v1.VerifiableCredential/AcceptCredential"
+	VerifiableCredential_RejectCredential_FullMethodName      = "/services.verifiablecredentials.v1.VerifiableCredential/RejectCredential"
 )
 
 // VerifiableCredentialClient is the client API for VerifiableCredential service.
@@ -47,6 +50,12 @@ type VerifiableCredentialClient interface {
 	VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error)
 	// Sends a document directly to a user's email within the given ecosystem
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
+	// Create credential offer
+	CreateCredentialOffer(ctx context.Context, in *CreateCredentialOfferRequest, opts ...grpc.CallOption) (*CreateCredentialOfferResponse, error)
+	// Accept an offer to exchange a credential
+	AcceptCredential(ctx context.Context, in *AcceptCredentialRequest, opts ...grpc.CallOption) (*AcceptCredentialResponse, error)
+	// Reject an offer to exchange a credential
+	RejectCredential(ctx context.Context, in *RejectCredentialRequest, opts ...grpc.CallOption) (*RejectCredentialResponse, error)
 }
 
 type verifiableCredentialClient struct {
@@ -111,6 +120,33 @@ func (c *verifiableCredentialClient) Send(ctx context.Context, in *SendRequest, 
 	return out, nil
 }
 
+func (c *verifiableCredentialClient) CreateCredentialOffer(ctx context.Context, in *CreateCredentialOfferRequest, opts ...grpc.CallOption) (*CreateCredentialOfferResponse, error) {
+	out := new(CreateCredentialOfferResponse)
+	err := c.cc.Invoke(ctx, VerifiableCredential_CreateCredentialOffer_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *verifiableCredentialClient) AcceptCredential(ctx context.Context, in *AcceptCredentialRequest, opts ...grpc.CallOption) (*AcceptCredentialResponse, error) {
+	out := new(AcceptCredentialResponse)
+	err := c.cc.Invoke(ctx, VerifiableCredential_AcceptCredential_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *verifiableCredentialClient) RejectCredential(ctx context.Context, in *RejectCredentialRequest, opts ...grpc.CallOption) (*RejectCredentialResponse, error) {
+	out := new(RejectCredentialResponse)
+	err := c.cc.Invoke(ctx, VerifiableCredential_RejectCredential_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VerifiableCredentialServer is the server API for VerifiableCredential service.
 // All implementations must embed UnimplementedVerifiableCredentialServer
 // for forward compatibility
@@ -131,6 +167,12 @@ type VerifiableCredentialServer interface {
 	VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error)
 	// Sends a document directly to a user's email within the given ecosystem
 	Send(context.Context, *SendRequest) (*SendResponse, error)
+	// Create credential offer
+	CreateCredentialOffer(context.Context, *CreateCredentialOfferRequest) (*CreateCredentialOfferResponse, error)
+	// Accept an offer to exchange a credential
+	AcceptCredential(context.Context, *AcceptCredentialRequest) (*AcceptCredentialResponse, error)
+	// Reject an offer to exchange a credential
+	RejectCredential(context.Context, *RejectCredentialRequest) (*RejectCredentialResponse, error)
 	mustEmbedUnimplementedVerifiableCredentialServer()
 }
 
@@ -155,6 +197,15 @@ func (UnimplementedVerifiableCredentialServer) VerifyProof(context.Context, *Ver
 }
 func (UnimplementedVerifiableCredentialServer) Send(context.Context, *SendRequest) (*SendResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
+}
+func (UnimplementedVerifiableCredentialServer) CreateCredentialOffer(context.Context, *CreateCredentialOfferRequest) (*CreateCredentialOfferResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCredentialOffer not implemented")
+}
+func (UnimplementedVerifiableCredentialServer) AcceptCredential(context.Context, *AcceptCredentialRequest) (*AcceptCredentialResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AcceptCredential not implemented")
+}
+func (UnimplementedVerifiableCredentialServer) RejectCredential(context.Context, *RejectCredentialRequest) (*RejectCredentialResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RejectCredential not implemented")
 }
 func (UnimplementedVerifiableCredentialServer) mustEmbedUnimplementedVerifiableCredentialServer() {}
 
@@ -277,6 +328,60 @@ func _VerifiableCredential_Send_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VerifiableCredential_CreateCredentialOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCredentialOfferRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VerifiableCredentialServer).CreateCredentialOffer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VerifiableCredential_CreateCredentialOffer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VerifiableCredentialServer).CreateCredentialOffer(ctx, req.(*CreateCredentialOfferRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VerifiableCredential_AcceptCredential_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AcceptCredentialRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VerifiableCredentialServer).AcceptCredential(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VerifiableCredential_AcceptCredential_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VerifiableCredentialServer).AcceptCredential(ctx, req.(*AcceptCredentialRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VerifiableCredential_RejectCredential_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RejectCredentialRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VerifiableCredentialServer).RejectCredential(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VerifiableCredential_RejectCredential_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VerifiableCredentialServer).RejectCredential(ctx, req.(*RejectCredentialRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VerifiableCredential_ServiceDesc is the grpc.ServiceDesc for VerifiableCredential service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -307,6 +412,18 @@ var VerifiableCredential_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Send",
 			Handler:    _VerifiableCredential_Send_Handler,
+		},
+		{
+			MethodName: "CreateCredentialOffer",
+			Handler:    _VerifiableCredential_CreateCredentialOffer_Handler,
+		},
+		{
+			MethodName: "AcceptCredential",
+			Handler:    _VerifiableCredential_AcceptCredential_Handler,
+		},
+		{
+			MethodName: "RejectCredential",
+			Handler:    _VerifiableCredential_RejectCredential_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
