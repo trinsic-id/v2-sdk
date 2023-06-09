@@ -65,12 +65,16 @@ Future runVaccineDemo() async {
 
   // createCredentialTemplate() {
   var credentialTemplateResponse = await trinsic.template().create(
-      CreateCredentialTemplateRequest(name: "Vaccination-Certificate-${uuid.v4()}", fields: {
-        "firstName": TemplateField(description: "First name"),
-        "lastName": TemplateField(description: "Last name"),
-        "batchNumber": TemplateField(description: "Batch number of vaccine"),
-        "countryOfVaccination": TemplateField(description: "Country of vaccination"),
-      }));
+          CreateCredentialTemplateRequest(
+              name: "Vaccination-Certificate-${uuid.v4()}",
+              fields: {
+            "firstName": TemplateField(description: "First name"),
+            "lastName": TemplateField(description: "Last name"),
+            "batchNumber":
+                TemplateField(description: "Batch number of vaccine"),
+            "countryOfVaccination":
+                TemplateField(description: "Country of vaccination"),
+          }));
   var template = credentialTemplateResponse.data;
   // }
 
@@ -90,7 +94,6 @@ Future runVaccineDemo() async {
           templateId: template.id, valuesJson: jsonString));
   var credential = issueResponse.documentJson;
   // }
-
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.

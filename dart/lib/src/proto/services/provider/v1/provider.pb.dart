@@ -9,9 +9,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $1;
+import '../../account/v1/account.pb.dart' as $4;
 
-import '../../account/v1/account.pbenum.dart' as $1;
+import '../../account/v1/account.pbenum.dart' as $4;
 import 'provider.pbenum.dart';
 import '../../common/v1/common.pbenum.dart' as $8;
 
@@ -145,12 +145,12 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOM<$1.AccountDetails>(
+    ..aOM<$4.AccountDetails>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $1.AccountDetails.create)
+        subBuilder: $4.AccountDetails.create)
     ..aOS(
         5,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -162,7 +162,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   factory CreateEcosystemRequest({
     $core.String? name,
     $core.String? description,
-    $1.AccountDetails? details,
+    $4.AccountDetails? details,
     $core.String? domain,
   }) {
     final _result = create();
@@ -234,9 +234,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(4)
-  $1.AccountDetails get details => $_getN(2);
+  $4.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(4)
-  set details($1.AccountDetails v) {
+  set details($4.AccountDetails v) {
     setField(4, v);
   }
 
@@ -245,7 +245,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $1.AccountDetails ensureDetails() => $_ensure(2);
+  $4.AccountDetails ensureDetails() => $_ensure(2);
 
   @$pb.TagNumber(5)
   $core.String get domain => $_getSZ(3);
@@ -276,28 +276,28 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
             ? ''
             : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$1.AccountProfile>(
+    ..aOM<$4.AccountProfile>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $1.AccountProfile.create)
-    ..e<$1.ConfirmationMethod>(
+        subBuilder: $4.AccountProfile.create)
+    ..e<$4.ConfirmationMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'confirmationMethod',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $1.ConfirmationMethod.None,
-        valueOf: $1.ConfirmationMethod.valueOf,
-        enumValues: $1.ConfirmationMethod.values)
+        defaultOrMaker: $4.ConfirmationMethod.None,
+        valueOf: $4.ConfirmationMethod.valueOf,
+        enumValues: $4.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   CreateEcosystemResponse._() : super();
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $1.AccountProfile? profile,
-    $1.ConfirmationMethod? confirmationMethod,
+    $4.AccountProfile? profile,
+    $4.ConfirmationMethod? confirmationMethod,
   }) {
     final _result = create();
     if (ecosystem != null) {
@@ -355,9 +355,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $1.AccountProfile get profile => $_getN(1);
+  $4.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($1.AccountProfile v) {
+  set profile($4.AccountProfile v) {
     setField(2, v);
   }
 
@@ -366,12 +366,12 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $1.AccountProfile ensureProfile() => $_ensure(1);
+  $4.AccountProfile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $4.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($1.ConfirmationMethod v) {
+  set confirmationMethod($4.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -1131,13 +1131,13 @@ class WalletConfiguration extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'configType')
-    ..pc<$1.WalletAuthToken>(
+    ..pc<$4.WalletAuthToken>(
         7,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'authTokens',
         $pb.PbFieldType.PM,
-        subBuilder: $1.WalletAuthToken.create)
+        subBuilder: $4.WalletAuthToken.create)
     ..pPS(
         8,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1170,7 +1170,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? walletId,
     $core.String? publicDid,
     $core.String? configType,
-    $core.Iterable<$1.WalletAuthToken>? authTokens,
+    $core.Iterable<$4.WalletAuthToken>? authTokens,
     @$core.Deprecated('This field is deprecated.')
     $core.Iterable<$core.String>? externalIdentityIds,
     $core.String? ecosystemId,
@@ -1324,7 +1324,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   void clearConfigType() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.List<$1.WalletAuthToken> get authTokens => $_getList(6);
+  $core.List<$4.WalletAuthToken> get authTokens => $_getList(6);
 
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(8)
