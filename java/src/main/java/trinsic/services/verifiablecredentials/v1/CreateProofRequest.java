@@ -427,7 +427,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Wrap the output in a verifiable presentation
+   * Wrap the output in a verifiable presentation.
+   * If the credential used in the proof is bound to the holder DID,
+   * the output will always use a verifiable presentation and this field will be ignored.
    * </pre>
    *
    * <code>bool use_verifiable_presentation = 4;</code>
@@ -1666,7 +1668,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Wrap the output in a verifiable presentation
+     * Wrap the output in a verifiable presentation.
+     * If the credential used in the proof is bound to the holder DID,
+     * the output will always use a verifiable presentation and this field will be ignored.
      * </pre>
      *
      * <code>bool use_verifiable_presentation = 4;</code>
@@ -1681,7 +1685,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Wrap the output in a verifiable presentation
+     * Wrap the output in a verifiable presentation.
+     * If the credential used in the proof is bound to the holder DID,
+     * the output will always use a verifiable presentation and this field will be ignored.
      * </pre>
      *
      * <code>bool use_verifiable_presentation = 4;</code>
@@ -1699,7 +1705,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Wrap the output in a verifiable presentation
+     * Wrap the output in a verifiable presentation.
+     * If the credential used in the proof is bound to the holder DID,
+     * the output will always use a verifiable presentation and this field will be ignored.
      * </pre>
      *
      * <code>bool use_verifiable_presentation = 4;</code>

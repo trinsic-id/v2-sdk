@@ -9,9 +9,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../provider/v1/provider.pb.dart' as $5;
+import '../../provider/v1/provider.pb.dart' as $4;
 
-import '../../provider/v1/provider.pbenum.dart' as $5;
+import '../../provider/v1/provider.pbenum.dart' as $4;
 
 class SearchRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -931,21 +931,21 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'identity')
-    ..e<$5.IdentityProvider>(
+    ..e<$4.IdentityProvider>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'provider',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $5.IdentityProvider.Unknown,
-        valueOf: $5.IdentityProvider.valueOf,
-        enumValues: $5.IdentityProvider.values)
+        defaultOrMaker: $4.IdentityProvider.Unknown,
+        valueOf: $4.IdentityProvider.valueOf,
+        enumValues: $4.IdentityProvider.values)
     ..hasRequiredFields = false;
 
   CreateWalletRequest_ExternalIdentity._() : super();
   factory CreateWalletRequest_ExternalIdentity({
     $core.String? identity,
-    $5.IdentityProvider? provider,
+    $4.IdentityProvider? provider,
   }) {
     final _result = create();
     if (identity != null) {
@@ -1002,9 +1002,9 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  $5.IdentityProvider get provider => $_getN(1);
+  $4.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($5.IdentityProvider v) {
+  set provider($4.IdentityProvider v) {
     setField(2, v);
   }
 
@@ -1146,19 +1146,19 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'tokenId')
-    ..aOM<$5.WalletConfiguration>(
+    ..aOM<$4.WalletConfiguration>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $5.WalletConfiguration.create)
+        subBuilder: $4.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   CreateWalletResponse._() : super();
   factory CreateWalletResponse({
     $core.String? authToken,
     $core.String? tokenId,
-    $5.WalletConfiguration? wallet,
+    $4.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (authToken != null) {
@@ -1225,9 +1225,9 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   void clearTokenId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $5.WalletConfiguration get wallet => $_getN(2);
+  $4.WalletConfiguration get wallet => $_getN(2);
   @$pb.TagNumber(4)
-  set wallet($5.WalletConfiguration v) {
+  set wallet($4.WalletConfiguration v) {
     setField(4, v);
   }
 
@@ -1236,7 +1236,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearWallet() => clearField(4);
   @$pb.TagNumber(4)
-  $5.WalletConfiguration ensureWallet() => $_ensure(2);
+  $4.WalletConfiguration ensureWallet() => $_ensure(2);
 }
 
 class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1497,17 +1497,17 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$5.WalletConfiguration>(
+    ..aOM<$4.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $5.WalletConfiguration.create)
+        subBuilder: $4.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   GetWalletInfoResponse._() : super();
   factory GetWalletInfoResponse({
-    $5.WalletConfiguration? wallet,
+    $4.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (wallet != null) {
@@ -1545,9 +1545,9 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   static GetWalletInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $5.WalletConfiguration get wallet => $_getN(0);
+  $4.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($5.WalletConfiguration v) {
+  set wallet($4.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1556,7 +1556,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $5.WalletConfiguration ensureWallet() => $_ensure(0);
+  $4.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class GetMyInfoRequest extends $pb.GeneratedMessage {
@@ -1611,17 +1611,17 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$5.WalletConfiguration>(
+    ..aOM<$4.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallet',
-        subBuilder: $5.WalletConfiguration.create)
+        subBuilder: $4.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   GetMyInfoResponse._() : super();
   factory GetMyInfoResponse({
-    $5.WalletConfiguration? wallet,
+    $4.WalletConfiguration? wallet,
   }) {
     final _result = create();
     if (wallet != null) {
@@ -1657,9 +1657,9 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   static GetMyInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $5.WalletConfiguration get wallet => $_getN(0);
+  $4.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($5.WalletConfiguration v) {
+  set wallet($4.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1668,7 +1668,7 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $5.WalletConfiguration ensureWallet() => $_ensure(0);
+  $4.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1882,18 +1882,18 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..pc<$5.WalletConfiguration>(
+    ..pc<$4.WalletConfiguration>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'wallets',
         $pb.PbFieldType.PM,
-        subBuilder: $5.WalletConfiguration.create)
+        subBuilder: $4.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   ListWalletsResponse._() : super();
   factory ListWalletsResponse({
-    $core.Iterable<$5.WalletConfiguration>? wallets,
+    $core.Iterable<$4.WalletConfiguration>? wallets,
   }) {
     final _result = create();
     if (wallets != null) {
@@ -1929,7 +1929,7 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
   static ListWalletsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$5.WalletConfiguration> get wallets => $_getList(0);
+  $core.List<$4.WalletConfiguration> get wallets => $_getList(0);
 }
 
 class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
@@ -1947,21 +1947,21 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'identity')
-    ..e<$5.IdentityProvider>(
+    ..e<$4.IdentityProvider>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'provider',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $5.IdentityProvider.Unknown,
-        valueOf: $5.IdentityProvider.valueOf,
-        enumValues: $5.IdentityProvider.values)
+        defaultOrMaker: $4.IdentityProvider.Unknown,
+        valueOf: $4.IdentityProvider.valueOf,
+        enumValues: $4.IdentityProvider.values)
     ..hasRequiredFields = false;
 
   AddExternalIdentityInitRequest._() : super();
   factory AddExternalIdentityInitRequest({
     $core.String? identity,
-    $5.IdentityProvider? provider,
+    $4.IdentityProvider? provider,
   }) {
     final _result = create();
     if (identity != null) {
@@ -2016,9 +2016,9 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  $5.IdentityProvider get provider => $_getN(1);
+  $4.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($5.IdentityProvider v) {
+  set provider($4.IdentityProvider v) {
     setField(2, v);
   }
 
@@ -2372,15 +2372,15 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'identity')
-    ..e<$5.IdentityProvider>(
+    ..e<$4.IdentityProvider>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'provider',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $5.IdentityProvider.Unknown,
-        valueOf: $5.IdentityProvider.valueOf,
-        enumValues: $5.IdentityProvider.values)
+        defaultOrMaker: $4.IdentityProvider.Unknown,
+        valueOf: $4.IdentityProvider.valueOf,
+        enumValues: $4.IdentityProvider.values)
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -2391,7 +2391,7 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
   AuthenticateInitRequest._() : super();
   factory AuthenticateInitRequest({
     $core.String? identity,
-    $5.IdentityProvider? provider,
+    $4.IdentityProvider? provider,
     $core.String? ecosystemId,
   }) {
     final _result = create();
@@ -2448,9 +2448,9 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  $5.IdentityProvider get provider => $_getN(1);
+  $4.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($5.IdentityProvider v) {
+  set provider($4.IdentityProvider v) {
     setField(2, v);
   }
 

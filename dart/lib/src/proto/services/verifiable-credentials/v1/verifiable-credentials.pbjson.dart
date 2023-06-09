@@ -320,3 +320,117 @@ const CheckStatusResponse$json = const {
 final $typed_data.Uint8List checkStatusResponseDescriptor =
     $convert.base64Decode(
         'ChNDaGVja1N0YXR1c1Jlc3BvbnNlEhgKB3Jldm9rZWQYASABKAhSB3Jldm9rZWQ=');
+@$core.Deprecated('Use createCredentialOfferRequestDescriptor instead')
+const CreateCredentialOfferRequest$json = const {
+  '1': 'CreateCredentialOfferRequest',
+  '2': const [
+    const {'1': 'template_id', '3': 1, '4': 1, '5': 9, '10': 'templateId'},
+    const {'1': 'values_json', '3': 2, '4': 1, '5': 9, '10': 'valuesJson'},
+    const {
+      '1': 'holder_binding',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'holderBinding'
+    },
+    const {
+      '1': 'include_governance',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '10': 'includeGovernance'
+    },
+    const {
+      '1': 'generate_share_url',
+      '3': 5,
+      '4': 1,
+      '5': 8,
+      '10': 'generateShareUrl'
+    },
+  ],
+};
+
+/// Descriptor for `CreateCredentialOfferRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createCredentialOfferRequestDescriptor =
+    $convert.base64Decode(
+        'ChxDcmVhdGVDcmVkZW50aWFsT2ZmZXJSZXF1ZXN0Eh8KC3RlbXBsYXRlX2lkGAEgASgJUgp0ZW1wbGF0ZUlkEh8KC3ZhbHVlc19qc29uGAIgASgJUgp2YWx1ZXNKc29uEiUKDmhvbGRlcl9iaW5kaW5nGAMgASgIUg1ob2xkZXJCaW5kaW5nEi0KEmluY2x1ZGVfZ292ZXJuYW5jZRgEIAEoCFIRaW5jbHVkZUdvdmVybmFuY2USLAoSZ2VuZXJhdGVfc2hhcmVfdXJsGAUgASgIUhBnZW5lcmF0ZVNoYXJlVXJs');
+@$core.Deprecated('Use createCredentialOfferResponseDescriptor instead')
+const CreateCredentialOfferResponse$json = const {
+  '1': 'CreateCredentialOfferResponse',
+  '2': const [
+    const {'1': 'document_json', '3': 1, '4': 1, '5': 9, '10': 'documentJson'},
+    const {'1': 'share_url', '3': 2, '4': 1, '5': 9, '10': 'shareUrl'},
+  ],
+};
+
+/// Descriptor for `CreateCredentialOfferResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createCredentialOfferResponseDescriptor =
+    $convert.base64Decode(
+        'Ch1DcmVhdGVDcmVkZW50aWFsT2ZmZXJSZXNwb25zZRIjCg1kb2N1bWVudF9qc29uGAEgASgJUgxkb2N1bWVudEpzb24SGwoJc2hhcmVfdXJsGAIgASgJUghzaGFyZVVybA==');
+@$core.Deprecated('Use acceptCredentialRequestDescriptor instead')
+const AcceptCredentialRequest$json = const {
+  '1': 'AcceptCredentialRequest',
+  '2': const [
+    const {
+      '1': 'document_json',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'documentJson'
+    },
+    const {'1': 'item_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'itemId'},
+  ],
+  '8': const [
+    const {'1': 'offer'},
+  ],
+};
+
+/// Descriptor for `AcceptCredentialRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List acceptCredentialRequestDescriptor =
+    $convert.base64Decode(
+        'ChdBY2NlcHRDcmVkZW50aWFsUmVxdWVzdBIlCg1kb2N1bWVudF9qc29uGAEgASgJSABSDGRvY3VtZW50SnNvbhIZCgdpdGVtX2lkGAIgASgJSABSBml0ZW1JZEIHCgVvZmZlcg==');
+@$core.Deprecated('Use acceptCredentialResponseDescriptor instead')
+const AcceptCredentialResponse$json = const {
+  '1': 'AcceptCredentialResponse',
+  '2': const [
+    const {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
+    const {'1': 'document_json', '3': 2, '4': 1, '5': 9, '10': 'documentJson'},
+  ],
+};
+
+/// Descriptor for `AcceptCredentialResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List acceptCredentialResponseDescriptor =
+    $convert.base64Decode(
+        'ChhBY2NlcHRDcmVkZW50aWFsUmVzcG9uc2USFwoHaXRlbV9pZBgBIAEoCVIGaXRlbUlkEiMKDWRvY3VtZW50X2pzb24YAiABKAlSDGRvY3VtZW50SnNvbg==');
+@$core.Deprecated('Use rejectCredentialRequestDescriptor instead')
+const RejectCredentialRequest$json = const {
+  '1': 'RejectCredentialRequest',
+  '2': const [
+    const {
+      '1': 'document_json',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'documentJson'
+    },
+    const {'1': 'item_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'itemId'},
+  ],
+  '8': const [
+    const {'1': 'offer'},
+  ],
+};
+
+/// Descriptor for `RejectCredentialRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rejectCredentialRequestDescriptor =
+    $convert.base64Decode(
+        'ChdSZWplY3RDcmVkZW50aWFsUmVxdWVzdBIlCg1kb2N1bWVudF9qc29uGAEgASgJSABSDGRvY3VtZW50SnNvbhIZCgdpdGVtX2lkGAIgASgJSABSBml0ZW1JZEIHCgVvZmZlcg==');
+@$core.Deprecated('Use rejectCredentialResponseDescriptor instead')
+const RejectCredentialResponse$json = const {
+  '1': 'RejectCredentialResponse',
+};
+
+/// Descriptor for `RejectCredentialResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rejectCredentialResponseDescriptor =
+    $convert.base64Decode('ChhSZWplY3RDcmVkZW50aWFsUmVzcG9uc2U=');
