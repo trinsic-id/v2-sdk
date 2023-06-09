@@ -6,7 +6,9 @@ from trinsic.proto.services.trustregistry.v1 import (
     RegistrationStatus,
     UnregisterMemberRequest,
     GetMemberAuthorizationStatusRequest,
-    RegisterMemberRequest, ListAuthorizedMembersRequest, GetMemberRequest,
+    RegisterMemberRequest,
+    ListAuthorizedMembersRequest,
+    GetMemberRequest,
 )
 from trinsic.proto.services.universalwallet.v1 import CreateWalletRequest
 from trinsic.trinsic_service import TrinsicService
@@ -48,17 +50,13 @@ async def trustregistry_demo():
 
     # listMembers() {
     list_response = await trinsic_service.trust_registry.list_authorized_members(
-        request=ListAuthorizedMembersRequest(
-            schema_uri=https_schema_org
-        )
+        request=ListAuthorizedMembersRequest(schema_uri=https_schema_org)
     )
     # }
 
     # getMember() {
     get_member_response = await trinsic_service.trust_registry.get_member(
-        request=GetMemberRequest(
-            did_uri=did_example_test
-        )
+        request=GetMemberRequest(did_uri=did_example_test)
     )
     # }
 

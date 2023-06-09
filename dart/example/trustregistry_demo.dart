@@ -31,13 +31,15 @@ Future runTrustRegistryDemo() async {
   assert(checkResponse.status == RegistrationStatus.CURRENT);
 
   // getMember() {
-  var getMemberResponse = await trinsic.trustRegistry().getMember(
-      GetMemberRequest(didUri: didExampleTest));
+  var getMemberResponse = await trinsic
+      .trustRegistry()
+      .getMember(GetMemberRequest(didUri: didExampleTest));
   // }
 
   // listMembers() {
-  var listMembersResponse = await trinsic.trustRegistry().listAuthorizedMembers(
-    ListAuthorizedMembersRequest(schemaUri: httpsSchemaOrg));
+  var listMembersResponse = await trinsic
+      .trustRegistry()
+      .listAuthorizedMembers(ListMembersRequest(schemaUri: httpsSchemaOrg));
   //}
 
   // unregisterIssuer() {
