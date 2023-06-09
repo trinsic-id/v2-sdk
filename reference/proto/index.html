@@ -2541,6 +2541,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#acceptcredentialrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AcceptCredentialRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceptcredentialresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AcceptCredentialResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#checkstatusrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2556,6 +2578,28 @@
     <span class="md-ellipsis">
       
         CheckStatusResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcredentialofferrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CreateCredentialOfferRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcredentialofferresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CreateCredentialOfferResponse
       
     </span>
   </a>
@@ -2600,6 +2644,28 @@
     <span class="md-ellipsis">
       
         IssueFromTemplateResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejectcredentialrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RejectCredentialRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejectcredentialresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RejectCredentialResponse
       
     </span>
   </a>
@@ -4998,10 +5064,74 @@ like email, SMS, etc.</p>
 <td><a href="/reference/proto#services-verifiablecredentials-v1-SendResponse">SendResponse</a></td>
 <td>Sends a document directly to a user's email within the given ecosystem</td>
 </tr>
+<tr>
+<td>CreateCredentialOffer</td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-CreateCredentialOfferRequest">CreateCredentialOfferRequest</a></td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-CreateCredentialOfferResponse">CreateCredentialOfferResponse</a></td>
+<td>Create credential offer</td>
+</tr>
+<tr>
+<td>AcceptCredential</td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-AcceptCredentialRequest">AcceptCredentialRequest</a></td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-AcceptCredentialResponse">AcceptCredentialResponse</a></td>
+<td>Accept an offer to exchange a credential</td>
+</tr>
+<tr>
+<td>RejectCredential</td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-RejectCredentialRequest">RejectCredentialRequest</a></td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-RejectCredentialResponse">RejectCredentialResponse</a></td>
+<td>Reject an offer to exchange a credential</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
 
+<p><a name="services-verifiablecredentials-v1-AcceptCredentialRequest"></a></p>
+<h3 id="acceptcredentialrequest">AcceptCredentialRequest<a class="headerlink" href="#acceptcredentialrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The JSON document that contains the credential offer</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The ID of the item in the wallet that contains the credential offer</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-v1-AcceptCredentialResponse"></a></p>
+<h3 id="acceptcredentialresponse">AcceptCredentialResponse<a class="headerlink" href="#acceptcredentialresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The ID of the item in the wallet that contains the issued credential</td>
+</tr>
+<tr>
+<td>document_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The JSON document that contains the issued credential. This item is already stored in the wallet.</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-verifiablecredentials-v1-CheckStatusRequest"></a></p>
 <h3 id="checkstatusrequest">CheckStatusRequest<a class="headerlink" href="#checkstatusrequest" title="Permanent link">&para;</a></h3>
 <p>Request to check a credential's revocation status</p>
@@ -5037,6 +5167,67 @@ like email, SMS, etc.</p>
 <td>revoked</td>
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>The credential's revocation status</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-v1-CreateCredentialOfferRequest"></a></p>
+<h3 id="createcredentialofferrequest">CreateCredentialOfferRequest<a class="headerlink" href="#createcredentialofferrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>template_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of template to use</td>
+</tr>
+<tr>
+<td>values_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>JSON document string with keys corresponding to the fields of the template referenced by <code>template_id</code></td>
+</tr>
+<tr>
+<td>holder_binding</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>If true, the credential will be issued with holder binding by specifying the holder DID in the credential subject</td>
+</tr>
+<tr>
+<td>include_governance</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
+</tr>
+<tr>
+<td>generate_share_url</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-v1-CreateCredentialOfferResponse"></a></p>
+<h3 id="createcredentialofferresponse">CreateCredentialOfferResponse<a class="headerlink" href="#createcredentialofferresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The JSON document that contains the credential offer</td>
+</tr>
+<tr>
+<td>share_url</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>If requested, a URL that can be used to share the credential offer with the holder. This is a short URL that can be used in a QR code and will redirect the holder to the credential offer using the wallet app.</td>
 </tr>
 </tbody>
 </table>
@@ -5076,7 +5267,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>use_verifiable_presentation</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>Wrap the output in a verifiable presentation</td>
+<td>Wrap the output in a verifiable presentation. If the credential used in the proof is bound to the holder DID, the output will always use a verifiable presentation and this field will be ignored.</td>
 </tr>
 <tr>
 <td>nonce</td>
@@ -5162,6 +5353,31 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 </tr>
 </tbody>
 </table>
+<p><a name="services-verifiablecredentials-v1-RejectCredentialRequest"></a></p>
+<h3 id="rejectcredentialrequest">RejectCredentialRequest<a class="headerlink" href="#rejectcredentialrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The JSON document that contains the credential offer</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The ID of the item in the wallet that contains the credential offer</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-v1-RejectCredentialResponse"></a></p>
+<h3 id="rejectcredentialresponse">RejectCredentialResponse<a class="headerlink" href="#rejectcredentialresponse" title="Permanent link">&para;</a></h3>
 <p><a name="services-verifiablecredentials-v1-RevealTemplateAttributes"></a></p>
 <h3 id="revealtemplateattributes">RevealTemplateAttributes<a class="headerlink" href="#revealtemplateattributes" title="Permanent link">&para;</a></h3>
 <table>
