@@ -7,6 +7,9 @@ using Trinsic.Sdk.Options.V1;
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
 
+/// <summary>
+/// Extension methods for <see cref="IServiceCollection"/> to add Trinsic Service dependencies
+/// </summary>
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
@@ -19,11 +22,12 @@ public static class ServiceCollectionExtensions
     /// <param name="configureOptions"></param>
     /// <returns></returns>
     public static IServiceCollection AddTrinsic(this IServiceCollection serviceCollection, Action<TrinsicOptions>? configureOptions = null) {
-        if (configureOptions is not null)
-        {
+        if (configureOptions is not null) {
             serviceCollection.Configure(configureOptions);
         }
 
-        return serviceCollection.AddSingleton(provider => new TrinsicService(provider.GetService<IOptions<TrinsicOptions>>()?.Value ?? new TrinsicOptions()));
+        return serviceCollection
+            .AddSingleton(provider => new TrinsicService(provider.GetService<IOptions<TrinsicOptions>>()?.Value ?? new TrinsicOptions()))
+            .AddSingleton<ITrinsicService>(provider => new TrinsicService(provider.GetService<IOptions<TrinsicOptions>>()?.Value ?? new TrinsicOptions()));
     }
 }
