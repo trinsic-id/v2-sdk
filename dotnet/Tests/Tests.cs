@@ -159,12 +159,9 @@ public class Tests
         // }
 
         // SHARE CREDENTIAL
-        var proofRequestJson = await File.ReadAllTextAsync(VaccinationCertificateFrame);
-
         var credentialProof = await trinsic.Credential.CreateProofAsync(new()
         {
-            ItemId = itemId,
-            RevealDocumentJson = proofRequestJson
+            ItemId = itemId
         });
 
         _testOutputHelper.WriteLine("Proof:");

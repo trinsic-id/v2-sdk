@@ -113,6 +113,36 @@
             Sends a document directly to a user's email within the given ecosystem
             </summary>
         </member>
+        <member name="M:Trinsic.CredentialService.CreateCredentialOffer(Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest)">
+            <summary>
+            Create credential offer
+            </summary>
+        </member>
+        <member name="M:Trinsic.CredentialService.CreateCredentialOfferAsync(Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest)">
+            <summary>
+            Create credential offer
+            </summary>
+        </member>
+        <member name="M:Trinsic.CredentialService.AcceptCredential(Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest)">
+            <summary>
+            Accept an offer to exchange a credential
+            </summary>
+        </member>
+        <member name="M:Trinsic.CredentialService.AcceptCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest)">
+            <summary>
+            Accept an offer to exchange a credential
+            </summary>
+        </member>
+        <member name="M:Trinsic.CredentialService.RejectCredential(Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest)">
+            <summary>
+            Reject an offer to exchange a credential
+            </summary>
+        </member>
+        <member name="M:Trinsic.CredentialService.RejectCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest)">
+            <summary>
+            Reject an offer to exchange a credential
+            </summary>
+        </member>
         <member name="T:Trinsic.Base64Url">
             <summary>
             Encodes and Decodes strings as Base64Url encoding.
@@ -5343,7 +5373,9 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.UseVerifiablePresentation">
             <summary>
-            Wrap the output in a verifiable presentation
+            Wrap the output in a verifiable presentation.
+            If the credential used in the proof is bound to the holder DID,
+            the output will always use a verifiable presentation and this field will be ignored.
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.NonceFieldNumber">
@@ -5552,6 +5584,123 @@
             The credential's revocation status
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.TemplateIdFieldNumber">
+            <summary>Field number for the "template_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.TemplateId">
+            <summary>
+            ID of template to use
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.ValuesJsonFieldNumber">
+            <summary>Field number for the "values_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.ValuesJson">
+            <summary>
+            JSON document string with keys corresponding to the fields of
+            the template referenced by `template_id`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.HolderBindingFieldNumber">
+            <summary>Field number for the "holder_binding" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.HolderBinding">
+            <summary>
+            If true, the credential will be issued with holder binding by specifying 
+            the holder DID in the credential subject
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.IncludeGovernanceFieldNumber">
+            <summary>Field number for the "include_governance" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.IncludeGovernance">
+            <summary>
+            If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+            governance framework.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.GenerateShareUrlFieldNumber">
+            <summary>Field number for the "generate_share_url" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.GenerateShareUrl">
+            <summary>
+            If true, a short URL link will be generated that can be used to share the credential offer with the holder.
+            This link will point to the credential offer in the wallet app.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferResponse.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferResponse.DocumentJson">
+            <summary>
+            The JSON document that contains the credential offer
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferResponse.ShareUrlFieldNumber">
+            <summary>Field number for the "share_url" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferResponse.ShareUrl">
+            <summary>
+            If requested, a URL that can be used to share the credential offer with the holder.
+            This is a short URL that can be used in a QR code and will redirect the 
+            holder to the credential offer using the wallet app.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest.DocumentJson">
+            <summary>
+            The JSON document that contains the credential offer
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest.ItemId">
+            <summary>
+            The ID of the item in the wallet that contains the credential offer
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest.OfferOneofCase">
+            <summary>Enum of possible cases for the "offer" oneof.</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialResponse.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialResponse.ItemId">
+            <summary>
+            The ID of the item in the wallet that contains the issued credential
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialResponse.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialResponse.DocumentJson">
+            <summary>
+            The JSON document that contains the issued credential. 
+            This item is already stored in the wallet.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest.DocumentJson">
+            <summary>
+            The JSON document that contains the credential offer
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest.ItemId">
+            <summary>
+            The ID of the item in the wallet that contains the credential offer
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest.OfferOneofCase">
+            <summary>Enum of possible cases for the "offer" oneof.</summary>
+        </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -5605,6 +5754,30 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.Send(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Sends a document directly to a user's email within the given ecosystem
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CreateCredentialOffer(Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Create credential offer
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.AcceptCredential(Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Accept an offer to exchange a credential
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.RejectCredential(Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Reject an offer to exchange a credential
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -5860,6 +6033,114 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateCredentialOffer(Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create credential offer
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateCredentialOffer(Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create credential offer
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateCredentialOfferAsync(Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create credential offer
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateCredentialOfferAsync(Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create credential offer
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.AcceptCredential(Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Accept an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.AcceptCredential(Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Accept an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.AcceptCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Accept an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.AcceptCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Accept an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.RejectCredential(Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Reject an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.RejectCredential(Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Reject an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.RejectCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Reject an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.RejectCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.RejectCredentialRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Reject an offer to exchange a credential
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
@@ -5937,6 +6218,46 @@
             This method is experimental
               Get statistics about files uploaded by the calling account
              </summary>
+        </member>
+        <member name="T:Trinsic.ITrinsicService">
+            <summary>
+            Trinsic Service Interface
+            </summary>
+        </member>
+        <member name="P:Trinsic.ITrinsicService.AccessManagement">
+            <summary>
+            Access Management Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.ITrinsicService.Credential">
+            <summary>
+            Credential Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.ITrinsicService.FileManagement">
+            <summary>
+            File Management Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.ITrinsicService.Template">
+            <summary>
+            Template Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.ITrinsicService.Provider">
+            <summary>
+            Provider Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.ITrinsicService.TrustRegistry">
+            <summary>
+            Trust Registry Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.ITrinsicService.Wallet">
+            <summary>
+            Wallet Service
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
@@ -6083,6 +6404,17 @@
             Trinsic Service
             </summary>
         </member>
+        <member name="M:Trinsic.TrinsicService.#ctor(Trinsic.Sdk.Options.V1.TrinsicOptions)">
+            <summary>
+            Trinsic Service
+            </summary>
+            <param name="options">Trinsic Options</param>
+        </member>
+        <member name="M:Trinsic.TrinsicService.#ctor">
+            <summary>
+            Trinsic Service
+            </summary>
+        </member>
         <member name="P:Trinsic.TrinsicService.AccessManagement">
             <summary>
             Exposes Account Service functionality
@@ -6091,6 +6423,11 @@
         <member name="P:Trinsic.TrinsicService.Credential">
             <summary>
             Exposes Credential Service functionality
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.FileManagement">
+            <summary>
+            Exposes File Management Service functionality
             </summary>
         </member>
         <member name="P:Trinsic.TrinsicService.Template">
@@ -6424,6 +6761,11 @@
             <typeparam name="T"></typeparam>
             <param name="message"></param>
             <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add Trinsic Service dependencies
+            </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTrinsic(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Trinsic.Sdk.Options.V1.TrinsicOptions})">
             <summary>
