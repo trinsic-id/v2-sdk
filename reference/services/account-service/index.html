@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15+insiders-4.35.3">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16+insiders-4.36.0">
     
     
       
@@ -2496,12 +2496,9 @@
 <span class="w">        </span><span class="c1">// }</span>
 
 <span class="w">        </span><span class="c1">// SHARE CREDENTIAL</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">proofRequestJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllTextAsync</span><span class="p">(</span><span class="n">VaccinationCertificateFrame</span><span class="p">);</span>
-
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">ItemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemId</span><span class="p">,</span>
-<span class="w">            </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proofRequestJson</span>
+<span class="w">            </span><span class="n">ItemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemId</span>
 <span class="w">        </span><span class="p">});</span>
 
 <span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Proof:&quot;</span><span class="p">);</span>
@@ -3026,7 +3023,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.6c7302c4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.10c6cd24.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7001d404.min.js"></script>
       
         
           <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
