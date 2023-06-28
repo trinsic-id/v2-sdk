@@ -1,18 +1,25 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/verifiable-credentials/v1/verifiable-credentials.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:async' as $async;
-
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
+import 'package:protobuf/protobuf.dart' as $pb;
+
 import 'verifiable-credentials.pb.dart' as $2;
+
 export 'verifiable-credentials.pb.dart';
 
+@$pb.GrpcServiceName('services.verifiablecredentials.v1.VerifiableCredential')
 class VerifiableCredentialClient extends $grpc.Client {
   static final _$issueFromTemplate = $grpc.ClientMethod<
           $2.IssueFromTemplateRequest, $2.IssueFromTemplateResponse>(
@@ -126,6 +133,7 @@ class VerifiableCredentialClient extends $grpc.Client {
   }
 }
 
+@$pb.GrpcServiceName('services.verifiablecredentials.v1.VerifiableCredential')
 abstract class VerifiableCredentialServiceBase extends $grpc.Service {
   $core.String get $name =>
       'services.verifiablecredentials.v1.VerifiableCredential';

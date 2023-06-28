@@ -1,18 +1,25 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/universal-wallet/v1/universal-wallet.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:async' as $async;
-
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
+import 'package:protobuf/protobuf.dart' as $pb;
+
 import 'universal-wallet.pb.dart' as $6;
+
 export 'universal-wallet.pb.dart';
 
+@$pb.GrpcServiceName('services.universalwallet.v1.UniversalWallet')
 class UniversalWalletClient extends $grpc.Client {
   static final _$getItem =
       $grpc.ClientMethod<$6.GetItemRequest, $6.GetItemResponse>(
@@ -240,6 +247,7 @@ class UniversalWalletClient extends $grpc.Client {
   }
 }
 
+@$pb.GrpcServiceName('services.universalwallet.v1.UniversalWallet')
 abstract class UniversalWalletServiceBase extends $grpc.Service {
   $core.String get $name => 'services.universalwallet.v1.UniversalWallet';
 

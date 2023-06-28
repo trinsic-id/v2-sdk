@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/trust-registry/v1/trust-registry.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -17,6 +21,15 @@ export 'trust-registry.pbenum.dart';
 enum RegisterMemberRequest_Member { didUri, walletId, email, notSet }
 
 class RegisterMemberRequest extends $pb.GeneratedMessage {
+  factory RegisterMemberRequest() => create();
+  RegisterMemberRequest._() : super();
+  factory RegisterMemberRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RegisterMemberRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, RegisterMemberRequest_Member>
       _RegisterMemberRequest_MemberByTag = {
     1: RegisterMemberRequest_Member.didUri,
@@ -25,87 +38,23 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
     0: RegisterMemberRequest_Member.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'RegisterMemberRequest',
+      _omitMessageNames ? '' : 'RegisterMemberRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
       createEmptyInstance: create)
     ..oo(0, [1, 3, 4])
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'walletId')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'email')
-    ..aOS(
-        10,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'schemaUri')
+    ..aOS(1, _omitFieldNames ? '' : 'didUri')
+    ..aOS(3, _omitFieldNames ? '' : 'walletId')
+    ..aOS(4, _omitFieldNames ? '' : 'email')
+    ..aOS(10, _omitFieldNames ? '' : 'schemaUri')
     ..a<$fixnum.Int64>(
-        11,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'validFromUtc',
-        $pb.PbFieldType.OU6,
+        11, _omitFieldNames ? '' : 'validFromUtc', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(
-        12,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'validUntilUtc',
-        $pb.PbFieldType.OU6,
+        12, _omitFieldNames ? '' : 'validUntilUtc', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
-  RegisterMemberRequest._() : super();
-  factory RegisterMemberRequest({
-    $core.String? didUri,
-    $core.String? walletId,
-    $core.String? email,
-    $core.String? schemaUri,
-    $fixnum.Int64? validFromUtc,
-    $fixnum.Int64? validUntilUtc,
-  }) {
-    final _result = create();
-    if (didUri != null) {
-      _result.didUri = didUri;
-    }
-    if (walletId != null) {
-      _result.walletId = walletId;
-    }
-    if (email != null) {
-      _result.email = email;
-    }
-    if (schemaUri != null) {
-      _result.schemaUri = schemaUri;
-    }
-    if (validFromUtc != null) {
-      _result.validFromUtc = validFromUtc;
-    }
-    if (validUntilUtc != null) {
-      _result.validUntilUtc = validUntilUtc;
-    }
-    return _result;
-  }
-  factory RegisterMemberRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RegisterMemberRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -117,8 +66,10 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
   RegisterMemberRequest copyWith(
           void Function(RegisterMemberRequest) updates) =>
       super.copyWith((message) => updates(message as RegisterMemberRequest))
-          as RegisterMemberRequest; // ignore: deprecated_member_use
+          as RegisterMemberRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static RegisterMemberRequest create() => RegisterMemberRequest._();
   RegisterMemberRequest createEmptyInstance() => create();
@@ -207,25 +158,22 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
 }
 
 class RegisterMemberResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'RegisterMemberResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  RegisterMemberResponse._() : super();
   factory RegisterMemberResponse() => create();
+  RegisterMemberResponse._() : super();
   factory RegisterMemberResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory RegisterMemberResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RegisterMemberResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -237,8 +185,10 @@ class RegisterMemberResponse extends $pb.GeneratedMessage {
   RegisterMemberResponse copyWith(
           void Function(RegisterMemberResponse) updates) =>
       super.copyWith((message) => updates(message as RegisterMemberResponse))
-          as RegisterMemberResponse; // ignore: deprecated_member_use
+          as RegisterMemberResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static RegisterMemberResponse create() => RegisterMemberResponse._();
   RegisterMemberResponse createEmptyInstance() => create();
@@ -253,6 +203,15 @@ class RegisterMemberResponse extends $pb.GeneratedMessage {
 enum UnregisterMemberRequest_Member { didUri, walletId, email, notSet }
 
 class UnregisterMemberRequest extends $pb.GeneratedMessage {
+  factory UnregisterMemberRequest() => create();
+  UnregisterMemberRequest._() : super();
+  factory UnregisterMemberRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory UnregisterMemberRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, UnregisterMemberRequest_Member>
       _UnregisterMemberRequest_MemberByTag = {
     1: UnregisterMemberRequest_Member.didUri,
@@ -261,65 +220,17 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
     0: UnregisterMemberRequest_Member.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UnregisterMemberRequest',
+      _omitMessageNames ? '' : 'UnregisterMemberRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
       createEmptyInstance: create)
     ..oo(0, [1, 3, 4])
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'walletId')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'email')
-    ..aOS(
-        10,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'schemaUri')
+    ..aOS(1, _omitFieldNames ? '' : 'didUri')
+    ..aOS(3, _omitFieldNames ? '' : 'walletId')
+    ..aOS(4, _omitFieldNames ? '' : 'email')
+    ..aOS(10, _omitFieldNames ? '' : 'schemaUri')
     ..hasRequiredFields = false;
 
-  UnregisterMemberRequest._() : super();
-  factory UnregisterMemberRequest({
-    $core.String? didUri,
-    $core.String? walletId,
-    $core.String? email,
-    $core.String? schemaUri,
-  }) {
-    final _result = create();
-    if (didUri != null) {
-      _result.didUri = didUri;
-    }
-    if (walletId != null) {
-      _result.walletId = walletId;
-    }
-    if (email != null) {
-      _result.email = email;
-    }
-    if (schemaUri != null) {
-      _result.schemaUri = schemaUri;
-    }
-    return _result;
-  }
-  factory UnregisterMemberRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory UnregisterMemberRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -331,8 +242,10 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
   UnregisterMemberRequest copyWith(
           void Function(UnregisterMemberRequest) updates) =>
       super.copyWith((message) => updates(message as UnregisterMemberRequest))
-          as UnregisterMemberRequest; // ignore: deprecated_member_use
+          as UnregisterMemberRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UnregisterMemberRequest create() => UnregisterMemberRequest._();
   UnregisterMemberRequest createEmptyInstance() => create();
@@ -397,25 +310,22 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
 }
 
 class UnregisterMemberResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UnregisterMemberResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  UnregisterMemberResponse._() : super();
   factory UnregisterMemberResponse() => create();
+  UnregisterMemberResponse._() : super();
   factory UnregisterMemberResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UnregisterMemberResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UnregisterMemberResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -427,8 +337,10 @@ class UnregisterMemberResponse extends $pb.GeneratedMessage {
   UnregisterMemberResponse copyWith(
           void Function(UnregisterMemberResponse) updates) =>
       super.copyWith((message) => updates(message as UnregisterMemberResponse))
-          as UnregisterMemberResponse; // ignore: deprecated_member_use
+          as UnregisterMemberResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UnregisterMemberResponse create() => UnregisterMemberResponse._();
   UnregisterMemberResponse createEmptyInstance() => create();
@@ -441,41 +353,8 @@ class UnregisterMemberResponse extends $pb.GeneratedMessage {
 }
 
 class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetMemberAuthorizationStatusRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'schemaUri')
-    ..hasRequiredFields = false;
-
+  factory GetMemberAuthorizationStatusRequest() => create();
   GetMemberAuthorizationStatusRequest._() : super();
-  factory GetMemberAuthorizationStatusRequest({
-    $core.String? didUri,
-    $core.String? schemaUri,
-  }) {
-    final _result = create();
-    if (didUri != null) {
-      _result.didUri = didUri;
-    }
-    if (schemaUri != null) {
-      _result.schemaUri = schemaUri;
-    }
-    return _result;
-  }
   factory GetMemberAuthorizationStatusRequest.fromBuffer(
           $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -483,6 +362,16 @@ class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
   factory GetMemberAuthorizationStatusRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetMemberAuthorizationStatusRequest',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'didUri')
+    ..aOS(2, _omitFieldNames ? '' : 'schemaUri')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -495,8 +384,10 @@ class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
           void Function(GetMemberAuthorizationStatusRequest) updates) =>
       super.copyWith((message) =>
               updates(message as GetMemberAuthorizationStatusRequest))
-          as GetMemberAuthorizationStatusRequest; // ignore: deprecated_member_use
+          as GetMemberAuthorizationStatusRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GetMemberAuthorizationStatusRequest create() =>
       GetMemberAuthorizationStatusRequest._();
@@ -535,36 +426,8 @@ class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
 }
 
 class GetMemberAuthorizationStatusResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetMemberAuthorizationStatusResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..e<RegistrationStatus>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'status',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: RegistrationStatus.CURRENT,
-        valueOf: RegistrationStatus.valueOf,
-        enumValues: RegistrationStatus.values)
-    ..hasRequiredFields = false;
-
+  factory GetMemberAuthorizationStatusResponse() => create();
   GetMemberAuthorizationStatusResponse._() : super();
-  factory GetMemberAuthorizationStatusResponse({
-    RegistrationStatus? status,
-  }) {
-    final _result = create();
-    if (status != null) {
-      _result.status = status;
-    }
-    return _result;
-  }
   factory GetMemberAuthorizationStatusResponse.fromBuffer(
           $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -572,6 +435,19 @@ class GetMemberAuthorizationStatusResponse extends $pb.GeneratedMessage {
   factory GetMemberAuthorizationStatusResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetMemberAuthorizationStatusResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..e<RegistrationStatus>(
+        1, _omitFieldNames ? '' : 'status', $pb.PbFieldType.OE,
+        defaultOrMaker: RegistrationStatus.CURRENT,
+        valueOf: RegistrationStatus.valueOf,
+        enumValues: RegistrationStatus.values)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -584,8 +460,10 @@ class GetMemberAuthorizationStatusResponse extends $pb.GeneratedMessage {
           void Function(GetMemberAuthorizationStatusResponse) updates) =>
       super.copyWith((message) =>
               updates(message as GetMemberAuthorizationStatusResponse))
-          as GetMemberAuthorizationStatusResponse; // ignore: deprecated_member_use
+          as GetMemberAuthorizationStatusResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GetMemberAuthorizationStatusResponse create() =>
       GetMemberAuthorizationStatusResponse._();
@@ -612,47 +490,24 @@ class GetMemberAuthorizationStatusResponse extends $pb.GeneratedMessage {
 }
 
 class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListAuthorizedMembersRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'schemaUri')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'continuationToken')
-    ..hasRequiredFields = false;
-
+  factory ListAuthorizedMembersRequest() => create();
   ListAuthorizedMembersRequest._() : super();
-  factory ListAuthorizedMembersRequest({
-    $core.String? schemaUri,
-    $core.String? continuationToken,
-  }) {
-    final _result = create();
-    if (schemaUri != null) {
-      _result.schemaUri = schemaUri;
-    }
-    if (continuationToken != null) {
-      _result.continuationToken = continuationToken;
-    }
-    return _result;
-  }
   factory ListAuthorizedMembersRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory ListAuthorizedMembersRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListAuthorizedMembersRequest',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'schemaUri')
+    ..aOS(2, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -665,8 +520,10 @@ class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
           void Function(ListAuthorizedMembersRequest) updates) =>
       super.copyWith(
               (message) => updates(message as ListAuthorizedMembersRequest))
-          as ListAuthorizedMembersRequest; // ignore: deprecated_member_use
+          as ListAuthorizedMembersRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListAuthorizedMembersRequest create() =>
       ListAuthorizedMembersRequest._();
@@ -704,58 +561,27 @@ class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
 }
 
 class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListAuthorizedMembersResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..pc<AuthorizedMember>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'authorizedMembers',
-        $pb.PbFieldType.PM,
-        subBuilder: AuthorizedMember.create)
-    ..aOB(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'hasMoreResults')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'continuationToken')
-    ..hasRequiredFields = false;
-
+  factory ListAuthorizedMembersResponse() => create();
   ListAuthorizedMembersResponse._() : super();
-  factory ListAuthorizedMembersResponse({
-    $core.Iterable<AuthorizedMember>? authorizedMembers,
-    $core.bool? hasMoreResults,
-    $core.String? continuationToken,
-  }) {
-    final _result = create();
-    if (authorizedMembers != null) {
-      _result.authorizedMembers.addAll(authorizedMembers);
-    }
-    if (hasMoreResults != null) {
-      _result.hasMoreResults = hasMoreResults;
-    }
-    if (continuationToken != null) {
-      _result.continuationToken = continuationToken;
-    }
-    return _result;
-  }
   factory ListAuthorizedMembersResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory ListAuthorizedMembersResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListAuthorizedMembersResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..pc<AuthorizedMember>(
+        1, _omitFieldNames ? '' : 'authorizedMembers', $pb.PbFieldType.PM,
+        subBuilder: AuthorizedMember.create)
+    ..aOB(2, _omitFieldNames ? '' : 'hasMoreResults')
+    ..aOS(3, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -768,8 +594,10 @@ class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
           void Function(ListAuthorizedMembersResponse) updates) =>
       super.copyWith(
               (message) => updates(message as ListAuthorizedMembersResponse))
-          as ListAuthorizedMembersResponse; // ignore: deprecated_member_use
+          as ListAuthorizedMembersResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListAuthorizedMembersResponse create() =>
       ListAuthorizedMembersResponse._();
@@ -810,49 +638,26 @@ class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
 }
 
 class AuthorizedMember extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AuthorizedMember',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'did')
-    ..pc<AuthorizedMemberSchema>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'authorizedMemberSchemas',
-        $pb.PbFieldType.PM,
-        subBuilder: AuthorizedMemberSchema.create)
-    ..hasRequiredFields = false;
-
+  factory AuthorizedMember() => create();
   AuthorizedMember._() : super();
-  factory AuthorizedMember({
-    $core.String? did,
-    $core.Iterable<AuthorizedMemberSchema>? authorizedMemberSchemas,
-  }) {
-    final _result = create();
-    if (did != null) {
-      _result.did = did;
-    }
-    if (authorizedMemberSchemas != null) {
-      _result.authorizedMemberSchemas.addAll(authorizedMemberSchemas);
-    }
-    return _result;
-  }
   factory AuthorizedMember.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory AuthorizedMember.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'AuthorizedMember',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'did')
+    ..pc<AuthorizedMemberSchema>(
+        2, _omitFieldNames ? '' : 'authorizedMemberSchemas', $pb.PbFieldType.PM,
+        subBuilder: AuthorizedMemberSchema.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -862,8 +667,10 @@ class AuthorizedMember extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   AuthorizedMember copyWith(void Function(AuthorizedMember) updates) =>
       super.copyWith((message) => updates(message as AuthorizedMember))
-          as AuthorizedMember; // ignore: deprecated_member_use
+          as AuthorizedMember;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AuthorizedMember create() => AuthorizedMember._();
   AuthorizedMember createEmptyInstance() => create();
@@ -892,78 +699,31 @@ class AuthorizedMember extends $pb.GeneratedMessage {
 }
 
 class AuthorizedMemberSchema extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AuthorizedMemberSchema',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'schemaUri')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'status')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'statusDetails')
-    ..a<$fixnum.Int64>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'validFrom',
-        $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'validUntil',
-        $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
-    ..hasRequiredFields = false;
-
+  factory AuthorizedMemberSchema() => create();
   AuthorizedMemberSchema._() : super();
-  factory AuthorizedMemberSchema({
-    $core.String? schemaUri,
-    $core.String? status,
-    $core.String? statusDetails,
-    $fixnum.Int64? validFrom,
-    $fixnum.Int64? validUntil,
-  }) {
-    final _result = create();
-    if (schemaUri != null) {
-      _result.schemaUri = schemaUri;
-    }
-    if (status != null) {
-      _result.status = status;
-    }
-    if (statusDetails != null) {
-      _result.statusDetails = statusDetails;
-    }
-    if (validFrom != null) {
-      _result.validFrom = validFrom;
-    }
-    if (validUntil != null) {
-      _result.validUntil = validUntil;
-    }
-    return _result;
-  }
   factory AuthorizedMemberSchema.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory AuthorizedMemberSchema.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'AuthorizedMemberSchema',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'schemaUri')
+    ..aOS(2, _omitFieldNames ? '' : 'status')
+    ..aOS(3, _omitFieldNames ? '' : 'statusDetails')
+    ..a<$fixnum.Int64>(
+        4, _omitFieldNames ? '' : 'validFrom', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        5, _omitFieldNames ? '' : 'validUntil', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -975,8 +735,10 @@ class AuthorizedMemberSchema extends $pb.GeneratedMessage {
   AuthorizedMemberSchema copyWith(
           void Function(AuthorizedMemberSchema) updates) =>
       super.copyWith((message) => updates(message as AuthorizedMemberSchema))
-          as AuthorizedMemberSchema; // ignore: deprecated_member_use
+          as AuthorizedMemberSchema;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AuthorizedMemberSchema create() => AuthorizedMemberSchema._();
   AuthorizedMemberSchema createEmptyInstance() => create();
@@ -1051,6 +813,15 @@ class AuthorizedMemberSchema extends $pb.GeneratedMessage {
 enum GetMemberRequest_Member { didUri, walletId, email, notSet }
 
 class GetMemberRequest extends $pb.GeneratedMessage {
+  factory GetMemberRequest() => create();
+  GetMemberRequest._() : super();
+  factory GetMemberRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetMemberRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, GetMemberRequest_Member>
       _GetMemberRequest_MemberByTag = {
     1: GetMemberRequest_Member.didUri,
@@ -1059,56 +830,16 @@ class GetMemberRequest extends $pb.GeneratedMessage {
     0: GetMemberRequest_Member.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetMemberRequest',
+      _omitMessageNames ? '' : 'GetMemberRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
       createEmptyInstance: create)
     ..oo(0, [1, 3, 4])
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'walletId')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'email')
+    ..aOS(1, _omitFieldNames ? '' : 'didUri')
+    ..aOS(3, _omitFieldNames ? '' : 'walletId')
+    ..aOS(4, _omitFieldNames ? '' : 'email')
     ..hasRequiredFields = false;
 
-  GetMemberRequest._() : super();
-  factory GetMemberRequest({
-    $core.String? didUri,
-    $core.String? walletId,
-    $core.String? email,
-  }) {
-    final _result = create();
-    if (didUri != null) {
-      _result.didUri = didUri;
-    }
-    if (walletId != null) {
-      _result.walletId = walletId;
-    }
-    if (email != null) {
-      _result.email = email;
-    }
-    return _result;
-  }
-  factory GetMemberRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory GetMemberRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1118,8 +849,10 @@ class GetMemberRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   GetMemberRequest copyWith(void Function(GetMemberRequest) updates) =>
       super.copyWith((message) => updates(message as GetMemberRequest))
-          as GetMemberRequest; // ignore: deprecated_member_use
+          as GetMemberRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GetMemberRequest create() => GetMemberRequest._();
   GetMemberRequest createEmptyInstance() => create();
@@ -1172,39 +905,24 @@ class GetMemberRequest extends $pb.GeneratedMessage {
 }
 
 class GetMemberResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetMemberResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.trustregistry.v1'),
-      createEmptyInstance: create)
-    ..aOM<AuthorizedMember>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'authorizedMember',
-        subBuilder: AuthorizedMember.create)
-    ..hasRequiredFields = false;
-
+  factory GetMemberResponse() => create();
   GetMemberResponse._() : super();
-  factory GetMemberResponse({
-    AuthorizedMember? authorizedMember,
-  }) {
-    final _result = create();
-    if (authorizedMember != null) {
-      _result.authorizedMember = authorizedMember;
-    }
-    return _result;
-  }
   factory GetMemberResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory GetMemberResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetMemberResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.trustregistry.v1'),
+      createEmptyInstance: create)
+    ..aOM<AuthorizedMember>(1, _omitFieldNames ? '' : 'authorizedMember',
+        subBuilder: AuthorizedMember.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1214,8 +932,10 @@ class GetMemberResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   GetMemberResponse copyWith(void Function(GetMemberResponse) updates) =>
       super.copyWith((message) => updates(message as GetMemberResponse))
-          as GetMemberResponse; // ignore: deprecated_member_use
+          as GetMemberResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GetMemberResponse create() => GetMemberResponse._();
   GetMemberResponse createEmptyInstance() => create();
@@ -1240,3 +960,7 @@ class GetMemberResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   AuthorizedMember ensureAuthorizedMember() => $_ensure(0);
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

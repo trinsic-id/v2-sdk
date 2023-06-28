@@ -1,30 +1,25 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/provider/v1/provider.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-// ignore_for_file: UNDEFINED_SHOWN_NAME
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:core' as $core;
+
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class IdentityProvider extends $pb.ProtobufEnum {
-  static const IdentityProvider Unknown = IdentityProvider._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Unknown');
-  static const IdentityProvider Email = IdentityProvider._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Email');
-  static const IdentityProvider Phone = IdentityProvider._(
-      2,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Phone');
+  static const IdentityProvider Unknown =
+      IdentityProvider._(0, _omitEnumNames ? '' : 'Unknown');
+  static const IdentityProvider Email =
+      IdentityProvider._(1, _omitEnumNames ? '' : 'Email');
+  static const IdentityProvider Phone =
+      IdentityProvider._(2, _omitEnumNames ? '' : 'Phone');
 
   static const $core.List<IdentityProvider> values = <IdentityProvider>[
     Unknown,
@@ -40,16 +35,10 @@ class IdentityProvider extends $pb.ProtobufEnum {
 }
 
 class IonOptions_IonNetwork extends $pb.ProtobufEnum {
-  static const IonOptions_IonNetwork TestNet = IonOptions_IonNetwork._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'TestNet');
-  static const IonOptions_IonNetwork MainNet = IonOptions_IonNetwork._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'MainNet');
+  static const IonOptions_IonNetwork TestNet =
+      IonOptions_IonNetwork._(0, _omitEnumNames ? '' : 'TestNet');
+  static const IonOptions_IonNetwork MainNet =
+      IonOptions_IonNetwork._(1, _omitEnumNames ? '' : 'MainNet');
 
   static const $core.List<IonOptions_IonNetwork> values =
       <IonOptions_IonNetwork>[
@@ -65,53 +54,24 @@ class IonOptions_IonNetwork extends $pb.ProtobufEnum {
 }
 
 class IndyOptions_IndyNetwork extends $pb.ProtobufEnum {
-  static const IndyOptions_IndyNetwork Danube = IndyOptions_IndyNetwork._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Danube');
+  static const IndyOptions_IndyNetwork Danube =
+      IndyOptions_IndyNetwork._(0, _omitEnumNames ? '' : 'Danube');
   static const IndyOptions_IndyNetwork SovrinBuilder =
-      IndyOptions_IndyNetwork._(
-          1,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-              ? ''
-              : 'SovrinBuilder');
+      IndyOptions_IndyNetwork._(1, _omitEnumNames ? '' : 'SovrinBuilder');
   static const IndyOptions_IndyNetwork SovrinStaging =
-      IndyOptions_IndyNetwork._(
-          2,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-              ? ''
-              : 'SovrinStaging');
-  static const IndyOptions_IndyNetwork Sovrin = IndyOptions_IndyNetwork._(
-      3,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Sovrin');
-  static const IndyOptions_IndyNetwork IdUnionTest = IndyOptions_IndyNetwork._(
-      4,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'IdUnionTest');
-  static const IndyOptions_IndyNetwork IdUnion = IndyOptions_IndyNetwork._(
-      5,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'IdUnion');
-  static const IndyOptions_IndyNetwork IndicioTest = IndyOptions_IndyNetwork._(
-      6,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'IndicioTest');
-  static const IndyOptions_IndyNetwork IndicioDemo = IndyOptions_IndyNetwork._(
-      7,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'IndicioDemo');
-  static const IndyOptions_IndyNetwork Indicio = IndyOptions_IndyNetwork._(
-      8,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'Indicio');
+      IndyOptions_IndyNetwork._(2, _omitEnumNames ? '' : 'SovrinStaging');
+  static const IndyOptions_IndyNetwork Sovrin =
+      IndyOptions_IndyNetwork._(3, _omitEnumNames ? '' : 'Sovrin');
+  static const IndyOptions_IndyNetwork IdUnionTest =
+      IndyOptions_IndyNetwork._(4, _omitEnumNames ? '' : 'IdUnionTest');
+  static const IndyOptions_IndyNetwork IdUnion =
+      IndyOptions_IndyNetwork._(5, _omitEnumNames ? '' : 'IdUnion');
+  static const IndyOptions_IndyNetwork IndicioTest =
+      IndyOptions_IndyNetwork._(6, _omitEnumNames ? '' : 'IndicioTest');
+  static const IndyOptions_IndyNetwork IndicioDemo =
+      IndyOptions_IndyNetwork._(7, _omitEnumNames ? '' : 'IndicioDemo');
+  static const IndyOptions_IndyNetwork Indicio =
+      IndyOptions_IndyNetwork._(8, _omitEnumNames ? '' : 'Indicio');
 
   static const $core.List<IndyOptions_IndyNetwork> values =
       <IndyOptions_IndyNetwork>[
@@ -132,3 +92,5 @@ class IndyOptions_IndyNetwork extends $pb.ProtobufEnum {
 
   const IndyOptions_IndyNetwork._($core.int v, $core.String n) : super(v, n);
 }
+
+const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');
