@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/verifiable-credentials/templates/v1/templates.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -14,38 +18,24 @@ import 'templates.pbenum.dart';
 export 'templates.pbenum.dart';
 
 class GetCredentialTemplateRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetCredentialTemplateRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'id')
-    ..hasRequiredFields = false;
-
+  factory GetCredentialTemplateRequest() => create();
   GetCredentialTemplateRequest._() : super();
-  factory GetCredentialTemplateRequest({
-    $core.String? id,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    return _result;
-  }
   factory GetCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory GetCredentialTemplateRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetCredentialTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -58,8 +48,10 @@ class GetCredentialTemplateRequest extends $pb.GeneratedMessage {
           void Function(GetCredentialTemplateRequest) updates) =>
       super.copyWith(
               (message) => updates(message as GetCredentialTemplateRequest))
-          as GetCredentialTemplateRequest; // ignore: deprecated_member_use
+          as GetCredentialTemplateRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GetCredentialTemplateRequest create() =>
       GetCredentialTemplateRequest._();
@@ -85,39 +77,25 @@ class GetCredentialTemplateRequest extends $pb.GeneratedMessage {
 }
 
 class GetCredentialTemplateResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetCredentialTemplateResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOM<TemplateData>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'template',
-        subBuilder: TemplateData.create)
-    ..hasRequiredFields = false;
-
+  factory GetCredentialTemplateResponse() => create();
   GetCredentialTemplateResponse._() : super();
-  factory GetCredentialTemplateResponse({
-    TemplateData? template,
-  }) {
-    final _result = create();
-    if (template != null) {
-      _result.template = template;
-    }
-    return _result;
-  }
   factory GetCredentialTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory GetCredentialTemplateResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetCredentialTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOM<TemplateData>(1, _omitFieldNames ? '' : 'template',
+        subBuilder: TemplateData.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -130,8 +108,10 @@ class GetCredentialTemplateResponse extends $pb.GeneratedMessage {
           void Function(GetCredentialTemplateResponse) updates) =>
       super.copyWith(
               (message) => updates(message as GetCredentialTemplateResponse))
-          as GetCredentialTemplateResponse; // ignore: deprecated_member_use
+          as GetCredentialTemplateResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static GetCredentialTemplateResponse create() =>
       GetCredentialTemplateResponse._();
@@ -159,47 +139,25 @@ class GetCredentialTemplateResponse extends $pb.GeneratedMessage {
 }
 
 class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SearchCredentialTemplatesRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'query')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'continuationToken')
-    ..hasRequiredFields = false;
-
+  factory SearchCredentialTemplatesRequest() => create();
   SearchCredentialTemplatesRequest._() : super();
-  factory SearchCredentialTemplatesRequest({
-    $core.String? query,
-    $core.String? continuationToken,
-  }) {
-    final _result = create();
-    if (query != null) {
-      _result.query = query;
-    }
-    if (continuationToken != null) {
-      _result.continuationToken = continuationToken;
-    }
-    return _result;
-  }
   factory SearchCredentialTemplatesRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory SearchCredentialTemplatesRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SearchCredentialTemplatesRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'query')
+    ..aOS(2, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -212,8 +170,10 @@ class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
           void Function(SearchCredentialTemplatesRequest) updates) =>
       super.copyWith(
               (message) => updates(message as SearchCredentialTemplatesRequest))
-          as SearchCredentialTemplatesRequest; // ignore: deprecated_member_use
+          as SearchCredentialTemplatesRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SearchCredentialTemplatesRequest create() =>
       SearchCredentialTemplatesRequest._();
@@ -252,56 +212,26 @@ class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
 }
 
 class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SearchCredentialTemplatesResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'itemsJson')
-    ..aOB(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'hasMoreResults')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'continuationToken')
-    ..hasRequiredFields = false;
-
+  factory SearchCredentialTemplatesResponse() => create();
   SearchCredentialTemplatesResponse._() : super();
-  factory SearchCredentialTemplatesResponse({
-    $core.String? itemsJson,
-    $core.bool? hasMoreResults,
-    $core.String? continuationToken,
-  }) {
-    final _result = create();
-    if (itemsJson != null) {
-      _result.itemsJson = itemsJson;
-    }
-    if (hasMoreResults != null) {
-      _result.hasMoreResults = hasMoreResults;
-    }
-    if (continuationToken != null) {
-      _result.continuationToken = continuationToken;
-    }
-    return _result;
-  }
   factory SearchCredentialTemplatesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory SearchCredentialTemplatesResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SearchCredentialTemplatesResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'itemsJson')
+    ..aOB(2, _omitFieldNames ? '' : 'hasMoreResults')
+    ..aOS(4, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -314,8 +244,10 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
           void Function(SearchCredentialTemplatesResponse) updates) =>
       super.copyWith((message) =>
               updates(message as SearchCredentialTemplatesResponse))
-          as SearchCredentialTemplatesResponse; // ignore: deprecated_member_use
+          as SearchCredentialTemplatesResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SearchCredentialTemplatesResponse create() =>
       SearchCredentialTemplatesResponse._();
@@ -366,47 +298,25 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
 }
 
 class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListCredentialTemplatesRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'query')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'continuationToken')
-    ..hasRequiredFields = false;
-
+  factory ListCredentialTemplatesRequest() => create();
   ListCredentialTemplatesRequest._() : super();
-  factory ListCredentialTemplatesRequest({
-    $core.String? query,
-    $core.String? continuationToken,
-  }) {
-    final _result = create();
-    if (query != null) {
-      _result.query = query;
-    }
-    if (continuationToken != null) {
-      _result.continuationToken = continuationToken;
-    }
-    return _result;
-  }
   factory ListCredentialTemplatesRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory ListCredentialTemplatesRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListCredentialTemplatesRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'query')
+    ..aOS(2, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -419,8 +329,10 @@ class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
           void Function(ListCredentialTemplatesRequest) updates) =>
       super.copyWith(
               (message) => updates(message as ListCredentialTemplatesRequest))
-          as ListCredentialTemplatesRequest; // ignore: deprecated_member_use
+          as ListCredentialTemplatesRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListCredentialTemplatesRequest create() =>
       ListCredentialTemplatesRequest._();
@@ -458,58 +370,28 @@ class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
 }
 
 class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListCredentialTemplatesResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..pc<TemplateData>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'templates',
-        $pb.PbFieldType.PM,
-        subBuilder: TemplateData.create)
-    ..aOB(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'hasMoreResults')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'continuationToken')
-    ..hasRequiredFields = false;
-
+  factory ListCredentialTemplatesResponse() => create();
   ListCredentialTemplatesResponse._() : super();
-  factory ListCredentialTemplatesResponse({
-    $core.Iterable<TemplateData>? templates,
-    $core.bool? hasMoreResults,
-    $core.String? continuationToken,
-  }) {
-    final _result = create();
-    if (templates != null) {
-      _result.templates.addAll(templates);
-    }
-    if (hasMoreResults != null) {
-      _result.hasMoreResults = hasMoreResults;
-    }
-    if (continuationToken != null) {
-      _result.continuationToken = continuationToken;
-    }
-    return _result;
-  }
   factory ListCredentialTemplatesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory ListCredentialTemplatesResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListCredentialTemplatesResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..pc<TemplateData>(
+        1, _omitFieldNames ? '' : 'templates', $pb.PbFieldType.PM,
+        subBuilder: TemplateData.create)
+    ..aOB(2, _omitFieldNames ? '' : 'hasMoreResults')
+    ..aOS(3, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -522,8 +404,10 @@ class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
           void Function(ListCredentialTemplatesResponse) updates) =>
       super.copyWith(
               (message) => updates(message as ListCredentialTemplatesResponse))
-          as ListCredentialTemplatesResponse; // ignore: deprecated_member_use
+          as ListCredentialTemplatesResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListCredentialTemplatesResponse create() =>
       ListCredentialTemplatesResponse._();
@@ -565,38 +449,24 @@ class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
 }
 
 class DeleteCredentialTemplateRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'DeleteCredentialTemplateRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'id')
-    ..hasRequiredFields = false;
-
+  factory DeleteCredentialTemplateRequest() => create();
   DeleteCredentialTemplateRequest._() : super();
-  factory DeleteCredentialTemplateRequest({
-    $core.String? id,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    return _result;
-  }
   factory DeleteCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory DeleteCredentialTemplateRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DeleteCredentialTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -609,8 +479,10 @@ class DeleteCredentialTemplateRequest extends $pb.GeneratedMessage {
           void Function(DeleteCredentialTemplateRequest) updates) =>
       super.copyWith(
               (message) => updates(message as DeleteCredentialTemplateRequest))
-          as DeleteCredentialTemplateRequest; // ignore: deprecated_member_use
+          as DeleteCredentialTemplateRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static DeleteCredentialTemplateRequest create() =>
       DeleteCredentialTemplateRequest._();
@@ -637,25 +509,23 @@ class DeleteCredentialTemplateRequest extends $pb.GeneratedMessage {
 }
 
 class DeleteCredentialTemplateResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'DeleteCredentialTemplateResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  DeleteCredentialTemplateResponse._() : super();
   factory DeleteCredentialTemplateResponse() => create();
+  DeleteCredentialTemplateResponse._() : super();
   factory DeleteCredentialTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory DeleteCredentialTemplateResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DeleteCredentialTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -668,8 +538,10 @@ class DeleteCredentialTemplateResponse extends $pb.GeneratedMessage {
           void Function(DeleteCredentialTemplateResponse) updates) =>
       super.copyWith(
               (message) => updates(message as DeleteCredentialTemplateResponse))
-          as DeleteCredentialTemplateResponse; // ignore: deprecated_member_use
+          as DeleteCredentialTemplateResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static DeleteCredentialTemplateResponse create() =>
       DeleteCredentialTemplateResponse._();
@@ -684,105 +556,45 @@ class DeleteCredentialTemplateResponse extends $pb.GeneratedMessage {
 }
 
 class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateCredentialTemplateRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'name')
-    ..m<$core.String, TemplateField>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'fields',
-        entryClassName: 'CreateCredentialTemplateRequest.FieldsEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: TemplateField.create,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'allowAdditionalFields')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'title')
-    ..aOS(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'description')
-    ..m<$core.String, FieldOrdering>(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'fieldOrdering',
-        entryClassName: 'CreateCredentialTemplateRequest.FieldOrderingEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: FieldOrdering.create,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
-    ..aOM<AppleWalletOptions>(
-        7,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'appleWalletOptions',
-        subBuilder: AppleWalletOptions.create)
-    ..hasRequiredFields = false;
-
+  factory CreateCredentialTemplateRequest() => create();
   CreateCredentialTemplateRequest._() : super();
-  factory CreateCredentialTemplateRequest({
-    $core.String? name,
-    $core.Map<$core.String, TemplateField>? fields,
-    $core.bool? allowAdditionalFields,
-    $core.String? title,
-    $core.String? description,
-    $core.Map<$core.String, FieldOrdering>? fieldOrdering,
-    AppleWalletOptions? appleWalletOptions,
-  }) {
-    final _result = create();
-    if (name != null) {
-      _result.name = name;
-    }
-    if (fields != null) {
-      _result.fields.addAll(fields);
-    }
-    if (allowAdditionalFields != null) {
-      _result.allowAdditionalFields = allowAdditionalFields;
-    }
-    if (title != null) {
-      _result.title = title;
-    }
-    if (description != null) {
-      _result.description = description;
-    }
-    if (fieldOrdering != null) {
-      _result.fieldOrdering.addAll(fieldOrdering);
-    }
-    if (appleWalletOptions != null) {
-      _result.appleWalletOptions = appleWalletOptions;
-    }
-    return _result;
-  }
   factory CreateCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateCredentialTemplateRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateCredentialTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'name')
+    ..m<$core.String, TemplateField>(2, _omitFieldNames ? '' : 'fields',
+        entryClassName: 'CreateCredentialTemplateRequest.FieldsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: TemplateField.create,
+        valueDefaultOrMaker: TemplateField.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..aOB(3, _omitFieldNames ? '' : 'allowAdditionalFields')
+    ..aOS(4, _omitFieldNames ? '' : 'title')
+    ..aOS(5, _omitFieldNames ? '' : 'description')
+    ..m<$core.String, FieldOrdering>(6, _omitFieldNames ? '' : 'fieldOrdering',
+        entryClassName: 'CreateCredentialTemplateRequest.FieldOrderingEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: FieldOrdering.create,
+        valueDefaultOrMaker: FieldOrdering.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..aOM<AppleWalletOptions>(7, _omitFieldNames ? '' : 'appleWalletOptions',
+        subBuilder: AppleWalletOptions.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -795,8 +607,10 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
           void Function(CreateCredentialTemplateRequest) updates) =>
       super.copyWith(
               (message) => updates(message as CreateCredentialTemplateRequest))
-          as CreateCredentialTemplateRequest; // ignore: deprecated_member_use
+          as CreateCredentialTemplateRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateCredentialTemplateRequest create() =>
       CreateCredentialTemplateRequest._();
@@ -879,39 +693,25 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
 }
 
 class CreateCredentialTemplateResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateCredentialTemplateResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOM<TemplateData>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        subBuilder: TemplateData.create)
-    ..hasRequiredFields = false;
-
+  factory CreateCredentialTemplateResponse() => create();
   CreateCredentialTemplateResponse._() : super();
-  factory CreateCredentialTemplateResponse({
-    TemplateData? data,
-  }) {
-    final _result = create();
-    if (data != null) {
-      _result.data = data;
-    }
-    return _result;
-  }
   factory CreateCredentialTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateCredentialTemplateResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateCredentialTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOM<TemplateData>(1, _omitFieldNames ? '' : 'data',
+        subBuilder: TemplateData.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -924,8 +724,10 @@ class CreateCredentialTemplateResponse extends $pb.GeneratedMessage {
           void Function(CreateCredentialTemplateResponse) updates) =>
       super.copyWith(
               (message) => updates(message as CreateCredentialTemplateResponse))
-          as CreateCredentialTemplateResponse; // ignore: deprecated_member_use
+          as CreateCredentialTemplateResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateCredentialTemplateResponse create() =>
       CreateCredentialTemplateResponse._();
@@ -954,96 +756,44 @@ class CreateCredentialTemplateResponse extends $pb.GeneratedMessage {
 }
 
 class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UpdateCredentialTemplateRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'id')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'title')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'description')
-    ..m<$core.String, TemplateFieldPatch>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'fields',
-        entryClassName: 'UpdateCredentialTemplateRequest.FieldsEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: TemplateFieldPatch.create,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
-    ..m<$core.String, FieldOrdering>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'fieldOrdering',
-        entryClassName: 'UpdateCredentialTemplateRequest.FieldOrderingEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: FieldOrdering.create,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
-    ..aOM<AppleWalletOptions>(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'appleWalletOptions',
-        subBuilder: AppleWalletOptions.create)
-    ..hasRequiredFields = false;
-
+  factory UpdateCredentialTemplateRequest() => create();
   UpdateCredentialTemplateRequest._() : super();
-  factory UpdateCredentialTemplateRequest({
-    $core.String? id,
-    $core.String? title,
-    $core.String? description,
-    $core.Map<$core.String, TemplateFieldPatch>? fields,
-    $core.Map<$core.String, FieldOrdering>? fieldOrdering,
-    AppleWalletOptions? appleWalletOptions,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (title != null) {
-      _result.title = title;
-    }
-    if (description != null) {
-      _result.description = description;
-    }
-    if (fields != null) {
-      _result.fields.addAll(fields);
-    }
-    if (fieldOrdering != null) {
-      _result.fieldOrdering.addAll(fieldOrdering);
-    }
-    if (appleWalletOptions != null) {
-      _result.appleWalletOptions = appleWalletOptions;
-    }
-    return _result;
-  }
   factory UpdateCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UpdateCredentialTemplateRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UpdateCredentialTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'title')
+    ..aOS(3, _omitFieldNames ? '' : 'description')
+    ..m<$core.String, TemplateFieldPatch>(4, _omitFieldNames ? '' : 'fields',
+        entryClassName: 'UpdateCredentialTemplateRequest.FieldsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: TemplateFieldPatch.create,
+        valueDefaultOrMaker: TemplateFieldPatch.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..m<$core.String, FieldOrdering>(5, _omitFieldNames ? '' : 'fieldOrdering',
+        entryClassName: 'UpdateCredentialTemplateRequest.FieldOrderingEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: FieldOrdering.create,
+        valueDefaultOrMaker: FieldOrdering.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..aOM<AppleWalletOptions>(6, _omitFieldNames ? '' : 'appleWalletOptions',
+        subBuilder: AppleWalletOptions.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1056,8 +806,10 @@ class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
           void Function(UpdateCredentialTemplateRequest) updates) =>
       super.copyWith(
               (message) => updates(message as UpdateCredentialTemplateRequest))
-          as UpdateCredentialTemplateRequest; // ignore: deprecated_member_use
+          as UpdateCredentialTemplateRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UpdateCredentialTemplateRequest create() =>
       UpdateCredentialTemplateRequest._();
@@ -1128,39 +880,25 @@ class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
 }
 
 class UpdateCredentialTemplateResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UpdateCredentialTemplateResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOM<TemplateData>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'updatedTemplate',
-        subBuilder: TemplateData.create)
-    ..hasRequiredFields = false;
-
+  factory UpdateCredentialTemplateResponse() => create();
   UpdateCredentialTemplateResponse._() : super();
-  factory UpdateCredentialTemplateResponse({
-    TemplateData? updatedTemplate,
-  }) {
-    final _result = create();
-    if (updatedTemplate != null) {
-      _result.updatedTemplate = updatedTemplate;
-    }
-    return _result;
-  }
   factory UpdateCredentialTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UpdateCredentialTemplateResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UpdateCredentialTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOM<TemplateData>(1, _omitFieldNames ? '' : 'updatedTemplate',
+        subBuilder: TemplateData.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1173,8 +911,10 @@ class UpdateCredentialTemplateResponse extends $pb.GeneratedMessage {
           void Function(UpdateCredentialTemplateResponse) updates) =>
       super.copyWith(
               (message) => updates(message as UpdateCredentialTemplateResponse))
-          as UpdateCredentialTemplateResponse; // ignore: deprecated_member_use
+          as UpdateCredentialTemplateResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UpdateCredentialTemplateResponse create() =>
       UpdateCredentialTemplateResponse._();
@@ -1203,169 +943,52 @@ class UpdateCredentialTemplateResponse extends $pb.GeneratedMessage {
 }
 
 class TemplateData extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'TemplateData',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'id')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'name')
-    ..a<$core.int>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'version',
-        $pb.PbFieldType.O3)
-    ..m<$core.String, TemplateField>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'fields',
-        entryClassName: 'TemplateData.FieldsEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: TemplateField.create,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
-    ..aOB(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'allowAdditionalFields')
-    ..aOS(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'schemaUri')
-    ..aOS(
-        8,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ecosystemId')
-    ..aOS(
-        9,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'type')
-    ..aOS(
-        10,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'createdBy')
-    ..aOS(
-        11,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'dateCreated')
-    ..aOS(
-        12,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'title')
-    ..aOS(
-        13,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'description')
-    ..m<$core.String, FieldOrdering>(
-        14,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'fieldOrdering',
-        entryClassName: 'TemplateData.FieldOrderingEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: FieldOrdering.create,
-        packageName: const $pb.PackageName(
-            'services.verifiablecredentials.templates.v1'))
-    ..aOM<AppleWalletOptions>(
-        15,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'appleWalletOptions',
-        subBuilder: AppleWalletOptions.create)
-    ..hasRequiredFields = false;
-
+  factory TemplateData() => create();
   TemplateData._() : super();
-  factory TemplateData({
-    $core.String? id,
-    $core.String? name,
-    $core.int? version,
-    $core.Map<$core.String, TemplateField>? fields,
-    $core.bool? allowAdditionalFields,
-    $core.String? schemaUri,
-    $core.String? ecosystemId,
-    $core.String? type,
-    $core.String? createdBy,
-    $core.String? dateCreated,
-    $core.String? title,
-    $core.String? description,
-    $core.Map<$core.String, FieldOrdering>? fieldOrdering,
-    AppleWalletOptions? appleWalletOptions,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (name != null) {
-      _result.name = name;
-    }
-    if (version != null) {
-      _result.version = version;
-    }
-    if (fields != null) {
-      _result.fields.addAll(fields);
-    }
-    if (allowAdditionalFields != null) {
-      _result.allowAdditionalFields = allowAdditionalFields;
-    }
-    if (schemaUri != null) {
-      _result.schemaUri = schemaUri;
-    }
-    if (ecosystemId != null) {
-      _result.ecosystemId = ecosystemId;
-    }
-    if (type != null) {
-      _result.type = type;
-    }
-    if (createdBy != null) {
-      _result.createdBy = createdBy;
-    }
-    if (dateCreated != null) {
-      _result.dateCreated = dateCreated;
-    }
-    if (title != null) {
-      _result.title = title;
-    }
-    if (description != null) {
-      _result.description = description;
-    }
-    if (fieldOrdering != null) {
-      _result.fieldOrdering.addAll(fieldOrdering);
-    }
-    if (appleWalletOptions != null) {
-      _result.appleWalletOptions = appleWalletOptions;
-    }
-    return _result;
-  }
   factory TemplateData.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory TemplateData.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TemplateData',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'version', $pb.PbFieldType.O3)
+    ..m<$core.String, TemplateField>(4, _omitFieldNames ? '' : 'fields',
+        entryClassName: 'TemplateData.FieldsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: TemplateField.create,
+        valueDefaultOrMaker: TemplateField.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..aOB(5, _omitFieldNames ? '' : 'allowAdditionalFields')
+    ..aOS(6, _omitFieldNames ? '' : 'schemaUri')
+    ..aOS(8, _omitFieldNames ? '' : 'ecosystemId')
+    ..aOS(9, _omitFieldNames ? '' : 'type')
+    ..aOS(10, _omitFieldNames ? '' : 'createdBy')
+    ..aOS(11, _omitFieldNames ? '' : 'dateCreated')
+    ..aOS(12, _omitFieldNames ? '' : 'title')
+    ..aOS(13, _omitFieldNames ? '' : 'description')
+    ..m<$core.String, FieldOrdering>(14, _omitFieldNames ? '' : 'fieldOrdering',
+        entryClassName: 'TemplateData.FieldOrderingEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: FieldOrdering.create,
+        valueDefaultOrMaker: FieldOrdering.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..aOM<AppleWalletOptions>(15, _omitFieldNames ? '' : 'appleWalletOptions',
+        subBuilder: AppleWalletOptions.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1375,8 +998,10 @@ class TemplateData extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   TemplateData copyWith(void Function(TemplateData) updates) =>
       super.copyWith((message) => updates(message as TemplateData))
-          as TemplateData; // ignore: deprecated_member_use
+          as TemplateData;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static TemplateData create() => TemplateData._();
   TemplateData createEmptyInstance() => create();
@@ -1541,83 +1166,29 @@ class TemplateData extends $pb.GeneratedMessage {
 }
 
 class AppleWalletOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AppleWalletOptions',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'backgroundColor')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'foregroundColor')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'labelColor')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'primaryField')
-    ..pPS(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'secondaryFields')
-    ..pPS(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'auxiliaryFields')
-    ..hasRequiredFields = false;
-
+  factory AppleWalletOptions() => create();
   AppleWalletOptions._() : super();
-  factory AppleWalletOptions({
-    $core.String? backgroundColor,
-    $core.String? foregroundColor,
-    $core.String? labelColor,
-    $core.String? primaryField,
-    $core.Iterable<$core.String>? secondaryFields,
-    $core.Iterable<$core.String>? auxiliaryFields,
-  }) {
-    final _result = create();
-    if (backgroundColor != null) {
-      _result.backgroundColor = backgroundColor;
-    }
-    if (foregroundColor != null) {
-      _result.foregroundColor = foregroundColor;
-    }
-    if (labelColor != null) {
-      _result.labelColor = labelColor;
-    }
-    if (primaryField != null) {
-      _result.primaryField = primaryField;
-    }
-    if (secondaryFields != null) {
-      _result.secondaryFields.addAll(secondaryFields);
-    }
-    if (auxiliaryFields != null) {
-      _result.auxiliaryFields.addAll(auxiliaryFields);
-    }
-    return _result;
-  }
   factory AppleWalletOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory AppleWalletOptions.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'AppleWalletOptions',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'backgroundColor')
+    ..aOS(2, _omitFieldNames ? '' : 'foregroundColor')
+    ..aOS(3, _omitFieldNames ? '' : 'labelColor')
+    ..aOS(4, _omitFieldNames ? '' : 'primaryField')
+    ..pPS(5, _omitFieldNames ? '' : 'secondaryFields')
+    ..pPS(6, _omitFieldNames ? '' : 'auxiliaryFields')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1627,8 +1198,10 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   AppleWalletOptions copyWith(void Function(AppleWalletOptions) updates) =>
       super.copyWith((message) => updates(message as AppleWalletOptions))
-          as AppleWalletOptions; // ignore: deprecated_member_use
+          as AppleWalletOptions;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AppleWalletOptions create() => AppleWalletOptions._();
   AppleWalletOptions createEmptyInstance() => create();
@@ -1695,48 +1268,25 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
 }
 
 class FieldOrdering extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'FieldOrdering',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..a<$core.int>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'order',
-        $pb.PbFieldType.O3)
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'section')
-    ..hasRequiredFields = false;
-
+  factory FieldOrdering() => create();
   FieldOrdering._() : super();
-  factory FieldOrdering({
-    $core.int? order,
-    $core.String? section,
-  }) {
-    final _result = create();
-    if (order != null) {
-      _result.order = order;
-    }
-    if (section != null) {
-      _result.section = section;
-    }
-    return _result;
-  }
   factory FieldOrdering.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory FieldOrdering.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'FieldOrdering',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'order', $pb.PbFieldType.O3)
+    ..aOS(2, _omitFieldNames ? '' : 'section')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1746,8 +1296,10 @@ class FieldOrdering extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   FieldOrdering copyWith(void Function(FieldOrdering) updates) =>
       super.copyWith((message) => updates(message as FieldOrdering))
-          as FieldOrdering; // ignore: deprecated_member_use
+          as FieldOrdering;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static FieldOrdering create() => FieldOrdering._();
   FieldOrdering createEmptyInstance() => create();
@@ -1784,79 +1336,32 @@ class FieldOrdering extends $pb.GeneratedMessage {
 }
 
 class TemplateField extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'TemplateField',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'title')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'description')
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'optional')
-    ..e<FieldType>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'type',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: FieldType.STRING,
-        valueOf: FieldType.valueOf,
-        enumValues: FieldType.values)
-    ..aOM<UriFieldData>(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'uriData',
-        subBuilder: UriFieldData.create)
-    ..hasRequiredFields = false;
-
+  factory TemplateField() => create();
   TemplateField._() : super();
-  factory TemplateField({
-    $core.String? title,
-    $core.String? description,
-    $core.bool? optional,
-    FieldType? type,
-    UriFieldData? uriData,
-  }) {
-    final _result = create();
-    if (title != null) {
-      _result.title = title;
-    }
-    if (description != null) {
-      _result.description = description;
-    }
-    if (optional != null) {
-      _result.optional = optional;
-    }
-    if (type != null) {
-      _result.type = type;
-    }
-    if (uriData != null) {
-      _result.uriData = uriData;
-    }
-    return _result;
-  }
   factory TemplateField.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory TemplateField.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TemplateField',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'title')
+    ..aOS(2, _omitFieldNames ? '' : 'description')
+    ..aOB(3, _omitFieldNames ? '' : 'optional')
+    ..e<FieldType>(4, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE,
+        defaultOrMaker: FieldType.STRING,
+        valueOf: FieldType.valueOf,
+        enumValues: FieldType.values)
+    ..aOM<UriFieldData>(6, _omitFieldNames ? '' : 'uriData',
+        subBuilder: UriFieldData.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1866,8 +1371,10 @@ class TemplateField extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   TemplateField copyWith(void Function(TemplateField) updates) =>
       super.copyWith((message) => updates(message as TemplateField))
-          as TemplateField; // ignore: deprecated_member_use
+          as TemplateField;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static TemplateField create() => TemplateField._();
   TemplateField createEmptyInstance() => create();
@@ -1942,57 +1449,27 @@ class TemplateField extends $pb.GeneratedMessage {
 }
 
 class TemplateFieldPatch extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'TemplateFieldPatch',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'title')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'description')
-    ..aOM<UriFieldData>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'uriData',
-        subBuilder: UriFieldData.create)
-    ..hasRequiredFields = false;
-
+  factory TemplateFieldPatch() => create();
   TemplateFieldPatch._() : super();
-  factory TemplateFieldPatch({
-    $core.String? title,
-    $core.String? description,
-    UriFieldData? uriData,
-  }) {
-    final _result = create();
-    if (title != null) {
-      _result.title = title;
-    }
-    if (description != null) {
-      _result.description = description;
-    }
-    if (uriData != null) {
-      _result.uriData = uriData;
-    }
-    return _result;
-  }
   factory TemplateFieldPatch.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory TemplateFieldPatch.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TemplateFieldPatch',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'title')
+    ..aOS(2, _omitFieldNames ? '' : 'description')
+    ..aOM<UriFieldData>(3, _omitFieldNames ? '' : 'uriData',
+        subBuilder: UriFieldData.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -2002,8 +1479,10 @@ class TemplateFieldPatch extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   TemplateFieldPatch copyWith(void Function(TemplateFieldPatch) updates) =>
       super.copyWith((message) => updates(message as TemplateFieldPatch))
-          as TemplateFieldPatch; // ignore: deprecated_member_use
+          as TemplateFieldPatch;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static TemplateFieldPatch create() => TemplateFieldPatch._();
   TemplateFieldPatch createEmptyInstance() => create();
@@ -2054,51 +1533,29 @@ class TemplateFieldPatch extends $pb.GeneratedMessage {
 }
 
 class UriFieldData extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UriFieldData',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.verifiablecredentials.templates.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'mimeType')
-    ..e<UriRenderMethod>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'renderMethod',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: UriRenderMethod.TEXT,
-        valueOf: UriRenderMethod.valueOf,
-        enumValues: UriRenderMethod.values)
-    ..hasRequiredFields = false;
-
+  factory UriFieldData() => create();
   UriFieldData._() : super();
-  factory UriFieldData({
-    $core.String? mimeType,
-    UriRenderMethod? renderMethod,
-  }) {
-    final _result = create();
-    if (mimeType != null) {
-      _result.mimeType = mimeType;
-    }
-    if (renderMethod != null) {
-      _result.renderMethod = renderMethod;
-    }
-    return _result;
-  }
   factory UriFieldData.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UriFieldData.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UriFieldData',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'mimeType')
+    ..e<UriRenderMethod>(
+        2, _omitFieldNames ? '' : 'renderMethod', $pb.PbFieldType.OE,
+        defaultOrMaker: UriRenderMethod.TEXT,
+        valueOf: UriRenderMethod.valueOf,
+        enumValues: UriRenderMethod.values)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -2108,8 +1565,10 @@ class UriFieldData extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   UriFieldData copyWith(void Function(UriFieldData) updates) =>
       super.copyWith((message) => updates(message as UriFieldData))
-          as UriFieldData; // ignore: deprecated_member_use
+          as UriFieldData;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UriFieldData create() => UriFieldData._();
   UriFieldData createEmptyInstance() => create();
@@ -2144,3 +1603,935 @@ class UriFieldData extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearRenderMethod() => clearField(2);
 }
+
+class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
+  factory CreateVerificationTemplateRequest() => create();
+  CreateVerificationTemplateRequest._() : super();
+  factory CreateVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CreateVerificationTemplateRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateVerificationTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'name')
+    ..pc<VerificationTemplateField>(
+        2, _omitFieldNames ? '' : 'fields', $pb.PbFieldType.PM,
+        subBuilder: VerificationTemplateField.create)
+    ..aOS(3, _omitFieldNames ? '' : 'credentialTemplateId')
+    ..aOS(4, _omitFieldNames ? '' : 'title')
+    ..aOS(5, _omitFieldNames ? '' : 'description')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CreateVerificationTemplateRequest clone() =>
+      CreateVerificationTemplateRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CreateVerificationTemplateRequest copyWith(
+          void Function(CreateVerificationTemplateRequest) updates) =>
+      super.copyWith((message) =>
+              updates(message as CreateVerificationTemplateRequest))
+          as CreateVerificationTemplateRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CreateVerificationTemplateRequest create() =>
+      CreateVerificationTemplateRequest._();
+  CreateVerificationTemplateRequest createEmptyInstance() => create();
+  static $pb.PbList<CreateVerificationTemplateRequest> createRepeated() =>
+      $pb.PbList<CreateVerificationTemplateRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CreateVerificationTemplateRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateVerificationTemplateRequest>(
+          create);
+  static CreateVerificationTemplateRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<VerificationTemplateField> get fields => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.String get credentialTemplateId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set credentialTemplateId($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasCredentialTemplateId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCredentialTemplateId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get title => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set title($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasTitle() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTitle() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get description => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set description($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasDescription() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDescription() => clearField(5);
+}
+
+class CreateVerificationTemplateResponse extends $pb.GeneratedMessage {
+  factory CreateVerificationTemplateResponse() => create();
+  CreateVerificationTemplateResponse._() : super();
+  factory CreateVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CreateVerificationTemplateResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateVerificationTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOM<VerificationTemplateData>(1, _omitFieldNames ? '' : 'data',
+        subBuilder: VerificationTemplateData.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CreateVerificationTemplateResponse clone() =>
+      CreateVerificationTemplateResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CreateVerificationTemplateResponse copyWith(
+          void Function(CreateVerificationTemplateResponse) updates) =>
+      super.copyWith((message) =>
+              updates(message as CreateVerificationTemplateResponse))
+          as CreateVerificationTemplateResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CreateVerificationTemplateResponse create() =>
+      CreateVerificationTemplateResponse._();
+  CreateVerificationTemplateResponse createEmptyInstance() => create();
+  static $pb.PbList<CreateVerificationTemplateResponse> createRepeated() =>
+      $pb.PbList<CreateVerificationTemplateResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CreateVerificationTemplateResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateVerificationTemplateResponse>(
+          create);
+  static CreateVerificationTemplateResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  VerificationTemplateData get data => $_getN(0);
+  @$pb.TagNumber(1)
+  set data(VerificationTemplateData v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasData() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearData() => clearField(1);
+  @$pb.TagNumber(1)
+  VerificationTemplateData ensureData() => $_ensure(0);
+}
+
+class UpdateVerificationTemplateRequest extends $pb.GeneratedMessage {
+  factory UpdateVerificationTemplateRequest() => create();
+  UpdateVerificationTemplateRequest._() : super();
+  factory UpdateVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory UpdateVerificationTemplateRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UpdateVerificationTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'title')
+    ..aOS(3, _omitFieldNames ? '' : 'description')
+    ..m<$core.String, VerificationTemplateFieldPatch>(
+        4, _omitFieldNames ? '' : 'fields',
+        entryClassName: 'UpdateVerificationTemplateRequest.FieldsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: VerificationTemplateFieldPatch.create,
+        valueDefaultOrMaker: VerificationTemplateFieldPatch.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  UpdateVerificationTemplateRequest clone() =>
+      UpdateVerificationTemplateRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  UpdateVerificationTemplateRequest copyWith(
+          void Function(UpdateVerificationTemplateRequest) updates) =>
+      super.copyWith((message) =>
+              updates(message as UpdateVerificationTemplateRequest))
+          as UpdateVerificationTemplateRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateVerificationTemplateRequest create() =>
+      UpdateVerificationTemplateRequest._();
+  UpdateVerificationTemplateRequest createEmptyInstance() => create();
+  static $pb.PbList<UpdateVerificationTemplateRequest> createRepeated() =>
+      $pb.PbList<UpdateVerificationTemplateRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateVerificationTemplateRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<UpdateVerificationTemplateRequest>(
+          create);
+  static UpdateVerificationTemplateRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get title => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set title($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasTitle() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTitle() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get description => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set description($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasDescription() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDescription() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.Map<$core.String, VerificationTemplateFieldPatch> get fields =>
+      $_getMap(3);
+}
+
+class UpdateVerificationTemplateResponse extends $pb.GeneratedMessage {
+  factory UpdateVerificationTemplateResponse() => create();
+  UpdateVerificationTemplateResponse._() : super();
+  factory UpdateVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory UpdateVerificationTemplateResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UpdateVerificationTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOM<VerificationTemplateData>(1, _omitFieldNames ? '' : 'template',
+        subBuilder: VerificationTemplateData.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  UpdateVerificationTemplateResponse clone() =>
+      UpdateVerificationTemplateResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  UpdateVerificationTemplateResponse copyWith(
+          void Function(UpdateVerificationTemplateResponse) updates) =>
+      super.copyWith((message) =>
+              updates(message as UpdateVerificationTemplateResponse))
+          as UpdateVerificationTemplateResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UpdateVerificationTemplateResponse create() =>
+      UpdateVerificationTemplateResponse._();
+  UpdateVerificationTemplateResponse createEmptyInstance() => create();
+  static $pb.PbList<UpdateVerificationTemplateResponse> createRepeated() =>
+      $pb.PbList<UpdateVerificationTemplateResponse>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateVerificationTemplateResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<UpdateVerificationTemplateResponse>(
+          create);
+  static UpdateVerificationTemplateResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  VerificationTemplateData get template => $_getN(0);
+  @$pb.TagNumber(1)
+  set template(VerificationTemplateData v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasTemplate() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTemplate() => clearField(1);
+  @$pb.TagNumber(1)
+  VerificationTemplateData ensureTemplate() => $_ensure(0);
+}
+
+class DeleteVerificationTemplateRequest extends $pb.GeneratedMessage {
+  factory DeleteVerificationTemplateRequest() => create();
+  DeleteVerificationTemplateRequest._() : super();
+  factory DeleteVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DeleteVerificationTemplateRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DeleteVerificationTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'verificationTemplateId')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DeleteVerificationTemplateRequest clone() =>
+      DeleteVerificationTemplateRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DeleteVerificationTemplateRequest copyWith(
+          void Function(DeleteVerificationTemplateRequest) updates) =>
+      super.copyWith((message) =>
+              updates(message as DeleteVerificationTemplateRequest))
+          as DeleteVerificationTemplateRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DeleteVerificationTemplateRequest create() =>
+      DeleteVerificationTemplateRequest._();
+  DeleteVerificationTemplateRequest createEmptyInstance() => create();
+  static $pb.PbList<DeleteVerificationTemplateRequest> createRepeated() =>
+      $pb.PbList<DeleteVerificationTemplateRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteVerificationTemplateRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteVerificationTemplateRequest>(
+          create);
+  static DeleteVerificationTemplateRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get verificationTemplateId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set verificationTemplateId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasVerificationTemplateId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearVerificationTemplateId() => clearField(1);
+}
+
+class DeleteVerificationTemplateResponse extends $pb.GeneratedMessage {
+  factory DeleteVerificationTemplateResponse() => create();
+  DeleteVerificationTemplateResponse._() : super();
+  factory DeleteVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DeleteVerificationTemplateResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DeleteVerificationTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DeleteVerificationTemplateResponse clone() =>
+      DeleteVerificationTemplateResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DeleteVerificationTemplateResponse copyWith(
+          void Function(DeleteVerificationTemplateResponse) updates) =>
+      super.copyWith((message) =>
+              updates(message as DeleteVerificationTemplateResponse))
+          as DeleteVerificationTemplateResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DeleteVerificationTemplateResponse create() =>
+      DeleteVerificationTemplateResponse._();
+  DeleteVerificationTemplateResponse createEmptyInstance() => create();
+  static $pb.PbList<DeleteVerificationTemplateResponse> createRepeated() =>
+      $pb.PbList<DeleteVerificationTemplateResponse>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteVerificationTemplateResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteVerificationTemplateResponse>(
+          create);
+  static DeleteVerificationTemplateResponse? _defaultInstance;
+}
+
+class VerificationTemplateData extends $pb.GeneratedMessage {
+  factory VerificationTemplateData() => create();
+  VerificationTemplateData._() : super();
+  factory VerificationTemplateData.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory VerificationTemplateData.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerificationTemplateData',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'version', $pb.PbFieldType.O3)
+    ..pc<VerificationTemplateField>(
+        4, _omitFieldNames ? '' : 'fields', $pb.PbFieldType.PM,
+        subBuilder: VerificationTemplateField.create)
+    ..aOS(6, _omitFieldNames ? '' : 'schemaUri')
+    ..aOS(8, _omitFieldNames ? '' : 'ecosystemId')
+    ..aOS(9, _omitFieldNames ? '' : 'type')
+    ..aOS(10, _omitFieldNames ? '' : 'createdBy')
+    ..aOS(11, _omitFieldNames ? '' : 'dateCreated')
+    ..aOS(12, _omitFieldNames ? '' : 'title')
+    ..aOS(13, _omitFieldNames ? '' : 'description')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  VerificationTemplateData clone() =>
+      VerificationTemplateData()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  VerificationTemplateData copyWith(
+          void Function(VerificationTemplateData) updates) =>
+      super.copyWith((message) => updates(message as VerificationTemplateData))
+          as VerificationTemplateData;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static VerificationTemplateData create() => VerificationTemplateData._();
+  VerificationTemplateData createEmptyInstance() => create();
+  static $pb.PbList<VerificationTemplateData> createRepeated() =>
+      $pb.PbList<VerificationTemplateData>();
+  @$core.pragma('dart2js:noInline')
+  static VerificationTemplateData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<VerificationTemplateData>(create);
+  static VerificationTemplateData? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get version => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set version($core.int v) {
+    $_setSignedInt32(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasVersion() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearVersion() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<VerificationTemplateField> get fields => $_getList(3);
+
+  @$pb.TagNumber(6)
+  $core.String get schemaUri => $_getSZ(4);
+  @$pb.TagNumber(6)
+  set schemaUri($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasSchemaUri() => $_has(4);
+  @$pb.TagNumber(6)
+  void clearSchemaUri() => clearField(6);
+
+  @$pb.TagNumber(8)
+  $core.String get ecosystemId => $_getSZ(5);
+  @$pb.TagNumber(8)
+  set ecosystemId($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasEcosystemId() => $_has(5);
+  @$pb.TagNumber(8)
+  void clearEcosystemId() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get type => $_getSZ(6);
+  @$pb.TagNumber(9)
+  set type($core.String v) {
+    $_setString(6, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasType() => $_has(6);
+  @$pb.TagNumber(9)
+  void clearType() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get createdBy => $_getSZ(7);
+  @$pb.TagNumber(10)
+  set createdBy($core.String v) {
+    $_setString(7, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasCreatedBy() => $_has(7);
+  @$pb.TagNumber(10)
+  void clearCreatedBy() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get dateCreated => $_getSZ(8);
+  @$pb.TagNumber(11)
+  set dateCreated($core.String v) {
+    $_setString(8, v);
+  }
+
+  @$pb.TagNumber(11)
+  $core.bool hasDateCreated() => $_has(8);
+  @$pb.TagNumber(11)
+  void clearDateCreated() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.String get title => $_getSZ(9);
+  @$pb.TagNumber(12)
+  set title($core.String v) {
+    $_setString(9, v);
+  }
+
+  @$pb.TagNumber(12)
+  $core.bool hasTitle() => $_has(9);
+  @$pb.TagNumber(12)
+  void clearTitle() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.String get description => $_getSZ(10);
+  @$pb.TagNumber(13)
+  set description($core.String v) {
+    $_setString(10, v);
+  }
+
+  @$pb.TagNumber(13)
+  $core.bool hasDescription() => $_has(10);
+  @$pb.TagNumber(13)
+  void clearDescription() => clearField(13);
+}
+
+class ListVerificationTemplatesRequest extends $pb.GeneratedMessage {
+  factory ListVerificationTemplatesRequest() => create();
+  ListVerificationTemplatesRequest._() : super();
+  factory ListVerificationTemplatesRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListVerificationTemplatesRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListVerificationTemplatesRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'query')
+    ..aOS(2, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ListVerificationTemplatesRequest clone() =>
+      ListVerificationTemplatesRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ListVerificationTemplatesRequest copyWith(
+          void Function(ListVerificationTemplatesRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as ListVerificationTemplatesRequest))
+          as ListVerificationTemplatesRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListVerificationTemplatesRequest create() =>
+      ListVerificationTemplatesRequest._();
+  ListVerificationTemplatesRequest createEmptyInstance() => create();
+  static $pb.PbList<ListVerificationTemplatesRequest> createRepeated() =>
+      $pb.PbList<ListVerificationTemplatesRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ListVerificationTemplatesRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListVerificationTemplatesRequest>(
+          create);
+  static ListVerificationTemplatesRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get query => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set query($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasQuery() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearQuery() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get continuationToken => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set continuationToken($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasContinuationToken() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearContinuationToken() => clearField(2);
+}
+
+class ListVerificationTemplatesResponse extends $pb.GeneratedMessage {
+  factory ListVerificationTemplatesResponse() => create();
+  ListVerificationTemplatesResponse._() : super();
+  factory ListVerificationTemplatesResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListVerificationTemplatesResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListVerificationTemplatesResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..pc<VerificationTemplateData>(
+        1, _omitFieldNames ? '' : 'templates', $pb.PbFieldType.PM,
+        subBuilder: VerificationTemplateData.create)
+    ..aOB(2, _omitFieldNames ? '' : 'hasMoreResults')
+    ..aOS(3, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ListVerificationTemplatesResponse clone() =>
+      ListVerificationTemplatesResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ListVerificationTemplatesResponse copyWith(
+          void Function(ListVerificationTemplatesResponse) updates) =>
+      super.copyWith((message) =>
+              updates(message as ListVerificationTemplatesResponse))
+          as ListVerificationTemplatesResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListVerificationTemplatesResponse create() =>
+      ListVerificationTemplatesResponse._();
+  ListVerificationTemplatesResponse createEmptyInstance() => create();
+  static $pb.PbList<ListVerificationTemplatesResponse> createRepeated() =>
+      $pb.PbList<ListVerificationTemplatesResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ListVerificationTemplatesResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListVerificationTemplatesResponse>(
+          create);
+  static ListVerificationTemplatesResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<VerificationTemplateData> get templates => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.bool get hasMoreResults => $_getBF(1);
+  @$pb.TagNumber(2)
+  set hasMoreResults($core.bool v) {
+    $_setBool(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasHasMoreResults() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearHasMoreResults() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get continuationToken => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set continuationToken($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasContinuationToken() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearContinuationToken() => clearField(3);
+}
+
+class VerificationTemplateField extends $pb.GeneratedMessage {
+  factory VerificationTemplateField() => create();
+  VerificationTemplateField._() : super();
+  factory VerificationTemplateField.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory VerificationTemplateField.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerificationTemplateField',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'name')
+    ..e<VerificationShareType>(
+        2, _omitFieldNames ? '' : 'fieldShareType', $pb.PbFieldType.OE,
+        defaultOrMaker: VerificationShareType.REQUIRED,
+        valueOf: VerificationShareType.valueOf,
+        enumValues: VerificationShareType.values)
+    ..aOS(3, _omitFieldNames ? '' : 'usagePolicy')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  VerificationTemplateField clone() =>
+      VerificationTemplateField()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  VerificationTemplateField copyWith(
+          void Function(VerificationTemplateField) updates) =>
+      super.copyWith((message) => updates(message as VerificationTemplateField))
+          as VerificationTemplateField;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static VerificationTemplateField create() => VerificationTemplateField._();
+  VerificationTemplateField createEmptyInstance() => create();
+  static $pb.PbList<VerificationTemplateField> createRepeated() =>
+      $pb.PbList<VerificationTemplateField>();
+  @$core.pragma('dart2js:noInline')
+  static VerificationTemplateField getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<VerificationTemplateField>(create);
+  static VerificationTemplateField? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  VerificationShareType get fieldShareType => $_getN(1);
+  @$pb.TagNumber(2)
+  set fieldShareType(VerificationShareType v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasFieldShareType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFieldShareType() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get usagePolicy => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set usagePolicy($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasUsagePolicy() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUsagePolicy() => clearField(3);
+}
+
+class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
+  factory VerificationTemplateFieldPatch() => create();
+  VerificationTemplateFieldPatch._() : super();
+  factory VerificationTemplateFieldPatch.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory VerificationTemplateFieldPatch.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerificationTemplateFieldPatch',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'title')
+    ..aOS(2, _omitFieldNames ? '' : 'description')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  VerificationTemplateFieldPatch clone() =>
+      VerificationTemplateFieldPatch()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  VerificationTemplateFieldPatch copyWith(
+          void Function(VerificationTemplateFieldPatch) updates) =>
+      super.copyWith(
+              (message) => updates(message as VerificationTemplateFieldPatch))
+          as VerificationTemplateFieldPatch;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static VerificationTemplateFieldPatch create() =>
+      VerificationTemplateFieldPatch._();
+  VerificationTemplateFieldPatch createEmptyInstance() => create();
+  static $pb.PbList<VerificationTemplateFieldPatch> createRepeated() =>
+      $pb.PbList<VerificationTemplateFieldPatch>();
+  @$core.pragma('dart2js:noInline')
+  static VerificationTemplateFieldPatch getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<VerificationTemplateFieldPatch>(create);
+  static VerificationTemplateFieldPatch? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get title => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set title($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasTitle() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTitle() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get description => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set description($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDescription() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDescription() => clearField(2);
+}
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

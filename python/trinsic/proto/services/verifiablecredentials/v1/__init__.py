@@ -72,7 +72,7 @@ class IssueFromTemplateResponse(betterproto.Message):
 class CreateProofRequest(betterproto.Message):
     """
     Request to create a proof for a Verifiable Credential using public key tied
-    to caller. Either `item_id` or `document_json` may be provided, not both.
+    to caller. Either `item_id`, or `document_json` may be provided, not both.
     """
 
     reveal_document_json: str = betterproto.string_field(1, group="disclosure")
@@ -86,6 +86,12 @@ class CreateProofRequest(betterproto.Message):
         11, group="disclosure"
     )
     """Information about what sections of the document to reveal"""
+
+    verification_template_id: str = betterproto.string_field(12, group="disclosure")
+    """
+    Id of verification template with which to construct the JSON-LD proof
+    document
+    """
 
     item_id: str = betterproto.string_field(2, group="proof")
     """ID of wallet item stored in a Trinsic cloud wallet"""

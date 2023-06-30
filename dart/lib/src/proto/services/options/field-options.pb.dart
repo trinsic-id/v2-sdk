@@ -1,56 +1,37 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/options/field-options.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class AnnotationOption extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AnnotationOption',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.options'),
-      createEmptyInstance: create)
-    ..aOB(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'active')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'message')
-    ..hasRequiredFields = false;
-
+  factory AnnotationOption() => create();
   AnnotationOption._() : super();
-  factory AnnotationOption({
-    $core.bool? active,
-    $core.String? message,
-  }) {
-    final _result = create();
-    if (active != null) {
-      _result.active = active;
-    }
-    if (message != null) {
-      _result.message = message;
-    }
-    return _result;
-  }
   factory AnnotationOption.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory AnnotationOption.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'AnnotationOption',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.options'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'active')
+    ..aOS(2, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -60,8 +41,10 @@ class AnnotationOption extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   AnnotationOption copyWith(void Function(AnnotationOption) updates) =>
       super.copyWith((message) => updates(message as AnnotationOption))
-          as AnnotationOption; // ignore: deprecated_member_use
+          as AnnotationOption;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AnnotationOption create() => AnnotationOption._();
   AnnotationOption createEmptyInstance() => create();
@@ -98,76 +81,29 @@ class AnnotationOption extends $pb.GeneratedMessage {
 }
 
 class SdkTemplateOption extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SdkTemplateOption',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.options'),
-      createEmptyInstance: create)
-    ..aOB(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'anonymous')
-    ..aOB(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ignore')
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'noArguments')
-    ..aOM<AnnotationOption>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'experimental',
-        subBuilder: AnnotationOption.create)
-    ..aOM<AnnotationOption>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'deprecated',
-        subBuilder: AnnotationOption.create)
-    ..hasRequiredFields = false;
-
+  factory SdkTemplateOption() => create();
   SdkTemplateOption._() : super();
-  factory SdkTemplateOption({
-    $core.bool? anonymous,
-    $core.bool? ignore,
-    $core.bool? noArguments,
-    AnnotationOption? experimental,
-    AnnotationOption? deprecated,
-  }) {
-    final _result = create();
-    if (anonymous != null) {
-      _result.anonymous = anonymous;
-    }
-    if (ignore != null) {
-      _result.ignore = ignore;
-    }
-    if (noArguments != null) {
-      _result.noArguments = noArguments;
-    }
-    if (experimental != null) {
-      _result.experimental = experimental;
-    }
-    if (deprecated != null) {
-      _result.deprecated = deprecated;
-    }
-    return _result;
-  }
   factory SdkTemplateOption.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory SdkTemplateOption.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SdkTemplateOption',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.options'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'anonymous')
+    ..aOB(2, _omitFieldNames ? '' : 'ignore')
+    ..aOB(3, _omitFieldNames ? '' : 'noArguments')
+    ..aOM<AnnotationOption>(4, _omitFieldNames ? '' : 'experimental',
+        subBuilder: AnnotationOption.create)
+    ..aOM<AnnotationOption>(5, _omitFieldNames ? '' : 'deprecated',
+        subBuilder: AnnotationOption.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -177,8 +113,10 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   SdkTemplateOption copyWith(void Function(SdkTemplateOption) updates) =>
       super.copyWith((message) => updates(message as SdkTemplateOption))
-          as SdkTemplateOption; // ignore: deprecated_member_use
+          as SdkTemplateOption;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SdkTemplateOption create() => SdkTemplateOption._();
   SdkTemplateOption createEmptyInstance() => create();
@@ -256,21 +194,13 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
 
 class Field_options {
   static final optional = $pb.Extension<$core.bool>(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'google.protobuf.FieldOptions',
-      const $core.bool.fromEnvironment('protobuf.omit_field_names')
-          ? ''
-          : 'optional',
+      _omitMessageNames ? '' : 'google.protobuf.FieldOptions',
+      _omitFieldNames ? '' : 'optional',
       60000,
       $pb.PbFieldType.OB);
   static final sdkTemplateOption = $pb.Extension<SdkTemplateOption>(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'google.protobuf.MethodOptions',
-      const $core.bool.fromEnvironment('protobuf.omit_field_names')
-          ? ''
-          : 'sdkTemplateOption',
+      _omitMessageNames ? '' : 'google.protobuf.MethodOptions',
+      _omitFieldNames ? '' : 'sdkTemplateOption',
       60001,
       $pb.PbFieldType.OM,
       defaultOrMaker: SdkTemplateOption.getDefault,
@@ -280,3 +210,7 @@ class Field_options {
     registry.add(sdkTemplateOption);
   }
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

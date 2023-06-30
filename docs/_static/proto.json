@@ -900,6 +900,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.IdentityProvider"
     },
+    "services.provider.v1.IdentityProvider.Passkey": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IdentityProvider"
+    },
     "services.provider.v1.IdentityProvider.Phone": {
       "type": "enum_value",
       "collection": "enum_values",
@@ -2460,6 +2466,54 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse"
     },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.credential_template_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.fields": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.title": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse"
+    },
     "services.verifiablecredentials.templates.v1.CredentialTemplates": {
       "type": "service",
       "collection": "services",
@@ -2472,7 +2526,19 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate": {
       "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
@@ -2490,6 +2556,12 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Search": {
       "type": "method",
       "collection": "methods",
@@ -2497,6 +2569,12 @@
       "parent": ""
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Update": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate": {
       "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
@@ -2515,6 +2593,24 @@
       "parent": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest"
     },
     "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest.verification_template_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponse": {
       "type": "message",
       "collection": "messages",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
@@ -2639,6 +2735,48 @@
       "collection": "fields",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.query": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.has_more_results": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.templates": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse"
     },
     "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest": {
       "type": "message",
@@ -2958,6 +3096,66 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse"
     },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.value": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.fields": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.title": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse.template": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse"
+    },
     "services.verifiablecredentials.templates.v1.UriFieldData": {
       "type": "message",
       "collection": "messages",
@@ -2999,6 +3197,138 @@
       "collection": "enum_values",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.UriRenderMethod"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationShareType": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationShareType"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationShareType"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.created_by": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.date_created": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.fields": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.title": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.version": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField.field_share_type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateField"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateField"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField.usage_policy": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateField"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.title": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch"
     },
     "services.verifiablecredentials.v1.AcceptCredentialRequest": {
       "type": "message",
@@ -3151,6 +3481,12 @@
       "parent": "services.verifiablecredentials.v1.CreateProofRequest"
     },
     "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateProofRequest"
+    },
+    "services.verifiablecredentials.v1.CreateProofRequest.verification_template_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -3782,7 +4118,8 @@
         "services.provider.v1.IndyOptions.IndyNetwork.Indicio",
         "services.provider.v1.IdentityProvider.Unknown",
         "services.provider.v1.IdentityProvider.Email",
-        "services.provider.v1.IdentityProvider.Phone"
+        "services.provider.v1.IdentityProvider.Phone",
+        "services.provider.v1.IdentityProvider.Passkey"
       ]
     },
     "services/trust-registry/v1/trust-registry.proto": {
@@ -3989,7 +4326,11 @@
         "services.verifiablecredentials.templates.v1.CredentialTemplates.Update",
         "services.verifiablecredentials.templates.v1.CredentialTemplates.List",
         "services.verifiablecredentials.templates.v1.CredentialTemplates.Search",
-        "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete"
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate"
       ],
       "messages": [
         "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest",
@@ -4015,7 +4356,19 @@
         "services.verifiablecredentials.templates.v1.FieldOrdering",
         "services.verifiablecredentials.templates.v1.TemplateField",
         "services.verifiablecredentials.templates.v1.TemplateFieldPatch",
-        "services.verifiablecredentials.templates.v1.UriFieldData"
+        "services.verifiablecredentials.templates.v1.UriFieldData",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse",
+        "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest",
+        "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponse",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateField",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch"
       ],
       "fields": [
         "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest.id",
@@ -4089,11 +4442,47 @@
         "services.verifiablecredentials.templates.v1.TemplateFieldPatch.description",
         "services.verifiablecredentials.templates.v1.TemplateFieldPatch.uri_data",
         "services.verifiablecredentials.templates.v1.UriFieldData.mime_type",
-        "services.verifiablecredentials.templates.v1.UriFieldData.render_method"
+        "services.verifiablecredentials.templates.v1.UriFieldData.render_method",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.name",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.fields",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.credential_template_id",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.title",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.description",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse.data",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.id",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.title",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.description",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.fields",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.key",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.value",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse.template",
+        "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest.verification_template_id",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.id",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.name",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.version",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.fields",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.ecosystem_id",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.type",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.created_by",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.date_created",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.title",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.description",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.query",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.continuation_token",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.templates",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.has_more_results",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.continuation_token",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateField.name",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateField.field_share_type",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateField.usage_policy",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.title",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.description"
       ],
       "enums": [
         "services.verifiablecredentials.templates.v1.FieldType",
-        "services.verifiablecredentials.templates.v1.UriRenderMethod"
+        "services.verifiablecredentials.templates.v1.UriRenderMethod",
+        "services.verifiablecredentials.templates.v1.VerificationShareType"
       ],
       "enum_values": [
         "services.verifiablecredentials.templates.v1.FieldType.STRING",
@@ -4103,7 +4492,9 @@
         "services.verifiablecredentials.templates.v1.FieldType.URI",
         "services.verifiablecredentials.templates.v1.UriRenderMethod.TEXT",
         "services.verifiablecredentials.templates.v1.UriRenderMethod.LINK",
-        "services.verifiablecredentials.templates.v1.UriRenderMethod.INLINE_IMAGE"
+        "services.verifiablecredentials.templates.v1.UriRenderMethod.INLINE_IMAGE",
+        "services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED",
+        "services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL"
       ]
     },
     "services/verifiable-credentials/v1/verifiable-credentials.proto": {
@@ -4156,6 +4547,7 @@
         "services.verifiablecredentials.v1.IssueFromTemplateResponse.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
+        "services.verifiablecredentials.v1.CreateProofRequest.verification_template_id",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
@@ -4290,7 +4682,11 @@
         "services.verifiablecredentials.templates.v1.CredentialTemplates.Update",
         "services.verifiablecredentials.templates.v1.CredentialTemplates.List",
         "services.verifiablecredentials.templates.v1.CredentialTemplates.Search",
-        "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete"
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate",
+        "services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate"
       ]
     },
     "services.verifiablecredentials.v1.VerifiableCredential": {
@@ -4650,12 +5046,26 @@
       "output_type": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse",
       "description": "Create a credential template in the current ecosystem"
     },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate": {
+      "name": "CreateVerificationTemplate",
+      "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate",
+      "input_type": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest",
+      "output_type": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse",
+      "description": "Create/update verification templates\nTODO - Should this be in a separate `verification-templates.proto`?"
+    },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete": {
       "name": "Delete",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete",
       "input_type": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse",
       "description": "Delete a credential template from the current ecosystem by ID"
+    },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate": {
+      "name": "DeleteVerificationTemplate",
+      "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate",
+      "input_type": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest",
+      "output_type": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponse",
+      "description": ""
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Get": {
       "name": "Get",
@@ -4671,6 +5081,13 @@
       "output_type": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse",
       "description": "Search credential templates using SQL, returning strongly-typed template data"
     },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate": {
+      "name": "ListVerificationTemplate",
+      "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate",
+      "input_type": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest",
+      "output_type": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse",
+      "description": ""
+    },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Search": {
       "name": "Search",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Search",
@@ -4684,6 +5101,13 @@
       "input_type": "services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse",
       "description": "Update metadata of a template"
+    },
+    "services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate": {
+      "name": "UpdateVerificationTemplate",
+      "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate",
+      "input_type": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest",
+      "output_type": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse",
+      "description": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential": {
       "name": "AcceptCredential",
@@ -5949,6 +6373,30 @@
       "messages": [],
       "enums": []
     },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest": {
+      "name": "CreateVerificationTemplateRequest",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.name",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.fields",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.credential_template_id",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.title",
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.description"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse": {
+      "name": "CreateVerificationTemplateResponse",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse.data"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest": {
       "name": "DeleteCredentialTemplateRequest",
       "full_name": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest",
@@ -5963,6 +6411,24 @@
       "name": "DeleteCredentialTemplateResponse",
       "full_name": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse",
       "description": "Response to `DeleteCredentialTemplateRequest`",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest": {
+      "name": "DeleteVerificationTemplateRequest",
+      "full_name": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest.verification_template_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponse": {
+      "name": "DeleteVerificationTemplateResponse",
+      "full_name": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponse",
+      "description": "This space intentionally left blank",
       "fields": [],
       "messages": [],
       "enums": []
@@ -6017,6 +6483,29 @@
         "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse.templates",
         "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse.has_more_results",
         "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse.continuation_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest": {
+      "name": "ListVerificationTemplatesRequest",
+      "full_name": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest",
+      "description": "Request to list templates using a SQL query",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.query",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.continuation_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse": {
+      "name": "ListVerificationTemplatesResponse",
+      "full_name": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.templates",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.has_more_results",
+        "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.continuation_token"
       ],
       "messages": [],
       "enums": []
@@ -6172,6 +6661,43 @@
       "messages": [],
       "enums": []
     },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest": {
+      "name": "UpdateVerificationTemplateRequest",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.id",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.title",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.description",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.fields"
+      ],
+      "messages": [
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry"
+      ],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry": {
+      "name": "FieldsEntry",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry",
+      "description": "",
+      "is_map_entry": true,
+      "fields": [
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.key",
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.value"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse": {
+      "name": "UpdateVerificationTemplateResponse",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse",
+      "description": "",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse.template"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.verifiablecredentials.templates.v1.UriFieldData": {
       "name": "UriFieldData",
       "full_name": "services.verifiablecredentials.templates.v1.UriFieldData",
@@ -6179,6 +6705,49 @@
       "fields": [
         "services.verifiablecredentials.templates.v1.UriFieldData.mime_type",
         "services.verifiablecredentials.templates.v1.UriFieldData.render_method"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData": {
+      "name": "VerificationTemplateData",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData",
+      "description": "Verification Template",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.id",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.name",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.version",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.fields",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.ecosystem_id",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.type",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.created_by",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.date_created",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.title",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateData.description"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField": {
+      "name": "VerificationTemplateField",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateField",
+      "description": "A field defined in a template",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.VerificationTemplateField.name",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateField.field_share_type",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateField.usage_policy"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch": {
+      "name": "VerificationTemplateFieldPatch",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch",
+      "description": "A patch to apply to an existing template field",
+      "fields": [
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.title",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.description"
       ],
       "messages": [],
       "enums": []
@@ -6253,10 +6822,11 @@
     "services.verifiablecredentials.v1.CreateProofRequest": {
       "name": "CreateProofRequest",
       "full_name": "services.verifiablecredentials.v1.CreateProofRequest",
-      "description": "Request to create a proof for a Verifiable Credential using public key tied to caller.\nEither `item_id` or `document_json` may be provided, not both.",
+      "description": "Request to create a proof for a Verifiable Credential using public key tied to caller.\nEither `item_id`, or `document_json` may be provided, not both.",
       "fields": [
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
+        "services.verifiablecredentials.v1.CreateProofRequest.verification_template_id",
         "services.verifiablecredentials.v1.CreateProofRequest.item_id",
         "services.verifiablecredentials.v1.CreateProofRequest.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.use_verifiable_presentation",
@@ -8199,6 +8769,54 @@
       "full_type": "services.verifiablecredentials.templates.v1.TemplateData",
       "description": "Created template"
     },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.credential_template_id": {
+      "name": "credential_template_id",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.credential_template_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Source credential template, used for verifying that the specified `fields` are present in the credential template"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.description": {
+      "name": "description",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Human-readable description of template"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.fields": {
+      "name": "fields",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.fields",
+      "label": "LABEL_REPEATED",
+      "type": "VerificationTemplateField",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationTemplateField",
+      "description": "Fields which will be required in the verification proof template\n\nTODO - Add support for predicate types - currently only equality."
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.name": {
+      "name": "name",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Name of new template. Must be a unique identifier within its ecosystem."
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.title": {
+      "name": "title",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest.title",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Human-readable name of template"
+    },
+    "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse.data": {
+      "name": "data",
+      "full_name": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationTemplateData",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationTemplateData",
+      "description": ""
+    },
     "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest.id": {
       "name": "id",
       "full_name": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest.id",
@@ -8206,6 +8824,14 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of template to delete"
+    },
+    "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest.verification_template_id": {
+      "name": "verification_template_id",
+      "full_name": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest.verification_template_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
     },
     "services.verifiablecredentials.templates.v1.FieldOrdering.order": {
       "name": "order",
@@ -8264,7 +8890,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Token to fetch next set of resuts via `ListCredentialTemplatesRequest`"
+      "description": "Token to fetch next set of results via `ListCredentialTemplatesRequest`"
     },
     "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse.has_more_results": {
       "name": "has_more_results",
@@ -8280,6 +8906,49 @@
       "label": "LABEL_REPEATED",
       "type": "TemplateData",
       "full_type": "services.verifiablecredentials.templates.v1.TemplateData",
+      "description": "Templates found by query"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token provided by previous `ListCredentialTemplatesResponse`\nif more data is available for query",
+      "options": {
+        "services.options.optional": true
+      }
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.query": {
+      "name": "query",
+      "full_name": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest.query",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token to fetch next set of results via `ListVerificationTemplatesRequest`"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.has_more_results": {
+      "name": "has_more_results",
+      "full_name": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.has_more_results",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether more results are available for this query via `continuation_token`"
+    },
+    "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.templates": {
+      "name": "templates",
+      "full_name": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.templates",
+      "label": "LABEL_REPEATED",
+      "type": "VerificationTemplateData",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationTemplateData",
       "description": "Templates found by query"
     },
     "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.continuation_token": {
@@ -8621,6 +9290,62 @@
       "full_type": "services.verifiablecredentials.templates.v1.TemplateData",
       "description": "The Template after the update has been applied"
     },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.key": {
+      "name": "key",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.value": {
+      "name": "value",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry.value",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationTemplateFieldPatch",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch",
+      "description": ""
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.description": {
+      "name": "description",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "New human-readable description of Template"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.fields": {
+      "name": "fields",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.fields",
+      "label": "LABEL_REPEATED",
+      "type": "FieldsEntry",
+      "full_type": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry",
+      "description": "Fields to update within the Template"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.id": {
+      "name": "id",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of Template to update"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.title": {
+      "name": "title",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest.title",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "New human-readable title of Template"
+    },
+    "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse.template": {
+      "name": "template",
+      "full_name": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse.template",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationTemplateData",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationTemplateData",
+      "description": ""
+    },
     "services.verifiablecredentials.templates.v1.UriFieldData.mime_type": {
       "name": "mime_type",
       "full_name": "services.verifiablecredentials.templates.v1.UriFieldData.mime_type",
@@ -8636,6 +9361,134 @@
       "type": "UriRenderMethod",
       "full_type": "services.verifiablecredentials.templates.v1.UriRenderMethod",
       "description": "How to display the URI value when rendering a credential."
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.created_by": {
+      "name": "created_by",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.created_by",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of template creator"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.date_created": {
+      "name": "date_created",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.date_created",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Date when template was created as ISO 8601 utc string"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.description": {
+      "name": "description",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Human-readable template description"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of ecosystem in which template resides"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.fields": {
+      "name": "fields",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.fields",
+      "label": "LABEL_REPEATED",
+      "type": "VerificationTemplateField",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationTemplateField",
+      "description": "Fields defined for the template"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.id": {
+      "name": "id",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Template ID"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.name": {
+      "name": "name",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Template name"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri": {
+      "name": "schema_uri",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "URI pointing to template JSON schema document"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.title": {
+      "name": "title",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.title",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Human-readable template title"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.type": {
+      "name": "type",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Template type (`VerificationTemplate`)"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateData.version": {
+      "name": "version",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.version",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "Template version number"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField.field_share_type": {
+      "name": "field_share_type",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateField.field_share_type",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationShareType",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationShareType",
+      "description": "Whether this field may be omitted on proof creation"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField.name": {
+      "name": "name",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateField.name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Field name (must be unique within template)"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateField.usage_policy": {
+      "name": "usage_policy",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateField.usage_policy",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "User-facing explanation of what is done with this data\n\nTODO - Future work supporting proof conditionals/ranges/etc"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.description": {
+      "name": "description",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Human-readable description of the field"
+    },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.title": {
+      "name": "title",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.title",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Human-readable name of the field"
     },
     "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json": {
       "name": "document_json",
@@ -8791,6 +9644,14 @@
       "type": "bool",
       "full_type": "bool",
       "description": "Wrap the output in a verifiable presentation.\nIf the credential used in the proof is bound to the holder DID,\nthe output will always use a verifiable presentation and this field will be ignored."
+    },
+    "services.verifiablecredentials.v1.CreateProofRequest.verification_template_id": {
+      "name": "verification_template_id",
+      "full_name": "services.verifiablecredentials.v1.CreateProofRequest.verification_template_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Id of verification template with which to construct the JSON-LD proof document"
     },
     "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json": {
       "name": "proof_document_json",
@@ -9036,7 +9897,8 @@
       "values": [
         "services.provider.v1.IdentityProvider.Unknown",
         "services.provider.v1.IdentityProvider.Email",
-        "services.provider.v1.IdentityProvider.Phone"
+        "services.provider.v1.IdentityProvider.Phone",
+        "services.provider.v1.IdentityProvider.Passkey"
       ]
     },
     "services.provider.v1.IndyOptions.IndyNetwork": {
@@ -9096,6 +9958,15 @@
         "services.verifiablecredentials.templates.v1.UriRenderMethod.TEXT",
         "services.verifiablecredentials.templates.v1.UriRenderMethod.LINK",
         "services.verifiablecredentials.templates.v1.UriRenderMethod.INLINE_IMAGE"
+      ]
+    },
+    "services.verifiablecredentials.templates.v1.VerificationShareType": {
+      "name": "VerificationShareType",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationShareType",
+      "description": "",
+      "values": [
+        "services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED",
+        "services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL"
       ]
     }
   },
@@ -9189,6 +10060,12 @@
       "full_name": "services.provider.v1.IdentityProvider.Email",
       "description": "Identity provider is email",
       "value": 1
+    },
+    "services.provider.v1.IdentityProvider.Passkey": {
+      "name": "Passkey",
+      "full_name": "services.provider.v1.IdentityProvider.Passkey",
+      "description": "Identity provider is passkey (WebAuthn) -- for Trinsic internal use only",
+      "value": 3
     },
     "services.provider.v1.IdentityProvider.Phone": {
       "name": "Phone",
@@ -9344,6 +10221,18 @@
       "name": "TEXT",
       "full_name": "services.verifiablecredentials.templates.v1.UriRenderMethod.TEXT",
       "description": "Display URI as text",
+      "value": 0
+    },
+    "services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL": {
+      "name": "OPTIONAL",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL",
+      "description": "",
+      "value": 1
+    },
+    "services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED": {
+      "name": "REQUIRED",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED",
+      "description": "",
       "value": 0
     }
   }
