@@ -247,6 +247,9 @@ service UniversalWallet {
 
   // List all wallets in the ecosystem
   rpc ListWallets(ListWalletsRequest) returns (ListWalletsResponse);
+
+  // List credentials which match a given verification template
+  rpc ListByVerificationTemplate(ListByVerificationTemplateRequest) returns (ListByVerificationTemplateResponse);
 }
 
 message AddExternalIdentityInitRequest {
@@ -310,4 +313,26 @@ message AuthenticateConfirmRequest {
 message AuthenticateConfirmResponse {
   // Auth token for the wallet
   string auth_token = 1;
+}
+
+// Request to list templates by 
+message ListByVerificationTemplateRequest {
+  // ID of verification template to list matching credentials
+  string verification_template_id = 1;
+
+  // Token provided by previous `ListCredentialTemplatesResponse`
+  // if more data is available for query
+  string continuation_token = 2 [(options.optional) = true];
+}
+
+// Response to `ListByVerificationTemplateRequest`
+message ListByVerificationTemplateResponse {
+  // Array of query results, as JSON strings
+  repeated string items = 1;
+
+  // Whether more results are available for this query via `continuation_token`
+  bool has_more_results = 2;
+
+  // Token to fetch next set of results via `ListByVerificationTemplateRequest`
+  string continuation_token = 3;
 }
