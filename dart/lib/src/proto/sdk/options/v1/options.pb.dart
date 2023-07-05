@@ -1,75 +1,38 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: sdk/options/v1/options.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class TrinsicOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'TrinsicOptions',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'sdk.options.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'serverEndpoint')
-    ..a<$core.int>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'serverPort',
-        $pb.PbFieldType.O3)
-    ..aOB(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'serverUseTls')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'authToken')
-    ..hasRequiredFields = false;
-
+  factory TrinsicOptions() => create();
   TrinsicOptions._() : super();
-  factory TrinsicOptions({
-    $core.String? serverEndpoint,
-    $core.int? serverPort,
-    $core.bool? serverUseTls,
-    $core.String? authToken,
-  }) {
-    final _result = create();
-    if (serverEndpoint != null) {
-      _result.serverEndpoint = serverEndpoint;
-    }
-    if (serverPort != null) {
-      _result.serverPort = serverPort;
-    }
-    if (serverUseTls != null) {
-      _result.serverUseTls = serverUseTls;
-    }
-    if (authToken != null) {
-      _result.authToken = authToken;
-    }
-    return _result;
-  }
   factory TrinsicOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory TrinsicOptions.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TrinsicOptions',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'sdk.options.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'serverEndpoint')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'serverPort', $pb.PbFieldType.O3)
+    ..aOB(3, _omitFieldNames ? '' : 'serverUseTls')
+    ..aOS(4, _omitFieldNames ? '' : 'authToken')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -79,8 +42,10 @@ class TrinsicOptions extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   TrinsicOptions copyWith(void Function(TrinsicOptions) updates) =>
       super.copyWith((message) => updates(message as TrinsicOptions))
-          as TrinsicOptions; // ignore: deprecated_member_use
+          as TrinsicOptions;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static TrinsicOptions create() => TrinsicOptions._();
   TrinsicOptions createEmptyInstance() => create();
@@ -139,3 +104,7 @@ class TrinsicOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearAuthToken() => clearField(4);
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

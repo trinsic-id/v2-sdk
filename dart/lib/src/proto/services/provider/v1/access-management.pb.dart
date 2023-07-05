@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/provider/v1/access-management.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -12,6 +16,15 @@ import 'package:protobuf/protobuf.dart' as $pb;
 enum AddRoleAssignmentRequest_Account { email, walletId, didUri, notSet }
 
 class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
+  factory AddRoleAssignmentRequest() => create();
+  AddRoleAssignmentRequest._() : super();
+  factory AddRoleAssignmentRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AddRoleAssignmentRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, AddRoleAssignmentRequest_Account>
       _AddRoleAssignmentRequest_AccountByTag = {
     2: AddRoleAssignmentRequest_Account.email,
@@ -20,65 +33,17 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
     0: AddRoleAssignmentRequest_Account.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AddRoleAssignmentRequest',
+      _omitMessageNames ? '' : 'AddRoleAssignmentRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
+          _omitMessageNames ? '' : 'services.provider.v1'),
       createEmptyInstance: create)
     ..oo(0, [2, 3, 4])
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'role')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'email')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'walletId')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
+    ..aOS(1, _omitFieldNames ? '' : 'role')
+    ..aOS(2, _omitFieldNames ? '' : 'email')
+    ..aOS(3, _omitFieldNames ? '' : 'walletId')
+    ..aOS(4, _omitFieldNames ? '' : 'didUri')
     ..hasRequiredFields = false;
 
-  AddRoleAssignmentRequest._() : super();
-  factory AddRoleAssignmentRequest({
-    $core.String? role,
-    $core.String? email,
-    $core.String? walletId,
-    $core.String? didUri,
-  }) {
-    final _result = create();
-    if (role != null) {
-      _result.role = role;
-    }
-    if (email != null) {
-      _result.email = email;
-    }
-    if (walletId != null) {
-      _result.walletId = walletId;
-    }
-    if (didUri != null) {
-      _result.didUri = didUri;
-    }
-    return _result;
-  }
-  factory AddRoleAssignmentRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory AddRoleAssignmentRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -90,8 +55,10 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
   AddRoleAssignmentRequest copyWith(
           void Function(AddRoleAssignmentRequest) updates) =>
       super.copyWith((message) => updates(message as AddRoleAssignmentRequest))
-          as AddRoleAssignmentRequest; // ignore: deprecated_member_use
+          as AddRoleAssignmentRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AddRoleAssignmentRequest create() => AddRoleAssignmentRequest._();
   AddRoleAssignmentRequest createEmptyInstance() => create();
@@ -156,25 +123,22 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
 }
 
 class AddRoleAssignmentResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'AddRoleAssignmentResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  AddRoleAssignmentResponse._() : super();
   factory AddRoleAssignmentResponse() => create();
+  AddRoleAssignmentResponse._() : super();
   factory AddRoleAssignmentResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory AddRoleAssignmentResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'AddRoleAssignmentResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -186,8 +150,10 @@ class AddRoleAssignmentResponse extends $pb.GeneratedMessage {
   AddRoleAssignmentResponse copyWith(
           void Function(AddRoleAssignmentResponse) updates) =>
       super.copyWith((message) => updates(message as AddRoleAssignmentResponse))
-          as AddRoleAssignmentResponse; // ignore: deprecated_member_use
+          as AddRoleAssignmentResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AddRoleAssignmentResponse create() => AddRoleAssignmentResponse._();
   AddRoleAssignmentResponse createEmptyInstance() => create();
@@ -202,6 +168,15 @@ class AddRoleAssignmentResponse extends $pb.GeneratedMessage {
 enum RemoveRoleAssignmentRequest_Account { email, walletId, didUri, notSet }
 
 class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
+  factory RemoveRoleAssignmentRequest() => create();
+  RemoveRoleAssignmentRequest._() : super();
+  factory RemoveRoleAssignmentRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RemoveRoleAssignmentRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, RemoveRoleAssignmentRequest_Account>
       _RemoveRoleAssignmentRequest_AccountByTag = {
     2: RemoveRoleAssignmentRequest_Account.email,
@@ -210,65 +185,17 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
     0: RemoveRoleAssignmentRequest_Account.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'RemoveRoleAssignmentRequest',
+      _omitMessageNames ? '' : 'RemoveRoleAssignmentRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
+          _omitMessageNames ? '' : 'services.provider.v1'),
       createEmptyInstance: create)
     ..oo(0, [2, 3, 4])
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'role')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'email')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'walletId')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
+    ..aOS(1, _omitFieldNames ? '' : 'role')
+    ..aOS(2, _omitFieldNames ? '' : 'email')
+    ..aOS(3, _omitFieldNames ? '' : 'walletId')
+    ..aOS(4, _omitFieldNames ? '' : 'didUri')
     ..hasRequiredFields = false;
 
-  RemoveRoleAssignmentRequest._() : super();
-  factory RemoveRoleAssignmentRequest({
-    $core.String? role,
-    $core.String? email,
-    $core.String? walletId,
-    $core.String? didUri,
-  }) {
-    final _result = create();
-    if (role != null) {
-      _result.role = role;
-    }
-    if (email != null) {
-      _result.email = email;
-    }
-    if (walletId != null) {
-      _result.walletId = walletId;
-    }
-    if (didUri != null) {
-      _result.didUri = didUri;
-    }
-    return _result;
-  }
-  factory RemoveRoleAssignmentRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RemoveRoleAssignmentRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -281,8 +208,10 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
           void Function(RemoveRoleAssignmentRequest) updates) =>
       super.copyWith(
               (message) => updates(message as RemoveRoleAssignmentRequest))
-          as RemoveRoleAssignmentRequest; // ignore: deprecated_member_use
+          as RemoveRoleAssignmentRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static RemoveRoleAssignmentRequest create() =>
       RemoveRoleAssignmentRequest._();
@@ -348,25 +277,22 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
 }
 
 class RemoveRoleAssignmentResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'RemoveRoleAssignmentResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  RemoveRoleAssignmentResponse._() : super();
   factory RemoveRoleAssignmentResponse() => create();
+  RemoveRoleAssignmentResponse._() : super();
   factory RemoveRoleAssignmentResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory RemoveRoleAssignmentResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RemoveRoleAssignmentResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -379,8 +305,10 @@ class RemoveRoleAssignmentResponse extends $pb.GeneratedMessage {
           void Function(RemoveRoleAssignmentResponse) updates) =>
       super.copyWith(
               (message) => updates(message as RemoveRoleAssignmentResponse))
-          as RemoveRoleAssignmentResponse; // ignore: deprecated_member_use
+          as RemoveRoleAssignmentResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static RemoveRoleAssignmentResponse create() =>
       RemoveRoleAssignmentResponse._();
@@ -396,6 +324,15 @@ class RemoveRoleAssignmentResponse extends $pb.GeneratedMessage {
 enum ListRoleAssignmentsRequest_Account { email, walletId, didUri, notSet }
 
 class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
+  factory ListRoleAssignmentsRequest() => create();
+  ListRoleAssignmentsRequest._() : super();
+  factory ListRoleAssignmentsRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListRoleAssignmentsRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, ListRoleAssignmentsRequest_Account>
       _ListRoleAssignmentsRequest_AccountByTag = {
     2: ListRoleAssignmentsRequest_Account.email,
@@ -404,56 +341,16 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
     0: ListRoleAssignmentsRequest_Account.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListRoleAssignmentsRequest',
+      _omitMessageNames ? '' : 'ListRoleAssignmentsRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
+          _omitMessageNames ? '' : 'services.provider.v1'),
       createEmptyInstance: create)
     ..oo(0, [2, 3, 4])
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'email')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'walletId')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'didUri')
+    ..aOS(2, _omitFieldNames ? '' : 'email')
+    ..aOS(3, _omitFieldNames ? '' : 'walletId')
+    ..aOS(4, _omitFieldNames ? '' : 'didUri')
     ..hasRequiredFields = false;
 
-  ListRoleAssignmentsRequest._() : super();
-  factory ListRoleAssignmentsRequest({
-    $core.String? email,
-    $core.String? walletId,
-    $core.String? didUri,
-  }) {
-    final _result = create();
-    if (email != null) {
-      _result.email = email;
-    }
-    if (walletId != null) {
-      _result.walletId = walletId;
-    }
-    if (didUri != null) {
-      _result.didUri = didUri;
-    }
-    return _result;
-  }
-  factory ListRoleAssignmentsRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory ListRoleAssignmentsRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -466,8 +363,10 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
           void Function(ListRoleAssignmentsRequest) updates) =>
       super.copyWith(
               (message) => updates(message as ListRoleAssignmentsRequest))
-          as ListRoleAssignmentsRequest; // ignore: deprecated_member_use
+          as ListRoleAssignmentsRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListRoleAssignmentsRequest create() => ListRoleAssignmentsRequest._();
   ListRoleAssignmentsRequest createEmptyInstance() => create();
@@ -520,38 +419,23 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
 }
 
 class ListRoleAssignmentsResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListRoleAssignmentsResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..pPS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'roles')
-    ..hasRequiredFields = false;
-
+  factory ListRoleAssignmentsResponse() => create();
   ListRoleAssignmentsResponse._() : super();
-  factory ListRoleAssignmentsResponse({
-    $core.Iterable<$core.String>? roles,
-  }) {
-    final _result = create();
-    if (roles != null) {
-      _result.roles.addAll(roles);
-    }
-    return _result;
-  }
   factory ListRoleAssignmentsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory ListRoleAssignmentsResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListRoleAssignmentsResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'roles')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -564,8 +448,10 @@ class ListRoleAssignmentsResponse extends $pb.GeneratedMessage {
           void Function(ListRoleAssignmentsResponse) updates) =>
       super.copyWith(
               (message) => updates(message as ListRoleAssignmentsResponse))
-          as ListRoleAssignmentsResponse; // ignore: deprecated_member_use
+          as ListRoleAssignmentsResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListRoleAssignmentsResponse create() =>
       ListRoleAssignmentsResponse._();
@@ -582,25 +468,22 @@ class ListRoleAssignmentsResponse extends $pb.GeneratedMessage {
 }
 
 class ListAvailableRolesRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListAvailableRolesRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  ListAvailableRolesRequest._() : super();
   factory ListAvailableRolesRequest() => create();
+  ListAvailableRolesRequest._() : super();
   factory ListAvailableRolesRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory ListAvailableRolesRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListAvailableRolesRequest',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -612,8 +495,10 @@ class ListAvailableRolesRequest extends $pb.GeneratedMessage {
   ListAvailableRolesRequest copyWith(
           void Function(ListAvailableRolesRequest) updates) =>
       super.copyWith((message) => updates(message as ListAvailableRolesRequest))
-          as ListAvailableRolesRequest; // ignore: deprecated_member_use
+          as ListAvailableRolesRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListAvailableRolesRequest create() => ListAvailableRolesRequest._();
   ListAvailableRolesRequest createEmptyInstance() => create();
@@ -626,38 +511,23 @@ class ListAvailableRolesRequest extends $pb.GeneratedMessage {
 }
 
 class ListAvailableRolesResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ListAvailableRolesResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..pPS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'roles')
-    ..hasRequiredFields = false;
-
+  factory ListAvailableRolesResponse() => create();
   ListAvailableRolesResponse._() : super();
-  factory ListAvailableRolesResponse({
-    $core.Iterable<$core.String>? roles,
-  }) {
-    final _result = create();
-    if (roles != null) {
-      _result.roles.addAll(roles);
-    }
-    return _result;
-  }
   factory ListAvailableRolesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory ListAvailableRolesResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListAvailableRolesResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'roles')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -670,8 +540,10 @@ class ListAvailableRolesResponse extends $pb.GeneratedMessage {
           void Function(ListAvailableRolesResponse) updates) =>
       super.copyWith(
               (message) => updates(message as ListAvailableRolesResponse))
-          as ListAvailableRolesResponse; // ignore: deprecated_member_use
+          as ListAvailableRolesResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ListAvailableRolesResponse create() => ListAvailableRolesResponse._();
   ListAvailableRolesResponse createEmptyInstance() => create();
@@ -685,3 +557,7 @@ class ListAvailableRolesResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.List<$core.String> get roles => $_getList(0);
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

@@ -33,6 +33,11 @@ class IdentityProvider(betterproto.Enum):
     Phone = 2
     """Identity provider is phone"""
 
+    Passkey = 3
+    """
+    Identity provider is passkey (WebAuthn) -- for Trinsic internal use only
+    """
+
 
 class IonOptionsIonNetwork(betterproto.Enum):
     TestNet = 0

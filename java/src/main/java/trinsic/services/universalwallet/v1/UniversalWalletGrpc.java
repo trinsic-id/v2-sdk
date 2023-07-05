@@ -880,6 +880,58 @@ public final class UniversalWalletGrpc {
     return getListWalletsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest,
+          trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>
+      getListByVerificationTemplateMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ListByVerificationTemplate",
+      requestType = trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest.class,
+      responseType = trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest,
+          trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>
+      getListByVerificationTemplateMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest,
+            trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>
+        getListByVerificationTemplateMethod;
+    if ((getListByVerificationTemplateMethod =
+            UniversalWalletGrpc.getListByVerificationTemplateMethod)
+        == null) {
+      synchronized (UniversalWalletGrpc.class) {
+        if ((getListByVerificationTemplateMethod =
+                UniversalWalletGrpc.getListByVerificationTemplateMethod)
+            == null) {
+          UniversalWalletGrpc.getListByVerificationTemplateMethod =
+              getListByVerificationTemplateMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest,
+                          trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "ListByVerificationTemplate"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new UniversalWalletMethodDescriptorSupplier("ListByVerificationTemplate"))
+                      .build();
+        }
+      }
+    }
+    return getListByVerificationTemplateMethod;
+  }
+
   /** Creates a new async stub that supports all call types for the service */
   public static UniversalWalletStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<UniversalWalletStub> factory =
@@ -1204,6 +1256,22 @@ public final class UniversalWalletGrpc {
           getListWalletsMethod(), responseObserver);
     }
 
+    /**
+     *
+     *
+     * <pre>
+     * List credentials which match a given verification template
+     * </pre>
+     */
+    public void listByVerificationTemplate(
+        trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getListByVerificationTemplateMethod(), responseObserver);
+    }
+
     @java.lang.Override
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
@@ -1332,6 +1400,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.ListWalletsRequest,
                       trinsic.services.universalwallet.v1.ListWalletsResponse>(
                       this, METHODID_LIST_WALLETS)))
+          .addMethod(
+              getListByVerificationTemplateMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest,
+                      trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>(
+                      this, METHODID_LIST_BY_VERIFICATION_TEMPLATE)))
           .build();
     }
   }
@@ -1657,6 +1732,24 @@ public final class UniversalWalletGrpc {
           request,
           responseObserver);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * List credentials which match a given verification template
+     * </pre>
+     */
+    public void listByVerificationTemplate(
+        trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListByVerificationTemplateMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
   }
 
   /**
@@ -1920,6 +2013,20 @@ public final class UniversalWalletGrpc {
         trinsic.services.universalwallet.v1.ListWalletsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListWalletsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * List credentials which match a given verification template
+     * </pre>
+     */
+    public trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse
+        listByVerificationTemplate(
+            trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getListByVerificationTemplateMethod(), getCallOptions(), request);
     }
   }
 
@@ -2204,6 +2311,21 @@ public final class UniversalWalletGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListWalletsMethod(), getCallOptions()), request);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * List credentials which match a given verification template
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>
+        listByVerificationTemplate(
+            trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListByVerificationTemplateMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_ITEM = 0;
@@ -2224,6 +2346,7 @@ public final class UniversalWalletGrpc {
   private static final int METHODID_AUTHENTICATE_CONFIRM = 15;
   private static final int METHODID_AUTHENTICATE_RESEND_CODE = 16;
   private static final int METHODID_LIST_WALLETS = 17;
+  private static final int METHODID_LIST_BY_VERIFICATION_TEMPLATE = 18;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2361,6 +2484,13 @@ public final class UniversalWalletGrpc {
               (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.ListWalletsResponse>)
                   responseObserver);
           break;
+        case METHODID_LIST_BY_VERIFICATION_TEMPLATE:
+          serviceImpl.listByVerificationTemplate(
+              (trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>)
+                  responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -2443,6 +2573,7 @@ public final class UniversalWalletGrpc {
                       .addMethod(getAuthenticateConfirmMethod())
                       .addMethod(getAuthenticateResendCodeMethod())
                       .addMethod(getListWalletsMethod())
+                      .addMethod(getListByVerificationTemplateMethod())
                       .build();
         }
       }
