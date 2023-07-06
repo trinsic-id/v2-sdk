@@ -61,7 +61,7 @@ message ListCredentialTemplatesResponse {
   // Whether more results are available for this query via `continuation_token`
   bool has_more_results = 2;
 
-  // Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+  // Token to fetch next set of results via `ListCredentialTemplatesRequest`
   string continuation_token = 3;
 }
 
@@ -278,4 +278,119 @@ service CredentialTemplates {
 
   // Delete a credential template from the current ecosystem by ID
   rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
+
+  // Create/update verification templates
+  rpc CreateVerificationTemplate(CreateVerificationTemplateRequest) returns (CreateVerificationTemplateResponse);
+  rpc ListVerificationTemplate(ListVerificationTemplatesRequest) returns (ListVerificationTemplatesResponse);
+  rpc UpdateVerificationTemplate(UpdateVerificationTemplateRequest) returns (UpdateVerificationTemplateResponse);
+  rpc DeleteVerificationTemplate(DeleteVerificationTemplateRequest) returns (DeleteVerificationTemplateResponse);
+}
+
+
+message CreateVerificationTemplateRequest {
+  // Name of new template. Must be a unique identifier within its ecosystem.
+  string name = 1;
+  // Fields which will be required in the verification proof template
+  map<string,VerificationTemplateField> fields = 2;
+  // TODO - Add support for predicate types - currently only equality.
+
+  // Source credential template, used for verifying that the specified `fields` are present in the credential template
+  string credential_template_id = 3;
+
+  // Human-readable name of template
+  string title = 4;
+
+  // Human-readable description of template
+  string description = 5;
+}
+
+message CreateVerificationTemplateResponse {
+    VerificationTemplateData data = 1;
+}
+
+message UpdateVerificationTemplateRequest {
+  // ID of Template to update
+  string id = 1;
+  // New human-readable title of Template
+  optional string title = 2;
+  // New human-readable description of Template
+  optional string description = 3;
+  // Fields to update within the Template
+  map<string, VerificationTemplateFieldPatch> fields = 4;
+}
+message UpdateVerificationTemplateResponse {
+  VerificationTemplateData template = 1;
+}
+message DeleteVerificationTemplateRequest {
+  string verification_template_id = 1;
+}
+message DeleteVerificationTemplateResponse {
+  // This space intentionally left blank
+}
+
+// Verification Template
+message VerificationTemplateData {
+  // Template ID
+  string id = 1 [json_name = "id"];
+  // Template name
+  string name = 2 [json_name="name"];
+  // Template version number
+  int32 version = 3 [json_name="version"];
+  // Fields defined for the template
+  repeated VerificationTemplateField fields = 4;
+  // URI pointing to template JSON schema document
+  string schema_uri = 6 [json_name="schemaUri"];
+  // ID of ecosystem in which template resides
+  string ecosystem_id = 8 [json_name = "ecosystemId"];
+  // Template type (`VerificationTemplate`)
+  string type = 9         [json_name = "type"];
+  // ID of template creator
+  string created_by = 10  [json_name = "createdBy"];
+  // Date when template was created as ISO 8601 utc string
+  string date_created = 11 [json_name = "dateCreated"];
+  // Human-readable template title
+  string title = 12;
+  // Human-readable template description
+  string description = 13;
+}
+
+// Request to list templates using a SQL query
+message ListVerificationTemplatesRequest {
+  // SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
+  string query = 1;
+
+  // Token provided by previous `ListCredentialTemplatesResponse`
+  // if more data is available for query
+  string continuation_token = 2 [(options.optional) = true];
+}
+
+message ListVerificationTemplatesResponse {
+  // Templates found by query
+  repeated VerificationTemplateData templates = 1;
+
+  // Whether more results are available for this query via `continuation_token`
+  bool has_more_results = 2;
+
+  // Token to fetch next set of results via `ListVerificationTemplatesRequest`
+  string continuation_token = 3;
+}
+
+// A field defined in a template
+message VerificationTemplateField {
+  // Whether this field may be omitted on proof creation
+  VerificationShareType field_share_type = 1;
+  // User-facing explanation of what is done with this data
+  string usage_policy = 2;
+  // TODO - Future work supporting proof conditionals/ranges/etc
+}
+
+enum VerificationShareType {
+  REQUIRED = 0;
+  OPTIONAL = 1;
+}
+
+// A patch to apply to an existing template field
+message VerificationTemplateFieldPatch {
+  // Human-readable name of the field
+  optional string usage_policy = 1;
 }
