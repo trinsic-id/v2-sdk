@@ -80,7 +80,7 @@ public interface ListCredentialTemplatesResponseOrBuilder
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+   * Token to fetch next set of results via `ListCredentialTemplatesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
@@ -92,7 +92,7 @@ public interface ListCredentialTemplatesResponseOrBuilder
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+   * Token to fetch next set of results via `ListCredentialTemplatesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>

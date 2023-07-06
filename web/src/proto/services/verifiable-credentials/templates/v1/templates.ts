@@ -96,6 +96,39 @@ export function uriRenderMethodToJSON(object: UriRenderMethod): string {
   }
 }
 
+export enum VerificationShareType {
+  REQUIRED = 0,
+  OPTIONAL = 1,
+  UNRECOGNIZED = -1,
+}
+
+export function verificationShareTypeFromJSON(object: any): VerificationShareType {
+  switch (object) {
+    case 0:
+    case "REQUIRED":
+      return VerificationShareType.REQUIRED;
+    case 1:
+    case "OPTIONAL":
+      return VerificationShareType.OPTIONAL;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return VerificationShareType.UNRECOGNIZED;
+  }
+}
+
+export function verificationShareTypeToJSON(object: VerificationShareType): string {
+  switch (object) {
+    case VerificationShareType.REQUIRED:
+      return "REQUIRED";
+    case VerificationShareType.OPTIONAL:
+      return "OPTIONAL";
+    case VerificationShareType.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** Request to fetch a template by ID */
 export interface GetCredentialTemplateRequest {
   /** ID of template to fetch */
@@ -146,7 +179,7 @@ export interface ListCredentialTemplatesResponse {
   templates?: TemplateData[];
   /** Whether more results are available for this query via `continuation_token` */
   hasMoreResults?: boolean;
-  /** Token to fetch next set of resuts via `ListCredentialTemplatesRequest` */
+  /** Token to fetch next set of results via `ListCredentialTemplatesRequest` */
   continuationToken?: string;
 }
 
@@ -348,6 +381,120 @@ export interface UriFieldData {
   mimeType?: string;
   /** How to display the URI value when rendering a credential. */
   renderMethod?: UriRenderMethod;
+}
+
+export interface CreateVerificationTemplateRequest {
+  /** Name of new template. Must be a unique identifier within its ecosystem. */
+  name?: string;
+  /** Fields which will be required in the verification proof template */
+  fields?: { [key: string]: VerificationTemplateField };
+  /** Source credential template, used for verifying that the specified `fields` are present in the credential template */
+  credentialTemplateId?: string;
+  /** Human-readable name of template */
+  title?: string;
+  /** Human-readable description of template */
+  description?: string;
+}
+
+export interface CreateVerificationTemplateRequest_FieldsEntry {
+  key: string;
+  value?: VerificationTemplateField;
+}
+
+export interface CreateVerificationTemplateResponse {
+  data?: VerificationTemplateData;
+}
+
+export interface UpdateVerificationTemplateRequest {
+  /** ID of Template to update */
+  id?: string;
+  /** New human-readable title of Template */
+  title?:
+    | string
+    | undefined;
+  /** New human-readable description of Template */
+  description?:
+    | string
+    | undefined;
+  /** Fields to update within the Template */
+  fields?: { [key: string]: VerificationTemplateFieldPatch };
+}
+
+export interface UpdateVerificationTemplateRequest_FieldsEntry {
+  key: string;
+  value?: VerificationTemplateFieldPatch;
+}
+
+export interface UpdateVerificationTemplateResponse {
+  template?: VerificationTemplateData;
+}
+
+export interface DeleteVerificationTemplateRequest {
+  verificationTemplateId?: string;
+}
+
+/** This space intentionally left blank */
+export interface DeleteVerificationTemplateResponse {
+}
+
+/** Verification Template */
+export interface VerificationTemplateData {
+  /** Template ID */
+  id?: string;
+  /** Template name */
+  name?: string;
+  /** Template version number */
+  version?: number;
+  /** Fields defined for the template */
+  fields?: VerificationTemplateField[];
+  /** URI pointing to template JSON schema document */
+  schemaUri?: string;
+  /** ID of ecosystem in which template resides */
+  ecosystemId?: string;
+  /** Template type (`VerificationTemplate`) */
+  type?: string;
+  /** ID of template creator */
+  createdBy?: string;
+  /** Date when template was created as ISO 8601 utc string */
+  dateCreated?: string;
+  /** Human-readable template title */
+  title?: string;
+  /** Human-readable template description */
+  description?: string;
+}
+
+/** Request to list templates using a SQL query */
+export interface ListVerificationTemplatesRequest {
+  /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
+  query?: string;
+  /**
+   * Token provided by previous `ListCredentialTemplatesResponse`
+   * if more data is available for query
+   */
+  continuationToken?: string;
+}
+
+export interface ListVerificationTemplatesResponse {
+  /** Templates found by query */
+  templates?: VerificationTemplateData[];
+  /** Whether more results are available for this query via `continuation_token` */
+  hasMoreResults?: boolean;
+  /** Token to fetch next set of results via `ListVerificationTemplatesRequest` */
+  continuationToken?: string;
+}
+
+/** A field defined in a template */
+export interface VerificationTemplateField {
+  /** Whether this field may be omitted on proof creation */
+  fieldShareType?: VerificationShareType;
+  /** User-facing explanation of what is done with this data */
+  usagePolicy?: string;
+}
+
+/** A patch to apply to an existing template field */
+export interface VerificationTemplateFieldPatch {
+  /** Human-readable name of the field */
+  usagePolicy?: string | undefined;
 }
 
 function createBaseGetCredentialTemplateRequest(): GetCredentialTemplateRequest {
@@ -2600,6 +2747,1131 @@ export const UriFieldData = {
   },
 };
 
+function createBaseCreateVerificationTemplateRequest(): CreateVerificationTemplateRequest {
+  return { name: "", fields: {}, credentialTemplateId: "", title: "", description: "" };
+}
+
+export const CreateVerificationTemplateRequest = {
+  encode(message: CreateVerificationTemplateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.name !== undefined && message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    Object.entries(message.fields || {}).forEach(([key, value]) => {
+      CreateVerificationTemplateRequest_FieldsEntry.encode({ key: key as any, value }, writer.uint32(18).fork())
+        .ldelim();
+    });
+    if (message.credentialTemplateId !== undefined && message.credentialTemplateId !== "") {
+      writer.uint32(26).string(message.credentialTemplateId);
+    }
+    if (message.title !== undefined && message.title !== "") {
+      writer.uint32(34).string(message.title);
+    }
+    if (message.description !== undefined && message.description !== "") {
+      writer.uint32(42).string(message.description);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateVerificationTemplateRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateVerificationTemplateRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.name = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          const entry2 = CreateVerificationTemplateRequest_FieldsEntry.decode(reader, reader.uint32());
+          if (entry2.value !== undefined) {
+            message.fields![entry2.key] = entry2.value;
+          }
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.credentialTemplateId = reader.string();
+          continue;
+        case 4:
+          if (tag != 34) {
+            break;
+          }
+
+          message.title = reader.string();
+          continue;
+        case 5:
+          if (tag != 42) {
+            break;
+          }
+
+          message.description = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateVerificationTemplateRequest {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      fields: isObject(object.fields)
+        ? Object.entries(object.fields).reduce<{ [key: string]: VerificationTemplateField }>((acc, [key, value]) => {
+          acc[key] = VerificationTemplateField.fromJSON(value);
+          return acc;
+        }, {})
+        : {},
+      credentialTemplateId: isSet(object.credentialTemplateId) ? String(object.credentialTemplateId) : "",
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+    };
+  },
+
+  toJSON(message: CreateVerificationTemplateRequest): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    obj.fields = {};
+    if (message.fields) {
+      Object.entries(message.fields).forEach(([k, v]) => {
+        obj.fields[k] = VerificationTemplateField.toJSON(v);
+      });
+    }
+    message.credentialTemplateId !== undefined && (obj.credentialTemplateId = message.credentialTemplateId);
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    return obj;
+  },
+
+  create(base?: DeepPartial<CreateVerificationTemplateRequest>): CreateVerificationTemplateRequest {
+    return CreateVerificationTemplateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CreateVerificationTemplateRequest>): CreateVerificationTemplateRequest {
+    const message = createBaseCreateVerificationTemplateRequest();
+    message.name = object.name ?? "";
+    message.fields = Object.entries(object.fields ?? {}).reduce<{ [key: string]: VerificationTemplateField }>(
+      (acc, [key, value]) => {
+        if (value !== undefined) {
+          acc[key] = VerificationTemplateField.fromPartial(value);
+        }
+        return acc;
+      },
+      {},
+    );
+    message.credentialTemplateId = object.credentialTemplateId ?? "";
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    return message;
+  },
+};
+
+function createBaseCreateVerificationTemplateRequest_FieldsEntry(): CreateVerificationTemplateRequest_FieldsEntry {
+  return { key: "", value: undefined };
+}
+
+export const CreateVerificationTemplateRequest_FieldsEntry = {
+  encode(message: CreateVerificationTemplateRequest_FieldsEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== undefined) {
+      VerificationTemplateField.encode(message.value, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateVerificationTemplateRequest_FieldsEntry {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateVerificationTemplateRequest_FieldsEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.value = VerificationTemplateField.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateVerificationTemplateRequest_FieldsEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? VerificationTemplateField.fromJSON(object.value) : undefined,
+    };
+  },
+
+  toJSON(message: CreateVerificationTemplateRequest_FieldsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value ? VerificationTemplateField.toJSON(message.value) : undefined);
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CreateVerificationTemplateRequest_FieldsEntry>,
+  ): CreateVerificationTemplateRequest_FieldsEntry {
+    return CreateVerificationTemplateRequest_FieldsEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CreateVerificationTemplateRequest_FieldsEntry>,
+  ): CreateVerificationTemplateRequest_FieldsEntry {
+    const message = createBaseCreateVerificationTemplateRequest_FieldsEntry();
+    message.key = object.key ?? "";
+    message.value = (object.value !== undefined && object.value !== null)
+      ? VerificationTemplateField.fromPartial(object.value)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCreateVerificationTemplateResponse(): CreateVerificationTemplateResponse {
+  return { data: undefined };
+}
+
+export const CreateVerificationTemplateResponse = {
+  encode(message: CreateVerificationTemplateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.data !== undefined) {
+      VerificationTemplateData.encode(message.data, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateVerificationTemplateResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateVerificationTemplateResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.data = VerificationTemplateData.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateVerificationTemplateResponse {
+    return { data: isSet(object.data) ? VerificationTemplateData.fromJSON(object.data) : undefined };
+  },
+
+  toJSON(message: CreateVerificationTemplateResponse): unknown {
+    const obj: any = {};
+    message.data !== undefined && (obj.data = message.data ? VerificationTemplateData.toJSON(message.data) : undefined);
+    return obj;
+  },
+
+  create(base?: DeepPartial<CreateVerificationTemplateResponse>): CreateVerificationTemplateResponse {
+    return CreateVerificationTemplateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CreateVerificationTemplateResponse>): CreateVerificationTemplateResponse {
+    const message = createBaseCreateVerificationTemplateResponse();
+    message.data = (object.data !== undefined && object.data !== null)
+      ? VerificationTemplateData.fromPartial(object.data)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseUpdateVerificationTemplateRequest(): UpdateVerificationTemplateRequest {
+  return { id: "", title: undefined, description: undefined, fields: {} };
+}
+
+export const UpdateVerificationTemplateRequest = {
+  encode(message: UpdateVerificationTemplateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.title !== undefined) {
+      writer.uint32(18).string(message.title);
+    }
+    if (message.description !== undefined) {
+      writer.uint32(26).string(message.description);
+    }
+    Object.entries(message.fields || {}).forEach(([key, value]) => {
+      UpdateVerificationTemplateRequest_FieldsEntry.encode({ key: key as any, value }, writer.uint32(34).fork())
+        .ldelim();
+    });
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateVerificationTemplateRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateVerificationTemplateRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.id = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.title = reader.string();
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.description = reader.string();
+          continue;
+        case 4:
+          if (tag != 34) {
+            break;
+          }
+
+          const entry4 = UpdateVerificationTemplateRequest_FieldsEntry.decode(reader, reader.uint32());
+          if (entry4.value !== undefined) {
+            message.fields![entry4.key] = entry4.value;
+          }
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateVerificationTemplateRequest {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      title: isSet(object.title) ? String(object.title) : undefined,
+      description: isSet(object.description) ? String(object.description) : undefined,
+      fields: isObject(object.fields)
+        ? Object.entries(object.fields).reduce<{ [key: string]: VerificationTemplateFieldPatch }>(
+          (acc, [key, value]) => {
+            acc[key] = VerificationTemplateFieldPatch.fromJSON(value);
+            return acc;
+          },
+          {},
+        )
+        : {},
+    };
+  },
+
+  toJSON(message: UpdateVerificationTemplateRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    obj.fields = {};
+    if (message.fields) {
+      Object.entries(message.fields).forEach(([k, v]) => {
+        obj.fields[k] = VerificationTemplateFieldPatch.toJSON(v);
+      });
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<UpdateVerificationTemplateRequest>): UpdateVerificationTemplateRequest {
+    return UpdateVerificationTemplateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<UpdateVerificationTemplateRequest>): UpdateVerificationTemplateRequest {
+    const message = createBaseUpdateVerificationTemplateRequest();
+    message.id = object.id ?? "";
+    message.title = object.title ?? undefined;
+    message.description = object.description ?? undefined;
+    message.fields = Object.entries(object.fields ?? {}).reduce<{ [key: string]: VerificationTemplateFieldPatch }>(
+      (acc, [key, value]) => {
+        if (value !== undefined) {
+          acc[key] = VerificationTemplateFieldPatch.fromPartial(value);
+        }
+        return acc;
+      },
+      {},
+    );
+    return message;
+  },
+};
+
+function createBaseUpdateVerificationTemplateRequest_FieldsEntry(): UpdateVerificationTemplateRequest_FieldsEntry {
+  return { key: "", value: undefined };
+}
+
+export const UpdateVerificationTemplateRequest_FieldsEntry = {
+  encode(message: UpdateVerificationTemplateRequest_FieldsEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== undefined) {
+      VerificationTemplateFieldPatch.encode(message.value, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateVerificationTemplateRequest_FieldsEntry {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateVerificationTemplateRequest_FieldsEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.value = VerificationTemplateFieldPatch.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateVerificationTemplateRequest_FieldsEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? VerificationTemplateFieldPatch.fromJSON(object.value) : undefined,
+    };
+  },
+
+  toJSON(message: UpdateVerificationTemplateRequest_FieldsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value ? VerificationTemplateFieldPatch.toJSON(message.value) : undefined);
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<UpdateVerificationTemplateRequest_FieldsEntry>,
+  ): UpdateVerificationTemplateRequest_FieldsEntry {
+    return UpdateVerificationTemplateRequest_FieldsEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<UpdateVerificationTemplateRequest_FieldsEntry>,
+  ): UpdateVerificationTemplateRequest_FieldsEntry {
+    const message = createBaseUpdateVerificationTemplateRequest_FieldsEntry();
+    message.key = object.key ?? "";
+    message.value = (object.value !== undefined && object.value !== null)
+      ? VerificationTemplateFieldPatch.fromPartial(object.value)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseUpdateVerificationTemplateResponse(): UpdateVerificationTemplateResponse {
+  return { template: undefined };
+}
+
+export const UpdateVerificationTemplateResponse = {
+  encode(message: UpdateVerificationTemplateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.template !== undefined) {
+      VerificationTemplateData.encode(message.template, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpdateVerificationTemplateResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateVerificationTemplateResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.template = VerificationTemplateData.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateVerificationTemplateResponse {
+    return { template: isSet(object.template) ? VerificationTemplateData.fromJSON(object.template) : undefined };
+  },
+
+  toJSON(message: UpdateVerificationTemplateResponse): unknown {
+    const obj: any = {};
+    message.template !== undefined &&
+      (obj.template = message.template ? VerificationTemplateData.toJSON(message.template) : undefined);
+    return obj;
+  },
+
+  create(base?: DeepPartial<UpdateVerificationTemplateResponse>): UpdateVerificationTemplateResponse {
+    return UpdateVerificationTemplateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<UpdateVerificationTemplateResponse>): UpdateVerificationTemplateResponse {
+    const message = createBaseUpdateVerificationTemplateResponse();
+    message.template = (object.template !== undefined && object.template !== null)
+      ? VerificationTemplateData.fromPartial(object.template)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseDeleteVerificationTemplateRequest(): DeleteVerificationTemplateRequest {
+  return { verificationTemplateId: "" };
+}
+
+export const DeleteVerificationTemplateRequest = {
+  encode(message: DeleteVerificationTemplateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.verificationTemplateId !== undefined && message.verificationTemplateId !== "") {
+      writer.uint32(10).string(message.verificationTemplateId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DeleteVerificationTemplateRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeleteVerificationTemplateRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.verificationTemplateId = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): DeleteVerificationTemplateRequest {
+    return {
+      verificationTemplateId: isSet(object.verificationTemplateId) ? String(object.verificationTemplateId) : "",
+    };
+  },
+
+  toJSON(message: DeleteVerificationTemplateRequest): unknown {
+    const obj: any = {};
+    message.verificationTemplateId !== undefined && (obj.verificationTemplateId = message.verificationTemplateId);
+    return obj;
+  },
+
+  create(base?: DeepPartial<DeleteVerificationTemplateRequest>): DeleteVerificationTemplateRequest {
+    return DeleteVerificationTemplateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<DeleteVerificationTemplateRequest>): DeleteVerificationTemplateRequest {
+    const message = createBaseDeleteVerificationTemplateRequest();
+    message.verificationTemplateId = object.verificationTemplateId ?? "";
+    return message;
+  },
+};
+
+function createBaseDeleteVerificationTemplateResponse(): DeleteVerificationTemplateResponse {
+  return {};
+}
+
+export const DeleteVerificationTemplateResponse = {
+  encode(_: DeleteVerificationTemplateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DeleteVerificationTemplateResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeleteVerificationTemplateResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(_: any): DeleteVerificationTemplateResponse {
+    return {};
+  },
+
+  toJSON(_: DeleteVerificationTemplateResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  create(base?: DeepPartial<DeleteVerificationTemplateResponse>): DeleteVerificationTemplateResponse {
+    return DeleteVerificationTemplateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<DeleteVerificationTemplateResponse>): DeleteVerificationTemplateResponse {
+    const message = createBaseDeleteVerificationTemplateResponse();
+    return message;
+  },
+};
+
+function createBaseVerificationTemplateData(): VerificationTemplateData {
+  return {
+    id: "",
+    name: "",
+    version: 0,
+    fields: [],
+    schemaUri: "",
+    ecosystemId: "",
+    type: "",
+    createdBy: "",
+    dateCreated: "",
+    title: "",
+    description: "",
+  };
+}
+
+export const VerificationTemplateData = {
+  encode(message: VerificationTemplateData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.name !== undefined && message.name !== "") {
+      writer.uint32(18).string(message.name);
+    }
+    if (message.version !== undefined && message.version !== 0) {
+      writer.uint32(24).int32(message.version);
+    }
+    if (message.fields !== undefined && message.fields.length !== 0) {
+      for (const v of message.fields) {
+        VerificationTemplateField.encode(v!, writer.uint32(34).fork()).ldelim();
+      }
+    }
+    if (message.schemaUri !== undefined && message.schemaUri !== "") {
+      writer.uint32(50).string(message.schemaUri);
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      writer.uint32(66).string(message.ecosystemId);
+    }
+    if (message.type !== undefined && message.type !== "") {
+      writer.uint32(74).string(message.type);
+    }
+    if (message.createdBy !== undefined && message.createdBy !== "") {
+      writer.uint32(82).string(message.createdBy);
+    }
+    if (message.dateCreated !== undefined && message.dateCreated !== "") {
+      writer.uint32(90).string(message.dateCreated);
+    }
+    if (message.title !== undefined && message.title !== "") {
+      writer.uint32(98).string(message.title);
+    }
+    if (message.description !== undefined && message.description !== "") {
+      writer.uint32(106).string(message.description);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerificationTemplateData {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVerificationTemplateData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.id = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.name = reader.string();
+          continue;
+        case 3:
+          if (tag != 24) {
+            break;
+          }
+
+          message.version = reader.int32();
+          continue;
+        case 4:
+          if (tag != 34) {
+            break;
+          }
+
+          message.fields!.push(VerificationTemplateField.decode(reader, reader.uint32()));
+          continue;
+        case 6:
+          if (tag != 50) {
+            break;
+          }
+
+          message.schemaUri = reader.string();
+          continue;
+        case 8:
+          if (tag != 66) {
+            break;
+          }
+
+          message.ecosystemId = reader.string();
+          continue;
+        case 9:
+          if (tag != 74) {
+            break;
+          }
+
+          message.type = reader.string();
+          continue;
+        case 10:
+          if (tag != 82) {
+            break;
+          }
+
+          message.createdBy = reader.string();
+          continue;
+        case 11:
+          if (tag != 90) {
+            break;
+          }
+
+          message.dateCreated = reader.string();
+          continue;
+        case 12:
+          if (tag != 98) {
+            break;
+          }
+
+          message.title = reader.string();
+          continue;
+        case 13:
+          if (tag != 106) {
+            break;
+          }
+
+          message.description = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): VerificationTemplateData {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      version: isSet(object.version) ? Number(object.version) : 0,
+      fields: Array.isArray(object?.fields) ? object.fields.map((e: any) => VerificationTemplateField.fromJSON(e)) : [],
+      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+      type: isSet(object.type) ? String(object.type) : "",
+      createdBy: isSet(object.createdBy) ? String(object.createdBy) : "",
+      dateCreated: isSet(object.dateCreated) ? String(object.dateCreated) : "",
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+    };
+  },
+
+  toJSON(message: VerificationTemplateData): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.name !== undefined && (obj.name = message.name);
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    if (message.fields) {
+      obj.fields = message.fields.map((e) => e ? VerificationTemplateField.toJSON(e) : undefined);
+    } else {
+      obj.fields = [];
+    }
+    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
+    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
+    message.type !== undefined && (obj.type = message.type);
+    message.createdBy !== undefined && (obj.createdBy = message.createdBy);
+    message.dateCreated !== undefined && (obj.dateCreated = message.dateCreated);
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    return obj;
+  },
+
+  create(base?: DeepPartial<VerificationTemplateData>): VerificationTemplateData {
+    return VerificationTemplateData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VerificationTemplateData>): VerificationTemplateData {
+    const message = createBaseVerificationTemplateData();
+    message.id = object.id ?? "";
+    message.name = object.name ?? "";
+    message.version = object.version ?? 0;
+    message.fields = object.fields?.map((e) => VerificationTemplateField.fromPartial(e)) || [];
+    message.schemaUri = object.schemaUri ?? "";
+    message.ecosystemId = object.ecosystemId ?? "";
+    message.type = object.type ?? "";
+    message.createdBy = object.createdBy ?? "";
+    message.dateCreated = object.dateCreated ?? "";
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    return message;
+  },
+};
+
+function createBaseListVerificationTemplatesRequest(): ListVerificationTemplatesRequest {
+  return { query: "", continuationToken: "" };
+}
+
+export const ListVerificationTemplatesRequest = {
+  encode(message: ListVerificationTemplatesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.query !== undefined && message.query !== "") {
+      writer.uint32(10).string(message.query);
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      writer.uint32(18).string(message.continuationToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListVerificationTemplatesRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListVerificationTemplatesRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.query = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListVerificationTemplatesRequest {
+    return {
+      query: isSet(object.query) ? String(object.query) : "",
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
+    };
+  },
+
+  toJSON(message: ListVerificationTemplatesRequest): unknown {
+    const obj: any = {};
+    message.query !== undefined && (obj.query = message.query);
+    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListVerificationTemplatesRequest>): ListVerificationTemplatesRequest {
+    return ListVerificationTemplatesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ListVerificationTemplatesRequest>): ListVerificationTemplatesRequest {
+    const message = createBaseListVerificationTemplatesRequest();
+    message.query = object.query ?? "";
+    message.continuationToken = object.continuationToken ?? "";
+    return message;
+  },
+};
+
+function createBaseListVerificationTemplatesResponse(): ListVerificationTemplatesResponse {
+  return { templates: [], hasMoreResults: false, continuationToken: "" };
+}
+
+export const ListVerificationTemplatesResponse = {
+  encode(message: ListVerificationTemplatesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.templates !== undefined && message.templates.length !== 0) {
+      for (const v of message.templates) {
+        VerificationTemplateData.encode(v!, writer.uint32(10).fork()).ldelim();
+      }
+    }
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      writer.uint32(26).string(message.continuationToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListVerificationTemplatesResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListVerificationTemplatesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.templates!.push(VerificationTemplateData.decode(reader, reader.uint32()));
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.hasMoreResults = reader.bool();
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListVerificationTemplatesResponse {
+    return {
+      templates: Array.isArray(object?.templates)
+        ? object.templates.map((e: any) => VerificationTemplateData.fromJSON(e))
+        : [],
+      hasMoreResults: isSet(object.hasMoreResults) ? Boolean(object.hasMoreResults) : false,
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
+    };
+  },
+
+  toJSON(message: ListVerificationTemplatesResponse): unknown {
+    const obj: any = {};
+    if (message.templates) {
+      obj.templates = message.templates.map((e) => e ? VerificationTemplateData.toJSON(e) : undefined);
+    } else {
+      obj.templates = [];
+    }
+    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
+    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListVerificationTemplatesResponse>): ListVerificationTemplatesResponse {
+    return ListVerificationTemplatesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ListVerificationTemplatesResponse>): ListVerificationTemplatesResponse {
+    const message = createBaseListVerificationTemplatesResponse();
+    message.templates = object.templates?.map((e) => VerificationTemplateData.fromPartial(e)) || [];
+    message.hasMoreResults = object.hasMoreResults ?? false;
+    message.continuationToken = object.continuationToken ?? "";
+    return message;
+  },
+};
+
+function createBaseVerificationTemplateField(): VerificationTemplateField {
+  return { fieldShareType: 0, usagePolicy: "" };
+}
+
+export const VerificationTemplateField = {
+  encode(message: VerificationTemplateField, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.fieldShareType !== undefined && message.fieldShareType !== 0) {
+      writer.uint32(8).int32(message.fieldShareType);
+    }
+    if (message.usagePolicy !== undefined && message.usagePolicy !== "") {
+      writer.uint32(18).string(message.usagePolicy);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerificationTemplateField {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVerificationTemplateField();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 8) {
+            break;
+          }
+
+          message.fieldShareType = reader.int32() as any;
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.usagePolicy = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): VerificationTemplateField {
+    return {
+      fieldShareType: isSet(object.fieldShareType) ? verificationShareTypeFromJSON(object.fieldShareType) : 0,
+      usagePolicy: isSet(object.usagePolicy) ? String(object.usagePolicy) : "",
+    };
+  },
+
+  toJSON(message: VerificationTemplateField): unknown {
+    const obj: any = {};
+    message.fieldShareType !== undefined && (obj.fieldShareType = verificationShareTypeToJSON(message.fieldShareType));
+    message.usagePolicy !== undefined && (obj.usagePolicy = message.usagePolicy);
+    return obj;
+  },
+
+  create(base?: DeepPartial<VerificationTemplateField>): VerificationTemplateField {
+    return VerificationTemplateField.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VerificationTemplateField>): VerificationTemplateField {
+    const message = createBaseVerificationTemplateField();
+    message.fieldShareType = object.fieldShareType ?? 0;
+    message.usagePolicy = object.usagePolicy ?? "";
+    return message;
+  },
+};
+
+function createBaseVerificationTemplateFieldPatch(): VerificationTemplateFieldPatch {
+  return { usagePolicy: undefined };
+}
+
+export const VerificationTemplateFieldPatch = {
+  encode(message: VerificationTemplateFieldPatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.usagePolicy !== undefined) {
+      writer.uint32(10).string(message.usagePolicy);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerificationTemplateFieldPatch {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVerificationTemplateFieldPatch();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.usagePolicy = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): VerificationTemplateFieldPatch {
+    return { usagePolicy: isSet(object.usagePolicy) ? String(object.usagePolicy) : undefined };
+  },
+
+  toJSON(message: VerificationTemplateFieldPatch): unknown {
+    const obj: any = {};
+    message.usagePolicy !== undefined && (obj.usagePolicy = message.usagePolicy);
+    return obj;
+  },
+
+  create(base?: DeepPartial<VerificationTemplateFieldPatch>): VerificationTemplateFieldPatch {
+    return VerificationTemplateFieldPatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VerificationTemplateFieldPatch>): VerificationTemplateFieldPatch {
+    const message = createBaseVerificationTemplateFieldPatch();
+    message.usagePolicy = object.usagePolicy ?? undefined;
+    return message;
+  },
+};
+
 export type CredentialTemplatesDefinition = typeof CredentialTemplatesDefinition;
 export const CredentialTemplatesDefinition = {
   name: "CredentialTemplates",
@@ -2656,6 +3928,39 @@ export const CredentialTemplatesDefinition = {
       requestType: DeleteCredentialTemplateRequest,
       requestStream: false,
       responseType: DeleteCredentialTemplateResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Create/update verification templates */
+    createVerificationTemplate: {
+      name: "CreateVerificationTemplate",
+      requestType: CreateVerificationTemplateRequest,
+      requestStream: false,
+      responseType: CreateVerificationTemplateResponse,
+      responseStream: false,
+      options: {},
+    },
+    listVerificationTemplate: {
+      name: "ListVerificationTemplate",
+      requestType: ListVerificationTemplatesRequest,
+      requestStream: false,
+      responseType: ListVerificationTemplatesResponse,
+      responseStream: false,
+      options: {},
+    },
+    updateVerificationTemplate: {
+      name: "UpdateVerificationTemplate",
+      requestType: UpdateVerificationTemplateRequest,
+      requestStream: false,
+      responseType: UpdateVerificationTemplateResponse,
+      responseStream: false,
+      options: {},
+    },
+    deleteVerificationTemplate: {
+      name: "DeleteVerificationTemplate",
+      requestType: DeleteVerificationTemplateRequest,
+      requestStream: false,
+      responseType: DeleteVerificationTemplateResponse,
       responseStream: false,
       options: {},
     },

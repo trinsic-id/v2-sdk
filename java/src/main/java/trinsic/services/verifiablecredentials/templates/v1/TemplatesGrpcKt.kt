@@ -56,6 +56,22 @@ object CredentialTemplatesGrpcKt {
       MethodDescriptor<DeleteCredentialTemplateRequest, DeleteCredentialTemplateResponse>
     @JvmStatic get() = CredentialTemplatesGrpc.getDeleteMethod()
 
+  val createVerificationTemplateMethod:
+      MethodDescriptor<CreateVerificationTemplateRequest, CreateVerificationTemplateResponse>
+    @JvmStatic get() = CredentialTemplatesGrpc.getCreateVerificationTemplateMethod()
+
+  val listVerificationTemplateMethod:
+      MethodDescriptor<ListVerificationTemplatesRequest, ListVerificationTemplatesResponse>
+    @JvmStatic get() = CredentialTemplatesGrpc.getListVerificationTemplateMethod()
+
+  val updateVerificationTemplateMethod:
+      MethodDescriptor<UpdateVerificationTemplateRequest, UpdateVerificationTemplateResponse>
+    @JvmStatic get() = CredentialTemplatesGrpc.getUpdateVerificationTemplateMethod()
+
+  val deleteVerificationTemplateMethod:
+      MethodDescriptor<DeleteVerificationTemplateRequest, DeleteVerificationTemplateResponse>
+    @JvmStatic get() = CredentialTemplatesGrpc.getDeleteVerificationTemplateMethod()
+
   /**
    * A stub for issuing RPCs to a(n) services.verifiablecredentials.templates.v1.CredentialTemplates
    * service as suspending coroutines.
@@ -172,6 +188,94 @@ object CredentialTemplatesGrpcKt {
         headers: Metadata = Metadata()
     ): DeleteCredentialTemplateResponse =
         unaryRpc(channel, CredentialTemplatesGrpc.getDeleteMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun createVerificationTemplate(
+        request: CreateVerificationTemplateRequest,
+        headers: Metadata = Metadata()
+    ): CreateVerificationTemplateResponse =
+        unaryRpc(
+            channel,
+            CredentialTemplatesGrpc.getCreateVerificationTemplateMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun listVerificationTemplate(
+        request: ListVerificationTemplatesRequest,
+        headers: Metadata = Metadata()
+    ): ListVerificationTemplatesResponse =
+        unaryRpc(
+            channel,
+            CredentialTemplatesGrpc.getListVerificationTemplateMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun updateVerificationTemplate(
+        request: UpdateVerificationTemplateRequest,
+        headers: Metadata = Metadata()
+    ): UpdateVerificationTemplateResponse =
+        unaryRpc(
+            channel,
+            CredentialTemplatesGrpc.getUpdateVerificationTemplateMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun deleteVerificationTemplate(
+        request: DeleteVerificationTemplateRequest,
+        headers: Metadata = Metadata()
+    ): DeleteVerificationTemplateResponse =
+        unaryRpc(
+            channel,
+            CredentialTemplatesGrpc.getDeleteVerificationTemplateMethod(),
+            request,
+            callOptions,
+            headers)
   }
 
   /**
@@ -287,6 +391,78 @@ object CredentialTemplatesGrpcKt {
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.templates.v1.CredentialTemplates.Delete is unimplemented"))
 
+    /**
+     * Returns the response to an RPC for
+     * services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun createVerificationTemplate(
+        request: CreateVerificationTemplateRequest
+    ): CreateVerificationTemplateResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun listVerificationTemplate(
+        request: ListVerificationTemplatesRequest
+    ): ListVerificationTemplatesResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun updateVerificationTemplate(
+        request: UpdateVerificationTemplateRequest
+    ): UpdateVerificationTemplateResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun deleteVerificationTemplate(
+        request: DeleteVerificationTemplateRequest
+    ): DeleteVerificationTemplateResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate is unimplemented"))
+
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
             .addMethod(
@@ -319,6 +495,26 @@ object CredentialTemplatesGrpcKt {
                     context = this.context,
                     descriptor = CredentialTemplatesGrpc.getDeleteMethod(),
                     implementation = ::delete))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = CredentialTemplatesGrpc.getCreateVerificationTemplateMethod(),
+                    implementation = ::createVerificationTemplate))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = CredentialTemplatesGrpc.getListVerificationTemplateMethod(),
+                    implementation = ::listVerificationTemplate))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = CredentialTemplatesGrpc.getUpdateVerificationTemplateMethod(),
+                    implementation = ::updateVerificationTemplate))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = CredentialTemplatesGrpc.getDeleteVerificationTemplateMethod(),
+                    implementation = ::deleteVerificationTemplate))
             .build()
   }
 }

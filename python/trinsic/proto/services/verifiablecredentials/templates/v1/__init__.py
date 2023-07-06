@@ -45,6 +45,11 @@ class UriRenderMethod(betterproto.Enum):
     """
 
 
+class VerificationShareType(betterproto.Enum):
+    REQUIRED = 0
+    OPTIONAL = 1
+
+
 @dataclass(eq=False, repr=False)
 class GetCredentialTemplateRequest(betterproto.Message):
     """Request to fetch a template by ID"""
@@ -125,7 +130,7 @@ class ListCredentialTemplatesResponse(betterproto.Message):
 
     continuation_token: str = betterproto.string_field(3)
     """
-    Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+    Token to fetch next set of results via `ListCredentialTemplatesRequest`
     """
 
 
@@ -415,6 +420,161 @@ class UriFieldData(betterproto.Message):
     """How to display the URI value when rendering a credential."""
 
 
+@dataclass(eq=False, repr=False)
+class CreateVerificationTemplateRequest(betterproto.Message):
+    name: str = betterproto.string_field(1)
+    """
+    Name of new template. Must be a unique identifier within its ecosystem.
+    """
+
+    fields: Dict[str, "VerificationTemplateField"] = betterproto.map_field(
+        2, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    """Fields which will be required in the verification proof template"""
+
+    credential_template_id: str = betterproto.string_field(3)
+    """
+    Source credential template, used for verifying that the specified `fields`
+    are present in the credential template
+    """
+
+    title: str = betterproto.string_field(4)
+    """Human-readable name of template"""
+
+    description: str = betterproto.string_field(5)
+    """Human-readable description of template"""
+
+
+@dataclass(eq=False, repr=False)
+class CreateVerificationTemplateResponse(betterproto.Message):
+    data: "VerificationTemplateData" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class UpdateVerificationTemplateRequest(betterproto.Message):
+    id: str = betterproto.string_field(1)
+    """ID of Template to update"""
+
+    title: Optional[str] = betterproto.string_field(2, optional=True, group="_title")
+    """New human-readable title of Template"""
+
+    description: Optional[str] = betterproto.string_field(
+        3, optional=True, group="_description"
+    )
+    """New human-readable description of Template"""
+
+    fields: Dict[str, "VerificationTemplateFieldPatch"] = betterproto.map_field(
+        4, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    """Fields to update within the Template"""
+
+
+@dataclass(eq=False, repr=False)
+class UpdateVerificationTemplateResponse(betterproto.Message):
+    template: "VerificationTemplateData" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class DeleteVerificationTemplateRequest(betterproto.Message):
+    verification_template_id: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class DeleteVerificationTemplateResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class VerificationTemplateData(betterproto.Message):
+    """Verification Template"""
+
+    id: str = betterproto.string_field(1)
+    """Template ID"""
+
+    name: str = betterproto.string_field(2)
+    """Template name"""
+
+    version: int = betterproto.int32_field(3)
+    """Template version number"""
+
+    fields: List["VerificationTemplateField"] = betterproto.message_field(4)
+    """Fields defined for the template"""
+
+    schema_uri: str = betterproto.string_field(6)
+    """URI pointing to template JSON schema document"""
+
+    ecosystem_id: str = betterproto.string_field(8)
+    """ID of ecosystem in which template resides"""
+
+    type: str = betterproto.string_field(9)
+    """Template type (`VerificationTemplate`)"""
+
+    created_by: str = betterproto.string_field(10)
+    """ID of template creator"""
+
+    date_created: str = betterproto.string_field(11)
+    """Date when template was created as ISO 8601 utc string"""
+
+    title: str = betterproto.string_field(12)
+    """Human-readable template title"""
+
+    description: str = betterproto.string_field(13)
+    """Human-readable template description"""
+
+
+@dataclass(eq=False, repr=False)
+class ListVerificationTemplatesRequest(betterproto.Message):
+    """Request to list templates using a SQL query"""
+
+    query: str = betterproto.string_field(1)
+    """
+    SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
+    """
+
+    continuation_token: str = betterproto.string_field(2)
+    """
+    Token provided by previous `ListCredentialTemplatesResponse` if more data
+    is available for query
+    """
+
+
+@dataclass(eq=False, repr=False)
+class ListVerificationTemplatesResponse(betterproto.Message):
+    templates: List["VerificationTemplateData"] = betterproto.message_field(1)
+    """Templates found by query"""
+
+    has_more_results: bool = betterproto.bool_field(2)
+    """
+    Whether more results are available for this query via `continuation_token`
+    """
+
+    continuation_token: str = betterproto.string_field(3)
+    """
+    Token to fetch next set of results via `ListVerificationTemplatesRequest`
+    """
+
+
+@dataclass(eq=False, repr=False)
+class VerificationTemplateField(betterproto.Message):
+    """A field defined in a template"""
+
+    field_share_type: "VerificationShareType" = betterproto.enum_field(1)
+    """Whether this field may be omitted on proof creation"""
+
+    usage_policy: str = betterproto.string_field(2)
+    """User-facing explanation of what is done with this data"""
+
+
+@dataclass(eq=False, repr=False)
+class VerificationTemplateFieldPatch(betterproto.Message):
+    """A patch to apply to an existing template field"""
+
+    usage_policy: Optional[str] = betterproto.string_field(
+        1, optional=True, group="_usage_policy"
+    )
+    """Human-readable name of the field"""
+
+
 class CredentialTemplatesStub(betterproto.ServiceStub):
     async def create(
         self,
@@ -512,6 +672,70 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def create_verification_template(
+        self,
+        create_verification_template_request: "CreateVerificationTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "CreateVerificationTemplateResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/CreateVerificationTemplate",
+            create_verification_template_request,
+            CreateVerificationTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def list_verification_template(
+        self,
+        list_verification_templates_request: "ListVerificationTemplatesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListVerificationTemplatesResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplate",
+            list_verification_templates_request,
+            ListVerificationTemplatesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def update_verification_template(
+        self,
+        update_verification_template_request: "UpdateVerificationTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "UpdateVerificationTemplateResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/UpdateVerificationTemplate",
+            update_verification_template_request,
+            UpdateVerificationTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def delete_verification_template(
+        self,
+        delete_verification_template_request: "DeleteVerificationTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "DeleteVerificationTemplateResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/DeleteVerificationTemplate",
+            delete_verification_template_request,
+            DeleteVerificationTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class CredentialTemplatesBase(ServiceBase):
     async def create(
@@ -544,6 +768,26 @@ class CredentialTemplatesBase(ServiceBase):
     ) -> "DeleteCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def create_verification_template(
+        self, create_verification_template_request: "CreateVerificationTemplateRequest"
+    ) -> "CreateVerificationTemplateResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def list_verification_template(
+        self, list_verification_templates_request: "ListVerificationTemplatesRequest"
+    ) -> "ListVerificationTemplatesResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def update_verification_template(
+        self, update_verification_template_request: "UpdateVerificationTemplateRequest"
+    ) -> "UpdateVerificationTemplateResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def delete_verification_template(
+        self, delete_verification_template_request: "DeleteVerificationTemplateRequest"
+    ) -> "DeleteVerificationTemplateResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_create(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.create(request)
@@ -572,6 +816,34 @@ class CredentialTemplatesBase(ServiceBase):
     async def __rpc_delete(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.delete(request)
+        await stream.send_message(response)
+
+    async def __rpc_create_verification_template(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.create_verification_template(request)
+        await stream.send_message(response)
+
+    async def __rpc_list_verification_template(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.list_verification_template(request)
+        await stream.send_message(response)
+
+    async def __rpc_update_verification_template(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.update_verification_template(request)
+        await stream.send_message(response)
+
+    async def __rpc_delete_verification_template(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.delete_verification_template(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -611,5 +883,29 @@ class CredentialTemplatesBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 DeleteCredentialTemplateRequest,
                 DeleteCredentialTemplateResponse,
+            ),
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/CreateVerificationTemplate": grpclib.const.Handler(
+                self.__rpc_create_verification_template,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                CreateVerificationTemplateRequest,
+                CreateVerificationTemplateResponse,
+            ),
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplate": grpclib.const.Handler(
+                self.__rpc_list_verification_template,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListVerificationTemplatesRequest,
+                ListVerificationTemplatesResponse,
+            ),
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/UpdateVerificationTemplate": grpclib.const.Handler(
+                self.__rpc_update_verification_template,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                UpdateVerificationTemplateRequest,
+                UpdateVerificationTemplateResponse,
+            ),
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/DeleteVerificationTemplate": grpclib.const.Handler(
+                self.__rpc_delete_verification_template,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                DeleteVerificationTemplateRequest,
+                DeleteVerificationTemplateResponse,
             ),
         }

@@ -378,6 +378,38 @@ class AuthenticateConfirmResponse(betterproto.Message):
     """Auth token for the wallet"""
 
 
+@dataclass(eq=False, repr=False)
+class ListByVerificationTemplateRequest(betterproto.Message):
+    """Request to list templates by"""
+
+    verification_template_id: str = betterproto.string_field(1)
+    """ID of verification template to list matching credentials"""
+
+    continuation_token: str = betterproto.string_field(2)
+    """
+    Token provided by previous `ListCredentialTemplatesResponse` if more data
+    is available for query
+    """
+
+
+@dataclass(eq=False, repr=False)
+class ListByVerificationTemplateResponse(betterproto.Message):
+    """Response to `ListByVerificationTemplateRequest`"""
+
+    items: List[str] = betterproto.string_field(1)
+    """Array of query results, as JSON strings"""
+
+    has_more_results: bool = betterproto.bool_field(2)
+    """
+    Whether more results are available for this query via `continuation_token`
+    """
+
+    continuation_token: str = betterproto.string_field(3)
+    """
+    Token to fetch next set of results via `ListByVerificationTemplateRequest`
+    """
+
+
 class UniversalWalletStub(betterproto.ServiceStub):
     async def get_item(
         self,
@@ -667,6 +699,22 @@ class UniversalWalletStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def list_by_verification_template(
+        self,
+        list_by_verification_template_request: "ListByVerificationTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListByVerificationTemplateResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate",
+            list_by_verification_template_request,
+            ListByVerificationTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class UniversalWalletBase(ServiceBase):
     async def get_item(self, get_item_request: "GetItemRequest") -> "GetItemResponse":
@@ -753,6 +801,11 @@ class UniversalWalletBase(ServiceBase):
     async def list_wallets(
         self, list_wallets_request: "ListWalletsRequest"
     ) -> "ListWalletsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def list_by_verification_template(
+        self, list_by_verification_template_request: "ListByVerificationTemplateRequest"
+    ) -> "ListByVerificationTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_get_item(self, stream: grpclib.server.Stream) -> None:
@@ -851,6 +904,13 @@ class UniversalWalletBase(ServiceBase):
     async def __rpc_list_wallets(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.list_wallets(request)
+        await stream.send_message(response)
+
+    async def __rpc_list_by_verification_template(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.list_by_verification_template(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -962,5 +1022,11 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 ListWalletsRequest,
                 ListWalletsResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate": grpclib.const.Handler(
+                self.__rpc_list_by_verification_template,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListByVerificationTemplateRequest,
+                ListByVerificationTemplateResponse,
             ),
         }

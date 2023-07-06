@@ -153,7 +153,7 @@ public final class ListCredentialTemplatesResponse extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+   * Token to fetch next set of results via `ListCredentialTemplatesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
@@ -176,7 +176,7 @@ public final class ListCredentialTemplatesResponse extends com.google.protobuf.G
    *
    *
    * <pre>
-   * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+   * Token to fetch next set of results via `ListCredentialTemplatesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
@@ -1090,7 +1090,7 @@ public final class ListCredentialTemplatesResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * Token to fetch next set of results via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1112,7 +1112,7 @@ public final class ListCredentialTemplatesResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * Token to fetch next set of results via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1134,7 +1134,7 @@ public final class ListCredentialTemplatesResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * Token to fetch next set of results via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1155,7 +1155,7 @@ public final class ListCredentialTemplatesResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * Token to fetch next set of results via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
@@ -1172,7 +1172,7 @@ public final class ListCredentialTemplatesResponse extends com.google.protobuf.G
      *
      *
      * <pre>
-     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * Token to fetch next set of results via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>

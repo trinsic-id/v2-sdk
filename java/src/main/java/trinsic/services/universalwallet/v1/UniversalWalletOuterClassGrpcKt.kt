@@ -93,6 +93,10 @@ object UniversalWalletGrpcKt {
   val listWalletsMethod: MethodDescriptor<ListWalletsRequest, ListWalletsResponse>
     @JvmStatic get() = UniversalWalletGrpc.getListWalletsMethod()
 
+  val listByVerificationTemplateMethod:
+      MethodDescriptor<ListByVerificationTemplateRequest, ListByVerificationTemplateResponse>
+    @JvmStatic get() = UniversalWalletGrpc.getListByVerificationTemplateMethod()
+
   /**
    * A stub for issuing RPCs to a(n) services.universalwallet.v1.UniversalWallet service as
    * suspending coroutines.
@@ -440,6 +444,28 @@ object UniversalWalletGrpcKt {
         headers: Metadata = Metadata()
     ): ListWalletsResponse =
         unaryRpc(channel, UniversalWalletGrpc.getListWalletsMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun listByVerificationTemplate(
+        request: ListByVerificationTemplateRequest,
+        headers: Metadata = Metadata()
+    ): ListByVerificationTemplateResponse =
+        unaryRpc(
+            channel,
+            UniversalWalletGrpc.getListByVerificationTemplateMethod(),
+            request,
+            callOptions,
+            headers)
   }
 
   /**
@@ -739,6 +765,24 @@ object UniversalWalletGrpcKt {
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.ListWallets is unimplemented"))
 
+    /**
+     * Returns the response to an RPC for
+     * services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun listByVerificationTemplate(
+        request: ListByVerificationTemplateRequest
+    ): ListByVerificationTemplateResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate is unimplemented"))
+
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
             .addMethod(
@@ -831,6 +875,11 @@ object UniversalWalletGrpcKt {
                     context = this.context,
                     descriptor = UniversalWalletGrpc.getListWalletsMethod(),
                     implementation = ::listWallets))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = UniversalWalletGrpc.getListByVerificationTemplateMethod(),
+                    implementation = ::listByVerificationTemplate))
             .build()
   }
 }

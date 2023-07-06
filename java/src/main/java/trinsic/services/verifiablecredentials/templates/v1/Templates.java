@@ -108,6 +108,58 @@ public final class Templates {
       internal_static_services_verifiablecredentials_templates_v1_UriFieldData_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_UriFieldData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_FieldsEntry_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_FieldsEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_FieldsEntry_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_FieldsEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateField_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateField_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateFieldPatch_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateFieldPatch_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -249,7 +301,69 @@ public final class Templates {
           + "\014UriFieldData\022\021\n"
           + "\tmime_type\030\001 \001(\t\022S\n\r"
           + "render_method\030\002"
-          + " \001(\0162<.services.verifiablecredentials.templates.v1.UriRenderMethod*D\n"
+          + " \001(\0162<.services.verifiablecredentials.templates.v1.UriRenderMethod\"\330\002\n"
+          + "!CreateVerificationTemplateRequest\022\014\n"
+          + "\004name\030\001 \001(\t\022j\n"
+          + "\006fields\030\002 \003(\0132Z.services.verifiablecr"
+          + "edentials.templates.v1.CreateVerificationTemplateRequest.FieldsEntry\022\036\n"
+          + "\026credential_template_id\030\003 \001(\t\022\r\n"
+          + "\005title\030\004 \001(\t\022\023\n"
+          + "\013description\030\005 \001(\t\032u\n"
+          + "\013FieldsEntry\022\013\n"
+          + "\003key\030\001 \001(\t\022U\n"
+          + "\005value\030\002 \001(\0132F.services.verifiabl"
+          + "ecredentials.templates.v1.VerificationTemplateField:\0028\001\"y\n"
+          + "\"CreateVerificationTemplateResponse\022S\n"
+          + "\004data\030\001 \001(\0132E.services.v"
+          + "erifiablecredentials.templates.v1.VerificationTemplateData\"\337\002\n"
+          + "!UpdateVerificationTemplateRequest\022\n\n"
+          + "\002id\030\001 \001(\t\022\022\n"
+          + "\005title\030\002 \001(\tH\000\210\001\001\022\030\n"
+          + "\013description\030\003 \001(\tH\001\210\001\001\022j\n"
+          + "\006fields\030\004 \003(\0132Z.services.verifiablecredenti"
+          + "als.templates.v1.UpdateVerificationTemplateRequest.FieldsEntry\032z\n"
+          + "\013FieldsEntry\022\013\n"
+          + "\003key\030\001 \001(\t\022Z\n"
+          + "\005value\030\002 \001(\0132K.services.ver"
+          + "ifiablecredentials.templates.v1.VerificationTemplateFieldPatch:\0028\001B\010\n"
+          + "\006_titleB\016\n"
+          + "\014_description\"}\n"
+          + "\"UpdateVerificationTemplateResponse\022W\n"
+          + "\010template\030\001 \001(\0132E.services."
+          + "verifiablecredentials.templates.v1.VerificationTemplateData\"E\n"
+          + "!DeleteVerificationTemplateRequest\022 \n"
+          + "\030verification_template_id\030\001 \001(\t\"$\n"
+          + "\"DeleteVerificationTemplateResponse\"\354\002\n"
+          + "\030VerificationTemplateData\022\016\n"
+          + "\002id\030\001 \001(\tR\002id\022\022\n"
+          + "\004name\030\002 \001(\tR\004name\022\030\n"
+          + "\007version\030\003 \001(\005R\007version\022V\n"
+          + "\006fields\030\004 \003(\0132F.se"
+          + "rvices.verifiablecredentials.templates.v1.VerificationTemplateField\022\035\n\n"
+          + "schema_uri\030\006 \001(\tR\tschemaUri\022!\n"
+          + "\014ecosystem_id\030\010 \001(\tR\013ecosystemId\022\022\n"
+          + "\004type\030\t \001(\tR\004type\022\035\n\n"
+          + "created_by\030\n"
+          + " \001(\tR\tcreatedBy\022!\n"
+          + "\014date_created\030\013 \001(\tR\013dateCreated\022\r\n"
+          + "\005title\030\014 \001(\t\022\023\n"
+          + "\013description\030\r"
+          + " \001(\t\"S\n"
+          + " ListVerificationTemplatesRequest\022\r\n"
+          + "\005query\030\001 \001(\t\022 \n"
+          + "\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"\263\001\n"
+          + "!ListVerificationTemplatesResponse\022X\n"
+          + "\ttemplates\030\001 \003(\0132E."
+          + "services.verifiablecredentials.templates.v1.VerificationTemplateData\022\030\n"
+          + "\020has_more_results\030\002 \001(\010\022\032\n"
+          + "\022continuation_token\030\003 \001(\t\"\217\001\n"
+          + "\031VerificationTemplateField\022\\\n"
+          + "\020field_share_type\030\001 \001(\0162B.services.verifiable"
+          + "credentials.templates.v1.VerificationShareType\022\024\n"
+          + "\014usage_policy\030\002 \001(\t\"L\n"
+          + "\036VerificationTemplateFieldPatch\022\031\n"
+          + "\014usage_policy\030\001 \001(\tH\000\210\001\001B\017\n\r"
+          + "_usage_policy*D\n"
           + "\tFieldType\022\n\n"
           + "\006STRING\020\000\022\n\n"
           + "\006NUMBER\020\001\022\010\n"
@@ -259,29 +373,45 @@ public final class Templates {
           + "\017UriRenderMethod\022\010\n"
           + "\004TEXT\020\000\022\010\n"
           + "\004LINK\020\001\022\020\n"
-          + "\014INLINE_IMAGE\020\0022\372\007\n"
+          + "\014INLINE_IMAGE\020\002*3\n"
+          + "\025VerificationShareType\022\014\n"
+          + "\010REQUIRED\020\000\022\014\n"
+          + "\010OPTIONAL\020\0012\366\r\n"
           + "\023CredentialTemplates\022\245\001\n"
-          + "\006Create\022L.services.verifiablecredentials.templates.v1.Cre"
-          + "ateCredentialTemplateRequest\032M.services."
-          + "verifiablecredentials.templates.v1.CreateCredentialTemplateResponse\022\234\001\n"
-          + "\003Get\022I.services.verifiablecredentials.templates.v"
-          + "1.GetCredentialTemplateRequest\032J.service"
-          + "s.verifiablecredentials.templates.v1.GetCredentialTemplateResponse\022\245\001\n"
-          + "\006Update\022L.services.verifiablecredentials.templates"
-          + ".v1.UpdateCredentialTemplateRequest\032M.se"
-          + "rvices.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse\022\241\001\n"
-          + "\004List\022K.services.verifiablecredentials.tem"
-          + "plates.v1.ListCredentialTemplatesRequest\032L.services.verifiablecredentials.templa"
-          + "tes.v1.ListCredentialTemplatesResponse\022\247\001\n"
-          + "\006Search\022M.services.verifiablecredentials.templates.v1.SearchCredentialTemplate"
-          + "sRequest\032N.services.verifiablecredential"
-          + "s.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
-          + "\006Delete\022L.services.verifiablecredentials.templates.v1.DeleteCredenti"
-          + "alTemplateRequest\032M.services.verifiablec"
-          + "redentials.templates.v1.DeleteCredentialTemplateResponseB\243\001\n"
-          + "3trinsic.services.verifiablecredentials.templates.v1P\001Z4serv"
-          + "ices/verifiablecredentials/templates/v1/template\252\0023Trinsic.Services.VerifiableCr"
-          + "edentials.Templates.V1b\006proto3"
+          + "\006Create\022L.services.verifiablecredentials.templ"
+          + "ates.v1.CreateCredentialTemplateRequest\032M.services.verifiablecredentials.templat"
+          + "es.v1.CreateCredentialTemplateResponse\022\234\001\n"
+          + "\003Get\022I.services.verifiablecredentials.templates.v1.GetCredentialTemplateReques"
+          + "t\032J.services.verifiablecredentials.templ"
+          + "ates.v1.GetCredentialTemplateResponse\022\245\001\n"
+          + "\006Update\022L.services.verifiablecredentials.templates.v1.UpdateCredentialTemplateR"
+          + "equest\032M.services.verifiablecredentials."
+          + "templates.v1.UpdateCredentialTemplateResponse\022\241\001\n"
+          + "\004List\022K.services.verifiablecredentials.templates.v1.ListCredentialTempl"
+          + "atesRequest\032L.services.verifiablecredent"
+          + "ials.templates.v1.ListCredentialTemplatesResponse\022\247\001\n"
+          + "\006Search\022M.services.verifiablecredentials.templates.v1.SearchCredent"
+          + "ialTemplatesRequest\032N.services.verifiabl"
+          + "ecredentials.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
+          + "\006Delete\022L.services.verifiablecredentials.templates.v1.Del"
+          + "eteCredentialTemplateRequest\032M.services."
+          + "verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse\022\275\001\n"
+          + "\032CreateVerificationTemplate\022N.services.verifiable"
+          + "credentials.templates.v1.CreateVerificationTemplateRequest\032O.services.verifiable"
+          + "credentials.templates.v1.CreateVerificationTemplateResponse\022\271\001\n"
+          + "\030ListVerificationTemplate\022M.services.verifiablecredential"
+          + "s.templates.v1.ListVerificationTemplatesRequest\032N.services.verifiablecredentials"
+          + ".templates.v1.ListVerificationTemplatesResponse\022\275\001\n"
+          + "\032UpdateVerificationTemplate\022N.services.verifiablecredentials.template"
+          + "s.v1.UpdateVerificationTemplateRequest\032O.services.verifiablecredentials.template"
+          + "s.v1.UpdateVerificationTemplateResponse\022\275\001\n"
+          + "\032DeleteVerificationTemplate\022N.services.verifiablecredentials.templates.v1.Del"
+          + "eteVerificationTemplateRequest\032O.service"
+          + "s.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponseB\243\001\n"
+          + "3trinsic.services.verifiablecredentials.templ"
+          + "ates.v1P\001Z4services/verifiablecredential"
+          + "s/templates/v1/template\252\0023Trinsic.Servic"
+          + "es.VerifiableCredentials.Templates.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -523,6 +653,122 @@ public final class Templates {
             internal_static_services_verifiablecredentials_templates_v1_UriFieldData_descriptor,
             new java.lang.String[] {
               "MimeType", "RenderMethod",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_descriptor =
+        getDescriptor().getMessageTypes().get(18);
+    internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "Name", "Fields", "CredentialTemplateId", "Title", "Description",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_FieldsEntry_descriptor =
+        internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_FieldsEntry_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateRequest_FieldsEntry_descriptor,
+            new java.lang.String[] {
+              "Key", "Value",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateResponse_descriptor =
+        getDescriptor().getMessageTypes().get(19);
+    internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_CreateVerificationTemplateResponse_descriptor,
+            new java.lang.String[] {
+              "Data",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_descriptor =
+        getDescriptor().getMessageTypes().get(20);
+    internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "Id", "Title", "Description", "Fields", "Title", "Description",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_FieldsEntry_descriptor =
+        internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_FieldsEntry_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateRequest_FieldsEntry_descriptor,
+            new java.lang.String[] {
+              "Key", "Value",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateResponse_descriptor =
+        getDescriptor().getMessageTypes().get(21);
+    internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_UpdateVerificationTemplateResponse_descriptor,
+            new java.lang.String[] {
+              "Template",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateRequest_descriptor =
+        getDescriptor().getMessageTypes().get(22);
+    internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "VerificationTemplateId",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateResponse_descriptor =
+        getDescriptor().getMessageTypes().get(23);
+    internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_DeleteVerificationTemplateResponse_descriptor,
+            new java.lang.String[] {});
+    internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_descriptor =
+        getDescriptor().getMessageTypes().get(24);
+    internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_descriptor,
+            new java.lang.String[] {
+              "Id",
+              "Name",
+              "Version",
+              "Fields",
+              "SchemaUri",
+              "EcosystemId",
+              "Type",
+              "CreatedBy",
+              "DateCreated",
+              "Title",
+              "Description",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesRequest_descriptor =
+        getDescriptor().getMessageTypes().get(25);
+    internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesRequest_descriptor,
+            new java.lang.String[] {
+              "Query", "ContinuationToken",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesResponse_descriptor =
+        getDescriptor().getMessageTypes().get(26);
+    internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_ListVerificationTemplatesResponse_descriptor,
+            new java.lang.String[] {
+              "Templates", "HasMoreResults", "ContinuationToken",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateField_descriptor =
+        getDescriptor().getMessageTypes().get(27);
+    internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateField_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateField_descriptor,
+            new java.lang.String[] {
+              "FieldShareType", "UsagePolicy",
+            });
+    internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateFieldPatch_descriptor =
+        getDescriptor().getMessageTypes().get(28);
+    internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateFieldPatch_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateFieldPatch_descriptor,
+            new java.lang.String[] {
+              "UsagePolicy", "UsagePolicy",
             });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
