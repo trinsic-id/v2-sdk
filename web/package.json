@@ -44,7 +44,7 @@
         "js-base64": "3.7.5",
         "long": "5.2.3",
         "nice-grpc-web": "3.2.4",
-        "protobufjs": "7.2.3"
+        "protobufjs": "7.2.4"
     },
     "devDependencies": {
         "@babel/core": "7.18.10",
