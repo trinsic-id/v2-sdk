@@ -8,6 +8,9 @@ nav:
   - Home: index.md
   - Learn:
     - Introduction: learn/index.md
+    - Guide:
+      - Issuance: guide/issuance.md
+      - Verification: guide/verification.md
     - Key Concepts:
       - Ecosystems: learn/concepts/ecosystems.md
       - Wallets: learn/concepts/wallets.md
@@ -16,12 +19,9 @@ nav:
       - Templates: learn/concepts/templates.md
       - Identifiers: learn/concepts/dids.md
       - Governance: learn/concepts/trust-registries.md
-      - JSON-LD: learn/concepts/json-ld.md
     - Trinsic Platform:
       - Standards: learn/platform/standards.md
       - Security Overview: learn/platform/security.md
-    - Tutorials:
-      - Build a Vaccine Card: walkthroughs/vaccination.md
     - Resources:
       - "Migration: From v1" : learn/resources/migrate.md
       - "Migration: Account API": learn/resources/migrate-account.md
@@ -45,7 +45,6 @@ nav:
   - Reference:
     - Overview: reference/index.md
     - APIs:
-      - Account API: reference/services/account-service.md
       - Credential API: reference/services/credential-service.md
       - File Management API: reference/services/file-management-service.md
       - Provider API: reference/services/provider-service.md
@@ -125,6 +124,23 @@ extra_css:
 extra:
   generator: false
   # homepage: learn # change or remove this when updating with new landing page
+  analytics:
+    provider: google
+    property: G-X19MMM47TF
+    feedback:
+      title: Did you find the help you needed?
+      ratings:
+        - icon: material/check
+          name: Yes, this page was helpful
+          data: 1
+          note: >-
+            Yes, I did!
+        - icon: material/close
+          name: No, not really
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
 
 plugins:
   - search
