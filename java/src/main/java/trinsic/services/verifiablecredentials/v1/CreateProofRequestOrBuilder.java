@@ -91,6 +91,43 @@ public interface CreateProofRequestOrBuilder
    *
    *
    * <pre>
+   * Id of verification template with which to construct the JSON-LD proof document
+   * </pre>
+   *
+   * <code>string verification_template_id = 12;</code>
+   *
+   * @return Whether the verificationTemplateId field is set.
+   */
+  boolean hasVerificationTemplateId();
+  /**
+   *
+   *
+   * <pre>
+   * Id of verification template with which to construct the JSON-LD proof document
+   * </pre>
+   *
+   * <code>string verification_template_id = 12;</code>
+   *
+   * @return The verificationTemplateId.
+   */
+  java.lang.String getVerificationTemplateId();
+  /**
+   *
+   *
+   * <pre>
+   * Id of verification template with which to construct the JSON-LD proof document
+   * </pre>
+   *
+   * <code>string verification_template_id = 12;</code>
+   *
+   * @return The bytes for verificationTemplateId.
+   */
+  com.google.protobuf.ByteString getVerificationTemplateIdBytes();
+
+  /**
+   *
+   *
+   * <pre>
    * ID of wallet item stored in a Trinsic cloud wallet
    * </pre>
    *

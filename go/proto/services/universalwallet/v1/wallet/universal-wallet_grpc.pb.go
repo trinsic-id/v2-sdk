@@ -37,6 +37,7 @@ const (
 	UniversalWallet_AuthenticateConfirm_FullMethodName        = "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm"
 	UniversalWallet_AuthenticateResendCode_FullMethodName     = "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode"
 	UniversalWallet_ListWallets_FullMethodName                = "/services.universalwallet.v1.UniversalWallet/ListWallets"
+	UniversalWallet_ListByVerificationTemplate_FullMethodName = "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate"
 )
 
 // UniversalWalletClient is the client API for UniversalWallet service.
@@ -85,6 +86,8 @@ type UniversalWalletClient interface {
 	AuthenticateResendCode(ctx context.Context, in *AuthenticateResendCodeRequest, opts ...grpc.CallOption) (*AuthenticateResendCodeResponse, error)
 	// List all wallets in the ecosystem
 	ListWallets(ctx context.Context, in *ListWalletsRequest, opts ...grpc.CallOption) (*ListWalletsResponse, error)
+	// List credentials which match a given verification template
+	ListByVerificationTemplate(ctx context.Context, in *ListByVerificationTemplateRequest, opts ...grpc.CallOption) (*ListByVerificationTemplateResponse, error)
 }
 
 type universalWalletClient struct {
@@ -257,6 +260,15 @@ func (c *universalWalletClient) ListWallets(ctx context.Context, in *ListWallets
 	return out, nil
 }
 
+func (c *universalWalletClient) ListByVerificationTemplate(ctx context.Context, in *ListByVerificationTemplateRequest, opts ...grpc.CallOption) (*ListByVerificationTemplateResponse, error) {
+	out := new(ListByVerificationTemplateResponse)
+	err := c.cc.Invoke(ctx, UniversalWallet_ListByVerificationTemplate_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UniversalWalletServer is the server API for UniversalWallet service.
 // All implementations must embed UnimplementedUniversalWalletServer
 // for forward compatibility
@@ -303,6 +315,8 @@ type UniversalWalletServer interface {
 	AuthenticateResendCode(context.Context, *AuthenticateResendCodeRequest) (*AuthenticateResendCodeResponse, error)
 	// List all wallets in the ecosystem
 	ListWallets(context.Context, *ListWalletsRequest) (*ListWalletsResponse, error)
+	// List credentials which match a given verification template
+	ListByVerificationTemplate(context.Context, *ListByVerificationTemplateRequest) (*ListByVerificationTemplateResponse, error)
 	mustEmbedUnimplementedUniversalWalletServer()
 }
 
@@ -363,6 +377,9 @@ func (UnimplementedUniversalWalletServer) AuthenticateResendCode(context.Context
 }
 func (UnimplementedUniversalWalletServer) ListWallets(context.Context, *ListWalletsRequest) (*ListWalletsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListWallets not implemented")
+}
+func (UnimplementedUniversalWalletServer) ListByVerificationTemplate(context.Context, *ListByVerificationTemplateRequest) (*ListByVerificationTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListByVerificationTemplate not implemented")
 }
 func (UnimplementedUniversalWalletServer) mustEmbedUnimplementedUniversalWalletServer() {}
 
@@ -701,6 +718,24 @@ func _UniversalWallet_ListWallets_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UniversalWallet_ListByVerificationTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListByVerificationTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversalWalletServer).ListByVerificationTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UniversalWallet_ListByVerificationTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversalWalletServer).ListByVerificationTemplate(ctx, req.(*ListByVerificationTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UniversalWallet_ServiceDesc is the grpc.ServiceDesc for UniversalWallet service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -779,6 +814,10 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListWallets",
 			Handler:    _UniversalWallet_ListWallets_Handler,
+		},
+		{
+			MethodName: "ListByVerificationTemplate",
+			Handler:    _UniversalWallet_ListByVerificationTemplate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

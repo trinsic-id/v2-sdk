@@ -1,146 +1,154 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/provider/v1/provider.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:async' as $async;
-
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'provider.pb.dart' as $4;
+import 'package:protobuf/protobuf.dart' as $pb;
+
+import 'provider.pb.dart' as $1;
+
 export 'provider.pb.dart';
 
+@$pb.GrpcServiceName('services.provider.v1.Provider')
 class ProviderClient extends $grpc.Client {
   static final _$createEcosystem =
-      $grpc.ClientMethod<$4.CreateEcosystemRequest, $4.CreateEcosystemResponse>(
+      $grpc.ClientMethod<$1.CreateEcosystemRequest, $1.CreateEcosystemResponse>(
           '/services.provider.v1.Provider/CreateEcosystem',
-          ($4.CreateEcosystemRequest value) => value.writeToBuffer(),
+          ($1.CreateEcosystemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $4.CreateEcosystemResponse.fromBuffer(value));
+              $1.CreateEcosystemResponse.fromBuffer(value));
   static final _$getOberonKey =
-      $grpc.ClientMethod<$4.GetOberonKeyRequest, $4.GetOberonKeyResponse>(
+      $grpc.ClientMethod<$1.GetOberonKeyRequest, $1.GetOberonKeyResponse>(
           '/services.provider.v1.Provider/GetOberonKey',
-          ($4.GetOberonKeyRequest value) => value.writeToBuffer(),
+          ($1.GetOberonKeyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $4.GetOberonKeyResponse.fromBuffer(value));
+              $1.GetOberonKeyResponse.fromBuffer(value));
   static final _$upgradeDID =
-      $grpc.ClientMethod<$4.UpgradeDidRequest, $4.UpgradeDidResponse>(
+      $grpc.ClientMethod<$1.UpgradeDidRequest, $1.UpgradeDidResponse>(
           '/services.provider.v1.Provider/UpgradeDID',
-          ($4.UpgradeDidRequest value) => value.writeToBuffer(),
+          ($1.UpgradeDidRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $4.UpgradeDidResponse.fromBuffer(value));
+              $1.UpgradeDidResponse.fromBuffer(value));
   static final _$searchWalletConfigurations = $grpc.ClientMethod<
-          $4.SearchWalletConfigurationsRequest,
-          $4.SearchWalletConfigurationResponse>(
+          $1.SearchWalletConfigurationsRequest,
+          $1.SearchWalletConfigurationResponse>(
       '/services.provider.v1.Provider/SearchWalletConfigurations',
-      ($4.SearchWalletConfigurationsRequest value) => value.writeToBuffer(),
+      ($1.SearchWalletConfigurationsRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $4.SearchWalletConfigurationResponse.fromBuffer(value));
+          $1.SearchWalletConfigurationResponse.fromBuffer(value));
 
   ProviderClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$4.CreateEcosystemResponse> createEcosystem(
-      $4.CreateEcosystemRequest request,
+  $grpc.ResponseFuture<$1.CreateEcosystemResponse> createEcosystem(
+      $1.CreateEcosystemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createEcosystem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.GetOberonKeyResponse> getOberonKey(
-      $4.GetOberonKeyRequest request,
+  $grpc.ResponseFuture<$1.GetOberonKeyResponse> getOberonKey(
+      $1.GetOberonKeyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOberonKey, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.UpgradeDidResponse> upgradeDID(
-      $4.UpgradeDidRequest request,
+  $grpc.ResponseFuture<$1.UpgradeDidResponse> upgradeDID(
+      $1.UpgradeDidRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$upgradeDID, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.SearchWalletConfigurationResponse>
-      searchWalletConfigurations($4.SearchWalletConfigurationsRequest request,
+  $grpc.ResponseFuture<$1.SearchWalletConfigurationResponse>
+      searchWalletConfigurations($1.SearchWalletConfigurationsRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$searchWalletConfigurations, request,
         options: options);
   }
 }
 
+@$pb.GrpcServiceName('services.provider.v1.Provider')
 abstract class ProviderServiceBase extends $grpc.Service {
   $core.String get $name => 'services.provider.v1.Provider';
 
   ProviderServiceBase() {
-    $addMethod($grpc.ServiceMethod<$4.CreateEcosystemRequest,
-            $4.CreateEcosystemResponse>(
+    $addMethod($grpc.ServiceMethod<$1.CreateEcosystemRequest,
+            $1.CreateEcosystemResponse>(
         'CreateEcosystem',
         createEcosystem_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $4.CreateEcosystemRequest.fromBuffer(value),
-        ($4.CreateEcosystemResponse value) => value.writeToBuffer()));
+            $1.CreateEcosystemRequest.fromBuffer(value),
+        ($1.CreateEcosystemResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$4.GetOberonKeyRequest, $4.GetOberonKeyResponse>(
+        $grpc.ServiceMethod<$1.GetOberonKeyRequest, $1.GetOberonKeyResponse>(
             'GetOberonKey',
             getOberonKey_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $4.GetOberonKeyRequest.fromBuffer(value),
-            ($4.GetOberonKeyResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.UpgradeDidRequest, $4.UpgradeDidResponse>(
+                $1.GetOberonKeyRequest.fromBuffer(value),
+            ($1.GetOberonKeyResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.UpgradeDidRequest, $1.UpgradeDidResponse>(
         'UpgradeDID',
         upgradeDID_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.UpgradeDidRequest.fromBuffer(value),
-        ($4.UpgradeDidResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.SearchWalletConfigurationsRequest,
-            $4.SearchWalletConfigurationResponse>(
+        ($core.List<$core.int> value) => $1.UpgradeDidRequest.fromBuffer(value),
+        ($1.UpgradeDidResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.SearchWalletConfigurationsRequest,
+            $1.SearchWalletConfigurationResponse>(
         'SearchWalletConfigurations',
         searchWalletConfigurations_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $4.SearchWalletConfigurationsRequest.fromBuffer(value),
-        ($4.SearchWalletConfigurationResponse value) => value.writeToBuffer()));
+            $1.SearchWalletConfigurationsRequest.fromBuffer(value),
+        ($1.SearchWalletConfigurationResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$4.CreateEcosystemResponse> createEcosystem_Pre(
+  $async.Future<$1.CreateEcosystemResponse> createEcosystem_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$4.CreateEcosystemRequest> request) async {
+      $async.Future<$1.CreateEcosystemRequest> request) async {
     return createEcosystem(call, await request);
   }
 
-  $async.Future<$4.GetOberonKeyResponse> getOberonKey_Pre(
+  $async.Future<$1.GetOberonKeyResponse> getOberonKey_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$4.GetOberonKeyRequest> request) async {
+      $async.Future<$1.GetOberonKeyRequest> request) async {
     return getOberonKey(call, await request);
   }
 
-  $async.Future<$4.UpgradeDidResponse> upgradeDID_Pre($grpc.ServiceCall call,
-      $async.Future<$4.UpgradeDidRequest> request) async {
+  $async.Future<$1.UpgradeDidResponse> upgradeDID_Pre($grpc.ServiceCall call,
+      $async.Future<$1.UpgradeDidRequest> request) async {
     return upgradeDID(call, await request);
   }
 
-  $async.Future<$4.SearchWalletConfigurationResponse>
+  $async.Future<$1.SearchWalletConfigurationResponse>
       searchWalletConfigurations_Pre($grpc.ServiceCall call,
-          $async.Future<$4.SearchWalletConfigurationsRequest> request) async {
+          $async.Future<$1.SearchWalletConfigurationsRequest> request) async {
     return searchWalletConfigurations(call, await request);
   }
 
-  $async.Future<$4.CreateEcosystemResponse> createEcosystem(
-      $grpc.ServiceCall call, $4.CreateEcosystemRequest request);
-  $async.Future<$4.GetOberonKeyResponse> getOberonKey(
-      $grpc.ServiceCall call, $4.GetOberonKeyRequest request);
-  $async.Future<$4.UpgradeDidResponse> upgradeDID(
-      $grpc.ServiceCall call, $4.UpgradeDidRequest request);
-  $async.Future<$4.SearchWalletConfigurationResponse>
+  $async.Future<$1.CreateEcosystemResponse> createEcosystem(
+      $grpc.ServiceCall call, $1.CreateEcosystemRequest request);
+  $async.Future<$1.GetOberonKeyResponse> getOberonKey(
+      $grpc.ServiceCall call, $1.GetOberonKeyRequest request);
+  $async.Future<$1.UpgradeDidResponse> upgradeDID(
+      $grpc.ServiceCall call, $1.UpgradeDidRequest request);
+  $async.Future<$1.SearchWalletConfigurationResponse>
       searchWalletConfigurations(
-          $grpc.ServiceCall call, $4.SearchWalletConfigurationsRequest request);
+          $grpc.ServiceCall call, $1.SearchWalletConfigurationsRequest request);
 }

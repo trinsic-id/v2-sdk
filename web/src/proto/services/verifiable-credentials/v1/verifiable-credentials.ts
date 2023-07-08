@@ -41,7 +41,7 @@ export interface IssueFromTemplateResponse {
 
 /**
  * Request to create a proof for a Verifiable Credential using public key tied to caller.
- * Either `item_id` or `document_json` may be provided, not both.
+ * Either `item_id`, or `document_json` may be provided, not both.
  */
 export interface CreateProofRequest {
   /**
@@ -55,6 +55,10 @@ export interface CreateProofRequest {
   /** Information about what sections of the document to reveal */
   revealTemplate?:
     | RevealTemplateAttributes
+    | undefined;
+  /** Id of verification template with which to construct the JSON-LD proof document */
+  verificationTemplateId?:
+    | string
     | undefined;
   /** ID of wallet item stored in a Trinsic cloud wallet */
   itemId?:
@@ -412,6 +416,7 @@ function createBaseCreateProofRequest(): CreateProofRequest {
   return {
     revealDocumentJson: undefined,
     revealTemplate: undefined,
+    verificationTemplateId: undefined,
     itemId: undefined,
     documentJson: undefined,
     useVerifiablePresentation: false,
@@ -426,6 +431,9 @@ export const CreateProofRequest = {
     }
     if (message.revealTemplate !== undefined) {
       RevealTemplateAttributes.encode(message.revealTemplate, writer.uint32(90).fork()).ldelim();
+    }
+    if (message.verificationTemplateId !== undefined) {
+      writer.uint32(98).string(message.verificationTemplateId);
     }
     if (message.itemId !== undefined) {
       writer.uint32(18).string(message.itemId);
@@ -462,6 +470,13 @@ export const CreateProofRequest = {
           }
 
           message.revealTemplate = RevealTemplateAttributes.decode(reader, reader.uint32());
+          continue;
+        case 12:
+          if (tag != 98) {
+            break;
+          }
+
+          message.verificationTemplateId = reader.string();
           continue;
         case 2:
           if (tag != 18) {
@@ -506,6 +521,7 @@ export const CreateProofRequest = {
       revealTemplate: isSet(object.revealTemplate)
         ? RevealTemplateAttributes.fromJSON(object.revealTemplate)
         : undefined,
+      verificationTemplateId: isSet(object.verificationTemplateId) ? String(object.verificationTemplateId) : undefined,
       itemId: isSet(object.itemId) ? String(object.itemId) : undefined,
       documentJson: isSet(object.documentJson) ? String(object.documentJson) : undefined,
       useVerifiablePresentation: isSet(object.useVerifiablePresentation)
@@ -522,6 +538,7 @@ export const CreateProofRequest = {
       (obj.revealTemplate = message.revealTemplate
         ? RevealTemplateAttributes.toJSON(message.revealTemplate)
         : undefined);
+    message.verificationTemplateId !== undefined && (obj.verificationTemplateId = message.verificationTemplateId);
     message.itemId !== undefined && (obj.itemId = message.itemId);
     message.documentJson !== undefined && (obj.documentJson = message.documentJson);
     message.useVerifiablePresentation !== undefined &&
@@ -541,6 +558,7 @@ export const CreateProofRequest = {
     message.revealTemplate = (object.revealTemplate !== undefined && object.revealTemplate !== null)
       ? RevealTemplateAttributes.fromPartial(object.revealTemplate)
       : undefined;
+    message.verificationTemplateId = object.verificationTemplateId ?? undefined;
     message.itemId = object.itemId ?? undefined;
     message.documentJson = object.documentJson ?? undefined;
     message.useVerifiablePresentation = object.useVerifiablePresentation ?? false;

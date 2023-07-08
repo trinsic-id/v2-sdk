@@ -274,6 +274,27 @@ export interface AuthenticateConfirmResponse {
   authToken?: string;
 }
 
+/** Request to list templates by */
+export interface ListByVerificationTemplateRequest {
+  /** ID of verification template to list matching credentials */
+  verificationTemplateId?: string;
+  /**
+   * Token provided by previous `ListCredentialTemplatesResponse`
+   * if more data is available for query
+   */
+  continuationToken?: string;
+}
+
+/** Response to `ListByVerificationTemplateRequest` */
+export interface ListByVerificationTemplateResponse {
+  /** Array of query results, as JSON strings */
+  items?: string[];
+  /** Whether more results are available for this query via `continuation_token` */
+  hasMoreResults?: boolean;
+  /** Token to fetch next set of results via `ListByVerificationTemplateRequest` */
+  continuationToken?: string;
+}
+
 function createBaseSearchRequest(): SearchRequest {
   return { query: "", continuationToken: "" };
 }
@@ -2581,6 +2602,167 @@ export const AuthenticateConfirmResponse = {
   },
 };
 
+function createBaseListByVerificationTemplateRequest(): ListByVerificationTemplateRequest {
+  return { verificationTemplateId: "", continuationToken: "" };
+}
+
+export const ListByVerificationTemplateRequest = {
+  encode(message: ListByVerificationTemplateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.verificationTemplateId !== undefined && message.verificationTemplateId !== "") {
+      writer.uint32(10).string(message.verificationTemplateId);
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      writer.uint32(18).string(message.continuationToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListByVerificationTemplateRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListByVerificationTemplateRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.verificationTemplateId = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListByVerificationTemplateRequest {
+    return {
+      verificationTemplateId: isSet(object.verificationTemplateId) ? String(object.verificationTemplateId) : "",
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
+    };
+  },
+
+  toJSON(message: ListByVerificationTemplateRequest): unknown {
+    const obj: any = {};
+    message.verificationTemplateId !== undefined && (obj.verificationTemplateId = message.verificationTemplateId);
+    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListByVerificationTemplateRequest>): ListByVerificationTemplateRequest {
+    return ListByVerificationTemplateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ListByVerificationTemplateRequest>): ListByVerificationTemplateRequest {
+    const message = createBaseListByVerificationTemplateRequest();
+    message.verificationTemplateId = object.verificationTemplateId ?? "";
+    message.continuationToken = object.continuationToken ?? "";
+    return message;
+  },
+};
+
+function createBaseListByVerificationTemplateResponse(): ListByVerificationTemplateResponse {
+  return { items: [], hasMoreResults: false, continuationToken: "" };
+}
+
+export const ListByVerificationTemplateResponse = {
+  encode(message: ListByVerificationTemplateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.items !== undefined && message.items.length !== 0) {
+      for (const v of message.items) {
+        writer.uint32(10).string(v!);
+      }
+    }
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      writer.uint32(26).string(message.continuationToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListByVerificationTemplateResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListByVerificationTemplateResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.items!.push(reader.string());
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.hasMoreResults = reader.bool();
+          continue;
+        case 3:
+          if (tag != 26) {
+            break;
+          }
+
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListByVerificationTemplateResponse {
+    return {
+      items: Array.isArray(object?.items) ? object.items.map((e: any) => String(e)) : [],
+      hasMoreResults: isSet(object.hasMoreResults) ? Boolean(object.hasMoreResults) : false,
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
+    };
+  },
+
+  toJSON(message: ListByVerificationTemplateResponse): unknown {
+    const obj: any = {};
+    if (message.items) {
+      obj.items = message.items.map((e) => e);
+    } else {
+      obj.items = [];
+    }
+    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
+    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListByVerificationTemplateResponse>): ListByVerificationTemplateResponse {
+    return ListByVerificationTemplateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ListByVerificationTemplateResponse>): ListByVerificationTemplateResponse {
+    const message = createBaseListByVerificationTemplateResponse();
+    message.items = object.items?.map((e) => e) || [];
+    message.hasMoreResults = object.hasMoreResults ?? false;
+    message.continuationToken = object.continuationToken ?? "";
+    return message;
+  },
+};
+
 /** Service for managing wallets */
 export type UniversalWalletDefinition = typeof UniversalWalletDefinition;
 export const UniversalWalletDefinition = {
@@ -2760,6 +2942,15 @@ export const UniversalWalletDefinition = {
       requestType: ListWalletsRequest,
       requestStream: false,
       responseType: ListWalletsResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** List credentials which match a given verification template */
+    listByVerificationTemplate: {
+      name: "ListByVerificationTemplate",
+      requestType: ListByVerificationTemplateRequest,
+      requestStream: false,
+      responseType: ListByVerificationTemplateResponse,
       responseStream: false,
       options: {},
     },

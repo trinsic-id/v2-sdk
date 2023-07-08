@@ -1,45 +1,31 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: services/common/v1/common.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-// ignore_for_file: UNDEFINED_SHOWN_NAME
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:core' as $core;
+
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class ResponseStatus extends $pb.ProtobufEnum {
-  static const ResponseStatus SUCCESS = ResponseStatus._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'SUCCESS');
-  static const ResponseStatus WALLET_ACCESS_DENIED = ResponseStatus._(
-      10,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'WALLET_ACCESS_DENIED');
-  static const ResponseStatus WALLET_EXISTS = ResponseStatus._(
-      11,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'WALLET_EXISTS');
-  static const ResponseStatus ITEM_NOT_FOUND = ResponseStatus._(
-      20,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'ITEM_NOT_FOUND');
-  static const ResponseStatus SERIALIZATION_ERROR = ResponseStatus._(
-      200,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'SERIALIZATION_ERROR');
-  static const ResponseStatus UNKNOWN_ERROR = ResponseStatus._(
-      100,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'UNKNOWN_ERROR');
+  static const ResponseStatus SUCCESS =
+      ResponseStatus._(0, _omitEnumNames ? '' : 'SUCCESS');
+  static const ResponseStatus WALLET_ACCESS_DENIED =
+      ResponseStatus._(10, _omitEnumNames ? '' : 'WALLET_ACCESS_DENIED');
+  static const ResponseStatus WALLET_EXISTS =
+      ResponseStatus._(11, _omitEnumNames ? '' : 'WALLET_EXISTS');
+  static const ResponseStatus ITEM_NOT_FOUND =
+      ResponseStatus._(20, _omitEnumNames ? '' : 'ITEM_NOT_FOUND');
+  static const ResponseStatus SERIALIZATION_ERROR =
+      ResponseStatus._(200, _omitEnumNames ? '' : 'SERIALIZATION_ERROR');
+  static const ResponseStatus UNKNOWN_ERROR =
+      ResponseStatus._(100, _omitEnumNames ? '' : 'UNKNOWN_ERROR');
 
   static const $core.List<ResponseStatus> values = <ResponseStatus>[
     SUCCESS,
@@ -58,21 +44,12 @@ class ResponseStatus extends $pb.ProtobufEnum {
 }
 
 class SupportedDidMethod extends $pb.ProtobufEnum {
-  static const SupportedDidMethod KEY = SupportedDidMethod._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'KEY');
-  static const SupportedDidMethod ION = SupportedDidMethod._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'ION');
-  static const SupportedDidMethod INDY = SupportedDidMethod._(
-      2,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'INDY');
+  static const SupportedDidMethod KEY =
+      SupportedDidMethod._(0, _omitEnumNames ? '' : 'KEY');
+  static const SupportedDidMethod ION =
+      SupportedDidMethod._(1, _omitEnumNames ? '' : 'ION');
+  static const SupportedDidMethod INDY =
+      SupportedDidMethod._(2, _omitEnumNames ? '' : 'INDY');
 
   static const $core.List<SupportedDidMethod> values = <SupportedDidMethod>[
     KEY,
@@ -86,3 +63,5 @@ class SupportedDidMethod extends $pb.ProtobufEnum {
 
   const SupportedDidMethod._($core.int v, $core.String n) : super(v, n);
 }
+
+const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

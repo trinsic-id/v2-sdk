@@ -8,7 +8,7 @@ package trinsic.services.verifiablecredentials.v1;
  *
  * <pre>
  * Request to create a proof for a Verifiable Credential using public key tied to caller.
- * Either `item_id` or `document_json` may be provided, not both.
+ * Either `item_id`, or `document_json` may be provided, not both.
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
@@ -62,6 +62,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     REVEAL_DOCUMENT_JSON(1),
     REVEAL_TEMPLATE(11),
+    VERIFICATION_TEMPLATE_ID(12),
     DISCLOSURE_NOT_SET(0);
     private final int value;
 
@@ -84,6 +85,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
           return REVEAL_DOCUMENT_JSON;
         case 11:
           return REVEAL_TEMPLATE;
+        case 12:
+          return VERIFICATION_TEMPLATE_ID;
         case 0:
           return DISCLOSURE_NOT_SET;
         default:
@@ -273,6 +276,76 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       return (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_;
     }
     return trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes.getDefaultInstance();
+  }
+
+  public static final int VERIFICATION_TEMPLATE_ID_FIELD_NUMBER = 12;
+  /**
+   *
+   *
+   * <pre>
+   * Id of verification template with which to construct the JSON-LD proof document
+   * </pre>
+   *
+   * <code>string verification_template_id = 12;</code>
+   *
+   * @return Whether the verificationTemplateId field is set.
+   */
+  public boolean hasVerificationTemplateId() {
+    return disclosureCase_ == 12;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Id of verification template with which to construct the JSON-LD proof document
+   * </pre>
+   *
+   * <code>string verification_template_id = 12;</code>
+   *
+   * @return The verificationTemplateId.
+   */
+  public java.lang.String getVerificationTemplateId() {
+    java.lang.Object ref = "";
+    if (disclosureCase_ == 12) {
+      ref = disclosure_;
+    }
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (disclosureCase_ == 12) {
+        disclosure_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Id of verification template with which to construct the JSON-LD proof document
+   * </pre>
+   *
+   * <code>string verification_template_id = 12;</code>
+   *
+   * @return The bytes for verificationTemplateId.
+   */
+  public com.google.protobuf.ByteString getVerificationTemplateIdBytes() {
+    java.lang.Object ref = "";
+    if (disclosureCase_ == 12) {
+      ref = disclosure_;
+    }
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      if (disclosureCase_ == 12) {
+        disclosure_ = b;
+      }
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int ITEM_ID_FIELD_NUMBER = 2;
@@ -493,6 +566,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       output.writeMessage(
           11, (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_);
     }
+    if (disclosureCase_ == 12) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, disclosure_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -522,6 +598,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
           com.google.protobuf.CodedOutputStream.computeMessageSize(
               11, (trinsic.services.verifiablecredentials.v1.RevealTemplateAttributes) disclosure_);
     }
+    if (disclosureCase_ == 12) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, disclosure_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -547,6 +626,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
         break;
       case 11:
         if (!getRevealTemplate().equals(other.getRevealTemplate())) return false;
+        break;
+      case 12:
+        if (!getVerificationTemplateId().equals(other.getVerificationTemplateId())) return false;
         break;
       case 0:
       default:
@@ -585,6 +667,10 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       case 11:
         hash = (37 * hash) + REVEAL_TEMPLATE_FIELD_NUMBER;
         hash = (53 * hash) + getRevealTemplate().hashCode();
+        break;
+      case 12:
+        hash = (37 * hash) + VERIFICATION_TEMPLATE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getVerificationTemplateId().hashCode();
         break;
       case 0:
       default:
@@ -707,7 +793,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
    *
    * <pre>
    * Request to create a proof for a Verifiable Credential using public key tied to caller.
-   * Either `item_id` or `document_json` may be provided, not both.
+   * Either `item_id`, or `document_json` may be provided, not both.
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
@@ -790,6 +876,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
           result.disclosure_ = revealTemplateBuilder_.build();
         }
       }
+      if (disclosureCase_ == 12) {
+        result.disclosure_ = disclosure_;
+      }
       if (proofCase_ == 2) {
         result.proof_ = proof_;
       }
@@ -868,6 +957,13 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
         case REVEAL_TEMPLATE:
           {
             mergeRevealTemplate(other.getRevealTemplate());
+            break;
+          }
+        case VERIFICATION_TEMPLATE_ID:
+          {
+            disclosureCase_ = 12;
+            disclosure_ = other.disclosure_;
+            onChanged();
             break;
           }
         case DISCLOSURE_NOT_SET:
@@ -960,6 +1056,13 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
                 disclosureCase_ = 11;
                 break;
               } // case 90
+            case 98:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                disclosureCase_ = 12;
+                disclosure_ = s;
+                break;
+              } // case 98
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1381,6 +1484,140 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       onChanged();
       ;
       return revealTemplateBuilder_;
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Id of verification template with which to construct the JSON-LD proof document
+     * </pre>
+     *
+     * <code>string verification_template_id = 12;</code>
+     *
+     * @return Whether the verificationTemplateId field is set.
+     */
+    @java.lang.Override
+    public boolean hasVerificationTemplateId() {
+      return disclosureCase_ == 12;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Id of verification template with which to construct the JSON-LD proof document
+     * </pre>
+     *
+     * <code>string verification_template_id = 12;</code>
+     *
+     * @return The verificationTemplateId.
+     */
+    @java.lang.Override
+    public java.lang.String getVerificationTemplateId() {
+      java.lang.Object ref = "";
+      if (disclosureCase_ == 12) {
+        ref = disclosure_;
+      }
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (disclosureCase_ == 12) {
+          disclosure_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Id of verification template with which to construct the JSON-LD proof document
+     * </pre>
+     *
+     * <code>string verification_template_id = 12;</code>
+     *
+     * @return The bytes for verificationTemplateId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getVerificationTemplateIdBytes() {
+      java.lang.Object ref = "";
+      if (disclosureCase_ == 12) {
+        ref = disclosure_;
+      }
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        if (disclosureCase_ == 12) {
+          disclosure_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Id of verification template with which to construct the JSON-LD proof document
+     * </pre>
+     *
+     * <code>string verification_template_id = 12;</code>
+     *
+     * @param value The verificationTemplateId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVerificationTemplateId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      disclosureCase_ = 12;
+      disclosure_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Id of verification template with which to construct the JSON-LD proof document
+     * </pre>
+     *
+     * <code>string verification_template_id = 12;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearVerificationTemplateId() {
+      if (disclosureCase_ == 12) {
+        disclosureCase_ = 0;
+        disclosure_ = null;
+        onChanged();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Id of verification template with which to construct the JSON-LD proof document
+     * </pre>
+     *
+     * <code>string verification_template_id = 12;</code>
+     *
+     * @param value The bytes for verificationTemplateId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVerificationTemplateIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+      disclosureCase_ = 12;
+      disclosure_ = value;
+      onChanged();
+      return this;
     }
 
     /**
