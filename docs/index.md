@@ -10,37 +10,19 @@ hide:
     <h3>Build the future of identity with Trinsic, infrastructure for building amazing identity products using identity wallets and verifiable credentials.</h3>
   </div>
   <div class="homepage-main-image">
-    <img src="/_static/images/person-welcome.png"/>
+    <img src="/_static/images/person-welcome.png" width="60%"/>
   </div>
 </div>
 </div>
-<hr />
+
 <div class="card-container">
   <div class="card">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-    </svg>
-    <h4>CLI Tutorial</h4>
-    <p>Dive into a sandbox CLI environment</p>
-    <a href="/walkthroughs/vaccination" rel="noreferrer">
-      Get started
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-      </svg>
-    </a>
-  </div>
-  <div class="card">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-    </svg>
-    <h4>Dashboard</h4>
-    <p>Create your ecosystem and API key</p>
-    <a href="https://dashboard.trinsic.cloud/" rel="noreferrer">
-      Sign in
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-      </svg>
-    </a>
+  <h4>Platform walkthrough video</h4>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yKeIx3iE1WM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <p>
+        Get a quick intro to our platform by watching the walkthrough video of our presentation during the <b><a href="https://www.eventbrite.com/e/didhack-decentralized-identity-hackathon-tickets-626600859037" target="_blank">did:hack</a></b> event.
+    </p>
   </div>
   <div class="card">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
