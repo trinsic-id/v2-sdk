@@ -191,8 +191,7 @@ pub struct WalletAuthToken {
     pub date_created: ::prost::alloc::string::String,
 }
 /// Confirmation method type for two-factor workflows
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ConfirmationMethod {
     /// No confirmation required
@@ -235,8 +234,8 @@ impl ConfirmationMethod {
 /// Generated client implementations.
 pub mod account_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct AccountClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -267,22 +266,15 @@ pub mod account_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> AccountClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> AccountClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             AccountClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -309,16 +301,9 @@ pub mod account_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.Account/SignIn",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Begin login flow for specified account, creating one if it does not already exist
@@ -329,16 +314,9 @@ pub mod account_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.Account/Login",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Login");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Finalize login flow with two-factor confirmation code
@@ -349,16 +327,9 @@ pub mod account_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.Account/LoginConfirm",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/LoginConfirm");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Get account information
@@ -369,16 +340,9 @@ pub mod account_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.Account/Info",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Info");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
