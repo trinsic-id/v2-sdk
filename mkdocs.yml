@@ -21,7 +21,6 @@ nav:
       - Governance: learn/concepts/trust-registries.md
     - Trinsic Platform:
       - Standards: learn/platform/standards.md
-      - Security Overview: learn/platform/security.md
     - Resources:
       - "Migration: From v1" : learn/resources/migrate.md
       - "Migration: Account API": learn/resources/migrate-account.md

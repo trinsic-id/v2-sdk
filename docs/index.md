@@ -36,7 +36,7 @@ hide:
   <div class="card">
     <iframe width="300" height="165" class="rounded-frame" src="https://www.youtube.com/embed/GfNJgkGn_8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <h4>Branded Studio overview</h4>
-    <p>Our new studio features a wallet that can be customized with your colors and logo, allowing your users to log in and view their credentials.</p>
+    <p>Our new studio has a customizable wallet with your colors and logo, enabling users to log in and access their credentials.</p>
     <a href="https://dashboard.trinsic.id" target="_blank" rel="noreferrer">
       Visit Dashboard
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
