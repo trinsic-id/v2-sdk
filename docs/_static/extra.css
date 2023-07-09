@@ -46,6 +46,11 @@ input {
     font-size: 0.75rem;
 }
 
+iframe.rounded-frame {
+    border-radius: 0.8em;
+    overflow: hidden;
+}
+
 
 /** Improve spacing of <hr/> between service page sections **/
 .md-typeset hr + h2,.md-typeset hr + h3 {
