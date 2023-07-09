@@ -122,6 +122,13 @@ extra_css:
   - _static/extra.css
 
 extra:
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
   generator: false
   # homepage: learn # change or remove this when updating with new landing page
   analytics:
@@ -130,13 +137,19 @@ extra:
     feedback:
       title: Did you find the help you needed?
       ratings:
-        - icon: material/check
+        - icon: material/emoticon-outline
           name: Yes, this page was helpful
+          data: 2
+          note: >-
+            Yes, this page was helpful
+        - icon: material/emoticon-neutral-outline
+          name: Sort of, still need help
           data: 1
           note: >-
-            Yes, I did!
-        - icon: material/close
-          name: No, not really
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+        - icon: material/emoticon-cry-outline
+          name: No, this page wasn't helpful
           data: 0
           note: >-
             Thanks for your feedback! Help us improve this page by

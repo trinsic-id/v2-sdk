@@ -31,7 +31,9 @@ input {
     /* [0, 360] */
 }
 
-.md-header__button.md-logo {
+.md-feedback__icon.md-icon {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .md-header__button.md-logo img,
