@@ -10,7 +10,7 @@ In our platform, we distinguish between two types of issuances, each fulfilling 
 
 :   This form of credential issuance allows issuing parties to sign a Verifiable Credential without requiring user interaction, consent, or binding commitment. In this case, the issued credential is returned to the issuer in the response and can be sent to the user directly.
 
-    To use direct issuance in your integration, use the [Issue from Template](/reference/services/credential-service/#issue-credential-from-template) method. The returned credential can then be exchanged with the user using one of the methods described below.
+    To use direct issuance in your integration, use the [Issue from Template](/reference/services/credential-service/#issue-credential-from-template) method. The returned credential can then be exchanged with the user using one of the methods described in the next section.
 
     ``` mermaid
     sequenceDiagram
@@ -18,11 +18,11 @@ In our platform, we distinguish between two types of issuances, each fulfilling 
         actor Issuer
         participant API
         actor Holder
-        Issuer->>API: Issue from Template
-        API-->>Issuer: Verifiable Credential
-        Issuer->>API: Send
-        note over API: Credential is stored in the wallet<br/>owned by the specified email
-        API-->Holder: Email notification
+        Issuer->>API: Call [Issue from Template]
+        API-->>Issuer: [Verifiable Credential]
+        Issuer->>API: Call [Send]
+        note over API: [Verifiable Credential] is stored in the wallet<br/>owned by the specified email
+        API-->>Holder: Email notification
     ```
 
 ### Interactive issuance
@@ -41,20 +41,22 @@ In our platform, we distinguish between two types of issuances, each fulfilling 
         Issuer->>API: Call [Create Offer]
         API-->>Issuer: [Credential Offer]
         Issuer->>Holder: Present [Credential Offer]
-        Holder->>API: [Accept Offer]
-        API->>API: Exchange credential offer
+        Holder->>API: Call [Accept Credential]
+        API->>API: Exchange [Credential Offer]
         note over API: Holder's wallet adds binding information<br/>and submits the proof to the Issuer's wallet<br/>for final issuance
         API-->>Holder: [Verifiable Credential]
     ```
 
 ## Credential exchange methods
 
-Once you have created the Verifiable Credential (or Credential Offer), it should be shared with the user. There are few different ways to achieve this:
+Once the Verifiable Credential (or Credential Offer) is created, it can be shared with the user. There are few different ways to approach this exchange:
 
 ### Manually, using the Branded Studio
 
-:   This method is the easiest and useful if you'd like to use the Branded Studio to manually issue a credential to the user. To accomplish this, log in to your studio (you can get the URL from the main Dashboard page) and go to Issue using the left-hand menu.
-    Then select the template you'd like to use to issue a credential, and fill in the user's details, including the user's email. Once done, the credential will be sent to the user and they will recieve an email notification.
+:   If you want to manually issue a credential to a user using the Branded Studio, this method is the easiest and most useful.
+    Simply log in to your studio (the URL can be found on the main Dashboard page) and navigate to the 'Issue' option in the left-hand menu.
+    Choose the desired template for issuing the credential and provide the user's details, including their email address.
+    Once completed, the credential will be sent to the user, who will receive an email notification.
     !!! note ""
 
         Use this method to send yourself a credential and get some test data in your wallet.
