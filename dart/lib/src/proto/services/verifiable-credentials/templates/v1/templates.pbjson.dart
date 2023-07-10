@@ -1028,26 +1028,23 @@ final $typed_data.Uint8List verificationTemplateFieldDescriptor = $convert.base6
 const VerificationTemplateFieldPatch$json = {
   '1': 'VerificationTemplateFieldPatch',
   '2': [
-    {'1': 'title', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'title', '17': true},
     {
-      '1': 'description',
-      '3': 2,
+      '1': 'usage_policy',
+      '3': 1,
       '4': 1,
       '5': 9,
-      '9': 1,
-      '10': 'description',
+      '9': 0,
+      '10': 'usagePolicy',
       '17': true
     },
   ],
   '8': [
-    {'1': '_title'},
-    {'1': '_description'},
+    {'1': '_usage_policy'},
   ],
 };
 
 /// Descriptor for `VerificationTemplateFieldPatch`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verificationTemplateFieldPatchDescriptor =
     $convert.base64Decode(
-        'Ch5WZXJpZmljYXRpb25UZW1wbGF0ZUZpZWxkUGF0Y2gSGQoFdGl0bGUYASABKAlIAFIFdGl0bG'
-        'WIAQESJQoLZGVzY3JpcHRpb24YAiABKAlIAVILZGVzY3JpcHRpb26IAQFCCAoGX3RpdGxlQg4K'
-        'DF9kZXNjcmlwdGlvbg==');
+        'Ch5WZXJpZmljYXRpb25UZW1wbGF0ZUZpZWxkUGF0Y2gSJgoMdXNhZ2VfcG9saWN5GAEgASgJSA'
+        'BSC3VzYWdlUG9saWN5iAEBQg8KDV91c2FnZV9wb2xpY3k=');

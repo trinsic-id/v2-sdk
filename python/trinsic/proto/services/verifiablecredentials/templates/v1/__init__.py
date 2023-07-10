@@ -569,13 +569,10 @@ class VerificationTemplateField(betterproto.Message):
 class VerificationTemplateFieldPatch(betterproto.Message):
     """A patch to apply to an existing template field"""
 
-    title: Optional[str] = betterproto.string_field(1, optional=True, group="_title")
-    """Human-readable name of the field"""
-
-    description: Optional[str] = betterproto.string_field(
-        2, optional=True, group="_description"
+    usage_policy: Optional[str] = betterproto.string_field(
+        1, optional=True, group="_usage_policy"
     )
-    """Human-readable description of the field"""
+    """Human-readable name of the field"""
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):

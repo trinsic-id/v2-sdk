@@ -2469,8 +2469,7 @@ class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
           ? ''
           : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'title')
-    ..aOS(2, _omitFieldNames ? '' : 'description')
+    ..aOS(1, _omitFieldNames ? '' : 'usagePolicy')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2501,28 +2500,16 @@ class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
   static VerificationTemplateFieldPatch? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get title => $_getSZ(0);
+  $core.String get usagePolicy => $_getSZ(0);
   @$pb.TagNumber(1)
-  set title($core.String v) {
+  set usagePolicy($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasTitle() => $_has(0);
+  $core.bool hasUsagePolicy() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTitle() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get description => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set description($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasDescription() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearDescription() => clearField(2);
+  void clearUsagePolicy() => clearField(1);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
