@@ -22,6 +22,10 @@ body, html {
     font-variant-ligatures: none;
 }
 
+.tabbed-control.tabbed-control--prev, .tabbed-control.tabbed-control--next {
+    visibility: hidden;
+}
+
 input {
     font-variant-ligatures: none;
 }
