@@ -15,11 +15,11 @@ public interface VerificationTemplateFieldPatchOrBuilder
    * Human-readable name of the field
    * </pre>
    *
-   * <code>optional string title = 1;</code>
+   * <code>optional string usage_policy = 1;</code>
    *
-   * @return Whether the title field is set.
+   * @return Whether the usagePolicy field is set.
    */
-  boolean hasTitle();
+  boolean hasUsagePolicy();
   /**
    *
    *
@@ -27,11 +27,11 @@ public interface VerificationTemplateFieldPatchOrBuilder
    * Human-readable name of the field
    * </pre>
    *
-   * <code>optional string title = 1;</code>
+   * <code>optional string usage_policy = 1;</code>
    *
-   * @return The title.
+   * @return The usagePolicy.
    */
-  java.lang.String getTitle();
+  java.lang.String getUsagePolicy();
   /**
    *
    *
@@ -39,46 +39,9 @@ public interface VerificationTemplateFieldPatchOrBuilder
    * Human-readable name of the field
    * </pre>
    *
-   * <code>optional string title = 1;</code>
+   * <code>optional string usage_policy = 1;</code>
    *
-   * @return The bytes for title.
+   * @return The bytes for usagePolicy.
    */
-  com.google.protobuf.ByteString getTitleBytes();
-
-  /**
-   *
-   *
-   * <pre>
-   * Human-readable description of the field
-   * </pre>
-   *
-   * <code>optional string description = 2;</code>
-   *
-   * @return Whether the description field is set.
-   */
-  boolean hasDescription();
-  /**
-   *
-   *
-   * <pre>
-   * Human-readable description of the field
-   * </pre>
-   *
-   * <code>optional string description = 2;</code>
-   *
-   * @return The description.
-   */
-  java.lang.String getDescription();
-  /**
-   *
-   *
-   * <pre>
-   * Human-readable description of the field
-   * </pre>
-   *
-   * <code>optional string description = 2;</code>
-   *
-   * @return The bytes for description.
-   */
-  com.google.protobuf.ByteString getDescriptionBytes();
+  com.google.protobuf.ByteString getUsagePolicyBytes();
 }

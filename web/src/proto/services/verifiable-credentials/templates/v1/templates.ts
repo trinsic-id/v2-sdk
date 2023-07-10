@@ -494,11 +494,7 @@ export interface VerificationTemplateField {
 /** A patch to apply to an existing template field */
 export interface VerificationTemplateFieldPatch {
   /** Human-readable name of the field */
-  title?:
-    | string
-    | undefined;
-  /** Human-readable description of the field */
-  description?: string | undefined;
+  usagePolicy?: string | undefined;
 }
 
 function createBaseGetCredentialTemplateRequest(): GetCredentialTemplateRequest {
@@ -3821,16 +3817,13 @@ export const VerificationTemplateField = {
 };
 
 function createBaseVerificationTemplateFieldPatch(): VerificationTemplateFieldPatch {
-  return { title: undefined, description: undefined };
+  return { usagePolicy: undefined };
 }
 
 export const VerificationTemplateFieldPatch = {
   encode(message: VerificationTemplateFieldPatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.title !== undefined) {
-      writer.uint32(10).string(message.title);
-    }
-    if (message.description !== undefined) {
-      writer.uint32(18).string(message.description);
+    if (message.usagePolicy !== undefined) {
+      writer.uint32(10).string(message.usagePolicy);
     }
     return writer;
   },
@@ -3847,14 +3840,7 @@ export const VerificationTemplateFieldPatch = {
             break;
           }
 
-          message.title = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.description = reader.string();
+          message.usagePolicy = reader.string();
           continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
@@ -3866,16 +3852,12 @@ export const VerificationTemplateFieldPatch = {
   },
 
   fromJSON(object: any): VerificationTemplateFieldPatch {
-    return {
-      title: isSet(object.title) ? String(object.title) : undefined,
-      description: isSet(object.description) ? String(object.description) : undefined,
-    };
+    return { usagePolicy: isSet(object.usagePolicy) ? String(object.usagePolicy) : undefined };
   },
 
   toJSON(message: VerificationTemplateFieldPatch): unknown {
     const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
+    message.usagePolicy !== undefined && (obj.usagePolicy = message.usagePolicy);
     return obj;
   },
 
@@ -3885,8 +3867,7 @@ export const VerificationTemplateFieldPatch = {
 
   fromPartial(object: DeepPartial<VerificationTemplateFieldPatch>): VerificationTemplateFieldPatch {
     const message = createBaseVerificationTemplateFieldPatch();
-    message.title = object.title ?? undefined;
-    message.description = object.description ?? undefined;
+    message.usagePolicy = object.usagePolicy ?? undefined;
     return message;
   },
 };

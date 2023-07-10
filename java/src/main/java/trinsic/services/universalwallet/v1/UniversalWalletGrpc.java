@@ -932,6 +932,53 @@ public final class UniversalWalletGrpc {
     return getListByVerificationTemplateMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.CreateDidWebDocRequest,
+          trinsic.services.universalwallet.v1.CreateDidWebDocResponse>
+      getCreateDidWebDocMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateDidWebDoc",
+      requestType = trinsic.services.universalwallet.v1.CreateDidWebDocRequest.class,
+      responseType = trinsic.services.universalwallet.v1.CreateDidWebDocResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.CreateDidWebDocRequest,
+          trinsic.services.universalwallet.v1.CreateDidWebDocResponse>
+      getCreateDidWebDocMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.universalwallet.v1.CreateDidWebDocRequest,
+            trinsic.services.universalwallet.v1.CreateDidWebDocResponse>
+        getCreateDidWebDocMethod;
+    if ((getCreateDidWebDocMethod = UniversalWalletGrpc.getCreateDidWebDocMethod) == null) {
+      synchronized (UniversalWalletGrpc.class) {
+        if ((getCreateDidWebDocMethod = UniversalWalletGrpc.getCreateDidWebDocMethod) == null) {
+          UniversalWalletGrpc.getCreateDidWebDocMethod =
+              getCreateDidWebDocMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.universalwallet.v1.CreateDidWebDocRequest,
+                          trinsic.services.universalwallet.v1.CreateDidWebDocResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateDidWebDoc"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.CreateDidWebDocRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1.CreateDidWebDocResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new UniversalWalletMethodDescriptorSupplier("CreateDidWebDoc"))
+                      .build();
+        }
+      }
+    }
+    return getCreateDidWebDocMethod;
+  }
+
   /** Creates a new async stub that supports all call types for the service */
   public static UniversalWalletStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<UniversalWalletStub> factory =
@@ -1272,6 +1319,21 @@ public final class UniversalWalletGrpc {
           getListByVerificationTemplateMethod(), responseObserver);
     }
 
+    /**
+     *
+     *
+     * <pre>
+     * Create a `did:web` document from a wallet's key(s)
+     * </pre>
+     */
+    public void createDidWebDoc(
+        trinsic.services.universalwallet.v1.CreateDidWebDocRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.CreateDidWebDocResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getCreateDidWebDocMethod(), responseObserver);
+    }
+
     @java.lang.Override
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
@@ -1407,6 +1469,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest,
                       trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>(
                       this, METHODID_LIST_BY_VERIFICATION_TEMPLATE)))
+          .addMethod(
+              getCreateDidWebDocMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.universalwallet.v1.CreateDidWebDocRequest,
+                      trinsic.services.universalwallet.v1.CreateDidWebDocResponse>(
+                      this, METHODID_CREATE_DID_WEB_DOC)))
           .build();
     }
   }
@@ -1750,6 +1819,23 @@ public final class UniversalWalletGrpc {
           request,
           responseObserver);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * Create a `did:web` document from a wallet's key(s)
+     * </pre>
+     */
+    public void createDidWebDoc(
+        trinsic.services.universalwallet.v1.CreateDidWebDocRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.CreateDidWebDocResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateDidWebDocMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
   }
 
   /**
@@ -2027,6 +2113,19 @@ public final class UniversalWalletGrpc {
             trinsic.services.universalwallet.v1.ListByVerificationTemplateRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListByVerificationTemplateMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Create a `did:web` document from a wallet's key(s)
+     * </pre>
+     */
+    public trinsic.services.universalwallet.v1.CreateDidWebDocResponse createDidWebDoc(
+        trinsic.services.universalwallet.v1.CreateDidWebDocRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateDidWebDocMethod(), getCallOptions(), request);
     }
   }
 
@@ -2326,6 +2425,20 @@ public final class UniversalWalletGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListByVerificationTemplateMethod(), getCallOptions()), request);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * Create a `did:web` document from a wallet's key(s)
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.universalwallet.v1.CreateDidWebDocResponse>
+        createDidWebDoc(trinsic.services.universalwallet.v1.CreateDidWebDocRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateDidWebDocMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_ITEM = 0;
@@ -2347,6 +2460,7 @@ public final class UniversalWalletGrpc {
   private static final int METHODID_AUTHENTICATE_RESEND_CODE = 16;
   private static final int METHODID_LIST_WALLETS = 17;
   private static final int METHODID_LIST_BY_VERIFICATION_TEMPLATE = 18;
+  private static final int METHODID_CREATE_DID_WEB_DOC = 19;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2491,6 +2605,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.ListByVerificationTemplateResponse>)
                   responseObserver);
           break;
+        case METHODID_CREATE_DID_WEB_DOC:
+          serviceImpl.createDidWebDoc(
+              (trinsic.services.universalwallet.v1.CreateDidWebDocRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.universalwallet.v1.CreateDidWebDocResponse>)
+                  responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -2574,6 +2695,7 @@ public final class UniversalWalletGrpc {
                       .addMethod(getAuthenticateResendCodeMethod())
                       .addMethod(getListWalletsMethod())
                       .addMethod(getListByVerificationTemplateMethod())
+                      .addMethod(getCreateDidWebDocMethod())
                       .build();
         }
       }

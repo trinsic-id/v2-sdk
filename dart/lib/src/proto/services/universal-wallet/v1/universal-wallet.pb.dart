@@ -13,8 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../provider/v1/provider.pb.dart' as $1;
-import '../../provider/v1/provider.pbenum.dart' as $1;
+import '../../provider/v1/provider.pb.dart' as $3;
+import '../../provider/v1/provider.pbenum.dart' as $3;
 
 class SearchRequest extends $pb.GeneratedMessage {
   factory SearchRequest() => create();
@@ -752,11 +752,11 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'identity')
-    ..e<$1.IdentityProvider>(
+    ..e<$3.IdentityProvider>(
         2, _omitFieldNames ? '' : 'provider', $pb.PbFieldType.OE,
-        defaultOrMaker: $1.IdentityProvider.Unknown,
-        valueOf: $1.IdentityProvider.valueOf,
-        enumValues: $1.IdentityProvider.values)
+        defaultOrMaker: $3.IdentityProvider.Unknown,
+        valueOf: $3.IdentityProvider.valueOf,
+        enumValues: $3.IdentityProvider.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -800,9 +800,9 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  $1.IdentityProvider get provider => $_getN(1);
+  $3.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($1.IdentityProvider v) {
+  set provider($3.IdentityProvider v) {
     setField(2, v);
   }
 
@@ -913,8 +913,8 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(2, _omitFieldNames ? '' : 'authToken')
     ..aOS(3, _omitFieldNames ? '' : 'tokenId')
-    ..aOM<$1.WalletConfiguration>(4, _omitFieldNames ? '' : 'wallet',
-        subBuilder: $1.WalletConfiguration.create)
+    ..aOM<$3.WalletConfiguration>(4, _omitFieldNames ? '' : 'wallet',
+        subBuilder: $3.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -966,9 +966,9 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   void clearTokenId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $1.WalletConfiguration get wallet => $_getN(2);
+  $3.WalletConfiguration get wallet => $_getN(2);
   @$pb.TagNumber(4)
-  set wallet($1.WalletConfiguration v) {
+  set wallet($3.WalletConfiguration v) {
     setField(4, v);
   }
 
@@ -977,7 +977,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearWallet() => clearField(4);
   @$pb.TagNumber(4)
-  $1.WalletConfiguration ensureWallet() => $_ensure(2);
+  $3.WalletConfiguration ensureWallet() => $_ensure(2);
 }
 
 class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1188,8 +1188,8 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$1.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
-        subBuilder: $1.WalletConfiguration.create)
+    ..aOM<$3.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
+        subBuilder: $3.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1218,9 +1218,9 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   static GetWalletInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.WalletConfiguration get wallet => $_getN(0);
+  $3.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($1.WalletConfiguration v) {
+  set wallet($3.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1229,7 +1229,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $1.WalletConfiguration ensureWallet() => $_ensure(0);
+  $3.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class GetMyInfoRequest extends $pb.GeneratedMessage {
@@ -1288,8 +1288,8 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$1.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
-        subBuilder: $1.WalletConfiguration.create)
+    ..aOM<$3.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
+        subBuilder: $3.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1316,9 +1316,9 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   static GetMyInfoResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.WalletConfiguration get wallet => $_getN(0);
+  $3.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($1.WalletConfiguration v) {
+  set wallet($3.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1327,7 +1327,7 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $1.WalletConfiguration ensureWallet() => $_ensure(0);
+  $3.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1511,9 +1511,9 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..pc<$1.WalletConfiguration>(
+    ..pc<$3.WalletConfiguration>(
         1, _omitFieldNames ? '' : 'wallets', $pb.PbFieldType.PM,
-        subBuilder: $1.WalletConfiguration.create)
+        subBuilder: $3.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1540,7 +1540,106 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
   static ListWalletsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$1.WalletConfiguration> get wallets => $_getList(0);
+  $core.List<$3.WalletConfiguration> get wallets => $_getList(0);
+}
+
+class CreateDidWebDocRequest extends $pb.GeneratedMessage {
+  factory CreateDidWebDocRequest() => create();
+  CreateDidWebDocRequest._() : super();
+  factory CreateDidWebDocRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CreateDidWebDocRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateDidWebDocRequest',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.universalwallet.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CreateDidWebDocRequest clone() =>
+      CreateDidWebDocRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CreateDidWebDocRequest copyWith(
+          void Function(CreateDidWebDocRequest) updates) =>
+      super.copyWith((message) => updates(message as CreateDidWebDocRequest))
+          as CreateDidWebDocRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CreateDidWebDocRequest create() => CreateDidWebDocRequest._();
+  CreateDidWebDocRequest createEmptyInstance() => create();
+  static $pb.PbList<CreateDidWebDocRequest> createRepeated() =>
+      $pb.PbList<CreateDidWebDocRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CreateDidWebDocRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateDidWebDocRequest>(create);
+  static CreateDidWebDocRequest? _defaultInstance;
+}
+
+class CreateDidWebDocResponse extends $pb.GeneratedMessage {
+  factory CreateDidWebDocResponse() => create();
+  CreateDidWebDocResponse._() : super();
+  factory CreateDidWebDocResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CreateDidWebDocResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateDidWebDocResponse',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'services.universalwallet.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'didWebJson', protoName: 'didWebJson')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CreateDidWebDocResponse clone() =>
+      CreateDidWebDocResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CreateDidWebDocResponse copyWith(
+          void Function(CreateDidWebDocResponse) updates) =>
+      super.copyWith((message) => updates(message as CreateDidWebDocResponse))
+          as CreateDidWebDocResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CreateDidWebDocResponse create() => CreateDidWebDocResponse._();
+  CreateDidWebDocResponse createEmptyInstance() => create();
+  static $pb.PbList<CreateDidWebDocResponse> createRepeated() =>
+      $pb.PbList<CreateDidWebDocResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CreateDidWebDocResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateDidWebDocResponse>(create);
+  static CreateDidWebDocResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get didWebJson => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set didWebJson($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDidWebJson() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDidWebJson() => clearField(1);
 }
 
 class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
@@ -1559,11 +1658,11 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'identity')
-    ..e<$1.IdentityProvider>(
+    ..e<$3.IdentityProvider>(
         2, _omitFieldNames ? '' : 'provider', $pb.PbFieldType.OE,
-        defaultOrMaker: $1.IdentityProvider.Unknown,
-        valueOf: $1.IdentityProvider.valueOf,
-        enumValues: $1.IdentityProvider.values)
+        defaultOrMaker: $3.IdentityProvider.Unknown,
+        valueOf: $3.IdentityProvider.valueOf,
+        enumValues: $3.IdentityProvider.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1606,9 +1705,9 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  $1.IdentityProvider get provider => $_getN(1);
+  $3.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($1.IdentityProvider v) {
+  set provider($3.IdentityProvider v) {
     setField(2, v);
   }
 
@@ -1914,11 +2013,11 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'identity')
-    ..e<$1.IdentityProvider>(
+    ..e<$3.IdentityProvider>(
         2, _omitFieldNames ? '' : 'provider', $pb.PbFieldType.OE,
-        defaultOrMaker: $1.IdentityProvider.Unknown,
-        valueOf: $1.IdentityProvider.valueOf,
-        enumValues: $1.IdentityProvider.values)
+        defaultOrMaker: $3.IdentityProvider.Unknown,
+        valueOf: $3.IdentityProvider.valueOf,
+        enumValues: $3.IdentityProvider.values)
     ..aOS(3, _omitFieldNames ? '' : 'ecosystemId')
     ..hasRequiredFields = false;
 
@@ -1960,9 +2059,9 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
   void clearIdentity() => clearField(1);
 
   @$pb.TagNumber(2)
-  $1.IdentityProvider get provider => $_getN(1);
+  $3.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($1.IdentityProvider v) {
+  set provider($3.IdentityProvider v) {
     setField(2, v);
   }
 
