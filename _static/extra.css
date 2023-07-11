@@ -22,6 +22,10 @@ body, html {
     font-variant-ligatures: none;
 }
 
+.tabbed-control.tabbed-control--prev, .tabbed-control.tabbed-control--next {
+    visibility: hidden;
+}
+
 input {
     font-variant-ligatures: none;
 }
@@ -31,7 +35,9 @@ input {
     /* [0, 360] */
 }
 
-.md-header__button.md-logo {
+.md-feedback__icon.md-icon {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .md-header__button.md-logo img,
@@ -40,6 +46,15 @@ input {
 .md-nav__title .md-nav__button.md-logo svg {
     width: auto;
     height: 1.6rem !important;
+}
+
+.md-tabs__link {
+    font-size: 0.75rem;
+}
+
+iframe.rounded-frame {
+    border-radius: 0.8em;
+    overflow: hidden;
 }
 
 
