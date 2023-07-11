@@ -7,7 +7,7 @@ The Credential Service exposes functionality for issuance, proof generation, ver
     The Credential service currently supports [BBS+ Signatures <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}, which enable selective disclosure of credential fields during proof generation.
 
     Credentials are signed, and proofs are created, using a key pair unique to the signing / holding wallet. This key pair is created and managed by Trinsic upon account creation.
-    
+
 ---
 
 ## Issue Credential from Template
@@ -15,22 +15,23 @@ The Credential Service exposes functionality for issuance, proof generation, ver
 Issues a credential from a [previously-defined template](/reference/services/template-service#create-template){target=_blank}.
 
 {{ proto_sample_start() }}
-    === "Trinsic CLI"
-        ```bash
-        trinsic vc issue-from-template [OPTIONS] --template-id <ID>
-
-        # OPTIONS
-        # --out <OUTPUT_FILE>     (Optional) Output file to store the issued credential
-        # --values-data <JSON>    The JSON values of the credential subject
-        # --values-file <FILE>    The file with JSON values of the credential subject
-        ```
 
     === "TypeScript"
-        <!--codeinclude-->
-        ```typescript
-        [Issue From Template](../../../web/test/CredentialTemplateShared.ts) inside_block:issueFromTemplate
+        ```ts
+        import { TrinsicService } from "@trinsic/trinsic";
+
+        const trinsic = new TrinsicService({ authToken: "<auth token>" });
+
+        const request = {
+            templateId: "https://schema.trinsic.cloud/default/example-credential",
+            include_governance: true,
+            valuesJson: JSON.stringify({
+                "name": "John Doe",
+                "email": "john.doe@example.com"
+            })
+        };
+        const response = await trinsic.credential().issueFromTemplate(request);
         ```
-        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -82,6 +83,36 @@ Here's an example of a VC with extended issuer information:
 ```
 
 See [Trust Registry Service](/reference/services/trust-registry-service) for more information on managing your ecosystem's governance.
+
+---
+
+## Create Credential Offer
+
+The purpose of the "Create Offer" endpoint is to initiate interactive issuance and facilitate the issuance of a verifiable credential. This endpoint serves as the starting point for the interactive issuance process, allowing the issuing party to generate an offer to issue a credential to a specific user or entity.
+
+By utilizing the "Create Offer" endpoint, the issuing party can initiate a request for the user's consent to issue a verifiable credential on their behalf. This interactive process ensures that the user actively participates in the credential issuance and has the opportunity to review and provide their consent before the credential is issued.
+
+Furthermore, the "Create Offer" endpoint enables the issuing party to define and configure the holder binding properties of the credential. This means that the issued credential will be bound to the intended holder, making it non-transferable and restricted for use solely by the authorized holder.
+
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer") }}
+
+---
+
+## Accept Credential
+
+The purpose of the "Accept Offer" method is for the user to formally accept the offered verifiable credential. It enables the user to provide explicit consent and indicate their willingness to receive and possess the credential. By using this method, the user confirms their agreement to become the rightful holder of the credential.
+
+The "Accept Offer" method is a mandatory step in the issuance process, as it solidifies the user's commitment to acquiring the verifiable credential. During this step, if the issuer requested binding information, the user's wallet will submit a proof of DID ownership bind the credential to the user and make it non-transferable. The verifiable credential is then securely generated and delivered to the user, officially establishing their possession and ownership of the credential.
+
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential") }}
+
+---
+
+## Reject Credential
+
+This endpoint allows users to decline or reject an offered verifiable credential. By utilizing this endpoint, users can explicitly communicate their decision not to accept the credential being offered to them. By offering this option in your application, your platform promotes user empowerment and supports a transparent workflow for the acceptance or rejection of verifiable credentials.
+
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.RejectCredential") }}
 
 ---
 

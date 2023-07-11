@@ -19,6 +19,7 @@ We're using [mkdocs](https://www.mkdocs.org/) with [`mkdocs-material`](https://s
 ### Running locally
 
 Type `mkdocs serve` in this repo's root. The command will start a server at http://127.0.0.0:5000/ with automatic refresh.
+Alternatively `python3 -m mkdocs serve` may also work.
 
 ### Editing
 

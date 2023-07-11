@@ -177,8 +177,7 @@ pub struct GetMemberResponse {
     #[prost(message, optional, tag = "1")]
     pub authorized_member: ::core::option::Option<AuthorizedMember>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum RegistrationStatus {
     /// Member is currently authorized, as of the time of the query
@@ -221,8 +220,8 @@ impl RegistrationStatus {
 /// Generated client implementations.
 pub mod trust_registry_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct TrustRegistryClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -253,22 +252,15 @@ pub mod trust_registry_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> TrustRegistryClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> TrustRegistryClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             TrustRegistryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -295,16 +287,9 @@ pub mod trust_registry_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.trustregistry.v1.TrustRegistry/RegisterMember",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/RegisterMember");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Removes an authoritative issuer for a credential schema from the trust registry
@@ -315,62 +300,35 @@ pub mod trust_registry_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.trustregistry.v1.TrustRegistry/UnregisterMember",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/UnregisterMember");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Fetch the status of a member for a given credential schema in a trust registry
         pub async fn get_member_authorization_status(
             &mut self,
             request: impl tonic::IntoRequest<super::GetMemberAuthorizationStatusRequest>,
-        ) -> Result<
-            tonic::Response<super::GetMemberAuthorizationStatusResponse>,
-            tonic::Status,
-        > {
+        ) -> Result<tonic::Response<super::GetMemberAuthorizationStatusResponse>, tonic::Status> {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
         pub async fn list_authorized_members(
             &mut self,
             request: impl tonic::IntoRequest<super::ListAuthorizedMembersRequest>,
-        ) -> Result<
-            tonic::Response<super::ListAuthorizedMembersResponse>,
-            tonic::Status,
-        > {
+        ) -> Result<tonic::Response<super::ListAuthorizedMembersResponse>, tonic::Status> {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Get member for a given did in a trust registry
@@ -381,16 +339,9 @@ pub mod trust_registry_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.trustregistry.v1.TrustRegistry/GetMember",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/GetMember");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

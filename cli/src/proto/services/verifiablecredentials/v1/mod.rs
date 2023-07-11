@@ -37,12 +37,14 @@ pub struct IssueFromTemplateResponse {
     pub document_json: ::prost::alloc::string::String,
 }
 /// Request to create a proof for a Verifiable Credential using public key tied to caller.
-/// Either `item_id` or `document_json` may be provided, not both.
+/// Either `item_id`, or `document_json` may be provided, not both.
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
-    /// Wrap the output in a verifiable presentation
+    /// Wrap the output in a verifiable presentation.
+    /// If the credential used in the proof is bound to the holder DID,
+    /// the output will always use a verifiable presentation and this field will be ignored.
     #[prost(bool, tag = "4")]
     pub use_verifiable_presentation: bool,
     /// Nonce value used to derive the proof. If not specified, a random nonce will be generated.
@@ -51,7 +53,7 @@ pub struct CreateProofRequest {
     pub nonce: ::prost::alloc::vec::Vec<u8>,
     /// Selective disclosure specification. If nothing is provided, the entire proof is returned.
     /// Either a custom JSON-LD frame is provided, or a list of attributes is provided for selective disclosure
-    #[prost(oneof = "create_proof_request::Disclosure", tags = "1, 11")]
+    #[prost(oneof = "create_proof_request::Disclosure", tags = "1, 11, 12")]
     pub disclosure: ::core::option::Option<create_proof_request::Disclosure>,
     /// Specify the input to be used to derive this proof.
     /// Input can be an existing item in the wallet or an input document
@@ -74,6 +76,9 @@ pub mod create_proof_request {
         /// Information about what sections of the document to reveal
         #[prost(message, tag = "11")]
         RevealTemplate(super::RevealTemplateAttributes),
+        /// Id of verification template with which to construct the JSON-LD proof document
+        #[prost(string, tag = "12")]
+        VerificationTemplateId(::prost::alloc::string::String),
     }
     /// Specify the input to be used to derive this proof.
     /// Input can be an existing item in the wallet or an input document
@@ -129,10 +134,7 @@ pub struct VerifyProofResponse {
     /// such as schema conformance, revocation status, signature, etc.
     /// Detailed results are provided for failed validations.
     #[prost(map = "string, message", tag = "3")]
-    pub validation_results: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ValidationMessage,
-    >,
+    pub validation_results: ::std::collections::HashMap<::prost::alloc::string::String, ValidationMessage>,
 }
 /// Result of a validation check on a proof
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -220,11 +222,106 @@ pub struct CheckStatusResponse {
     #[prost(bool, tag = "1")]
     pub revoked: bool,
 }
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateCredentialOfferRequest {
+    /// ID of template to use
+    #[prost(string, tag = "1")]
+    pub template_id: ::prost::alloc::string::String,
+    /// JSON document string with keys corresponding to the fields of
+    /// the template referenced by `template_id`
+    #[prost(string, tag = "2")]
+    pub values_json: ::prost::alloc::string::String,
+    /// If true, the credential will be issued with holder binding by specifying
+    /// the holder DID in the credential subject
+    #[prost(bool, tag = "3")]
+    pub holder_binding: bool,
+    /// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+    /// governance framework.
+    #[prost(bool, tag = "4")]
+    pub include_governance: bool,
+    /// If true, a short URL link will be generated that can be used to share the credential offer with the holder.
+    /// This link will point to the credential offer in the wallet app.
+    #[prost(bool, tag = "5")]
+    pub generate_share_url: bool,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateCredentialOfferResponse {
+    /// The JSON document that contains the credential offer
+    #[prost(string, tag = "1")]
+    pub document_json: ::prost::alloc::string::String,
+    /// If requested, a URL that can be used to share the credential offer with the holder.
+    /// This is a short URL that can be used in a QR code and will redirect the
+    /// holder to the credential offer using the wallet app.
+    #[prost(string, tag = "2")]
+    pub share_url: ::prost::alloc::string::String,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AcceptCredentialRequest {
+    #[prost(oneof = "accept_credential_request::Offer", tags = "1, 2")]
+    pub offer: ::core::option::Option<accept_credential_request::Offer>,
+}
+/// Nested message and enum types in `AcceptCredentialRequest`.
+pub mod accept_credential_request {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[allow(clippy::derive_partial_eq_without_eq)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Offer {
+        /// The JSON document that contains the credential offer
+        #[prost(string, tag = "1")]
+        DocumentJson(::prost::alloc::string::String),
+        /// The ID of the item in the wallet that contains the credential offer
+        #[prost(string, tag = "2")]
+        ItemId(::prost::alloc::string::String),
+    }
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AcceptCredentialResponse {
+    /// The ID of the item in the wallet that contains the issued credential
+    #[prost(string, tag = "1")]
+    pub item_id: ::prost::alloc::string::String,
+    /// The JSON document that contains the issued credential.
+    /// This item is already stored in the wallet.
+    #[prost(string, tag = "2")]
+    pub document_json: ::prost::alloc::string::String,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct RejectCredentialRequest {
+    #[prost(oneof = "reject_credential_request::Offer", tags = "1, 2")]
+    pub offer: ::core::option::Option<reject_credential_request::Offer>,
+}
+/// Nested message and enum types in `RejectCredentialRequest`.
+pub mod reject_credential_request {
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[allow(clippy::derive_partial_eq_without_eq)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Offer {
+        /// The JSON document that contains the credential offer
+        #[prost(string, tag = "1")]
+        DocumentJson(::prost::alloc::string::String),
+        /// The ID of the item in the wallet that contains the credential offer
+        #[prost(string, tag = "2")]
+        ItemId(::prost::alloc::string::String),
+    }
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct RejectCredentialResponse {}
 /// Generated client implementations.
 pub mod verifiable_credential_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct VerifiableCredentialClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -255,22 +352,15 @@ pub mod verifiable_credential_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> VerifiableCredentialClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> VerifiableCredentialClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             VerifiableCredentialClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -299,16 +389,9 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Check credential status in the revocation registry
@@ -319,16 +402,9 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Update credential status by setting the revocation value
@@ -339,16 +415,9 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Create a proof from a signed document that is a valid
@@ -360,16 +429,9 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/CreateProof");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Verifies a proof by checking the signature value, and if possible schema validation,
@@ -381,16 +443,9 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Sends a document directly to a user's email within the given ecosystem
@@ -401,16 +456,48 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.VerifiableCredential/Send",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/Send");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Create credential offer
+        pub async fn create_credential_offer(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateCredentialOfferRequest>,
+        ) -> Result<tonic::Response<super::CreateCredentialOfferResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Accept an offer to exchange a credential
+        pub async fn accept_credential(
+            &mut self,
+            request: impl tonic::IntoRequest<super::AcceptCredentialRequest>,
+        ) -> Result<tonic::Response<super::AcceptCredentialResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/AcceptCredential");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Reject an offer to exchange a credential
+        pub async fn reject_credential(
+            &mut self,
+            request: impl tonic::IntoRequest<super::RejectCredentialRequest>,
+        ) -> Result<tonic::Response<super::RejectCredentialResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/RejectCredential");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
