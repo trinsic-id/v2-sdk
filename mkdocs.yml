@@ -52,12 +52,7 @@ nav:
       - Wallet API: reference/services/wallet-service.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
-  - Resources:
-    - Roadmap: roadmap.md
-    - Ask a Question: support.md
-    - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
-    # - Changelog: changelog.md
-    - Contribute on GitHub: https://github.com/trinsic-id
+  - Examples: examples/index.md
 theme:
   name: material
   logo: _static/logo-title.svg
