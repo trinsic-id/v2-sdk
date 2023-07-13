@@ -422,29 +422,6 @@ final $typed_data.Uint8List listWalletsResponseDescriptor = $convert.base64Decod
     'ChNMaXN0V2FsbGV0c1Jlc3BvbnNlEkMKB3dhbGxldHMYASADKAsyKS5zZXJ2aWNlcy5wcm92aW'
     'Rlci52MS5XYWxsZXRDb25maWd1cmF0aW9uUgd3YWxsZXRz');
 
-@$core.Deprecated('Use createDidWebDocRequestDescriptor instead')
-const CreateDidWebDocRequest$json = {
-  '1': 'CreateDidWebDocRequest',
-};
-
-/// Descriptor for `CreateDidWebDocRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createDidWebDocRequestDescriptor =
-    $convert.base64Decode('ChZDcmVhdGVEaWRXZWJEb2NSZXF1ZXN0');
-
-@$core.Deprecated('Use createDidWebDocResponseDescriptor instead')
-const CreateDidWebDocResponse$json = {
-  '1': 'CreateDidWebDocResponse',
-  '2': [
-    {'1': 'didWebJson', '3': 1, '4': 1, '5': 9, '10': 'didWebJson'},
-  ],
-};
-
-/// Descriptor for `CreateDidWebDocResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createDidWebDocResponseDescriptor =
-    $convert.base64Decode(
-        'ChdDcmVhdGVEaWRXZWJEb2NSZXNwb25zZRIeCgpkaWRXZWJKc29uGAEgASgJUgpkaWRXZWJKc2'
-        '9u');
-
 @$core.Deprecated('Use addExternalIdentityInitRequestDescriptor instead')
 const AddExternalIdentityInitRequest$json = {
   '1': 'AddExternalIdentityInitRequest',

@@ -137,12 +137,6 @@ class UniversalWalletClient extends $grpc.Client {
       ($4.ListByVerificationTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $4.ListByVerificationTemplateResponse.fromBuffer(value));
-  static final _$createDidWebDoc =
-      $grpc.ClientMethod<$4.CreateDidWebDocRequest, $4.CreateDidWebDocResponse>(
-          '/services.universalwallet.v1.UniversalWallet/CreateDidWebDoc',
-          ($4.CreateDidWebDocRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $4.CreateDidWebDocResponse.fromBuffer(value));
 
   UniversalWalletClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -264,12 +258,6 @@ class UniversalWalletClient extends $grpc.Client {
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listByVerificationTemplate, request,
         options: options);
-  }
-
-  $grpc.ResponseFuture<$4.CreateDidWebDocResponse> createDidWebDoc(
-      $4.CreateDidWebDocRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$createDidWebDoc, request, options: options);
   }
 }
 
@@ -439,15 +427,6 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
             $4.ListByVerificationTemplateRequest.fromBuffer(value),
         ($4.ListByVerificationTemplateResponse value) =>
             value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.CreateDidWebDocRequest,
-            $4.CreateDidWebDocResponse>(
-        'CreateDidWebDoc',
-        createDidWebDoc_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) =>
-            $4.CreateDidWebDocRequest.fromBuffer(value),
-        ($4.CreateDidWebDocResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.GetItemResponse> getItem_Pre(
@@ -557,12 +536,6 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
     return listByVerificationTemplate(call, await request);
   }
 
-  $async.Future<$4.CreateDidWebDocResponse> createDidWebDoc_Pre(
-      $grpc.ServiceCall call,
-      $async.Future<$4.CreateDidWebDocRequest> request) async {
-    return createDidWebDoc(call, await request);
-  }
-
   $async.Future<$4.GetItemResponse> getItem(
       $grpc.ServiceCall call, $4.GetItemRequest request);
   $async.Future<$4.SearchResponse> search(
@@ -603,6 +576,4 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
   $async.Future<$4.ListByVerificationTemplateResponse>
       listByVerificationTemplate(
           $grpc.ServiceCall call, $4.ListByVerificationTemplateRequest request);
-  $async.Future<$4.CreateDidWebDocResponse> createDidWebDoc(
-      $grpc.ServiceCall call, $4.CreateDidWebDocRequest request);
 }

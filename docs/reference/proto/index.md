@@ -914,7 +914,6 @@ Service for managing wallets
 | AuthenticateResendCode | [AuthenticateResendCodeRequest](/reference/proto#services-universalwallet-v1-AuthenticateResendCodeRequest) | [AuthenticateResendCodeResponse](/reference/proto#services-universalwallet-v1-AuthenticateResendCodeResponse) | Resend previous authentication code |
 | ListWallets | [ListWalletsRequest](/reference/proto#services-universalwallet-v1-ListWalletsRequest) | [ListWalletsResponse](/reference/proto#services-universalwallet-v1-ListWalletsResponse) | List all wallets in the ecosystem |
 | ListByVerificationTemplate | [ListByVerificationTemplateRequest](/reference/proto#services-universalwallet-v1-ListByVerificationTemplateRequest) | [ListByVerificationTemplateResponse](/reference/proto#services-universalwallet-v1-ListByVerificationTemplateResponse) | List credentials which match a given verification template |
-| CreateDidWebDoc | [CreateDidWebDocRequest](/reference/proto#services-universalwallet-v1-CreateDidWebDocRequest) | [CreateDidWebDocResponse](/reference/proto#services-universalwallet-v1-CreateDidWebDocResponse) | Create a `did:web` document from a wallet's key(s) |
 
  <!-- end services -->
 
@@ -1058,33 +1057,6 @@ Service for managing wallets
 
 ### AuthenticateResendCodeResponse
 
-
-
-
-
-
-
-<a name="services-universalwallet-v1-CreateDidWebDocRequest"></a>
-
-### CreateDidWebDocRequest
-Request to create a did:web document
-
-TODO - Are there any options we need to pass in?
-
-
-
-
-
-
-<a name="services-universalwallet-v1-CreateDidWebDocResponse"></a>
-
-### CreateDidWebDocResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| didWebJson | [string](/reference/proto#string) | JSON of `did:web` document |
 
 
 
