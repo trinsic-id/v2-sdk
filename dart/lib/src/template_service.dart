@@ -57,28 +57,39 @@ class TemplateService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
+  @Deprecated('This method is experimental')
   Future<CreateVerificationTemplateResponse> createVerificationTemplate(
       CreateVerificationTemplateRequest request) async {
-    ///  Create/update verification templates
+    /// This method is experimental
+    /// Create/update verification templates
 
     return client.createVerificationTemplate(request,
         options: await buildMetadata(request: request));
   }
 
+  @Deprecated('This method is experimental')
   Future<ListVerificationTemplatesResponse> listVerificationTemplate(
       ListVerificationTemplatesRequest request) async {
+    /// This method is experimental
+
     return client.listVerificationTemplate(request,
         options: await buildMetadata(request: request));
   }
 
+  @Deprecated('This method is experimental')
   Future<UpdateVerificationTemplateResponse> updateVerificationTemplate(
       UpdateVerificationTemplateRequest request) async {
+    /// This method is experimental
+
     return client.updateVerificationTemplate(request,
         options: await buildMetadata(request: request));
   }
 
+  @Deprecated('This method is experimental')
   Future<DeleteVerificationTemplateResponse> deleteVerificationTemplate(
       DeleteVerificationTemplateRequest request) async {
+    /// This method is experimental
+
     return client.deleteVerificationTemplate(request,
         options: await buildMetadata(request: request));
   }

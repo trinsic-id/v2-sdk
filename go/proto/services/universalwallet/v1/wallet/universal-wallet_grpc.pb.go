@@ -38,7 +38,6 @@ const (
 	UniversalWallet_AuthenticateResendCode_FullMethodName     = "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode"
 	UniversalWallet_ListWallets_FullMethodName                = "/services.universalwallet.v1.UniversalWallet/ListWallets"
 	UniversalWallet_ListByVerificationTemplate_FullMethodName = "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate"
-	UniversalWallet_CreateDidWebDoc_FullMethodName            = "/services.universalwallet.v1.UniversalWallet/CreateDidWebDoc"
 )
 
 // UniversalWalletClient is the client API for UniversalWallet service.
@@ -89,8 +88,6 @@ type UniversalWalletClient interface {
 	ListWallets(ctx context.Context, in *ListWalletsRequest, opts ...grpc.CallOption) (*ListWalletsResponse, error)
 	// List credentials which match a given verification template
 	ListByVerificationTemplate(ctx context.Context, in *ListByVerificationTemplateRequest, opts ...grpc.CallOption) (*ListByVerificationTemplateResponse, error)
-	// Create a `did:web` document from a wallet's key(s)
-	CreateDidWebDoc(ctx context.Context, in *CreateDidWebDocRequest, opts ...grpc.CallOption) (*CreateDidWebDocResponse, error)
 }
 
 type universalWalletClient struct {
@@ -272,15 +269,6 @@ func (c *universalWalletClient) ListByVerificationTemplate(ctx context.Context, 
 	return out, nil
 }
 
-func (c *universalWalletClient) CreateDidWebDoc(ctx context.Context, in *CreateDidWebDocRequest, opts ...grpc.CallOption) (*CreateDidWebDocResponse, error) {
-	out := new(CreateDidWebDocResponse)
-	err := c.cc.Invoke(ctx, UniversalWallet_CreateDidWebDoc_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // UniversalWalletServer is the server API for UniversalWallet service.
 // All implementations must embed UnimplementedUniversalWalletServer
 // for forward compatibility
@@ -329,8 +317,6 @@ type UniversalWalletServer interface {
 	ListWallets(context.Context, *ListWalletsRequest) (*ListWalletsResponse, error)
 	// List credentials which match a given verification template
 	ListByVerificationTemplate(context.Context, *ListByVerificationTemplateRequest) (*ListByVerificationTemplateResponse, error)
-	// Create a `did:web` document from a wallet's key(s)
-	CreateDidWebDoc(context.Context, *CreateDidWebDocRequest) (*CreateDidWebDocResponse, error)
 	mustEmbedUnimplementedUniversalWalletServer()
 }
 
@@ -394,9 +380,6 @@ func (UnimplementedUniversalWalletServer) ListWallets(context.Context, *ListWall
 }
 func (UnimplementedUniversalWalletServer) ListByVerificationTemplate(context.Context, *ListByVerificationTemplateRequest) (*ListByVerificationTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListByVerificationTemplate not implemented")
-}
-func (UnimplementedUniversalWalletServer) CreateDidWebDoc(context.Context, *CreateDidWebDocRequest) (*CreateDidWebDocResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateDidWebDoc not implemented")
 }
 func (UnimplementedUniversalWalletServer) mustEmbedUnimplementedUniversalWalletServer() {}
 
@@ -753,24 +736,6 @@ func _UniversalWallet_ListByVerificationTemplate_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UniversalWallet_CreateDidWebDoc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateDidWebDocRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UniversalWalletServer).CreateDidWebDoc(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UniversalWallet_CreateDidWebDoc_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UniversalWalletServer).CreateDidWebDoc(ctx, req.(*CreateDidWebDocRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // UniversalWallet_ServiceDesc is the grpc.ServiceDesc for UniversalWallet service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -853,10 +818,6 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListByVerificationTemplate",
 			Handler:    _UniversalWallet_ListByVerificationTemplate_Handler,
-		},
-		{
-			MethodName: "CreateDidWebDoc",
-			Handler:    _UniversalWallet_CreateDidWebDoc_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

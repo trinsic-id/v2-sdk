@@ -277,19 +277,6 @@ class ListWalletsResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class CreateDidWebDocRequest(betterproto.Message):
-    """Request to create a did:web document"""
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class CreateDidWebDocResponse(betterproto.Message):
-    did_web_json: str = betterproto.string_field(1)
-    """JSON of `did:web` document"""
-
-
-@dataclass(eq=False, repr=False)
 class AddExternalIdentityInitRequest(betterproto.Message):
     identity: str = betterproto.string_field(1)
     """
@@ -728,22 +715,6 @@ class UniversalWalletStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def create_did_web_doc(
-        self,
-        create_did_web_doc_request: "CreateDidWebDocRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "CreateDidWebDocResponse":
-        return await self._unary_unary(
-            "/services.universalwallet.v1.UniversalWallet/CreateDidWebDoc",
-            create_did_web_doc_request,
-            CreateDidWebDocResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
 
 class UniversalWalletBase(ServiceBase):
     async def get_item(self, get_item_request: "GetItemRequest") -> "GetItemResponse":
@@ -835,11 +806,6 @@ class UniversalWalletBase(ServiceBase):
     async def list_by_verification_template(
         self, list_by_verification_template_request: "ListByVerificationTemplateRequest"
     ) -> "ListByVerificationTemplateResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def create_did_web_doc(
-        self, create_did_web_doc_request: "CreateDidWebDocRequest"
-    ) -> "CreateDidWebDocResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_get_item(self, stream: grpclib.server.Stream) -> None:
@@ -945,11 +911,6 @@ class UniversalWalletBase(ServiceBase):
     ) -> None:
         request = await stream.recv_message()
         response = await self.list_by_verification_template(request)
-        await stream.send_message(response)
-
-    async def __rpc_create_did_web_doc(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.create_did_web_doc(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -1067,11 +1028,5 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 ListByVerificationTemplateRequest,
                 ListByVerificationTemplateResponse,
-            ),
-            "/services.universalwallet.v1.UniversalWallet/CreateDidWebDoc": grpclib.const.Handler(
-                self.__rpc_create_did_web_doc,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CreateDidWebDocRequest,
-                CreateDidWebDocResponse,
             ),
         }

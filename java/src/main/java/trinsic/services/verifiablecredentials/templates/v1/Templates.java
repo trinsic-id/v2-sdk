@@ -376,7 +376,7 @@ public final class Templates {
           + "\014INLINE_IMAGE\020\002*3\n"
           + "\025VerificationShareType\022\014\n"
           + "\010REQUIRED\020\000\022\014\n"
-          + "\010OPTIONAL\020\0012\366\r\n"
+          + "\010OPTIONAL\020\0012\236\016\n"
           + "\023CredentialTemplates\022\245\001\n"
           + "\006Create\022L.services.verifiablecredentials.templ"
           + "ates.v1.CreateCredentialTemplateRequest\032M.services.verifiablecredentials.templat"
@@ -395,19 +395,19 @@ public final class Templates {
           + "ecredentials.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
           + "\006Delete\022L.services.verifiablecredentials.templates.v1.Del"
           + "eteCredentialTemplateRequest\032M.services."
-          + "verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse\022\275\001\n"
+          + "verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse\022\307\001\n"
           + "\032CreateVerificationTemplate\022N.services.verifiable"
           + "credentials.templates.v1.CreateVerificationTemplateRequest\032O.services.verifiable"
-          + "credentials.templates.v1.CreateVerificationTemplateResponse\022\271\001\n"
-          + "\030ListVerificationTemplate\022M.services.verifiablecredential"
-          + "s.templates.v1.ListVerificationTemplatesRequest\032N.services.verifiablecredentials"
-          + ".templates.v1.ListVerificationTemplatesResponse\022\275\001\n"
-          + "\032UpdateVerificationTemplate\022N.services.verifiablecredentials.template"
-          + "s.v1.UpdateVerificationTemplateRequest\032O.services.verifiablecredentials.template"
-          + "s.v1.UpdateVerificationTemplateResponse\022\275\001\n"
-          + "\032DeleteVerificationTemplate\022N.services.verifiablecredentials.templates.v1.Del"
-          + "eteVerificationTemplateRequest\032O.service"
-          + "s.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponseB\243\001\n"
+          + "credentials.templates.v1.CreateVerificationTemplateResponse\"\010\212\246\035\004\"\002\010\001\022\303\001\n"
+          + "\030ListVerificationTemplate\022M.services.verifiable"
+          + "credentials.templates.v1.ListVerificationTemplatesRequest\032N.services.verifiablec"
+          + "redentials.templates.v1.ListVerificationTemplatesResponse\"\010\212\246\035\004\"\002\010\001\022\307\001\n"
+          + "\032UpdateVerificationTemplate\022N.services.verifiable"
+          + "credentials.templates.v1.UpdateVerificationTemplateRequest\032O.services.verifiable"
+          + "credentials.templates.v1.UpdateVerificationTemplateResponse\"\010\212\246\035\004\"\002\010\001\022\307\001\n"
+          + "\032DeleteVerificationTemplate\022N.services.verifiab"
+          + "lecredentials.templates.v1.DeleteVerificationTemplateRequest\032O.services.verifiab"
+          + "lecredentials.templates.v1.DeleteVerificationTemplateResponse\"\010\212\246\035\004\"\002\010\001B\243\001\n"
           + "3trinsic.services.verifiablecredentials.templ"
           + "ates.v1P\001Z4services/verifiablecredential"
           + "s/templates/v1/template\252\0023Trinsic.Servic"
@@ -773,6 +773,7 @@ public final class Templates {
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();

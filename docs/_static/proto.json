@@ -1830,24 +1830,6 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
-    "services.universalwallet.v1.CreateDidWebDocRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": ""
-    },
-    "services.universalwallet.v1.CreateDidWebDocResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": ""
-    },
-    "services.universalwallet.v1.CreateDidWebDocResponse.didWebJson": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": "services.universalwallet.v1.CreateDidWebDocResponse"
-    },
     "services.universalwallet.v1.CreateWalletRequest": {
       "type": "message",
       "collection": "messages",
@@ -2281,12 +2263,6 @@
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/universal-wallet/v1/universal-wallet.proto",
-      "parent": ""
-    },
-    "services.universalwallet.v1.UniversalWallet.CreateDidWebDoc": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -4296,8 +4272,7 @@
         "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
         "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode",
         "services.universalwallet.v1.UniversalWallet.ListWallets",
-        "services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate",
-        "services.universalwallet.v1.UniversalWallet.CreateDidWebDoc"
+        "services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate"
       ],
       "messages": [
         "services.universalwallet.v1.SearchRequest",
@@ -4325,8 +4300,6 @@
         "services.universalwallet.v1.RevokeAuthTokenResponse",
         "services.universalwallet.v1.ListWalletsRequest",
         "services.universalwallet.v1.ListWalletsResponse",
-        "services.universalwallet.v1.CreateDidWebDocRequest",
-        "services.universalwallet.v1.CreateDidWebDocResponse",
         "services.universalwallet.v1.AddExternalIdentityInitRequest",
         "services.universalwallet.v1.AddExternalIdentityInitResponse",
         "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
@@ -4379,7 +4352,6 @@
         "services.universalwallet.v1.RevokeAuthTokenRequest.token_id",
         "services.universalwallet.v1.ListWalletsRequest.filter",
         "services.universalwallet.v1.ListWalletsResponse.wallets",
-        "services.universalwallet.v1.CreateDidWebDocResponse.didWebJson",
         "services.universalwallet.v1.AddExternalIdentityInitRequest.identity",
         "services.universalwallet.v1.AddExternalIdentityInitRequest.provider",
         "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge",
@@ -4761,8 +4733,7 @@
         "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
         "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode",
         "services.universalwallet.v1.UniversalWallet.ListWallets",
-        "services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate",
-        "services.universalwallet.v1.UniversalWallet.CreateDidWebDoc"
+        "services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate"
       ]
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates": {
@@ -5038,13 +5009,6 @@
       "output_type": "services.universalwallet.v1.AuthenticateResendCodeResponse",
       "description": "Resend previous authentication code"
     },
-    "services.universalwallet.v1.UniversalWallet.CreateDidWebDoc": {
-      "name": "CreateDidWebDoc",
-      "full_name": "services.universalwallet.v1.UniversalWallet.CreateDidWebDoc",
-      "input_type": "services.universalwallet.v1.CreateDidWebDocRequest",
-      "output_type": "services.universalwallet.v1.CreateDidWebDocResponse",
-      "description": "Create a `did:web` document from a wallet's key(s)"
-    },
     "services.universalwallet.v1.UniversalWallet.CreateWallet": {
       "name": "CreateWallet",
       "full_name": "services.universalwallet.v1.UniversalWallet.CreateWallet",
@@ -5158,7 +5122,10 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate",
       "input_type": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse",
-      "description": "Create/update verification templates"
+      "description": "Create/update verification templates",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete": {
       "name": "Delete",
@@ -5172,7 +5139,10 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate",
       "input_type": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponse",
-      "description": ""
+      "description": "",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Get": {
       "name": "Get",
@@ -5193,7 +5163,10 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate",
       "input_type": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesRequest",
       "output_type": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse",
-      "description": ""
+      "description": "",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Search": {
       "name": "Search",
@@ -5214,7 +5187,10 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate",
       "input_type": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse",
-      "description": ""
+      "description": "",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential": {
       "name": "AcceptCredential",
@@ -6133,24 +6109,6 @@
       "full_name": "services.universalwallet.v1.AuthenticateResendCodeResponse",
       "description": "",
       "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.universalwallet.v1.CreateDidWebDocRequest": {
-      "name": "CreateDidWebDocRequest",
-      "full_name": "services.universalwallet.v1.CreateDidWebDocRequest",
-      "description": "Request to create a did:web document\n\nTODO - Are there any options we need to pass in?",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.universalwallet.v1.CreateDidWebDocResponse": {
-      "name": "CreateDidWebDocResponse",
-      "full_name": "services.universalwallet.v1.CreateDidWebDocResponse",
-      "description": "",
-      "fields": [
-        "services.universalwallet.v1.CreateDidWebDocResponse.didWebJson"
-      ],
       "messages": [],
       "enums": []
     },
@@ -8473,14 +8431,6 @@
       "type": "string",
       "full_type": "string",
       "description": "Challenge for the code you want resent."
-    },
-    "services.universalwallet.v1.CreateDidWebDocResponse.didWebJson": {
-      "name": "didWebJson",
-      "full_name": "services.universalwallet.v1.CreateDidWebDocResponse.didWebJson",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "JSON of `did:web` document"
     },
     "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity.identity": {
       "name": "identity",
