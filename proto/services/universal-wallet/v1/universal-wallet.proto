@@ -250,19 +250,6 @@ service UniversalWallet {
 
   // List credentials which match a given verification template
   rpc ListByVerificationTemplate(ListByVerificationTemplateRequest) returns (ListByVerificationTemplateResponse);
-
-  // Create a `did:web` document from a wallet's key(s)
-  rpc CreateDidWebDoc(CreateDidWebDocRequest) returns (CreateDidWebDocResponse);
-}
-
-// Request to create a did:web document
-message CreateDidWebDocRequest {
-  // TODO - Are there any options we need to pass in?
-}
-
-message CreateDidWebDocResponse {
-  // JSON of `did:web` document
-  string didWebJson = 1;
 }
 
 message AddExternalIdentityInitRequest {

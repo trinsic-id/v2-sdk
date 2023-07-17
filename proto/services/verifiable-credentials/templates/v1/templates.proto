@@ -280,10 +280,18 @@ service CredentialTemplates {
   rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
 
   // Create/update verification templates
-  rpc CreateVerificationTemplate(CreateVerificationTemplateRequest) returns (CreateVerificationTemplateResponse);
-  rpc ListVerificationTemplate(ListVerificationTemplatesRequest) returns (ListVerificationTemplatesResponse);
-  rpc UpdateVerificationTemplate(UpdateVerificationTemplateRequest) returns (UpdateVerificationTemplateResponse);
-  rpc DeleteVerificationTemplate(DeleteVerificationTemplateRequest) returns (DeleteVerificationTemplateResponse);
+  rpc CreateVerificationTemplate(CreateVerificationTemplateRequest) returns (CreateVerificationTemplateResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
+  rpc ListVerificationTemplate(ListVerificationTemplatesRequest) returns (ListVerificationTemplatesResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
+  rpc UpdateVerificationTemplate(UpdateVerificationTemplateRequest) returns (UpdateVerificationTemplateResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
+  rpc DeleteVerificationTemplate(DeleteVerificationTemplateRequest) returns (DeleteVerificationTemplateResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
 }
 
 
