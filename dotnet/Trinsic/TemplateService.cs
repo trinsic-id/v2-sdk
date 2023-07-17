@@ -128,60 +128,74 @@ public class TemplateService : ServiceBase
     }
 
 	/// <summary>
-    /// Create/update verification templates
+    ///This method is experimental
+    ///  Create/update verification templates
     /// </summary>
-    
+    [Obsolete("This method is experimental")]
     public CreateVerificationTemplateResponse CreateVerificationTemplate(CreateVerificationTemplateRequest request) {
         
         return Client.CreateVerificationTemplate(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Create/update verification templates
+    ///This method is experimental
+    ///  Create/update verification templates
     /// </summary>
-    
+    [Obsolete("This method is experimental")]
     public async Task<CreateVerificationTemplateResponse> CreateVerificationTemplateAsync(CreateVerificationTemplateRequest request) {
         
         return await Client.CreateVerificationTemplateAsync(request, await BuildMetadataAsync(request));
     }
 
-	
-    
+	/// <summary>
+    ///This method is experimental
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public ListVerificationTemplatesResponse ListVerificationTemplate(ListVerificationTemplatesRequest request) {
         
         return Client.ListVerificationTemplate(request, BuildMetadata(request));
     }
 	
-	
-    
+	/// <summary>
+    ///This method is experimental
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public async Task<ListVerificationTemplatesResponse> ListVerificationTemplateAsync(ListVerificationTemplatesRequest request) {
         
         return await Client.ListVerificationTemplateAsync(request, await BuildMetadataAsync(request));
     }
 
-	
-    
+	/// <summary>
+    ///This method is experimental
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public UpdateVerificationTemplateResponse UpdateVerificationTemplate(UpdateVerificationTemplateRequest request) {
         
         return Client.UpdateVerificationTemplate(request, BuildMetadata(request));
     }
 	
-	
-    
+	/// <summary>
+    ///This method is experimental
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public async Task<UpdateVerificationTemplateResponse> UpdateVerificationTemplateAsync(UpdateVerificationTemplateRequest request) {
         
         return await Client.UpdateVerificationTemplateAsync(request, await BuildMetadataAsync(request));
     }
 
-	
-    
+	/// <summary>
+    ///This method is experimental
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public DeleteVerificationTemplateResponse DeleteVerificationTemplate(DeleteVerificationTemplateRequest request) {
         
         return Client.DeleteVerificationTemplate(request, BuildMetadata(request));
     }
 	
-	
-    
+	/// <summary>
+    ///This method is experimental
+    /// </summary>
+    [Obsolete("This method is experimental")]
     public async Task<DeleteVerificationTemplateResponse> DeleteVerificationTemplateAsync(DeleteVerificationTemplateRequest request) {
         
         return await Client.DeleteVerificationTemplateAsync(request, await BuildMetadataAsync(request));

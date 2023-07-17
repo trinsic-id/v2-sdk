@@ -57,25 +57,29 @@ public class TemplateService extends ServiceBase {
 
     return withMetadata(stub, request).delete(request);
   }
-  /** Create/update verification templates */
+  /** This method is experimental Create/update verification templates */
+  @Deprecated(since = "This method is experimental")
   public ListenableFuture<CreateVerificationTemplateResponse> createVerificationTemplate(
       CreateVerificationTemplateRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).createVerificationTemplate(request);
   }
-
+  /** This method is experimental */
+  @Deprecated(since = "This method is experimental")
   public ListenableFuture<ListVerificationTemplatesResponse> listVerificationTemplate(
       ListVerificationTemplatesRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).listVerificationTemplate(request);
   }
-
+  /** This method is experimental */
+  @Deprecated(since = "This method is experimental")
   public ListenableFuture<UpdateVerificationTemplateResponse> updateVerificationTemplate(
       UpdateVerificationTemplateRequest request) throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).updateVerificationTemplate(request);
   }
-
+  /** This method is experimental */
+  @Deprecated(since = "This method is experimental")
   public ListenableFuture<DeleteVerificationTemplateResponse> deleteVerificationTemplate(
       DeleteVerificationTemplateRequest request) throws InvalidProtocolBufferException {
 

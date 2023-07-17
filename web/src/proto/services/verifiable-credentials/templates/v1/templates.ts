@@ -3938,7 +3938,7 @@ export const CredentialTemplatesDefinition = {
       requestStream: false,
       responseType: CreateVerificationTemplateResponse,
       responseStream: false,
-      options: {},
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
     },
     listVerificationTemplate: {
       name: "ListVerificationTemplate",
@@ -3946,7 +3946,7 @@ export const CredentialTemplatesDefinition = {
       requestStream: false,
       responseType: ListVerificationTemplatesResponse,
       responseStream: false,
-      options: {},
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
     },
     updateVerificationTemplate: {
       name: "UpdateVerificationTemplate",
@@ -3954,7 +3954,7 @@ export const CredentialTemplatesDefinition = {
       requestStream: false,
       responseType: UpdateVerificationTemplateResponse,
       responseStream: false,
-      options: {},
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
     },
     deleteVerificationTemplate: {
       name: "DeleteVerificationTemplate",
@@ -3962,7 +3962,7 @@ export const CredentialTemplatesDefinition = {
       requestStream: false,
       responseType: DeleteVerificationTemplateResponse,
       responseStream: false,
-      options: {},
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
     },
   },
 } as const;

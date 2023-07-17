@@ -71,37 +71,44 @@ class TemplateService(ServiceBase):
 
         return await self.client.delete(request, metadata=self.build_metadata(request))
 
+    @deprecation.deprecated(details="This method is experimental")
     async def create_verification_template(
         self, *, request: CreateVerificationTemplateRequest
     ) -> CreateVerificationTemplateResponse:
-        """Create/update verification templates"""
+        """
+        This method is experimental
+          Create/update verification templates
+        """
 
         return await self.client.create_verification_template(
             request, metadata=self.build_metadata(request)
         )
 
+    @deprecation.deprecated(details="This method is experimental")
     async def list_verification_template(
         self, *, request: ListVerificationTemplatesRequest
     ) -> ListVerificationTemplatesResponse:
-        """ """
+        """This method is experimental"""
 
         return await self.client.list_verification_template(
             request, metadata=self.build_metadata(request)
         )
 
+    @deprecation.deprecated(details="This method is experimental")
     async def update_verification_template(
         self, *, request: UpdateVerificationTemplateRequest
     ) -> UpdateVerificationTemplateResponse:
-        """ """
+        """This method is experimental"""
 
         return await self.client.update_verification_template(
             request, metadata=self.build_metadata(request)
         )
 
+    @deprecation.deprecated(details="This method is experimental")
     async def delete_verification_template(
         self, *, request: DeleteVerificationTemplateRequest
     ) -> DeleteVerificationTemplateResponse:
-        """ """
+        """This method is experimental"""
 
         return await self.client.delete_verification_template(
             request, metadata=self.build_metadata(request)

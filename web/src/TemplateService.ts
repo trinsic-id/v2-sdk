@@ -58,28 +58,29 @@ export class TemplateService extends ServiceBase {
       metadata: await this.buildMetadata(proto.DeleteCredentialTemplateRequest.encode(request).finish())
     });
   }
-  /** Create/update verification templates */
+  /** Create/update verification templates
+*@deprecated This method is experimental */
   public async createVerificationTemplate(request: proto.CreateVerificationTemplateRequest): Promise<proto.CreateVerificationTemplateResponse> {
     
     return this.client.createVerificationTemplate(request, {
       metadata: await this.buildMetadata(proto.CreateVerificationTemplateRequest.encode(request).finish())
     });
   }
-  
+  /**@deprecated This method is experimental */
   public async listVerificationTemplate(request: proto.ListVerificationTemplatesRequest): Promise<proto.ListVerificationTemplatesResponse> {
     
     return this.client.listVerificationTemplate(request, {
       metadata: await this.buildMetadata(proto.ListVerificationTemplatesRequest.encode(request).finish())
     });
   }
-  
+  /**@deprecated This method is experimental */
   public async updateVerificationTemplate(request: proto.UpdateVerificationTemplateRequest): Promise<proto.UpdateVerificationTemplateResponse> {
     
     return this.client.updateVerificationTemplate(request, {
       metadata: await this.buildMetadata(proto.UpdateVerificationTemplateRequest.encode(request).finish())
     });
   }
-  
+  /**@deprecated This method is experimental */
   public async deleteVerificationTemplate(request: proto.DeleteVerificationTemplateRequest): Promise<proto.DeleteVerificationTemplateResponse> {
     
     return this.client.deleteVerificationTemplate(request, {

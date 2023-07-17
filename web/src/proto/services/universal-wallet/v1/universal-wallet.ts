@@ -195,15 +195,6 @@ export interface ListWalletsResponse {
   wallets?: WalletConfiguration[];
 }
 
-/** Request to create a did:web document */
-export interface CreateDidWebDocRequest {
-}
-
-export interface CreateDidWebDocResponse {
-  /** JSON of `did:web` document */
-  didWebJson?: string;
-}
-
 export interface AddExternalIdentityInitRequest {
   /**
    * The user identity to add to the wallet
@@ -1902,106 +1893,6 @@ export const ListWalletsResponse = {
   },
 };
 
-function createBaseCreateDidWebDocRequest(): CreateDidWebDocRequest {
-  return {};
-}
-
-export const CreateDidWebDocRequest = {
-  encode(_: CreateDidWebDocRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): CreateDidWebDocRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCreateDidWebDocRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(_: any): CreateDidWebDocRequest {
-    return {};
-  },
-
-  toJSON(_: CreateDidWebDocRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  create(base?: DeepPartial<CreateDidWebDocRequest>): CreateDidWebDocRequest {
-    return CreateDidWebDocRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(_: DeepPartial<CreateDidWebDocRequest>): CreateDidWebDocRequest {
-    const message = createBaseCreateDidWebDocRequest();
-    return message;
-  },
-};
-
-function createBaseCreateDidWebDocResponse(): CreateDidWebDocResponse {
-  return { didWebJson: "" };
-}
-
-export const CreateDidWebDocResponse = {
-  encode(message: CreateDidWebDocResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.didWebJson !== undefined && message.didWebJson !== "") {
-      writer.uint32(10).string(message.didWebJson);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): CreateDidWebDocResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCreateDidWebDocResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.didWebJson = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CreateDidWebDocResponse {
-    return { didWebJson: isSet(object.didWebJson) ? String(object.didWebJson) : "" };
-  },
-
-  toJSON(message: CreateDidWebDocResponse): unknown {
-    const obj: any = {};
-    message.didWebJson !== undefined && (obj.didWebJson = message.didWebJson);
-    return obj;
-  },
-
-  create(base?: DeepPartial<CreateDidWebDocResponse>): CreateDidWebDocResponse {
-    return CreateDidWebDocResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<CreateDidWebDocResponse>): CreateDidWebDocResponse {
-    const message = createBaseCreateDidWebDocResponse();
-    message.didWebJson = object.didWebJson ?? "";
-    return message;
-  },
-};
-
 function createBaseAddExternalIdentityInitRequest(): AddExternalIdentityInitRequest {
   return { identity: "", provider: 0 };
 }
@@ -3060,15 +2951,6 @@ export const UniversalWalletDefinition = {
       requestType: ListByVerificationTemplateRequest,
       requestStream: false,
       responseType: ListByVerificationTemplateResponse,
-      responseStream: false,
-      options: {},
-    },
-    /** Create a `did:web` document from a wallet's key(s) */
-    createDidWebDoc: {
-      name: "CreateDidWebDoc",
-      requestType: CreateDidWebDocRequest,
-      requestStream: false,
-      responseType: CreateDidWebDocResponse,
       responseStream: false,
       options: {},
     },
