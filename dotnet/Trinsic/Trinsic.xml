@@ -1755,6 +1755,11 @@
             Identity provider is phone
             </summary>
         </member>
+        <member name="F:Trinsic.Services.Provider.V1.IdentityProvider.Passkey">
+            <summary>
+            Identity provider is passkey (WebAuthn) -- for Trinsic internal use only
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Provider.V1.Ecosystem">
             <summary>
             Details of an ecosystem
@@ -3456,6 +3461,57 @@
             Auth token for the wallet
             </summary>
         </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest">
+            <summary>
+            Request to list templates by 
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest.VerificationTemplateIdFieldNumber">
+            <summary>Field number for the "verification_template_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest.VerificationTemplateId">
+            <summary>
+            ID of verification template to list matching credentials
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest.ContinuationToken">
+            <summary>
+            Token provided by previous `ListCredentialTemplatesResponse`
+            if more data is available for query
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateResponse">
+            <summary>
+            Response to `ListByVerificationTemplateRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateResponse.ItemsFieldNumber">
+            <summary>Field number for the "items" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateResponse.Items">
+            <summary>
+            Array of query results, as JSON strings
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateResponse.HasMoreResults">
+            <summary>
+            Whether more results are available for this query via `continuation_token`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateResponse.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateResponse.ContinuationToken">
+            <summary>
+            Token to fetch next set of results via `ListByVerificationTemplateRequest`
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.UniversalWallet">
             <summary>
             Service for managing wallets
@@ -3612,6 +3668,14 @@
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.ListWallets(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest,Grpc.Core.ServerCallContext)">
             <summary>
             List all wallets in the ecosystem
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.ListByVerificationTemplate(Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            List credentials which match a given verification template
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -4307,6 +4371,42 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListByVerificationTemplate(Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List credentials which match a given verification template
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListByVerificationTemplate(Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List credentials which match a given verification template
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListByVerificationTemplateAsync(Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List credentials which match a given verification template
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.ListByVerificationTemplateAsync(Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List credentials which match a given verification template
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
@@ -4476,7 +4576,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.ContinuationToken">
             <summary>
-            Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+            Token to fetch next set of results via `ListCredentialTemplatesRequest`
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest">
@@ -4953,6 +5053,283 @@
             How to display the URI value when rendering a credential.
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.Name">
+            <summary>
+            Name of new template. Must be a unique identifier within its ecosystem.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.FieldsFieldNumber">
+            <summary>Field number for the "fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.Fields">
+            <summary>
+            Fields which will be required in the verification proof template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.CredentialTemplateIdFieldNumber">
+            <summary>Field number for the "credential_template_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.CredentialTemplateId">
+            <summary>
+            Source credential template, used for verifying that the specified `fields` are present in the credential template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.Title">
+            <summary>
+            Human-readable name of template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.Description">
+            <summary>
+            Human-readable description of template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateResponse.DataFieldNumber">
+            <summary>Field number for the "data" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.Id">
+            <summary>
+            ID of Template to update
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.Title">
+            <summary>
+            New human-readable title of Template
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.HasTitle">
+            <summary>Gets whether the "title" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.ClearTitle">
+            <summary>Clears the value of the "title" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.Description">
+            <summary>
+            New human-readable description of Template
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.HasDescription">
+            <summary>Gets whether the "description" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.ClearDescription">
+            <summary>Clears the value of the "description" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.FieldsFieldNumber">
+            <summary>Field number for the "fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest.Fields">
+            <summary>
+            Fields to update within the Template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateResponse.TemplateFieldNumber">
+            <summary>Field number for the "template" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteVerificationTemplateRequest.VerificationTemplateIdFieldNumber">
+            <summary>Field number for the "verification_template_id" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteVerificationTemplateResponse">
+            <summary>
+            This space intentionally left blank
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData">
+            <summary>
+            Verification Template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.Id">
+            <summary>
+            Template ID
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.Name">
+            <summary>
+            Template name
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.VersionFieldNumber">
+            <summary>Field number for the "version" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.Version">
+            <summary>
+            Template version number
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.FieldsFieldNumber">
+            <summary>Field number for the "fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.Fields">
+            <summary>
+            Fields defined for the template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.SchemaUriFieldNumber">
+            <summary>Field number for the "schema_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.SchemaUri">
+            <summary>
+            URI pointing to template JSON schema document
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.EcosystemId">
+            <summary>
+            ID of ecosystem in which template resides
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.Type">
+            <summary>
+            Template type (`VerificationTemplate`)
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.CreatedByFieldNumber">
+            <summary>Field number for the "created_by" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.CreatedBy">
+            <summary>
+            ID of template creator
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.DateCreatedFieldNumber">
+            <summary>Field number for the "date_created" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.DateCreated">
+            <summary>
+            Date when template was created as ISO 8601 utc string
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.TitleFieldNumber">
+            <summary>Field number for the "title" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.Title">
+            <summary>
+            Human-readable template title
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.Description">
+            <summary>
+            Human-readable template description
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest">
+            <summary>
+            Request to list templates using a SQL query
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest.QueryFieldNumber">
+            <summary>Field number for the "query" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest.Query">
+            <summary>
+            SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest.ContinuationToken">
+            <summary>
+            Token provided by previous `ListCredentialTemplatesResponse`
+            if more data is available for query
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesResponse.TemplatesFieldNumber">
+            <summary>Field number for the "templates" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesResponse.Templates">
+            <summary>
+            Templates found by query
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesResponse.HasMoreResultsFieldNumber">
+            <summary>Field number for the "has_more_results" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesResponse.HasMoreResults">
+            <summary>
+            Whether more results are available for this query via `continuation_token`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesResponse.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesResponse.ContinuationToken">
+            <summary>
+            Token to fetch next set of results via `ListVerificationTemplatesRequest`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateField">
+            <summary>
+            A field defined in a template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateField.FieldShareTypeFieldNumber">
+            <summary>Field number for the "field_share_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateField.FieldShareType">
+            <summary>
+            Whether this field may be omitted on proof creation
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateField.UsagePolicyFieldNumber">
+            <summary>Field number for the "usage_policy" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateField.UsagePolicy">
+            <summary>
+            User-facing explanation of what is done with this data
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch">
+            <summary>
+            A patch to apply to an existing template field
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.UsagePolicyFieldNumber">
+            <summary>Field number for the "usage_policy" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.UsagePolicy">
+            <summary>
+            Human-readable name of the field
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.HasUsagePolicy">
+            <summary>Gets whether the "usage_policy" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.ClearUsagePolicy">
+            <summary>Clears the value of the "usage_policy" field</summary>
+        </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -5002,6 +5379,14 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesBase.Delete(Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Delete a credential template from the current ecosystem by ID
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesBase.CreateVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Create/update verification templates
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -5241,6 +5626,42 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.CreateVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create/update verification templates
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.CreateVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create/update verification templates
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.CreateVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create/update verification templates
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.CreateVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create/update verification templates
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
@@ -5329,7 +5750,7 @@
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest">
             <summary>
             Request to create a proof for a Verifiable Credential using public key tied to caller.
-            Either `item_id` or `document_json` may be provided, not both.
+            Either `item_id`, or `document_json` may be provided, not both.
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJsonFieldNumber">
@@ -5348,6 +5769,14 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealTemplate">
             <summary>
             Information about what sections of the document to reveal
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.VerificationTemplateIdFieldNumber">
+            <summary>Field number for the "verification_template_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.VerificationTemplateId">
+            <summary>
+            Id of verification template with which to construct the JSON-LD proof document
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemIdFieldNumber">
@@ -6399,6 +6828,48 @@
             Delete a credential template from the current ecosystem by ID
             </summary>
         </member>
+        <member name="M:Trinsic.TemplateService.CreateVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest)">
+             <summary>
+            This method is experimental
+              Create/update verification templates
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.CreateVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest)">
+             <summary>
+            This method is experimental
+              Create/update verification templates
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.ListVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.ListVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.UpdateVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.UpdateVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.UpdateVerificationTemplateRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.DeleteVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteVerificationTemplateRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.DeleteVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteVerificationTemplateRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
         <member name="T:Trinsic.TrinsicService">
             <summary>
             Trinsic Service
@@ -6708,6 +7179,16 @@
         <member name="M:Trinsic.WalletService.ListWalletsAsync(Trinsic.Services.UniversalWallet.V1.ListWalletsRequest)">
             <summary>
             List all wallets in the ecosystem
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.ListByVerificationTemplate(Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest)">
+            <summary>
+            List credentials which match a given verification template
+            </summary>
+        </member>
+        <member name="M:Trinsic.WalletService.ListByVerificationTemplateAsync(Trinsic.Services.UniversalWallet.V1.ListByVerificationTemplateRequest)">
+            <summary>
+            List credentials which match a given verification template
             </summary>
         </member>
         <member name="T:Trinsic.Sdk.Options.V1.OptionsReflection">
