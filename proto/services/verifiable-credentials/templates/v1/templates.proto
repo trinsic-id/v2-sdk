@@ -417,5 +417,6 @@ enum VerificationShareType {
 // A patch to apply to an existing template field
 message VerificationTemplateFieldPatch {
   // Human-readable name of the field
-  optional string usage_policy = 1;
+  VerificationShareType field_share_type = 1;
+
 }
