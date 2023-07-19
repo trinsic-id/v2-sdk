@@ -79,33 +79,7 @@ public interface VerificationTemplateDataOrBuilder
    * </pre>
    *
    * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-   * </code>
-   */
-  java.util.List<trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
-      getFieldsList();
-  /**
-   *
-   *
-   * <pre>
-   * Fields defined for the template
-   * </pre>
-   *
-   * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-   * </code>
-   */
-  trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField getFields(
-      int index);
-  /**
-   *
-   *
-   * <pre>
-   * Fields defined for the template
-   * </pre>
-   *
-   * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
    * </code>
    */
   int getFieldsCount();
@@ -117,14 +91,16 @@ public interface VerificationTemplateDataOrBuilder
    * </pre>
    *
    * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
    * </code>
    */
-  java.util.List<
-          ? extends
-              trinsic.services.verifiablecredentials.templates.v1
-                  .VerificationTemplateFieldOrBuilder>
-      getFieldsOrBuilderList();
+  boolean containsFields(java.lang.String key);
+  /** Use {@link #getFieldsMap()} instead. */
+  @java.lang.Deprecated
+  java.util.Map<
+          java.lang.String,
+          trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+      getFields();
   /**
    *
    *
@@ -133,11 +109,68 @@ public interface VerificationTemplateDataOrBuilder
    * </pre>
    *
    * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
    * </code>
    */
-  trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldOrBuilder
-      getFieldsOrBuilder(int index);
+  java.util.Map<
+          java.lang.String,
+          trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+      getFieldsMap();
+  /**
+   *
+   *
+   * <pre>
+   * Fields defined for the template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+   * </code>
+   */
+
+  /* nullable */
+  trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField getFieldsOrDefault(
+      java.lang.String key,
+      /* nullable */
+      trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField defaultValue);
+  /**
+   *
+   *
+   * <pre>
+   * Fields defined for the template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+   * </code>
+   */
+  trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField getFieldsOrThrow(
+      java.lang.String key);
+
+  /**
+   *
+   *
+   * <pre>
+   * Source credential template, used for verifying that the specified `fields` are present in the credential template
+   * </pre>
+   *
+   * <code>string credential_template_id = 5;</code>
+   *
+   * @return The credentialTemplateId.
+   */
+  java.lang.String getCredentialTemplateId();
+  /**
+   *
+   *
+   * <pre>
+   * Source credential template, used for verifying that the specified `fields` are present in the credential template
+   * </pre>
+   *
+   * <code>string credential_template_id = 5;</code>
+   *
+   * @return The bytes for credentialTemplateId.
+   */
+  com.google.protobuf.ByteString getCredentialTemplateIdBytes();
 
   /**
    *

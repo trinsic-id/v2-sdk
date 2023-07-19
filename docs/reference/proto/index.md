@@ -1515,7 +1515,8 @@ Response to `UpdateItemRequest`
 | Search | [SearchCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse) | Search credential templates using SQL, returning raw JSON data |
 | Delete | [DeleteCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse) | Delete a credential template from the current ecosystem by ID |
 | CreateVerificationTemplate | [CreateVerificationTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-CreateVerificationTemplateRequest) | [CreateVerificationTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-CreateVerificationTemplateResponse) | Create/update verification templates |
-| ListVerificationTemplate | [ListVerificationTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-ListVerificationTemplatesRequest) | [ListVerificationTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-ListVerificationTemplatesResponse) |  |
+| ListVerificationTemplates | [ListVerificationTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-ListVerificationTemplatesRequest) | [ListVerificationTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-ListVerificationTemplatesResponse) |  |
+| GetVerificationTemplate | [GetVerificationTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-GetVerificationTemplateRequest) | [GetVerificationTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-GetVerificationTemplateResponse) |  |
 | UpdateVerificationTemplate | [UpdateVerificationTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-UpdateVerificationTemplateRequest) | [UpdateVerificationTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-UpdateVerificationTemplateResponse) |  |
 | DeleteVerificationTemplate | [DeleteVerificationTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-DeleteVerificationTemplateRequest) | [DeleteVerificationTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-DeleteVerificationTemplateResponse) |  |
 
@@ -1752,6 +1753,36 @@ Response to `GetCredentialTemplateRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Template fetched by ID |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetVerificationTemplateRequest"></a>
+
+### GetVerificationTemplateRequest
+Request to fetch a template by ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of template to fetch |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetVerificationTemplateResponse"></a>
+
+### GetVerificationTemplateResponse
+Response to `GetCredentialTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template | [VerificationTemplateData](/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateData) | Template fetched by ID |
 
 
 
@@ -2096,7 +2127,8 @@ Verification Template
 | id | [string](/reference/proto#string) | Template ID |
 | name | [string](/reference/proto#string) | Template name |
 | version | [int32](/reference/proto#int32) | Template version number |
-| fields | [VerificationTemplateField](/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateField)[] | Fields defined for the template |
+| fields | [VerificationTemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateData-FieldsEntry)[] | Fields defined for the template |
+| credential_template_id | [string](/reference/proto#string) | Source credential template, used for verifying that the specified `fields` are present in the credential template |
 | schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
 | ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
 | type | [string](/reference/proto#string) | Template type (`VerificationTemplate`) |
@@ -2104,6 +2136,22 @@ Verification Template
 | date_created | [string](/reference/proto#string) | Date when template was created as ISO 8601 utc string |
 | title | [string](/reference/proto#string) | Human-readable template title |
 | description | [string](/reference/proto#string) | Human-readable template description |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-VerificationTemplateData-FieldsEntry"></a>
+
+### VerificationTemplateData.FieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [VerificationTemplateField](/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateField) |  |
 
 
 
@@ -2180,8 +2228,8 @@ How to display a URI value when rendering a credential.
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| REQUIRED | 0 |  |
-| OPTIONAL | 1 |  |
+| OPTIONAL | 0 |  |
+| REQUIRED | 1 |  |
 
 
  <!-- end enums -->

@@ -49,15 +49,15 @@ final $typed_data.Uint8List uriRenderMethodDescriptor = $convert.base64Decode(
 const VerificationShareType$json = {
   '1': 'VerificationShareType',
   '2': [
-    {'1': 'REQUIRED', '2': 0},
-    {'1': 'OPTIONAL', '2': 1},
+    {'1': 'OPTIONAL', '2': 0},
+    {'1': 'REQUIRED', '2': 1},
   ],
 };
 
 /// Descriptor for `VerificationShareType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List verificationShareTypeDescriptor =
     $convert.base64Decode(
-        'ChVWZXJpZmljYXRpb25TaGFyZVR5cGUSDAoIUkVRVUlSRUQQABIMCghPUFRJT05BTBAB');
+        'ChVWZXJpZmljYXRpb25TaGFyZVR5cGUSDAoIT1BUSU9OQUwQABIMCghSRVFVSVJFRBAB');
 
 @$core.Deprecated('Use getCredentialTemplateRequestDescriptor instead')
 const GetCredentialTemplateRequest$json = {
@@ -718,6 +718,42 @@ final $typed_data.Uint8List uriFieldDataDescriptor = $convert.base64Decode(
     'V0aG9kGAIgASgOMjwuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52'
     'MS5VcmlSZW5kZXJNZXRob2RSDHJlbmRlck1ldGhvZA==');
 
+@$core.Deprecated('Use getVerificationTemplateRequestDescriptor instead')
+const GetVerificationTemplateRequest$json = {
+  '1': 'GetVerificationTemplateRequest',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `GetVerificationTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getVerificationTemplateRequestDescriptor =
+    $convert.base64Decode(
+        'Ch5HZXRWZXJpZmljYXRpb25UZW1wbGF0ZVJlcXVlc3QSDgoCaWQYASABKAlSAmlk');
+
+@$core.Deprecated('Use getVerificationTemplateResponseDescriptor instead')
+const GetVerificationTemplateResponse$json = {
+  '1': 'GetVerificationTemplateResponse',
+  '2': [
+    {
+      '1': 'template',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.VerificationTemplateData',
+      '10': 'template'
+    },
+  ],
+};
+
+/// Descriptor for `GetVerificationTemplateResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getVerificationTemplateResponseDescriptor =
+    $convert.base64Decode(
+        'Ch9HZXRWZXJpZmljYXRpb25UZW1wbGF0ZVJlc3BvbnNlEmEKCHRlbXBsYXRlGAEgASgLMkUuc2'
+        'VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5WZXJpZmljYXRpb25U'
+        'ZW1wbGF0ZURhdGFSCHRlbXBsYXRl');
+
 @$core.Deprecated('Use createVerificationTemplateRequestDescriptor instead')
 const CreateVerificationTemplateRequest$json = {
   '1': 'CreateVerificationTemplateRequest',
@@ -923,8 +959,15 @@ const VerificationTemplateData$json = {
       '4': 3,
       '5': 11,
       '6':
-          '.services.verifiablecredentials.templates.v1.VerificationTemplateField',
+          '.services.verifiablecredentials.templates.v1.VerificationTemplateData.FieldsEntry',
       '10': 'fields'
+    },
+    {
+      '1': 'credential_template_id',
+      '3': 5,
+      '4': 1,
+      '5': 9,
+      '10': 'credentialTemplateId'
     },
     {'1': 'schema_uri', '3': 6, '4': 1, '5': 9, '10': 'schemaUri'},
     {'1': 'ecosystem_id', '3': 8, '4': 1, '5': 9, '10': 'ecosystemId'},
@@ -934,18 +977,40 @@ const VerificationTemplateData$json = {
     {'1': 'title', '3': 12, '4': 1, '5': 9, '10': 'title'},
     {'1': 'description', '3': 13, '4': 1, '5': 9, '10': 'description'},
   ],
+  '3': [VerificationTemplateData_FieldsEntry$json],
+};
+
+@$core.Deprecated('Use verificationTemplateDataDescriptor instead')
+const VerificationTemplateData_FieldsEntry$json = {
+  '1': 'FieldsEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {
+      '1': 'value',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.VerificationTemplateField',
+      '10': 'value'
+    },
+  ],
+  '7': {'7': true},
 };
 
 /// Descriptor for `VerificationTemplateData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verificationTemplateDataDescriptor = $convert.base64Decode(
     'ChhWZXJpZmljYXRpb25UZW1wbGF0ZURhdGESDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKA'
-    'lSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJeCgZmaWVsZHMYBCADKAsyRi5zZXJ2'
+    'lSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJpCgZmaWVsZHMYBCADKAsyUS5zZXJ2'
     'aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlZlcmlmaWNhdGlvblRlbX'
-    'BsYXRlRmllbGRSBmZpZWxkcxIdCgpzY2hlbWFfdXJpGAYgASgJUglzY2hlbWFVcmkSIQoMZWNv'
-    'c3lzdGVtX2lkGAggASgJUgtlY29zeXN0ZW1JZBISCgR0eXBlGAkgASgJUgR0eXBlEh0KCmNyZW'
-    'F0ZWRfYnkYCiABKAlSCWNyZWF0ZWRCeRIhCgxkYXRlX2NyZWF0ZWQYCyABKAlSC2RhdGVDcmVh'
-    'dGVkEhQKBXRpdGxlGAwgASgJUgV0aXRsZRIgCgtkZXNjcmlwdGlvbhgNIAEoCVILZGVzY3JpcH'
-    'Rpb24=');
+    'BsYXRlRGF0YS5GaWVsZHNFbnRyeVIGZmllbGRzEjQKFmNyZWRlbnRpYWxfdGVtcGxhdGVfaWQY'
+    'BSABKAlSFGNyZWRlbnRpYWxUZW1wbGF0ZUlkEh0KCnNjaGVtYV91cmkYBiABKAlSCXNjaGVtYV'
+    'VyaRIhCgxlY29zeXN0ZW1faWQYCCABKAlSC2Vjb3N5c3RlbUlkEhIKBHR5cGUYCSABKAlSBHR5'
+    'cGUSHQoKY3JlYXRlZF9ieRgKIAEoCVIJY3JlYXRlZEJ5EiEKDGRhdGVfY3JlYXRlZBgLIAEoCV'
+    'ILZGF0ZUNyZWF0ZWQSFAoFdGl0bGUYDCABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGA0gASgJ'
+    'UgtkZXNjcmlwdGlvbhqBAQoLRmllbGRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSXAoFdmFsdW'
+    'UYAiABKAsyRi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlZl'
+    'cmlmaWNhdGlvblRlbXBsYXRlRmllbGRSBXZhbHVlOgI4AQ==');
 
 @$core.Deprecated('Use listVerificationTemplatesRequestDescriptor instead')
 const ListVerificationTemplatesRequest$json = {

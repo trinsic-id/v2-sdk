@@ -60,15 +60,15 @@ class UriRenderMethod extends $pb.ProtobufEnum {
 }
 
 class VerificationShareType extends $pb.ProtobufEnum {
-  static const VerificationShareType REQUIRED =
-      VerificationShareType._(0, _omitEnumNames ? '' : 'REQUIRED');
   static const VerificationShareType OPTIONAL =
-      VerificationShareType._(1, _omitEnumNames ? '' : 'OPTIONAL');
+      VerificationShareType._(0, _omitEnumNames ? '' : 'OPTIONAL');
+  static const VerificationShareType REQUIRED =
+      VerificationShareType._(1, _omitEnumNames ? '' : 'REQUIRED');
 
   static const $core.List<VerificationShareType> values =
       <VerificationShareType>[
-    REQUIRED,
     OPTIONAL,
+    REQUIRED,
   ];
 
   static final $core.Map<$core.int, VerificationShareType> _byValue =

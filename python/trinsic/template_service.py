@@ -85,12 +85,22 @@ class TemplateService(ServiceBase):
         )
 
     @deprecation.deprecated(details="This method is experimental")
-    async def list_verification_template(
+    async def list_verification_templates(
         self, *, request: ListVerificationTemplatesRequest
     ) -> ListVerificationTemplatesResponse:
         """This method is experimental"""
 
-        return await self.client.list_verification_template(
+        return await self.client.list_verification_templates(
+            request, metadata=self.build_metadata(request)
+        )
+
+    @deprecation.deprecated(details="This method is experimental")
+    async def get_verification_template(
+        self, *, request: GetVerificationTemplateRequest
+    ) -> GetVerificationTemplateResponse:
+        """This method is experimental"""
+
+        return await self.client.get_verification_template(
             request, metadata=self.build_metadata(request)
         )
 

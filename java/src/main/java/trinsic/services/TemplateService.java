@@ -66,10 +66,17 @@ public class TemplateService extends ServiceBase {
   }
   /** This method is experimental */
   @Deprecated(since = "This method is experimental")
-  public ListenableFuture<ListVerificationTemplatesResponse> listVerificationTemplate(
+  public ListenableFuture<ListVerificationTemplatesResponse> listVerificationTemplates(
       ListVerificationTemplatesRequest request) throws InvalidProtocolBufferException {
 
-    return withMetadata(stub, request).listVerificationTemplate(request);
+    return withMetadata(stub, request).listVerificationTemplates(request);
+  }
+  /** This method is experimental */
+  @Deprecated(since = "This method is experimental")
+  public ListenableFuture<GetVerificationTemplateResponse> getVerificationTemplate(
+      GetVerificationTemplateRequest request) throws InvalidProtocolBufferException {
+
+    return withMetadata(stub, request).getVerificationTemplate(request);
   }
   /** This method is experimental */
   @Deprecated(since = "This method is experimental")

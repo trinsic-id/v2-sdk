@@ -25,7 +25,7 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
   private VerificationTemplateData() {
     id_ = "";
     name_ = "";
-    fields_ = java.util.Collections.emptyList();
+    credentialTemplateId_ = "";
     schemaUri_ = "";
     ecosystemId_ = "";
     type_ = "";
@@ -49,6 +49,17 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.verifiablecredentials.templates.v1.Templates
         .internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_descriptor;
+  }
+
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(int number) {
+    switch (number) {
+      case 4:
+        return internalGetFields();
+      default:
+        throw new RuntimeException("Invalid map field number: " + number);
+    }
   }
 
   @java.lang.Override
@@ -179,59 +190,42 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
   }
 
   public static final int FIELDS_FIELD_NUMBER = 4;
-  private java.util.List<
+
+  private static final class FieldsDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        defaultEntry =
+            com.google.protobuf.MapEntry
+                .<java.lang.String,
+                    trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+                    newDefaultInstance(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates
+                            .internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_FieldsEntry_descriptor,
+                        com.google.protobuf.WireFormat.FieldType.STRING,
+                        "",
+                        com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                        trinsic.services.verifiablecredentials.templates.v1
+                            .VerificationTemplateField.getDefaultInstance());
+  }
+
+  private com.google.protobuf.MapField<
+          java.lang.String,
           trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
       fields_;
-  /**
-   *
-   *
-   * <pre>
-   * Fields defined for the template
-   * </pre>
-   *
-   * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-   * </code>
-   */
-  @java.lang.Override
-  public java.util.List<
+
+  private com.google.protobuf.MapField<
+          java.lang.String,
           trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
-      getFieldsList() {
+      internalGetFields() {
+    if (fields_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
+    }
     return fields_;
   }
-  /**
-   *
-   *
-   * <pre>
-   * Fields defined for the template
-   * </pre>
-   *
-   * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-   * </code>
-   */
-  @java.lang.Override
-  public java.util.List<
-          ? extends
-              trinsic.services.verifiablecredentials.templates.v1
-                  .VerificationTemplateFieldOrBuilder>
-      getFieldsOrBuilderList() {
-    return fields_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Fields defined for the template
-   * </pre>
-   *
-   * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-   * </code>
-   */
-  @java.lang.Override
+
   public int getFieldsCount() {
-    return fields_.size();
+    return internalGetFields().getMap().size();
   }
   /**
    *
@@ -241,13 +235,24 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
    * </pre>
    *
    * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
    * </code>
    */
   @java.lang.Override
-  public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField getFields(
-      int index) {
-    return fields_.get(index);
+  public boolean containsFields(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    return internalGetFields().getMap().containsKey(key);
+  }
+  /** Use {@link #getFieldsMap()} instead. */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<
+          java.lang.String,
+          trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+      getFields() {
+    return getFieldsMap();
   }
   /**
    *
@@ -257,13 +262,116 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
    * </pre>
    *
    * <code>
-   * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
    * </code>
    */
   @java.lang.Override
-  public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldOrBuilder
-      getFieldsOrBuilder(int index) {
-    return fields_.get(index);
+  public java.util.Map<
+          java.lang.String,
+          trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+      getFieldsMap() {
+    return internalGetFields().getMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Fields defined for the template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
+      getFieldsOrDefault(
+          java.lang.String key,
+          trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
+              defaultValue) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        map = internalGetFields().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Fields defined for the template
+   * </pre>
+   *
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
+      getFieldsOrThrow(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        map = internalGetFields().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
+  public static final int CREDENTIAL_TEMPLATE_ID_FIELD_NUMBER = 5;
+  private volatile java.lang.Object credentialTemplateId_;
+  /**
+   *
+   *
+   * <pre>
+   * Source credential template, used for verifying that the specified `fields` are present in the credential template
+   * </pre>
+   *
+   * <code>string credential_template_id = 5;</code>
+   *
+   * @return The credentialTemplateId.
+   */
+  @java.lang.Override
+  public java.lang.String getCredentialTemplateId() {
+    java.lang.Object ref = credentialTemplateId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      credentialTemplateId_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Source credential template, used for verifying that the specified `fields` are present in the credential template
+   * </pre>
+   *
+   * <code>string credential_template_id = 5;</code>
+   *
+   * @return The bytes for credentialTemplateId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getCredentialTemplateIdBytes() {
+    java.lang.Object ref = credentialTemplateId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      credentialTemplateId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int SCHEMA_URI_FIELD_NUMBER = 6;
@@ -632,8 +740,10 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     if (version_ != 0) {
       output.writeInt32(3, version_);
     }
-    for (int i = 0; i < fields_.size(); i++) {
-      output.writeMessage(4, fields_.get(i));
+    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+        output, internalGetFields(), FieldsDefaultEntryHolder.defaultEntry, 4);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTemplateId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, credentialTemplateId_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, schemaUri_);
@@ -674,8 +784,23 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     if (version_ != 0) {
       size += com.google.protobuf.CodedOutputStream.computeInt32Size(3, version_);
     }
-    for (int i = 0; i < fields_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, fields_.get(i));
+    for (java.util.Map.Entry<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        entry : internalGetFields().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+          fields__ =
+              FieldsDefaultEntryHolder.defaultEntry
+                  .newBuilderForType()
+                  .setKey(entry.getKey())
+                  .setValue(entry.getValue())
+                  .build();
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, fields__);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTemplateId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, credentialTemplateId_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, schemaUri_);
@@ -718,7 +843,8 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     if (!getId().equals(other.getId())) return false;
     if (!getName().equals(other.getName())) return false;
     if (getVersion() != other.getVersion()) return false;
-    if (!getFieldsList().equals(other.getFieldsList())) return false;
+    if (!internalGetFields().equals(other.internalGetFields())) return false;
+    if (!getCredentialTemplateId().equals(other.getCredentialTemplateId())) return false;
     if (!getSchemaUri().equals(other.getSchemaUri())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getType().equals(other.getType())) return false;
@@ -743,10 +869,12 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + VERSION_FIELD_NUMBER;
     hash = (53 * hash) + getVersion();
-    if (getFieldsCount() > 0) {
+    if (!internalGetFields().getMap().isEmpty()) {
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
-      hash = (53 * hash) + getFieldsList().hashCode();
+      hash = (53 * hash) + internalGetFields().hashCode();
     }
+    hash = (37 * hash) + CREDENTIAL_TEMPLATE_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getCredentialTemplateId().hashCode();
     hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
     hash = (53 * hash) + getSchemaUri().hashCode();
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
@@ -886,6 +1014,26 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
           .internal_static_services_verifiablecredentials_templates_v1_VerificationTemplateData_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
+      switch (number) {
+        case 4:
+          return internalGetFields();
+        default:
+          throw new RuntimeException("Invalid map field number: " + number);
+      }
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
+      switch (number) {
+        case 4:
+          return internalGetMutableFields();
+        default:
+          throw new RuntimeException("Invalid map field number: " + number);
+      }
+    }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -914,13 +1062,9 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
 
       version_ = 0;
 
-      if (fieldsBuilder_ == null) {
-        fields_ = java.util.Collections.emptyList();
-      } else {
-        fields_ = null;
-        fieldsBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
+      internalGetMutableFields().clear();
+      credentialTemplateId_ = "";
+
       schemaUri_ = "";
 
       ecosystemId_ = "";
@@ -970,15 +1114,9 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
       result.id_ = id_;
       result.name_ = name_;
       result.version_ = version_;
-      if (fieldsBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          fields_ = java.util.Collections.unmodifiableList(fields_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.fields_ = fields_;
-      } else {
-        result.fields_ = fieldsBuilder_.build();
-      }
+      result.fields_ = internalGetFields();
+      result.fields_.makeImmutable();
+      result.credentialTemplateId_ = credentialTemplateId_;
       result.schemaUri_ = schemaUri_;
       result.ecosystemId_ = ecosystemId_;
       result.type_ = type_;
@@ -1051,32 +1189,10 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
       if (other.getVersion() != 0) {
         setVersion(other.getVersion());
       }
-      if (fieldsBuilder_ == null) {
-        if (!other.fields_.isEmpty()) {
-          if (fields_.isEmpty()) {
-            fields_ = other.fields_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureFieldsIsMutable();
-            fields_.addAll(other.fields_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.fields_.isEmpty()) {
-          if (fieldsBuilder_.isEmpty()) {
-            fieldsBuilder_.dispose();
-            fieldsBuilder_ = null;
-            fields_ = other.fields_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            fieldsBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getFieldsFieldBuilder()
-                    : null;
-          } else {
-            fieldsBuilder_.addAllMessages(other.fields_);
-          }
-        }
+      internalGetMutableFields().mergeFrom(other.internalGetFields());
+      if (!other.getCredentialTemplateId().isEmpty()) {
+        credentialTemplateId_ = other.credentialTemplateId_;
+        onChanged();
       }
       if (!other.getSchemaUri().isEmpty()) {
         schemaUri_ = other.schemaUri_;
@@ -1152,19 +1268,25 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
               } // case 24
             case 34:
               {
-                trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField m =
-                    input.readMessage(
+                com.google.protobuf.MapEntry<
+                        java.lang.String,
                         trinsic.services.verifiablecredentials.templates.v1
-                            .VerificationTemplateField.parser(),
-                        extensionRegistry);
-                if (fieldsBuilder_ == null) {
-                  ensureFieldsIsMutable();
-                  fields_.add(m);
-                } else {
-                  fieldsBuilder_.addMessage(m);
-                }
+                            .VerificationTemplateField>
+                    fields__ =
+                        input.readMessage(
+                            FieldsDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                internalGetMutableFields()
+                    .getMutableMap()
+                    .put(fields__.getKey(), fields__.getValue());
                 break;
               } // case 34
+            case 42:
+              {
+                credentialTemplateId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 42
             case 50:
               {
                 schemaUri_ = input.readStringRequireUtf8();
@@ -1490,63 +1612,65 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
       return this;
     }
 
-    private java.util.List<
+    private com.google.protobuf.MapField<
+            java.lang.String,
             trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
-        fields_ = java.util.Collections.emptyList();
+        fields_;
 
-    private void ensureFieldsIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        fields_ =
-            new java.util.ArrayList<
-                trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>(
-                fields_);
-        bitField0_ |= 0x00000001;
+    private com.google.protobuf.MapField<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        internalGetFields() {
+      if (fields_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
       }
+      return fields_;
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField,
-            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder,
-            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldOrBuilder>
-        fieldsBuilder_;
-
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public java.util.List<
+    private com.google.protobuf.MapField<
+            java.lang.String,
             trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
-        getFieldsList() {
-      if (fieldsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(fields_);
-      } else {
-        return fieldsBuilder_.getMessageList();
+        internalGetMutableFields() {
+      onChanged();
+      ;
+      if (fields_ == null) {
+        fields_ = com.google.protobuf.MapField.newMapField(FieldsDefaultEntryHolder.defaultEntry);
       }
+      if (!fields_.isMutable()) {
+        fields_ = fields_.copy();
+      }
+      return fields_;
     }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
+
     public int getFieldsCount() {
-      if (fieldsBuilder_ == null) {
-        return fields_.size();
-      } else {
-        return fieldsBuilder_.getCount();
+      return internalGetFields().getMap().size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+     * </code>
+     */
+    @java.lang.Override
+    public boolean containsFields(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
       }
+      return internalGetFields().getMap().containsKey(key);
+    }
+    /** Use {@link #getFieldsMap()} instead. */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        getFields() {
+      return getFieldsMap();
     }
     /**
      *
@@ -1556,16 +1680,41 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
      * </pre>
      *
      * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
      * </code>
      */
-    public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField getFields(
-        int index) {
-      if (fieldsBuilder_ == null) {
-        return fields_.get(index);
-      } else {
-        return fieldsBuilder_.getMessage(index);
+    @java.lang.Override
+    public java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        getFieldsMap() {
+      return internalGetFields().getMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+     * </code>
+     */
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
+        getFieldsOrDefault(
+            java.lang.String key,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
+                defaultValue) {
+      if (key == null) {
+        throw new NullPointerException("map key");
       }
+      java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+          map = internalGetFields().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
      *
@@ -1575,340 +1724,203 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
      * </pre>
      *
      * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
+     * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
      * </code>
      */
-    public Builder setFields(
-        int index,
-        trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField value) {
-      if (fieldsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFieldsIsMutable();
-        fields_.set(index, value);
-        onChanged();
-      } else {
-        fieldsBuilder_.setMessage(index, value);
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
+        getFieldsOrThrow(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
       }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder setFields(
-        int index,
-        trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder
-            builderForValue) {
-      if (fieldsBuilder_ == null) {
-        ensureFieldsIsMutable();
-        fields_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        fieldsBuilder_.setMessage(index, builderForValue.build());
+      java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+          map = internalGetFields().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder addFields(
-        trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField value) {
-      if (fieldsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFieldsIsMutable();
-        fields_.add(value);
-        onChanged();
-      } else {
-        fieldsBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder addFields(
-        int index,
-        trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField value) {
-      if (fieldsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureFieldsIsMutable();
-        fields_.add(index, value);
-        onChanged();
-      } else {
-        fieldsBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder addFields(
-        trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder
-            builderForValue) {
-      if (fieldsBuilder_ == null) {
-        ensureFieldsIsMutable();
-        fields_.add(builderForValue.build());
-        onChanged();
-      } else {
-        fieldsBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder addFields(
-        int index,
-        trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder
-            builderForValue) {
-      if (fieldsBuilder_ == null) {
-        ensureFieldsIsMutable();
-        fields_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        fieldsBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder addAllFields(
-        java.lang.Iterable<
-                ? extends
-                    trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
-            values) {
-      if (fieldsBuilder_ == null) {
-        ensureFieldsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, fields_);
-        onChanged();
-      } else {
-        fieldsBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder clearFields() {
-      if (fieldsBuilder_ == null) {
-        fields_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        fieldsBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public Builder removeFields(int index) {
-      if (fieldsBuilder_ == null) {
-        ensureFieldsIsMutable();
-        fields_.remove(index);
-        onChanged();
-      } else {
-        fieldsBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder
-        getFieldsBuilder(int index) {
-      return getFieldsFieldBuilder().getBuilder(index);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldOrBuilder
-        getFieldsOrBuilder(int index) {
-      if (fieldsBuilder_ == null) {
-        return fields_.get(index);
-      } else {
-        return fieldsBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public java.util.List<
-            ? extends
-                trinsic.services.verifiablecredentials.templates.v1
-                    .VerificationTemplateFieldOrBuilder>
-        getFieldsOrBuilderList() {
-      if (fieldsBuilder_ != null) {
-        return fieldsBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(fields_);
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder
-        addFieldsBuilder() {
-      return getFieldsFieldBuilder()
-          .addBuilder(
-              trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
-                  .getDefaultInstance());
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder
-        addFieldsBuilder(int index) {
-      return getFieldsFieldBuilder()
-          .addBuilder(
-              index,
-              trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
-                  .getDefaultInstance());
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Fields defined for the template
-     * </pre>
-     *
-     * <code>
-     * repeated .services.verifiablecredentials.templates.v1.VerificationTemplateField fields = 4;
-     * </code>
-     */
-    public java.util.List<
-            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder>
-        getFieldsBuilderList() {
-      return getFieldsFieldBuilder().getBuilderList();
+      return map.get(key);
     }
 
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField,
-            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField.Builder,
-            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldOrBuilder>
-        getFieldsFieldBuilder() {
-      if (fieldsBuilder_ == null) {
-        fieldsBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField,
-                trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField
-                    .Builder,
-                trinsic.services.verifiablecredentials.templates.v1
-                    .VerificationTemplateFieldOrBuilder>(
-                fields_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
-        fields_ = null;
+    public Builder clearFields() {
+      internalGetMutableFields().getMutableMap().clear();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+     * </code>
+     */
+    public Builder removeFields(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
       }
-      return fieldsBuilder_;
+      internalGetMutableFields().getMutableMap().remove(key);
+      return this;
+    }
+    /** Use alternate mutation accessors instead. */
+    @java.lang.Deprecated
+    public java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+        getMutableFields() {
+      return internalGetMutableFields().getMutableMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+     * </code>
+     */
+    public Builder putFields(
+        java.lang.String key,
+        trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField value) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      if (value == null) {
+        throw new NullPointerException("map value");
+      }
+
+      internalGetMutableFields().getMutableMap().put(key, value);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.VerificationTemplateField&gt; fields = 4 [json_name = "fields"];
+     * </code>
+     */
+    public Builder putAllFields(
+        java.util.Map<
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateField>
+            values) {
+      internalGetMutableFields().getMutableMap().putAll(values);
+      return this;
+    }
+
+    private java.lang.Object credentialTemplateId_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Source credential template, used for verifying that the specified `fields` are present in the credential template
+     * </pre>
+     *
+     * <code>string credential_template_id = 5;</code>
+     *
+     * @return The credentialTemplateId.
+     */
+    public java.lang.String getCredentialTemplateId() {
+      java.lang.Object ref = credentialTemplateId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        credentialTemplateId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Source credential template, used for verifying that the specified `fields` are present in the credential template
+     * </pre>
+     *
+     * <code>string credential_template_id = 5;</code>
+     *
+     * @return The bytes for credentialTemplateId.
+     */
+    public com.google.protobuf.ByteString getCredentialTemplateIdBytes() {
+      java.lang.Object ref = credentialTemplateId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        credentialTemplateId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Source credential template, used for verifying that the specified `fields` are present in the credential template
+     * </pre>
+     *
+     * <code>string credential_template_id = 5;</code>
+     *
+     * @param value The credentialTemplateId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCredentialTemplateId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      credentialTemplateId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Source credential template, used for verifying that the specified `fields` are present in the credential template
+     * </pre>
+     *
+     * <code>string credential_template_id = 5;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearCredentialTemplateId() {
+
+      credentialTemplateId_ = getDefaultInstance().getCredentialTemplateId();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Source credential template, used for verifying that the specified `fields` are present in the credential template
+     * </pre>
+     *
+     * <code>string credential_template_id = 5;</code>
+     *
+     * @param value The bytes for credentialTemplateId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCredentialTemplateIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      credentialTemplateId_ = value;
+      onChanged();
+      return this;
     }
 
     private java.lang.Object schemaUri_ = "";

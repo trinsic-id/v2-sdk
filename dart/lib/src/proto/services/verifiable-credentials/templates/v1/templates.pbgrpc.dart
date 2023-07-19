@@ -66,13 +66,20 @@ class CredentialTemplatesClient extends $grpc.Client {
       ($5.CreateVerificationTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $5.CreateVerificationTemplateResponse.fromBuffer(value));
-  static final _$listVerificationTemplate = $grpc.ClientMethod<
+  static final _$listVerificationTemplates = $grpc.ClientMethod<
           $5.ListVerificationTemplatesRequest,
           $5.ListVerificationTemplatesResponse>(
-      '/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplate',
+      '/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplates',
       ($5.ListVerificationTemplatesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $5.ListVerificationTemplatesResponse.fromBuffer(value));
+  static final _$getVerificationTemplate = $grpc.ClientMethod<
+          $5.GetVerificationTemplateRequest,
+          $5.GetVerificationTemplateResponse>(
+      '/services.verifiablecredentials.templates.v1.CredentialTemplates/GetVerificationTemplate',
+      ($5.GetVerificationTemplateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $5.GetVerificationTemplateResponse.fromBuffer(value));
   static final _$updateVerificationTemplate = $grpc.ClientMethod<
           $5.UpdateVerificationTemplateRequest,
           $5.UpdateVerificationTemplateResponse>(
@@ -137,9 +144,16 @@ class CredentialTemplatesClient extends $grpc.Client {
   }
 
   $grpc.ResponseFuture<$5.ListVerificationTemplatesResponse>
-      listVerificationTemplate($5.ListVerificationTemplatesRequest request,
+      listVerificationTemplates($5.ListVerificationTemplatesRequest request,
           {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$listVerificationTemplate, request,
+    return $createUnaryCall(_$listVerificationTemplates, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$5.GetVerificationTemplateResponse>
+      getVerificationTemplate($5.GetVerificationTemplateRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getVerificationTemplate, request,
         options: options);
   }
 
@@ -231,13 +245,22 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
             value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$5.ListVerificationTemplatesRequest,
             $5.ListVerificationTemplatesResponse>(
-        'ListVerificationTemplate',
-        listVerificationTemplate_Pre,
+        'ListVerificationTemplates',
+        listVerificationTemplates_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
             $5.ListVerificationTemplatesRequest.fromBuffer(value),
         ($5.ListVerificationTemplatesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.GetVerificationTemplateRequest,
+            $5.GetVerificationTemplateResponse>(
+        'GetVerificationTemplate',
+        getVerificationTemplate_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $5.GetVerificationTemplateRequest.fromBuffer(value),
+        ($5.GetVerificationTemplateResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$5.UpdateVerificationTemplateRequest,
             $5.UpdateVerificationTemplateResponse>(
         'UpdateVerificationTemplate',
@@ -303,9 +326,15 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
   }
 
   $async.Future<$5.ListVerificationTemplatesResponse>
-      listVerificationTemplate_Pre($grpc.ServiceCall call,
+      listVerificationTemplates_Pre($grpc.ServiceCall call,
           $async.Future<$5.ListVerificationTemplatesRequest> request) async {
-    return listVerificationTemplate(call, await request);
+    return listVerificationTemplates(call, await request);
+  }
+
+  $async.Future<$5.GetVerificationTemplateResponse> getVerificationTemplate_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$5.GetVerificationTemplateRequest> request) async {
+    return getVerificationTemplate(call, await request);
   }
 
   $async.Future<$5.UpdateVerificationTemplateResponse>
@@ -335,8 +364,10 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
   $async.Future<$5.CreateVerificationTemplateResponse>
       createVerificationTemplate(
           $grpc.ServiceCall call, $5.CreateVerificationTemplateRequest request);
-  $async.Future<$5.ListVerificationTemplatesResponse> listVerificationTemplate(
+  $async.Future<$5.ListVerificationTemplatesResponse> listVerificationTemplates(
       $grpc.ServiceCall call, $5.ListVerificationTemplatesRequest request);
+  $async.Future<$5.GetVerificationTemplateResponse> getVerificationTemplate(
+      $grpc.ServiceCall call, $5.GetVerificationTemplateRequest request);
   $async.Future<$5.UpdateVerificationTemplateResponse>
       updateVerificationTemplate(
           $grpc.ServiceCall call, $5.UpdateVerificationTemplateRequest request);

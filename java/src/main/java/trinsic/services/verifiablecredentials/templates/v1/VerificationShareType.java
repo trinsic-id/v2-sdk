@@ -5,17 +5,17 @@ package trinsic.services.verifiablecredentials.templates.v1;
 
 /** Protobuf enum {@code services.verifiablecredentials.templates.v1.VerificationShareType} */
 public enum VerificationShareType implements com.google.protobuf.ProtocolMessageEnum {
-  /** <code>REQUIRED = 0;</code> */
-  REQUIRED(0),
-  /** <code>OPTIONAL = 1;</code> */
-  OPTIONAL(1),
+  /** <code>OPTIONAL = 0;</code> */
+  OPTIONAL(0),
+  /** <code>REQUIRED = 1;</code> */
+  REQUIRED(1),
   UNRECOGNIZED(-1),
   ;
 
-  /** <code>REQUIRED = 0;</code> */
-  public static final int REQUIRED_VALUE = 0;
-  /** <code>OPTIONAL = 1;</code> */
-  public static final int OPTIONAL_VALUE = 1;
+  /** <code>OPTIONAL = 0;</code> */
+  public static final int OPTIONAL_VALUE = 0;
+  /** <code>REQUIRED = 1;</code> */
+  public static final int REQUIRED_VALUE = 1;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -42,9 +42,9 @@ public enum VerificationShareType implements com.google.protobuf.ProtocolMessage
   public static VerificationShareType forNumber(int value) {
     switch (value) {
       case 0:
-        return REQUIRED;
-      case 1:
         return OPTIONAL;
+      case 1:
+        return REQUIRED;
       default:
         return null;
     }

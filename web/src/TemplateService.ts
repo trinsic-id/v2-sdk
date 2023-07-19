@@ -67,10 +67,17 @@ export class TemplateService extends ServiceBase {
     });
   }
   /**@deprecated This method is experimental */
-  public async listVerificationTemplate(request: proto.ListVerificationTemplatesRequest): Promise<proto.ListVerificationTemplatesResponse> {
+  public async listVerificationTemplates(request: proto.ListVerificationTemplatesRequest): Promise<proto.ListVerificationTemplatesResponse> {
     
-    return this.client.listVerificationTemplate(request, {
+    return this.client.listVerificationTemplates(request, {
       metadata: await this.buildMetadata(proto.ListVerificationTemplatesRequest.encode(request).finish())
+    });
+  }
+  /**@deprecated This method is experimental */
+  public async getVerificationTemplate(request: proto.GetVerificationTemplateRequest): Promise<proto.GetVerificationTemplateResponse> {
+    
+    return this.client.getVerificationTemplate(request, {
+      metadata: await this.buildMetadata(proto.GetVerificationTemplateRequest.encode(request).finish())
     });
   }
   /**@deprecated This method is experimental */

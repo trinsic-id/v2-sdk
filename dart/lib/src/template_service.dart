@@ -68,11 +68,20 @@ class TemplateService extends ServiceBase {
   }
 
   @Deprecated('This method is experimental')
-  Future<ListVerificationTemplatesResponse> listVerificationTemplate(
+  Future<ListVerificationTemplatesResponse> listVerificationTemplates(
       ListVerificationTemplatesRequest request) async {
     /// This method is experimental
 
-    return client.listVerificationTemplate(request,
+    return client.listVerificationTemplates(request,
+        options: await buildMetadata(request: request));
+  }
+
+  @Deprecated('This method is experimental')
+  Future<GetVerificationTemplateResponse> getVerificationTemplate(
+      GetVerificationTemplateRequest request) async {
+    /// This method is experimental
+
+    return client.getVerificationTemplate(request,
         options: await buildMetadata(request: request));
   }
 

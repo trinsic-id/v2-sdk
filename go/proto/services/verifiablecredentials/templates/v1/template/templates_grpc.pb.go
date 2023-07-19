@@ -26,7 +26,8 @@ const (
 	CredentialTemplates_Search_FullMethodName                     = "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search"
 	CredentialTemplates_Delete_FullMethodName                     = "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete"
 	CredentialTemplates_CreateVerificationTemplate_FullMethodName = "/services.verifiablecredentials.templates.v1.CredentialTemplates/CreateVerificationTemplate"
-	CredentialTemplates_ListVerificationTemplate_FullMethodName   = "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplate"
+	CredentialTemplates_ListVerificationTemplates_FullMethodName  = "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplates"
+	CredentialTemplates_GetVerificationTemplate_FullMethodName    = "/services.verifiablecredentials.templates.v1.CredentialTemplates/GetVerificationTemplate"
 	CredentialTemplates_UpdateVerificationTemplate_FullMethodName = "/services.verifiablecredentials.templates.v1.CredentialTemplates/UpdateVerificationTemplate"
 	CredentialTemplates_DeleteVerificationTemplate_FullMethodName = "/services.verifiablecredentials.templates.v1.CredentialTemplates/DeleteVerificationTemplate"
 )
@@ -49,7 +50,8 @@ type CredentialTemplatesClient interface {
 	Delete(ctx context.Context, in *DeleteCredentialTemplateRequest, opts ...grpc.CallOption) (*DeleteCredentialTemplateResponse, error)
 	// Create/update verification templates
 	CreateVerificationTemplate(ctx context.Context, in *CreateVerificationTemplateRequest, opts ...grpc.CallOption) (*CreateVerificationTemplateResponse, error)
-	ListVerificationTemplate(ctx context.Context, in *ListVerificationTemplatesRequest, opts ...grpc.CallOption) (*ListVerificationTemplatesResponse, error)
+	ListVerificationTemplates(ctx context.Context, in *ListVerificationTemplatesRequest, opts ...grpc.CallOption) (*ListVerificationTemplatesResponse, error)
+	GetVerificationTemplate(ctx context.Context, in *GetVerificationTemplateRequest, opts ...grpc.CallOption) (*GetVerificationTemplateResponse, error)
 	UpdateVerificationTemplate(ctx context.Context, in *UpdateVerificationTemplateRequest, opts ...grpc.CallOption) (*UpdateVerificationTemplateResponse, error)
 	DeleteVerificationTemplate(ctx context.Context, in *DeleteVerificationTemplateRequest, opts ...grpc.CallOption) (*DeleteVerificationTemplateResponse, error)
 }
@@ -125,9 +127,18 @@ func (c *credentialTemplatesClient) CreateVerificationTemplate(ctx context.Conte
 	return out, nil
 }
 
-func (c *credentialTemplatesClient) ListVerificationTemplate(ctx context.Context, in *ListVerificationTemplatesRequest, opts ...grpc.CallOption) (*ListVerificationTemplatesResponse, error) {
+func (c *credentialTemplatesClient) ListVerificationTemplates(ctx context.Context, in *ListVerificationTemplatesRequest, opts ...grpc.CallOption) (*ListVerificationTemplatesResponse, error) {
 	out := new(ListVerificationTemplatesResponse)
-	err := c.cc.Invoke(ctx, CredentialTemplates_ListVerificationTemplate_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, CredentialTemplates_ListVerificationTemplates_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *credentialTemplatesClient) GetVerificationTemplate(ctx context.Context, in *GetVerificationTemplateRequest, opts ...grpc.CallOption) (*GetVerificationTemplateResponse, error) {
+	out := new(GetVerificationTemplateResponse)
+	err := c.cc.Invoke(ctx, CredentialTemplates_GetVerificationTemplate_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -170,7 +181,8 @@ type CredentialTemplatesServer interface {
 	Delete(context.Context, *DeleteCredentialTemplateRequest) (*DeleteCredentialTemplateResponse, error)
 	// Create/update verification templates
 	CreateVerificationTemplate(context.Context, *CreateVerificationTemplateRequest) (*CreateVerificationTemplateResponse, error)
-	ListVerificationTemplate(context.Context, *ListVerificationTemplatesRequest) (*ListVerificationTemplatesResponse, error)
+	ListVerificationTemplates(context.Context, *ListVerificationTemplatesRequest) (*ListVerificationTemplatesResponse, error)
+	GetVerificationTemplate(context.Context, *GetVerificationTemplateRequest) (*GetVerificationTemplateResponse, error)
 	UpdateVerificationTemplate(context.Context, *UpdateVerificationTemplateRequest) (*UpdateVerificationTemplateResponse, error)
 	DeleteVerificationTemplate(context.Context, *DeleteVerificationTemplateRequest) (*DeleteVerificationTemplateResponse, error)
 	mustEmbedUnimplementedCredentialTemplatesServer()
@@ -201,8 +213,11 @@ func (UnimplementedCredentialTemplatesServer) Delete(context.Context, *DeleteCre
 func (UnimplementedCredentialTemplatesServer) CreateVerificationTemplate(context.Context, *CreateVerificationTemplateRequest) (*CreateVerificationTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateVerificationTemplate not implemented")
 }
-func (UnimplementedCredentialTemplatesServer) ListVerificationTemplate(context.Context, *ListVerificationTemplatesRequest) (*ListVerificationTemplatesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListVerificationTemplate not implemented")
+func (UnimplementedCredentialTemplatesServer) ListVerificationTemplates(context.Context, *ListVerificationTemplatesRequest) (*ListVerificationTemplatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVerificationTemplates not implemented")
+}
+func (UnimplementedCredentialTemplatesServer) GetVerificationTemplate(context.Context, *GetVerificationTemplateRequest) (*GetVerificationTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVerificationTemplate not implemented")
 }
 func (UnimplementedCredentialTemplatesServer) UpdateVerificationTemplate(context.Context, *UpdateVerificationTemplateRequest) (*UpdateVerificationTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVerificationTemplate not implemented")
@@ -349,20 +364,38 @@ func _CredentialTemplates_CreateVerificationTemplate_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CredentialTemplates_ListVerificationTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CredentialTemplates_ListVerificationTemplates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListVerificationTemplatesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CredentialTemplatesServer).ListVerificationTemplate(ctx, in)
+		return srv.(CredentialTemplatesServer).ListVerificationTemplates(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CredentialTemplates_ListVerificationTemplate_FullMethodName,
+		FullMethod: CredentialTemplates_ListVerificationTemplates_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CredentialTemplatesServer).ListVerificationTemplate(ctx, req.(*ListVerificationTemplatesRequest))
+		return srv.(CredentialTemplatesServer).ListVerificationTemplates(ctx, req.(*ListVerificationTemplatesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CredentialTemplates_GetVerificationTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetVerificationTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CredentialTemplatesServer).GetVerificationTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CredentialTemplates_GetVerificationTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CredentialTemplatesServer).GetVerificationTemplate(ctx, req.(*GetVerificationTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -439,8 +472,12 @@ var CredentialTemplates_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CredentialTemplates_CreateVerificationTemplate_Handler,
 		},
 		{
-			MethodName: "ListVerificationTemplate",
-			Handler:    _CredentialTemplates_ListVerificationTemplate_Handler,
+			MethodName: "ListVerificationTemplates",
+			Handler:    _CredentialTemplates_ListVerificationTemplates_Handler,
+		},
+		{
+			MethodName: "GetVerificationTemplate",
+			Handler:    _CredentialTemplates_GetVerificationTemplate_Handler,
 		},
 		{
 			MethodName: "UpdateVerificationTemplate",

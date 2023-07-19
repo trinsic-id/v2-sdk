@@ -160,7 +160,7 @@ public final class VerificationTemplateField extends com.google.protobuf.Generat
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (fieldShareType_
-        != trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED
+        != trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL
             .getNumber()) {
       output.writeEnum(1, fieldShareType_);
     }
@@ -177,7 +177,7 @@ public final class VerificationTemplateField extends com.google.protobuf.Generat
 
     size = 0;
     if (fieldShareType_
-        != trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED
+        != trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL
             .getNumber()) {
       size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, fieldShareType_);
     }
