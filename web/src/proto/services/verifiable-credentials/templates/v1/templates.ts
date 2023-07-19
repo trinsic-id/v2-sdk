@@ -513,7 +513,7 @@ export interface VerificationTemplateField {
 /** A patch to apply to an existing template field */
 export interface VerificationTemplateFieldPatch {
   /** Human-readable name of the field */
-  usagePolicy?: string | undefined;
+  fieldShareType?: VerificationShareType;
 }
 
 function createBaseGetCredentialTemplateRequest(): GetCredentialTemplateRequest {
@@ -4054,13 +4054,13 @@ export const VerificationTemplateField = {
 };
 
 function createBaseVerificationTemplateFieldPatch(): VerificationTemplateFieldPatch {
-  return { usagePolicy: undefined };
+  return { fieldShareType: 0 };
 }
 
 export const VerificationTemplateFieldPatch = {
   encode(message: VerificationTemplateFieldPatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.usagePolicy !== undefined) {
-      writer.uint32(10).string(message.usagePolicy);
+    if (message.fieldShareType !== undefined && message.fieldShareType !== 0) {
+      writer.uint32(8).int32(message.fieldShareType);
     }
     return writer;
   },
@@ -4073,11 +4073,11 @@ export const VerificationTemplateFieldPatch = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag != 8) {
             break;
           }
 
-          message.usagePolicy = reader.string();
+          message.fieldShareType = reader.int32() as any;
           continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
@@ -4089,12 +4089,12 @@ export const VerificationTemplateFieldPatch = {
   },
 
   fromJSON(object: any): VerificationTemplateFieldPatch {
-    return { usagePolicy: isSet(object.usagePolicy) ? String(object.usagePolicy) : undefined };
+    return { fieldShareType: isSet(object.fieldShareType) ? verificationShareTypeFromJSON(object.fieldShareType) : 0 };
   },
 
   toJSON(message: VerificationTemplateFieldPatch): unknown {
     const obj: any = {};
-    message.usagePolicy !== undefined && (obj.usagePolicy = message.usagePolicy);
+    message.fieldShareType !== undefined && (obj.fieldShareType = verificationShareTypeToJSON(message.fieldShareType));
     return obj;
   },
 
@@ -4104,7 +4104,7 @@ export const VerificationTemplateFieldPatch = {
 
   fromPartial(object: DeepPartial<VerificationTemplateFieldPatch>): VerificationTemplateFieldPatch {
     const message = createBaseVerificationTemplateFieldPatch();
-    message.usagePolicy = object.usagePolicy ?? undefined;
+    message.fieldShareType = object.fieldShareType ?? 0;
     return message;
   },
 };

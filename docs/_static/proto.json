@@ -3432,7 +3432,7 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
-    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy": {
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type": {
       "type": "field",
       "collection": "fields",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
@@ -4603,7 +4603,7 @@
         "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.continuation_token",
         "services.verifiablecredentials.templates.v1.VerificationTemplateField.field_share_type",
         "services.verifiablecredentials.templates.v1.VerificationTemplateField.usage_policy",
-        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy"
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type"
       ],
       "enums": [
         "services.verifiablecredentials.templates.v1.FieldType",
@@ -6974,7 +6974,7 @@
       "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch",
       "description": "A patch to apply to an existing template field",
       "fields": [
-        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy"
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type"
       ],
       "messages": [],
       "enums": []
@@ -9792,12 +9792,12 @@
       "full_type": "string",
       "description": "User-facing explanation of what is done with this data\n\nTODO - Future work supporting proof conditionals/ranges/etc"
     },
-    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy": {
-      "name": "usage_policy",
-      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy",
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type": {
+      "name": "field_share_type",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type",
       "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
+      "type": "VerificationShareType",
+      "full_type": "services.verifiablecredentials.templates.v1.VerificationShareType",
       "description": "Human-readable name of the field"
     },
     "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json": {

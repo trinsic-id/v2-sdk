@@ -2184,7 +2184,7 @@ A patch to apply to an existing template field
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| usage_policy | [string](/reference/proto#string) | Human-readable name of the field |
+| field_share_type | [VerificationShareType](/reference/proto#services-verifiablecredentials-templates-v1-VerificationShareType) | Human-readable name of the field |
 
 
 

@@ -24,7 +24,7 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
   }
 
   private VerificationTemplateFieldPatch() {
-    usagePolicy_ = "";
+    fieldShareType_ = 0;
   }
 
   @java.lang.Override
@@ -55,9 +55,8 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
                 .Builder.class);
   }
 
-  private int bitField0_;
-  public static final int USAGE_POLICY_FIELD_NUMBER = 1;
-  private volatile java.lang.Object usagePolicy_;
+  public static final int FIELD_SHARE_TYPE_FIELD_NUMBER = 1;
+  private int fieldShareType_;
   /**
    *
    *
@@ -65,13 +64,14 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
    * Human-readable name of the field
    * </pre>
    *
-   * <code>optional string usage_policy = 1;</code>
+   * <code>.services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+   * </code>
    *
-   * @return Whether the usagePolicy field is set.
+   * @return The enum numeric value on the wire for fieldShareType.
    */
   @java.lang.Override
-  public boolean hasUsagePolicy() {
-    return ((bitField0_ & 0x00000001) != 0);
+  public int getFieldShareTypeValue() {
+    return fieldShareType_;
   }
   /**
    *
@@ -80,44 +80,21 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
    * Human-readable name of the field
    * </pre>
    *
-   * <code>optional string usage_policy = 1;</code>
+   * <code>.services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+   * </code>
    *
-   * @return The usagePolicy.
+   * @return The fieldShareType.
    */
   @java.lang.Override
-  public java.lang.String getUsagePolicy() {
-    java.lang.Object ref = usagePolicy_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      usagePolicy_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Human-readable name of the field
-   * </pre>
-   *
-   * <code>optional string usage_policy = 1;</code>
-   *
-   * @return The bytes for usagePolicy.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getUsagePolicyBytes() {
-    java.lang.Object ref = usagePolicy_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      usagePolicy_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public trinsic.services.verifiablecredentials.templates.v1.VerificationShareType
+      getFieldShareType() {
+    @SuppressWarnings("deprecation")
+    trinsic.services.verifiablecredentials.templates.v1.VerificationShareType result =
+        trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.valueOf(
+            fieldShareType_);
+    return result == null
+        ? trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.UNRECOGNIZED
+        : result;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -134,8 +111,10 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, usagePolicy_);
+    if (fieldShareType_
+        != trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL
+            .getNumber()) {
+      output.writeEnum(1, fieldShareType_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -146,8 +125,10 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, usagePolicy_);
+    if (fieldShareType_
+        != trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL
+            .getNumber()) {
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, fieldShareType_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -167,10 +148,7 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
     trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch other =
         (trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch) obj;
 
-    if (hasUsagePolicy() != other.hasUsagePolicy()) return false;
-    if (hasUsagePolicy()) {
-      if (!getUsagePolicy().equals(other.getUsagePolicy())) return false;
-    }
+    if (fieldShareType_ != other.fieldShareType_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -182,10 +160,8 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUsagePolicy()) {
-      hash = (37 * hash) + USAGE_POLICY_FIELD_NUMBER;
-      hash = (53 * hash) + getUsagePolicy().hashCode();
-    }
+    hash = (37 * hash) + FIELD_SHARE_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + fieldShareType_;
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -336,8 +312,8 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      usagePolicy_ = "";
-      bitField0_ = (bitField0_ & ~0x00000001);
+      fieldShareType_ = 0;
+
       return this;
     }
 
@@ -371,13 +347,7 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
       trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch result =
           new trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch(
               this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        to_bitField0_ |= 0x00000001;
-      }
-      result.usagePolicy_ = usagePolicy_;
-      result.bitField0_ = to_bitField0_;
+      result.fieldShareType_ = fieldShareType_;
       onBuilt();
       return result;
     }
@@ -434,10 +404,8 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
       if (other
           == trinsic.services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch
               .getDefaultInstance()) return this;
-      if (other.hasUsagePolicy()) {
-        bitField0_ |= 0x00000001;
-        usagePolicy_ = other.usagePolicy_;
-        onChanged();
+      if (other.fieldShareType_ != 0) {
+        setFieldShareTypeValue(other.getFieldShareTypeValue());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -465,12 +433,12 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
             case 0:
               done = true;
               break;
-            case 10:
+            case 8:
               {
-                usagePolicy_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
+                fieldShareType_ = input.readEnum();
+
                 break;
-              } // case 10
+              } // case 8
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -488,85 +456,41 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
       return this;
     }
 
-    private int bitField0_;
+    private int fieldShareType_ = 0;
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+     * </code>
+     *
+     * @return The enum numeric value on the wire for fieldShareType.
+     */
+    @java.lang.Override
+    public int getFieldShareTypeValue() {
+      return fieldShareType_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+     * </code>
+     *
+     * @param value The enum numeric value on the wire for fieldShareType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFieldShareTypeValue(int value) {
 
-    private java.lang.Object usagePolicy_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of the field
-     * </pre>
-     *
-     * <code>optional string usage_policy = 1;</code>
-     *
-     * @return Whether the usagePolicy field is set.
-     */
-    public boolean hasUsagePolicy() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of the field
-     * </pre>
-     *
-     * <code>optional string usage_policy = 1;</code>
-     *
-     * @return The usagePolicy.
-     */
-    public java.lang.String getUsagePolicy() {
-      java.lang.Object ref = usagePolicy_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        usagePolicy_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of the field
-     * </pre>
-     *
-     * <code>optional string usage_policy = 1;</code>
-     *
-     * @return The bytes for usagePolicy.
-     */
-    public com.google.protobuf.ByteString getUsagePolicyBytes() {
-      java.lang.Object ref = usagePolicy_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        usagePolicy_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Human-readable name of the field
-     * </pre>
-     *
-     * <code>optional string usage_policy = 1;</code>
-     *
-     * @param value The usagePolicy to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUsagePolicy(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      bitField0_ |= 0x00000001;
-      usagePolicy_ = value;
+      fieldShareType_ = value;
       onChanged();
       return this;
     }
@@ -577,13 +501,44 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
      * Human-readable name of the field
      * </pre>
      *
-     * <code>optional string usage_policy = 1;</code>
+     * <code>
+     * .services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+     * </code>
      *
+     * @return The fieldShareType.
+     */
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.templates.v1.VerificationShareType
+        getFieldShareType() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.verifiablecredentials.templates.v1.VerificationShareType result =
+          trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.valueOf(
+              fieldShareType_);
+      return result == null
+          ? trinsic.services.verifiablecredentials.templates.v1.VerificationShareType.UNRECOGNIZED
+          : result;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Human-readable name of the field
+     * </pre>
+     *
+     * <code>
+     * .services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+     * </code>
+     *
+     * @param value The fieldShareType to set.
      * @return This builder for chaining.
      */
-    public Builder clearUsagePolicy() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      usagePolicy_ = getDefaultInstance().getUsagePolicy();
+    public Builder setFieldShareType(
+        trinsic.services.verifiablecredentials.templates.v1.VerificationShareType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      fieldShareType_ = value.getNumber();
       onChanged();
       return this;
     }
@@ -594,18 +549,15 @@ public final class VerificationTemplateFieldPatch extends com.google.protobuf.Ge
      * Human-readable name of the field
      * </pre>
      *
-     * <code>optional string usage_policy = 1;</code>
+     * <code>
+     * .services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+     * </code>
      *
-     * @param value The bytes for usagePolicy to set.
      * @return This builder for chaining.
      */
-    public Builder setUsagePolicyBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000001;
-      usagePolicy_ = value;
+    public Builder clearFieldShareType() {
+
+      fieldShareType_ = 0;
       onChanged();
       return this;
     }
