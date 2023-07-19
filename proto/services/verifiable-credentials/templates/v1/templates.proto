@@ -283,7 +283,10 @@ service CredentialTemplates {
   rpc CreateVerificationTemplate(CreateVerificationTemplateRequest) returns (CreateVerificationTemplateResponse) {
     option (options.sdk_template_option).experimental = {active: true};
   }
-  rpc ListVerificationTemplate(ListVerificationTemplatesRequest) returns (ListVerificationTemplatesResponse) {
+  rpc ListVerificationTemplates(ListVerificationTemplatesRequest) returns (ListVerificationTemplatesResponse) {
+    option (options.sdk_template_option).experimental = {active: true};
+  }
+  rpc GetVerificationTemplate(GetVerificationTemplateRequest) returns (GetVerificationTemplateResponse) {
     option (options.sdk_template_option).experimental = {active: true};
   }
   rpc UpdateVerificationTemplate(UpdateVerificationTemplateRequest) returns (UpdateVerificationTemplateResponse) {
@@ -292,6 +295,18 @@ service CredentialTemplates {
   rpc DeleteVerificationTemplate(DeleteVerificationTemplateRequest) returns (DeleteVerificationTemplateResponse) {
     option (options.sdk_template_option).experimental = {active: true};
   }
+}
+
+// Request to fetch a template by ID
+message GetVerificationTemplateRequest {
+  // ID of template to fetch
+  string id = 1;
+}
+
+// Response to `GetCredentialTemplateRequest`
+message GetVerificationTemplateResponse {
+  // Template fetched by ID
+  VerificationTemplateData template = 1;
 }
 
 
@@ -345,7 +360,9 @@ message VerificationTemplateData {
   // Template version number
   int32 version = 3 [json_name="version"];
   // Fields defined for the template
-  repeated VerificationTemplateField fields = 4;
+  map<string, VerificationTemplateField> fields = 4 [json_name="fields"];
+  // Source credential template, used for verifying that the specified `fields` are present in the credential template
+  string credential_template_id = 5;
   // URI pointing to template JSON schema document
   string schema_uri = 6 [json_name="schemaUri"];
   // ID of ecosystem in which template resides
@@ -393,8 +410,8 @@ message VerificationTemplateField {
 }
 
 enum VerificationShareType {
-  REQUIRED = 0;
-  OPTIONAL = 1;
+  OPTIONAL = 0;
+  REQUIRED = 1;
 }
 
 // A patch to apply to an existing template field
