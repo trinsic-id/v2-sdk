@@ -3244,6 +3244,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#getverificationtemplaterequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetVerificationTemplateRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getverificationtemplateresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetVerificationTemplateResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#listcredentialtemplatesrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3457,6 +3479,17 @@
     <span class="md-ellipsis">
       
         VerificationTemplateData
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificationtemplatedatafieldsentry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VerificationTemplateData.FieldsEntry
       
     </span>
   </a>
@@ -6479,9 +6512,15 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>Create/update verification templates</td>
 </tr>
 <tr>
-<td>ListVerificationTemplate</td>
+<td>ListVerificationTemplates</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-ListVerificationTemplatesRequest">ListVerificationTemplatesRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-ListVerificationTemplatesResponse">ListVerificationTemplatesResponse</a></td>
+<td></td>
+</tr>
+<tr>
+<td>GetVerificationTemplate</td>
+<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-GetVerificationTemplateRequest">GetVerificationTemplateRequest</a></td>
+<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-GetVerificationTemplateResponse">GetVerificationTemplateResponse</a></td>
 <td></td>
 </tr>
 <tr>
@@ -6827,6 +6866,44 @@ DEPRECATED, will be removed June 1st 2023</p>
 <tr>
 <td>template</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a></td>
+<td>Template fetched by ID</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-templates-v1-GetVerificationTemplateRequest"></a></p>
+<h3 id="getverificationtemplaterequest">GetVerificationTemplateRequest<a class="headerlink" href="#getverificationtemplaterequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch a template by ID</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of template to fetch</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-templates-v1-GetVerificationTemplateResponse"></a></p>
+<h3 id="getverificationtemplateresponse">GetVerificationTemplateResponse<a class="headerlink" href="#getverificationtemplateresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetCredentialTemplateRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>template</td>
+<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateData">VerificationTemplateData</a></td>
 <td>Template fetched by ID</td>
 </tr>
 </tbody>
@@ -7423,8 +7500,13 @@ DEPRECATED, will be removed June 1st 2023</p>
 </tr>
 <tr>
 <td>fields</td>
-<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateField">VerificationTemplateField</a>[]</td>
+<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateData-FieldsEntry">VerificationTemplateData.FieldsEntry</a>[]</td>
 <td>Fields defined for the template</td>
+</tr>
+<tr>
+<td>credential_template_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Source credential template, used for verifying that the specified <code>fields</code> are present in the credential template</td>
 </tr>
 <tr>
 <td>schema_uri</td>
@@ -7460,6 +7542,29 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Human-readable template description</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-verifiablecredentials-templates-v1-VerificationTemplateData-FieldsEntry"></a></p>
+<h3 id="verificationtemplatedatafieldsentry">VerificationTemplateData.FieldsEntry<a class="headerlink" href="#verificationtemplatedatafieldsentry" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateField">VerificationTemplateField</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -7589,12 +7694,12 @@ DEPRECATED, will be removed June 1st 2023</p>
 </thead>
 <tbody>
 <tr>
-<td>REQUIRED</td>
+<td>OPTIONAL</td>
 <td>0</td>
 <td></td>
 </tr>
 <tr>
-<td>OPTIONAL</td>
+<td>REQUIRED</td>
 <td>1</td>
 <td></td>
 </tr>
