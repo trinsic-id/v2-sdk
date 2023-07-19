@@ -1604,6 +1604,128 @@ class UriFieldData extends $pb.GeneratedMessage {
   void clearRenderMethod() => clearField(2);
 }
 
+class GetVerificationTemplateRequest extends $pb.GeneratedMessage {
+  factory GetVerificationTemplateRequest() => create();
+  GetVerificationTemplateRequest._() : super();
+  factory GetVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetVerificationTemplateRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetVerificationTemplateRequest',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetVerificationTemplateRequest clone() =>
+      GetVerificationTemplateRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetVerificationTemplateRequest copyWith(
+          void Function(GetVerificationTemplateRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as GetVerificationTemplateRequest))
+          as GetVerificationTemplateRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetVerificationTemplateRequest create() =>
+      GetVerificationTemplateRequest._();
+  GetVerificationTemplateRequest createEmptyInstance() => create();
+  static $pb.PbList<GetVerificationTemplateRequest> createRepeated() =>
+      $pb.PbList<GetVerificationTemplateRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetVerificationTemplateRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetVerificationTemplateRequest>(create);
+  static GetVerificationTemplateRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+}
+
+class GetVerificationTemplateResponse extends $pb.GeneratedMessage {
+  factory GetVerificationTemplateResponse() => create();
+  GetVerificationTemplateResponse._() : super();
+  factory GetVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetVerificationTemplateResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GetVerificationTemplateResponse',
+      package: const $pb.PackageName(_omitMessageNames
+          ? ''
+          : 'services.verifiablecredentials.templates.v1'),
+      createEmptyInstance: create)
+    ..aOM<VerificationTemplateData>(1, _omitFieldNames ? '' : 'template',
+        subBuilder: VerificationTemplateData.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetVerificationTemplateResponse clone() =>
+      GetVerificationTemplateResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetVerificationTemplateResponse copyWith(
+          void Function(GetVerificationTemplateResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as GetVerificationTemplateResponse))
+          as GetVerificationTemplateResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetVerificationTemplateResponse create() =>
+      GetVerificationTemplateResponse._();
+  GetVerificationTemplateResponse createEmptyInstance() => create();
+  static $pb.PbList<GetVerificationTemplateResponse> createRepeated() =>
+      $pb.PbList<GetVerificationTemplateResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetVerificationTemplateResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetVerificationTemplateResponse>(
+          create);
+  static GetVerificationTemplateResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  VerificationTemplateData get template => $_getN(0);
+  @$pb.TagNumber(1)
+  set template(VerificationTemplateData v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasTemplate() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTemplate() => clearField(1);
+  @$pb.TagNumber(1)
+  VerificationTemplateData ensureTemplate() => $_ensure(0);
+}
+
 class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
   factory CreateVerificationTemplateRequest() => create();
   CreateVerificationTemplateRequest._() : super();
@@ -2066,9 +2188,16 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..a<$core.int>(3, _omitFieldNames ? '' : 'version', $pb.PbFieldType.O3)
-    ..pc<VerificationTemplateField>(
-        4, _omitFieldNames ? '' : 'fields', $pb.PbFieldType.PM,
-        subBuilder: VerificationTemplateField.create)
+    ..m<$core.String, VerificationTemplateField>(
+        4, _omitFieldNames ? '' : 'fields',
+        entryClassName: 'VerificationTemplateData.FieldsEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OM,
+        valueCreator: VerificationTemplateField.create,
+        valueDefaultOrMaker: VerificationTemplateField.getDefault,
+        packageName: const $pb.PackageName(
+            'services.verifiablecredentials.templates.v1'))
+    ..aOS(5, _omitFieldNames ? '' : 'credentialTemplateId')
     ..aOS(6, _omitFieldNames ? '' : 'schemaUri')
     ..aOS(8, _omitFieldNames ? '' : 'ecosystemId')
     ..aOS(9, _omitFieldNames ? '' : 'type')
@@ -2140,89 +2269,101 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   void clearVersion() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.List<VerificationTemplateField> get fields => $_getList(3);
+  $core.Map<$core.String, VerificationTemplateField> get fields => $_getMap(3);
 
-  @$pb.TagNumber(6)
-  $core.String get schemaUri => $_getSZ(4);
-  @$pb.TagNumber(6)
-  set schemaUri($core.String v) {
+  @$pb.TagNumber(5)
+  $core.String get credentialTemplateId => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set credentialTemplateId($core.String v) {
     $_setString(4, v);
   }
 
+  @$pb.TagNumber(5)
+  $core.bool hasCredentialTemplateId() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearCredentialTemplateId() => clearField(5);
+
   @$pb.TagNumber(6)
-  $core.bool hasSchemaUri() => $_has(4);
+  $core.String get schemaUri => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set schemaUri($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasSchemaUri() => $_has(5);
   @$pb.TagNumber(6)
   void clearSchemaUri() => clearField(6);
 
   @$pb.TagNumber(8)
-  $core.String get ecosystemId => $_getSZ(5);
+  $core.String get ecosystemId => $_getSZ(6);
   @$pb.TagNumber(8)
   set ecosystemId($core.String v) {
-    $_setString(5, v);
+    $_setString(6, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasEcosystemId() => $_has(5);
+  $core.bool hasEcosystemId() => $_has(6);
   @$pb.TagNumber(8)
   void clearEcosystemId() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get type => $_getSZ(6);
+  $core.String get type => $_getSZ(7);
   @$pb.TagNumber(9)
   set type($core.String v) {
-    $_setString(6, v);
+    $_setString(7, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasType() => $_has(6);
+  $core.bool hasType() => $_has(7);
   @$pb.TagNumber(9)
   void clearType() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.String get createdBy => $_getSZ(7);
+  $core.String get createdBy => $_getSZ(8);
   @$pb.TagNumber(10)
   set createdBy($core.String v) {
-    $_setString(7, v);
+    $_setString(8, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasCreatedBy() => $_has(7);
+  $core.bool hasCreatedBy() => $_has(8);
   @$pb.TagNumber(10)
   void clearCreatedBy() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.String get dateCreated => $_getSZ(8);
+  $core.String get dateCreated => $_getSZ(9);
   @$pb.TagNumber(11)
   set dateCreated($core.String v) {
-    $_setString(8, v);
+    $_setString(9, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasDateCreated() => $_has(8);
+  $core.bool hasDateCreated() => $_has(9);
   @$pb.TagNumber(11)
   void clearDateCreated() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.String get title => $_getSZ(9);
+  $core.String get title => $_getSZ(10);
   @$pb.TagNumber(12)
   set title($core.String v) {
-    $_setString(9, v);
+    $_setString(10, v);
   }
 
   @$pb.TagNumber(12)
-  $core.bool hasTitle() => $_has(9);
+  $core.bool hasTitle() => $_has(10);
   @$pb.TagNumber(12)
   void clearTitle() => clearField(12);
 
   @$pb.TagNumber(13)
-  $core.String get description => $_getSZ(10);
+  $core.String get description => $_getSZ(11);
   @$pb.TagNumber(13)
   set description($core.String v) {
-    $_setString(10, v);
+    $_setString(11, v);
   }
 
   @$pb.TagNumber(13)
-  $core.bool hasDescription() => $_has(10);
+  $core.bool hasDescription() => $_has(11);
   @$pb.TagNumber(13)
   void clearDescription() => clearField(13);
 }
@@ -2397,7 +2538,7 @@ class VerificationTemplateField extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..e<VerificationShareType>(
         1, _omitFieldNames ? '' : 'fieldShareType', $pb.PbFieldType.OE,
-        defaultOrMaker: VerificationShareType.REQUIRED,
+        defaultOrMaker: VerificationShareType.OPTIONAL,
         valueOf: VerificationShareType.valueOf,
         enumValues: VerificationShareType.values)
     ..aOS(2, _omitFieldNames ? '' : 'usagePolicy')

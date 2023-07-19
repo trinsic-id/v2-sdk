@@ -97,19 +97,19 @@ export function uriRenderMethodToJSON(object: UriRenderMethod): string {
 }
 
 export enum VerificationShareType {
-  REQUIRED = 0,
-  OPTIONAL = 1,
+  OPTIONAL = 0,
+  REQUIRED = 1,
   UNRECOGNIZED = -1,
 }
 
 export function verificationShareTypeFromJSON(object: any): VerificationShareType {
   switch (object) {
     case 0:
-    case "REQUIRED":
-      return VerificationShareType.REQUIRED;
-    case 1:
     case "OPTIONAL":
       return VerificationShareType.OPTIONAL;
+    case 1:
+    case "REQUIRED":
+      return VerificationShareType.REQUIRED;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -119,10 +119,10 @@ export function verificationShareTypeFromJSON(object: any): VerificationShareTyp
 
 export function verificationShareTypeToJSON(object: VerificationShareType): string {
   switch (object) {
-    case VerificationShareType.REQUIRED:
-      return "REQUIRED";
     case VerificationShareType.OPTIONAL:
       return "OPTIONAL";
+    case VerificationShareType.REQUIRED:
+      return "REQUIRED";
     case VerificationShareType.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
@@ -383,6 +383,18 @@ export interface UriFieldData {
   renderMethod?: UriRenderMethod;
 }
 
+/** Request to fetch a template by ID */
+export interface GetVerificationTemplateRequest {
+  /** ID of template to fetch */
+  id?: string;
+}
+
+/** Response to `GetCredentialTemplateRequest` */
+export interface GetVerificationTemplateResponse {
+  /** Template fetched by ID */
+  template?: VerificationTemplateData;
+}
+
 export interface CreateVerificationTemplateRequest {
   /** Name of new template. Must be a unique identifier within its ecosystem. */
   name?: string;
@@ -446,7 +458,9 @@ export interface VerificationTemplateData {
   /** Template version number */
   version?: number;
   /** Fields defined for the template */
-  fields?: VerificationTemplateField[];
+  fields?: { [key: string]: VerificationTemplateField };
+  /** Source credential template, used for verifying that the specified `fields` are present in the credential template */
+  credentialTemplateId?: string;
   /** URI pointing to template JSON schema document */
   schemaUri?: string;
   /** ID of ecosystem in which template resides */
@@ -461,6 +475,11 @@ export interface VerificationTemplateData {
   title?: string;
   /** Human-readable template description */
   description?: string;
+}
+
+export interface VerificationTemplateData_FieldsEntry {
+  key: string;
+  value?: VerificationTemplateField;
 }
 
 /** Request to list templates using a SQL query */
@@ -2747,6 +2766,121 @@ export const UriFieldData = {
   },
 };
 
+function createBaseGetVerificationTemplateRequest(): GetVerificationTemplateRequest {
+  return { id: "" };
+}
+
+export const GetVerificationTemplateRequest = {
+  encode(message: GetVerificationTemplateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetVerificationTemplateRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetVerificationTemplateRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.id = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetVerificationTemplateRequest {
+    return { id: isSet(object.id) ? String(object.id) : "" };
+  },
+
+  toJSON(message: GetVerificationTemplateRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
+  create(base?: DeepPartial<GetVerificationTemplateRequest>): GetVerificationTemplateRequest {
+    return GetVerificationTemplateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<GetVerificationTemplateRequest>): GetVerificationTemplateRequest {
+    const message = createBaseGetVerificationTemplateRequest();
+    message.id = object.id ?? "";
+    return message;
+  },
+};
+
+function createBaseGetVerificationTemplateResponse(): GetVerificationTemplateResponse {
+  return { template: undefined };
+}
+
+export const GetVerificationTemplateResponse = {
+  encode(message: GetVerificationTemplateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.template !== undefined) {
+      VerificationTemplateData.encode(message.template, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetVerificationTemplateResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetVerificationTemplateResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.template = VerificationTemplateData.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetVerificationTemplateResponse {
+    return { template: isSet(object.template) ? VerificationTemplateData.fromJSON(object.template) : undefined };
+  },
+
+  toJSON(message: GetVerificationTemplateResponse): unknown {
+    const obj: any = {};
+    message.template !== undefined &&
+      (obj.template = message.template ? VerificationTemplateData.toJSON(message.template) : undefined);
+    return obj;
+  },
+
+  create(base?: DeepPartial<GetVerificationTemplateResponse>): GetVerificationTemplateResponse {
+    return GetVerificationTemplateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<GetVerificationTemplateResponse>): GetVerificationTemplateResponse {
+    const message = createBaseGetVerificationTemplateResponse();
+    message.template = (object.template !== undefined && object.template !== null)
+      ? VerificationTemplateData.fromPartial(object.template)
+      : undefined;
+    return message;
+  },
+};
+
 function createBaseCreateVerificationTemplateRequest(): CreateVerificationTemplateRequest {
   return { name: "", fields: {}, credentialTemplateId: "", title: "", description: "" };
 }
@@ -3381,7 +3515,8 @@ function createBaseVerificationTemplateData(): VerificationTemplateData {
     id: "",
     name: "",
     version: 0,
-    fields: [],
+    fields: {},
+    credentialTemplateId: "",
     schemaUri: "",
     ecosystemId: "",
     type: "",
@@ -3403,10 +3538,11 @@ export const VerificationTemplateData = {
     if (message.version !== undefined && message.version !== 0) {
       writer.uint32(24).int32(message.version);
     }
-    if (message.fields !== undefined && message.fields.length !== 0) {
-      for (const v of message.fields) {
-        VerificationTemplateField.encode(v!, writer.uint32(34).fork()).ldelim();
-      }
+    Object.entries(message.fields || {}).forEach(([key, value]) => {
+      VerificationTemplateData_FieldsEntry.encode({ key: key as any, value }, writer.uint32(34).fork()).ldelim();
+    });
+    if (message.credentialTemplateId !== undefined && message.credentialTemplateId !== "") {
+      writer.uint32(42).string(message.credentialTemplateId);
     }
     if (message.schemaUri !== undefined && message.schemaUri !== "") {
       writer.uint32(50).string(message.schemaUri);
@@ -3465,7 +3601,17 @@ export const VerificationTemplateData = {
             break;
           }
 
-          message.fields!.push(VerificationTemplateField.decode(reader, reader.uint32()));
+          const entry4 = VerificationTemplateData_FieldsEntry.decode(reader, reader.uint32());
+          if (entry4.value !== undefined) {
+            message.fields![entry4.key] = entry4.value;
+          }
+          continue;
+        case 5:
+          if (tag != 42) {
+            break;
+          }
+
+          message.credentialTemplateId = reader.string();
           continue;
         case 6:
           if (tag != 50) {
@@ -3530,7 +3676,13 @@ export const VerificationTemplateData = {
       id: isSet(object.id) ? String(object.id) : "",
       name: isSet(object.name) ? String(object.name) : "",
       version: isSet(object.version) ? Number(object.version) : 0,
-      fields: Array.isArray(object?.fields) ? object.fields.map((e: any) => VerificationTemplateField.fromJSON(e)) : [],
+      fields: isObject(object.fields)
+        ? Object.entries(object.fields).reduce<{ [key: string]: VerificationTemplateField }>((acc, [key, value]) => {
+          acc[key] = VerificationTemplateField.fromJSON(value);
+          return acc;
+        }, {})
+        : {},
+      credentialTemplateId: isSet(object.credentialTemplateId) ? String(object.credentialTemplateId) : "",
       schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       type: isSet(object.type) ? String(object.type) : "",
@@ -3546,11 +3698,13 @@ export const VerificationTemplateData = {
     message.id !== undefined && (obj.id = message.id);
     message.name !== undefined && (obj.name = message.name);
     message.version !== undefined && (obj.version = Math.round(message.version));
+    obj.fields = {};
     if (message.fields) {
-      obj.fields = message.fields.map((e) => e ? VerificationTemplateField.toJSON(e) : undefined);
-    } else {
-      obj.fields = [];
+      Object.entries(message.fields).forEach(([k, v]) => {
+        obj.fields[k] = VerificationTemplateField.toJSON(v);
+      });
     }
+    message.credentialTemplateId !== undefined && (obj.credentialTemplateId = message.credentialTemplateId);
     message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
     message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
     message.type !== undefined && (obj.type = message.type);
@@ -3570,7 +3724,16 @@ export const VerificationTemplateData = {
     message.id = object.id ?? "";
     message.name = object.name ?? "";
     message.version = object.version ?? 0;
-    message.fields = object.fields?.map((e) => VerificationTemplateField.fromPartial(e)) || [];
+    message.fields = Object.entries(object.fields ?? {}).reduce<{ [key: string]: VerificationTemplateField }>(
+      (acc, [key, value]) => {
+        if (value !== undefined) {
+          acc[key] = VerificationTemplateField.fromPartial(value);
+        }
+        return acc;
+      },
+      {},
+    );
+    message.credentialTemplateId = object.credentialTemplateId ?? "";
     message.schemaUri = object.schemaUri ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.type = object.type ?? "";
@@ -3578,6 +3741,80 @@ export const VerificationTemplateData = {
     message.dateCreated = object.dateCreated ?? "";
     message.title = object.title ?? "";
     message.description = object.description ?? "";
+    return message;
+  },
+};
+
+function createBaseVerificationTemplateData_FieldsEntry(): VerificationTemplateData_FieldsEntry {
+  return { key: "", value: undefined };
+}
+
+export const VerificationTemplateData_FieldsEntry = {
+  encode(message: VerificationTemplateData_FieldsEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== undefined) {
+      VerificationTemplateField.encode(message.value, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerificationTemplateData_FieldsEntry {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVerificationTemplateData_FieldsEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        case 2:
+          if (tag != 18) {
+            break;
+          }
+
+          message.value = VerificationTemplateField.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): VerificationTemplateData_FieldsEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? VerificationTemplateField.fromJSON(object.value) : undefined,
+    };
+  },
+
+  toJSON(message: VerificationTemplateData_FieldsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value ? VerificationTemplateField.toJSON(message.value) : undefined);
+    return obj;
+  },
+
+  create(base?: DeepPartial<VerificationTemplateData_FieldsEntry>): VerificationTemplateData_FieldsEntry {
+    return VerificationTemplateData_FieldsEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VerificationTemplateData_FieldsEntry>): VerificationTemplateData_FieldsEntry {
+    const message = createBaseVerificationTemplateData_FieldsEntry();
+    message.key = object.key ?? "";
+    message.value = (object.value !== undefined && object.value !== null)
+      ? VerificationTemplateField.fromPartial(object.value)
+      : undefined;
     return message;
   },
 };
@@ -3940,11 +4177,19 @@ export const CredentialTemplatesDefinition = {
       responseStream: false,
       options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
     },
-    listVerificationTemplate: {
-      name: "ListVerificationTemplate",
+    listVerificationTemplates: {
+      name: "ListVerificationTemplates",
       requestType: ListVerificationTemplatesRequest,
       requestStream: false,
       responseType: ListVerificationTemplatesResponse,
+      responseStream: false,
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
+    },
+    getVerificationTemplate: {
+      name: "GetVerificationTemplate",
+      requestType: GetVerificationTemplateRequest,
+      requestStream: false,
+      responseType: GetVerificationTemplateResponse,
       responseStream: false,
       options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
     },

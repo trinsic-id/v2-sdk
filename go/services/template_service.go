@@ -42,8 +42,10 @@ type TemplateService interface {
 	// CreateVerificationTemplate Deprecated: This method is experimental
 	// Create/update verification templates
 	CreateVerificationTemplate(userContext context.Context, request *template.CreateVerificationTemplateRequest) (*template.CreateVerificationTemplateResponse, error)
-	// ListVerificationTemplate Deprecated: This method is experimental
-	ListVerificationTemplate(userContext context.Context, request *template.ListVerificationTemplatesRequest) (*template.ListVerificationTemplatesResponse, error)
+	// ListVerificationTemplates Deprecated: This method is experimental
+	ListVerificationTemplates(userContext context.Context, request *template.ListVerificationTemplatesRequest) (*template.ListVerificationTemplatesResponse, error)
+	// GetVerificationTemplate Deprecated: This method is experimental
+	GetVerificationTemplate(userContext context.Context, request *template.GetVerificationTemplateRequest) (*template.GetVerificationTemplateResponse, error)
 	// UpdateVerificationTemplate Deprecated: This method is experimental
 	UpdateVerificationTemplate(userContext context.Context, request *template.UpdateVerificationTemplateRequest) (*template.UpdateVerificationTemplateResponse, error)
 	// DeleteVerificationTemplate Deprecated: This method is experimental
@@ -152,13 +154,26 @@ func (t *credentialTemplatesBase) CreateVerificationTemplate(userContext context
 	return response, nil
 }
 
-// ListVerificationTemplate Deprecated: This method is experimental
-func (t *credentialTemplatesBase) ListVerificationTemplate(userContext context.Context, request *template.ListVerificationTemplatesRequest) (*template.ListVerificationTemplatesResponse, error) {
+// ListVerificationTemplates Deprecated: This method is experimental
+func (t *credentialTemplatesBase) ListVerificationTemplates(userContext context.Context, request *template.ListVerificationTemplatesRequest) (*template.ListVerificationTemplatesResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
-	response, err := t.client.ListVerificationTemplate(md, request)
+	response, err := t.client.ListVerificationTemplates(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+// GetVerificationTemplate Deprecated: This method is experimental
+func (t *credentialTemplatesBase) GetVerificationTemplate(userContext context.Context, request *template.GetVerificationTemplateRequest) (*template.GetVerificationTemplateResponse, error) {
+	md, err := t.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := t.client.GetVerificationTemplate(md, request)
 	if err != nil {
 		return nil, err
 	}

@@ -46,8 +46,8 @@ class UriRenderMethod(betterproto.Enum):
 
 
 class VerificationShareType(betterproto.Enum):
-    REQUIRED = 0
-    OPTIONAL = 1
+    OPTIONAL = 0
+    REQUIRED = 1
 
 
 @dataclass(eq=False, repr=False)
@@ -421,6 +421,22 @@ class UriFieldData(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
+class GetVerificationTemplateRequest(betterproto.Message):
+    """Request to fetch a template by ID"""
+
+    id: str = betterproto.string_field(1)
+    """ID of template to fetch"""
+
+
+@dataclass(eq=False, repr=False)
+class GetVerificationTemplateResponse(betterproto.Message):
+    """Response to `GetCredentialTemplateRequest`"""
+
+    template: "VerificationTemplateData" = betterproto.message_field(1)
+    """Template fetched by ID"""
+
+
+@dataclass(eq=False, repr=False)
 class CreateVerificationTemplateRequest(betterproto.Message):
     name: str = betterproto.string_field(1)
     """
@@ -497,8 +513,16 @@ class VerificationTemplateData(betterproto.Message):
     version: int = betterproto.int32_field(3)
     """Template version number"""
 
-    fields: List["VerificationTemplateField"] = betterproto.message_field(4)
+    fields: Dict[str, "VerificationTemplateField"] = betterproto.map_field(
+        4, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
     """Fields defined for the template"""
+
+    credential_template_id: str = betterproto.string_field(5)
+    """
+    Source credential template, used for verifying that the specified `fields`
+    are present in the credential template
+    """
 
     schema_uri: str = betterproto.string_field(6)
     """URI pointing to template JSON schema document"""
@@ -688,7 +712,7 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def list_verification_template(
+    async def list_verification_templates(
         self,
         list_verification_templates_request: "ListVerificationTemplatesRequest",
         timeout: Optional[float] = None,
@@ -696,9 +720,25 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
         metadata: Optional["_MetadataLike"] = None,
     ) -> "ListVerificationTemplatesResponse":
         return await self._unary_unary(
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplate",
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplates",
             list_verification_templates_request,
             ListVerificationTemplatesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def get_verification_template(
+        self,
+        get_verification_template_request: "GetVerificationTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetVerificationTemplateResponse":
+        return await self._unary_unary(
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/GetVerificationTemplate",
+            get_verification_template_request,
+            GetVerificationTemplateResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -773,9 +813,14 @@ class CredentialTemplatesBase(ServiceBase):
     ) -> "CreateVerificationTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def list_verification_template(
+    async def list_verification_templates(
         self, list_verification_templates_request: "ListVerificationTemplatesRequest"
     ) -> "ListVerificationTemplatesResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def get_verification_template(
+        self, get_verification_template_request: "GetVerificationTemplateRequest"
+    ) -> "GetVerificationTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def update_verification_template(
@@ -825,11 +870,18 @@ class CredentialTemplatesBase(ServiceBase):
         response = await self.create_verification_template(request)
         await stream.send_message(response)
 
-    async def __rpc_list_verification_template(
+    async def __rpc_list_verification_templates(
         self, stream: grpclib.server.Stream
     ) -> None:
         request = await stream.recv_message()
-        response = await self.list_verification_template(request)
+        response = await self.list_verification_templates(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_verification_template(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.get_verification_template(request)
         await stream.send_message(response)
 
     async def __rpc_update_verification_template(
@@ -890,11 +942,17 @@ class CredentialTemplatesBase(ServiceBase):
                 CreateVerificationTemplateRequest,
                 CreateVerificationTemplateResponse,
             ),
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplate": grpclib.const.Handler(
-                self.__rpc_list_verification_template,
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplates": grpclib.const.Handler(
+                self.__rpc_list_verification_templates,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 ListVerificationTemplatesRequest,
                 ListVerificationTemplatesResponse,
+            ),
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/GetVerificationTemplate": grpclib.const.Handler(
+                self.__rpc_get_verification_template,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetVerificationTemplateRequest,
+                GetVerificationTemplateResponse,
             ),
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/UpdateVerificationTemplate": grpclib.const.Handler(
                 self.__rpc_update_verification_template,

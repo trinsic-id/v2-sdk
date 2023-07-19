@@ -60,9 +60,13 @@ object CredentialTemplatesGrpcKt {
       MethodDescriptor<CreateVerificationTemplateRequest, CreateVerificationTemplateResponse>
     @JvmStatic get() = CredentialTemplatesGrpc.getCreateVerificationTemplateMethod()
 
-  val listVerificationTemplateMethod:
+  val listVerificationTemplatesMethod:
       MethodDescriptor<ListVerificationTemplatesRequest, ListVerificationTemplatesResponse>
-    @JvmStatic get() = CredentialTemplatesGrpc.getListVerificationTemplateMethod()
+    @JvmStatic get() = CredentialTemplatesGrpc.getListVerificationTemplatesMethod()
+
+  val getVerificationTemplateMethod:
+      MethodDescriptor<GetVerificationTemplateRequest, GetVerificationTemplateResponse>
+    @JvmStatic get() = CredentialTemplatesGrpc.getGetVerificationTemplateMethod()
 
   val updateVerificationTemplateMethod:
       MethodDescriptor<UpdateVerificationTemplateRequest, UpdateVerificationTemplateResponse>
@@ -222,13 +226,35 @@ object CredentialTemplatesGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun listVerificationTemplate(
+    suspend fun listVerificationTemplates(
         request: ListVerificationTemplatesRequest,
         headers: Metadata = Metadata()
     ): ListVerificationTemplatesResponse =
         unaryRpc(
             channel,
-            CredentialTemplatesGrpc.getListVerificationTemplateMethod(),
+            CredentialTemplatesGrpc.getListVerificationTemplatesMethod(),
+            request,
+            callOptions,
+            headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun getVerificationTemplate(
+        request: GetVerificationTemplateRequest,
+        headers: Metadata = Metadata()
+    ): GetVerificationTemplateResponse =
+        unaryRpc(
+            channel,
+            CredentialTemplatesGrpc.getGetVerificationTemplateMethod(),
             request,
             callOptions,
             headers)
@@ -411,7 +437,7 @@ object CredentialTemplatesGrpcKt {
 
     /**
      * Returns the response to an RPC for
-     * services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate.
+     * services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplates.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -420,12 +446,30 @@ object CredentialTemplatesGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun listVerificationTemplate(
+    open suspend fun listVerificationTemplates(
         request: ListVerificationTemplatesRequest
     ): ListVerificationTemplatesResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
-                "Method services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplate is unimplemented"))
+                "Method services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplates is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.verifiablecredentials.templates.v1.CredentialTemplates.GetVerificationTemplate.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun getVerificationTemplate(
+        request: GetVerificationTemplateRequest
+    ): GetVerificationTemplateResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.verifiablecredentials.templates.v1.CredentialTemplates.GetVerificationTemplate is unimplemented"))
 
     /**
      * Returns the response to an RPC for
@@ -503,8 +547,13 @@ object CredentialTemplatesGrpcKt {
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
-                    descriptor = CredentialTemplatesGrpc.getListVerificationTemplateMethod(),
-                    implementation = ::listVerificationTemplate))
+                    descriptor = CredentialTemplatesGrpc.getListVerificationTemplatesMethod(),
+                    implementation = ::listVerificationTemplates))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = CredentialTemplatesGrpc.getGetVerificationTemplateMethod(),
+                    implementation = ::getVerificationTemplate))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,

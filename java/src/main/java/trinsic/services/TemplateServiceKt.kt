@@ -51,11 +51,19 @@ class TemplateServiceKt(options: TrinsicOptions.Builder?) : ServiceBase(options)
   }
   @Throws(InvalidProtocolBufferException::class)
   @Deprecated("This method is experimental")
-  suspend fun listVerificationTemplate(
+  suspend fun listVerificationTemplates(
       request: ListVerificationTemplatesRequest
   ): ListVerificationTemplatesResponse {
     /** This method is experimental */
-    return withMetadata(stub, request).listVerificationTemplate(request)
+    return withMetadata(stub, request).listVerificationTemplates(request)
+  }
+  @Throws(InvalidProtocolBufferException::class)
+  @Deprecated("This method is experimental")
+  suspend fun getVerificationTemplate(
+      request: GetVerificationTemplateRequest
+  ): GetVerificationTemplateResponse {
+    /** This method is experimental */
+    return withMetadata(stub, request).getVerificationTemplate(request)
   }
   @Throws(InvalidProtocolBufferException::class)
   @Deprecated("This method is experimental")
