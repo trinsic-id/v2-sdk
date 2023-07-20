@@ -418,5 +418,6 @@ enum VerificationShareType {
 message VerificationTemplateFieldPatch {
   // Human-readable name of the field
   VerificationShareType field_share_type = 1;
-
+  // User-facing explanation of what is done with this data
+  string usage_policy = 2;
 }

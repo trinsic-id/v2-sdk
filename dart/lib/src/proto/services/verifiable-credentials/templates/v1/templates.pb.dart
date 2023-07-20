@@ -2610,7 +2610,12 @@ class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
           ? ''
           : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'usagePolicy')
+    ..e<VerificationShareType>(
+        1, _omitFieldNames ? '' : 'fieldShareType', $pb.PbFieldType.OE,
+        defaultOrMaker: VerificationShareType.OPTIONAL,
+        valueOf: VerificationShareType.valueOf,
+        enumValues: VerificationShareType.values)
+    ..aOS(2, _omitFieldNames ? '' : 'usagePolicy')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2641,16 +2646,28 @@ class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
   static VerificationTemplateFieldPatch? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get usagePolicy => $_getSZ(0);
+  VerificationShareType get fieldShareType => $_getN(0);
   @$pb.TagNumber(1)
-  set usagePolicy($core.String v) {
-    $_setString(0, v);
+  set fieldShareType(VerificationShareType v) {
+    setField(1, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasUsagePolicy() => $_has(0);
+  $core.bool hasFieldShareType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUsagePolicy() => clearField(1);
+  void clearFieldShareType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get usagePolicy => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set usagePolicy($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasUsagePolicy() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearUsagePolicy() => clearField(2);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
