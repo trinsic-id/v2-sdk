@@ -593,10 +593,11 @@ class VerificationTemplateField(betterproto.Message):
 class VerificationTemplateFieldPatch(betterproto.Message):
     """A patch to apply to an existing template field"""
 
-    usage_policy: Optional[str] = betterproto.string_field(
-        1, optional=True, group="_usage_policy"
-    )
+    field_share_type: "VerificationShareType" = betterproto.enum_field(1)
     """Human-readable name of the field"""
+
+    usage_policy: str = betterproto.string_field(2)
+    """User-facing explanation of what is done with this data"""
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):

@@ -513,7 +513,9 @@ export interface VerificationTemplateField {
 /** A patch to apply to an existing template field */
 export interface VerificationTemplateFieldPatch {
   /** Human-readable name of the field */
-  usagePolicy?: string | undefined;
+  fieldShareType?: VerificationShareType;
+  /** User-facing explanation of what is done with this data */
+  usagePolicy?: string;
 }
 
 function createBaseGetCredentialTemplateRequest(): GetCredentialTemplateRequest {
@@ -4054,13 +4056,16 @@ export const VerificationTemplateField = {
 };
 
 function createBaseVerificationTemplateFieldPatch(): VerificationTemplateFieldPatch {
-  return { usagePolicy: undefined };
+  return { fieldShareType: 0, usagePolicy: "" };
 }
 
 export const VerificationTemplateFieldPatch = {
   encode(message: VerificationTemplateFieldPatch, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.usagePolicy !== undefined) {
-      writer.uint32(10).string(message.usagePolicy);
+    if (message.fieldShareType !== undefined && message.fieldShareType !== 0) {
+      writer.uint32(8).int32(message.fieldShareType);
+    }
+    if (message.usagePolicy !== undefined && message.usagePolicy !== "") {
+      writer.uint32(18).string(message.usagePolicy);
     }
     return writer;
   },
@@ -4073,7 +4078,14 @@ export const VerificationTemplateFieldPatch = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag != 8) {
+            break;
+          }
+
+          message.fieldShareType = reader.int32() as any;
+          continue;
+        case 2:
+          if (tag != 18) {
             break;
           }
 
@@ -4089,11 +4101,15 @@ export const VerificationTemplateFieldPatch = {
   },
 
   fromJSON(object: any): VerificationTemplateFieldPatch {
-    return { usagePolicy: isSet(object.usagePolicy) ? String(object.usagePolicy) : undefined };
+    return {
+      fieldShareType: isSet(object.fieldShareType) ? verificationShareTypeFromJSON(object.fieldShareType) : 0,
+      usagePolicy: isSet(object.usagePolicy) ? String(object.usagePolicy) : "",
+    };
   },
 
   toJSON(message: VerificationTemplateFieldPatch): unknown {
     const obj: any = {};
+    message.fieldShareType !== undefined && (obj.fieldShareType = verificationShareTypeToJSON(message.fieldShareType));
     message.usagePolicy !== undefined && (obj.usagePolicy = message.usagePolicy);
     return obj;
   },
@@ -4104,7 +4120,8 @@ export const VerificationTemplateFieldPatch = {
 
   fromPartial(object: DeepPartial<VerificationTemplateFieldPatch>): VerificationTemplateFieldPatch {
     const message = createBaseVerificationTemplateFieldPatch();
-    message.usagePolicy = object.usagePolicy ?? undefined;
+    message.fieldShareType = object.fieldShareType ?? 0;
+    message.usagePolicy = object.usagePolicy ?? "";
     return message;
   },
 };

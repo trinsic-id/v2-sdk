@@ -15,11 +15,12 @@ public interface VerificationTemplateFieldPatchOrBuilder
    * Human-readable name of the field
    * </pre>
    *
-   * <code>optional string usage_policy = 1;</code>
+   * <code>.services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+   * </code>
    *
-   * @return Whether the usagePolicy field is set.
+   * @return The enum numeric value on the wire for fieldShareType.
    */
-  boolean hasUsagePolicy();
+  int getFieldShareTypeValue();
   /**
    *
    *
@@ -27,7 +28,21 @@ public interface VerificationTemplateFieldPatchOrBuilder
    * Human-readable name of the field
    * </pre>
    *
-   * <code>optional string usage_policy = 1;</code>
+   * <code>.services.verifiablecredentials.templates.v1.VerificationShareType field_share_type = 1;
+   * </code>
+   *
+   * @return The fieldShareType.
+   */
+  trinsic.services.verifiablecredentials.templates.v1.VerificationShareType getFieldShareType();
+
+  /**
+   *
+   *
+   * <pre>
+   * User-facing explanation of what is done with this data
+   * </pre>
+   *
+   * <code>string usage_policy = 2;</code>
    *
    * @return The usagePolicy.
    */
@@ -36,10 +51,10 @@ public interface VerificationTemplateFieldPatchOrBuilder
    *
    *
    * <pre>
-   * Human-readable name of the field
+   * User-facing explanation of what is done with this data
    * </pre>
    *
-   * <code>optional string usage_policy = 1;</code>
+   * <code>string usage_policy = 2;</code>
    *
    * @return The bytes for usagePolicy.
    */

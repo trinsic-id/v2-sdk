@@ -1094,22 +1094,21 @@ const VerificationTemplateFieldPatch$json = {
   '1': 'VerificationTemplateFieldPatch',
   '2': [
     {
-      '1': 'usage_policy',
+      '1': 'field_share_type',
       '3': 1,
       '4': 1,
-      '5': 9,
-      '9': 0,
-      '10': 'usagePolicy',
-      '17': true
+      '5': 14,
+      '6': '.services.verifiablecredentials.templates.v1.VerificationShareType',
+      '10': 'fieldShareType'
     },
-  ],
-  '8': [
-    {'1': '_usage_policy'},
+    {'1': 'usage_policy', '3': 2, '4': 1, '5': 9, '10': 'usagePolicy'},
   ],
 };
 
 /// Descriptor for `VerificationTemplateFieldPatch`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verificationTemplateFieldPatchDescriptor =
     $convert.base64Decode(
-        'Ch5WZXJpZmljYXRpb25UZW1wbGF0ZUZpZWxkUGF0Y2gSJgoMdXNhZ2VfcG9saWN5GAEgASgJSA'
-        'BSC3VzYWdlUG9saWN5iAEBQg8KDV91c2FnZV9wb2xpY3k=');
+        'Ch5WZXJpZmljYXRpb25UZW1wbGF0ZUZpZWxkUGF0Y2gSbAoQZmllbGRfc2hhcmVfdHlwZRgBIA'
+        'EoDjJCLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVmVyaWZp'
+        'Y2F0aW9uU2hhcmVUeXBlUg5maWVsZFNoYXJlVHlwZRIhCgx1c2FnZV9wb2xpY3kYAiABKAlSC3'
+        'VzYWdlUG9saWN5');
