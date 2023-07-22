@@ -101,4 +101,29 @@ public interface CreateCredentialOfferRequestOrBuilder
    * @return The generateShareUrl.
    */
   boolean getGenerateShareUrl();
+
+  /**
+   *
+   *
+   * <pre>
+   * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   *
+   * @return The enum numeric value on the wire for signatureType.
+   */
+  int getSignatureTypeValue();
+  /**
+   *
+   *
+   * <pre>
+   * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   *
+   * @return The signatureType.
+   */
+  trinsic.services.verifiablecredentials.v1.SignatureType getSignatureType();
 }

@@ -19,6 +19,26 @@ if TYPE_CHECKING:
     from grpclib.metadata import Deadline
 
 
+class SignatureType(betterproto.Enum):
+    UNSPECIFIED = 0
+    """
+    The signature type is not specified. The experimental signature type will
+    be used.
+    """
+
+    STANDARD = 1
+    """
+    The signature type uses EdDSA with the Ed25519 curve (NIST compliant). This
+    type of signature does not support selective disclosure of attributes.
+    """
+
+    EXPERIMENTAL = 2
+    """
+    The signature type uses BBS signatures with BLS12-381 curve (experimental).
+    This type of signature allows for selective disclosure of attributes.
+    """
+
+
 @dataclass(eq=False, repr=False)
 class IssueFromTemplateRequest(betterproto.Message):
     """
@@ -53,6 +73,12 @@ class IssueFromTemplateRequest(betterproto.Message):
     """
     If true, the issued credential will contain an attestation of the issuer's
     membership in the ecosystem's governance framework.
+    """
+
+    signature_type: "SignatureType" = betterproto.enum_field(7)
+    """
+    The type of signature to use when signing the credential. Defaults to
+    `EXPERIMENTAL`.
     """
 
 
@@ -270,6 +296,12 @@ class CreateCredentialOfferRequest(betterproto.Message):
     offer in the wallet app.
     """
 
+    signature_type: "SignatureType" = betterproto.enum_field(7)
+    """
+    The type of signature to use when signing the credential. Defaults to
+    `EXPERIMENTAL`.
+    """
+
 
 @dataclass(eq=False, repr=False)
 class CreateCredentialOfferResponse(betterproto.Message):
@@ -280,7 +312,7 @@ class CreateCredentialOfferResponse(betterproto.Message):
     """
     If requested, a URL that can be used to share the credential offer with the
     holder. This is a short URL that can be used in a QR code and will redirect
-    the  holder to the credential offer using the wallet app.
+    the holder to the credential offer using the wallet app.
     """
 
 
@@ -300,8 +332,8 @@ class AcceptCredentialResponse(betterproto.Message):
 
     document_json: str = betterproto.string_field(2)
     """
-    The JSON document that contains the issued credential.  This item is
-    already stored in the wallet.
+    The JSON document that contains the issued credential. This item is already
+    stored in the wallet.
     """
 
 

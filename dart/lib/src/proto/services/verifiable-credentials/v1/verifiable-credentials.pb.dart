@@ -13,6 +13,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'verifiable-credentials.pbenum.dart';
+
+export 'verifiable-credentials.pbenum.dart';
+
 class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   factory IssueFromTemplateRequest() => create();
   IssueFromTemplateRequest._() : super();
@@ -33,6 +37,11 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
     ..aOB(4, _omitFieldNames ? '' : 'saveCopy')
     ..aOS(5, _omitFieldNames ? '' : 'expirationDate')
     ..aOB(6, _omitFieldNames ? '' : 'includeGovernance')
+    ..e<SignatureType>(
+        7, _omitFieldNames ? '' : 'signatureType', $pb.PbFieldType.OE,
+        defaultOrMaker: SignatureType.UNSPECIFIED,
+        valueOf: SignatureType.valueOf,
+        enumValues: SignatureType.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -119,6 +128,18 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   $core.bool hasIncludeGovernance() => $_has(4);
   @$pb.TagNumber(6)
   void clearIncludeGovernance() => clearField(6);
+
+  @$pb.TagNumber(7)
+  SignatureType get signatureType => $_getN(5);
+  @$pb.TagNumber(7)
+  set signatureType(SignatureType v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasSignatureType() => $_has(5);
+  @$pb.TagNumber(7)
+  void clearSignatureType() => clearField(7);
 }
 
 class IssueFromTemplateResponse extends $pb.GeneratedMessage {
@@ -1035,6 +1056,11 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
     ..aOB(3, _omitFieldNames ? '' : 'holderBinding')
     ..aOB(4, _omitFieldNames ? '' : 'includeGovernance')
     ..aOB(5, _omitFieldNames ? '' : 'generateShareUrl')
+    ..e<SignatureType>(
+        7, _omitFieldNames ? '' : 'signatureType', $pb.PbFieldType.OE,
+        defaultOrMaker: SignatureType.UNSPECIFIED,
+        valueOf: SignatureType.valueOf,
+        enumValues: SignatureType.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1123,6 +1149,18 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
   $core.bool hasGenerateShareUrl() => $_has(4);
   @$pb.TagNumber(5)
   void clearGenerateShareUrl() => clearField(5);
+
+  @$pb.TagNumber(7)
+  SignatureType get signatureType => $_getN(5);
+  @$pb.TagNumber(7)
+  set signatureType(SignatureType v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasSignatureType() => $_has(5);
+  @$pb.TagNumber(7)
+  void clearSignatureType() => clearField(7);
 }
 
 class CreateCredentialOfferResponse extends $pb.GeneratedMessage {

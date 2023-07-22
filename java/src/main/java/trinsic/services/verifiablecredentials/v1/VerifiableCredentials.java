@@ -107,19 +107,21 @@ public final class VerifiableCredentials {
     java.lang.String[] descriptorData = {
       "\n"
           + "?services/verifiable-credentials/v1/verifiable-credentials.proto\022!services.veri"
-          + "fiablecredentials.v1\032$services/options/field-options.proto\"\240\001\n"
+          + "fiablecredentials.v1\032$services/options/field-options.proto\"\352\001\n"
           + "\030IssueFromTemplateRequest\022\023\n"
           + "\013template_id\030\001 \001(\t\022\023\n"
           + "\013values_json\030\002 \001(\t\022\021\n"
           + "\tsave_copy\030\004 \001(\010\022\027\n"
           + "\017expiration_date\030\005 \001(\t\022\032\n"
-          + "\022include_governance\030\006 \001(\010J\004\010\003\020\004R\014framework_id\"2\n"
+          + "\022include_governance\030\006 \001(\010\022H\n"
+          + "\016signature_type\030\007 \001(\01620.services.ver"
+          + "ifiablecredentials.v1.SignatureTypeJ\004\010\003\020\004R\014framework_id\"2\n"
           + "\031IssueFromTemplateResponse\022\025\n\r"
           + "document_json\030\001 \001(\t\"\255\002\n"
           + "\022CreateProofRequest\022\036\n"
           + "\024reveal_document_json\030\001 \001(\tH\000\022V\n"
-          + "\017reveal_template\030\013 \001(\0132;.serv"
-          + "ices.verifiablecredentials.v1.RevealTemplateAttributesH\000\022\"\n"
+          + "\017reveal_template\030\013 \001(\0132;.services.v"
+          + "erifiablecredentials.v1.RevealTemplateAttributesH\000\022\"\n"
           + "\030verification_template_id\030\014 \001(\tH\000\022\021\n"
           + "\007item_id\030\002 \001(\tH\001\022\027\n\r"
           + "document_json\030\003 \001(\tH\001\022#\n"
@@ -136,12 +138,12 @@ public final class VerifiableCredentials {
           + "\023proof_document_json\030\001 \001(\t\"\235\002\n"
           + "\023VerifyProofResponse\022\020\n"
           + "\010is_valid\030\001 \001(\010\022i\n"
-          + "\022validation_results\030\003 \003(\0132M.services.verifiablecredentials"
-          + ".v1.VerifyProofResponse.ValidationResultsEntry\032n\n"
+          + "\022validation_results\030\003 \003(\0132M.services.verifiablecredentials.v1.Ve"
+          + "rifyProofResponse.ValidationResultsEntry\032n\n"
           + "\026ValidationResultsEntry\022\013\n"
           + "\003key\030\001 \001(\t\022C\n"
-          + "\005value\030\002 \001(\01324.services.verifiab"
-          + "lecredentials.v1.ValidationMessage:\0028\001J\004\010\002\020\003R\023validation_messages\"7\n"
+          + "\005value\030\002 \001(\01324.services.verifiablecred"
+          + "entials.v1.ValidationMessage:\0028\001J\004\010\002\020\003R\023validation_messages\"7\n"
           + "\021ValidationMessage\022\020\n"
           + "\010is_valid\030\001 \001(\010\022\020\n"
           + "\010messages\030\002 \003(\t\"\310\001\n"
@@ -152,8 +154,8 @@ public final class VerifiableCredentials {
           + "\014phone_number\030\007 \001(\tH\000\022\031\n"
           + "\021send_notification\030\004 \001(\010\022\025\n\r"
           + "document_json\030d \001(\tB\021\n"
-          + "\017deliver"
-          + "y_methodJ\004\010\002\020\003J\004\010\003\020\004R\027didcomm_invitation_json\"\016\n"
+          + "\017delivery_meth"
+          + "odJ\004\010\002\020\003J\004\010\003\020\004R\027didcomm_invitation_json\"\016\n"
           + "\014SendResponse\"D\n"
           + "\023UpdateStatusRequest\022\034\n"
           + "\024credential_status_id\030\001 \001(\t\022\017\n"
@@ -162,13 +164,15 @@ public final class VerifiableCredentials {
           + "\022CheckStatusRequest\022\034\n"
           + "\024credential_status_id\030\001 \001(\t\"&\n"
           + "\023CheckStatusResponse\022\017\n"
-          + "\007revoked\030\001 \001(\010\"\230\001\n"
+          + "\007revoked\030\001 \001(\010\"\342\001\n"
           + "\034CreateCredentialOfferRequest\022\023\n"
           + "\013template_id\030\001 \001(\t\022\023\n"
           + "\013values_json\030\002 \001(\t\022\026\n"
           + "\016holder_binding\030\003 \001(\010\022\032\n"
           + "\022include_governance\030\004 \001(\010\022\032\n"
-          + "\022generate_share_url\030\005 \001(\010\"I\n"
+          + "\022generate_share_url\030\005 \001(\010\022H\n"
+          + "\016signature_type\030\007"
+          + " \001(\01620.services.verifiablecredentials.v1.SignatureType\"I\n"
           + "\035CreateCredentialOfferResponse\022\025\n\r"
           + "document_json\030\001 \001(\t\022\021\n"
           + "\tshare_url\030\002 \001(\t\"N\n"
@@ -183,33 +187,36 @@ public final class VerifiableCredentials {
           + "document_json\030\001 \001(\tH\000\022\021\n"
           + "\007item_id\030\002 \001(\tH\000B\007\n"
           + "\005offer\"\032\n"
-          + "\030RejectCredentialResponse2\304\t\n"
+          + "\030RejectCredentialResponse*@\n\r"
+          + "SignatureType\022\017\n"
+          + "\013UNSPECIFIED\020\000\022\014\n"
+          + "\010STANDARD\020\001\022\020\n"
+          + "\014EXPERIMENTAL\020\0022\304\t\n"
           + "\024VerifiableCredential\022\216\001\n"
-          + "\021IssueFromTemplate\022;.services.verifiablecredentials.v1.IssueFromTemplateReques"
-          + "t\032<.services.verifiablecredentials.v1.IssueFromTemplateResponse\022|\n"
-          + "\013CheckStatus\0225.services.verifiablecredentials.v1.Check"
-          + "StatusRequest\0326.services.verifiablecredentials.v1.CheckStatusResponse\022\177\n"
-          + "\014UpdateStatus\0226.services.verifiablecredentials.v"
-          + "1.UpdateStatusRequest\0327.services.verifia"
-          + "blecredentials.v1.UpdateStatusResponse\022|\n"
-          + "\013CreateProof\0225.services.verifiablecrede"
-          + "ntials.v1.CreateProofRequest\0326.services."
-          + "verifiablecredentials.v1.CreateProofResponse\022|\n"
-          + "\013VerifyProof\0225.services.verifiablecredentials.v1.VerifyProofRequest\0326.ser"
-          + "vices.verifiablecredentials.v1.VerifyProofResponse\022g\n"
-          + "\004Send\022..services.verifiable"
-          + "credentials.v1.SendRequest\032/.services.verifiablecredentials.v1.SendResponse\022\232\001\n"
-          + "\025CreateCredentialOffer\022?.services.verifia"
-          + "blecredentials.v1.CreateCredentialOfferR"
-          + "equest\032@.services.verifiablecredentials.v1.CreateCredentialOfferResponse\022\213\001\n"
-          + "\020AcceptCredential\022:.services.verifiablecrede"
-          + "ntials.v1.AcceptCredentialRequest\032;.serv"
-          + "ices.verifiablecredentials.v1.AcceptCredentialResponse\022\213\001\n"
-          + "\020RejectCredential\022:.services.verifiablecredentials.v1.RejectCr"
-          + "edentialRequest\032;.services.verifiablecredentials.v1.RejectCredentialResponseB\231\001\n"
-          + ")trinsic.services.verifiablecredentials.v1P\001Z,services/verifiablecredentials/v1/"
-          + "credential\242\002\017TrinsicServices\252\002)Trinsic.S"
-          + "ervices.VerifiableCredentials.V1b\006proto3"
+          + "\021IssueFromTemplate\022;.services.verifiablecredentials.v1.IssueFrom"
+          + "TemplateRequest\032<.services.verifiablecredentials.v1.IssueFromTemplateResponse\022|\n"
+          + "\013CheckStatus\0225.services.verifiablecreden"
+          + "tials.v1.CheckStatusRequest\0326.services.v"
+          + "erifiablecredentials.v1.CheckStatusResponse\022\177\n"
+          + "\014UpdateStatus\0226.services.verifiablecredentials.v1.UpdateStatusRequest\0327.se"
+          + "rvices.verifiablecredentials.v1.UpdateStatusResponse\022|\n"
+          + "\013CreateProof\0225.services.verifiablecredentials.v1.CreateProofReque"
+          + "st\0326.services.verifiablecredentials.v1.CreateProofResponse\022|\n"
+          + "\013VerifyProof\0225.services.verifiablecredentials.v1.VerifyProo"
+          + "fRequest\0326.services.verifiablecredentials.v1.VerifyProofResponse\022g\n"
+          + "\004Send\022..services.verifiablecredentials.v1.SendRequest"
+          + "\032/.services.verifiablecredentials.v1.SendResponse\022\232\001\n"
+          + "\025CreateCredentialOffer\022?.services.verifiablecredentials.v1.CreateCr"
+          + "edentialOfferRequest\032@.services.verifiab"
+          + "lecredentials.v1.CreateCredentialOfferResponse\022\213\001\n"
+          + "\020AcceptCredential\022:.services.verifiablecredentials.v1.AcceptCredential"
+          + "Request\032;.services.verifiablecredentials.v1.AcceptCredentialResponse\022\213\001\n"
+          + "\020RejectCredential\022:.services.verifiablecredentia"
+          + "ls.v1.RejectCredentialRequest\032;.services"
+          + ".verifiablecredentials.v1.RejectCredentialResponseB\231\001\n"
+          + ")trinsic.services.verifiablecredentials.v1P\001Z,services/verifiablec"
+          + "redentials/v1/credential\242\002\017TrinsicServic"
+          + "es\252\002)Trinsic.Services.VerifiableCredentials.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -223,7 +230,12 @@ public final class VerifiableCredentials {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor,
             new java.lang.String[] {
-              "TemplateId", "ValuesJson", "SaveCopy", "ExpirationDate", "IncludeGovernance",
+              "TemplateId",
+              "ValuesJson",
+              "SaveCopy",
+              "ExpirationDate",
+              "IncludeGovernance",
+              "SignatureType",
             });
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_descriptor =
         getDescriptor().getMessageTypes().get(1);
@@ -355,7 +367,12 @@ public final class VerifiableCredentials {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_verifiablecredentials_v1_CreateCredentialOfferRequest_descriptor,
             new java.lang.String[] {
-              "TemplateId", "ValuesJson", "HolderBinding", "IncludeGovernance", "GenerateShareUrl",
+              "TemplateId",
+              "ValuesJson",
+              "HolderBinding",
+              "IncludeGovernance",
+              "GenerateShareUrl",
+              "SignatureType",
             });
     internal_static_services_verifiablecredentials_v1_CreateCredentialOfferResponse_descriptor =
         getDescriptor().getMessageTypes().get(15);

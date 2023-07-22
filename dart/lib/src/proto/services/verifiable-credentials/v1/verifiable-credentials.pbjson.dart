@@ -13,6 +13,21 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use signatureTypeDescriptor instead')
+const SignatureType$json = {
+  '1': 'SignatureType',
+  '2': [
+    {'1': 'UNSPECIFIED', '2': 0},
+    {'1': 'STANDARD', '2': 1},
+    {'1': 'EXPERIMENTAL', '2': 2},
+  ],
+};
+
+/// Descriptor for `SignatureType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List signatureTypeDescriptor = $convert.base64Decode(
+    'Cg1TaWduYXR1cmVUeXBlEg8KC1VOU1BFQ0lGSUVEEAASDAoIU1RBTkRBUkQQARIQCgxFWFBFUk'
+    'lNRU5UQUwQAg==');
+
 @$core.Deprecated('Use issueFromTemplateRequestDescriptor instead')
 const IssueFromTemplateRequest$json = {
   '1': 'IssueFromTemplateRequest',
@@ -28,6 +43,14 @@ const IssueFromTemplateRequest$json = {
       '5': 8,
       '10': 'includeGovernance'
     },
+    {
+      '1': 'signature_type',
+      '3': 7,
+      '4': 1,
+      '5': 14,
+      '6': '.services.verifiablecredentials.v1.SignatureType',
+      '10': 'signatureType'
+    },
   ],
   '9': [
     {'1': 3, '2': 4},
@@ -40,8 +63,9 @@ final $typed_data.Uint8List issueFromTemplateRequestDescriptor = $convert.base64
     'ChhJc3N1ZUZyb21UZW1wbGF0ZVJlcXVlc3QSHwoLdGVtcGxhdGVfaWQYASABKAlSCnRlbXBsYX'
     'RlSWQSHwoLdmFsdWVzX2pzb24YAiABKAlSCnZhbHVlc0pzb24SGwoJc2F2ZV9jb3B5GAQgASgI'
     'UghzYXZlQ29weRInCg9leHBpcmF0aW9uX2RhdGUYBSABKAlSDmV4cGlyYXRpb25EYXRlEi0KEm'
-    'luY2x1ZGVfZ292ZXJuYW5jZRgGIAEoCFIRaW5jbHVkZUdvdmVybmFuY2VKBAgDEARSDGZyYW1l'
-    'd29ya19pZA==');
+    'luY2x1ZGVfZ292ZXJuYW5jZRgGIAEoCFIRaW5jbHVkZUdvdmVybmFuY2USVwoOc2lnbmF0dXJl'
+    'X3R5cGUYByABKA4yMC5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuU2lnbmF0dX'
+    'JlVHlwZVINc2lnbmF0dXJlVHlwZUoECAMQBFIMZnJhbWV3b3JrX2lk');
 
 @$core.Deprecated('Use issueFromTemplateResponseDescriptor instead')
 const IssueFromTemplateResponse$json = {
@@ -367,6 +391,14 @@ const CreateCredentialOfferRequest$json = {
       '5': 8,
       '10': 'generateShareUrl'
     },
+    {
+      '1': 'signature_type',
+      '3': 7,
+      '4': 1,
+      '5': 14,
+      '6': '.services.verifiablecredentials.v1.SignatureType',
+      '10': 'signatureType'
+    },
   ],
 };
 
@@ -376,7 +408,8 @@ final $typed_data.Uint8List createCredentialOfferRequestDescriptor = $convert.ba
     '1wbGF0ZUlkEh8KC3ZhbHVlc19qc29uGAIgASgJUgp2YWx1ZXNKc29uEiUKDmhvbGRlcl9iaW5k'
     'aW5nGAMgASgIUg1ob2xkZXJCaW5kaW5nEi0KEmluY2x1ZGVfZ292ZXJuYW5jZRgEIAEoCFIRaW'
     '5jbHVkZUdvdmVybmFuY2USLAoSZ2VuZXJhdGVfc2hhcmVfdXJsGAUgASgIUhBnZW5lcmF0ZVNo'
-    'YXJlVXJs');
+    'YXJlVXJsElcKDnNpZ25hdHVyZV90eXBlGAcgASgOMjAuc2VydmljZXMudmVyaWZpYWJsZWNyZW'
+    'RlbnRpYWxzLnYxLlNpZ25hdHVyZVR5cGVSDXNpZ25hdHVyZVR5cGU=');
 
 @$core.Deprecated('Use createCredentialOfferResponseDescriptor instead')
 const CreateCredentialOfferResponse$json = {
