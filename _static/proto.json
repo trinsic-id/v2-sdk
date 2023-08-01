@@ -3438,6 +3438,12 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch"
     },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch"
+    },
     "services.verifiablecredentials.v1.AcceptCredentialRequest": {
       "type": "message",
       "collection": "messages",
@@ -3517,6 +3523,12 @@
       "parent": "services.verifiablecredentials.v1.CreateCredentialOfferRequest"
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.CreateCredentialOfferRequest"
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type": {
       "type": "field",
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -3636,6 +3648,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.IssueFromTemplateRequest"
     },
+    "services.verifiablecredentials.v1.IssueFromTemplateRequest.signature_type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.IssueFromTemplateRequest"
+    },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id": {
       "type": "field",
       "collection": "fields",
@@ -3743,6 +3761,30 @@
       "collection": "messages",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
+    },
+    "services.verifiablecredentials.v1.SignatureType": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": ""
+    },
+    "services.verifiablecredentials.v1.SignatureType.EXPERIMENTAL": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SignatureType"
+    },
+    "services.verifiablecredentials.v1.SignatureType.STANDARD": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SignatureType"
+    },
+    "services.verifiablecredentials.v1.SignatureType.UNSPECIFIED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SignatureType"
     },
     "services.verifiablecredentials.v1.UpdateStatusRequest": {
       "type": "message",
@@ -4603,7 +4645,8 @@
         "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse.continuation_token",
         "services.verifiablecredentials.templates.v1.VerificationTemplateField.field_share_type",
         "services.verifiablecredentials.templates.v1.VerificationTemplateField.usage_policy",
-        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type"
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy"
       ],
       "enums": [
         "services.verifiablecredentials.templates.v1.FieldType",
@@ -4670,6 +4713,7 @@
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.expiration_date",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.include_governance",
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.signature_type",
         "services.verifiablecredentials.v1.IssueFromTemplateResponse.document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_document_json",
         "services.verifiablecredentials.v1.CreateProofRequest.reveal_template",
@@ -4702,6 +4746,7 @@
         "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding",
         "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance",
         "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type",
         "services.verifiablecredentials.v1.CreateCredentialOfferResponse.document_json",
         "services.verifiablecredentials.v1.CreateCredentialOfferResponse.share_url",
         "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json",
@@ -4711,8 +4756,14 @@
         "services.verifiablecredentials.v1.RejectCredentialRequest.document_json",
         "services.verifiablecredentials.v1.RejectCredentialRequest.item_id"
       ],
-      "enums": [],
-      "enum_values": []
+      "enums": [
+        "services.verifiablecredentials.v1.SignatureType"
+      ],
+      "enum_values": [
+        "services.verifiablecredentials.v1.SignatureType.UNSPECIFIED",
+        "services.verifiablecredentials.v1.SignatureType.STANDARD",
+        "services.verifiablecredentials.v1.SignatureType.EXPERIMENTAL"
+      ]
     }
   },
   "services": {
@@ -6974,7 +7025,8 @@
       "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch",
       "description": "A patch to apply to an existing template field",
       "fields": [
-        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type"
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.field_share_type",
+        "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy"
       ],
       "messages": [],
       "enums": []
@@ -7030,7 +7082,8 @@
         "services.verifiablecredentials.v1.CreateCredentialOfferRequest.values_json",
         "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding",
         "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance",
-        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url"
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.generate_share_url",
+        "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type"
       ],
       "messages": [],
       "enums": []
@@ -7081,7 +7134,8 @@
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.values_json",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy",
         "services.verifiablecredentials.v1.IssueFromTemplateRequest.expiration_date",
-        "services.verifiablecredentials.v1.IssueFromTemplateRequest.include_governance"
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.include_governance",
+        "services.verifiablecredentials.v1.IssueFromTemplateRequest.signature_type"
       ],
       "messages": [],
       "enums": []
@@ -9800,6 +9854,14 @@
       "full_type": "services.verifiablecredentials.templates.v1.VerificationShareType",
       "description": "Human-readable name of the field"
     },
+    "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy": {
+      "name": "usage_policy",
+      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateFieldPatch.usage_policy",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "User-facing explanation of what is done with this data"
+    },
     "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json": {
       "name": "document_json",
       "full_name": "services.verifiablecredentials.v1.AcceptCredentialRequest.document_json",
@@ -9822,7 +9884,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The JSON document that contains the issued credential. \nThis item is already stored in the wallet."
+      "description": "The JSON document that contains the issued credential.\nThis item is already stored in the wallet."
     },
     "services.verifiablecredentials.v1.AcceptCredentialResponse.item_id": {
       "name": "item_id",
@@ -9862,7 +9924,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the credential will be issued with holder binding by specifying \nthe holder DID in the credential subject"
+      "description": "If true, the credential will be issued with holder binding by specifying\nthe holder DID in the credential subject"
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance": {
       "name": "include_governance",
@@ -9871,6 +9933,14 @@
       "type": "bool",
       "full_type": "bool",
       "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+    },
+    "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type": {
+      "name": "signature_type",
+      "full_name": "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type",
+      "label": "LABEL_OPTIONAL",
+      "type": "SignatureType",
+      "full_type": "services.verifiablecredentials.v1.SignatureType",
+      "description": "The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`."
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id": {
       "name": "template_id",
@@ -9902,7 +9972,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "If requested, a URL that can be used to share the credential offer with the holder.\nThis is a short URL that can be used in a QR code and will redirect the \nholder to the credential offer using the wallet app."
+      "description": "If requested, a URL that can be used to share the credential offer with the holder.\nThis is a short URL that can be used in a QR code and will redirect the\nholder to the credential offer using the wallet app."
     },
     "services.verifiablecredentials.v1.CreateProofRequest.document_json": {
       "name": "document_json",
@@ -9994,6 +10064,14 @@
       "type": "bool",
       "full_type": "bool",
       "description": "Save a copy of the issued credential to this user's wallet. This copy will only contain\nthe credential data, but not the secret proof value. Issuers may use this data to\nkeep track of the details for revocation status."
+    },
+    "services.verifiablecredentials.v1.IssueFromTemplateRequest.signature_type": {
+      "name": "signature_type",
+      "full_name": "services.verifiablecredentials.v1.IssueFromTemplateRequest.signature_type",
+      "label": "LABEL_OPTIONAL",
+      "type": "SignatureType",
+      "full_type": "services.verifiablecredentials.v1.SignatureType",
+      "description": "The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`."
     },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.template_id": {
       "name": "template_id",
@@ -10278,6 +10356,16 @@
         "services.verifiablecredentials.templates.v1.VerificationShareType.OPTIONAL",
         "services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED"
       ]
+    },
+    "services.verifiablecredentials.v1.SignatureType": {
+      "name": "SignatureType",
+      "full_name": "services.verifiablecredentials.v1.SignatureType",
+      "description": "",
+      "values": [
+        "services.verifiablecredentials.v1.SignatureType.UNSPECIFIED",
+        "services.verifiablecredentials.v1.SignatureType.STANDARD",
+        "services.verifiablecredentials.v1.SignatureType.EXPERIMENTAL"
+      ]
     }
   },
   "enum_values": {
@@ -10544,6 +10632,24 @@
       "full_name": "services.verifiablecredentials.templates.v1.VerificationShareType.REQUIRED",
       "description": "",
       "value": 1
+    },
+    "services.verifiablecredentials.v1.SignatureType.EXPERIMENTAL": {
+      "name": "EXPERIMENTAL",
+      "full_name": "services.verifiablecredentials.v1.SignatureType.EXPERIMENTAL",
+      "description": "The signature type uses BBS signatures with BLS12-381 curve (experimental).\nThis type of signature allows for selective disclosure of attributes.",
+      "value": 2
+    },
+    "services.verifiablecredentials.v1.SignatureType.STANDARD": {
+      "name": "STANDARD",
+      "full_name": "services.verifiablecredentials.v1.SignatureType.STANDARD",
+      "description": "The signature type uses EdDSA with the Ed25519 curve (NIST compliant).\nThis type of signature does not support selective disclosure of attributes.",
+      "value": 1
+    },
+    "services.verifiablecredentials.v1.SignatureType.UNSPECIFIED": {
+      "name": "UNSPECIFIED",
+      "full_name": "services.verifiablecredentials.v1.SignatureType.UNSPECIFIED",
+      "description": "The signature type is not specified. The experimental signature type will be used.",
+      "value": 0
     }
   }
 }

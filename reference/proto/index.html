@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18+insiders-4.37.0">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21+insiders-4.38.1">
     
     
       
@@ -3804,6 +3804,17 @@
     <span class="md-ellipsis">
       
         VerifyProofResponse.ValidationResultsEntry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signaturetype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SignatureType
       
     </span>
   </a>
@@ -7610,6 +7621,11 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-VerificationShareType">VerificationShareType</a></td>
 <td>Human-readable name of the field</td>
 </tr>
+<tr>
+<td>usage_policy</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>User-facing explanation of what is done with this data</td>
+</tr>
 </tbody>
 </table>
 <!-- end messages -->
@@ -7903,6 +7919,11 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app.</td>
 </tr>
+<tr>
+<td>signature_type</td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-SignatureType">SignatureType</a></td>
+<td>The type of signature to use when signing the credential. Defaults to <code>EXPERIMENTAL</code>.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-verifiablecredentials-v1-CreateCredentialOfferResponse"></a></p>
@@ -8033,6 +8054,11 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 <td>include_governance</td>
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
+</tr>
+<tr>
+<td>signature_type</td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-SignatureType">SignatureType</a></td>
+<td>The type of signature to use when signing the credential. Defaults to <code>EXPERIMENTAL</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -8264,6 +8290,34 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 </table>
 <!-- end messages -->
 
+<p><a name="services-verifiablecredentials-v1-SignatureType"></a></p>
+<h3 id="signaturetype">SignatureType<a class="headerlink" href="#signaturetype" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNSPECIFIED</td>
+<td>0</td>
+<td>The signature type is not specified. The experimental signature type will be used.</td>
+</tr>
+<tr>
+<td>STANDARD</td>
+<td>1</td>
+<td>The signature type uses EdDSA with the Ed25519 curve (NIST compliant). This type of signature does not support selective disclosure of attributes.</td>
+</tr>
+<tr>
+<td>EXPERIMENTAL</td>
+<td>2</td>
+<td>The signature type uses BBS signatures with BLS12-381 curve (experimental). This type of signature allows for selective disclosure of attributes.</td>
+</tr>
+</tbody>
+</table>
 <!-- end enums -->
 
 <!-- end HasExtensions -->
