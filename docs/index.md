@@ -14,7 +14,6 @@ hide:
         <li><a href="/learn">Learn and get started</a> &mdash; guides and articles to get you started with our plaftorm</li>
         <li><a href="/reference">API references</a> &mdash; technical reference of our RPC-based API and available tools</li>
         <li><a href="/sdk">SDK tools</a> &mdash; availabe tools and SDKs, how to install and use them</li>
-        <li><a href="/examples">Examples and demos</a> &mdash; various code samples that showcase functional use cases</li>
     </ul>
   </div>
   <div class="homepage-main-image">
@@ -57,5 +56,3 @@ hide:
     </a>
   </div>
 </div>
-
-<a href="https://legacy.docs.trinsic.id/" target="_blank" style="font-style:italic; font-size: 0.85em">Looking for our Legacy Platform's documentation?</a>

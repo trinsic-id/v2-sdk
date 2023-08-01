@@ -197,11 +197,11 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 ---
 
-## Define a Template
+## Define a credential template
 
-Before we can issue a credential, we need to create a [Template](/learn/concepts/templates/){target=_blank} for it.
+Before we can issue a credential, we need to create a [Credential](/learn/concepts/credential-templates/){target=_blank} for it.
 
-Templates are simply a list of the fields that a credential can have.
+Credential templates are simply a list of the fields that a credential can have.
 
 === "Trinsic CLI"
     First, prepare a JSON file which describes your template:
@@ -228,13 +228,13 @@ Templates are simply a list of the fields that a credential can have.
     }
     ```
 
-    Then create the template:
+    Then create the credential template:
 
     ```bash
     trinsic template create -n "VaccinationCertificate" --fields-file templateData.json
     ```
 
-    The output of this command will include a template ID; copy this down for later use.
+    The output of this command will include a credential template ID; copy this down for later use.
 
 === "Typescript"
     <!--codeinclude-->
@@ -271,10 +271,10 @@ Templates are simply a list of the fields that a credential can have.
     ```
     <!--/codeinclude-->
 
-!!! abstract "Further Reading: Templates"
+!!! abstract "Further Reading: Credential Templates"
 
-    - Learn more about [Templates](/learn/concepts/templates){target=_blank}
-    - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
+    - Learn more about [Credential Templates](/learn/concepts/credential-templates){target=_blank}
+    - Browse the [Credential Template API reference](/reference/services/template-service/){target=_blank}
 
 ---
 
@@ -283,7 +283,7 @@ Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, w
 
 A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.
 
-To issue a vaccine certificate, we'll use the template we created in the last step.
+To issue a vaccine certificate, we'll use the credential template we created in the last step.
 
 === "Trinsic CLI"
 
@@ -307,7 +307,7 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
     The output of this command will contain a signed JSON document, which has been saved to `credential.json`.
 
-    Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate".
+    Note that TEMPLATE_ID refers to the "Schema" URI of the credential template you created earlier called "VaccinationCertificate".
     More specifically, it's the property 'schema_uri' in the JSON returned by the `trinsic template create...` command.
 
 

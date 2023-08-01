@@ -1,13 +1,13 @@
-# Templates
-“Templates” enable providers to define the formats and types of verifiable credentials that will be issued to holders inside and outside of their ecosystem. Templates are an abstraction provided by Trinsic that makes getting started easy, improves ongoing management of an ecosystem, and enables tighter integration with other features in the Trinsic platform such as Trust Registries. 
+# Credential Templates
+“Credential Templates” enable providers to define the formats and types of verifiable credentials that will be issued to holders inside and outside of their ecosystem. Credential templates are an abstraction provided by Trinsic that makes getting started easy, improves ongoing management of an ecosystem, and enables tighter integration with other features in the Trinsic platform such as Trust Registries. 
 
-When you understand how templates work in Trinsic, you inherit the benefits of semantic interoperability and Trust Registry without needing to understand the nuts and bolts of schemas, credential definitions, JSON-LD contexts, credential restrictions, and more. 
+When you understand how credential templates work in Trinsic, you inherit the benefits of semantic interoperability and Trust Registry without needing to understand the nuts and bolts of schemas, credential definitions, JSON-LD contexts, credential restrictions, and more. 
 
-Defining templates isn’t just helpful for issuer and verifier adoption, but when done correctly also provides increased interoperability. 
+Defining credential templates isn’t just helpful for issuer and verifier adoption, but when done correctly also provides increased interoperability. 
 
-## How to approach templates in your product
+## How to approach credential templates in your product
 
-Templates enable you to to remove friction for the participants of your ecosystem. Therefore first and foremost, you should ensure whatever templates you provide satisfy the needs of the issuers and verifiers you’re working with. 
+Credential templates enable you to to remove friction for the participants of your ecosystem. Therefore first and foremost, you should ensure whatever templates you provide satisfy the needs of the issuers and verifiers you’re working with. 
 
 Before you create your own template, you should consider whether a schema for your desired credential already exists. Standards bodies or industry best-practice sometimes dictate the kind of data that should be issued. For example, you may use [this document](https://w3c-ccg.github.io/vaccination-vocab/) as a starting point for a Covid-19 vaccine credential or [this document](https://www.aamva.org/getmedia/99ac7057-0f4d-4461-b0a2-3a5532e1b35c/AAMVA-2020-DLID-Card-Design-Standard.pdf) for a driver’s license in the USA.
 
@@ -15,9 +15,7 @@ Verifiable credentials enable the decoupling of datasets included in issuance an
 
 Because attributes from different credentials can be combined together into a “compound proof”, you do not need to worry about fitting all possible attributes into a single template.
 
-We do not yet allow you to edit a template after it’s been created, nor do we pre-populate or recommend templates for you to use. If you’re interested in either of these features, please contact us.
-
-## Anatomy of a template
+## Anatomy of a credential template
 
 When you create a template, you do the following:
 
@@ -27,9 +25,9 @@ When you create a template, you do the following:
     1. Assign optional or required value to each attribute
     2. Provide a description of the attribute
 
-Trinsic then translates that input into a JSON schema and JSON-LD context, generates a unique identifier for the template, creates a resource with the details needed to maintain public resolution of these artifacts, and hosts it on your behalf.
+Trinsic then translates that input into a JSON schema and JSON-LD context, generates a unique identifier for the credential template, creates a resource with the details needed to maintain public resolution of these artifacts, and hosts it on your behalf.
 
-For example, you may create a template with the following:
+For example, you may create a credential template with the following:
 
 ```
 {
@@ -54,7 +52,7 @@ For example, you may create a template with the following:
 }
 ```
 
-This will create a Template that has the following structure:
+This will create a credential template that has the following structure:
 
 ```
 TemplateData {
