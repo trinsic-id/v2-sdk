@@ -51,6 +51,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.trinsic.id/examples/1-issue-direct-send/</loc>
+         <lastmod>2023-08-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.trinsic.id/go/</loc>
          <lastmod>2023-08-01</lastmod>
          <changefreq>daily</changefreq>
