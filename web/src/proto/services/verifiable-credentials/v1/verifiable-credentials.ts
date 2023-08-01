@@ -1,6 +1,54 @@
 /* eslint-disable */
 import _m0 from "protobufjs/minimal";
 
+export enum SignatureType {
+  /** UNSPECIFIED - The signature type is not specified. The experimental signature type will be used. */
+  UNSPECIFIED = 0,
+  /**
+   * STANDARD - The signature type uses EdDSA with the Ed25519 curve (NIST compliant).
+   * This type of signature does not support selective disclosure of attributes.
+   */
+  STANDARD = 1,
+  /**
+   * EXPERIMENTAL - The signature type uses BBS signatures with BLS12-381 curve (experimental).
+   * This type of signature allows for selective disclosure of attributes.
+   */
+  EXPERIMENTAL = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function signatureTypeFromJSON(object: any): SignatureType {
+  switch (object) {
+    case 0:
+    case "UNSPECIFIED":
+      return SignatureType.UNSPECIFIED;
+    case 1:
+    case "STANDARD":
+      return SignatureType.STANDARD;
+    case 2:
+    case "EXPERIMENTAL":
+      return SignatureType.EXPERIMENTAL;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return SignatureType.UNRECOGNIZED;
+  }
+}
+
+export function signatureTypeToJSON(object: SignatureType): string {
+  switch (object) {
+    case SignatureType.UNSPECIFIED:
+      return "UNSPECIFIED";
+    case SignatureType.STANDARD:
+      return "STANDARD";
+    case SignatureType.EXPERIMENTAL:
+      return "EXPERIMENTAL";
+    case SignatureType.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller */
 export interface IssueFromTemplateRequest {
   /** ID of template to use */
@@ -27,6 +75,8 @@ export interface IssueFromTemplateRequest {
    * governance framework.
    */
   includeGovernance?: boolean;
+  /** The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. */
+  signatureType?: SignatureType;
 }
 
 /** Response to `IssueFromTemplateRequest` */
@@ -202,6 +252,8 @@ export interface CreateCredentialOfferRequest {
    * This link will point to the credential offer in the wallet app.
    */
   generateShareUrl?: boolean;
+  /** The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. */
+  signatureType?: SignatureType;
 }
 
 export interface CreateCredentialOfferResponse {
@@ -247,7 +299,14 @@ export interface RejectCredentialResponse {
 }
 
 function createBaseIssueFromTemplateRequest(): IssueFromTemplateRequest {
-  return { templateId: "", valuesJson: "", saveCopy: false, expirationDate: "", includeGovernance: false };
+  return {
+    templateId: "",
+    valuesJson: "",
+    saveCopy: false,
+    expirationDate: "",
+    includeGovernance: false,
+    signatureType: 0,
+  };
 }
 
 export const IssueFromTemplateRequest = {
@@ -266,6 +325,9 @@ export const IssueFromTemplateRequest = {
     }
     if (message.includeGovernance === true) {
       writer.uint32(48).bool(message.includeGovernance);
+    }
+    if (message.signatureType !== undefined && message.signatureType !== 0) {
+      writer.uint32(56).int32(message.signatureType);
     }
     return writer;
   },
@@ -312,6 +374,13 @@ export const IssueFromTemplateRequest = {
 
           message.includeGovernance = reader.bool();
           continue;
+        case 7:
+          if (tag != 56) {
+            break;
+          }
+
+          message.signatureType = reader.int32() as any;
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -328,6 +397,7 @@ export const IssueFromTemplateRequest = {
       saveCopy: isSet(object.saveCopy) ? Boolean(object.saveCopy) : false,
       expirationDate: isSet(object.expirationDate) ? String(object.expirationDate) : "",
       includeGovernance: isSet(object.includeGovernance) ? Boolean(object.includeGovernance) : false,
+      signatureType: isSet(object.signatureType) ? signatureTypeFromJSON(object.signatureType) : 0,
     };
   },
 
@@ -338,6 +408,7 @@ export const IssueFromTemplateRequest = {
     message.saveCopy !== undefined && (obj.saveCopy = message.saveCopy);
     message.expirationDate !== undefined && (obj.expirationDate = message.expirationDate);
     message.includeGovernance !== undefined && (obj.includeGovernance = message.includeGovernance);
+    message.signatureType !== undefined && (obj.signatureType = signatureTypeToJSON(message.signatureType));
     return obj;
   },
 
@@ -352,6 +423,7 @@ export const IssueFromTemplateRequest = {
     message.saveCopy = object.saveCopy ?? false;
     message.expirationDate = object.expirationDate ?? "";
     message.includeGovernance = object.includeGovernance ?? false;
+    message.signatureType = object.signatureType ?? 0;
     return message;
   },
 };
@@ -1390,7 +1462,14 @@ export const CheckStatusResponse = {
 };
 
 function createBaseCreateCredentialOfferRequest(): CreateCredentialOfferRequest {
-  return { templateId: "", valuesJson: "", holderBinding: false, includeGovernance: false, generateShareUrl: false };
+  return {
+    templateId: "",
+    valuesJson: "",
+    holderBinding: false,
+    includeGovernance: false,
+    generateShareUrl: false,
+    signatureType: 0,
+  };
 }
 
 export const CreateCredentialOfferRequest = {
@@ -1409,6 +1488,9 @@ export const CreateCredentialOfferRequest = {
     }
     if (message.generateShareUrl === true) {
       writer.uint32(40).bool(message.generateShareUrl);
+    }
+    if (message.signatureType !== undefined && message.signatureType !== 0) {
+      writer.uint32(56).int32(message.signatureType);
     }
     return writer;
   },
@@ -1455,6 +1537,13 @@ export const CreateCredentialOfferRequest = {
 
           message.generateShareUrl = reader.bool();
           continue;
+        case 7:
+          if (tag != 56) {
+            break;
+          }
+
+          message.signatureType = reader.int32() as any;
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -1471,6 +1560,7 @@ export const CreateCredentialOfferRequest = {
       holderBinding: isSet(object.holderBinding) ? Boolean(object.holderBinding) : false,
       includeGovernance: isSet(object.includeGovernance) ? Boolean(object.includeGovernance) : false,
       generateShareUrl: isSet(object.generateShareUrl) ? Boolean(object.generateShareUrl) : false,
+      signatureType: isSet(object.signatureType) ? signatureTypeFromJSON(object.signatureType) : 0,
     };
   },
 
@@ -1481,6 +1571,7 @@ export const CreateCredentialOfferRequest = {
     message.holderBinding !== undefined && (obj.holderBinding = message.holderBinding);
     message.includeGovernance !== undefined && (obj.includeGovernance = message.includeGovernance);
     message.generateShareUrl !== undefined && (obj.generateShareUrl = message.generateShareUrl);
+    message.signatureType !== undefined && (obj.signatureType = signatureTypeToJSON(message.signatureType));
     return obj;
   },
 
@@ -1495,6 +1586,7 @@ export const CreateCredentialOfferRequest = {
     message.holderBinding = object.holderBinding ?? false;
     message.includeGovernance = object.includeGovernance ?? false;
     message.generateShareUrl = object.generateShareUrl ?? false;
+    message.signatureType = object.signatureType ?? 0;
     return message;
   },
 };

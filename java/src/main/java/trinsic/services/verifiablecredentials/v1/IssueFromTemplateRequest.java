@@ -26,6 +26,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     templateId_ = "";
     valuesJson_ = "";
     expirationDate_ = "";
+    signatureType_ = 0;
   }
 
   @java.lang.Override
@@ -246,6 +247,44 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     return includeGovernance_;
   }
 
+  public static final int SIGNATURE_TYPE_FIELD_NUMBER = 7;
+  private int signatureType_;
+  /**
+   *
+   *
+   * <pre>
+   * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   *
+   * @return The enum numeric value on the wire for signatureType.
+   */
+  @java.lang.Override
+  public int getSignatureTypeValue() {
+    return signatureType_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+   * </pre>
+   *
+   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   *
+   * @return The signatureType.
+   */
+  @java.lang.Override
+  public trinsic.services.verifiablecredentials.v1.SignatureType getSignatureType() {
+    @SuppressWarnings("deprecation")
+    trinsic.services.verifiablecredentials.v1.SignatureType result =
+        trinsic.services.verifiablecredentials.v1.SignatureType.valueOf(signatureType_);
+    return result == null
+        ? trinsic.services.verifiablecredentials.v1.SignatureType.UNRECOGNIZED
+        : result;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -275,6 +314,10 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (includeGovernance_ != false) {
       output.writeBool(6, includeGovernance_);
     }
+    if (signatureType_
+        != trinsic.services.verifiablecredentials.v1.SignatureType.UNSPECIFIED.getNumber()) {
+      output.writeEnum(7, signatureType_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -299,6 +342,10 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (includeGovernance_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(6, includeGovernance_);
     }
+    if (signatureType_
+        != trinsic.services.verifiablecredentials.v1.SignatureType.UNSPECIFIED.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(7, signatureType_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -320,6 +367,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (getSaveCopy() != other.getSaveCopy()) return false;
     if (!getExpirationDate().equals(other.getExpirationDate())) return false;
     if (getIncludeGovernance() != other.getIncludeGovernance()) return false;
+    if (signatureType_ != other.signatureType_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -341,6 +389,8 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     hash = (53 * hash) + getExpirationDate().hashCode();
     hash = (37 * hash) + INCLUDE_GOVERNANCE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIncludeGovernance());
+    hash = (37 * hash) + SIGNATURE_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + signatureType_;
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -492,6 +542,8 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
       includeGovernance_ = false;
 
+      signatureType_ = 0;
+
       return this;
     }
 
@@ -526,6 +578,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       result.saveCopy_ = saveCopy_;
       result.expirationDate_ = expirationDate_;
       result.includeGovernance_ = includeGovernance_;
+      result.signatureType_ = signatureType_;
       onBuilt();
       return result;
     }
@@ -597,6 +650,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       if (other.getIncludeGovernance() != false) {
         setIncludeGovernance(other.getIncludeGovernance());
       }
+      if (other.signatureType_ != 0) {
+        setSignatureTypeValue(other.getSignatureTypeValue());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -653,6 +709,12 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
                 break;
               } // case 48
+            case 56:
+              {
+                signatureType_ = input.readEnum();
+
+                break;
+              } // case 56
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1112,6 +1174,99 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     public Builder clearIncludeGovernance() {
 
       includeGovernance_ = false;
+      onChanged();
+      return this;
+    }
+
+    private int signatureType_ = 0;
+    /**
+     *
+     *
+     * <pre>
+     * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     *
+     * @return The enum numeric value on the wire for signatureType.
+     */
+    @java.lang.Override
+    public int getSignatureTypeValue() {
+      return signatureType_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     *
+     * @param value The enum numeric value on the wire for signatureType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSignatureTypeValue(int value) {
+
+      signatureType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     *
+     * @return The signatureType.
+     */
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.v1.SignatureType getSignatureType() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.verifiablecredentials.v1.SignatureType result =
+          trinsic.services.verifiablecredentials.v1.SignatureType.valueOf(signatureType_);
+      return result == null
+          ? trinsic.services.verifiablecredentials.v1.SignatureType.UNRECOGNIZED
+          : result;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     *
+     * @param value The signatureType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSignatureType(trinsic.services.verifiablecredentials.v1.SignatureType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      signatureType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+     * </pre>
+     *
+     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearSignatureType() {
+
+      signatureType_ = 0;
       onChanged();
       return this;
     }
