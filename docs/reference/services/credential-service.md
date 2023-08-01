@@ -10,9 +10,9 @@ The Credential Service exposes functionality for issuance, proof generation, ver
 
 ---
 
-## Issue Credential from Template
+## Issue Credential from Credential Template
 
-Issues a credential from a [previously-defined template](/reference/services/template-service#create-template){target=_blank}.
+Issues a credential from a [previously-defined credential template](/reference/services/template-service#create-template){target=_blank}.
 
 {{ proto_sample_start() }}
 
