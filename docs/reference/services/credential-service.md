@@ -63,14 +63,14 @@ Issues a credential from a [previously-defined template](/reference/services/tem
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
 
-### Add governance information to issued credential
+### Add Trust Registry information to issued credential
 
 In order to attach governance information to the credential, issuers must request this explicitly by specifying the parameter
-`include_governance` to `true` in the above request. This will reference the ecosystem's governance framework that the issuer is authorized
+`include_governance` to `true` in the above request. This will reference the ecosystem's Trust Registry that the issuer is authorized
 to issue credentials of the designated type (schema).
 
 When this parameter is set to `true`, the issued credential will contain extended information in the `issuer` field to assert authorization in
-the given governance framework. The framework identifier will be in the `issuer.trustRegistry` field.
+the given Trust Registry. The registry identifier will be in the `issuer.trustRegistry` field.
 Here's an example of a VC with extended issuer information:
 
 ```json

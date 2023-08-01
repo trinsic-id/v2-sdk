@@ -79,7 +79,7 @@ public interface CreateCredentialOfferRequestOrBuilder
    *
    * <pre>
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    * </pre>
    *
    * <code>bool include_governance = 4;</code>

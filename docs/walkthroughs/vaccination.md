@@ -565,7 +565,7 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 
 ---
 
-## Governance Setup
+## Trust Registry Setup
 
 Before we begin, you'll need to prepare your [trust registry](/learn/concepts/trust-registries). This defines who is an authorized issuer of your vaccine card.
 
@@ -635,11 +635,11 @@ Check the status of an issuer for a specific credential type using the public_di
 ---
 
 
-### Issue a Credential with Governance framework
+### Issue a Credential with Trust Registry
 
-We need to prepare a credential with a governance framework specified. This will consist of:
+We need to prepare a credential with a Trust Registry specified. This will consist of:
 
-1. Issuing the credential with governance enabled
+1. Issuing the credential with Trust Registry enabled
 2. Inserting the credential into your wallet
 3. Deriving a proof of the credential
 
@@ -678,9 +678,9 @@ We need to prepare a credential with a governance framework specified. This will
 
 ---
 
-### Verify a proof with governance status
+### Verify a proof with Trust Registry status
 
-Now we can verify the proof from the previous step, and get the governance status.
+Now we can verify the proof from the previous step, and get the Trust Registry status.
 
 === "Trinsic CLI"
 
@@ -732,9 +732,9 @@ Revoke the status of an issuer for a specific credential type using the public_d
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.UnregisterMember") }}
 
 
-### Verify a proof with governance status after revocation of issuer
+### Verify a proof with Trust Registry status after revocation of issuer
 
-Now we can verify the proof from the previous step, and get the governance status.
+Now we can verify the proof from the previous step, and get the Trust Registry status.
 
 === "Trinsic CLI"
 
@@ -778,7 +778,7 @@ Now we can verify the proof from the previous step, and get the governance statu
 
 !!! info "Further Reading: Trust Registries"
 
-    - Learn more about [Governance](/learn/concepts/trust-registries){target=_blank}
+    - Learn more about [Trust Registry](/learn/concepts/trust-registries){target=_blank}
     - Browse the [Provider API reference](reference/services/trust-registry-service/){target=_blank}
 
 

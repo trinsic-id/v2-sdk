@@ -6029,7 +6029,7 @@
     "services.trustregistry.v1.GetMemberAuthorizationStatusRequest": {
       "name": "GetMemberAuthorizationStatusRequest",
       "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
-      "description": "Request to fetch member status in governance framework for a specific credential schema.",
+      "description": "Request to fetch member status in Trust Registry for a specific credential schema.",
       "fields": [
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri",
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri"
@@ -6050,7 +6050,7 @@
     "services.trustregistry.v1.GetMemberRequest": {
       "name": "GetMemberRequest",
       "full_name": "services.trustregistry.v1.GetMemberRequest",
-      "description": "Request to get a member of the governance framework",
+      "description": "Request to get a member of the Trust Registry",
       "fields": [
         "services.trustregistry.v1.GetMemberRequest.did_uri",
         "services.trustregistry.v1.GetMemberRequest.wallet_id",
@@ -9932,7 +9932,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry."
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type": {
       "name": "signature_type",
@@ -10055,7 +10055,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry."
     },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy": {
       "name": "save_copy",

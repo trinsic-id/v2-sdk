@@ -1,7 +1,7 @@
 # Templates
-“Templates” enable providers to define the formats and types of verifiable credentials that will be issued to holders inside and outside of their ecosystem. Templates are an abstraction provided by Trinsic that makes getting started easy, improves ongoing management of an ecosystem, and enables tighter integration with other features in the Trinsic platform such as governance. 
+“Templates” enable providers to define the formats and types of verifiable credentials that will be issued to holders inside and outside of their ecosystem. Templates are an abstraction provided by Trinsic that makes getting started easy, improves ongoing management of an ecosystem, and enables tighter integration with other features in the Trinsic platform such as Trust Registries. 
 
-When you understand how templates work in Trinsic, you inherit the benefits of semantic interoperability and governance without needing to understand the nuts and bolts of schemas, credential definitions, JSON-LD contexts, credential restrictions, and more. 
+When you understand how templates work in Trinsic, you inherit the benefits of semantic interoperability and Trust Registry without needing to understand the nuts and bolts of schemas, credential definitions, JSON-LD contexts, credential restrictions, and more. 
 
 Defining templates isn’t just helpful for issuer and verifier adoption, but when done correctly also provides increased interoperability. 
 

@@ -60,7 +60,7 @@ message UnregisterMemberRequest {
 // Response to `UnregisterMemberRequest`
 message UnregisterMemberResponse {}
 
-// Request to fetch member status in governance framework for a specific credential schema.
+// Request to fetch member status in Trust Registry for a specific credential schema.
 message GetMemberAuthorizationStatusRequest {
   // DID URI of member
   string did_uri = 1;
@@ -115,7 +115,7 @@ message AuthorizedMemberSchema{
   uint64 valid_until = 5;
 }
 
-// Request to get a member of the governance framework
+// Request to get a member of the Trust Registry
 message GetMemberRequest {
   oneof member {
     // DID URI of member to get

@@ -2561,7 +2561,7 @@
         </member>
         <member name="T:Trinsic.Services.TrustRegistry.V1.GetMemberAuthorizationStatusRequest">
             <summary>
-            Request to fetch member status in governance framework for a specific credential schema.
+            Request to fetch member status in Trust Registry for a specific credential schema.
             </summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.GetMemberAuthorizationStatusRequest.DidUriFieldNumber">
@@ -2673,7 +2673,7 @@
         </member>
         <member name="T:Trinsic.Services.TrustRegistry.V1.GetMemberRequest">
             <summary>
-            Request to get a member of the governance framework
+            Request to get a member of the Trust Registry
             </summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.GetMemberRequest.DidUriFieldNumber">
@@ -5729,7 +5729,7 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.IncludeGovernance">
             <summary>
             If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-            governance framework.
+            Trust Registry.
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse">
@@ -6045,7 +6045,7 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.IncludeGovernance">
             <summary>
             If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-            governance framework.
+            Trust Registry.
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.GenerateShareUrlFieldNumber">
