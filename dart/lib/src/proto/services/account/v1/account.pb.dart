@@ -17,76 +17,6 @@ import 'account.pbenum.dart';
 
 export 'account.pbenum.dart';
 
-class SignInRequest extends $pb.GeneratedMessage {
-  factory SignInRequest() => create();
-  SignInRequest._() : super();
-  factory SignInRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory SignInRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'SignInRequest',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'services.account.v1'),
-      createEmptyInstance: create)
-    ..aOM<AccountDetails>(1, _omitFieldNames ? '' : 'details',
-        subBuilder: AccountDetails.create)
-    ..aOS(3, _omitFieldNames ? '' : 'ecosystemId')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  SignInRequest clone() => SignInRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  SignInRequest copyWith(void Function(SignInRequest) updates) =>
-      super.copyWith((message) => updates(message as SignInRequest))
-          as SignInRequest;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static SignInRequest create() => SignInRequest._();
-  SignInRequest createEmptyInstance() => create();
-  static $pb.PbList<SignInRequest> createRepeated() =>
-      $pb.PbList<SignInRequest>();
-  @$core.pragma('dart2js:noInline')
-  static SignInRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<SignInRequest>(create);
-  static SignInRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  AccountDetails get details => $_getN(0);
-  @$pb.TagNumber(1)
-  set details(AccountDetails v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasDetails() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearDetails() => clearField(1);
-  @$pb.TagNumber(1)
-  AccountDetails ensureDetails() => $_ensure(0);
-
-  @$pb.TagNumber(3)
-  $core.String get ecosystemId => $_getSZ(1);
-  @$pb.TagNumber(3)
-  set ecosystemId($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasEcosystemId() => $_has(1);
-  @$pb.TagNumber(3)
-  void clearEcosystemId() => clearField(3);
-}
-
 class AccountDetails extends $pb.GeneratedMessage {
   factory AccountDetails() => create();
   AccountDetails._() : super();
@@ -175,78 +105,75 @@ class AccountDetails extends $pb.GeneratedMessage {
   void clearSms() => clearField(3);
 }
 
-class SignInResponse extends $pb.GeneratedMessage {
-  factory SignInResponse() => create();
-  SignInResponse._() : super();
-  factory SignInResponse.fromBuffer($core.List<$core.int> i,
+class TokenProtection extends $pb.GeneratedMessage {
+  factory TokenProtection() => create();
+  TokenProtection._() : super();
+  factory TokenProtection.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory SignInResponse.fromJson($core.String i,
+  factory TokenProtection.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'SignInResponse',
+      _omitMessageNames ? '' : 'TokenProtection',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'services.account.v1'),
       createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'enabled')
     ..e<ConfirmationMethod>(
-        3, _omitFieldNames ? '' : 'confirmationMethod', $pb.PbFieldType.OE,
+        2, _omitFieldNames ? '' : 'method', $pb.PbFieldType.OE,
         defaultOrMaker: ConfirmationMethod.None,
         valueOf: ConfirmationMethod.valueOf,
         enumValues: ConfirmationMethod.values)
-    ..aOM<AccountProfile>(4, _omitFieldNames ? '' : 'profile',
-        subBuilder: AccountProfile.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  SignInResponse clone() => SignInResponse()..mergeFromMessage(this);
+  TokenProtection clone() => TokenProtection()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  SignInResponse copyWith(void Function(SignInResponse) updates) =>
-      super.copyWith((message) => updates(message as SignInResponse))
-          as SignInResponse;
+  TokenProtection copyWith(void Function(TokenProtection) updates) =>
+      super.copyWith((message) => updates(message as TokenProtection))
+          as TokenProtection;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static SignInResponse create() => SignInResponse._();
-  SignInResponse createEmptyInstance() => create();
-  static $pb.PbList<SignInResponse> createRepeated() =>
-      $pb.PbList<SignInResponse>();
+  static TokenProtection create() => TokenProtection._();
+  TokenProtection createEmptyInstance() => create();
+  static $pb.PbList<TokenProtection> createRepeated() =>
+      $pb.PbList<TokenProtection>();
   @$core.pragma('dart2js:noInline')
-  static SignInResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<SignInResponse>(create);
-  static SignInResponse? _defaultInstance;
+  static TokenProtection getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TokenProtection>(create);
+  static TokenProtection? _defaultInstance;
 
-  @$pb.TagNumber(3)
-  ConfirmationMethod get confirmationMethod => $_getN(0);
-  @$pb.TagNumber(3)
-  set confirmationMethod(ConfirmationMethod v) {
-    setField(3, v);
+  @$pb.TagNumber(1)
+  $core.bool get enabled => $_getBF(0);
+  @$pb.TagNumber(1)
+  set enabled($core.bool v) {
+    $_setBool(0, v);
   }
 
-  @$pb.TagNumber(3)
-  $core.bool hasConfirmationMethod() => $_has(0);
-  @$pb.TagNumber(3)
-  void clearConfirmationMethod() => clearField(3);
+  @$pb.TagNumber(1)
+  $core.bool hasEnabled() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEnabled() => clearField(1);
 
-  @$pb.TagNumber(4)
-  AccountProfile get profile => $_getN(1);
-  @$pb.TagNumber(4)
-  set profile(AccountProfile v) {
-    setField(4, v);
+  @$pb.TagNumber(2)
+  ConfirmationMethod get method => $_getN(1);
+  @$pb.TagNumber(2)
+  set method(ConfirmationMethod v) {
+    setField(2, v);
   }
 
-  @$pb.TagNumber(4)
-  $core.bool hasProfile() => $_has(1);
-  @$pb.TagNumber(4)
-  void clearProfile() => clearField(4);
-  @$pb.TagNumber(4)
-  AccountProfile ensureProfile() => $_ensure(1);
+  @$pb.TagNumber(2)
+  $core.bool hasMethod() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMethod() => clearField(2);
 }
 
 class AccountProfile extends $pb.GeneratedMessage {
@@ -345,77 +272,6 @@ class AccountProfile extends $pb.GeneratedMessage {
   void clearProtection() => clearField(4);
   @$pb.TagNumber(4)
   TokenProtection ensureProtection() => $_ensure(3);
-}
-
-class TokenProtection extends $pb.GeneratedMessage {
-  factory TokenProtection() => create();
-  TokenProtection._() : super();
-  factory TokenProtection.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory TokenProtection.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'TokenProtection',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'services.account.v1'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'enabled')
-    ..e<ConfirmationMethod>(
-        2, _omitFieldNames ? '' : 'method', $pb.PbFieldType.OE,
-        defaultOrMaker: ConfirmationMethod.None,
-        valueOf: ConfirmationMethod.valueOf,
-        enumValues: ConfirmationMethod.values)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  TokenProtection clone() => TokenProtection()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  TokenProtection copyWith(void Function(TokenProtection) updates) =>
-      super.copyWith((message) => updates(message as TokenProtection))
-          as TokenProtection;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static TokenProtection create() => TokenProtection._();
-  TokenProtection createEmptyInstance() => create();
-  static $pb.PbList<TokenProtection> createRepeated() =>
-      $pb.PbList<TokenProtection>();
-  @$core.pragma('dart2js:noInline')
-  static TokenProtection getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TokenProtection>(create);
-  static TokenProtection? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.bool get enabled => $_getBF(0);
-  @$pb.TagNumber(1)
-  set enabled($core.bool v) {
-    $_setBool(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasEnabled() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearEnabled() => clearField(1);
-
-  @$pb.TagNumber(2)
-  ConfirmationMethod get method => $_getN(1);
-  @$pb.TagNumber(2)
-  set method(ConfirmationMethod v) {
-    setField(2, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasMethod() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMethod() => clearField(2);
 }
 
 class AccountInfoRequest extends $pb.GeneratedMessage {

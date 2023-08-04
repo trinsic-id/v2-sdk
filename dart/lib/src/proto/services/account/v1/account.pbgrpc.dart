@@ -21,11 +21,6 @@ export 'account.pb.dart';
 
 @$pb.GrpcServiceName('services.account.v1.Account')
 class AccountClient extends $grpc.Client {
-  static final _$signIn =
-      $grpc.ClientMethod<$2.SignInRequest, $2.SignInResponse>(
-          '/services.account.v1.Account/SignIn',
-          ($2.SignInRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $2.SignInResponse.fromBuffer(value));
   static final _$login = $grpc.ClientMethod<$2.LoginRequest, $2.LoginResponse>(
       '/services.account.v1.Account/Login',
       ($2.LoginRequest value) => value.writeToBuffer(),
@@ -47,11 +42,6 @@ class AccountClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
-
-  $grpc.ResponseFuture<$2.SignInResponse> signIn($2.SignInRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$signIn, request, options: options);
-  }
 
   $grpc.ResponseFuture<$2.LoginResponse> login($2.LoginRequest request,
       {$grpc.CallOptions? options}) {
@@ -76,13 +66,6 @@ abstract class AccountServiceBase extends $grpc.Service {
   $core.String get $name => 'services.account.v1.Account';
 
   AccountServiceBase() {
-    $addMethod($grpc.ServiceMethod<$2.SignInRequest, $2.SignInResponse>(
-        'SignIn',
-        signIn_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $2.SignInRequest.fromBuffer(value),
-        ($2.SignInResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.LoginRequest, $2.LoginResponse>(
         'Login',
         login_Pre,
@@ -110,11 +93,6 @@ abstract class AccountServiceBase extends $grpc.Service {
             ($2.AccountInfoResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$2.SignInResponse> signIn_Pre(
-      $grpc.ServiceCall call, $async.Future<$2.SignInRequest> request) async {
-    return signIn(call, await request);
-  }
-
   $async.Future<$2.LoginResponse> login_Pre(
       $grpc.ServiceCall call, $async.Future<$2.LoginRequest> request) async {
     return login(call, await request);
@@ -131,8 +109,6 @@ abstract class AccountServiceBase extends $grpc.Service {
     return info(call, await request);
   }
 
-  $async.Future<$2.SignInResponse> signIn(
-      $grpc.ServiceCall call, $2.SignInRequest request);
   $async.Future<$2.LoginResponse> login(
       $grpc.ServiceCall call, $2.LoginRequest request);
   $async.Future<$2.LoginConfirmResponse> loginConfirm(

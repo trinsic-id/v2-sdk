@@ -19,7 +19,6 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Account_SignIn_FullMethodName       = "/services.account.v1.Account/SignIn"
 	Account_Login_FullMethodName        = "/services.account.v1.Account/Login"
 	Account_LoginConfirm_FullMethodName = "/services.account.v1.Account/LoginConfirm"
 	Account_Info_FullMethodName         = "/services.account.v1.Account/Info"
@@ -29,9 +28,6 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AccountClient interface {
-	// Deprecated: Do not use.
-	// Sign in to an already existing account
-	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
 	// Deprecated: Do not use.
 	// Begin login flow for specified account, creating one if it does not already exist
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
@@ -49,16 +45,6 @@ type accountClient struct {
 
 func NewAccountClient(cc grpc.ClientConnInterface) AccountClient {
 	return &accountClient{cc}
-}
-
-// Deprecated: Do not use.
-func (c *accountClient) SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error) {
-	out := new(SignInResponse)
-	err := c.cc.Invoke(ctx, Account_SignIn_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 // Deprecated: Do not use.
@@ -96,9 +82,6 @@ func (c *accountClient) Info(ctx context.Context, in *AccountInfoRequest, opts .
 // for forward compatibility
 type AccountServer interface {
 	// Deprecated: Do not use.
-	// Sign in to an already existing account
-	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
-	// Deprecated: Do not use.
 	// Begin login flow for specified account, creating one if it does not already exist
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	// Deprecated: Do not use.
@@ -114,9 +97,6 @@ type AccountServer interface {
 type UnimplementedAccountServer struct {
 }
 
-func (UnimplementedAccountServer) SignIn(context.Context, *SignInRequest) (*SignInResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SignIn not implemented")
-}
 func (UnimplementedAccountServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
@@ -137,24 +117,6 @@ type UnsafeAccountServer interface {
 
 func RegisterAccountServer(s grpc.ServiceRegistrar, srv AccountServer) {
 	s.RegisterService(&Account_ServiceDesc, srv)
-}
-
-func _Account_SignIn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SignInRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServer).SignIn(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Account_SignIn_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServer).SignIn(ctx, req.(*SignInRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _Account_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -218,10 +180,6 @@ var Account_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "services.account.v1.Account",
 	HandlerType: (*AccountServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "SignIn",
-			Handler:    _Account_SignIn_Handler,
-		},
 		{
 			MethodName: "Login",
 			Handler:    _Account_Login_Handler,

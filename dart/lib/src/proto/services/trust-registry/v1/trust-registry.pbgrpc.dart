@@ -15,77 +15,77 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'trust-registry.pb.dart' as $0;
+import 'trust-registry.pb.dart' as $5;
 
 export 'trust-registry.pb.dart';
 
 @$pb.GrpcServiceName('services.trustregistry.v1.TrustRegistry')
 class TrustRegistryClient extends $grpc.Client {
   static final _$registerMember =
-      $grpc.ClientMethod<$0.RegisterMemberRequest, $0.RegisterMemberResponse>(
+      $grpc.ClientMethod<$5.RegisterMemberRequest, $5.RegisterMemberResponse>(
           '/services.trustregistry.v1.TrustRegistry/RegisterMember',
-          ($0.RegisterMemberRequest value) => value.writeToBuffer(),
+          ($5.RegisterMemberRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.RegisterMemberResponse.fromBuffer(value));
+              $5.RegisterMemberResponse.fromBuffer(value));
   static final _$unregisterMember = $grpc.ClientMethod<
-          $0.UnregisterMemberRequest, $0.UnregisterMemberResponse>(
+          $5.UnregisterMemberRequest, $5.UnregisterMemberResponse>(
       '/services.trustregistry.v1.TrustRegistry/UnregisterMember',
-      ($0.UnregisterMemberRequest value) => value.writeToBuffer(),
+      ($5.UnregisterMemberRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $0.UnregisterMemberResponse.fromBuffer(value));
+          $5.UnregisterMemberResponse.fromBuffer(value));
   static final _$getMemberAuthorizationStatus = $grpc.ClientMethod<
-          $0.GetMemberAuthorizationStatusRequest,
-          $0.GetMemberAuthorizationStatusResponse>(
+          $5.GetMemberAuthorizationStatusRequest,
+          $5.GetMemberAuthorizationStatusResponse>(
       '/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus',
-      ($0.GetMemberAuthorizationStatusRequest value) => value.writeToBuffer(),
+      ($5.GetMemberAuthorizationStatusRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $0.GetMemberAuthorizationStatusResponse.fromBuffer(value));
+          $5.GetMemberAuthorizationStatusResponse.fromBuffer(value));
   static final _$listAuthorizedMembers = $grpc.ClientMethod<
-          $0.ListAuthorizedMembersRequest, $0.ListAuthorizedMembersResponse>(
+          $5.ListAuthorizedMembersRequest, $5.ListAuthorizedMembersResponse>(
       '/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers',
-      ($0.ListAuthorizedMembersRequest value) => value.writeToBuffer(),
+      ($5.ListAuthorizedMembersRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $0.ListAuthorizedMembersResponse.fromBuffer(value));
+          $5.ListAuthorizedMembersResponse.fromBuffer(value));
   static final _$getMember =
-      $grpc.ClientMethod<$0.GetMemberRequest, $0.GetMemberResponse>(
+      $grpc.ClientMethod<$5.GetMemberRequest, $5.GetMemberResponse>(
           '/services.trustregistry.v1.TrustRegistry/GetMember',
-          ($0.GetMemberRequest value) => value.writeToBuffer(),
+          ($5.GetMemberRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.GetMemberResponse.fromBuffer(value));
+              $5.GetMemberResponse.fromBuffer(value));
 
   TrustRegistryClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.RegisterMemberResponse> registerMember(
-      $0.RegisterMemberRequest request,
+  $grpc.ResponseFuture<$5.RegisterMemberResponse> registerMember(
+      $5.RegisterMemberRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$registerMember, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.UnregisterMemberResponse> unregisterMember(
-      $0.UnregisterMemberRequest request,
+  $grpc.ResponseFuture<$5.UnregisterMemberResponse> unregisterMember(
+      $5.UnregisterMemberRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$unregisterMember, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetMemberAuthorizationStatusResponse>
+  $grpc.ResponseFuture<$5.GetMemberAuthorizationStatusResponse>
       getMemberAuthorizationStatus(
-          $0.GetMemberAuthorizationStatusRequest request,
+          $5.GetMemberAuthorizationStatusRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMemberAuthorizationStatus, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$0.ListAuthorizedMembersResponse> listAuthorizedMembers(
-      $0.ListAuthorizedMembersRequest request,
+  $grpc.ResponseFuture<$5.ListAuthorizedMembersResponse> listAuthorizedMembers(
+      $5.ListAuthorizedMembersRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listAuthorizedMembers, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetMemberResponse> getMember(
-      $0.GetMemberRequest request,
+  $grpc.ResponseFuture<$5.GetMemberResponse> getMember(
+      $5.GetMemberRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMember, request, options: options);
   }
@@ -96,90 +96,90 @@ abstract class TrustRegistryServiceBase extends $grpc.Service {
   $core.String get $name => 'services.trustregistry.v1.TrustRegistry';
 
   TrustRegistryServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.RegisterMemberRequest,
-            $0.RegisterMemberResponse>(
+    $addMethod($grpc.ServiceMethod<$5.RegisterMemberRequest,
+            $5.RegisterMemberResponse>(
         'RegisterMember',
         registerMember_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.RegisterMemberRequest.fromBuffer(value),
-        ($0.RegisterMemberResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.UnregisterMemberRequest,
-            $0.UnregisterMemberResponse>(
+            $5.RegisterMemberRequest.fromBuffer(value),
+        ($5.RegisterMemberResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.UnregisterMemberRequest,
+            $5.UnregisterMemberResponse>(
         'UnregisterMember',
         unregisterMember_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.UnregisterMemberRequest.fromBuffer(value),
-        ($0.UnregisterMemberResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GetMemberAuthorizationStatusRequest,
-            $0.GetMemberAuthorizationStatusResponse>(
+            $5.UnregisterMemberRequest.fromBuffer(value),
+        ($5.UnregisterMemberResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.GetMemberAuthorizationStatusRequest,
+            $5.GetMemberAuthorizationStatusResponse>(
         'GetMemberAuthorizationStatus',
         getMemberAuthorizationStatus_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.GetMemberAuthorizationStatusRequest.fromBuffer(value),
-        ($0.GetMemberAuthorizationStatusResponse value) =>
+            $5.GetMemberAuthorizationStatusRequest.fromBuffer(value),
+        ($5.GetMemberAuthorizationStatusResponse value) =>
             value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ListAuthorizedMembersRequest,
-            $0.ListAuthorizedMembersResponse>(
+    $addMethod($grpc.ServiceMethod<$5.ListAuthorizedMembersRequest,
+            $5.ListAuthorizedMembersResponse>(
         'ListAuthorizedMembers',
         listAuthorizedMembers_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.ListAuthorizedMembersRequest.fromBuffer(value),
-        ($0.ListAuthorizedMembersResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GetMemberRequest, $0.GetMemberResponse>(
+            $5.ListAuthorizedMembersRequest.fromBuffer(value),
+        ($5.ListAuthorizedMembersResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.GetMemberRequest, $5.GetMemberResponse>(
         'GetMember',
         getMember_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.GetMemberRequest.fromBuffer(value),
-        ($0.GetMemberResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $5.GetMemberRequest.fromBuffer(value),
+        ($5.GetMemberResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.RegisterMemberResponse> registerMember_Pre(
+  $async.Future<$5.RegisterMemberResponse> registerMember_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$0.RegisterMemberRequest> request) async {
+      $async.Future<$5.RegisterMemberRequest> request) async {
     return registerMember(call, await request);
   }
 
-  $async.Future<$0.UnregisterMemberResponse> unregisterMember_Pre(
+  $async.Future<$5.UnregisterMemberResponse> unregisterMember_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$0.UnregisterMemberRequest> request) async {
+      $async.Future<$5.UnregisterMemberRequest> request) async {
     return unregisterMember(call, await request);
   }
 
-  $async.Future<$0.GetMemberAuthorizationStatusResponse>
+  $async.Future<$5.GetMemberAuthorizationStatusResponse>
       getMemberAuthorizationStatus_Pre($grpc.ServiceCall call,
-          $async.Future<$0.GetMemberAuthorizationStatusRequest> request) async {
+          $async.Future<$5.GetMemberAuthorizationStatusRequest> request) async {
     return getMemberAuthorizationStatus(call, await request);
   }
 
-  $async.Future<$0.ListAuthorizedMembersResponse> listAuthorizedMembers_Pre(
+  $async.Future<$5.ListAuthorizedMembersResponse> listAuthorizedMembers_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$0.ListAuthorizedMembersRequest> request) async {
+      $async.Future<$5.ListAuthorizedMembersRequest> request) async {
     return listAuthorizedMembers(call, await request);
   }
 
-  $async.Future<$0.GetMemberResponse> getMember_Pre($grpc.ServiceCall call,
-      $async.Future<$0.GetMemberRequest> request) async {
+  $async.Future<$5.GetMemberResponse> getMember_Pre($grpc.ServiceCall call,
+      $async.Future<$5.GetMemberRequest> request) async {
     return getMember(call, await request);
   }
 
-  $async.Future<$0.RegisterMemberResponse> registerMember(
-      $grpc.ServiceCall call, $0.RegisterMemberRequest request);
-  $async.Future<$0.UnregisterMemberResponse> unregisterMember(
-      $grpc.ServiceCall call, $0.UnregisterMemberRequest request);
-  $async.Future<$0.GetMemberAuthorizationStatusResponse>
+  $async.Future<$5.RegisterMemberResponse> registerMember(
+      $grpc.ServiceCall call, $5.RegisterMemberRequest request);
+  $async.Future<$5.UnregisterMemberResponse> unregisterMember(
+      $grpc.ServiceCall call, $5.UnregisterMemberRequest request);
+  $async.Future<$5.GetMemberAuthorizationStatusResponse>
       getMemberAuthorizationStatus($grpc.ServiceCall call,
-          $0.GetMemberAuthorizationStatusRequest request);
-  $async.Future<$0.ListAuthorizedMembersResponse> listAuthorizedMembers(
-      $grpc.ServiceCall call, $0.ListAuthorizedMembersRequest request);
-  $async.Future<$0.GetMemberResponse> getMember(
-      $grpc.ServiceCall call, $0.GetMemberRequest request);
+          $5.GetMemberAuthorizationStatusRequest request);
+  $async.Future<$5.ListAuthorizedMembersResponse> listAuthorizedMembers(
+      $grpc.ServiceCall call, $5.ListAuthorizedMembersRequest request);
+  $async.Future<$5.GetMemberResponse> getMember(
+      $grpc.ServiceCall call, $5.GetMemberRequest request);
 }
