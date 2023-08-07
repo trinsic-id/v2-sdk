@@ -61,6 +61,7 @@ Once the Verifiable Credential (or Credential Offer) is created, it can be share
 
         Use this method to send yourself a credential and get some test data in your wallet.
 
+<!--
 
 ### Programmatically, using Credential Handler API (CHAPI)
 
@@ -68,4 +69,4 @@ TODO
 
 ### Programmatically, using custom integration and Trinsic API
 
-TODO
+TODO -->
