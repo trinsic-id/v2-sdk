@@ -1,10 +1,10 @@
 # Platform Walkthrough
 
-If you're looking to harness the power of verifiable credentials and streamline your reusable identity use-case, you've come to the right place. In this comprehensive tutorial, we will walk you through the steps to get started with Trinsic's Dashboard and White Label Wallet products, enabling you to issue, manage, and verify credentials seamlessly.
+If you're looking to harness the power of verifiable credentials and streamline your reusable identity use case, you've come to the right place. In this comprehensive tutorial, we will walk you through the steps to get started with Trinsic's Dashboard and White Label Wallet products, enabling you to issue, manage, and verify credentials seamlessly.
 
 This tutorial will teach you how set up a basic verifiable credential ecosystem, define credential templates, assign credential issuers, issue a verifiable credential, manage verifiable credentials in a personal wallet, and verify a credential with Trinsic. There are instructions in text and video.
 
-For the purposes of this tutorial we will be dealing with the use-case of an *employee badge*, but feel free to try different things as you follow along.
+For the purposes of this tutorial we will be dealing with the use case of an *employee badge*, but feel free to try different things as you follow along.
 
 ---
 
@@ -49,7 +49,7 @@ Watch the video below for a good overview on how to use your White Label Wallet.
 
 Credential templates (i.e., schemas) allow providers to specify the formats and types of verifiable credentials issued to the ecosystem’s identity holders. They serve as an abstraction that simplifies initial setup.
 
-In our use-case of *employee badges*, employees will receive their badge in a digital format as a verifiable credential. Our ecosystem needs to define a credential before issuers are able to issue the employee badges.
+In our use case of *employee badges*, employees will receive their badge in a digital format as a verifiable credential. Our ecosystem needs to define a credential before issuers are able to issue the employee badges.
 
 !!! info "Learn More"
     To learn more about credential templates or verifiable credentials, see our documentation on [templates](https://docs.trinsic.id/learn/concepts/templates/) and [credentials](https://docs.trinsic.id/learn/concepts/credentials/).
@@ -167,9 +167,9 @@ We offer you the ability to delete your verifiable credential. This action is ir
 
 ## Verify your Credential
 
-Up until this point we walked you through a working demo you can safely employ in production. The philosophy behind the white-label wallet and the issuer portal is to keep you from reinventing the wheel when it comes to your use-case.
+Up until this point we walked you through a working demo you can safely employ in production. The philosophy behind the white-label wallet and the issuer portal is to keep you from reinventing the wheel when it comes to your use case.
 
-This next step is purely for demonstration purposes and does not represent a real use-case of a verification flow. We expect you as a provider to leverage Trinsic’s tools and SDK to build your verification strategies in partnership with your verifiers.
+This next step is purely for demonstration purposes and does not represent a real use case of a verification flow. We expect you as a provider to leverage Trinsic’s tools and SDK to build your verification strategies in partnership with your verifiers.
 
 Since in this example we don’t have a verifier portal built, we can use the Dashboard verify function as a proof of concept and demonstration that your newly issued credential is indeed valid and belongs to you.
 
@@ -200,7 +200,7 @@ You’ve learned how to set up a quick demo using the White-label wallet and the
 
 There is much more you can do with Trinsic.
 
-- You can create [Verification Templates](https://dashboard.trinsic.id/ecosystem/verifications)
+- Try implementing a full use case using our SDK with [this video tutorial](https://www.youtube.com/watch?v=yKeIx3iE1WM)
 - Integrate other [authentication methods](https://dashboard.trinsic.id/ecosystem/settings/authentication) in the White Label Wallet
 - Build your identity product with one of our [SDKs](https://docs.trinsic.id/sdk/)
 - Join our [developer community](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ)
