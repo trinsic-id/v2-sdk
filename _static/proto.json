@@ -384,6 +384,36 @@
       "file": "services/common/v1/common.proto",
       "parent": "services.common.v1.SupportedDidMethod"
     },
+    "services.common.v1.TrinsicClientOptions": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/common/v1/common.proto",
+      "parent": ""
+    },
+    "services.common.v1.TrinsicClientOptions.auth_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_endpoint": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_port": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_use_tls": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
     "services.filemanagement.v1.DeleteFileRequest": {
       "type": "message",
       "collection": "messages",
@@ -3983,11 +4013,16 @@
       "services": [],
       "methods": [],
       "messages": [
-        "services.common.v1.Nonce"
+        "services.common.v1.Nonce",
+        "services.common.v1.TrinsicClientOptions"
       ],
       "fields": [
         "services.common.v1.Nonce.timestamp",
-        "services.common.v1.Nonce.request_hash"
+        "services.common.v1.Nonce.request_hash",
+        "services.common.v1.TrinsicClientOptions.server_endpoint",
+        "services.common.v1.TrinsicClientOptions.server_port",
+        "services.common.v1.TrinsicClientOptions.server_use_tls",
+        "services.common.v1.TrinsicClientOptions.auth_token"
       ],
       "enums": [
         "services.common.v1.ResponseStatus",
@@ -5455,6 +5490,19 @@
       "fields": [
         "services.common.v1.Nonce.timestamp",
         "services.common.v1.Nonce.request_hash"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.common.v1.TrinsicClientOptions": {
+      "name": "TrinsicClientOptions",
+      "full_name": "services.common.v1.TrinsicClientOptions",
+      "description": "",
+      "fields": [
+        "services.common.v1.TrinsicClientOptions.server_endpoint",
+        "services.common.v1.TrinsicClientOptions.server_port",
+        "services.common.v1.TrinsicClientOptions.server_use_tls",
+        "services.common.v1.TrinsicClientOptions.auth_token"
       ],
       "messages": [],
       "enums": []
@@ -7450,6 +7498,38 @@
       "type": "int64",
       "full_type": "int64",
       "description": "UTC unix millisecond timestamp the request was made"
+    },
+    "services.common.v1.TrinsicClientOptions.auth_token": {
+      "name": "auth_token",
+      "full_name": "services.common.v1.TrinsicClientOptions.auth_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Authentication token for SDK calls; defaults to empty string (unauthenticated)"
+    },
+    "services.common.v1.TrinsicClientOptions.server_endpoint": {
+      "name": "server_endpoint",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_endpoint",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"
+    },
+    "services.common.v1.TrinsicClientOptions.server_port": {
+      "name": "server_port",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_port",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "Trinsic API port; defaults to `443`"
+    },
+    "services.common.v1.TrinsicClientOptions.server_use_tls": {
+      "name": "server_use_tls",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_use_tls",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether TLS is enabled between SDK and Trinsic API; defaults to `true`"
     },
     "services.filemanagement.v1.DeleteFileRequest.id": {
       "name": "id",

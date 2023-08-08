@@ -3998,6 +3998,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#trinsicclientoptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TrinsicClientOptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#responsestatus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8558,6 +8569,39 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>request_hash</td>
 <td><a href="/reference/proto#bytes">bytes</a></td>
 <td>blake3256 hash of the request body</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-common-v1-TrinsicClientOptions"></a></p>
+<h3 id="trinsicclientoptions">TrinsicClientOptions<a class="headerlink" href="#trinsicclientoptions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server_endpoint</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Trinsic API endpoint. Defaults to <code>prod.trinsic.cloud</code></td>
+</tr>
+<tr>
+<td>server_port</td>
+<td><a href="/reference/proto#int32">int32</a></td>
+<td>Trinsic API port; defaults to <code>443</code></td>
+</tr>
+<tr>
+<td>server_use_tls</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Whether TLS is enabled between SDK and Trinsic API; defaults to <code>true</code></td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Authentication token for SDK calls; defaults to empty string (unauthenticated)</td>
 </tr>
 </tbody>
 </table>
