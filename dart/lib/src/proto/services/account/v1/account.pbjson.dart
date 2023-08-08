@@ -30,33 +30,6 @@ final $typed_data.Uint8List confirmationMethodDescriptor = $convert.base64Decode
     'ChJDb25maXJtYXRpb25NZXRob2QSCAoETm9uZRAAEgkKBUVtYWlsEAESBwoDU21zEAISEwoPQ2'
     '9ubmVjdGVkRGV2aWNlEAMSCQoFT3RoZXIQCg==');
 
-@$core.Deprecated('Use signInRequestDescriptor instead')
-const SignInRequest$json = {
-  '1': 'SignInRequest',
-  '2': [
-    {
-      '1': 'details',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.services.account.v1.AccountDetails',
-      '8': {},
-      '10': 'details'
-    },
-    {'1': 'ecosystem_id', '3': 3, '4': 1, '5': 9, '8': {}, '10': 'ecosystemId'},
-  ],
-  '9': [
-    {'1': 2, '2': 3},
-  ],
-  '10': ['invitation_code'],
-};
-
-/// Descriptor for `SignInRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List signInRequestDescriptor = $convert.base64Decode(
-    'Cg1TaWduSW5SZXF1ZXN0EkMKB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLk'
-    'FjY291bnREZXRhaWxzQgSAph0BUgdkZXRhaWxzEicKDGVjb3N5c3RlbV9pZBgDIAEoCUIEgKYd'
-    'AVILZWNvc3lzdGVtSWRKBAgCEANSD2ludml0YXRpb25fY29kZQ==');
-
 @$core.Deprecated('Use accountDetailsDescriptor instead')
 const AccountDetails$json = {
   '1': 'AccountDetails',
@@ -86,35 +59,26 @@ final $typed_data.Uint8List accountDetailsDescriptor = $convert.base64Decode(
     'Cg5BY2NvdW50RGV0YWlscxIYCgRuYW1lGAEgASgJQgSAph0BUgRuYW1lEhwKBWVtYWlsGAIgAS'
     'gJQgYYAYCmHQFSBWVtYWlsEhgKA3NtcxgDIAEoCUIGGAGAph0BUgNzbXM=');
 
-@$core.Deprecated('Use signInResponseDescriptor instead')
-const SignInResponse$json = {
-  '1': 'SignInResponse',
+@$core.Deprecated('Use tokenProtectionDescriptor instead')
+const TokenProtection$json = {
+  '1': 'TokenProtection',
   '2': [
+    {'1': 'enabled', '3': 1, '4': 1, '5': 8, '10': 'enabled'},
     {
-      '1': 'confirmation_method',
-      '3': 3,
+      '1': 'method',
+      '3': 2,
       '4': 1,
       '5': 14,
       '6': '.services.account.v1.ConfirmationMethod',
-      '10': 'confirmationMethod'
-    },
-    {
-      '1': 'profile',
-      '3': 4,
-      '4': 1,
-      '5': 11,
-      '6': '.services.account.v1.AccountProfile',
-      '10': 'profile'
+      '10': 'method'
     },
   ],
 };
 
-/// Descriptor for `SignInResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List signInResponseDescriptor = $convert.base64Decode(
-    'Cg5TaWduSW5SZXNwb25zZRJYChNjb25maXJtYXRpb25fbWV0aG9kGAMgASgOMicuc2VydmljZX'
-    'MuYWNjb3VudC52MS5Db25maXJtYXRpb25NZXRob2RSEmNvbmZpcm1hdGlvbk1ldGhvZBI9Cgdw'
-    'cm9maWxlGAQgASgLMiMuc2VydmljZXMuYWNjb3VudC52MS5BY2NvdW50UHJvZmlsZVIHcHJvZm'
-    'lsZQ==');
+/// Descriptor for `TokenProtection`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List tokenProtectionDescriptor = $convert.base64Decode(
+    'Cg9Ub2tlblByb3RlY3Rpb24SGAoHZW5hYmxlZBgBIAEoCFIHZW5hYmxlZBI/CgZtZXRob2QYAi'
+    'ABKA4yJy5zZXJ2aWNlcy5hY2NvdW50LnYxLkNvbmZpcm1hdGlvbk1ldGhvZFIGbWV0aG9k');
 
 @$core.Deprecated('Use accountProfileDescriptor instead')
 const AccountProfile$json = {
@@ -140,27 +104,6 @@ final $typed_data.Uint8List accountProfileDescriptor = $convert.base64Decode(
     'F1dGhfZGF0YRgCIAEoDFIIYXV0aERhdGESHQoKYXV0aF90b2tlbhgDIAEoDFIJYXV0aFRva2Vu'
     'EkQKCnByb3RlY3Rpb24YBCABKAsyJC5zZXJ2aWNlcy5hY2NvdW50LnYxLlRva2VuUHJvdGVjdG'
     'lvblIKcHJvdGVjdGlvbg==');
-
-@$core.Deprecated('Use tokenProtectionDescriptor instead')
-const TokenProtection$json = {
-  '1': 'TokenProtection',
-  '2': [
-    {'1': 'enabled', '3': 1, '4': 1, '5': 8, '10': 'enabled'},
-    {
-      '1': 'method',
-      '3': 2,
-      '4': 1,
-      '5': 14,
-      '6': '.services.account.v1.ConfirmationMethod',
-      '10': 'method'
-    },
-  ],
-};
-
-/// Descriptor for `TokenProtection`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List tokenProtectionDescriptor = $convert.base64Decode(
-    'Cg9Ub2tlblByb3RlY3Rpb24SGAoHZW5hYmxlZBgBIAEoCFIHZW5hYmxlZBI/CgZtZXRob2QYAi'
-    'ABKA4yJy5zZXJ2aWNlcy5hY2NvdW50LnYxLkNvbmZpcm1hdGlvbk1ldGhvZFIGbWV0aG9k');
 
 @$core.Deprecated('Use accountInfoRequestDescriptor instead')
 const AccountInfoRequest$json = {

@@ -40,17 +40,6 @@ class ConfirmationMethod(betterproto.Enum):
 
 
 @dataclass(eq=False, repr=False)
-class SignInRequest(betterproto.Message):
-    """Request for creating or signing into an account"""
-
-    details: "AccountDetails" = betterproto.message_field(1)
-    """Account registration details"""
-
-    ecosystem_id: str = betterproto.string_field(3)
-    """ID of Ecosystem to use Ignored if `invitation_code` is passed"""
-
-
-@dataclass(eq=False, repr=False)
 class AccountDetails(betterproto.Message):
     """Account registration details"""
 
@@ -72,23 +61,17 @@ class AccountDetails(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class SignInResponse(betterproto.Message):
+class TokenProtection(betterproto.Message):
+    """Token protection info"""
+
+    enabled: bool = betterproto.bool_field(1)
     """
-    Response for creating new account This object will indicate if a
-    confirmation code was sent to one of the users two-factor methods like
-    email, SMS, etc.
+    Indicates if token is protected using a PIN, security code, HSM secret,
+    etc.
     """
 
-    confirmation_method: "ConfirmationMethod" = betterproto.enum_field(3)
-    """Indicates if confirmation of account is required."""
-
-    profile: "AccountProfile" = betterproto.message_field(4)
-    """
-    Contains authentication data for use with the current device. This object
-    must be stored in a secure place. It can also be protected with a PIN, but
-    this is optional. See the docs at https://docs.trinsic.id for more
-    information on working with authentication data.
-    """
+    method: "ConfirmationMethod" = betterproto.enum_field(2)
+    """The method used to protect the token"""
 
 
 @dataclass(eq=False, repr=False)
@@ -116,20 +99,6 @@ class AccountProfile(betterproto.Message):
     implementations must supply protection secret before using the token for
     authentication.
     """
-
-
-@dataclass(eq=False, repr=False)
-class TokenProtection(betterproto.Message):
-    """Token protection info"""
-
-    enabled: bool = betterproto.bool_field(1)
-    """
-    Indicates if token is protected using a PIN, security code, HSM secret,
-    etc.
-    """
-
-    method: "ConfirmationMethod" = betterproto.enum_field(2)
-    """The method used to protect the token"""
 
 
 @dataclass(eq=False, repr=False)
@@ -246,22 +215,6 @@ class WalletAuthToken(betterproto.Message):
 
 
 class AccountStub(betterproto.ServiceStub):
-    async def sign_in(
-        self,
-        sign_in_request: "SignInRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "SignInResponse":
-        return await self._unary_unary(
-            "/services.account.v1.Account/SignIn",
-            sign_in_request,
-            SignInResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
     async def login(
         self,
         login_request: "LoginRequest",
@@ -312,9 +265,6 @@ class AccountStub(betterproto.ServiceStub):
 
 
 class AccountBase(ServiceBase):
-    async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
     async def login(self, login_request: "LoginRequest") -> "LoginResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
@@ -327,11 +277,6 @@ class AccountBase(ServiceBase):
         self, account_info_request: "AccountInfoRequest"
     ) -> "AccountInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.sign_in(request)
-        await stream.send_message(response)
 
     async def __rpc_login(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
@@ -350,12 +295,6 @@ class AccountBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.account.v1.Account/SignIn": grpclib.const.Handler(
-                self.__rpc_sign_in,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                SignInRequest,
-                SignInResponse,
-            ),
             "/services.account.v1.Account/Login": grpclib.const.Handler(
                 self.__rpc_login,
                 grpclib.const.Cardinality.UNARY_UNARY,

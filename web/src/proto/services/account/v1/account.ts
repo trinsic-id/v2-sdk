@@ -58,17 +58,6 @@ export function confirmationMethodToJSON(object: ConfirmationMethod): string {
   }
 }
 
-/** Request for creating or signing into an account */
-export interface SignInRequest {
-  /** Account registration details */
-  details?: AccountDetails;
-  /**
-   * ID of Ecosystem to use
-   * Ignored if `invitation_code` is passed
-   */
-  ecosystemId?: string;
-}
-
 /** Account registration details */
 export interface AccountDetails {
   /** Account name */
@@ -87,23 +76,15 @@ export interface AccountDetails {
   sms?: string;
 }
 
-/**
- * Response for creating new account
- * This object will indicate if a confirmation code
- * was sent to one of the users two-factor methods
- * like email, SMS, etc.
- */
-export interface SignInResponse {
-  /** Indicates if confirmation of account is required. */
-  confirmationMethod?: ConfirmationMethod;
+/** Token protection info */
+export interface TokenProtection {
   /**
-   * Contains authentication data for use with the current device.
-   * This object must be stored in a secure place. It can also be
-   * protected with a PIN, but this is optional.
-   * See the docs at https://docs.trinsic.id for more information
-   * on working with authentication data.
+   * Indicates if token is protected using a PIN,
+   * security code, HSM secret, etc.
    */
-  profile?: AccountProfile;
+  enabled?: boolean;
+  /** The method used to protect the token */
+  method?: ConfirmationMethod;
 }
 
 /**
@@ -126,17 +107,6 @@ export interface AccountProfile {
    * protection secret before using the token for authentication.
    */
   protection?: TokenProtection;
-}
-
-/** Token protection info */
-export interface TokenProtection {
-  /**
-   * Indicates if token is protected using a PIN,
-   * security code, HSM secret, etc.
-   */
-  enabled?: boolean;
-  /** The method used to protect the token */
-  method?: ConfirmationMethod;
 }
 
 /** Request for information about the account used to make the request */
@@ -226,80 +196,6 @@ export interface WalletAuthToken {
   dateCreated?: string;
 }
 
-function createBaseSignInRequest(): SignInRequest {
-  return { details: undefined, ecosystemId: "" };
-}
-
-export const SignInRequest = {
-  encode(message: SignInRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.details !== undefined) {
-      AccountDetails.encode(message.details, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
-      writer.uint32(26).string(message.ecosystemId);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): SignInRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSignInRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.details = AccountDetails.decode(reader, reader.uint32());
-          continue;
-        case 3:
-          if (tag != 26) {
-            break;
-          }
-
-          message.ecosystemId = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): SignInRequest {
-    return {
-      details: isSet(object.details) ? AccountDetails.fromJSON(object.details) : undefined,
-      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
-    };
-  },
-
-  toJSON(message: SignInRequest): unknown {
-    const obj: any = {};
-    message.details !== undefined &&
-      (obj.details = message.details ? AccountDetails.toJSON(message.details) : undefined);
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    return obj;
-  },
-
-  create(base?: DeepPartial<SignInRequest>): SignInRequest {
-    return SignInRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<SignInRequest>): SignInRequest {
-    const message = createBaseSignInRequest();
-    message.details = (object.details !== undefined && object.details !== null)
-      ? AccountDetails.fromPartial(object.details)
-      : undefined;
-    message.ecosystemId = object.ecosystemId ?? "";
-    return message;
-  },
-};
-
 function createBaseAccountDetails(): AccountDetails {
   return { name: "", email: "", sms: "" };
 }
@@ -384,41 +280,41 @@ export const AccountDetails = {
   },
 };
 
-function createBaseSignInResponse(): SignInResponse {
-  return { confirmationMethod: 0, profile: undefined };
+function createBaseTokenProtection(): TokenProtection {
+  return { enabled: false, method: 0 };
 }
 
-export const SignInResponse = {
-  encode(message: SignInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.confirmationMethod !== undefined && message.confirmationMethod !== 0) {
-      writer.uint32(24).int32(message.confirmationMethod);
+export const TokenProtection = {
+  encode(message: TokenProtection, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.enabled === true) {
+      writer.uint32(8).bool(message.enabled);
     }
-    if (message.profile !== undefined) {
-      AccountProfile.encode(message.profile, writer.uint32(34).fork()).ldelim();
+    if (message.method !== undefined && message.method !== 0) {
+      writer.uint32(16).int32(message.method);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SignInResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): TokenProtection {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSignInResponse();
+    const message = createBaseTokenProtection();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 3:
-          if (tag != 24) {
+        case 1:
+          if (tag != 8) {
             break;
           }
 
-          message.confirmationMethod = reader.int32() as any;
+          message.enabled = reader.bool();
           continue;
-        case 4:
-          if (tag != 34) {
+        case 2:
+          if (tag != 16) {
             break;
           }
 
-          message.profile = AccountProfile.decode(reader, reader.uint32());
+          message.method = reader.int32() as any;
           continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
@@ -429,32 +325,28 @@ export const SignInResponse = {
     return message;
   },
 
-  fromJSON(object: any): SignInResponse {
+  fromJSON(object: any): TokenProtection {
     return {
-      confirmationMethod: isSet(object.confirmationMethod) ? confirmationMethodFromJSON(object.confirmationMethod) : 0,
-      profile: isSet(object.profile) ? AccountProfile.fromJSON(object.profile) : undefined,
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
+      method: isSet(object.method) ? confirmationMethodFromJSON(object.method) : 0,
     };
   },
 
-  toJSON(message: SignInResponse): unknown {
+  toJSON(message: TokenProtection): unknown {
     const obj: any = {};
-    message.confirmationMethod !== undefined &&
-      (obj.confirmationMethod = confirmationMethodToJSON(message.confirmationMethod));
-    message.profile !== undefined &&
-      (obj.profile = message.profile ? AccountProfile.toJSON(message.profile) : undefined);
+    message.enabled !== undefined && (obj.enabled = message.enabled);
+    message.method !== undefined && (obj.method = confirmationMethodToJSON(message.method));
     return obj;
   },
 
-  create(base?: DeepPartial<SignInResponse>): SignInResponse {
-    return SignInResponse.fromPartial(base ?? {});
+  create(base?: DeepPartial<TokenProtection>): TokenProtection {
+    return TokenProtection.fromPartial(base ?? {});
   },
 
-  fromPartial(object: DeepPartial<SignInResponse>): SignInResponse {
-    const message = createBaseSignInResponse();
-    message.confirmationMethod = object.confirmationMethod ?? 0;
-    message.profile = (object.profile !== undefined && object.profile !== null)
-      ? AccountProfile.fromPartial(object.profile)
-      : undefined;
+  fromPartial(object: DeepPartial<TokenProtection>): TokenProtection {
+    const message = createBaseTokenProtection();
+    message.enabled = object.enabled ?? false;
+    message.method = object.method ?? 0;
     return message;
   },
 };
@@ -557,77 +449,6 @@ export const AccountProfile = {
     message.protection = (object.protection !== undefined && object.protection !== null)
       ? TokenProtection.fromPartial(object.protection)
       : undefined;
-    return message;
-  },
-};
-
-function createBaseTokenProtection(): TokenProtection {
-  return { enabled: false, method: 0 };
-}
-
-export const TokenProtection = {
-  encode(message: TokenProtection, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.enabled === true) {
-      writer.uint32(8).bool(message.enabled);
-    }
-    if (message.method !== undefined && message.method !== 0) {
-      writer.uint32(16).int32(message.method);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): TokenProtection {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseTokenProtection();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 8) {
-            break;
-          }
-
-          message.enabled = reader.bool();
-          continue;
-        case 2:
-          if (tag != 16) {
-            break;
-          }
-
-          message.method = reader.int32() as any;
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): TokenProtection {
-    return {
-      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
-      method: isSet(object.method) ? confirmationMethodFromJSON(object.method) : 0,
-    };
-  },
-
-  toJSON(message: TokenProtection): unknown {
-    const obj: any = {};
-    message.enabled !== undefined && (obj.enabled = message.enabled);
-    message.method !== undefined && (obj.method = confirmationMethodToJSON(message.method));
-    return obj;
-  },
-
-  create(base?: DeepPartial<TokenProtection>): TokenProtection {
-    return TokenProtection.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<TokenProtection>): TokenProtection {
-    const message = createBaseTokenProtection();
-    message.enabled = object.enabled ?? false;
-    message.method = object.method ?? 0;
     return message;
   },
 };
@@ -1181,19 +1002,6 @@ export const AccountDefinition = {
   name: "Account",
   fullName: "services.account.v1.Account",
   methods: {
-    /**
-     * Sign in to an already existing account
-     *
-     * @deprecated
-     */
-    signIn: {
-      name: "SignIn",
-      requestType: SignInRequest,
-      requestStream: false,
-      responseType: SignInResponse,
-      responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([2, 16, 1]), new Uint8Array([2, 8, 1])] } },
-    },
     /**
      * Begin login flow for specified account, creating one if it does not already exist
      *

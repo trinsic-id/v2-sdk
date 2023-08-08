@@ -54,12 +54,6 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
-    "services.account.v1.Account.SignIn": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.AccountDetails": {
       "type": "message",
       "collection": "messages",
@@ -264,42 +258,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.LoginResponse"
     },
-    "services.account.v1.SignInRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.SignInRequest.details": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInRequest"
-    },
-    "services.account.v1.SignInRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInRequest"
-    },
-    "services.account.v1.SignInResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.SignInResponse.confirmation_method": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInResponse"
-    },
-    "services.account.v1.SignInResponse.profile": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInResponse"
-    },
     "services.account.v1.TokenProtection": {
       "type": "message",
       "collection": "messages",
@@ -425,6 +383,36 @@
       "collection": "enum_values",
       "file": "services/common/v1/common.proto",
       "parent": "services.common.v1.SupportedDidMethod"
+    },
+    "services.common.v1.TrinsicClientOptions": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/common/v1/common.proto",
+      "parent": ""
+    },
+    "services.common.v1.TrinsicClientOptions.auth_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_endpoint": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_port": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_use_tls": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
     },
     "services.filemanagement.v1.DeleteFileRequest": {
       "type": "message",
@@ -3964,17 +3952,14 @@
         "services.account.v1.Account"
       ],
       "methods": [
-        "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info"
       ],
       "messages": [
-        "services.account.v1.SignInRequest",
         "services.account.v1.AccountDetails",
-        "services.account.v1.SignInResponse",
-        "services.account.v1.AccountProfile",
         "services.account.v1.TokenProtection",
+        "services.account.v1.AccountProfile",
         "services.account.v1.AccountInfoRequest",
         "services.account.v1.AccountInfoResponse",
         "services.account.v1.LoginRequest",
@@ -3984,19 +3969,15 @@
         "services.account.v1.WalletAuthToken"
       ],
       "fields": [
-        "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.ecosystem_id",
         "services.account.v1.AccountDetails.name",
         "services.account.v1.AccountDetails.email",
         "services.account.v1.AccountDetails.sms",
-        "services.account.v1.SignInResponse.confirmation_method",
-        "services.account.v1.SignInResponse.profile",
+        "services.account.v1.TokenProtection.enabled",
+        "services.account.v1.TokenProtection.method",
         "services.account.v1.AccountProfile.profile_type",
         "services.account.v1.AccountProfile.auth_data",
         "services.account.v1.AccountProfile.auth_token",
         "services.account.v1.AccountProfile.protection",
-        "services.account.v1.TokenProtection.enabled",
-        "services.account.v1.TokenProtection.method",
         "services.account.v1.AccountInfoResponse.details",
         "services.account.v1.AccountInfoResponse.wallet_id",
         "services.account.v1.AccountInfoResponse.device_id",
@@ -4032,11 +4013,16 @@
       "services": [],
       "methods": [],
       "messages": [
-        "services.common.v1.Nonce"
+        "services.common.v1.Nonce",
+        "services.common.v1.TrinsicClientOptions"
       ],
       "fields": [
         "services.common.v1.Nonce.timestamp",
-        "services.common.v1.Nonce.request_hash"
+        "services.common.v1.Nonce.request_hash",
+        "services.common.v1.TrinsicClientOptions.server_endpoint",
+        "services.common.v1.TrinsicClientOptions.server_port",
+        "services.common.v1.TrinsicClientOptions.server_use_tls",
+        "services.common.v1.TrinsicClientOptions.auth_token"
       ],
       "enums": [
         "services.common.v1.ResponseStatus",
@@ -4772,7 +4758,6 @@
       "full_name": "services.account.v1.Account",
       "description": "",
       "methods": [
-        "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info"
@@ -4914,17 +4899,6 @@
       "input_type": "services.account.v1.LoginConfirmRequest",
       "output_type": "services.account.v1.LoginConfirmResponse",
       "description": "Finalize login flow with two-factor confirmation code",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.account.v1.Account.SignIn": {
-      "name": "SignIn",
-      "full_name": "services.account.v1.Account.SignIn",
-      "input_type": "services.account.v1.SignInRequest",
-      "output_type": "services.account.v1.SignInResponse",
-      "description": "Sign in to an already existing account",
       "options": {
         "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
@@ -5486,28 +5460,6 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.SignInRequest": {
-      "name": "SignInRequest",
-      "full_name": "services.account.v1.SignInRequest",
-      "description": "Request for creating or signing into an account",
-      "fields": [
-        "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.ecosystem_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.SignInResponse": {
-      "name": "SignInResponse",
-      "full_name": "services.account.v1.SignInResponse",
-      "description": "Response for creating new account\nThis object will indicate if a confirmation code\nwas sent to one of the users two-factor methods\nlike email, SMS, etc.",
-      "fields": [
-        "services.account.v1.SignInResponse.confirmation_method",
-        "services.account.v1.SignInResponse.profile"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.account.v1.TokenProtection": {
       "name": "TokenProtection",
       "full_name": "services.account.v1.TokenProtection",
@@ -5538,6 +5490,19 @@
       "fields": [
         "services.common.v1.Nonce.timestamp",
         "services.common.v1.Nonce.request_hash"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.common.v1.TrinsicClientOptions": {
+      "name": "TrinsicClientOptions",
+      "full_name": "services.common.v1.TrinsicClientOptions",
+      "description": "",
+      "fields": [
+        "services.common.v1.TrinsicClientOptions.server_endpoint",
+        "services.common.v1.TrinsicClientOptions.server_port",
+        "services.common.v1.TrinsicClientOptions.server_use_tls",
+        "services.common.v1.TrinsicClientOptions.auth_token"
       ],
       "messages": [],
       "enums": []
@@ -7478,44 +7443,6 @@
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account profile response. If present, no confirmation of login is required."
     },
-    "services.account.v1.SignInRequest.details": {
-      "name": "details",
-      "full_name": "services.account.v1.SignInRequest.details",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountDetails",
-      "full_type": "services.account.v1.AccountDetails",
-      "description": "Account registration details",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.SignInRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.account.v1.SignInRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of Ecosystem to use\nIgnored if `invitation_code` is passed",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.SignInResponse.confirmation_method": {
-      "name": "confirmation_method",
-      "full_name": "services.account.v1.SignInResponse.confirmation_method",
-      "label": "LABEL_OPTIONAL",
-      "type": "ConfirmationMethod",
-      "full_type": "services.account.v1.ConfirmationMethod",
-      "description": "Indicates if confirmation of account is required."
-    },
-    "services.account.v1.SignInResponse.profile": {
-      "name": "profile",
-      "full_name": "services.account.v1.SignInResponse.profile",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountProfile",
-      "full_type": "services.account.v1.AccountProfile",
-      "description": "Contains authentication data for use with the current device.\nThis object must be stored in a secure place. It can also be\nprotected with a PIN, but this is optional.\nSee the docs at https://docs.trinsic.id for more information\non working with authentication data."
-    },
     "services.account.v1.TokenProtection.enabled": {
       "name": "enabled",
       "full_name": "services.account.v1.TokenProtection.enabled",
@@ -7571,6 +7498,38 @@
       "type": "int64",
       "full_type": "int64",
       "description": "UTC unix millisecond timestamp the request was made"
+    },
+    "services.common.v1.TrinsicClientOptions.auth_token": {
+      "name": "auth_token",
+      "full_name": "services.common.v1.TrinsicClientOptions.auth_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Authentication token for SDK calls; defaults to empty string (unauthenticated)"
+    },
+    "services.common.v1.TrinsicClientOptions.server_endpoint": {
+      "name": "server_endpoint",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_endpoint",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"
+    },
+    "services.common.v1.TrinsicClientOptions.server_port": {
+      "name": "server_port",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_port",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "Trinsic API port; defaults to `443`"
+    },
+    "services.common.v1.TrinsicClientOptions.server_use_tls": {
+      "name": "server_use_tls",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_use_tls",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether TLS is enabled between SDK and Trinsic API; defaults to `true`"
     },
     "services.filemanagement.v1.DeleteFileRequest.id": {
       "name": "id",

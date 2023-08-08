@@ -115,7 +115,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.account.v1.AccountDetails.email is deprecated. See
-   *     services/account/v1/account.proto;l=29
+   *     services/account/v1/account.proto;l=16
    * @return The email.
    */
   @java.lang.Override
@@ -141,7 +141,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.account.v1.AccountDetails.email is deprecated. See
-   *     services/account/v1/account.proto;l=29
+   *     services/account/v1/account.proto;l=16
    * @return The bytes for email.
    */
   @java.lang.Override
@@ -170,7 +170,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
-   *     services/account/v1/account.proto;l=31
+   *     services/account/v1/account.proto;l=18
    * @return The sms.
    */
   @java.lang.Override
@@ -196,7 +196,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
-   *     services/account/v1/account.proto;l=31
+   *     services/account/v1/account.proto;l=18
    * @return The bytes for sms.
    */
   @java.lang.Override
@@ -703,7 +703,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.email is deprecated. See
-     *     services/account/v1/account.proto;l=29
+     *     services/account/v1/account.proto;l=16
      * @return The email.
      */
     @java.lang.Deprecated
@@ -728,7 +728,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.email is deprecated. See
-     *     services/account/v1/account.proto;l=29
+     *     services/account/v1/account.proto;l=16
      * @return The bytes for email.
      */
     @java.lang.Deprecated
@@ -753,7 +753,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.email is deprecated. See
-     *     services/account/v1/account.proto;l=29
+     *     services/account/v1/account.proto;l=16
      * @param value The email to set.
      * @return This builder for chaining.
      */
@@ -777,7 +777,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.email is deprecated. See
-     *     services/account/v1/account.proto;l=29
+     *     services/account/v1/account.proto;l=16
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -797,7 +797,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string email = 2 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.email is deprecated. See
-     *     services/account/v1/account.proto;l=29
+     *     services/account/v1/account.proto;l=16
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
@@ -824,7 +824,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
-     *     services/account/v1/account.proto;l=31
+     *     services/account/v1/account.proto;l=18
      * @return The sms.
      */
     @java.lang.Deprecated
@@ -849,7 +849,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
-     *     services/account/v1/account.proto;l=31
+     *     services/account/v1/account.proto;l=18
      * @return The bytes for sms.
      */
     @java.lang.Deprecated
@@ -874,7 +874,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
-     *     services/account/v1/account.proto;l=31
+     *     services/account/v1/account.proto;l=18
      * @param value The sms to set.
      * @return This builder for chaining.
      */
@@ -898,7 +898,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
-     *     services/account/v1/account.proto;l=31
+     *     services/account/v1/account.proto;l=18
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -918,7 +918,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      * <code>string sms = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.account.v1.AccountDetails.sms is deprecated. See
-     *     services/account/v1/account.proto;l=31
+     *     services/account/v1/account.proto;l=18
      * @param value The bytes for sms to set.
      * @return This builder for chaining.
      */

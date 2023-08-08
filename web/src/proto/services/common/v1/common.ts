@@ -113,6 +113,17 @@ export interface Nonce {
   requestHash?: Uint8Array;
 }
 
+export interface TrinsicClientOptions {
+  /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
+  serverEndpoint?: string;
+  /** Trinsic API port; defaults to `443` */
+  serverPort?: number;
+  /** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */
+  serverUseTls?: boolean;
+  /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
+  authToken?: string;
+}
+
 function createBaseNonce(): Nonce {
   return { timestamp: 0, requestHash: new Uint8Array() };
 }
@@ -181,6 +192,103 @@ export const Nonce = {
     const message = createBaseNonce();
     message.timestamp = object.timestamp ?? 0;
     message.requestHash = object.requestHash ?? new Uint8Array();
+    return message;
+  },
+};
+
+function createBaseTrinsicClientOptions(): TrinsicClientOptions {
+  return { serverEndpoint: "", serverPort: 0, serverUseTls: false, authToken: "" };
+}
+
+export const TrinsicClientOptions = {
+  encode(message: TrinsicClientOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.serverEndpoint !== undefined && message.serverEndpoint !== "") {
+      writer.uint32(10).string(message.serverEndpoint);
+    }
+    if (message.serverPort !== undefined && message.serverPort !== 0) {
+      writer.uint32(16).int32(message.serverPort);
+    }
+    if (message.serverUseTls === true) {
+      writer.uint32(24).bool(message.serverUseTls);
+    }
+    if (message.authToken !== undefined && message.authToken !== "") {
+      writer.uint32(34).string(message.authToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TrinsicClientOptions {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTrinsicClientOptions();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.serverEndpoint = reader.string();
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.serverPort = reader.int32();
+          continue;
+        case 3:
+          if (tag != 24) {
+            break;
+          }
+
+          message.serverUseTls = reader.bool();
+          continue;
+        case 4:
+          if (tag != 34) {
+            break;
+          }
+
+          message.authToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TrinsicClientOptions {
+    return {
+      serverEndpoint: isSet(object.serverEndpoint) ? String(object.serverEndpoint) : "",
+      serverPort: isSet(object.serverPort) ? Number(object.serverPort) : 0,
+      serverUseTls: isSet(object.serverUseTls) ? Boolean(object.serverUseTls) : false,
+      authToken: isSet(object.authToken) ? String(object.authToken) : "",
+    };
+  },
+
+  toJSON(message: TrinsicClientOptions): unknown {
+    const obj: any = {};
+    message.serverEndpoint !== undefined && (obj.serverEndpoint = message.serverEndpoint);
+    message.serverPort !== undefined && (obj.serverPort = Math.round(message.serverPort));
+    message.serverUseTls !== undefined && (obj.serverUseTls = message.serverUseTls);
+    message.authToken !== undefined && (obj.authToken = message.authToken);
+    return obj;
+  },
+
+  create(base?: DeepPartial<TrinsicClientOptions>): TrinsicClientOptions {
+    return TrinsicClientOptions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<TrinsicClientOptions>): TrinsicClientOptions {
+    const message = createBaseTrinsicClientOptions();
+    message.serverEndpoint = object.serverEndpoint ?? "";
+    message.serverPort = object.serverPort ?? 0;
+    message.serverUseTls = object.serverUseTls ?? false;
+    message.authToken = object.authToken ?? "";
     return message;
   },
 };
