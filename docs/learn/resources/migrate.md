@@ -17,7 +17,7 @@ This document outlines the differences between our existing platform based on Hy
 ## Who should consider migration?
 
 - Teams looking to manage their own identity data in the ecosystem
-- Your solution requires support for ecosystem governance
+- Your solution requires support for ecosystem Trust Registry
 - You are looking to use open standard and need interoperability with VC, JWT, or OIDC
 - Teams looking to reduce transaction costs of writing to decentralized ledgers
 - Developers looking to provide custom wallet experience or customized integration

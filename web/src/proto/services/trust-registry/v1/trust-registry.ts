@@ -65,16 +65,16 @@ export function registrationStatusToJSON(object: RegistrationStatus): string {
 export interface RegisterMemberRequest {
   /** DID URI of member to register */
   didUri?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** Trinsic Wallet ID of member to register */
   walletId?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** Email address of member to register. Must be associated with an existing Trinsic account. */
   email?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** URI of credential schema to register member as authorized issuer of */
   schemaUri?: string;
   /** Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. */
@@ -94,16 +94,16 @@ export interface RegisterMemberResponse {
 export interface UnregisterMemberRequest {
   /** DID URI of member to unregister */
   didUri?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** Trinsic Wallet ID of member to unregister */
   walletId?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** Email address of member to unregister. Must be associated with an existing Trinsic account. */
   email?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** URI of credential schema to unregister member as authorized issuer of */
   schemaUri?: string;
 }
@@ -112,7 +112,7 @@ export interface UnregisterMemberRequest {
 export interface UnregisterMemberResponse {
 }
 
-/** Request to fetch member status in governance framework for a specific credential schema. */
+/** Request to fetch member status in Trust Registry for a specific credential schema. */
 export interface GetMemberAuthorizationStatusRequest {
   /** DID URI of member */
   didUri?: string;
@@ -129,8 +129,8 @@ export interface GetMemberAuthorizationStatusResponse {
 export interface ListAuthorizedMembersRequest {
   /** id of schema that needs to be checked */
   schemaUri?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** Token to fetch next set of results, from previous `ListAuthorizedMembersResponse` */
   continuationToken?: string | undefined;
 }
@@ -158,16 +158,16 @@ export interface AuthorizedMemberSchema {
   validUntil?: number;
 }
 
-/** Request to get a member of the governance framework */
+/** Request to get a member of the Trust Registry */
 export interface GetMemberRequest {
   /** DID URI of member to get */
   didUri?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** Trinsic Wallet ID of member to get */
   walletId?:
-    | string
-    | undefined;
+  | string
+  | undefined;
   /** Email address of member to get. Must be associated with an existing Trinsic account. */
   email?: string | undefined;
 }

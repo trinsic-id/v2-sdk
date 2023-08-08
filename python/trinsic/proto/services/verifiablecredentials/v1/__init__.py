@@ -72,7 +72,7 @@ class IssueFromTemplateRequest(betterproto.Message):
     include_governance: bool = betterproto.bool_field(6)
     """
     If true, the issued credential will contain an attestation of the issuer's
-    membership in the ecosystem's governance framework.
+    membership in the ecosystem's Trust Registry.
     """
 
     signature_type: "SignatureType" = betterproto.enum_field(7)
@@ -286,7 +286,7 @@ class CreateCredentialOfferRequest(betterproto.Message):
     include_governance: bool = betterproto.bool_field(4)
     """
     If true, the issued credential will contain an attestation of the issuer's
-    membership in the ecosystem's governance framework.
+    membership in the ecosystem's Trust Registry.
     """
 
     generate_share_url: bool = betterproto.bool_field(5)

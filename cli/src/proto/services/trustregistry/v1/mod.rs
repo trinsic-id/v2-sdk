@@ -72,7 +72,7 @@ pub mod unregister_member_request {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterMemberResponse {}
-/// Request to fetch member status in governance framework for a specific credential schema.
+/// Request to fetch member status in Trust Registry for a specific credential schema.
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -143,7 +143,7 @@ pub struct AuthorizedMemberSchema {
     #[prost(uint64, tag = "5")]
     pub valid_until: u64,
 }
-/// Request to get a member of the governance framework
+/// Request to get a member of the Trust Registry
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

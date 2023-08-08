@@ -116,7 +116,7 @@ subcommands:
                   required: true
               - include-governance:
                   long: include-governance
-                  help: If set, will include attestation of issuer's presence in ecosystem's trust registry as an authorized issuer of the credential type
+                  help: If set, will include attestation of issuer's presence in ecosystem's Trust Registry as an authorized issuer of the credential type
                   takes_value: false
                   required: false
               - values-data:

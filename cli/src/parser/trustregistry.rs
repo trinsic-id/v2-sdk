@@ -150,7 +150,7 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a> {
         .subcommand(
             SubCommand::with_name("unregister-member")
                 .setting(AppSettings::ArgRequiredElseHelp)
-                .about("Unregister member as authoritative with a schema in a governance framework")
+                .about("Unregister member as authoritative with a schema in a Trust Registry")
                 .after_help("EXAMPLES:\r\n\ttrinsic trust-registry unregister-member --did <DID_URI> --schema 'https://schema.org/ExampleCredential'")
                 .arg(Arg::from_usage("-s --schema <SCHEMA_URI> 'Sets the schema URI'").required(true))
                 .arg(Arg::from_usage("-e --email <EMAIL> 'Sets the member using their email'").required(false))

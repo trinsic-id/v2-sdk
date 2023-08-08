@@ -41,11 +41,11 @@ In its simplest form, attributes are key-value pairs in a JSON object. These att
 
 Verifiers use attributes to request only the data from credentials that they need—for example, an age-checking verifier may only request `date_of_birth` from a driver’s license, instead of the entire credential.
 
-### Templates
+### Credential Templates
 
-Credentials are issued from templates, an abstraction provided by Trinsic that makes getting started and ongoing management easy, and enables tighter integration with other features in the Trinsic platform such as governance. 
+Credentials are issued from credential templates, an abstraction provided by Trinsic that makes getting started and ongoing management easy, and enables tighter integration with other features in the Trinsic platform such as Trust Registries.
 
-When you understand how templates work in Trinsic, you will get the benefits of semantic interoperability and governance without needing to understand the nuts and bolts of schemas, credential definitions, JSON-LD contexts, credential restrictions, and more. See our page on [templates](/learn/concepts/templates) to learn more.
+When you understand how credential templates work in Trinsic, you will get the benefits of semantic interoperability and Trust Registry without needing to understand the nuts and bolts of schemas, credential definitions, JSON-LD contexts, credential restrictions, and more. See our page on [Credential Templates](/learn/concepts/credential-templates) to learn more.
 
 ### Issuer ID
 

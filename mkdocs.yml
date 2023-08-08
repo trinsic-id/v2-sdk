@@ -34,9 +34,9 @@ nav:
       - Wallets: learn/concepts/wallets.md
       - Credentials: learn/concepts/credentials.md
       - Verifications: learn/concepts/verifications.md
-      - Templates: learn/concepts/templates.md
+      - Credential Templates: learn/concepts/credential-templates.md
       - Identifiers: learn/concepts/dids.md
-      - Governance: learn/concepts/trust-registries.md
+      - Trust Registries: learn/concepts/trust-registries.md
     - Trinsic Platform:
       - Standards: learn/platform/standards.md
     - Resources:
@@ -49,12 +49,11 @@ nav:
       - Credential API: reference/services/credential-service.md
       - File Management API: reference/services/file-management-service.md
       - Provider API: reference/services/provider-service.md
-      - Template API: reference/services/template-service.md
-      - Governance API: reference/services/trust-registry-service.md
+      - Credential Template API: reference/services/template-service.md
+      - Trust Registry API: reference/services/trust-registry-service.md
       - Wallet API: reference/services/wallet-service.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
-  - Examples: examples/index.md
 theme:
   name: material
   logo: _static/logo-title.svg

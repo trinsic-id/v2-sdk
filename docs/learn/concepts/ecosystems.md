@@ -26,11 +26,11 @@ As Covid-19 swept over the world, jurisdictions of various kinds sought to curb 
 
 ### Anatomy of a trust ecosystem
 
-As you dive deeper into how ecosystems work, it’s helpful to understand wallets, credentials, templates, and governance. We recommend referring back and forth between these pages to get a full picture. 
+As you dive deeper into how ecosystems work, it’s helpful to understand wallets, credentials, templates, and Trust Registry. We recommend referring back and forth between these pages to get a full picture. 
 
 **Provider**
 
-At the helm of a trust ecosystem sits a *provider*. Providers develop IDtech products that solve problems for the other participants of an ecosystem. They develop the software, adoption tools (such as templates), business models & incentives, and the governance that enables an ecosystem to be successful. 
+At the helm of a trust ecosystem sits a *provider*. Providers develop IDtech products that solve problems for the other participants of an ecosystem. They develop the software, adoption tools (such as credential templates), business models & incentives, and the Trust Registry that enables an ecosystem to be successful. 
 
 > Before Stripe, every growing internet platform had a payments team. Today, every growing internet platform has an Identity team. Identity verification is a core piece of economic infrastructure for online businesses.
 - *Stripe*
