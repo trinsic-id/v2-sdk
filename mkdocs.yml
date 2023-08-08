@@ -6,6 +6,24 @@ repo_name: trinsic-id/sdk
 site_url: https://docs.trinsic.id
 nav:
   - Home: index.md
+  - Platform:
+    - Overview: sdk/index.md
+    - Getting Started:
+      - Platform Walkthrough: guide/platform-walkthrough.md
+    - Client-Side SDKs:
+      - Flutter: dart/index.md
+      - Browser: web/index.md
+      - React Native: web/index.md
+      - iOS: ios/index.md
+      - Android: android/index.md
+    - Server-Side SDKs:
+      - Dart: dart/index.md
+      - Node: node/index.md
+      - C#: dotnet/index.md
+      - Python: python/index.md
+      - Go: go/index.md
+      - Java: java/index.md
+    - Trinsic CLI: cli/index.md
   - Learn:
     - Introduction: learn/index.md
     - Guide:
@@ -25,22 +43,6 @@ nav:
       - "Migration: From v1" : learn/resources/migrate.md
       - "Migration: Account API": learn/resources/migrate-account.md
       - Interactive API Experience: learn/resources/interactive-api.md
-  - Tools & SDKs:
-    - Overview: sdk/index.md
-    - Client-Side SDKs:
-      - Flutter: dart/index.md
-      - Browser: web/index.md
-      - React Native: web/index.md
-      - iOS: ios/index.md
-      - Android: android/index.md
-    - Server-Side SDKs:
-      - Dart: dart/index.md
-      - Node: node/index.md
-      - C#: dotnet/index.md
-      - Python: python/index.md
-      - Go: go/index.md
-      - Java: java/index.md
-    - Trinsic CLI: cli/index.md
   - Reference:
     - Overview: reference/index.md
     - APIs:
