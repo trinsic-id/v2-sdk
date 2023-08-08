@@ -8,44 +8,15 @@ option java_multiple_files = true;
 
 import "services/options/field-options.proto";
 
-// Request for creating or signing into an account
-message SignInRequest {
-  // Account registration details
-  AccountDetails details = 1 [(options.optional) = true];
-
-  // ID of Ecosystem to use
-  // Ignored if `invitation_code` is passed
-  string ecosystem_id = 3 [(options.optional) = true];
-
-  reserved 2;
-  reserved "invitation_code";
-}
-
 // Account registration details
 message AccountDetails
 {
   // Account name
   string name = 1 [(options.optional) = true];
-  // Email address of account. 
+  // Email address of account.
   string email = 2 [(options.optional) = true, deprecated = true];
   // SMS number including country code
   string sms = 3 [(options.optional) = true, deprecated = true];
-}
-
-// Response for creating new account
-// This object will indicate if a confirmation code
-// was sent to one of the users two-factor methods
-// like email, SMS, etc.
-message SignInResponse {
-  // Indicates if confirmation of account is required.
-  ConfirmationMethod confirmation_method = 3;
-
-  // Contains authentication data for use with the current device.
-  // This object must be stored in a secure place. It can also be
-  // protected with a PIN, but this is optional.
-  // See the docs at https://docs.trinsic.id for more information
-  // on working with authentication data.
-  AccountProfile profile = 4;
 }
 
 // Confirmation method type for two-factor workflows
@@ -62,6 +33,15 @@ enum ConfirmationMethod {
   Other = 10;
 }
 
+// Token protection info
+message TokenProtection {
+  // Indicates if token is protected using a PIN,
+  // security code, HSM secret, etc.
+  bool enabled = 1;
+  // The method used to protect the token
+  ConfirmationMethod method = 2;
+}
+
 // Device profile containing sensitive authentication data.
 // This information should be stored securely
 message AccountProfile {
@@ -76,15 +56,6 @@ message AccountProfile {
   // If token protection is enabled, implementations must supply
   // protection secret before using the token for authentication.
   TokenProtection protection = 4;
-}
-
-// Token protection info
-message TokenProtection {
-  // Indicates if token is protected using a PIN,
-  // security code, HSM secret, etc.
-  bool enabled = 1;
-  // The method used to protect the token
-  ConfirmationMethod method = 2;
 }
 
 // Request for information about the account used to make the request
@@ -168,13 +139,6 @@ message WalletAuthToken {
 }
 
 service Account {
-  // Sign in to an already existing account
-  rpc SignIn              (SignInRequest)             returns (SignInResponse) {
-    option deprecated = true;
-    option (options.sdk_template_option).ignore = true;
-    option (options.sdk_template_option).anonymous = true;
-  }
-
   // Begin login flow for specified account, creating one if it does not already exist
   rpc Login               (LoginRequest)              returns (LoginResponse) {
     option deprecated = true;
