@@ -35,14 +35,8 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: gradle
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-          cache: pip
       - name: Build with Gradle
         run: |
-          python ../devops/build_sdks.py --language=java
           gradle build --scan
         shell: pwsh
         working-directory: java
