@@ -7,7 +7,7 @@ package trinsic.services.trustregistry.v1;
  *
  *
  * <pre>
- * Request to fetch member status in governance framework for a specific credential schema.
+ * Request to fetch member status in Trust Registry for a specific credential schema.
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.GetMemberAuthorizationStatusRequest}
@@ -327,7 +327,7 @@ public final class GetMemberAuthorizationStatusRequest
    *
    *
    * <pre>
-   * Request to fetch member status in governance framework for a specific credential schema.
+   * Request to fetch member status in Trust Registry for a specific credential schema.
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.GetMemberAuthorizationStatusRequest}

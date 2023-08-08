@@ -95,7 +95,7 @@ type IssueFromTemplateRequest struct {
 	// https://www.w3.org/TR/vc-data-model/#expiration
 	ExpirationDate string `protobuf:"bytes,5,opt,name=expiration_date,json=expirationDate,proto3" json:"expiration_date,omitempty"`
 	// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-	// governance framework.
+	// Trust Registry.
 	IncludeGovernance bool `protobuf:"varint,6,opt,name=include_governance,json=includeGovernance,proto3" json:"include_governance,omitempty"`
 	// The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
 	SignatureType SignatureType `protobuf:"varint,7,opt,name=signature_type,json=signatureType,proto3,enum=services.verifiablecredentials.v1.SignatureType" json:"signature_type,omitempty"`
@@ -1045,7 +1045,7 @@ type CreateCredentialOfferRequest struct {
 	// the holder DID in the credential subject
 	HolderBinding bool `protobuf:"varint,3,opt,name=holder_binding,json=holderBinding,proto3" json:"holder_binding,omitempty"`
 	// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-	// governance framework.
+	// Trust Registry.
 	IncludeGovernance bool `protobuf:"varint,4,opt,name=include_governance,json=includeGovernance,proto3" json:"include_governance,omitempty"`
 	// If true, a short URL link will be generated that can be used to share the credential offer with the holder.
 	// This link will point to the credential offer in the wallet app.

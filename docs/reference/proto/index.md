@@ -145,7 +145,6 @@ TODO - Add support for predicate types - currently only equality. |
 
 
 
-
 <a name="services-verifiablecredentials-templates-v1-CreateVerificationTemplateRequest-FieldsEntry"></a>
 
 ### CreateVerificationTemplateRequest.FieldsEntry

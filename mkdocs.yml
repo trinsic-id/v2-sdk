@@ -6,27 +6,10 @@ repo_name: trinsic-id/sdk
 site_url: https://docs.trinsic.id
 nav:
   - Home: index.md
-  - Learn:
-    - Introduction: learn/index.md
-    - Guide:
-      - Issuance: guide/issuance.md
-      - Verification: guide/verification.md
-    - Key Concepts:
-      - Ecosystems: learn/concepts/ecosystems.md
-      - Wallets: learn/concepts/wallets.md
-      - Credentials: learn/concepts/credentials.md
-      - Verifications: learn/concepts/verifications.md
-      - Templates: learn/concepts/templates.md
-      - Identifiers: learn/concepts/dids.md
-      - Governance: learn/concepts/trust-registries.md
-    - Trinsic Platform:
-      - Standards: learn/platform/standards.md
-    - Resources:
-      - "Migration: From v1" : learn/resources/migrate.md
-      - "Migration: Account API": learn/resources/migrate-account.md
-      - Interactive API Experience: learn/resources/interactive-api.md
-  - Tools & SDKs:
+  - Platform:
     - Overview: sdk/index.md
+    - Getting Started:
+      - Platform Walkthrough: guide/platform-walkthrough.md
     - Client-Side SDKs:
       - Flutter: dart/index.md
       - Browser: web/index.md
@@ -41,18 +24,36 @@ nav:
       - Go: go/index.md
       - Java: java/index.md
     - Trinsic CLI: cli/index.md
+  - Learn:
+    - Introduction: learn/index.md
+    - Guide:
+      - Issuance: guide/issuance.md
+      - Verification: guide/verification.md
+    - Key Concepts:
+      - Ecosystems: learn/concepts/ecosystems.md
+      - Wallets: learn/concepts/wallets.md
+      - Credentials: learn/concepts/credentials.md
+      - Verifications: learn/concepts/verifications.md
+      - Credential Templates: learn/concepts/credential-templates.md
+      - Identifiers: learn/concepts/dids.md
+      - Trust Registries: learn/concepts/trust-registries.md
+    - Trinsic Platform:
+      - Standards: learn/platform/standards.md
+    - Resources:
+      - "Migration: From v1" : learn/resources/migrate.md
+      - "Migration: Account API": learn/resources/migrate-account.md
+      - Interactive API Experience: learn/resources/interactive-api.md
   - Reference:
     - Overview: reference/index.md
     - APIs:
       - Credential API: reference/services/credential-service.md
       - File Management API: reference/services/file-management-service.md
       - Provider API: reference/services/provider-service.md
-      - Template API: reference/services/template-service.md
-      - Governance API: reference/services/trust-registry-service.md
+      - Credential Template API: reference/services/template-service.md
+      - Trust Registry API: reference/services/trust-registry-service.md
       - Wallet API: reference/services/wallet-service.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
-  - Examples: examples/index.md
 theme:
   name: material
   logo: _static/logo-title.svg

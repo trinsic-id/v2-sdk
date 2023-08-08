@@ -197,11 +197,11 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 ---
 
-## Define a Template
+## Define a credential template
 
-Before we can issue a credential, we need to create a [Template](/learn/concepts/templates/){target=_blank} for it.
+Before we can issue a credential, we need to create a [Credential](/learn/concepts/credential-templates/){target=_blank} for it.
 
-Templates are simply a list of the fields that a credential can have.
+Credential templates are simply a list of the fields that a credential can have.
 
 === "Trinsic CLI"
     First, prepare a JSON file which describes your template:
@@ -228,13 +228,13 @@ Templates are simply a list of the fields that a credential can have.
     }
     ```
 
-    Then create the template:
+    Then create the credential template:
 
     ```bash
     trinsic template create -n "VaccinationCertificate" --fields-file templateData.json
     ```
 
-    The output of this command will include a template ID; copy this down for later use.
+    The output of this command will include a credential template ID; copy this down for later use.
 
 === "Typescript"
     <!--codeinclude-->
@@ -271,10 +271,10 @@ Templates are simply a list of the fields that a credential can have.
     ```
     <!--/codeinclude-->
 
-!!! abstract "Further Reading: Templates"
+!!! abstract "Further Reading: Credential Templates"
 
-    - Learn more about [Templates](/learn/concepts/templates){target=_blank}
-    - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
+    - Learn more about [Credential Templates](/learn/concepts/credential-templates){target=_blank}
+    - Browse the [Credential Template API reference](/reference/services/template-service/){target=_blank}
 
 ---
 
@@ -283,7 +283,7 @@ Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, w
 
 A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.
 
-To issue a vaccine certificate, we'll use the template we created in the last step.
+To issue a vaccine certificate, we'll use the credential template we created in the last step.
 
 === "Trinsic CLI"
 
@@ -307,7 +307,7 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
     The output of this command will contain a signed JSON document, which has been saved to `credential.json`.
 
-    Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate".
+    Note that TEMPLATE_ID refers to the "Schema" URI of the credential template you created earlier called "VaccinationCertificate".
     More specifically, it's the property 'schema_uri' in the JSON returned by the `trinsic template create...` command.
 
 
@@ -565,7 +565,7 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 
 ---
 
-## Governance Setup
+## Trust Registry Setup
 
 Before we begin, you'll need to prepare your [trust registry](/learn/concepts/trust-registries). This defines who is an authorized issuer of your vaccine card.
 
@@ -635,11 +635,11 @@ Check the status of an issuer for a specific credential type using the public_di
 ---
 
 
-### Issue a Credential with Governance framework
+### Issue a Credential with Trust Registry
 
-We need to prepare a credential with a governance framework specified. This will consist of:
+We need to prepare a credential with a Trust Registry specified. This will consist of:
 
-1. Issuing the credential with governance enabled
+1. Issuing the credential with Trust Registry enabled
 2. Inserting the credential into your wallet
 3. Deriving a proof of the credential
 
@@ -678,9 +678,9 @@ We need to prepare a credential with a governance framework specified. This will
 
 ---
 
-### Verify a proof with governance status
+### Verify a proof with Trust Registry status
 
-Now we can verify the proof from the previous step, and get the governance status.
+Now we can verify the proof from the previous step, and get the Trust Registry status.
 
 === "Trinsic CLI"
 
@@ -732,9 +732,9 @@ Revoke the status of an issuer for a specific credential type using the public_d
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.UnregisterMember") }}
 
 
-### Verify a proof with governance status after revocation of issuer
+### Verify a proof with Trust Registry status after revocation of issuer
 
-Now we can verify the proof from the previous step, and get the governance status.
+Now we can verify the proof from the previous step, and get the Trust Registry status.
 
 === "Trinsic CLI"
 
@@ -778,7 +778,7 @@ Now we can verify the proof from the previous step, and get the governance statu
 
 !!! info "Further Reading: Trust Registries"
 
-    - Learn more about [Governance](/learn/concepts/trust-registries){target=_blank}
+    - Learn more about [Trust Registry](/learn/concepts/trust-registries){target=_blank}
     - Browse the [Provider API reference](reference/services/trust-registry-service/){target=_blank}
 
 
