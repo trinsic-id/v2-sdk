@@ -25,7 +25,7 @@
     
     
       
-        <title>Governance API - Documentation</title>
+        <title>Trust Registry API - Documentation</title>
       
     
     
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Governance API
+              Trust Registry API
             
           </span>
         </div>
@@ -300,23 +300,6 @@
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../examples/" class="md-tabs__link">
-        
-  
-    
-  
-  Examples
-
-      </a>
-    </li>
   
 
       
@@ -1308,13 +1291,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../learn/concepts/templates/" class="md-nav__link">
+      <a href="../../../learn/concepts/credential-templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
-    Templates
+    Credential Templates
   
 
     
@@ -1366,7 +1349,7 @@
   <span class="md-ellipsis">
     
   
-    Governance
+    Trust Registries
   
 
     
@@ -1815,7 +1798,7 @@
   <span class="md-ellipsis">
     
   
-    Template API
+    Credential Template API
   
 
     
@@ -1850,7 +1833,7 @@
   <span class="md-ellipsis">
     
   
-    Governance API
+    Trust Registry API
   
 
     
@@ -1867,7 +1850,7 @@
   <span class="md-ellipsis">
     
   
-    Governance API
+    Trust Registry API
   
 
     
@@ -2077,31 +2060,6 @@
   
 
     
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Examples
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -2204,7 +2162,7 @@
 
 
 <h1 id="trust-registry-service">Trust Registry Service<a class="headerlink" href="#trust-registry-service" title="Permanent link">&para;</a></h1>
-<p>The Governance API exposes functionality for managing your Ecosystem's <a href="/learn/concepts/trust-registries">Trust Registry</a>.</p>
+<p>The Trust Registry API exposes functionality for managing your Ecosystem's <a href="/learn/concepts/trust-registries">Trust Registry</a>.</p>
 <p>A Trust Registry is a list of authorized issuers for the various credential types within an ecosystem.</p>
 <hr />
 <h2 id="register-issuer">Register Issuer<a class="headerlink" href="#register-issuer" title="Permanent link">&para;</a></h2>
@@ -2458,7 +2416,7 @@ trinsic trust-registry get-member \
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberRequest' href='/reference/proto#services.trustregistry.v1.GetMemberRequest'>GetMemberRequest</a></div><div class='proto-obj-description'>Request to get a member of the governance framework</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to get</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to get</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to get. Must be associated with an existing Trinsic account.</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberRequest' href='/reference/proto#services.trustregistry.v1.GetMemberRequest'>GetMemberRequest</a></div><div class='proto-obj-description'>Request to get a member of the Trust Registry</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member to get</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic Wallet ID of member to get</div></div><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of member to get. Must be associated with an existing Trinsic account.</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberResponse' href='/reference/proto#services.trustregistry.v1.GetMemberResponse'>GetMemberResponse</a></div><div class='proto-obj-description'>Response to <code>GetMemberAuthorizationStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>authorized_member</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.AuthorizedMember'>AuthorizedMember</a></div><div class='proto-field-description'>Member for given did in given framework</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.</span>did</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.</span>authorized_member_schemas</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.AuthorizedMemberSchema'>AuthorizedMemberSchema</a>[]</div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>status_details</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>valid_from</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>authorized_member.authorized_member_schemas[<span class='proto-context-array-key'>i</span>].</span>valid_until</div> <div class='proto-field-type'>uint64</div><div class='proto-field-description'></div></div></div></div></div></div></div></div></div></div></p>
@@ -2530,7 +2488,7 @@ trinsic trust-registry get-member \
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusRequest'>GetMemberAuthorizationStatusRequest</a></div><div class='proto-obj-description'>Request to fetch member status in governance framework for a specific credential schema.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with member</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusRequest'>GetMemberAuthorizationStatusRequest</a></div><div class='proto-obj-description'>Request to fetch member status in Trust Registry for a specific credential schema.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with member</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusResponse' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusResponse'>GetMemberAuthorizationStatusResponse</a></div><div class='proto-obj-description'>Response to <code>GetMemberAuthorizationStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>status</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.RegistrationStatus'>RegistrationStatus</a></div><div class='proto-field-description'>Status of member for given credential schema</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>CURRENT</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>Member is currently authorized, as of the time of the query</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>EXPIRED</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Member's authorization has expired</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>TERMINATED</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>Member has voluntarily ceased Issuer role under the specific EGF</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>REVOKED</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Member authority under specific EGF was terminated by the governing authority</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>NOT_FOUND</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Member is not associated with given credential schema in the EGF</div></div></div></div></div></div></div></p>
@@ -2588,7 +2546,7 @@ trinsic trust-registry get-member \
               
                 
               
-              Thanks for your feedback! Help us improve this page by using our <a href="https://github.com/trinsic-id/sdk/issues/new/?title=[Docs feedback]+Governance%20API+-+/reference/services/trust-registry-service/" target="_blank" rel="noopener">GitHub issue form</a>.
+              Thanks for your feedback! Help us improve this page by using our <a href="https://github.com/trinsic-id/sdk/issues/new/?title=[Docs feedback]+Trust%20Registry%20API+-+/reference/services/trust-registry-service/" target="_blank" rel="noopener">GitHub issue form</a>.
             </div>
           
         </div>

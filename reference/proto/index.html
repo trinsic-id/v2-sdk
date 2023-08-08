@@ -297,23 +297,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../examples/" class="md-tabs__link">
-        
-  
-    
-  
-  Examples
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -1302,13 +1285,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learn/concepts/templates/" class="md-nav__link">
+      <a href="../../learn/concepts/credential-templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
-    Templates
+    Credential Templates
   
 
     
@@ -1360,7 +1343,7 @@
   <span class="md-ellipsis">
     
   
-    Governance
+    Trust Registries
   
 
     
@@ -1809,7 +1792,7 @@
   <span class="md-ellipsis">
     
   
-    Template API
+    Credential Template API
   
 
     
@@ -1835,7 +1818,7 @@
   <span class="md-ellipsis">
     
   
-    Governance API
+    Trust Registry API
   
 
     
@@ -1966,31 +1949,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Examples
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -4178,28 +4136,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#signinrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SignInRequest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signinresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SignInResponse
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#tokenprotection" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5747,7 +5683,7 @@
 <tr>
 <td>include_governance</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</td>
 </tr>
 <tr>
 <td>generate_share_url</td>
@@ -5888,7 +5824,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 <tr>
 <td>include_governance</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</td>
 </tr>
 <tr>
 <td>signature_type</td>
@@ -7124,7 +7060,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 </table>
 <p><a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a></p>
 <h3 id="getmemberauthorizationstatusrequest">GetMemberAuthorizationStatusRequest<a class="headerlink" href="#getmemberauthorizationstatusrequest" title="Permanent link">&para;</a></h3>
-<p>Request to fetch member status in governance framework for a specific credential schema.</p>
+<p>Request to fetch member status in Trust Registry for a specific credential schema.</p>
 <table>
 <thead>
 <tr>
@@ -7167,7 +7103,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 </table>
 <p><a name="services-trustregistry-v1-GetMemberRequest"></a></p>
 <h3 id="getmemberrequest">GetMemberRequest<a class="headerlink" href="#getmemberrequest" title="Permanent link">&para;</a></h3>
-<p>Request to get a member of the governance framework</p>
+<p>Request to get a member of the Trust Registry</p>
 <table>
 <thead>
 <tr>
@@ -8721,12 +8657,6 @@ https://docs.godiddy.com/en/supported-methods</p>
 </thead>
 <tbody>
 <tr>
-<td>SignIn</td>
-<td><a href="/reference/proto#services-account-v1-SignInRequest">SignInRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-SignInResponse">SignInResponse</a></td>
-<td>Sign in to an already existing account</td>
-</tr>
-<tr>
 <td>Login</td>
 <td><a href="/reference/proto#services-account-v1-LoginRequest">LoginRequest</a></td>
 <td><a href="/reference/proto#services-account-v1-LoginResponse">LoginResponse</a></td>
@@ -8947,57 +8877,6 @@ This information should be stored securely</p>
 <td>profile</td>
 <td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
 <td>Account profile response. If present, no confirmation of login is required.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-SignInRequest"></a></p>
-<h3 id="signinrequest">SignInRequest<a class="headerlink" href="#signinrequest" title="Permanent link">&para;</a></h3>
-<p>Request for creating or signing into an account</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
-<td>Account registration details</td>
-</tr>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of Ecosystem to use Ignored if <code>invitation_code</code> is passed</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-SignInResponse"></a></p>
-<h3 id="signinresponse">SignInResponse<a class="headerlink" href="#signinresponse" title="Permanent link">&para;</a></h3>
-<p>Response for creating new account
-This object will indicate if a confirmation code
-was sent to one of the users two-factor methods
-like email, SMS, etc.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>confirmation_method</td>
-<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
-<td>Indicates if confirmation of account is required.</td>
-</tr>
-<tr>
-<td>profile</td>
-<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
-<td>Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data.</td>
 </tr>
 </tbody>
 </table>

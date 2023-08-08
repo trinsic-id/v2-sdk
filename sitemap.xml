@@ -91,6 +91,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.trinsic.id/learn/concepts/credential-templates/</loc>
+         <lastmod>2023-08-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.trinsic.id/learn/concepts/credentials/</loc>
          <lastmod>2023-08-08</lastmod>
          <changefreq>daily</changefreq>
@@ -107,11 +112,6 @@
     </url>
     <url>
          <loc>https://docs.trinsic.id/learn/concepts/json-ld/</loc>
-         <lastmod>2023-08-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.trinsic.id/learn/concepts/templates/</loc>
          <lastmod>2023-08-08</lastmod>
          <changefreq>daily</changefreq>
     </url>

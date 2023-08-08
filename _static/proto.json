@@ -54,12 +54,6 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
-    "services.account.v1.Account.SignIn": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.AccountDetails": {
       "type": "message",
       "collection": "messages",
@@ -263,42 +257,6 @@
       "collection": "fields",
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.LoginResponse"
-    },
-    "services.account.v1.SignInRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.SignInRequest.details": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInRequest"
-    },
-    "services.account.v1.SignInRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInRequest"
-    },
-    "services.account.v1.SignInResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.SignInResponse.confirmation_method": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInResponse"
-    },
-    "services.account.v1.SignInResponse.profile": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInResponse"
     },
     "services.account.v1.TokenProtection": {
       "type": "message",
@@ -3964,17 +3922,14 @@
         "services.account.v1.Account"
       ],
       "methods": [
-        "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info"
       ],
       "messages": [
-        "services.account.v1.SignInRequest",
         "services.account.v1.AccountDetails",
-        "services.account.v1.SignInResponse",
-        "services.account.v1.AccountProfile",
         "services.account.v1.TokenProtection",
+        "services.account.v1.AccountProfile",
         "services.account.v1.AccountInfoRequest",
         "services.account.v1.AccountInfoResponse",
         "services.account.v1.LoginRequest",
@@ -3984,19 +3939,15 @@
         "services.account.v1.WalletAuthToken"
       ],
       "fields": [
-        "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.ecosystem_id",
         "services.account.v1.AccountDetails.name",
         "services.account.v1.AccountDetails.email",
         "services.account.v1.AccountDetails.sms",
-        "services.account.v1.SignInResponse.confirmation_method",
-        "services.account.v1.SignInResponse.profile",
+        "services.account.v1.TokenProtection.enabled",
+        "services.account.v1.TokenProtection.method",
         "services.account.v1.AccountProfile.profile_type",
         "services.account.v1.AccountProfile.auth_data",
         "services.account.v1.AccountProfile.auth_token",
         "services.account.v1.AccountProfile.protection",
-        "services.account.v1.TokenProtection.enabled",
-        "services.account.v1.TokenProtection.method",
         "services.account.v1.AccountInfoResponse.details",
         "services.account.v1.AccountInfoResponse.wallet_id",
         "services.account.v1.AccountInfoResponse.device_id",
@@ -4772,7 +4723,6 @@
       "full_name": "services.account.v1.Account",
       "description": "",
       "methods": [
-        "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info"
@@ -4914,17 +4864,6 @@
       "input_type": "services.account.v1.LoginConfirmRequest",
       "output_type": "services.account.v1.LoginConfirmResponse",
       "description": "Finalize login flow with two-factor confirmation code",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.account.v1.Account.SignIn": {
-      "name": "SignIn",
-      "full_name": "services.account.v1.Account.SignIn",
-      "input_type": "services.account.v1.SignInRequest",
-      "output_type": "services.account.v1.SignInResponse",
-      "description": "Sign in to an already existing account",
       "options": {
         "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
@@ -5486,28 +5425,6 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.SignInRequest": {
-      "name": "SignInRequest",
-      "full_name": "services.account.v1.SignInRequest",
-      "description": "Request for creating or signing into an account",
-      "fields": [
-        "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.ecosystem_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.SignInResponse": {
-      "name": "SignInResponse",
-      "full_name": "services.account.v1.SignInResponse",
-      "description": "Response for creating new account\nThis object will indicate if a confirmation code\nwas sent to one of the users two-factor methods\nlike email, SMS, etc.",
-      "fields": [
-        "services.account.v1.SignInResponse.confirmation_method",
-        "services.account.v1.SignInResponse.profile"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.account.v1.TokenProtection": {
       "name": "TokenProtection",
       "full_name": "services.account.v1.TokenProtection",
@@ -6029,7 +5946,7 @@
     "services.trustregistry.v1.GetMemberAuthorizationStatusRequest": {
       "name": "GetMemberAuthorizationStatusRequest",
       "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
-      "description": "Request to fetch member status in governance framework for a specific credential schema.",
+      "description": "Request to fetch member status in Trust Registry for a specific credential schema.",
       "fields": [
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri",
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri"
@@ -6050,7 +5967,7 @@
     "services.trustregistry.v1.GetMemberRequest": {
       "name": "GetMemberRequest",
       "full_name": "services.trustregistry.v1.GetMemberRequest",
-      "description": "Request to get a member of the governance framework",
+      "description": "Request to get a member of the Trust Registry",
       "fields": [
         "services.trustregistry.v1.GetMemberRequest.did_uri",
         "services.trustregistry.v1.GetMemberRequest.wallet_id",
@@ -7477,44 +7394,6 @@
       "type": "AccountProfile",
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account profile response. If present, no confirmation of login is required."
-    },
-    "services.account.v1.SignInRequest.details": {
-      "name": "details",
-      "full_name": "services.account.v1.SignInRequest.details",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountDetails",
-      "full_type": "services.account.v1.AccountDetails",
-      "description": "Account registration details",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.SignInRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.account.v1.SignInRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of Ecosystem to use\nIgnored if `invitation_code` is passed",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.SignInResponse.confirmation_method": {
-      "name": "confirmation_method",
-      "full_name": "services.account.v1.SignInResponse.confirmation_method",
-      "label": "LABEL_OPTIONAL",
-      "type": "ConfirmationMethod",
-      "full_type": "services.account.v1.ConfirmationMethod",
-      "description": "Indicates if confirmation of account is required."
-    },
-    "services.account.v1.SignInResponse.profile": {
-      "name": "profile",
-      "full_name": "services.account.v1.SignInResponse.profile",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountProfile",
-      "full_type": "services.account.v1.AccountProfile",
-      "description": "Contains authentication data for use with the current device.\nThis object must be stored in a secure place. It can also be\nprotected with a PIN, but this is optional.\nSee the docs at https://docs.trinsic.id for more information\non working with authentication data."
     },
     "services.account.v1.TokenProtection.enabled": {
       "name": "enabled",
@@ -9932,7 +9811,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry."
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type": {
       "name": "signature_type",
@@ -10055,7 +9934,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry."
     },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy": {
       "name": "save_copy",

@@ -303,23 +303,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../examples/" class="md-tabs__link">
-        
-  
-    
-  
-  Examples
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -1308,13 +1291,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../learn/concepts/templates/" class="md-nav__link">
+      <a href="../../../learn/concepts/credential-templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
-    Templates
+    Credential Templates
   
 
     
@@ -1366,7 +1349,7 @@
   <span class="md-ellipsis">
     
   
-    Governance
+    Trust Registries
   
 
     
@@ -1789,22 +1772,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#issue-credential-from-template" class="md-nav__link">
+  <a href="#issue-credential-from-credential-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Issue Credential from Template
+        Issue Credential from Credential Template
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Issue Credential from Template">
+    <nav class="md-nav" aria-label="Issue Credential from Credential Template">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-governance-information-to-issued-credential" class="md-nav__link">
+  <a href="#add-trust-registry-information-to-issued-credential" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add governance information to issued credential
+        Add Trust Registry information to issued credential
       
     </span>
   </a>
@@ -1994,7 +1977,7 @@
   <span class="md-ellipsis">
     
   
-    Template API
+    Credential Template API
   
 
     
@@ -2020,7 +2003,7 @@
   <span class="md-ellipsis">
     
   
-    Governance API
+    Trust Registry API
   
 
     
@@ -2155,31 +2138,6 @@
   
 
     
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Examples
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -2207,22 +2165,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#issue-credential-from-template" class="md-nav__link">
+  <a href="#issue-credential-from-credential-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Issue Credential from Template
+        Issue Credential from Credential Template
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Issue Credential from Template">
+    <nav class="md-nav" aria-label="Issue Credential from Credential Template">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#add-governance-information-to-issued-credential" class="md-nav__link">
+  <a href="#add-trust-registry-information-to-issued-credential" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add governance information to issued credential
+        Add Trust Registry information to issued credential
       
     </span>
   </a>
@@ -2367,8 +2325,8 @@
 <p>Credentials are signed, and proofs are created, using a key pair unique to the signing / holding wallet. This key pair is created and managed by Trinsic upon account creation.</p>
 </div>
 <hr />
-<h2 id="issue-credential-from-template">Issue Credential from Template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h2>
-<p>Issues a credential from a <a href="/reference/services/template-service#create-template" target="_blank">previously-defined template</a>.</p>
+<h2 id="issue-credential-from-credential-template">Issue Credential from Credential Template<a class="headerlink" href="#issue-credential-from-credential-template" title="Permanent link">&para;</a></h2>
+<p>Issues a credential from a <a href="/reference/services/template-service#create-template" target="_blank">previously-defined credential template</a>.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2437,19 +2395,19 @@
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.IssueFromTemplateRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.IssueFromTemplateRequest' href='/reference/proto#services.verifiablecredentials.v1.IssueFromTemplateRequest'>IssueFromTemplateRequest</a></div><div class='proto-obj-description'>Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>template_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template to use</div></div><div class='proto-field'><div class='proto-field-name'>values_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>JSON document string with keys corresponding to the fields of the template referenced by <code>template_id</code></div></div><div class='proto-field'><div class='proto-field-name'>save_copy</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status.</div></div><div class='proto-field'><div class='proto-field-name'>expiration_date</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration</div></div><div class='proto-field'><div class='proto-field-name'>include_governance</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</div></div><div class='proto-field'><div class='proto-field-name'>signature_type</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.v1.SignatureType'>SignatureType</a></div><div class='proto-field-description'>The type of signature to use when signing the credential. Defaults to <code>EXPERIMENTAL</code>.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>UNSPECIFIED</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>The signature type is not specified. The experimental signature type will be used.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>STANDARD</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>The signature type uses EdDSA with the Ed25519 curve (NIST compliant). This type of signature does not support selective disclosure of attributes.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>EXPERIMENTAL</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>The signature type uses BBS signatures with BLS12-381 curve (experimental). This type of signature allows for selective disclosure of attributes.</div></div></div></div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.IssueFromTemplateRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.IssueFromTemplateRequest' href='/reference/proto#services.verifiablecredentials.v1.IssueFromTemplateRequest'>IssueFromTemplateRequest</a></div><div class='proto-obj-description'>Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>template_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template to use</div></div><div class='proto-field'><div class='proto-field-name'>values_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>JSON document string with keys corresponding to the fields of the template referenced by <code>template_id</code></div></div><div class='proto-field'><div class='proto-field-name'>save_copy</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status.</div></div><div class='proto-field'><div class='proto-field-name'>expiration_date</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration</div></div><div class='proto-field'><div class='proto-field-name'>include_governance</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</div></div><div class='proto-field'><div class='proto-field-name'>signature_type</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.v1.SignatureType'>SignatureType</a></div><div class='proto-field-description'>The type of signature to use when signing the credential. Defaults to <code>EXPERIMENTAL</code>.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>UNSPECIFIED</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>The signature type is not specified. The experimental signature type will be used.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>STANDARD</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>The signature type uses EdDSA with the Ed25519 curve (NIST compliant). This type of signature does not support selective disclosure of attributes.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>EXPERIMENTAL</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>The signature type uses BBS signatures with BLS12-381 curve (experimental). This type of signature allows for selective disclosure of attributes.</div></div></div></div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.IssueFromTemplateResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.IssueFromTemplateResponse' href='/reference/proto#services.verifiablecredentials.v1.IssueFromTemplateResponse'>IssueFromTemplateResponse</a></div><div class='proto-obj-description'>Response to <code>IssueFromTemplateRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Verifiable Credential document, in JSON-LD form, constructed from the specified template and values; signed with public key tied to caller of <code>IssueFromTemplateRequest</code></div></div></div></div></p>
 </div>
 </div>
 </div>
-<h3 id="add-governance-information-to-issued-credential">Add governance information to issued credential<a class="headerlink" href="#add-governance-information-to-issued-credential" title="Permanent link">&para;</a></h3>
+<h3 id="add-trust-registry-information-to-issued-credential">Add Trust Registry information to issued credential<a class="headerlink" href="#add-trust-registry-information-to-issued-credential" title="Permanent link">&para;</a></h3>
 <p>In order to attach governance information to the credential, issuers must request this explicitly by specifying the parameter
-<code>include_governance</code> to <code>true</code> in the above request. This will reference the ecosystem's governance framework that the issuer is authorized
+<code>include_governance</code> to <code>true</code> in the above request. This will reference the ecosystem's Trust Registry that the issuer is authorized
 to issue credentials of the designated type (schema).</p>
 <p>When this parameter is set to <code>true</code>, the issued credential will contain extended information in the <code>issuer</code> field to assert authorization in
-the given governance framework. The framework identifier will be in the <code>issuer.trustRegistry</code> field.
+the given Trust Registry. The registry identifier will be in the <code>issuer.trustRegistry</code> field.
 Here's an example of a VC with extended issuer information:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;did:key:z5TcEFAQPu7RkrBCMCJDGgVziV&quot;</span><span class="p">,</span>
@@ -2467,7 +2425,7 @@ Here's an example of a VC with extended issuer information:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.CreateCredentialOfferRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.CreateCredentialOfferRequest' href='/reference/proto#services.verifiablecredentials.v1.CreateCredentialOfferRequest'>CreateCredentialOfferRequest</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>template_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template to use</div></div><div class='proto-field'><div class='proto-field-name'>values_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>JSON document string with keys corresponding to the fields of the template referenced by <code>template_id</code></div></div><div class='proto-field'><div class='proto-field-name'>holder_binding</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, the credential will be issued with holder binding by specifying the holder DID in the credential subject</div></div><div class='proto-field'><div class='proto-field-name'>include_governance</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</div></div><div class='proto-field'><div class='proto-field-name'>generate_share_url</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app.</div></div><div class='proto-field'><div class='proto-field-name'>signature_type</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.v1.SignatureType'>SignatureType</a></div><div class='proto-field-description'>The type of signature to use when signing the credential. Defaults to <code>EXPERIMENTAL</code>.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>UNSPECIFIED</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>The signature type is not specified. The experimental signature type will be used.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>STANDARD</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>The signature type uses EdDSA with the Ed25519 curve (NIST compliant). This type of signature does not support selective disclosure of attributes.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>EXPERIMENTAL</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>The signature type uses BBS signatures with BLS12-381 curve (experimental). This type of signature allows for selective disclosure of attributes.</div></div></div></div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.CreateCredentialOfferRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.CreateCredentialOfferRequest' href='/reference/proto#services.verifiablecredentials.v1.CreateCredentialOfferRequest'>CreateCredentialOfferRequest</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>template_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template to use</div></div><div class='proto-field'><div class='proto-field-name'>values_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>JSON document string with keys corresponding to the fields of the template referenced by <code>template_id</code></div></div><div class='proto-field'><div class='proto-field-name'>holder_binding</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, the credential will be issued with holder binding by specifying the holder DID in the credential subject</div></div><div class='proto-field'><div class='proto-field-name'>include_governance</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</div></div><div class='proto-field'><div class='proto-field-name'>generate_share_url</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app.</div></div><div class='proto-field'><div class='proto-field-name'>signature_type</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.v1.SignatureType'>SignatureType</a></div><div class='proto-field-description'>The type of signature to use when signing the credential. Defaults to <code>EXPERIMENTAL</code>.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>UNSPECIFIED</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>The signature type is not specified. The experimental signature type will be used.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>STANDARD</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>The signature type uses EdDSA with the Ed25519 curve (NIST compliant). This type of signature does not support selective disclosure of attributes.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SignatureType.</span>EXPERIMENTAL</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>The signature type uses BBS signatures with BLS12-381 curve (experimental). This type of signature allows for selective disclosure of attributes.</div></div></div></div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.CreateCredentialOfferResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.CreateCredentialOfferResponse' href='/reference/proto#services.verifiablecredentials.v1.CreateCredentialOfferResponse'>CreateCredentialOfferResponse</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>document_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The JSON document that contains the credential offer</div></div><div class='proto-field'><div class='proto-field-name'>share_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>If requested, a URL that can be used to share the credential offer with the holder. This is a short URL that can be used in a QR code and will redirect the holder to the credential offer using the wallet app.</div></div></div></div></p>

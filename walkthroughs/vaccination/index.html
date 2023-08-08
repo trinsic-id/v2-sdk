@@ -297,23 +297,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../examples/" class="md-tabs__link">
-        
-  
-    
-  
-  Examples
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -1302,13 +1285,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learn/concepts/templates/" class="md-nav__link">
+      <a href="../../learn/concepts/credential-templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     
   
-    Templates
+    Credential Templates
   
 
     
@@ -1360,7 +1343,7 @@
   <span class="md-ellipsis">
     
   
-    Governance
+    Trust Registries
   
 
     
@@ -1809,7 +1792,7 @@
   <span class="md-ellipsis">
     
   
-    Template API
+    Credential Template API
   
 
     
@@ -1835,7 +1818,7 @@
   <span class="md-ellipsis">
     
   
-    Governance API
+    Trust Registry API
   
 
     
@@ -1970,31 +1953,6 @@
   
 
     
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Examples
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -2094,10 +2052,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#define-a-template" class="md-nav__link">
+  <a href="#define-a-credential-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Define a Template
+        Define a credential template
       
     </span>
   </a>
@@ -2171,15 +2129,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#governance-setup" class="md-nav__link">
+  <a href="#trust-registry-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Governance Setup
+        Trust Registry Setup
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Governance Setup">
+    <nav class="md-nav" aria-label="Trust Registry Setup">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2205,10 +2163,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#issue-a-credential-with-governance-framework" class="md-nav__link">
+  <a href="#issue-a-credential-with-trust-registry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Issue a Credential with Governance framework
+        Issue a Credential with Trust Registry
       
     </span>
   </a>
@@ -2216,10 +2174,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verify-a-proof-with-governance-status" class="md-nav__link">
+  <a href="#verify-a-proof-with-trust-registry-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify a proof with governance status
+        Verify a proof with Trust Registry status
       
     </span>
   </a>
@@ -2238,10 +2196,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verify-a-proof-with-governance-status-after-revocation-of-issuer" class="md-nav__link">
+  <a href="#verify-a-proof-with-trust-registry-status-after-revocation-of-issuer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify a proof with governance status after revocation of issuer
+        Verify a proof with Trust Registry status after revocation of issuer
       
     </span>
   </a>
@@ -2474,9 +2432,9 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 </ul>
 </div>
 <hr />
-<h2 id="define-a-template">Define a Template<a class="headerlink" href="#define-a-template" title="Permanent link">&para;</a></h2>
-<p>Before we can issue a credential, we need to create a <a href="/learn/concepts/templates/" target="_blank">Template</a> for it.</p>
-<p>Templates are simply a list of the fields that a credential can have.</p>
+<h2 id="define-a-credential-template">Define a credential template<a class="headerlink" href="#define-a-credential-template" title="Permanent link">&para;</a></h2>
+<p>Before we can issue a credential, we need to create a <a href="/learn/concepts/credential-templates/" target="_blank">Credential</a> for it.</p>
+<p>Credential templates are simply a list of the fields that a credential can have.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">Typescript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2505,10 +2463,10 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Then create the template:</p>
+<p>Then create the credential template:</p>
 <div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>template<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;VaccinationCertificate&quot;</span><span class="w"> </span>--fields-file<span class="w"> </span>templateData.json
 </code></pre></div>
-<p>The output of this command will include a template ID; copy this down for later use.</p>
+<p>The output of this command will include a credential template ID; copy this down for later use.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">//Define all fields</span>
@@ -2643,17 +2601,17 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 </div>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">Further Reading: Templates</p>
+<p class="admonition-title">Further Reading: Credential Templates</p>
 <ul>
-<li>Learn more about <a href="/learn/concepts/templates" target="_blank">Templates</a></li>
-<li>Browse the <a href="/reference/services/template-service/" target="_blank">Template API reference</a></li>
+<li>Learn more about <a href="/learn/concepts/credential-templates" target="_blank">Credential Templates</a></li>
+<li>Browse the <a href="/reference/services/template-service/" target="_blank">Credential Template API reference</a></li>
 </ul>
 </div>
 <hr />
 <h2 id="issue-a-credential">Issue a Credential<a class="headerlink" href="#issue-a-credential" title="Permanent link">&para;</a></h2>
 <p>Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.</p>
 <p>A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.</p>
-<p>To issue a vaccine certificate, we'll use the template we created in the last step.</p>
+<p>To issue a vaccine certificate, we'll use the credential template we created in the last step.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">Typescript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Java</label><label for="__tabbed_6_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2675,7 +2633,7 @@ trinsic<span class="w"> </span>account<span class="w"> </span>login<span class="
 trinsic<span class="w"> </span>vc<span class="w"> </span>issue-from-template<span class="w"> </span>--template-id<span class="w"> </span><span class="o">{</span>TEMPLATE_ID<span class="o">}</span><span class="w"> </span>--values-file<span class="w"> </span>values.json<span class="w"> </span>--out<span class="w"> </span>credential.json
 </code></pre></div>
 <p>The output of this command will contain a signed JSON document, which has been saved to <code>credential.json</code>.</p>
-<p>Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate".
+<p>Note that TEMPLATE_ID refers to the "Schema" URI of the credential template you created earlier called "VaccinationCertificate".
 More specifically, it's the property 'schema_uri' in the JSON returned by the <code>trinsic template create...</code> command.</p>
 </div>
 <div class="tabbed-block">
@@ -3054,7 +3012,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 </div>
 </div>
 <hr />
-<h2 id="governance-setup">Governance Setup<a class="headerlink" href="#governance-setup" title="Permanent link">&para;</a></h2>
+<h2 id="trust-registry-setup">Trust Registry Setup<a class="headerlink" href="#trust-registry-setup" title="Permanent link">&para;</a></h2>
 <p>Before we begin, you'll need to prepare your <a href="/learn/concepts/trust-registries">trust registry</a>. This defines who is an authorized issuer of your vaccine card.</p>
 <h3 id="register-issuer">Register Issuer<a class="headerlink" href="#register-issuer" title="Permanent link">&para;</a></h3>
 <p>First, let's grab our account info. You can use an email address, walletId or PublicDID as identifiers for a wallet. We will use publicDID.</p>
@@ -3136,7 +3094,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusRequest'>GetMemberAuthorizationStatusRequest</a></div><div class='proto-obj-description'>Request to fetch member status in governance framework for a specific credential schema.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with member</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusRequest' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusRequest'>GetMemberAuthorizationStatusRequest</a></div><div class='proto-obj-description'>Request to fetch member status in Trust Registry for a specific credential schema.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>DID URI of member</div></div><div class='proto-field'><div class='proto-field-name'>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI of credential schema associated with member</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.trustregistry.v1.GetMemberAuthorizationStatusResponse'><div class='proto-obj-name'><a name='services.trustregistry.v1.GetMemberAuthorizationStatusResponse' href='/reference/proto#services.trustregistry.v1.GetMemberAuthorizationStatusResponse'>GetMemberAuthorizationStatusResponse</a></div><div class='proto-obj-description'>Response to <code>GetMemberAuthorizationStatusRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>status</div> <div class='proto-field-type'><a href='/reference/proto#services.trustregistry.v1.RegistrationStatus'>RegistrationStatus</a></div><div class='proto-field-description'>Status of member for given credential schema</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>CURRENT</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>Member is currently authorized, as of the time of the query</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>EXPIRED</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Member's authorization has expired</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>TERMINATED</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>Member has voluntarily ceased Issuer role under the specific EGF</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>REVOKED</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Member authority under specific EGF was terminated by the governing authority</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>RegistrationStatus.</span>NOT_FOUND</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Member is not associated with given credential schema in the EGF</div></div></div></div></div></div></div></p>
@@ -3144,10 +3102,10 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 </div>
 </div>
 <hr />
-<h3 id="issue-a-credential-with-governance-framework">Issue a Credential with Governance framework<a class="headerlink" href="#issue-a-credential-with-governance-framework" title="Permanent link">&para;</a></h3>
-<p>We need to prepare a credential with a governance framework specified. This will consist of:</p>
+<h3 id="issue-a-credential-with-trust-registry">Issue a Credential with Trust Registry<a class="headerlink" href="#issue-a-credential-with-trust-registry" title="Permanent link">&para;</a></h3>
+<p>We need to prepare a credential with a Trust Registry specified. This will consist of:</p>
 <ol>
-<li>Issuing the credential with governance enabled</li>
+<li>Issuing the credential with Trust Registry enabled</li>
 <li>Inserting the credential into your wallet</li>
 <li>Deriving a proof of the credential</li>
 </ol>
@@ -3182,8 +3140,8 @@ item<span class="w"> </span>id<span class="w"> </span>→<span class="w"> </span
 </div>
 </div>
 <hr />
-<h3 id="verify-a-proof-with-governance-status">Verify a proof with governance status<a class="headerlink" href="#verify-a-proof-with-governance-status" title="Permanent link">&para;</a></h3>
-<p>Now we can verify the proof from the previous step, and get the governance status.</p>
+<h3 id="verify-a-proof-with-trust-registry-status">Verify a proof with Trust Registry status<a class="headerlink" href="#verify-a-proof-with-trust-registry-status" title="Permanent link">&para;</a></h3>
+<p>Now we can verify the proof from the previous step, and get the Trust Registry status.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3243,8 +3201,8 @@ validation<span class="w"> </span>results<span class="w"> </span>→<span class=
 </div>
 </div>
 </div>
-<h3 id="verify-a-proof-with-governance-status-after-revocation-of-issuer">Verify a proof with governance status after revocation of issuer<a class="headerlink" href="#verify-a-proof-with-governance-status-after-revocation-of-issuer" title="Permanent link">&para;</a></h3>
-<p>Now we can verify the proof from the previous step, and get the governance status.</p>
+<h3 id="verify-a-proof-with-trust-registry-status-after-revocation-of-issuer">Verify a proof with Trust Registry status after revocation of issuer<a class="headerlink" href="#verify-a-proof-with-trust-registry-status-after-revocation-of-issuer" title="Permanent link">&para;</a></h3>
+<p>Now we can verify the proof from the previous step, and get the Trust Registry status.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3285,7 +3243,7 @@ validation<span class="w"> </span>results<span class="w"> </span>→<span class=
 <div class="admonition info">
 <p class="admonition-title">Further Reading: Trust Registries</p>
 <ul>
-<li>Learn more about <a href="/learn/concepts/trust-registries" target="_blank">Governance</a></li>
+<li>Learn more about <a href="/learn/concepts/trust-registries" target="_blank">Trust Registry</a></li>
 <li>Browse the <a href="reference/services/trust-registry-service/" target="_blank">Provider API reference</a></li>
 </ul>
 </div>
