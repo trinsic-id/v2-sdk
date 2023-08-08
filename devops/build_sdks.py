@@ -22,38 +22,6 @@ def parse_version_tag():
     raise NotImplementedError
 
 
-def get_os_arch_path(extract_dir, windows_path):
-    copy_from = ""
-    libs_dir = join(extract_dir, "libs")
-    os_name = platform.system().lower()
-    processor_name = platform.machine().lower()
-    if os_name == "windows":
-        copy_from = join(libs_dir, windows_path)
-    elif os_name == "linux":
-        if processor_name == "x86_64":
-            copy_from = join(libs_dir, "linux")
-        elif processor_name == "armv7l":
-            copy_from = join(libs_dir, "linux-armv7")
-        elif processor_name == "aarch64":
-            copy_from = join(libs_dir, "linux-aarch64")
-    elif os_name == "darwin":
-        copy_from = join(libs_dir, "macos")
-    return copy_from
-
-
-def copy_okapi_libs(copy_to: str, windows_path="windows"):
-    okapi_dir = abspath(join(dirname(__file__), ".."))
-    copy_from = get_os_arch_path(okapi_dir, windows_path)
-    logging.info(f"Copying okapi libs from: {copy_from}\nto: {copy_to}")
-
-    for copy_file in glob.glob(join(copy_from, "*.*")):
-        shutil.copy2(copy_file, copy_to)
-    try:
-        shutil.copy2(join(okapi_dir, "libs", "C_header", "okapi.h"), copy_to)
-    except FileNotFoundError:
-        pass
-
-
 def clean_dir(language_dir: str) -> None:
     logging.info(f"Cleaning directory={language_dir}")
     try:
@@ -114,7 +82,6 @@ def build_python(args) -> None:
         join(python_dir, "trinsic", "__init__.py"),
         {'sdk_version = "': f'    sdk_version = "{get_package_versions(args)}"'},
     )
-    copy_okapi_libs(abspath(join(python_dir, "..", "libs")))
 
 
 def build_java(args) -> None:
@@ -130,7 +97,6 @@ def build_java(args) -> None:
             "final String sdkVersion = ": f'    final String sdkVersion = "{get_package_versions(args)}";'
         },
     )
-    copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
 
 def build_golang(args) -> None:
@@ -142,8 +108,6 @@ def build_golang(args) -> None:
             "const sdkVersion = ": f'    const sdkVersion = "{get_package_versions(args)}"'
         },
     )
-    # Copy in the binaries
-    copy_okapi_libs(golang_dir, "windows-gnu")
 
 
 def build_dart(args) -> None:
