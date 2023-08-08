@@ -3,6 +3,8 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import *
 
 from trinsic.service_base import ServiceBase
 
+import deprecation
+
 
 class TemplateService(ServiceBase):
     """Wrapper for the [Credential Templates Service](/reference/services/CredentialTemplates-service/)"""
