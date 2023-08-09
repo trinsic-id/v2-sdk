@@ -13,8 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $2;
-import '../../account/v1/account.pbenum.dart' as $2;
+import '../../account/v1/account.pb.dart' as $0;
+import '../../account/v1/account.pbenum.dart' as $0;
 import '../../common/v1/common.pbenum.dart' as $8;
 import 'provider.pbenum.dart';
 
@@ -115,8 +115,8 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'name')
     ..aOS(2, _omitFieldNames ? '' : 'description')
-    ..aOM<$2.AccountDetails>(4, _omitFieldNames ? '' : 'details',
-        subBuilder: $2.AccountDetails.create)
+    ..aOM<$0.AccountDetails>(4, _omitFieldNames ? '' : 'details',
+        subBuilder: $0.AccountDetails.create)
     ..aOS(5, _omitFieldNames ? '' : 'domain')
     ..hasRequiredFields = false;
 
@@ -170,9 +170,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(4)
-  $2.AccountDetails get details => $_getN(2);
+  $0.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(4)
-  set details($2.AccountDetails v) {
+  set details($0.AccountDetails v) {
     setField(4, v);
   }
 
@@ -181,7 +181,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $2.AccountDetails ensureDetails() => $_ensure(2);
+  $0.AccountDetails ensureDetails() => $_ensure(2);
 
   @$pb.TagNumber(5)
   $core.String get domain => $_getSZ(3);
@@ -213,13 +213,13 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOM<Ecosystem>(1, _omitFieldNames ? '' : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$2.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
-        subBuilder: $2.AccountProfile.create)
-    ..e<$2.ConfirmationMethod>(
+    ..aOM<$0.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
+        subBuilder: $0.AccountProfile.create)
+    ..e<$0.ConfirmationMethod>(
         3, _omitFieldNames ? '' : 'confirmationMethod', $pb.PbFieldType.OE,
-        defaultOrMaker: $2.ConfirmationMethod.None,
-        valueOf: $2.ConfirmationMethod.valueOf,
-        enumValues: $2.ConfirmationMethod.values)
+        defaultOrMaker: $0.ConfirmationMethod.None,
+        valueOf: $0.ConfirmationMethod.valueOf,
+        enumValues: $0.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -262,9 +262,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $2.AccountProfile get profile => $_getN(1);
+  $0.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($2.AccountProfile v) {
+  set profile($0.AccountProfile v) {
     setField(2, v);
   }
 
@@ -273,12 +273,12 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $2.AccountProfile ensureProfile() => $_ensure(1);
+  $0.AccountProfile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $2.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $0.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($2.ConfirmationMethod v) {
+  set confirmationMethod($0.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -897,9 +897,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'walletId')
     ..aOS(5, _omitFieldNames ? '' : 'publicDid')
     ..aOS(6, _omitFieldNames ? '' : 'configType')
-    ..pc<$2.WalletAuthToken>(
+    ..pc<$0.WalletAuthToken>(
         7, _omitFieldNames ? '' : 'authTokens', $pb.PbFieldType.PM,
-        subBuilder: $2.WalletAuthToken.create)
+        subBuilder: $0.WalletAuthToken.create)
     ..pPS(8, _omitFieldNames ? '' : 'externalIdentityIds')
     ..aOS(9, _omitFieldNames ? '' : 'ecosystemId')
     ..aOS(10, _omitFieldNames ? '' : 'description')
@@ -1012,7 +1012,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   void clearConfigType() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.List<$2.WalletAuthToken> get authTokens => $_getList(6);
+  $core.List<$0.WalletAuthToken> get authTokens => $_getList(6);
 
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(8)
