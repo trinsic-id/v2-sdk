@@ -145,6 +145,7 @@ TODO - Add support for predicate types - currently only equality. |
 
 
 
+
 <a name="services-verifiablecredentials-templates-v1-CreateVerificationTemplateRequest-FieldsEntry"></a>
 
 ### CreateVerificationTemplateRequest.FieldsEntry
@@ -852,7 +853,7 @@ Response to `CheckStatusRequest`
 | template_id | [string](/reference/proto#string) | ID of template to use |
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | holder_binding | [bool](/reference/proto#bool) | If true, the credential will be issued with holder binding by specifying the holder DID in the credential subject |
-| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework. |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
 | generate_share_url | [bool](/reference/proto#bool) | If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app. |
 | signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
 
@@ -926,7 +927,7 @@ Request to create and sign a JSON-LD Verifiable Credential from a template using
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | save_copy | [bool](/reference/proto#bool) | Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status. |
 | expiration_date | [string](/reference/proto#string) | The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration |
-| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework. |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
 | signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
 
 
@@ -1803,7 +1804,7 @@ Response to `UpdateItemRequest`
 <a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
 
 ### GetMemberAuthorizationStatusRequest
-Request to fetch member status in governance framework for a specific credential schema.
+Request to fetch member status in Trust Registry for a specific credential schema.
 
 
 | Field | Type | Description |
@@ -1834,7 +1835,7 @@ Response to `GetMemberAuthorizationStatusRequest`
 <a name="services-trustregistry-v1-GetMemberRequest"></a>
 
 ### GetMemberRequest
-Request to get a member of the governance framework
+Request to get a member of the Trust Registry
 
 
 | Field | Type | Description |
