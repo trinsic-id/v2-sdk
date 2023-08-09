@@ -15,11 +15,12 @@ TrinsicOptions trinsicConfig({String authToken = ""}) {
     // unsupported operation happens in flutter, ignore it.
   }
 
-  return TrinsicOptions(
-      authToken: authToken,
-      serverEndpoint: endpoint,
-      serverPort: int.parse(port),
-      serverUseTls: useTls.toLowerCase() != "false");
+  var trinsicOptions = TrinsicOptions();
+  trinsicOptions.authToken = authToken;
+  trinsicOptions.serverEndpoint = endpoint;
+  trinsicOptions.serverPort = int.parse(port);
+  trinsicOptions.serverUseTls = useTls.toLowerCase() != "false";
+  return trinsicOptions;
 }
 
 String getSdkVersion() {

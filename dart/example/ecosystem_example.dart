@@ -1,5 +1,3 @@
-import 'package:trinsic_dart/src/proto/services/provider/v1/provider.pbgrpc.dart';
-import 'package:trinsic_dart/src/proto/services/universal-wallet/v1/universal-wallet.pb.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
@@ -7,13 +5,14 @@ Future runEcosystemDemo() async {
   var trinsic = TrinsicService(trinsicConfig());
   var account = await trinsic
       .wallet()
-      .createWallet(CreateWalletRequest(ecosystemId: "default"));
+      .createWallet(CreateWalletRequest()..ecosystemId = "default");
   assert(account.authToken.isNotEmpty);
   trinsic = TrinsicService(trinsicConfig(authToken: account.authToken));
   // createEcosystem() {
-  var actualCreate = await trinsic.provider().createEcosystem(
-      request: CreateEcosystemRequest(
-          description: "My ecosystem", domain: "https://example.com"));
+  var createEcosystemRequest = CreateEcosystemRequest.create();
+  createEcosystemRequest.description = "My Ecosystem";
+  createEcosystemRequest.domain = "https://example.com";
+  var actualCreate = await trinsic.provider().createEcosystem(request: createEcosystemRequest);
   // }
 
   assert(actualCreate.ecosystem.id != "");

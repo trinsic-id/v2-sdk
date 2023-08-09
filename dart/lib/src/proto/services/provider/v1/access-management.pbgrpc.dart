@@ -15,62 +15,62 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'access-management.pb.dart' as $7;
+import 'access-management.pb.dart' as $2;
 
 export 'access-management.pb.dart';
 
 @$pb.GrpcServiceName('services.provider.v1.AccessManagement')
 class AccessManagementClient extends $grpc.Client {
   static final _$addRoleAssignment = $grpc.ClientMethod<
-          $7.AddRoleAssignmentRequest, $7.AddRoleAssignmentResponse>(
+          $2.AddRoleAssignmentRequest, $2.AddRoleAssignmentResponse>(
       '/services.provider.v1.AccessManagement/AddRoleAssignment',
-      ($7.AddRoleAssignmentRequest value) => value.writeToBuffer(),
+      ($2.AddRoleAssignmentRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.AddRoleAssignmentResponse.fromBuffer(value));
+          $2.AddRoleAssignmentResponse.fromBuffer(value));
   static final _$removeRoleAssignment = $grpc.ClientMethod<
-          $7.RemoveRoleAssignmentRequest, $7.RemoveRoleAssignmentResponse>(
+          $2.RemoveRoleAssignmentRequest, $2.RemoveRoleAssignmentResponse>(
       '/services.provider.v1.AccessManagement/RemoveRoleAssignment',
-      ($7.RemoveRoleAssignmentRequest value) => value.writeToBuffer(),
+      ($2.RemoveRoleAssignmentRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.RemoveRoleAssignmentResponse.fromBuffer(value));
+          $2.RemoveRoleAssignmentResponse.fromBuffer(value));
   static final _$listRoleAssignments = $grpc.ClientMethod<
-          $7.ListRoleAssignmentsRequest, $7.ListRoleAssignmentsResponse>(
+          $2.ListRoleAssignmentsRequest, $2.ListRoleAssignmentsResponse>(
       '/services.provider.v1.AccessManagement/ListRoleAssignments',
-      ($7.ListRoleAssignmentsRequest value) => value.writeToBuffer(),
+      ($2.ListRoleAssignmentsRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.ListRoleAssignmentsResponse.fromBuffer(value));
+          $2.ListRoleAssignmentsResponse.fromBuffer(value));
   static final _$listAvailableRoles = $grpc.ClientMethod<
-          $7.ListAvailableRolesRequest, $7.ListAvailableRolesResponse>(
+          $2.ListAvailableRolesRequest, $2.ListAvailableRolesResponse>(
       '/services.provider.v1.AccessManagement/ListAvailableRoles',
-      ($7.ListAvailableRolesRequest value) => value.writeToBuffer(),
+      ($2.ListAvailableRolesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $7.ListAvailableRolesResponse.fromBuffer(value));
+          $2.ListAvailableRolesResponse.fromBuffer(value));
 
   AccessManagementClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$7.AddRoleAssignmentResponse> addRoleAssignment(
-      $7.AddRoleAssignmentRequest request,
+  $grpc.ResponseFuture<$2.AddRoleAssignmentResponse> addRoleAssignment(
+      $2.AddRoleAssignmentRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addRoleAssignment, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.RemoveRoleAssignmentResponse> removeRoleAssignment(
-      $7.RemoveRoleAssignmentRequest request,
+  $grpc.ResponseFuture<$2.RemoveRoleAssignmentResponse> removeRoleAssignment(
+      $2.RemoveRoleAssignmentRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$removeRoleAssignment, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ListRoleAssignmentsResponse> listRoleAssignments(
-      $7.ListRoleAssignmentsRequest request,
+  $grpc.ResponseFuture<$2.ListRoleAssignmentsResponse> listRoleAssignments(
+      $2.ListRoleAssignmentsRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listRoleAssignments, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.ListAvailableRolesResponse> listAvailableRoles(
-      $7.ListAvailableRolesRequest request,
+  $grpc.ResponseFuture<$2.ListAvailableRolesResponse> listAvailableRoles(
+      $2.ListAvailableRolesRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listAvailableRoles, request, options: options);
   }
@@ -81,74 +81,74 @@ abstract class AccessManagementServiceBase extends $grpc.Service {
   $core.String get $name => 'services.provider.v1.AccessManagement';
 
   AccessManagementServiceBase() {
-    $addMethod($grpc.ServiceMethod<$7.AddRoleAssignmentRequest,
-            $7.AddRoleAssignmentResponse>(
+    $addMethod($grpc.ServiceMethod<$2.AddRoleAssignmentRequest,
+            $2.AddRoleAssignmentResponse>(
         'AddRoleAssignment',
         addRoleAssignment_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.AddRoleAssignmentRequest.fromBuffer(value),
-        ($7.AddRoleAssignmentResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.RemoveRoleAssignmentRequest,
-            $7.RemoveRoleAssignmentResponse>(
+            $2.AddRoleAssignmentRequest.fromBuffer(value),
+        ($2.AddRoleAssignmentResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.RemoveRoleAssignmentRequest,
+            $2.RemoveRoleAssignmentResponse>(
         'RemoveRoleAssignment',
         removeRoleAssignment_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.RemoveRoleAssignmentRequest.fromBuffer(value),
-        ($7.RemoveRoleAssignmentResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ListRoleAssignmentsRequest,
-            $7.ListRoleAssignmentsResponse>(
+            $2.RemoveRoleAssignmentRequest.fromBuffer(value),
+        ($2.RemoveRoleAssignmentResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.ListRoleAssignmentsRequest,
+            $2.ListRoleAssignmentsResponse>(
         'ListRoleAssignments',
         listRoleAssignments_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.ListRoleAssignmentsRequest.fromBuffer(value),
-        ($7.ListRoleAssignmentsResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.ListAvailableRolesRequest,
-            $7.ListAvailableRolesResponse>(
+            $2.ListRoleAssignmentsRequest.fromBuffer(value),
+        ($2.ListRoleAssignmentsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.ListAvailableRolesRequest,
+            $2.ListAvailableRolesResponse>(
         'ListAvailableRoles',
         listAvailableRoles_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.ListAvailableRolesRequest.fromBuffer(value),
-        ($7.ListAvailableRolesResponse value) => value.writeToBuffer()));
+            $2.ListAvailableRolesRequest.fromBuffer(value),
+        ($2.ListAvailableRolesResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$7.AddRoleAssignmentResponse> addRoleAssignment_Pre(
+  $async.Future<$2.AddRoleAssignmentResponse> addRoleAssignment_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.AddRoleAssignmentRequest> request) async {
+      $async.Future<$2.AddRoleAssignmentRequest> request) async {
     return addRoleAssignment(call, await request);
   }
 
-  $async.Future<$7.RemoveRoleAssignmentResponse> removeRoleAssignment_Pre(
+  $async.Future<$2.RemoveRoleAssignmentResponse> removeRoleAssignment_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.RemoveRoleAssignmentRequest> request) async {
+      $async.Future<$2.RemoveRoleAssignmentRequest> request) async {
     return removeRoleAssignment(call, await request);
   }
 
-  $async.Future<$7.ListRoleAssignmentsResponse> listRoleAssignments_Pre(
+  $async.Future<$2.ListRoleAssignmentsResponse> listRoleAssignments_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.ListRoleAssignmentsRequest> request) async {
+      $async.Future<$2.ListRoleAssignmentsRequest> request) async {
     return listRoleAssignments(call, await request);
   }
 
-  $async.Future<$7.ListAvailableRolesResponse> listAvailableRoles_Pre(
+  $async.Future<$2.ListAvailableRolesResponse> listAvailableRoles_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.ListAvailableRolesRequest> request) async {
+      $async.Future<$2.ListAvailableRolesRequest> request) async {
     return listAvailableRoles(call, await request);
   }
 
-  $async.Future<$7.AddRoleAssignmentResponse> addRoleAssignment(
-      $grpc.ServiceCall call, $7.AddRoleAssignmentRequest request);
-  $async.Future<$7.RemoveRoleAssignmentResponse> removeRoleAssignment(
-      $grpc.ServiceCall call, $7.RemoveRoleAssignmentRequest request);
-  $async.Future<$7.ListRoleAssignmentsResponse> listRoleAssignments(
-      $grpc.ServiceCall call, $7.ListRoleAssignmentsRequest request);
-  $async.Future<$7.ListAvailableRolesResponse> listAvailableRoles(
-      $grpc.ServiceCall call, $7.ListAvailableRolesRequest request);
+  $async.Future<$2.AddRoleAssignmentResponse> addRoleAssignment(
+      $grpc.ServiceCall call, $2.AddRoleAssignmentRequest request);
+  $async.Future<$2.RemoveRoleAssignmentResponse> removeRoleAssignment(
+      $grpc.ServiceCall call, $2.RemoveRoleAssignmentRequest request);
+  $async.Future<$2.ListRoleAssignmentsResponse> listRoleAssignments(
+      $grpc.ServiceCall call, $2.ListRoleAssignmentsRequest request);
+  $async.Future<$2.ListAvailableRolesResponse> listAvailableRoles(
+      $grpc.ServiceCall call, $2.ListAvailableRolesRequest request);
 }
