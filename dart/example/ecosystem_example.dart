@@ -12,7 +12,8 @@ Future runEcosystemDemo() async {
   var createEcosystemRequest = CreateEcosystemRequest.create();
   createEcosystemRequest.description = "My Ecosystem";
   createEcosystemRequest.domain = "https://example.com";
-  var actualCreate = await trinsic.provider().createEcosystem(request: createEcosystemRequest);
+  var actualCreate =
+      await trinsic.provider().createEcosystem(request: createEcosystemRequest);
   // }
 
   assert(actualCreate.ecosystem.id != "");

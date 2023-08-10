@@ -3,9 +3,11 @@ import _m0 from "protobufjs/minimal";
 
 export interface AnnotationOption {
   /** Is this annotation active */
-  active?: boolean;
+  active?:
+    | boolean
+    | undefined;
   /** Custom annotation message to provide */
-  message?: string;
+  message?: string | undefined;
 }
 
 export interface SdkTemplateOption {
@@ -13,21 +15,29 @@ export interface SdkTemplateOption {
    * Whether the service endpoint allows anonymous (no auth token necessary) authentication
    * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
    */
-  anonymous?: boolean;
+  anonymous?:
+    | boolean
+    | undefined;
   /**
    * Whether the SDK template generator should ignore this method. This method will
    * be wrapped manually.
    */
-  ignore?: boolean;
+  ignore?:
+    | boolean
+    | undefined;
   /**
    * Whether the SDK template generator should generate this method without arguments, eg
    * ProviderService.GetEcosystemInfo() where the request object is empty
    */
-  noArguments?: boolean;
+  noArguments?:
+    | boolean
+    | undefined;
   /** This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. */
-  experimental?: AnnotationOption;
+  experimental?:
+    | AnnotationOption
+    | undefined;
   /** This endpoint is deprecated. It will be removed in the future. */
-  deprecated?: AnnotationOption;
+  deprecated?: AnnotationOption | undefined;
 }
 
 function createBaseAnnotationOption(): AnnotationOption {
@@ -53,21 +63,21 @@ export const AnnotationOption = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.active = reader.bool();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.message = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -84,15 +94,18 @@ export const AnnotationOption = {
 
   toJSON(message: AnnotationOption): unknown {
     const obj: any = {};
-    message.active !== undefined && (obj.active = message.active);
-    message.message !== undefined && (obj.message = message.message);
+    if (message.active === true) {
+      obj.active = message.active;
+    }
+    if (message.message !== undefined && message.message !== "") {
+      obj.message = message.message;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AnnotationOption>): AnnotationOption {
     return AnnotationOption.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AnnotationOption>): AnnotationOption {
     const message = createBaseAnnotationOption();
     message.active = object.active ?? false;
@@ -133,42 +146,42 @@ export const SdkTemplateOption = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.anonymous = reader.bool();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.ignore = reader.bool();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.noArguments = reader.bool();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.experimental = AnnotationOption.decode(reader, reader.uint32());
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.deprecated = AnnotationOption.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -188,20 +201,27 @@ export const SdkTemplateOption = {
 
   toJSON(message: SdkTemplateOption): unknown {
     const obj: any = {};
-    message.anonymous !== undefined && (obj.anonymous = message.anonymous);
-    message.ignore !== undefined && (obj.ignore = message.ignore);
-    message.noArguments !== undefined && (obj.noArguments = message.noArguments);
-    message.experimental !== undefined &&
-      (obj.experimental = message.experimental ? AnnotationOption.toJSON(message.experimental) : undefined);
-    message.deprecated !== undefined &&
-      (obj.deprecated = message.deprecated ? AnnotationOption.toJSON(message.deprecated) : undefined);
+    if (message.anonymous === true) {
+      obj.anonymous = message.anonymous;
+    }
+    if (message.ignore === true) {
+      obj.ignore = message.ignore;
+    }
+    if (message.noArguments === true) {
+      obj.noArguments = message.noArguments;
+    }
+    if (message.experimental !== undefined) {
+      obj.experimental = AnnotationOption.toJSON(message.experimental);
+    }
+    if (message.deprecated !== undefined) {
+      obj.deprecated = AnnotationOption.toJSON(message.deprecated);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SdkTemplateOption>): SdkTemplateOption {
     return SdkTemplateOption.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SdkTemplateOption>): SdkTemplateOption {
     const message = createBaseSdkTemplateOption();
     message.anonymous = object.anonymous ?? false;

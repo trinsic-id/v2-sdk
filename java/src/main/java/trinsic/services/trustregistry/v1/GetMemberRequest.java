@@ -7,7 +7,7 @@ package trinsic.services.trustregistry.v1;
  *
  *
  * <pre>
- * Request to get a member of the Trust Registry
+ * Request to get a member of the governance framework
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.GetMemberRequest}
@@ -512,7 +512,7 @@ public final class GetMemberRequest extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Request to get a member of the Trust Registry
+   * Request to get a member of the governance framework
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.GetMemberRequest}

@@ -643,7 +643,6 @@ Verification Template
 | version | [int32](/reference/proto#int32) | Template version number |
 | fields | [VerificationTemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-VerificationTemplateData-FieldsEntry)[] | Fields defined for the template |
 | credential_template_id | [string](/reference/proto#string) | Source credential template, used for verifying that the specified `fields` are present in the credential template |
-| schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
 | ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
 | type | [string](/reference/proto#string) | Template type (`VerificationTemplate`) |
 | created_by | [string](/reference/proto#string) | ID of template creator |
@@ -853,7 +852,7 @@ Response to `CheckStatusRequest`
 | template_id | [string](/reference/proto#string) | ID of template to use |
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | holder_binding | [bool](/reference/proto#bool) | If true, the credential will be issued with holder binding by specifying the holder DID in the credential subject |
-| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework. |
 | generate_share_url | [bool](/reference/proto#bool) | If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app. |
 | signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
 
@@ -927,7 +926,7 @@ Request to create and sign a JSON-LD Verifiable Credential from a template using
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | save_copy | [bool](/reference/proto#bool) | Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status. |
 | expiration_date | [string](/reference/proto#string) | The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration |
-| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework. |
 | signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
 
 
@@ -1804,7 +1803,7 @@ Response to `UpdateItemRequest`
 <a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
 
 ### GetMemberAuthorizationStatusRequest
-Request to fetch member status in Trust Registry for a specific credential schema.
+Request to fetch member status in governance framework for a specific credential schema.
 
 
 | Field | Type | Description |
@@ -1835,7 +1834,7 @@ Response to `GetMemberAuthorizationStatusRequest`
 <a name="services-trustregistry-v1-GetMemberRequest"></a>
 
 ### GetMemberRequest
-Request to get a member of the Trust Registry
+Request to get a member of the governance framework
 
 
 | Field | Type | Description |

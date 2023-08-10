@@ -5,57 +5,71 @@ import _m0 from "protobufjs/minimal";
 /** Contains information about a file stored in Trinsic's CDN */
 export interface File {
   /** ID of file, generated randomly by Trinsic on upload */
-  id?: string;
+  id?:
+    | string
+    | undefined;
   /** Wallet ID of uploader */
-  uploaderId?: string;
+  uploaderId?:
+    | string
+    | undefined;
   /** Size, in bytes, of file */
-  size?: number;
+  size?:
+    | number
+    | undefined;
   /** Uploader-provided MIME type of file */
-  mimeType?: string;
+  mimeType?:
+    | string
+    | undefined;
   /** ISO 8601 timestamp of when file was uploaded to Trinsic */
-  uploaded?: string;
+  uploaded?:
+    | string
+    | undefined;
   /** CDN URL of file */
-  url?: string;
+  url?: string | undefined;
 }
 
 /** Represents aggregate statistics of all files uploaded by a single issuer */
 export interface StorageStats {
   /** Number of files uploaded by this account */
-  numFiles?: number;
+  numFiles?:
+    | number
+    | undefined;
   /** Sum total size of all files, in bytes */
-  totalSize?: number;
+  totalSize?: number | undefined;
 }
 
 /** Request to upload a file to Trinsic's CDN */
 export interface UploadFileRequest {
   /** Raw content of file */
-  contents?: Uint8Array;
+  contents?:
+    | Uint8Array
+    | undefined;
   /** MIME type describing file contents */
-  mimeType?: string;
+  mimeType?: string | undefined;
 }
 
 /** Response to `UploadFileRequest` */
 export interface UploadFileResponse {
   /** Information about newly-uploaded file */
-  uploadedFile?: File;
+  uploadedFile?: File | undefined;
 }
 
 /** Request to fetch information about a stored file */
 export interface GetFileRequest {
   /** ID of file to fetch */
-  id?: string;
+  id?: string | undefined;
 }
 
 /** Response to `GetFileRequest` */
 export interface GetFileResponse {
   /** File specified by `id` parameter of `GetFileRequest`. */
-  file?: File;
+  file?: File | undefined;
 }
 
 /** Request to delete a file from Trinsic's CDN by ID */
 export interface DeleteFileRequest {
   /** ID of file to delete */
-  id?: string;
+  id?: string | undefined;
 }
 
 /** Response to `DeleteFileRequest`. Empty payload. */
@@ -65,22 +79,28 @@ export interface DeleteFileResponse {
 /** Request to list files */
 export interface ListFilesRequest {
   /** Query to search with. If not specified, will return the most recent 100 files. */
-  query?: string;
+  query?:
+    | string
+    | undefined;
   /**
    * Token provided by previous `ListFilesRequest`
    * if more data is available for query
    */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Response to `ListFilesRequest` */
 export interface ListFilesResponse {
   /** Files found by query */
-  files?: File[];
+  files?:
+    | File[]
+    | undefined;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `ListFilesRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Request to get statistics about files uploaded by this account */
@@ -90,7 +110,7 @@ export interface GetStorageStatsRequest {
 /** Response to `GetStorageStatsRequest` */
 export interface GetStorageStatsResponse {
   /** Statistics about files uploaded by the calling account */
-  stats?: StorageStats;
+  stats?: StorageStats | undefined;
 }
 
 function createBaseFile(): File {
@@ -128,49 +148,49 @@ export const File = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.uploaderId = reader.string();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.size = reader.uint32();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.mimeType = reader.string();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.uploaded = reader.string();
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.url = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -191,19 +211,30 @@ export const File = {
 
   toJSON(message: File): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.uploaderId !== undefined && (obj.uploaderId = message.uploaderId);
-    message.size !== undefined && (obj.size = Math.round(message.size));
-    message.mimeType !== undefined && (obj.mimeType = message.mimeType);
-    message.uploaded !== undefined && (obj.uploaded = message.uploaded);
-    message.url !== undefined && (obj.url = message.url);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    if (message.uploaderId !== undefined && message.uploaderId !== "") {
+      obj.uploaderId = message.uploaderId;
+    }
+    if (message.size !== undefined && message.size !== 0) {
+      obj.size = Math.round(message.size);
+    }
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      obj.mimeType = message.mimeType;
+    }
+    if (message.uploaded !== undefined && message.uploaded !== "") {
+      obj.uploaded = message.uploaded;
+    }
+    if (message.url !== undefined && message.url !== "") {
+      obj.url = message.url;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<File>): File {
     return File.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<File>): File {
     const message = createBaseFile();
     message.id = object.id ?? "";
@@ -239,21 +270,21 @@ export const StorageStats = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.numFiles = reader.uint32();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.totalSize = longToNumber(reader.uint64() as Long);
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -270,15 +301,18 @@ export const StorageStats = {
 
   toJSON(message: StorageStats): unknown {
     const obj: any = {};
-    message.numFiles !== undefined && (obj.numFiles = Math.round(message.numFiles));
-    message.totalSize !== undefined && (obj.totalSize = Math.round(message.totalSize));
+    if (message.numFiles !== undefined && message.numFiles !== 0) {
+      obj.numFiles = Math.round(message.numFiles);
+    }
+    if (message.totalSize !== undefined && message.totalSize !== 0) {
+      obj.totalSize = Math.round(message.totalSize);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<StorageStats>): StorageStats {
     return StorageStats.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<StorageStats>): StorageStats {
     const message = createBaseStorageStats();
     message.numFiles = object.numFiles ?? 0;
@@ -288,7 +322,7 @@ export const StorageStats = {
 };
 
 function createBaseUploadFileRequest(): UploadFileRequest {
-  return { contents: new Uint8Array(), mimeType: "" };
+  return { contents: new Uint8Array(0), mimeType: "" };
 }
 
 export const UploadFileRequest = {
@@ -310,21 +344,21 @@ export const UploadFileRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.contents = reader.bytes();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.mimeType = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -334,26 +368,28 @@ export const UploadFileRequest = {
 
   fromJSON(object: any): UploadFileRequest {
     return {
-      contents: isSet(object.contents) ? bytesFromBase64(object.contents) : new Uint8Array(),
+      contents: isSet(object.contents) ? bytesFromBase64(object.contents) : new Uint8Array(0),
       mimeType: isSet(object.mimeType) ? String(object.mimeType) : "",
     };
   },
 
   toJSON(message: UploadFileRequest): unknown {
     const obj: any = {};
-    message.contents !== undefined &&
-      (obj.contents = base64FromBytes(message.contents !== undefined ? message.contents : new Uint8Array()));
-    message.mimeType !== undefined && (obj.mimeType = message.mimeType);
+    if (message.contents !== undefined && message.contents.length !== 0) {
+      obj.contents = base64FromBytes(message.contents);
+    }
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      obj.mimeType = message.mimeType;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UploadFileRequest>): UploadFileRequest {
     return UploadFileRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UploadFileRequest>): UploadFileRequest {
     const message = createBaseUploadFileRequest();
-    message.contents = object.contents ?? new Uint8Array();
+    message.contents = object.contents ?? new Uint8Array(0);
     message.mimeType = object.mimeType ?? "";
     return message;
   },
@@ -379,14 +415,14 @@ export const UploadFileResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.uploadedFile = File.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -400,15 +436,15 @@ export const UploadFileResponse = {
 
   toJSON(message: UploadFileResponse): unknown {
     const obj: any = {};
-    message.uploadedFile !== undefined &&
-      (obj.uploadedFile = message.uploadedFile ? File.toJSON(message.uploadedFile) : undefined);
+    if (message.uploadedFile !== undefined) {
+      obj.uploadedFile = File.toJSON(message.uploadedFile);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UploadFileResponse>): UploadFileResponse {
     return UploadFileResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UploadFileResponse>): UploadFileResponse {
     const message = createBaseUploadFileResponse();
     message.uploadedFile = (object.uploadedFile !== undefined && object.uploadedFile !== null)
@@ -438,14 +474,14 @@ export const GetFileRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -459,14 +495,15 @@ export const GetFileRequest = {
 
   toJSON(message: GetFileRequest): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetFileRequest>): GetFileRequest {
     return GetFileRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetFileRequest>): GetFileRequest {
     const message = createBaseGetFileRequest();
     message.id = object.id ?? "";
@@ -494,14 +531,14 @@ export const GetFileResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.file = File.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -515,14 +552,15 @@ export const GetFileResponse = {
 
   toJSON(message: GetFileResponse): unknown {
     const obj: any = {};
-    message.file !== undefined && (obj.file = message.file ? File.toJSON(message.file) : undefined);
+    if (message.file !== undefined) {
+      obj.file = File.toJSON(message.file);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetFileResponse>): GetFileResponse {
     return GetFileResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetFileResponse>): GetFileResponse {
     const message = createBaseGetFileResponse();
     message.file = (object.file !== undefined && object.file !== null) ? File.fromPartial(object.file) : undefined;
@@ -550,14 +588,14 @@ export const DeleteFileRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -571,14 +609,15 @@ export const DeleteFileRequest = {
 
   toJSON(message: DeleteFileRequest): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<DeleteFileRequest>): DeleteFileRequest {
     return DeleteFileRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<DeleteFileRequest>): DeleteFileRequest {
     const message = createBaseDeleteFileRequest();
     message.id = object.id ?? "";
@@ -603,7 +642,7 @@ export const DeleteFileResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -623,7 +662,6 @@ export const DeleteFileResponse = {
   create(base?: DeepPartial<DeleteFileResponse>): DeleteFileResponse {
     return DeleteFileResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<DeleteFileResponse>): DeleteFileResponse {
     const message = createBaseDeleteFileResponse();
     return message;
@@ -653,21 +691,21 @@ export const ListFilesRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.query = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -684,15 +722,18 @@ export const ListFilesRequest = {
 
   toJSON(message: ListFilesRequest): unknown {
     const obj: any = {};
-    message.query !== undefined && (obj.query = message.query);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.query !== undefined && message.query !== "") {
+      obj.query = message.query;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListFilesRequest>): ListFilesRequest {
     return ListFilesRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListFilesRequest>): ListFilesRequest {
     const message = createBaseListFilesRequest();
     message.query = object.query ?? "";
@@ -729,28 +770,28 @@ export const ListFilesResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.files!.push(File.decode(reader, reader.uint32()));
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -768,20 +809,21 @@ export const ListFilesResponse = {
 
   toJSON(message: ListFilesResponse): unknown {
     const obj: any = {};
-    if (message.files) {
-      obj.files = message.files.map((e) => e ? File.toJSON(e) : undefined);
-    } else {
-      obj.files = [];
+    if (message.files?.length) {
+      obj.files = message.files.map((e) => File.toJSON(e));
     }
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListFilesResponse>): ListFilesResponse {
     return ListFilesResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListFilesResponse>): ListFilesResponse {
     const message = createBaseListFilesResponse();
     message.files = object.files?.map((e) => File.fromPartial(e)) || [];
@@ -808,7 +850,7 @@ export const GetStorageStatsRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -828,7 +870,6 @@ export const GetStorageStatsRequest = {
   create(base?: DeepPartial<GetStorageStatsRequest>): GetStorageStatsRequest {
     return GetStorageStatsRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<GetStorageStatsRequest>): GetStorageStatsRequest {
     const message = createBaseGetStorageStatsRequest();
     return message;
@@ -855,14 +896,14 @@ export const GetStorageStatsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.stats = StorageStats.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -876,14 +917,15 @@ export const GetStorageStatsResponse = {
 
   toJSON(message: GetStorageStatsResponse): unknown {
     const obj: any = {};
-    message.stats !== undefined && (obj.stats = message.stats ? StorageStats.toJSON(message.stats) : undefined);
+    if (message.stats !== undefined) {
+      obj.stats = StorageStats.toJSON(message.stats);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetStorageStatsResponse>): GetStorageStatsResponse {
     return GetStorageStatsResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetStorageStatsResponse>): GetStorageStatsResponse {
     const message = createBaseGetStorageStatsResponse();
     message.stats = (object.stats !== undefined && object.stats !== null)
@@ -946,10 +988,10 @@ export const FileManagementDefinition = {
   },
 } as const;
 
-declare var self: any | undefined;
-declare var window: any | undefined;
-declare var global: any | undefined;
-var tsProtoGlobalThis: any = (() => {
+declare const self: any | undefined;
+declare const window: any | undefined;
+declare const global: any | undefined;
+const tsProtoGlobalThis: any = (() => {
   if (typeof globalThis !== "undefined") {
     return globalThis;
   }

@@ -176,31 +176,6 @@ public interface VerificationTemplateDataOrBuilder
    *
    *
    * <pre>
-   * URI pointing to template JSON schema document
-   * </pre>
-   *
-   * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-   *
-   * @return The schemaUri.
-   */
-  java.lang.String getSchemaUri();
-  /**
-   *
-   *
-   * <pre>
-   * URI pointing to template JSON schema document
-   * </pre>
-   *
-   * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-   *
-   * @return The bytes for schemaUri.
-   */
-  com.google.protobuf.ByteString getSchemaUriBytes();
-
-  /**
-   *
-   *
-   * <pre>
    * ID of ecosystem in which template resides
    * </pre>
    *

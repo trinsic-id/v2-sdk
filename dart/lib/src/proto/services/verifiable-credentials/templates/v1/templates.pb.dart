@@ -2198,7 +2198,6 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
         packageName: const $pb.PackageName(
             'services.verifiablecredentials.templates.v1'))
     ..aOS(5, _omitFieldNames ? '' : 'credentialTemplateId')
-    ..aOS(6, _omitFieldNames ? '' : 'schemaUri')
     ..aOS(8, _omitFieldNames ? '' : 'ecosystemId')
     ..aOS(9, _omitFieldNames ? '' : 'type')
     ..aOS(10, _omitFieldNames ? '' : 'createdBy')
@@ -2283,87 +2282,75 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearCredentialTemplateId() => clearField(5);
 
-  @$pb.TagNumber(6)
-  $core.String get schemaUri => $_getSZ(5);
-  @$pb.TagNumber(6)
-  set schemaUri($core.String v) {
+  @$pb.TagNumber(8)
+  $core.String get ecosystemId => $_getSZ(5);
+  @$pb.TagNumber(8)
+  set ecosystemId($core.String v) {
     $_setString(5, v);
   }
 
-  @$pb.TagNumber(6)
-  $core.bool hasSchemaUri() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearSchemaUri() => clearField(6);
-
   @$pb.TagNumber(8)
-  $core.String get ecosystemId => $_getSZ(6);
-  @$pb.TagNumber(8)
-  set ecosystemId($core.String v) {
-    $_setString(6, v);
-  }
-
-  @$pb.TagNumber(8)
-  $core.bool hasEcosystemId() => $_has(6);
+  $core.bool hasEcosystemId() => $_has(5);
   @$pb.TagNumber(8)
   void clearEcosystemId() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get type => $_getSZ(7);
+  $core.String get type => $_getSZ(6);
   @$pb.TagNumber(9)
   set type($core.String v) {
-    $_setString(7, v);
+    $_setString(6, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasType() => $_has(7);
+  $core.bool hasType() => $_has(6);
   @$pb.TagNumber(9)
   void clearType() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.String get createdBy => $_getSZ(8);
+  $core.String get createdBy => $_getSZ(7);
   @$pb.TagNumber(10)
   set createdBy($core.String v) {
-    $_setString(8, v);
+    $_setString(7, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasCreatedBy() => $_has(8);
+  $core.bool hasCreatedBy() => $_has(7);
   @$pb.TagNumber(10)
   void clearCreatedBy() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.String get dateCreated => $_getSZ(9);
+  $core.String get dateCreated => $_getSZ(8);
   @$pb.TagNumber(11)
   set dateCreated($core.String v) {
-    $_setString(9, v);
+    $_setString(8, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasDateCreated() => $_has(9);
+  $core.bool hasDateCreated() => $_has(8);
   @$pb.TagNumber(11)
   void clearDateCreated() => clearField(11);
 
   @$pb.TagNumber(12)
-  $core.String get title => $_getSZ(10);
+  $core.String get title => $_getSZ(9);
   @$pb.TagNumber(12)
   set title($core.String v) {
-    $_setString(10, v);
+    $_setString(9, v);
   }
 
   @$pb.TagNumber(12)
-  $core.bool hasTitle() => $_has(10);
+  $core.bool hasTitle() => $_has(9);
   @$pb.TagNumber(12)
   void clearTitle() => clearField(12);
 
   @$pb.TagNumber(13)
-  $core.String get description => $_getSZ(11);
+  $core.String get description => $_getSZ(10);
   @$pb.TagNumber(13)
   set description($core.String v) {
-    $_setString(11, v);
+    $_setString(10, v);
   }
 
   @$pb.TagNumber(13)
-  $core.bool hasDescription() => $_has(11);
+  $core.bool hasDescription() => $_has(10);
   @$pb.TagNumber(13)
   void clearDescription() => clearField(13);
 }

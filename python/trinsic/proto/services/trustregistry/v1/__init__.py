@@ -104,8 +104,8 @@ class UnregisterMemberResponse(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class GetMemberAuthorizationStatusRequest(betterproto.Message):
     """
-    Request to fetch member status in Trust Registry for a specific credential
-    schema.
+    Request to fetch member status in governance framework for a specific
+    credential schema.
     """
 
     did_uri: str = betterproto.string_field(1)
@@ -174,7 +174,7 @@ class AuthorizedMemberSchema(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class GetMemberRequest(betterproto.Message):
-    """Request to get a member of the Trust Registry"""
+    """Request to get a member of the governance framework"""
 
     did_uri: str = betterproto.string_field(1, group="member")
     """DID URI of member to get"""

@@ -524,9 +524,6 @@ class VerificationTemplateData(betterproto.Message):
     are present in the credential template
     """
 
-    schema_uri: str = betterproto.string_field(6)
-    """URI pointing to template JSON schema document"""
-
     ecosystem_id: str = betterproto.string_field(8)
     """ID of ecosystem in which template resides"""
 

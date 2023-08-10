@@ -15,73 +15,73 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'file-management.pb.dart' as $1;
+import 'file-management.pb.dart' as $6;
 
 export 'file-management.pb.dart';
 
 @$pb.GrpcServiceName('services.filemanagement.v1.FileManagement')
 class FileManagementClient extends $grpc.Client {
   static final _$uploadFile =
-      $grpc.ClientMethod<$1.UploadFileRequest, $1.UploadFileResponse>(
+      $grpc.ClientMethod<$6.UploadFileRequest, $6.UploadFileResponse>(
           '/services.filemanagement.v1.FileManagement/UploadFile',
-          ($1.UploadFileRequest value) => value.writeToBuffer(),
+          ($6.UploadFileRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.UploadFileResponse.fromBuffer(value));
+              $6.UploadFileResponse.fromBuffer(value));
   static final _$getFile =
-      $grpc.ClientMethod<$1.GetFileRequest, $1.GetFileResponse>(
+      $grpc.ClientMethod<$6.GetFileRequest, $6.GetFileResponse>(
           '/services.filemanagement.v1.FileManagement/GetFile',
-          ($1.GetFileRequest value) => value.writeToBuffer(),
+          ($6.GetFileRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.GetFileResponse.fromBuffer(value));
+              $6.GetFileResponse.fromBuffer(value));
   static final _$deleteFile =
-      $grpc.ClientMethod<$1.DeleteFileRequest, $1.DeleteFileResponse>(
+      $grpc.ClientMethod<$6.DeleteFileRequest, $6.DeleteFileResponse>(
           '/services.filemanagement.v1.FileManagement/DeleteFile',
-          ($1.DeleteFileRequest value) => value.writeToBuffer(),
+          ($6.DeleteFileRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.DeleteFileResponse.fromBuffer(value));
+              $6.DeleteFileResponse.fromBuffer(value));
   static final _$listFiles =
-      $grpc.ClientMethod<$1.ListFilesRequest, $1.ListFilesResponse>(
+      $grpc.ClientMethod<$6.ListFilesRequest, $6.ListFilesResponse>(
           '/services.filemanagement.v1.FileManagement/ListFiles',
-          ($1.ListFilesRequest value) => value.writeToBuffer(),
+          ($6.ListFilesRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.ListFilesResponse.fromBuffer(value));
+              $6.ListFilesResponse.fromBuffer(value));
   static final _$getStorageStats =
-      $grpc.ClientMethod<$1.GetStorageStatsRequest, $1.GetStorageStatsResponse>(
+      $grpc.ClientMethod<$6.GetStorageStatsRequest, $6.GetStorageStatsResponse>(
           '/services.filemanagement.v1.FileManagement/GetStorageStats',
-          ($1.GetStorageStatsRequest value) => value.writeToBuffer(),
+          ($6.GetStorageStatsRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.GetStorageStatsResponse.fromBuffer(value));
+              $6.GetStorageStatsResponse.fromBuffer(value));
 
   FileManagementClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$1.UploadFileResponse> uploadFile(
-      $1.UploadFileRequest request,
+  $grpc.ResponseFuture<$6.UploadFileResponse> uploadFile(
+      $6.UploadFileRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$uploadFile, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.GetFileResponse> getFile($1.GetFileRequest request,
+  $grpc.ResponseFuture<$6.GetFileResponse> getFile($6.GetFileRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getFile, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.DeleteFileResponse> deleteFile(
-      $1.DeleteFileRequest request,
+  $grpc.ResponseFuture<$6.DeleteFileResponse> deleteFile(
+      $6.DeleteFileRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteFile, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.ListFilesResponse> listFiles(
-      $1.ListFilesRequest request,
+  $grpc.ResponseFuture<$6.ListFilesResponse> listFiles(
+      $6.ListFilesRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listFiles, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.GetStorageStatsResponse> getStorageStats(
-      $1.GetStorageStatsRequest request,
+  $grpc.ResponseFuture<$6.GetStorageStatsResponse> getStorageStats(
+      $6.GetStorageStatsRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getStorageStats, request, options: options);
   }
@@ -92,79 +92,79 @@ abstract class FileManagementServiceBase extends $grpc.Service {
   $core.String get $name => 'services.filemanagement.v1.FileManagement';
 
   FileManagementServiceBase() {
-    $addMethod($grpc.ServiceMethod<$1.UploadFileRequest, $1.UploadFileResponse>(
+    $addMethod($grpc.ServiceMethod<$6.UploadFileRequest, $6.UploadFileResponse>(
         'UploadFile',
         uploadFile_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.UploadFileRequest.fromBuffer(value),
-        ($1.UploadFileResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetFileRequest, $1.GetFileResponse>(
+        ($core.List<$core.int> value) => $6.UploadFileRequest.fromBuffer(value),
+        ($6.UploadFileResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.GetFileRequest, $6.GetFileResponse>(
         'GetFile',
         getFile_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.GetFileRequest.fromBuffer(value),
-        ($1.GetFileResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.DeleteFileRequest, $1.DeleteFileResponse>(
+        ($core.List<$core.int> value) => $6.GetFileRequest.fromBuffer(value),
+        ($6.GetFileResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.DeleteFileRequest, $6.DeleteFileResponse>(
         'DeleteFile',
         deleteFile_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.DeleteFileRequest.fromBuffer(value),
-        ($1.DeleteFileResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.ListFilesRequest, $1.ListFilesResponse>(
+        ($core.List<$core.int> value) => $6.DeleteFileRequest.fromBuffer(value),
+        ($6.DeleteFileResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.ListFilesRequest, $6.ListFilesResponse>(
         'ListFiles',
         listFiles_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.ListFilesRequest.fromBuffer(value),
-        ($1.ListFilesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetStorageStatsRequest,
-            $1.GetStorageStatsResponse>(
+        ($core.List<$core.int> value) => $6.ListFilesRequest.fromBuffer(value),
+        ($6.ListFilesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.GetStorageStatsRequest,
+            $6.GetStorageStatsResponse>(
         'GetStorageStats',
         getStorageStats_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.GetStorageStatsRequest.fromBuffer(value),
-        ($1.GetStorageStatsResponse value) => value.writeToBuffer()));
+            $6.GetStorageStatsRequest.fromBuffer(value),
+        ($6.GetStorageStatsResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$1.UploadFileResponse> uploadFile_Pre($grpc.ServiceCall call,
-      $async.Future<$1.UploadFileRequest> request) async {
+  $async.Future<$6.UploadFileResponse> uploadFile_Pre($grpc.ServiceCall call,
+      $async.Future<$6.UploadFileRequest> request) async {
     return uploadFile(call, await request);
   }
 
-  $async.Future<$1.GetFileResponse> getFile_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.GetFileRequest> request) async {
+  $async.Future<$6.GetFileResponse> getFile_Pre(
+      $grpc.ServiceCall call, $async.Future<$6.GetFileRequest> request) async {
     return getFile(call, await request);
   }
 
-  $async.Future<$1.DeleteFileResponse> deleteFile_Pre($grpc.ServiceCall call,
-      $async.Future<$1.DeleteFileRequest> request) async {
+  $async.Future<$6.DeleteFileResponse> deleteFile_Pre($grpc.ServiceCall call,
+      $async.Future<$6.DeleteFileRequest> request) async {
     return deleteFile(call, await request);
   }
 
-  $async.Future<$1.ListFilesResponse> listFiles_Pre($grpc.ServiceCall call,
-      $async.Future<$1.ListFilesRequest> request) async {
+  $async.Future<$6.ListFilesResponse> listFiles_Pre($grpc.ServiceCall call,
+      $async.Future<$6.ListFilesRequest> request) async {
     return listFiles(call, await request);
   }
 
-  $async.Future<$1.GetStorageStatsResponse> getStorageStats_Pre(
+  $async.Future<$6.GetStorageStatsResponse> getStorageStats_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.GetStorageStatsRequest> request) async {
+      $async.Future<$6.GetStorageStatsRequest> request) async {
     return getStorageStats(call, await request);
   }
 
-  $async.Future<$1.UploadFileResponse> uploadFile(
-      $grpc.ServiceCall call, $1.UploadFileRequest request);
-  $async.Future<$1.GetFileResponse> getFile(
-      $grpc.ServiceCall call, $1.GetFileRequest request);
-  $async.Future<$1.DeleteFileResponse> deleteFile(
-      $grpc.ServiceCall call, $1.DeleteFileRequest request);
-  $async.Future<$1.ListFilesResponse> listFiles(
-      $grpc.ServiceCall call, $1.ListFilesRequest request);
-  $async.Future<$1.GetStorageStatsResponse> getStorageStats(
-      $grpc.ServiceCall call, $1.GetStorageStatsRequest request);
+  $async.Future<$6.UploadFileResponse> uploadFile(
+      $grpc.ServiceCall call, $6.UploadFileRequest request);
+  $async.Future<$6.GetFileResponse> getFile(
+      $grpc.ServiceCall call, $6.GetFileRequest request);
+  $async.Future<$6.DeleteFileResponse> deleteFile(
+      $grpc.ServiceCall call, $6.DeleteFileRequest request);
+  $async.Future<$6.ListFilesResponse> listFiles(
+      $grpc.ServiceCall call, $6.ListFilesRequest request);
+  $async.Future<$6.GetStorageStatsResponse> getStorageStats(
+      $grpc.ServiceCall call, $6.GetStorageStatsRequest request);
 }
