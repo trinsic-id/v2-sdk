@@ -18,22 +18,42 @@ class TrinsicService(ServiceBase):
     ):
         super().__init__(server_config)
 
-        self._access_management: AccessManagementService = None
-        self._credential: CredentialService = None
-        self._file_management: FileManagementService = None
-        self._template: TemplateService = None
-        self._provider: ProviderService = None
-        self._trust_registry: TrustRegistryService = None
-        self._wallet: WalletService = None
+        self._access_management: AccessManagementService = AccessManagementService(
+            server_config=self._channel
+        )
+        self._credential: CredentialService = CredentialService(
+            server_config=self._channel
+        )
+        self._file_management: FileManagementService = FileManagementService(
+            server_config=self._channel
+        )
+        self._template: TemplateService = TemplateService(server_config=self._channel)
+        self._provider: ProviderService = ProviderService(server_config=self._channel)
+        self._trust_registry: TrustRegistryService = TrustRegistryService(
+            server_config=self._channel
+        )
+        self._wallet: WalletService = WalletService(server_config=self._channel)
+
+    def __del__(self):
+        self.close()
 
     def close(self):
         # TODO - Channel management
-        self.credential.close()
-        self.file_management.close()
-        self.template.close()
-        self.provider.close()
-        self.trust_registry.close()
-        self.wallet.close()
+        if self._access_management is not None:
+            self._access_management.close()
+        if self._credential is not None:
+            self._credential.close()
+        if self._file_management is not None:
+            self._file_management.close()
+        if self._template is not None:
+            self._template.close()
+        if self._provider is not None:
+            self._provider.close()
+        if self._trust_registry is not None:
+            self._trust_registry.close()
+        if self._wallet is not None:
+            self._wallet.close()
+        super().close()
 
     @property
     def access_management(self) -> AccessManagementService:

@@ -94,6 +94,8 @@ async def credential_demo():
     assert verify_result.validation_results["SignatureVerification"].is_valid
     assert selective_verify_result.validation_results["SignatureVerification"].is_valid
 
+    del trinsic_service
+
 
 if __name__ == "__main__":
     set_eventloop_policy()
