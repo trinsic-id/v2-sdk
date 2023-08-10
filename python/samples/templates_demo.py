@@ -175,6 +175,8 @@ async def templates_demo():
         # permission denied on deletion - whatever
         pass
 
+    del trinsic_service
+
 
 if __name__ == "__main__":
     set_eventloop_policy()

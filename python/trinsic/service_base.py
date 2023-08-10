@@ -18,9 +18,20 @@ class ServiceBase(ABC):
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
     """
 
-    def __init__(self, server_config: TrinsicOptions):
-        self.service_options: TrinsicOptions = server_config or trinsic_config()
-        self._channel: Channel = create_channel(self.service_options)
+    def __init__(self, server_config: TrinsicOptions | Channel):
+        if isinstance(server_config, Channel):
+            # TODO - Cane we get the server_config from the channel?
+            current_config = TrinsicOptions(
+                server_endpoint=server_config._host,
+                server_port=server_config._port,
+                auth_token="",
+                server_use_tls=server_config._scheme != "http",
+            )
+            self.service_options: TrinsicOptions = current_config or trinsic_config()
+            self._channel = server_config
+        else:
+            self.service_options: TrinsicOptions = server_config or trinsic_config()
+            self._channel: Channel = create_channel(self.service_options)
 
     def __enter__(self):
         return self
