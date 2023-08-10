@@ -5302,11 +5302,6 @@
 <td>Source credential template, used for verifying that the specified <code>fields</code> are present in the credential template</td>
 </tr>
 <tr>
-<td>schema_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>URI pointing to template JSON schema document</td>
-</tr>
-<tr>
 <td>ecosystem_id</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>ID of ecosystem in which template resides</td>
@@ -5694,7 +5689,7 @@
 <tr>
 <td>include_governance</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
 </tr>
 <tr>
 <td>generate_share_url</td>
@@ -5835,7 +5830,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 <tr>
 <td>include_governance</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
 </tr>
 <tr>
 <td>signature_type</td>
@@ -7071,7 +7066,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 </table>
 <p><a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a></p>
 <h3 id="getmemberauthorizationstatusrequest">GetMemberAuthorizationStatusRequest<a class="headerlink" href="#getmemberauthorizationstatusrequest" title="Permanent link">&para;</a></h3>
-<p>Request to fetch member status in Trust Registry for a specific credential schema.</p>
+<p>Request to fetch member status in governance framework for a specific credential schema.</p>
 <table>
 <thead>
 <tr>
@@ -7114,7 +7109,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 </table>
 <p><a name="services-trustregistry-v1-GetMemberRequest"></a></p>
 <h3 id="getmemberrequest">GetMemberRequest<a class="headerlink" href="#getmemberrequest" title="Permanent link">&para;</a></h3>
-<p>Request to get a member of the Trust Registry</p>
+<p>Request to get a member of the governance framework</p>
 <table>
 <thead>
 <tr>
