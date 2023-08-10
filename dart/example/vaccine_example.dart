@@ -39,15 +39,9 @@ Future runVaccineDemo() async {
   // Create 3 different profiles for each participant in the scenario
   var request = CreateWalletRequest.create();
   request.ecosystemId = ecosystemId;
-  var allison = await trinsic
-      .wallet()
-      .createWallet(request);
-  var clinic = await trinsic
-      .wallet()
-      .createWallet(request);
-  var airline = await trinsic
-      .wallet()
-      .createWallet(request);
+  var allison = await trinsic.wallet().createWallet(request);
+  var clinic = await trinsic.wallet().createWallet(request);
+  var airline = await trinsic.wallet().createWallet(request);
   // }
 
   trinsic.serviceOptions.authToken = clinic.authToken;
@@ -69,15 +63,14 @@ Future runVaccineDemo() async {
   var createCredentialTemplateRequest = CreateCredentialTemplateRequest();
   createCredentialTemplateRequest.name = "Vaccination-Certificate-${uuid.v4()}";
   createCredentialTemplateRequest.fields.addAll({
-            "firstName": TemplateField()..description= "First name",
-            "lastName": TemplateField()..description=  "Last name",
-            "batchNumber":
-                TemplateField()..description = "Batch number of vaccine",
-            "countryOfVaccination":
-                TemplateField()..description = "Country of vaccination",
-          });
-  var credentialTemplateResponse = await trinsic.template().create(
-          createCredentialTemplateRequest);
+    "firstName": TemplateField()..description = "First name",
+    "lastName": TemplateField()..description = "Last name",
+    "batchNumber": TemplateField()..description = "Batch number of vaccine",
+    "countryOfVaccination": TemplateField()
+      ..description = "Country of vaccination",
+  });
+  var credentialTemplateResponse =
+      await trinsic.template().create(createCredentialTemplateRequest);
   var template = credentialTemplateResponse.data;
   // }
 
@@ -95,8 +88,8 @@ Future runVaccineDemo() async {
   var issueFromTemplateRequest = IssueFromTemplateRequest();
   issueFromTemplateRequest.templateId = template.id;
   issueFromTemplateRequest.valuesJson = jsonString;
-  var issueResponse = await trinsic.credential().issueFromTemplate(
-      issueFromTemplateRequest);
+  var issueResponse =
+      await trinsic.credential().issueFromTemplate(issueFromTemplateRequest);
   var credential = issueResponse.documentJson;
   // }
 
@@ -128,7 +121,8 @@ Future runVaccineDemo() async {
   var createProofRequest = CreateProofRequest();
   createProofRequest.itemId = itemId;
   createProofRequest.revealTemplate = revealTemplate;
-  var selectiveProofResponse = await trinsic.credential().createProof(createProofRequest);
+  var selectiveProofResponse =
+      await trinsic.credential().createProof(createProofRequest);
   // }
   var credentialProof = proofResponse.proofDocumentJson;
   print("Proof: $credentialProof");
@@ -144,7 +138,8 @@ Future runVaccineDemo() async {
   // }
 
   var selectiveVerifyResult = await trinsic.credential().verifyProof(
-      VerifyProofRequest()..proofDocumentJson= selectiveProofResponse.proofDocumentJson);
+      VerifyProofRequest()
+        ..proofDocumentJson = selectiveProofResponse.proofDocumentJson);
 
   print("Verification result: $verifyResult");
   assert(verifyResult.validationResults["SignatureVerification"]?.isValid ??

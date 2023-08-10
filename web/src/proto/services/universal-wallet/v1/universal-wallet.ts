@@ -10,44 +10,54 @@ import {
 /** Request to search items in wallet */
 export interface SearchRequest {
   /** SQL Query to execute against items in wallet */
-  query?: string;
+  query?:
+    | string
+    | undefined;
   /**
    * Token provided by previous `SearchResponse`
    * if more data is available for query
    */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Response to `SearchRequest` */
 export interface SearchResponse {
   /** Array of query results, as JSON strings */
-  items?: string[];
+  items?:
+    | string[]
+    | undefined;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `SearchRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Request to fetch an item from wallet */
 export interface GetItemRequest {
   /** ID of item in wallet */
-  itemId?: string;
+  itemId?: string | undefined;
 }
 
 /** Response to `GetItemRequest` */
 export interface GetItemResponse {
   /** Item data as a JSON string */
-  itemJson?: string;
+  itemJson?:
+    | string
+    | undefined;
   /** Type of item specified when item was inserted into wallet */
-  itemType?: string;
+  itemType?: string | undefined;
 }
 
 /** Request to update item in wallet */
 export interface UpdateItemRequest {
   /** ID of item in wallet */
-  itemId?: string;
+  itemId?:
+    | string
+    | undefined;
   /** Item type (ex. "VerifiableCredential") */
-  itemType?: string;
+  itemType?: string | undefined;
 }
 
 /** Response to `UpdateItemRequest` */
@@ -57,21 +67,23 @@ export interface UpdateItemResponse {
 /** Request to insert a JSON document into a wallet */
 export interface InsertItemRequest {
   /** Document to insert; must be stringified JSON */
-  itemJson?: string;
+  itemJson?:
+    | string
+    | undefined;
   /** Item type (ex. "VerifiableCredential") */
-  itemType?: string;
+  itemType?: string | undefined;
 }
 
 /** Response to `InsertItemRequest` */
 export interface InsertItemResponse {
   /** ID of item inserted into wallet */
-  itemId?: string;
+  itemId?: string | undefined;
 }
 
 /** Request to delete an item in a wallet */
 export interface DeleteItemRequest {
   /** ID of item to delete */
-  itemId?: string;
+  itemId?: string | undefined;
 }
 
 /** Response to `DeleteItemRequest` */
@@ -107,7 +119,9 @@ export interface DeleteWalletResponse {
 
 export interface CreateWalletRequest {
   /** Ecosystem ID of the wallet to create */
-  ecosystemId?: string;
+  ecosystemId?:
+    | string
+    | undefined;
   /**
    * Wallet name or description.
    * Use this field to add vendor specific information about this wallet,
@@ -130,40 +144,46 @@ export interface CreateWalletRequest_ExternalIdentity {
    * The user identity to add to the wallet
    * This can be an email address or phone number (formatted as +[country code][phone number])
    */
-  identity?: string;
+  identity?:
+    | string
+    | undefined;
   /** The type of identity provider, like EMAIL or PHONE */
-  provider?: IdentityProvider;
+  provider?: IdentityProvider | undefined;
 }
 
 export interface CreateWalletResponse {
   /** Auth token for the newly created wallet */
-  authToken?: string;
+  authToken?:
+    | string
+    | undefined;
   /** Token ID of the newly generated token */
-  tokenId?: string;
+  tokenId?:
+    | string
+    | undefined;
   /** Wallet configuration */
-  wallet?: WalletConfiguration;
+  wallet?: WalletConfiguration | undefined;
 }
 
 export interface GenerateAuthTokenRequest {
-  walletId?: string;
-  tokenDescription?: string;
+  walletId?: string | undefined;
+  tokenDescription?: string | undefined;
 }
 
 export interface GenerateAuthTokenResponse {
-  tokenId?: string;
-  authToken?: string;
+  tokenId?: string | undefined;
+  authToken?: string | undefined;
 }
 
 /** Request to retrieve wallet information about a given wallet identified by its wallet ID */
 export interface GetWalletInfoRequest {
   /** Wallet ID of the wallet to retrieve */
-  walletId?: string;
+  walletId?: string | undefined;
 }
 
 /** Response to `GetWalletInfoRequest` */
 export interface GetWalletInfoResponse {
   /** Wallet configuration */
-  wallet?: WalletConfiguration;
+  wallet?: WalletConfiguration | undefined;
 }
 
 /** Request to retrieve wallet information about the currently authenticated wallet */
@@ -173,26 +193,28 @@ export interface GetMyInfoRequest {
 /** Response to `GetMyInfoRequest` */
 export interface GetMyInfoResponse {
   /** Wallet configuration */
-  wallet?: WalletConfiguration;
+  wallet?: WalletConfiguration | undefined;
 }
 
 /** Request to revoke a previously issued auth token */
 export interface RevokeAuthTokenRequest {
   /** Wallet ID of the wallet to from which to revoke the token */
-  walletId?: string;
+  walletId?:
+    | string
+    | undefined;
   /** Token ID of the token to revoke */
-  tokenId?: string;
+  tokenId?: string | undefined;
 }
 
 export interface RevokeAuthTokenResponse {
 }
 
 export interface ListWalletsRequest {
-  filter?: string;
+  filter?: string | undefined;
 }
 
 export interface ListWalletsResponse {
-  wallets?: WalletConfiguration[];
+  wallets?: WalletConfiguration[] | undefined;
 }
 
 export interface AddExternalIdentityInitRequest {
@@ -200,24 +222,28 @@ export interface AddExternalIdentityInitRequest {
    * The user identity to add to the wallet
    * This can be an email address or phone number (formatted as +[country code][phone number])
    */
-  identity?: string;
+  identity?:
+    | string
+    | undefined;
   /** The type of identity provider, like EMAIL or PHONE */
-  provider?: IdentityProvider;
+  provider?: IdentityProvider | undefined;
 }
 
 export interface AddExternalIdentityInitResponse {
   /** Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint */
-  challenge?: string;
+  challenge?: string | undefined;
 }
 
 export interface AddExternalIdentityConfirmRequest {
   /** The challenge received from the `AddExternalIdentityInit` endpoint */
-  challenge?: string;
+  challenge?:
+    | string
+    | undefined;
   /**
    * The response to the challenge. If using Email or Phone,
    * this is the OTP code sent to the user's email or phone
    */
-  response?: string;
+  response?: string | undefined;
 }
 
 export interface AddExternalIdentityConfirmResponse {
@@ -228,7 +254,7 @@ export interface RemoveExternalIdentityRequest {
    * The user identity to remove from the wallet
    * This can be an email address or phone number (formatted as +[country code][phone number])
    */
-  identity?: string;
+  identity?: string | undefined;
 }
 
 export interface RemoveExternalIdentityResponse {
@@ -236,11 +262,15 @@ export interface RemoveExternalIdentityResponse {
 
 export interface AuthenticateInitRequest {
   /** Identity to add to the wallet */
-  identity?: string;
+  identity?:
+    | string
+    | undefined;
   /** Identity provider */
-  provider?: IdentityProvider;
+  provider?:
+    | IdentityProvider
+    | undefined;
   /** Ecosystem ID to which the wallet belongs */
-  ecosystemId?: string;
+  ecosystemId?: string | undefined;
 }
 
 export interface AuthenticateInitResponse {
@@ -248,12 +278,12 @@ export interface AuthenticateInitResponse {
    * The challenge received from the `AcquireAuthTokenInit` endpoint
    * Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint
    */
-  challenge?: string;
+  challenge?: string | undefined;
 }
 
 export interface AuthenticateResendCodeRequest {
   /** Challenge for the code you want resent. */
-  challenge?: string;
+  challenge?: string | undefined;
 }
 
 export interface AuthenticateResendCodeResponse {
@@ -261,38 +291,46 @@ export interface AuthenticateResendCodeResponse {
 
 export interface AuthenticateConfirmRequest {
   /** The challenge received from the `AcquireAuthTokenInit` endpoint */
-  challenge?: string;
+  challenge?:
+    | string
+    | undefined;
   /**
    * The response to the challenge. If using Email or Phone,
    * this is the OTP code sent to the user's email or phone
    */
-  response?: string;
+  response?: string | undefined;
 }
 
 export interface AuthenticateConfirmResponse {
   /** Auth token for the wallet */
-  authToken?: string;
+  authToken?: string | undefined;
 }
 
 /** Request to list templates by */
 export interface ListByVerificationTemplateRequest {
   /** ID of verification template to list matching credentials */
-  verificationTemplateId?: string;
+  verificationTemplateId?:
+    | string
+    | undefined;
   /**
    * Token provided by previous `ListCredentialTemplatesResponse`
    * if more data is available for query
    */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Response to `ListByVerificationTemplateRequest` */
 export interface ListByVerificationTemplateResponse {
   /** Array of query results, as JSON strings */
-  items?: string[];
+  items?:
+    | string[]
+    | undefined;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `ListByVerificationTemplateRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 function createBaseSearchRequest(): SearchRequest {
@@ -318,21 +356,21 @@ export const SearchRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.query = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -349,15 +387,18 @@ export const SearchRequest = {
 
   toJSON(message: SearchRequest): unknown {
     const obj: any = {};
-    message.query !== undefined && (obj.query = message.query);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.query !== undefined && message.query !== "") {
+      obj.query = message.query;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SearchRequest>): SearchRequest {
     return SearchRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SearchRequest>): SearchRequest {
     const message = createBaseSearchRequest();
     message.query = object.query ?? "";
@@ -394,28 +435,28 @@ export const SearchResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.items!.push(reader.string());
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -433,20 +474,21 @@ export const SearchResponse = {
 
   toJSON(message: SearchResponse): unknown {
     const obj: any = {};
-    if (message.items) {
-      obj.items = message.items.map((e) => e);
-    } else {
-      obj.items = [];
+    if (message.items?.length) {
+      obj.items = message.items;
     }
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SearchResponse>): SearchResponse {
     return SearchResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SearchResponse>): SearchResponse {
     const message = createBaseSearchResponse();
     message.items = object.items?.map((e) => e) || [];
@@ -476,14 +518,14 @@ export const GetItemRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -497,14 +539,15 @@ export const GetItemRequest = {
 
   toJSON(message: GetItemRequest): unknown {
     const obj: any = {};
-    message.itemId !== undefined && (obj.itemId = message.itemId);
+    if (message.itemId !== undefined && message.itemId !== "") {
+      obj.itemId = message.itemId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetItemRequest>): GetItemRequest {
     return GetItemRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetItemRequest>): GetItemRequest {
     const message = createBaseGetItemRequest();
     message.itemId = object.itemId ?? "";
@@ -535,21 +578,21 @@ export const GetItemResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.itemJson = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.itemType = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -566,15 +609,18 @@ export const GetItemResponse = {
 
   toJSON(message: GetItemResponse): unknown {
     const obj: any = {};
-    message.itemJson !== undefined && (obj.itemJson = message.itemJson);
-    message.itemType !== undefined && (obj.itemType = message.itemType);
+    if (message.itemJson !== undefined && message.itemJson !== "") {
+      obj.itemJson = message.itemJson;
+    }
+    if (message.itemType !== undefined && message.itemType !== "") {
+      obj.itemType = message.itemType;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetItemResponse>): GetItemResponse {
     return GetItemResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetItemResponse>): GetItemResponse {
     const message = createBaseGetItemResponse();
     message.itemJson = object.itemJson ?? "";
@@ -606,21 +652,21 @@ export const UpdateItemRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.itemType = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -637,15 +683,18 @@ export const UpdateItemRequest = {
 
   toJSON(message: UpdateItemRequest): unknown {
     const obj: any = {};
-    message.itemId !== undefined && (obj.itemId = message.itemId);
-    message.itemType !== undefined && (obj.itemType = message.itemType);
+    if (message.itemId !== undefined && message.itemId !== "") {
+      obj.itemId = message.itemId;
+    }
+    if (message.itemType !== undefined && message.itemType !== "") {
+      obj.itemType = message.itemType;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpdateItemRequest>): UpdateItemRequest {
     return UpdateItemRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpdateItemRequest>): UpdateItemRequest {
     const message = createBaseUpdateItemRequest();
     message.itemId = object.itemId ?? "";
@@ -671,7 +720,7 @@ export const UpdateItemResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -691,7 +740,6 @@ export const UpdateItemResponse = {
   create(base?: DeepPartial<UpdateItemResponse>): UpdateItemResponse {
     return UpdateItemResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<UpdateItemResponse>): UpdateItemResponse {
     const message = createBaseUpdateItemResponse();
     return message;
@@ -721,21 +769,21 @@ export const InsertItemRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.itemJson = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.itemType = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -752,15 +800,18 @@ export const InsertItemRequest = {
 
   toJSON(message: InsertItemRequest): unknown {
     const obj: any = {};
-    message.itemJson !== undefined && (obj.itemJson = message.itemJson);
-    message.itemType !== undefined && (obj.itemType = message.itemType);
+    if (message.itemJson !== undefined && message.itemJson !== "") {
+      obj.itemJson = message.itemJson;
+    }
+    if (message.itemType !== undefined && message.itemType !== "") {
+      obj.itemType = message.itemType;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<InsertItemRequest>): InsertItemRequest {
     return InsertItemRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<InsertItemRequest>): InsertItemRequest {
     const message = createBaseInsertItemRequest();
     message.itemJson = object.itemJson ?? "";
@@ -789,14 +840,14 @@ export const InsertItemResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -810,14 +861,15 @@ export const InsertItemResponse = {
 
   toJSON(message: InsertItemResponse): unknown {
     const obj: any = {};
-    message.itemId !== undefined && (obj.itemId = message.itemId);
+    if (message.itemId !== undefined && message.itemId !== "") {
+      obj.itemId = message.itemId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<InsertItemResponse>): InsertItemResponse {
     return InsertItemResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<InsertItemResponse>): InsertItemResponse {
     const message = createBaseInsertItemResponse();
     message.itemId = object.itemId ?? "";
@@ -845,14 +897,14 @@ export const DeleteItemRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -866,14 +918,15 @@ export const DeleteItemRequest = {
 
   toJSON(message: DeleteItemRequest): unknown {
     const obj: any = {};
-    message.itemId !== undefined && (obj.itemId = message.itemId);
+    if (message.itemId !== undefined && message.itemId !== "") {
+      obj.itemId = message.itemId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<DeleteItemRequest>): DeleteItemRequest {
     return DeleteItemRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<DeleteItemRequest>): DeleteItemRequest {
     const message = createBaseDeleteItemRequest();
     message.itemId = object.itemId ?? "";
@@ -898,7 +951,7 @@ export const DeleteItemResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -918,7 +971,6 @@ export const DeleteItemResponse = {
   create(base?: DeepPartial<DeleteItemResponse>): DeleteItemResponse {
     return DeleteItemResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<DeleteItemResponse>): DeleteItemResponse {
     const message = createBaseDeleteItemResponse();
     return message;
@@ -951,28 +1003,28 @@ export const DeleteWalletRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -990,16 +1042,21 @@ export const DeleteWalletRequest = {
 
   toJSON(message: DeleteWalletRequest): unknown {
     const obj: any = {};
-    message.email !== undefined && (obj.email = message.email);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<DeleteWalletRequest>): DeleteWalletRequest {
     return DeleteWalletRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<DeleteWalletRequest>): DeleteWalletRequest {
     const message = createBaseDeleteWalletRequest();
     message.email = object.email ?? undefined;
@@ -1026,7 +1083,7 @@ export const DeleteWalletResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1046,7 +1103,6 @@ export const DeleteWalletResponse = {
   create(base?: DeepPartial<DeleteWalletResponse>): DeleteWalletResponse {
     return DeleteWalletResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<DeleteWalletResponse>): DeleteWalletResponse {
     const message = createBaseDeleteWalletResponse();
     return message;
@@ -1079,28 +1135,28 @@ export const CreateWalletRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.ecosystemId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.identity = CreateWalletRequest_ExternalIdentity.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1118,17 +1174,21 @@ export const CreateWalletRequest = {
 
   toJSON(message: CreateWalletRequest): unknown {
     const obj: any = {};
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    message.description !== undefined && (obj.description = message.description);
-    message.identity !== undefined &&
-      (obj.identity = message.identity ? CreateWalletRequest_ExternalIdentity.toJSON(message.identity) : undefined);
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      obj.ecosystemId = message.ecosystemId;
+    }
+    if (message.description !== undefined) {
+      obj.description = message.description;
+    }
+    if (message.identity !== undefined) {
+      obj.identity = CreateWalletRequest_ExternalIdentity.toJSON(message.identity);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateWalletRequest>): CreateWalletRequest {
     return CreateWalletRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateWalletRequest>): CreateWalletRequest {
     const message = createBaseCreateWalletRequest();
     message.ecosystemId = object.ecosystemId ?? "";
@@ -1163,21 +1223,21 @@ export const CreateWalletRequest_ExternalIdentity = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.identity = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.provider = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1194,15 +1254,18 @@ export const CreateWalletRequest_ExternalIdentity = {
 
   toJSON(message: CreateWalletRequest_ExternalIdentity): unknown {
     const obj: any = {};
-    message.identity !== undefined && (obj.identity = message.identity);
-    message.provider !== undefined && (obj.provider = identityProviderToJSON(message.provider));
+    if (message.identity !== undefined && message.identity !== "") {
+      obj.identity = message.identity;
+    }
+    if (message.provider !== undefined && message.provider !== 0) {
+      obj.provider = identityProviderToJSON(message.provider);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateWalletRequest_ExternalIdentity>): CreateWalletRequest_ExternalIdentity {
     return CreateWalletRequest_ExternalIdentity.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateWalletRequest_ExternalIdentity>): CreateWalletRequest_ExternalIdentity {
     const message = createBaseCreateWalletRequest_ExternalIdentity();
     message.identity = object.identity ?? "";
@@ -1237,28 +1300,28 @@ export const CreateWalletResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.authToken = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.tokenId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.wallet = WalletConfiguration.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1276,17 +1339,21 @@ export const CreateWalletResponse = {
 
   toJSON(message: CreateWalletResponse): unknown {
     const obj: any = {};
-    message.authToken !== undefined && (obj.authToken = message.authToken);
-    message.tokenId !== undefined && (obj.tokenId = message.tokenId);
-    message.wallet !== undefined &&
-      (obj.wallet = message.wallet ? WalletConfiguration.toJSON(message.wallet) : undefined);
+    if (message.authToken !== undefined && message.authToken !== "") {
+      obj.authToken = message.authToken;
+    }
+    if (message.tokenId !== undefined && message.tokenId !== "") {
+      obj.tokenId = message.tokenId;
+    }
+    if (message.wallet !== undefined) {
+      obj.wallet = WalletConfiguration.toJSON(message.wallet);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateWalletResponse>): CreateWalletResponse {
     return CreateWalletResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateWalletResponse>): CreateWalletResponse {
     const message = createBaseCreateWalletResponse();
     message.authToken = object.authToken ?? "";
@@ -1321,21 +1388,21 @@ export const GenerateAuthTokenRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.tokenDescription = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1352,15 +1419,18 @@ export const GenerateAuthTokenRequest = {
 
   toJSON(message: GenerateAuthTokenRequest): unknown {
     const obj: any = {};
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.tokenDescription !== undefined && (obj.tokenDescription = message.tokenDescription);
+    if (message.walletId !== undefined && message.walletId !== "") {
+      obj.walletId = message.walletId;
+    }
+    if (message.tokenDescription !== undefined && message.tokenDescription !== "") {
+      obj.tokenDescription = message.tokenDescription;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GenerateAuthTokenRequest>): GenerateAuthTokenRequest {
     return GenerateAuthTokenRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GenerateAuthTokenRequest>): GenerateAuthTokenRequest {
     const message = createBaseGenerateAuthTokenRequest();
     message.walletId = object.walletId ?? "";
@@ -1392,21 +1462,21 @@ export const GenerateAuthTokenResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.tokenId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.authToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1423,15 +1493,18 @@ export const GenerateAuthTokenResponse = {
 
   toJSON(message: GenerateAuthTokenResponse): unknown {
     const obj: any = {};
-    message.tokenId !== undefined && (obj.tokenId = message.tokenId);
-    message.authToken !== undefined && (obj.authToken = message.authToken);
+    if (message.tokenId !== undefined && message.tokenId !== "") {
+      obj.tokenId = message.tokenId;
+    }
+    if (message.authToken !== undefined && message.authToken !== "") {
+      obj.authToken = message.authToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GenerateAuthTokenResponse>): GenerateAuthTokenResponse {
     return GenerateAuthTokenResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GenerateAuthTokenResponse>): GenerateAuthTokenResponse {
     const message = createBaseGenerateAuthTokenResponse();
     message.tokenId = object.tokenId ?? "";
@@ -1460,14 +1533,14 @@ export const GetWalletInfoRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1481,14 +1554,15 @@ export const GetWalletInfoRequest = {
 
   toJSON(message: GetWalletInfoRequest): unknown {
     const obj: any = {};
-    message.walletId !== undefined && (obj.walletId = message.walletId);
+    if (message.walletId !== undefined && message.walletId !== "") {
+      obj.walletId = message.walletId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetWalletInfoRequest>): GetWalletInfoRequest {
     return GetWalletInfoRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetWalletInfoRequest>): GetWalletInfoRequest {
     const message = createBaseGetWalletInfoRequest();
     message.walletId = object.walletId ?? "";
@@ -1516,14 +1590,14 @@ export const GetWalletInfoResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.wallet = WalletConfiguration.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1537,15 +1611,15 @@ export const GetWalletInfoResponse = {
 
   toJSON(message: GetWalletInfoResponse): unknown {
     const obj: any = {};
-    message.wallet !== undefined &&
-      (obj.wallet = message.wallet ? WalletConfiguration.toJSON(message.wallet) : undefined);
+    if (message.wallet !== undefined) {
+      obj.wallet = WalletConfiguration.toJSON(message.wallet);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetWalletInfoResponse>): GetWalletInfoResponse {
     return GetWalletInfoResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetWalletInfoResponse>): GetWalletInfoResponse {
     const message = createBaseGetWalletInfoResponse();
     message.wallet = (object.wallet !== undefined && object.wallet !== null)
@@ -1572,7 +1646,7 @@ export const GetMyInfoRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1592,7 +1666,6 @@ export const GetMyInfoRequest = {
   create(base?: DeepPartial<GetMyInfoRequest>): GetMyInfoRequest {
     return GetMyInfoRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<GetMyInfoRequest>): GetMyInfoRequest {
     const message = createBaseGetMyInfoRequest();
     return message;
@@ -1619,14 +1692,14 @@ export const GetMyInfoResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.wallet = WalletConfiguration.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1640,15 +1713,15 @@ export const GetMyInfoResponse = {
 
   toJSON(message: GetMyInfoResponse): unknown {
     const obj: any = {};
-    message.wallet !== undefined &&
-      (obj.wallet = message.wallet ? WalletConfiguration.toJSON(message.wallet) : undefined);
+    if (message.wallet !== undefined) {
+      obj.wallet = WalletConfiguration.toJSON(message.wallet);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetMyInfoResponse>): GetMyInfoResponse {
     return GetMyInfoResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetMyInfoResponse>): GetMyInfoResponse {
     const message = createBaseGetMyInfoResponse();
     message.wallet = (object.wallet !== undefined && object.wallet !== null)
@@ -1681,21 +1754,21 @@ export const RevokeAuthTokenRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.tokenId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1712,15 +1785,18 @@ export const RevokeAuthTokenRequest = {
 
   toJSON(message: RevokeAuthTokenRequest): unknown {
     const obj: any = {};
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.tokenId !== undefined && (obj.tokenId = message.tokenId);
+    if (message.walletId !== undefined && message.walletId !== "") {
+      obj.walletId = message.walletId;
+    }
+    if (message.tokenId !== undefined && message.tokenId !== "") {
+      obj.tokenId = message.tokenId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<RevokeAuthTokenRequest>): RevokeAuthTokenRequest {
     return RevokeAuthTokenRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RevokeAuthTokenRequest>): RevokeAuthTokenRequest {
     const message = createBaseRevokeAuthTokenRequest();
     message.walletId = object.walletId ?? "";
@@ -1746,7 +1822,7 @@ export const RevokeAuthTokenResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1766,7 +1842,6 @@ export const RevokeAuthTokenResponse = {
   create(base?: DeepPartial<RevokeAuthTokenResponse>): RevokeAuthTokenResponse {
     return RevokeAuthTokenResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<RevokeAuthTokenResponse>): RevokeAuthTokenResponse {
     const message = createBaseRevokeAuthTokenResponse();
     return message;
@@ -1793,14 +1868,14 @@ export const ListWalletsRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.filter = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1814,14 +1889,15 @@ export const ListWalletsRequest = {
 
   toJSON(message: ListWalletsRequest): unknown {
     const obj: any = {};
-    message.filter !== undefined && (obj.filter = message.filter);
+    if (message.filter !== undefined && message.filter !== "") {
+      obj.filter = message.filter;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListWalletsRequest>): ListWalletsRequest {
     return ListWalletsRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListWalletsRequest>): ListWalletsRequest {
     const message = createBaseListWalletsRequest();
     message.filter = object.filter ?? "";
@@ -1851,14 +1927,14 @@ export const ListWalletsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.wallets!.push(WalletConfiguration.decode(reader, reader.uint32()));
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1874,10 +1950,8 @@ export const ListWalletsResponse = {
 
   toJSON(message: ListWalletsResponse): unknown {
     const obj: any = {};
-    if (message.wallets) {
-      obj.wallets = message.wallets.map((e) => e ? WalletConfiguration.toJSON(e) : undefined);
-    } else {
-      obj.wallets = [];
+    if (message.wallets?.length) {
+      obj.wallets = message.wallets.map((e) => WalletConfiguration.toJSON(e));
     }
     return obj;
   },
@@ -1885,7 +1959,6 @@ export const ListWalletsResponse = {
   create(base?: DeepPartial<ListWalletsResponse>): ListWalletsResponse {
     return ListWalletsResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListWalletsResponse>): ListWalletsResponse {
     const message = createBaseListWalletsResponse();
     message.wallets = object.wallets?.map((e) => WalletConfiguration.fromPartial(e)) || [];
@@ -1916,21 +1989,21 @@ export const AddExternalIdentityInitRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.identity = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.provider = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1947,15 +2020,18 @@ export const AddExternalIdentityInitRequest = {
 
   toJSON(message: AddExternalIdentityInitRequest): unknown {
     const obj: any = {};
-    message.identity !== undefined && (obj.identity = message.identity);
-    message.provider !== undefined && (obj.provider = identityProviderToJSON(message.provider));
+    if (message.identity !== undefined && message.identity !== "") {
+      obj.identity = message.identity;
+    }
+    if (message.provider !== undefined && message.provider !== 0) {
+      obj.provider = identityProviderToJSON(message.provider);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AddExternalIdentityInitRequest>): AddExternalIdentityInitRequest {
     return AddExternalIdentityInitRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AddExternalIdentityInitRequest>): AddExternalIdentityInitRequest {
     const message = createBaseAddExternalIdentityInitRequest();
     message.identity = object.identity ?? "";
@@ -1984,14 +2060,14 @@ export const AddExternalIdentityInitResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.challenge = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2005,14 +2081,15 @@ export const AddExternalIdentityInitResponse = {
 
   toJSON(message: AddExternalIdentityInitResponse): unknown {
     const obj: any = {};
-    message.challenge !== undefined && (obj.challenge = message.challenge);
+    if (message.challenge !== undefined && message.challenge !== "") {
+      obj.challenge = message.challenge;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AddExternalIdentityInitResponse>): AddExternalIdentityInitResponse {
     return AddExternalIdentityInitResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AddExternalIdentityInitResponse>): AddExternalIdentityInitResponse {
     const message = createBaseAddExternalIdentityInitResponse();
     message.challenge = object.challenge ?? "";
@@ -2043,21 +2120,21 @@ export const AddExternalIdentityConfirmRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.challenge = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.response = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2074,15 +2151,18 @@ export const AddExternalIdentityConfirmRequest = {
 
   toJSON(message: AddExternalIdentityConfirmRequest): unknown {
     const obj: any = {};
-    message.challenge !== undefined && (obj.challenge = message.challenge);
-    message.response !== undefined && (obj.response = message.response);
+    if (message.challenge !== undefined && message.challenge !== "") {
+      obj.challenge = message.challenge;
+    }
+    if (message.response !== undefined && message.response !== "") {
+      obj.response = message.response;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AddExternalIdentityConfirmRequest>): AddExternalIdentityConfirmRequest {
     return AddExternalIdentityConfirmRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AddExternalIdentityConfirmRequest>): AddExternalIdentityConfirmRequest {
     const message = createBaseAddExternalIdentityConfirmRequest();
     message.challenge = object.challenge ?? "";
@@ -2108,7 +2188,7 @@ export const AddExternalIdentityConfirmResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2128,7 +2208,6 @@ export const AddExternalIdentityConfirmResponse = {
   create(base?: DeepPartial<AddExternalIdentityConfirmResponse>): AddExternalIdentityConfirmResponse {
     return AddExternalIdentityConfirmResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<AddExternalIdentityConfirmResponse>): AddExternalIdentityConfirmResponse {
     const message = createBaseAddExternalIdentityConfirmResponse();
     return message;
@@ -2155,14 +2234,14 @@ export const RemoveExternalIdentityRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.identity = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2176,14 +2255,15 @@ export const RemoveExternalIdentityRequest = {
 
   toJSON(message: RemoveExternalIdentityRequest): unknown {
     const obj: any = {};
-    message.identity !== undefined && (obj.identity = message.identity);
+    if (message.identity !== undefined && message.identity !== "") {
+      obj.identity = message.identity;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<RemoveExternalIdentityRequest>): RemoveExternalIdentityRequest {
     return RemoveExternalIdentityRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RemoveExternalIdentityRequest>): RemoveExternalIdentityRequest {
     const message = createBaseRemoveExternalIdentityRequest();
     message.identity = object.identity ?? "";
@@ -2208,7 +2288,7 @@ export const RemoveExternalIdentityResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2228,7 +2308,6 @@ export const RemoveExternalIdentityResponse = {
   create(base?: DeepPartial<RemoveExternalIdentityResponse>): RemoveExternalIdentityResponse {
     return RemoveExternalIdentityResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<RemoveExternalIdentityResponse>): RemoveExternalIdentityResponse {
     const message = createBaseRemoveExternalIdentityResponse();
     return message;
@@ -2261,28 +2340,28 @@ export const AuthenticateInitRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.identity = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.provider = reader.int32() as any;
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.ecosystemId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2300,16 +2379,21 @@ export const AuthenticateInitRequest = {
 
   toJSON(message: AuthenticateInitRequest): unknown {
     const obj: any = {};
-    message.identity !== undefined && (obj.identity = message.identity);
-    message.provider !== undefined && (obj.provider = identityProviderToJSON(message.provider));
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
+    if (message.identity !== undefined && message.identity !== "") {
+      obj.identity = message.identity;
+    }
+    if (message.provider !== undefined && message.provider !== 0) {
+      obj.provider = identityProviderToJSON(message.provider);
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      obj.ecosystemId = message.ecosystemId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AuthenticateInitRequest>): AuthenticateInitRequest {
     return AuthenticateInitRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AuthenticateInitRequest>): AuthenticateInitRequest {
     const message = createBaseAuthenticateInitRequest();
     message.identity = object.identity ?? "";
@@ -2339,14 +2423,14 @@ export const AuthenticateInitResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.challenge = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2360,14 +2444,15 @@ export const AuthenticateInitResponse = {
 
   toJSON(message: AuthenticateInitResponse): unknown {
     const obj: any = {};
-    message.challenge !== undefined && (obj.challenge = message.challenge);
+    if (message.challenge !== undefined && message.challenge !== "") {
+      obj.challenge = message.challenge;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AuthenticateInitResponse>): AuthenticateInitResponse {
     return AuthenticateInitResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AuthenticateInitResponse>): AuthenticateInitResponse {
     const message = createBaseAuthenticateInitResponse();
     message.challenge = object.challenge ?? "";
@@ -2395,14 +2480,14 @@ export const AuthenticateResendCodeRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.challenge = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2416,14 +2501,15 @@ export const AuthenticateResendCodeRequest = {
 
   toJSON(message: AuthenticateResendCodeRequest): unknown {
     const obj: any = {};
-    message.challenge !== undefined && (obj.challenge = message.challenge);
+    if (message.challenge !== undefined && message.challenge !== "") {
+      obj.challenge = message.challenge;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AuthenticateResendCodeRequest>): AuthenticateResendCodeRequest {
     return AuthenticateResendCodeRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AuthenticateResendCodeRequest>): AuthenticateResendCodeRequest {
     const message = createBaseAuthenticateResendCodeRequest();
     message.challenge = object.challenge ?? "";
@@ -2448,7 +2534,7 @@ export const AuthenticateResendCodeResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2468,7 +2554,6 @@ export const AuthenticateResendCodeResponse = {
   create(base?: DeepPartial<AuthenticateResendCodeResponse>): AuthenticateResendCodeResponse {
     return AuthenticateResendCodeResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<AuthenticateResendCodeResponse>): AuthenticateResendCodeResponse {
     const message = createBaseAuthenticateResendCodeResponse();
     return message;
@@ -2498,21 +2583,21 @@ export const AuthenticateConfirmRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.challenge = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.response = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2529,15 +2614,18 @@ export const AuthenticateConfirmRequest = {
 
   toJSON(message: AuthenticateConfirmRequest): unknown {
     const obj: any = {};
-    message.challenge !== undefined && (obj.challenge = message.challenge);
-    message.response !== undefined && (obj.response = message.response);
+    if (message.challenge !== undefined && message.challenge !== "") {
+      obj.challenge = message.challenge;
+    }
+    if (message.response !== undefined && message.response !== "") {
+      obj.response = message.response;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AuthenticateConfirmRequest>): AuthenticateConfirmRequest {
     return AuthenticateConfirmRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AuthenticateConfirmRequest>): AuthenticateConfirmRequest {
     const message = createBaseAuthenticateConfirmRequest();
     message.challenge = object.challenge ?? "";
@@ -2566,14 +2654,14 @@ export const AuthenticateConfirmResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.authToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2587,14 +2675,15 @@ export const AuthenticateConfirmResponse = {
 
   toJSON(message: AuthenticateConfirmResponse): unknown {
     const obj: any = {};
-    message.authToken !== undefined && (obj.authToken = message.authToken);
+    if (message.authToken !== undefined && message.authToken !== "") {
+      obj.authToken = message.authToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AuthenticateConfirmResponse>): AuthenticateConfirmResponse {
     return AuthenticateConfirmResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AuthenticateConfirmResponse>): AuthenticateConfirmResponse {
     const message = createBaseAuthenticateConfirmResponse();
     message.authToken = object.authToken ?? "";
@@ -2625,21 +2714,21 @@ export const ListByVerificationTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.verificationTemplateId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2656,15 +2745,18 @@ export const ListByVerificationTemplateRequest = {
 
   toJSON(message: ListByVerificationTemplateRequest): unknown {
     const obj: any = {};
-    message.verificationTemplateId !== undefined && (obj.verificationTemplateId = message.verificationTemplateId);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.verificationTemplateId !== undefined && message.verificationTemplateId !== "") {
+      obj.verificationTemplateId = message.verificationTemplateId;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListByVerificationTemplateRequest>): ListByVerificationTemplateRequest {
     return ListByVerificationTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListByVerificationTemplateRequest>): ListByVerificationTemplateRequest {
     const message = createBaseListByVerificationTemplateRequest();
     message.verificationTemplateId = object.verificationTemplateId ?? "";
@@ -2701,28 +2793,28 @@ export const ListByVerificationTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.items!.push(reader.string());
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2740,20 +2832,21 @@ export const ListByVerificationTemplateResponse = {
 
   toJSON(message: ListByVerificationTemplateResponse): unknown {
     const obj: any = {};
-    if (message.items) {
-      obj.items = message.items.map((e) => e);
-    } else {
-      obj.items = [];
+    if (message.items?.length) {
+      obj.items = message.items;
     }
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListByVerificationTemplateResponse>): ListByVerificationTemplateResponse {
     return ListByVerificationTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListByVerificationTemplateResponse>): ListByVerificationTemplateResponse {
     const message = createBaseListByVerificationTemplateResponse();
     message.items = object.items?.map((e) => e) || [];

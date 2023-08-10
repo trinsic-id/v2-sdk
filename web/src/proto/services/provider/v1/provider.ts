@@ -62,11 +62,15 @@ export function identityProviderToJSON(object: IdentityProvider): string {
 /** Details of an ecosystem */
 export interface Ecosystem {
   /** URN of the ecosystem */
-  id?: string;
+  id?:
+    | string
+    | undefined;
   /** Globally unique name for the ecosystem */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /** Ecosystem description */
-  description?: string;
+  description?: string | undefined;
 }
 
 /** Request to create an ecosystem */
@@ -77,23 +81,33 @@ export interface CreateEcosystemRequest {
    * Allowed characters are lowercase letters, numbers, underscore and hyphen.
    * If not passed, ecosystem name will be auto-generated.
    */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /** Ecosystem description */
-  description?: string;
+  description?:
+    | string
+    | undefined;
   /** The account details of the owner of the ecosystem */
-  details?: AccountDetails;
+  details?:
+    | AccountDetails
+    | undefined;
   /** New domain URL */
-  domain?: string;
+  domain?: string | undefined;
 }
 
 /** Response to `CreateEcosystemRequest` */
 export interface CreateEcosystemResponse {
   /** Details of the created ecosystem */
-  ecosystem?: Ecosystem;
+  ecosystem?:
+    | Ecosystem
+    | undefined;
   /** Account profile for auth of the owner of the ecosystem */
-  profile?: AccountProfile;
+  profile?:
+    | AccountProfile
+    | undefined;
   /** Indicates if confirmation of account is required. */
-  confirmationMethod?: ConfirmationMethod;
+  confirmationMethod?: ConfirmationMethod | undefined;
 }
 
 /** Request to fetch information about an ecosystem */
@@ -103,7 +117,7 @@ export interface EcosystemInfoRequest {
 /** Response to `InfoRequest` */
 export interface EcosystemInfoResponse {
   /** Ecosystem corresponding to current ecosystem in the account token */
-  ecosystem?: Ecosystem;
+  ecosystem?: Ecosystem | undefined;
 }
 
 /**
@@ -116,7 +130,7 @@ export interface GetOberonKeyRequest {
 /** Response to `GetOberonKeyRequest` */
 export interface GetOberonKeyResponse {
   /** Oberon Public Key as RAW base64-url encoded string */
-  key?: string;
+  key?: string | undefined;
 }
 
 /**
@@ -136,9 +150,11 @@ export interface RetrieveDomainVerificationRecordRequest {
  */
 export interface RetrieveDomainVerificationRecordResponse {
   /** TXT record name to use for domain verification */
-  verificationRecordName?: string;
+  verificationRecordName?:
+    | string
+    | undefined;
   /** TXT code for domain verification */
-  verificationRecordValue?: string;
+  verificationRecordValue?: string | undefined;
 }
 
 /**
@@ -158,84 +174,108 @@ export interface RefreshDomainVerificationStatusRequest {
  */
 export interface RefreshDomainVerificationStatusResponse {
   /** Domain URL verified */
-  domain?: string;
+  domain?:
+    | string
+    | undefined;
   /** Specifies if the above `domain` was successfully verified */
-  domainVerified?: boolean;
+  domainVerified?: boolean | undefined;
 }
 
 /** Search for issuers/holders/verifiers */
 export interface SearchWalletConfigurationsRequest {
   /** SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` */
-  queryFilter?: string;
+  queryFilter?:
+    | string
+    | undefined;
   /**
    * Token provided by previous `SearchResponse`
    * if more data is available for query
    */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 export interface SearchWalletConfigurationResponse {
   /** Results matching the search query */
-  results?: WalletConfiguration[];
+  results?:
+    | WalletConfiguration[]
+    | undefined;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `SearchRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Strongly typed information about wallet configurations */
 export interface WalletConfiguration {
   /** Name/description of the wallet */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /**
    * Deprecated and will be removed on August 1, 2023 -- use external_identities.
    * This field is set to the first email address present in `external_identities`, if any.
    *
    * @deprecated
    */
-  email?: string;
+  email?:
+    | string
+    | undefined;
   /**
    * Deprecated -- use external_identities
    *
    * @deprecated
    */
-  sms?: string;
-  walletId?: string;
+  sms?: string | undefined;
+  walletId?:
+    | string
+    | undefined;
   /** The DID of the wallet */
-  publicDid?: string;
-  configType?: string;
+  publicDid?: string | undefined;
+  configType?:
+    | string
+    | undefined;
   /**
    * List of active authentication tokens for this wallet.
    * This list does not contain the issued token, only metadata
    * such as ID, description, and creation date.
    */
-  authTokens?: WalletAuthToken[];
+  authTokens?:
+    | WalletAuthToken[]
+    | undefined;
   /**
    * List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
    * This is deprecated; use `external_identities` instead.
    *
    * @deprecated
    */
-  externalIdentityIds?: string[];
+  externalIdentityIds?:
+    | string[]
+    | undefined;
   /** Ecosystem in which this wallet is contained. */
-  ecosystemId?: string;
-  description?: string;
+  ecosystemId?: string | undefined;
+  description?:
+    | string
+    | undefined;
   /** List of external identities associated with this wallet. */
-  externalIdentities?: WalletExternalIdentity[];
+  externalIdentities?: WalletExternalIdentity[] | undefined;
 }
 
 /** An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes. */
 export interface WalletExternalIdentity {
   /** The type of this identity (whether this identity is an email address, phone number, etc.) */
-  provider?: IdentityProvider;
+  provider?:
+    | IdentityProvider
+    | undefined;
   /** The actual email address/phone number/etc. for this identity */
-  id?: string;
+  id?: string | undefined;
 }
 
 /** Options for creation of DID on the ION network */
 export interface IonOptions {
   /** ION network on which DID should be published */
-  network?: IonOptions_IonNetwork;
+  network?: IonOptions_IonNetwork | undefined;
 }
 
 export enum IonOptions_IonNetwork {
@@ -274,7 +314,7 @@ export function ionOptions_IonNetworkToJSON(object: IonOptions_IonNetwork): stri
 /** Options for creation of DID on the SOV network */
 export interface IndyOptions {
   /** SOV network on which DID should be published */
-  network?: IndyOptions_IndyNetwork;
+  network?: IndyOptions_IndyNetwork | undefined;
 }
 
 export enum IndyOptions_IndyNetwork {
@@ -376,7 +416,9 @@ export interface UpgradeDidRequest {
     | string
     | undefined;
   /** DID Method to which wallet should be upgraded */
-  method?: SupportedDidMethod;
+  method?:
+    | SupportedDidMethod
+    | undefined;
   /** Configuration for creation of DID on ION network */
   ionOptions?:
     | IonOptions
@@ -388,7 +430,7 @@ export interface UpgradeDidRequest {
 /** Response to `UpgradeDIDRequest` */
 export interface UpgradeDidResponse {
   /** New DID of wallet */
-  did?: string;
+  did?: string | undefined;
 }
 
 function createBaseEcosystem(): Ecosystem {
@@ -417,28 +459,28 @@ export const Ecosystem = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.description = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -456,16 +498,21 @@ export const Ecosystem = {
 
   toJSON(message: Ecosystem): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.name !== undefined && (obj.name = message.name);
-    message.description !== undefined && (obj.description = message.description);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<Ecosystem>): Ecosystem {
     return Ecosystem.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<Ecosystem>): Ecosystem {
     const message = createBaseEcosystem();
     message.id = object.id ?? "";
@@ -504,35 +551,35 @@ export const CreateEcosystemRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.details = AccountDetails.decode(reader, reader.uint32());
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.domain = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -551,18 +598,24 @@ export const CreateEcosystemRequest = {
 
   toJSON(message: CreateEcosystemRequest): unknown {
     const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.description !== undefined && (obj.description = message.description);
-    message.details !== undefined &&
-      (obj.details = message.details ? AccountDetails.toJSON(message.details) : undefined);
-    message.domain !== undefined && (obj.domain = message.domain);
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
+    if (message.details !== undefined) {
+      obj.details = AccountDetails.toJSON(message.details);
+    }
+    if (message.domain !== undefined && message.domain !== "") {
+      obj.domain = message.domain;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateEcosystemRequest>): CreateEcosystemRequest {
     return CreateEcosystemRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateEcosystemRequest>): CreateEcosystemRequest {
     const message = createBaseCreateEcosystemRequest();
     message.name = object.name ?? "";
@@ -601,28 +654,28 @@ export const CreateEcosystemResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.ecosystem = Ecosystem.decode(reader, reader.uint32());
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.profile = AccountProfile.decode(reader, reader.uint32());
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.confirmationMethod = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -640,19 +693,21 @@ export const CreateEcosystemResponse = {
 
   toJSON(message: CreateEcosystemResponse): unknown {
     const obj: any = {};
-    message.ecosystem !== undefined &&
-      (obj.ecosystem = message.ecosystem ? Ecosystem.toJSON(message.ecosystem) : undefined);
-    message.profile !== undefined &&
-      (obj.profile = message.profile ? AccountProfile.toJSON(message.profile) : undefined);
-    message.confirmationMethod !== undefined &&
-      (obj.confirmationMethod = confirmationMethodToJSON(message.confirmationMethod));
+    if (message.ecosystem !== undefined) {
+      obj.ecosystem = Ecosystem.toJSON(message.ecosystem);
+    }
+    if (message.profile !== undefined) {
+      obj.profile = AccountProfile.toJSON(message.profile);
+    }
+    if (message.confirmationMethod !== undefined && message.confirmationMethod !== 0) {
+      obj.confirmationMethod = confirmationMethodToJSON(message.confirmationMethod);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateEcosystemResponse>): CreateEcosystemResponse {
     return CreateEcosystemResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateEcosystemResponse>): CreateEcosystemResponse {
     const message = createBaseCreateEcosystemResponse();
     message.ecosystem = (object.ecosystem !== undefined && object.ecosystem !== null)
@@ -683,7 +738,7 @@ export const EcosystemInfoRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -703,7 +758,6 @@ export const EcosystemInfoRequest = {
   create(base?: DeepPartial<EcosystemInfoRequest>): EcosystemInfoRequest {
     return EcosystemInfoRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<EcosystemInfoRequest>): EcosystemInfoRequest {
     const message = createBaseEcosystemInfoRequest();
     return message;
@@ -730,14 +784,14 @@ export const EcosystemInfoResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.ecosystem = Ecosystem.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -751,15 +805,15 @@ export const EcosystemInfoResponse = {
 
   toJSON(message: EcosystemInfoResponse): unknown {
     const obj: any = {};
-    message.ecosystem !== undefined &&
-      (obj.ecosystem = message.ecosystem ? Ecosystem.toJSON(message.ecosystem) : undefined);
+    if (message.ecosystem !== undefined) {
+      obj.ecosystem = Ecosystem.toJSON(message.ecosystem);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<EcosystemInfoResponse>): EcosystemInfoResponse {
     return EcosystemInfoResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<EcosystemInfoResponse>): EcosystemInfoResponse {
     const message = createBaseEcosystemInfoResponse();
     message.ecosystem = (object.ecosystem !== undefined && object.ecosystem !== null)
@@ -786,7 +840,7 @@ export const GetOberonKeyRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -806,7 +860,6 @@ export const GetOberonKeyRequest = {
   create(base?: DeepPartial<GetOberonKeyRequest>): GetOberonKeyRequest {
     return GetOberonKeyRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<GetOberonKeyRequest>): GetOberonKeyRequest {
     const message = createBaseGetOberonKeyRequest();
     return message;
@@ -833,14 +886,14 @@ export const GetOberonKeyResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -854,14 +907,15 @@ export const GetOberonKeyResponse = {
 
   toJSON(message: GetOberonKeyResponse): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
+    if (message.key !== undefined && message.key !== "") {
+      obj.key = message.key;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetOberonKeyResponse>): GetOberonKeyResponse {
     return GetOberonKeyResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetOberonKeyResponse>): GetOberonKeyResponse {
     const message = createBaseGetOberonKeyResponse();
     message.key = object.key ?? "";
@@ -886,7 +940,7 @@ export const RetrieveDomainVerificationRecordRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -906,7 +960,6 @@ export const RetrieveDomainVerificationRecordRequest = {
   create(base?: DeepPartial<RetrieveDomainVerificationRecordRequest>): RetrieveDomainVerificationRecordRequest {
     return RetrieveDomainVerificationRecordRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<RetrieveDomainVerificationRecordRequest>): RetrieveDomainVerificationRecordRequest {
     const message = createBaseRetrieveDomainVerificationRecordRequest();
     return message;
@@ -936,21 +989,21 @@ export const RetrieveDomainVerificationRecordResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.verificationRecordName = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.verificationRecordValue = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -967,15 +1020,18 @@ export const RetrieveDomainVerificationRecordResponse = {
 
   toJSON(message: RetrieveDomainVerificationRecordResponse): unknown {
     const obj: any = {};
-    message.verificationRecordName !== undefined && (obj.verificationRecordName = message.verificationRecordName);
-    message.verificationRecordValue !== undefined && (obj.verificationRecordValue = message.verificationRecordValue);
+    if (message.verificationRecordName !== undefined && message.verificationRecordName !== "") {
+      obj.verificationRecordName = message.verificationRecordName;
+    }
+    if (message.verificationRecordValue !== undefined && message.verificationRecordValue !== "") {
+      obj.verificationRecordValue = message.verificationRecordValue;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<RetrieveDomainVerificationRecordResponse>): RetrieveDomainVerificationRecordResponse {
     return RetrieveDomainVerificationRecordResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RetrieveDomainVerificationRecordResponse>): RetrieveDomainVerificationRecordResponse {
     const message = createBaseRetrieveDomainVerificationRecordResponse();
     message.verificationRecordName = object.verificationRecordName ?? "";
@@ -1001,7 +1057,7 @@ export const RefreshDomainVerificationStatusRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1021,7 +1077,6 @@ export const RefreshDomainVerificationStatusRequest = {
   create(base?: DeepPartial<RefreshDomainVerificationStatusRequest>): RefreshDomainVerificationStatusRequest {
     return RefreshDomainVerificationStatusRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<RefreshDomainVerificationStatusRequest>): RefreshDomainVerificationStatusRequest {
     const message = createBaseRefreshDomainVerificationStatusRequest();
     return message;
@@ -1051,21 +1106,21 @@ export const RefreshDomainVerificationStatusResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.domain = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.domainVerified = reader.bool();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1082,15 +1137,18 @@ export const RefreshDomainVerificationStatusResponse = {
 
   toJSON(message: RefreshDomainVerificationStatusResponse): unknown {
     const obj: any = {};
-    message.domain !== undefined && (obj.domain = message.domain);
-    message.domainVerified !== undefined && (obj.domainVerified = message.domainVerified);
+    if (message.domain !== undefined && message.domain !== "") {
+      obj.domain = message.domain;
+    }
+    if (message.domainVerified === true) {
+      obj.domainVerified = message.domainVerified;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<RefreshDomainVerificationStatusResponse>): RefreshDomainVerificationStatusResponse {
     return RefreshDomainVerificationStatusResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RefreshDomainVerificationStatusResponse>): RefreshDomainVerificationStatusResponse {
     const message = createBaseRefreshDomainVerificationStatusResponse();
     message.domain = object.domain ?? "";
@@ -1122,21 +1180,21 @@ export const SearchWalletConfigurationsRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.queryFilter = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1153,15 +1211,18 @@ export const SearchWalletConfigurationsRequest = {
 
   toJSON(message: SearchWalletConfigurationsRequest): unknown {
     const obj: any = {};
-    message.queryFilter !== undefined && (obj.queryFilter = message.queryFilter);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.queryFilter !== undefined && message.queryFilter !== "") {
+      obj.queryFilter = message.queryFilter;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SearchWalletConfigurationsRequest>): SearchWalletConfigurationsRequest {
     return SearchWalletConfigurationsRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SearchWalletConfigurationsRequest>): SearchWalletConfigurationsRequest {
     const message = createBaseSearchWalletConfigurationsRequest();
     message.queryFilter = object.queryFilter ?? "";
@@ -1198,28 +1259,28 @@ export const SearchWalletConfigurationResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.results!.push(WalletConfiguration.decode(reader, reader.uint32()));
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1237,20 +1298,21 @@ export const SearchWalletConfigurationResponse = {
 
   toJSON(message: SearchWalletConfigurationResponse): unknown {
     const obj: any = {};
-    if (message.results) {
-      obj.results = message.results.map((e) => e ? WalletConfiguration.toJSON(e) : undefined);
-    } else {
-      obj.results = [];
+    if (message.results?.length) {
+      obj.results = message.results.map((e) => WalletConfiguration.toJSON(e));
     }
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SearchWalletConfigurationResponse>): SearchWalletConfigurationResponse {
     return SearchWalletConfigurationResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SearchWalletConfigurationResponse>): SearchWalletConfigurationResponse {
     const message = createBaseSearchWalletConfigurationResponse();
     message.results = object.results?.map((e) => WalletConfiguration.fromPartial(e)) || [];
@@ -1328,84 +1390,84 @@ export const WalletConfiguration = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.sms = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.publicDid = reader.string();
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.configType = reader.string();
           continue;
         case 7:
-          if (tag != 58) {
+          if (tag !== 58) {
             break;
           }
 
           message.authTokens!.push(WalletAuthToken.decode(reader, reader.uint32()));
           continue;
         case 8:
-          if (tag != 66) {
+          if (tag !== 66) {
             break;
           }
 
           message.externalIdentityIds!.push(reader.string());
           continue;
         case 9:
-          if (tag != 74) {
+          if (tag !== 74) {
             break;
           }
 
           message.ecosystemId = reader.string();
           continue;
         case 10:
-          if (tag != 82) {
+          if (tag !== 82) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 11:
-          if (tag != 90) {
+          if (tag !== 90) {
             break;
           }
 
           message.externalIdentities!.push(WalletExternalIdentity.decode(reader, reader.uint32()));
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1437,28 +1499,38 @@ export const WalletConfiguration = {
 
   toJSON(message: WalletConfiguration): unknown {
     const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.email !== undefined && (obj.email = message.email);
-    message.sms !== undefined && (obj.sms = message.sms);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.publicDid !== undefined && (obj.publicDid = message.publicDid);
-    message.configType !== undefined && (obj.configType = message.configType);
-    if (message.authTokens) {
-      obj.authTokens = message.authTokens.map((e) => e ? WalletAuthToken.toJSON(e) : undefined);
-    } else {
-      obj.authTokens = [];
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
     }
-    if (message.externalIdentityIds) {
-      obj.externalIdentityIds = message.externalIdentityIds.map((e) => e);
-    } else {
-      obj.externalIdentityIds = [];
+    if (message.email !== undefined && message.email !== "") {
+      obj.email = message.email;
     }
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    message.description !== undefined && (obj.description = message.description);
-    if (message.externalIdentities) {
-      obj.externalIdentities = message.externalIdentities.map((e) => e ? WalletExternalIdentity.toJSON(e) : undefined);
-    } else {
-      obj.externalIdentities = [];
+    if (message.sms !== undefined && message.sms !== "") {
+      obj.sms = message.sms;
+    }
+    if (message.walletId !== undefined && message.walletId !== "") {
+      obj.walletId = message.walletId;
+    }
+    if (message.publicDid !== undefined && message.publicDid !== "") {
+      obj.publicDid = message.publicDid;
+    }
+    if (message.configType !== undefined && message.configType !== "") {
+      obj.configType = message.configType;
+    }
+    if (message.authTokens?.length) {
+      obj.authTokens = message.authTokens.map((e) => WalletAuthToken.toJSON(e));
+    }
+    if (message.externalIdentityIds?.length) {
+      obj.externalIdentityIds = message.externalIdentityIds;
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      obj.ecosystemId = message.ecosystemId;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
+    if (message.externalIdentities?.length) {
+      obj.externalIdentities = message.externalIdentities.map((e) => WalletExternalIdentity.toJSON(e));
     }
     return obj;
   },
@@ -1466,7 +1538,6 @@ export const WalletConfiguration = {
   create(base?: DeepPartial<WalletConfiguration>): WalletConfiguration {
     return WalletConfiguration.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<WalletConfiguration>): WalletConfiguration {
     const message = createBaseWalletConfiguration();
     message.name = object.name ?? "";
@@ -1507,21 +1578,21 @@ export const WalletExternalIdentity = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.provider = reader.int32() as any;
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.id = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1538,15 +1609,18 @@ export const WalletExternalIdentity = {
 
   toJSON(message: WalletExternalIdentity): unknown {
     const obj: any = {};
-    message.provider !== undefined && (obj.provider = identityProviderToJSON(message.provider));
-    message.id !== undefined && (obj.id = message.id);
+    if (message.provider !== undefined && message.provider !== 0) {
+      obj.provider = identityProviderToJSON(message.provider);
+    }
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<WalletExternalIdentity>): WalletExternalIdentity {
     return WalletExternalIdentity.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<WalletExternalIdentity>): WalletExternalIdentity {
     const message = createBaseWalletExternalIdentity();
     message.provider = object.provider ?? 0;
@@ -1575,14 +1649,14 @@ export const IonOptions = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.network = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1596,14 +1670,15 @@ export const IonOptions = {
 
   toJSON(message: IonOptions): unknown {
     const obj: any = {};
-    message.network !== undefined && (obj.network = ionOptions_IonNetworkToJSON(message.network));
+    if (message.network !== undefined && message.network !== 0) {
+      obj.network = ionOptions_IonNetworkToJSON(message.network);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<IonOptions>): IonOptions {
     return IonOptions.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<IonOptions>): IonOptions {
     const message = createBaseIonOptions();
     message.network = object.network ?? 0;
@@ -1631,14 +1706,14 @@ export const IndyOptions = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.network = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1652,14 +1727,15 @@ export const IndyOptions = {
 
   toJSON(message: IndyOptions): unknown {
     const obj: any = {};
-    message.network !== undefined && (obj.network = indyOptions_IndyNetworkToJSON(message.network));
+    if (message.network !== undefined && message.network !== 0) {
+      obj.network = indyOptions_IndyNetworkToJSON(message.network);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<IndyOptions>): IndyOptions {
     return IndyOptions.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<IndyOptions>): IndyOptions {
     const message = createBaseIndyOptions();
     message.network = object.network ?? 0;
@@ -1709,49 +1785,49 @@ export const UpgradeDidRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.method = reader.int32() as any;
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.ionOptions = IonOptions.decode(reader, reader.uint32());
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.indyOptions = IndyOptions.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1772,21 +1848,30 @@ export const UpgradeDidRequest = {
 
   toJSON(message: UpgradeDidRequest): unknown {
     const obj: any = {};
-    message.email !== undefined && (obj.email = message.email);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.method !== undefined && (obj.method = supportedDidMethodToJSON(message.method));
-    message.ionOptions !== undefined &&
-      (obj.ionOptions = message.ionOptions ? IonOptions.toJSON(message.ionOptions) : undefined);
-    message.indyOptions !== undefined &&
-      (obj.indyOptions = message.indyOptions ? IndyOptions.toJSON(message.indyOptions) : undefined);
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
+    if (message.method !== undefined && message.method !== 0) {
+      obj.method = supportedDidMethodToJSON(message.method);
+    }
+    if (message.ionOptions !== undefined) {
+      obj.ionOptions = IonOptions.toJSON(message.ionOptions);
+    }
+    if (message.indyOptions !== undefined) {
+      obj.indyOptions = IndyOptions.toJSON(message.indyOptions);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpgradeDidRequest>): UpgradeDidRequest {
     return UpgradeDidRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpgradeDidRequest>): UpgradeDidRequest {
     const message = createBaseUpgradeDidRequest();
     message.email = object.email ?? undefined;
@@ -1823,14 +1908,14 @@ export const UpgradeDidResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.did = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1844,14 +1929,15 @@ export const UpgradeDidResponse = {
 
   toJSON(message: UpgradeDidResponse): unknown {
     const obj: any = {};
-    message.did !== undefined && (obj.did = message.did);
+    if (message.did !== undefined && message.did !== "") {
+      obj.did = message.did;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpgradeDidResponse>): UpgradeDidResponse {
     return UpgradeDidResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpgradeDidResponse>): UpgradeDidResponse {
     const message = createBaseUpgradeDidResponse();
     message.did = object.did ?? "";

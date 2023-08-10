@@ -109,7 +109,7 @@ public interface IssueFromTemplateRequestOrBuilder
    *
    * <pre>
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * Trust Registry.
+   * governance framework.
    * </pre>
    *
    * <code>bool include_governance = 6;</code>
