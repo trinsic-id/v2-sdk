@@ -408,3 +408,4 @@ dart/test/dart_test.dart.vm.json
 samples/grpc-web/build/
 samples/grpc-web/lib/
 samples/grpc-web/coverage/
+web/dist/

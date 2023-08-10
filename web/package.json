@@ -2,7 +2,7 @@
     "name": "@trinsic/trinsic",
     "version": "1.0.0",
     "description": "Node and Browser wrapper for the Trinsic services",
-    "main": "lib/index.js",
+    "main": "dist/index.js",
     "types": "lib/index.d.ts",
     "files": [
         "lib/**/*"
@@ -11,9 +11,10 @@
         ".": "./lib/index.js"
     },
     "scripts": {
-        "build": "npm run build:proto && npm run build:typescript",
+        "build": "npm run build:proto && npm run build:vite",
         "build:proto": "pwsh Generate-Proto.ps1",
         "build:prettier": "npx prettier ./src ./test --write",
+        "build:vite": "vite build",
         "build:typescript": "npx tsc",
         "test:node": "jest --config .config/jest.config.cjs --no-cache",
         "test:browser": "karma start .config/karma.conf.cjs",
@@ -81,6 +82,7 @@
         "ts-proto": "1.156.2",
         "typescript": "4.7.4",
         "uuid": "8.3.2",
+        "vite": "4.4.9",
         "webpack": "5.76.0",
         "webpack-cli": "4.10.0"
     }
