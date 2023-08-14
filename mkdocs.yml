@@ -8,8 +8,13 @@ nav:
   - Home: index.md
   - Platform:
     - Overview: sdk/index.md
-    - Getting Started:
-      - Platform Walkthrough: guide/platform-walkthrough.md
+    - Getting Started: guide/platform-walkthrough.md
+    - Platform:
+      - Ecosystem Branding: platform/ecosystem-branding.md
+      - Domain Verification: platform/domain-verification.md
+      - Authentication: platform/authentication.md
+      - Portability: platform/portability.md
+      - Verification Templates: platform/verification-templates.md
     - Client-Side SDKs:
       - Flutter: dart/index.md
       - Browser: web/index.md
