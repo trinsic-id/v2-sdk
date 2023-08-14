@@ -13,7 +13,6 @@ nav:
       - Ecosystem Branding: platform/ecosystem-branding.md
       - Domain Verification: platform/domain-verification.md
       - Authentication: platform/authentication.md
-      - Portability: platform/portability.md
     - Client-Side SDKs:
       - Flutter: dart/index.md
       - Browser: web/index.md
