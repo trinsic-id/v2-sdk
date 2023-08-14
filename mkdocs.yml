@@ -14,7 +14,6 @@ nav:
       - Domain Verification: platform/domain-verification.md
       - Authentication: platform/authentication.md
       - Portability: platform/portability.md
-      - Verification Templates: platform/verification-templates.md
     - Client-Side SDKs:
       - Flutter: dart/index.md
       - Browser: web/index.md
