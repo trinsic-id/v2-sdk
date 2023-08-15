@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -14,7 +14,19 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class AnnotationOption extends $pb.GeneratedMessage {
-  factory AnnotationOption() => create();
+  factory AnnotationOption({
+    $core.bool? active,
+    $core.String? message,
+  }) {
+    final $result = create();
+    if (active != null) {
+      $result.active = active;
+    }
+    if (message != null) {
+      $result.message = message;
+    }
+    return $result;
+  }
   AnnotationOption._() : super();
   factory AnnotationOption.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -55,6 +67,7 @@ class AnnotationOption extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AnnotationOption>(create);
   static AnnotationOption? _defaultInstance;
 
+  /// Is this annotation active
   @$pb.TagNumber(1)
   $core.bool get active => $_getBF(0);
   @$pb.TagNumber(1)
@@ -67,6 +80,7 @@ class AnnotationOption extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearActive() => clearField(1);
 
+  /// Custom annotation message to provide
   @$pb.TagNumber(2)
   $core.String get message => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -81,7 +95,31 @@ class AnnotationOption extends $pb.GeneratedMessage {
 }
 
 class SdkTemplateOption extends $pb.GeneratedMessage {
-  factory SdkTemplateOption() => create();
+  factory SdkTemplateOption({
+    $core.bool? anonymous,
+    $core.bool? ignore,
+    $core.bool? noArguments,
+    AnnotationOption? experimental,
+    AnnotationOption? deprecated,
+  }) {
+    final $result = create();
+    if (anonymous != null) {
+      $result.anonymous = anonymous;
+    }
+    if (ignore != null) {
+      $result.ignore = ignore;
+    }
+    if (noArguments != null) {
+      $result.noArguments = noArguments;
+    }
+    if (experimental != null) {
+      $result.experimental = experimental;
+    }
+    if (deprecated != null) {
+      $result.deprecated = deprecated;
+    }
+    return $result;
+  }
   SdkTemplateOption._() : super();
   factory SdkTemplateOption.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -127,6 +165,8 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SdkTemplateOption>(create);
   static SdkTemplateOption? _defaultInstance;
 
+  /// Whether the service endpoint allows anonymous (no auth token necessary) authentication
+  /// This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
   @$pb.TagNumber(1)
   $core.bool get anonymous => $_getBF(0);
   @$pb.TagNumber(1)
@@ -139,6 +179,8 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearAnonymous() => clearField(1);
 
+  /// Whether the SDK template generator should ignore this method. This method will
+  /// be wrapped manually.
   @$pb.TagNumber(2)
   $core.bool get ignore => $_getBF(1);
   @$pb.TagNumber(2)
@@ -151,6 +193,8 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearIgnore() => clearField(2);
 
+  /// Whether the SDK template generator should generate this method without arguments, eg
+  /// ProviderService.GetEcosystemInfo() where the request object is empty
   @$pb.TagNumber(3)
   $core.bool get noArguments => $_getBF(2);
   @$pb.TagNumber(3)
@@ -163,6 +207,7 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearNoArguments() => clearField(3);
 
+  /// This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect.
   @$pb.TagNumber(4)
   AnnotationOption get experimental => $_getN(3);
   @$pb.TagNumber(4)
@@ -177,6 +222,7 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   AnnotationOption ensureExperimental() => $_ensure(3);
 
+  /// This endpoint is deprecated. It will be removed in the future.
   @$pb.TagNumber(5)
   AnnotationOption get deprecated => $_getN(4);
   @$pb.TagNumber(5)

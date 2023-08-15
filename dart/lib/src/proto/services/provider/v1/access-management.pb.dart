@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -15,8 +15,29 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 enum AddRoleAssignmentRequest_Account { email, walletId, didUri, notSet }
 
+/// Role management
 class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
-  factory AddRoleAssignmentRequest() => create();
+  factory AddRoleAssignmentRequest({
+    $core.String? role,
+    $core.String? email,
+    $core.String? walletId,
+    $core.String? didUri,
+  }) {
+    final $result = create();
+    if (role != null) {
+      $result.role = role;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    return $result;
+  }
   AddRoleAssignmentRequest._() : super();
   factory AddRoleAssignmentRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -73,6 +94,7 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
       _AddRoleAssignmentRequest_AccountByTag[$_whichOneof(0)]!;
   void clearAccount() => clearField($_whichOneof(0));
 
+  /// Role to assign
   @$pb.TagNumber(1)
   $core.String get role => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -85,6 +107,8 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearRole() => clearField(1);
 
+  /// Email address of account to assign role.
+  /// Mutually exclusive with `walletId` and `didUri`.
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -97,6 +121,8 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearEmail() => clearField(2);
 
+  /// Wallet ID of account to assign role to.
+  /// Mutually exclusive with `email` and `didUri`.
   @$pb.TagNumber(3)
   $core.String get walletId => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -109,6 +135,8 @@ class AddRoleAssignmentRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
+  /// DID URI of the account to assign role.
+  /// Mutually exclusive with `email` and `walletId`.
   @$pb.TagNumber(4)
   $core.String get didUri => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -168,7 +196,27 @@ class AddRoleAssignmentResponse extends $pb.GeneratedMessage {
 enum RemoveRoleAssignmentRequest_Account { email, walletId, didUri, notSet }
 
 class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
-  factory RemoveRoleAssignmentRequest() => create();
+  factory RemoveRoleAssignmentRequest({
+    $core.String? role,
+    $core.String? email,
+    $core.String? walletId,
+    $core.String? didUri,
+  }) {
+    final $result = create();
+    if (role != null) {
+      $result.role = role;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    return $result;
+  }
   RemoveRoleAssignmentRequest._() : super();
   factory RemoveRoleAssignmentRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -227,6 +275,7 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
       _RemoveRoleAssignmentRequest_AccountByTag[$_whichOneof(0)]!;
   void clearAccount() => clearField($_whichOneof(0));
 
+  /// Role to unassign
   @$pb.TagNumber(1)
   $core.String get role => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -239,6 +288,8 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearRole() => clearField(1);
 
+  /// Email address of account to unassign role.
+  /// Mutually exclusive with `walletId` and `didUri`.
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -251,6 +302,8 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearEmail() => clearField(2);
 
+  /// Wallet ID of account to unassign role.
+  /// Mutually exclusive with `email` and `didUri`.
   @$pb.TagNumber(3)
   $core.String get walletId => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -263,6 +316,8 @@ class RemoveRoleAssignmentRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
+  /// DID URI of the account to unassign role.
+  /// Mutually exclusive with `email` and `walletId`.
   @$pb.TagNumber(4)
   $core.String get didUri => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -323,8 +378,25 @@ class RemoveRoleAssignmentResponse extends $pb.GeneratedMessage {
 
 enum ListRoleAssignmentsRequest_Account { email, walletId, didUri, notSet }
 
+/// Request to fetch the list of roles assigned to the current account
 class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
-  factory ListRoleAssignmentsRequest() => create();
+  factory ListRoleAssignmentsRequest({
+    $core.String? email,
+    $core.String? walletId,
+    $core.String? didUri,
+  }) {
+    final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    return $result;
+  }
   ListRoleAssignmentsRequest._() : super();
   factory ListRoleAssignmentsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -381,6 +453,8 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
       _ListRoleAssignmentsRequest_AccountByTag[$_whichOneof(0)]!;
   void clearAccount() => clearField($_whichOneof(0));
 
+  /// Email address of account to list roles.
+  /// Mutually exclusive with `walletId` and `didUri`.
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(0);
   @$pb.TagNumber(2)
@@ -393,6 +467,8 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearEmail() => clearField(2);
 
+  /// Wallet ID of account to list roles.
+  /// Mutually exclusive with `email` and `didUri`.
   @$pb.TagNumber(3)
   $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -405,6 +481,8 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
+  /// DID URI of the account to list roles.
+  /// Mutually exclusive with `email` and `walletId`.
   @$pb.TagNumber(4)
   $core.String get didUri => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -419,7 +497,15 @@ class ListRoleAssignmentsRequest extends $pb.GeneratedMessage {
 }
 
 class ListRoleAssignmentsResponse extends $pb.GeneratedMessage {
-  factory ListRoleAssignmentsResponse() => create();
+  factory ListRoleAssignmentsResponse({
+    $core.Iterable<$core.String>? roles,
+  }) {
+    final $result = create();
+    if (roles != null) {
+      $result.roles.addAll(roles);
+    }
+    return $result;
+  }
   ListRoleAssignmentsResponse._() : super();
   factory ListRoleAssignmentsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -463,10 +549,12 @@ class ListRoleAssignmentsResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ListRoleAssignmentsResponse>(create);
   static ListRoleAssignmentsResponse? _defaultInstance;
 
+  /// List of roles
   @$pb.TagNumber(1)
   $core.List<$core.String> get roles => $_getList(0);
 }
 
+/// Request to fetch the available roles in the current ecosystem
 class ListAvailableRolesRequest extends $pb.GeneratedMessage {
   factory ListAvailableRolesRequest() => create();
   ListAvailableRolesRequest._() : super();
@@ -511,7 +599,15 @@ class ListAvailableRolesRequest extends $pb.GeneratedMessage {
 }
 
 class ListAvailableRolesResponse extends $pb.GeneratedMessage {
-  factory ListAvailableRolesResponse() => create();
+  factory ListAvailableRolesResponse({
+    $core.Iterable<$core.String>? roles,
+  }) {
+    final $result = create();
+    if (roles != null) {
+      $result.roles.addAll(roles);
+    }
+    return $result;
+  }
   ListAvailableRolesResponse._() : super();
   factory ListAvailableRolesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -554,6 +650,7 @@ class ListAvailableRolesResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ListAvailableRolesResponse>(create);
   static ListAvailableRolesResponse? _defaultInstance;
 
+  /// List of roles
   @$pb.TagNumber(1)
   $core.List<$core.String> get roles => $_getList(0);
 }

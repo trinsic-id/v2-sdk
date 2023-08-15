@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -17,8 +17,27 @@ import 'account.pbenum.dart';
 
 export 'account.pbenum.dart';
 
+/// Account registration details
 class AccountDetails extends $pb.GeneratedMessage {
-  factory AccountDetails() => create();
+  factory AccountDetails({
+    $core.String? name,
+    @$core.Deprecated('This field is deprecated.') $core.String? email,
+    @$core.Deprecated('This field is deprecated.') $core.String? sms,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    if (email != null) {
+      // ignore: deprecated_member_use_from_same_package
+      $result.email = email;
+    }
+    if (sms != null) {
+      // ignore: deprecated_member_use_from_same_package
+      $result.sms = sms;
+    }
+    return $result;
+  }
   AccountDetails._() : super();
   factory AccountDetails.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -60,6 +79,7 @@ class AccountDetails extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AccountDetails>(create);
   static AccountDetails? _defaultInstance;
 
+  /// Account name
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -72,6 +92,7 @@ class AccountDetails extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
 
+  /// Email address of account.
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(1);
@@ -88,6 +109,7 @@ class AccountDetails extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearEmail() => clearField(2);
 
+  /// SMS number including country code
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.String get sms => $_getSZ(2);
@@ -105,8 +127,21 @@ class AccountDetails extends $pb.GeneratedMessage {
   void clearSms() => clearField(3);
 }
 
+/// Token protection info
 class TokenProtection extends $pb.GeneratedMessage {
-  factory TokenProtection() => create();
+  factory TokenProtection({
+    $core.bool? enabled,
+    ConfirmationMethod? method,
+  }) {
+    final $result = create();
+    if (enabled != null) {
+      $result.enabled = enabled;
+    }
+    if (method != null) {
+      $result.method = method;
+    }
+    return $result;
+  }
   TokenProtection._() : super();
   factory TokenProtection.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -151,6 +186,8 @@ class TokenProtection extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TokenProtection>(create);
   static TokenProtection? _defaultInstance;
 
+  /// Indicates if token is protected using a PIN,
+  /// security code, HSM secret, etc.
   @$pb.TagNumber(1)
   $core.bool get enabled => $_getBF(0);
   @$pb.TagNumber(1)
@@ -163,6 +200,7 @@ class TokenProtection extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEnabled() => clearField(1);
 
+  /// The method used to protect the token
   @$pb.TagNumber(2)
   ConfirmationMethod get method => $_getN(1);
   @$pb.TagNumber(2)
@@ -176,8 +214,30 @@ class TokenProtection extends $pb.GeneratedMessage {
   void clearMethod() => clearField(2);
 }
 
+/// Device profile containing sensitive authentication data.
+/// This information should be stored securely
 class AccountProfile extends $pb.GeneratedMessage {
-  factory AccountProfile() => create();
+  factory AccountProfile({
+    $core.String? profileType,
+    $core.List<$core.int>? authData,
+    $core.List<$core.int>? authToken,
+    TokenProtection? protection,
+  }) {
+    final $result = create();
+    if (profileType != null) {
+      $result.profileType = profileType;
+    }
+    if (authData != null) {
+      $result.authData = authData;
+    }
+    if (authToken != null) {
+      $result.authToken = authToken;
+    }
+    if (protection != null) {
+      $result.protection = protection;
+    }
+    return $result;
+  }
   AccountProfile._() : super();
   factory AccountProfile.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -223,6 +283,8 @@ class AccountProfile extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AccountProfile>(create);
   static AccountProfile? _defaultInstance;
 
+  /// The type of profile, used to differentiate between
+  /// protocol schemes or versions
   @$pb.TagNumber(1)
   $core.String get profileType => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -235,6 +297,7 @@ class AccountProfile extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearProfileType() => clearField(1);
 
+  /// Auth data containg information about the current device access
   @$pb.TagNumber(2)
   $core.List<$core.int> get authData => $_getN(1);
   @$pb.TagNumber(2)
@@ -247,6 +310,7 @@ class AccountProfile extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearAuthData() => clearField(2);
 
+  /// Secure token issued by server used to generate zero-knowledge proofs
   @$pb.TagNumber(3)
   $core.List<$core.int> get authToken => $_getN(2);
   @$pb.TagNumber(3)
@@ -259,6 +323,9 @@ class AccountProfile extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearAuthToken() => clearField(3);
 
+  /// Token security information about the token.
+  /// If token protection is enabled, implementations must supply
+  /// protection secret before using the token for authentication.
   @$pb.TagNumber(4)
   TokenProtection get protection => $_getN(3);
   @$pb.TagNumber(4)
@@ -274,6 +341,7 @@ class AccountProfile extends $pb.GeneratedMessage {
   TokenProtection ensureProtection() => $_ensure(3);
 }
 
+/// Request for information about the account used to make the request
 class AccountInfoRequest extends $pb.GeneratedMessage {
   factory AccountInfoRequest() => create();
   AccountInfoRequest._() : super();
@@ -315,8 +383,37 @@ class AccountInfoRequest extends $pb.GeneratedMessage {
   static AccountInfoRequest? _defaultInstance;
 }
 
+/// Information about the account used to make the request
 class AccountInfoResponse extends $pb.GeneratedMessage {
-  factory AccountInfoResponse() => create();
+  factory AccountInfoResponse({
+    AccountDetails? details,
+    $core.String? walletId,
+    $core.String? deviceId,
+    $core.String? ecosystemId,
+    $core.String? publicDid,
+    $core.Iterable<WalletAuthToken>? authTokens,
+  }) {
+    final $result = create();
+    if (details != null) {
+      $result.details = details;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (deviceId != null) {
+      $result.deviceId = deviceId;
+    }
+    if (ecosystemId != null) {
+      $result.ecosystemId = ecosystemId;
+    }
+    if (publicDid != null) {
+      $result.publicDid = publicDid;
+    }
+    if (authTokens != null) {
+      $result.authTokens.addAll(authTokens);
+    }
+    return $result;
+  }
   AccountInfoResponse._() : super();
   factory AccountInfoResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -364,6 +461,8 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AccountInfoResponse>(create);
   static AccountInfoResponse? _defaultInstance;
 
+  /// The account details associated with
+  /// the calling request context
   @$pb.TagNumber(1)
   AccountDetails get details => $_getN(0);
   @$pb.TagNumber(1)
@@ -378,6 +477,7 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   AccountDetails ensureDetails() => $_ensure(0);
 
+  /// The wallet ID associated with this account
   @$pb.TagNumber(3)
   $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -390,6 +490,7 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
+  /// The device ID associated with this account session
   @$pb.TagNumber(4)
   $core.String get deviceId => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -402,6 +503,7 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDeviceId() => clearField(4);
 
+  /// The ecosystem ID within which this account resides
   @$pb.TagNumber(5)
   $core.String get ecosystemId => $_getSZ(3);
   @$pb.TagNumber(5)
@@ -414,6 +516,8 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearEcosystemId() => clearField(5);
 
+  /// The public DID associated with this account.
+  /// This DID is used as the `issuer` when signing verifiable credentials
   @$pb.TagNumber(6)
   $core.String get publicDid => $_getSZ(4);
   @$pb.TagNumber(6)
@@ -426,12 +530,28 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearPublicDid() => clearField(6);
 
+  /// List of active authentication tokens for this wallet.
+  /// This list does not contain the issued token, only metadata
+  /// such as ID, description, and creation date.
   @$pb.TagNumber(8)
   $core.List<WalletAuthToken> get authTokens => $_getList(5);
 }
 
+/// Request to begin login flow
 class LoginRequest extends $pb.GeneratedMessage {
-  factory LoginRequest() => create();
+  factory LoginRequest({
+    $core.String? email,
+    $core.String? ecosystemId,
+  }) {
+    final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
+    if (ecosystemId != null) {
+      $result.ecosystemId = ecosystemId;
+    }
+    return $result;
+  }
   LoginRequest._() : super();
   factory LoginRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -472,6 +592,7 @@ class LoginRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<LoginRequest>(create);
   static LoginRequest? _defaultInstance;
 
+  /// Email address of account. If unspecified, an anonymous account will be created.
   @$pb.TagNumber(1)
   $core.String get email => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -484,6 +605,7 @@ class LoginRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
+  /// ID of Ecosystem to sign into.
   @$pb.TagNumber(3)
   $core.String get ecosystemId => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -499,8 +621,21 @@ class LoginRequest extends $pb.GeneratedMessage {
 
 enum LoginResponse_Response { challenge, profile, notSet }
 
+/// Response to `LoginRequest`
 class LoginResponse extends $pb.GeneratedMessage {
-  factory LoginResponse() => create();
+  factory LoginResponse({
+    $core.List<$core.int>? challenge,
+    AccountProfile? profile,
+  }) {
+    final $result = create();
+    if (challenge != null) {
+      $result.challenge = challenge;
+    }
+    if (profile != null) {
+      $result.profile = profile;
+    }
+    return $result;
+  }
   LoginResponse._() : super();
   factory LoginResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -554,6 +689,9 @@ class LoginResponse extends $pb.GeneratedMessage {
       _LoginResponse_ResponseByTag[$_whichOneof(0)]!;
   void clearResponse() => clearField($_whichOneof(0));
 
+  /// Random byte sequence unique to this login request.
+  /// If present, two-factor confirmation of login is required.
+  /// Must be sent back, unaltered, in `LoginConfirm`.
   @$pb.TagNumber(1)
   $core.List<$core.int> get challenge => $_getN(0);
   @$pb.TagNumber(1)
@@ -566,6 +704,7 @@ class LoginResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearChallenge() => clearField(1);
 
+  /// Account profile response. If present, no confirmation of login is required.
   @$pb.TagNumber(2)
   AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
@@ -581,8 +720,21 @@ class LoginResponse extends $pb.GeneratedMessage {
   AccountProfile ensureProfile() => $_ensure(1);
 }
 
+/// Request to finalize login flow
 class LoginConfirmRequest extends $pb.GeneratedMessage {
-  factory LoginConfirmRequest() => create();
+  factory LoginConfirmRequest({
+    $core.List<$core.int>? challenge,
+    $core.List<$core.int>? confirmationCodeHashed,
+  }) {
+    final $result = create();
+    if (challenge != null) {
+      $result.challenge = challenge;
+    }
+    if (confirmationCodeHashed != null) {
+      $result.confirmationCodeHashed = confirmationCodeHashed;
+    }
+    return $result;
+  }
   LoginConfirmRequest._() : super();
   factory LoginConfirmRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -625,6 +777,7 @@ class LoginConfirmRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<LoginConfirmRequest>(create);
   static LoginConfirmRequest? _defaultInstance;
 
+  /// Challenge received from `Login`
   @$pb.TagNumber(1)
   $core.List<$core.int> get challenge => $_getN(0);
   @$pb.TagNumber(1)
@@ -637,6 +790,8 @@ class LoginConfirmRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearChallenge() => clearField(1);
 
+  /// Two-factor confirmation code sent to account email or phone,
+  /// hashed using Blake3. Our SDKs will handle this hashing process for you.
   @$pb.TagNumber(2)
   $core.List<$core.int> get confirmationCodeHashed => $_getN(1);
   @$pb.TagNumber(2)
@@ -650,8 +805,17 @@ class LoginConfirmRequest extends $pb.GeneratedMessage {
   void clearConfirmationCodeHashed() => clearField(2);
 }
 
+/// Response to `LoginConfirmRequest`
 class LoginConfirmResponse extends $pb.GeneratedMessage {
-  factory LoginConfirmResponse() => create();
+  factory LoginConfirmResponse({
+    AccountProfile? profile,
+  }) {
+    final $result = create();
+    if (profile != null) {
+      $result.profile = profile;
+    }
+    return $result;
+  }
   LoginConfirmResponse._() : super();
   factory LoginConfirmResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -693,6 +857,8 @@ class LoginConfirmResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<LoginConfirmResponse>(create);
   static LoginConfirmResponse? _defaultInstance;
 
+  /// Profile response; must be unprotected using unhashed confirmation code.
+  /// Our SDKs will handle this process for you, and return to you an authentication token string.
   @$pb.TagNumber(1)
   AccountProfile get profile => $_getN(0);
   @$pb.TagNumber(1)
@@ -708,8 +874,25 @@ class LoginConfirmResponse extends $pb.GeneratedMessage {
   AccountProfile ensureProfile() => $_ensure(0);
 }
 
+/// Information about authentication tokens for a wallet
 class WalletAuthToken extends $pb.GeneratedMessage {
-  factory WalletAuthToken() => create();
+  factory WalletAuthToken({
+    $core.String? id,
+    $core.String? description,
+    $core.String? dateCreated,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (dateCreated != null) {
+      $result.dateCreated = dateCreated;
+    }
+    return $result;
+  }
   WalletAuthToken._() : super();
   factory WalletAuthToken.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -751,6 +934,8 @@ class WalletAuthToken extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<WalletAuthToken>(create);
   static WalletAuthToken? _defaultInstance;
 
+  /// Unique identifier for the token.
+  /// This field will match the `DeviceId` in the WalletAuthData
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -763,6 +948,7 @@ class WalletAuthToken extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
 
+  /// Device name/description
   @$pb.TagNumber(2)
   $core.String get description => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -775,6 +961,7 @@ class WalletAuthToken extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
 
+  /// Date when the token was created in ISO 8601 format
   @$pb.TagNumber(3)
   $core.String get dateCreated => $_getSZ(2);
   @$pb.TagNumber(3)

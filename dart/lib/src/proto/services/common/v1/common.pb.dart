@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -16,8 +16,21 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 export 'common.pbenum.dart';
 
+/// Nonce used to generate an oberon proof
 class Nonce extends $pb.GeneratedMessage {
-  factory Nonce() => create();
+  factory Nonce({
+    $fixnum.Int64? timestamp,
+    $core.List<$core.int>? requestHash,
+  }) {
+    final $result = create();
+    if (timestamp != null) {
+      $result.timestamp = timestamp;
+    }
+    if (requestHash != null) {
+      $result.requestHash = requestHash;
+    }
+    return $result;
+  }
   Nonce._() : super();
   factory Nonce.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -83,7 +96,27 @@ class Nonce extends $pb.GeneratedMessage {
 }
 
 class TrinsicClientOptions extends $pb.GeneratedMessage {
-  factory TrinsicClientOptions() => create();
+  factory TrinsicClientOptions({
+    $core.String? serverEndpoint,
+    $core.int? serverPort,
+    $core.bool? serverUseTls,
+    $core.String? authToken,
+  }) {
+    final $result = create();
+    if (serverEndpoint != null) {
+      $result.serverEndpoint = serverEndpoint;
+    }
+    if (serverPort != null) {
+      $result.serverPort = serverPort;
+    }
+    if (serverUseTls != null) {
+      $result.serverUseTls = serverUseTls;
+    }
+    if (authToken != null) {
+      $result.authToken = authToken;
+    }
+    return $result;
+  }
   TrinsicClientOptions._() : super();
   factory TrinsicClientOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -127,6 +160,7 @@ class TrinsicClientOptions extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TrinsicClientOptions>(create);
   static TrinsicClientOptions? _defaultInstance;
 
+  /// Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
   @$pb.TagNumber(1)
   $core.String get serverEndpoint => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -139,6 +173,7 @@ class TrinsicClientOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearServerEndpoint() => clearField(1);
 
+  /// Trinsic API port; defaults to `443`
   @$pb.TagNumber(2)
   $core.int get serverPort => $_getIZ(1);
   @$pb.TagNumber(2)
@@ -151,6 +186,7 @@ class TrinsicClientOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearServerPort() => clearField(2);
 
+  /// Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
   @$pb.TagNumber(3)
   $core.bool get serverUseTls => $_getBF(2);
   @$pb.TagNumber(3)
@@ -163,6 +199,7 @@ class TrinsicClientOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearServerUseTls() => clearField(3);
 
+  /// Authentication token for SDK calls; defaults to empty string (unauthenticated)
   @$pb.TagNumber(4)
   $core.String get authToken => $_getSZ(3);
   @$pb.TagNumber(4)

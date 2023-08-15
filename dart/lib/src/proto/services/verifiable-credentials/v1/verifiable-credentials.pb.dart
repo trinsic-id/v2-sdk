@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -17,8 +17,37 @@ import 'verifiable-credentials.pbenum.dart';
 
 export 'verifiable-credentials.pbenum.dart';
 
+/// Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
 class IssueFromTemplateRequest extends $pb.GeneratedMessage {
-  factory IssueFromTemplateRequest() => create();
+  factory IssueFromTemplateRequest({
+    $core.String? templateId,
+    $core.String? valuesJson,
+    $core.bool? saveCopy,
+    $core.String? expirationDate,
+    $core.bool? includeGovernance,
+    SignatureType? signatureType,
+  }) {
+    final $result = create();
+    if (templateId != null) {
+      $result.templateId = templateId;
+    }
+    if (valuesJson != null) {
+      $result.valuesJson = valuesJson;
+    }
+    if (saveCopy != null) {
+      $result.saveCopy = saveCopy;
+    }
+    if (expirationDate != null) {
+      $result.expirationDate = expirationDate;
+    }
+    if (includeGovernance != null) {
+      $result.includeGovernance = includeGovernance;
+    }
+    if (signatureType != null) {
+      $result.signatureType = signatureType;
+    }
+    return $result;
+  }
   IssueFromTemplateRequest._() : super();
   factory IssueFromTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -69,6 +98,7 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<IssueFromTemplateRequest>(create);
   static IssueFromTemplateRequest? _defaultInstance;
 
+  /// ID of template to use
   @$pb.TagNumber(1)
   $core.String get templateId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -81,6 +111,8 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTemplateId() => clearField(1);
 
+  /// JSON document string with keys corresponding to the fields of
+  /// the template referenced by `template_id`
   @$pb.TagNumber(2)
   $core.String get valuesJson => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -93,6 +125,9 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearValuesJson() => clearField(2);
 
+  /// Save a copy of the issued credential to this user's wallet. This copy will only contain
+  /// the credential data, but not the secret proof value. Issuers may use this data to
+  /// keep track of the details for revocation status.
   @$pb.TagNumber(4)
   $core.bool get saveCopy => $_getBF(2);
   @$pb.TagNumber(4)
@@ -105,6 +140,9 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearSaveCopy() => clearField(4);
 
+  /// The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
+  /// If specified, the issued credential will contain an expiration date.
+  /// https://www.w3.org/TR/vc-data-model/#expiration
   @$pb.TagNumber(5)
   $core.String get expirationDate => $_getSZ(3);
   @$pb.TagNumber(5)
@@ -117,6 +155,8 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearExpirationDate() => clearField(5);
 
+  /// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+  /// governance framework.
   @$pb.TagNumber(6)
   $core.bool get includeGovernance => $_getBF(4);
   @$pb.TagNumber(6)
@@ -129,6 +169,7 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearIncludeGovernance() => clearField(6);
 
+  /// The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
   @$pb.TagNumber(7)
   SignatureType get signatureType => $_getN(5);
   @$pb.TagNumber(7)
@@ -142,8 +183,17 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   void clearSignatureType() => clearField(7);
 }
 
+/// Response to `IssueFromTemplateRequest`
 class IssueFromTemplateResponse extends $pb.GeneratedMessage {
-  factory IssueFromTemplateResponse() => create();
+  factory IssueFromTemplateResponse({
+    $core.String? documentJson,
+  }) {
+    final $result = create();
+    if (documentJson != null) {
+      $result.documentJson = documentJson;
+    }
+    return $result;
+  }
   IssueFromTemplateResponse._() : super();
   factory IssueFromTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -185,6 +235,9 @@ class IssueFromTemplateResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<IssueFromTemplateResponse>(create);
   static IssueFromTemplateResponse? _defaultInstance;
 
+  /// Verifiable Credential document, in JSON-LD form,
+  /// constructed from the specified template and values; signed
+  /// with public key tied to caller of `IssueFromTemplateRequest`
   @$pb.TagNumber(1)
   $core.String get documentJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -207,8 +260,42 @@ enum CreateProofRequest_Disclosure {
 
 enum CreateProofRequest_Proof { itemId, documentJson, notSet }
 
+/// Request to create a proof for a Verifiable Credential using public key tied to caller.
+/// Either `item_id`, or `document_json` may be provided, not both.
 class CreateProofRequest extends $pb.GeneratedMessage {
-  factory CreateProofRequest() => create();
+  factory CreateProofRequest({
+    $core.String? revealDocumentJson,
+    $core.String? itemId,
+    $core.String? documentJson,
+    $core.bool? useVerifiablePresentation,
+    $core.List<$core.int>? nonce,
+    RevealTemplateAttributes? revealTemplate,
+    $core.String? verificationTemplateId,
+  }) {
+    final $result = create();
+    if (revealDocumentJson != null) {
+      $result.revealDocumentJson = revealDocumentJson;
+    }
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    if (documentJson != null) {
+      $result.documentJson = documentJson;
+    }
+    if (useVerifiablePresentation != null) {
+      $result.useVerifiablePresentation = useVerifiablePresentation;
+    }
+    if (nonce != null) {
+      $result.nonce = nonce;
+    }
+    if (revealTemplate != null) {
+      $result.revealTemplate = revealTemplate;
+    }
+    if (verificationTemplateId != null) {
+      $result.verificationTemplateId = verificationTemplateId;
+    }
+    return $result;
+  }
   CreateProofRequest._() : super();
   factory CreateProofRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -279,6 +366,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
       _CreateProofRequest_ProofByTag[$_whichOneof(1)]!;
   void clearProof() => clearField($_whichOneof(1));
 
+  /// A valid JSON-LD frame describing which fields should be
+  /// revealed in the generated proof.
+  /// If unspecified, all fields in the document will be revealed
   @$pb.TagNumber(1)
   $core.String get revealDocumentJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -291,6 +381,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearRevealDocumentJson() => clearField(1);
 
+  /// ID of wallet item stored in a Trinsic cloud wallet
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -303,6 +394,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearItemId() => clearField(2);
 
+  /// A valid JSON-LD Verifiable Credential document string
+  /// with an unbound signature. The proof will be derived from this
+  /// document directly. The document will not be stored in the wallet.
   @$pb.TagNumber(3)
   $core.String get documentJson => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -315,6 +409,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDocumentJson() => clearField(3);
 
+  /// Wrap the output in a verifiable presentation.
+  /// If the credential used in the proof is bound to the holder DID,
+  /// the output will always use a verifiable presentation and this field will be ignored.
   @$pb.TagNumber(4)
   $core.bool get useVerifiablePresentation => $_getBF(3);
   @$pb.TagNumber(4)
@@ -327,6 +424,8 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearUseVerifiablePresentation() => clearField(4);
 
+  /// Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+  /// This value may be represented in base64 format in the proof model.
   @$pb.TagNumber(10)
   $core.List<$core.int> get nonce => $_getN(4);
   @$pb.TagNumber(10)
@@ -339,6 +438,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   void clearNonce() => clearField(10);
 
+  /// Information about what sections of the document to reveal
   @$pb.TagNumber(11)
   RevealTemplateAttributes get revealTemplate => $_getN(5);
   @$pb.TagNumber(11)
@@ -353,6 +453,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   RevealTemplateAttributes ensureRevealTemplate() => $_ensure(5);
 
+  /// Id of verification template with which to construct the JSON-LD proof document
   @$pb.TagNumber(12)
   $core.String get verificationTemplateId => $_getSZ(6);
   @$pb.TagNumber(12)
@@ -367,7 +468,15 @@ class CreateProofRequest extends $pb.GeneratedMessage {
 }
 
 class RevealTemplateAttributes extends $pb.GeneratedMessage {
-  factory RevealTemplateAttributes() => create();
+  factory RevealTemplateAttributes({
+    $core.Iterable<$core.String>? templateAttributes,
+  }) {
+    final $result = create();
+    if (templateAttributes != null) {
+      $result.templateAttributes.addAll(templateAttributes);
+    }
+    return $result;
+  }
   RevealTemplateAttributes._() : super();
   factory RevealTemplateAttributes.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -409,12 +518,22 @@ class RevealTemplateAttributes extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<RevealTemplateAttributes>(create);
   static RevealTemplateAttributes? _defaultInstance;
 
+  /// A list of document attributes to reveal. If unset, all attributes will be returned.
   @$pb.TagNumber(1)
   $core.List<$core.String> get templateAttributes => $_getList(0);
 }
 
+/// Response to `CreateProofRequest`
 class CreateProofResponse extends $pb.GeneratedMessage {
-  factory CreateProofResponse() => create();
+  factory CreateProofResponse({
+    $core.String? proofDocumentJson,
+  }) {
+    final $result = create();
+    if (proofDocumentJson != null) {
+      $result.proofDocumentJson = proofDocumentJson;
+    }
+    return $result;
+  }
   CreateProofResponse._() : super();
   factory CreateProofResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -454,6 +573,7 @@ class CreateProofResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateProofResponse>(create);
   static CreateProofResponse? _defaultInstance;
 
+  /// Valid JSON-LD proof for the specified credential
   @$pb.TagNumber(1)
   $core.String get proofDocumentJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -467,8 +587,17 @@ class CreateProofResponse extends $pb.GeneratedMessage {
   void clearProofDocumentJson() => clearField(1);
 }
 
+/// Request to verify a proof
 class VerifyProofRequest extends $pb.GeneratedMessage {
-  factory VerifyProofRequest() => create();
+  factory VerifyProofRequest({
+    $core.String? proofDocumentJson,
+  }) {
+    final $result = create();
+    if (proofDocumentJson != null) {
+      $result.proofDocumentJson = proofDocumentJson;
+    }
+    return $result;
+  }
   VerifyProofRequest._() : super();
   factory VerifyProofRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -508,6 +637,7 @@ class VerifyProofRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<VerifyProofRequest>(create);
   static VerifyProofRequest? _defaultInstance;
 
+  /// JSON-LD proof document string to verify
   @$pb.TagNumber(1)
   $core.String get proofDocumentJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -521,8 +651,21 @@ class VerifyProofRequest extends $pb.GeneratedMessage {
   void clearProofDocumentJson() => clearField(1);
 }
 
+/// Response to `VerifyProofRequest`
 class VerifyProofResponse extends $pb.GeneratedMessage {
-  factory VerifyProofResponse() => create();
+  factory VerifyProofResponse({
+    $core.bool? isValid,
+    $core.Map<$core.String, ValidationMessage>? validationResults,
+  }) {
+    final $result = create();
+    if (isValid != null) {
+      $result.isValid = isValid;
+    }
+    if (validationResults != null) {
+      $result.validationResults.addAll(validationResults);
+    }
+    return $result;
+  }
   VerifyProofResponse._() : super();
   factory VerifyProofResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -570,6 +713,7 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<VerifyProofResponse>(create);
   static VerifyProofResponse? _defaultInstance;
 
+  /// Whether all validations in `validation_results` passed
   @$pb.TagNumber(1)
   $core.bool get isValid => $_getBF(0);
   @$pb.TagNumber(1)
@@ -582,13 +726,29 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIsValid() => clearField(1);
 
+  /// Results of each validation check performed,
+  /// such as schema conformance, revocation status, signature, etc.
+  /// Detailed results are provided for failed validations.
   @$pb.TagNumber(3)
   $core.Map<$core.String, ValidationMessage> get validationResults =>
       $_getMap(1);
 }
 
+/// Result of a validation check on a proof
 class ValidationMessage extends $pb.GeneratedMessage {
-  factory ValidationMessage() => create();
+  factory ValidationMessage({
+    $core.bool? isValid,
+    $core.Iterable<$core.String>? messages,
+  }) {
+    final $result = create();
+    if (isValid != null) {
+      $result.isValid = isValid;
+    }
+    if (messages != null) {
+      $result.messages.addAll(messages);
+    }
+    return $result;
+  }
   ValidationMessage._() : super();
   factory ValidationMessage.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -629,6 +789,7 @@ class ValidationMessage extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ValidationMessage>(create);
   static ValidationMessage? _defaultInstance;
 
+  /// Whether this validation check passed
   @$pb.TagNumber(1)
   $core.bool get isValid => $_getBF(0);
   @$pb.TagNumber(1)
@@ -641,14 +802,44 @@ class ValidationMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIsValid() => clearField(1);
 
+  /// If validation failed, contains messages explaining why
   @$pb.TagNumber(2)
   $core.List<$core.String> get messages => $_getList(1);
 }
 
 enum SendRequest_DeliveryMethod { email, walletId, didUri, phoneNumber, notSet }
 
+/// Request to send a document to another user's wallet
 class SendRequest extends $pb.GeneratedMessage {
-  factory SendRequest() => create();
+  factory SendRequest({
+    $core.String? email,
+    $core.bool? sendNotification,
+    $core.String? walletId,
+    $core.String? didUri,
+    $core.String? phoneNumber,
+    $core.String? documentJson,
+  }) {
+    final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
+    if (sendNotification != null) {
+      $result.sendNotification = sendNotification;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    if (phoneNumber != null) {
+      $result.phoneNumber = phoneNumber;
+    }
+    if (documentJson != null) {
+      $result.documentJson = documentJson;
+    }
+    return $result;
+  }
   SendRequest._() : super();
   factory SendRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -705,6 +896,7 @@ class SendRequest extends $pb.GeneratedMessage {
       _SendRequest_DeliveryMethodByTag[$_whichOneof(0)]!;
   void clearDeliveryMethod() => clearField($_whichOneof(0));
 
+  /// Email address of user to whom you'll send the item
   @$pb.TagNumber(1)
   $core.String get email => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -717,6 +909,7 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
+  /// Send email notification that credential has been sent to a wallet
   @$pb.TagNumber(4)
   $core.bool get sendNotification => $_getBF(1);
   @$pb.TagNumber(4)
@@ -729,6 +922,7 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearSendNotification() => clearField(4);
 
+  /// Wallet ID of the recipient within the ecosystem
   @$pb.TagNumber(5)
   $core.String get walletId => $_getSZ(2);
   @$pb.TagNumber(5)
@@ -741,6 +935,7 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearWalletId() => clearField(5);
 
+  /// DID URI of the recipient
   @$pb.TagNumber(6)
   $core.String get didUri => $_getSZ(3);
   @$pb.TagNumber(6)
@@ -753,6 +948,7 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearDidUri() => clearField(6);
 
+  /// SMS of user to whom you'll send the item
   @$pb.TagNumber(7)
   $core.String get phoneNumber => $_getSZ(4);
   @$pb.TagNumber(7)
@@ -765,6 +961,7 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearPhoneNumber() => clearField(7);
 
+  /// JSON document to send to recipient
   @$pb.TagNumber(100)
   $core.String get documentJson => $_getSZ(5);
   @$pb.TagNumber(100)
@@ -778,6 +975,7 @@ class SendRequest extends $pb.GeneratedMessage {
   void clearDocumentJson() => clearField(100);
 }
 
+/// Response to `SendRequest`
 class SendResponse extends $pb.GeneratedMessage {
   factory SendResponse() => create();
   SendResponse._() : super();
@@ -819,8 +1017,21 @@ class SendResponse extends $pb.GeneratedMessage {
   static SendResponse? _defaultInstance;
 }
 
+/// Request to update a credential's revocation status
 class UpdateStatusRequest extends $pb.GeneratedMessage {
-  factory UpdateStatusRequest() => create();
+  factory UpdateStatusRequest({
+    $core.String? credentialStatusId,
+    $core.bool? revoked,
+  }) {
+    final $result = create();
+    if (credentialStatusId != null) {
+      $result.credentialStatusId = credentialStatusId;
+    }
+    if (revoked != null) {
+      $result.revoked = revoked;
+    }
+    return $result;
+  }
   UpdateStatusRequest._() : super();
   factory UpdateStatusRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -861,6 +1072,7 @@ class UpdateStatusRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<UpdateStatusRequest>(create);
   static UpdateStatusRequest? _defaultInstance;
 
+  /// Credential Status ID to update. This is not the same as the credential's ID.
   @$pb.TagNumber(1)
   $core.String get credentialStatusId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -873,6 +1085,7 @@ class UpdateStatusRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearCredentialStatusId() => clearField(1);
 
+  /// New revocation status of credential
   @$pb.TagNumber(2)
   $core.bool get revoked => $_getBF(1);
   @$pb.TagNumber(2)
@@ -886,6 +1099,7 @@ class UpdateStatusRequest extends $pb.GeneratedMessage {
   void clearRevoked() => clearField(2);
 }
 
+/// Response to `UpdateStatusRequest`
 class UpdateStatusResponse extends $pb.GeneratedMessage {
   factory UpdateStatusResponse() => create();
   UpdateStatusResponse._() : super();
@@ -928,8 +1142,17 @@ class UpdateStatusResponse extends $pb.GeneratedMessage {
   static UpdateStatusResponse? _defaultInstance;
 }
 
+/// Request to check a credential's revocation status
 class CheckStatusRequest extends $pb.GeneratedMessage {
-  factory CheckStatusRequest() => create();
+  factory CheckStatusRequest({
+    $core.String? credentialStatusId,
+  }) {
+    final $result = create();
+    if (credentialStatusId != null) {
+      $result.credentialStatusId = credentialStatusId;
+    }
+    return $result;
+  }
   CheckStatusRequest._() : super();
   factory CheckStatusRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -969,6 +1192,7 @@ class CheckStatusRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CheckStatusRequest>(create);
   static CheckStatusRequest? _defaultInstance;
 
+  /// Credential Status ID to check. This is not the same as the credential's ID.
   @$pb.TagNumber(1)
   $core.String get credentialStatusId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -982,8 +1206,17 @@ class CheckStatusRequest extends $pb.GeneratedMessage {
   void clearCredentialStatusId() => clearField(1);
 }
 
+/// Response to `CheckStatusRequest`
 class CheckStatusResponse extends $pb.GeneratedMessage {
-  factory CheckStatusResponse() => create();
+  factory CheckStatusResponse({
+    $core.bool? revoked,
+  }) {
+    final $result = create();
+    if (revoked != null) {
+      $result.revoked = revoked;
+    }
+    return $result;
+  }
   CheckStatusResponse._() : super();
   factory CheckStatusResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1023,6 +1256,7 @@ class CheckStatusResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CheckStatusResponse>(create);
   static CheckStatusResponse? _defaultInstance;
 
+  /// The credential's revocation status
   @$pb.TagNumber(1)
   $core.bool get revoked => $_getBF(0);
   @$pb.TagNumber(1)
@@ -1037,7 +1271,35 @@ class CheckStatusResponse extends $pb.GeneratedMessage {
 }
 
 class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
-  factory CreateCredentialOfferRequest() => create();
+  factory CreateCredentialOfferRequest({
+    $core.String? templateId,
+    $core.String? valuesJson,
+    $core.bool? holderBinding,
+    $core.bool? includeGovernance,
+    $core.bool? generateShareUrl,
+    SignatureType? signatureType,
+  }) {
+    final $result = create();
+    if (templateId != null) {
+      $result.templateId = templateId;
+    }
+    if (valuesJson != null) {
+      $result.valuesJson = valuesJson;
+    }
+    if (holderBinding != null) {
+      $result.holderBinding = holderBinding;
+    }
+    if (includeGovernance != null) {
+      $result.includeGovernance = includeGovernance;
+    }
+    if (generateShareUrl != null) {
+      $result.generateShareUrl = generateShareUrl;
+    }
+    if (signatureType != null) {
+      $result.signatureType = signatureType;
+    }
+    return $result;
+  }
   CreateCredentialOfferRequest._() : super();
   factory CreateCredentialOfferRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1090,6 +1352,7 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateCredentialOfferRequest>(create);
   static CreateCredentialOfferRequest? _defaultInstance;
 
+  /// ID of template to use
   @$pb.TagNumber(1)
   $core.String get templateId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1102,6 +1365,8 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTemplateId() => clearField(1);
 
+  /// JSON document string with keys corresponding to the fields of
+  /// the template referenced by `template_id`
   @$pb.TagNumber(2)
   $core.String get valuesJson => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1114,6 +1379,8 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearValuesJson() => clearField(2);
 
+  /// If true, the credential will be issued with holder binding by specifying
+  /// the holder DID in the credential subject
   @$pb.TagNumber(3)
   $core.bool get holderBinding => $_getBF(2);
   @$pb.TagNumber(3)
@@ -1126,6 +1393,8 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearHolderBinding() => clearField(3);
 
+  /// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
+  /// governance framework.
   @$pb.TagNumber(4)
   $core.bool get includeGovernance => $_getBF(3);
   @$pb.TagNumber(4)
@@ -1138,6 +1407,8 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearIncludeGovernance() => clearField(4);
 
+  /// If true, a short URL link will be generated that can be used to share the credential offer with the holder.
+  /// This link will point to the credential offer in the wallet app.
   @$pb.TagNumber(5)
   $core.bool get generateShareUrl => $_getBF(4);
   @$pb.TagNumber(5)
@@ -1150,6 +1421,7 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearGenerateShareUrl() => clearField(5);
 
+  /// The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
   @$pb.TagNumber(7)
   SignatureType get signatureType => $_getN(5);
   @$pb.TagNumber(7)
@@ -1164,7 +1436,19 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
 }
 
 class CreateCredentialOfferResponse extends $pb.GeneratedMessage {
-  factory CreateCredentialOfferResponse() => create();
+  factory CreateCredentialOfferResponse({
+    $core.String? documentJson,
+    $core.String? shareUrl,
+  }) {
+    final $result = create();
+    if (documentJson != null) {
+      $result.documentJson = documentJson;
+    }
+    if (shareUrl != null) {
+      $result.shareUrl = shareUrl;
+    }
+    return $result;
+  }
   CreateCredentialOfferResponse._() : super();
   factory CreateCredentialOfferResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1209,6 +1493,7 @@ class CreateCredentialOfferResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateCredentialOfferResponse>(create);
   static CreateCredentialOfferResponse? _defaultInstance;
 
+  /// The JSON document that contains the credential offer
   @$pb.TagNumber(1)
   $core.String get documentJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1221,6 +1506,9 @@ class CreateCredentialOfferResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocumentJson() => clearField(1);
 
+  /// If requested, a URL that can be used to share the credential offer with the holder.
+  /// This is a short URL that can be used in a QR code and will redirect the
+  /// holder to the credential offer using the wallet app.
   @$pb.TagNumber(2)
   $core.String get shareUrl => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1237,7 +1525,19 @@ class CreateCredentialOfferResponse extends $pb.GeneratedMessage {
 enum AcceptCredentialRequest_Offer { documentJson, itemId, notSet }
 
 class AcceptCredentialRequest extends $pb.GeneratedMessage {
-  factory AcceptCredentialRequest() => create();
+  factory AcceptCredentialRequest({
+    $core.String? documentJson,
+    $core.String? itemId,
+  }) {
+    final $result = create();
+    if (documentJson != null) {
+      $result.documentJson = documentJson;
+    }
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    return $result;
+  }
   AcceptCredentialRequest._() : super();
   factory AcceptCredentialRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1291,6 +1591,7 @@ class AcceptCredentialRequest extends $pb.GeneratedMessage {
       _AcceptCredentialRequest_OfferByTag[$_whichOneof(0)]!;
   void clearOffer() => clearField($_whichOneof(0));
 
+  /// The JSON document that contains the credential offer
   @$pb.TagNumber(1)
   $core.String get documentJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1303,6 +1604,7 @@ class AcceptCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocumentJson() => clearField(1);
 
+  /// The ID of the item in the wallet that contains the credential offer
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1317,7 +1619,19 @@ class AcceptCredentialRequest extends $pb.GeneratedMessage {
 }
 
 class AcceptCredentialResponse extends $pb.GeneratedMessage {
-  factory AcceptCredentialResponse() => create();
+  factory AcceptCredentialResponse({
+    $core.String? itemId,
+    $core.String? documentJson,
+  }) {
+    final $result = create();
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    if (documentJson != null) {
+      $result.documentJson = documentJson;
+    }
+    return $result;
+  }
   AcceptCredentialResponse._() : super();
   factory AcceptCredentialResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1360,6 +1674,7 @@ class AcceptCredentialResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AcceptCredentialResponse>(create);
   static AcceptCredentialResponse? _defaultInstance;
 
+  /// The ID of the item in the wallet that contains the issued credential
   @$pb.TagNumber(1)
   $core.String get itemId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1372,6 +1687,8 @@ class AcceptCredentialResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearItemId() => clearField(1);
 
+  /// The JSON document that contains the issued credential.
+  /// This item is already stored in the wallet.
   @$pb.TagNumber(2)
   $core.String get documentJson => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1388,7 +1705,19 @@ class AcceptCredentialResponse extends $pb.GeneratedMessage {
 enum RejectCredentialRequest_Offer { documentJson, itemId, notSet }
 
 class RejectCredentialRequest extends $pb.GeneratedMessage {
-  factory RejectCredentialRequest() => create();
+  factory RejectCredentialRequest({
+    $core.String? documentJson,
+    $core.String? itemId,
+  }) {
+    final $result = create();
+    if (documentJson != null) {
+      $result.documentJson = documentJson;
+    }
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    return $result;
+  }
   RejectCredentialRequest._() : super();
   factory RejectCredentialRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1442,6 +1771,7 @@ class RejectCredentialRequest extends $pb.GeneratedMessage {
       _RejectCredentialRequest_OfferByTag[$_whichOneof(0)]!;
   void clearOffer() => clearField($_whichOneof(0));
 
+  /// The JSON document that contains the credential offer
   @$pb.TagNumber(1)
   $core.String get documentJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1454,6 +1784,7 @@ class RejectCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocumentJson() => clearField(1);
 
+  /// The ID of the item in the wallet that contains the credential offer
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(1);
   @$pb.TagNumber(2)

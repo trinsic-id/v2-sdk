@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -17,8 +17,17 @@ import 'templates.pbenum.dart';
 
 export 'templates.pbenum.dart';
 
+/// Request to fetch a template by ID
 class GetCredentialTemplateRequest extends $pb.GeneratedMessage {
-  factory GetCredentialTemplateRequest() => create();
+  factory GetCredentialTemplateRequest({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   GetCredentialTemplateRequest._() : super();
   factory GetCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -63,6 +72,7 @@ class GetCredentialTemplateRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetCredentialTemplateRequest>(create);
   static GetCredentialTemplateRequest? _defaultInstance;
 
+  /// ID of template to fetch
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -76,8 +86,17 @@ class GetCredentialTemplateRequest extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+/// Response to `GetCredentialTemplateRequest`
 class GetCredentialTemplateResponse extends $pb.GeneratedMessage {
-  factory GetCredentialTemplateResponse() => create();
+  factory GetCredentialTemplateResponse({
+    TemplateData? template,
+  }) {
+    final $result = create();
+    if (template != null) {
+      $result.template = template;
+    }
+    return $result;
+  }
   GetCredentialTemplateResponse._() : super();
   factory GetCredentialTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -123,6 +142,7 @@ class GetCredentialTemplateResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetCredentialTemplateResponse>(create);
   static GetCredentialTemplateResponse? _defaultInstance;
 
+  /// Template fetched by ID
   @$pb.TagNumber(1)
   TemplateData get template => $_getN(0);
   @$pb.TagNumber(1)
@@ -138,8 +158,21 @@ class GetCredentialTemplateResponse extends $pb.GeneratedMessage {
   TemplateData ensureTemplate() => $_ensure(0);
 }
 
+/// Request to search templates using a SQL query
 class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
-  factory SearchCredentialTemplatesRequest() => create();
+  factory SearchCredentialTemplatesRequest({
+    $core.String? query,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (query != null) {
+      $result.query = query;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   SearchCredentialTemplatesRequest._() : super();
   factory SearchCredentialTemplatesRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -186,6 +219,7 @@ class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
           create);
   static SearchCredentialTemplatesRequest? _defaultInstance;
 
+  /// SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
   @$pb.TagNumber(1)
   $core.String get query => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -198,6 +232,8 @@ class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearQuery() => clearField(1);
 
+  /// Token provided by previous `SearchCredentialTemplatesResponse`
+  /// if more data is available for query
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -211,8 +247,25 @@ class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(2);
 }
 
+/// Response to `SearchCredentialTemplatesRequest`
 class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
-  factory SearchCredentialTemplatesResponse() => create();
+  factory SearchCredentialTemplatesResponse({
+    $core.String? itemsJson,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (itemsJson != null) {
+      $result.itemsJson = itemsJson;
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   SearchCredentialTemplatesResponse._() : super();
   factory SearchCredentialTemplatesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -260,6 +313,7 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
           create);
   static SearchCredentialTemplatesResponse? _defaultInstance;
 
+  /// Raw JSON data returned from query
   @$pb.TagNumber(1)
   $core.String get itemsJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -272,6 +326,7 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearItemsJson() => clearField(1);
 
+  /// Whether more results are available for this query via `continuation_token`
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -284,6 +339,7 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `SearchCredentialTemplatesRequest`
   @$pb.TagNumber(4)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -297,8 +353,21 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(4);
 }
 
+/// Request to list templates using a SQL query
 class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
-  factory ListCredentialTemplatesRequest() => create();
+  factory ListCredentialTemplatesRequest({
+    $core.String? query,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (query != null) {
+      $result.query = query;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListCredentialTemplatesRequest._() : super();
   factory ListCredentialTemplatesRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -344,6 +413,7 @@ class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ListCredentialTemplatesRequest>(create);
   static ListCredentialTemplatesRequest? _defaultInstance;
 
+  /// SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
   @$pb.TagNumber(1)
   $core.String get query => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -356,6 +426,8 @@ class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearQuery() => clearField(1);
 
+  /// Token provided by previous `ListCredentialTemplatesResponse`
+  /// if more data is available for query
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -369,8 +441,25 @@ class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(2);
 }
 
+/// Response to `ListCredentialTemplatesRequest`
 class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
-  factory ListCredentialTemplatesResponse() => create();
+  factory ListCredentialTemplatesResponse({
+    $core.Iterable<TemplateData>? templates,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (templates != null) {
+      $result.templates.addAll(templates);
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListCredentialTemplatesResponse._() : super();
   factory ListCredentialTemplatesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -420,9 +509,11 @@ class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
           create);
   static ListCredentialTemplatesResponse? _defaultInstance;
 
+  /// Templates found by query
   @$pb.TagNumber(1)
   $core.List<TemplateData> get templates => $_getList(0);
 
+  /// Whether more results are available for this query via `continuation_token`
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -435,6 +526,7 @@ class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `ListCredentialTemplatesRequest`
   @$pb.TagNumber(3)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -448,8 +540,17 @@ class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(3);
 }
 
+/// Request to delete a template by ID
 class DeleteCredentialTemplateRequest extends $pb.GeneratedMessage {
-  factory DeleteCredentialTemplateRequest() => create();
+  factory DeleteCredentialTemplateRequest({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   DeleteCredentialTemplateRequest._() : super();
   factory DeleteCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -495,6 +596,7 @@ class DeleteCredentialTemplateRequest extends $pb.GeneratedMessage {
           create);
   static DeleteCredentialTemplateRequest? _defaultInstance;
 
+  /// ID of template to delete
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -508,6 +610,7 @@ class DeleteCredentialTemplateRequest extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+/// Response to `DeleteCredentialTemplateRequest`
 class DeleteCredentialTemplateResponse extends $pb.GeneratedMessage {
   factory DeleteCredentialTemplateResponse() => create();
   DeleteCredentialTemplateResponse._() : super();
@@ -555,8 +658,41 @@ class DeleteCredentialTemplateResponse extends $pb.GeneratedMessage {
   static DeleteCredentialTemplateResponse? _defaultInstance;
 }
 
+/// Request to create a new template
 class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
-  factory CreateCredentialTemplateRequest() => create();
+  factory CreateCredentialTemplateRequest({
+    $core.String? name,
+    $core.Map<$core.String, TemplateField>? fields,
+    $core.bool? allowAdditionalFields,
+    $core.String? title,
+    $core.String? description,
+    $core.Map<$core.String, FieldOrdering>? fieldOrdering,
+    AppleWalletOptions? appleWalletOptions,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    if (fields != null) {
+      $result.fields.addAll(fields);
+    }
+    if (allowAdditionalFields != null) {
+      $result.allowAdditionalFields = allowAdditionalFields;
+    }
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (fieldOrdering != null) {
+      $result.fieldOrdering.addAll(fieldOrdering);
+    }
+    if (appleWalletOptions != null) {
+      $result.appleWalletOptions = appleWalletOptions;
+    }
+    return $result;
+  }
   CreateCredentialTemplateRequest._() : super();
   factory CreateCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -623,6 +759,7 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
           create);
   static CreateCredentialTemplateRequest? _defaultInstance;
 
+  /// Name of new template. Must be a unique identifier within its ecosystem.
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -635,9 +772,12 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
 
+  /// Fields which compose the template
   @$pb.TagNumber(2)
   $core.Map<$core.String, TemplateField> get fields => $_getMap(1);
 
+  /// Whether credentials may be issued against this template which have fields
+  /// not specified in `fields`
   @$pb.TagNumber(3)
   $core.bool get allowAdditionalFields => $_getBF(2);
   @$pb.TagNumber(3)
@@ -650,6 +790,7 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearAllowAdditionalFields() => clearField(3);
 
+  /// Human-readable name of template
   @$pb.TagNumber(4)
   $core.String get title => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -662,6 +803,7 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearTitle() => clearField(4);
 
+  /// Human-readable description of template
   @$pb.TagNumber(5)
   $core.String get description => $_getSZ(4);
   @$pb.TagNumber(5)
@@ -674,9 +816,12 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearDescription() => clearField(5);
 
+  /// Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
+  /// If not provided, this will be auto-generated.
   @$pb.TagNumber(6)
   $core.Map<$core.String, FieldOrdering> get fieldOrdering => $_getMap(5);
 
+  /// Options for rendering the template in Apple Wallet
   @$pb.TagNumber(7)
   AppleWalletOptions get appleWalletOptions => $_getN(6);
   @$pb.TagNumber(7)
@@ -692,8 +837,17 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
   AppleWalletOptions ensureAppleWalletOptions() => $_ensure(6);
 }
 
+/// Response to `CreateCredentialTemplateRequest`
 class CreateCredentialTemplateResponse extends $pb.GeneratedMessage {
-  factory CreateCredentialTemplateResponse() => create();
+  factory CreateCredentialTemplateResponse({
+    TemplateData? data,
+  }) {
+    final $result = create();
+    if (data != null) {
+      $result.data = data;
+    }
+    return $result;
+  }
   CreateCredentialTemplateResponse._() : super();
   factory CreateCredentialTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -740,6 +894,7 @@ class CreateCredentialTemplateResponse extends $pb.GeneratedMessage {
           create);
   static CreateCredentialTemplateResponse? _defaultInstance;
 
+  /// Created template
   @$pb.TagNumber(1)
   TemplateData get data => $_getN(0);
   @$pb.TagNumber(1)
@@ -755,8 +910,37 @@ class CreateCredentialTemplateResponse extends $pb.GeneratedMessage {
   TemplateData ensureData() => $_ensure(0);
 }
 
+/// Request to update display information for a template
 class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
-  factory UpdateCredentialTemplateRequest() => create();
+  factory UpdateCredentialTemplateRequest({
+    $core.String? id,
+    $core.String? title,
+    $core.String? description,
+    $core.Map<$core.String, TemplateFieldPatch>? fields,
+    $core.Map<$core.String, FieldOrdering>? fieldOrdering,
+    AppleWalletOptions? appleWalletOptions,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (fields != null) {
+      $result.fields.addAll(fields);
+    }
+    if (fieldOrdering != null) {
+      $result.fieldOrdering.addAll(fieldOrdering);
+    }
+    if (appleWalletOptions != null) {
+      $result.appleWalletOptions = appleWalletOptions;
+    }
+    return $result;
+  }
   UpdateCredentialTemplateRequest._() : super();
   factory UpdateCredentialTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -822,6 +1006,7 @@ class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
           create);
   static UpdateCredentialTemplateRequest? _defaultInstance;
 
+  /// ID of Template to update
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -834,6 +1019,7 @@ class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
 
+  /// New human-readable title of Template
   @$pb.TagNumber(2)
   $core.String get title => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -846,6 +1032,7 @@ class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearTitle() => clearField(2);
 
+  /// New human-readable description of Template
   @$pb.TagNumber(3)
   $core.String get description => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -858,12 +1045,15 @@ class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDescription() => clearField(3);
 
+  /// Fields to update within the Template
   @$pb.TagNumber(4)
   $core.Map<$core.String, TemplateFieldPatch> get fields => $_getMap(3);
 
+  /// New field ordering options. See documentation for template creation for usage information.
   @$pb.TagNumber(5)
   $core.Map<$core.String, FieldOrdering> get fieldOrdering => $_getMap(4);
 
+  /// New Apple Wallet configuration
   @$pb.TagNumber(6)
   AppleWalletOptions get appleWalletOptions => $_getN(5);
   @$pb.TagNumber(6)
@@ -879,8 +1069,17 @@ class UpdateCredentialTemplateRequest extends $pb.GeneratedMessage {
   AppleWalletOptions ensureAppleWalletOptions() => $_ensure(5);
 }
 
+/// Response to `UpdateCredentialTemplateRequest`
 class UpdateCredentialTemplateResponse extends $pb.GeneratedMessage {
-  factory UpdateCredentialTemplateResponse() => create();
+  factory UpdateCredentialTemplateResponse({
+    TemplateData? updatedTemplate,
+  }) {
+    final $result = create();
+    if (updatedTemplate != null) {
+      $result.updatedTemplate = updatedTemplate;
+    }
+    return $result;
+  }
   UpdateCredentialTemplateResponse._() : super();
   factory UpdateCredentialTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -927,6 +1126,7 @@ class UpdateCredentialTemplateResponse extends $pb.GeneratedMessage {
           create);
   static UpdateCredentialTemplateResponse? _defaultInstance;
 
+  /// The Template after the update has been applied
   @$pb.TagNumber(1)
   TemplateData get updatedTemplate => $_getN(0);
   @$pb.TagNumber(1)
@@ -942,8 +1142,69 @@ class UpdateCredentialTemplateResponse extends $pb.GeneratedMessage {
   TemplateData ensureUpdatedTemplate() => $_ensure(0);
 }
 
+/// Credential Template
 class TemplateData extends $pb.GeneratedMessage {
-  factory TemplateData() => create();
+  factory TemplateData({
+    $core.String? id,
+    $core.String? name,
+    $core.int? version,
+    $core.Map<$core.String, TemplateField>? fields,
+    $core.bool? allowAdditionalFields,
+    $core.String? schemaUri,
+    $core.String? ecosystemId,
+    $core.String? type,
+    $core.String? createdBy,
+    $core.String? dateCreated,
+    $core.String? title,
+    $core.String? description,
+    $core.Map<$core.String, FieldOrdering>? fieldOrdering,
+    AppleWalletOptions? appleWalletOptions,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (version != null) {
+      $result.version = version;
+    }
+    if (fields != null) {
+      $result.fields.addAll(fields);
+    }
+    if (allowAdditionalFields != null) {
+      $result.allowAdditionalFields = allowAdditionalFields;
+    }
+    if (schemaUri != null) {
+      $result.schemaUri = schemaUri;
+    }
+    if (ecosystemId != null) {
+      $result.ecosystemId = ecosystemId;
+    }
+    if (type != null) {
+      $result.type = type;
+    }
+    if (createdBy != null) {
+      $result.createdBy = createdBy;
+    }
+    if (dateCreated != null) {
+      $result.dateCreated = dateCreated;
+    }
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (fieldOrdering != null) {
+      $result.fieldOrdering.addAll(fieldOrdering);
+    }
+    if (appleWalletOptions != null) {
+      $result.appleWalletOptions = appleWalletOptions;
+    }
+    return $result;
+  }
   TemplateData._() : super();
   factory TemplateData.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1012,6 +1273,7 @@ class TemplateData extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TemplateData>(create);
   static TemplateData? _defaultInstance;
 
+  /// Template ID
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1024,6 +1286,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
 
+  /// Template name
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1036,6 +1299,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
 
+  /// Template version number
   @$pb.TagNumber(3)
   $core.int get version => $_getIZ(2);
   @$pb.TagNumber(3)
@@ -1048,9 +1312,12 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearVersion() => clearField(3);
 
+  /// Fields defined for the template
   @$pb.TagNumber(4)
   $core.Map<$core.String, TemplateField> get fields => $_getMap(3);
 
+  /// Whether credentials issued against this template may
+  /// contain fields not defined by template
   @$pb.TagNumber(5)
   $core.bool get allowAdditionalFields => $_getBF(4);
   @$pb.TagNumber(5)
@@ -1063,6 +1330,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearAllowAdditionalFields() => clearField(5);
 
+  /// URI pointing to template JSON schema document
   @$pb.TagNumber(6)
   $core.String get schemaUri => $_getSZ(5);
   @$pb.TagNumber(6)
@@ -1075,6 +1343,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearSchemaUri() => clearField(6);
 
+  /// ID of ecosystem in which template resides
   @$pb.TagNumber(8)
   $core.String get ecosystemId => $_getSZ(6);
   @$pb.TagNumber(8)
@@ -1087,6 +1356,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   void clearEcosystemId() => clearField(8);
 
+  /// Template type (`VerifiableCredential`)
   @$pb.TagNumber(9)
   $core.String get type => $_getSZ(7);
   @$pb.TagNumber(9)
@@ -1099,6 +1369,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   void clearType() => clearField(9);
 
+  /// ID of template creator
   @$pb.TagNumber(10)
   $core.String get createdBy => $_getSZ(8);
   @$pb.TagNumber(10)
@@ -1111,6 +1382,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   void clearCreatedBy() => clearField(10);
 
+  /// Date when template was created as ISO 8601 utc string
   @$pb.TagNumber(11)
   $core.String get dateCreated => $_getSZ(9);
   @$pb.TagNumber(11)
@@ -1123,6 +1395,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   void clearDateCreated() => clearField(11);
 
+  /// Human-readable template title
   @$pb.TagNumber(12)
   $core.String get title => $_getSZ(10);
   @$pb.TagNumber(12)
@@ -1135,6 +1408,7 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   void clearTitle() => clearField(12);
 
+  /// Human-readable template description
   @$pb.TagNumber(13)
   $core.String get description => $_getSZ(11);
   @$pb.TagNumber(13)
@@ -1147,9 +1421,11 @@ class TemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(13)
   void clearDescription() => clearField(13);
 
+  /// Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
   @$pb.TagNumber(14)
   $core.Map<$core.String, FieldOrdering> get fieldOrdering => $_getMap(12);
 
+  /// Options for rendering the template in Apple Wallet
   @$pb.TagNumber(15)
   AppleWalletOptions get appleWalletOptions => $_getN(13);
   @$pb.TagNumber(15)
@@ -1165,8 +1441,37 @@ class TemplateData extends $pb.GeneratedMessage {
   AppleWalletOptions ensureAppleWalletOptions() => $_ensure(13);
 }
 
+/// Configuration options for Apple Wallet when
 class AppleWalletOptions extends $pb.GeneratedMessage {
-  factory AppleWalletOptions() => create();
+  factory AppleWalletOptions({
+    $core.String? backgroundColor,
+    $core.String? foregroundColor,
+    $core.String? labelColor,
+    $core.String? primaryField,
+    $core.Iterable<$core.String>? secondaryFields,
+    $core.Iterable<$core.String>? auxiliaryFields,
+  }) {
+    final $result = create();
+    if (backgroundColor != null) {
+      $result.backgroundColor = backgroundColor;
+    }
+    if (foregroundColor != null) {
+      $result.foregroundColor = foregroundColor;
+    }
+    if (labelColor != null) {
+      $result.labelColor = labelColor;
+    }
+    if (primaryField != null) {
+      $result.primaryField = primaryField;
+    }
+    if (secondaryFields != null) {
+      $result.secondaryFields.addAll(secondaryFields);
+    }
+    if (auxiliaryFields != null) {
+      $result.auxiliaryFields.addAll(auxiliaryFields);
+    }
+    return $result;
+  }
   AppleWalletOptions._() : super();
   factory AppleWalletOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1212,6 +1517,7 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AppleWalletOptions>(create);
   static AppleWalletOptions? _defaultInstance;
 
+  /// Background color, in hex format, of credential when stored in an Apple Wallet.
   @$pb.TagNumber(1)
   $core.String get backgroundColor => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1224,6 +1530,7 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearBackgroundColor() => clearField(1);
 
+  /// Foreground color, in hex format, of credential when stored in an Apple Wallet.
   @$pb.TagNumber(2)
   $core.String get foregroundColor => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1236,6 +1543,7 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearForegroundColor() => clearField(2);
 
+  /// Label color, in hex format, of credential when stored in an Apple Wallet.
   @$pb.TagNumber(3)
   $core.String get labelColor => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -1248,6 +1556,7 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearLabelColor() => clearField(3);
 
+  /// The ID of the template field which should be used as the primary field of a credential.
   @$pb.TagNumber(4)
   $core.String get primaryField => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -1260,15 +1569,30 @@ class AppleWalletOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearPrimaryField() => clearField(4);
 
+  /// The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name.
   @$pb.TagNumber(5)
   $core.List<$core.String> get secondaryFields => $_getList(4);
 
+  /// The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name.
   @$pb.TagNumber(6)
   $core.List<$core.String> get auxiliaryFields => $_getList(5);
 }
 
+/// Ordering information for a template field
 class FieldOrdering extends $pb.GeneratedMessage {
-  factory FieldOrdering() => create();
+  factory FieldOrdering({
+    $core.int? order,
+    $core.String? section,
+  }) {
+    final $result = create();
+    if (order != null) {
+      $result.order = order;
+    }
+    if (section != null) {
+      $result.section = section;
+    }
+    return $result;
+  }
   FieldOrdering._() : super();
   factory FieldOrdering.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1310,6 +1634,8 @@ class FieldOrdering extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<FieldOrdering>(create);
   static FieldOrdering? _defaultInstance;
 
+  /// The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
+  /// Field orders must be contiguous from `0` to the number of fields minus 1.
   @$pb.TagNumber(1)
   $core.int get order => $_getIZ(0);
   @$pb.TagNumber(1)
@@ -1322,6 +1648,8 @@ class FieldOrdering extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearOrder() => clearField(1);
 
+  /// The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
+  /// Sections must be contiguous with respect to `order`.
   @$pb.TagNumber(2)
   $core.String get section => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1335,8 +1663,33 @@ class FieldOrdering extends $pb.GeneratedMessage {
   void clearSection() => clearField(2);
 }
 
+/// A field defined in a template
 class TemplateField extends $pb.GeneratedMessage {
-  factory TemplateField() => create();
+  factory TemplateField({
+    $core.String? title,
+    $core.String? description,
+    $core.bool? optional,
+    FieldType? type,
+    UriFieldData? uriData,
+  }) {
+    final $result = create();
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (optional != null) {
+      $result.optional = optional;
+    }
+    if (type != null) {
+      $result.type = type;
+    }
+    if (uriData != null) {
+      $result.uriData = uriData;
+    }
+    return $result;
+  }
   TemplateField._() : super();
   factory TemplateField.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1385,6 +1738,7 @@ class TemplateField extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TemplateField>(create);
   static TemplateField? _defaultInstance;
 
+  /// Human-readable name of the field
   @$pb.TagNumber(1)
   $core.String get title => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1397,6 +1751,7 @@ class TemplateField extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTitle() => clearField(1);
 
+  /// Human-readable description of the field
   @$pb.TagNumber(2)
   $core.String get description => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1409,6 +1764,7 @@ class TemplateField extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
 
+  /// Whether this field may be omitted when a credential is issued against the template
   @$pb.TagNumber(3)
   $core.bool get optional => $_getBF(2);
   @$pb.TagNumber(3)
@@ -1421,6 +1777,7 @@ class TemplateField extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearOptional() => clearField(3);
 
+  /// The type of the field
   @$pb.TagNumber(4)
   FieldType get type => $_getN(3);
   @$pb.TagNumber(4)
@@ -1433,6 +1790,7 @@ class TemplateField extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearType() => clearField(4);
 
+  /// How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
   @$pb.TagNumber(6)
   UriFieldData get uriData => $_getN(4);
   @$pb.TagNumber(6)
@@ -1448,8 +1806,25 @@ class TemplateField extends $pb.GeneratedMessage {
   UriFieldData ensureUriData() => $_ensure(4);
 }
 
+/// A patch to apply to an existing template field
 class TemplateFieldPatch extends $pb.GeneratedMessage {
-  factory TemplateFieldPatch() => create();
+  factory TemplateFieldPatch({
+    $core.String? title,
+    $core.String? description,
+    UriFieldData? uriData,
+  }) {
+    final $result = create();
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (uriData != null) {
+      $result.uriData = uriData;
+    }
+    return $result;
+  }
   TemplateFieldPatch._() : super();
   factory TemplateFieldPatch.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1493,6 +1868,7 @@ class TemplateFieldPatch extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TemplateFieldPatch>(create);
   static TemplateFieldPatch? _defaultInstance;
 
+  /// Human-readable name of the field
   @$pb.TagNumber(1)
   $core.String get title => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1505,6 +1881,7 @@ class TemplateFieldPatch extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTitle() => clearField(1);
 
+  /// Human-readable description of the field
   @$pb.TagNumber(2)
   $core.String get description => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1517,6 +1894,7 @@ class TemplateFieldPatch extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
 
+  /// How to deal with this URI field when rendering credential. Only use if `type` is `URI`.
   @$pb.TagNumber(3)
   UriFieldData get uriData => $_getN(2);
   @$pb.TagNumber(3)
@@ -1532,8 +1910,21 @@ class TemplateFieldPatch extends $pb.GeneratedMessage {
   UriFieldData ensureUriData() => $_ensure(2);
 }
 
+/// Data pertaining to a URI Field
 class UriFieldData extends $pb.GeneratedMessage {
-  factory UriFieldData() => create();
+  factory UriFieldData({
+    $core.String? mimeType,
+    UriRenderMethod? renderMethod,
+  }) {
+    final $result = create();
+    if (mimeType != null) {
+      $result.mimeType = mimeType;
+    }
+    if (renderMethod != null) {
+      $result.renderMethod = renderMethod;
+    }
+    return $result;
+  }
   UriFieldData._() : super();
   factory UriFieldData.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1579,6 +1970,8 @@ class UriFieldData extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<UriFieldData>(create);
   static UriFieldData? _defaultInstance;
 
+  /// Expected MIME Type of content pointed to by URI. Can be generic (eg, "image/") or specific ("image/png").
+  /// Defaults to "application/octet-stream".
   @$pb.TagNumber(1)
   $core.String get mimeType => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1591,6 +1984,7 @@ class UriFieldData extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearMimeType() => clearField(1);
 
+  /// How to display the URI value when rendering a credential.
   @$pb.TagNumber(2)
   UriRenderMethod get renderMethod => $_getN(1);
   @$pb.TagNumber(2)
@@ -1604,8 +1998,17 @@ class UriFieldData extends $pb.GeneratedMessage {
   void clearRenderMethod() => clearField(2);
 }
 
+/// Request to fetch a template by ID
 class GetVerificationTemplateRequest extends $pb.GeneratedMessage {
-  factory GetVerificationTemplateRequest() => create();
+  factory GetVerificationTemplateRequest({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   GetVerificationTemplateRequest._() : super();
   factory GetVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1650,6 +2053,7 @@ class GetVerificationTemplateRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetVerificationTemplateRequest>(create);
   static GetVerificationTemplateRequest? _defaultInstance;
 
+  /// ID of template to fetch
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1663,8 +2067,17 @@ class GetVerificationTemplateRequest extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+/// Response to `GetCredentialTemplateRequest`
 class GetVerificationTemplateResponse extends $pb.GeneratedMessage {
-  factory GetVerificationTemplateResponse() => create();
+  factory GetVerificationTemplateResponse({
+    VerificationTemplateData? template,
+  }) {
+    final $result = create();
+    if (template != null) {
+      $result.template = template;
+    }
+    return $result;
+  }
   GetVerificationTemplateResponse._() : super();
   factory GetVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1711,6 +2124,7 @@ class GetVerificationTemplateResponse extends $pb.GeneratedMessage {
           create);
   static GetVerificationTemplateResponse? _defaultInstance;
 
+  /// Template fetched by ID
   @$pb.TagNumber(1)
   VerificationTemplateData get template => $_getN(0);
   @$pb.TagNumber(1)
@@ -1727,7 +2141,31 @@ class GetVerificationTemplateResponse extends $pb.GeneratedMessage {
 }
 
 class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
-  factory CreateVerificationTemplateRequest() => create();
+  factory CreateVerificationTemplateRequest({
+    $core.String? name,
+    $core.Map<$core.String, VerificationTemplateField>? fields,
+    $core.String? credentialTemplateId,
+    $core.String? title,
+    $core.String? description,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    if (fields != null) {
+      $result.fields.addAll(fields);
+    }
+    if (credentialTemplateId != null) {
+      $result.credentialTemplateId = credentialTemplateId;
+    }
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    return $result;
+  }
   CreateVerificationTemplateRequest._() : super();
   factory CreateVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1785,6 +2223,7 @@ class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
           create);
   static CreateVerificationTemplateRequest? _defaultInstance;
 
+  /// Name of new template. Must be a unique identifier within its ecosystem.
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1797,9 +2236,11 @@ class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
 
+  /// Fields which will be required in the verification proof template
   @$pb.TagNumber(2)
   $core.Map<$core.String, VerificationTemplateField> get fields => $_getMap(1);
 
+  /// Source credential template, used for verifying that the specified `fields` are present in the credential template
   @$pb.TagNumber(3)
   $core.String get credentialTemplateId => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -1812,6 +2253,7 @@ class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearCredentialTemplateId() => clearField(3);
 
+  /// Human-readable name of template
   @$pb.TagNumber(4)
   $core.String get title => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -1824,6 +2266,7 @@ class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearTitle() => clearField(4);
 
+  /// Human-readable description of template
   @$pb.TagNumber(5)
   $core.String get description => $_getSZ(4);
   @$pb.TagNumber(5)
@@ -1838,7 +2281,15 @@ class CreateVerificationTemplateRequest extends $pb.GeneratedMessage {
 }
 
 class CreateVerificationTemplateResponse extends $pb.GeneratedMessage {
-  factory CreateVerificationTemplateResponse() => create();
+  factory CreateVerificationTemplateResponse({
+    VerificationTemplateData? data,
+  }) {
+    final $result = create();
+    if (data != null) {
+      $result.data = data;
+    }
+    return $result;
+  }
   CreateVerificationTemplateResponse._() : super();
   factory CreateVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1901,7 +2352,27 @@ class CreateVerificationTemplateResponse extends $pb.GeneratedMessage {
 }
 
 class UpdateVerificationTemplateRequest extends $pb.GeneratedMessage {
-  factory UpdateVerificationTemplateRequest() => create();
+  factory UpdateVerificationTemplateRequest({
+    $core.String? id,
+    $core.String? title,
+    $core.String? description,
+    $core.Map<$core.String, VerificationTemplateFieldPatch>? fields,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (fields != null) {
+      $result.fields.addAll(fields);
+    }
+    return $result;
+  }
   UpdateVerificationTemplateRequest._() : super();
   factory UpdateVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1958,6 +2429,7 @@ class UpdateVerificationTemplateRequest extends $pb.GeneratedMessage {
           create);
   static UpdateVerificationTemplateRequest? _defaultInstance;
 
+  /// ID of Template to update
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1970,6 +2442,7 @@ class UpdateVerificationTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
 
+  /// New human-readable title of Template
   @$pb.TagNumber(2)
   $core.String get title => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1982,6 +2455,7 @@ class UpdateVerificationTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearTitle() => clearField(2);
 
+  /// New human-readable description of Template
   @$pb.TagNumber(3)
   $core.String get description => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -1994,13 +2468,22 @@ class UpdateVerificationTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDescription() => clearField(3);
 
+  /// Fields to update within the Template
   @$pb.TagNumber(4)
   $core.Map<$core.String, VerificationTemplateFieldPatch> get fields =>
       $_getMap(3);
 }
 
 class UpdateVerificationTemplateResponse extends $pb.GeneratedMessage {
-  factory UpdateVerificationTemplateResponse() => create();
+  factory UpdateVerificationTemplateResponse({
+    VerificationTemplateData? template,
+  }) {
+    final $result = create();
+    if (template != null) {
+      $result.template = template;
+    }
+    return $result;
+  }
   UpdateVerificationTemplateResponse._() : super();
   factory UpdateVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2063,7 +2546,15 @@ class UpdateVerificationTemplateResponse extends $pb.GeneratedMessage {
 }
 
 class DeleteVerificationTemplateRequest extends $pb.GeneratedMessage {
-  factory DeleteVerificationTemplateRequest() => create();
+  factory DeleteVerificationTemplateRequest({
+    $core.String? verificationTemplateId,
+  }) {
+    final $result = create();
+    if (verificationTemplateId != null) {
+      $result.verificationTemplateId = verificationTemplateId;
+    }
+    return $result;
+  }
   DeleteVerificationTemplateRequest._() : super();
   factory DeleteVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2169,8 +2660,57 @@ class DeleteVerificationTemplateResponse extends $pb.GeneratedMessage {
   static DeleteVerificationTemplateResponse? _defaultInstance;
 }
 
+/// Verification Template
 class VerificationTemplateData extends $pb.GeneratedMessage {
-  factory VerificationTemplateData() => create();
+  factory VerificationTemplateData({
+    $core.String? id,
+    $core.String? name,
+    $core.int? version,
+    $core.Map<$core.String, VerificationTemplateField>? fields,
+    $core.String? credentialTemplateId,
+    $core.String? ecosystemId,
+    $core.String? type,
+    $core.String? createdBy,
+    $core.String? dateCreated,
+    $core.String? title,
+    $core.String? description,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (version != null) {
+      $result.version = version;
+    }
+    if (fields != null) {
+      $result.fields.addAll(fields);
+    }
+    if (credentialTemplateId != null) {
+      $result.credentialTemplateId = credentialTemplateId;
+    }
+    if (ecosystemId != null) {
+      $result.ecosystemId = ecosystemId;
+    }
+    if (type != null) {
+      $result.type = type;
+    }
+    if (createdBy != null) {
+      $result.createdBy = createdBy;
+    }
+    if (dateCreated != null) {
+      $result.dateCreated = dateCreated;
+    }
+    if (title != null) {
+      $result.title = title;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    return $result;
+  }
   VerificationTemplateData._() : super();
   factory VerificationTemplateData.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2231,6 +2771,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<VerificationTemplateData>(create);
   static VerificationTemplateData? _defaultInstance;
 
+  /// Template ID
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -2243,6 +2784,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
 
+  /// Template name
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -2255,6 +2797,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
 
+  /// Template version number
   @$pb.TagNumber(3)
   $core.int get version => $_getIZ(2);
   @$pb.TagNumber(3)
@@ -2267,9 +2810,11 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearVersion() => clearField(3);
 
+  /// Fields defined for the template
   @$pb.TagNumber(4)
   $core.Map<$core.String, VerificationTemplateField> get fields => $_getMap(3);
 
+  /// Source credential template, used for verifying that the specified `fields` are present in the credential template
   @$pb.TagNumber(5)
   $core.String get credentialTemplateId => $_getSZ(4);
   @$pb.TagNumber(5)
@@ -2282,6 +2827,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearCredentialTemplateId() => clearField(5);
 
+  /// ID of ecosystem in which template resides
   @$pb.TagNumber(8)
   $core.String get ecosystemId => $_getSZ(5);
   @$pb.TagNumber(8)
@@ -2294,6 +2840,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   void clearEcosystemId() => clearField(8);
 
+  /// Template type (`VerificationTemplate`)
   @$pb.TagNumber(9)
   $core.String get type => $_getSZ(6);
   @$pb.TagNumber(9)
@@ -2306,6 +2853,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   void clearType() => clearField(9);
 
+  /// ID of template creator
   @$pb.TagNumber(10)
   $core.String get createdBy => $_getSZ(7);
   @$pb.TagNumber(10)
@@ -2318,6 +2866,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   void clearCreatedBy() => clearField(10);
 
+  /// Date when template was created as ISO 8601 utc string
   @$pb.TagNumber(11)
   $core.String get dateCreated => $_getSZ(8);
   @$pb.TagNumber(11)
@@ -2330,6 +2879,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   void clearDateCreated() => clearField(11);
 
+  /// Human-readable template title
   @$pb.TagNumber(12)
   $core.String get title => $_getSZ(9);
   @$pb.TagNumber(12)
@@ -2342,6 +2892,7 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   void clearTitle() => clearField(12);
 
+  /// Human-readable template description
   @$pb.TagNumber(13)
   $core.String get description => $_getSZ(10);
   @$pb.TagNumber(13)
@@ -2355,8 +2906,21 @@ class VerificationTemplateData extends $pb.GeneratedMessage {
   void clearDescription() => clearField(13);
 }
 
+/// Request to list templates using a SQL query
 class ListVerificationTemplatesRequest extends $pb.GeneratedMessage {
-  factory ListVerificationTemplatesRequest() => create();
+  factory ListVerificationTemplatesRequest({
+    $core.String? query,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (query != null) {
+      $result.query = query;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListVerificationTemplatesRequest._() : super();
   factory ListVerificationTemplatesRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2403,6 +2967,7 @@ class ListVerificationTemplatesRequest extends $pb.GeneratedMessage {
           create);
   static ListVerificationTemplatesRequest? _defaultInstance;
 
+  /// SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
   @$pb.TagNumber(1)
   $core.String get query => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -2415,6 +2980,8 @@ class ListVerificationTemplatesRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearQuery() => clearField(1);
 
+  /// Token provided by previous `ListCredentialTemplatesResponse`
+  /// if more data is available for query
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -2429,7 +2996,23 @@ class ListVerificationTemplatesRequest extends $pb.GeneratedMessage {
 }
 
 class ListVerificationTemplatesResponse extends $pb.GeneratedMessage {
-  factory ListVerificationTemplatesResponse() => create();
+  factory ListVerificationTemplatesResponse({
+    $core.Iterable<VerificationTemplateData>? templates,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (templates != null) {
+      $result.templates.addAll(templates);
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListVerificationTemplatesResponse._() : super();
   factory ListVerificationTemplatesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2479,9 +3062,11 @@ class ListVerificationTemplatesResponse extends $pb.GeneratedMessage {
           create);
   static ListVerificationTemplatesResponse? _defaultInstance;
 
+  /// Templates found by query
   @$pb.TagNumber(1)
   $core.List<VerificationTemplateData> get templates => $_getList(0);
 
+  /// Whether more results are available for this query via `continuation_token`
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -2494,6 +3079,7 @@ class ListVerificationTemplatesResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `ListVerificationTemplatesRequest`
   @$pb.TagNumber(3)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -2507,8 +3093,21 @@ class ListVerificationTemplatesResponse extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(3);
 }
 
+/// A field defined in a template
 class VerificationTemplateField extends $pb.GeneratedMessage {
-  factory VerificationTemplateField() => create();
+  factory VerificationTemplateField({
+    VerificationShareType? fieldShareType,
+    $core.String? usagePolicy,
+  }) {
+    final $result = create();
+    if (fieldShareType != null) {
+      $result.fieldShareType = fieldShareType;
+    }
+    if (usagePolicy != null) {
+      $result.usagePolicy = usagePolicy;
+    }
+    return $result;
+  }
   VerificationTemplateField._() : super();
   factory VerificationTemplateField.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2556,6 +3155,7 @@ class VerificationTemplateField extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<VerificationTemplateField>(create);
   static VerificationTemplateField? _defaultInstance;
 
+  /// Whether this field may be omitted on proof creation
   @$pb.TagNumber(1)
   VerificationShareType get fieldShareType => $_getN(0);
   @$pb.TagNumber(1)
@@ -2568,6 +3168,7 @@ class VerificationTemplateField extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearFieldShareType() => clearField(1);
 
+  /// User-facing explanation of what is done with this data
   @$pb.TagNumber(2)
   $core.String get usagePolicy => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -2581,8 +3182,21 @@ class VerificationTemplateField extends $pb.GeneratedMessage {
   void clearUsagePolicy() => clearField(2);
 }
 
+/// A patch to apply to an existing template field
 class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
-  factory VerificationTemplateFieldPatch() => create();
+  factory VerificationTemplateFieldPatch({
+    VerificationShareType? fieldShareType,
+    $core.String? usagePolicy,
+  }) {
+    final $result = create();
+    if (fieldShareType != null) {
+      $result.fieldShareType = fieldShareType;
+    }
+    if (usagePolicy != null) {
+      $result.usagePolicy = usagePolicy;
+    }
+    return $result;
+  }
   VerificationTemplateFieldPatch._() : super();
   factory VerificationTemplateFieldPatch.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2632,6 +3246,7 @@ class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<VerificationTemplateFieldPatch>(create);
   static VerificationTemplateFieldPatch? _defaultInstance;
 
+  /// Human-readable name of the field
   @$pb.TagNumber(1)
   VerificationShareType get fieldShareType => $_getN(0);
   @$pb.TagNumber(1)
@@ -2644,6 +3259,7 @@ class VerificationTemplateFieldPatch extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearFieldShareType() => clearField(1);
 
+  /// User-facing explanation of what is done with this data
   @$pb.TagNumber(2)
   $core.String get usagePolicy => $_getSZ(1);
   @$pb.TagNumber(2)

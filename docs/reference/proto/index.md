@@ -2188,6 +2188,240 @@ Response to `UploadFileRequest`
 
 
 
+<a name="services_connect_v1_connect-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/connect/v1/connect.proto
+
+
+
+<a name="services-connect-v1-Connect"></a>
+
+### Service - Connect
+The Connect service provides access to Trinsic Connect, a reusable identity verification service.
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse](/reference/proto#services-connect-v1-CreateSessionResponse) | Create an IDVSession |
+| CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
+| GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
+
+ <!-- end services -->
+
+
+<a name="services-connect-v1-CancelSessionRequest"></a>
+
+### CancelSessionRequest
+Request to cancel an Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to cancel |
+
+
+
+
+
+
+<a name="services-connect-v1-CancelSessionResponse"></a>
+
+### CancelSessionResponse
+Response to `CancelIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession in its current state after cancellation |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionRequest"></a>
+
+### CreateSessionRequest
+Request to create an Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| verifications | [RequestedVerification](/reference/proto#services-connect-v1-RequestedVerification)[] | Array of verifications to perform |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionResponse"></a>
+
+### CreateSessionResponse
+Response to `CreateIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The created IDVSession |
+
+
+
+
+
+
+<a name="services-connect-v1-GetSessionRequest"></a>
+
+### GetSessionRequest
+Request to get an IDVSession
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to get |
+
+
+
+
+
+
+<a name="services-connect-v1-GetSessionResponse"></a>
+
+### GetSessionResponse
+Response to `GetIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession |
+
+
+
+
+
+
+<a name="services-connect-v1-IDVSession"></a>
+
+### IDVSession
+An Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | The ID of the IDVSession. |
+| client_token | [string](/reference/proto#string) | The Client Token for this IDVSession. This should be passed to your frontend to initiate the IDV flow using Trinsic's Web SDK. |
+| state | [IDVSessionState](/reference/proto#services-connect-v1-IDVSessionState) | State of the IDVSession |
+| verifications | [IDVSession.VerificationsEntry](/reference/proto#services-connect-v1-IDVSession-VerificationsEntry)[] | The actual Verifications to perform in this IDV flow |
+| result_vp | [string](/reference/proto#string) | The resultant signed VP combining the results of all verifications |
+| created | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession was created |
+| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession's `state` was last updated |
+
+
+
+
+
+
+<a name="services-connect-v1-IDVSession-VerificationsEntry"></a>
+
+### IDVSession.VerificationsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [Verification](/reference/proto#services-connect-v1-Verification) |  |
+
+
+
+
+
+
+<a name="services-connect-v1-RequestedVerification"></a>
+
+### RequestedVerification
+A verification to perform in an IDV flow
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification to perform |
+
+
+
+
+
+
+<a name="services-connect-v1-Verification"></a>
+
+### Verification
+A Verification that is part of an IDVSession
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | The ID of the verification |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification (driver's license, passport, proof of address, etc) |
+| state | [VerificationState](/reference/proto#services-connect-v1-VerificationState) | The state of the verification |
+| reused | [bool](/reference/proto#bool) | Whether this was a reused (true) or fresh (false) verification. If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information. |
+| begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
+| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- o |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-connect-v1-IDVSessionState"></a>
+
+### IDVSessionState
+The states a VerificationSession can be in
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| IDV_CREATED | 0 | Session has been created, but not yet shown to user |
+| IDV_INITIATED | 1 | Session has been shown to user (iframe / popup opened), but user has not yet logged in. |
+| IDV_AUTHENTICATING | 2 | User has entered their phone number, but not yet authenticated with the code sent via SMS |
+| IDV_IN_PROGRESS | 3 | User has been authenticated and is performing identity verification |
+| IDV_SUCCESS | 4 | Session was completed successfully and IDV data is available to RP |
+| IDV_USER_CANCELED | 5 | User explicitly canceled session / did not consent |
+| IDV_EXPIRED | 6 | Session was not completed within {X} timeframe from creation and expired |
+| IDV_RP_CANCELED | 7 | Relying Party canceled the session via the SDK |
+| IDV_FAILED | 8 | The user's identity was not deemed legitimate by the IDV |
+
+
+
+<a name="services-connect-v1-VerificationState"></a>
+
+### VerificationState
+The states an individual Verification can be in
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| VERIFICATION_PENDING | 0 | This verification has not yet been performed in the flow |
+| VERIFICATION_STARTED | 1 | This verification has been started by the user, but not yet completed |
+| VERIFICATION_SUCCESS | 2 | This verification has been successfully completed |
+| VERIFICATION_FAILED | 3 | This verification has failed |
+
+
+
+<a name="services-connect-v1-VerificationType"></a>
+
+### VerificationType
+The type of verification to perform
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| GOVERNMENT_ID | 0 | Government-issued ID (driver's license, passport, etc) |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="services_provider_v1_access-management-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
