@@ -1,0 +1,159 @@
+syntax = "proto3";
+package services.connect.v1;
+
+option csharp_namespace = "Trinsic.Services.Connect.V1";
+option go_package = "services/connect/v1/connect";
+option java_package = "trinsic.services.connect.v1";
+option java_multiple_files = true;
+
+// The type of verification to perform
+enum VerificationType {
+  // Government-issued ID (driver's license, passport, etc)
+  GOVERNMENT_ID = 0;
+}
+
+// The states a VerificationSession can be in
+enum IDVSessionState {
+  // Session has been created, but not yet shown to user
+  IDV_CREATED = 0;
+
+  // Session has been shown to user (iframe / popup opened), but
+  // user has not yet logged in.
+  IDV_INITIATED = 1;
+  
+  // User has entered their phone number, but not yet authenticated with the code sent via SMS
+  IDV_AUTHENTICATING = 2;
+
+  // User has been authenticated and is performing identity verification
+  IDV_IN_PROGRESS = 3;
+
+  // Session was completed successfully and IDV data is available to RP
+  IDV_SUCCESS = 4;
+
+  // User explicitly canceled session / did not consent
+  IDV_USER_CANCELED = 5;
+
+  // Session was not completed within {X} timeframe from creation and expired
+  IDV_EXPIRED = 6;
+
+  // Relying Party canceled the session via the SDK
+  IDV_RP_CANCELED = 7;
+
+  // The user's identity was not deemed legitimate by the IDV
+  IDV_FAILED = 8;
+}
+
+// The states an individual Verification can be in
+enum VerificationState {
+  // This verification has not yet been performed in the flow
+  VERIFICATION_PENDING = 0;
+  // This verification has been started by the user, but not yet completed
+  VERIFICATION_STARTED = 1;
+  // This verification has been successfully completed
+  VERIFICATION_SUCCESS = 2;
+  // This verification has failed
+  VERIFICATION_FAILED = 3;
+}
+
+// An Identity Verification Session
+message IDVSession {
+  // The ID of the IDVSession.
+  string id = 1;
+  
+  // The Client Token for this IDVSession. This should be passed to your frontend to initiate
+  // the IDV flow using Trinsic's Web SDK.
+  string client_token = 2;
+
+  // State of the IDVSession
+  IDVSessionState state = 3;
+
+  // The actual Verifications to perform in this IDV flow
+  map<string, Verification> verifications = 4;
+
+  // The resultant signed VP combining the results of all verifications
+  optional string result_vp = 5;
+  
+  // The unix timestamp, in seconds, that this IDVSession was created
+  fixed64 created = 6;
+  
+  // The unix timestamp, in seconds, that this IDVSession's `state` was last updated
+  fixed64 updated = 7;
+}
+
+// A Verification that is part of an IDVSession
+message Verification {
+  // The ID of the verification
+  string id = 1;
+  
+  // The type of verification (driver's license, passport, proof of address, etc)
+  VerificationType type = 2;
+
+  // The state of the verification
+  VerificationState state = 3;
+
+  // Whether this was a reused (true) or fresh (false) verification. 
+  // If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
+  bool reused = 4;
+
+  // The unix timestamp, in seconds, when this verification was begun 
+  // by the user -- or `0` if not yet begun.
+  fixed64 begun = 5;
+
+  // The unix timestamp, in seconds, when this verification last changed state -- o
+  fixed64 updated = 6;
+}
+
+// Request to create an Identity Verification Session
+message CreateSessionRequest {
+  // Array of verifications to perform
+  repeated RequestedVerification verifications = 1;
+}
+
+// A verification to perform in an IDV flow
+message RequestedVerification {
+  // The type of verification to perform
+  VerificationType type = 1;
+}
+
+// Response to `CreateIDVSessionRequest`
+message CreateSessionResponse {
+  // The created IDVSession
+  IDVSession session = 1;
+}
+
+
+// Request to cancel an Identity Verification Session
+message CancelSessionRequest {
+  // The ID of the IDVSession to cancel
+  string idv_session_id = 1;
+}
+
+// Response to `CancelIDVSessionRequest`
+message CancelSessionResponse {
+  // The IDVSession in its current state after cancellation
+  IDVSession session = 1;
+}
+
+// Request to get an IDVSession
+message GetSessionRequest {
+  // The ID of the IDVSession to get
+  string idv_session_id = 1;
+}
+
+// Response to `GetIDVSessionRequest`
+message GetSessionResponse {
+  // The IDVSession
+  IDVSession session = 1;
+}
+
+// The Connect service provides access to Trinsic Connect, a reusable identity verification service.
+service Connect {
+  // Create an IDVSession
+  rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+  
+  // Cancel an IDVSession
+  rpc CancelSession(CancelSessionRequest) returns (CancelSessionResponse);
+  
+  // Get an IDVSession
+  rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+}
