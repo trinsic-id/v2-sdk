@@ -33,8 +33,8 @@ public class Tests
     // private const int DefaultPort = 5000;
     // private const bool DefaultUseTls = false;
     // #else
-    private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
-    private const int DefaultPort = 443;
+    public const string DefaultEndpoint = "staging-internal.trinsic.cloud";
+    public const int DefaultPort = 443;
 
     // #endif
 

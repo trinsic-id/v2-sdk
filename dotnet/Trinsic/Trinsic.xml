@@ -241,6 +241,38 @@
             blake3256 hash of the request body
             </summary>
         </member>
+        <member name="F:Trinsic.Services.Common.V1.TrinsicClientOptions.ServerEndpointFieldNumber">
+            <summary>Field number for the "server_endpoint" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Common.V1.TrinsicClientOptions.ServerEndpoint">
+            <summary>
+            Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Common.V1.TrinsicClientOptions.ServerPortFieldNumber">
+            <summary>Field number for the "server_port" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Common.V1.TrinsicClientOptions.ServerPort">
+            <summary>
+            Trinsic API port; defaults to `443`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Common.V1.TrinsicClientOptions.ServerUseTlsFieldNumber">
+            <summary>Field number for the "server_use_tls" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Common.V1.TrinsicClientOptions.ServerUseTls">
+            <summary>
+            Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Common.V1.TrinsicClientOptions.AuthTokenFieldNumber">
+            <summary>Field number for the "auth_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Common.V1.TrinsicClientOptions.AuthToken">
+            <summary>
+            Authentication token for SDK calls; defaults to empty string (unauthenticated)
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Account.V1.AccountReflection">
             <summary>Holder for reflection information generated from services/account/v1/account.proto</summary>
         </member>
@@ -277,28 +309,6 @@
             Third-party method of confirmation is required
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Account.V1.SignInRequest">
-            <summary>
-            Request for creating or signing into an account
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Account.V1.SignInRequest.DetailsFieldNumber">
-            <summary>Field number for the "details" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Account.V1.SignInRequest.Details">
-            <summary>
-            Account registration details
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Account.V1.SignInRequest.EcosystemIdFieldNumber">
-            <summary>Field number for the "ecosystem_id" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Account.V1.SignInRequest.EcosystemId">
-            <summary>
-            ID of Ecosystem to use
-            Ignored if `invitation_code` is passed
-            </summary>
-        </member>
         <member name="T:Trinsic.Services.Account.V1.AccountDetails">
             <summary>
             Account registration details
@@ -317,7 +327,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.AccountDetails.Email">
             <summary>
-            Email address of account. 
+            Email address of account.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.AccountDetails.SmsFieldNumber">
@@ -328,32 +338,26 @@
             SMS number including country code
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Account.V1.SignInResponse">
+        <member name="T:Trinsic.Services.Account.V1.TokenProtection">
             <summary>
-            Response for creating new account
-            This object will indicate if a confirmation code
-            was sent to one of the users two-factor methods
-            like email, SMS, etc.
+            Token protection info
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Account.V1.SignInResponse.ConfirmationMethodFieldNumber">
-            <summary>Field number for the "confirmation_method" field.</summary>
+        <member name="F:Trinsic.Services.Account.V1.TokenProtection.EnabledFieldNumber">
+            <summary>Field number for the "enabled" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Account.V1.SignInResponse.ConfirmationMethod">
+        <member name="P:Trinsic.Services.Account.V1.TokenProtection.Enabled">
             <summary>
-            Indicates if confirmation of account is required.
+            Indicates if token is protected using a PIN,
+            security code, HSM secret, etc.
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Account.V1.SignInResponse.ProfileFieldNumber">
-            <summary>Field number for the "profile" field.</summary>
+        <member name="F:Trinsic.Services.Account.V1.TokenProtection.MethodFieldNumber">
+            <summary>Field number for the "method" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Account.V1.SignInResponse.Profile">
+        <member name="P:Trinsic.Services.Account.V1.TokenProtection.Method">
             <summary>
-            Contains authentication data for use with the current device.
-            This object must be stored in a secure place. It can also be
-            protected with a PIN, but this is optional.
-            See the docs at https://docs.trinsic.id for more information
-            on working with authentication data.
+            The method used to protect the token
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.AccountProfile">
@@ -395,28 +399,6 @@
             Token security information about the token.
             If token protection is enabled, implementations must supply
             protection secret before using the token for authentication.
-            </summary>
-        </member>
-        <member name="T:Trinsic.Services.Account.V1.TokenProtection">
-            <summary>
-            Token protection info
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Account.V1.TokenProtection.EnabledFieldNumber">
-            <summary>Field number for the "enabled" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Account.V1.TokenProtection.Enabled">
-            <summary>
-            Indicates if token is protected using a PIN,
-            security code, HSM secret, etc.
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Account.V1.TokenProtection.MethodFieldNumber">
-            <summary>Field number for the "method" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Account.V1.TokenProtection.Method">
-            <summary>
-            The method used to protect the token
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.AccountInfoRequest">
@@ -606,14 +588,6 @@
         <member name="T:Trinsic.Services.Account.V1.Account.AccountBase">
             <summary>Base class for server-side implementations of Account</summary>
         </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountBase.SignIn(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Sign in to an already existing account
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
         <member name="M:Trinsic.Services.Account.V1.Account.AccountBase.Login(Trinsic.Services.Account.V1.LoginRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Begin login flow for specified account, creating one if it does not already exist
@@ -655,42 +629,6 @@
         <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Protected constructor to allow creation of configured clients.</summary>
             <param name="configuration">The client configuration.</param>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.SignIn(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Sign in to an already existing account
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.SignIn(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Sign in to an already existing account
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.SignInAsync(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Sign in to an already existing account
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.SignInAsync(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Sign in to an already existing account
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
         </member>
         <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.Login(Trinsic.Services.Account.V1.LoginRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
@@ -2561,7 +2499,7 @@
         </member>
         <member name="T:Trinsic.Services.TrustRegistry.V1.GetMemberAuthorizationStatusRequest">
             <summary>
-            Request to fetch member status in Trust Registry for a specific credential schema.
+            Request to fetch member status in governance framework for a specific credential schema.
             </summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.GetMemberAuthorizationStatusRequest.DidUriFieldNumber">
@@ -2673,7 +2611,7 @@
         </member>
         <member name="T:Trinsic.Services.TrustRegistry.V1.GetMemberRequest">
             <summary>
-            Request to get a member of the Trust Registry
+            Request to get a member of the governance framework
             </summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.GetMemberRequest.DidUriFieldNumber">
@@ -5053,6 +4991,32 @@
             How to display the URI value when rendering a credential.
             </summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateRequest">
+            <summary>
+            Request to fetch a template by ID
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateRequest.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateRequest.Id">
+            <summary>
+            ID of template to fetch
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateResponse">
+            <summary>
+            Response to `GetCredentialTemplateRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateResponse.TemplateFieldNumber">
+            <summary>Field number for the "template" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateResponse.Template">
+            <summary>
+            Template fetched by ID
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateVerificationTemplateRequest.NameFieldNumber">
             <summary>Field number for the "name" field.</summary>
         </member>
@@ -5188,12 +5152,12 @@
             Fields defined for the template
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.SchemaUriFieldNumber">
-            <summary>Field number for the "schema_uri" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.CredentialTemplateIdFieldNumber">
+            <summary>Field number for the "credential_template_id" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.SchemaUri">
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.CredentialTemplateId">
             <summary>
-            URI pointing to template JSON schema document
+            Source credential template, used for verifying that the specified `fields` are present in the credential template
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateData.EcosystemIdFieldNumber">
@@ -5316,19 +5280,21 @@
             A patch to apply to an existing template field
             </summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.FieldShareTypeFieldNumber">
+            <summary>Field number for the "field_share_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.FieldShareType">
+            <summary>
+            Human-readable name of the field
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.UsagePolicyFieldNumber">
             <summary>Field number for the "usage_policy" field.</summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.UsagePolicy">
             <summary>
-            Human-readable name of the field
+            User-facing explanation of what is done with this data
             </summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.HasUsagePolicy">
-            <summary>Gets whether the "usage_policy" field is set</summary>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.VerificationTemplateFieldPatch.ClearUsagePolicy">
-            <summary>Clears the value of the "usage_policy" field</summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.Descriptor">
             <summary>Service descriptor</summary>
@@ -5681,6 +5647,23 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredentialsReflection.Descriptor">
             <summary>File descriptor for services/verifiable-credentials/v1/verifiable-credentials.proto</summary>
         </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SignatureType.Unspecified">
+            <summary>
+            The signature type is not specified. The experimental signature type will be used.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SignatureType.Standard">
+            <summary>
+            The signature type uses EdDSA with the Ed25519 curve (NIST compliant).
+            This type of signature does not support selective disclosure of attributes.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SignatureType.Experimental">
+            <summary>
+            The signature type uses BBS signatures with BLS12-381 curve (experimental).
+            This type of signature allows for selective disclosure of attributes.
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest">
             <summary>
             Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
@@ -5729,7 +5712,15 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.IncludeGovernance">
             <summary>
             If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-            Trust Registry.
+            governance framework.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.SignatureTypeFieldNumber">
+            <summary>Field number for the "signature_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.SignatureType">
+            <summary>
+            The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse">
@@ -6035,7 +6026,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.HolderBinding">
             <summary>
-            If true, the credential will be issued with holder binding by specifying 
+            If true, the credential will be issued with holder binding by specifying
             the holder DID in the credential subject
             </summary>
         </member>
@@ -6045,7 +6036,7 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.IncludeGovernance">
             <summary>
             If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-            Trust Registry.
+            governance framework.
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.GenerateShareUrlFieldNumber">
@@ -6055,6 +6046,14 @@
             <summary>
             If true, a short URL link will be generated that can be used to share the credential offer with the holder.
             This link will point to the credential offer in the wallet app.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.SignatureTypeFieldNumber">
+            <summary>Field number for the "signature_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferRequest.SignatureType">
+            <summary>
+            The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferResponse.DocumentJsonFieldNumber">
@@ -6071,7 +6070,7 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateCredentialOfferResponse.ShareUrl">
             <summary>
             If requested, a URL that can be used to share the credential offer with the holder.
-            This is a short URL that can be used in a QR code and will redirect the 
+            This is a short URL that can be used in a QR code and will redirect the
             holder to the credential offer using the wallet app.
             </summary>
         </member>
@@ -6107,7 +6106,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.AcceptCredentialResponse.DocumentJson">
             <summary>
-            The JSON document that contains the issued credential. 
+            The JSON document that contains the issued credential.
             This item is already stored in the wallet.
             </summary>
         </member>
@@ -6840,12 +6839,22 @@
               Create/update verification templates
              </summary>
         </member>
-        <member name="M:Trinsic.TemplateService.ListVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest)">
+        <member name="M:Trinsic.TemplateService.ListVerificationTemplates(Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest)">
              <summary>
             This method is experimental
              </summary>
         </member>
-        <member name="M:Trinsic.TemplateService.ListVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest)">
+        <member name="M:Trinsic.TemplateService.ListVerificationTemplatesAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.ListVerificationTemplatesRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.GetVerificationTemplate(Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateRequest)">
+             <summary>
+            This method is experimental
+             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.GetVerificationTemplateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.GetVerificationTemplateRequest)">
              <summary>
             This method is experimental
              </summary>
