@@ -1,3 +1,5 @@
+import dts from 'vite-plugin-dts'
+
 export default {
     build: {
         target: 'ES2017',
@@ -8,5 +10,7 @@ export default {
         rollupOptions: {
             // Add any additional Rollup options here
         },
+        sourcemap: true
     },
+    plugins: [dts()]
 };
