@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -14,8 +14,37 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// Contains information about a file stored in Trinsic's CDN
 class File extends $pb.GeneratedMessage {
-  factory File() => create();
+  factory File({
+    $core.String? id,
+    $core.String? uploaderId,
+    $core.int? size,
+    $core.String? mimeType,
+    $core.String? uploaded,
+    $core.String? url,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (uploaderId != null) {
+      $result.uploaderId = uploaderId;
+    }
+    if (size != null) {
+      $result.size = size;
+    }
+    if (mimeType != null) {
+      $result.mimeType = mimeType;
+    }
+    if (uploaded != null) {
+      $result.uploaded = uploaded;
+    }
+    if (url != null) {
+      $result.url = url;
+    }
+    return $result;
+  }
   File._() : super();
   factory File.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -131,8 +160,21 @@ class File extends $pb.GeneratedMessage {
   void clearUrl() => clearField(6);
 }
 
+/// Represents aggregate statistics of all files uploaded by a single issuer
 class StorageStats extends $pb.GeneratedMessage {
-  factory StorageStats() => create();
+  factory StorageStats({
+    $core.int? numFiles,
+    $fixnum.Int64? totalSize,
+  }) {
+    final $result = create();
+    if (numFiles != null) {
+      $result.numFiles = numFiles;
+    }
+    if (totalSize != null) {
+      $result.totalSize = totalSize;
+    }
+    return $result;
+  }
   StorageStats._() : super();
   factory StorageStats.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -200,8 +242,21 @@ class StorageStats extends $pb.GeneratedMessage {
   void clearTotalSize() => clearField(2);
 }
 
+/// Request to upload a file to Trinsic's CDN
 class UploadFileRequest extends $pb.GeneratedMessage {
-  factory UploadFileRequest() => create();
+  factory UploadFileRequest({
+    $core.List<$core.int>? contents,
+    $core.String? mimeType,
+  }) {
+    final $result = create();
+    if (contents != null) {
+      $result.contents = contents;
+    }
+    if (mimeType != null) {
+      $result.mimeType = mimeType;
+    }
+    return $result;
+  }
   UploadFileRequest._() : super();
   factory UploadFileRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -243,6 +298,7 @@ class UploadFileRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<UploadFileRequest>(create);
   static UploadFileRequest? _defaultInstance;
 
+  /// Raw content of file
   @$pb.TagNumber(1)
   $core.List<$core.int> get contents => $_getN(0);
   @$pb.TagNumber(1)
@@ -255,6 +311,7 @@ class UploadFileRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearContents() => clearField(1);
 
+  /// MIME type describing file contents
   @$pb.TagNumber(2)
   $core.String get mimeType => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -268,8 +325,17 @@ class UploadFileRequest extends $pb.GeneratedMessage {
   void clearMimeType() => clearField(2);
 }
 
+/// Response to `UploadFileRequest`
 class UploadFileResponse extends $pb.GeneratedMessage {
-  factory UploadFileResponse() => create();
+  factory UploadFileResponse({
+    File? uploadedFile,
+  }) {
+    final $result = create();
+    if (uploadedFile != null) {
+      $result.uploadedFile = uploadedFile;
+    }
+    return $result;
+  }
   UploadFileResponse._() : super();
   factory UploadFileResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -325,8 +391,17 @@ class UploadFileResponse extends $pb.GeneratedMessage {
   File ensureUploadedFile() => $_ensure(0);
 }
 
+/// Request to fetch information about a stored file
 class GetFileRequest extends $pb.GeneratedMessage {
-  factory GetFileRequest() => create();
+  factory GetFileRequest({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   GetFileRequest._() : super();
   factory GetFileRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -379,8 +454,17 @@ class GetFileRequest extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+/// Response to `GetFileRequest`
 class GetFileResponse extends $pb.GeneratedMessage {
-  factory GetFileResponse() => create();
+  factory GetFileResponse({
+    File? file,
+  }) {
+    final $result = create();
+    if (file != null) {
+      $result.file = file;
+    }
+    return $result;
+  }
   GetFileResponse._() : super();
   factory GetFileResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -435,8 +519,17 @@ class GetFileResponse extends $pb.GeneratedMessage {
   File ensureFile() => $_ensure(0);
 }
 
+/// Request to delete a file from Trinsic's CDN by ID
 class DeleteFileRequest extends $pb.GeneratedMessage {
-  factory DeleteFileRequest() => create();
+  factory DeleteFileRequest({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   DeleteFileRequest._() : super();
   factory DeleteFileRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -489,6 +582,7 @@ class DeleteFileRequest extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
+/// Response to `DeleteFileRequest`. Empty payload.
 class DeleteFileResponse extends $pb.GeneratedMessage {
   factory DeleteFileResponse() => create();
   DeleteFileResponse._() : super();
@@ -530,8 +624,21 @@ class DeleteFileResponse extends $pb.GeneratedMessage {
   static DeleteFileResponse? _defaultInstance;
 }
 
+/// Request to list files
 class ListFilesRequest extends $pb.GeneratedMessage {
-  factory ListFilesRequest() => create();
+  factory ListFilesRequest({
+    $core.String? query,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (query != null) {
+      $result.query = query;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListFilesRequest._() : super();
   factory ListFilesRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -572,6 +679,7 @@ class ListFilesRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ListFilesRequest>(create);
   static ListFilesRequest? _defaultInstance;
 
+  /// Query to search with. If not specified, will return the most recent 100 files.
   @$pb.TagNumber(1)
   $core.String get query => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -584,6 +692,8 @@ class ListFilesRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearQuery() => clearField(1);
 
+  /// Token provided by previous `ListFilesRequest`
+  /// if more data is available for query
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -597,8 +707,25 @@ class ListFilesRequest extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(2);
 }
 
+/// Response to `ListFilesRequest`
 class ListFilesResponse extends $pb.GeneratedMessage {
-  factory ListFilesResponse() => create();
+  factory ListFilesResponse({
+    $core.Iterable<File>? files,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (files != null) {
+      $result.files.addAll(files);
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListFilesResponse._() : super();
   factory ListFilesResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -641,9 +768,11 @@ class ListFilesResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ListFilesResponse>(create);
   static ListFilesResponse? _defaultInstance;
 
+  /// Files found by query
   @$pb.TagNumber(1)
   $core.List<File> get files => $_getList(0);
 
+  /// Whether more results are available for this query via `continuation_token`
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -656,6 +785,7 @@ class ListFilesResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `ListFilesRequest`
   @$pb.TagNumber(3)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -669,6 +799,7 @@ class ListFilesResponse extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(3);
 }
 
+/// Request to get statistics about files uploaded by this account
 class GetStorageStatsRequest extends $pb.GeneratedMessage {
   factory GetStorageStatsRequest() => create();
   GetStorageStatsRequest._() : super();
@@ -712,8 +843,17 @@ class GetStorageStatsRequest extends $pb.GeneratedMessage {
   static GetStorageStatsRequest? _defaultInstance;
 }
 
+/// Response to `GetStorageStatsRequest`
 class GetStorageStatsResponse extends $pb.GeneratedMessage {
-  factory GetStorageStatsResponse() => create();
+  factory GetStorageStatsResponse({
+    StorageStats? stats,
+  }) {
+    final $result = create();
+    if (stats != null) {
+      $result.stats = stats;
+    }
+    return $result;
+  }
   GetStorageStatsResponse._() : super();
   factory GetStorageStatsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>

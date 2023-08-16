@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -20,8 +20,38 @@ export 'trust-registry.pbenum.dart';
 
 enum RegisterMemberRequest_Member { didUri, walletId, email, notSet }
 
+/// Request to register a member as a valid issuer of a specific credential schema.
+/// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
 class RegisterMemberRequest extends $pb.GeneratedMessage {
-  factory RegisterMemberRequest() => create();
+  factory RegisterMemberRequest({
+    $core.String? didUri,
+    $core.String? walletId,
+    $core.String? email,
+    $core.String? schemaUri,
+    $fixnum.Int64? validFromUtc,
+    $fixnum.Int64? validUntilUtc,
+  }) {
+    final $result = create();
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    if (schemaUri != null) {
+      $result.schemaUri = schemaUri;
+    }
+    if (validFromUtc != null) {
+      $result.validFromUtc = validFromUtc;
+    }
+    if (validUntilUtc != null) {
+      $result.validUntilUtc = validUntilUtc;
+    }
+    return $result;
+  }
   RegisterMemberRequest._() : super();
   factory RegisterMemberRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -84,6 +114,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
       _RegisterMemberRequest_MemberByTag[$_whichOneof(0)]!;
   void clearMember() => clearField($_whichOneof(0));
 
+  /// DID URI of member to register
   @$pb.TagNumber(1)
   $core.String get didUri => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -96,6 +127,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDidUri() => clearField(1);
 
+  /// Trinsic Wallet ID of member to register
   @$pb.TagNumber(3)
   $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -108,6 +140,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
+  /// Email address of member to register. Must be associated with an existing Trinsic account.
   @$pb.TagNumber(4)
   $core.String get email => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -120,6 +153,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearEmail() => clearField(4);
 
+  /// URI of credential schema to register member as authorized issuer of
   @$pb.TagNumber(10)
   $core.String get schemaUri => $_getSZ(3);
   @$pb.TagNumber(10)
@@ -132,6 +166,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   void clearSchemaUri() => clearField(10);
 
+  /// Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
   @$pb.TagNumber(11)
   $fixnum.Int64 get validFromUtc => $_getI64(4);
   @$pb.TagNumber(11)
@@ -144,6 +179,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   void clearValidFromUtc() => clearField(11);
 
+  /// Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
   @$pb.TagNumber(12)
   $fixnum.Int64 get validUntilUtc => $_getI64(5);
   @$pb.TagNumber(12)
@@ -157,6 +193,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
   void clearValidUntilUtc() => clearField(12);
 }
 
+/// Response to `RegisterMemberRequest`
 class RegisterMemberResponse extends $pb.GeneratedMessage {
   factory RegisterMemberResponse() => create();
   RegisterMemberResponse._() : super();
@@ -202,8 +239,30 @@ class RegisterMemberResponse extends $pb.GeneratedMessage {
 
 enum UnregisterMemberRequest_Member { didUri, walletId, email, notSet }
 
+/// Request to unregister a member as a valid issuer of a specific credential schema.
+/// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
 class UnregisterMemberRequest extends $pb.GeneratedMessage {
-  factory UnregisterMemberRequest() => create();
+  factory UnregisterMemberRequest({
+    $core.String? didUri,
+    $core.String? walletId,
+    $core.String? email,
+    $core.String? schemaUri,
+  }) {
+    final $result = create();
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    if (schemaUri != null) {
+      $result.schemaUri = schemaUri;
+    }
+    return $result;
+  }
   UnregisterMemberRequest._() : super();
   factory UnregisterMemberRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -260,6 +319,7 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
       _UnregisterMemberRequest_MemberByTag[$_whichOneof(0)]!;
   void clearMember() => clearField($_whichOneof(0));
 
+  /// DID URI of member to unregister
   @$pb.TagNumber(1)
   $core.String get didUri => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -272,6 +332,7 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDidUri() => clearField(1);
 
+  /// Trinsic Wallet ID of member to unregister
   @$pb.TagNumber(3)
   $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -284,6 +345,7 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
+  /// Email address of member to unregister. Must be associated with an existing Trinsic account.
   @$pb.TagNumber(4)
   $core.String get email => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -296,6 +358,7 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearEmail() => clearField(4);
 
+  /// URI of credential schema to unregister member as authorized issuer of
   @$pb.TagNumber(10)
   $core.String get schemaUri => $_getSZ(3);
   @$pb.TagNumber(10)
@@ -309,6 +372,7 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
   void clearSchemaUri() => clearField(10);
 }
 
+/// Response to `UnregisterMemberRequest`
 class UnregisterMemberResponse extends $pb.GeneratedMessage {
   factory UnregisterMemberResponse() => create();
   UnregisterMemberResponse._() : super();
@@ -352,8 +416,21 @@ class UnregisterMemberResponse extends $pb.GeneratedMessage {
   static UnregisterMemberResponse? _defaultInstance;
 }
 
+/// Request to fetch member status in governance framework for a specific credential schema.
 class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
-  factory GetMemberAuthorizationStatusRequest() => create();
+  factory GetMemberAuthorizationStatusRequest({
+    $core.String? didUri,
+    $core.String? schemaUri,
+  }) {
+    final $result = create();
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    if (schemaUri != null) {
+      $result.schemaUri = schemaUri;
+    }
+    return $result;
+  }
   GetMemberAuthorizationStatusRequest._() : super();
   factory GetMemberAuthorizationStatusRequest.fromBuffer(
           $core.List<$core.int> i,
@@ -400,6 +477,7 @@ class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
           GetMemberAuthorizationStatusRequest>(create);
   static GetMemberAuthorizationStatusRequest? _defaultInstance;
 
+  /// DID URI of member
   @$pb.TagNumber(1)
   $core.String get didUri => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -412,6 +490,7 @@ class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDidUri() => clearField(1);
 
+  /// URI of credential schema associated with member
   @$pb.TagNumber(2)
   $core.String get schemaUri => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -425,8 +504,17 @@ class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
   void clearSchemaUri() => clearField(2);
 }
 
+/// Response to `GetMemberAuthorizationStatusRequest`
 class GetMemberAuthorizationStatusResponse extends $pb.GeneratedMessage {
-  factory GetMemberAuthorizationStatusResponse() => create();
+  factory GetMemberAuthorizationStatusResponse({
+    RegistrationStatus? status,
+  }) {
+    final $result = create();
+    if (status != null) {
+      $result.status = status;
+    }
+    return $result;
+  }
   GetMemberAuthorizationStatusResponse._() : super();
   factory GetMemberAuthorizationStatusResponse.fromBuffer(
           $core.List<$core.int> i,
@@ -476,6 +564,7 @@ class GetMemberAuthorizationStatusResponse extends $pb.GeneratedMessage {
           GetMemberAuthorizationStatusResponse>(create);
   static GetMemberAuthorizationStatusResponse? _defaultInstance;
 
+  /// Status of member for given credential schema
   @$pb.TagNumber(1)
   RegistrationStatus get status => $_getN(0);
   @$pb.TagNumber(1)
@@ -490,7 +579,19 @@ class GetMemberAuthorizationStatusResponse extends $pb.GeneratedMessage {
 }
 
 class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
-  factory ListAuthorizedMembersRequest() => create();
+  factory ListAuthorizedMembersRequest({
+    $core.String? schemaUri,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (schemaUri != null) {
+      $result.schemaUri = schemaUri;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListAuthorizedMembersRequest._() : super();
   factory ListAuthorizedMembersRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -535,6 +636,7 @@ class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ListAuthorizedMembersRequest>(create);
   static ListAuthorizedMembersRequest? _defaultInstance;
 
+  /// id of schema that needs to be checked
   @$pb.TagNumber(1)
   $core.String get schemaUri => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -547,6 +649,7 @@ class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearSchemaUri() => clearField(1);
 
+  /// Token to fetch next set of results, from previous `ListAuthorizedMembersResponse`
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -560,8 +663,25 @@ class ListAuthorizedMembersRequest extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(2);
 }
 
+/// Response to `ListAuthorizedMembersRequest`
 class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
-  factory ListAuthorizedMembersResponse() => create();
+  factory ListAuthorizedMembersResponse({
+    $core.Iterable<AuthorizedMember>? authorizedMembers,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (authorizedMembers != null) {
+      $result.authorizedMembers.addAll(authorizedMembers);
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListAuthorizedMembersResponse._() : super();
   factory ListAuthorizedMembersResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -609,9 +729,11 @@ class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ListAuthorizedMembersResponse>(create);
   static ListAuthorizedMembersResponse? _defaultInstance;
 
+  /// JSON string containing array of resultant objects
   @$pb.TagNumber(1)
   $core.List<AuthorizedMember> get authorizedMembers => $_getList(0);
 
+  /// Whether more data is available to fetch for query
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -624,6 +746,7 @@ class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `ListAuthorizedMembersRequest`
   @$pb.TagNumber(3)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -638,7 +761,19 @@ class ListAuthorizedMembersResponse extends $pb.GeneratedMessage {
 }
 
 class AuthorizedMember extends $pb.GeneratedMessage {
-  factory AuthorizedMember() => create();
+  factory AuthorizedMember({
+    $core.String? did,
+    $core.Iterable<AuthorizedMemberSchema>? authorizedMemberSchemas,
+  }) {
+    final $result = create();
+    if (did != null) {
+      $result.did = did;
+    }
+    if (authorizedMemberSchemas != null) {
+      $result.authorizedMemberSchemas.addAll(authorizedMemberSchemas);
+    }
+    return $result;
+  }
   AuthorizedMember._() : super();
   factory AuthorizedMember.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -699,7 +834,31 @@ class AuthorizedMember extends $pb.GeneratedMessage {
 }
 
 class AuthorizedMemberSchema extends $pb.GeneratedMessage {
-  factory AuthorizedMemberSchema() => create();
+  factory AuthorizedMemberSchema({
+    $core.String? schemaUri,
+    $core.String? status,
+    $core.String? statusDetails,
+    $fixnum.Int64? validFrom,
+    $fixnum.Int64? validUntil,
+  }) {
+    final $result = create();
+    if (schemaUri != null) {
+      $result.schemaUri = schemaUri;
+    }
+    if (status != null) {
+      $result.status = status;
+    }
+    if (statusDetails != null) {
+      $result.statusDetails = statusDetails;
+    }
+    if (validFrom != null) {
+      $result.validFrom = validFrom;
+    }
+    if (validUntil != null) {
+      $result.validUntil = validUntil;
+    }
+    return $result;
+  }
   AuthorizedMemberSchema._() : super();
   factory AuthorizedMemberSchema.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -812,8 +971,25 @@ class AuthorizedMemberSchema extends $pb.GeneratedMessage {
 
 enum GetMemberRequest_Member { didUri, walletId, email, notSet }
 
+/// Request to get a member of the governance framework
 class GetMemberRequest extends $pb.GeneratedMessage {
-  factory GetMemberRequest() => create();
+  factory GetMemberRequest({
+    $core.String? didUri,
+    $core.String? walletId,
+    $core.String? email,
+  }) {
+    final $result = create();
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (email != null) {
+      $result.email = email;
+    }
+    return $result;
+  }
   GetMemberRequest._() : super();
   factory GetMemberRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -867,6 +1043,7 @@ class GetMemberRequest extends $pb.GeneratedMessage {
       _GetMemberRequest_MemberByTag[$_whichOneof(0)]!;
   void clearMember() => clearField($_whichOneof(0));
 
+  /// DID URI of member to get
   @$pb.TagNumber(1)
   $core.String get didUri => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -879,6 +1056,7 @@ class GetMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDidUri() => clearField(1);
 
+  /// Trinsic Wallet ID of member to get
   @$pb.TagNumber(3)
   $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -891,6 +1069,7 @@ class GetMemberRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearWalletId() => clearField(3);
 
+  /// Email address of member to get. Must be associated with an existing Trinsic account.
   @$pb.TagNumber(4)
   $core.String get email => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -904,8 +1083,17 @@ class GetMemberRequest extends $pb.GeneratedMessage {
   void clearEmail() => clearField(4);
 }
 
+/// Response to `GetMemberAuthorizationStatusRequest`
 class GetMemberResponse extends $pb.GeneratedMessage {
-  factory GetMemberResponse() => create();
+  factory GetMemberResponse({
+    AuthorizedMember? authorizedMember,
+  }) {
+    final $result = create();
+    if (authorizedMember != null) {
+      $result.authorizedMember = authorizedMember;
+    }
+    return $result;
+  }
   GetMemberResponse._() : super();
   factory GetMemberResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -946,6 +1134,7 @@ class GetMemberResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetMemberResponse>(create);
   static GetMemberResponse? _defaultInstance;
 
+  /// Member for given did in given framework
   @$pb.TagNumber(1)
   AuthorizedMember get authorizedMember => $_getN(0);
   @$pb.TagNumber(1)

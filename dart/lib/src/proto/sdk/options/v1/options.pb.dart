@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,8 +13,29 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// Configuration for Trinsic SDK Services
 class TrinsicOptions extends $pb.GeneratedMessage {
-  factory TrinsicOptions() => create();
+  factory TrinsicOptions({
+    $core.String? serverEndpoint,
+    $core.int? serverPort,
+    $core.bool? serverUseTls,
+    $core.String? authToken,
+  }) {
+    final $result = create();
+    if (serverEndpoint != null) {
+      $result.serverEndpoint = serverEndpoint;
+    }
+    if (serverPort != null) {
+      $result.serverPort = serverPort;
+    }
+    if (serverUseTls != null) {
+      $result.serverUseTls = serverUseTls;
+    }
+    if (authToken != null) {
+      $result.authToken = authToken;
+    }
+    return $result;
+  }
   TrinsicOptions._() : super();
   factory TrinsicOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -56,6 +77,7 @@ class TrinsicOptions extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TrinsicOptions>(create);
   static TrinsicOptions? _defaultInstance;
 
+  /// Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
   @$pb.TagNumber(1)
   $core.String get serverEndpoint => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -68,6 +90,7 @@ class TrinsicOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearServerEndpoint() => clearField(1);
 
+  /// Trinsic API port; defaults to `443`
   @$pb.TagNumber(2)
   $core.int get serverPort => $_getIZ(1);
   @$pb.TagNumber(2)
@@ -80,6 +103,7 @@ class TrinsicOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearServerPort() => clearField(2);
 
+  /// Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
   @$pb.TagNumber(3)
   $core.bool get serverUseTls => $_getBF(2);
   @$pb.TagNumber(3)
@@ -92,6 +116,7 @@ class TrinsicOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearServerUseTls() => clearField(3);
 
+  /// Authentication token for SDK calls; defaults to empty string (unauthenticated)
   @$pb.TagNumber(4)
   $core.String get authToken => $_getSZ(3);
   @$pb.TagNumber(4)

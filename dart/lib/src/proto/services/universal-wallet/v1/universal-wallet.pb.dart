@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -16,8 +16,21 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import '../../provider/v1/provider.pb.dart' as $3;
 import '../../provider/v1/provider.pbenum.dart' as $3;
 
+/// Request to search items in wallet
 class SearchRequest extends $pb.GeneratedMessage {
-  factory SearchRequest() => create();
+  factory SearchRequest({
+    $core.String? query,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (query != null) {
+      $result.query = query;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   SearchRequest._() : super();
   factory SearchRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -58,6 +71,7 @@ class SearchRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SearchRequest>(create);
   static SearchRequest? _defaultInstance;
 
+  /// SQL Query to execute against items in wallet
   @$pb.TagNumber(1)
   $core.String get query => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -70,6 +84,8 @@ class SearchRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearQuery() => clearField(1);
 
+  /// Token provided by previous `SearchResponse`
+  /// if more data is available for query
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -83,8 +99,25 @@ class SearchRequest extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(2);
 }
 
+/// Response to `SearchRequest`
 class SearchResponse extends $pb.GeneratedMessage {
-  factory SearchResponse() => create();
+  factory SearchResponse({
+    $core.Iterable<$core.String>? items,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   SearchResponse._() : super();
   factory SearchResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -126,9 +159,11 @@ class SearchResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SearchResponse>(create);
   static SearchResponse? _defaultInstance;
 
+  /// Array of query results, as JSON strings
   @$pb.TagNumber(1)
   $core.List<$core.String> get items => $_getList(0);
 
+  /// Whether more results are available for this query via `continuation_token`
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -141,6 +176,7 @@ class SearchResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `SearchRequest`
   @$pb.TagNumber(4)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -154,8 +190,17 @@ class SearchResponse extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(4);
 }
 
+/// Request to fetch an item from wallet
 class GetItemRequest extends $pb.GeneratedMessage {
-  factory GetItemRequest() => create();
+  factory GetItemRequest({
+    $core.String? itemId,
+  }) {
+    final $result = create();
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    return $result;
+  }
   GetItemRequest._() : super();
   factory GetItemRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -195,6 +240,7 @@ class GetItemRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetItemRequest>(create);
   static GetItemRequest? _defaultInstance;
 
+  /// ID of item in wallet
   @$pb.TagNumber(1)
   $core.String get itemId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -208,8 +254,21 @@ class GetItemRequest extends $pb.GeneratedMessage {
   void clearItemId() => clearField(1);
 }
 
+/// Response to `GetItemRequest`
 class GetItemResponse extends $pb.GeneratedMessage {
-  factory GetItemResponse() => create();
+  factory GetItemResponse({
+    $core.String? itemJson,
+    $core.String? itemType,
+  }) {
+    final $result = create();
+    if (itemJson != null) {
+      $result.itemJson = itemJson;
+    }
+    if (itemType != null) {
+      $result.itemType = itemType;
+    }
+    return $result;
+  }
   GetItemResponse._() : super();
   factory GetItemResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -250,6 +309,7 @@ class GetItemResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetItemResponse>(create);
   static GetItemResponse? _defaultInstance;
 
+  /// Item data as a JSON string
   @$pb.TagNumber(1)
   $core.String get itemJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -262,6 +322,7 @@ class GetItemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearItemJson() => clearField(1);
 
+  /// Type of item specified when item was inserted into wallet
   @$pb.TagNumber(2)
   $core.String get itemType => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -275,8 +336,21 @@ class GetItemResponse extends $pb.GeneratedMessage {
   void clearItemType() => clearField(2);
 }
 
+/// Request to update item in wallet
 class UpdateItemRequest extends $pb.GeneratedMessage {
-  factory UpdateItemRequest() => create();
+  factory UpdateItemRequest({
+    $core.String? itemId,
+    $core.String? itemType,
+  }) {
+    final $result = create();
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    if (itemType != null) {
+      $result.itemType = itemType;
+    }
+    return $result;
+  }
   UpdateItemRequest._() : super();
   factory UpdateItemRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -317,6 +391,7 @@ class UpdateItemRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<UpdateItemRequest>(create);
   static UpdateItemRequest? _defaultInstance;
 
+  /// ID of item in wallet
   @$pb.TagNumber(1)
   $core.String get itemId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -329,6 +404,7 @@ class UpdateItemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearItemId() => clearField(1);
 
+  /// Item type (ex. "VerifiableCredential")
   @$pb.TagNumber(2)
   $core.String get itemType => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -342,6 +418,7 @@ class UpdateItemRequest extends $pb.GeneratedMessage {
   void clearItemType() => clearField(2);
 }
 
+/// Response to `UpdateItemRequest`
 class UpdateItemResponse extends $pb.GeneratedMessage {
   factory UpdateItemResponse() => create();
   UpdateItemResponse._() : super();
@@ -383,8 +460,21 @@ class UpdateItemResponse extends $pb.GeneratedMessage {
   static UpdateItemResponse? _defaultInstance;
 }
 
+/// Request to insert a JSON document into a wallet
 class InsertItemRequest extends $pb.GeneratedMessage {
-  factory InsertItemRequest() => create();
+  factory InsertItemRequest({
+    $core.String? itemJson,
+    $core.String? itemType,
+  }) {
+    final $result = create();
+    if (itemJson != null) {
+      $result.itemJson = itemJson;
+    }
+    if (itemType != null) {
+      $result.itemType = itemType;
+    }
+    return $result;
+  }
   InsertItemRequest._() : super();
   factory InsertItemRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -425,6 +515,7 @@ class InsertItemRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<InsertItemRequest>(create);
   static InsertItemRequest? _defaultInstance;
 
+  /// Document to insert; must be stringified JSON
   @$pb.TagNumber(1)
   $core.String get itemJson => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -437,6 +528,7 @@ class InsertItemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearItemJson() => clearField(1);
 
+  /// Item type (ex. "VerifiableCredential")
   @$pb.TagNumber(2)
   $core.String get itemType => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -450,8 +542,17 @@ class InsertItemRequest extends $pb.GeneratedMessage {
   void clearItemType() => clearField(2);
 }
 
+/// Response to `InsertItemRequest`
 class InsertItemResponse extends $pb.GeneratedMessage {
-  factory InsertItemResponse() => create();
+  factory InsertItemResponse({
+    $core.String? itemId,
+  }) {
+    final $result = create();
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    return $result;
+  }
   InsertItemResponse._() : super();
   factory InsertItemResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -491,6 +592,7 @@ class InsertItemResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<InsertItemResponse>(create);
   static InsertItemResponse? _defaultInstance;
 
+  /// ID of item inserted into wallet
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(0);
   @$pb.TagNumber(2)
@@ -504,8 +606,17 @@ class InsertItemResponse extends $pb.GeneratedMessage {
   void clearItemId() => clearField(2);
 }
 
+/// Request to delete an item in a wallet
 class DeleteItemRequest extends $pb.GeneratedMessage {
-  factory DeleteItemRequest() => create();
+  factory DeleteItemRequest({
+    $core.String? itemId,
+  }) {
+    final $result = create();
+    if (itemId != null) {
+      $result.itemId = itemId;
+    }
+    return $result;
+  }
   DeleteItemRequest._() : super();
   factory DeleteItemRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -545,6 +656,7 @@ class DeleteItemRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<DeleteItemRequest>(create);
   static DeleteItemRequest? _defaultInstance;
 
+  /// ID of item to delete
   @$pb.TagNumber(1)
   $core.String get itemId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -558,6 +670,7 @@ class DeleteItemRequest extends $pb.GeneratedMessage {
   void clearItemId() => clearField(1);
 }
 
+/// Response to `DeleteItemRequest`
 class DeleteItemResponse extends $pb.GeneratedMessage {
   factory DeleteItemResponse() => create();
   DeleteItemResponse._() : super();
@@ -601,8 +714,25 @@ class DeleteItemResponse extends $pb.GeneratedMessage {
 
 enum DeleteWalletRequest_Account { email, walletId, didUri, notSet }
 
+/// Request to delete a wallet
 class DeleteWalletRequest extends $pb.GeneratedMessage {
-  factory DeleteWalletRequest() => create();
+  factory DeleteWalletRequest({
+    $core.String? email,
+    $core.String? walletId,
+    $core.String? didUri,
+  }) {
+    final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    return $result;
+  }
   DeleteWalletRequest._() : super();
   factory DeleteWalletRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -656,6 +786,8 @@ class DeleteWalletRequest extends $pb.GeneratedMessage {
       _DeleteWalletRequest_AccountByTag[$_whichOneof(0)]!;
   void clearAccount() => clearField($_whichOneof(0));
 
+  /// Email address of account to delete.
+  /// Mutually exclusive with `walletId` and `didUri`.
   @$pb.TagNumber(1)
   $core.String get email => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -668,6 +800,8 @@ class DeleteWalletRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
+  /// Wallet ID of account to delete.
+  /// Mutually exclusive with `email` and `didUri`.
   @$pb.TagNumber(2)
   $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -680,6 +814,8 @@ class DeleteWalletRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearWalletId() => clearField(2);
 
+  /// DID URI of the account to delete.
+  /// Mutually exclusive with `email` and `walletId`.
   @$pb.TagNumber(4)
   $core.String get didUri => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -693,6 +829,7 @@ class DeleteWalletRequest extends $pb.GeneratedMessage {
   void clearDidUri() => clearField(4);
 }
 
+/// Response to `DeleteWalletRequest`. Empty payload.
 class DeleteWalletResponse extends $pb.GeneratedMessage {
   factory DeleteWalletResponse() => create();
   DeleteWalletResponse._() : super();
@@ -736,7 +873,19 @@ class DeleteWalletResponse extends $pb.GeneratedMessage {
 }
 
 class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
-  factory CreateWalletRequest_ExternalIdentity() => create();
+  factory CreateWalletRequest_ExternalIdentity({
+    $core.String? identity,
+    $3.IdentityProvider? provider,
+  }) {
+    final $result = create();
+    if (identity != null) {
+      $result.identity = identity;
+    }
+    if (provider != null) {
+      $result.provider = provider;
+    }
+    return $result;
+  }
   CreateWalletRequest_ExternalIdentity._() : super();
   factory CreateWalletRequest_ExternalIdentity.fromBuffer(
           $core.List<$core.int> i,
@@ -787,6 +936,8 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
           CreateWalletRequest_ExternalIdentity>(create);
   static CreateWalletRequest_ExternalIdentity? _defaultInstance;
 
+  /// The user identity to add to the wallet
+  /// This can be an email address or phone number (formatted as +[country code][phone number])
   @$pb.TagNumber(1)
   $core.String get identity => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -799,6 +950,7 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIdentity() => clearField(1);
 
+  /// The type of identity provider, like EMAIL or PHONE
   @$pb.TagNumber(2)
   $3.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
@@ -813,7 +965,23 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
 }
 
 class CreateWalletRequest extends $pb.GeneratedMessage {
-  factory CreateWalletRequest() => create();
+  factory CreateWalletRequest({
+    $core.String? ecosystemId,
+    $core.String? description,
+    CreateWalletRequest_ExternalIdentity? identity,
+  }) {
+    final $result = create();
+    if (ecosystemId != null) {
+      $result.ecosystemId = ecosystemId;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (identity != null) {
+      $result.identity = identity;
+    }
+    return $result;
+  }
   CreateWalletRequest._() : super();
   factory CreateWalletRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -857,6 +1025,7 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateWalletRequest>(create);
   static CreateWalletRequest? _defaultInstance;
 
+  /// Ecosystem ID of the wallet to create
   @$pb.TagNumber(1)
   $core.String get ecosystemId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -869,6 +1038,10 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEcosystemId() => clearField(1);
 
+  /// Wallet name or description.
+  /// Use this field to add vendor specific information about this wallet,
+  /// such as email, phone, internal ID, or anything you'd like to associate
+  /// with this wallet. This field is searchable.
   @$pb.TagNumber(2)
   $core.String get description => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -881,6 +1054,9 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
 
+  /// Optional identity to add to the wallet (email or sms).
+  /// Use this field when inviting participants into an ecosystem.
+  /// If this field is set, an auth token will not be sent in the response.
   @$pb.TagNumber(3)
   CreateWalletRequest_ExternalIdentity get identity => $_getN(2);
   @$pb.TagNumber(3)
@@ -897,7 +1073,23 @@ class CreateWalletRequest extends $pb.GeneratedMessage {
 }
 
 class CreateWalletResponse extends $pb.GeneratedMessage {
-  factory CreateWalletResponse() => create();
+  factory CreateWalletResponse({
+    $core.String? authToken,
+    $core.String? tokenId,
+    $3.WalletConfiguration? wallet,
+  }) {
+    final $result = create();
+    if (authToken != null) {
+      $result.authToken = authToken;
+    }
+    if (tokenId != null) {
+      $result.tokenId = tokenId;
+    }
+    if (wallet != null) {
+      $result.wallet = wallet;
+    }
+    return $result;
+  }
   CreateWalletResponse._() : super();
   factory CreateWalletResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -941,6 +1133,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateWalletResponse>(create);
   static CreateWalletResponse? _defaultInstance;
 
+  /// Auth token for the newly created wallet
   @$pb.TagNumber(2)
   $core.String get authToken => $_getSZ(0);
   @$pb.TagNumber(2)
@@ -953,6 +1146,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearAuthToken() => clearField(2);
 
+  /// Token ID of the newly generated token
   @$pb.TagNumber(3)
   $core.String get tokenId => $_getSZ(1);
   @$pb.TagNumber(3)
@@ -965,6 +1159,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearTokenId() => clearField(3);
 
+  /// Wallet configuration
   @$pb.TagNumber(4)
   $3.WalletConfiguration get wallet => $_getN(2);
   @$pb.TagNumber(4)
@@ -981,7 +1176,19 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
 }
 
 class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
-  factory GenerateAuthTokenRequest() => create();
+  factory GenerateAuthTokenRequest({
+    $core.String? walletId,
+    $core.String? tokenDescription,
+  }) {
+    final $result = create();
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (tokenDescription != null) {
+      $result.tokenDescription = tokenDescription;
+    }
+    return $result;
+  }
   GenerateAuthTokenRequest._() : super();
   factory GenerateAuthTokenRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1050,7 +1257,19 @@ class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
 }
 
 class GenerateAuthTokenResponse extends $pb.GeneratedMessage {
-  factory GenerateAuthTokenResponse() => create();
+  factory GenerateAuthTokenResponse({
+    $core.String? tokenId,
+    $core.String? authToken,
+  }) {
+    final $result = create();
+    if (tokenId != null) {
+      $result.tokenId = tokenId;
+    }
+    if (authToken != null) {
+      $result.authToken = authToken;
+    }
+    return $result;
+  }
   GenerateAuthTokenResponse._() : super();
   factory GenerateAuthTokenResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1118,8 +1337,17 @@ class GenerateAuthTokenResponse extends $pb.GeneratedMessage {
   void clearAuthToken() => clearField(2);
 }
 
+/// Request to retrieve wallet information about a given wallet identified by its wallet ID
 class GetWalletInfoRequest extends $pb.GeneratedMessage {
-  factory GetWalletInfoRequest() => create();
+  factory GetWalletInfoRequest({
+    $core.String? walletId,
+  }) {
+    final $result = create();
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    return $result;
+  }
   GetWalletInfoRequest._() : super();
   factory GetWalletInfoRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1160,6 +1388,7 @@ class GetWalletInfoRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetWalletInfoRequest>(create);
   static GetWalletInfoRequest? _defaultInstance;
 
+  /// Wallet ID of the wallet to retrieve
   @$pb.TagNumber(1)
   $core.String get walletId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1173,8 +1402,17 @@ class GetWalletInfoRequest extends $pb.GeneratedMessage {
   void clearWalletId() => clearField(1);
 }
 
+/// Response to `GetWalletInfoRequest`
 class GetWalletInfoResponse extends $pb.GeneratedMessage {
-  factory GetWalletInfoResponse() => create();
+  factory GetWalletInfoResponse({
+    $3.WalletConfiguration? wallet,
+  }) {
+    final $result = create();
+    if (wallet != null) {
+      $result.wallet = wallet;
+    }
+    return $result;
+  }
   GetWalletInfoResponse._() : super();
   factory GetWalletInfoResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1217,6 +1455,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetWalletInfoResponse>(create);
   static GetWalletInfoResponse? _defaultInstance;
 
+  /// Wallet configuration
   @$pb.TagNumber(1)
   $3.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
@@ -1232,6 +1471,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   $3.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
+/// Request to retrieve wallet information about the currently authenticated wallet
 class GetMyInfoRequest extends $pb.GeneratedMessage {
   factory GetMyInfoRequest() => create();
   GetMyInfoRequest._() : super();
@@ -1273,8 +1513,17 @@ class GetMyInfoRequest extends $pb.GeneratedMessage {
   static GetMyInfoRequest? _defaultInstance;
 }
 
+/// Response to `GetMyInfoRequest`
 class GetMyInfoResponse extends $pb.GeneratedMessage {
-  factory GetMyInfoResponse() => create();
+  factory GetMyInfoResponse({
+    $3.WalletConfiguration? wallet,
+  }) {
+    final $result = create();
+    if (wallet != null) {
+      $result.wallet = wallet;
+    }
+    return $result;
+  }
   GetMyInfoResponse._() : super();
   factory GetMyInfoResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1315,6 +1564,7 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetMyInfoResponse>(create);
   static GetMyInfoResponse? _defaultInstance;
 
+  /// Wallet configuration
   @$pb.TagNumber(1)
   $3.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
@@ -1330,8 +1580,21 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   $3.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
+/// Request to revoke a previously issued auth token
 class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
-  factory RevokeAuthTokenRequest() => create();
+  factory RevokeAuthTokenRequest({
+    $core.String? walletId,
+    $core.String? tokenId,
+  }) {
+    final $result = create();
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (tokenId != null) {
+      $result.tokenId = tokenId;
+    }
+    return $result;
+  }
   RevokeAuthTokenRequest._() : super();
   factory RevokeAuthTokenRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1374,6 +1637,7 @@ class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<RevokeAuthTokenRequest>(create);
   static RevokeAuthTokenRequest? _defaultInstance;
 
+  /// Wallet ID of the wallet to from which to revoke the token
   @$pb.TagNumber(1)
   $core.String get walletId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1386,6 +1650,7 @@ class RevokeAuthTokenRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWalletId() => clearField(1);
 
+  /// Token ID of the token to revoke
   @$pb.TagNumber(2)
   $core.String get tokenId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1443,7 +1708,15 @@ class RevokeAuthTokenResponse extends $pb.GeneratedMessage {
 }
 
 class ListWalletsRequest extends $pb.GeneratedMessage {
-  factory ListWalletsRequest() => create();
+  factory ListWalletsRequest({
+    $core.String? filter,
+  }) {
+    final $result = create();
+    if (filter != null) {
+      $result.filter = filter;
+    }
+    return $result;
+  }
   ListWalletsRequest._() : super();
   factory ListWalletsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1497,7 +1770,15 @@ class ListWalletsRequest extends $pb.GeneratedMessage {
 }
 
 class ListWalletsResponse extends $pb.GeneratedMessage {
-  factory ListWalletsResponse() => create();
+  factory ListWalletsResponse({
+    $core.Iterable<$3.WalletConfiguration>? wallets,
+  }) {
+    final $result = create();
+    if (wallets != null) {
+      $result.wallets.addAll(wallets);
+    }
+    return $result;
+  }
   ListWalletsResponse._() : super();
   factory ListWalletsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1544,7 +1825,19 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
 }
 
 class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
-  factory AddExternalIdentityInitRequest() => create();
+  factory AddExternalIdentityInitRequest({
+    $core.String? identity,
+    $3.IdentityProvider? provider,
+  }) {
+    final $result = create();
+    if (identity != null) {
+      $result.identity = identity;
+    }
+    if (provider != null) {
+      $result.provider = provider;
+    }
+    return $result;
+  }
   AddExternalIdentityInitRequest._() : super();
   factory AddExternalIdentityInitRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1593,6 +1886,8 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AddExternalIdentityInitRequest>(create);
   static AddExternalIdentityInitRequest? _defaultInstance;
 
+  /// The user identity to add to the wallet
+  /// This can be an email address or phone number (formatted as +[country code][phone number])
   @$pb.TagNumber(1)
   $core.String get identity => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1605,6 +1900,7 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIdentity() => clearField(1);
 
+  /// The type of identity provider, like EMAIL or PHONE
   @$pb.TagNumber(2)
   $3.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
@@ -1619,7 +1915,15 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
 }
 
 class AddExternalIdentityInitResponse extends $pb.GeneratedMessage {
-  factory AddExternalIdentityInitResponse() => create();
+  factory AddExternalIdentityInitResponse({
+    $core.String? challenge,
+  }) {
+    final $result = create();
+    if (challenge != null) {
+      $result.challenge = challenge;
+    }
+    return $result;
+  }
   AddExternalIdentityInitResponse._() : super();
   factory AddExternalIdentityInitResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1664,6 +1968,7 @@ class AddExternalIdentityInitResponse extends $pb.GeneratedMessage {
           create);
   static AddExternalIdentityInitResponse? _defaultInstance;
 
+  /// Challenge or reference to the challenge to be used in the `AddExternalIdentityConfirm` endpoint
   @$pb.TagNumber(1)
   $core.String get challenge => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1678,7 +1983,19 @@ class AddExternalIdentityInitResponse extends $pb.GeneratedMessage {
 }
 
 class AddExternalIdentityConfirmRequest extends $pb.GeneratedMessage {
-  factory AddExternalIdentityConfirmRequest() => create();
+  factory AddExternalIdentityConfirmRequest({
+    $core.String? challenge,
+    $core.String? response,
+  }) {
+    final $result = create();
+    if (challenge != null) {
+      $result.challenge = challenge;
+    }
+    if (response != null) {
+      $result.response = response;
+    }
+    return $result;
+  }
   AddExternalIdentityConfirmRequest._() : super();
   factory AddExternalIdentityConfirmRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1724,6 +2041,7 @@ class AddExternalIdentityConfirmRequest extends $pb.GeneratedMessage {
           create);
   static AddExternalIdentityConfirmRequest? _defaultInstance;
 
+  /// The challenge received from the `AddExternalIdentityInit` endpoint
   @$pb.TagNumber(1)
   $core.String get challenge => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1736,6 +2054,8 @@ class AddExternalIdentityConfirmRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearChallenge() => clearField(1);
 
+  /// The response to the challenge. If using Email or Phone,
+  /// this is the OTP code sent to the user's email or phone
   @$pb.TagNumber(2)
   $core.String get response => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1796,7 +2116,15 @@ class AddExternalIdentityConfirmResponse extends $pb.GeneratedMessage {
 }
 
 class RemoveExternalIdentityRequest extends $pb.GeneratedMessage {
-  factory RemoveExternalIdentityRequest() => create();
+  factory RemoveExternalIdentityRequest({
+    $core.String? identity,
+  }) {
+    final $result = create();
+    if (identity != null) {
+      $result.identity = identity;
+    }
+    return $result;
+  }
   RemoveExternalIdentityRequest._() : super();
   factory RemoveExternalIdentityRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1840,6 +2168,8 @@ class RemoveExternalIdentityRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<RemoveExternalIdentityRequest>(create);
   static RemoveExternalIdentityRequest? _defaultInstance;
 
+  /// The user identity to remove from the wallet
+  /// This can be an email address or phone number (formatted as +[country code][phone number])
   @$pb.TagNumber(1)
   $core.String get identity => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1899,7 +2229,23 @@ class RemoveExternalIdentityResponse extends $pb.GeneratedMessage {
 }
 
 class AuthenticateInitRequest extends $pb.GeneratedMessage {
-  factory AuthenticateInitRequest() => create();
+  factory AuthenticateInitRequest({
+    $core.String? identity,
+    $3.IdentityProvider? provider,
+    $core.String? ecosystemId,
+  }) {
+    final $result = create();
+    if (identity != null) {
+      $result.identity = identity;
+    }
+    if (provider != null) {
+      $result.provider = provider;
+    }
+    if (ecosystemId != null) {
+      $result.ecosystemId = ecosystemId;
+    }
+    return $result;
+  }
   AuthenticateInitRequest._() : super();
   factory AuthenticateInitRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1947,6 +2293,7 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AuthenticateInitRequest>(create);
   static AuthenticateInitRequest? _defaultInstance;
 
+  /// Identity to add to the wallet
   @$pb.TagNumber(1)
   $core.String get identity => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1959,6 +2306,7 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIdentity() => clearField(1);
 
+  /// Identity provider
   @$pb.TagNumber(2)
   $3.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
@@ -1971,6 +2319,7 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProvider() => clearField(2);
 
+  /// Ecosystem ID to which the wallet belongs
   @$pb.TagNumber(3)
   $core.String get ecosystemId => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -1985,7 +2334,15 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
 }
 
 class AuthenticateInitResponse extends $pb.GeneratedMessage {
-  factory AuthenticateInitResponse() => create();
+  factory AuthenticateInitResponse({
+    $core.String? challenge,
+  }) {
+    final $result = create();
+    if (challenge != null) {
+      $result.challenge = challenge;
+    }
+    return $result;
+  }
   AuthenticateInitResponse._() : super();
   factory AuthenticateInitResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2027,6 +2384,8 @@ class AuthenticateInitResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AuthenticateInitResponse>(create);
   static AuthenticateInitResponse? _defaultInstance;
 
+  /// The challenge received from the `AcquireAuthTokenInit` endpoint
+  /// Pass this challenge back to the `AcquireAuthTokenConfirm` endpoint
   @$pb.TagNumber(1)
   $core.String get challenge => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -2041,7 +2400,15 @@ class AuthenticateInitResponse extends $pb.GeneratedMessage {
 }
 
 class AuthenticateResendCodeRequest extends $pb.GeneratedMessage {
-  factory AuthenticateResendCodeRequest() => create();
+  factory AuthenticateResendCodeRequest({
+    $core.String? challenge,
+  }) {
+    final $result = create();
+    if (challenge != null) {
+      $result.challenge = challenge;
+    }
+    return $result;
+  }
   AuthenticateResendCodeRequest._() : super();
   factory AuthenticateResendCodeRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2085,6 +2452,7 @@ class AuthenticateResendCodeRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AuthenticateResendCodeRequest>(create);
   static AuthenticateResendCodeRequest? _defaultInstance;
 
+  /// Challenge for the code you want resent.
   @$pb.TagNumber(1)
   $core.String get challenge => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -2144,7 +2512,19 @@ class AuthenticateResendCodeResponse extends $pb.GeneratedMessage {
 }
 
 class AuthenticateConfirmRequest extends $pb.GeneratedMessage {
-  factory AuthenticateConfirmRequest() => create();
+  factory AuthenticateConfirmRequest({
+    $core.String? challenge,
+    $core.String? response,
+  }) {
+    final $result = create();
+    if (challenge != null) {
+      $result.challenge = challenge;
+    }
+    if (response != null) {
+      $result.response = response;
+    }
+    return $result;
+  }
   AuthenticateConfirmRequest._() : super();
   factory AuthenticateConfirmRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2188,6 +2568,7 @@ class AuthenticateConfirmRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AuthenticateConfirmRequest>(create);
   static AuthenticateConfirmRequest? _defaultInstance;
 
+  /// The challenge received from the `AcquireAuthTokenInit` endpoint
   @$pb.TagNumber(1)
   $core.String get challenge => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -2200,6 +2581,8 @@ class AuthenticateConfirmRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearChallenge() => clearField(1);
 
+  /// The response to the challenge. If using Email or Phone,
+  /// this is the OTP code sent to the user's email or phone
   @$pb.TagNumber(2)
   $core.String get response => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -2214,7 +2597,15 @@ class AuthenticateConfirmRequest extends $pb.GeneratedMessage {
 }
 
 class AuthenticateConfirmResponse extends $pb.GeneratedMessage {
-  factory AuthenticateConfirmResponse() => create();
+  factory AuthenticateConfirmResponse({
+    $core.String? authToken,
+  }) {
+    final $result = create();
+    if (authToken != null) {
+      $result.authToken = authToken;
+    }
+    return $result;
+  }
   AuthenticateConfirmResponse._() : super();
   factory AuthenticateConfirmResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2258,6 +2649,7 @@ class AuthenticateConfirmResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<AuthenticateConfirmResponse>(create);
   static AuthenticateConfirmResponse? _defaultInstance;
 
+  /// Auth token for the wallet
   @$pb.TagNumber(1)
   $core.String get authToken => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -2271,8 +2663,21 @@ class AuthenticateConfirmResponse extends $pb.GeneratedMessage {
   void clearAuthToken() => clearField(1);
 }
 
+/// Request to list templates by
 class ListByVerificationTemplateRequest extends $pb.GeneratedMessage {
-  factory ListByVerificationTemplateRequest() => create();
+  factory ListByVerificationTemplateRequest({
+    $core.String? verificationTemplateId,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (verificationTemplateId != null) {
+      $result.verificationTemplateId = verificationTemplateId;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListByVerificationTemplateRequest._() : super();
   factory ListByVerificationTemplateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2318,6 +2723,7 @@ class ListByVerificationTemplateRequest extends $pb.GeneratedMessage {
           create);
   static ListByVerificationTemplateRequest? _defaultInstance;
 
+  /// ID of verification template to list matching credentials
   @$pb.TagNumber(1)
   $core.String get verificationTemplateId => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -2330,6 +2736,8 @@ class ListByVerificationTemplateRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearVerificationTemplateId() => clearField(1);
 
+  /// Token provided by previous `ListCredentialTemplatesResponse`
+  /// if more data is available for query
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -2343,8 +2751,25 @@ class ListByVerificationTemplateRequest extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(2);
 }
 
+/// Response to `ListByVerificationTemplateRequest`
 class ListByVerificationTemplateResponse extends $pb.GeneratedMessage {
-  factory ListByVerificationTemplateResponse() => create();
+  factory ListByVerificationTemplateResponse({
+    $core.Iterable<$core.String>? items,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   ListByVerificationTemplateResponse._() : super();
   factory ListByVerificationTemplateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -2391,9 +2816,11 @@ class ListByVerificationTemplateResponse extends $pb.GeneratedMessage {
           create);
   static ListByVerificationTemplateResponse? _defaultInstance;
 
+  /// Array of query results, as JSON strings
   @$pb.TagNumber(1)
   $core.List<$core.String> get items => $_getList(0);
 
+  /// Whether more results are available for this query via `continuation_token`
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -2406,6 +2833,7 @@ class ListByVerificationTemplateResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `ListByVerificationTemplateRequest`
   @$pb.TagNumber(3)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(3)
