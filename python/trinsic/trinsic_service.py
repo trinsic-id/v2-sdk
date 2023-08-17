@@ -1,4 +1,5 @@
 from trinsic.access_management_service import AccessManagementService
+from trinsic.connect_service import ConnectService
 from trinsic.credential_service import CredentialService
 from trinsic.file_management_service import FileManagementService
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
@@ -21,6 +22,7 @@ class TrinsicService(ServiceBase):
         self._access_management: AccessManagementService = AccessManagementService(
             server_config=self._channel
         )
+        self._connect: ConnectService = ConnectService(server_config=self._channel)
         self._credential: CredentialService = CredentialService(
             server_config=self._channel
         )
@@ -51,6 +53,11 @@ class TrinsicService(ServiceBase):
     def access_management(self) -> AccessManagementService:
         self._access_management.service_options = self.service_options
         return self._access_management
+
+    @property
+    def connect(self) -> ConnectService:
+        self._connect.service_options = self.service_options
+        return self._connect
 
     @property
     def credential(self) -> CredentialService:
