@@ -7,6 +7,7 @@ import { TrustRegistryService } from "./TrustRegistryService";
 import { WalletService } from "./WalletService";
 import { AccessManagementService } from "./AccessManagementService";
 import { FileManagementService } from "./FileManagementService";
+import {ConnectService} from "./ConnectService";
 
 export class TrinsicService extends ServiceBase {
     private _access: AccessManagementService | undefined;
