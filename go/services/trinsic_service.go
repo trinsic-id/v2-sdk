@@ -1,6 +1,7 @@
 package services
 
 import (
+	"github.com/trinsic-id/sdk/go/proto/services/connect/v1/connect"
 	"github.com/trinsic-id/sdk/go/proto/services/filemanagement/v1/filemanagement"
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 	"github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry"
@@ -12,13 +13,14 @@ import (
 type Trinsic struct {
 	Service
 
-	ams *accessManagementBase
-	cs  *verifiableCredentialBase
-	fms *fileManagementBase
-	ts  *credentialTemplatesBase
-	ps  *providerBase
-	tr  *trustRegistryBase
-	ws  *universalWalletBase
+	ams  *accessManagementBase
+	cons *connectBase
+	cs   *verifiableCredentialBase
+	fms  *fileManagementBase
+	ts   *credentialTemplatesBase
+	ps   *providerBase
+	tr   *trustRegistryBase
+	ws   *universalWalletBase
 }
 
 func NewTrinsic(options ...Option) (*Trinsic, error) {
@@ -44,6 +46,17 @@ func (t *Trinsic) AccessManagement() AccessManagementService {
 	}
 
 	return t.ams
+}
+
+func (t *Trinsic) Connect() ConnectService {
+	if t.cons == nil {
+		t.cons = &connectBase{
+			Service: t.Service,
+			client:  connect.NewConnectClient(t.Service.GetChannel()),
+		}
+	}
+
+	return t.cons
 }
 
 func (t *Trinsic) Credential() CredentialService {

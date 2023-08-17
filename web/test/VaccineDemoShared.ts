@@ -65,7 +65,7 @@ export async function vaccineDemo() {
         IssueFromTemplateRequest.fromPartial({
             templateId: template.id,
             valuesJson: credentialValues,
-        })
+        }),
     );
     // }
 
@@ -75,7 +75,7 @@ export async function vaccineDemo() {
     const insertResponse = await trinsic.wallet().insertItem(
         InsertItemRequest.fromPartial({
             itemJson: issueResponse.documentJson,
-        })
+        }),
     );
     // }
 
@@ -85,7 +85,7 @@ export async function vaccineDemo() {
     const proofResponse = await trinsic.credential().createProof(
         CreateProofRequest.fromPartial({
             itemId: insertResponse.itemId,
-        })
+        }),
     );
     // }
 
@@ -95,7 +95,7 @@ export async function vaccineDemo() {
     const verifyResponse = await trinsic.credential().verifyProof(
         VerifyProofRequest.fromPartial({
             proofDocumentJson: proofResponse.proofDocumentJson,
-        })
+        }),
     );
     // }
 
@@ -103,7 +103,7 @@ export async function vaccineDemo() {
 }
 
 async function doTemplate(
-    trinsicService: TrinsicService
+    trinsicService: TrinsicService,
 ): Promise<TemplateData> {
     // createTemplate() {
     //Define all fields

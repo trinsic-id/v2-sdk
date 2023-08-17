@@ -31,7 +31,9 @@ describe("Demo: Credential Templates", () => {
     setTestTimeout();
     beforeAll(async () => {
         trinsic = new TrinsicService(getTestServerOptions());
-        const createEcosystemResponse = await trinsic.provider().createEcosystem({});
+        const createEcosystemResponse = await trinsic
+            .provider()
+            .createEcosystem({});
         ecosystemAuthToken = trinsic.options.authToken!;
         ecosystemId = createEcosystemResponse.ecosystem?.id!;
     });
@@ -53,7 +55,7 @@ describe("Demo: Credential Templates", () => {
 
     it("Issue Credential From Template", async () => {
         let credential = JSON.parse(
-            (await issueCredentialFromTemplate(trinsic)).documentJson!
+            (await issueCredentialFromTemplate(trinsic)).documentJson!,
         );
 
         expect(credential.issuer).not.toBeNull();
@@ -61,7 +63,7 @@ describe("Demo: Credential Templates", () => {
         expect(credential.credentialSubject?.name).toBe("Alice");
         expect(credential.credentialSubject?.numberOfBags).toBe(2);
         expect(
-            new Date(credential?.credentialSubject?.dateOfBirth).toISOString()
+            new Date(credential?.credentialSubject?.dateOfBirth).toISOString(),
         ).toBe(new Date("1/1/2000").toISOString());
         expect(credential.credentialSubject?.vaccinated).toBe(true);
     });
@@ -72,7 +74,7 @@ describe("Demo: Credential Templates", () => {
         let response = await verifyCredential(
             trinsic,
             ecosystemId,
-            JSON.stringify(templateCertFrame)
+            JSON.stringify(templateCertFrame),
         );
         expect(response).toBeTruthy();
     });

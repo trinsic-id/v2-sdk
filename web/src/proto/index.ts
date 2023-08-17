@@ -1,6 +1,7 @@
 export * from "./sdk/options/v1/options";
 export * from "./services/common/v1/common";
 export * from "./services/account/v1/account";
+export * from "./services/connect/v1/connect";
 export * from "./services/verifiable-credentials/v1/verifiable-credentials";
 export * from "./services/verifiable-credentials/templates/v1/templates";
 export * from "./services/provider/v1/provider";

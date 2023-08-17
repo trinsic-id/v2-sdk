@@ -13,7 +13,7 @@ export function getLocalServerOptions(): TrinsicOptions {
         serverEndpoint: "127.0.0.1",
         serverPort: 5000,
         serverUseTls: false,
-    }
+    };
 }
 
 export function setTestTimeout(timeoutMs: number = 40000) {

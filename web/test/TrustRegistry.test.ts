@@ -5,7 +5,7 @@ import {
     RegistrationStatus,
     TrinsicService,
 } from "../src";
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 import {
     getTestServerOptions,
     myEcosystemIdOrName,
@@ -20,7 +20,8 @@ describe("TrustRegistryService Unit Tests", () => {
     beforeAll(async () => {
         trinsic = new TrinsicService(options);
         await trinsic
-            .provider().createEcosystem(CreateEcosystemRequest.fromPartial({}));
+            .provider()
+            .createEcosystem(CreateEcosystemRequest.fromPartial({}));
     });
 
     it("Demo: Trust Registry", async () => {
@@ -32,33 +33,33 @@ describe("TrustRegistryService Unit Tests", () => {
             RegisterMemberRequest.fromPartial({
                 didUri: didUri,
                 schemaUri: schemaUri,
-            })
+            }),
         );
         // }
         expect(response).not.toBeNull();
 
         // checkIssuerStatus() {
-        let issuerStatus = await trinsic.trustRegistry().getMemberAuthorizationStatus({
+        let issuerStatus = await trinsic
+            .trustRegistry()
+            .getMemberAuthorizationStatus({
                 didUri: didUri,
                 schemaUri: schemaUri,
-            }
-        );
+            });
         // }
         expect(issuerStatus).not.toBeNull();
         expect(issuerStatus.status).toBe(RegistrationStatus.CURRENT);
 
         // listMembers() {
         const members = await trinsic.trustRegistry().listAuthorizedMembers({
-                schemaUri: schemaUri
-            }
-        );
+            schemaUri: schemaUri,
+        });
         // }
         expect(members).not.toBeNull();
         expect(members.authorizedMembers?.length).toBe(1);
 
         // getMemberSample() {
         const member = await trinsic.trustRegistry().getMember({
-            didUri: didUri
+            didUri: didUri,
         });
         // }
         expect(member.authorizedMember).toEqual(members.authorizedMembers![0]);
@@ -66,8 +67,8 @@ describe("TrustRegistryService Unit Tests", () => {
         // unregisterMember() {
         let unregisterResult = await trinsic.trustRegistry().unregisterMember({
             didUri: didUri,
-            schemaUri: schemaUri
-        })
+            schemaUri: schemaUri,
+        });
         // }
         expect(unregisterResult).not.toBeNull();
     });
