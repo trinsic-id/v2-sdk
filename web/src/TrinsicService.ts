@@ -10,6 +10,7 @@ import { FileManagementService } from "./FileManagementService";
 
 export class TrinsicService extends ServiceBase {
     private _access: AccessManagementService | undefined;
+    private _connect: ConnectService | undefined;
     private _credential: CredentialService | undefined;
     private _fileManagement: FileManagementService | undefined;
     private _provider: ProviderService | undefined;
@@ -26,6 +27,12 @@ export class TrinsicService extends ServiceBase {
             this._access || new AccessManagementService(this.options);
         this._access.options = this.options;
         return this._access!;
+    }
+
+    public connection(): ConnectService {
+        this._connect = this._connect || new ConnectService(this.options);
+        this._connect.options = this.options;
+        return this._connect!;
     }
 
     public credential(): CredentialService {

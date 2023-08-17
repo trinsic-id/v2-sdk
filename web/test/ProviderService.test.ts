@@ -32,14 +32,14 @@ describe("ProviderService Unit Tests", () => {
         let createResponse = await trinsic.provider().createEcosystem(
             CreateEcosystemRequest.fromPartial({
                 description: "Test ecosystem from Node",
-            })
+            }),
         );
         // }
 
         expect(createResponse).not.toBeNull();
         expect(createResponse.ecosystem).not.toBeNull();
         expect(
-            createResponse.ecosystem!.id!.startsWith("urn:trinsic:ecosystems:")
+            createResponse.ecosystem!.id!.startsWith("urn:trinsic:ecosystems:"),
         ).toBeTruthy();
 
         // ecosystemInfo() {
@@ -58,7 +58,7 @@ describe("ProviderService Unit Tests", () => {
                     ionOptions: IonOptions.fromPartial({
                         network: IonOptions_IonNetwork.TestNet,
                     }),
-                })
+                }),
             );
             // }
         } catch (e) {}

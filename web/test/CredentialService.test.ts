@@ -1,7 +1,4 @@
-import {
-    TrinsicOptions,
-    TrinsicService,
-} from "../src";
+import { TrinsicOptions, TrinsicService } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 // @ts-ignore
@@ -27,5 +24,5 @@ describe("CredentialService Unit Tests", () => {
 
     it("is an empty test suite", () => {
         expect(true).toBe(true);
-    })
+    });
 });
