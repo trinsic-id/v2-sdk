@@ -37,9 +37,6 @@ Future runTrustRegistryDemo() async {
   // }
 
   // listMembers() {
-  var listMembersResponse = await trinsic
-      .trustRegistry()
-      .listAuthorizedMembers(ListMembersRequest(schemaUri: httpsSchemaOrg));
   //}
 
   // unregisterIssuer() {

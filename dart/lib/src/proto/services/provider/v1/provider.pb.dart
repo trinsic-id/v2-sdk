@@ -1049,7 +1049,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? configType,
     $core.Iterable<$2.WalletAuthToken>? authTokens,
     @$core.Deprecated('This field is deprecated.')
-    $core.Iterable<$core.String>? externalIdentityIds,
+        $core.Iterable<$core.String>? externalIdentityIds,
     $core.String? ecosystemId,
     $core.String? description,
     $core.Iterable<WalletExternalIdentity>? externalIdentities,

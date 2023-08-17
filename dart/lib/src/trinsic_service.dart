@@ -1,9 +1,11 @@
+import 'package:trinsic_dart/src/connect_service.dart';
 import 'package:trinsic_dart/src/service_base.dart';
 
 import 'package:trinsic_dart/trinsic.dart';
 
 class TrinsicService extends ServiceBase {
   AccessManagementService? _accessManagementService;
+  ConnectService? _connectService;
   CredentialService? _credentialService;
   FileManagementService? _fileManagementService;
   ProviderService? _providerService;
@@ -16,6 +18,12 @@ class TrinsicService extends ServiceBase {
     _accessManagementService ??= AccessManagementService(serviceOptions);
     _accessManagementService!.serviceOptions = serviceOptions;
     return _accessManagementService!;
+  }
+
+  ConnectService connect() {
+    _connectService ??= ConnectService(serviceOptions);
+    _connectService!.serviceOptions = serviceOptions;
+    return _connectService!;
   }
 
   CredentialService credential() {
