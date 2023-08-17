@@ -2691,7 +2691,7 @@ More specifically, it's the property 'schema_uri' in the JSON returned by the <c
 <span class="w">    </span><span class="nx">IssueFromTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="kt">template.id</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">valuesJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialValues</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2819,7 +2819,7 @@ trinsic<span class="w"> </span>wallet<span class="w"> </span>insert-item<span cl
 <span class="kd">const</span><span class="w"> </span><span class="nx">insertResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">insertItem</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">itemJson</span><span class="o">:</span><span class="w"> </span><span class="kt">issueResponse.documentJson</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2897,7 +2897,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>create-proof<span class
 <span class="kd">const</span><span class="w"> </span><span class="nx">proofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertResponse.itemId</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2975,7 +2975,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>verify-proof<span class
 <span class="kd">const</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">verifyProof</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">VerifyProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proofResponse.proofDocumentJson</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>

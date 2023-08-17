@@ -2224,14 +2224,13 @@
 <span class="w">    </span><span class="nx">RegisterMemberRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">didUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">;</span>
-<span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">RegisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">RegisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
 <span class="p">});</span>
@@ -2291,13 +2290,12 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">unregisterResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">unregisterMember</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span>
-<span class="p">})</span>
+<span class="w">    </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span><span class="p">,</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">UnregisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">UnregisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
 <span class="p">});</span>
@@ -2355,14 +2353,12 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">listAuthorizedMembers</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">);</span>
+<span class="w">    </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span><span class="p">,</span>
+<span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">ListAuthorizedMembersAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">ListAuthorizedMembersAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2419,13 +2415,12 @@ trinsic trust-registry get-member \
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">getMember</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span>
+<span class="w">    </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2479,16 +2474,16 @@ trinsic trust-registry get-member \
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">().</span><span class="nx">getMemberAuthorizationStatus</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">trustRegistry</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">getMemberAuthorizationStatus</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">didUri</span><span class="o">:</span><span class="w"> </span><span class="kt">didUri</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">schemaUri</span><span class="o">:</span><span class="w"> </span><span class="kt">schemaUri</span><span class="p">,</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMemberAuthorizationStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMemberAuthorizationStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">schemaUri</span>
 <span class="p">});</span>

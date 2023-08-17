@@ -2390,8 +2390,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">TemplateId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">templateId</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ValuesJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span>
 <span class="p">});</span>
@@ -2629,8 +2628,8 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertItemResponse.itemId</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">        </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertItemResponse.itemId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">selectiveProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
@@ -2638,21 +2637,18 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>update-status<span clas
 <span class="w">        </span><span class="nx">revealTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">templateAttributes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;lastName&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">DocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">,</span>
 <span class="w">    </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">None</span><span class="p">)</span>
 <span class="p">});</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">selectiveProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="p">{</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">selectiveProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">DocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">,</span>
-<span class="w">    </span><span class="n">RevealTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RevealTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// The other field, not disclosed, is &quot;age&quot;</span>
 <span class="w">        </span><span class="n">TemplateAttributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lastName&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2752,8 +2748,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>issuer<span class="w"> 
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">});</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">

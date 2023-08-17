@@ -2239,7 +2239,7 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 <span class="w">    </span><span class="nx">UploadFileRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">contents</span><span class="o">:</span><span class="w"> </span><span class="kt">fileBytes</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">mimeType</span><span class="o">:</span><span class="w"> </span><span class="kt">fileMimeType</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2313,7 +2313,7 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">getFileResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">getFile</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">GetFileRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">fileId</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2366,7 +2366,7 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 <div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">deleteFile</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">DeleteFileRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">fileId</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2415,7 +2415,7 @@ storing highly-sensitive files or documents via the File Management Service.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">listFilesResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">fileManagement</span><span class="p">().</span><span class="nx">listFiles</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ListFilesRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>

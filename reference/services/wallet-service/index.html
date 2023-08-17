@@ -2553,7 +2553,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">insertItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">insertItem</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
 <span class="w">        </span><span class="nx">itemJson</span><span class="o">:</span><span class="w"> </span><span class="kt">issueResponse.documentJson</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}),</span>
 <span class="p">);</span>
 </code></pre></div>
 </div>
@@ -2623,8 +2623,7 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetItemAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">GetItemRequest</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">GetItemAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">GetItemRequest</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemId</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2671,8 +2670,7 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">DeleteItemAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeleteItemRequest</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">DeleteItemAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeleteItemRequest</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemId</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2721,8 +2719,7 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">DeleteWalletAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeleteWalletRequest</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">DeleteWalletAsync</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DeleteWalletRequest</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">WalletId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletId</span>
 <span class="p">});</span>
 </code></pre></div>
