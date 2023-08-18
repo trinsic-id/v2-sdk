@@ -2,13 +2,13 @@
     "name": "@trinsic/trinsic",
     "version": "1.0.0",
     "description": "Node and Browser wrapper for the Trinsic services",
-    "main": "dist/index.js",
-    "types": "lib/index.d.ts",
+    "main": "dist/trinsic.umd.js",
+    "types": "dist/index.d.ts",
     "files": [
-        "lib/**/*"
+        "dist/**/*"
     ],
     "exports": {
-        ".": "./lib/index.js"
+        ".": "./dist/trinsic.umd.js"
     },
     "scripts": {
         "build": "npm run build:proto && npm run build:vite",
