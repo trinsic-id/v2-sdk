@@ -2,9 +2,10 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import {connectInit, SessionResult} from "./shared.ts";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [clientToken, setClientToken] = useState("N/A");
 
     return (
         <>
@@ -22,8 +23,14 @@ function App() {
             </div>
             <h1>Vite + React</h1>
             <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
+                <p>
+                    Client token: <pre>{clientToken}</pre>
+                </p>
+                <button onClick={async () => {
+                    const result: SessionResult = await connectInit();
+                    setClientToken(result.client_token);
+                }}>
+                    Initialize Trinsic Connect
                 </button>
                 <p>
                     Edit <code>src/App.tsx</code> and save to test HMR

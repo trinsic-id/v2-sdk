@@ -4,7 +4,7 @@ import "fastestsmallesttextencoderdecoder";
 
 import { WalletService } from "./WalletService";
 import { ConnectService } from "./ConnectService";
-import { AccessManagementService } from "./AccessManagementService
+import { AccessManagementService } from "./AccessManagementService";
 import { ProviderService } from "./ProviderService";
 import { TrustRegistryService } from "./TrustRegistryService";
 import { CredentialService } from "./CredentialService";

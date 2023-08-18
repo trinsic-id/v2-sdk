@@ -48,17 +48,18 @@ export class TransportProvider implements IPlatformProvider {
         address: string,
     ): Client<ClientService> {
         let transport: any;
-        const runtime = getRuntime();
-        if (runtime === "web") {
-            transport = FetchTransport();
-        } else if (runtime === "react-native") {
-            // TODO - Once this PR is merged: https://github.com/deeplay-io/nice-grpc/pull/348
-            transport = FetchReactNativeTransport();
-        } else {
-            transport = NodeHttpTransport();
-        }
         if (TransportProvider.overrideTransport !== undefined) {
             transport = TransportProvider.overrideTransport;
+        } else {
+            const runtime = getRuntime();
+            if (runtime === "web") {
+                transport = FetchTransport();
+            } else if (runtime === "react-native") {
+                // TODO - Once this PR is merged: https://github.com/deeplay-io/nice-grpc/pull/348
+                transport = FetchReactNativeTransport();
+            } else {
+                transport = NodeHttpTransport();
+            }
         }
         const channel = createChannel(address, transport);
         return createClient(definition, channel);
