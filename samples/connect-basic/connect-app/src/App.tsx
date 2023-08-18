@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import {connectGetSession, connectInit, FlowType, SessionResult, showTrinsicConnect} from "./shared.ts";
 import {CodeBlock, dracula} from "react-code-blocks";
-import useInterval from "@use-it/interval";
+import {useInterval} from "./util.ts";
 
 function App() {
     const [clientToken, setClientToken] = useState("N/A");
@@ -12,11 +12,11 @@ function App() {
     const [verifyStatus, setVerifyStatus] = useState("No Flippin Idea");
 
     useInterval(async () => {
-        console.log("Checking for session status");
-        const vpResult = await connectGetSession();
-        setVerifyStatus(vpResult.status);
-    },3*1000);
+        const result = await connectGetSession();
+        setVerifyStatus(result.status);
+    }, 5000);
 
+    // @ts-ignore
     return (
         <>
             <div>
@@ -60,9 +60,13 @@ function App() {
                 >
                     Show Trinsic Connect
                 </button>
-                <p>
-                    <b>Current Status:</b> {verifyStatus}
-                </p>
+                <button
+                    onClick={async () => {
+                        const result = await connectGetSession();
+                        setVerifyStatus(result.status);
+                    }}
+                    >Refresh Status</button>
+                <div><b>Current Status:</b> {verifyStatus}</div>
                 <CodeBlock
                     // @ts-ignore
                     text={verifiablePresentation}

@@ -45,6 +45,8 @@ const htmlContent = `
 app.use(
     cors({
         origin: "*",
+        methods: ["GET", "POST"],
+        credentials: false,
     }),
 );
 
@@ -70,6 +72,7 @@ app.post("/connect_init", async (req, res) => {
     const sessionResult: SessionResult = {
         client_token: result.session.clientToken,
         verifiable_presentation: "",
+        status: result.session.state.toString(),
     };
     res.status(200).json(sessionResult);
 });
@@ -78,25 +81,33 @@ app.post("/connect_get_session", async (req, res) => {
     console.log("POST /connect_get_session");
     // const {sessionId} = req.body;
     // Use the `id` to get the session
-    const result = await connectSvc.getSession({
-        idvSessionId: mockDatabase.get(sessionId),
-    });
+    try {
+        let idvSessionId = mockDatabase.get(sessionId);
 
-    const sessionResult: SessionResult = {
-        client_token: "",
-        verifiable_presentation: "",
-        status: result.session.state.toString(),
-    };
+        const result = await connectSvc.getSession({
+            idvSessionId: idvSessionId,
+        });
 
-    if (result.session.state === IDVSessionState.IDV_SUCCESS) {
-        // Return the session
-        sessionResult.verifiable_presentation = result.session.resultVp;
-        res.status(200);
-    } else {
-        // Processing
-        res.status(102);
+        const sessionResult: SessionResult = {
+            client_token: "",
+            verifiable_presentation: "",
+            status: result.session.state.toString(),
+        };
+
+        if (result.session.state === IDVSessionState.IDV_SUCCESS) {
+            // Return the session
+            sessionResult.verifiable_presentation = result.session.resultVp;
+            res.status(200);
+        } else {
+            // Processing
+            res.status(102);
+        }
+        console.log(sessionResult);
+        res.json(sessionResult);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Session not found" });
     }
-    res.send(JSON.stringify(sessionResult));
 });
 
 app.post("/connect_cancel", async (req, res) => {
