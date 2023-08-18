@@ -12,8 +12,8 @@ function App() {
     const [verifyStatus, setVerifyStatus] = useState("No Flippin Idea");
 
     useInterval(async () => {
-        const result = await connectGetSession();
-        setVerifyStatus(result.status);
+        // const result = await connectGetSession();
+        // setVerifyStatus(result.status);
     }, 5000);
 
     // @ts-ignore

@@ -81,6 +81,7 @@ export async function showTrinsicConnect(
     // resolve/reject the promise in response
     return new Promise((resolve, reject) => {
         window.addEventListener("message", (evt) => {
+            console.log("Received message from IDV flow", evt.data);
             // do security checks eg message comes from right place etc
             if (evt.data.verificationSessionId !== sessionId) return;
 

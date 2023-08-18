@@ -45,8 +45,6 @@ const htmlContent = `
 app.use(
     cors({
         origin: "*",
-        methods: ["GET", "POST"],
-        credentials: false,
     }),
 );
 
@@ -72,13 +70,14 @@ app.post("/connect_init", async (req, res) => {
     const sessionResult: SessionResult = {
         client_token: result.session.clientToken,
         verifiable_presentation: "",
-        status: result.session.state.toString(),
+        status: IDVSessionState[result.session.state],
     };
     res.status(200).json(sessionResult);
 });
 
 app.post("/connect_get_session", async (req, res) => {
     console.log("POST /connect_get_session");
+    req.read();
     // const {sessionId} = req.body;
     // Use the `id` to get the session
     try {
@@ -91,19 +90,15 @@ app.post("/connect_get_session", async (req, res) => {
         const sessionResult: SessionResult = {
             client_token: "",
             verifiable_presentation: "",
-            status: result.session.state.toString(),
+            status: IDVSessionState[result.session.state],
         };
 
         if (result.session.state === IDVSessionState.IDV_SUCCESS) {
             // Return the session
             sessionResult.verifiable_presentation = result.session.resultVp;
-            res.status(200);
-        } else {
-            // Processing
-            res.status(102);
         }
         console.log(sessionResult);
-        res.json(sessionResult);
+        res.status(200).json(sessionResult);
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Session not found" });
