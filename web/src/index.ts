@@ -3,6 +3,8 @@ import "@azure/core-asynciterator-polyfill";
 import "fastestsmallesttextencoderdecoder";
 
 import { WalletService } from "./WalletService";
+import { ConnectService } from "./ConnectService";
+import { AccessManagementService } from "./AccessManagementService
 import { ProviderService } from "./ProviderService";
 import { TrustRegistryService } from "./TrustRegistryService";
 import { CredentialService } from "./CredentialService";
@@ -17,6 +19,8 @@ export * from "./XHRTransport";
 
 export {
     TrinsicService,
+    ConnectService,
+    AccessManagementService,
     WalletService,
     ProviderService,
     TrustRegistryService,

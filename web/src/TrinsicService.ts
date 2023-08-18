@@ -30,7 +30,7 @@ export class TrinsicService extends ServiceBase {
         return this._access!;
     }
 
-    public connection(): ConnectService {
+    public connect(): ConnectService {
         this._connect = this._connect || new ConnectService(this.options);
         this._connect.options = this.options;
         return this._connect!;
