@@ -1,16 +1,24 @@
 import express from "express";
-import {FetchTransport} from "nice-grpc-web";
-import bodyParser from 'body-parser';
-import {SessionResult} from "./shared";
+import { FetchTransport } from "nice-grpc-web";
+import bodyParser from "body-parser";
+import { SessionResult } from "./shared";
 import cors from "cors";
 
-import {TrinsicService, TransportProvider, IDVSessionState, VerificationType} from "@trinsic/trinsic";
+import {
+    TrinsicService,
+    TransportProvider,
+    IDVSessionState,
+    VerificationType,
+} from "@trinsic/trinsic";
 
 const app = express();
 const port = 3000;
 
 TransportProvider.overrideTransport = FetchTransport();
-const trinsic = new TrinsicService({ authToken: process.env.TRINSIC_AUTH_TOKEN, serverEndpoint: "dev-internal.trinsic.cloud" });
+const trinsic = new TrinsicService({
+    authToken: process.env.TRINSIC_AUTH_TOKEN,
+    serverEndpoint: "dev-internal.trinsic.cloud",
+});
 const connectSvc = trinsic.connect();
 let sessionId = "SESSION-ID-KEY";
 const mockDatabase = new Map<string, any>();
@@ -34,9 +42,11 @@ const htmlContent = `
     `;
 
 // Allow requests without the 'Origin' header
-app.use(cors({
-    origin: "*"
-}));
+app.use(
+    cors({
+        origin: "*",
+    }),
+);
 
 app.use(bodyParser.json());
 
@@ -51,11 +61,16 @@ app.post("/connect_init", async (req, res) => {
     // const { sessionId } = req.body;
     // Create a connect session
     // Open connect session using government id
-    const result = await connectSvc.createSession({verifications: [{type: VerificationType.GOVERNMENT_ID }]})
+    const result = await connectSvc.createSession({
+        verifications: [{ type: VerificationType.GOVERNMENT_ID }],
+    });
     mockDatabase.set(sessionId, result.session.id);
-    req.read()
+    req.read();
     // Return the client_token to the user
-    const sessionResult: SessionResult = { client_token: result.session.clientToken, verifiable_presentation: "" };
+    const sessionResult: SessionResult = {
+        client_token: result.session.clientToken,
+        verifiable_presentation: "",
+    };
     res.status(200).json(sessionResult);
 });
 
@@ -63,9 +78,15 @@ app.post("/connect_get_session", async (req, res) => {
     console.log("POST /connect_get_session");
     // const {sessionId} = req.body;
     // Use the `id` to get the session
-    const result = await connectSvc.getSession({idvSessionId: mockDatabase.get(sessionId)});
+    const result = await connectSvc.getSession({
+        idvSessionId: mockDatabase.get(sessionId),
+    });
 
-    const sessionResult: SessionResult = { client_token: "", verifiable_presentation: "" };
+    const sessionResult: SessionResult = {
+        client_token: "",
+        verifiable_presentation: "",
+        status: result.session.state.toString(),
+    };
 
     if (result.session.state === IDVSessionState.IDV_SUCCESS) {
         // Return the session
@@ -81,7 +102,9 @@ app.post("/connect_get_session", async (req, res) => {
 app.post("/connect_cancel", async (req, res) => {
     console.log("POST /connect_cancel");
     // TODO - Call the `CancelSession` endpoint to terminate
-    const result = await connectSvc.cancelSession({idvSessionId: mockDatabase.get(sessionId)});
+    const result = await connectSvc.cancelSession({
+        idvSessionId: mockDatabase.get(sessionId),
+    });
     res.status(200);
 });
 

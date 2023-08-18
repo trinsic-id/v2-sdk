@@ -11,7 +11,9 @@
     },
     "dependencies": {
         "@trinsic/trinsic": "file:../../../web",
+        "@use-it/interval": "^1.0.0",
         "react": "^18.2.0",
+        "react-code-blocks": "^0.1.3",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {

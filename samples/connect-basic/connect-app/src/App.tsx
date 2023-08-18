@@ -1,11 +1,21 @@
-import { useState } from "react";
+import {useState} from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import {connectInit, SessionResult} from "./shared.ts";
+import {connectGetSession, connectInit, FlowType, SessionResult, showTrinsicConnect} from "./shared.ts";
+import {CodeBlock, dracula} from "react-code-blocks";
+import useInterval from "@use-it/interval";
 
 function App() {
     const [clientToken, setClientToken] = useState("N/A");
+    const [verifiablePresentation, setVerifiablePresentation] = useState("No VP");
+    const [verifyStatus, setVerifyStatus] = useState("No Flippin Idea");
+
+    useInterval(async () => {
+        console.log("Checking for session status");
+        const vpResult = await connectGetSession();
+        setVerifyStatus(vpResult.status);
+    },3*1000);
 
     return (
         <>
@@ -24,14 +34,42 @@ function App() {
             <h1>Vite + React</h1>
             <div className="card">
                 <p>
-                    Client token: <pre>{clientToken}</pre>
+                    Client token:
                 </p>
-                <button onClick={async () => {
-                    const result: SessionResult = await connectInit();
-                    setClientToken(result.client_token);
-                }}>
+                <pre>{clientToken}</pre>
+                <button
+                    onClick={async () => {
+                        const result: SessionResult = await connectInit();
+                        setClientToken(result.client_token);
+                    }}
+                >
                     Initialize Trinsic Connect
                 </button>
+                <button
+                    onClick={async () => {
+                        try {
+                            const sessionId = await showTrinsicConnect(clientToken, {flowType: FlowType.POPUP});
+                            console.log("TODO - Handle the actual session ID - " + sessionId);
+                            // TODO - Handle the actual session ID
+                            const vpResult = await connectGetSession();
+                            setVerifiablePresentation(vpResult.verifiable_presentation);
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    }}
+                >
+                    Show Trinsic Connect
+                </button>
+                <p>
+                    <b>Current Status:</b> {verifyStatus}
+                </p>
+                <CodeBlock
+                    // @ts-ignore
+                    text={verifiablePresentation}
+                    language={"json"}
+                    showLineNumbers={true}
+                    theme={dracula}
+                />
                 <p>
                     Edit <code>src/App.tsx</code> and save to test HMR
                 </p>
