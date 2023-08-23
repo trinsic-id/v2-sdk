@@ -29,22 +29,22 @@ pub(crate) fn execute(args: &TemplateCommand, config: &CliConfig) -> Result<Outp
 async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
-    let fields: Result<HashMap<String, Field>, _> = match &args.fields_data {
+    let fields = match &args.fields_data {
         Some(data) => serde_json::from_str(&data),
         None => match &args.fields_file {
             Some(file) => serde_json::from_str(&read_file(file)?),
             None => return Err(Error::InvalidArgument("you must specify input fields file".to_string())),
         },
-    };
+    }?;
 
     let req = CreateCredentialTemplateRequest {
         name: args.name.clone(),
-        fields: to_map(fields?),
+        fields: to_map(&fields),
         apple_wallet_options: Option::None,
         description: args.description.clone(),
         allow_additional_fields: args.allow_additional,
         title: args.title.clone(),
-        field_ordering: Default::default(),
+        field_ordering: to_field_ordering(&fields),
     };
     let request = tonic::Request::new(req);
 

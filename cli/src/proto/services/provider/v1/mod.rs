@@ -171,7 +171,9 @@ pub struct WalletConfiguration {
     /// This list does not contain the issued token, only metadata
     /// such as ID, description, and creation date.
     #[prost(message, repeated, tag = "7")]
-    pub auth_tokens: ::prost::alloc::vec::Vec<super::super::account::v1::WalletAuthToken>,
+    pub auth_tokens: ::prost::alloc::vec::Vec<
+        super::super::account::v1::WalletAuthToken,
+    >,
     /// List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
     /// This is deprecated; use `external_identities` instead.
     #[deprecated]
@@ -209,7 +211,18 @@ pub struct IonOptions {
 }
 /// Nested message and enum types in `IonOptions`.
 pub mod ion_options {
-    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum IonNetwork {
         TestNet = 0,
@@ -247,7 +260,18 @@ pub struct IndyOptions {
 }
 /// Nested message and enum types in `IndyOptions`.
 pub mod indy_options {
-    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(::serde::Serialize, ::serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum IndyNetwork {
         Danube = 0,
@@ -348,7 +372,8 @@ pub struct UpgradeDidResponse {
     #[prost(string, tag = "1")]
     pub did: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum IdentityProvider {
     /// Identity provider is unknown
@@ -387,8 +412,8 @@ impl IdentityProvider {
 /// Generated client implementations.
 pub mod provider_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
+    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct ProviderClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -419,15 +444,22 @@ pub mod provider_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(inner: T, interceptor: F) -> ProviderClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(
+            inner: T,
+            interceptor: F,
+        ) -> ProviderClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
+                Response = http::Response<
+                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                >,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<
+                http::Request<tonic::body::BoxBody>,
+            >>::Error: Into<StdError> + Send + Sync,
         {
             ProviderClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -454,9 +486,16 @@ pub mod provider_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/CreateEcosystem");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.provider.v1.Provider/CreateEcosystem",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Returns the public key being used to create/verify oberon tokens
@@ -467,9 +506,16 @@ pub mod provider_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetOberonKey");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.provider.v1.Provider/GetOberonKey",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Upgrade a wallet's DID from `did:key` to another method
@@ -480,22 +526,39 @@ pub mod provider_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/UpgradeDID");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.provider.v1.Provider/UpgradeDID",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Search for issuers/providers/verifiers in the current ecosystem
         pub async fn search_wallet_configurations(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchWalletConfigurationsRequest>,
-        ) -> Result<tonic::Response<super::SearchWalletConfigurationResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::SearchWalletConfigurationResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/SearchWalletConfigurations");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.provider.v1.Provider/SearchWalletConfigurations",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

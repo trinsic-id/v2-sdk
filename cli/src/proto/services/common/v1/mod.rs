@@ -10,7 +10,25 @@ pub struct Nonce {
     #[prost(bytes = "vec", tag = "2")]
     pub request_hash: ::prost::alloc::vec::Vec<u8>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct TrinsicClientOptions {
+    /// Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+    #[prost(string, tag = "1")]
+    pub server_endpoint: ::prost::alloc::string::String,
+    /// Trinsic API port; defaults to `443`
+    #[prost(int32, tag = "2")]
+    pub server_port: i32,
+    /// Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
+    #[prost(bool, tag = "3")]
+    pub server_use_tls: bool,
+    /// Authentication token for SDK calls; defaults to empty string (unauthenticated)
+    #[prost(string, tag = "4")]
+    pub auth_token: ::prost::alloc::string::String,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ResponseStatus {
     Success = 0,
@@ -50,7 +68,8 @@ impl ResponseStatus {
 }
 /// Enum of all supported DID Methods
 /// <https://docs.godiddy.com/en/supported-methods>
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum SupportedDidMethod {
     /// The did:key method -- all wallets use this by default
