@@ -1,16 +1,3 @@
-/// Request for creating or signing into an account
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct SignInRequest {
-    /// Account registration details
-    #[prost(message, optional, tag = "1")]
-    pub details: ::core::option::Option<AccountDetails>,
-    /// ID of Ecosystem to use
-    /// Ignored if `invitation_code` is passed
-    #[prost(string, tag = "3")]
-    pub ecosystem_id: ::prost::alloc::string::String,
-}
 /// Account registration details
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -28,24 +15,18 @@ pub struct AccountDetails {
     #[prost(string, tag = "3")]
     pub sms: ::prost::alloc::string::String,
 }
-/// Response for creating new account
-/// This object will indicate if a confirmation code
-/// was sent to one of the users two-factor methods
-/// like email, SMS, etc.
+/// Token protection info
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct SignInResponse {
-    /// Indicates if confirmation of account is required.
-    #[prost(enumeration = "ConfirmationMethod", tag = "3")]
-    pub confirmation_method: i32,
-    /// Contains authentication data for use with the current device.
-    /// This object must be stored in a secure place. It can also be
-    /// protected with a PIN, but this is optional.
-    /// See the docs at <https://docs.trinsic.id> for more information
-    /// on working with authentication data.
-    #[prost(message, optional, tag = "4")]
-    pub profile: ::core::option::Option<AccountProfile>,
+pub struct TokenProtection {
+    /// Indicates if token is protected using a PIN,
+    /// security code, HSM secret, etc.
+    #[prost(bool, tag = "1")]
+    pub enabled: bool,
+    /// The method used to protect the token
+    #[prost(enumeration = "ConfirmationMethod", tag = "2")]
+    pub method: i32,
 }
 /// Device profile containing sensitive authentication data.
 /// This information should be stored securely
@@ -68,19 +49,6 @@ pub struct AccountProfile {
     /// protection secret before using the token for authentication.
     #[prost(message, optional, tag = "4")]
     pub protection: ::core::option::Option<TokenProtection>,
-}
-/// Token protection info
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct TokenProtection {
-    /// Indicates if token is protected using a PIN,
-    /// security code, HSM secret, etc.
-    #[prost(bool, tag = "1")]
-    pub enabled: bool,
-    /// The method used to protect the token
-    #[prost(enumeration = "ConfirmationMethod", tag = "2")]
-    pub method: i32,
 }
 /// Request for information about the account used to make the request
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -191,7 +159,8 @@ pub struct WalletAuthToken {
     pub date_created: ::prost::alloc::string::String,
 }
 /// Confirmation method type for two-factor workflows
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ConfirmationMethod {
     /// No confirmation required
@@ -234,8 +203,8 @@ impl ConfirmationMethod {
 /// Generated client implementations.
 pub mod account_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
+    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct AccountClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -266,15 +235,22 @@ pub mod account_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(inner: T, interceptor: F) -> AccountClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(
+            inner: T,
+            interceptor: F,
+        ) -> AccountClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
+                Response = http::Response<
+                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                >,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<
+                http::Request<tonic::body::BoxBody>,
+            >>::Error: Into<StdError> + Send + Sync,
         {
             AccountClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -293,19 +269,6 @@ pub mod account_client {
             self.inner = self.inner.accept_compressed(encoding);
             self
         }
-        /// Sign in to an already existing account
-        pub async fn sign_in(
-            &mut self,
-            request: impl tonic::IntoRequest<super::SignInRequest>,
-        ) -> Result<tonic::Response<super::SignInResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
-            self.inner.unary(request.into_request(), path, codec).await
-        }
         /// Begin login flow for specified account, creating one if it does not already exist
         pub async fn login(
             &mut self,
@@ -314,9 +277,16 @@ pub mod account_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Login");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.account.v1.Account/Login",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Finalize login flow with two-factor confirmation code
@@ -327,9 +297,16 @@ pub mod account_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/LoginConfirm");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.account.v1.Account/LoginConfirm",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Get account information
@@ -340,9 +317,16 @@ pub mod account_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Info");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.account.v1.Account/Info",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

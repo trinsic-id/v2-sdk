@@ -96,7 +96,10 @@ pub struct CreateCredentialTemplateRequest {
     pub name: ::prost::alloc::string::String,
     /// Fields which compose the template
     #[prost(map = "string, message", tag = "2")]
-    pub fields: ::std::collections::HashMap<::prost::alloc::string::String, TemplateField>,
+    pub fields: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        TemplateField,
+    >,
     /// Whether credentials may be issued against this template which have fields
     /// not specified in `fields`
     #[prost(bool, tag = "3")]
@@ -110,7 +113,10 @@ pub struct CreateCredentialTemplateRequest {
     /// Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
     /// If not provided, this will be auto-generated.
     #[prost(map = "string, message", tag = "6")]
-    pub field_ordering: ::std::collections::HashMap<::prost::alloc::string::String, FieldOrdering>,
+    pub field_ordering: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        FieldOrdering,
+    >,
     /// Options for rendering the template in Apple Wallet
     #[prost(message, optional, tag = "7")]
     pub apple_wallet_options: ::core::option::Option<AppleWalletOptions>,
@@ -140,10 +146,16 @@ pub struct UpdateCredentialTemplateRequest {
     pub description: ::core::option::Option<::prost::alloc::string::String>,
     /// Fields to update within the Template
     #[prost(map = "string, message", tag = "4")]
-    pub fields: ::std::collections::HashMap<::prost::alloc::string::String, TemplateFieldPatch>,
+    pub fields: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        TemplateFieldPatch,
+    >,
     /// New field ordering options. See documentation for template creation for usage information.
     #[prost(map = "string, message", tag = "5")]
-    pub field_ordering: ::std::collections::HashMap<::prost::alloc::string::String, FieldOrdering>,
+    pub field_ordering: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        FieldOrdering,
+    >,
     /// New Apple Wallet configuration
     #[prost(message, optional, tag = "6")]
     pub apple_wallet_options: ::core::option::Option<AppleWalletOptions>,
@@ -173,7 +185,10 @@ pub struct TemplateData {
     pub version: i32,
     /// Fields defined for the template
     #[prost(map = "string, message", tag = "4")]
-    pub fields: ::std::collections::HashMap<::prost::alloc::string::String, TemplateField>,
+    pub fields: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        TemplateField,
+    >,
     /// Whether credentials issued against this template may
     /// contain fields not defined by template
     #[prost(bool, tag = "5")]
@@ -201,7 +216,10 @@ pub struct TemplateData {
     pub description: ::prost::alloc::string::String,
     /// Map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
     #[prost(map = "string, message", tag = "14")]
-    pub field_ordering: ::std::collections::HashMap<::prost::alloc::string::String, FieldOrdering>,
+    pub field_ordering: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        FieldOrdering,
+    >,
     /// Options for rendering the template in Apple Wallet
     #[prost(message, optional, tag = "15")]
     pub apple_wallet_options: ::core::option::Option<AppleWalletOptions>,
@@ -293,6 +311,24 @@ pub struct UriFieldData {
     #[prost(enumeration = "UriRenderMethod", tag = "2")]
     pub render_method: i32,
 }
+/// Request to fetch a template by ID
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetVerificationTemplateRequest {
+    /// ID of template to fetch
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+}
+/// Response to `GetCredentialTemplateRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetVerificationTemplateResponse {
+    /// Template fetched by ID
+    #[prost(message, optional, tag = "1")]
+    pub template: ::core::option::Option<VerificationTemplateData>,
+}
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -304,7 +340,10 @@ pub struct CreateVerificationTemplateRequest {
     ///
     /// TODO - Add support for predicate types - currently only equality.
     #[prost(map = "string, message", tag = "2")]
-    pub fields: ::std::collections::HashMap<::prost::alloc::string::String, VerificationTemplateField>,
+    pub fields: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        VerificationTemplateField,
+    >,
     /// Source credential template, used for verifying that the specified `fields` are present in the credential template
     #[prost(string, tag = "3")]
     pub credential_template_id: ::prost::alloc::string::String,
@@ -337,7 +376,10 @@ pub struct UpdateVerificationTemplateRequest {
     pub description: ::core::option::Option<::prost::alloc::string::String>,
     /// Fields to update within the Template
     #[prost(map = "string, message", tag = "4")]
-    pub fields: ::std::collections::HashMap<::prost::alloc::string::String, VerificationTemplateFieldPatch>,
+    pub fields: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        VerificationTemplateFieldPatch,
+    >,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -373,11 +415,14 @@ pub struct VerificationTemplateData {
     #[prost(int32, tag = "3")]
     pub version: i32,
     /// Fields defined for the template
-    #[prost(message, repeated, tag = "4")]
-    pub fields: ::prost::alloc::vec::Vec<VerificationTemplateField>,
-    /// URI pointing to template JSON schema document
-    #[prost(string, tag = "6")]
-    pub schema_uri: ::prost::alloc::string::String,
+    #[prost(map = "string, message", tag = "4")]
+    pub fields: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        VerificationTemplateField,
+    >,
+    /// Source credential template, used for verifying that the specified `fields` are present in the credential template
+    #[prost(string, tag = "5")]
+    pub credential_template_id: ::prost::alloc::string::String,
     /// ID of ecosystem in which template resides
     #[prost(string, tag = "8")]
     pub ecosystem_id: ::prost::alloc::string::String,
@@ -444,14 +489,15 @@ pub struct VerificationTemplateField {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerificationTemplateFieldPatch {
     /// Human-readable name of the field
-    #[prost(string, optional, tag = "1")]
-    pub title: ::core::option::Option<::prost::alloc::string::String>,
-    /// Human-readable description of the field
-    #[prost(string, optional, tag = "2")]
-    pub description: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(enumeration = "VerificationShareType", tag = "1")]
+    pub field_share_type: i32,
+    /// User-facing explanation of what is done with this data
+    #[prost(string, tag = "2")]
+    pub usage_policy: ::prost::alloc::string::String,
 }
 /// Valid types for credential fields
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum FieldType {
     String = 0,
@@ -487,7 +533,8 @@ impl FieldType {
     }
 }
 /// How to display a URI value when rendering a credential.
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum UriRenderMethod {
     /// Display URI as text
@@ -519,11 +566,12 @@ impl UriRenderMethod {
         }
     }
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum VerificationShareType {
-    Required = 0,
-    Optional = 1,
+    Optional = 0,
+    Required = 1,
 }
 impl VerificationShareType {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -532,15 +580,15 @@ impl VerificationShareType {
     /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
-            VerificationShareType::Required => "REQUIRED",
             VerificationShareType::Optional => "OPTIONAL",
+            VerificationShareType::Required => "REQUIRED",
         }
     }
     /// Creates an enum from field names used in the ProtoBuf definition.
     pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
         match value {
-            "REQUIRED" => Some(Self::Required),
             "OPTIONAL" => Some(Self::Optional),
+            "REQUIRED" => Some(Self::Required),
             _ => None,
         }
     }
@@ -548,8 +596,8 @@ impl VerificationShareType {
 /// Generated client implementations.
 pub mod credential_templates_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
+    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct CredentialTemplatesClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -580,15 +628,22 @@ pub mod credential_templates_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(inner: T, interceptor: F) -> CredentialTemplatesClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(
+            inner: T,
+            interceptor: F,
+        ) -> CredentialTemplatesClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
+                Response = http::Response<
+                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                >,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<
+                http::Request<tonic::body::BoxBody>,
+            >>::Error: Into<StdError> + Send + Sync,
         {
             CredentialTemplatesClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -611,131 +666,249 @@ pub mod credential_templates_client {
         pub async fn create(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateCredentialTemplateRequest>,
-        ) -> Result<tonic::Response<super::CreateCredentialTemplateResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::CreateCredentialTemplateResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Create");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Fetch a credential template by ID
         pub async fn get(
             &mut self,
             request: impl tonic::IntoRequest<super::GetCredentialTemplateRequest>,
-        ) -> Result<tonic::Response<super::GetCredentialTemplateResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::GetCredentialTemplateResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Get");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Update metadata of a template
         pub async fn update(
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateCredentialTemplateRequest>,
-        ) -> Result<tonic::Response<super::UpdateCredentialTemplateResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::UpdateCredentialTemplateResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Update");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Search credential templates using SQL, returning strongly-typed template data
         pub async fn list(
             &mut self,
             request: impl tonic::IntoRequest<super::ListCredentialTemplatesRequest>,
-        ) -> Result<tonic::Response<super::ListCredentialTemplatesResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::ListCredentialTemplatesResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/List");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/List",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Search credential templates using SQL, returning raw JSON data
         pub async fn search(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchCredentialTemplatesRequest>,
-        ) -> Result<tonic::Response<super::SearchCredentialTemplatesResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::SearchCredentialTemplatesResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Search");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Delete a credential template from the current ecosystem by ID
         pub async fn delete(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteCredentialTemplateRequest>,
-        ) -> Result<tonic::Response<super::DeleteCredentialTemplateResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::DeleteCredentialTemplateResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Create/update verification templates
         pub async fn create_verification_template(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateVerificationTemplateRequest>,
-        ) -> Result<tonic::Response<super::CreateVerificationTemplateResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::CreateVerificationTemplateResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/CreateVerificationTemplate");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/CreateVerificationTemplate",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
-        pub async fn list_verification_template(
+        pub async fn list_verification_templates(
             &mut self,
             request: impl tonic::IntoRequest<super::ListVerificationTemplatesRequest>,
-        ) -> Result<tonic::Response<super::ListVerificationTemplatesResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::ListVerificationTemplatesResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplate");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplates",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        pub async fn get_verification_template(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetVerificationTemplateRequest>,
+        ) -> Result<
+            tonic::Response<super::GetVerificationTemplateResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/GetVerificationTemplate",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn update_verification_template(
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateVerificationTemplateRequest>,
-        ) -> Result<tonic::Response<super::UpdateVerificationTemplateResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::UpdateVerificationTemplateResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/UpdateVerificationTemplate");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/UpdateVerificationTemplate",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn delete_verification_template(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteVerificationTemplateRequest>,
-        ) -> Result<tonic::Response<super::DeleteVerificationTemplateResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::DeleteVerificationTemplateResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/DeleteVerificationTemplate");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.templates.v1.CredentialTemplates/DeleteVerificationTemplate",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

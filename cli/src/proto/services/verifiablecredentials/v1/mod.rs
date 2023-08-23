@@ -24,6 +24,9 @@ pub struct IssueFromTemplateRequest {
     /// governance framework.
     #[prost(bool, tag = "6")]
     pub include_governance: bool,
+    /// The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+    #[prost(enumeration = "SignatureType", tag = "7")]
+    pub signature_type: i32,
 }
 /// Response to `IssueFromTemplateRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -134,7 +137,10 @@ pub struct VerifyProofResponse {
     /// such as schema conformance, revocation status, signature, etc.
     /// Detailed results are provided for failed validations.
     #[prost(map = "string, message", tag = "3")]
-    pub validation_results: ::std::collections::HashMap<::prost::alloc::string::String, ValidationMessage>,
+    pub validation_results: ::std::collections::HashMap<
+        ::prost::alloc::string::String,
+        ValidationMessage,
+    >,
 }
 /// Result of a validation check on a proof
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -245,6 +251,9 @@ pub struct CreateCredentialOfferRequest {
     /// This link will point to the credential offer in the wallet app.
     #[prost(bool, tag = "5")]
     pub generate_share_url: bool,
+    /// The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
+    #[prost(enumeration = "SignatureType", tag = "7")]
+    pub signature_type: i32,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -317,11 +326,46 @@ pub mod reject_credential_request {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RejectCredentialResponse {}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum SignatureType {
+    /// The signature type is not specified. The experimental signature type will be used.
+    Unspecified = 0,
+    /// The signature type uses EdDSA with the Ed25519 curve (NIST compliant).
+    /// This type of signature does not support selective disclosure of attributes.
+    Standard = 1,
+    /// The signature type uses BBS signatures with BLS12-381 curve (experimental).
+    /// This type of signature allows for selective disclosure of attributes.
+    Experimental = 2,
+}
+impl SignatureType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            SignatureType::Unspecified => "UNSPECIFIED",
+            SignatureType::Standard => "STANDARD",
+            SignatureType::Experimental => "EXPERIMENTAL",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "UNSPECIFIED" => Some(Self::Unspecified),
+            "STANDARD" => Some(Self::Standard),
+            "EXPERIMENTAL" => Some(Self::Experimental),
+            _ => None,
+        }
+    }
+}
 /// Generated client implementations.
 pub mod verifiable_credential_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
+    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct VerifiableCredentialClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -352,15 +396,22 @@ pub mod verifiable_credential_client {
             let inner = tonic::client::Grpc::with_origin(inner, origin);
             Self { inner }
         }
-        pub fn with_interceptor<F>(inner: T, interceptor: F) -> VerifiableCredentialClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(
+            inner: T,
+            interceptor: F,
+        ) -> VerifiableCredentialClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
+                Response = http::Response<
+                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                >,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<
+                http::Request<tonic::body::BoxBody>,
+            >>::Error: Into<StdError> + Send + Sync,
         {
             VerifiableCredentialClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -389,9 +440,16 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Check credential status in the revocation registry
@@ -402,9 +460,16 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Update credential status by setting the revocation value
@@ -415,9 +480,16 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Create a proof from a signed document that is a valid
@@ -429,9 +501,16 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/CreateProof");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Verifies a proof by checking the signature value, and if possible schema validation,
@@ -443,9 +522,16 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Sends a document directly to a user's email within the given ecosystem
@@ -456,22 +542,39 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/Send");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/Send",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Create credential offer
         pub async fn create_credential_offer(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateCredentialOfferRequest>,
-        ) -> Result<tonic::Response<super::CreateCredentialOfferResponse>, tonic::Status> {
+        ) -> Result<
+            tonic::Response<super::CreateCredentialOfferResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Accept an offer to exchange a credential
@@ -482,9 +585,16 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/AcceptCredential");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/AcceptCredential",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Reject an offer to exchange a credential
@@ -495,9 +605,16 @@ pub mod verifiable_credential_client {
             self.inner
                 .ready()
                 .await
-                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.v1.VerifiableCredential/RejectCredential");
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/RejectCredential",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
