@@ -53,17 +53,18 @@ const VerificationState$json = {
   '1': 'VerificationState',
   '2': [
     {'1': 'VERIFICATION_PENDING', '2': 0},
-    {'1': 'VERIFICATION_STARTED', '2': 1},
-    {'1': 'VERIFICATION_SUCCESS', '2': 2},
-    {'1': 'VERIFICATION_FAILED', '2': 3},
+    {'1': 'VERIFICATION_PENDING_REUSE', '2': 1},
+    {'1': 'VERIFICATION_STARTED', '2': 2},
+    {'1': 'VERIFICATION_SUCCESS', '2': 3},
+    {'1': 'VERIFICATION_FAILED', '2': 4},
   ],
 };
 
 /// Descriptor for `VerificationState`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List verificationStateDescriptor = $convert.base64Decode(
-    'ChFWZXJpZmljYXRpb25TdGF0ZRIYChRWRVJJRklDQVRJT05fUEVORElORxAAEhgKFFZFUklGSU'
-    'NBVElPTl9TVEFSVEVEEAESGAoUVkVSSUZJQ0FUSU9OX1NVQ0NFU1MQAhIXChNWRVJJRklDQVRJ'
-    'T05fRkFJTEVEEAM=');
+    'ChFWZXJpZmljYXRpb25TdGF0ZRIYChRWRVJJRklDQVRJT05fUEVORElORxAAEh4KGlZFUklGSU'
+    'NBVElPTl9QRU5ESU5HX1JFVVNFEAESGAoUVkVSSUZJQ0FUSU9OX1NUQVJURUQQAhIYChRWRVJJ'
+    'RklDQVRJT05fU1VDQ0VTUxADEhcKE1ZFUklGSUNBVElPTl9GQUlMRUQQBA==');
 
 @$core.Deprecated('Use iDVSessionDescriptor instead')
 const IDVSession$json = {
@@ -208,9 +209,9 @@ final $typed_data.Uint8List requestedVerificationDescriptor = $convert.base64Dec
     'ChVSZXF1ZXN0ZWRWZXJpZmljYXRpb24SOQoEdHlwZRgBIAEoDjIlLnNlcnZpY2VzLmNvbm5lY3'
     'QudjEuVmVyaWZpY2F0aW9uVHlwZVIEdHlwZQ==');
 
-@$core.Deprecated('Use createSessionResponseDescriptor instead')
-const CreateSessionResponse$json = {
-  '1': 'CreateSessionResponse',
+@$core.Deprecated('Use createSessionResponse2Descriptor instead')
+const CreateSessionResponse2$json = {
+  '1': 'CreateSessionResponse2',
   '2': [
     {
       '1': 'session',
@@ -223,10 +224,11 @@ const CreateSessionResponse$json = {
   ],
 };
 
-/// Descriptor for `CreateSessionResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createSessionResponseDescriptor = $convert.base64Decode(
-    'ChVDcmVhdGVTZXNzaW9uUmVzcG9uc2USOQoHc2Vzc2lvbhgBIAEoCzIfLnNlcnZpY2VzLmNvbm'
-    '5lY3QudjEuSURWU2Vzc2lvblIHc2Vzc2lvbg==');
+/// Descriptor for `CreateSessionResponse2`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createSessionResponse2Descriptor =
+    $convert.base64Decode(
+        'ChZDcmVhdGVTZXNzaW9uUmVzcG9uc2UyEjkKB3Nlc3Npb24YASABKAsyHy5zZXJ2aWNlcy5jb2'
+        '5uZWN0LnYxLklEVlNlc3Npb25SB3Nlc3Npb24=');
 
 @$core.Deprecated('Use cancelSessionRequestDescriptor instead')
 const CancelSessionRequest$json = {

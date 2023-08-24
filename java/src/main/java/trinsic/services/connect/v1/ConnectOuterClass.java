@@ -33,9 +33,9 @@ public final class ConnectOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_RequestedVerification_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_connect_v1_CreateSessionResponse_descriptor;
+      internal_static_services_connect_v1_CreateSessionResponse2_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_connect_v1_CreateSessionResponse_fieldAccessorTable;
+      internal_static_services_connect_v1_CreateSessionResponse2_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_connect_v1_CancelSessionRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -86,8 +86,8 @@ public final class ConnectOuterClass {
           + "\024CreateSessionRequest\022A\n\r"
           + "verifications\030\001 \003(\0132*.services.connect.v1.RequestedVerification\"L\n"
           + "\025RequestedVerification\0223\n"
-          + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\"I\n"
-          + "\025CreateSessionResponse\0220\n"
+          + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\"J\n"
+          + "\026CreateSessionResponse2\0220\n"
           + "\007session\030\001 \001(\0132\037.services.connect.v1.IDVSession\".\n"
           + "\024CancelSessionRequest\022\026\n"
           + "\016idv_session_id\030\001 \001(\t\"I\n"
@@ -108,21 +108,22 @@ public final class ConnectOuterClass {
           + "\021IDV_USER_CANCELED\020\005\022\017\n"
           + "\013IDV_EXPIRED\020\006\022\023\n"
           + "\017IDV_RP_CANCELED\020\007\022\016\n\n"
-          + "IDV_FAILED\020\010*z\n"
+          + "IDV_FAILED\020\010*\232\001\n"
           + "\021VerificationState\022\030\n"
-          + "\024VERIFICATION_PENDING\020\000\022\030\n"
-          + "\024VERIFICATION_STARTED\020\001\022\030\n"
-          + "\024VERIFICATION_SUCCESS\020\002\022\027\n"
-          + "\023VERIFICATION_FAILED\020\0032\270\002\n"
-          + "\007Connect\022f\n\r"
-          + "CreateSession\022).services.connect.v1.CreateS"
-          + "essionRequest\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
-          + "CancelSession\022).services.connect.v1.CancelSessionRequest\032*."
-          + "services.connect.v1.CancelSessionResponse\022]\n\n"
-          + "GetSession\022&.services.connect.v1.Ge"
-          + "tSessionRequest\032\'.services.connect.v1.GetSessionResponseBZ\n"
-          + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/connect\252\002"
-          + "\033Trinsic.Services.Connect.V1b\006proto3"
+          + "\024VERIFICATION_PENDING\020\000\022\036\n"
+          + "\032VERIFICATION_PENDING_REUSE\020\001\022\030\n"
+          + "\024VERIFICATION_STARTED\020\002\022\030\n"
+          + "\024VERIFICATION_SUCCESS\020\003\022\027\n"
+          + "\023VERIFICATION_FAILED\020\0042\271\002\n"
+          + "\007Connect\022g\n\r"
+          + "CreateSession\022).services.connect.v1.CreateSession"
+          + "Request\032+.services.connect.v1.CreateSessionResponse2\022f\n\r"
+          + "CancelSession\022).services"
+          + ".connect.v1.CancelSessionRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
+          + "GetSession\022&.services.connect.v1.GetSess"
+          + "ionRequest\032\'.services.connect.v1.GetSessionResponseBZ\n"
+          + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/connect\252\002\033Trin"
+          + "sic.Services.Connect.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -174,11 +175,11 @@ public final class ConnectOuterClass {
             new java.lang.String[] {
               "Type",
             });
-    internal_static_services_connect_v1_CreateSessionResponse_descriptor =
+    internal_static_services_connect_v1_CreateSessionResponse2_descriptor =
         getDescriptor().getMessageTypes().get(4);
-    internal_static_services_connect_v1_CreateSessionResponse_fieldAccessorTable =
+    internal_static_services_connect_v1_CreateSessionResponse2_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_connect_v1_CreateSessionResponse_descriptor,
+            internal_static_services_connect_v1_CreateSessionResponse2_descriptor,
             new java.lang.String[] {
               "Session",
             });

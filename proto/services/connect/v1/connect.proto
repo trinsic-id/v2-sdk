@@ -20,7 +20,7 @@ enum IDVSessionState {
   // Session has been shown to user (iframe / popup opened), but
   // user has not yet logged in.
   IDV_INITIATED = 1;
-  
+
   // User has entered their phone number, but not yet authenticated with the code sent via SMS
   IDV_AUTHENTICATING = 2;
 
@@ -47,19 +47,22 @@ enum IDVSessionState {
 enum VerificationState {
   // This verification has not yet been performed in the flow
   VERIFICATION_PENDING = 0;
+  // This verification has been started by the user, and can be reused from a previous verification, but the user
+  // has not yet decided whether to reuse it.
+  VERIFICATION_PENDING_REUSE = 1;
   // This verification has been started by the user, but not yet completed
-  VERIFICATION_STARTED = 1;
+  VERIFICATION_STARTED = 2;
   // This verification has been successfully completed
-  VERIFICATION_SUCCESS = 2;
+  VERIFICATION_SUCCESS = 3;
   // This verification has failed
-  VERIFICATION_FAILED = 3;
+  VERIFICATION_FAILED = 4;
 }
 
 // An Identity Verification Session
 message IDVSession {
   // The ID of the IDVSession.
   string id = 1;
-  
+
   // The Client Token for this IDVSession. This should be passed to your frontend to initiate
   // the IDV flow using Trinsic's Web SDK.
   string client_token = 2;
@@ -72,10 +75,10 @@ message IDVSession {
 
   // The resultant signed VP combining the results of all verifications
   optional string result_vp = 5;
-  
+
   // The unix timestamp, in seconds, that this IDVSession was created
   fixed64 created = 6;
-  
+
   // The unix timestamp, in seconds, that this IDVSession's `state` was last updated
   fixed64 updated = 7;
 }
@@ -84,18 +87,18 @@ message IDVSession {
 message Verification {
   // The ID of the verification
   string id = 1;
-  
+
   // The type of verification (driver's license, passport, proof of address, etc)
   VerificationType type = 2;
 
   // The state of the verification
   VerificationState state = 3;
 
-  // Whether this was a reused (true) or fresh (false) verification. 
+  // Whether this was a reused (true) or fresh (false) verification.
   // If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
   bool reused = 4;
 
-  // The unix timestamp, in seconds, when this verification was begun 
+  // The unix timestamp, in seconds, when this verification was begun
   // by the user -- or `0` if not yet begun.
   fixed64 begun = 5;
 
@@ -116,7 +119,7 @@ message RequestedVerification {
 }
 
 // Response to `CreateIDVSessionRequest`
-message CreateSessionResponse {
+message CreateSessionResponse2 {
   // The created IDVSession
   IDVSession session = 1;
 }
@@ -149,11 +152,11 @@ message GetSessionResponse {
 // The Connect service provides access to Trinsic Connect, a reusable identity verification service.
 service Connect {
   // Create an IDVSession
-  rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
-  
+  rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse2);
+
   // Cancel an IDVSession
   rpc CancelSession(CancelSessionRequest) returns (CancelSessionResponse);
-  
+
   // Get an IDVSession
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
 }

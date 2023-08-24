@@ -24,8 +24,8 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.TrinsicOptions
   }
 
   fun credential(): CredentialServiceKt {
-      if (_credentialService == null) _credentialService = CredentialServiceKt(optionsBuilder)
-      return _credentialService!!
+    if (_credentialService == null) _credentialService = CredentialServiceKt(optionsBuilder)
+    return _credentialService!!
   }
 
   fun fileManagement(): FileManagementServiceKt {

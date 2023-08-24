@@ -27,9 +27,8 @@ public class TrinsicService extends ServiceBase {
   }
 
   public ConnectService connect() {
-      if (_connectService == null)
-          _connectService = new ConnectService(this.getOptionsBuilder());
-      return _connectService;
+    if (_connectService == null) _connectService = new ConnectService(this.getOptionsBuilder());
+    return _connectService;
   }
 
   public CredentialService credential() {
