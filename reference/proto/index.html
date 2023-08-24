@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.3+insiders-4.39.2">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.3+insiders-4.39.3">
     
     
       
@@ -2468,10 +2468,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#createsessionresponse" class="md-nav__link">
+  <a href="#createsessionresponse2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CreateSessionResponse
+        CreateSessionResponse2
       
     </span>
   </a>
@@ -5279,7 +5279,7 @@ DEPRECATED, will be removed June 1st 2023</p>
 <tr>
 <td>CreateSession</td>
 <td><a href="/reference/proto#services-connect-v1-CreateSessionRequest">CreateSessionRequest</a></td>
-<td><a href="/reference/proto#services-connect-v1-CreateSessionResponse">CreateSessionResponse</a></td>
+<td><a href="/reference/proto#services-connect-v1-CreateSessionResponse2">CreateSessionResponse2</a></td>
 <td>Create an IDVSession</td>
 </tr>
 <tr>
@@ -5355,8 +5355,8 @@ DEPRECATED, will be removed June 1st 2023</p>
 </tr>
 </tbody>
 </table>
-<p><a name="services-connect-v1-CreateSessionResponse"></a></p>
-<h3 id="createsessionresponse">CreateSessionResponse<a class="headerlink" href="#createsessionresponse" title="Permanent link">&para;</a></h3>
+<p><a name="services-connect-v1-CreateSessionResponse2"></a></p>
+<h3 id="createsessionresponse2">CreateSessionResponse2<a class="headerlink" href="#createsessionresponse2" title="Permanent link">&para;</a></h3>
 <p>Response to <code>CreateIDVSessionRequest</code></p>
 <table>
 <thead>
@@ -5626,18 +5626,23 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>This verification has not yet been performed in the flow</td>
 </tr>
 <tr>
-<td>VERIFICATION_STARTED</td>
+<td>VERIFICATION_PENDING_REUSE</td>
 <td>1</td>
+<td>This verification has been started by the user, and can be reused from a previous verification, but the user has not yet decided whether to reuse it.</td>
+</tr>
+<tr>
+<td>VERIFICATION_STARTED</td>
+<td>2</td>
 <td>This verification has been started by the user, but not yet completed</td>
 </tr>
 <tr>
 <td>VERIFICATION_SUCCESS</td>
-<td>2</td>
+<td>3</td>
 <td>This verification has been successfully completed</td>
 </tr>
 <tr>
 <td>VERIFICATION_FAILED</td>
-<td>3</td>
+<td>4</td>
 <td>This verification has failed</td>
 </tr>
 </tbody>
