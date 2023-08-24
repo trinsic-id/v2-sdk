@@ -22,21 +22,21 @@ public final class ConnectGrpc {
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<
           trinsic.services.connect.v1.CreateSessionRequest,
-          trinsic.services.connect.v1.CreateSessionResponse>
+          trinsic.services.connect.v1.CreateSessionResponse2>
       getCreateSessionMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CreateSession",
       requestType = trinsic.services.connect.v1.CreateSessionRequest.class,
-      responseType = trinsic.services.connect.v1.CreateSessionResponse.class,
+      responseType = trinsic.services.connect.v1.CreateSessionResponse2.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
           trinsic.services.connect.v1.CreateSessionRequest,
-          trinsic.services.connect.v1.CreateSessionResponse>
+          trinsic.services.connect.v1.CreateSessionResponse2>
       getCreateSessionMethod() {
     io.grpc.MethodDescriptor<
             trinsic.services.connect.v1.CreateSessionRequest,
-            trinsic.services.connect.v1.CreateSessionResponse>
+            trinsic.services.connect.v1.CreateSessionResponse2>
         getCreateSessionMethod;
     if ((getCreateSessionMethod = ConnectGrpc.getCreateSessionMethod) == null) {
       synchronized (ConnectGrpc.class) {
@@ -45,7 +45,7 @@ public final class ConnectGrpc {
               getCreateSessionMethod =
                   io.grpc.MethodDescriptor
                       .<trinsic.services.connect.v1.CreateSessionRequest,
-                          trinsic.services.connect.v1.CreateSessionResponse>
+                          trinsic.services.connect.v1.CreateSessionResponse2>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateSession"))
@@ -56,7 +56,7 @@ public final class ConnectGrpc {
                                   .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.connect.v1.CreateSessionResponse
+                              trinsic.services.connect.v1.CreateSessionResponse2
                                   .getDefaultInstance()))
                       .setSchemaDescriptor(new ConnectMethodDescriptorSupplier("CreateSession"))
                       .build();
@@ -214,7 +214,7 @@ public final class ConnectGrpc {
      */
     public void createSession(
         trinsic.services.connect.v1.CreateSessionRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.CreateSessionResponse>
+        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.CreateSessionResponse2>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getCreateSessionMethod(), responseObserver);
@@ -257,7 +257,7 @@ public final class ConnectGrpc {
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
                       trinsic.services.connect.v1.CreateSessionRequest,
-                      trinsic.services.connect.v1.CreateSessionResponse>(
+                      trinsic.services.connect.v1.CreateSessionResponse2>(
                       this, METHODID_CREATE_SESSION)))
           .addMethod(
               getCancelSessionMethod(),
@@ -302,7 +302,7 @@ public final class ConnectGrpc {
      */
     public void createSession(
         trinsic.services.connect.v1.CreateSessionRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.CreateSessionResponse>
+        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.CreateSessionResponse2>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateSessionMethod(), getCallOptions()),
@@ -368,7 +368,7 @@ public final class ConnectGrpc {
      * Create an IDVSession
      * </pre>
      */
-    public trinsic.services.connect.v1.CreateSessionResponse createSession(
+    public trinsic.services.connect.v1.CreateSessionResponse2 createSession(
         trinsic.services.connect.v1.CreateSessionRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateSessionMethod(), getCallOptions(), request);
@@ -427,7 +427,7 @@ public final class ConnectGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.connect.v1.CreateSessionResponse>
+            trinsic.services.connect.v1.CreateSessionResponse2>
         createSession(trinsic.services.connect.v1.CreateSessionRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreateSessionMethod(), getCallOptions()), request);
@@ -486,7 +486,7 @@ public final class ConnectGrpc {
         case METHODID_CREATE_SESSION:
           serviceImpl.createSession(
               (trinsic.services.connect.v1.CreateSessionRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.connect.v1.CreateSessionResponse>)
+              (io.grpc.stub.StreamObserver<trinsic.services.connect.v1.CreateSessionResponse2>)
                   responseObserver);
           break;
         case METHODID_CANCEL_SESSION:

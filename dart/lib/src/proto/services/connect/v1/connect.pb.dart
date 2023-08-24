@@ -484,8 +484,8 @@ class RequestedVerification extends $pb.GeneratedMessage {
 }
 
 /// Response to `CreateIDVSessionRequest`
-class CreateSessionResponse extends $pb.GeneratedMessage {
-  factory CreateSessionResponse({
+class CreateSessionResponse2 extends $pb.GeneratedMessage {
+  factory CreateSessionResponse2({
     IDVSession? session,
   }) {
     final $result = create();
@@ -494,16 +494,16 @@ class CreateSessionResponse extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  CreateSessionResponse._() : super();
-  factory CreateSessionResponse.fromBuffer($core.List<$core.int> i,
+  CreateSessionResponse2._() : super();
+  factory CreateSessionResponse2.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory CreateSessionResponse.fromJson($core.String i,
+  factory CreateSessionResponse2.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CreateSessionResponse',
+      _omitMessageNames ? '' : 'CreateSessionResponse2',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
       createEmptyInstance: create)
@@ -514,27 +514,27 @@ class CreateSessionResponse extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  CreateSessionResponse clone() =>
-      CreateSessionResponse()..mergeFromMessage(this);
+  CreateSessionResponse2 clone() =>
+      CreateSessionResponse2()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  CreateSessionResponse copyWith(
-          void Function(CreateSessionResponse) updates) =>
-      super.copyWith((message) => updates(message as CreateSessionResponse))
-          as CreateSessionResponse;
+  CreateSessionResponse2 copyWith(
+          void Function(CreateSessionResponse2) updates) =>
+      super.copyWith((message) => updates(message as CreateSessionResponse2))
+          as CreateSessionResponse2;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static CreateSessionResponse create() => CreateSessionResponse._();
-  CreateSessionResponse createEmptyInstance() => create();
-  static $pb.PbList<CreateSessionResponse> createRepeated() =>
-      $pb.PbList<CreateSessionResponse>();
+  static CreateSessionResponse2 create() => CreateSessionResponse2._();
+  CreateSessionResponse2 createEmptyInstance() => create();
+  static $pb.PbList<CreateSessionResponse2> createRepeated() =>
+      $pb.PbList<CreateSessionResponse2>();
   @$core.pragma('dart2js:noInline')
-  static CreateSessionResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CreateSessionResponse>(create);
-  static CreateSessionResponse? _defaultInstance;
+  static CreateSessionResponse2 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateSessionResponse2>(create);
+  static CreateSessionResponse2? _defaultInstance;
 
   /// The created IDVSession
   @$pb.TagNumber(1)

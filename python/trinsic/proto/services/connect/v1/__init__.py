@@ -71,15 +71,22 @@ class VerificationState(betterproto.Enum):
     VERIFICATION_PENDING = 0
     """This verification has not yet been performed in the flow"""
 
-    VERIFICATION_STARTED = 1
+    VERIFICATION_PENDING_REUSE = 1
+    """
+    This verification has been started by the user, and can be reused from a
+    previous verification, but the user has not yet decided whether to reuse
+    it.
+    """
+
+    VERIFICATION_STARTED = 2
     """
     This verification has been started by the user, but not yet completed
     """
 
-    VERIFICATION_SUCCESS = 2
+    VERIFICATION_SUCCESS = 3
     """This verification has been successfully completed"""
 
-    VERIFICATION_FAILED = 3
+    VERIFICATION_FAILED = 4
     """This verification has failed"""
 
 
@@ -137,14 +144,14 @@ class Verification(betterproto.Message):
 
     reused: bool = betterproto.bool_field(4)
     """
-    Whether this was a reused (true) or fresh (false) verification.  If `state`
+    Whether this was a reused (true) or fresh (false) verification. If `state`
     is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey
     useful information.
     """
 
     begun: int = betterproto.fixed64_field(5)
     """
-    The unix timestamp, in seconds, when this verification was begun  by the
+    The unix timestamp, in seconds, when this verification was begun by the
     user -- or `0` if not yet begun.
     """
 
@@ -172,7 +179,7 @@ class RequestedVerification(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class CreateSessionResponse(betterproto.Message):
+class CreateSessionResponse2(betterproto.Message):
     """Response to `CreateIDVSessionRequest`"""
 
     session: "IdvSession" = betterproto.message_field(1)
@@ -218,11 +225,11 @@ class ConnectStub(betterproto.ServiceStub):
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["_MetadataLike"] = None,
-    ) -> "CreateSessionResponse":
+    ) -> "CreateSessionResponse2":
         return await self._unary_unary(
             "/services.connect.v1.Connect/CreateSession",
             create_session_request,
-            CreateSessionResponse,
+            CreateSessionResponse2,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -264,7 +271,7 @@ class ConnectStub(betterproto.ServiceStub):
 class ConnectBase(ServiceBase):
     async def create_session(
         self, create_session_request: "CreateSessionRequest"
-    ) -> "CreateSessionResponse":
+    ) -> "CreateSessionResponse2":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def cancel_session(
@@ -298,7 +305,7 @@ class ConnectBase(ServiceBase):
                 self.__rpc_create_session,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 CreateSessionRequest,
-                CreateSessionResponse,
+                CreateSessionResponse2,
             ),
             "/services.connect.v1.Connect/CancelSession": grpclib.const.Handler(
                 self.__rpc_cancel_session,

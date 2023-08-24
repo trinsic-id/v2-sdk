@@ -27,12 +27,23 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    *
    *
    * <pre>
+   * This verification has been started by the user, and can be reused from a previous verification, but the user
+   * has not yet decided whether to reuse it.
+   * </pre>
+   *
+   * <code>VERIFICATION_PENDING_REUSE = 1;</code>
+   */
+  VERIFICATION_PENDING_REUSE(1),
+  /**
+   *
+   *
+   * <pre>
    * This verification has been started by the user, but not yet completed
    * </pre>
    *
-   * <code>VERIFICATION_STARTED = 1;</code>
+   * <code>VERIFICATION_STARTED = 2;</code>
    */
-  VERIFICATION_STARTED(1),
+  VERIFICATION_STARTED(2),
   /**
    *
    *
@@ -40,9 +51,9 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    * This verification has been successfully completed
    * </pre>
    *
-   * <code>VERIFICATION_SUCCESS = 2;</code>
+   * <code>VERIFICATION_SUCCESS = 3;</code>
    */
-  VERIFICATION_SUCCESS(2),
+  VERIFICATION_SUCCESS(3),
   /**
    *
    *
@@ -50,9 +61,9 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    * This verification has failed
    * </pre>
    *
-   * <code>VERIFICATION_FAILED = 3;</code>
+   * <code>VERIFICATION_FAILED = 4;</code>
    */
-  VERIFICATION_FAILED(3),
+  VERIFICATION_FAILED(4),
   UNRECOGNIZED(-1),
   ;
 
@@ -70,12 +81,23 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    *
    *
    * <pre>
+   * This verification has been started by the user, and can be reused from a previous verification, but the user
+   * has not yet decided whether to reuse it.
+   * </pre>
+   *
+   * <code>VERIFICATION_PENDING_REUSE = 1;</code>
+   */
+  public static final int VERIFICATION_PENDING_REUSE_VALUE = 1;
+  /**
+   *
+   *
+   * <pre>
    * This verification has been started by the user, but not yet completed
    * </pre>
    *
-   * <code>VERIFICATION_STARTED = 1;</code>
+   * <code>VERIFICATION_STARTED = 2;</code>
    */
-  public static final int VERIFICATION_STARTED_VALUE = 1;
+  public static final int VERIFICATION_STARTED_VALUE = 2;
   /**
    *
    *
@@ -83,9 +105,9 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    * This verification has been successfully completed
    * </pre>
    *
-   * <code>VERIFICATION_SUCCESS = 2;</code>
+   * <code>VERIFICATION_SUCCESS = 3;</code>
    */
-  public static final int VERIFICATION_SUCCESS_VALUE = 2;
+  public static final int VERIFICATION_SUCCESS_VALUE = 3;
   /**
    *
    *
@@ -93,9 +115,9 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    * This verification has failed
    * </pre>
    *
-   * <code>VERIFICATION_FAILED = 3;</code>
+   * <code>VERIFICATION_FAILED = 4;</code>
    */
-  public static final int VERIFICATION_FAILED_VALUE = 3;
+  public static final int VERIFICATION_FAILED_VALUE = 4;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -124,10 +146,12 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
       case 0:
         return VERIFICATION_PENDING;
       case 1:
-        return VERIFICATION_STARTED;
+        return VERIFICATION_PENDING_REUSE;
       case 2:
-        return VERIFICATION_SUCCESS;
+        return VERIFICATION_STARTED;
       case 3:
+        return VERIFICATION_SUCCESS;
+      case 4:
         return VERIFICATION_FAILED;
       default:
         return null;

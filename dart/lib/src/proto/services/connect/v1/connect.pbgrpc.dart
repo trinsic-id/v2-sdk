@@ -15,50 +15,50 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'connect.pb.dart' as $7;
+import 'connect.pb.dart' as $3;
 
 export 'connect.pb.dart';
 
 @$pb.GrpcServiceName('services.connect.v1.Connect')
 class ConnectClient extends $grpc.Client {
   static final _$createSession =
-      $grpc.ClientMethod<$7.CreateSessionRequest, $7.CreateSessionResponse>(
+      $grpc.ClientMethod<$3.CreateSessionRequest, $3.CreateSessionResponse2>(
           '/services.connect.v1.Connect/CreateSession',
-          ($7.CreateSessionRequest value) => value.writeToBuffer(),
+          ($3.CreateSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $7.CreateSessionResponse.fromBuffer(value));
+              $3.CreateSessionResponse2.fromBuffer(value));
   static final _$cancelSession =
-      $grpc.ClientMethod<$7.CancelSessionRequest, $7.CancelSessionResponse>(
+      $grpc.ClientMethod<$3.CancelSessionRequest, $3.CancelSessionResponse>(
           '/services.connect.v1.Connect/CancelSession',
-          ($7.CancelSessionRequest value) => value.writeToBuffer(),
+          ($3.CancelSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $7.CancelSessionResponse.fromBuffer(value));
+              $3.CancelSessionResponse.fromBuffer(value));
   static final _$getSession =
-      $grpc.ClientMethod<$7.GetSessionRequest, $7.GetSessionResponse>(
+      $grpc.ClientMethod<$3.GetSessionRequest, $3.GetSessionResponse>(
           '/services.connect.v1.Connect/GetSession',
-          ($7.GetSessionRequest value) => value.writeToBuffer(),
+          ($3.GetSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $7.GetSessionResponse.fromBuffer(value));
+              $3.GetSessionResponse.fromBuffer(value));
 
   ConnectClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$7.CreateSessionResponse> createSession(
-      $7.CreateSessionRequest request,
+  $grpc.ResponseFuture<$3.CreateSessionResponse2> createSession(
+      $3.CreateSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createSession, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.CancelSessionResponse> cancelSession(
-      $7.CancelSessionRequest request,
+  $grpc.ResponseFuture<$3.CancelSessionResponse> cancelSession(
+      $3.CancelSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$cancelSession, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.GetSessionResponse> getSession(
-      $7.GetSessionRequest request,
+  $grpc.ResponseFuture<$3.GetSessionResponse> getSession(
+      $3.GetSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getSession, request, options: options);
   }
@@ -70,53 +70,53 @@ abstract class ConnectServiceBase extends $grpc.Service {
 
   ConnectServiceBase() {
     $addMethod(
-        $grpc.ServiceMethod<$7.CreateSessionRequest, $7.CreateSessionResponse>(
+        $grpc.ServiceMethod<$3.CreateSessionRequest, $3.CreateSessionResponse2>(
             'CreateSession',
             createSession_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $7.CreateSessionRequest.fromBuffer(value),
-            ($7.CreateSessionResponse value) => value.writeToBuffer()));
+                $3.CreateSessionRequest.fromBuffer(value),
+            ($3.CreateSessionResponse2 value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$7.CancelSessionRequest, $7.CancelSessionResponse>(
+        $grpc.ServiceMethod<$3.CancelSessionRequest, $3.CancelSessionResponse>(
             'CancelSession',
             cancelSession_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $7.CancelSessionRequest.fromBuffer(value),
-            ($7.CancelSessionResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.GetSessionRequest, $7.GetSessionResponse>(
+                $3.CancelSessionRequest.fromBuffer(value),
+            ($3.CancelSessionResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.GetSessionRequest, $3.GetSessionResponse>(
         'GetSession',
         getSession_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.GetSessionRequest.fromBuffer(value),
-        ($7.GetSessionResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $3.GetSessionRequest.fromBuffer(value),
+        ($3.GetSessionResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$7.CreateSessionResponse> createSession_Pre(
+  $async.Future<$3.CreateSessionResponse2> createSession_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.CreateSessionRequest> request) async {
+      $async.Future<$3.CreateSessionRequest> request) async {
     return createSession(call, await request);
   }
 
-  $async.Future<$7.CancelSessionResponse> cancelSession_Pre(
+  $async.Future<$3.CancelSessionResponse> cancelSession_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$7.CancelSessionRequest> request) async {
+      $async.Future<$3.CancelSessionRequest> request) async {
     return cancelSession(call, await request);
   }
 
-  $async.Future<$7.GetSessionResponse> getSession_Pre($grpc.ServiceCall call,
-      $async.Future<$7.GetSessionRequest> request) async {
+  $async.Future<$3.GetSessionResponse> getSession_Pre($grpc.ServiceCall call,
+      $async.Future<$3.GetSessionRequest> request) async {
     return getSession(call, await request);
   }
 
-  $async.Future<$7.CreateSessionResponse> createSession(
-      $grpc.ServiceCall call, $7.CreateSessionRequest request);
-  $async.Future<$7.CancelSessionResponse> cancelSession(
-      $grpc.ServiceCall call, $7.CancelSessionRequest request);
-  $async.Future<$7.GetSessionResponse> getSession(
-      $grpc.ServiceCall call, $7.GetSessionRequest request);
+  $async.Future<$3.CreateSessionResponse2> createSession(
+      $grpc.ServiceCall call, $3.CreateSessionRequest request);
+  $async.Future<$3.CancelSessionResponse> cancelSession(
+      $grpc.ServiceCall call, $3.CancelSessionRequest request);
+  $async.Future<$3.GetSessionResponse> getSession(
+      $grpc.ServiceCall call, $3.GetSessionRequest request);
 }

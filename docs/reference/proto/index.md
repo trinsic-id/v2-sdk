@@ -8,6 +8,756 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 
 
 
+<a name="services_provider_v1_access-management-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/provider/v1/access-management.proto
+
+
+
+<a name="services-provider-v1-AccessManagement"></a>
+
+### Service - AccessManagement
+Access Management service provides methods to manage access to ecosystem resources
+such by assigning roles and permissions to wallet accounts
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
+| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
+| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
+| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
+
+ <!-- end services -->
+
+
+<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
+
+### AddRoleAssignmentRequest
+Role management
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to assign |
+| email | [string](/reference/proto#string) | Email address of account to assign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to assign role. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
+
+### AddRoleAssignmentResponse
+
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesRequest"></a>
+
+### ListAvailableRolesRequest
+Request to fetch the available roles in the current ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesResponse"></a>
+
+### ListAvailableRolesResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
+
+### ListRoleAssignmentsRequest
+Request to fetch the list of roles assigned to the current account
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to list roles. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to list roles. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to list roles. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
+
+### ListRoleAssignmentsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
+
+### RemoveRoleAssignmentRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to unassign |
+| email | [string](/reference/proto#string) | Email address of account to unassign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to unassign role. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
+
+### RemoveRoleAssignmentResponse
+
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_provider_v1_provider-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/provider/v1/provider.proto
+
+
+
+<a name="services-provider-v1-Provider"></a>
+
+### Service - Provider
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
+| GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
+| UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
+| SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
+
+ <!-- end services -->
+
+
+<a name="services-provider-v1-CreateEcosystemRequest"></a>
+
+### CreateEcosystemRequest
+Request to create an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
+| description | [string](/reference/proto#string) | Ecosystem description |
+| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
+| domain | [string](/reference/proto#string) | New domain URL |
+
+
+
+
+
+
+<a name="services-provider-v1-CreateEcosystemResponse"></a>
+
+### CreateEcosystemResponse
+Response to `CreateEcosystemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Details of the created ecosystem |
+| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
+| confirmation_method | [services.account.v1.ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. |
+
+
+
+
+
+
+<a name="services-provider-v1-Ecosystem"></a>
+
+### Ecosystem
+Details of an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | URN of the ecosystem |
+| name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
+| description | [string](/reference/proto#string) | Ecosystem description |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoRequest"></a>
+
+### EcosystemInfoRequest
+Request to fetch information about an ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoResponse"></a>
+
+### EcosystemInfoResponse
+Response to `InfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to current ecosystem in the account token |
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyRequest"></a>
+
+### GetOberonKeyRequest
+Request to fetch the Trinsic public key used
+to verify authentication token validity
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyResponse"></a>
+
+### GetOberonKeyResponse
+Response to `GetOberonKeyRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64-url encoded string |
+
+
+
+
+
+
+<a name="services-provider-v1-IndyOptions"></a>
+
+### IndyOptions
+Options for creation of DID on the SOV network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IndyOptions.IndyNetwork](/reference/proto#services-provider-v1-IndyOptions-IndyNetwork) | SOV network on which DID should be published |
+
+
+
+
+
+
+<a name="services-provider-v1-IonOptions"></a>
+
+### IonOptions
+Options for creation of DID on the ION network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IonOptions.IonNetwork](/reference/proto#services-provider-v1-IonOptions-IonNetwork) | ION network on which DID should be published |
+
+
+
+
+
+
+<a name="services-provider-v1-RefreshDomainVerificationStatusRequest"></a>
+
+### RefreshDomainVerificationStatusRequest
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+
+
+
+
+<a name="services-provider-v1-RefreshDomainVerificationStatusResponse"></a>
+
+### RefreshDomainVerificationStatusResponse
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| domain | [string](/reference/proto#string) | Domain URL verified |
+| domain_verified | [bool](/reference/proto#bool) | Specifies if the above `domain` was successfully verified |
+
+
+
+
+
+
+<a name="services-provider-v1-RetrieveDomainVerificationRecordRequest"></a>
+
+### RetrieveDomainVerificationRecordRequest
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+
+
+
+
+<a name="services-provider-v1-RetrieveDomainVerificationRecordResponse"></a>
+
+### RetrieveDomainVerificationRecordResponse
+The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+DEPRECATED, will be removed June 1st 2023
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| verification_record_name | [string](/reference/proto#string) | TXT record name to use for domain verification |
+| verification_record_value | [string](/reference/proto#string) | TXT code for domain verification |
+
+
+
+
+
+
+<a name="services-provider-v1-SearchWalletConfigurationResponse"></a>
+
+### SearchWalletConfigurationResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| results | [WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] | Results matching the search query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
+
+
+
+
+
+
+<a name="services-provider-v1-SearchWalletConfigurationsRequest"></a>
+
+### SearchWalletConfigurationsRequest
+Search for issuers/holders/verifiers
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-provider-v1-UpgradeDidRequest"></a>
+
+### UpgradeDidRequest
+Request to upgrade a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to upgrade. Mutually exclusive with `email` and `walletId`. |
+| method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
+| ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
+| indy_options | [IndyOptions](/reference/proto#services-provider-v1-IndyOptions) | Configuration for creation of DID on INDY network |
+
+
+
+
+
+
+<a name="services-provider-v1-UpgradeDidResponse"></a>
+
+### UpgradeDidResponse
+Response to `UpgradeDIDRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did | [string](/reference/proto#string) | New DID of wallet |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletConfiguration"></a>
+
+### WalletConfiguration
+Strongly typed information about wallet configurations
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Name/description of the wallet |
+| email | [string](/reference/proto#string) | **Deprecated.** Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in `external_identities`, if any. |
+| sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
+| wallet_id | [string](/reference/proto#string) |  |
+| public_did | [string](/reference/proto#string) | The DID of the wallet |
+| config_type | [string](/reference/proto#string) |  |
+| auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
+| external_identity_ids | [string](/reference/proto#string)[] | **Deprecated.** List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use `external_identities` instead. |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
+| description | [string](/reference/proto#string) |  |
+| external_identities | [WalletExternalIdentity](/reference/proto#services-provider-v1-WalletExternalIdentity)[] | List of external identities associated with this wallet. |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletExternalIdentity"></a>
+
+### WalletExternalIdentity
+An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| provider | [IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of this identity (whether this identity is an email address, phone number, etc.) |
+| id | [string](/reference/proto#string) | The actual email address/phone number/etc. for this identity |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-provider-v1-IdentityProvider"></a>
+
+### IdentityProvider
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Unknown | 0 | Identity provider is unknown |
+| Email | 1 | Identity provider is email |
+| Phone | 2 | Identity provider is phone |
+| Passkey | 3 | Identity provider is passkey (WebAuthn) -- for Trinsic internal use only |
+
+
+
+<a name="services-provider-v1-IndyOptions-IndyNetwork"></a>
+
+### IndyOptions.IndyNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Danube | 0 |  |
+| SovrinBuilder | 1 |  |
+| SovrinStaging | 2 |  |
+| Sovrin | 3 |  |
+| IdUnionTest | 4 |  |
+| IdUnion | 5 |  |
+| IndicioTest | 6 |  |
+| IndicioDemo | 7 |  |
+| Indicio | 8 |  |
+
+
+
+<a name="services-provider-v1-IonOptions-IonNetwork"></a>
+
+### IonOptions.IonNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TestNet | 0 |  |
+| MainNet | 1 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_connect_v1_connect-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/connect/v1/connect.proto
+
+
+
+<a name="services-connect-v1-Connect"></a>
+
+### Service - Connect
+The Connect service provides access to Trinsic Connect, a reusable identity verification service.
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse2](/reference/proto#services-connect-v1-CreateSessionResponse2) | Create an IDVSession |
+| CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
+| GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
+
+ <!-- end services -->
+
+
+<a name="services-connect-v1-CancelSessionRequest"></a>
+
+### CancelSessionRequest
+Request to cancel an Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to cancel |
+
+
+
+
+
+
+<a name="services-connect-v1-CancelSessionResponse"></a>
+
+### CancelSessionResponse
+Response to `CancelIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession in its current state after cancellation |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionRequest"></a>
+
+### CreateSessionRequest
+Request to create an Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| verifications | [RequestedVerification](/reference/proto#services-connect-v1-RequestedVerification)[] | Array of verifications to perform |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionResponse2"></a>
+
+### CreateSessionResponse2
+Response to `CreateIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The created IDVSession |
+
+
+
+
+
+
+<a name="services-connect-v1-GetSessionRequest"></a>
+
+### GetSessionRequest
+Request to get an IDVSession
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to get |
+
+
+
+
+
+
+<a name="services-connect-v1-GetSessionResponse"></a>
+
+### GetSessionResponse
+Response to `GetIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession |
+
+
+
+
+
+
+<a name="services-connect-v1-IDVSession"></a>
+
+### IDVSession
+An Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | The ID of the IDVSession. |
+| client_token | [string](/reference/proto#string) | The Client Token for this IDVSession. This should be passed to your frontend to initiate the IDV flow using Trinsic's Web SDK. |
+| state | [IDVSessionState](/reference/proto#services-connect-v1-IDVSessionState) | State of the IDVSession |
+| verifications | [IDVSession.VerificationsEntry](/reference/proto#services-connect-v1-IDVSession-VerificationsEntry)[] | The actual Verifications to perform in this IDV flow |
+| result_vp | [string](/reference/proto#string) | The resultant signed VP combining the results of all verifications |
+| created | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession was created |
+| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession's `state` was last updated |
+
+
+
+
+
+
+<a name="services-connect-v1-IDVSession-VerificationsEntry"></a>
+
+### IDVSession.VerificationsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [Verification](/reference/proto#services-connect-v1-Verification) |  |
+
+
+
+
+
+
+<a name="services-connect-v1-RequestedVerification"></a>
+
+### RequestedVerification
+A verification to perform in an IDV flow
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification to perform |
+
+
+
+
+
+
+<a name="services-connect-v1-Verification"></a>
+
+### Verification
+A Verification that is part of an IDVSession
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | The ID of the verification |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification (driver's license, passport, proof of address, etc) |
+| state | [VerificationState](/reference/proto#services-connect-v1-VerificationState) | The state of the verification |
+| reused | [bool](/reference/proto#bool) | Whether this was a reused (true) or fresh (false) verification. If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information. |
+| begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
+| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- o |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-connect-v1-IDVSessionState"></a>
+
+### IDVSessionState
+The states a VerificationSession can be in
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| IDV_CREATED | 0 | Session has been created, but not yet shown to user |
+| IDV_INITIATED | 1 | Session has been shown to user (iframe / popup opened), but user has not yet logged in. |
+| IDV_AUTHENTICATING | 2 | User has entered their phone number, but not yet authenticated with the code sent via SMS |
+| IDV_IN_PROGRESS | 3 | User has been authenticated and is performing identity verification |
+| IDV_SUCCESS | 4 | Session was completed successfully and IDV data is available to RP |
+| IDV_USER_CANCELED | 5 | User explicitly canceled session / did not consent |
+| IDV_EXPIRED | 6 | Session was not completed within {X} timeframe from creation and expired |
+| IDV_RP_CANCELED | 7 | Relying Party canceled the session via the SDK |
+| IDV_FAILED | 8 | The user's identity was not deemed legitimate by the IDV |
+
+
+
+<a name="services-connect-v1-VerificationState"></a>
+
+### VerificationState
+The states an individual Verification can be in
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| VERIFICATION_PENDING | 0 | This verification has not yet been performed in the flow |
+| VERIFICATION_PENDING_REUSE | 1 | This verification has been started by the user, and can be reused from a previous verification, but the user has not yet decided whether to reuse it. |
+| VERIFICATION_STARTED | 2 | This verification has been started by the user, but not yet completed |
+| VERIFICATION_SUCCESS | 3 | This verification has been successfully completed |
+| VERIFICATION_FAILED | 4 | This verification has failed |
+
+
+
+<a name="services-connect-v1-VerificationType"></a>
+
+### VerificationType
+The type of verification to perform
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| GOVERNMENT_ID | 0 | Government-issued ID (driver's license, passport, etc) |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="services_verifiable-credentials_templates_v1_templates-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -1742,6 +2492,216 @@ Response to `UpdateItemRequest`
 
 
 
+<a name="services_file-management_v1_file-management-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/file-management/v1/file-management.proto
+
+
+
+<a name="services-filemanagement-v1-FileManagement"></a>
+
+### Service - FileManagement
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| UploadFile | [UploadFileRequest](/reference/proto#services-filemanagement-v1-UploadFileRequest) | [UploadFileResponse](/reference/proto#services-filemanagement-v1-UploadFileResponse) | Upload a file to Trinsic's CDN |
+| GetFile | [GetFileRequest](/reference/proto#services-filemanagement-v1-GetFileRequest) | [GetFileResponse](/reference/proto#services-filemanagement-v1-GetFileResponse) | Fetch information about a file by its ID |
+| DeleteFile | [DeleteFileRequest](/reference/proto#services-filemanagement-v1-DeleteFileRequest) | [DeleteFileResponse](/reference/proto#services-filemanagement-v1-DeleteFileResponse) | Delete a file by its ID |
+| ListFiles | [ListFilesRequest](/reference/proto#services-filemanagement-v1-ListFilesRequest) | [ListFilesResponse](/reference/proto#services-filemanagement-v1-ListFilesResponse) | List files the calling account has uploaded |
+| GetStorageStats | [GetStorageStatsRequest](/reference/proto#services-filemanagement-v1-GetStorageStatsRequest) | [GetStorageStatsResponse](/reference/proto#services-filemanagement-v1-GetStorageStatsResponse) | Get statistics about files uploaded by the calling account |
+
+ <!-- end services -->
+
+
+<a name="services-filemanagement-v1-DeleteFileRequest"></a>
+
+### DeleteFileRequest
+Request to delete a file from Trinsic's CDN by ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of file to delete |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-DeleteFileResponse"></a>
+
+### DeleteFileResponse
+Response to `DeleteFileRequest`. Empty payload.
+
+
+
+
+
+
+<a name="services-filemanagement-v1-File"></a>
+
+### File
+Contains information about a file stored in Trinsic's CDN
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of file, generated randomly by Trinsic on upload |
+| uploader_id | [string](/reference/proto#string) | Wallet ID of uploader |
+| size | [uint32](/reference/proto#uint32) | Size, in bytes, of file |
+| mime_type | [string](/reference/proto#string) | Uploader-provided MIME type of file |
+| uploaded | [string](/reference/proto#string) | ISO 8601 timestamp of when file was uploaded to Trinsic |
+| url | [string](/reference/proto#string) | CDN URL of file |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetFileRequest"></a>
+
+### GetFileRequest
+Request to fetch information about a stored file
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of file to fetch |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetFileResponse"></a>
+
+### GetFileResponse
+Response to `GetFileRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| file | [File](/reference/proto#services-filemanagement-v1-File) | File specified by `id` parameter of `GetFileRequest`. |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetStorageStatsRequest"></a>
+
+### GetStorageStatsRequest
+Request to get statistics about files uploaded by this account
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetStorageStatsResponse"></a>
+
+### GetStorageStatsResponse
+Response to `GetStorageStatsRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| stats | [StorageStats](/reference/proto#services-filemanagement-v1-StorageStats) | Statistics about files uploaded by the calling account |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-ListFilesRequest"></a>
+
+### ListFilesRequest
+Request to list files
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | Query to search with. If not specified, will return the most recent 100 files. |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListFilesRequest` if more data is available for query |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-ListFilesResponse"></a>
+
+### ListFilesResponse
+Response to `ListFilesRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| files | [File](/reference/proto#services-filemanagement-v1-File)[] | Files found by query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListFilesRequest` |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-StorageStats"></a>
+
+### StorageStats
+Represents aggregate statistics of all files uploaded by a single issuer
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| num_files | [uint32](/reference/proto#uint32) | Number of files uploaded by this account |
+| total_size | [uint64](/reference/proto#uint64) | Sum total size of all files, in bytes |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-UploadFileRequest"></a>
+
+### UploadFileRequest
+Request to upload a file to Trinsic's CDN
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| contents | [bytes](/reference/proto#bytes) | Raw content of file |
+| mime_type | [string](/reference/proto#string) | MIME type describing file contents |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-UploadFileResponse"></a>
+
+### UploadFileResponse
+Response to `UploadFileRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uploaded_file | [File](/reference/proto#services-filemanagement-v1-File) | Information about newly-uploaded file |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="services_trust-registry_v1_trust-registry-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -1978,1105 +2938,6 @@ Response to `UnregisterMemberRequest`
 
 
 
-<a name="services_file-management_v1_file-management-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/file-management/v1/file-management.proto
-
-
-
-<a name="services-filemanagement-v1-FileManagement"></a>
-
-### Service - FileManagement
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| UploadFile | [UploadFileRequest](/reference/proto#services-filemanagement-v1-UploadFileRequest) | [UploadFileResponse](/reference/proto#services-filemanagement-v1-UploadFileResponse) | Upload a file to Trinsic's CDN |
-| GetFile | [GetFileRequest](/reference/proto#services-filemanagement-v1-GetFileRequest) | [GetFileResponse](/reference/proto#services-filemanagement-v1-GetFileResponse) | Fetch information about a file by its ID |
-| DeleteFile | [DeleteFileRequest](/reference/proto#services-filemanagement-v1-DeleteFileRequest) | [DeleteFileResponse](/reference/proto#services-filemanagement-v1-DeleteFileResponse) | Delete a file by its ID |
-| ListFiles | [ListFilesRequest](/reference/proto#services-filemanagement-v1-ListFilesRequest) | [ListFilesResponse](/reference/proto#services-filemanagement-v1-ListFilesResponse) | List files the calling account has uploaded |
-| GetStorageStats | [GetStorageStatsRequest](/reference/proto#services-filemanagement-v1-GetStorageStatsRequest) | [GetStorageStatsResponse](/reference/proto#services-filemanagement-v1-GetStorageStatsResponse) | Get statistics about files uploaded by the calling account |
-
- <!-- end services -->
-
-
-<a name="services-filemanagement-v1-DeleteFileRequest"></a>
-
-### DeleteFileRequest
-Request to delete a file from Trinsic's CDN by ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file to delete |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-DeleteFileResponse"></a>
-
-### DeleteFileResponse
-Response to `DeleteFileRequest`. Empty payload.
-
-
-
-
-
-
-<a name="services-filemanagement-v1-File"></a>
-
-### File
-Contains information about a file stored in Trinsic's CDN
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file, generated randomly by Trinsic on upload |
-| uploader_id | [string](/reference/proto#string) | Wallet ID of uploader |
-| size | [uint32](/reference/proto#uint32) | Size, in bytes, of file |
-| mime_type | [string](/reference/proto#string) | Uploader-provided MIME type of file |
-| uploaded | [string](/reference/proto#string) | ISO 8601 timestamp of when file was uploaded to Trinsic |
-| url | [string](/reference/proto#string) | CDN URL of file |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetFileRequest"></a>
-
-### GetFileRequest
-Request to fetch information about a stored file
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file to fetch |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetFileResponse"></a>
-
-### GetFileResponse
-Response to `GetFileRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| file | [File](/reference/proto#services-filemanagement-v1-File) | File specified by `id` parameter of `GetFileRequest`. |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetStorageStatsRequest"></a>
-
-### GetStorageStatsRequest
-Request to get statistics about files uploaded by this account
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetStorageStatsResponse"></a>
-
-### GetStorageStatsResponse
-Response to `GetStorageStatsRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| stats | [StorageStats](/reference/proto#services-filemanagement-v1-StorageStats) | Statistics about files uploaded by the calling account |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-ListFilesRequest"></a>
-
-### ListFilesRequest
-Request to list files
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | Query to search with. If not specified, will return the most recent 100 files. |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListFilesRequest` if more data is available for query |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-ListFilesResponse"></a>
-
-### ListFilesResponse
-Response to `ListFilesRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| files | [File](/reference/proto#services-filemanagement-v1-File)[] | Files found by query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListFilesRequest` |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-StorageStats"></a>
-
-### StorageStats
-Represents aggregate statistics of all files uploaded by a single issuer
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| num_files | [uint32](/reference/proto#uint32) | Number of files uploaded by this account |
-| total_size | [uint64](/reference/proto#uint64) | Sum total size of all files, in bytes |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-UploadFileRequest"></a>
-
-### UploadFileRequest
-Request to upload a file to Trinsic's CDN
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| contents | [bytes](/reference/proto#bytes) | Raw content of file |
-| mime_type | [string](/reference/proto#string) | MIME type describing file contents |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-UploadFileResponse"></a>
-
-### UploadFileResponse
-Response to `UploadFileRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| uploaded_file | [File](/reference/proto#services-filemanagement-v1-File) | Information about newly-uploaded file |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_connect_v1_connect-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/connect/v1/connect.proto
-
-
-
-<a name="services-connect-v1-Connect"></a>
-
-### Service - Connect
-The Connect service provides access to Trinsic Connect, a reusable identity verification service.
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse](/reference/proto#services-connect-v1-CreateSessionResponse) | Create an IDVSession |
-| CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
-| GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
-
- <!-- end services -->
-
-
-<a name="services-connect-v1-CancelSessionRequest"></a>
-
-### CancelSessionRequest
-Request to cancel an Identity Verification Session
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to cancel |
-
-
-
-
-
-
-<a name="services-connect-v1-CancelSessionResponse"></a>
-
-### CancelSessionResponse
-Response to `CancelIDVSessionRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession in its current state after cancellation |
-
-
-
-
-
-
-<a name="services-connect-v1-CreateSessionRequest"></a>
-
-### CreateSessionRequest
-Request to create an Identity Verification Session
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| verifications | [RequestedVerification](/reference/proto#services-connect-v1-RequestedVerification)[] | Array of verifications to perform |
-
-
-
-
-
-
-<a name="services-connect-v1-CreateSessionResponse"></a>
-
-### CreateSessionResponse
-Response to `CreateIDVSessionRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The created IDVSession |
-
-
-
-
-
-
-<a name="services-connect-v1-GetSessionRequest"></a>
-
-### GetSessionRequest
-Request to get an IDVSession
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to get |
-
-
-
-
-
-
-<a name="services-connect-v1-GetSessionResponse"></a>
-
-### GetSessionResponse
-Response to `GetIDVSessionRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession |
-
-
-
-
-
-
-<a name="services-connect-v1-IDVSession"></a>
-
-### IDVSession
-An Identity Verification Session
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | The ID of the IDVSession. |
-| client_token | [string](/reference/proto#string) | The Client Token for this IDVSession. This should be passed to your frontend to initiate the IDV flow using Trinsic's Web SDK. |
-| state | [IDVSessionState](/reference/proto#services-connect-v1-IDVSessionState) | State of the IDVSession |
-| verifications | [IDVSession.VerificationsEntry](/reference/proto#services-connect-v1-IDVSession-VerificationsEntry)[] | The actual Verifications to perform in this IDV flow |
-| result_vp | [string](/reference/proto#string) | The resultant signed VP combining the results of all verifications |
-| created | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession was created |
-| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession's `state` was last updated |
-
-
-
-
-
-
-<a name="services-connect-v1-IDVSession-VerificationsEntry"></a>
-
-### IDVSession.VerificationsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [Verification](/reference/proto#services-connect-v1-Verification) |  |
-
-
-
-
-
-
-<a name="services-connect-v1-RequestedVerification"></a>
-
-### RequestedVerification
-A verification to perform in an IDV flow
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification to perform |
-
-
-
-
-
-
-<a name="services-connect-v1-Verification"></a>
-
-### Verification
-A Verification that is part of an IDVSession
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | The ID of the verification |
-| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification (driver's license, passport, proof of address, etc) |
-| state | [VerificationState](/reference/proto#services-connect-v1-VerificationState) | The state of the verification |
-| reused | [bool](/reference/proto#bool) | Whether this was a reused (true) or fresh (false) verification. If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information. |
-| begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
-| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- o |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-connect-v1-IDVSessionState"></a>
-
-### IDVSessionState
-The states a VerificationSession can be in
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| IDV_CREATED | 0 | Session has been created, but not yet shown to user |
-| IDV_INITIATED | 1 | Session has been shown to user (iframe / popup opened), but user has not yet logged in. |
-| IDV_AUTHENTICATING | 2 | User has entered their phone number, but not yet authenticated with the code sent via SMS |
-| IDV_IN_PROGRESS | 3 | User has been authenticated and is performing identity verification |
-| IDV_SUCCESS | 4 | Session was completed successfully and IDV data is available to RP |
-| IDV_USER_CANCELED | 5 | User explicitly canceled session / did not consent |
-| IDV_EXPIRED | 6 | Session was not completed within {X} timeframe from creation and expired |
-| IDV_RP_CANCELED | 7 | Relying Party canceled the session via the SDK |
-| IDV_FAILED | 8 | The user's identity was not deemed legitimate by the IDV |
-
-
-
-<a name="services-connect-v1-VerificationState"></a>
-
-### VerificationState
-The states an individual Verification can be in
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| VERIFICATION_PENDING | 0 | This verification has not yet been performed in the flow |
-| VERIFICATION_STARTED | 1 | This verification has been started by the user, but not yet completed |
-| VERIFICATION_SUCCESS | 2 | This verification has been successfully completed |
-| VERIFICATION_FAILED | 3 | This verification has failed |
-
-
-
-<a name="services-connect-v1-VerificationType"></a>
-
-### VerificationType
-The type of verification to perform
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| GOVERNMENT_ID | 0 | Government-issued ID (driver's license, passport, etc) |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_provider_v1_access-management-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/provider/v1/access-management.proto
-
-
-
-<a name="services-provider-v1-AccessManagement"></a>
-
-### Service - AccessManagement
-Access Management service provides methods to manage access to ecosystem resources
-such by assigning roles and permissions to wallet accounts
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
-| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
-| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
-| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
-
- <!-- end services -->
-
-
-<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
-
-### AddRoleAssignmentRequest
-Role management
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| role | [string](/reference/proto#string) | Role to assign |
-| email | [string](/reference/proto#string) | Email address of account to assign role. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to assign role. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
-
-### AddRoleAssignmentResponse
-
-
-
-
-
-
-
-<a name="services-provider-v1-ListAvailableRolesRequest"></a>
-
-### ListAvailableRolesRequest
-Request to fetch the available roles in the current ecosystem
-
-
-
-
-
-
-<a name="services-provider-v1-ListAvailableRolesResponse"></a>
-
-### ListAvailableRolesResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| roles | [string](/reference/proto#string)[] | List of roles |
-
-
-
-
-
-
-<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
-
-### ListRoleAssignmentsRequest
-Request to fetch the list of roles assigned to the current account
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to list roles. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to list roles. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to list roles. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
-
-### ListRoleAssignmentsResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| roles | [string](/reference/proto#string)[] | List of roles |
-
-
-
-
-
-
-<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
-
-### RemoveRoleAssignmentRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| role | [string](/reference/proto#string) | Role to unassign |
-| email | [string](/reference/proto#string) | Email address of account to unassign role. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to unassign role. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
-
-### RemoveRoleAssignmentResponse
-
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_provider_v1_provider-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/provider/v1/provider.proto
-
-
-
-<a name="services-provider-v1-Provider"></a>
-
-### Service - Provider
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
-| GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
-| UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
-| SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
-
- <!-- end services -->
-
-
-<a name="services-provider-v1-CreateEcosystemRequest"></a>
-
-### CreateEcosystemRequest
-Request to create an ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
-| description | [string](/reference/proto#string) | Ecosystem description |
-| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
-| domain | [string](/reference/proto#string) | New domain URL |
-
-
-
-
-
-
-<a name="services-provider-v1-CreateEcosystemResponse"></a>
-
-### CreateEcosystemResponse
-Response to `CreateEcosystemRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Details of the created ecosystem |
-| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
-| confirmation_method | [services.account.v1.ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. |
-
-
-
-
-
-
-<a name="services-provider-v1-Ecosystem"></a>
-
-### Ecosystem
-Details of an ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | URN of the ecosystem |
-| name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
-| description | [string](/reference/proto#string) | Ecosystem description |
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemInfoRequest"></a>
-
-### EcosystemInfoRequest
-Request to fetch information about an ecosystem
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemInfoResponse"></a>
-
-### EcosystemInfoResponse
-Response to `InfoRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to current ecosystem in the account token |
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyRequest"></a>
-
-### GetOberonKeyRequest
-Request to fetch the Trinsic public key used
-to verify authentication token validity
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyResponse"></a>
-
-### GetOberonKeyResponse
-Response to `GetOberonKeyRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64-url encoded string |
-
-
-
-
-
-
-<a name="services-provider-v1-IndyOptions"></a>
-
-### IndyOptions
-Options for creation of DID on the SOV network
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| network | [IndyOptions.IndyNetwork](/reference/proto#services-provider-v1-IndyOptions-IndyNetwork) | SOV network on which DID should be published |
-
-
-
-
-
-
-<a name="services-provider-v1-IonOptions"></a>
-
-### IonOptions
-Options for creation of DID on the ION network
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| network | [IonOptions.IonNetwork](/reference/proto#services-provider-v1-IonOptions-IonNetwork) | ION network on which DID should be published |
-
-
-
-
-
-
-<a name="services-provider-v1-RefreshDomainVerificationStatusRequest"></a>
-
-### RefreshDomainVerificationStatusRequest
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-
-
-
-
-<a name="services-provider-v1-RefreshDomainVerificationStatusResponse"></a>
-
-### RefreshDomainVerificationStatusResponse
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| domain | [string](/reference/proto#string) | Domain URL verified |
-| domain_verified | [bool](/reference/proto#bool) | Specifies if the above `domain` was successfully verified |
-
-
-
-
-
-
-<a name="services-provider-v1-RetrieveDomainVerificationRecordRequest"></a>
-
-### RetrieveDomainVerificationRecordRequest
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-
-
-
-
-<a name="services-provider-v1-RetrieveDomainVerificationRecordResponse"></a>
-
-### RetrieveDomainVerificationRecordResponse
-The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-DEPRECATED, will be removed June 1st 2023
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| verification_record_name | [string](/reference/proto#string) | TXT record name to use for domain verification |
-| verification_record_value | [string](/reference/proto#string) | TXT code for domain verification |
-
-
-
-
-
-
-<a name="services-provider-v1-SearchWalletConfigurationResponse"></a>
-
-### SearchWalletConfigurationResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| results | [WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] | Results matching the search query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
-
-
-
-
-
-
-<a name="services-provider-v1-SearchWalletConfigurationsRequest"></a>
-
-### SearchWalletConfigurationsRequest
-Search for issuers/holders/verifiers
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-provider-v1-UpgradeDidRequest"></a>
-
-### UpgradeDidRequest
-Request to upgrade a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to upgrade. Mutually exclusive with `email` and `walletId`. |
-| method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
-| ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
-| indy_options | [IndyOptions](/reference/proto#services-provider-v1-IndyOptions) | Configuration for creation of DID on INDY network |
-
-
-
-
-
-
-<a name="services-provider-v1-UpgradeDidResponse"></a>
-
-### UpgradeDidResponse
-Response to `UpgradeDIDRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did | [string](/reference/proto#string) | New DID of wallet |
-
-
-
-
-
-
-<a name="services-provider-v1-WalletConfiguration"></a>
-
-### WalletConfiguration
-Strongly typed information about wallet configurations
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Name/description of the wallet |
-| email | [string](/reference/proto#string) | **Deprecated.** Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in `external_identities`, if any. |
-| sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
-| wallet_id | [string](/reference/proto#string) |  |
-| public_did | [string](/reference/proto#string) | The DID of the wallet |
-| config_type | [string](/reference/proto#string) |  |
-| auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
-| external_identity_ids | [string](/reference/proto#string)[] | **Deprecated.** List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use `external_identities` instead. |
-| ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
-| description | [string](/reference/proto#string) |  |
-| external_identities | [WalletExternalIdentity](/reference/proto#services-provider-v1-WalletExternalIdentity)[] | List of external identities associated with this wallet. |
-
-
-
-
-
-
-<a name="services-provider-v1-WalletExternalIdentity"></a>
-
-### WalletExternalIdentity
-An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| provider | [IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of this identity (whether this identity is an email address, phone number, etc.) |
-| id | [string](/reference/proto#string) | The actual email address/phone number/etc. for this identity |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-provider-v1-IdentityProvider"></a>
-
-### IdentityProvider
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| Unknown | 0 | Identity provider is unknown |
-| Email | 1 | Identity provider is email |
-| Phone | 2 | Identity provider is phone |
-| Passkey | 3 | Identity provider is passkey (WebAuthn) -- for Trinsic internal use only |
-
-
-
-<a name="services-provider-v1-IndyOptions-IndyNetwork"></a>
-
-### IndyOptions.IndyNetwork
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| Danube | 0 |  |
-| SovrinBuilder | 1 |  |
-| SovrinStaging | 2 |  |
-| Sovrin | 3 |  |
-| IdUnionTest | 4 |  |
-| IdUnion | 5 |  |
-| IndicioTest | 6 |  |
-| IndicioDemo | 7 |  |
-| Indicio | 8 |  |
-
-
-
-<a name="services-provider-v1-IonOptions-IonNetwork"></a>
-
-### IonOptions.IonNetwork
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| TestNet | 0 |  |
-| MainNet | 1 |  |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_options_field-options-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/options/field-options.proto
-
-
- <!-- end services -->
-
-
-<a name="services-options-AnnotationOption"></a>
-
-### AnnotationOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| active | [bool](/reference/proto#bool) | Is this annotation active |
-| message | [string](/reference/proto#string) | Custom annotation message to provide |
-
-
-
-
-
-
-<a name="services-options-SdkTemplateOption"></a>
-
-### SdkTemplateOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
-| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
-| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
-| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
-| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
-
-<a name="services_options_field-options-proto-extensions"></a>
-
-### File-level Extensions
-| Extension | Type | Base | Number | Description |
-| --------- | ---- | ---- | ------ | ----------- |
-| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
-| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_common_v1_common-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/common/v1/common.proto
-
-
- <!-- end services -->
-
-
-<a name="services-common-v1-Nonce"></a>
-
-### Nonce
-Nonce used to generate an oberon proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
-
-
-
-
-
-
-<a name="services-common-v1-TrinsicClientOptions"></a>
-
-### TrinsicClientOptions
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
-| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
-| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
-| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-common-v1-ResponseStatus"></a>
-
-### ResponseStatus
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| SUCCESS | 0 |  |
-| WALLET_ACCESS_DENIED | 10 |  |
-| WALLET_EXISTS | 11 |  |
-| ITEM_NOT_FOUND | 20 |  |
-| SERIALIZATION_ERROR | 200 |  |
-| UNKNOWN_ERROR | 100 |  |
-
-
-
-<a name="services-common-v1-SupportedDidMethod"></a>
-
-### SupportedDidMethod
-Enum of all supported DID Methods
-https://docs.godiddy.com/en/supported-methods
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| KEY | 0 | The did:key method -- all wallets use this by default |
-| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
-| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
 <a name="services_account_v1_account-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -3277,6 +3138,146 @@ Confirmation method type for two-factor workflows
 
 
  <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_common_v1_common-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/common/v1/common.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-common-v1-Nonce"></a>
+
+### Nonce
+Nonce used to generate an oberon proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
+| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+
+
+
+
+
+
+<a name="services-common-v1-TrinsicClientOptions"></a>
+
+### TrinsicClientOptions
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
+| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
+| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-common-v1-ResponseStatus"></a>
+
+### ResponseStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SUCCESS | 0 |  |
+| WALLET_ACCESS_DENIED | 10 |  |
+| WALLET_EXISTS | 11 |  |
+| ITEM_NOT_FOUND | 20 |  |
+| SERIALIZATION_ERROR | 200 |  |
+| UNKNOWN_ERROR | 100 |  |
+
+
+
+<a name="services-common-v1-SupportedDidMethod"></a>
+
+### SupportedDidMethod
+Enum of all supported DID Methods
+https://docs.godiddy.com/en/supported-methods
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| KEY | 0 | The did:key method -- all wallets use this by default |
+| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
+| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_options_field-options-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/options/field-options.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-options-AnnotationOption"></a>
+
+### AnnotationOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| active | [bool](/reference/proto#bool) | Is this annotation active |
+| message | [string](/reference/proto#string) | Custom annotation message to provide |
+
+
+
+
+
+
+<a name="services-options-SdkTemplateOption"></a>
+
+### SdkTemplateOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
+| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
+| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
+| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
+| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+
+<a name="services_options_field-options-proto-extensions"></a>
+
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
 
  <!-- end HasExtensions -->
 
