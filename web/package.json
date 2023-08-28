@@ -45,6 +45,7 @@
         "js-base64": "3.7.5",
         "long": "5.2.3",
         "nice-grpc-web": "3.2.4",
+        "oidc-client-ts": "2.2.5",
         "protobufjs": "7.2.4"
     },
     "devDependencies": {
