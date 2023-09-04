@@ -110,28 +110,28 @@ export interface CreateProofRequest {
    * If unspecified, all fields in the document will be revealed
    */
   revealDocumentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** Information about what sections of the document to reveal */
   revealTemplate?:
-  | RevealTemplateAttributes
-  | undefined;
+    | RevealTemplateAttributes
+    | undefined;
   /** Id of verification template with which to construct the JSON-LD proof document */
   verificationTemplateId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** ID of wallet item stored in a Trinsic cloud wallet */
   itemId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    */
   documentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * Wrap the output in a verifiable presentation.
    * If the credential used in the proof is bound to the holder DID,
@@ -197,20 +197,20 @@ export interface ValidationMessage {
 export interface SendRequest {
   /** Email address of user to whom you'll send the item */
   email?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** Wallet ID of the recipient within the ecosystem */
   walletId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** DID URI of the recipient */
   didUri?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** SMS of user to whom you'll send the item */
   phoneNumber?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** Send email notification that credential has been sent to a wallet */
   sendNotification?:
     | boolean
@@ -302,8 +302,8 @@ export interface CreateCredentialOfferResponse {
 export interface AcceptCredentialRequest {
   /** The JSON document that contains the credential offer */
   documentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** The ID of the item in the wallet that contains the credential offer */
   itemId?: string | undefined;
 }
@@ -323,8 +323,8 @@ export interface AcceptCredentialResponse {
 export interface RejectCredentialRequest {
   /** The JSON document that contains the credential offer */
   documentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** The ID of the item in the wallet that contains the credential offer */
   itemId?: string | undefined;
 }
