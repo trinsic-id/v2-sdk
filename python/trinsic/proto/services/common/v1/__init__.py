@@ -41,3 +41,23 @@ class Nonce(betterproto.Message):
 
     timestamp: int = betterproto.int64_field(1)
     request_hash: bytes = betterproto.bytes_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class TrinsicClientOptions(betterproto.Message):
+    server_endpoint: str = betterproto.string_field(1)
+    """Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"""
+
+    server_port: int = betterproto.int32_field(2)
+    """Trinsic API port; defaults to `443`"""
+
+    server_use_tls: bool = betterproto.bool_field(3)
+    """
+    Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
+    """
+
+    auth_token: str = betterproto.string_field(4)
+    """
+    Authentication token for SDK calls; defaults to empty string
+    (unauthenticated)
+    """

@@ -132,61 +132,73 @@ export function verificationShareTypeToJSON(object: VerificationShareType): stri
 /** Request to fetch a template by ID */
 export interface GetCredentialTemplateRequest {
   /** ID of template to fetch */
-  id?: string;
+  id?: string | undefined;
 }
 
 /** Response to `GetCredentialTemplateRequest` */
 export interface GetCredentialTemplateResponse {
   /** Template fetched by ID */
-  template?: TemplateData;
+  template?: TemplateData | undefined;
 }
 
 /** Request to search templates using a SQL query */
 export interface SearchCredentialTemplatesRequest {
   /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
-  query?: string;
+  query?:
+    | string
+    | undefined;
   /**
    * Token provided by previous `SearchCredentialTemplatesResponse`
    * if more data is available for query
    */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Response to `SearchCredentialTemplatesRequest` */
 export interface SearchCredentialTemplatesResponse {
   /** Raw JSON data returned from query */
-  itemsJson?: string;
+  itemsJson?:
+    | string
+    | undefined;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `SearchCredentialTemplatesRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Request to list templates using a SQL query */
 export interface ListCredentialTemplatesRequest {
   /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
-  query?: string;
+  query?:
+    | string
+    | undefined;
   /**
    * Token provided by previous `ListCredentialTemplatesResponse`
    * if more data is available for query
    */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Response to `ListCredentialTemplatesRequest` */
 export interface ListCredentialTemplatesResponse {
   /** Templates found by query */
-  templates?: TemplateData[];
+  templates?:
+    | TemplateData[]
+    | undefined;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `ListCredentialTemplatesRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** Request to delete a template by ID */
 export interface DeleteCredentialTemplateRequest {
   /** ID of template to delete */
-  id?: string;
+  id?: string | undefined;
 }
 
 /** Response to `DeleteCredentialTemplateRequest` */
@@ -196,47 +208,61 @@ export interface DeleteCredentialTemplateResponse {
 /** Request to create a new template */
 export interface CreateCredentialTemplateRequest {
   /** Name of new template. Must be a unique identifier within its ecosystem. */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /** Fields which compose the template */
-  fields?: { [key: string]: TemplateField };
+  fields?:
+    | { [key: string]: TemplateField }
+    | undefined;
   /**
    * Whether credentials may be issued against this template which have fields
    * not specified in `fields`
    */
-  allowAdditionalFields?: boolean;
+  allowAdditionalFields?:
+    | boolean
+    | undefined;
   /** Human-readable name of template */
-  title?: string;
+  title?:
+    | string
+    | undefined;
   /** Human-readable description of template */
-  description?: string;
+  description?:
+    | string
+    | undefined;
   /**
    * Optional map describing how to order and categorize the fields within the template. The key of this map is the field `name`.
    * If not provided, this will be auto-generated.
    */
-  fieldOrdering?: { [key: string]: FieldOrdering };
+  fieldOrdering?:
+    | { [key: string]: FieldOrdering }
+    | undefined;
   /** Options for rendering the template in Apple Wallet */
   appleWalletOptions?: AppleWalletOptions | undefined;
 }
 
 export interface CreateCredentialTemplateRequest_FieldsEntry {
   key: string;
-  value?: TemplateField;
+  value?: TemplateField | undefined;
 }
 
 export interface CreateCredentialTemplateRequest_FieldOrderingEntry {
   key: string;
-  value?: FieldOrdering;
+  value?: FieldOrdering | undefined;
 }
 
 /** Response to `CreateCredentialTemplateRequest` */
 export interface CreateCredentialTemplateResponse {
   /** Created template */
-  data?: TemplateData;
+  data?: TemplateData | undefined;
 }
 
 /** Request to update display information for a template */
 export interface UpdateCredentialTemplateRequest {
   /** ID of Template to update */
-  id?: string;
+  id?:
+    | string
+    | undefined;
   /** New human-readable title of Template */
   title?:
     | string
@@ -246,88 +272,128 @@ export interface UpdateCredentialTemplateRequest {
     | string
     | undefined;
   /** Fields to update within the Template */
-  fields?: { [key: string]: TemplateFieldPatch };
+  fields?:
+    | { [key: string]: TemplateFieldPatch }
+    | undefined;
   /** New field ordering options. See documentation for template creation for usage information. */
-  fieldOrdering?: { [key: string]: FieldOrdering };
+  fieldOrdering?:
+    | { [key: string]: FieldOrdering }
+    | undefined;
   /** New Apple Wallet configuration */
   appleWalletOptions?: AppleWalletOptions | undefined;
 }
 
 export interface UpdateCredentialTemplateRequest_FieldsEntry {
   key: string;
-  value?: TemplateFieldPatch;
+  value?: TemplateFieldPatch | undefined;
 }
 
 export interface UpdateCredentialTemplateRequest_FieldOrderingEntry {
   key: string;
-  value?: FieldOrdering;
+  value?: FieldOrdering | undefined;
 }
 
 /** Response to `UpdateCredentialTemplateRequest` */
 export interface UpdateCredentialTemplateResponse {
   /** The Template after the update has been applied */
-  updatedTemplate?: TemplateData;
+  updatedTemplate?: TemplateData | undefined;
 }
 
 /** Credential Template */
 export interface TemplateData {
   /** Template ID */
-  id?: string;
+  id?:
+    | string
+    | undefined;
   /** Template name */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /** Template version number */
-  version?: number;
+  version?:
+    | number
+    | undefined;
   /** Fields defined for the template */
-  fields?: { [key: string]: TemplateField };
+  fields?:
+    | { [key: string]: TemplateField }
+    | undefined;
   /**
    * Whether credentials issued against this template may
    * contain fields not defined by template
    */
-  allowAdditionalFields?: boolean;
+  allowAdditionalFields?:
+    | boolean
+    | undefined;
   /** URI pointing to template JSON schema document */
-  schemaUri?: string;
+  schemaUri?:
+    | string
+    | undefined;
   /** ID of ecosystem in which template resides */
-  ecosystemId?: string;
+  ecosystemId?:
+    | string
+    | undefined;
   /** Template type (`VerifiableCredential`) */
-  type?: string;
+  type?:
+    | string
+    | undefined;
   /** ID of template creator */
-  createdBy?: string;
+  createdBy?:
+    | string
+    | undefined;
   /** Date when template was created as ISO 8601 utc string */
-  dateCreated?: string;
+  dateCreated?:
+    | string
+    | undefined;
   /** Human-readable template title */
-  title?: string;
+  title?:
+    | string
+    | undefined;
   /** Human-readable template description */
-  description?: string;
+  description?:
+    | string
+    | undefined;
   /** Map describing how to order and categorize the fields within the template. The key of this map is the field `name`. */
-  fieldOrdering?: { [key: string]: FieldOrdering };
+  fieldOrdering?:
+    | { [key: string]: FieldOrdering }
+    | undefined;
   /** Options for rendering the template in Apple Wallet */
-  appleWalletOptions?: AppleWalletOptions;
+  appleWalletOptions?: AppleWalletOptions | undefined;
 }
 
 export interface TemplateData_FieldsEntry {
   key: string;
-  value?: TemplateField;
+  value?: TemplateField | undefined;
 }
 
 export interface TemplateData_FieldOrderingEntry {
   key: string;
-  value?: FieldOrdering;
+  value?: FieldOrdering | undefined;
 }
 
 /** Configuration options for Apple Wallet when */
 export interface AppleWalletOptions {
   /** Background color, in hex format, of credential when stored in an Apple Wallet. */
-  backgroundColor?: string;
+  backgroundColor?:
+    | string
+    | undefined;
   /** Foreground color, in hex format, of credential when stored in an Apple Wallet. */
-  foregroundColor?: string;
+  foregroundColor?:
+    | string
+    | undefined;
   /** Label color, in hex format, of credential when stored in an Apple Wallet. */
-  labelColor?: string;
+  labelColor?:
+    | string
+    | undefined;
   /** The ID of the template field which should be used as the primary field of a credential. */
-  primaryField?: string;
+  primaryField?:
+    | string
+    | undefined;
   /** The secondary fields of the credential. This is a mapping between the order of a secondary field (0 or 1) and the field name. */
-  secondaryFields?: string[];
+  secondaryFields?:
+    | string[]
+    | undefined;
   /** The auxiliary fields of the credential. This is a mapping between the order of an auxiliary field (0 or 1) and the field name. */
-  auxiliaryFields?: string[];
+  auxiliaryFields?: string[] | undefined;
 }
 
 /** Ordering information for a template field */
@@ -336,24 +402,34 @@ export interface FieldOrdering {
    * The order of the field; must be unique within the Template. Fields are sorted by order ascending when displaying a credential.
    * Field orders must be contiguous from `0` to the number of fields minus 1.
    */
-  order?: number;
+  order?:
+    | number
+    | undefined;
   /**
    * The human-readable name of the section this field appears in; used to group together fields when displaying a credential.
    * Sections must be contiguous with respect to `order`.
    */
-  section?: string;
+  section?: string | undefined;
 }
 
 /** A field defined in a template */
 export interface TemplateField {
   /** Human-readable name of the field */
-  title?: string;
+  title?:
+    | string
+    | undefined;
   /** Human-readable description of the field */
-  description?: string;
+  description?:
+    | string
+    | undefined;
   /** Whether this field may be omitted when a credential is issued against the template */
-  optional?: boolean;
+  optional?:
+    | boolean
+    | undefined;
   /** The type of the field */
-  type?: FieldType;
+  type?:
+    | FieldType
+    | undefined;
   /** How to deal with this URI field when rendering credential. Only use if `type` is `URI`. */
   uriData?: UriFieldData | undefined;
 }
@@ -378,48 +454,60 @@ export interface UriFieldData {
    * Expected MIME Type of content pointed to by URI. Can be generic (eg, "image/") or specific ("image/png").
    * Defaults to "application/octet-stream".
    */
-  mimeType?: string;
+  mimeType?:
+    | string
+    | undefined;
   /** How to display the URI value when rendering a credential. */
-  renderMethod?: UriRenderMethod;
+  renderMethod?: UriRenderMethod | undefined;
 }
 
 /** Request to fetch a template by ID */
 export interface GetVerificationTemplateRequest {
   /** ID of template to fetch */
-  id?: string;
+  id?: string | undefined;
 }
 
 /** Response to `GetCredentialTemplateRequest` */
 export interface GetVerificationTemplateResponse {
   /** Template fetched by ID */
-  template?: VerificationTemplateData;
+  template?: VerificationTemplateData | undefined;
 }
 
 export interface CreateVerificationTemplateRequest {
   /** Name of new template. Must be a unique identifier within its ecosystem. */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /** Fields which will be required in the verification proof template */
-  fields?: { [key: string]: VerificationTemplateField };
+  fields?:
+    | { [key: string]: VerificationTemplateField }
+    | undefined;
   /** Source credential template, used for verifying that the specified `fields` are present in the credential template */
-  credentialTemplateId?: string;
+  credentialTemplateId?:
+    | string
+    | undefined;
   /** Human-readable name of template */
-  title?: string;
+  title?:
+    | string
+    | undefined;
   /** Human-readable description of template */
-  description?: string;
+  description?: string | undefined;
 }
 
 export interface CreateVerificationTemplateRequest_FieldsEntry {
   key: string;
-  value?: VerificationTemplateField;
+  value?: VerificationTemplateField | undefined;
 }
 
 export interface CreateVerificationTemplateResponse {
-  data?: VerificationTemplateData;
+  data?: VerificationTemplateData | undefined;
 }
 
 export interface UpdateVerificationTemplateRequest {
   /** ID of Template to update */
-  id?: string;
+  id?:
+    | string
+    | undefined;
   /** New human-readable title of Template */
   title?:
     | string
@@ -429,20 +517,20 @@ export interface UpdateVerificationTemplateRequest {
     | string
     | undefined;
   /** Fields to update within the Template */
-  fields?: { [key: string]: VerificationTemplateFieldPatch };
+  fields?: { [key: string]: VerificationTemplateFieldPatch } | undefined;
 }
 
 export interface UpdateVerificationTemplateRequest_FieldsEntry {
   key: string;
-  value?: VerificationTemplateFieldPatch;
+  value?: VerificationTemplateFieldPatch | undefined;
 }
 
 export interface UpdateVerificationTemplateResponse {
-  template?: VerificationTemplateData;
+  template?: VerificationTemplateData | undefined;
 }
 
 export interface DeleteVerificationTemplateRequest {
-  verificationTemplateId?: string;
+  verificationTemplateId?: string | undefined;
 }
 
 /** This space intentionally left blank */
@@ -452,70 +540,98 @@ export interface DeleteVerificationTemplateResponse {
 /** Verification Template */
 export interface VerificationTemplateData {
   /** Template ID */
-  id?: string;
+  id?:
+    | string
+    | undefined;
   /** Template name */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /** Template version number */
-  version?: number;
+  version?:
+    | number
+    | undefined;
   /** Fields defined for the template */
-  fields?: { [key: string]: VerificationTemplateField };
+  fields?:
+    | { [key: string]: VerificationTemplateField }
+    | undefined;
   /** Source credential template, used for verifying that the specified `fields` are present in the credential template */
-  credentialTemplateId?: string;
-  /** URI pointing to template JSON schema document */
-  schemaUri?: string;
+  credentialTemplateId?:
+    | string
+    | undefined;
   /** ID of ecosystem in which template resides */
-  ecosystemId?: string;
+  ecosystemId?:
+    | string
+    | undefined;
   /** Template type (`VerificationTemplate`) */
-  type?: string;
+  type?:
+    | string
+    | undefined;
   /** ID of template creator */
-  createdBy?: string;
+  createdBy?:
+    | string
+    | undefined;
   /** Date when template was created as ISO 8601 utc string */
-  dateCreated?: string;
+  dateCreated?:
+    | string
+    | undefined;
   /** Human-readable template title */
-  title?: string;
+  title?:
+    | string
+    | undefined;
   /** Human-readable template description */
-  description?: string;
+  description?: string | undefined;
 }
 
 export interface VerificationTemplateData_FieldsEntry {
   key: string;
-  value?: VerificationTemplateField;
+  value?: VerificationTemplateField | undefined;
 }
 
 /** Request to list templates using a SQL query */
 export interface ListVerificationTemplatesRequest {
   /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
-  query?: string;
+  query?:
+    | string
+    | undefined;
   /**
    * Token provided by previous `ListCredentialTemplatesResponse`
    * if more data is available for query
    */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 export interface ListVerificationTemplatesResponse {
   /** Templates found by query */
-  templates?: VerificationTemplateData[];
+  templates?:
+    | VerificationTemplateData[]
+    | undefined;
   /** Whether more results are available for this query via `continuation_token` */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `ListVerificationTemplatesRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 /** A field defined in a template */
 export interface VerificationTemplateField {
   /** Whether this field may be omitted on proof creation */
-  fieldShareType?: VerificationShareType;
+  fieldShareType?:
+    | VerificationShareType
+    | undefined;
   /** User-facing explanation of what is done with this data */
-  usagePolicy?: string;
+  usagePolicy?: string | undefined;
 }
 
 /** A patch to apply to an existing template field */
 export interface VerificationTemplateFieldPatch {
   /** Human-readable name of the field */
-  fieldShareType?: VerificationShareType;
+  fieldShareType?:
+    | VerificationShareType
+    | undefined;
   /** User-facing explanation of what is done with this data */
-  usagePolicy?: string;
+  usagePolicy?: string | undefined;
 }
 
 function createBaseGetCredentialTemplateRequest(): GetCredentialTemplateRequest {
@@ -538,14 +654,14 @@ export const GetCredentialTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -559,14 +675,15 @@ export const GetCredentialTemplateRequest = {
 
   toJSON(message: GetCredentialTemplateRequest): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetCredentialTemplateRequest>): GetCredentialTemplateRequest {
     return GetCredentialTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetCredentialTemplateRequest>): GetCredentialTemplateRequest {
     const message = createBaseGetCredentialTemplateRequest();
     message.id = object.id ?? "";
@@ -594,14 +711,14 @@ export const GetCredentialTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.template = TemplateData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -615,15 +732,15 @@ export const GetCredentialTemplateResponse = {
 
   toJSON(message: GetCredentialTemplateResponse): unknown {
     const obj: any = {};
-    message.template !== undefined &&
-      (obj.template = message.template ? TemplateData.toJSON(message.template) : undefined);
+    if (message.template !== undefined) {
+      obj.template = TemplateData.toJSON(message.template);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetCredentialTemplateResponse>): GetCredentialTemplateResponse {
     return GetCredentialTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetCredentialTemplateResponse>): GetCredentialTemplateResponse {
     const message = createBaseGetCredentialTemplateResponse();
     message.template = (object.template !== undefined && object.template !== null)
@@ -656,21 +773,21 @@ export const SearchCredentialTemplatesRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.query = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -687,15 +804,18 @@ export const SearchCredentialTemplatesRequest = {
 
   toJSON(message: SearchCredentialTemplatesRequest): unknown {
     const obj: any = {};
-    message.query !== undefined && (obj.query = message.query);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.query !== undefined && message.query !== "") {
+      obj.query = message.query;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SearchCredentialTemplatesRequest>): SearchCredentialTemplatesRequest {
     return SearchCredentialTemplatesRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SearchCredentialTemplatesRequest>): SearchCredentialTemplatesRequest {
     const message = createBaseSearchCredentialTemplatesRequest();
     message.query = object.query ?? "";
@@ -730,28 +850,28 @@ export const SearchCredentialTemplatesResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.itemsJson = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -769,16 +889,21 @@ export const SearchCredentialTemplatesResponse = {
 
   toJSON(message: SearchCredentialTemplatesResponse): unknown {
     const obj: any = {};
-    message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.itemsJson !== undefined && message.itemsJson !== "") {
+      obj.itemsJson = message.itemsJson;
+    }
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SearchCredentialTemplatesResponse>): SearchCredentialTemplatesResponse {
     return SearchCredentialTemplatesResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SearchCredentialTemplatesResponse>): SearchCredentialTemplatesResponse {
     const message = createBaseSearchCredentialTemplatesResponse();
     message.itemsJson = object.itemsJson ?? "";
@@ -811,21 +936,21 @@ export const ListCredentialTemplatesRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.query = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -842,15 +967,18 @@ export const ListCredentialTemplatesRequest = {
 
   toJSON(message: ListCredentialTemplatesRequest): unknown {
     const obj: any = {};
-    message.query !== undefined && (obj.query = message.query);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.query !== undefined && message.query !== "") {
+      obj.query = message.query;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListCredentialTemplatesRequest>): ListCredentialTemplatesRequest {
     return ListCredentialTemplatesRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListCredentialTemplatesRequest>): ListCredentialTemplatesRequest {
     const message = createBaseListCredentialTemplatesRequest();
     message.query = object.query ?? "";
@@ -887,28 +1015,28 @@ export const ListCredentialTemplatesResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.templates!.push(TemplateData.decode(reader, reader.uint32()));
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -926,20 +1054,21 @@ export const ListCredentialTemplatesResponse = {
 
   toJSON(message: ListCredentialTemplatesResponse): unknown {
     const obj: any = {};
-    if (message.templates) {
-      obj.templates = message.templates.map((e) => e ? TemplateData.toJSON(e) : undefined);
-    } else {
-      obj.templates = [];
+    if (message.templates?.length) {
+      obj.templates = message.templates.map((e) => TemplateData.toJSON(e));
     }
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListCredentialTemplatesResponse>): ListCredentialTemplatesResponse {
     return ListCredentialTemplatesResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListCredentialTemplatesResponse>): ListCredentialTemplatesResponse {
     const message = createBaseListCredentialTemplatesResponse();
     message.templates = object.templates?.map((e) => TemplateData.fromPartial(e)) || [];
@@ -969,14 +1098,14 @@ export const DeleteCredentialTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -990,14 +1119,15 @@ export const DeleteCredentialTemplateRequest = {
 
   toJSON(message: DeleteCredentialTemplateRequest): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<DeleteCredentialTemplateRequest>): DeleteCredentialTemplateRequest {
     return DeleteCredentialTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<DeleteCredentialTemplateRequest>): DeleteCredentialTemplateRequest {
     const message = createBaseDeleteCredentialTemplateRequest();
     message.id = object.id ?? "";
@@ -1022,7 +1152,7 @@ export const DeleteCredentialTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1042,7 +1172,6 @@ export const DeleteCredentialTemplateResponse = {
   create(base?: DeepPartial<DeleteCredentialTemplateResponse>): DeleteCredentialTemplateResponse {
     return DeleteCredentialTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<DeleteCredentialTemplateResponse>): DeleteCredentialTemplateResponse {
     const message = createBaseDeleteCredentialTemplateResponse();
     return message;
@@ -1096,14 +1225,14 @@ export const CreateCredentialTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
@@ -1113,28 +1242,28 @@ export const CreateCredentialTemplateRequest = {
           }
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.allowAdditionalFields = reader.bool();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
@@ -1144,14 +1273,14 @@ export const CreateCredentialTemplateRequest = {
           }
           continue;
         case 7:
-          if (tag != 58) {
+          if (tag !== 58) {
             break;
           }
 
           message.appleWalletOptions = AppleWalletOptions.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1185,32 +1314,45 @@ export const CreateCredentialTemplateRequest = {
 
   toJSON(message: CreateCredentialTemplateRequest): unknown {
     const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    obj.fields = {};
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
+    }
     if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = TemplateField.toJSON(v);
-      });
+      const entries = Object.entries(message.fields);
+      if (entries.length > 0) {
+        obj.fields = {};
+        entries.forEach(([k, v]) => {
+          obj.fields[k] = TemplateField.toJSON(v);
+        });
+      }
     }
-    message.allowAdditionalFields !== undefined && (obj.allowAdditionalFields = message.allowAdditionalFields);
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    obj.fieldOrdering = {};
+    if (message.allowAdditionalFields === true) {
+      obj.allowAdditionalFields = message.allowAdditionalFields;
+    }
+    if (message.title !== undefined && message.title !== "") {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
     if (message.fieldOrdering) {
-      Object.entries(message.fieldOrdering).forEach(([k, v]) => {
-        obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
-      });
+      const entries = Object.entries(message.fieldOrdering);
+      if (entries.length > 0) {
+        obj.fieldOrdering = {};
+        entries.forEach(([k, v]) => {
+          obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
+        });
+      }
     }
-    message.appleWalletOptions !== undefined && (obj.appleWalletOptions = message.appleWalletOptions
-      ? AppleWalletOptions.toJSON(message.appleWalletOptions)
-      : undefined);
+    if (message.appleWalletOptions !== undefined) {
+      obj.appleWalletOptions = AppleWalletOptions.toJSON(message.appleWalletOptions);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateCredentialTemplateRequest>): CreateCredentialTemplateRequest {
     return CreateCredentialTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateCredentialTemplateRequest>): CreateCredentialTemplateRequest {
     const message = createBaseCreateCredentialTemplateRequest();
     message.name = object.name ?? "";
@@ -1265,21 +1407,21 @@ export const CreateCredentialTemplateRequest_FieldsEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = TemplateField.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1296,15 +1438,18 @@ export const CreateCredentialTemplateRequest_FieldsEntry = {
 
   toJSON(message: CreateCredentialTemplateRequest_FieldsEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? TemplateField.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = TemplateField.toJSON(message.value);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateCredentialTemplateRequest_FieldsEntry>): CreateCredentialTemplateRequest_FieldsEntry {
     return CreateCredentialTemplateRequest_FieldsEntry.fromPartial(base ?? {});
   },
-
   fromPartial(
     object: DeepPartial<CreateCredentialTemplateRequest_FieldsEntry>,
   ): CreateCredentialTemplateRequest_FieldsEntry {
@@ -1343,21 +1488,21 @@ export const CreateCredentialTemplateRequest_FieldOrderingEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = FieldOrdering.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1374,8 +1519,12 @@ export const CreateCredentialTemplateRequest_FieldOrderingEntry = {
 
   toJSON(message: CreateCredentialTemplateRequest_FieldOrderingEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? FieldOrdering.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = FieldOrdering.toJSON(message.value);
+    }
     return obj;
   },
 
@@ -1384,7 +1533,6 @@ export const CreateCredentialTemplateRequest_FieldOrderingEntry = {
   ): CreateCredentialTemplateRequest_FieldOrderingEntry {
     return CreateCredentialTemplateRequest_FieldOrderingEntry.fromPartial(base ?? {});
   },
-
   fromPartial(
     object: DeepPartial<CreateCredentialTemplateRequest_FieldOrderingEntry>,
   ): CreateCredentialTemplateRequest_FieldOrderingEntry {
@@ -1417,14 +1565,14 @@ export const CreateCredentialTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.data = TemplateData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1438,14 +1586,15 @@ export const CreateCredentialTemplateResponse = {
 
   toJSON(message: CreateCredentialTemplateResponse): unknown {
     const obj: any = {};
-    message.data !== undefined && (obj.data = message.data ? TemplateData.toJSON(message.data) : undefined);
+    if (message.data !== undefined) {
+      obj.data = TemplateData.toJSON(message.data);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateCredentialTemplateResponse>): CreateCredentialTemplateResponse {
     return CreateCredentialTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateCredentialTemplateResponse>): CreateCredentialTemplateResponse {
     const message = createBaseCreateCredentialTemplateResponse();
     message.data = (object.data !== undefined && object.data !== null)
@@ -1498,28 +1647,28 @@ export const UpdateCredentialTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
@@ -1529,7 +1678,7 @@ export const UpdateCredentialTemplateRequest = {
           }
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
@@ -1539,14 +1688,14 @@ export const UpdateCredentialTemplateRequest = {
           }
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.appleWalletOptions = AppleWalletOptions.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1579,31 +1728,42 @@ export const UpdateCredentialTemplateRequest = {
 
   toJSON(message: UpdateCredentialTemplateRequest): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    obj.fields = {};
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    if (message.title !== undefined) {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined) {
+      obj.description = message.description;
+    }
     if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = TemplateFieldPatch.toJSON(v);
-      });
+      const entries = Object.entries(message.fields);
+      if (entries.length > 0) {
+        obj.fields = {};
+        entries.forEach(([k, v]) => {
+          obj.fields[k] = TemplateFieldPatch.toJSON(v);
+        });
+      }
     }
-    obj.fieldOrdering = {};
     if (message.fieldOrdering) {
-      Object.entries(message.fieldOrdering).forEach(([k, v]) => {
-        obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
-      });
+      const entries = Object.entries(message.fieldOrdering);
+      if (entries.length > 0) {
+        obj.fieldOrdering = {};
+        entries.forEach(([k, v]) => {
+          obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
+        });
+      }
     }
-    message.appleWalletOptions !== undefined && (obj.appleWalletOptions = message.appleWalletOptions
-      ? AppleWalletOptions.toJSON(message.appleWalletOptions)
-      : undefined);
+    if (message.appleWalletOptions !== undefined) {
+      obj.appleWalletOptions = AppleWalletOptions.toJSON(message.appleWalletOptions);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpdateCredentialTemplateRequest>): UpdateCredentialTemplateRequest {
     return UpdateCredentialTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpdateCredentialTemplateRequest>): UpdateCredentialTemplateRequest {
     const message = createBaseUpdateCredentialTemplateRequest();
     message.id = object.id ?? "";
@@ -1657,21 +1817,21 @@ export const UpdateCredentialTemplateRequest_FieldsEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = TemplateFieldPatch.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1688,15 +1848,18 @@ export const UpdateCredentialTemplateRequest_FieldsEntry = {
 
   toJSON(message: UpdateCredentialTemplateRequest_FieldsEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? TemplateFieldPatch.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = TemplateFieldPatch.toJSON(message.value);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpdateCredentialTemplateRequest_FieldsEntry>): UpdateCredentialTemplateRequest_FieldsEntry {
     return UpdateCredentialTemplateRequest_FieldsEntry.fromPartial(base ?? {});
   },
-
   fromPartial(
     object: DeepPartial<UpdateCredentialTemplateRequest_FieldsEntry>,
   ): UpdateCredentialTemplateRequest_FieldsEntry {
@@ -1735,21 +1898,21 @@ export const UpdateCredentialTemplateRequest_FieldOrderingEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = FieldOrdering.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1766,8 +1929,12 @@ export const UpdateCredentialTemplateRequest_FieldOrderingEntry = {
 
   toJSON(message: UpdateCredentialTemplateRequest_FieldOrderingEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? FieldOrdering.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = FieldOrdering.toJSON(message.value);
+    }
     return obj;
   },
 
@@ -1776,7 +1943,6 @@ export const UpdateCredentialTemplateRequest_FieldOrderingEntry = {
   ): UpdateCredentialTemplateRequest_FieldOrderingEntry {
     return UpdateCredentialTemplateRequest_FieldOrderingEntry.fromPartial(base ?? {});
   },
-
   fromPartial(
     object: DeepPartial<UpdateCredentialTemplateRequest_FieldOrderingEntry>,
   ): UpdateCredentialTemplateRequest_FieldOrderingEntry {
@@ -1809,14 +1975,14 @@ export const UpdateCredentialTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.updatedTemplate = TemplateData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1832,15 +1998,15 @@ export const UpdateCredentialTemplateResponse = {
 
   toJSON(message: UpdateCredentialTemplateResponse): unknown {
     const obj: any = {};
-    message.updatedTemplate !== undefined &&
-      (obj.updatedTemplate = message.updatedTemplate ? TemplateData.toJSON(message.updatedTemplate) : undefined);
+    if (message.updatedTemplate !== undefined) {
+      obj.updatedTemplate = TemplateData.toJSON(message.updatedTemplate);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpdateCredentialTemplateResponse>): UpdateCredentialTemplateResponse {
     return UpdateCredentialTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpdateCredentialTemplateResponse>): UpdateCredentialTemplateResponse {
     const message = createBaseUpdateCredentialTemplateResponse();
     message.updatedTemplate = (object.updatedTemplate !== undefined && object.updatedTemplate !== null)
@@ -1924,28 +2090,28 @@ export const TemplateData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.version = reader.int32();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
@@ -1955,63 +2121,63 @@ export const TemplateData = {
           }
           continue;
         case 5:
-          if (tag != 40) {
+          if (tag !== 40) {
             break;
           }
 
           message.allowAdditionalFields = reader.bool();
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.schemaUri = reader.string();
           continue;
         case 8:
-          if (tag != 66) {
+          if (tag !== 66) {
             break;
           }
 
           message.ecosystemId = reader.string();
           continue;
         case 9:
-          if (tag != 74) {
+          if (tag !== 74) {
             break;
           }
 
           message.type = reader.string();
           continue;
         case 10:
-          if (tag != 82) {
+          if (tag !== 82) {
             break;
           }
 
           message.createdBy = reader.string();
           continue;
         case 11:
-          if (tag != 90) {
+          if (tag !== 90) {
             break;
           }
 
           message.dateCreated = reader.string();
           continue;
         case 12:
-          if (tag != 98) {
+          if (tag !== 98) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 13:
-          if (tag != 106) {
+          if (tag !== 106) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 14:
-          if (tag != 114) {
+          if (tag !== 114) {
             break;
           }
 
@@ -2021,14 +2187,14 @@ export const TemplateData = {
           }
           continue;
         case 15:
-          if (tag != 122) {
+          if (tag !== 122) {
             break;
           }
 
           message.appleWalletOptions = AppleWalletOptions.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2069,39 +2235,66 @@ export const TemplateData = {
 
   toJSON(message: TemplateData): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.name !== undefined && (obj.name = message.name);
-    message.version !== undefined && (obj.version = Math.round(message.version));
-    obj.fields = {};
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.version !== undefined && message.version !== 0) {
+      obj.version = Math.round(message.version);
+    }
     if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = TemplateField.toJSON(v);
-      });
+      const entries = Object.entries(message.fields);
+      if (entries.length > 0) {
+        obj.fields = {};
+        entries.forEach(([k, v]) => {
+          obj.fields[k] = TemplateField.toJSON(v);
+        });
+      }
     }
-    message.allowAdditionalFields !== undefined && (obj.allowAdditionalFields = message.allowAdditionalFields);
-    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    message.type !== undefined && (obj.type = message.type);
-    message.createdBy !== undefined && (obj.createdBy = message.createdBy);
-    message.dateCreated !== undefined && (obj.dateCreated = message.dateCreated);
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    obj.fieldOrdering = {};
+    if (message.allowAdditionalFields === true) {
+      obj.allowAdditionalFields = message.allowAdditionalFields;
+    }
+    if (message.schemaUri !== undefined && message.schemaUri !== "") {
+      obj.schemaUri = message.schemaUri;
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      obj.ecosystemId = message.ecosystemId;
+    }
+    if (message.type !== undefined && message.type !== "") {
+      obj.type = message.type;
+    }
+    if (message.createdBy !== undefined && message.createdBy !== "") {
+      obj.createdBy = message.createdBy;
+    }
+    if (message.dateCreated !== undefined && message.dateCreated !== "") {
+      obj.dateCreated = message.dateCreated;
+    }
+    if (message.title !== undefined && message.title !== "") {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
     if (message.fieldOrdering) {
-      Object.entries(message.fieldOrdering).forEach(([k, v]) => {
-        obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
-      });
+      const entries = Object.entries(message.fieldOrdering);
+      if (entries.length > 0) {
+        obj.fieldOrdering = {};
+        entries.forEach(([k, v]) => {
+          obj.fieldOrdering[k] = FieldOrdering.toJSON(v);
+        });
+      }
     }
-    message.appleWalletOptions !== undefined && (obj.appleWalletOptions = message.appleWalletOptions
-      ? AppleWalletOptions.toJSON(message.appleWalletOptions)
-      : undefined);
+    if (message.appleWalletOptions !== undefined) {
+      obj.appleWalletOptions = AppleWalletOptions.toJSON(message.appleWalletOptions);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<TemplateData>): TemplateData {
     return TemplateData.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<TemplateData>): TemplateData {
     const message = createBaseTemplateData();
     message.id = object.id ?? "";
@@ -2163,21 +2356,21 @@ export const TemplateData_FieldsEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = TemplateField.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2194,15 +2387,18 @@ export const TemplateData_FieldsEntry = {
 
   toJSON(message: TemplateData_FieldsEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? TemplateField.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = TemplateField.toJSON(message.value);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<TemplateData_FieldsEntry>): TemplateData_FieldsEntry {
     return TemplateData_FieldsEntry.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<TemplateData_FieldsEntry>): TemplateData_FieldsEntry {
     const message = createBaseTemplateData_FieldsEntry();
     message.key = object.key ?? "";
@@ -2236,21 +2432,21 @@ export const TemplateData_FieldOrderingEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = FieldOrdering.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2267,15 +2463,18 @@ export const TemplateData_FieldOrderingEntry = {
 
   toJSON(message: TemplateData_FieldOrderingEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? FieldOrdering.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = FieldOrdering.toJSON(message.value);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<TemplateData_FieldOrderingEntry>): TemplateData_FieldOrderingEntry {
     return TemplateData_FieldOrderingEntry.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<TemplateData_FieldOrderingEntry>): TemplateData_FieldOrderingEntry {
     const message = createBaseTemplateData_FieldOrderingEntry();
     message.key = object.key ?? "";
@@ -2332,49 +2531,49 @@ export const AppleWalletOptions = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.backgroundColor = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.foregroundColor = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.labelColor = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.primaryField = reader.string();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.secondaryFields!.push(reader.string());
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.auxiliaryFields!.push(reader.string());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2395,19 +2594,23 @@ export const AppleWalletOptions = {
 
   toJSON(message: AppleWalletOptions): unknown {
     const obj: any = {};
-    message.backgroundColor !== undefined && (obj.backgroundColor = message.backgroundColor);
-    message.foregroundColor !== undefined && (obj.foregroundColor = message.foregroundColor);
-    message.labelColor !== undefined && (obj.labelColor = message.labelColor);
-    message.primaryField !== undefined && (obj.primaryField = message.primaryField);
-    if (message.secondaryFields) {
-      obj.secondaryFields = message.secondaryFields.map((e) => e);
-    } else {
-      obj.secondaryFields = [];
+    if (message.backgroundColor !== undefined && message.backgroundColor !== "") {
+      obj.backgroundColor = message.backgroundColor;
     }
-    if (message.auxiliaryFields) {
-      obj.auxiliaryFields = message.auxiliaryFields.map((e) => e);
-    } else {
-      obj.auxiliaryFields = [];
+    if (message.foregroundColor !== undefined && message.foregroundColor !== "") {
+      obj.foregroundColor = message.foregroundColor;
+    }
+    if (message.labelColor !== undefined && message.labelColor !== "") {
+      obj.labelColor = message.labelColor;
+    }
+    if (message.primaryField !== undefined && message.primaryField !== "") {
+      obj.primaryField = message.primaryField;
+    }
+    if (message.secondaryFields?.length) {
+      obj.secondaryFields = message.secondaryFields;
+    }
+    if (message.auxiliaryFields?.length) {
+      obj.auxiliaryFields = message.auxiliaryFields;
     }
     return obj;
   },
@@ -2415,7 +2618,6 @@ export const AppleWalletOptions = {
   create(base?: DeepPartial<AppleWalletOptions>): AppleWalletOptions {
     return AppleWalletOptions.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AppleWalletOptions>): AppleWalletOptions {
     const message = createBaseAppleWalletOptions();
     message.backgroundColor = object.backgroundColor ?? "";
@@ -2451,21 +2653,21 @@ export const FieldOrdering = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.order = reader.int32();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.section = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2482,15 +2684,18 @@ export const FieldOrdering = {
 
   toJSON(message: FieldOrdering): unknown {
     const obj: any = {};
-    message.order !== undefined && (obj.order = Math.round(message.order));
-    message.section !== undefined && (obj.section = message.section);
+    if (message.order !== undefined && message.order !== 0) {
+      obj.order = Math.round(message.order);
+    }
+    if (message.section !== undefined && message.section !== "") {
+      obj.section = message.section;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<FieldOrdering>): FieldOrdering {
     return FieldOrdering.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<FieldOrdering>): FieldOrdering {
     const message = createBaseFieldOrdering();
     message.order = object.order ?? 0;
@@ -2531,42 +2736,42 @@ export const TemplateField = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.optional = reader.bool();
           continue;
         case 4:
-          if (tag != 32) {
+          if (tag !== 32) {
             break;
           }
 
           message.type = reader.int32() as any;
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.uriData = UriFieldData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2586,18 +2791,27 @@ export const TemplateField = {
 
   toJSON(message: TemplateField): unknown {
     const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.optional !== undefined && (obj.optional = message.optional);
-    message.type !== undefined && (obj.type = fieldTypeToJSON(message.type));
-    message.uriData !== undefined && (obj.uriData = message.uriData ? UriFieldData.toJSON(message.uriData) : undefined);
+    if (message.title !== undefined && message.title !== "") {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
+    if (message.optional === true) {
+      obj.optional = message.optional;
+    }
+    if (message.type !== undefined && message.type !== 0) {
+      obj.type = fieldTypeToJSON(message.type);
+    }
+    if (message.uriData !== undefined) {
+      obj.uriData = UriFieldData.toJSON(message.uriData);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<TemplateField>): TemplateField {
     return TemplateField.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<TemplateField>): TemplateField {
     const message = createBaseTemplateField();
     message.title = object.title ?? "";
@@ -2637,28 +2851,28 @@ export const TemplateFieldPatch = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.uriData = UriFieldData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2676,16 +2890,21 @@ export const TemplateFieldPatch = {
 
   toJSON(message: TemplateFieldPatch): unknown {
     const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.uriData !== undefined && (obj.uriData = message.uriData ? UriFieldData.toJSON(message.uriData) : undefined);
+    if (message.title !== undefined) {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined) {
+      obj.description = message.description;
+    }
+    if (message.uriData !== undefined) {
+      obj.uriData = UriFieldData.toJSON(message.uriData);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<TemplateFieldPatch>): TemplateFieldPatch {
     return TemplateFieldPatch.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<TemplateFieldPatch>): TemplateFieldPatch {
     const message = createBaseTemplateFieldPatch();
     message.title = object.title ?? undefined;
@@ -2720,21 +2939,21 @@ export const UriFieldData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.mimeType = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.renderMethod = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2751,15 +2970,18 @@ export const UriFieldData = {
 
   toJSON(message: UriFieldData): unknown {
     const obj: any = {};
-    message.mimeType !== undefined && (obj.mimeType = message.mimeType);
-    message.renderMethod !== undefined && (obj.renderMethod = uriRenderMethodToJSON(message.renderMethod));
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      obj.mimeType = message.mimeType;
+    }
+    if (message.renderMethod !== undefined && message.renderMethod !== 0) {
+      obj.renderMethod = uriRenderMethodToJSON(message.renderMethod);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UriFieldData>): UriFieldData {
     return UriFieldData.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UriFieldData>): UriFieldData {
     const message = createBaseUriFieldData();
     message.mimeType = object.mimeType ?? "";
@@ -2788,14 +3010,14 @@ export const GetVerificationTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2809,14 +3031,15 @@ export const GetVerificationTemplateRequest = {
 
   toJSON(message: GetVerificationTemplateRequest): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetVerificationTemplateRequest>): GetVerificationTemplateRequest {
     return GetVerificationTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetVerificationTemplateRequest>): GetVerificationTemplateRequest {
     const message = createBaseGetVerificationTemplateRequest();
     message.id = object.id ?? "";
@@ -2844,14 +3067,14 @@ export const GetVerificationTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.template = VerificationTemplateData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2865,15 +3088,15 @@ export const GetVerificationTemplateResponse = {
 
   toJSON(message: GetVerificationTemplateResponse): unknown {
     const obj: any = {};
-    message.template !== undefined &&
-      (obj.template = message.template ? VerificationTemplateData.toJSON(message.template) : undefined);
+    if (message.template !== undefined) {
+      obj.template = VerificationTemplateData.toJSON(message.template);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetVerificationTemplateResponse>): GetVerificationTemplateResponse {
     return GetVerificationTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetVerificationTemplateResponse>): GetVerificationTemplateResponse {
     const message = createBaseGetVerificationTemplateResponse();
     message.template = (object.template !== undefined && object.template !== null)
@@ -2916,14 +3139,14 @@ export const CreateVerificationTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
@@ -2933,28 +3156,28 @@ export const CreateVerificationTemplateRequest = {
           }
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.credentialTemplateId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.description = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -2979,23 +3202,33 @@ export const CreateVerificationTemplateRequest = {
 
   toJSON(message: CreateVerificationTemplateRequest): unknown {
     const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    obj.fields = {};
-    if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = VerificationTemplateField.toJSON(v);
-      });
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
     }
-    message.credentialTemplateId !== undefined && (obj.credentialTemplateId = message.credentialTemplateId);
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
+    if (message.fields) {
+      const entries = Object.entries(message.fields);
+      if (entries.length > 0) {
+        obj.fields = {};
+        entries.forEach(([k, v]) => {
+          obj.fields[k] = VerificationTemplateField.toJSON(v);
+        });
+      }
+    }
+    if (message.credentialTemplateId !== undefined && message.credentialTemplateId !== "") {
+      obj.credentialTemplateId = message.credentialTemplateId;
+    }
+    if (message.title !== undefined && message.title !== "") {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateVerificationTemplateRequest>): CreateVerificationTemplateRequest {
     return CreateVerificationTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateVerificationTemplateRequest>): CreateVerificationTemplateRequest {
     const message = createBaseCreateVerificationTemplateRequest();
     message.name = object.name ?? "";
@@ -3038,21 +3271,21 @@ export const CreateVerificationTemplateRequest_FieldsEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = VerificationTemplateField.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3069,9 +3302,12 @@ export const CreateVerificationTemplateRequest_FieldsEntry = {
 
   toJSON(message: CreateVerificationTemplateRequest_FieldsEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined &&
-      (obj.value = message.value ? VerificationTemplateField.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = VerificationTemplateField.toJSON(message.value);
+    }
     return obj;
   },
 
@@ -3080,7 +3316,6 @@ export const CreateVerificationTemplateRequest_FieldsEntry = {
   ): CreateVerificationTemplateRequest_FieldsEntry {
     return CreateVerificationTemplateRequest_FieldsEntry.fromPartial(base ?? {});
   },
-
   fromPartial(
     object: DeepPartial<CreateVerificationTemplateRequest_FieldsEntry>,
   ): CreateVerificationTemplateRequest_FieldsEntry {
@@ -3113,14 +3348,14 @@ export const CreateVerificationTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.data = VerificationTemplateData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3134,14 +3369,15 @@ export const CreateVerificationTemplateResponse = {
 
   toJSON(message: CreateVerificationTemplateResponse): unknown {
     const obj: any = {};
-    message.data !== undefined && (obj.data = message.data ? VerificationTemplateData.toJSON(message.data) : undefined);
+    if (message.data !== undefined) {
+      obj.data = VerificationTemplateData.toJSON(message.data);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateVerificationTemplateResponse>): CreateVerificationTemplateResponse {
     return CreateVerificationTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateVerificationTemplateResponse>): CreateVerificationTemplateResponse {
     const message = createBaseCreateVerificationTemplateResponse();
     message.data = (object.data !== undefined && object.data !== null)
@@ -3181,28 +3417,28 @@ export const UpdateVerificationTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
@@ -3212,7 +3448,7 @@ export const UpdateVerificationTemplateRequest = {
           }
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3239,14 +3475,23 @@ export const UpdateVerificationTemplateRequest = {
 
   toJSON(message: UpdateVerificationTemplateRequest): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    obj.fields = {};
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    if (message.title !== undefined) {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined) {
+      obj.description = message.description;
+    }
     if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = VerificationTemplateFieldPatch.toJSON(v);
-      });
+      const entries = Object.entries(message.fields);
+      if (entries.length > 0) {
+        obj.fields = {};
+        entries.forEach(([k, v]) => {
+          obj.fields[k] = VerificationTemplateFieldPatch.toJSON(v);
+        });
+      }
     }
     return obj;
   },
@@ -3254,7 +3499,6 @@ export const UpdateVerificationTemplateRequest = {
   create(base?: DeepPartial<UpdateVerificationTemplateRequest>): UpdateVerificationTemplateRequest {
     return UpdateVerificationTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpdateVerificationTemplateRequest>): UpdateVerificationTemplateRequest {
     const message = createBaseUpdateVerificationTemplateRequest();
     message.id = object.id ?? "";
@@ -3296,21 +3540,21 @@ export const UpdateVerificationTemplateRequest_FieldsEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = VerificationTemplateFieldPatch.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3327,9 +3571,12 @@ export const UpdateVerificationTemplateRequest_FieldsEntry = {
 
   toJSON(message: UpdateVerificationTemplateRequest_FieldsEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined &&
-      (obj.value = message.value ? VerificationTemplateFieldPatch.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = VerificationTemplateFieldPatch.toJSON(message.value);
+    }
     return obj;
   },
 
@@ -3338,7 +3585,6 @@ export const UpdateVerificationTemplateRequest_FieldsEntry = {
   ): UpdateVerificationTemplateRequest_FieldsEntry {
     return UpdateVerificationTemplateRequest_FieldsEntry.fromPartial(base ?? {});
   },
-
   fromPartial(
     object: DeepPartial<UpdateVerificationTemplateRequest_FieldsEntry>,
   ): UpdateVerificationTemplateRequest_FieldsEntry {
@@ -3371,14 +3617,14 @@ export const UpdateVerificationTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.template = VerificationTemplateData.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3392,15 +3638,15 @@ export const UpdateVerificationTemplateResponse = {
 
   toJSON(message: UpdateVerificationTemplateResponse): unknown {
     const obj: any = {};
-    message.template !== undefined &&
-      (obj.template = message.template ? VerificationTemplateData.toJSON(message.template) : undefined);
+    if (message.template !== undefined) {
+      obj.template = VerificationTemplateData.toJSON(message.template);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpdateVerificationTemplateResponse>): UpdateVerificationTemplateResponse {
     return UpdateVerificationTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpdateVerificationTemplateResponse>): UpdateVerificationTemplateResponse {
     const message = createBaseUpdateVerificationTemplateResponse();
     message.template = (object.template !== undefined && object.template !== null)
@@ -3430,14 +3676,14 @@ export const DeleteVerificationTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.verificationTemplateId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3453,14 +3699,15 @@ export const DeleteVerificationTemplateRequest = {
 
   toJSON(message: DeleteVerificationTemplateRequest): unknown {
     const obj: any = {};
-    message.verificationTemplateId !== undefined && (obj.verificationTemplateId = message.verificationTemplateId);
+    if (message.verificationTemplateId !== undefined && message.verificationTemplateId !== "") {
+      obj.verificationTemplateId = message.verificationTemplateId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<DeleteVerificationTemplateRequest>): DeleteVerificationTemplateRequest {
     return DeleteVerificationTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<DeleteVerificationTemplateRequest>): DeleteVerificationTemplateRequest {
     const message = createBaseDeleteVerificationTemplateRequest();
     message.verificationTemplateId = object.verificationTemplateId ?? "";
@@ -3485,7 +3732,7 @@ export const DeleteVerificationTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3505,7 +3752,6 @@ export const DeleteVerificationTemplateResponse = {
   create(base?: DeepPartial<DeleteVerificationTemplateResponse>): DeleteVerificationTemplateResponse {
     return DeleteVerificationTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<DeleteVerificationTemplateResponse>): DeleteVerificationTemplateResponse {
     const message = createBaseDeleteVerificationTemplateResponse();
     return message;
@@ -3519,7 +3765,6 @@ function createBaseVerificationTemplateData(): VerificationTemplateData {
     version: 0,
     fields: {},
     credentialTemplateId: "",
-    schemaUri: "",
     ecosystemId: "",
     type: "",
     createdBy: "",
@@ -3545,9 +3790,6 @@ export const VerificationTemplateData = {
     });
     if (message.credentialTemplateId !== undefined && message.credentialTemplateId !== "") {
       writer.uint32(42).string(message.credentialTemplateId);
-    }
-    if (message.schemaUri !== undefined && message.schemaUri !== "") {
-      writer.uint32(50).string(message.schemaUri);
     }
     if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
       writer.uint32(66).string(message.ecosystemId);
@@ -3578,28 +3820,28 @@ export const VerificationTemplateData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.version = reader.int32();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
@@ -3609,63 +3851,56 @@ export const VerificationTemplateData = {
           }
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.credentialTemplateId = reader.string();
           continue;
-        case 6:
-          if (tag != 50) {
-            break;
-          }
-
-          message.schemaUri = reader.string();
-          continue;
         case 8:
-          if (tag != 66) {
+          if (tag !== 66) {
             break;
           }
 
           message.ecosystemId = reader.string();
           continue;
         case 9:
-          if (tag != 74) {
+          if (tag !== 74) {
             break;
           }
 
           message.type = reader.string();
           continue;
         case 10:
-          if (tag != 82) {
+          if (tag !== 82) {
             break;
           }
 
           message.createdBy = reader.string();
           continue;
         case 11:
-          if (tag != 90) {
+          if (tag !== 90) {
             break;
           }
 
           message.dateCreated = reader.string();
           continue;
         case 12:
-          if (tag != 98) {
+          if (tag !== 98) {
             break;
           }
 
           message.title = reader.string();
           continue;
         case 13:
-          if (tag != 106) {
+          if (tag !== 106) {
             break;
           }
 
           message.description = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3685,7 +3920,6 @@ export const VerificationTemplateData = {
         }, {})
         : {},
       credentialTemplateId: isSet(object.credentialTemplateId) ? String(object.credentialTemplateId) : "",
-      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       type: isSet(object.type) ? String(object.type) : "",
       createdBy: isSet(object.createdBy) ? String(object.createdBy) : "",
@@ -3697,30 +3931,51 @@ export const VerificationTemplateData = {
 
   toJSON(message: VerificationTemplateData): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.name !== undefined && (obj.name = message.name);
-    message.version !== undefined && (obj.version = Math.round(message.version));
-    obj.fields = {};
-    if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = VerificationTemplateField.toJSON(v);
-      });
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
     }
-    message.credentialTemplateId !== undefined && (obj.credentialTemplateId = message.credentialTemplateId);
-    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    message.type !== undefined && (obj.type = message.type);
-    message.createdBy !== undefined && (obj.createdBy = message.createdBy);
-    message.dateCreated !== undefined && (obj.dateCreated = message.dateCreated);
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.version !== undefined && message.version !== 0) {
+      obj.version = Math.round(message.version);
+    }
+    if (message.fields) {
+      const entries = Object.entries(message.fields);
+      if (entries.length > 0) {
+        obj.fields = {};
+        entries.forEach(([k, v]) => {
+          obj.fields[k] = VerificationTemplateField.toJSON(v);
+        });
+      }
+    }
+    if (message.credentialTemplateId !== undefined && message.credentialTemplateId !== "") {
+      obj.credentialTemplateId = message.credentialTemplateId;
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      obj.ecosystemId = message.ecosystemId;
+    }
+    if (message.type !== undefined && message.type !== "") {
+      obj.type = message.type;
+    }
+    if (message.createdBy !== undefined && message.createdBy !== "") {
+      obj.createdBy = message.createdBy;
+    }
+    if (message.dateCreated !== undefined && message.dateCreated !== "") {
+      obj.dateCreated = message.dateCreated;
+    }
+    if (message.title !== undefined && message.title !== "") {
+      obj.title = message.title;
+    }
+    if (message.description !== undefined && message.description !== "") {
+      obj.description = message.description;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<VerificationTemplateData>): VerificationTemplateData {
     return VerificationTemplateData.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<VerificationTemplateData>): VerificationTemplateData {
     const message = createBaseVerificationTemplateData();
     message.id = object.id ?? "";
@@ -3736,7 +3991,6 @@ export const VerificationTemplateData = {
       {},
     );
     message.credentialTemplateId = object.credentialTemplateId ?? "";
-    message.schemaUri = object.schemaUri ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.type = object.type ?? "";
     message.createdBy = object.createdBy ?? "";
@@ -3770,21 +4024,21 @@ export const VerificationTemplateData_FieldsEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = VerificationTemplateField.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3801,16 +4055,18 @@ export const VerificationTemplateData_FieldsEntry = {
 
   toJSON(message: VerificationTemplateData_FieldsEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined &&
-      (obj.value = message.value ? VerificationTemplateField.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = VerificationTemplateField.toJSON(message.value);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<VerificationTemplateData_FieldsEntry>): VerificationTemplateData_FieldsEntry {
     return VerificationTemplateData_FieldsEntry.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<VerificationTemplateData_FieldsEntry>): VerificationTemplateData_FieldsEntry {
     const message = createBaseVerificationTemplateData_FieldsEntry();
     message.key = object.key ?? "";
@@ -3844,21 +4100,21 @@ export const ListVerificationTemplatesRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.query = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3875,15 +4131,18 @@ export const ListVerificationTemplatesRequest = {
 
   toJSON(message: ListVerificationTemplatesRequest): unknown {
     const obj: any = {};
-    message.query !== undefined && (obj.query = message.query);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.query !== undefined && message.query !== "") {
+      obj.query = message.query;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListVerificationTemplatesRequest>): ListVerificationTemplatesRequest {
     return ListVerificationTemplatesRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListVerificationTemplatesRequest>): ListVerificationTemplatesRequest {
     const message = createBaseListVerificationTemplatesRequest();
     message.query = object.query ?? "";
@@ -3920,28 +4179,28 @@ export const ListVerificationTemplatesResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.templates!.push(VerificationTemplateData.decode(reader, reader.uint32()));
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -3961,20 +4220,21 @@ export const ListVerificationTemplatesResponse = {
 
   toJSON(message: ListVerificationTemplatesResponse): unknown {
     const obj: any = {};
-    if (message.templates) {
-      obj.templates = message.templates.map((e) => e ? VerificationTemplateData.toJSON(e) : undefined);
-    } else {
-      obj.templates = [];
+    if (message.templates?.length) {
+      obj.templates = message.templates.map((e) => VerificationTemplateData.toJSON(e));
     }
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListVerificationTemplatesResponse>): ListVerificationTemplatesResponse {
     return ListVerificationTemplatesResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListVerificationTemplatesResponse>): ListVerificationTemplatesResponse {
     const message = createBaseListVerificationTemplatesResponse();
     message.templates = object.templates?.map((e) => VerificationTemplateData.fromPartial(e)) || [];
@@ -4007,21 +4267,21 @@ export const VerificationTemplateField = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.fieldShareType = reader.int32() as any;
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.usagePolicy = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -4038,15 +4298,18 @@ export const VerificationTemplateField = {
 
   toJSON(message: VerificationTemplateField): unknown {
     const obj: any = {};
-    message.fieldShareType !== undefined && (obj.fieldShareType = verificationShareTypeToJSON(message.fieldShareType));
-    message.usagePolicy !== undefined && (obj.usagePolicy = message.usagePolicy);
+    if (message.fieldShareType !== undefined && message.fieldShareType !== 0) {
+      obj.fieldShareType = verificationShareTypeToJSON(message.fieldShareType);
+    }
+    if (message.usagePolicy !== undefined && message.usagePolicy !== "") {
+      obj.usagePolicy = message.usagePolicy;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<VerificationTemplateField>): VerificationTemplateField {
     return VerificationTemplateField.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<VerificationTemplateField>): VerificationTemplateField {
     const message = createBaseVerificationTemplateField();
     message.fieldShareType = object.fieldShareType ?? 0;
@@ -4078,21 +4341,21 @@ export const VerificationTemplateFieldPatch = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.fieldShareType = reader.int32() as any;
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.usagePolicy = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -4109,15 +4372,18 @@ export const VerificationTemplateFieldPatch = {
 
   toJSON(message: VerificationTemplateFieldPatch): unknown {
     const obj: any = {};
-    message.fieldShareType !== undefined && (obj.fieldShareType = verificationShareTypeToJSON(message.fieldShareType));
-    message.usagePolicy !== undefined && (obj.usagePolicy = message.usagePolicy);
+    if (message.fieldShareType !== undefined && message.fieldShareType !== 0) {
+      obj.fieldShareType = verificationShareTypeToJSON(message.fieldShareType);
+    }
+    if (message.usagePolicy !== undefined && message.usagePolicy !== "") {
+      obj.usagePolicy = message.usagePolicy;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<VerificationTemplateFieldPatch>): VerificationTemplateFieldPatch {
     return VerificationTemplateFieldPatch.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<VerificationTemplateFieldPatch>): VerificationTemplateFieldPatch {
     const message = createBaseVerificationTemplateFieldPatch();
     message.fieldShareType = object.fieldShareType ?? 0;

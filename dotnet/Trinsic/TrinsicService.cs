@@ -9,6 +9,7 @@ namespace Trinsic;
 public class TrinsicService : ServiceBase, ITrinsicService
 {
     private AccessManagementService? _accessManagement;
+    private ConnectService? _connect;
     private CredentialService? _credential;
     private FileManagementService? _fileManagement;
     private TemplateService? _template;
@@ -33,6 +34,11 @@ public class TrinsicService : ServiceBase, ITrinsicService
     /// Exposes Account Service functionality
     /// </summary>
     public AccessManagementService AccessManagement => _accessManagement ??= new(Options);
+
+    /// <summary>
+    /// Exposes Trinsic Connect Service functionality
+    /// </summary>
+    public ConnectService Connect => _connect ??= new(Options);
 
     /// <summary>
     /// Exposes Credential Service functionality

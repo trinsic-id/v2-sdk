@@ -52,31 +52,41 @@ export function signatureTypeToJSON(object: SignatureType): string {
 /** Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller */
 export interface IssueFromTemplateRequest {
   /** ID of template to use */
-  templateId?: string;
+  templateId?:
+    | string
+    | undefined;
   /**
    * JSON document string with keys corresponding to the fields of
    * the template referenced by `template_id`
    */
-  valuesJson?: string;
+  valuesJson?:
+    | string
+    | undefined;
   /**
    * Save a copy of the issued credential to this user's wallet. This copy will only contain
    * the credential data, but not the secret proof value. Issuers may use this data to
    * keep track of the details for revocation status.
    */
-  saveCopy?: boolean;
+  saveCopy?:
+    | boolean
+    | undefined;
   /**
    * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
    * If specified, the issued credential will contain an expiration date.
    * https://www.w3.org/TR/vc-data-model/#expiration
    */
-  expirationDate?: string;
+  expirationDate?:
+    | string
+    | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
    * Trust Registry.
    */
-  includeGovernance?: boolean;
+  includeGovernance?:
+    | boolean
+    | undefined;
   /** The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. */
-  signatureType?: SignatureType;
+  signatureType?: SignatureType | undefined;
 }
 
 /** Response to `IssueFromTemplateRequest` */
@@ -86,7 +96,7 @@ export interface IssueFromTemplateResponse {
    * constructed from the specified template and values; signed
    * with public key tied to caller of `IssueFromTemplateRequest`
    */
-  documentJson?: string;
+  documentJson?: string | undefined;
 }
 
 /**
@@ -127,54 +137,60 @@ export interface CreateProofRequest {
    * If the credential used in the proof is bound to the holder DID,
    * the output will always use a verifiable presentation and this field will be ignored.
    */
-  useVerifiablePresentation?: boolean;
+  useVerifiablePresentation?:
+    | boolean
+    | undefined;
   /**
    * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
    * This value may be represented in base64 format in the proof model.
    */
-  nonce?: Uint8Array;
+  nonce?: Uint8Array | undefined;
 }
 
 export interface RevealTemplateAttributes {
   /** A list of document attributes to reveal. If unset, all attributes will be returned. */
-  templateAttributes?: string[];
+  templateAttributes?: string[] | undefined;
 }
 
 /** Response to `CreateProofRequest` */
 export interface CreateProofResponse {
   /** Valid JSON-LD proof for the specified credential */
-  proofDocumentJson?: string;
+  proofDocumentJson?: string | undefined;
 }
 
 /** Request to verify a proof */
 export interface VerifyProofRequest {
   /** JSON-LD proof document string to verify */
-  proofDocumentJson?: string;
+  proofDocumentJson?: string | undefined;
 }
 
 /** Response to `VerifyProofRequest` */
 export interface VerifyProofResponse {
   /** Whether all validations in `validation_results` passed */
-  isValid?: boolean;
+  isValid?:
+    | boolean
+    | undefined;
   /**
    * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    */
-  validationResults?: { [key: string]: ValidationMessage };
+  validationResults?: { [key: string]: ValidationMessage } | undefined;
 }
 
 export interface VerifyProofResponse_ValidationResultsEntry {
   key: string;
-  value?: ValidationMessage;
+  value?: ValidationMessage | undefined;
 }
 
 /** Result of a validation check on a proof */
 export interface ValidationMessage {
   /** Whether this validation check passed */
-  isValid?: boolean;
+  isValid?:
+    | boolean
+    | undefined;
   /** If validation failed, contains messages explaining why */
-  messages?: string[];
+  messages?: string[] | undefined;
 }
 
 /** Request to send a document to another user's wallet */
@@ -196,9 +212,11 @@ export interface SendRequest {
   | string
   | undefined;
   /** Send email notification that credential has been sent to a wallet */
-  sendNotification?: boolean;
+  sendNotification?:
+    | boolean
+    | undefined;
   /** JSON document to send to recipient */
-  documentJson?: string;
+  documentJson?: string | undefined;
 }
 
 /** Response to `SendRequest` */
@@ -208,9 +226,11 @@ export interface SendResponse {
 /** Request to update a credential's revocation status */
 export interface UpdateStatusRequest {
   /** Credential Status ID to update. This is not the same as the credential's ID. */
-  credentialStatusId?: string;
+  credentialStatusId?:
+    | string
+    | undefined;
   /** New revocation status of credential */
-  revoked?: boolean;
+  revoked?: boolean | undefined;
 }
 
 /** Response to `UpdateStatusRequest` */
@@ -220,51 +240,63 @@ export interface UpdateStatusResponse {
 /** Request to check a credential's revocation status */
 export interface CheckStatusRequest {
   /** Credential Status ID to check. This is not the same as the credential's ID. */
-  credentialStatusId?: string;
+  credentialStatusId?: string | undefined;
 }
 
 /** Response to `CheckStatusRequest` */
 export interface CheckStatusResponse {
   /** The credential's revocation status */
-  revoked?: boolean;
+  revoked?: boolean | undefined;
 }
 
 export interface CreateCredentialOfferRequest {
   /** ID of template to use */
-  templateId?: string;
+  templateId?:
+    | string
+    | undefined;
   /**
    * JSON document string with keys corresponding to the fields of
    * the template referenced by `template_id`
    */
-  valuesJson?: string;
+  valuesJson?:
+    | string
+    | undefined;
   /**
    * If true, the credential will be issued with holder binding by specifying
    * the holder DID in the credential subject
    */
-  holderBinding?: boolean;
+  holderBinding?:
+    | boolean
+    | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
    * Trust Registry.
    */
-  includeGovernance?: boolean;
+  includeGovernance?:
+    | boolean
+    | undefined;
   /**
    * If true, a short URL link will be generated that can be used to share the credential offer with the holder.
    * This link will point to the credential offer in the wallet app.
    */
-  generateShareUrl?: boolean;
+  generateShareUrl?:
+    | boolean
+    | undefined;
   /** The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. */
-  signatureType?: SignatureType;
+  signatureType?: SignatureType | undefined;
 }
 
 export interface CreateCredentialOfferResponse {
   /** The JSON document that contains the credential offer */
-  documentJson?: string;
+  documentJson?:
+    | string
+    | undefined;
   /**
    * If requested, a URL that can be used to share the credential offer with the holder.
    * This is a short URL that can be used in a QR code and will redirect the
    * holder to the credential offer using the wallet app.
    */
-  shareUrl?: string;
+  shareUrl?: string | undefined;
 }
 
 export interface AcceptCredentialRequest {
@@ -278,12 +310,14 @@ export interface AcceptCredentialRequest {
 
 export interface AcceptCredentialResponse {
   /** The ID of the item in the wallet that contains the issued credential */
-  itemId?: string;
+  itemId?:
+    | string
+    | undefined;
   /**
    * The JSON document that contains the issued credential.
    * This item is already stored in the wallet.
    */
-  documentJson?: string;
+  documentJson?: string | undefined;
 }
 
 export interface RejectCredentialRequest {
@@ -340,49 +374,49 @@ export const IssueFromTemplateRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.templateId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.valuesJson = reader.string();
           continue;
         case 4:
-          if (tag != 32) {
+          if (tag !== 32) {
             break;
           }
 
           message.saveCopy = reader.bool();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.expirationDate = reader.string();
           continue;
         case 6:
-          if (tag != 48) {
+          if (tag !== 48) {
             break;
           }
 
           message.includeGovernance = reader.bool();
           continue;
         case 7:
-          if (tag != 56) {
+          if (tag !== 56) {
             break;
           }
 
           message.signatureType = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -403,19 +437,30 @@ export const IssueFromTemplateRequest = {
 
   toJSON(message: IssueFromTemplateRequest): unknown {
     const obj: any = {};
-    message.templateId !== undefined && (obj.templateId = message.templateId);
-    message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
-    message.saveCopy !== undefined && (obj.saveCopy = message.saveCopy);
-    message.expirationDate !== undefined && (obj.expirationDate = message.expirationDate);
-    message.includeGovernance !== undefined && (obj.includeGovernance = message.includeGovernance);
-    message.signatureType !== undefined && (obj.signatureType = signatureTypeToJSON(message.signatureType));
+    if (message.templateId !== undefined && message.templateId !== "") {
+      obj.templateId = message.templateId;
+    }
+    if (message.valuesJson !== undefined && message.valuesJson !== "") {
+      obj.valuesJson = message.valuesJson;
+    }
+    if (message.saveCopy === true) {
+      obj.saveCopy = message.saveCopy;
+    }
+    if (message.expirationDate !== undefined && message.expirationDate !== "") {
+      obj.expirationDate = message.expirationDate;
+    }
+    if (message.includeGovernance === true) {
+      obj.includeGovernance = message.includeGovernance;
+    }
+    if (message.signatureType !== undefined && message.signatureType !== 0) {
+      obj.signatureType = signatureTypeToJSON(message.signatureType);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<IssueFromTemplateRequest>): IssueFromTemplateRequest {
     return IssueFromTemplateRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<IssueFromTemplateRequest>): IssueFromTemplateRequest {
     const message = createBaseIssueFromTemplateRequest();
     message.templateId = object.templateId ?? "";
@@ -448,14 +493,14 @@ export const IssueFromTemplateResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.documentJson = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -469,14 +514,15 @@ export const IssueFromTemplateResponse = {
 
   toJSON(message: IssueFromTemplateResponse): unknown {
     const obj: any = {};
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
+    if (message.documentJson !== undefined && message.documentJson !== "") {
+      obj.documentJson = message.documentJson;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<IssueFromTemplateResponse>): IssueFromTemplateResponse {
     return IssueFromTemplateResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<IssueFromTemplateResponse>): IssueFromTemplateResponse {
     const message = createBaseIssueFromTemplateResponse();
     message.documentJson = object.documentJson ?? "";
@@ -492,7 +538,7 @@ function createBaseCreateProofRequest(): CreateProofRequest {
     itemId: undefined,
     documentJson: undefined,
     useVerifiablePresentation: false,
-    nonce: new Uint8Array(),
+    nonce: new Uint8Array(0),
   };
 }
 
@@ -530,56 +576,56 @@ export const CreateProofRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.revealDocumentJson = reader.string();
           continue;
         case 11:
-          if (tag != 90) {
+          if (tag !== 90) {
             break;
           }
 
           message.revealTemplate = RevealTemplateAttributes.decode(reader, reader.uint32());
           continue;
         case 12:
-          if (tag != 98) {
+          if (tag !== 98) {
             break;
           }
 
           message.verificationTemplateId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.documentJson = reader.string();
           continue;
         case 4:
-          if (tag != 32) {
+          if (tag !== 32) {
             break;
           }
 
           message.useVerifiablePresentation = reader.bool();
           continue;
         case 10:
-          if (tag != 82) {
+          if (tag !== 82) {
             break;
           }
 
           message.nonce = reader.bytes();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -599,31 +645,39 @@ export const CreateProofRequest = {
       useVerifiablePresentation: isSet(object.useVerifiablePresentation)
         ? Boolean(object.useVerifiablePresentation)
         : false,
-      nonce: isSet(object.nonce) ? bytesFromBase64(object.nonce) : new Uint8Array(),
+      nonce: isSet(object.nonce) ? bytesFromBase64(object.nonce) : new Uint8Array(0),
     };
   },
 
   toJSON(message: CreateProofRequest): unknown {
     const obj: any = {};
-    message.revealDocumentJson !== undefined && (obj.revealDocumentJson = message.revealDocumentJson);
-    message.revealTemplate !== undefined &&
-      (obj.revealTemplate = message.revealTemplate
-        ? RevealTemplateAttributes.toJSON(message.revealTemplate)
-        : undefined);
-    message.verificationTemplateId !== undefined && (obj.verificationTemplateId = message.verificationTemplateId);
-    message.itemId !== undefined && (obj.itemId = message.itemId);
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
-    message.useVerifiablePresentation !== undefined &&
-      (obj.useVerifiablePresentation = message.useVerifiablePresentation);
-    message.nonce !== undefined &&
-      (obj.nonce = base64FromBytes(message.nonce !== undefined ? message.nonce : new Uint8Array()));
+    if (message.revealDocumentJson !== undefined) {
+      obj.revealDocumentJson = message.revealDocumentJson;
+    }
+    if (message.revealTemplate !== undefined) {
+      obj.revealTemplate = RevealTemplateAttributes.toJSON(message.revealTemplate);
+    }
+    if (message.verificationTemplateId !== undefined) {
+      obj.verificationTemplateId = message.verificationTemplateId;
+    }
+    if (message.itemId !== undefined) {
+      obj.itemId = message.itemId;
+    }
+    if (message.documentJson !== undefined) {
+      obj.documentJson = message.documentJson;
+    }
+    if (message.useVerifiablePresentation === true) {
+      obj.useVerifiablePresentation = message.useVerifiablePresentation;
+    }
+    if (message.nonce !== undefined && message.nonce.length !== 0) {
+      obj.nonce = base64FromBytes(message.nonce);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateProofRequest>): CreateProofRequest {
     return CreateProofRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateProofRequest>): CreateProofRequest {
     const message = createBaseCreateProofRequest();
     message.revealDocumentJson = object.revealDocumentJson ?? undefined;
@@ -634,7 +688,7 @@ export const CreateProofRequest = {
     message.itemId = object.itemId ?? undefined;
     message.documentJson = object.documentJson ?? undefined;
     message.useVerifiablePresentation = object.useVerifiablePresentation ?? false;
-    message.nonce = object.nonce ?? new Uint8Array();
+    message.nonce = object.nonce ?? new Uint8Array(0);
     return message;
   },
 };
@@ -661,14 +715,14 @@ export const RevealTemplateAttributes = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.templateAttributes!.push(reader.string());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -686,10 +740,8 @@ export const RevealTemplateAttributes = {
 
   toJSON(message: RevealTemplateAttributes): unknown {
     const obj: any = {};
-    if (message.templateAttributes) {
-      obj.templateAttributes = message.templateAttributes.map((e) => e);
-    } else {
-      obj.templateAttributes = [];
+    if (message.templateAttributes?.length) {
+      obj.templateAttributes = message.templateAttributes;
     }
     return obj;
   },
@@ -697,7 +749,6 @@ export const RevealTemplateAttributes = {
   create(base?: DeepPartial<RevealTemplateAttributes>): RevealTemplateAttributes {
     return RevealTemplateAttributes.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RevealTemplateAttributes>): RevealTemplateAttributes {
     const message = createBaseRevealTemplateAttributes();
     message.templateAttributes = object.templateAttributes?.map((e) => e) || [];
@@ -725,14 +776,14 @@ export const CreateProofResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.proofDocumentJson = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -746,14 +797,15 @@ export const CreateProofResponse = {
 
   toJSON(message: CreateProofResponse): unknown {
     const obj: any = {};
-    message.proofDocumentJson !== undefined && (obj.proofDocumentJson = message.proofDocumentJson);
+    if (message.proofDocumentJson !== undefined && message.proofDocumentJson !== "") {
+      obj.proofDocumentJson = message.proofDocumentJson;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateProofResponse>): CreateProofResponse {
     return CreateProofResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateProofResponse>): CreateProofResponse {
     const message = createBaseCreateProofResponse();
     message.proofDocumentJson = object.proofDocumentJson ?? "";
@@ -781,14 +833,14 @@ export const VerifyProofRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.proofDocumentJson = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -802,14 +854,15 @@ export const VerifyProofRequest = {
 
   toJSON(message: VerifyProofRequest): unknown {
     const obj: any = {};
-    message.proofDocumentJson !== undefined && (obj.proofDocumentJson = message.proofDocumentJson);
+    if (message.proofDocumentJson !== undefined && message.proofDocumentJson !== "") {
+      obj.proofDocumentJson = message.proofDocumentJson;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<VerifyProofRequest>): VerifyProofRequest {
     return VerifyProofRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<VerifyProofRequest>): VerifyProofRequest {
     const message = createBaseVerifyProofRequest();
     message.proofDocumentJson = object.proofDocumentJson ?? "";
@@ -840,14 +893,14 @@ export const VerifyProofResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.isValid = reader.bool();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
@@ -857,7 +910,7 @@ export const VerifyProofResponse = {
           }
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -879,12 +932,17 @@ export const VerifyProofResponse = {
 
   toJSON(message: VerifyProofResponse): unknown {
     const obj: any = {};
-    message.isValid !== undefined && (obj.isValid = message.isValid);
-    obj.validationResults = {};
+    if (message.isValid === true) {
+      obj.isValid = message.isValid;
+    }
     if (message.validationResults) {
-      Object.entries(message.validationResults).forEach(([k, v]) => {
-        obj.validationResults[k] = ValidationMessage.toJSON(v);
-      });
+      const entries = Object.entries(message.validationResults);
+      if (entries.length > 0) {
+        obj.validationResults = {};
+        entries.forEach(([k, v]) => {
+          obj.validationResults[k] = ValidationMessage.toJSON(v);
+        });
+      }
     }
     return obj;
   },
@@ -892,7 +950,6 @@ export const VerifyProofResponse = {
   create(base?: DeepPartial<VerifyProofResponse>): VerifyProofResponse {
     return VerifyProofResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<VerifyProofResponse>): VerifyProofResponse {
     const message = createBaseVerifyProofResponse();
     message.isValid = object.isValid ?? false;
@@ -931,21 +988,21 @@ export const VerifyProofResponse_ValidationResultsEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.key = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.value = ValidationMessage.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -962,15 +1019,18 @@ export const VerifyProofResponse_ValidationResultsEntry = {
 
   toJSON(message: VerifyProofResponse_ValidationResultsEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? ValidationMessage.toJSON(message.value) : undefined);
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = ValidationMessage.toJSON(message.value);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<VerifyProofResponse_ValidationResultsEntry>): VerifyProofResponse_ValidationResultsEntry {
     return VerifyProofResponse_ValidationResultsEntry.fromPartial(base ?? {});
   },
-
   fromPartial(
     object: DeepPartial<VerifyProofResponse_ValidationResultsEntry>,
   ): VerifyProofResponse_ValidationResultsEntry {
@@ -1008,21 +1068,21 @@ export const ValidationMessage = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.isValid = reader.bool();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.messages!.push(reader.string());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1039,11 +1099,11 @@ export const ValidationMessage = {
 
   toJSON(message: ValidationMessage): unknown {
     const obj: any = {};
-    message.isValid !== undefined && (obj.isValid = message.isValid);
-    if (message.messages) {
-      obj.messages = message.messages.map((e) => e);
-    } else {
-      obj.messages = [];
+    if (message.isValid === true) {
+      obj.isValid = message.isValid;
+    }
+    if (message.messages?.length) {
+      obj.messages = message.messages;
     }
     return obj;
   },
@@ -1051,7 +1111,6 @@ export const ValidationMessage = {
   create(base?: DeepPartial<ValidationMessage>): ValidationMessage {
     return ValidationMessage.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ValidationMessage>): ValidationMessage {
     const message = createBaseValidationMessage();
     message.isValid = object.isValid ?? false;
@@ -1102,49 +1161,49 @@ export const SendRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
         case 7:
-          if (tag != 58) {
+          if (tag !== 58) {
             break;
           }
 
           message.phoneNumber = reader.string();
           continue;
         case 4:
-          if (tag != 32) {
+          if (tag !== 32) {
             break;
           }
 
           message.sendNotification = reader.bool();
           continue;
         case 100:
-          if (tag != 802) {
+          if (tag !== 802) {
             break;
           }
 
           message.documentJson = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1165,19 +1224,30 @@ export const SendRequest = {
 
   toJSON(message: SendRequest): unknown {
     const obj: any = {};
-    message.email !== undefined && (obj.email = message.email);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.phoneNumber !== undefined && (obj.phoneNumber = message.phoneNumber);
-    message.sendNotification !== undefined && (obj.sendNotification = message.sendNotification);
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
+    if (message.phoneNumber !== undefined) {
+      obj.phoneNumber = message.phoneNumber;
+    }
+    if (message.sendNotification === true) {
+      obj.sendNotification = message.sendNotification;
+    }
+    if (message.documentJson !== undefined && message.documentJson !== "") {
+      obj.documentJson = message.documentJson;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<SendRequest>): SendRequest {
     return SendRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<SendRequest>): SendRequest {
     const message = createBaseSendRequest();
     message.email = object.email ?? undefined;
@@ -1207,7 +1277,7 @@ export const SendResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1227,7 +1297,6 @@ export const SendResponse = {
   create(base?: DeepPartial<SendResponse>): SendResponse {
     return SendResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<SendResponse>): SendResponse {
     const message = createBaseSendResponse();
     return message;
@@ -1257,21 +1326,21 @@ export const UpdateStatusRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.credentialStatusId = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.revoked = reader.bool();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1288,15 +1357,18 @@ export const UpdateStatusRequest = {
 
   toJSON(message: UpdateStatusRequest): unknown {
     const obj: any = {};
-    message.credentialStatusId !== undefined && (obj.credentialStatusId = message.credentialStatusId);
-    message.revoked !== undefined && (obj.revoked = message.revoked);
+    if (message.credentialStatusId !== undefined && message.credentialStatusId !== "") {
+      obj.credentialStatusId = message.credentialStatusId;
+    }
+    if (message.revoked === true) {
+      obj.revoked = message.revoked;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UpdateStatusRequest>): UpdateStatusRequest {
     return UpdateStatusRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UpdateStatusRequest>): UpdateStatusRequest {
     const message = createBaseUpdateStatusRequest();
     message.credentialStatusId = object.credentialStatusId ?? "";
@@ -1322,7 +1394,7 @@ export const UpdateStatusResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1342,7 +1414,6 @@ export const UpdateStatusResponse = {
   create(base?: DeepPartial<UpdateStatusResponse>): UpdateStatusResponse {
     return UpdateStatusResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<UpdateStatusResponse>): UpdateStatusResponse {
     const message = createBaseUpdateStatusResponse();
     return message;
@@ -1369,14 +1440,14 @@ export const CheckStatusRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.credentialStatusId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1390,14 +1461,15 @@ export const CheckStatusRequest = {
 
   toJSON(message: CheckStatusRequest): unknown {
     const obj: any = {};
-    message.credentialStatusId !== undefined && (obj.credentialStatusId = message.credentialStatusId);
+    if (message.credentialStatusId !== undefined && message.credentialStatusId !== "") {
+      obj.credentialStatusId = message.credentialStatusId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CheckStatusRequest>): CheckStatusRequest {
     return CheckStatusRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CheckStatusRequest>): CheckStatusRequest {
     const message = createBaseCheckStatusRequest();
     message.credentialStatusId = object.credentialStatusId ?? "";
@@ -1425,14 +1497,14 @@ export const CheckStatusResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.revoked = reader.bool();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1446,14 +1518,15 @@ export const CheckStatusResponse = {
 
   toJSON(message: CheckStatusResponse): unknown {
     const obj: any = {};
-    message.revoked !== undefined && (obj.revoked = message.revoked);
+    if (message.revoked === true) {
+      obj.revoked = message.revoked;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CheckStatusResponse>): CheckStatusResponse {
     return CheckStatusResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CheckStatusResponse>): CheckStatusResponse {
     const message = createBaseCheckStatusResponse();
     message.revoked = object.revoked ?? false;
@@ -1503,49 +1576,49 @@ export const CreateCredentialOfferRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.templateId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.valuesJson = reader.string();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.holderBinding = reader.bool();
           continue;
         case 4:
-          if (tag != 32) {
+          if (tag !== 32) {
             break;
           }
 
           message.includeGovernance = reader.bool();
           continue;
         case 5:
-          if (tag != 40) {
+          if (tag !== 40) {
             break;
           }
 
           message.generateShareUrl = reader.bool();
           continue;
         case 7:
-          if (tag != 56) {
+          if (tag !== 56) {
             break;
           }
 
           message.signatureType = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1566,19 +1639,30 @@ export const CreateCredentialOfferRequest = {
 
   toJSON(message: CreateCredentialOfferRequest): unknown {
     const obj: any = {};
-    message.templateId !== undefined && (obj.templateId = message.templateId);
-    message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
-    message.holderBinding !== undefined && (obj.holderBinding = message.holderBinding);
-    message.includeGovernance !== undefined && (obj.includeGovernance = message.includeGovernance);
-    message.generateShareUrl !== undefined && (obj.generateShareUrl = message.generateShareUrl);
-    message.signatureType !== undefined && (obj.signatureType = signatureTypeToJSON(message.signatureType));
+    if (message.templateId !== undefined && message.templateId !== "") {
+      obj.templateId = message.templateId;
+    }
+    if (message.valuesJson !== undefined && message.valuesJson !== "") {
+      obj.valuesJson = message.valuesJson;
+    }
+    if (message.holderBinding === true) {
+      obj.holderBinding = message.holderBinding;
+    }
+    if (message.includeGovernance === true) {
+      obj.includeGovernance = message.includeGovernance;
+    }
+    if (message.generateShareUrl === true) {
+      obj.generateShareUrl = message.generateShareUrl;
+    }
+    if (message.signatureType !== undefined && message.signatureType !== 0) {
+      obj.signatureType = signatureTypeToJSON(message.signatureType);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateCredentialOfferRequest>): CreateCredentialOfferRequest {
     return CreateCredentialOfferRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateCredentialOfferRequest>): CreateCredentialOfferRequest {
     const message = createBaseCreateCredentialOfferRequest();
     message.templateId = object.templateId ?? "";
@@ -1614,21 +1698,21 @@ export const CreateCredentialOfferResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.documentJson = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.shareUrl = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1645,15 +1729,18 @@ export const CreateCredentialOfferResponse = {
 
   toJSON(message: CreateCredentialOfferResponse): unknown {
     const obj: any = {};
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
-    message.shareUrl !== undefined && (obj.shareUrl = message.shareUrl);
+    if (message.documentJson !== undefined && message.documentJson !== "") {
+      obj.documentJson = message.documentJson;
+    }
+    if (message.shareUrl !== undefined && message.shareUrl !== "") {
+      obj.shareUrl = message.shareUrl;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CreateCredentialOfferResponse>): CreateCredentialOfferResponse {
     return CreateCredentialOfferResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<CreateCredentialOfferResponse>): CreateCredentialOfferResponse {
     const message = createBaseCreateCredentialOfferResponse();
     message.documentJson = object.documentJson ?? "";
@@ -1685,21 +1772,21 @@ export const AcceptCredentialRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.documentJson = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1716,15 +1803,18 @@ export const AcceptCredentialRequest = {
 
   toJSON(message: AcceptCredentialRequest): unknown {
     const obj: any = {};
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
-    message.itemId !== undefined && (obj.itemId = message.itemId);
+    if (message.documentJson !== undefined) {
+      obj.documentJson = message.documentJson;
+    }
+    if (message.itemId !== undefined) {
+      obj.itemId = message.itemId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AcceptCredentialRequest>): AcceptCredentialRequest {
     return AcceptCredentialRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AcceptCredentialRequest>): AcceptCredentialRequest {
     const message = createBaseAcceptCredentialRequest();
     message.documentJson = object.documentJson ?? undefined;
@@ -1756,21 +1846,21 @@ export const AcceptCredentialResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.documentJson = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1787,15 +1877,18 @@ export const AcceptCredentialResponse = {
 
   toJSON(message: AcceptCredentialResponse): unknown {
     const obj: any = {};
-    message.itemId !== undefined && (obj.itemId = message.itemId);
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
+    if (message.itemId !== undefined && message.itemId !== "") {
+      obj.itemId = message.itemId;
+    }
+    if (message.documentJson !== undefined && message.documentJson !== "") {
+      obj.documentJson = message.documentJson;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AcceptCredentialResponse>): AcceptCredentialResponse {
     return AcceptCredentialResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AcceptCredentialResponse>): AcceptCredentialResponse {
     const message = createBaseAcceptCredentialResponse();
     message.itemId = object.itemId ?? "";
@@ -1827,21 +1920,21 @@ export const RejectCredentialRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.documentJson = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.itemId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1858,15 +1951,18 @@ export const RejectCredentialRequest = {
 
   toJSON(message: RejectCredentialRequest): unknown {
     const obj: any = {};
-    message.documentJson !== undefined && (obj.documentJson = message.documentJson);
-    message.itemId !== undefined && (obj.itemId = message.itemId);
+    if (message.documentJson !== undefined) {
+      obj.documentJson = message.documentJson;
+    }
+    if (message.itemId !== undefined) {
+      obj.itemId = message.itemId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<RejectCredentialRequest>): RejectCredentialRequest {
     return RejectCredentialRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RejectCredentialRequest>): RejectCredentialRequest {
     const message = createBaseRejectCredentialRequest();
     message.documentJson = object.documentJson ?? undefined;
@@ -1892,7 +1988,7 @@ export const RejectCredentialResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1912,7 +2008,6 @@ export const RejectCredentialResponse = {
   create(base?: DeepPartial<RejectCredentialResponse>): RejectCredentialResponse {
     return RejectCredentialResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<RejectCredentialResponse>): RejectCredentialResponse {
     const message = createBaseRejectCredentialResponse();
     return message;
@@ -2018,10 +2113,10 @@ export const VerifiableCredentialDefinition = {
   },
 } as const;
 
-declare var self: any | undefined;
-declare var window: any | undefined;
-declare var global: any | undefined;
-var tsProtoGlobalThis: any = (() => {
+declare const self: any | undefined;
+declare const window: any | undefined;
+declare const global: any | undefined;
+const tsProtoGlobalThis: any = (() => {
   if (typeof globalThis !== "undefined") {
     return globalThis;
   }

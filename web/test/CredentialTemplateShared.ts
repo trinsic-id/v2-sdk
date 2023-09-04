@@ -75,7 +75,9 @@ export async function verifyCredential(
     const insertItemResponse = await trinsic
         .wallet()
         .insertItem(
-            InsertItemRequest.fromPartial({ itemJson: credential.documentJson })
+            InsertItemRequest.fromPartial({
+                itemJson: credential.documentJson,
+            }),
         );
 
     trinsic.options.authToken = allison.authToken;
@@ -97,7 +99,7 @@ export async function verifyCredential(
 }
 
 export async function createCredentialTemplateTest(
-    trinsic: TrinsicService
+    trinsic: TrinsicService,
 ): Promise<CreateCredentialTemplateResponse> {
     const {
         credentialTemplateName,
@@ -122,7 +124,7 @@ export async function createCredentialTemplateTest(
 }
 
 export async function issueCredentialFromTemplate(
-    trinsic: TrinsicService
+    trinsic: TrinsicService,
 ): Promise<IssueFromTemplateResponse> {
     let templateResponse = await createCredentialTemplateTest(trinsic);
 
@@ -148,7 +150,7 @@ export async function searchTemplate(trinsic: TrinsicService) {
     let searchTemplateResponse = await trinsic.template().search(
         SearchCredentialTemplatesRequest.fromPartial({
             query: "Select * from c",
-        })
+        }),
     );
     // }
     return searchTemplateResponse;
@@ -159,7 +161,7 @@ export async function getTemplate(trinsic: TrinsicService) {
     let getTemplateResponse = await trinsic.template().get(
         GetCredentialTemplateRequest.fromPartial({
             id: "id",
-        })
+        }),
     );
     // }
     return getTemplateResponse;

@@ -11,22 +11,25 @@ Future runTemplatesDemo() async {
   var trinsic = TrinsicService(trinsicConfig());
   var createWalletResponse = await trinsic
       .wallet()
-      .createWallet(CreateWalletRequest(ecosystemId: "default"));
+      .createWallet(CreateWalletRequest()..ecosystemId = "default");
   assert(createWalletResponse.authToken.isNotEmpty);
   trinsic =
       TrinsicService(trinsicConfig(authToken: createWalletResponse.authToken));
 
   var uuid = Uuid();
   // createTemplate() {
-  var template = await trinsic.template().create(
-          CreateCredentialTemplateRequest(
-              name: "An Example Credential ${uuid.v4()}",
-              allowAdditionalFields: false,
-              fields: {
-            "firstName": TemplateField(description: "Given name"),
-            "lastName": TemplateField(),
-            "age": TemplateField(optional: true, type: FieldType.NUMBER)
-          }));
+  var createCredentialTemplateRequest = CreateCredentialTemplateRequest();
+  createCredentialTemplateRequest.name = "An Example Credential ${uuid.v4()}";
+  createCredentialTemplateRequest.allowAdditionalFields = false;
+  createCredentialTemplateRequest.fields.addAll({
+    "firstName": TemplateField()..description = "Given name",
+    "lastName": TemplateField(),
+    "age": TemplateField()
+      ..type = FieldType.NUMBER
+      ..optional = true,
+  });
+  var template =
+      await trinsic.template().create(createCredentialTemplateRequest);
   // }
   assert(template.data.id != "");
   assert(template.data.schemaUri != "");
@@ -34,9 +37,10 @@ Future runTemplatesDemo() async {
   // issueFromTemplate() {
   var values =
       jsonEncode({"firstName": "Jane", "lastName": "Doe", "age": "42"});
-  var issueResponse = await trinsic.credential().issueFromTemplate(
-      IssueFromTemplateRequest(
-          templateId: template.data.id, valuesJson: values));
+  var issueResponse =
+      await trinsic.credential().issueFromTemplate(IssueFromTemplateRequest()
+        ..templateId = template.data.id
+        ..valuesJson = values);
   // }
   var jsonDocument = json.decode(issueResponse.documentJson);
   assert(jsonDocument['id'] != "");

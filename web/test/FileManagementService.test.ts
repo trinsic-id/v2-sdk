@@ -31,7 +31,7 @@ describe("FileManagementService Unit Tests", () => {
             UploadFileRequest.fromPartial({
                 contents: fileBytes,
                 mimeType: fileMimeType,
-            })
+            }),
         );
         //}
 
@@ -43,7 +43,7 @@ describe("FileManagementService Unit Tests", () => {
         const getFileResponse = await trinsic.fileManagement().getFile(
             GetFileRequest.fromPartial({
                 id: fileId,
-            })
+            }),
         );
         //}
 
@@ -54,7 +54,7 @@ describe("FileManagementService Unit Tests", () => {
         const listFilesResponse = await trinsic.fileManagement().listFiles(
             ListFilesRequest.fromPartial({
                 query: "SELECT * FROM _ ORDER BY _.uploadDate DESC OFFSET 0 LIMIT 100",
-            })
+            }),
         );
         // }
 
@@ -70,14 +70,14 @@ describe("FileManagementService Unit Tests", () => {
 
         expect(getStorageStatsResponse.stats?.numFiles).toBe(1);
         expect(getStorageStatsResponse.stats?.totalSize).toBe(
-            getFileResponse.file?.size
+            getFileResponse.file?.size,
         );
 
         // deleteFile() {
         await trinsic.fileManagement().deleteFile(
             DeleteFileRequest.fromPartial({
                 id: fileId,
-            })
+            }),
         );
         //}
 

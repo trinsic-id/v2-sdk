@@ -1,8 +1,5 @@
 import ServiceBase from "./ServiceBase";
-import {
-    TrinsicOptions,
-    TrustRegistryDefinition,
-} from "./proto";
+import { TrinsicOptions, TrustRegistryDefinition } from "./proto";
 import * as proto from "./proto";
 
 import type { Client as BrowserClient } from "nice-grpc-web";

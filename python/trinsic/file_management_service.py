@@ -1,4 +1,5 @@
 import deprecation
+from grpclib.client import Channel
 
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
 from trinsic.proto.services.filemanagement.v1 import *
@@ -12,7 +13,7 @@ class FileManagementService(ServiceBase):
     def __init__(
         self,
         *,
-        server_config: TrinsicOptions = None,
+        server_config: TrinsicOptions | Channel = None,
     ):
         """
         Initialize a connection to the server.

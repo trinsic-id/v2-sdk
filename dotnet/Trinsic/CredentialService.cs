@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.VerifiableCredentials.V1;

@@ -21,7 +21,7 @@ export class WalletService extends ServiceBase {
     public async searchWallet(
         request: SearchRequest = SearchRequest.fromPartial({
             query: "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100",
-        })
+        }),
     ): Promise<SearchResponse> {
         return this.search(request);
     }

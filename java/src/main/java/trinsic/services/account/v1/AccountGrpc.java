@@ -15,47 +15,6 @@ public final class AccountGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.account.v1.SignInRequest, trinsic.services.account.v1.SignInResponse>
-      getSignInMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "SignIn",
-      requestType = trinsic.services.account.v1.SignInRequest.class,
-      responseType = trinsic.services.account.v1.SignInResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<
-          trinsic.services.account.v1.SignInRequest, trinsic.services.account.v1.SignInResponse>
-      getSignInMethod() {
-    io.grpc.MethodDescriptor<
-            trinsic.services.account.v1.SignInRequest, trinsic.services.account.v1.SignInResponse>
-        getSignInMethod;
-    if ((getSignInMethod = AccountGrpc.getSignInMethod) == null) {
-      synchronized (AccountGrpc.class) {
-        if ((getSignInMethod = AccountGrpc.getSignInMethod) == null) {
-          AccountGrpc.getSignInMethod =
-              getSignInMethod =
-                  io.grpc.MethodDescriptor
-                      .<trinsic.services.account.v1.SignInRequest,
-                          trinsic.services.account.v1.SignInResponse>
-                          newBuilder()
-                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SignIn"))
-                      .setSampledToLocalTracing(true)
-                      .setRequestMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.account.v1.SignInRequest.getDefaultInstance()))
-                      .setResponseMarshaller(
-                          io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.account.v1.SignInResponse.getDefaultInstance()))
-                      .setSchemaDescriptor(new AccountMethodDescriptorSupplier("SignIn"))
-                      .build();
-        }
-      }
-    }
-    return getSignInMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.account.v1.LoginRequest, trinsic.services.account.v1.LoginResponse>
       getLoginMethod;
 
@@ -232,20 +191,6 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Sign in to an already existing account
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public void signIn(
-        trinsic.services.account.v1.SignInRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.account.v1.SignInResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSignInMethod(), responseObserver);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
@@ -291,12 +236,6 @@ public final class AccountGrpc {
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-              getSignInMethod(),
-              io.grpc.stub.ServerCalls.asyncUnaryCall(
-                  new MethodHandlers<
-                      trinsic.services.account.v1.SignInRequest,
-                      trinsic.services.account.v1.SignInResponse>(this, METHODID_SIGN_IN)))
-          .addMethod(
               getLoginMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
@@ -328,21 +267,6 @@ public final class AccountGrpc {
     @java.lang.Override
     protected AccountStub build(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new AccountStub(channel, callOptions);
-    }
-
-    /**
-     *
-     *
-     * <pre>
-     * Sign in to an already existing account
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public void signIn(
-        trinsic.services.account.v1.SignInRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.account.v1.SignInResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getSignInMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -411,20 +335,6 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Sign in to an already existing account
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public trinsic.services.account.v1.SignInResponse signIn(
-        trinsic.services.account.v1.SignInRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getSignInMethod(), getCallOptions(), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
@@ -480,21 +390,6 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Sign in to an already existing account
-     * </pre>
-     */
-    @java.lang.Deprecated
-    public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.account.v1.SignInResponse>
-        signIn(trinsic.services.account.v1.SignInRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getSignInMethod(), getCallOptions()), request);
-    }
-
-    /**
-     *
-     *
-     * <pre>
      * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
@@ -537,10 +432,9 @@ public final class AccountGrpc {
     }
   }
 
-  private static final int METHODID_SIGN_IN = 0;
-  private static final int METHODID_LOGIN = 1;
-  private static final int METHODID_LOGIN_CONFIRM = 2;
-  private static final int METHODID_INFO = 3;
+  private static final int METHODID_LOGIN = 0;
+  private static final int METHODID_LOGIN_CONFIRM = 1;
+  private static final int METHODID_INFO = 2;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -559,12 +453,6 @@ public final class AccountGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SIGN_IN:
-          serviceImpl.signIn(
-              (trinsic.services.account.v1.SignInRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.account.v1.SignInResponse>)
-                  responseObserver);
-          break;
         case METHODID_LOGIN:
           serviceImpl.login(
               (trinsic.services.account.v1.LoginRequest) request,
@@ -645,7 +533,6 @@ public final class AccountGrpc {
               result =
                   io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
                       .setSchemaDescriptor(new AccountFileDescriptorSupplier())
-                      .addMethod(getSignInMethod())
                       .addMethod(getLoginMethod())
                       .addMethod(getLoginConfirmMethod())
                       .addMethod(getInfoMethod())

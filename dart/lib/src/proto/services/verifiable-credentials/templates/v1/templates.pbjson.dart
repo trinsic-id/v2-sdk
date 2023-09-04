@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -969,7 +969,6 @@ const VerificationTemplateData$json = {
       '5': 9,
       '10': 'credentialTemplateId'
     },
-    {'1': 'schema_uri', '3': 6, '4': 1, '5': 9, '10': 'schemaUri'},
     {'1': 'ecosystem_id', '3': 8, '4': 1, '5': 9, '10': 'ecosystemId'},
     {'1': 'type', '3': 9, '4': 1, '5': 9, '10': 'type'},
     {'1': 'created_by', '3': 10, '4': 1, '5': 9, '10': 'createdBy'},
@@ -978,6 +977,10 @@ const VerificationTemplateData$json = {
     {'1': 'description', '3': 13, '4': 1, '5': 9, '10': 'description'},
   ],
   '3': [VerificationTemplateData_FieldsEntry$json],
+  '9': [
+    {'1': 6, '2': 7},
+  ],
+  '10': ['schemaUri'],
 };
 
 @$core.Deprecated('Use verificationTemplateDataDescriptor instead')
@@ -1004,13 +1007,13 @@ final $typed_data.Uint8List verificationTemplateDataDescriptor = $convert.base64
     'lSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJpCgZmaWVsZHMYBCADKAsyUS5zZXJ2'
     'aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlZlcmlmaWNhdGlvblRlbX'
     'BsYXRlRGF0YS5GaWVsZHNFbnRyeVIGZmllbGRzEjQKFmNyZWRlbnRpYWxfdGVtcGxhdGVfaWQY'
-    'BSABKAlSFGNyZWRlbnRpYWxUZW1wbGF0ZUlkEh0KCnNjaGVtYV91cmkYBiABKAlSCXNjaGVtYV'
-    'VyaRIhCgxlY29zeXN0ZW1faWQYCCABKAlSC2Vjb3N5c3RlbUlkEhIKBHR5cGUYCSABKAlSBHR5'
-    'cGUSHQoKY3JlYXRlZF9ieRgKIAEoCVIJY3JlYXRlZEJ5EiEKDGRhdGVfY3JlYXRlZBgLIAEoCV'
-    'ILZGF0ZUNyZWF0ZWQSFAoFdGl0bGUYDCABKAlSBXRpdGxlEiAKC2Rlc2NyaXB0aW9uGA0gASgJ'
-    'UgtkZXNjcmlwdGlvbhqBAQoLRmllbGRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSXAoFdmFsdW'
-    'UYAiABKAsyRi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlZl'
-    'cmlmaWNhdGlvblRlbXBsYXRlRmllbGRSBXZhbHVlOgI4AQ==');
+    'BSABKAlSFGNyZWRlbnRpYWxUZW1wbGF0ZUlkEiEKDGVjb3N5c3RlbV9pZBgIIAEoCVILZWNvc3'
+    'lzdGVtSWQSEgoEdHlwZRgJIAEoCVIEdHlwZRIdCgpjcmVhdGVkX2J5GAogASgJUgljcmVhdGVk'
+    'QnkSIQoMZGF0ZV9jcmVhdGVkGAsgASgJUgtkYXRlQ3JlYXRlZBIUCgV0aXRsZRgMIAEoCVIFdG'
+    'l0bGUSIAoLZGVzY3JpcHRpb24YDSABKAlSC2Rlc2NyaXB0aW9uGoEBCgtGaWVsZHNFbnRyeRIQ'
+    'CgNrZXkYASABKAlSA2tleRJcCgV2YWx1ZRgCIAEoCzJGLnNlcnZpY2VzLnZlcmlmaWFibGVjcm'
+    'VkZW50aWFscy50ZW1wbGF0ZXMudjEuVmVyaWZpY2F0aW9uVGVtcGxhdGVGaWVsZFIFdmFsdWU6'
+    'AjgBSgQIBhAHUglzY2hlbWFVcmk=');
 
 @$core.Deprecated('Use listVerificationTemplatesRequestDescriptor instead')
 const ListVerificationTemplatesRequest$json = {

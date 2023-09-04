@@ -1,5 +1,7 @@
 import {
-    CreateCredentialTemplateRequest, CreateCredentialTemplateResponse, CreateEcosystemRequest,
+    CreateCredentialTemplateRequest,
+    CreateCredentialTemplateResponse,
+    CreateEcosystemRequest,
     CreateProofRequest,
     FieldType,
     InsertItemRequest,
@@ -8,10 +10,7 @@ import {
     TrinsicService,
 } from "../src";
 
-import {
-    getTestServerOptions,
-    setTestTimeout,
-} from "./env";
+import { getTestServerOptions, setTestTimeout } from "./env";
 import { v4 as uuid } from "uuid";
 
 const options = getTestServerOptions();
@@ -30,7 +29,7 @@ describe("WalletService Unit Tests", () => {
         let createResponse = await trinsic.provider().createEcosystem(
             CreateEcosystemRequest.fromPartial({
                 description: "Test ecosystem from Node for Wallet Service",
-            })
+            }),
         );
 
         ecosystemId = createResponse.ecosystem!.id!;
@@ -107,7 +106,7 @@ describe("WalletService Unit Tests", () => {
         let insertItemResponse = await trinsic.wallet().insertItem(
             InsertItemRequest.fromPartial({
                 itemJson: issueResponse.documentJson,
-            })
+            }),
         );
         // }
 
@@ -135,7 +134,7 @@ describe("WalletService Unit Tests", () => {
         let items2 = await trinsic.wallet().searchWallet(
             SearchRequest.fromPartial({
                 query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'",
-            })
+            }),
         );
         // }
 
@@ -143,8 +142,8 @@ describe("WalletService Unit Tests", () => {
         // createProof() {
         let proof = await trinsic.credential().createProof(
             CreateProofRequest.fromPartial({
-                itemId: insertItemResponse.itemId
-            })
+                itemId: insertItemResponse.itemId,
+            }),
         );
         let selectiveProof = await trinsic.credential().createProof(
             CreateProofRequest.fromPartial({
@@ -152,7 +151,7 @@ describe("WalletService Unit Tests", () => {
                 revealTemplate: {
                     templateAttributes: ["firstName", "lastName"],
                 },
-            })
+            }),
         );
         // }
 
@@ -168,12 +167,12 @@ describe("WalletService Unit Tests", () => {
         });
 
         expect(
-            verifyResponse.validationResults!["SignatureVerification"].isValid
+            verifyResponse.validationResults!["SignatureVerification"].isValid,
         ).toBeTruthy();
 
         expect(
             selectiveVerifyResponse.validationResults!["SignatureVerification"]
-                .isValid
+                .isValid,
         ).toBeTruthy();
 
         // Switch to Allison, who holds the credential

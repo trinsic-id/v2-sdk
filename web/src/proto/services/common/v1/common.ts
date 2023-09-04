@@ -108,13 +108,32 @@ export function supportedDidMethodToJSON(object: SupportedDidMethod): string {
 /** Nonce used to generate an oberon proof */
 export interface Nonce {
   /** UTC unix millisecond timestamp the request was made */
-  timestamp?: number;
+  timestamp?:
+    | number
+    | undefined;
   /** blake3256 hash of the request body */
-  requestHash?: Uint8Array;
+  requestHash?: Uint8Array | undefined;
+}
+
+export interface TrinsicClientOptions {
+  /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
+  serverEndpoint?:
+    | string
+    | undefined;
+  /** Trinsic API port; defaults to `443` */
+  serverPort?:
+    | number
+    | undefined;
+  /** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */
+  serverUseTls?:
+    | boolean
+    | undefined;
+  /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
+  authToken?: string | undefined;
 }
 
 function createBaseNonce(): Nonce {
-  return { timestamp: 0, requestHash: new Uint8Array() };
+  return { timestamp: 0, requestHash: new Uint8Array(0) };
 }
 
 export const Nonce = {
@@ -136,21 +155,21 @@ export const Nonce = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.timestamp = longToNumber(reader.int64() as Long);
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.requestHash = reader.bytes();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -161,34 +180,140 @@ export const Nonce = {
   fromJSON(object: any): Nonce {
     return {
       timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
-      requestHash: isSet(object.requestHash) ? bytesFromBase64(object.requestHash) : new Uint8Array(),
+      requestHash: isSet(object.requestHash) ? bytesFromBase64(object.requestHash) : new Uint8Array(0),
     };
   },
 
   toJSON(message: Nonce): unknown {
     const obj: any = {};
-    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
-    message.requestHash !== undefined &&
-      (obj.requestHash = base64FromBytes(message.requestHash !== undefined ? message.requestHash : new Uint8Array()));
+    if (message.timestamp !== undefined && message.timestamp !== 0) {
+      obj.timestamp = Math.round(message.timestamp);
+    }
+    if (message.requestHash !== undefined && message.requestHash.length !== 0) {
+      obj.requestHash = base64FromBytes(message.requestHash);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<Nonce>): Nonce {
     return Nonce.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<Nonce>): Nonce {
     const message = createBaseNonce();
     message.timestamp = object.timestamp ?? 0;
-    message.requestHash = object.requestHash ?? new Uint8Array();
+    message.requestHash = object.requestHash ?? new Uint8Array(0);
     return message;
   },
 };
 
-declare var self: any | undefined;
-declare var window: any | undefined;
-declare var global: any | undefined;
-var tsProtoGlobalThis: any = (() => {
+function createBaseTrinsicClientOptions(): TrinsicClientOptions {
+  return { serverEndpoint: "", serverPort: 0, serverUseTls: false, authToken: "" };
+}
+
+export const TrinsicClientOptions = {
+  encode(message: TrinsicClientOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.serverEndpoint !== undefined && message.serverEndpoint !== "") {
+      writer.uint32(10).string(message.serverEndpoint);
+    }
+    if (message.serverPort !== undefined && message.serverPort !== 0) {
+      writer.uint32(16).int32(message.serverPort);
+    }
+    if (message.serverUseTls === true) {
+      writer.uint32(24).bool(message.serverUseTls);
+    }
+    if (message.authToken !== undefined && message.authToken !== "") {
+      writer.uint32(34).string(message.authToken);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): TrinsicClientOptions {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTrinsicClientOptions();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.serverEndpoint = reader.string();
+          continue;
+        case 2:
+          if (tag !== 16) {
+            break;
+          }
+
+          message.serverPort = reader.int32();
+          continue;
+        case 3:
+          if (tag !== 24) {
+            break;
+          }
+
+          message.serverUseTls = reader.bool();
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.authToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TrinsicClientOptions {
+    return {
+      serverEndpoint: isSet(object.serverEndpoint) ? String(object.serverEndpoint) : "",
+      serverPort: isSet(object.serverPort) ? Number(object.serverPort) : 0,
+      serverUseTls: isSet(object.serverUseTls) ? Boolean(object.serverUseTls) : false,
+      authToken: isSet(object.authToken) ? String(object.authToken) : "",
+    };
+  },
+
+  toJSON(message: TrinsicClientOptions): unknown {
+    const obj: any = {};
+    if (message.serverEndpoint !== undefined && message.serverEndpoint !== "") {
+      obj.serverEndpoint = message.serverEndpoint;
+    }
+    if (message.serverPort !== undefined && message.serverPort !== 0) {
+      obj.serverPort = Math.round(message.serverPort);
+    }
+    if (message.serverUseTls === true) {
+      obj.serverUseTls = message.serverUseTls;
+    }
+    if (message.authToken !== undefined && message.authToken !== "") {
+      obj.authToken = message.authToken;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<TrinsicClientOptions>): TrinsicClientOptions {
+    return TrinsicClientOptions.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<TrinsicClientOptions>): TrinsicClientOptions {
+    const message = createBaseTrinsicClientOptions();
+    message.serverEndpoint = object.serverEndpoint ?? "";
+    message.serverPort = object.serverPort ?? 0;
+    message.serverUseTls = object.serverUseTls ?? false;
+    message.authToken = object.authToken ?? "";
+    return message;
+  },
+};
+
+declare const self: any | undefined;
+declare const window: any | undefined;
+declare const global: any | undefined;
+const tsProtoGlobalThis: any = (() => {
   if (typeof globalThis !== "undefined") {
     return globalThis;
   }

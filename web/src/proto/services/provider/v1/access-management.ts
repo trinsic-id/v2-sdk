@@ -4,7 +4,9 @@ import _m0 from "protobufjs/minimal";
 /** Role management */
 export interface AddRoleAssignmentRequest {
   /** Role to assign */
-  role?: string;
+  role?:
+    | string
+    | undefined;
   /**
    * Email address of account to assign role.
    * Mutually exclusive with `walletId` and `didUri`.
@@ -31,7 +33,9 @@ export interface AddRoleAssignmentResponse {
 
 export interface RemoveRoleAssignmentRequest {
   /** Role to unassign */
-  role?: string;
+  role?:
+    | string
+    | undefined;
   /**
    * Email address of account to unassign role.
    * Mutually exclusive with `walletId` and `didUri`.
@@ -81,7 +85,7 @@ export interface ListRoleAssignmentsRequest {
 
 export interface ListRoleAssignmentsResponse {
   /** List of roles */
-  roles?: string[];
+  roles?: string[] | undefined;
 }
 
 /** Request to fetch the available roles in the current ecosystem */
@@ -90,7 +94,7 @@ export interface ListAvailableRolesRequest {
 
 export interface ListAvailableRolesResponse {
   /** List of roles */
-  roles?: string[];
+  roles?: string[] | undefined;
 }
 
 function createBaseAddRoleAssignmentRequest(): AddRoleAssignmentRequest {
@@ -122,35 +126,35 @@ export const AddRoleAssignmentRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.role = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -169,17 +173,24 @@ export const AddRoleAssignmentRequest = {
 
   toJSON(message: AddRoleAssignmentRequest): unknown {
     const obj: any = {};
-    message.role !== undefined && (obj.role = message.role);
-    message.email !== undefined && (obj.email = message.email);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
+    if (message.role !== undefined && message.role !== "") {
+      obj.role = message.role;
+    }
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AddRoleAssignmentRequest>): AddRoleAssignmentRequest {
     return AddRoleAssignmentRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AddRoleAssignmentRequest>): AddRoleAssignmentRequest {
     const message = createBaseAddRoleAssignmentRequest();
     message.role = object.role ?? "";
@@ -207,7 +218,7 @@ export const AddRoleAssignmentResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -227,7 +238,6 @@ export const AddRoleAssignmentResponse = {
   create(base?: DeepPartial<AddRoleAssignmentResponse>): AddRoleAssignmentResponse {
     return AddRoleAssignmentResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<AddRoleAssignmentResponse>): AddRoleAssignmentResponse {
     const message = createBaseAddRoleAssignmentResponse();
     return message;
@@ -263,35 +273,35 @@ export const RemoveRoleAssignmentRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.role = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -310,17 +320,24 @@ export const RemoveRoleAssignmentRequest = {
 
   toJSON(message: RemoveRoleAssignmentRequest): unknown {
     const obj: any = {};
-    message.role !== undefined && (obj.role = message.role);
-    message.email !== undefined && (obj.email = message.email);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
+    if (message.role !== undefined && message.role !== "") {
+      obj.role = message.role;
+    }
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<RemoveRoleAssignmentRequest>): RemoveRoleAssignmentRequest {
     return RemoveRoleAssignmentRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RemoveRoleAssignmentRequest>): RemoveRoleAssignmentRequest {
     const message = createBaseRemoveRoleAssignmentRequest();
     message.role = object.role ?? "";
@@ -348,7 +365,7 @@ export const RemoveRoleAssignmentResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -368,7 +385,6 @@ export const RemoveRoleAssignmentResponse = {
   create(base?: DeepPartial<RemoveRoleAssignmentResponse>): RemoveRoleAssignmentResponse {
     return RemoveRoleAssignmentResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<RemoveRoleAssignmentResponse>): RemoveRoleAssignmentResponse {
     const message = createBaseRemoveRoleAssignmentResponse();
     return message;
@@ -401,28 +417,28 @@ export const ListRoleAssignmentsRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -440,16 +456,21 @@ export const ListRoleAssignmentsRequest = {
 
   toJSON(message: ListRoleAssignmentsRequest): unknown {
     const obj: any = {};
-    message.email !== undefined && (obj.email = message.email);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListRoleAssignmentsRequest>): ListRoleAssignmentsRequest {
     return ListRoleAssignmentsRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListRoleAssignmentsRequest>): ListRoleAssignmentsRequest {
     const message = createBaseListRoleAssignmentsRequest();
     message.email = object.email ?? undefined;
@@ -481,14 +502,14 @@ export const ListRoleAssignmentsResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.roles!.push(reader.string());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -502,10 +523,8 @@ export const ListRoleAssignmentsResponse = {
 
   toJSON(message: ListRoleAssignmentsResponse): unknown {
     const obj: any = {};
-    if (message.roles) {
-      obj.roles = message.roles.map((e) => e);
-    } else {
-      obj.roles = [];
+    if (message.roles?.length) {
+      obj.roles = message.roles;
     }
     return obj;
   },
@@ -513,7 +532,6 @@ export const ListRoleAssignmentsResponse = {
   create(base?: DeepPartial<ListRoleAssignmentsResponse>): ListRoleAssignmentsResponse {
     return ListRoleAssignmentsResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListRoleAssignmentsResponse>): ListRoleAssignmentsResponse {
     const message = createBaseListRoleAssignmentsResponse();
     message.roles = object.roles?.map((e) => e) || [];
@@ -538,7 +556,7 @@ export const ListAvailableRolesRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -558,7 +576,6 @@ export const ListAvailableRolesRequest = {
   create(base?: DeepPartial<ListAvailableRolesRequest>): ListAvailableRolesRequest {
     return ListAvailableRolesRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<ListAvailableRolesRequest>): ListAvailableRolesRequest {
     const message = createBaseListAvailableRolesRequest();
     return message;
@@ -587,14 +604,14 @@ export const ListAvailableRolesResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.roles!.push(reader.string());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -608,10 +625,8 @@ export const ListAvailableRolesResponse = {
 
   toJSON(message: ListAvailableRolesResponse): unknown {
     const obj: any = {};
-    if (message.roles) {
-      obj.roles = message.roles.map((e) => e);
-    } else {
-      obj.roles = [];
+    if (message.roles?.length) {
+      obj.roles = message.roles;
     }
     return obj;
   },
@@ -619,7 +634,6 @@ export const ListAvailableRolesResponse = {
   create(base?: DeepPartial<ListAvailableRolesResponse>): ListAvailableRolesResponse {
     return ListAvailableRolesResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListAvailableRolesResponse>): ListAvailableRolesResponse {
     const message = createBaseListAvailableRolesResponse();
     message.roles = object.roles?.map((e) => e) || [];

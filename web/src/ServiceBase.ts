@@ -12,7 +12,7 @@ export default abstract class ServiceBase {
     options: TrinsicOptions;
 
     protected constructor(
-        options: TrinsicOptions = TrinsicOptions.fromPartial({})
+        options: TrinsicOptions = TrinsicOptions.fromPartial({}),
     ) {
         options.serverEndpoint = options.serverEndpoint || "prod.trinsic.cloud";
         options.serverPort = options.serverPort || 443;
@@ -26,13 +26,13 @@ export default abstract class ServiceBase {
         const metadata = new Metadata();
         metadata.append(
             "trinsicsdklanguage".toLowerCase(),
-            ServiceBase.platform.metadataLanguage()
+            ServiceBase.platform.metadataLanguage(),
         );
         metadata.append("trinsicsdkversion".toLowerCase(), getSdkVersion());
         if (this.options.authToken) {
             metadata.append(
                 "authorization",
-                "Bearer " + this.options.authToken!
+                "Bearer " + this.options.authToken!,
             );
         }
         return metadata;
@@ -43,7 +43,7 @@ export default abstract class ServiceBase {
     }
 
     protected createClient<ClientService extends ClientServiceDefinition>(
-        definition: ClientService
+        definition: ClientService,
     ): BrowserClient<ClientService> {
         let address = `${this.options.serverUseTls ? "https" : "http"}://${
             this.options.serverEndpoint

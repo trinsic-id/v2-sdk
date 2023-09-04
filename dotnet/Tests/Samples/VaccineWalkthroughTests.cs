@@ -18,8 +18,6 @@ namespace Tests;
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
 public class VaccineWalkthroughTests
 {
-    private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
-    private const int DefaultPort = 443;
 
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly TrinsicOptions _options;
@@ -28,8 +26,8 @@ public class VaccineWalkthroughTests
         _testOutputHelper = testOutputHelper;
 
         _options = new() {
-            ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? DefaultEndpoint,
-            ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : DefaultPort,
+            ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? Tests.DefaultEndpoint,
+            ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : Tests.DefaultPort,
             ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls
         };
 

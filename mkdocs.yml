@@ -6,27 +6,12 @@ repo_name: trinsic-id/sdk
 site_url: https://docs.trinsic.id
 nav:
   - Home: index.md
-  - Learn:
-    - Introduction: learn/index.md
-    - Guide:
-      - Issuance: guide/issuance.md
-      - Verification: guide/verification.md
-    - Key Concepts:
-      - Ecosystems: learn/concepts/ecosystems.md
-      - Wallets: learn/concepts/wallets.md
-      - Credentials: learn/concepts/credentials.md
-      - Verifications: learn/concepts/verifications.md
-      - Credential Templates: learn/concepts/credential-templates.md
-      - Identifiers: learn/concepts/dids.md
-      - Trust Registries: learn/concepts/trust-registries.md
-    - Trinsic Platform:
-      - Standards: learn/platform/standards.md
-    - Resources:
-      - "Migration: From v1" : learn/resources/migrate.md
-      - "Migration: Account API": learn/resources/migrate-account.md
-      - Interactive API Experience: learn/resources/interactive-api.md
-  - Tools & SDKs:
-    - Overview: sdk/index.md
+  - Platform:
+    - Getting Started: guide/platform-walkthrough.md
+    - Dashboard:
+      - Ecosystem Branding: platform/ecosystem-branding.md
+      - Domain Verification: platform/domain-verification.md
+      - Authentication: platform/authentication.md
     - Client-Side SDKs:
       - Flutter: dart/index.md
       - Browser: web/index.md
@@ -41,6 +26,24 @@ nav:
       - Go: go/index.md
       - Java: java/index.md
     - Trinsic CLI: cli/index.md
+  - Learn:
+    - Introduction: learn/index.md
+    - Guide:
+      - Issuance: guide/issuance.md
+      - Verification: guide/verification.md
+    - Key Concepts:
+      - Ecosystems: learn/concepts/ecosystems.md
+      - Wallets: learn/concepts/wallets.md
+      - Credentials: learn/concepts/credentials.md
+      - Verifications: learn/concepts/verifications.md
+      - Credential Templates: learn/concepts/credential-templates.md
+      - Identifiers: learn/concepts/dids.md
+      - Trust Registries: learn/concepts/trust-registries.md
+    - Trinsic Standards: learn/platform/standards.md
+    - Resources:
+      - "Migration: From v1" : learn/resources/migrate.md
+      - "Migration: Account API": learn/resources/migrate-account.md
+      - Interactive API Experience: learn/resources/interactive-api.md
   - Reference:
     - Overview: reference/index.md
     - APIs:

@@ -14,20 +14,20 @@ export class ProviderService extends ServiceBase {
     }
 
     public async createEcosystem(
-        request: proto.CreateEcosystemRequest
+        request: proto.CreateEcosystemRequest,
     ): Promise<proto.CreateEcosystemResponse> {
         const response =
             request.name?.trim() || request.details?.email?.trim()
                 ? await this.client.createEcosystem(request, {
                       metadata: await this.buildMetadata(
-                          proto.CreateEcosystemRequest.encode(request).finish()
+                          proto.CreateEcosystemRequest.encode(request).finish(),
                       ),
                   })
                 : await this.client.createEcosystem(request);
 
         const authToken = Base64.fromUint8Array(
             proto.AccountProfile.encode(response.profile!).finish(),
-            true
+            true,
         );
         this.options.authToken = authToken;
         return response;

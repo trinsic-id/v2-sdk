@@ -30,31 +30,13 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-          cache: pip
       - name: Dart analyze
         run: |
           dart pub get
           dart analyze
-          python ../devops/build_sdks.py --language=dart
           dart pub global activate coverage
           dart run coverage:test_with_coverage
         shell: pwsh
         working-directory: dart
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
-      - name: Build, Test, Pack
-        run: |
-          dart pub get
-          python ../devops/build_sdks.py --language=dart
-          dart pub global activate coverage
-          dart run coverage:test_with_coverage
-        shell: pwsh
-        working-directory: dart
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"

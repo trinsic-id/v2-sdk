@@ -1,7 +1,11 @@
+from grpclib.client import Channel
+
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
 from trinsic.proto.services.verifiablecredentials.templates.v1 import *
 
 from trinsic.service_base import ServiceBase
+
+import deprecation
 
 
 class TemplateService(ServiceBase):
@@ -10,7 +14,7 @@ class TemplateService(ServiceBase):
     def __init__(
         self,
         *,
-        server_config: TrinsicOptions = None,
+        server_config: TrinsicOptions | Channel = None,
     ):
         """
         Initialize a connection to the server.

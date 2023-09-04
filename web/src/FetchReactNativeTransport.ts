@@ -1,8 +1,8 @@
-import {throwIfAborted} from 'abort-controller-x';
-import {ClientError, Metadata, Status} from 'nice-grpc-common';
-import {Transport} from 'nice-grpc-web/src/client/Transport';
-import {FetchTransportConfig} from "nice-grpc-web/lib/client/transports/fetch";
-import {Base64} from "js-base64";
+import { throwIfAborted } from "abort-controller-x";
+import { ClientError, Metadata, Status } from "nice-grpc-common";
+import { Transport } from "nice-grpc-web/src/client/Transport";
+import { FetchTransportConfig } from "nice-grpc-web/lib/client/transports/fetch";
+import { Base64 } from "js-base64";
 
 // @ts-ignore
 // import {fetch} from "react-native-fetch-api";
@@ -13,11 +13,13 @@ export function blobReaderAsync(myBlob: Blob): Promise<Uint8Array> {
     return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
         fileReader.onloadend = function () {
-            const dataString = (fileReader.result as string);
-            const base64String = dataString.substring(dataString.indexOf(",")+1);
+            const dataString = fileReader.result as string;
+            const base64String = dataString.substring(
+                dataString.indexOf(",") + 1,
+            );
             const uint8Data = Base64.toUint8Array(base64String);
             resolve(uint8Data);
-        }
+        };
         fileReader.readAsDataURL(myBlob);
     });
 }
@@ -25,8 +27,16 @@ export function blobReaderAsync(myBlob: Blob): Promise<Uint8Array> {
 /**
  * Transport for browsers based on `fetch` API.
  */
-export function FetchReactNativeTransport(config?: FetchTransportConfig): Transport {
-    return async function* fetchTransport({url, body, metadata, signal, method}) {
+export function FetchReactNativeTransport(
+    config?: FetchTransportConfig,
+): Transport {
+    return async function* fetchTransport({
+        url,
+        body,
+        metadata,
+        signal,
+        method,
+    }) {
         let requestBody: BodyInit;
 
         if (!method.requestStream) {
@@ -44,13 +54,13 @@ export function FetchReactNativeTransport(config?: FetchTransportConfig): Transp
 
             requestBody = new ReadableStream({
                 // @ts-ignore
-                type: 'bytes',
+                type: "bytes",
                 start() {
                     iterator = body[Symbol.asyncIterator]();
                 },
 
                 async pull(controller) {
-                    const {done, value} = await iterator!.next();
+                    const { done, value } = await iterator!.next();
 
                     if (done) {
                         controller.close();
@@ -65,17 +75,17 @@ export function FetchReactNativeTransport(config?: FetchTransportConfig): Transp
         }
 
         const response: Response = await fetch(url, {
-            method: 'POST',
+            method: "POST",
             body: requestBody,
             headers: metadataToHeaders(metadata),
             signal,
-            cache: 'no-cache',
-            ['duplex' as any]: 'half',
+            cache: "no-cache",
+            ["duplex" as any]: "half",
             credentials: config?.credentials,
         });
 
         yield {
-            type: 'header',
+            type: "header",
             header: headersToMetadata(response.headers),
         };
 
@@ -98,7 +108,7 @@ export function FetchReactNativeTransport(config?: FetchTransportConfig): Transp
             for (const uint8Array of [myBlobArray]) {
                 if (uint8Array !== null) {
                     yield {
-                        type: 'data',
+                        type: "data",
                         data: uint8Array,
                     };
                 }
@@ -114,8 +124,10 @@ function stringToArrayBuffer(str: string): Uint8Array {
     const asArray = new Uint8Array(str.length);
     let arrayIndex = 0;
     for (let i = 0; i < str.length; i++) {
-        const codePoint = (String.prototype as any).codePointAt ? (str as any).codePointAt(i) : codePointAtPolyfill(str, i);
-        asArray[arrayIndex++] = codePoint & 0xFF;
+        const codePoint = (String.prototype as any).codePointAt
+            ? (str as any).codePointAt(i)
+            : codePointAtPolyfill(str, i);
+        asArray[arrayIndex++] = codePoint & 0xff;
     }
     return asArray;
 }
@@ -138,7 +150,9 @@ function metadataToHeaders(metadata: Metadata): Headers {
         for (const value of values) {
             headers.append(
                 key,
-                typeof value === 'string' ? value : Base64.fromUint8Array(value, true),
+                typeof value === "string"
+                    ? value
+                    : Base64.fromUint8Array(value, true),
             );
         }
     }
@@ -151,7 +165,7 @@ function headersToMetadata(headers: Headers): Metadata {
 
     // @ts-ignore
     for (const [key, value] of headers) {
-        if (key.endsWith('-bin')) {
+        if (key.endsWith("-bin")) {
             for (const item of value.split(/,\s?/)) {
                 metadata.append(key, Base64.toUint8Array(item));
             }
@@ -192,7 +206,7 @@ function getErrorDetailsFromHttpResponse(
     return (
         `Received HTTP ${statusCode} response: ` +
         (responseText.length > 1000
-            ? responseText.slice(0, 1000) + '... (truncated)'
+            ? responseText.slice(0, 1000) + "... (truncated)"
             : responseText)
     );
 }

@@ -363,8 +363,6 @@ message VerificationTemplateData {
   map<string, VerificationTemplateField> fields = 4 [json_name="fields"];
   // Source credential template, used for verifying that the specified `fields` are present in the credential template
   string credential_template_id = 5;
-  // URI pointing to template JSON schema document
-  string schema_uri = 6 [json_name="schemaUri"];
   // ID of ecosystem in which template resides
   string ecosystem_id = 8 [json_name = "ecosystemId"];
   // Template type (`VerificationTemplate`)
@@ -377,6 +375,9 @@ message VerificationTemplateData {
   string title = 12;
   // Human-readable template description
   string description = 13;
+  
+  reserved 6;
+  reserved "schemaUri";
 }
 
 // Request to list templates using a SQL query

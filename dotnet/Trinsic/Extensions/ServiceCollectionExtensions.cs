@@ -22,7 +22,8 @@ public static class ServiceCollectionExtensions
     /// <param name="configureOptions"></param>
     /// <returns></returns>
     public static IServiceCollection AddTrinsic(this IServiceCollection serviceCollection, Action<TrinsicOptions>? configureOptions = null) {
-        if (configureOptions is not null) {
+        if (configureOptions is not null)
+        {
             serviceCollection.Configure(configureOptions);
         }
 

@@ -1,3 +1,5 @@
+from grpclib.client import Channel
+
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
 from trinsic.proto.services.trustregistry.v1 import *
 
@@ -12,7 +14,7 @@ class TrustRegistryService(ServiceBase):
     def __init__(
         self,
         *,
-        server_config: TrinsicOptions = None,
+        server_config: TrinsicOptions | Channel = None,
     ):
         super().__init__(server_config)
         self.client = TrustRegistryStub(super().channel)

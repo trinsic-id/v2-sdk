@@ -123,7 +123,12 @@ pub struct ExtensionRangeOptions {
     /// The verification state of the range.
     /// TODO(b/278783756): flip the default to DECLARATION once all empty ranges
     /// are marked as UNVERIFIED.
-    #[prost(enumeration = "extension_range_options::VerificationState", optional, tag = "3", default = "Unverified")]
+    #[prost(
+        enumeration = "extension_range_options::VerificationState",
+        optional,
+        tag = "3",
+        default = "Unverified"
+    )]
     pub verification: ::core::option::Option<i32>,
 }
 /// Nested message and enum types in `ExtensionRangeOptions`.
@@ -158,7 +163,17 @@ pub mod extension_range_options {
         pub repeated: ::core::option::Option<bool>,
     }
     /// The verification state of the extension range.
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum VerificationState {
         /// All the extensions of the range must be declared.
@@ -255,7 +270,17 @@ pub struct FieldDescriptorProto {
 }
 /// Nested message and enum types in `FieldDescriptorProto`.
 pub mod field_descriptor_proto {
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum Type {
         /// 0 is reserved for errors.
@@ -343,7 +368,17 @@ pub mod field_descriptor_proto {
             }
         }
     }
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum Label {
         /// 0 is reserved for errors
@@ -397,7 +432,9 @@ pub struct EnumDescriptorProto {
     /// by enum values in the same enum declaration. Reserved ranges may not
     /// overlap.
     #[prost(message, repeated, tag = "4")]
-    pub reserved_range: ::prost::alloc::vec::Vec<enum_descriptor_proto::EnumReservedRange>,
+    pub reserved_range: ::prost::alloc::vec::Vec<
+        enum_descriptor_proto::EnumReservedRange,
+    >,
     /// Reserved enum value names, which may not be reused. A given name may only
     /// be reserved once.
     #[prost(string, repeated, tag = "5")]
@@ -501,7 +538,12 @@ pub struct FileOptions {
     /// This option has no effect on when used with the lite runtime.
     #[prost(bool, optional, tag = "27", default = "false")]
     pub java_string_check_utf8: ::core::option::Option<bool>,
-    #[prost(enumeration = "file_options::OptimizeMode", optional, tag = "9", default = "Speed")]
+    #[prost(
+        enumeration = "file_options::OptimizeMode",
+        optional,
+        tag = "9",
+        default = "Speed"
+    )]
     pub optimize_for: ::core::option::Option<i32>,
     /// Sets the Go package where structs generated from this .proto will be
     /// placed. If omitted, the Go package will be derived from the following:
@@ -578,7 +620,17 @@ pub struct FileOptions {
 /// Nested message and enum types in `FileOptions`.
 pub mod file_options {
     /// Generated classes can be optimized for speed or code size.
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum OptimizeMode {
         /// Generate complete code for parsing, serialization,
@@ -696,7 +748,12 @@ pub struct FieldOptions {
     /// \[ctype=CORD\] and \[ctype=STRING\] (the default) on non-repeated fields of
     /// type "bytes" in the open source release -- sorry, we'll try to include
     /// other types in a future version!
-    #[prost(enumeration = "field_options::CType", optional, tag = "1", default = "String")]
+    #[prost(
+        enumeration = "field_options::CType",
+        optional,
+        tag = "1",
+        default = "String"
+    )]
     pub ctype: ::core::option::Option<i32>,
     /// The packed option can be enabled for repeated primitive fields to enable
     /// a more efficient representation on the wire. Rather than repeatedly
@@ -716,7 +773,12 @@ pub struct FieldOptions {
     ///
     /// This option is an enum to permit additional types to be added, e.g.
     /// goog.math.Integer.
-    #[prost(enumeration = "field_options::JsType", optional, tag = "6", default = "JsNormal")]
+    #[prost(
+        enumeration = "field_options::JsType",
+        optional,
+        tag = "6",
+        default = "JsNormal"
+    )]
     pub jstype: ::core::option::Option<i32>,
     /// Should this field be parsed lazily?  Lazy applies only to message-type
     /// fields.  It means that when the outer message is initially parsed, the
@@ -773,7 +835,12 @@ pub struct FieldOptions {
     #[deprecated]
     #[prost(enumeration = "field_options::OptionTargetType", optional, tag = "18")]
     pub target: ::core::option::Option<i32>,
-    #[prost(enumeration = "field_options::OptionTargetType", repeated, packed = "false", tag = "19")]
+    #[prost(
+        enumeration = "field_options::OptionTargetType",
+        repeated,
+        packed = "false",
+        tag = "19"
+    )]
     pub targets: ::prost::alloc::vec::Vec<i32>,
     /// The parser stores options it doesn't recognize here. See above.
     #[prost(message, repeated, tag = "999")]
@@ -781,7 +848,17 @@ pub struct FieldOptions {
 }
 /// Nested message and enum types in `FieldOptions`.
 pub mod field_options {
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum CType {
         /// Default mode.
@@ -817,7 +894,17 @@ pub mod field_options {
             }
         }
     }
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum JsType {
         /// Use the default type.
@@ -852,7 +939,17 @@ pub mod field_options {
     /// If set to RETENTION_SOURCE, the option will be omitted from the binary.
     /// Note: as of January 2023, support for this is in progress and does not yet
     /// have an effect (b/264593489).
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum OptionRetention {
         RetentionUnknown = 0,
@@ -885,7 +982,17 @@ pub mod field_options {
     /// as an option. If it is unset, then the field may be freely used as an
     /// option on any kind of entity. Note: as of January 2023, support for this is
     /// in progress and does not yet have an effect (b/264593489).
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum OptionTargetType {
         TargetTypeUnknown = 0,
@@ -908,7 +1015,9 @@ pub mod field_options {
             match self {
                 OptionTargetType::TargetTypeUnknown => "TARGET_TYPE_UNKNOWN",
                 OptionTargetType::TargetTypeFile => "TARGET_TYPE_FILE",
-                OptionTargetType::TargetTypeExtensionRange => "TARGET_TYPE_EXTENSION_RANGE",
+                OptionTargetType::TargetTypeExtensionRange => {
+                    "TARGET_TYPE_EXTENSION_RANGE"
+                }
                 OptionTargetType::TargetTypeMessage => "TARGET_TYPE_MESSAGE",
                 OptionTargetType::TargetTypeField => "TARGET_TYPE_FIELD",
                 OptionTargetType::TargetTypeOneof => "TARGET_TYPE_ONEOF",
@@ -1004,7 +1113,12 @@ pub struct MethodOptions {
     /// this is a formalization for deprecating methods.
     #[prost(bool, optional, tag = "33", default = "false")]
     pub deprecated: ::core::option::Option<bool>,
-    #[prost(enumeration = "method_options::IdempotencyLevel", optional, tag = "34", default = "IdempotencyUnknown")]
+    #[prost(
+        enumeration = "method_options::IdempotencyLevel",
+        optional,
+        tag = "34",
+        default = "IdempotencyUnknown"
+    )]
     pub idempotency_level: ::core::option::Option<i32>,
     /// The parser stores options it doesn't recognize here. See above.
     #[prost(message, repeated, tag = "999")]
@@ -1015,7 +1129,17 @@ pub mod method_options {
     /// Is this method side-effect-free (or safe in HTTP parlance), or idempotent,
     /// or neither? HTTP based RPC implementation may choose GET verb for safe
     /// methods, and PUT verb for idempotent methods instead of the default POST.
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum IdempotencyLevel {
         IdempotencyUnknown = 0,
@@ -1231,7 +1355,9 @@ pub mod source_code_info {
         #[prost(string, optional, tag = "4")]
         pub trailing_comments: ::core::option::Option<::prost::alloc::string::String>,
         #[prost(string, repeated, tag = "6")]
-        pub leading_detached_comments: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+        pub leading_detached_comments: ::prost::alloc::vec::Vec<
+            ::prost::alloc::string::String,
+        >,
     }
 }
 /// Describes the relationship between generated code and its original source
@@ -1273,7 +1399,17 @@ pub mod generated_code_info {
     pub mod annotation {
         /// Represents the identified object's effect on the element in the original
         /// .proto file.
-        #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+        #[derive(
+            Clone,
+            Copy,
+            Debug,
+            PartialEq,
+            Eq,
+            Hash,
+            PartialOrd,
+            Ord,
+            ::prost::Enumeration
+        )]
         #[repr(i32)]
         pub enum Semantic {
             /// There is no effect or the effect is indescribable.

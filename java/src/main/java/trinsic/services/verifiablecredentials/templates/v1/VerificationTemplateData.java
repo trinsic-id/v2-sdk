@@ -26,7 +26,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     id_ = "";
     name_ = "";
     credentialTemplateId_ = "";
-    schemaUri_ = "";
     ecosystemId_ = "";
     type_ = "";
     createdBy_ = "";
@@ -374,55 +373,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     }
   }
 
-  public static final int SCHEMA_URI_FIELD_NUMBER = 6;
-  private volatile java.lang.Object schemaUri_;
-  /**
-   *
-   *
-   * <pre>
-   * URI pointing to template JSON schema document
-   * </pre>
-   *
-   * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-   *
-   * @return The schemaUri.
-   */
-  @java.lang.Override
-  public java.lang.String getSchemaUri() {
-    java.lang.Object ref = schemaUri_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      schemaUri_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * URI pointing to template JSON schema document
-   * </pre>
-   *
-   * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-   *
-   * @return The bytes for schemaUri.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getSchemaUriBytes() {
-    java.lang.Object ref = schemaUri_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      schemaUri_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 8;
   private volatile java.lang.Object ecosystemId_;
   /**
@@ -745,9 +695,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTemplateId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, credentialTemplateId_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, schemaUri_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, ecosystemId_);
     }
@@ -802,9 +749,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTemplateId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, credentialTemplateId_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, schemaUri_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, ecosystemId_);
     }
@@ -845,7 +789,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     if (getVersion() != other.getVersion()) return false;
     if (!internalGetFields().equals(other.internalGetFields())) return false;
     if (!getCredentialTemplateId().equals(other.getCredentialTemplateId())) return false;
-    if (!getSchemaUri().equals(other.getSchemaUri())) return false;
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getType().equals(other.getType())) return false;
     if (!getCreatedBy().equals(other.getCreatedBy())) return false;
@@ -875,8 +818,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
     }
     hash = (37 * hash) + CREDENTIAL_TEMPLATE_ID_FIELD_NUMBER;
     hash = (53 * hash) + getCredentialTemplateId().hashCode();
-    hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
-    hash = (53 * hash) + getSchemaUri().hashCode();
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -1065,8 +1006,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
       internalGetMutableFields().clear();
       credentialTemplateId_ = "";
 
-      schemaUri_ = "";
-
       ecosystemId_ = "";
 
       type_ = "";
@@ -1117,7 +1056,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
       result.fields_ = internalGetFields();
       result.fields_.makeImmutable();
       result.credentialTemplateId_ = credentialTemplateId_;
-      result.schemaUri_ = schemaUri_;
       result.ecosystemId_ = ecosystemId_;
       result.type_ = type_;
       result.createdBy_ = createdBy_;
@@ -1192,10 +1130,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
       internalGetMutableFields().mergeFrom(other.internalGetFields());
       if (!other.getCredentialTemplateId().isEmpty()) {
         credentialTemplateId_ = other.credentialTemplateId_;
-        onChanged();
-      }
-      if (!other.getSchemaUri().isEmpty()) {
-        schemaUri_ = other.schemaUri_;
         onChanged();
       }
       if (!other.getEcosystemId().isEmpty()) {
@@ -1287,12 +1221,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
 
                 break;
               } // case 42
-            case 50:
-              {
-                schemaUri_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 50
             case 66:
               {
                 ecosystemId_ = input.readStringRequireUtf8();
@@ -1919,112 +1847,6 @@ public final class VerificationTemplateData extends com.google.protobuf.Generate
       checkByteStringIsUtf8(value);
 
       credentialTemplateId_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object schemaUri_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * URI pointing to template JSON schema document
-     * </pre>
-     *
-     * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-     *
-     * @return The schemaUri.
-     */
-    public java.lang.String getSchemaUri() {
-      java.lang.Object ref = schemaUri_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        schemaUri_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI pointing to template JSON schema document
-     * </pre>
-     *
-     * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-     *
-     * @return The bytes for schemaUri.
-     */
-    public com.google.protobuf.ByteString getSchemaUriBytes() {
-      java.lang.Object ref = schemaUri_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        schemaUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI pointing to template JSON schema document
-     * </pre>
-     *
-     * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-     *
-     * @param value The schemaUri to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSchemaUri(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      schemaUri_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI pointing to template JSON schema document
-     * </pre>
-     *
-     * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearSchemaUri() {
-
-      schemaUri_ = getDefaultInstance().getSchemaUri();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * URI pointing to template JSON schema document
-     * </pre>
-     *
-     * <code>string schema_uri = 6 [json_name = "schemaUri"];</code>
-     *
-     * @param value The bytes for schemaUri to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSchemaUriBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      schemaUri_ = value;
       onChanged();
       return this;
     }

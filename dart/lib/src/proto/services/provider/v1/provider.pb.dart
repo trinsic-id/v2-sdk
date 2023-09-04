@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,15 +13,32 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $2;
-import '../../account/v1/account.pbenum.dart' as $2;
-import '../../common/v1/common.pbenum.dart' as $8;
+import '../../account/v1/account.pb.dart' as $1;
+import '../../account/v1/account.pbenum.dart' as $1;
+import '../../common/v1/common.pbenum.dart' as $9;
 import 'provider.pbenum.dart';
 
 export 'provider.pbenum.dart';
 
+/// Details of an ecosystem
 class Ecosystem extends $pb.GeneratedMessage {
-  factory Ecosystem() => create();
+  factory Ecosystem({
+    $core.String? id,
+    $core.String? name,
+    $core.String? description,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    return $result;
+  }
   Ecosystem._() : super();
   factory Ecosystem.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -61,6 +78,7 @@ class Ecosystem extends $pb.GeneratedMessage {
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Ecosystem>(create);
   static Ecosystem? _defaultInstance;
 
+  /// URN of the ecosystem
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -73,6 +91,7 @@ class Ecosystem extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
 
+  /// Globally unique name for the ecosystem
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -85,6 +104,7 @@ class Ecosystem extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
 
+  /// Ecosystem description
   @$pb.TagNumber(3)
   $core.String get description => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -98,8 +118,29 @@ class Ecosystem extends $pb.GeneratedMessage {
   void clearDescription() => clearField(3);
 }
 
+/// Request to create an ecosystem
 class CreateEcosystemRequest extends $pb.GeneratedMessage {
-  factory CreateEcosystemRequest() => create();
+  factory CreateEcosystemRequest({
+    $core.String? name,
+    $core.String? description,
+    $1.AccountDetails? details,
+    $core.String? domain,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (details != null) {
+      $result.details = details;
+    }
+    if (domain != null) {
+      $result.domain = domain;
+    }
+    return $result;
+  }
   CreateEcosystemRequest._() : super();
   factory CreateEcosystemRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -115,8 +156,8 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'name')
     ..aOS(2, _omitFieldNames ? '' : 'description')
-    ..aOM<$2.AccountDetails>(4, _omitFieldNames ? '' : 'details',
-        subBuilder: $2.AccountDetails.create)
+    ..aOM<$1.AccountDetails>(4, _omitFieldNames ? '' : 'details',
+        subBuilder: $1.AccountDetails.create)
     ..aOS(5, _omitFieldNames ? '' : 'domain')
     ..hasRequiredFields = false;
 
@@ -145,6 +186,10 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateEcosystemRequest>(create);
   static CreateEcosystemRequest? _defaultInstance;
 
+  /// Globally unique name for the Ecosystem. This name will be
+  /// part of the ecosystem-specific URLs and namespaces.
+  /// Allowed characters are lowercase letters, numbers, underscore and hyphen.
+  /// If not passed, ecosystem name will be auto-generated.
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -157,6 +202,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
 
+  /// Ecosystem description
   @$pb.TagNumber(2)
   $core.String get description => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -169,10 +215,11 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
 
+  /// The account details of the owner of the ecosystem
   @$pb.TagNumber(4)
-  $2.AccountDetails get details => $_getN(2);
+  $1.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(4)
-  set details($2.AccountDetails v) {
+  set details($1.AccountDetails v) {
     setField(4, v);
   }
 
@@ -181,8 +228,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $2.AccountDetails ensureDetails() => $_ensure(2);
+  $1.AccountDetails ensureDetails() => $_ensure(2);
 
+  /// New domain URL
   @$pb.TagNumber(5)
   $core.String get domain => $_getSZ(3);
   @$pb.TagNumber(5)
@@ -196,8 +244,25 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearDomain() => clearField(5);
 }
 
+/// Response to `CreateEcosystemRequest`
 class CreateEcosystemResponse extends $pb.GeneratedMessage {
-  factory CreateEcosystemResponse() => create();
+  factory CreateEcosystemResponse({
+    Ecosystem? ecosystem,
+    $1.AccountProfile? profile,
+    $1.ConfirmationMethod? confirmationMethod,
+  }) {
+    final $result = create();
+    if (ecosystem != null) {
+      $result.ecosystem = ecosystem;
+    }
+    if (profile != null) {
+      $result.profile = profile;
+    }
+    if (confirmationMethod != null) {
+      $result.confirmationMethod = confirmationMethod;
+    }
+    return $result;
+  }
   CreateEcosystemResponse._() : super();
   factory CreateEcosystemResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -213,13 +278,13 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOM<Ecosystem>(1, _omitFieldNames ? '' : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$2.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
-        subBuilder: $2.AccountProfile.create)
-    ..e<$2.ConfirmationMethod>(
+    ..aOM<$1.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
+        subBuilder: $1.AccountProfile.create)
+    ..e<$1.ConfirmationMethod>(
         3, _omitFieldNames ? '' : 'confirmationMethod', $pb.PbFieldType.OE,
-        defaultOrMaker: $2.ConfirmationMethod.None,
-        valueOf: $2.ConfirmationMethod.valueOf,
-        enumValues: $2.ConfirmationMethod.values)
+        defaultOrMaker: $1.ConfirmationMethod.None,
+        valueOf: $1.ConfirmationMethod.valueOf,
+        enumValues: $1.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -247,6 +312,7 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateEcosystemResponse>(create);
   static CreateEcosystemResponse? _defaultInstance;
 
+  /// Details of the created ecosystem
   @$pb.TagNumber(1)
   Ecosystem get ecosystem => $_getN(0);
   @$pb.TagNumber(1)
@@ -261,10 +327,11 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   Ecosystem ensureEcosystem() => $_ensure(0);
 
+  /// Account profile for auth of the owner of the ecosystem
   @$pb.TagNumber(2)
-  $2.AccountProfile get profile => $_getN(1);
+  $1.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($2.AccountProfile v) {
+  set profile($1.AccountProfile v) {
     setField(2, v);
   }
 
@@ -273,12 +340,13 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $2.AccountProfile ensureProfile() => $_ensure(1);
+  $1.AccountProfile ensureProfile() => $_ensure(1);
 
+  /// Indicates if confirmation of account is required.
   @$pb.TagNumber(3)
-  $2.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $1.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($2.ConfirmationMethod v) {
+  set confirmationMethod($1.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -288,6 +356,7 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   void clearConfirmationMethod() => clearField(3);
 }
 
+/// Request to fetch information about an ecosystem
 class EcosystemInfoRequest extends $pb.GeneratedMessage {
   factory EcosystemInfoRequest() => create();
   EcosystemInfoRequest._() : super();
@@ -330,8 +399,17 @@ class EcosystemInfoRequest extends $pb.GeneratedMessage {
   static EcosystemInfoRequest? _defaultInstance;
 }
 
+/// Response to `InfoRequest`
 class EcosystemInfoResponse extends $pb.GeneratedMessage {
-  factory EcosystemInfoResponse() => create();
+  factory EcosystemInfoResponse({
+    Ecosystem? ecosystem,
+  }) {
+    final $result = create();
+    if (ecosystem != null) {
+      $result.ecosystem = ecosystem;
+    }
+    return $result;
+  }
   EcosystemInfoResponse._() : super();
   factory EcosystemInfoResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -374,6 +452,7 @@ class EcosystemInfoResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<EcosystemInfoResponse>(create);
   static EcosystemInfoResponse? _defaultInstance;
 
+  /// Ecosystem corresponding to current ecosystem in the account token
   @$pb.TagNumber(1)
   Ecosystem get ecosystem => $_getN(0);
   @$pb.TagNumber(1)
@@ -389,6 +468,8 @@ class EcosystemInfoResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 }
 
+/// Request to fetch the Trinsic public key used
+/// to verify authentication token validity
 class GetOberonKeyRequest extends $pb.GeneratedMessage {
   factory GetOberonKeyRequest() => create();
   GetOberonKeyRequest._() : super();
@@ -430,8 +511,17 @@ class GetOberonKeyRequest extends $pb.GeneratedMessage {
   static GetOberonKeyRequest? _defaultInstance;
 }
 
+/// Response to `GetOberonKeyRequest`
 class GetOberonKeyResponse extends $pb.GeneratedMessage {
-  factory GetOberonKeyResponse() => create();
+  factory GetOberonKeyResponse({
+    $core.String? key,
+  }) {
+    final $result = create();
+    if (key != null) {
+      $result.key = key;
+    }
+    return $result;
+  }
   GetOberonKeyResponse._() : super();
   factory GetOberonKeyResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -472,6 +562,7 @@ class GetOberonKeyResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetOberonKeyResponse>(create);
   static GetOberonKeyResponse? _defaultInstance;
 
+  /// Oberon Public Key as RAW base64-url encoded string
   @$pb.TagNumber(1)
   $core.String get key => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -485,6 +576,8 @@ class GetOberonKeyResponse extends $pb.GeneratedMessage {
   void clearKey() => clearField(1);
 }
 
+/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+/// DEPRECATED, will be removed June 1st 2023
 class RetrieveDomainVerificationRecordRequest extends $pb.GeneratedMessage {
   factory RetrieveDomainVerificationRecordRequest() => create();
   RetrieveDomainVerificationRecordRequest._() : super();
@@ -532,8 +625,22 @@ class RetrieveDomainVerificationRecordRequest extends $pb.GeneratedMessage {
   static RetrieveDomainVerificationRecordRequest? _defaultInstance;
 }
 
+/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+/// DEPRECATED, will be removed June 1st 2023
 class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
-  factory RetrieveDomainVerificationRecordResponse() => create();
+  factory RetrieveDomainVerificationRecordResponse({
+    $core.String? verificationRecordName,
+    $core.String? verificationRecordValue,
+  }) {
+    final $result = create();
+    if (verificationRecordName != null) {
+      $result.verificationRecordName = verificationRecordName;
+    }
+    if (verificationRecordValue != null) {
+      $result.verificationRecordValue = verificationRecordValue;
+    }
+    return $result;
+  }
   RetrieveDomainVerificationRecordResponse._() : super();
   factory RetrieveDomainVerificationRecordResponse.fromBuffer(
           $core.List<$core.int> i,
@@ -581,6 +688,7 @@ class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
           RetrieveDomainVerificationRecordResponse>(create);
   static RetrieveDomainVerificationRecordResponse? _defaultInstance;
 
+  /// TXT record name to use for domain verification
   @$pb.TagNumber(1)
   $core.String get verificationRecordName => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -593,6 +701,7 @@ class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearVerificationRecordName() => clearField(1);
 
+  /// TXT code for domain verification
   @$pb.TagNumber(2)
   $core.String get verificationRecordValue => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -606,6 +715,8 @@ class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
   void clearVerificationRecordValue() => clearField(2);
 }
 
+/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+/// DEPRECATED, will be removed June 1st 2023
 class RefreshDomainVerificationStatusRequest extends $pb.GeneratedMessage {
   factory RefreshDomainVerificationStatusRequest() => create();
   RefreshDomainVerificationStatusRequest._() : super();
@@ -653,8 +764,22 @@ class RefreshDomainVerificationStatusRequest extends $pb.GeneratedMessage {
   static RefreshDomainVerificationStatusRequest? _defaultInstance;
 }
 
+/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
+/// DEPRECATED, will be removed June 1st 2023
 class RefreshDomainVerificationStatusResponse extends $pb.GeneratedMessage {
-  factory RefreshDomainVerificationStatusResponse() => create();
+  factory RefreshDomainVerificationStatusResponse({
+    $core.String? domain,
+    $core.bool? domainVerified,
+  }) {
+    final $result = create();
+    if (domain != null) {
+      $result.domain = domain;
+    }
+    if (domainVerified != null) {
+      $result.domainVerified = domainVerified;
+    }
+    return $result;
+  }
   RefreshDomainVerificationStatusResponse._() : super();
   factory RefreshDomainVerificationStatusResponse.fromBuffer(
           $core.List<$core.int> i,
@@ -701,6 +826,7 @@ class RefreshDomainVerificationStatusResponse extends $pb.GeneratedMessage {
           RefreshDomainVerificationStatusResponse>(create);
   static RefreshDomainVerificationStatusResponse? _defaultInstance;
 
+  /// Domain URL verified
   @$pb.TagNumber(1)
   $core.String get domain => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -713,6 +839,7 @@ class RefreshDomainVerificationStatusResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDomain() => clearField(1);
 
+  /// Specifies if the above `domain` was successfully verified
   @$pb.TagNumber(2)
   $core.bool get domainVerified => $_getBF(1);
   @$pb.TagNumber(2)
@@ -726,8 +853,21 @@ class RefreshDomainVerificationStatusResponse extends $pb.GeneratedMessage {
   void clearDomainVerified() => clearField(2);
 }
 
+/// Search for issuers/holders/verifiers
 class SearchWalletConfigurationsRequest extends $pb.GeneratedMessage {
-  factory SearchWalletConfigurationsRequest() => create();
+  factory SearchWalletConfigurationsRequest({
+    $core.String? queryFilter,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (queryFilter != null) {
+      $result.queryFilter = queryFilter;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   SearchWalletConfigurationsRequest._() : super();
   factory SearchWalletConfigurationsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -773,6 +913,7 @@ class SearchWalletConfigurationsRequest extends $pb.GeneratedMessage {
           create);
   static SearchWalletConfigurationsRequest? _defaultInstance;
 
+  /// SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]`
   @$pb.TagNumber(1)
   $core.String get queryFilter => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -785,6 +926,8 @@ class SearchWalletConfigurationsRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearQueryFilter() => clearField(1);
 
+  /// Token provided by previous `SearchResponse`
+  /// if more data is available for query
   @$pb.TagNumber(2)
   $core.String get continuationToken => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -799,7 +942,23 @@ class SearchWalletConfigurationsRequest extends $pb.GeneratedMessage {
 }
 
 class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
-  factory SearchWalletConfigurationResponse() => create();
+  factory SearchWalletConfigurationResponse({
+    $core.Iterable<WalletConfiguration>? results,
+    $core.bool? hasMoreResults,
+    $core.String? continuationToken,
+  }) {
+    final $result = create();
+    if (results != null) {
+      $result.results.addAll(results);
+    }
+    if (hasMoreResults != null) {
+      $result.hasMoreResults = hasMoreResults;
+    }
+    if (continuationToken != null) {
+      $result.continuationToken = continuationToken;
+    }
+    return $result;
+  }
   SearchWalletConfigurationResponse._() : super();
   factory SearchWalletConfigurationResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -848,9 +1007,11 @@ class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
           create);
   static SearchWalletConfigurationResponse? _defaultInstance;
 
+  /// Results matching the search query
   @$pb.TagNumber(1)
   $core.List<WalletConfiguration> get results => $_getList(0);
 
+  /// Whether more results are available for this query via `continuation_token`
   @$pb.TagNumber(2)
   $core.bool get hasMoreResults => $_getBF(1);
   @$pb.TagNumber(2)
@@ -863,6 +1024,7 @@ class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearHasMoreResults() => clearField(2);
 
+  /// Token to fetch next set of results via `SearchRequest`
   @$pb.TagNumber(4)
   $core.String get continuationToken => $_getSZ(2);
   @$pb.TagNumber(4)
@@ -876,8 +1038,61 @@ class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
   void clearContinuationToken() => clearField(4);
 }
 
+/// Strongly typed information about wallet configurations
 class WalletConfiguration extends $pb.GeneratedMessage {
-  factory WalletConfiguration() => create();
+  factory WalletConfiguration({
+    $core.String? name,
+    @$core.Deprecated('This field is deprecated.') $core.String? email,
+    @$core.Deprecated('This field is deprecated.') $core.String? sms,
+    $core.String? walletId,
+    $core.String? publicDid,
+    $core.String? configType,
+    $core.Iterable<$1.WalletAuthToken>? authTokens,
+    @$core.Deprecated('This field is deprecated.')
+    $core.Iterable<$core.String>? externalIdentityIds,
+    $core.String? ecosystemId,
+    $core.String? description,
+    $core.Iterable<WalletExternalIdentity>? externalIdentities,
+  }) {
+    final $result = create();
+    if (name != null) {
+      $result.name = name;
+    }
+    if (email != null) {
+      // ignore: deprecated_member_use_from_same_package
+      $result.email = email;
+    }
+    if (sms != null) {
+      // ignore: deprecated_member_use_from_same_package
+      $result.sms = sms;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (publicDid != null) {
+      $result.publicDid = publicDid;
+    }
+    if (configType != null) {
+      $result.configType = configType;
+    }
+    if (authTokens != null) {
+      $result.authTokens.addAll(authTokens);
+    }
+    if (externalIdentityIds != null) {
+      // ignore: deprecated_member_use_from_same_package
+      $result.externalIdentityIds.addAll(externalIdentityIds);
+    }
+    if (ecosystemId != null) {
+      $result.ecosystemId = ecosystemId;
+    }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (externalIdentities != null) {
+      $result.externalIdentities.addAll(externalIdentities);
+    }
+    return $result;
+  }
   WalletConfiguration._() : super();
   factory WalletConfiguration.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -897,9 +1112,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'walletId')
     ..aOS(5, _omitFieldNames ? '' : 'publicDid')
     ..aOS(6, _omitFieldNames ? '' : 'configType')
-    ..pc<$2.WalletAuthToken>(
+    ..pc<$1.WalletAuthToken>(
         7, _omitFieldNames ? '' : 'authTokens', $pb.PbFieldType.PM,
-        subBuilder: $2.WalletAuthToken.create)
+        subBuilder: $1.WalletAuthToken.create)
     ..pPS(8, _omitFieldNames ? '' : 'externalIdentityIds')
     ..aOS(9, _omitFieldNames ? '' : 'ecosystemId')
     ..aOS(10, _omitFieldNames ? '' : 'description')
@@ -931,6 +1146,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<WalletConfiguration>(create);
   static WalletConfiguration? _defaultInstance;
 
+  /// Name/description of the wallet
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -943,6 +1159,8 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
 
+  /// Deprecated and will be removed on August 1, 2023 -- use external_identities.
+  /// This field is set to the first email address present in `external_identities`, if any.
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get email => $_getSZ(1);
@@ -959,6 +1177,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearEmail() => clearField(2);
 
+  /// Deprecated -- use external_identities
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.String get sms => $_getSZ(2);
@@ -987,6 +1206,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearWalletId() => clearField(4);
 
+  /// The DID of the wallet
   @$pb.TagNumber(5)
   $core.String get publicDid => $_getSZ(4);
   @$pb.TagNumber(5)
@@ -1011,13 +1231,19 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearConfigType() => clearField(6);
 
+  /// List of active authentication tokens for this wallet.
+  /// This list does not contain the issued token, only metadata
+  /// such as ID, description, and creation date.
   @$pb.TagNumber(7)
-  $core.List<$2.WalletAuthToken> get authTokens => $_getList(6);
+  $core.List<$1.WalletAuthToken> get authTokens => $_getList(6);
 
+  /// List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
+  /// This is deprecated; use `external_identities` instead.
   @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(8)
   $core.List<$core.String> get externalIdentityIds => $_getList(7);
 
+  /// Ecosystem in which this wallet is contained.
   @$pb.TagNumber(9)
   $core.String get ecosystemId => $_getSZ(8);
   @$pb.TagNumber(9)
@@ -1042,12 +1268,26 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   void clearDescription() => clearField(10);
 
+  /// List of external identities associated with this wallet.
   @$pb.TagNumber(11)
   $core.List<WalletExternalIdentity> get externalIdentities => $_getList(10);
 }
 
+/// An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
 class WalletExternalIdentity extends $pb.GeneratedMessage {
-  factory WalletExternalIdentity() => create();
+  factory WalletExternalIdentity({
+    IdentityProvider? provider,
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (provider != null) {
+      $result.provider = provider;
+    }
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   WalletExternalIdentity._() : super();
   factory WalletExternalIdentity.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1094,6 +1334,7 @@ class WalletExternalIdentity extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<WalletExternalIdentity>(create);
   static WalletExternalIdentity? _defaultInstance;
 
+  /// The type of this identity (whether this identity is an email address, phone number, etc.)
   @$pb.TagNumber(1)
   IdentityProvider get provider => $_getN(0);
   @$pb.TagNumber(1)
@@ -1106,6 +1347,7 @@ class WalletExternalIdentity extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearProvider() => clearField(1);
 
+  /// The actual email address/phone number/etc. for this identity
   @$pb.TagNumber(2)
   $core.String get id => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1119,8 +1361,17 @@ class WalletExternalIdentity extends $pb.GeneratedMessage {
   void clearId() => clearField(2);
 }
 
+/// Options for creation of DID on the ION network
 class IonOptions extends $pb.GeneratedMessage {
-  factory IonOptions() => create();
+  factory IonOptions({
+    IonOptions_IonNetwork? network,
+  }) {
+    final $result = create();
+    if (network != null) {
+      $result.network = network;
+    }
+    return $result;
+  }
   IonOptions._() : super();
   factory IonOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1162,6 +1413,7 @@ class IonOptions extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<IonOptions>(create);
   static IonOptions? _defaultInstance;
 
+  /// ION network on which DID should be published
   @$pb.TagNumber(1)
   IonOptions_IonNetwork get network => $_getN(0);
   @$pb.TagNumber(1)
@@ -1175,8 +1427,17 @@ class IonOptions extends $pb.GeneratedMessage {
   void clearNetwork() => clearField(1);
 }
 
+/// Options for creation of DID on the SOV network
 class IndyOptions extends $pb.GeneratedMessage {
-  factory IndyOptions() => create();
+  factory IndyOptions({
+    IndyOptions_IndyNetwork? network,
+  }) {
+    final $result = create();
+    if (network != null) {
+      $result.network = network;
+    }
+    return $result;
+  }
   IndyOptions._() : super();
   factory IndyOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1219,6 +1480,7 @@ class IndyOptions extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<IndyOptions>(create);
   static IndyOptions? _defaultInstance;
 
+  /// SOV network on which DID should be published
   @$pb.TagNumber(1)
   IndyOptions_IndyNetwork get network => $_getN(0);
   @$pb.TagNumber(1)
@@ -1236,8 +1498,37 @@ enum UpgradeDidRequest_Account { email, walletId, didUri, notSet }
 
 enum UpgradeDidRequest_Options { ionOptions, indyOptions, notSet }
 
+/// Request to upgrade a wallet
 class UpgradeDidRequest extends $pb.GeneratedMessage {
-  factory UpgradeDidRequest() => create();
+  factory UpgradeDidRequest({
+    $core.String? email,
+    $core.String? walletId,
+    $9.SupportedDidMethod? method,
+    IonOptions? ionOptions,
+    IndyOptions? indyOptions,
+    $core.String? didUri,
+  }) {
+    final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
+    if (walletId != null) {
+      $result.walletId = walletId;
+    }
+    if (method != null) {
+      $result.method = method;
+    }
+    if (ionOptions != null) {
+      $result.ionOptions = ionOptions;
+    }
+    if (indyOptions != null) {
+      $result.indyOptions = indyOptions;
+    }
+    if (didUri != null) {
+      $result.didUri = didUri;
+    }
+    return $result;
+  }
   UpgradeDidRequest._() : super();
   factory UpgradeDidRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1268,11 +1559,11 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
     ..oo(1, [4, 5])
     ..aOS(1, _omitFieldNames ? '' : 'email')
     ..aOS(2, _omitFieldNames ? '' : 'walletId')
-    ..e<$8.SupportedDidMethod>(
+    ..e<$9.SupportedDidMethod>(
         3, _omitFieldNames ? '' : 'method', $pb.PbFieldType.OE,
-        defaultOrMaker: $8.SupportedDidMethod.KEY,
-        valueOf: $8.SupportedDidMethod.valueOf,
-        enumValues: $8.SupportedDidMethod.values)
+        defaultOrMaker: $9.SupportedDidMethod.KEY,
+        valueOf: $9.SupportedDidMethod.valueOf,
+        enumValues: $9.SupportedDidMethod.values)
     ..aOM<IonOptions>(4, _omitFieldNames ? '' : 'ionOptions',
         subBuilder: IonOptions.create)
     ..aOM<IndyOptions>(5, _omitFieldNames ? '' : 'indyOptions',
@@ -1311,6 +1602,8 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
       _UpgradeDidRequest_OptionsByTag[$_whichOneof(1)]!;
   void clearOptions() => clearField($_whichOneof(1));
 
+  /// Email address of account to upgrade.
+  /// Mutually exclusive with `walletId` and `didUri`.
   @$pb.TagNumber(1)
   $core.String get email => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -1323,6 +1616,8 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
+  /// Wallet ID of account to upgrade.
+  /// Mutually exclusive with `email` and `didUri`.
   @$pb.TagNumber(2)
   $core.String get walletId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1335,10 +1630,11 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearWalletId() => clearField(2);
 
+  /// DID Method to which wallet should be upgraded
   @$pb.TagNumber(3)
-  $8.SupportedDidMethod get method => $_getN(2);
+  $9.SupportedDidMethod get method => $_getN(2);
   @$pb.TagNumber(3)
-  set method($8.SupportedDidMethod v) {
+  set method($9.SupportedDidMethod v) {
     setField(3, v);
   }
 
@@ -1347,6 +1643,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearMethod() => clearField(3);
 
+  /// Configuration for creation of DID on ION network
   @$pb.TagNumber(4)
   IonOptions get ionOptions => $_getN(3);
   @$pb.TagNumber(4)
@@ -1361,6 +1658,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   IonOptions ensureIonOptions() => $_ensure(3);
 
+  /// Configuration for creation of DID on INDY network
   @$pb.TagNumber(5)
   IndyOptions get indyOptions => $_getN(4);
   @$pb.TagNumber(5)
@@ -1375,6 +1673,8 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   IndyOptions ensureIndyOptions() => $_ensure(4);
 
+  /// DID URI of the account to upgrade.
+  /// Mutually exclusive with `email` and `walletId`.
   @$pb.TagNumber(6)
   $core.String get didUri => $_getSZ(5);
   @$pb.TagNumber(6)
@@ -1388,8 +1688,17 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   void clearDidUri() => clearField(6);
 }
 
+/// Response to `UpgradeDIDRequest`
 class UpgradeDidResponse extends $pb.GeneratedMessage {
-  factory UpgradeDidResponse() => create();
+  factory UpgradeDidResponse({
+    $core.String? did,
+  }) {
+    final $result = create();
+    if (did != null) {
+      $result.did = did;
+    }
+    return $result;
+  }
   UpgradeDidResponse._() : super();
   factory UpgradeDidResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1429,6 +1738,7 @@ class UpgradeDidResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<UpgradeDidResponse>(create);
   static UpgradeDidResponse? _defaultInstance;
 
+  /// New DID of wallet
   @$pb.TagNumber(1)
   $core.String get did => $_getSZ(0);
   @$pb.TagNumber(1)

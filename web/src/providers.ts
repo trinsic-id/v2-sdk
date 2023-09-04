@@ -7,30 +7,31 @@ import {
     NodeHttpTransport,
     FetchTransport,
 } from "nice-grpc-web";
-import {XHRTransport} from "./XHRTransport";
-import {Transport} from "nice-grpc-web/lib/client/Transport";
-import {FetchReactNativeTransport} from "./FetchReactNativeTransport";
+import { XHRTransport } from "./XHRTransport";
+import { Transport } from "nice-grpc-web/lib/client/Transport";
+import { FetchReactNativeTransport } from "./FetchReactNativeTransport";
 
 export interface IPlatformProvider {
     metadataLanguage(): string;
 
     createGrpcClient<ClientService extends CompatServiceDefinition>(
         definition: ClientService,
-        address: string
+        address: string,
     ): Client<ClientService>;
 }
 
 export function getRuntime(): string {
     // https://stackoverflow.com/a/39473604
-    if (typeof document !== 'undefined') {
+    if (typeof document !== "undefined") {
         // I'm on the web!
         return "web";
-    }
-    else if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+    } else if (
+        typeof navigator !== "undefined" &&
+        navigator.product === "ReactNative"
+    ) {
         // I'm in react-native
         return "react-native";
-    }
-    else {
+    } else {
         // I'm in node js
         return "node";
     }
@@ -44,7 +45,7 @@ export class TransportProvider implements IPlatformProvider {
     private language?: string = undefined;
     createGrpcClient<ClientService extends CompatServiceDefinition>(
         definition: ClientService,
-        address: string
+        address: string,
     ): Client<ClientService> {
         let transport: any;
         const runtime = getRuntime();

@@ -54,12 +54,6 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
-    "services.account.v1.Account.SignIn": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.AccountDetails": {
       "type": "message",
       "collection": "messages",
@@ -264,42 +258,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.LoginResponse"
     },
-    "services.account.v1.SignInRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.SignInRequest.details": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInRequest"
-    },
-    "services.account.v1.SignInRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInRequest"
-    },
-    "services.account.v1.SignInResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.SignInResponse.confirmation_method": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInResponse"
-    },
-    "services.account.v1.SignInResponse.profile": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.SignInResponse"
-    },
     "services.account.v1.TokenProtection": {
       "type": "message",
       "collection": "messages",
@@ -425,6 +383,360 @@
       "collection": "enum_values",
       "file": "services/common/v1/common.proto",
       "parent": "services.common.v1.SupportedDidMethod"
+    },
+    "services.common.v1.TrinsicClientOptions": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/common/v1/common.proto",
+      "parent": ""
+    },
+    "services.common.v1.TrinsicClientOptions.auth_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_endpoint": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_port": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.common.v1.TrinsicClientOptions.server_use_tls": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.TrinsicClientOptions"
+    },
+    "services.connect.v1.CancelSessionRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.CancelSessionRequest.idv_session_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CancelSessionRequest"
+    },
+    "services.connect.v1.CancelSessionResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.CancelSessionResponse.session": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CancelSessionResponse"
+    },
+    "services.connect.v1.Connect": {
+      "type": "service",
+      "collection": "services",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.Connect.CancelSession": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.Connect.CreateSession": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.Connect.GetSession": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.CreateSessionRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.CreateSessionRequest.verifications": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CreateSessionRequest"
+    },
+    "services.connect.v1.CreateSessionResponse2": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.CreateSessionResponse2.session": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CreateSessionResponse2"
+    },
+    "services.connect.v1.GetSessionRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.GetSessionRequest.idv_session_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.GetSessionRequest"
+    },
+    "services.connect.v1.GetSessionResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.GetSessionResponse.session": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.GetSessionResponse"
+    },
+    "services.connect.v1.IDVSession": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.IDVSession.VerificationsEntry": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSession.VerificationsEntry.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession.VerificationsEntry"
+    },
+    "services.connect.v1.IDVSession.VerificationsEntry.value": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession.VerificationsEntry"
+    },
+    "services.connect.v1.IDVSession.client_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSession.created": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSession.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSession.result_vp": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSession.state": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSession.updated": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSession.verifications": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSession"
+    },
+    "services.connect.v1.IDVSessionState": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.IDVSessionState.IDV_AUTHENTICATING": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_CREATED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_EXPIRED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_FAILED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_INITIATED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_IN_PROGRESS": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_RP_CANCELED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_SUCCESS": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.IDVSessionState.IDV_USER_CANCELED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.IDVSessionState"
+    },
+    "services.connect.v1.RequestedVerification": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.RequestedVerification.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.RequestedVerification"
+    },
+    "services.connect.v1.Verification": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.Verification.begun": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.Verification"
+    },
+    "services.connect.v1.Verification.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.Verification"
+    },
+    "services.connect.v1.Verification.reused": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.Verification"
+    },
+    "services.connect.v1.Verification.state": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.Verification"
+    },
+    "services.connect.v1.Verification.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.Verification"
+    },
+    "services.connect.v1.Verification.updated": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.Verification"
+    },
+    "services.connect.v1.VerificationState": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_FAILED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.VerificationState"
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_PENDING": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.VerificationState"
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.VerificationState"
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_STARTED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.VerificationState"
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_SUCCESS": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.VerificationState"
+    },
+    "services.connect.v1.VerificationType": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.VerificationType.GOVERNMENT_ID": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.VerificationType"
     },
     "services.filemanagement.v1.DeleteFileRequest": {
       "type": "message",
@@ -3384,12 +3696,6 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
     },
-    "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/verifiable-credentials/templates/v1/templates.proto",
-      "parent": "services.verifiablecredentials.templates.v1.VerificationTemplateData"
-    },
     "services.verifiablecredentials.templates.v1.VerificationTemplateData.title": {
       "type": "field",
       "collection": "fields",
@@ -3964,17 +4270,14 @@
         "services.account.v1.Account"
       ],
       "methods": [
-        "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info"
       ],
       "messages": [
-        "services.account.v1.SignInRequest",
         "services.account.v1.AccountDetails",
-        "services.account.v1.SignInResponse",
-        "services.account.v1.AccountProfile",
         "services.account.v1.TokenProtection",
+        "services.account.v1.AccountProfile",
         "services.account.v1.AccountInfoRequest",
         "services.account.v1.AccountInfoResponse",
         "services.account.v1.LoginRequest",
@@ -3984,19 +4287,15 @@
         "services.account.v1.WalletAuthToken"
       ],
       "fields": [
-        "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.ecosystem_id",
         "services.account.v1.AccountDetails.name",
         "services.account.v1.AccountDetails.email",
         "services.account.v1.AccountDetails.sms",
-        "services.account.v1.SignInResponse.confirmation_method",
-        "services.account.v1.SignInResponse.profile",
+        "services.account.v1.TokenProtection.enabled",
+        "services.account.v1.TokenProtection.method",
         "services.account.v1.AccountProfile.profile_type",
         "services.account.v1.AccountProfile.auth_data",
         "services.account.v1.AccountProfile.auth_token",
         "services.account.v1.AccountProfile.protection",
-        "services.account.v1.TokenProtection.enabled",
-        "services.account.v1.TokenProtection.method",
         "services.account.v1.AccountInfoResponse.details",
         "services.account.v1.AccountInfoResponse.wallet_id",
         "services.account.v1.AccountInfoResponse.device_id",
@@ -4032,11 +4331,16 @@
       "services": [],
       "methods": [],
       "messages": [
-        "services.common.v1.Nonce"
+        "services.common.v1.Nonce",
+        "services.common.v1.TrinsicClientOptions"
       ],
       "fields": [
         "services.common.v1.Nonce.timestamp",
-        "services.common.v1.Nonce.request_hash"
+        "services.common.v1.Nonce.request_hash",
+        "services.common.v1.TrinsicClientOptions.server_endpoint",
+        "services.common.v1.TrinsicClientOptions.server_port",
+        "services.common.v1.TrinsicClientOptions.server_use_tls",
+        "services.common.v1.TrinsicClientOptions.auth_token"
       ],
       "enums": [
         "services.common.v1.ResponseStatus",
@@ -4052,6 +4356,77 @@
         "services.common.v1.SupportedDidMethod.KEY",
         "services.common.v1.SupportedDidMethod.ION",
         "services.common.v1.SupportedDidMethod.INDY"
+      ]
+    },
+    "services/connect/v1/connect.proto": {
+      "name": "services/connect/v1/connect.proto",
+      "package": "services.connect.v1",
+      "description": "",
+      "services": [
+        "services.connect.v1.Connect"
+      ],
+      "methods": [
+        "services.connect.v1.Connect.CreateSession",
+        "services.connect.v1.Connect.CancelSession",
+        "services.connect.v1.Connect.GetSession"
+      ],
+      "messages": [
+        "services.connect.v1.IDVSession",
+        "services.connect.v1.IDVSession.VerificationsEntry",
+        "services.connect.v1.Verification",
+        "services.connect.v1.CreateSessionRequest",
+        "services.connect.v1.RequestedVerification",
+        "services.connect.v1.CreateSessionResponse2",
+        "services.connect.v1.CancelSessionRequest",
+        "services.connect.v1.CancelSessionResponse",
+        "services.connect.v1.GetSessionRequest",
+        "services.connect.v1.GetSessionResponse"
+      ],
+      "fields": [
+        "services.connect.v1.IDVSession.id",
+        "services.connect.v1.IDVSession.client_token",
+        "services.connect.v1.IDVSession.state",
+        "services.connect.v1.IDVSession.verifications",
+        "services.connect.v1.IDVSession.result_vp",
+        "services.connect.v1.IDVSession.created",
+        "services.connect.v1.IDVSession.updated",
+        "services.connect.v1.IDVSession.VerificationsEntry.key",
+        "services.connect.v1.IDVSession.VerificationsEntry.value",
+        "services.connect.v1.Verification.id",
+        "services.connect.v1.Verification.type",
+        "services.connect.v1.Verification.state",
+        "services.connect.v1.Verification.reused",
+        "services.connect.v1.Verification.begun",
+        "services.connect.v1.Verification.updated",
+        "services.connect.v1.CreateSessionRequest.verifications",
+        "services.connect.v1.RequestedVerification.type",
+        "services.connect.v1.CreateSessionResponse2.session",
+        "services.connect.v1.CancelSessionRequest.idv_session_id",
+        "services.connect.v1.CancelSessionResponse.session",
+        "services.connect.v1.GetSessionRequest.idv_session_id",
+        "services.connect.v1.GetSessionResponse.session"
+      ],
+      "enums": [
+        "services.connect.v1.VerificationType",
+        "services.connect.v1.IDVSessionState",
+        "services.connect.v1.VerificationState"
+      ],
+      "enum_values": [
+        "services.connect.v1.VerificationType.GOVERNMENT_ID",
+        "services.connect.v1.IDVSessionState.IDV_CREATED",
+        "services.connect.v1.IDVSessionState.IDV_INITIATED",
+        "services.connect.v1.IDVSessionState.IDV_AUTHENTICATING",
+        "services.connect.v1.IDVSessionState.IDV_IN_PROGRESS",
+        "services.connect.v1.IDVSessionState.IDV_SUCCESS",
+        "services.connect.v1.IDVSessionState.IDV_USER_CANCELED",
+        "services.connect.v1.IDVSessionState.IDV_EXPIRED",
+        "services.connect.v1.IDVSessionState.IDV_RP_CANCELED",
+        "services.connect.v1.IDVSessionState.IDV_FAILED",
+        "services.connect.v1.VerificationState.VERIFICATION_PENDING",
+        "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE",
+        "services.connect.v1.VerificationState.VERIFICATION_STARTED",
+        "services.connect.v1.VerificationState.VERIFICATION_SUCCESS",
+        "services.connect.v1.VerificationState.VERIFICATION_FAILED"
       ]
     },
     "services/file-management/v1/file-management.proto": {
@@ -4629,7 +5004,6 @@
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.version",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.fields",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.credential_template_id",
-        "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.type",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.created_by",
@@ -4772,10 +5146,19 @@
       "full_name": "services.account.v1.Account",
       "description": "",
       "methods": [
-        "services.account.v1.Account.SignIn",
         "services.account.v1.Account.Login",
         "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info"
+      ]
+    },
+    "services.connect.v1.Connect": {
+      "name": "Connect",
+      "full_name": "services.connect.v1.Connect",
+      "description": "The Connect service provides access to Trinsic Connect, a reusable identity verification service.",
+      "methods": [
+        "services.connect.v1.Connect.CreateSession",
+        "services.connect.v1.Connect.CancelSession",
+        "services.connect.v1.Connect.GetSession"
       ]
     },
     "services.filemanagement.v1.FileManagement": {
@@ -4919,16 +5302,26 @@
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
-    "services.account.v1.Account.SignIn": {
-      "name": "SignIn",
-      "full_name": "services.account.v1.Account.SignIn",
-      "input_type": "services.account.v1.SignInRequest",
-      "output_type": "services.account.v1.SignInResponse",
-      "description": "Sign in to an already existing account",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
+    "services.connect.v1.Connect.CancelSession": {
+      "name": "CancelSession",
+      "full_name": "services.connect.v1.Connect.CancelSession",
+      "input_type": "services.connect.v1.CancelSessionRequest",
+      "output_type": "services.connect.v1.CancelSessionResponse",
+      "description": "Cancel an IDVSession"
+    },
+    "services.connect.v1.Connect.CreateSession": {
+      "name": "CreateSession",
+      "full_name": "services.connect.v1.Connect.CreateSession",
+      "input_type": "services.connect.v1.CreateSessionRequest",
+      "output_type": "services.connect.v1.CreateSessionResponse2",
+      "description": "Create an IDVSession"
+    },
+    "services.connect.v1.Connect.GetSession": {
+      "name": "GetSession",
+      "full_name": "services.connect.v1.Connect.GetSession",
+      "input_type": "services.connect.v1.GetSessionRequest",
+      "output_type": "services.connect.v1.GetSessionResponse",
+      "description": "Get an IDVSession"
     },
     "services.filemanagement.v1.FileManagement.DeleteFile": {
       "name": "DeleteFile",
@@ -5486,28 +5879,6 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.SignInRequest": {
-      "name": "SignInRequest",
-      "full_name": "services.account.v1.SignInRequest",
-      "description": "Request for creating or signing into an account",
-      "fields": [
-        "services.account.v1.SignInRequest.details",
-        "services.account.v1.SignInRequest.ecosystem_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.SignInResponse": {
-      "name": "SignInResponse",
-      "full_name": "services.account.v1.SignInResponse",
-      "description": "Response for creating new account\nThis object will indicate if a confirmation code\nwas sent to one of the users two-factor methods\nlike email, SMS, etc.",
-      "fields": [
-        "services.account.v1.SignInResponse.confirmation_method",
-        "services.account.v1.SignInResponse.profile"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.account.v1.TokenProtection": {
       "name": "TokenProtection",
       "full_name": "services.account.v1.TokenProtection",
@@ -5538,6 +5909,134 @@
       "fields": [
         "services.common.v1.Nonce.timestamp",
         "services.common.v1.Nonce.request_hash"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.common.v1.TrinsicClientOptions": {
+      "name": "TrinsicClientOptions",
+      "full_name": "services.common.v1.TrinsicClientOptions",
+      "description": "",
+      "fields": [
+        "services.common.v1.TrinsicClientOptions.server_endpoint",
+        "services.common.v1.TrinsicClientOptions.server_port",
+        "services.common.v1.TrinsicClientOptions.server_use_tls",
+        "services.common.v1.TrinsicClientOptions.auth_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.CancelSessionRequest": {
+      "name": "CancelSessionRequest",
+      "full_name": "services.connect.v1.CancelSessionRequest",
+      "description": "Request to cancel an Identity Verification Session",
+      "fields": [
+        "services.connect.v1.CancelSessionRequest.idv_session_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.CancelSessionResponse": {
+      "name": "CancelSessionResponse",
+      "full_name": "services.connect.v1.CancelSessionResponse",
+      "description": "Response to `CancelIDVSessionRequest`",
+      "fields": [
+        "services.connect.v1.CancelSessionResponse.session"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.CreateSessionRequest": {
+      "name": "CreateSessionRequest",
+      "full_name": "services.connect.v1.CreateSessionRequest",
+      "description": "Request to create an Identity Verification Session",
+      "fields": [
+        "services.connect.v1.CreateSessionRequest.verifications"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.CreateSessionResponse2": {
+      "name": "CreateSessionResponse2",
+      "full_name": "services.connect.v1.CreateSessionResponse2",
+      "description": "Response to `CreateIDVSessionRequest`",
+      "fields": [
+        "services.connect.v1.CreateSessionResponse2.session"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.GetSessionRequest": {
+      "name": "GetSessionRequest",
+      "full_name": "services.connect.v1.GetSessionRequest",
+      "description": "Request to get an IDVSession",
+      "fields": [
+        "services.connect.v1.GetSessionRequest.idv_session_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.GetSessionResponse": {
+      "name": "GetSessionResponse",
+      "full_name": "services.connect.v1.GetSessionResponse",
+      "description": "Response to `GetIDVSessionRequest`",
+      "fields": [
+        "services.connect.v1.GetSessionResponse.session"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.IDVSession": {
+      "name": "IDVSession",
+      "full_name": "services.connect.v1.IDVSession",
+      "description": "An Identity Verification Session",
+      "fields": [
+        "services.connect.v1.IDVSession.id",
+        "services.connect.v1.IDVSession.client_token",
+        "services.connect.v1.IDVSession.state",
+        "services.connect.v1.IDVSession.verifications",
+        "services.connect.v1.IDVSession.result_vp",
+        "services.connect.v1.IDVSession.created",
+        "services.connect.v1.IDVSession.updated"
+      ],
+      "messages": [
+        "services.connect.v1.IDVSession.VerificationsEntry"
+      ],
+      "enums": []
+    },
+    "services.connect.v1.IDVSession.VerificationsEntry": {
+      "name": "VerificationsEntry",
+      "full_name": "services.connect.v1.IDVSession.VerificationsEntry",
+      "description": "",
+      "is_map_entry": true,
+      "fields": [
+        "services.connect.v1.IDVSession.VerificationsEntry.key",
+        "services.connect.v1.IDVSession.VerificationsEntry.value"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.RequestedVerification": {
+      "name": "RequestedVerification",
+      "full_name": "services.connect.v1.RequestedVerification",
+      "description": "A verification to perform in an IDV flow",
+      "fields": [
+        "services.connect.v1.RequestedVerification.type"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.Verification": {
+      "name": "Verification",
+      "full_name": "services.connect.v1.Verification",
+      "description": "A Verification that is part of an IDVSession",
+      "fields": [
+        "services.connect.v1.Verification.id",
+        "services.connect.v1.Verification.type",
+        "services.connect.v1.Verification.state",
+        "services.connect.v1.Verification.reused",
+        "services.connect.v1.Verification.begun",
+        "services.connect.v1.Verification.updated"
       ],
       "messages": [],
       "enums": []
@@ -6984,7 +7483,6 @@
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.version",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.fields",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.credential_template_id",
-        "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.type",
         "services.verifiablecredentials.templates.v1.VerificationTemplateData.created_by",
@@ -7478,44 +7976,6 @@
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account profile response. If present, no confirmation of login is required."
     },
-    "services.account.v1.SignInRequest.details": {
-      "name": "details",
-      "full_name": "services.account.v1.SignInRequest.details",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountDetails",
-      "full_type": "services.account.v1.AccountDetails",
-      "description": "Account registration details",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.SignInRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.account.v1.SignInRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of Ecosystem to use\nIgnored if `invitation_code` is passed",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.SignInResponse.confirmation_method": {
-      "name": "confirmation_method",
-      "full_name": "services.account.v1.SignInResponse.confirmation_method",
-      "label": "LABEL_OPTIONAL",
-      "type": "ConfirmationMethod",
-      "full_type": "services.account.v1.ConfirmationMethod",
-      "description": "Indicates if confirmation of account is required."
-    },
-    "services.account.v1.SignInResponse.profile": {
-      "name": "profile",
-      "full_name": "services.account.v1.SignInResponse.profile",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountProfile",
-      "full_type": "services.account.v1.AccountProfile",
-      "description": "Contains authentication data for use with the current device.\nThis object must be stored in a secure place. It can also be\nprotected with a PIN, but this is optional.\nSee the docs at https://docs.trinsic.id for more information\non working with authentication data."
-    },
     "services.account.v1.TokenProtection.enabled": {
       "name": "enabled",
       "full_name": "services.account.v1.TokenProtection.enabled",
@@ -7571,6 +8031,214 @@
       "type": "int64",
       "full_type": "int64",
       "description": "UTC unix millisecond timestamp the request was made"
+    },
+    "services.common.v1.TrinsicClientOptions.auth_token": {
+      "name": "auth_token",
+      "full_name": "services.common.v1.TrinsicClientOptions.auth_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Authentication token for SDK calls; defaults to empty string (unauthenticated)"
+    },
+    "services.common.v1.TrinsicClientOptions.server_endpoint": {
+      "name": "server_endpoint",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_endpoint",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"
+    },
+    "services.common.v1.TrinsicClientOptions.server_port": {
+      "name": "server_port",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_port",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "Trinsic API port; defaults to `443`"
+    },
+    "services.common.v1.TrinsicClientOptions.server_use_tls": {
+      "name": "server_use_tls",
+      "full_name": "services.common.v1.TrinsicClientOptions.server_use_tls",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether TLS is enabled between SDK and Trinsic API; defaults to `true`"
+    },
+    "services.connect.v1.CancelSessionRequest.idv_session_id": {
+      "name": "idv_session_id",
+      "full_name": "services.connect.v1.CancelSessionRequest.idv_session_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the IDVSession to cancel"
+    },
+    "services.connect.v1.CancelSessionResponse.session": {
+      "name": "session",
+      "full_name": "services.connect.v1.CancelSessionResponse.session",
+      "label": "LABEL_OPTIONAL",
+      "type": "IDVSession",
+      "full_type": "services.connect.v1.IDVSession",
+      "description": "The IDVSession in its current state after cancellation"
+    },
+    "services.connect.v1.CreateSessionRequest.verifications": {
+      "name": "verifications",
+      "full_name": "services.connect.v1.CreateSessionRequest.verifications",
+      "label": "LABEL_REPEATED",
+      "type": "RequestedVerification",
+      "full_type": "services.connect.v1.RequestedVerification",
+      "description": "Array of verifications to perform"
+    },
+    "services.connect.v1.CreateSessionResponse2.session": {
+      "name": "session",
+      "full_name": "services.connect.v1.CreateSessionResponse2.session",
+      "label": "LABEL_OPTIONAL",
+      "type": "IDVSession",
+      "full_type": "services.connect.v1.IDVSession",
+      "description": "The created IDVSession"
+    },
+    "services.connect.v1.GetSessionRequest.idv_session_id": {
+      "name": "idv_session_id",
+      "full_name": "services.connect.v1.GetSessionRequest.idv_session_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the IDVSession to get"
+    },
+    "services.connect.v1.GetSessionResponse.session": {
+      "name": "session",
+      "full_name": "services.connect.v1.GetSessionResponse.session",
+      "label": "LABEL_OPTIONAL",
+      "type": "IDVSession",
+      "full_type": "services.connect.v1.IDVSession",
+      "description": "The IDVSession"
+    },
+    "services.connect.v1.IDVSession.VerificationsEntry.key": {
+      "name": "key",
+      "full_name": "services.connect.v1.IDVSession.VerificationsEntry.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.connect.v1.IDVSession.VerificationsEntry.value": {
+      "name": "value",
+      "full_name": "services.connect.v1.IDVSession.VerificationsEntry.value",
+      "label": "LABEL_OPTIONAL",
+      "type": "Verification",
+      "full_type": "services.connect.v1.Verification",
+      "description": ""
+    },
+    "services.connect.v1.IDVSession.client_token": {
+      "name": "client_token",
+      "full_name": "services.connect.v1.IDVSession.client_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The Client Token for this IDVSession. This should be passed to your frontend to initiate\nthe IDV flow using Trinsic's Web SDK."
+    },
+    "services.connect.v1.IDVSession.created": {
+      "name": "created",
+      "full_name": "services.connect.v1.IDVSession.created",
+      "label": "LABEL_OPTIONAL",
+      "type": "fixed64",
+      "full_type": "fixed64",
+      "description": "The unix timestamp, in seconds, that this IDVSession was created"
+    },
+    "services.connect.v1.IDVSession.id": {
+      "name": "id",
+      "full_name": "services.connect.v1.IDVSession.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the IDVSession."
+    },
+    "services.connect.v1.IDVSession.result_vp": {
+      "name": "result_vp",
+      "full_name": "services.connect.v1.IDVSession.result_vp",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The resultant signed VP combining the results of all verifications"
+    },
+    "services.connect.v1.IDVSession.state": {
+      "name": "state",
+      "full_name": "services.connect.v1.IDVSession.state",
+      "label": "LABEL_OPTIONAL",
+      "type": "IDVSessionState",
+      "full_type": "services.connect.v1.IDVSessionState",
+      "description": "State of the IDVSession"
+    },
+    "services.connect.v1.IDVSession.updated": {
+      "name": "updated",
+      "full_name": "services.connect.v1.IDVSession.updated",
+      "label": "LABEL_OPTIONAL",
+      "type": "fixed64",
+      "full_type": "fixed64",
+      "description": "The unix timestamp, in seconds, that this IDVSession's `state` was last updated"
+    },
+    "services.connect.v1.IDVSession.verifications": {
+      "name": "verifications",
+      "full_name": "services.connect.v1.IDVSession.verifications",
+      "label": "LABEL_REPEATED",
+      "type": "VerificationsEntry",
+      "full_type": "services.connect.v1.IDVSession.VerificationsEntry",
+      "description": "The actual Verifications to perform in this IDV flow"
+    },
+    "services.connect.v1.RequestedVerification.type": {
+      "name": "type",
+      "full_name": "services.connect.v1.RequestedVerification.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationType",
+      "full_type": "services.connect.v1.VerificationType",
+      "description": "The type of verification to perform"
+    },
+    "services.connect.v1.Verification.begun": {
+      "name": "begun",
+      "full_name": "services.connect.v1.Verification.begun",
+      "label": "LABEL_OPTIONAL",
+      "type": "fixed64",
+      "full_type": "fixed64",
+      "description": "The unix timestamp, in seconds, when this verification was begun\nby the user -- or `0` if not yet begun."
+    },
+    "services.connect.v1.Verification.id": {
+      "name": "id",
+      "full_name": "services.connect.v1.Verification.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID of the verification"
+    },
+    "services.connect.v1.Verification.reused": {
+      "name": "reused",
+      "full_name": "services.connect.v1.Verification.reused",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether this was a reused (true) or fresh (false) verification.\nIf `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information."
+    },
+    "services.connect.v1.Verification.state": {
+      "name": "state",
+      "full_name": "services.connect.v1.Verification.state",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationState",
+      "full_type": "services.connect.v1.VerificationState",
+      "description": "The state of the verification"
+    },
+    "services.connect.v1.Verification.type": {
+      "name": "type",
+      "full_name": "services.connect.v1.Verification.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationType",
+      "full_type": "services.connect.v1.VerificationType",
+      "description": "The type of verification (driver's license, passport, proof of address, etc)"
+    },
+    "services.connect.v1.Verification.updated": {
+      "name": "updated",
+      "full_name": "services.connect.v1.Verification.updated",
+      "label": "LABEL_OPTIONAL",
+      "type": "fixed64",
+      "full_type": "fixed64",
+      "description": "The unix timestamp, in seconds, when this verification last changed state -- o"
     },
     "services.filemanagement.v1.DeleteFileRequest.id": {
       "name": "id",
@@ -9798,14 +10466,6 @@
       "full_type": "string",
       "description": "Template name"
     },
-    "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri": {
-      "name": "schema_uri",
-      "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.schema_uri",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "URI pointing to template JSON schema document"
-    },
     "services.verifiablecredentials.templates.v1.VerificationTemplateData.title": {
       "name": "title",
       "full_name": "services.verifiablecredentials.templates.v1.VerificationTemplateData.title",
@@ -10278,6 +10938,42 @@
         "services.common.v1.SupportedDidMethod.INDY"
       ]
     },
+    "services.connect.v1.IDVSessionState": {
+      "name": "IDVSessionState",
+      "full_name": "services.connect.v1.IDVSessionState",
+      "description": "The states a VerificationSession can be in",
+      "values": [
+        "services.connect.v1.IDVSessionState.IDV_CREATED",
+        "services.connect.v1.IDVSessionState.IDV_INITIATED",
+        "services.connect.v1.IDVSessionState.IDV_AUTHENTICATING",
+        "services.connect.v1.IDVSessionState.IDV_IN_PROGRESS",
+        "services.connect.v1.IDVSessionState.IDV_SUCCESS",
+        "services.connect.v1.IDVSessionState.IDV_USER_CANCELED",
+        "services.connect.v1.IDVSessionState.IDV_EXPIRED",
+        "services.connect.v1.IDVSessionState.IDV_RP_CANCELED",
+        "services.connect.v1.IDVSessionState.IDV_FAILED"
+      ]
+    },
+    "services.connect.v1.VerificationState": {
+      "name": "VerificationState",
+      "full_name": "services.connect.v1.VerificationState",
+      "description": "The states an individual Verification can be in",
+      "values": [
+        "services.connect.v1.VerificationState.VERIFICATION_PENDING",
+        "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE",
+        "services.connect.v1.VerificationState.VERIFICATION_STARTED",
+        "services.connect.v1.VerificationState.VERIFICATION_SUCCESS",
+        "services.connect.v1.VerificationState.VERIFICATION_FAILED"
+      ]
+    },
+    "services.connect.v1.VerificationType": {
+      "name": "VerificationType",
+      "full_name": "services.connect.v1.VerificationType",
+      "description": "The type of verification to perform",
+      "values": [
+        "services.connect.v1.VerificationType.GOVERNMENT_ID"
+      ]
+    },
     "services.provider.v1.IdentityProvider": {
       "name": "IdentityProvider",
       "full_name": "services.provider.v1.IdentityProvider",
@@ -10451,6 +11147,96 @@
       "name": "KEY",
       "full_name": "services.common.v1.SupportedDidMethod.KEY",
       "description": "The did:key method -- all wallets use this by default",
+      "value": 0
+    },
+    "services.connect.v1.IDVSessionState.IDV_AUTHENTICATING": {
+      "name": "IDV_AUTHENTICATING",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_AUTHENTICATING",
+      "description": "User has entered their phone number, but not yet authenticated with the code sent via SMS",
+      "value": 2
+    },
+    "services.connect.v1.IDVSessionState.IDV_CREATED": {
+      "name": "IDV_CREATED",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_CREATED",
+      "description": "Session has been created, but not yet shown to user",
+      "value": 0
+    },
+    "services.connect.v1.IDVSessionState.IDV_EXPIRED": {
+      "name": "IDV_EXPIRED",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_EXPIRED",
+      "description": "Session was not completed within {X} timeframe from creation and expired",
+      "value": 6
+    },
+    "services.connect.v1.IDVSessionState.IDV_FAILED": {
+      "name": "IDV_FAILED",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_FAILED",
+      "description": "The user's identity was not deemed legitimate by the IDV",
+      "value": 8
+    },
+    "services.connect.v1.IDVSessionState.IDV_INITIATED": {
+      "name": "IDV_INITIATED",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_INITIATED",
+      "description": "Session has been shown to user (iframe / popup opened), but\nuser has not yet logged in.",
+      "value": 1
+    },
+    "services.connect.v1.IDVSessionState.IDV_IN_PROGRESS": {
+      "name": "IDV_IN_PROGRESS",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_IN_PROGRESS",
+      "description": "User has been authenticated and is performing identity verification",
+      "value": 3
+    },
+    "services.connect.v1.IDVSessionState.IDV_RP_CANCELED": {
+      "name": "IDV_RP_CANCELED",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_RP_CANCELED",
+      "description": "Relying Party canceled the session via the SDK",
+      "value": 7
+    },
+    "services.connect.v1.IDVSessionState.IDV_SUCCESS": {
+      "name": "IDV_SUCCESS",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_SUCCESS",
+      "description": "Session was completed successfully and IDV data is available to RP",
+      "value": 4
+    },
+    "services.connect.v1.IDVSessionState.IDV_USER_CANCELED": {
+      "name": "IDV_USER_CANCELED",
+      "full_name": "services.connect.v1.IDVSessionState.IDV_USER_CANCELED",
+      "description": "User explicitly canceled session / did not consent",
+      "value": 5
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_FAILED": {
+      "name": "VERIFICATION_FAILED",
+      "full_name": "services.connect.v1.VerificationState.VERIFICATION_FAILED",
+      "description": "This verification has failed",
+      "value": 4
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_PENDING": {
+      "name": "VERIFICATION_PENDING",
+      "full_name": "services.connect.v1.VerificationState.VERIFICATION_PENDING",
+      "description": "This verification has not yet been performed in the flow",
+      "value": 0
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE": {
+      "name": "VERIFICATION_PENDING_REUSE",
+      "full_name": "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE",
+      "description": "This verification has been started by the user, and can be reused from a previous verification, but the user\nhas not yet decided whether to reuse it.",
+      "value": 1
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_STARTED": {
+      "name": "VERIFICATION_STARTED",
+      "full_name": "services.connect.v1.VerificationState.VERIFICATION_STARTED",
+      "description": "This verification has been started by the user, but not yet completed",
+      "value": 2
+    },
+    "services.connect.v1.VerificationState.VERIFICATION_SUCCESS": {
+      "name": "VERIFICATION_SUCCESS",
+      "full_name": "services.connect.v1.VerificationState.VERIFICATION_SUCCESS",
+      "description": "This verification has been successfully completed",
+      "value": 3
+    },
+    "services.connect.v1.VerificationType.GOVERNMENT_ID": {
+      "name": "GOVERNMENT_ID",
+      "full_name": "services.connect.v1.VerificationType.GOVERNMENT_ID",
+      "description": "Government-issued ID (driver's license, passport, etc)",
       "value": 0
     },
     "services.provider.v1.IdentityProvider.Email": {

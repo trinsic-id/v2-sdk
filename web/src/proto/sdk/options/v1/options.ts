@@ -4,13 +4,19 @@ import _m0 from "protobufjs/minimal";
 /** Configuration for Trinsic SDK Services */
 export interface TrinsicOptions {
   /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
-  serverEndpoint?: string;
+  serverEndpoint?:
+    | string
+    | undefined;
   /** Trinsic API port; defaults to `443` */
-  serverPort?: number;
+  serverPort?:
+    | number
+    | undefined;
   /** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */
-  serverUseTls?: boolean;
+  serverUseTls?:
+    | boolean
+    | undefined;
   /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
-  authToken?: string;
+  authToken?: string | undefined;
 }
 
 function createBaseTrinsicOptions(): TrinsicOptions {
@@ -42,35 +48,35 @@ export const TrinsicOptions = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.serverEndpoint = reader.string();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.serverPort = reader.int32();
           continue;
         case 3:
-          if (tag != 24) {
+          if (tag !== 24) {
             break;
           }
 
           message.serverUseTls = reader.bool();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.authToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -89,17 +95,24 @@ export const TrinsicOptions = {
 
   toJSON(message: TrinsicOptions): unknown {
     const obj: any = {};
-    message.serverEndpoint !== undefined && (obj.serverEndpoint = message.serverEndpoint);
-    message.serverPort !== undefined && (obj.serverPort = Math.round(message.serverPort));
-    message.serverUseTls !== undefined && (obj.serverUseTls = message.serverUseTls);
-    message.authToken !== undefined && (obj.authToken = message.authToken);
+    if (message.serverEndpoint !== undefined && message.serverEndpoint !== "") {
+      obj.serverEndpoint = message.serverEndpoint;
+    }
+    if (message.serverPort !== undefined && message.serverPort !== 0) {
+      obj.serverPort = Math.round(message.serverPort);
+    }
+    if (message.serverUseTls === true) {
+      obj.serverUseTls = message.serverUseTls;
+    }
+    if (message.authToken !== undefined && message.authToken !== "") {
+      obj.authToken = message.authToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<TrinsicOptions>): TrinsicOptions {
     return TrinsicOptions.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<TrinsicOptions>): TrinsicOptions {
     const message = createBaseTrinsicOptions();
     message.serverEndpoint = object.serverEndpoint ?? "";

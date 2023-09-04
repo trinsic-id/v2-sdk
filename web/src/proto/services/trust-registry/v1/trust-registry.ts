@@ -76,11 +76,15 @@ export interface RegisterMemberRequest {
   | string
   | undefined;
   /** URI of credential schema to register member as authorized issuer of */
-  schemaUri?: string;
+  schemaUri?:
+    | string
+    | undefined;
   /** Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. */
-  validFromUtc?: number;
+  validFromUtc?:
+    | number
+    | undefined;
   /** Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. */
-  validUntilUtc?: number;
+  validUntilUtc?: number | undefined;
 }
 
 /** Response to `RegisterMemberRequest` */
@@ -105,7 +109,7 @@ export interface UnregisterMemberRequest {
   | string
   | undefined;
   /** URI of credential schema to unregister member as authorized issuer of */
-  schemaUri?: string;
+  schemaUri?: string | undefined;
 }
 
 /** Response to `UnregisterMemberRequest` */
@@ -115,15 +119,17 @@ export interface UnregisterMemberResponse {
 /** Request to fetch member status in Trust Registry for a specific credential schema. */
 export interface GetMemberAuthorizationStatusRequest {
   /** DID URI of member */
-  didUri?: string;
+  didUri?:
+    | string
+    | undefined;
   /** URI of credential schema associated with member */
-  schemaUri?: string;
+  schemaUri?: string | undefined;
 }
 
 /** Response to `GetMemberAuthorizationStatusRequest` */
 export interface GetMemberAuthorizationStatusResponse {
   /** Status of member for given credential schema */
-  status?: RegistrationStatus;
+  status?: RegistrationStatus | undefined;
 }
 
 export interface ListAuthorizedMembersRequest {
@@ -138,24 +144,28 @@ export interface ListAuthorizedMembersRequest {
 /** Response to `ListAuthorizedMembersRequest` */
 export interface ListAuthorizedMembersResponse {
   /** JSON string containing array of resultant objects */
-  authorizedMembers?: AuthorizedMember[];
+  authorizedMembers?:
+    | AuthorizedMember[]
+    | undefined;
   /** Whether more data is available to fetch for query */
-  hasMoreResults?: boolean;
+  hasMoreResults?:
+    | boolean
+    | undefined;
   /** Token to fetch next set of results via `ListAuthorizedMembersRequest` */
-  continuationToken?: string;
+  continuationToken?: string | undefined;
 }
 
 export interface AuthorizedMember {
-  did?: string;
-  authorizedMemberSchemas?: AuthorizedMemberSchema[];
+  did?: string | undefined;
+  authorizedMemberSchemas?: AuthorizedMemberSchema[] | undefined;
 }
 
 export interface AuthorizedMemberSchema {
-  schemaUri?: string;
-  status?: string;
-  statusDetails?: string;
-  validFrom?: number;
-  validUntil?: number;
+  schemaUri?: string | undefined;
+  status?: string | undefined;
+  statusDetails?: string | undefined;
+  validFrom?: number | undefined;
+  validUntil?: number | undefined;
 }
 
 /** Request to get a member of the Trust Registry */
@@ -175,7 +185,7 @@ export interface GetMemberRequest {
 /** Response to `GetMemberAuthorizationStatusRequest` */
 export interface GetMemberResponse {
   /** Member for given did in given framework */
-  authorizedMember?: AuthorizedMember;
+  authorizedMember?: AuthorizedMember | undefined;
 }
 
 function createBaseRegisterMemberRequest(): RegisterMemberRequest {
@@ -213,49 +223,49 @@ export const RegisterMemberRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 10:
-          if (tag != 82) {
+          if (tag !== 82) {
             break;
           }
 
           message.schemaUri = reader.string();
           continue;
         case 11:
-          if (tag != 88) {
+          if (tag !== 88) {
             break;
           }
 
           message.validFromUtc = longToNumber(reader.uint64() as Long);
           continue;
         case 12:
-          if (tag != 96) {
+          if (tag !== 96) {
             break;
           }
 
           message.validUntilUtc = longToNumber(reader.uint64() as Long);
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -276,19 +286,30 @@ export const RegisterMemberRequest = {
 
   toJSON(message: RegisterMemberRequest): unknown {
     const obj: any = {};
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.email !== undefined && (obj.email = message.email);
-    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
-    message.validFromUtc !== undefined && (obj.validFromUtc = Math.round(message.validFromUtc));
-    message.validUntilUtc !== undefined && (obj.validUntilUtc = Math.round(message.validUntilUtc));
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.schemaUri !== undefined && message.schemaUri !== "") {
+      obj.schemaUri = message.schemaUri;
+    }
+    if (message.validFromUtc !== undefined && message.validFromUtc !== 0) {
+      obj.validFromUtc = Math.round(message.validFromUtc);
+    }
+    if (message.validUntilUtc !== undefined && message.validUntilUtc !== 0) {
+      obj.validUntilUtc = Math.round(message.validUntilUtc);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<RegisterMemberRequest>): RegisterMemberRequest {
     return RegisterMemberRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<RegisterMemberRequest>): RegisterMemberRequest {
     const message = createBaseRegisterMemberRequest();
     message.didUri = object.didUri ?? undefined;
@@ -318,7 +339,7 @@ export const RegisterMemberResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -338,7 +359,6 @@ export const RegisterMemberResponse = {
   create(base?: DeepPartial<RegisterMemberResponse>): RegisterMemberResponse {
     return RegisterMemberResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<RegisterMemberResponse>): RegisterMemberResponse {
     const message = createBaseRegisterMemberResponse();
     return message;
@@ -374,35 +394,35 @@ export const UnregisterMemberRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 10:
-          if (tag != 82) {
+          if (tag !== 82) {
             break;
           }
 
           message.schemaUri = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -421,17 +441,24 @@ export const UnregisterMemberRequest = {
 
   toJSON(message: UnregisterMemberRequest): unknown {
     const obj: any = {};
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.email !== undefined && (obj.email = message.email);
-    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
+    if (message.schemaUri !== undefined && message.schemaUri !== "") {
+      obj.schemaUri = message.schemaUri;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<UnregisterMemberRequest>): UnregisterMemberRequest {
     return UnregisterMemberRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<UnregisterMemberRequest>): UnregisterMemberRequest {
     const message = createBaseUnregisterMemberRequest();
     message.didUri = object.didUri ?? undefined;
@@ -459,7 +486,7 @@ export const UnregisterMemberResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -479,7 +506,6 @@ export const UnregisterMemberResponse = {
   create(base?: DeepPartial<UnregisterMemberResponse>): UnregisterMemberResponse {
     return UnregisterMemberResponse.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<UnregisterMemberResponse>): UnregisterMemberResponse {
     const message = createBaseUnregisterMemberResponse();
     return message;
@@ -509,21 +535,21 @@ export const GetMemberAuthorizationStatusRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.schemaUri = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -540,15 +566,18 @@ export const GetMemberAuthorizationStatusRequest = {
 
   toJSON(message: GetMemberAuthorizationStatusRequest): unknown {
     const obj: any = {};
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
+    if (message.didUri !== undefined && message.didUri !== "") {
+      obj.didUri = message.didUri;
+    }
+    if (message.schemaUri !== undefined && message.schemaUri !== "") {
+      obj.schemaUri = message.schemaUri;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetMemberAuthorizationStatusRequest>): GetMemberAuthorizationStatusRequest {
     return GetMemberAuthorizationStatusRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetMemberAuthorizationStatusRequest>): GetMemberAuthorizationStatusRequest {
     const message = createBaseGetMemberAuthorizationStatusRequest();
     message.didUri = object.didUri ?? "";
@@ -577,14 +606,14 @@ export const GetMemberAuthorizationStatusResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.status = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -598,14 +627,15 @@ export const GetMemberAuthorizationStatusResponse = {
 
   toJSON(message: GetMemberAuthorizationStatusResponse): unknown {
     const obj: any = {};
-    message.status !== undefined && (obj.status = registrationStatusToJSON(message.status));
+    if (message.status !== undefined && message.status !== 0) {
+      obj.status = registrationStatusToJSON(message.status);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetMemberAuthorizationStatusResponse>): GetMemberAuthorizationStatusResponse {
     return GetMemberAuthorizationStatusResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetMemberAuthorizationStatusResponse>): GetMemberAuthorizationStatusResponse {
     const message = createBaseGetMemberAuthorizationStatusResponse();
     message.status = object.status ?? 0;
@@ -636,21 +666,21 @@ export const ListAuthorizedMembersRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.schemaUri = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -667,15 +697,18 @@ export const ListAuthorizedMembersRequest = {
 
   toJSON(message: ListAuthorizedMembersRequest): unknown {
     const obj: any = {};
-    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.schemaUri !== undefined) {
+      obj.schemaUri = message.schemaUri;
+    }
+    if (message.continuationToken !== undefined) {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListAuthorizedMembersRequest>): ListAuthorizedMembersRequest {
     return ListAuthorizedMembersRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListAuthorizedMembersRequest>): ListAuthorizedMembersRequest {
     const message = createBaseListAuthorizedMembersRequest();
     message.schemaUri = object.schemaUri ?? undefined;
@@ -712,28 +745,28 @@ export const ListAuthorizedMembersResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.authorizedMembers!.push(AuthorizedMember.decode(reader, reader.uint32()));
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.hasMoreResults = reader.bool();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.continuationToken = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -753,20 +786,21 @@ export const ListAuthorizedMembersResponse = {
 
   toJSON(message: ListAuthorizedMembersResponse): unknown {
     const obj: any = {};
-    if (message.authorizedMembers) {
-      obj.authorizedMembers = message.authorizedMembers.map((e) => e ? AuthorizedMember.toJSON(e) : undefined);
-    } else {
-      obj.authorizedMembers = [];
+    if (message.authorizedMembers?.length) {
+      obj.authorizedMembers = message.authorizedMembers.map((e) => AuthorizedMember.toJSON(e));
     }
-    message.hasMoreResults !== undefined && (obj.hasMoreResults = message.hasMoreResults);
-    message.continuationToken !== undefined && (obj.continuationToken = message.continuationToken);
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<ListAuthorizedMembersResponse>): ListAuthorizedMembersResponse {
     return ListAuthorizedMembersResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<ListAuthorizedMembersResponse>): ListAuthorizedMembersResponse {
     const message = createBaseListAuthorizedMembersResponse();
     message.authorizedMembers = object.authorizedMembers?.map((e) => AuthorizedMember.fromPartial(e)) || [];
@@ -801,21 +835,21 @@ export const AuthorizedMember = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.did = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.authorizedMemberSchemas!.push(AuthorizedMemberSchema.decode(reader, reader.uint32()));
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -834,13 +868,11 @@ export const AuthorizedMember = {
 
   toJSON(message: AuthorizedMember): unknown {
     const obj: any = {};
-    message.did !== undefined && (obj.did = message.did);
-    if (message.authorizedMemberSchemas) {
-      obj.authorizedMemberSchemas = message.authorizedMemberSchemas.map((e) =>
-        e ? AuthorizedMemberSchema.toJSON(e) : undefined
-      );
-    } else {
-      obj.authorizedMemberSchemas = [];
+    if (message.did !== undefined && message.did !== "") {
+      obj.did = message.did;
+    }
+    if (message.authorizedMemberSchemas?.length) {
+      obj.authorizedMemberSchemas = message.authorizedMemberSchemas.map((e) => AuthorizedMemberSchema.toJSON(e));
     }
     return obj;
   },
@@ -848,7 +880,6 @@ export const AuthorizedMember = {
   create(base?: DeepPartial<AuthorizedMember>): AuthorizedMember {
     return AuthorizedMember.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AuthorizedMember>): AuthorizedMember {
     const message = createBaseAuthorizedMember();
     message.did = object.did ?? "";
@@ -890,42 +921,42 @@ export const AuthorizedMemberSchema = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.schemaUri = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.status = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.statusDetails = reader.string();
           continue;
         case 4:
-          if (tag != 32) {
+          if (tag !== 32) {
             break;
           }
 
           message.validFrom = longToNumber(reader.uint64() as Long);
           continue;
         case 5:
-          if (tag != 40) {
+          if (tag !== 40) {
             break;
           }
 
           message.validUntil = longToNumber(reader.uint64() as Long);
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -945,18 +976,27 @@ export const AuthorizedMemberSchema = {
 
   toJSON(message: AuthorizedMemberSchema): unknown {
     const obj: any = {};
-    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
-    message.status !== undefined && (obj.status = message.status);
-    message.statusDetails !== undefined && (obj.statusDetails = message.statusDetails);
-    message.validFrom !== undefined && (obj.validFrom = Math.round(message.validFrom));
-    message.validUntil !== undefined && (obj.validUntil = Math.round(message.validUntil));
+    if (message.schemaUri !== undefined && message.schemaUri !== "") {
+      obj.schemaUri = message.schemaUri;
+    }
+    if (message.status !== undefined && message.status !== "") {
+      obj.status = message.status;
+    }
+    if (message.statusDetails !== undefined && message.statusDetails !== "") {
+      obj.statusDetails = message.statusDetails;
+    }
+    if (message.validFrom !== undefined && message.validFrom !== 0) {
+      obj.validFrom = Math.round(message.validFrom);
+    }
+    if (message.validUntil !== undefined && message.validUntil !== 0) {
+      obj.validUntil = Math.round(message.validUntil);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AuthorizedMemberSchema>): AuthorizedMemberSchema {
     return AuthorizedMemberSchema.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AuthorizedMemberSchema>): AuthorizedMemberSchema {
     const message = createBaseAuthorizedMemberSchema();
     message.schemaUri = object.schemaUri ?? "";
@@ -994,28 +1034,28 @@ export const GetMemberRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.didUri = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.email = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1033,16 +1073,21 @@ export const GetMemberRequest = {
 
   toJSON(message: GetMemberRequest): unknown {
     const obj: any = {};
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.email !== undefined && (obj.email = message.email);
+    if (message.didUri !== undefined) {
+      obj.didUri = message.didUri;
+    }
+    if (message.walletId !== undefined) {
+      obj.walletId = message.walletId;
+    }
+    if (message.email !== undefined) {
+      obj.email = message.email;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetMemberRequest>): GetMemberRequest {
     return GetMemberRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetMemberRequest>): GetMemberRequest {
     const message = createBaseGetMemberRequest();
     message.didUri = object.didUri ?? undefined;
@@ -1072,14 +1117,14 @@ export const GetMemberResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.authorizedMember = AuthorizedMember.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1095,15 +1140,15 @@ export const GetMemberResponse = {
 
   toJSON(message: GetMemberResponse): unknown {
     const obj: any = {};
-    message.authorizedMember !== undefined &&
-      (obj.authorizedMember = message.authorizedMember ? AuthorizedMember.toJSON(message.authorizedMember) : undefined);
+    if (message.authorizedMember !== undefined) {
+      obj.authorizedMember = AuthorizedMember.toJSON(message.authorizedMember);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<GetMemberResponse>): GetMemberResponse {
     return GetMemberResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<GetMemberResponse>): GetMemberResponse {
     const message = createBaseGetMemberResponse();
     message.authorizedMember = (object.authorizedMember !== undefined && object.authorizedMember !== null)
@@ -1166,10 +1211,10 @@ export const TrustRegistryDefinition = {
   },
 } as const;
 
-declare var self: any | undefined;
-declare var window: any | undefined;
-declare var global: any | undefined;
-var tsProtoGlobalThis: any = (() => {
+declare const self: any | undefined;
+declare const window: any | undefined;
+declare const global: any | undefined;
+const tsProtoGlobalThis: any = (() => {
   if (typeof globalThis !== "undefined") {
     return globalThis;
   }

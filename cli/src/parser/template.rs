@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use crate::proto::services::verifiablecredentials::templates::v1::FieldOrdering;
 use clap::{App, AppSettings, Arg, ArgMatches, SubCommand};
 use serde::*;
 
@@ -44,7 +45,7 @@ pub struct DeleteTemplateArgs {
     pub id: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Field {
     #[serde(default)]
     description: String,
@@ -52,9 +53,15 @@ pub struct Field {
     r#type: FieldType,
     #[serde(default)]
     optional: bool,
+    #[serde(default)]
+    title: String,
+    #[serde(default)]
+    section: String,
+    #[serde(default)]
+    order: i32,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum FieldType {
     String,
@@ -85,23 +92,43 @@ impl Into<ProtoFieldType> for FieldType {
     }
 }
 
-impl Into<ProtoField> for Field {
+impl Into<ProtoField> for &Field {
     fn into(self) -> ProtoField {
-        let t: ProtoFieldType = self.r#type.into();
+        let t: ProtoFieldType = self.r#type.clone().into();
         return ProtoField {
-            description: self.description,
+            description: self.description.clone(),
             optional: self.optional,
+            title: self.title.clone(),
             r#type: t as i32,
             ..Default::default()
         };
     }
 }
 
-pub fn to_map(map: HashMap<String, Field>) -> HashMap<String, ProtoField> {
+pub fn to_map(map: &HashMap<String, Field>) -> HashMap<String, ProtoField> {
     let mut result: HashMap<String, ProtoField> = HashMap::new();
 
-    for (k, v) in map {
-        result.insert(k, v.into());
+    for (k, v) in map.iter() {
+        result.insert(k.clone(), v.into());
+    }
+    result
+}
+
+/// Convert a map of fields into a map of field ordering
+pub fn to_field_ordering(map: &HashMap<String, Field>) -> HashMap<String, FieldOrdering> {
+    let mut result: HashMap<String, FieldOrdering> = HashMap::new();
+
+    for (k, v) in map.iter() {
+        if v.section.is_empty() {
+            continue;
+        }
+        result.insert(
+            k.clone(),
+            FieldOrdering {
+                section: v.section.clone(),
+                order: v.order,
+            },
+        );
     }
     result
 }
@@ -221,6 +248,9 @@ pub mod test {
             optional: false,
             r#type: FieldType::Number,
             description: "desc".to_string(),
+            title: "desc".to_string(),
+            section: "data".to_string(),
+            order: 1,
         };
 
         let json = serde_json::to_string_pretty(&f);
@@ -255,6 +285,9 @@ pub mod test {
                 description: "my field".to_string(),
                 r#type: FieldType::Number,
                 optional: true,
+                title: "my field".to_string(),
+                section: "data".to_string(),
+                order: 1,
             },
         );
 

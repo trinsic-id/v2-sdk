@@ -58,52 +58,39 @@ export function confirmationMethodToJSON(object: ConfirmationMethod): string {
   }
 }
 
-/** Request for creating or signing into an account */
-export interface SignInRequest {
-  /** Account registration details */
-  details?: AccountDetails;
-  /**
-   * ID of Ecosystem to use
-   * Ignored if `invitation_code` is passed
-   */
-  ecosystemId?: string;
-}
-
 /** Account registration details */
 export interface AccountDetails {
   /** Account name */
-  name?: string;
+  name?:
+    | string
+    | undefined;
   /**
    * Email address of account.
    *
    * @deprecated
    */
-  email?: string;
+  email?:
+    | string
+    | undefined;
   /**
    * SMS number including country code
    *
    * @deprecated
    */
-  sms?: string;
+  sms?: string | undefined;
 }
 
-/**
- * Response for creating new account
- * This object will indicate if a confirmation code
- * was sent to one of the users two-factor methods
- * like email, SMS, etc.
- */
-export interface SignInResponse {
-  /** Indicates if confirmation of account is required. */
-  confirmationMethod?: ConfirmationMethod;
+/** Token protection info */
+export interface TokenProtection {
   /**
-   * Contains authentication data for use with the current device.
-   * This object must be stored in a secure place. It can also be
-   * protected with a PIN, but this is optional.
-   * See the docs at https://docs.trinsic.id for more information
-   * on working with authentication data.
+   * Indicates if token is protected using a PIN,
+   * security code, HSM secret, etc.
    */
-  profile?: AccountProfile;
+  enabled?:
+    | boolean
+    | undefined;
+  /** The method used to protect the token */
+  method?: ConfirmationMethod | undefined;
 }
 
 /**
@@ -115,28 +102,23 @@ export interface AccountProfile {
    * The type of profile, used to differentiate between
    * protocol schemes or versions
    */
-  profileType?: string;
+  profileType?:
+    | string
+    | undefined;
   /** Auth data containg information about the current device access */
-  authData?: Uint8Array;
+  authData?:
+    | Uint8Array
+    | undefined;
   /** Secure token issued by server used to generate zero-knowledge proofs */
-  authToken?: Uint8Array;
+  authToken?:
+    | Uint8Array
+    | undefined;
   /**
    * Token security information about the token.
    * If token protection is enabled, implementations must supply
    * protection secret before using the token for authentication.
    */
-  protection?: TokenProtection;
-}
-
-/** Token protection info */
-export interface TokenProtection {
-  /**
-   * Indicates if token is protected using a PIN,
-   * security code, HSM secret, etc.
-   */
-  enabled?: boolean;
-  /** The method used to protect the token */
-  method?: ConfirmationMethod;
+  protection?: TokenProtection | undefined;
 }
 
 /** Request for information about the account used to make the request */
@@ -149,32 +131,44 @@ export interface AccountInfoResponse {
    * The account details associated with
    * the calling request context
    */
-  details?: AccountDetails;
+  details?:
+    | AccountDetails
+    | undefined;
   /** The wallet ID associated with this account */
-  walletId?: string;
+  walletId?:
+    | string
+    | undefined;
   /** The device ID associated with this account session */
-  deviceId?: string;
+  deviceId?:
+    | string
+    | undefined;
   /** The ecosystem ID within which this account resides */
-  ecosystemId?: string;
+  ecosystemId?:
+    | string
+    | undefined;
   /**
    * The public DID associated with this account.
    * This DID is used as the `issuer` when signing verifiable credentials
    */
-  publicDid?: string;
+  publicDid?:
+    | string
+    | undefined;
   /**
    * List of active authentication tokens for this wallet.
    * This list does not contain the issued token, only metadata
    * such as ID, description, and creation date.
    */
-  authTokens?: WalletAuthToken[];
+  authTokens?: WalletAuthToken[] | undefined;
 }
 
 /** Request to begin login flow */
 export interface LoginRequest {
   /** Email address of account. If unspecified, an anonymous account will be created. */
-  email?: string;
+  email?:
+    | string
+    | undefined;
   /** ID of Ecosystem to sign into. */
-  ecosystemId?: string;
+  ecosystemId?: string | undefined;
 }
 
 /** Response to `LoginRequest` */
@@ -194,12 +188,14 @@ export interface LoginResponse {
 /** Request to finalize login flow */
 export interface LoginConfirmRequest {
   /** Challenge received from `Login` */
-  challenge?: Uint8Array;
+  challenge?:
+    | Uint8Array
+    | undefined;
   /**
    * Two-factor confirmation code sent to account email or phone,
    * hashed using Blake3. Our SDKs will handle this hashing process for you.
    */
-  confirmationCodeHashed?: Uint8Array;
+  confirmationCodeHashed?: Uint8Array | undefined;
 }
 
 /** Response to `LoginConfirmRequest` */
@@ -208,7 +204,7 @@ export interface LoginConfirmResponse {
    * Profile response; must be unprotected using unhashed confirmation code.
    * Our SDKs will handle this process for you, and return to you an authentication token string.
    */
-  profile?: AccountProfile;
+  profile?: AccountProfile | undefined;
 }
 
 /** Information about authentication tokens for a wallet */
@@ -217,88 +213,16 @@ export interface WalletAuthToken {
    * Unique identifier for the token.
    * This field will match the `DeviceId` in the WalletAuthData
    */
-  id?: string;
+  id?:
+    | string
+    | undefined;
   /** Device name/description */
   description?:
     | string
     | undefined;
   /** Date when the token was created in ISO 8601 format */
-  dateCreated?: string;
+  dateCreated?: string | undefined;
 }
-
-function createBaseSignInRequest(): SignInRequest {
-  return { details: undefined, ecosystemId: "" };
-}
-
-export const SignInRequest = {
-  encode(message: SignInRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.details !== undefined) {
-      AccountDetails.encode(message.details, writer.uint32(10).fork()).ldelim();
-    }
-    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
-      writer.uint32(26).string(message.ecosystemId);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): SignInRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSignInRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.details = AccountDetails.decode(reader, reader.uint32());
-          continue;
-        case 3:
-          if (tag != 26) {
-            break;
-          }
-
-          message.ecosystemId = reader.string();
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): SignInRequest {
-    return {
-      details: isSet(object.details) ? AccountDetails.fromJSON(object.details) : undefined,
-      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
-    };
-  },
-
-  toJSON(message: SignInRequest): unknown {
-    const obj: any = {};
-    message.details !== undefined &&
-      (obj.details = message.details ? AccountDetails.toJSON(message.details) : undefined);
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    return obj;
-  },
-
-  create(base?: DeepPartial<SignInRequest>): SignInRequest {
-    return SignInRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<SignInRequest>): SignInRequest {
-    const message = createBaseSignInRequest();
-    message.details = (object.details !== undefined && object.details !== null)
-      ? AccountDetails.fromPartial(object.details)
-      : undefined;
-    message.ecosystemId = object.ecosystemId ?? "";
-    return message;
-  },
-};
 
 function createBaseAccountDetails(): AccountDetails {
   return { name: "", email: "", sms: "" };
@@ -326,28 +250,28 @@ export const AccountDetails = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.name = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.sms = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -365,198 +289,26 @@ export const AccountDetails = {
 
   toJSON(message: AccountDetails): unknown {
     const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.email !== undefined && (obj.email = message.email);
-    message.sms !== undefined && (obj.sms = message.sms);
+    if (message.name !== undefined && message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.email !== undefined && message.email !== "") {
+      obj.email = message.email;
+    }
+    if (message.sms !== undefined && message.sms !== "") {
+      obj.sms = message.sms;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<AccountDetails>): AccountDetails {
     return AccountDetails.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AccountDetails>): AccountDetails {
     const message = createBaseAccountDetails();
     message.name = object.name ?? "";
     message.email = object.email ?? "";
     message.sms = object.sms ?? "";
-    return message;
-  },
-};
-
-function createBaseSignInResponse(): SignInResponse {
-  return { confirmationMethod: 0, profile: undefined };
-}
-
-export const SignInResponse = {
-  encode(message: SignInResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.confirmationMethod !== undefined && message.confirmationMethod !== 0) {
-      writer.uint32(24).int32(message.confirmationMethod);
-    }
-    if (message.profile !== undefined) {
-      AccountProfile.encode(message.profile, writer.uint32(34).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): SignInResponse {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseSignInResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 3:
-          if (tag != 24) {
-            break;
-          }
-
-          message.confirmationMethod = reader.int32() as any;
-          continue;
-        case 4:
-          if (tag != 34) {
-            break;
-          }
-
-          message.profile = AccountProfile.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): SignInResponse {
-    return {
-      confirmationMethod: isSet(object.confirmationMethod) ? confirmationMethodFromJSON(object.confirmationMethod) : 0,
-      profile: isSet(object.profile) ? AccountProfile.fromJSON(object.profile) : undefined,
-    };
-  },
-
-  toJSON(message: SignInResponse): unknown {
-    const obj: any = {};
-    message.confirmationMethod !== undefined &&
-      (obj.confirmationMethod = confirmationMethodToJSON(message.confirmationMethod));
-    message.profile !== undefined &&
-      (obj.profile = message.profile ? AccountProfile.toJSON(message.profile) : undefined);
-    return obj;
-  },
-
-  create(base?: DeepPartial<SignInResponse>): SignInResponse {
-    return SignInResponse.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<SignInResponse>): SignInResponse {
-    const message = createBaseSignInResponse();
-    message.confirmationMethod = object.confirmationMethod ?? 0;
-    message.profile = (object.profile !== undefined && object.profile !== null)
-      ? AccountProfile.fromPartial(object.profile)
-      : undefined;
-    return message;
-  },
-};
-
-function createBaseAccountProfile(): AccountProfile {
-  return { profileType: "", authData: new Uint8Array(), authToken: new Uint8Array(), protection: undefined };
-}
-
-export const AccountProfile = {
-  encode(message: AccountProfile, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.profileType !== undefined && message.profileType !== "") {
-      writer.uint32(10).string(message.profileType);
-    }
-    if (message.authData !== undefined && message.authData.length !== 0) {
-      writer.uint32(18).bytes(message.authData);
-    }
-    if (message.authToken !== undefined && message.authToken.length !== 0) {
-      writer.uint32(26).bytes(message.authToken);
-    }
-    if (message.protection !== undefined) {
-      TokenProtection.encode(message.protection, writer.uint32(34).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): AccountProfile {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAccountProfile();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag != 10) {
-            break;
-          }
-
-          message.profileType = reader.string();
-          continue;
-        case 2:
-          if (tag != 18) {
-            break;
-          }
-
-          message.authData = reader.bytes();
-          continue;
-        case 3:
-          if (tag != 26) {
-            break;
-          }
-
-          message.authToken = reader.bytes();
-          continue;
-        case 4:
-          if (tag != 34) {
-            break;
-          }
-
-          message.protection = TokenProtection.decode(reader, reader.uint32());
-          continue;
-      }
-      if ((tag & 7) == 4 || tag == 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AccountProfile {
-    return {
-      profileType: isSet(object.profileType) ? String(object.profileType) : "",
-      authData: isSet(object.authData) ? bytesFromBase64(object.authData) : new Uint8Array(),
-      authToken: isSet(object.authToken) ? bytesFromBase64(object.authToken) : new Uint8Array(),
-      protection: isSet(object.protection) ? TokenProtection.fromJSON(object.protection) : undefined,
-    };
-  },
-
-  toJSON(message: AccountProfile): unknown {
-    const obj: any = {};
-    message.profileType !== undefined && (obj.profileType = message.profileType);
-    message.authData !== undefined &&
-      (obj.authData = base64FromBytes(message.authData !== undefined ? message.authData : new Uint8Array()));
-    message.authToken !== undefined &&
-      (obj.authToken = base64FromBytes(message.authToken !== undefined ? message.authToken : new Uint8Array()));
-    message.protection !== undefined &&
-      (obj.protection = message.protection ? TokenProtection.toJSON(message.protection) : undefined);
-    return obj;
-  },
-
-  create(base?: DeepPartial<AccountProfile>): AccountProfile {
-    return AccountProfile.fromPartial(base ?? {});
-  },
-
-  fromPartial(object: DeepPartial<AccountProfile>): AccountProfile {
-    const message = createBaseAccountProfile();
-    message.profileType = object.profileType ?? "";
-    message.authData = object.authData ?? new Uint8Array();
-    message.authToken = object.authToken ?? new Uint8Array();
-    message.protection = (object.protection !== undefined && object.protection !== null)
-      ? TokenProtection.fromPartial(object.protection)
-      : undefined;
     return message;
   },
 };
@@ -584,21 +336,21 @@ export const TokenProtection = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 8) {
+          if (tag !== 8) {
             break;
           }
 
           message.enabled = reader.bool();
           continue;
         case 2:
-          if (tag != 16) {
+          if (tag !== 16) {
             break;
           }
 
           message.method = reader.int32() as any;
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -615,19 +367,128 @@ export const TokenProtection = {
 
   toJSON(message: TokenProtection): unknown {
     const obj: any = {};
-    message.enabled !== undefined && (obj.enabled = message.enabled);
-    message.method !== undefined && (obj.method = confirmationMethodToJSON(message.method));
+    if (message.enabled === true) {
+      obj.enabled = message.enabled;
+    }
+    if (message.method !== undefined && message.method !== 0) {
+      obj.method = confirmationMethodToJSON(message.method);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<TokenProtection>): TokenProtection {
     return TokenProtection.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<TokenProtection>): TokenProtection {
     const message = createBaseTokenProtection();
     message.enabled = object.enabled ?? false;
     message.method = object.method ?? 0;
+    return message;
+  },
+};
+
+function createBaseAccountProfile(): AccountProfile {
+  return { profileType: "", authData: new Uint8Array(0), authToken: new Uint8Array(0), protection: undefined };
+}
+
+export const AccountProfile = {
+  encode(message: AccountProfile, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.profileType !== undefined && message.profileType !== "") {
+      writer.uint32(10).string(message.profileType);
+    }
+    if (message.authData !== undefined && message.authData.length !== 0) {
+      writer.uint32(18).bytes(message.authData);
+    }
+    if (message.authToken !== undefined && message.authToken.length !== 0) {
+      writer.uint32(26).bytes(message.authToken);
+    }
+    if (message.protection !== undefined) {
+      TokenProtection.encode(message.protection, writer.uint32(34).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): AccountProfile {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAccountProfile();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.profileType = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.authData = reader.bytes();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.authToken = reader.bytes();
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.protection = TokenProtection.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AccountProfile {
+    return {
+      profileType: isSet(object.profileType) ? String(object.profileType) : "",
+      authData: isSet(object.authData) ? bytesFromBase64(object.authData) : new Uint8Array(0),
+      authToken: isSet(object.authToken) ? bytesFromBase64(object.authToken) : new Uint8Array(0),
+      protection: isSet(object.protection) ? TokenProtection.fromJSON(object.protection) : undefined,
+    };
+  },
+
+  toJSON(message: AccountProfile): unknown {
+    const obj: any = {};
+    if (message.profileType !== undefined && message.profileType !== "") {
+      obj.profileType = message.profileType;
+    }
+    if (message.authData !== undefined && message.authData.length !== 0) {
+      obj.authData = base64FromBytes(message.authData);
+    }
+    if (message.authToken !== undefined && message.authToken.length !== 0) {
+      obj.authToken = base64FromBytes(message.authToken);
+    }
+    if (message.protection !== undefined) {
+      obj.protection = TokenProtection.toJSON(message.protection);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<AccountProfile>): AccountProfile {
+    return AccountProfile.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<AccountProfile>): AccountProfile {
+    const message = createBaseAccountProfile();
+    message.profileType = object.profileType ?? "";
+    message.authData = object.authData ?? new Uint8Array(0);
+    message.authToken = object.authToken ?? new Uint8Array(0);
+    message.protection = (object.protection !== undefined && object.protection !== null)
+      ? TokenProtection.fromPartial(object.protection)
+      : undefined;
     return message;
   },
 };
@@ -649,7 +510,7 @@ export const AccountInfoRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -669,7 +530,6 @@ export const AccountInfoRequest = {
   create(base?: DeepPartial<AccountInfoRequest>): AccountInfoRequest {
     return AccountInfoRequest.fromPartial(base ?? {});
   },
-
   fromPartial(_: DeepPartial<AccountInfoRequest>): AccountInfoRequest {
     const message = createBaseAccountInfoRequest();
     return message;
@@ -713,49 +573,49 @@ export const AccountInfoResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.details = AccountDetails.decode(reader, reader.uint32());
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.walletId = reader.string();
           continue;
         case 4:
-          if (tag != 34) {
+          if (tag !== 34) {
             break;
           }
 
           message.deviceId = reader.string();
           continue;
         case 5:
-          if (tag != 42) {
+          if (tag !== 42) {
             break;
           }
 
           message.ecosystemId = reader.string();
           continue;
         case 6:
-          if (tag != 50) {
+          if (tag !== 50) {
             break;
           }
 
           message.publicDid = reader.string();
           continue;
         case 8:
-          if (tag != 66) {
+          if (tag !== 66) {
             break;
           }
 
           message.authTokens!.push(WalletAuthToken.decode(reader, reader.uint32()));
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -778,16 +638,23 @@ export const AccountInfoResponse = {
 
   toJSON(message: AccountInfoResponse): unknown {
     const obj: any = {};
-    message.details !== undefined &&
-      (obj.details = message.details ? AccountDetails.toJSON(message.details) : undefined);
-    message.walletId !== undefined && (obj.walletId = message.walletId);
-    message.deviceId !== undefined && (obj.deviceId = message.deviceId);
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
-    message.publicDid !== undefined && (obj.publicDid = message.publicDid);
-    if (message.authTokens) {
-      obj.authTokens = message.authTokens.map((e) => e ? WalletAuthToken.toJSON(e) : undefined);
-    } else {
-      obj.authTokens = [];
+    if (message.details !== undefined) {
+      obj.details = AccountDetails.toJSON(message.details);
+    }
+    if (message.walletId !== undefined && message.walletId !== "") {
+      obj.walletId = message.walletId;
+    }
+    if (message.deviceId !== undefined && message.deviceId !== "") {
+      obj.deviceId = message.deviceId;
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      obj.ecosystemId = message.ecosystemId;
+    }
+    if (message.publicDid !== undefined && message.publicDid !== "") {
+      obj.publicDid = message.publicDid;
+    }
+    if (message.authTokens?.length) {
+      obj.authTokens = message.authTokens.map((e) => WalletAuthToken.toJSON(e));
     }
     return obj;
   },
@@ -795,7 +662,6 @@ export const AccountInfoResponse = {
   create(base?: DeepPartial<AccountInfoResponse>): AccountInfoResponse {
     return AccountInfoResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<AccountInfoResponse>): AccountInfoResponse {
     const message = createBaseAccountInfoResponse();
     message.details = (object.details !== undefined && object.details !== null)
@@ -833,21 +699,21 @@ export const LoginRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.email = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.ecosystemId = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -864,15 +730,18 @@ export const LoginRequest = {
 
   toJSON(message: LoginRequest): unknown {
     const obj: any = {};
-    message.email !== undefined && (obj.email = message.email);
-    message.ecosystemId !== undefined && (obj.ecosystemId = message.ecosystemId);
+    if (message.email !== undefined && message.email !== "") {
+      obj.email = message.email;
+    }
+    if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
+      obj.ecosystemId = message.ecosystemId;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<LoginRequest>): LoginRequest {
     return LoginRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<LoginRequest>): LoginRequest {
     const message = createBaseLoginRequest();
     message.email = object.email ?? "";
@@ -904,21 +773,21 @@ export const LoginResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.challenge = reader.bytes();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.profile = AccountProfile.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -935,17 +804,18 @@ export const LoginResponse = {
 
   toJSON(message: LoginResponse): unknown {
     const obj: any = {};
-    message.challenge !== undefined &&
-      (obj.challenge = message.challenge !== undefined ? base64FromBytes(message.challenge) : undefined);
-    message.profile !== undefined &&
-      (obj.profile = message.profile ? AccountProfile.toJSON(message.profile) : undefined);
+    if (message.challenge !== undefined) {
+      obj.challenge = base64FromBytes(message.challenge);
+    }
+    if (message.profile !== undefined) {
+      obj.profile = AccountProfile.toJSON(message.profile);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<LoginResponse>): LoginResponse {
     return LoginResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<LoginResponse>): LoginResponse {
     const message = createBaseLoginResponse();
     message.challenge = object.challenge ?? undefined;
@@ -957,7 +827,7 @@ export const LoginResponse = {
 };
 
 function createBaseLoginConfirmRequest(): LoginConfirmRequest {
-  return { challenge: new Uint8Array(), confirmationCodeHashed: new Uint8Array() };
+  return { challenge: new Uint8Array(0), confirmationCodeHashed: new Uint8Array(0) };
 }
 
 export const LoginConfirmRequest = {
@@ -979,21 +849,21 @@ export const LoginConfirmRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.challenge = reader.bytes();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.confirmationCodeHashed = reader.bytes();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1003,32 +873,31 @@ export const LoginConfirmRequest = {
 
   fromJSON(object: any): LoginConfirmRequest {
     return {
-      challenge: isSet(object.challenge) ? bytesFromBase64(object.challenge) : new Uint8Array(),
+      challenge: isSet(object.challenge) ? bytesFromBase64(object.challenge) : new Uint8Array(0),
       confirmationCodeHashed: isSet(object.confirmationCodeHashed)
         ? bytesFromBase64(object.confirmationCodeHashed)
-        : new Uint8Array(),
+        : new Uint8Array(0),
     };
   },
 
   toJSON(message: LoginConfirmRequest): unknown {
     const obj: any = {};
-    message.challenge !== undefined &&
-      (obj.challenge = base64FromBytes(message.challenge !== undefined ? message.challenge : new Uint8Array()));
-    message.confirmationCodeHashed !== undefined &&
-      (obj.confirmationCodeHashed = base64FromBytes(
-        message.confirmationCodeHashed !== undefined ? message.confirmationCodeHashed : new Uint8Array(),
-      ));
+    if (message.challenge !== undefined && message.challenge.length !== 0) {
+      obj.challenge = base64FromBytes(message.challenge);
+    }
+    if (message.confirmationCodeHashed !== undefined && message.confirmationCodeHashed.length !== 0) {
+      obj.confirmationCodeHashed = base64FromBytes(message.confirmationCodeHashed);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<LoginConfirmRequest>): LoginConfirmRequest {
     return LoginConfirmRequest.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<LoginConfirmRequest>): LoginConfirmRequest {
     const message = createBaseLoginConfirmRequest();
-    message.challenge = object.challenge ?? new Uint8Array();
-    message.confirmationCodeHashed = object.confirmationCodeHashed ?? new Uint8Array();
+    message.challenge = object.challenge ?? new Uint8Array(0);
+    message.confirmationCodeHashed = object.confirmationCodeHashed ?? new Uint8Array(0);
     return message;
   },
 };
@@ -1053,14 +922,14 @@ export const LoginConfirmResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.profile = AccountProfile.decode(reader, reader.uint32());
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1074,15 +943,15 @@ export const LoginConfirmResponse = {
 
   toJSON(message: LoginConfirmResponse): unknown {
     const obj: any = {};
-    message.profile !== undefined &&
-      (obj.profile = message.profile ? AccountProfile.toJSON(message.profile) : undefined);
+    if (message.profile !== undefined) {
+      obj.profile = AccountProfile.toJSON(message.profile);
+    }
     return obj;
   },
 
   create(base?: DeepPartial<LoginConfirmResponse>): LoginConfirmResponse {
     return LoginConfirmResponse.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<LoginConfirmResponse>): LoginConfirmResponse {
     const message = createBaseLoginConfirmResponse();
     message.profile = (object.profile !== undefined && object.profile !== null)
@@ -1118,28 +987,28 @@ export const WalletAuthToken = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag !== 10) {
             break;
           }
 
           message.id = reader.string();
           continue;
         case 2:
-          if (tag != 18) {
+          if (tag !== 18) {
             break;
           }
 
           message.description = reader.string();
           continue;
         case 3:
-          if (tag != 26) {
+          if (tag !== 26) {
             break;
           }
 
           message.dateCreated = reader.string();
           continue;
       }
-      if ((tag & 7) == 4 || tag == 0) {
+      if ((tag & 7) === 4 || tag === 0) {
         break;
       }
       reader.skipType(tag & 7);
@@ -1157,16 +1026,21 @@ export const WalletAuthToken = {
 
   toJSON(message: WalletAuthToken): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.description !== undefined && (obj.description = message.description);
-    message.dateCreated !== undefined && (obj.dateCreated = message.dateCreated);
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    if (message.description !== undefined) {
+      obj.description = message.description;
+    }
+    if (message.dateCreated !== undefined && message.dateCreated !== "") {
+      obj.dateCreated = message.dateCreated;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<WalletAuthToken>): WalletAuthToken {
     return WalletAuthToken.fromPartial(base ?? {});
   },
-
   fromPartial(object: DeepPartial<WalletAuthToken>): WalletAuthToken {
     const message = createBaseWalletAuthToken();
     message.id = object.id ?? "";
@@ -1181,19 +1055,6 @@ export const AccountDefinition = {
   name: "Account",
   fullName: "services.account.v1.Account",
   methods: {
-    /**
-     * Sign in to an already existing account
-     *
-     * @deprecated
-     */
-    signIn: {
-      name: "SignIn",
-      requestType: SignInRequest,
-      requestStream: false,
-      responseType: SignInResponse,
-      responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([2, 16, 1]), new Uint8Array([2, 8, 1])] } },
-    },
     /**
      * Begin login flow for specified account, creating one if it does not already exist
      *
@@ -1236,10 +1097,10 @@ export const AccountDefinition = {
   },
 } as const;
 
-declare var self: any | undefined;
-declare var window: any | undefined;
-declare var global: any | undefined;
-var tsProtoGlobalThis: any = (() => {
+declare const self: any | undefined;
+declare const window: any | undefined;
+declare const global: any | undefined;
+const tsProtoGlobalThis: any = (() => {
   if (typeof globalThis !== "undefined") {
     return globalThis;
   }

@@ -11,9 +11,11 @@ hide:
     <!-- <p>Build the future of identity with Trinsic, infrastructure for building amazing identity products using identity wallets and verifiable credentials.</p> -->
     <p>This documentation site is organized in 4 sections:</p>
     <ul>
-        <li><a href="/learn">Learn and get started</a> &mdash; guides and articles to get you started with our plaftorm</li>
+        <li><a href="/sdk">Get Started with our Platform</a> &mdash; start building with Trinsic Dashboard, White Label Wallet, and SDK</li>
+        <li><a href="/learn">Learn the concepts</a> &mdash; articles to get you started with reusable identity and verifiable credentials</li>
         <li><a href="/reference">API references</a> &mdash; technical reference of our RPC-based API and available tools</li>
-        <li><a href="/sdk">SDK tools</a> &mdash; availabe tools and SDKs, how to install and use them</li>
+        <li><a href="/sdk">SDK tools</a> &mdash; available tools and SDKs, how to install and use them</li>
+        <li><a href="/examples">Examples and demos</a> &mdash; various code samples that showcase functional use cases</li>
     </ul>
   </div>
   <div class="homepage-main-image">

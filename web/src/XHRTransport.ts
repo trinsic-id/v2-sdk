@@ -1,7 +1,7 @@
-import {throwIfAborted} from 'abort-controller-x';
-import {Base64} from 'js-base64';
-import {ClientError, Metadata, Status} from 'nice-grpc-common';
-import {Transport} from "nice-grpc-web/lib/client/Transport";
+import { throwIfAborted } from "abort-controller-x";
+import { Base64 } from "js-base64";
+import { ClientError, Metadata, Status } from "nice-grpc-common";
+import { Transport } from "nice-grpc-web/lib/client/Transport";
 
 class GrpcCallData {
     responseHeaders: Metadata = new Metadata();
@@ -14,9 +14,14 @@ export interface XHRTransportConfig {
     credentials?: boolean;
 }
 
-async function xhrPost(url: string, metadata: Metadata, requestBody: BodyInit, config?: XHRTransportConfig): Promise<GrpcCallData> {
+async function xhrPost(
+    url: string,
+    metadata: Metadata,
+    requestBody: BodyInit,
+    config?: XHRTransportConfig,
+): Promise<GrpcCallData> {
     const callData: GrpcCallData = new GrpcCallData();
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         // TODO - Support fallback for node?
         const xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
@@ -27,25 +32,34 @@ async function xhrPost(url: string, metadata: Metadata, requestBody: BodyInit, c
             for (const value of values) {
                 xhr.setRequestHeader(
                     key,
-                    typeof value === 'string' ? value : Base64.fromUint8Array(value),
+                    typeof value === "string"
+                        ? value
+                        : Base64.fromUint8Array(value),
                 );
             }
         }
 
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-                callData.responseHeaders = headersToMetadata(xhr.getAllResponseHeaders());
+                callData.responseHeaders = headersToMetadata(
+                    xhr.getAllResponseHeaders(),
+                );
             } else if (xhr.readyState === XMLHttpRequest.DONE) {
                 resolve(callData);
             }
-        }
-        xhr.onerror = function() {
-            callData.statusMessage = getErrorDetailsFromHttpResponse(xhr.status, xhr.statusText);
-        }
-        xhr.onloadend = function() {
-            callData.responseChunks.push(new Uint8Array(xhr.response as ArrayBuffer));
+        };
+        xhr.onerror = function () {
+            callData.statusMessage = getErrorDetailsFromHttpResponse(
+                xhr.status,
+                xhr.statusText,
+            );
+        };
+        xhr.onloadend = function () {
+            callData.responseChunks.push(
+                new Uint8Array(xhr.response as ArrayBuffer),
+            );
             callData.grpcStatus = getStatusFromHttpCode(xhr.status);
-        }
+        };
 
         // Tested, this works.
         // @ts-ignore
@@ -59,7 +73,7 @@ function concatenateChunks(chunks: Uint8Array[]): Uint8Array {
     for (const chunk of chunks) {
         totalSize += chunk.length;
     }
-    const newData = new Uint8Array(totalSize)
+    const newData = new Uint8Array(totalSize);
     let setIndex = 0;
     for (const chunk of chunks) {
         newData.set(chunk, setIndex);
@@ -72,7 +86,13 @@ function concatenateChunks(chunks: Uint8Array[]): Uint8Array {
  * Transport for browsers based on `XMLHttpRequest` API.
  */
 export function XHRTransport(config?: XHRTransportConfig): Transport {
-    return async function* fetchTransport({url, body, metadata, signal, method}) {
+    return async function* fetchTransport({
+        url,
+        body,
+        metadata,
+        signal,
+        method,
+    }) {
         let requestBody: BodyInit;
 
         if (!method.requestStream) {
@@ -90,13 +110,13 @@ export function XHRTransport(config?: XHRTransportConfig): Transport {
 
             requestBody = new ReadableStream({
                 // @ts-ignore
-                type: 'bytes',
+                type: "bytes",
                 start() {
                     iterator = body[Symbol.asyncIterator]();
                 },
 
                 async pull(controller) {
-                    const {done, value} = await iterator!.next();
+                    const { done, value } = await iterator!.next();
 
                     if (done) {
                         controller.close();
@@ -113,18 +133,20 @@ export function XHRTransport(config?: XHRTransportConfig): Transport {
         const xhrData = await xhrPost(url, metadata, requestBody, config);
 
         yield {
-            type: 'header',
+            type: "header",
             header: xhrData.responseHeaders,
         };
 
         if (xhrData.grpcStatus !== Status.OK) {
             const decoder = new TextDecoder();
-            const message = decoder.decode(concatenateChunks(xhrData.responseChunks));
+            const message = decoder.decode(
+                concatenateChunks(xhrData.responseChunks),
+            );
             console.warn(message, xhrData.statusMessage);
             throw new ClientError(
                 method.path,
                 xhrData.grpcStatus,
-                `status=${xhrData.statusMessage}, message=${message}`
+                `status=${xhrData.statusMessage}, message=${message}`,
             );
         }
 
@@ -134,7 +156,7 @@ export function XHRTransport(config?: XHRTransportConfig): Transport {
             for (const xhrChunk of xhrData.responseChunks) {
                 if (xhrChunk != null) {
                     yield {
-                        type: 'data',
+                        type: "data",
                         data: xhrChunk,
                     };
                 }
@@ -150,9 +172,9 @@ function headersToMetadata(headers: string): Metadata {
     const arr = headers.trim().split(/[\r\n]+/);
 
     arr.forEach((line) => {
-        const parts = line.split(': ');
+        const parts = line.split(": ");
         const header = parts.shift() ?? "";
-        const value = parts.join(': ');
+        const value = parts.join(": ");
         metadata.set(header, value);
     });
     return metadata;
@@ -187,7 +209,7 @@ function getErrorDetailsFromHttpResponse(
     return (
         `Received HTTP ${statusCode} response: ` +
         (responseText.length > 1000
-            ? responseText.slice(0, 1000) + '... (truncated)'
+            ? responseText.slice(0, 1000) + "... (truncated)"
             : responseText)
     );
 }
