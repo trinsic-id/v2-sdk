@@ -29,7 +29,7 @@ const trinsic = new TrinsicService({
 });
 ```
 
-You can obtain auth token from the [Dashboard <small>:material-open-in-new:</small>](https://dashboard.trinsic.id){targer=_blank} by clicking on the View Auth Token in the Home page.
+(You can obtain Auth Token from the [Dashboard <small>:material-open-in-new:</small>](https://dashboard.trinsic.id){targer=_blank} by clicking on the View Auth Token button in the Home page.)
 
 ### Issue credential from template
 
@@ -70,7 +70,7 @@ const issueResponse = await trinsic.credential().issueFromTemplate({
     templateId: "https://schema.trinsic.cloud/example/id-document",
     valuesJson: JSON.stringify(values),
     // optional
-    signatureType: SignatureType.STANDARD, // or EXPERIMENTAL
+    signatureType: SignatureType.STANDARD, // or SignatureType.EXPERIMENTAL
     includeGovernance: true,
     expirationDate: "2032-07-03T10:12:00Z",
     saveCopy: false,
@@ -79,47 +79,47 @@ const issueResponse = await trinsic.credential().issueFromTemplate({
 console.dir(JSON.parse(issueResponse.documentJson), { depth: null, });
 ```
 
-Let's look at some of the input fields for the issue from template request.
+Let's look at some of the input fields for the `issueFromTemplate()` request.
+<ul>
+    <li>`templateId` is a required field and refers to the template ID that we want to use.</li>
+    <li>`valuesJson` is a required field and must be an object with fields and their values. This object must be passed as JSON stringified value.</li>
+    <li>`signatureType` is an optional field that specifies type of signature that will be used to sign the credential. There are currently two types supported: `Standard` will use NIST approved cryptographic curves, specifically the Ed25519 curve with EDDSA signature. The `Experimental` signature type will use BBS Signatures with BLS12381 curve.</li>
+    <li>`includeGovernance` is an optional field that specifies if we'd like governance attestation about the issuer to be included with the credential. If set to true, this will indicate that the issuer is an authorized member of the governance framework for the given ecosystem and will include its Trust Registry data.</li>
 
-:   `templateId` is a required field and refers to the template ID that we want to use.
-:   `valuesJson` is a required field and must be an object with fields and their values. This object must be passed as JSON stringified value.
-:   `signatureType` is optional field that specifies type of signature that will be used to sign the credential. There are currently two types supported: `Standard` will use NIST approved cryptographic curves, specifically the Ed25519 curve with EDDSA signature. The `Experimental` signature type will use BBS Signatures with BLS12381 curve.
-:   `includeGovernance` is optional field that specifies if we'd like governance attestation about the issuer to be included with the credential. This will indicate that the issuer is authorized member of the governance framework for the given ecosystem.
+        When `includeGovernance: false`, governance information will not be included and the `issuer` field in the credential will only contain the issuer's DID:
+        ```json
+        issuer: 'did:web:example.connect.trinsic.cloud:zThZXjtWu1PsMXHnQfJGam4'
+        ```
 
-    Without governance information:
-    ```json
-    issuer: 'did:web:example.connect.trinsic.cloud:zThZXjtWu1PsMXHnQfJGam4'
-    ```
+        When `includeGovernance: true`, governance information will be included in the `issuer` field in the credential:
+        ```json
+        issuer: {
+            id: 'did:web:example.connect.trinsic.cloud:zThZXjtWu1PsMXHnQfJGam4',
+            type: 'AuthoritativeMember',
+            governanceFramework: 'urn:trinsic:ecosystems:example',
+            trustRegistry: 'urn:egf:example:default'
+        }
+        ```
 
-    With governance information:
-    ```json
-    issuer: {
-        id: 'did:web:example.connect.trinsic.cloud:zThZXjtWu1PsMXHnQfJGam4',
-        type: 'AuthoritativeMember',
-        governanceFramework: 'urn:trinsic:ecosystems:example',
-        trustRegistry: 'urn:egf:example:default'
-    }
-    ```
-
-:   `expirationDate` is optional and specifies the validity period of the issed credential. If specified, this field must be in ISO 8601 format
-:   `saveCopy` is optional and will save a copy of the issued credential in the issuer wallet that will be marked as `IssuedVerifiableCredential`. This copy will not contain any cryptographic data or signatures and it's purpose is to allow the issuers to track the issued credentials and their metadata. This metadata is required if the issuer wants to change the status of the credential and revoke it's validity. This is controlled using the data found in the `credentialStatus` field.
+    <li>`expirationDate` is optional and specifies the validity period of the issed credential. If specified, this field must be in ISO 8601 format.</li>
+    <li>`saveCopy` is optional and will save a copy of the issued credential in the issuer wallet that will be marked as `IssuedVerifiableCredential`. This copy will not contain any cryptographic data or signatures and it's purpose is to allow the issuers to track the issued credentials and their metadata. This metadata is required if the issuer wants to change the status of the credential and revoke it's validity. This is controlled using the data found in the `credentialStatus` field.</li>
+<ul>
 
 ### Send the credential
 
-Finally, we can just send the credentil to the user's wallet by specifying the email address of the user.
+Finally, we can just send the credentil to the user's wallet by specifying its email address. If you want to send an email notification that a credential has been sent to the user's wallet, just set `sendNotification` as true.
 
 ```js
 await trinsic.credential().send({
     documentJson: issueResponse.documentJson,
     email: "<EMAIL>",
+    sendNotification: true,
 });
 
 ```
 
 ### Example source code
 
-You can find a working example and full source code in our GitHub repo:
-
-[https://github.com/trinsic-id/sdk-examples/tree/main/01-issue-direct-send](https://github.com/trinsic-id/sdk-examples/tree/main/01-issue-direct-send)
+You can find a working example and full source code in our GitHub repo: [https://github.com/trinsic-id/sdk-examples/tree/main/01-issue-direct-send](https://github.com/trinsic-id/sdk-examples/tree/main/01-issue-direct-send)
 
 Enjoy! 👋
