@@ -39,7 +39,11 @@ definitions:
 
   # Page description
   - &page_description >-
-    {{ page.meta.get("description", config.site_description) or "" }}
+    {%- if layout.description -%}
+      {{ layout.description }}
+    {%- else -%}
+      {{ page.meta.get("description", config.site_description) | x }}
+    {%- endif -%}
 
 # Meta tags
 tags:
