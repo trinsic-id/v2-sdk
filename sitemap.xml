@@ -56,6 +56,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.trinsic.id/examples/2-issue-send-chapi/</loc>
+         <lastmod>2023-09-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.trinsic.id/examples/3-verify-cred-swift/</loc>
+         <lastmod>2023-09-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.trinsic.id/go/</loc>
          <lastmod>2023-09-07</lastmod>
          <changefreq>daily</changefreq>

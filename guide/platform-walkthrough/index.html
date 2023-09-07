@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="../../_static/extra.css">
     
+      <link rel="stylesheet" href="../../assets/stylesheets/badge.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -80,7 +82,18 @@
 </script>
 
 
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -2521,7 +2534,7 @@
 <hr />
 <h2 id="manage-your-credential">Manage your Credential<a class="headerlink" href="#manage-your-credential" title="Permanent link">&para;</a></h2>
 <p>After issuing the credential to yourself, you will receive a notification in your email with a link to visualize your credential in the White Label Wallet. Clicking that link will take you to your credential details view as shown below:</p>
-<p><img alt="Credential Details" src="../../_static/images/credential-details.png" /></p>
+<p><a class="glightbox" href="../../_static/images/credential-details.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Credential Details" src="../../_static/images/credential-details.png" /></a></p>
 <p>You can see all of the credentials you hold in the <em>Credentials</em> page of your White Label Wallet. You will also be able to export your credential as a <code>JSON</code> file, delete the credential, and add the verifiable credential pass to your Google or Apple wallet (if your ecosystem has these features enabled.)</p>
 <h3 id="add-your-verifiable-credential-to-your-google-or-apple-wallet">Add your Verifiable Credential to your Google or Apple Wallet<a class="headerlink" href="#add-your-verifiable-credential-to-your-google-or-apple-wallet" title="Permanent link">&para;</a></h3>
 <p>Ecosystems on the Build or Launch plans can enable their holders to add their verifiable credentials to their mobile wallets as verifiable credential passes for quick validation flows. The video below shows how that works.</p>
@@ -2783,6 +2796,8 @@
       
         <script src="../../_static/javascripts/tab_sync.js"></script>
       
+        <script src="../../assets/javascripts/badge.js" async></script>
+      
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

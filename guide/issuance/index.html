@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="../../_static/extra.css">
     
+      <link rel="stylesheet" href="../../assets/stylesheets/badge.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -80,7 +82,18 @@
 </script>
 
 
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1265,10 +1278,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manually-using-the-branded-studio" class="md-nav__link">
+  <a href="#send-using-an-email-or-link" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Manually, using the Branded Studio
+        Send using an email or link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send-credential-using-chapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Send credential using CHAPI
       
     </span>
   </a>
@@ -2196,10 +2220,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manually-using-the-branded-studio" class="md-nav__link">
+  <a href="#send-using-an-email-or-link" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Manually, using the Branded Studio
+        Send using an email or link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send-credential-using-chapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Send credential using CHAPI
       
     </span>
   </a>
@@ -2274,7 +2309,7 @@ presented to the user. This offer can then be presented to the user and allow th
 </dl>
 <h2 id="credential-exchange-methods">Credential exchange methods<a class="headerlink" href="#credential-exchange-methods" title="Permanent link">&para;</a></h2>
 <p>Once the Verifiable Credential (or Credential Offer) is created, it can be shared with the user. There are few different ways to approach this exchange:</p>
-<h3 id="manually-using-the-branded-studio">Manually, using the Branded Studio<a class="headerlink" href="#manually-using-the-branded-studio" title="Permanent link">&para;</a></h3>
+<h3 id="send-using-an-email-or-link">Send using an email or link<a class="headerlink" href="#send-using-an-email-or-link" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>If you want to manually issue a credential to a user using the Branded Studio, this method is the easiest and most useful.
 Simply log in to your studio (the URL can be found on the main Dashboard page) and navigate to the 'Issue' option in the left-hand menu.
@@ -2284,11 +2319,9 @@ Once completed, the credential will be sent to the user, who will receive an ema
 </div>
 </dd>
 </dl>
+<h3 id="send-credential-using-chapi">Send credential using CHAPI<a class="headerlink" href="#send-credential-using-chapi" title="Permanent link">&para;</a></h3>
+<p>TODO</p>
 <!--
-
-### Programmatically, using Credential Handler API (CHAPI)
-
-TODO
 
 ### Programmatically, using custom integration and Trinsic API
 
@@ -2501,6 +2534,8 @@ TODO -->
       
         <script src="../../_static/javascripts/tab_sync.js"></script>
       
+        <script src="../../assets/javascripts/badge.js" async></script>
+      
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

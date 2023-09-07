@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.trinsic.id/cli/config/">
+        <link rel="canonical" href="https://docs.trinsic.id/examples/3-verify-cred-swift/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Configuration - Documentation</title>
+        <title>Request Verifiable Credential on iOS - Documentation</title>
       
     
     
@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration" class="md-skip">
+        <a href="#request-verifiable-credential-on-ios" class="md-skip">
           Skip to content
         </a>
       
@@ -143,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuration
+              Request Verifiable Credential on iOS
             
           </span>
         </div>
@@ -321,7 +321,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../examples/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link">
         
   
     
@@ -350,7 +350,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1012,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1993,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2020,6 +2022,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -2031,36 +2035,6 @@
   
     
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#show-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Show Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-configuration-entry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Update Configuration Entry
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2080,43 +2054,17 @@
   
 
 
-<h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
-<p>The CLI stores its configuration in the user's home directory in <code>~/.trinsic/</code>. This directory contains the main configuration file <code>config.toml</code> and all the profile data.</p>
-<h2 id="show-configuration">Show Configuration<a class="headerlink" href="#show-configuration" title="Permanent link">&para;</a></h2>
-<p>To print the current configuration file in the terminal use:</p>
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>config<span class="w"> </span>--show
-</code></pre></div>
-<p>Typical configuration file may look like this:</p>
-<div class="highlight"><pre><span></span><code><span class="k">[server]</span>
-<span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://prod.trinsic.cloud&quot;</span>
+<h1 id="request-verifiable-credential-on-ios">Request Verifiable Credential on iOS<a class="headerlink" href="#request-verifiable-credential-on-ios" title="Permanent link">&para;</a></h1>
 
-<span class="k">[profile]</span>
-<span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_profile&quot;</span>
-</code></pre></div>
-<h2 id="update-configuration-entry">Update Configuration Entry<a class="headerlink" href="#update-configuration-entry" title="Permanent link">&para;</a></h2>
-<p>To change the configuration values, use the <code>config</code> subcommand with the attribute and its value.</p>
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>config<span class="w"> </span>&lt;attribute_name&gt;<span class="w"> </span>&lt;attribute_value&gt;
-</code></pre></div>
-<p>The following attributes are currently supported:</p>
-<dl>
-<dt><code>server-address</code></dt>
-<dd>
-<p>Updates the default server address the CLI communicates</p>
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>config<span class="w"> </span>--server-address<span class="w"> </span>https://example.com/
-</code></pre></div>
-</dd>
-<dt><code>profile-default</code></dt>
-<dd>
-<p>Updates the default profile used with the CLI</p>
-<div class="highlight"><pre><span></span><code>trinsic<span class="w"> </span>config<span class="w"> </span>--profile-default<span class="w"> </span>alice
-</code></pre></div>
-</dd>
-</dl>
+  
+  
 
 
 
   
 
+
+  
 
 
   <form class="md-feedback" name="feedback" hidden>
@@ -2163,7 +2111,7 @@
               
                 
               
-              Thanks for your feedback! Help us improve this page by using our <a href="https://github.com/trinsic-id/sdk/issues/new/?title=[Docs feedback]+Configuration+-+/cli/config/" target="_blank" rel="noopener">GitHub issue form</a>.
+              Thanks for your feedback! Help us improve this page by using our <a href="https://github.com/trinsic-id/sdk/issues/new/?title=[Docs feedback]+Request%20Verifiable%20Credential%20on%20iOS+-+/examples/3-verify-cred-swift/" target="_blank" rel="noopener">GitHub issue form</a>.
             </div>
           
         </div>

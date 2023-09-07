@@ -55,6 +55,8 @@
     
       <link rel="stylesheet" href="../_static/extra.css">
     
+      <link rel="stylesheet" href="../assets/stylesheets/badge.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -78,7 +80,18 @@
 </script>
 
 
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1995,6 +2008,23 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2010,6 +2040,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#issuance-of-verifiable-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issuance of Verifiable Credentials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2037,6 +2108,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#issuance-of-verifiable-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issuance of Verifiable Credentials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2056,25 +2157,24 @@
 
 
 <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
+<h2 id="issuance-of-verifiable-credentials">Issuance of Verifiable Credentials<a class="headerlink" href="#issuance-of-verifiable-credentials" title="Permanent link">&para;</a></h2>
 <div class="grid cards">
 <ul>
 <li>
 <p><strong>Issue directly and send</strong></p>
 <hr />
+<p><span class="pill node">Node.js</span></p>
 <p>Quickly issue a credential directly at your backend and send the issued credential
 to the user's wallet by specifying an email address.</p>
-<p><a href="/examples/1-issue-direct-send"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> See guide in Node.js</a></p>
+<p><a href="/examples/1-issue-direct-send"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Guide in Node.js</a></p>
 </li>
 <li>
-<p><strong>Issue directly and exchange using CHAPI</strong></p>
+<p><strong>Issue and exchange using CHAPI</strong></p>
 <hr />
+<p><span class="pill node">Node.js</span> <span class="pill js">Browser</span></p>
 <p>Issue a credential directly at your backend and exchange the issued credential
-with the user by utilizing the <a href="https://chapi.io">Credential Handler API <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> (CHAPI).</p>
-<div class="admonition info">
-<p>This example allows the user to choose which wallet they want to use to store their credential,
-interoperable with any wallet that supports CHAPI.</p>
-</div>
-<p><em>Coming soon...</em></p>
+with the user by utilizing the <a href="https://chapi.io">Credential Handler API <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> (CHAPI) via browser.</p>
+<p><a href="/examples/2-issue-send-chapi"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Guide in Node.js API and browser</a></p>
 </li>
 <li>
 <p><strong>Issue interactively and deliver out-of-band</strong></p>
@@ -2083,20 +2183,28 @@ interoperable with any wallet that supports CHAPI.</p>
 using their authenticaton context.</p>
 <p><em>Coming soon...</em></p>
 </li>
+</ul>
+</div>
+<h2 id="verifications">Verifications<a class="headerlink" href="#verifications" title="Permanent link">&para;</a></h2>
+<div class="grid cards">
+<ul>
 <li>
-<p><strong>Verify credenial using OIDC</strong></p>
+<p><strong>Request Verifiable Credential on iOS and MacOS</strong></p>
 <hr />
-<p><em>Coming soon...</em></p>
+<p><span class="pill swift">Swift</span></p>
+<p>This example shows how you can request a verifiable credential from the user
+directly from your native app in iOS or MacOS</p>
+<p><a href="/examples/3-verify-cred-swift"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Guide for iOS in Swift</a></p>
 </li>
 <li>
-<p><strong>Verify credenial using CHAPI</strong></p>
+<p><strong>Request Verifiable Credential on Android</strong></p>
 <hr />
-<p><em>Coming soon...</em></p>
+<p>Coming soon...</p>
 </li>
 <li>
-<p><strong>Identity Verification using document and biometrics</strong></p>
+<p><strong>Request Verifiable Credential in Browser</strong></p>
 <hr />
-<p><em>Coming soon...</em></p>
+<p>Coming soon...</p>
 </li>
 </ul>
 </div>
@@ -2263,6 +2371,8 @@ using their authenticaton context.</p>
       
         <script src="../_static/javascripts/tab_sync.js"></script>
       
+        <script src="../assets/javascripts/badge.js" async></script>
+      
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
