@@ -7,11 +7,15 @@ hide:
 
 # Examples
 
+## Issuance of Verifiable Credentials
+
 <div class="grid cards" markdown>
 
 -   __Issue directly and send__
 
     ---
+
+    <span class="pill node">Node.js</span>
 
     Quickly issue a credential directly at your backend and send the issued credential
     to the user's wallet by specifying an email address.
@@ -41,24 +45,33 @@ hide:
 
     *Coming soon...*
 
--   __Verify credenial using OIDC__
-
-    ---
-
-    *Coming soon...*
-
--   __Verify credenial using CHAPI__
-
-    ---
-
-    *Coming soon...*
-
--   __Identity Verification using document and biometrics__
-
-    ---
-
-    *Coming soon...*
-
-
 </div>
 
+## Verifications
+
+<div class="grid cards" markdown>
+
+-   __Request Verifiable Credential on iOS and MacOS__
+
+    ---
+
+    <span class="pill swift">Swift</span>
+
+    This example shows how you can request a verifiable credential from the user
+    directly from your native app in iOS or MacOS
+
+    [:octicons-arrow-right-24: See guide in Swift](/examples/2-verify-cred-swift)
+
+-   __Request Verifiable Credential on Android__
+
+    ---
+
+    Coming soon...
+
+-   __Request Verifiable Credential in Browser__
+
+    ---
+
+    Coming soon...
+
+</div>

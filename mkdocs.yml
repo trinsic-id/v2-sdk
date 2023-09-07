@@ -155,6 +155,7 @@ extra:
 
 plugins:
   - search
+  - badges
   - macros:
       module_name: mkdocs_macros_main
       verbose: true

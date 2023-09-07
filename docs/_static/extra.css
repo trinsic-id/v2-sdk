@@ -4,7 +4,8 @@ h3 {
     font-weight: 800;
 }
 
-body, html {
+body,
+html {
     font-size: 125%;
 }
 
@@ -15,14 +16,15 @@ body, html {
 }
 
 :root {
-    --md-primary-fg-color: #006BE5;
-    --md-primary-fg-color--light: #B3D6FF;
-    --md-primary-fg-color--dark: #003B80;
+    --md-primary-fg-color: #006be5;
+    --md-primary-fg-color--light: #b3d6ff;
+    --md-primary-fg-color--dark: #003b80;
 
     font-variant-ligatures: none;
 }
 
-.tabbed-control.tabbed-control--prev, .tabbed-control.tabbed-control--next {
+.tabbed-control.tabbed-control--prev,
+.tabbed-control.tabbed-control--next {
     visibility: hidden;
 }
 
@@ -57,9 +59,9 @@ iframe.rounded-frame {
     overflow: hidden;
 }
 
-
 /** Improve spacing of <hr/> between service page sections **/
-.md-typeset hr + h2,.md-typeset hr + h3 {
+.md-typeset hr + h2,
+.md-typeset hr + h3 {
     margin-top: 0em;
 }
 
@@ -97,7 +99,6 @@ iframe.rounded-frame {
 .proto-obj-contents p {
     font-size: 0.6rem;
 }
-
 
 /***********************************************************
  * New-style Protobuf Object Rendering                     *
@@ -151,7 +152,6 @@ iframe.rounded-frame {
     font-size: 14px;
 }
 
-
 .proto-field-expand-btn {
     cursor: pointer;
     margin-top: 0.5rem;
@@ -191,8 +191,6 @@ iframe.rounded-frame {
     color: #959fa7;
 }
 
-
-
 /**
   * When we render the "Sample / Request / Response" tabs
   * for protobuf method documentation, we want those tabs to be centered.
@@ -206,18 +204,18 @@ iframe.rounded-frame {
 }
 
 /* Center any tabs immediately following a .proto-method-tabs-marker */
-.proto-method-tabs-marker+.tabbed-set {
+.proto-method-tabs-marker + .tabbed-set {
     align-items: center;
 }
 
 /* For sub-tabs of the Sample/Request/Response tabs (ie, the language tabs),
    make their font smaller. */
-.proto-method-tabs-marker+.tabbed-set .tabbed-set .tabbed-labels label{
+.proto-method-tabs-marker + .tabbed-set .tabbed-set .tabbed-labels label {
     /* font-size: 0.5rem; */
 }
 
 /* Make the Sample / Request / Response tab labels larger */
-.proto-method-tabs-marker+.tabbed-set > .tabbed-labels > label {
+.proto-method-tabs-marker + .tabbed-set > .tabbed-labels > label {
     font-size: 0.7rem;
 }
 
@@ -267,4 +265,31 @@ iframe.rounded-frame {
     .homepage-main-intro-text {
         flex-basis: 100%;
     }
+}
+
+.pill {
+    border-radius: 0.3em;
+    background: linear-gradient(180deg, rgba(187, 187, 187, .1) 0%, rgba(0, 0, 0, .1) 100%);
+    padding-left: .8em;
+    padding-right: .8em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    line-height: 1em;
+    font-weight: bolder;
+    font-size: small;
+}
+
+.pill.node {
+    background-color: #339933;
+    color: white;
+}
+
+.pill.swift {
+    background-color: #FA7343;
+    color: white;
+}
+
+.pill.js {
+    background-color: #f7df1e;
+    color: black;
 }
