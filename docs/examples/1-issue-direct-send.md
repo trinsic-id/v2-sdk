@@ -107,7 +107,7 @@ Let's look at some of the input fields for the `issueFromTemplate()` request.
 
 ### Send the credential
 
-Finally, we can just send the credentil to the user's wallet by specifying its email address. If you want to send an email notification that a credential has been sent to the user's wallet, just set `sendNotification` as true.
+Finally, we can just send the credential to the user's wallet by specifying its email address. If you want to send an email notification that a credential has been sent to the user's wallet, just set `sendNotification` to `true`.
 
 ```js
 await trinsic.credential().send({
