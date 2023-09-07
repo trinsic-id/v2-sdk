@@ -18,19 +18,19 @@ hide:
 
     [:octicons-arrow-right-24: See guide in Node.js](/examples/1-issue-direct-send)
 
--   __Issue directly and exchange using CHAPI__
+-   __Issue and exchange using CHAPI__
 
     ---
 
     Issue a credential directly at your backend and exchange the issued credential
-    with the user by utilizing the [Credential Handler API <small>:material-open-in-new:</small>](https://chapi.io) (CHAPI).
+    with the user by utilizing the [Credential Handler API <small>:material-open-in-new:</small>](https://chapi.io) (CHAPI) via browser.
 
     !!! info ""
 
         This example allows the user to choose which wallet they want to use to store their credential,
         interoperable with any wallet that supports CHAPI.
 
-    *Coming soon...*
+    [:octicons-arrow-right-24: Guide with Node.js API and browser](/examples/1-issue-direct-send)
 
 -   __Issue interactively and deliver out-of-band__
 
