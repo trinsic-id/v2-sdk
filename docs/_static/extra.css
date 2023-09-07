@@ -277,6 +277,7 @@ iframe.rounded-frame {
     line-height: 1em;
     font-weight: bolder;
     font-size: small;
+    text-shadow: 1px 1px 4px #0000008e;
 }
 
 .pill.node {
@@ -291,5 +292,5 @@ iframe.rounded-frame {
 
 .pill.js {
     background-color: #f7df1e;
-    color: black;
+    color: white;
 }

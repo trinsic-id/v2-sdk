@@ -46,11 +46,6 @@ and return the issued document as a respoinse to the API call. We will use the s
 ```js
 
 app.get('/api/issue', async (req, res) => {
-    const values = {
-        firstName: "John",
-        lastName: "Dough",
-        dateOfBirth: "1990-07-03T10:12:00Z",
-    };
 
     const issueResponse = await trinsic.credential().issueFromTemplate({
         templateId: "https://schema.trinsic.cloud/example/id-document",
@@ -79,3 +74,62 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'index.html'));
 });
 ```
+
+### Example web page
+
+Let's create an example web page `index.html`, reference and initialize the Credential Handler polyfill.
+
+```html
+    <script src="https://unpkg.com/credential-handler-polyfill@3/dist/credential-handler-polyfill.min.js"></script>
+
+    <script>
+      // initialize the credential handler polyfill when the page loads
+      window.addEventListener("load", async () => {
+        await credentialHandlerPolyfill.loadOnce();
+      });
+    </script>
+
+```
+
+Next, we'll attach an event to a button, call our API and pass the result to the CHAPI library using the `navigator.credentials.store()` function.
+
+```html
+<button id="issueButton">Issue Credential</button>
+
+<script>
+    document.getElementById("issueButton").addEventListener("click", async () => {
+        try {
+            // call API to issue credential
+            const response = await fetch("/api/issue");
+            const data = await response.json();
+
+            // wrap the credential in an unsigned VerifiablePresentation
+            const presentation = {
+                "@context": ["https://www.w3.org/2018/credentials/v1"],
+                type: "VerifiablePresentation",
+                verifiableCredential: [data],
+            };
+            const webCredential = new WebCredential("VerifiablePresentation", presentation, {
+                recommendedHandlerOrigins: ["https://example.connect.trinsic.cloud/"],
+            });
+
+            // invoke CHAPI to store the credential
+            const result = await navigator.credentials.store(webCredential);
+        } catch (error) {
+            document.getElementById("apiResponse").innerText = "Failed to call API";
+        }
+    });
+</script>
+```
+
+!!! note "Configure recommended wallet"
+
+    Make sure to update the `recommendedHandlerOrigins` property to match your ecosystem, so that users will be offered to use your ecosysystem as digital wallet, although they can choose to use any wallet that supports CHAPI.
+
+### Example source code
+
+You can find a working example and full source code in our GitHub repo:
+
+[https://github.com/trinsic-id/sdk-examples/tree/main/02-issue-chapi](https://github.com/trinsic-id/sdk-examples/tree/main/02-issue-chapi)
+
+Enjoy! 👋
