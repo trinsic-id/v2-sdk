@@ -51,7 +51,7 @@ In our platform, we distinguish between two types of issuances, each fulfilling 
 
 Once the Verifiable Credential (or Credential Offer) is created, it can be shared with the user. There are few different ways to approach this exchange:
 
-### Manually, using the Branded Studio
+### Send using an email or link
 
 :   If you want to manually issue a credential to a user using the Branded Studio, this method is the easiest and most useful.
     Simply log in to your studio (the URL can be found on the main Dashboard page) and navigate to the 'Issue' option in the left-hand menu.
@@ -61,11 +61,11 @@ Once the Verifiable Credential (or Credential Offer) is created, it can be share
 
         Use this method to send yourself a credential and get some test data in your wallet.
 
-<!--
-
-### Programmatically, using Credential Handler API (CHAPI)
+### Send credential using CHAPI
 
 TODO
+
+<!--
 
 ### Programmatically, using custom integration and Trinsic API
 

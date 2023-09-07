@@ -8,3 +8,4 @@ mkdocstrings-python-legacy
 mkdocs-autorefs
 markdown-fenced-code-tabs
 mkdocs-badges
+mkdocs-glightbox

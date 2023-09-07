@@ -20,21 +20,18 @@ hide:
     Quickly issue a credential directly at your backend and send the issued credential
     to the user's wallet by specifying an email address.
 
-    [:octicons-arrow-right-24: See guide in Node.js](/examples/1-issue-direct-send)
+    [:octicons-arrow-right-24: Guide in Node.js](/examples/1-issue-direct-send)
 
 -   __Issue and exchange using CHAPI__
 
     ---
 
+    <span class="pill node">Node.js</span> <span class="pill js">Browser</span>
+
     Issue a credential directly at your backend and exchange the issued credential
     with the user by utilizing the [Credential Handler API <small>:material-open-in-new:</small>](https://chapi.io) (CHAPI) via browser.
 
-    !!! info ""
-
-        This example allows the user to choose which wallet they want to use to store their credential,
-        interoperable with any wallet that supports CHAPI.
-
-    [:octicons-arrow-right-24: Guide with Node.js API and browser](/examples/1-issue-direct-send)
+    [:octicons-arrow-right-24: Guide in Node.js API and browser](/examples/2-issue-send-chapi)
 
 -   __Issue interactively and deliver out-of-band__
 
@@ -60,7 +57,7 @@ hide:
     This example shows how you can request a verifiable credential from the user
     directly from your native app in iOS or MacOS
 
-    [:octicons-arrow-right-24: See guide in Swift](/examples/2-verify-cred-swift)
+    [:octicons-arrow-right-24: Guide for iOS in Swift](/examples/3-verify-cred-swift)
 
 -   __Request Verifiable Credential on Android__
 
