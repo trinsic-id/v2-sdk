@@ -29,7 +29,7 @@ const trinsic = new TrinsicService({
 });
 ```
 
-(You can obtain Auth Token from the [Dashboard <small>:material-open-in-new:</small>](https://dashboard.trinsic.id){targer=_blank} by clicking on the View Auth Token button in the Home page.)
+(You can obtain an Auth Token from the [Dashboard <small>:material-open-in-new:</small>](https://dashboard.trinsic.id){targer=_blank} by clicking on the View Auth Token button in the Home page.)
 
 ### Issue credential from template
 
