@@ -72,13 +72,11 @@ export async function verifyCredential(
     const credential = await issueCredentialFromTemplate(trinsic);
 
     trinsic.options.authToken = allison.authToken;
-    const insertItemResponse = await trinsic
-        .wallet()
-        .insertItem(
-            InsertItemRequest.fromPartial({
-                itemJson: credential.documentJson,
-            }),
-        );
+    const insertItemResponse = await trinsic.wallet().insertItem(
+        InsertItemRequest.fromPartial({
+            itemJson: credential.documentJson,
+        }),
+    );
 
     trinsic.options.authToken = allison.authToken;
     const proofRequest = CreateProofRequest.fromPartial({
