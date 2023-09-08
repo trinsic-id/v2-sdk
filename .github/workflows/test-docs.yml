@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "docs/**/*"
+      - ".github/workflows/test-docs.yml"
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -62,7 +63,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
           echo "Deploying site ${{ env.DOCS_BRANCH_NAME }}"
-          netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./ --prod
+          netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./docs-site --prod
       - name: Get Changed Docs
         id: docsite
         run: |
