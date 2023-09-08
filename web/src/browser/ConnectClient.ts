@@ -38,6 +38,11 @@ export class ConnecClient {
 
         return result;
     }
+
+    public static async identityVerification(): Promise<any> {
+        console.log("not implemented");
+        return Promise.resolve({});
+    }
 }
 
 export interface IVerifiableCredentialRequest {
