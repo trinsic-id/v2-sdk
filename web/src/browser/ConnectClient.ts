@@ -1,9 +1,12 @@
 import { UserManager } from "oidc-client-ts";
 
-export class ConnecClient {
-    public static async requestVerifableCredential(
+export class ConnectClient {
+    public static async requestVerifiableCredential(
         request: IVerifiableCredentialRequest,
     ): Promise<any> {
+        if (!request || !request.ecosystem || !request.schema) {
+            throw new Error("ecosystem and schema are required");
+        }
         var config = {
             authority: "https://connect.trinsic.cloud/",
             client_id: "http://localhost:8080/",
