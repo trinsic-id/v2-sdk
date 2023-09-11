@@ -28,8 +28,7 @@ const getMobileDetect = (userAgent: string) => {
 };
 
 const CSSString = `
-
-  .modal__overlay {
+.modal__overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -106,41 +105,41 @@ const CSSString = `
 
   @keyframes mmfadeIn {
     0% {
-        opacity: 0
+      opacity: 0
     }
 
     to {
-        opacity: 1
+      opacity: 1
     }
   }
 
   @keyframes mmfadeOut {
     0% {
-        opacity: 1
+      opacity: 1
     }
 
     to {
-        opacity: 0
+      opacity: 0
     }
   }
 
   @keyframes mmslideIn {
     0% {
-        transform: translateY(15%)
+      transform: translateY(15%)
     }
 
     to {
-        transform: translateY(0)
+      transform: translateY(0)
     }
   }
 
   @keyframes mmslideOut {
     0% {
-        transform: translateY(0)
+      transform: translateY(0)
     }
 
     to {
-        transform: translateY(-10%)
+      transform: translateY(-10%)
     }
   }
 
@@ -223,6 +222,11 @@ const CSSString = `
 
   .w-full {
     width: 100%
+  }
+
+  .lock-bg {
+    overflow-y: hidden;
+    overflow-x: hidden;
   }
 
 
