@@ -234,13 +234,10 @@ const CSSString = `
 
 import MicroModal from "micromodal";
 
-export class ConnecClient {
+export class ConnectClient {
     public baseUrl: string;
 
-    constructor(
-        clientToken: string,
-        connectUrl: string = "https://connect.trinsic.cloud"
-    ) {
+    constructor(connectUrl: string = "https://connect.trinsic.cloud") {
         this.baseUrl = connectUrl;
         MicroModal.init();
 
@@ -282,7 +279,7 @@ export class ConnecClient {
         bgOverlay.className = "fixed inset-0 flex items-center justify-center";
 
         const modalContainer = document.createElement("div");
-        modalContainer.role = "dialog";
+        // modalContainer.role = "dialog";
         modalContainer.ariaModal = "true";
 
         modalContainer.className = mobileDetect.isDesktop
@@ -312,36 +309,40 @@ export class ConnecClient {
     public async identityVerification(clientToken: string): Promise<any> {
         this.showModal(clientToken);
 
-        window.addEventListener(
-            "message",
-            (event) => {
-                console.log("event data", event.data);
-                if (event.data?.success === true) {
-                    return Promise.resolve(event.data);
-                }
-                if (event.data?.success === false) {
-                    return Promise.reject(event.data);
-                }
-            },
-            false
-        );
+        var result = new Promise((resolve, reject) => {
+            window.addEventListener(
+                "message",
+                (event) => {
+                    console.log("event data", event.data);
+                    if (event.data?.success === true) {
+                        resolve(event.data);
+                    }
+                    if (event.data?.success === false) {
+                        reject(event.data);
+                    }
+                },
+                false,
+            );
 
-        window.addEventListener(
-            "message",
-            (event) => {
-                if (event.data === "connect-verification-success") {
-                    return Promise.resolve({ success: true });
-                }
-                if (event.data === "connect-verification-failed") {
-                    return Promise.reject({ success: false });
-                }
-            },
-            false
-        );
+            window.addEventListener(
+                "message",
+                (event) => {
+                    if (event.data === "connect-verification-success") {
+                        resolve({ success: true });
+                    }
+                    if (event.data === "connect-verification-failed") {
+                        reject({ success: false });
+                    }
+                },
+                false,
+            );
+        });
+
+        return result;
     }
 
     public static async requestVerifableCredential(
-        request: IVerifiableCredentialRequest
+        request: IVerifiableCredentialRequest,
     ): Promise<any> {
         if (!request || !request.ecosystem || !request.schema) {
             throw new Error("ecosystem and schema are required");
@@ -377,13 +378,11 @@ export class ConnecClient {
 
         var manager = new UserManager(config);
 
-        window.open("", "trinsic-oidc-window")?.addEventListener("message", (e) => {
+        window.addEventListener("message", (e) => {
             manager.signinPopupCallback();
         });
 
-        return await manager.signinPopup({
-            popupWindowTarget: "trinsic-oidc-window",
-        });
+        return await manager.signinPopup();
     }
 }
 
