@@ -17,7 +17,7 @@ export default defineConfig({
     plugins: [dts()],
     build: {
         lib: {
-            entry: path.resolve(__dirname, "index.browser.ts"),
+            entry: path.resolve(__dirname, "index.ts"),
             name: "Trinsic",
             formats: ["es", "umd"],
         },

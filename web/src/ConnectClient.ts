@@ -1,4 +1,4 @@
-import { UserManager } from "oidc-client-ts";
+import { UserManager, WebStorageStateStore } from "oidc-client-ts";
 
 export class ConnectClient {
     public async requestVerifiableCredential(
@@ -33,11 +33,18 @@ export class ConnectClient {
                 "trinsic:schema": request.schema,
                 "trinsic:mode": "popup",
             },
+            userStore: new WebStorageStateStore({ store: window.localStorage }),
         };
 
         var manager = new UserManager(config);
 
-        return await manager.signinPopup();
+        window.open("", "trinsic-oidc-window")?.addEventListener("message", (e) => {
+            manager.signinPopupCallback();
+        });
+
+        return await manager.signinPopup({
+            popupWindowTarget: "trinsic-oidc-window",
+        });
     }
 
     public async identityVerification(): Promise<any> {
