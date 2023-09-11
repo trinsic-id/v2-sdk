@@ -235,14 +235,12 @@ const CSSString = `
 import MicroModal from "micromodal";
 
 export class ConnecClient {
-    public clientToken: string;
     public baseUrl: string;
 
     constructor(
         clientToken: string,
         connectUrl: string = "https://connect.trinsic.cloud"
     ) {
-        this.clientToken = clientToken;
         this.baseUrl = connectUrl;
         MicroModal.init();
 
@@ -268,7 +266,7 @@ export class ConnecClient {
         trinsicConnect?.remove();
     };
 
-    public showModal = () => {
+    public showModal = (clientToken: string) => {
         this.removeModal();
 
         const mobileDetect = this.detectMobile();
@@ -294,7 +292,7 @@ export class ConnecClient {
         const iframe = document.createElement("iframe");
         iframe.className = "h-full w-full bg-transparent";
         iframe.allow = "camera *; microphone *; display-capture *";
-        iframe.src = `${this.baseUrl}/connect/verify?clientToken=${this.clientToken}`;
+        iframe.src = `${this.baseUrl}/connect/verify?clientToken=${clientToken}`;
 
         modalContainer.append(iframe);
         bgOverlay.append(modalContainer);
@@ -311,8 +309,8 @@ export class ConnecClient {
         this.removeModal();
     };
 
-    public async identityVerification(): Promise<any> {
-        this.showModal();
+    public async identityVerification(clientToken: string): Promise<any> {
+        this.showModal(clientToken);
 
         window.addEventListener(
             "message",
