@@ -1,4 +1,4 @@
-import { UserManager } from "oidc-client-ts";
+import { UserManager, WebStorageStateStore } from "oidc-client-ts";
 
 export interface MobileDetect {
     isMobile: boolean;
@@ -234,13 +234,10 @@ const CSSString = `
 
 import MicroModal from "micromodal";
 
-export class ConnecClient {
+export class ConnectClient {
     public baseUrl: string;
 
-    constructor(
-        clientToken: string,
-        connectUrl: string = "https://connect.trinsic.cloud"
-    ) {
+    constructor(connectUrl: string = "https://connect.trinsic.cloud") {
         this.baseUrl = connectUrl;
         MicroModal.init();
 
@@ -282,7 +279,7 @@ export class ConnecClient {
         bgOverlay.className = "fixed inset-0 flex items-center justify-center";
 
         const modalContainer = document.createElement("div");
-        modalContainer.role = "dialog";
+        // modalContainer.role = "dialog";
         modalContainer.ariaModal = "true";
 
         modalContainer.className = mobileDetect.isDesktop
@@ -312,37 +309,44 @@ export class ConnecClient {
     public async identityVerification(clientToken: string): Promise<any> {
         this.showModal(clientToken);
 
-        window.addEventListener(
-            "message",
-            (event) => {
-                console.log("event data", event.data);
-                if (event.data?.success === true) {
-                    return Promise.resolve(event.data);
-                }
-                if (event.data?.success === false) {
-                    return Promise.reject(event.data);
-                }
-            },
-            false
-        );
+        var result = new Promise((resolve, reject) => {
+            window.addEventListener(
+                "message",
+                (event) => {
+                    console.log("event data", event.data);
+                    if (event.data?.success === true) {
+                        resolve(event.data);
+                    }
+                    if (event.data?.success === false) {
+                        reject(event.data);
+                    }
+                },
+                false,
+            );
 
-        window.addEventListener(
-            "message",
-            (event) => {
-                if (event.data === "connect-verification-success") {
-                    return Promise.resolve({ success: true });
-                }
-                if (event.data === "connect-verification-failed") {
-                    return Promise.reject({ success: false });
-                }
-            },
-            false
-        );
+            window.addEventListener(
+                "message",
+                (event) => {
+                    if (event.data === "connect-verification-success") {
+                        resolve({ success: true });
+                    }
+                    if (event.data === "connect-verification-failed") {
+                        reject({ success: false });
+                    }
+                },
+                false,
+            );
+        });
+
+        return result;
     }
 
     public static async requestVerifableCredential(
-        request: IVerifiableCredentialRequest
+        request: IVerifiableCredentialRequest,
     ): Promise<any> {
+        if (!request || !request.ecosystem || !request.schema) {
+            throw new Error("ecosystem and schema are required");
+        }
         var config = {
             authority: "https://connect.trinsic.cloud/",
             client_id: "http://localhost:8080/",
@@ -366,16 +370,19 @@ export class ConnecClient {
 
             extraQueryParams: {
                 "trinsic:ecosystem": request.ecosystem,
-                "trinsic:schema": encodeURIComponent(request.schema),
+                "trinsic:schema": request.schema,
                 "trinsic:mode": "popup",
             },
+            userStore: new WebStorageStateStore({ store: window.localStorage }),
         };
 
         var manager = new UserManager(config);
 
-        var result = await manager.signinPopup();
+        window.addEventListener("message", (e) => {
+            manager.signinPopupCallback();
+        });
 
-        return result;
+        return await manager.signinPopup();
     }
 }
 

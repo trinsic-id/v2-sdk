@@ -1,6 +1,5 @@
 // Force polyfill to prevent React Native/Expo errors:
 import "@azure/core-asynciterator-polyfill";
-import "fastestsmallesttextencoderdecoder";
 
 import { WalletService } from "./WalletService";
 import { ProviderService } from "./ProviderService";
@@ -14,6 +13,7 @@ export * from "./proto/index";
 export * from "./providers";
 export * from "./FetchReactNativeTransport";
 export * from "./XHRTransport";
+export * from "./ConnectClient";
 
 export {
     TrinsicService,

@@ -1,17 +1,29 @@
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import path from "path";
 
 // https://vitejs.dev/config/
+// export default defineConfig({
+//     plugins: [dts()],
+//     build: {
+//         outDir: "dist",
+//         rollupOptions: {},
+//         sourcemap: true,
+//         target: "esnext",
+//     },
+// });
+
 export default defineConfig({
     plugins: [dts()],
     build: {
-        rollupOptions: {},
         lib: {
-            entry: "index.browser.ts",
-            name: "trinsic",
-            formats: ["umd", "es"],
+            entry: path.resolve(__dirname, "index.ts"),
+            name: "Trinsic",
+            formats: ["es", "umd"],
         },
-        sourcemap: true,
-        target: "es2020",
+        rollupOptions: {
+            // Make sure to externalize dependencies that shouldn't be bundled
+            // into your library
+        },
     },
 });

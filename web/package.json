@@ -3,26 +3,17 @@
     "version": "1.0.0",
     "description": "Node and Browser wrapper for the Trinsic services",
     "main": "lib/index.js",
-    "browser": "lib/index.browser.js",
     "types": "lib/index.d.ts",
     "files": [
         "lib/**/*",
         "dist/**/*"
     ],
-    "exports": {
-        ".": {
-            "import": {
-                "browser": "./lib/index.browser.js",
-                "default": "./lib/index.js"
-            },
-            "require": "./lib/index.js"
-        }
-    },
     "scripts": {
-        "build": "npm run build:proto && npm run build:typescript && npm run build:vite",
+        "build": "npm run build:proto && npm run build:typescript && npm run build:webpack",
         "build:proto": "pwsh Generate-Proto.ps1",
         "build:prettier": "npx prettier ./src ./test --write",
         "build:vite": "vite build",
+        "build:webpack": "webpack --mode production",
         "build:typescript": "npx tsc",
         "test:node": "jest --config .config/jest.config.cjs --no-cache",
         "test:browser": "karma start .config/karma.conf.cjs",
@@ -48,7 +39,6 @@
     "dependencies": {
         "@azure/core-asynciterator-polyfill": "1.0.2",
         "buffer": "6.0.3",
-        "fastestsmallesttextencoderdecoder": "1.0.22",
         "google-protobuf": "3.21.2",
         "js-base64": "3.7.5",
         "long": "5.2.3",
