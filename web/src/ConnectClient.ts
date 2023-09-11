@@ -1,7 +1,7 @@
 import { UserManager } from "oidc-client-ts";
 
 export class ConnectClient {
-    public static async requestVerifiableCredential(
+    public async requestVerifiableCredential(
         request: IVerifiableCredentialRequest,
     ): Promise<any> {
         if (!request || !request.ecosystem || !request.schema) {
@@ -30,19 +30,17 @@ export class ConnectClient {
 
             extraQueryParams: {
                 "trinsic:ecosystem": request.ecosystem,
-                "trinsic:schema": encodeURIComponent(request.schema),
+                "trinsic:schema": request.schema,
                 "trinsic:mode": "popup",
             },
         };
 
         var manager = new UserManager(config);
 
-        var result = await manager.signinPopup();
-
-        return result;
+        return await manager.signinPopup();
     }
 
-    public static async identityVerification(): Promise<any> {
+    public async identityVerification(): Promise<any> {
         console.log("not implemented");
         return Promise.resolve({});
     }

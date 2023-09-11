@@ -1,9 +1,8 @@
 {
     "name": "@trinsic/trinsic",
-    "version": "1.11.3-pre.5",
+    "version": "1.0.0",
     "description": "Node and Browser wrapper for the Trinsic services",
     "main": "lib/index.js",
-    "browser": "lib/index.browser.js",
     "types": "lib/index.d.ts",
     "files": [
         "lib/**/*",
@@ -40,10 +39,8 @@
     "dependencies": {
         "@azure/core-asynciterator-polyfill": "1.0.2",
         "buffer": "6.0.3",
-        "fastestsmallesttextencoderdecoder": "1.0.22",
         "google-protobuf": "3.21.2",
         "js-base64": "3.7.5",
-        "long": "5.2.3",
         "nice-grpc-web": "3.2.4",
         "oidc-client-ts": "2.2.5",
         "protobufjs": "7.2.4"
