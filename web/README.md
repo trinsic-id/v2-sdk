@@ -36,7 +36,7 @@ Install the following requirements:
 npm run build:proto
 ```
 
-After this, you can run `npm ci` and `npm build`.
+After this, you can run `npm ci` and `npm run build`.
 
 The build script will generate the proto files by running the `Generate-Proto.ps1` script. You can also run this script manually.
 
