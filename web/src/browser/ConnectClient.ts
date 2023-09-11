@@ -319,7 +319,7 @@ export class ConnecClient {
                     return Promise.resolve({ success: true });
                 }
                 if (event.data === "connect-verification-failed") {
-                    return Promise.resolve({ success: false });
+                    return Promise.reject({ success: false });
                 }
             },
             false
