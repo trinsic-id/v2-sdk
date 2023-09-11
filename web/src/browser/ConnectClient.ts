@@ -315,6 +315,20 @@ export class ConnecClient {
         window.addEventListener(
             "message",
             (event) => {
+                console.log("event data", event.data);
+                if (event.data?.success === true) {
+                    return Promise.resolve(event.data);
+                }
+                if (event.data?.success === false) {
+                    return Promise.reject(event.data);
+                }
+            },
+            false
+        );
+
+        window.addEventListener(
+            "message",
+            (event) => {
                 if (event.data === "connect-verification-success") {
                     return Promise.resolve({ success: true });
                 }
