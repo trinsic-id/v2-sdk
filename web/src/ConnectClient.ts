@@ -241,26 +241,31 @@ import MicroModal from "micromodal";
 export class ConnectClient {
     public baseUrl: string;
 
-    oidcConfig: OidcClientSettings = {
-        authority: "https://connect.trinsic.cloud/",
-        client_id: "http://localhost:8080/",
-        redirect_uri: "http://localhost:8080/",
-
-        response_type: "code",
-        scope: "openid",
-
-        extraQueryParams: {
-            "trinsic:ecosystem": "",
-            "trinsic:schema": "",
-            "trinsic:mode": "popup",
-        },
-        stateStore: new WebStorageStateStore({ store: window.localStorage }),
-    };
+    public oidcConfig: OidcClientSettings;
     oidcClient?: OidcClient;
     popupWindow?: Window | null;
 
     constructor(connectUrl: string = "https://connect.trinsic.cloud") {
         this.baseUrl = connectUrl;
+
+        this.oidcConfig = {
+            authority: this.baseUrl,
+            client_id: "http://localhost:8080/",
+            redirect_uri: "http://localhost:8080/",
+
+            response_type: "code",
+            scope: "openid",
+
+            extraQueryParams: {
+                "trinsic:ecosystem": "",
+                "trinsic:schema": "",
+                "trinsic:mode": "popup",
+            },
+            stateStore: new WebStorageStateStore({
+                store: window.localStorage,
+            }),
+        };
+
         MicroModal.init();
 
         const style = document.createElement("style");
@@ -270,8 +275,8 @@ export class ConnectClient {
 
         window.addEventListener("message", async (e) => {
             this.popupWindow?.close();
-            var response = await this.oidcClient!.processSigninResponse(
-                e.data.url,
+            var response = await this.oidcClient?.processSigninResponse(
+                e.data.url
             );
             this.processCallback(response);
         });
@@ -286,6 +291,11 @@ export class ConnectClient {
             isIos: mobileDetect.isIos(),
             isSSR: mobileDetect.isSSR(),
         };
+    };
+
+    public isConnectModalOpen = () => {
+        const trinsicConnect = document.getElementById("trinsic-connect");
+        return trinsicConnect !== null;
     };
 
     public removeModal = () => {
@@ -309,7 +319,7 @@ export class ConnectClient {
         bgOverlay.className = "fixed inset-0 flex items-center justify-center";
 
         const modalContainer = document.createElement("div");
-        // modalContainer.role = "dialog";
+        modalContainer.role = "dialog";
         modalContainer.ariaModal = "true";
 
         modalContainer.className = mobileDetect.isDesktop
@@ -326,7 +336,6 @@ export class ConnectClient {
         modal.append(bgOverlay);
         document.body.classList.add("lock-bg");
         document.body.append(modal);
-
         MicroModal.show("trinsic-connect");
     };
 
@@ -351,7 +360,7 @@ export class ConnectClient {
                         reject(event.data);
                     }
                 },
-                false,
+                false
             );
 
             window.addEventListener(
@@ -364,7 +373,7 @@ export class ConnectClient {
                         reject({ success: false });
                     }
                 },
-                false,
+                false
             );
         });
 
@@ -374,7 +383,7 @@ export class ConnectClient {
     processCallback = (response: any) => {};
 
     public async requestVerifiableCredential(
-        request: IVerifiableCredentialRequest,
+        request: IVerifiableCredentialRequest
     ): Promise<any> {
         if (!request || !request.ecosystem || !request.schema) {
             throw new Error("ecosystem and schema are required");
@@ -407,7 +416,7 @@ export class ConnectClient {
         const popup = window.open(
             url,
             "oidc-popup",
-            `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`,
+            `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`
         );
 
         // Check if the popup was blocked
