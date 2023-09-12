@@ -2348,9 +2348,10 @@
 <p>This service does not require the use of Trinsic's SDKs in the user's browser, and is therefore lightweight and easy to integrate.</p>
 <div class="admonition info">
 <p class="admonition-title">Credential Issuance</p>
-<p>Currently, Trinsic's OpenID Connect service only enables the sharing of a credential between holder and verifier. We plan to support issuance through this service at a later date.</p>
-<p>In the meantime, use the <a href="../../services/wallet-service/#insert-item">InsertItem</a> or <a href="../../services/credential-service/#send-via-email">Send</a> methods to store credentials in a holder's wallet.</p>
 </div>
+<p>Currently, Trinsic's OpenID Connect service only enables the sharing of a credential between holder and verifier. We plan to support issuance through this service at a later date.</p>
+<div class="highlight"><pre><span></span><code>In the meantime, use the [InsertItem](../services/wallet-service.md#insert-item) or [Send](../services/credential-service.md#send-via-email) methods to store credentials in a holder&#39;s wallet.
+</code></pre></div>
 <h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
 <h3 id="openid-connect-protocol">OpenID Connect Protocol<a class="headerlink" href="#openid-connect-protocol" title="Permanent link">&para;</a></h3>
 <p>Because this is an OpenID Connect service, any compliant library may be used -- as long as it enables you to specify additional custom query parameters on the initial outbound URL.</p>
@@ -2421,6 +2422,10 @@
 <td><code>trinsic:mode</code></td>
 <td><em>(Optional)</em> Can be <code>redirect</code> (default), <code>popup</code>, or <code>silent</code>.</td>
 </tr>
+<tr>
+<td><code>trinsic:verification_template_id</code></td>
+<td><em>(Optional)</em> ID of the verification template that will be used to perform the verifications. Format: <code>urn:template:&lt;ecosystem_name&gt;:&lt;verification_template_name&gt;</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="presentation-replays-and-id-tokens">Presentation Replays and ID Tokens<a class="headerlink" href="#presentation-replays-and-id-tokens" title="Permanent link">&para;</a></h3>
@@ -2462,30 +2467,33 @@
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Credential Format</p>
-<p>Note that the above data has been modified for brevity.</p>
-<p>The <code>@context</code> and <code>type</code> arrays will contain additional entries which are specific to the credential.</p>
 </div>
+<p>Note that the above data has been modified for brevity.</p>
+<div class="highlight"><pre><span></span><code>The `@context` and `type` arrays will contain additional entries which are specific to the credential.
+</code></pre></div>
 <h3 id="verify-the-received-proof">Verify the Received Proof<a class="headerlink" href="#verify-the-received-proof" title="Permanent link">&para;</a></h3>
 <p><code>vp_token</code> is a Verifiable Proof; before making use of its data, you must verify it.</p>
 <p>This proof can be verified with any library that supports VC verifications for BBS+ signatures. It can also be verified using Trinsic's SDK; this is as simple as <a href="../../services/credential-service/#verify-proof">passing the proof to the VerifyProof call</a>.</p>
 <p>If you specified a <code>nonce</code> in the authorization request, always verify that the <code>nonce</code> claim in the JWT ID token matches the similarly named value in the <code>_vp_token</code> document. You may find the nonce in the <code>_vp_token.proof.nonce</code> path in the JSON structure. Note that the value in this proof may be specified in base64 format, so you may need to reformat your nonce before comparing. If you specified the nonce as base64 in the request, the two values should match with direct string comparison.</p>
 <div class="admonition warning">
 <p class="admonition-title">Always Verify</p>
-<p>It may be tempting to simply take the data in <code>vp_token</code> and act upon it without first verifying the proof.</p>
-<p><strong>Always verify the proof</strong> before making use of its data.</p>
-<p>Without verification, the received proof is of no more value than an unsubstantiated claim made by your user.</p>
 </div>
+<p>It may be tempting to simply take the data in <code>vp_token</code> and act upon it without first verifying the proof.</p>
+<div class="highlight"><pre><span></span><code>**Always verify the proof** before making use of its data.
+
+Without verification, the received proof is of no more value than an unsubstantiated claim made by your user.
+</code></pre></div>
 <h2 id="displaying-linked-data-in-credentials">Displaying Linked Data in Credentials<a class="headerlink" href="#displaying-linked-data-in-credentials" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">SDK Only</p>
-<p>The following section presently only applies when using our SDK to create a Template; our Dashboard does not yet support the ability to specify field annotations.</p>
 </div>
+<p>The following section presently only applies when using our SDK to create a Template; our Dashboard does not yet support the ability to specify field annotations.</p>
 <p>Some credential template fields may be intended for URLs which resolve to images or any other data which cannot be directly embedded in a credential. For example, you may wish to include a URL to an image of a physical credential in its digital representation.</p>
 <p>By default, these will display to the holders in the OIDC flow as simple text fields containing the raw URL. However, the template can be configured to display these URLs as either inline embedded images, or convenient links to download the linked data.</p>
 <p>When creating or updating a Template:</p>
 <ul>
 <li>Choose the <code>URI</code> type for any Fields which are intended to contain URIs.</li>
-<li>Configure the <code>UriData</code> object on the Field</li>
+<li>Configure the <code>UriData</code> object on the Field<ul>
 <li>Set the <code>RenderMethod</code> property<ul>
 <li>If the field is intended to contain an image, use the value <code>INLINE_IMAGE</code>.</li>
 <li>Otherwise, use <code>LINK</code> for a clickable link, or <code>TEXT</code> to display the URI in raw form.</li>
@@ -2495,6 +2503,8 @@
 <li>Use the value <code>image</code> if the field is intended to contain a link to an image</li>
 <li>Otherwise, the value should be the expected MIME Type of the data<ul>
 <li>If you are unsure, use <code>application/octet-stream</code> as a catch-all</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
