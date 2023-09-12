@@ -319,7 +319,7 @@ export class ConnectClient {
         bgOverlay.className = "fixed inset-0 flex items-center justify-center";
 
         const modalContainer = document.createElement("div");
-        modalContainer.role = "dialog";
+        //modalContainer.role = "dialog";
         modalContainer.ariaModal = "true";
 
         modalContainer.className = mobileDetect.isDesktop
