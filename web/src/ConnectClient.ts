@@ -299,6 +299,7 @@ export class ConnectClient {
     };
 
     public removeModal = () => {
+        MicroModal.close("trinsic-connect");
         const trinsicConnect = document.getElementById("trinsic-connect");
         trinsicConnect?.remove();
     };
@@ -352,31 +353,19 @@ export class ConnectClient {
             window.addEventListener(
                 "message",
                 (event) => {
-                    console.log("event data", event.data);
+                    console.debug("event data", event.data);
                     if (event.data?.success === true) {
+                        this.removeModal();
                         resolve(event.data);
                     }
                     if (event.data?.success === false) {
+                        this.removeModal();
                         reject(event.data);
                     }
                 },
                 false
             );
-
-            window.addEventListener(
-                "message",
-                (event) => {
-                    if (event.data === "connect-verification-success") {
-                        resolve({ success: true });
-                    }
-                    if (event.data === "connect-verification-failed") {
-                        reject({ success: false });
-                    }
-                },
-                false
-            );
         });
-
         return result;
     }
 
