@@ -269,10 +269,10 @@ export class ConnectClient {
         document.head.appendChild(style);
 
         window.addEventListener("message", async (e) => {
+            this.popupWindow?.close();
             var response = await this.oidcClient!.processSigninResponse(
                 e.data.url,
             );
-            this.popupWindow?.close();
             this.processCallback(response);
         });
     }
