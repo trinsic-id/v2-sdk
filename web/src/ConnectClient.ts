@@ -398,8 +398,8 @@ export class ConnectClient {
 
     openPopup = (url: string) => {
         // Calculate the position
-        const w = 800;
-        const h = 1000;
+        const w = 600;
+        const h = 800;
         const left = window.screen.width / 2 - w / 2;
         const top = window.screen.height / 2 - h / 2;
 
@@ -422,19 +422,5 @@ export class ConnectClient {
 export interface IVerifiableCredentialRequest {
     ecosystem: string;
     schema: string;
-    // popupWindowFeatures?: PopupWindowFeatures;
+    verificationTemplateId?: string;
 }
-
-// export declare interface PopupWindowFeatures {
-//     left?: number;
-//     top?: number;
-//     width?: number;
-//     height?: number;
-//     menubar?: boolean | string;
-//     toolbar?: boolean | string;
-//     location?: boolean | string;
-//     status?: boolean | string;
-//     resizable?: boolean | string;
-//     scrollbars?: boolean | string;
-//     [k: string]: boolean | string | number | undefined;
-// }
