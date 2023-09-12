@@ -299,7 +299,6 @@ export class ConnectClient {
     };
 
     public removeModal = () => {
-        MicroModal.close("trinsic-connect");
         const trinsicConnect = document.getElementById("trinsic-connect");
         trinsicConnect?.remove();
     };
@@ -341,7 +340,9 @@ export class ConnectClient {
     };
 
     public hideModal = () => {
-        MicroModal.close("trinsic-connect");
+        try {
+            MicroModal.close("trinsic-connect");
+        } catch (err) {}
         document.body.classList.remove("lock-bg");
         this.removeModal();
     };
@@ -355,11 +356,11 @@ export class ConnectClient {
                 (event) => {
                     console.debug("event data", event.data);
                     if (event.data?.success === true) {
-                        this.removeModal();
+                        this.hideModal();
                         resolve(event.data);
                     }
                     if (event.data?.success === false) {
-                        this.removeModal();
+                        this.hideModal();
                         reject(event.data);
                     }
                 },
