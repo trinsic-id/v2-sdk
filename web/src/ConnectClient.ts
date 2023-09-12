@@ -1,4 +1,8 @@
-import { UserManager, WebStorageStateStore } from "oidc-client-ts";
+import {
+    WebStorageStateStore,
+    OidcClient,
+    OidcClientSettings,
+} from "oidc-client-ts";
 
 export interface MobileDetect {
     isMobile: boolean;
@@ -237,6 +241,24 @@ import MicroModal from "micromodal";
 export class ConnectClient {
     public baseUrl: string;
 
+    oidcConfig: OidcClientSettings = {
+        authority: "https://connect.trinsic.cloud/",
+        client_id: "http://localhost:8080/",
+        redirect_uri: "http://localhost:8080/",
+
+        response_type: "code",
+        scope: "openid",
+
+        extraQueryParams: {
+            "trinsic:ecosystem": "",
+            "trinsic:schema": "",
+            "trinsic:mode": "popup",
+        },
+        stateStore: new WebStorageStateStore({ store: window.localStorage }),
+    };
+    oidcClient?: OidcClient;
+    popupWindow?: Window | null;
+
     constructor(connectUrl: string = "https://connect.trinsic.cloud") {
         this.baseUrl = connectUrl;
         MicroModal.init();
@@ -245,6 +267,14 @@ export class ConnectClient {
         style.id = "trinsic-connect-style";
         style.textContent = CSSString;
         document.head.appendChild(style);
+
+        window.addEventListener("message", async (e) => {
+            var response = await this.oidcClient!.processSigninResponse(
+                e.data.url,
+            );
+            this.popupWindow?.close();
+            this.processCallback(response);
+        });
     }
 
     public detectMobile = (): MobileDetect => {
@@ -341,67 +371,70 @@ export class ConnectClient {
         return result;
     }
 
-    public static async requestVerifableCredential(
+    processCallback = (response: any) => {};
+
+    public async requestVerifiableCredential(
         request: IVerifiableCredentialRequest,
     ): Promise<any> {
         if (!request || !request.ecosystem || !request.schema) {
             throw new Error("ecosystem and schema are required");
         }
-        var config = {
-            authority: "https://connect.trinsic.cloud/",
-            client_id: "http://localhost:8080/",
-            redirect_uri: "http://localhost:8080/",
 
-            popupWindowFeatures: {
-                ...request.popupWindowFeatures,
-                ...{
-                    menubar: "yes",
-                    location: "yes",
-                    toolbar: "yes",
-                    width: 1200,
-                    height: 800,
-                    left: 100,
-                    top: 100,
-                    resizable: "yes",
-                },
-            },
-            response_type: "code",
-            scope: "openid",
+        const settings = { ...this.oidcConfig };
+        settings.extraQueryParams!["trinsic:ecosystem"] = request.ecosystem;
+        settings.extraQueryParams!["trinsic:schema"] = request.schema;
 
-            extraQueryParams: {
-                "trinsic:ecosystem": request.ecosystem,
-                "trinsic:schema": request.schema,
-                "trinsic:mode": "popup",
-            },
-            userStore: new WebStorageStateStore({ store: window.localStorage }),
-        };
+        this.oidcClient = new OidcClient(settings);
+        var authRequest = await this.oidcClient.createSigninRequest({});
 
-        var manager = new UserManager(config);
+        this.popupWindow = this.openPopup(authRequest.url);
 
-        window.addEventListener("message", (e) => {
-            manager.signinPopupCallback();
+        var result = new Promise((resolve, reject) => {
+            this.processCallback = resolve;
         });
 
-        return await manager.signinPopup();
+        return result;
     }
+
+    openPopup = (url: string) => {
+        // Calculate the position
+        const w = 800;
+        const h = 1000;
+        const left = window.screen.width / 2 - w / 2;
+        const top = window.screen.height / 2 - h / 2;
+
+        // Open the window
+        const popup = window.open(
+            url,
+            "oidc-popup",
+            `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`,
+        );
+
+        // Check if the popup was blocked
+        if (popup === null || typeof popup === "undefined") {
+            alert("Popup blocked, please enable popups and try again");
+        }
+
+        return popup;
+    };
 }
 
 export interface IVerifiableCredentialRequest {
     ecosystem: string;
     schema: string;
-    popupWindowFeatures?: PopupWindowFeatures;
+    // popupWindowFeatures?: PopupWindowFeatures;
 }
 
-export declare interface PopupWindowFeatures {
-    left?: number;
-    top?: number;
-    width?: number;
-    height?: number;
-    menubar?: boolean | string;
-    toolbar?: boolean | string;
-    location?: boolean | string;
-    status?: boolean | string;
-    resizable?: boolean | string;
-    scrollbars?: boolean | string;
-    [k: string]: boolean | string | number | undefined;
-}
+// export declare interface PopupWindowFeatures {
+//     left?: number;
+//     top?: number;
+//     width?: number;
+//     height?: number;
+//     menubar?: boolean | string;
+//     toolbar?: boolean | string;
+//     location?: boolean | string;
+//     status?: boolean | string;
+//     resizable?: boolean | string;
+//     scrollbars?: boolean | string;
+//     [k: string]: boolean | string | number | undefined;
+// }
