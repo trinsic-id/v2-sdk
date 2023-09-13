@@ -2481,10 +2481,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#createsessionresponse2" class="md-nav__link">
+  <a href="#createsessionresponse" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CreateSessionResponse2
+        CreateSessionResponse
       
     </span>
   </a>
@@ -2562,6 +2562,28 @@
     <span class="md-ellipsis">
       
         IDVSessionState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sessionfailcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessionFailCode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificationfailcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VerificationFailCode
       
     </span>
   </a>
@@ -5292,7 +5314,7 @@ DEPRECATED, will be removed June 1st 2023</p>
 <tr>
 <td>CreateSession</td>
 <td><a href="/reference/proto#services-connect-v1-CreateSessionRequest">CreateSessionRequest</a></td>
-<td><a href="/reference/proto#services-connect-v1-CreateSessionResponse2">CreateSessionResponse2</a></td>
+<td><a href="/reference/proto#services-connect-v1-CreateSessionResponse">CreateSessionResponse</a></td>
 <td>Create an IDVSession</td>
 </tr>
 <tr>
@@ -5368,8 +5390,8 @@ DEPRECATED, will be removed June 1st 2023</p>
 </tr>
 </tbody>
 </table>
-<p><a name="services-connect-v1-CreateSessionResponse2"></a></p>
-<h3 id="createsessionresponse2">CreateSessionResponse2<a class="headerlink" href="#createsessionresponse2" title="Permanent link">&para;</a></h3>
+<p><a name="services-connect-v1-CreateSessionResponse"></a></p>
+<h3 id="createsessionresponse">CreateSessionResponse<a class="headerlink" href="#createsessionresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>CreateIDVSessionRequest</code></p>
 <table>
 <thead>
@@ -5458,6 +5480,11 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>The actual Verifications to perform in this IDV flow</td>
 </tr>
 <tr>
+<td>fail_code</td>
+<td><a href="/reference/proto#services-connect-v1-SessionFailCode">SessionFailCode</a></td>
+<td>The reason for the IDVSession's failure. Only set if <code>state</code> is <code>IDV_FAILED</code>.</td>
+</tr>
+<tr>
 <td>result_vp</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>The resultant signed VP combining the results of all verifications</td>
@@ -5544,6 +5571,11 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>The state of the verification</td>
 </tr>
 <tr>
+<td>fail_code</td>
+<td><a href="/reference/proto#services-connect-v1-VerificationFailCode">VerificationFailCode</a></td>
+<td>The reason for the Verification's failure. Only set if <code>state</code> is <code>VERIFICATION_FAILED</code>.</td>
+</tr>
+<tr>
 <td>reused</td>
 <td><a href="/reference/proto#bool">bool</a></td>
 <td>Whether this was a reused (true) or fresh (false) verification. If <code>state</code> is not <code>VERIFICATION_SUCCESS</code>, this field is <code>false</code> and does not convey useful information.</td>
@@ -5600,24 +5632,87 @@ DEPRECATED, will be removed June 1st 2023</p>
 <td>Session was completed successfully and IDV data is available to RP</td>
 </tr>
 <tr>
-<td>IDV_USER_CANCELED</td>
-<td>5</td>
-<td>User explicitly canceled session / did not consent</td>
-</tr>
-<tr>
-<td>IDV_EXPIRED</td>
-<td>6</td>
-<td>Session was not completed within {X} timeframe from creation and expired</td>
-</tr>
-<tr>
-<td>IDV_RP_CANCELED</td>
-<td>7</td>
-<td>Relying Party canceled the session via the SDK</td>
-</tr>
-<tr>
 <td>IDV_FAILED</td>
-<td>8</td>
-<td>The user's identity was not deemed legitimate by the IDV</td>
+<td>5</td>
+<td>The session failed; reason is present in <code>fail_code</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-connect-v1-SessionFailCode"></a></p>
+<h3 id="sessionfailcode">SessionFailCode<a class="headerlink" href="#sessionfailcode" title="Permanent link">&para;</a></h3>
+<p>The specific reason an IDVSession is in the <code>Failed</code> state</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SESSION_FAIL_INTERNAL</td>
+<td>0</td>
+<td>An internal Trinsic error caused this session to fail</td>
+</tr>
+<tr>
+<td>SESSION_FAIL_VERIFICATION_FAILED</td>
+<td>1</td>
+<td>The session failed because one or more of the verifications failed. The reason for the failure is present in the <code>fail_reason</code> field of the relevant <code>Verification</code> object(s).</td>
+</tr>
+<tr>
+<td>SESSION_FAIL_AUTHENTICATION</td>
+<td>2</td>
+<td>The session failed because the user failed to authenticate with their phone number too many times.</td>
+</tr>
+<tr>
+<td>SESSION_FAIL_EXPIRED</td>
+<td>3</td>
+<td>The session expired</td>
+</tr>
+<tr>
+<td>SESSION_FAIL_USER_CANCELED</td>
+<td>4</td>
+<td>The user canceled / rejected the session</td>
+</tr>
+<tr>
+<td>SESSION_FAIL_RP_CANCELED</td>
+<td>5</td>
+<td>The RP canceled the session</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-connect-v1-VerificationFailCode"></a></p>
+<h3 id="verificationfailcode">VerificationFailCode<a class="headerlink" href="#verificationfailcode" title="Permanent link">&para;</a></h3>
+<p>The specific reason a Verification is in the <code>Failed</code> state</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VERIFICATION_FAIL_INTERNAL</td>
+<td>0</td>
+<td>An internal Trinsic error caused this verification to fail</td>
+</tr>
+<tr>
+<td>VERIFICATION_FAIL_INVALID_IMAGE</td>
+<td>1</td>
+<td>The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed.</td>
+</tr>
+<tr>
+<td>VERIFICATION_FAIL_INAUTHENTIC</td>
+<td>2</td>
+<td>The identity data/images provided are suspected to be inauthentic, fraudulent, or forged.</td>
+</tr>
+<tr>
+<td>VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT</td>
+<td>3</td>
+<td>The document provided is either of an unsupported type, or from an unsupported country.</td>
 </tr>
 </tbody>
 </table>
