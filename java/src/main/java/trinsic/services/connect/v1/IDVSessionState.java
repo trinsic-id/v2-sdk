@@ -68,42 +68,12 @@ public enum IDVSessionState implements com.google.protobuf.ProtocolMessageEnum {
    *
    *
    * <pre>
-   * User explicitly canceled session / did not consent
+   * The session failed; reason is present in `fail_code`.
    * </pre>
    *
-   * <code>IDV_USER_CANCELED = 5;</code>
+   * <code>IDV_FAILED = 5;</code>
    */
-  IDV_USER_CANCELED(5),
-  /**
-   *
-   *
-   * <pre>
-   * Session was not completed within {X} timeframe from creation and expired
-   * </pre>
-   *
-   * <code>IDV_EXPIRED = 6;</code>
-   */
-  IDV_EXPIRED(6),
-  /**
-   *
-   *
-   * <pre>
-   * Relying Party canceled the session via the SDK
-   * </pre>
-   *
-   * <code>IDV_RP_CANCELED = 7;</code>
-   */
-  IDV_RP_CANCELED(7),
-  /**
-   *
-   *
-   * <pre>
-   * The user's identity was not deemed legitimate by the IDV
-   * </pre>
-   *
-   * <code>IDV_FAILED = 8;</code>
-   */
-  IDV_FAILED(8),
+  IDV_FAILED(5),
   UNRECOGNIZED(-1),
   ;
 
@@ -162,42 +132,12 @@ public enum IDVSessionState implements com.google.protobuf.ProtocolMessageEnum {
    *
    *
    * <pre>
-   * User explicitly canceled session / did not consent
+   * The session failed; reason is present in `fail_code`.
    * </pre>
    *
-   * <code>IDV_USER_CANCELED = 5;</code>
+   * <code>IDV_FAILED = 5;</code>
    */
-  public static final int IDV_USER_CANCELED_VALUE = 5;
-  /**
-   *
-   *
-   * <pre>
-   * Session was not completed within {X} timeframe from creation and expired
-   * </pre>
-   *
-   * <code>IDV_EXPIRED = 6;</code>
-   */
-  public static final int IDV_EXPIRED_VALUE = 6;
-  /**
-   *
-   *
-   * <pre>
-   * Relying Party canceled the session via the SDK
-   * </pre>
-   *
-   * <code>IDV_RP_CANCELED = 7;</code>
-   */
-  public static final int IDV_RP_CANCELED_VALUE = 7;
-  /**
-   *
-   *
-   * <pre>
-   * The user's identity was not deemed legitimate by the IDV
-   * </pre>
-   *
-   * <code>IDV_FAILED = 8;</code>
-   */
-  public static final int IDV_FAILED_VALUE = 8;
+  public static final int IDV_FAILED_VALUE = 5;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -234,12 +174,6 @@ public enum IDVSessionState implements com.google.protobuf.ProtocolMessageEnum {
       case 4:
         return IDV_SUCCESS;
       case 5:
-        return IDV_USER_CANCELED;
-      case 6:
-        return IDV_EXPIRED;
-      case 7:
-        return IDV_RP_CANCELED;
-      case 8:
         return IDV_FAILED;
       default:
         return null;

@@ -3,9 +3,9 @@
 
 package trinsic.services.connect.v1;
 
-public interface CreateSessionResponse2OrBuilder
+public interface CreateSessionResponseOrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:services.connect.v1.CreateSessionResponse2)
+    // @@protoc_insertion_point(interface_extends:services.connect.v1.CreateSessionResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

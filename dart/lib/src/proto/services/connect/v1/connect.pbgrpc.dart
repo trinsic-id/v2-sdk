@@ -22,11 +22,11 @@ export 'connect.pb.dart';
 @$pb.GrpcServiceName('services.connect.v1.Connect')
 class ConnectClient extends $grpc.Client {
   static final _$createSession =
-      $grpc.ClientMethod<$3.CreateSessionRequest, $3.CreateSessionResponse2>(
+      $grpc.ClientMethod<$3.CreateSessionRequest, $3.CreateSessionResponse>(
           '/services.connect.v1.Connect/CreateSession',
           ($3.CreateSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $3.CreateSessionResponse2.fromBuffer(value));
+              $3.CreateSessionResponse.fromBuffer(value));
   static final _$cancelSession =
       $grpc.ClientMethod<$3.CancelSessionRequest, $3.CancelSessionResponse>(
           '/services.connect.v1.Connect/CancelSession',
@@ -45,7 +45,7 @@ class ConnectClient extends $grpc.Client {
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$3.CreateSessionResponse2> createSession(
+  $grpc.ResponseFuture<$3.CreateSessionResponse> createSession(
       $3.CreateSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createSession, request, options: options);
@@ -70,14 +70,14 @@ abstract class ConnectServiceBase extends $grpc.Service {
 
   ConnectServiceBase() {
     $addMethod(
-        $grpc.ServiceMethod<$3.CreateSessionRequest, $3.CreateSessionResponse2>(
+        $grpc.ServiceMethod<$3.CreateSessionRequest, $3.CreateSessionResponse>(
             'CreateSession',
             createSession_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
                 $3.CreateSessionRequest.fromBuffer(value),
-            ($3.CreateSessionResponse2 value) => value.writeToBuffer()));
+            ($3.CreateSessionResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$3.CancelSessionRequest, $3.CancelSessionResponse>(
             'CancelSession',
@@ -96,7 +96,7 @@ abstract class ConnectServiceBase extends $grpc.Service {
         ($3.GetSessionResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.CreateSessionResponse2> createSession_Pre(
+  $async.Future<$3.CreateSessionResponse> createSession_Pre(
       $grpc.ServiceCall call,
       $async.Future<$3.CreateSessionRequest> request) async {
     return createSession(call, await request);
@@ -113,7 +113,7 @@ abstract class ConnectServiceBase extends $grpc.Service {
     return getSession(call, await request);
   }
 
-  $async.Future<$3.CreateSessionResponse2> createSession(
+  $async.Future<$3.CreateSessionResponse> createSession(
       $grpc.ServiceCall call, $3.CreateSessionRequest request);
   $async.Future<$3.CancelSessionResponse> cancelSession(
       $grpc.ServiceCall call, $3.CancelSessionRequest request);

@@ -11,7 +11,7 @@ class ConnectServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(o
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/ConnectServiceKt.kt
 
   @Throws(InvalidProtocolBufferException::class)
-  suspend fun createSession(request: CreateSessionRequest): CreateSessionResponse2 {
+  suspend fun createSession(request: CreateSessionRequest): CreateSessionResponse {
     /** Create an IDVSession */
     return withMetadata(stub, request).createSession(request)
   }

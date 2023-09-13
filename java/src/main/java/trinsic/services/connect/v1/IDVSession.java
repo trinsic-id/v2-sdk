@@ -26,6 +26,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
     id_ = "";
     clientToken_ = "";
     state_ = 0;
+    failCode_ = 0;
     resultVp_ = "";
   }
 
@@ -312,7 +313,61 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
     return map.get(key);
   }
 
-  public static final int RESULT_VP_FIELD_NUMBER = 5;
+  public static final int FAIL_CODE_FIELD_NUMBER = 5;
+  private int failCode_;
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the IDVSession's failure.
+   * Only set if `state` is `IDV_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+   *
+   * @return Whether the failCode field is set.
+   */
+  @java.lang.Override
+  public boolean hasFailCode() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the IDVSession's failure.
+   * Only set if `state` is `IDV_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+   *
+   * @return The enum numeric value on the wire for failCode.
+   */
+  @java.lang.Override
+  public int getFailCodeValue() {
+    return failCode_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the IDVSession's failure.
+   * Only set if `state` is `IDV_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+   *
+   * @return The failCode.
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.SessionFailCode getFailCode() {
+    @SuppressWarnings("deprecation")
+    trinsic.services.connect.v1.SessionFailCode result =
+        trinsic.services.connect.v1.SessionFailCode.valueOf(failCode_);
+    return result == null ? trinsic.services.connect.v1.SessionFailCode.UNRECOGNIZED : result;
+  }
+
+  public static final int RESULT_VP_FIELD_NUMBER = 6;
   private volatile java.lang.Object resultVp_;
   /**
    *
@@ -321,13 +376,13 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
    * The resultant signed VP combining the results of all verifications
    * </pre>
    *
-   * <code>optional string result_vp = 5;</code>
+   * <code>optional string result_vp = 6;</code>
    *
    * @return Whether the resultVp field is set.
    */
   @java.lang.Override
   public boolean hasResultVp() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ((bitField0_ & 0x00000002) != 0);
   }
   /**
    *
@@ -336,7 +391,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
    * The resultant signed VP combining the results of all verifications
    * </pre>
    *
-   * <code>optional string result_vp = 5;</code>
+   * <code>optional string result_vp = 6;</code>
    *
    * @return The resultVp.
    */
@@ -359,7 +414,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
    * The resultant signed VP combining the results of all verifications
    * </pre>
    *
-   * <code>optional string result_vp = 5;</code>
+   * <code>optional string result_vp = 6;</code>
    *
    * @return The bytes for resultVp.
    */
@@ -376,7 +431,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
-  public static final int CREATED_FIELD_NUMBER = 6;
+  public static final int CREATED_FIELD_NUMBER = 7;
   private long created_;
   /**
    *
@@ -385,7 +440,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
    * The unix timestamp, in seconds, that this IDVSession was created
    * </pre>
    *
-   * <code>fixed64 created = 6;</code>
+   * <code>fixed64 created = 7;</code>
    *
    * @return The created.
    */
@@ -394,7 +449,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
     return created_;
   }
 
-  public static final int UPDATED_FIELD_NUMBER = 7;
+  public static final int UPDATED_FIELD_NUMBER = 8;
   private long updated_;
   /**
    *
@@ -403,7 +458,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
    * The unix timestamp, in seconds, that this IDVSession's `state` was last updated
    * </pre>
    *
-   * <code>fixed64 updated = 7;</code>
+   * <code>fixed64 updated = 8;</code>
    *
    * @return The updated.
    */
@@ -438,13 +493,16 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
     com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
         output, internalGetVerifications(), VerificationsDefaultEntryHolder.defaultEntry, 4);
     if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, resultVp_);
+      output.writeEnum(5, failCode_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, resultVp_);
     }
     if (created_ != 0L) {
-      output.writeFixed64(6, created_);
+      output.writeFixed64(7, created_);
     }
     if (updated_ != 0L) {
-      output.writeFixed64(7, updated_);
+      output.writeFixed64(8, updated_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -476,13 +534,16 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, verifications__);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, resultVp_);
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(5, failCode_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, resultVp_);
     }
     if (created_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(6, created_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(7, created_);
     }
     if (updated_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(7, updated_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(8, updated_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -503,6 +564,10 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
     if (!getClientToken().equals(other.getClientToken())) return false;
     if (state_ != other.state_) return false;
     if (!internalGetVerifications().equals(other.internalGetVerifications())) return false;
+    if (hasFailCode() != other.hasFailCode()) return false;
+    if (hasFailCode()) {
+      if (failCode_ != other.failCode_) return false;
+    }
     if (hasResultVp() != other.hasResultVp()) return false;
     if (hasResultVp()) {
       if (!getResultVp().equals(other.getResultVp())) return false;
@@ -529,6 +594,10 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
     if (!internalGetVerifications().getMap().isEmpty()) {
       hash = (37 * hash) + VERIFICATIONS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetVerifications().hashCode();
+    }
+    if (hasFailCode()) {
+      hash = (37 * hash) + FAIL_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + failCode_;
     }
     if (hasResultVp()) {
       hash = (37 * hash) + RESULT_VP_FIELD_NUMBER;
@@ -703,8 +772,10 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
       state_ = 0;
 
       internalGetMutableVerifications().clear();
-      resultVp_ = "";
+      failCode_ = 0;
       bitField0_ = (bitField0_ & ~0x00000002);
+      resultVp_ = "";
+      bitField0_ = (bitField0_ & ~0x00000004);
       created_ = 0L;
 
       updated_ = 0L;
@@ -745,6 +816,10 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
       result.verifications_.makeImmutable();
       if (((from_bitField0_ & 0x00000002) != 0)) {
         to_bitField0_ |= 0x00000001;
+      }
+      result.failCode_ = failCode_;
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        to_bitField0_ |= 0x00000002;
       }
       result.resultVp_ = resultVp_;
       result.created_ = created_;
@@ -811,8 +886,11 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
         setStateValue(other.getStateValue());
       }
       internalGetMutableVerifications().mergeFrom(other.internalGetVerifications());
+      if (other.hasFailCode()) {
+        setFailCode(other.getFailCode());
+      }
       if (other.hasResultVp()) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         resultVp_ = other.resultVp_;
         onChanged();
       }
@@ -879,24 +957,30 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
                     .put(verifications__.getKey(), verifications__.getValue());
                 break;
               } // case 34
-            case 42:
+            case 40:
               {
-                resultVp_ = input.readStringRequireUtf8();
+                failCode_ = input.readEnum();
                 bitField0_ |= 0x00000002;
                 break;
-              } // case 42
-            case 49:
+              } // case 40
+            case 50:
+              {
+                resultVp_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 50
+            case 57:
               {
                 created_ = input.readFixed64();
 
                 break;
-              } // case 49
-            case 57:
+              } // case 57
+            case 65:
               {
                 updated_ = input.readFixed64();
 
                 break;
-              } // case 57
+              } // case 65
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1393,6 +1477,118 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
+    private int failCode_ = 0;
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the IDVSession's failure.
+     * Only set if `state` is `IDV_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+     *
+     * @return Whether the failCode field is set.
+     */
+    @java.lang.Override
+    public boolean hasFailCode() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the IDVSession's failure.
+     * Only set if `state` is `IDV_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+     *
+     * @return The enum numeric value on the wire for failCode.
+     */
+    @java.lang.Override
+    public int getFailCodeValue() {
+      return failCode_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the IDVSession's failure.
+     * Only set if `state` is `IDV_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+     *
+     * @param value The enum numeric value on the wire for failCode to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFailCodeValue(int value) {
+      bitField0_ |= 0x00000002;
+      failCode_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the IDVSession's failure.
+     * Only set if `state` is `IDV_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+     *
+     * @return The failCode.
+     */
+    @java.lang.Override
+    public trinsic.services.connect.v1.SessionFailCode getFailCode() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.connect.v1.SessionFailCode result =
+          trinsic.services.connect.v1.SessionFailCode.valueOf(failCode_);
+      return result == null ? trinsic.services.connect.v1.SessionFailCode.UNRECOGNIZED : result;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the IDVSession's failure.
+     * Only set if `state` is `IDV_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+     *
+     * @param value The failCode to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFailCode(trinsic.services.connect.v1.SessionFailCode value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      bitField0_ |= 0x00000002;
+      failCode_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the IDVSession's failure.
+     * Only set if `state` is `IDV_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearFailCode() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      failCode_ = 0;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object resultVp_ = "";
     /**
      *
@@ -1401,12 +1597,12 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The resultant signed VP combining the results of all verifications
      * </pre>
      *
-     * <code>optional string result_vp = 5;</code>
+     * <code>optional string result_vp = 6;</code>
      *
      * @return Whether the resultVp field is set.
      */
     public boolean hasResultVp() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      *
@@ -1415,7 +1611,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The resultant signed VP combining the results of all verifications
      * </pre>
      *
-     * <code>optional string result_vp = 5;</code>
+     * <code>optional string result_vp = 6;</code>
      *
      * @return The resultVp.
      */
@@ -1437,7 +1633,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The resultant signed VP combining the results of all verifications
      * </pre>
      *
-     * <code>optional string result_vp = 5;</code>
+     * <code>optional string result_vp = 6;</code>
      *
      * @return The bytes for resultVp.
      */
@@ -1459,7 +1655,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The resultant signed VP combining the results of all verifications
      * </pre>
      *
-     * <code>optional string result_vp = 5;</code>
+     * <code>optional string result_vp = 6;</code>
      *
      * @param value The resultVp to set.
      * @return This builder for chaining.
@@ -1468,7 +1664,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
       if (value == null) {
         throw new NullPointerException();
       }
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000004;
       resultVp_ = value;
       onChanged();
       return this;
@@ -1480,12 +1676,12 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The resultant signed VP combining the results of all verifications
      * </pre>
      *
-     * <code>optional string result_vp = 5;</code>
+     * <code>optional string result_vp = 6;</code>
      *
      * @return This builder for chaining.
      */
     public Builder clearResultVp() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000004);
       resultVp_ = getDefaultInstance().getResultVp();
       onChanged();
       return this;
@@ -1497,7 +1693,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The resultant signed VP combining the results of all verifications
      * </pre>
      *
-     * <code>optional string result_vp = 5;</code>
+     * <code>optional string result_vp = 6;</code>
      *
      * @param value The bytes for resultVp to set.
      * @return This builder for chaining.
@@ -1507,7 +1703,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000004;
       resultVp_ = value;
       onChanged();
       return this;
@@ -1521,7 +1717,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, that this IDVSession was created
      * </pre>
      *
-     * <code>fixed64 created = 6;</code>
+     * <code>fixed64 created = 7;</code>
      *
      * @return The created.
      */
@@ -1536,7 +1732,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, that this IDVSession was created
      * </pre>
      *
-     * <code>fixed64 created = 6;</code>
+     * <code>fixed64 created = 7;</code>
      *
      * @param value The created to set.
      * @return This builder for chaining.
@@ -1554,7 +1750,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, that this IDVSession was created
      * </pre>
      *
-     * <code>fixed64 created = 6;</code>
+     * <code>fixed64 created = 7;</code>
      *
      * @return This builder for chaining.
      */
@@ -1573,7 +1769,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, that this IDVSession's `state` was last updated
      * </pre>
      *
-     * <code>fixed64 updated = 7;</code>
+     * <code>fixed64 updated = 8;</code>
      *
      * @return The updated.
      */
@@ -1588,7 +1784,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, that this IDVSession's `state` was last updated
      * </pre>
      *
-     * <code>fixed64 updated = 7;</code>
+     * <code>fixed64 updated = 8;</code>
      *
      * @param value The updated to set.
      * @return This builder for chaining.
@@ -1606,7 +1802,7 @@ public final class IDVSession extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, that this IDVSession's `state` was last updated
      * </pre>
      *
-     * <code>fixed64 updated = 7;</code>
+     * <code>fixed64 updated = 8;</code>
      *
      * @return This builder for chaining.
      */

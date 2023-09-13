@@ -26,7 +26,7 @@ type ConnectService interface {
 	// target: /home/runner/work/sdk/sdk/go/services/connect_service.go
 
 	// CreateSession  Create an IDVSession
-	CreateSession(userContext context.Context, request *connect.CreateSessionRequest) (*connect.CreateSessionResponse2, error)
+	CreateSession(userContext context.Context, request *connect.CreateSessionRequest) (*connect.CreateSessionResponse, error)
 	// CancelSession  Cancel an IDVSession
 	CancelSession(userContext context.Context, request *connect.CancelSessionRequest) (*connect.CancelSessionResponse, error)
 	// GetSession  Get an IDVSession
@@ -44,7 +44,7 @@ type connectBase struct {
 // target: /home/runner/work/sdk/sdk/go/services/connect_service.go
 
 // CreateSession  Create an IDVSession
-func (c *connectBase) CreateSession(userContext context.Context, request *connect.CreateSessionRequest) (*connect.CreateSessionResponse2, error) {
+func (c *connectBase) CreateSession(userContext context.Context, request *connect.CreateSessionRequest) (*connect.CreateSessionResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

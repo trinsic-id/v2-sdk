@@ -50,19 +50,8 @@ class IdvSessionState(betterproto.Enum):
     IDV_SUCCESS = 4
     """Session was completed successfully and IDV data is available to RP"""
 
-    IDV_USER_CANCELED = 5
-    """User explicitly canceled session / did not consent"""
-
-    IDV_EXPIRED = 6
-    """
-    Session was not completed within {X} timeframe from creation and expired
-    """
-
-    IDV_RP_CANCELED = 7
-    """Relying Party canceled the session via the SDK"""
-
-    IDV_FAILED = 8
-    """The user's identity was not deemed legitimate by the IDV"""
+    IDV_FAILED = 5
+    """The session failed; reason is present in `fail_code`."""
 
 
 class VerificationState(betterproto.Enum):
@@ -90,6 +79,60 @@ class VerificationState(betterproto.Enum):
     """This verification has failed"""
 
 
+class SessionFailCode(betterproto.Enum):
+    """The specific reason an IDVSession is in the `Failed` state"""
+
+    SESSION_FAIL_INTERNAL = 0
+    """An internal Trinsic error caused this session to fail"""
+
+    SESSION_FAIL_VERIFICATION_FAILED = 1
+    """
+    The session failed because one or more of the verifications failed. The
+    reason for the failure is present in the `fail_reason` field of the
+    relevant `Verification` object(s).
+    """
+
+    SESSION_FAIL_AUTHENTICATION = 2
+    """
+    The session failed because the user failed to authenticate with their phone
+    number too many times.
+    """
+
+    SESSION_FAIL_EXPIRED = 3
+    """The session expired"""
+
+    SESSION_FAIL_USER_CANCELED = 4
+    """The user canceled / rejected the session"""
+
+    SESSION_FAIL_RP_CANCELED = 5
+    """The RP canceled the session"""
+
+
+class VerificationFailCode(betterproto.Enum):
+    """The specific reason a Verification is in the `Failed` state"""
+
+    VERIFICATION_FAIL_INTERNAL = 0
+    """An internal Trinsic error caused this verification to fail"""
+
+    VERIFICATION_FAIL_INVALID_IMAGE = 1
+    """
+    The image(s) provided for this verification were either too low-quality,
+    not of the correct type, or otherwise unable to be processed.
+    """
+
+    VERIFICATION_FAIL_INAUTHENTIC = 2
+    """
+    The identity data/images provided are suspected to be inauthentic,
+    fraudulent, or forged.
+    """
+
+    VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT = 3
+    """
+    The document provided is either of an unsupported type, or from an
+    unsupported country.
+    """
+
+
 @dataclass(eq=False, repr=False)
 class IdvSession(betterproto.Message):
     """An Identity Verification Session"""
@@ -111,15 +154,23 @@ class IdvSession(betterproto.Message):
     )
     """The actual Verifications to perform in this IDV flow"""
 
+    fail_code: Optional["SessionFailCode"] = betterproto.enum_field(
+        5, optional=True, group="_fail_code"
+    )
+    """
+    The reason for the IDVSession's failure. Only set if `state` is
+    `IDV_FAILED`.
+    """
+
     result_vp: Optional[str] = betterproto.string_field(
-        5, optional=True, group="_result_vp"
+        6, optional=True, group="_result_vp"
     )
     """The resultant signed VP combining the results of all verifications"""
 
-    created: int = betterproto.fixed64_field(6)
+    created: int = betterproto.fixed64_field(7)
     """The unix timestamp, in seconds, that this IDVSession was created"""
 
-    updated: int = betterproto.fixed64_field(7)
+    updated: int = betterproto.fixed64_field(8)
     """
     The unix timestamp, in seconds, that this IDVSession's `state` was last
     updated
@@ -142,20 +193,28 @@ class Verification(betterproto.Message):
     state: "VerificationState" = betterproto.enum_field(3)
     """The state of the verification"""
 
-    reused: bool = betterproto.bool_field(4)
+    fail_code: Optional["VerificationFailCode"] = betterproto.enum_field(
+        4, optional=True, group="_fail_code"
+    )
+    """
+    The reason for the Verification's failure. Only set if `state` is
+    `VERIFICATION_FAILED`.
+    """
+
+    reused: bool = betterproto.bool_field(5)
     """
     Whether this was a reused (true) or fresh (false) verification. If `state`
     is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey
     useful information.
     """
 
-    begun: int = betterproto.fixed64_field(5)
+    begun: int = betterproto.fixed64_field(6)
     """
     The unix timestamp, in seconds, when this verification was begun by the
     user -- or `0` if not yet begun.
     """
 
-    updated: int = betterproto.fixed64_field(6)
+    updated: int = betterproto.fixed64_field(7)
     """
     The unix timestamp, in seconds, when this verification last changed state
     -- o
@@ -179,7 +238,7 @@ class RequestedVerification(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class CreateSessionResponse2(betterproto.Message):
+class CreateSessionResponse(betterproto.Message):
     """Response to `CreateIDVSessionRequest`"""
 
     session: "IdvSession" = betterproto.message_field(1)
@@ -225,11 +284,11 @@ class ConnectStub(betterproto.ServiceStub):
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["_MetadataLike"] = None,
-    ) -> "CreateSessionResponse2":
+    ) -> "CreateSessionResponse":
         return await self._unary_unary(
             "/services.connect.v1.Connect/CreateSession",
             create_session_request,
-            CreateSessionResponse2,
+            CreateSessionResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -271,7 +330,7 @@ class ConnectStub(betterproto.ServiceStub):
 class ConnectBase(ServiceBase):
     async def create_session(
         self, create_session_request: "CreateSessionRequest"
-    ) -> "CreateSessionResponse2":
+    ) -> "CreateSessionResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def cancel_session(
@@ -305,7 +364,7 @@ class ConnectBase(ServiceBase):
                 self.__rpc_create_session,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 CreateSessionRequest,
-                CreateSessionResponse2,
+                CreateSessionResponse,
             ),
             "/services.connect.v1.Connect/CancelSession": grpclib.const.Handler(
                 self.__rpc_cancel_session,
