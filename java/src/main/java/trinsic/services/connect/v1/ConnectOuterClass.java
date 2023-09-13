@@ -33,9 +33,9 @@ public final class ConnectOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_RequestedVerification_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_connect_v1_CreateSessionResponse2_descriptor;
+      internal_static_services_connect_v1_CreateSessionResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_connect_v1_CreateSessionResponse2_fieldAccessorTable;
+      internal_static_services_connect_v1_CreateSessionResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_connect_v1_CancelSessionRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -62,32 +62,38 @@ public final class ConnectOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n"
-          + "!services/connect/v1/connect.proto\022\023services.connect.v1\"\317\002\n\n"
+          + "!services/connect/v1/connect.proto\022\023services.connect.v1\"\233\003\n\n"
           + "IDVSession\022\n\n"
           + "\002id\030\001 \001(\t\022\024\n"
           + "\014client_token\030\002 \001(\t\0223\n"
           + "\005state\030\003 \001(\0162$.services.connect.v1.IDVSessionState\022I\n\r"
           + "verifications\030\004"
-          + " \003(\01322.services.connect.v1.IDVSession.VerificationsEntry\022\026\n"
-          + "\tresult_vp\030\005 \001(\tH\000\210\001\001\022\017\n"
-          + "\007created\030\006 \001(\006\022\017\n"
-          + "\007updated\030\007 \001(\006\032W\n"
+          + " \003(\01322.services.connect.v1.IDVSession.VerificationsEntry\022<\n"
+          + "\tfail_code\030\005"
+          + " \001(\0162$.services.connect.v1.SessionFailCodeH\000\210\001\001\022\026\n"
+          + "\tresult_vp\030\006 \001(\tH\001\210\001\001\022\017\n"
+          + "\007created\030\007 \001(\006\022\017\n"
+          + "\007updated\030\010 \001(\006\032W\n"
           + "\022VerificationsEntry\022\013\n"
           + "\003key\030\001 \001(\t\0220\n"
           + "\005value\030\002 \001(\0132!.services.connect.v1.Verification:\0028\001B\014\n\n"
-          + "_result_vp\"\266\001\n"
+          + "_fail_codeB\014\n\n"
+          + "_result_vp\"\207\002\n"
           + "\014Verification\022\n\n"
           + "\002id\030\001 \001(\t\0223\n"
           + "\004type\030\002 \001(\0162%.services.connect.v1.VerificationType\0225\n"
-          + "\005state\030\003 \001(\0162&.services.connect.v1.VerificationState\022\016\n"
-          + "\006reused\030\004 \001(\010\022\r\n"
-          + "\005begun\030\005 \001(\006\022\017\n"
-          + "\007updated\030\006 \001(\006\"Y\n"
+          + "\005state\030\003 \001(\0162&.services.connect.v1.VerificationState\022A\n"
+          + "\tfail_code\030\004"
+          + " \001(\0162).services.connect.v1.VerificationFailCodeH\000\210\001\001\022\016\n"
+          + "\006reused\030\005 \001(\010\022\r\n"
+          + "\005begun\030\006 \001(\006\022\017\n"
+          + "\007updated\030\007 \001(\006B\014\n\n"
+          + "_fail_code\"Y\n"
           + "\024CreateSessionRequest\022A\n\r"
           + "verifications\030\001 \003(\0132*.services.connect.v1.RequestedVerification\"L\n"
           + "\025RequestedVerification\0223\n"
-          + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\"J\n"
-          + "\026CreateSessionResponse2\0220\n"
+          + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\"I\n"
+          + "\025CreateSessionResponse\0220\n"
           + "\007session\030\001 \001(\0132\037.services.connect.v1.IDVSession\".\n"
           + "\024CancelSessionRequest\022\026\n"
           + "\016idv_session_id\030\001 \001(\t\"I\n"
@@ -98,32 +104,41 @@ public final class ConnectOuterClass {
           + "\022GetSessionResponse\0220\n"
           + "\007session\030\001 \001(\0132\037.services.connect.v1.IDVSession*%\n"
           + "\020VerificationType\022\021\n\r"
-          + "GOVERNMENT_ID\020\000*\300\001\n"
+          + "GOVERNMENT_ID\020\000*\203\001\n"
           + "\017IDVSessionState\022\017\n"
           + "\013IDV_CREATED\020\000\022\021\n\r"
           + "IDV_INITIATED\020\001\022\026\n"
           + "\022IDV_AUTHENTICATING\020\002\022\023\n"
           + "\017IDV_IN_PROGRESS\020\003\022\017\n"
-          + "\013IDV_SUCCESS\020\004\022\025\n"
-          + "\021IDV_USER_CANCELED\020\005\022\017\n"
-          + "\013IDV_EXPIRED\020\006\022\023\n"
-          + "\017IDV_RP_CANCELED\020\007\022\016\n\n"
-          + "IDV_FAILED\020\010*\232\001\n"
+          + "\013IDV_SUCCESS\020\004\022\016\n\n"
+          + "IDV_FAILED\020\005*\232\001\n"
           + "\021VerificationState\022\030\n"
           + "\024VERIFICATION_PENDING\020\000\022\036\n"
           + "\032VERIFICATION_PENDING_REUSE\020\001\022\030\n"
           + "\024VERIFICATION_STARTED\020\002\022\030\n"
           + "\024VERIFICATION_SUCCESS\020\003\022\027\n"
-          + "\023VERIFICATION_FAILED\020\0042\271\002\n"
-          + "\007Connect\022g\n\r"
-          + "CreateSession\022).services.connect.v1.CreateSession"
-          + "Request\032+.services.connect.v1.CreateSessionResponse2\022f\n\r"
-          + "CancelSession\022).services"
-          + ".connect.v1.CancelSessionRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
-          + "GetSession\022&.services.connect.v1.GetSess"
-          + "ionRequest\032\'.services.connect.v1.GetSessionResponseBZ\n"
-          + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/connect\252\002\033Trin"
-          + "sic.Services.Connect.V1b\006proto3"
+          + "\023VERIFICATION_FAILED\020\004*\313\001\n"
+          + "\017SessionFailCode\022\031\n"
+          + "\025SESSION_FAIL_INTERNAL\020\000\022$\n"
+          + " SESSION_FAIL_VERIFICATION_FAILED\020\001\022\037\n"
+          + "\033SESSION_FAIL_AUTHENTICATION\020\002\022\030\n"
+          + "\024SESSION_FAIL_EXPIRED\020\003\022\036\n"
+          + "\032SESSION_FAIL_USER_CANCELED\020\004\022\034\n"
+          + "\030SESSION_FAIL_RP_CANCELED\020\005*\252\001\n"
+          + "\024VerificationFailCode\022\036\n"
+          + "\032VERIFICATION_FAIL_INTERNAL\020\000\022#\n"
+          + "\037VERIFICATION_FAIL_INVALID_IMAGE\020\001\022!\n"
+          + "\035VERIFICATION_FAIL_INAUTHENTIC\020\002\022*\n"
+          + "&VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT\020\0032\270\002\n"
+          + "\007Connect\022f\n\r"
+          + "CreateSession\022).services.connect.v1.CreateSessionReques"
+          + "t\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
+          + "CancelSession\022).services.connec"
+          + "t.v1.CancelSessionRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
+          + "GetSession\022&.services.connect.v1.GetSessionRequ"
+          + "est\032\'.services.connect.v1.GetSessionResponseBZ\n"
+          + "\033trinsic.services.connect.v1P\001Z\033s"
+          + "ervices/connect/v1/connect\252\002\033Trinsic.Services.Connect.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -138,9 +153,11 @@ public final class ConnectOuterClass {
               "ClientToken",
               "State",
               "Verifications",
+              "FailCode",
               "ResultVp",
               "Created",
               "Updated",
+              "FailCode",
               "ResultVp",
             });
     internal_static_services_connect_v1_IDVSession_VerificationsEntry_descriptor =
@@ -157,7 +174,7 @@ public final class ConnectOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_Verification_descriptor,
             new java.lang.String[] {
-              "Id", "Type", "State", "Reused", "Begun", "Updated",
+              "Id", "Type", "State", "FailCode", "Reused", "Begun", "Updated", "FailCode",
             });
     internal_static_services_connect_v1_CreateSessionRequest_descriptor =
         getDescriptor().getMessageTypes().get(2);
@@ -175,11 +192,11 @@ public final class ConnectOuterClass {
             new java.lang.String[] {
               "Type",
             });
-    internal_static_services_connect_v1_CreateSessionResponse2_descriptor =
+    internal_static_services_connect_v1_CreateSessionResponse_descriptor =
         getDescriptor().getMessageTypes().get(4);
-    internal_static_services_connect_v1_CreateSessionResponse2_fieldAccessorTable =
+    internal_static_services_connect_v1_CreateSessionResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_connect_v1_CreateSessionResponse2_descriptor,
+            internal_static_services_connect_v1_CreateSessionResponse_descriptor,
             new java.lang.String[] {
               "Session",
             });

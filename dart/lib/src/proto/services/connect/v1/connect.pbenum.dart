@@ -41,14 +41,8 @@ class IDVSessionState extends $pb.ProtobufEnum {
       IDVSessionState._(3, _omitEnumNames ? '' : 'IDV_IN_PROGRESS');
   static const IDVSessionState IDV_SUCCESS =
       IDVSessionState._(4, _omitEnumNames ? '' : 'IDV_SUCCESS');
-  static const IDVSessionState IDV_USER_CANCELED =
-      IDVSessionState._(5, _omitEnumNames ? '' : 'IDV_USER_CANCELED');
-  static const IDVSessionState IDV_EXPIRED =
-      IDVSessionState._(6, _omitEnumNames ? '' : 'IDV_EXPIRED');
-  static const IDVSessionState IDV_RP_CANCELED =
-      IDVSessionState._(7, _omitEnumNames ? '' : 'IDV_RP_CANCELED');
   static const IDVSessionState IDV_FAILED =
-      IDVSessionState._(8, _omitEnumNames ? '' : 'IDV_FAILED');
+      IDVSessionState._(5, _omitEnumNames ? '' : 'IDV_FAILED');
 
   static const $core.List<IDVSessionState> values = <IDVSessionState>[
     IDV_CREATED,
@@ -56,9 +50,6 @@ class IDVSessionState extends $pb.ProtobufEnum {
     IDV_AUTHENTICATING,
     IDV_IN_PROGRESS,
     IDV_SUCCESS,
-    IDV_USER_CANCELED,
-    IDV_EXPIRED,
-    IDV_RP_CANCELED,
     IDV_FAILED,
   ];
 
@@ -96,6 +87,67 @@ class VerificationState extends $pb.ProtobufEnum {
   static VerificationState? valueOf($core.int value) => _byValue[value];
 
   const VerificationState._($core.int v, $core.String n) : super(v, n);
+}
+
+/// The specific reason an IDVSession is in the `Failed` state
+class SessionFailCode extends $pb.ProtobufEnum {
+  static const SessionFailCode SESSION_FAIL_INTERNAL =
+      SessionFailCode._(0, _omitEnumNames ? '' : 'SESSION_FAIL_INTERNAL');
+  static const SessionFailCode SESSION_FAIL_VERIFICATION_FAILED =
+      SessionFailCode._(
+          1, _omitEnumNames ? '' : 'SESSION_FAIL_VERIFICATION_FAILED');
+  static const SessionFailCode SESSION_FAIL_AUTHENTICATION =
+      SessionFailCode._(2, _omitEnumNames ? '' : 'SESSION_FAIL_AUTHENTICATION');
+  static const SessionFailCode SESSION_FAIL_EXPIRED =
+      SessionFailCode._(3, _omitEnumNames ? '' : 'SESSION_FAIL_EXPIRED');
+  static const SessionFailCode SESSION_FAIL_USER_CANCELED =
+      SessionFailCode._(4, _omitEnumNames ? '' : 'SESSION_FAIL_USER_CANCELED');
+  static const SessionFailCode SESSION_FAIL_RP_CANCELED =
+      SessionFailCode._(5, _omitEnumNames ? '' : 'SESSION_FAIL_RP_CANCELED');
+
+  static const $core.List<SessionFailCode> values = <SessionFailCode>[
+    SESSION_FAIL_INTERNAL,
+    SESSION_FAIL_VERIFICATION_FAILED,
+    SESSION_FAIL_AUTHENTICATION,
+    SESSION_FAIL_EXPIRED,
+    SESSION_FAIL_USER_CANCELED,
+    SESSION_FAIL_RP_CANCELED,
+  ];
+
+  static final $core.Map<$core.int, SessionFailCode> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static SessionFailCode? valueOf($core.int value) => _byValue[value];
+
+  const SessionFailCode._($core.int v, $core.String n) : super(v, n);
+}
+
+/// The specific reason a Verification is in the `Failed` state
+class VerificationFailCode extends $pb.ProtobufEnum {
+  static const VerificationFailCode VERIFICATION_FAIL_INTERNAL =
+      VerificationFailCode._(
+          0, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INTERNAL');
+  static const VerificationFailCode VERIFICATION_FAIL_INVALID_IMAGE =
+      VerificationFailCode._(
+          1, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INVALID_IMAGE');
+  static const VerificationFailCode VERIFICATION_FAIL_INAUTHENTIC =
+      VerificationFailCode._(
+          2, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INAUTHENTIC');
+  static const VerificationFailCode VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT =
+      VerificationFailCode._(
+          3, _omitEnumNames ? '' : 'VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT');
+
+  static const $core.List<VerificationFailCode> values = <VerificationFailCode>[
+    VERIFICATION_FAIL_INTERNAL,
+    VERIFICATION_FAIL_INVALID_IMAGE,
+    VERIFICATION_FAIL_INAUTHENTIC,
+    VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT,
+  ];
+
+  static final $core.Map<$core.int, VerificationFailCode> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static VerificationFailCode? valueOf($core.int value) => _byValue[value];
+
+  const VerificationFailCode._($core.int v, $core.String n) : super(v, n);
 }
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

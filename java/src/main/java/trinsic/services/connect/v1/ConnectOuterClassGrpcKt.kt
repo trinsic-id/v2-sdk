@@ -31,7 +31,7 @@ object ConnectGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = ConnectGrpc.getServiceDescriptor()
 
-  val createSessionMethod: MethodDescriptor<CreateSessionRequest, CreateSessionResponse2>
+  val createSessionMethod: MethodDescriptor<CreateSessionRequest, CreateSessionResponse>
     @JvmStatic get() = ConnectGrpc.getCreateSessionMethod()
 
   val cancelSessionMethod: MethodDescriptor<CancelSessionRequest, CancelSessionResponse>
@@ -66,7 +66,7 @@ object ConnectGrpcKt {
     suspend fun createSession(
         request: CreateSessionRequest,
         headers: Metadata = Metadata()
-    ): CreateSessionResponse2 =
+    ): CreateSessionResponse =
         unaryRpc(channel, ConnectGrpc.getCreateSessionMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -120,7 +120,7 @@ object ConnectGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun createSession(request: CreateSessionRequest): CreateSessionResponse2 =
+    open suspend fun createSession(request: CreateSessionRequest): CreateSessionResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.connect.v1.Connect.CreateSession is unimplemented"))

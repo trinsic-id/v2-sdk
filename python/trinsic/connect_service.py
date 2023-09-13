@@ -26,7 +26,7 @@ class ConnectService(ServiceBase):
 
     async def create_session(
         self, *, request: CreateSessionRequest
-    ) -> CreateSessionResponse2:
+    ) -> CreateSessionResponse:
         """Create an IDVSession"""
 
         return await self.client.create_session(

@@ -34,10 +34,7 @@ const IDVSessionState$json = {
     {'1': 'IDV_AUTHENTICATING', '2': 2},
     {'1': 'IDV_IN_PROGRESS', '2': 3},
     {'1': 'IDV_SUCCESS', '2': 4},
-    {'1': 'IDV_USER_CANCELED', '2': 5},
-    {'1': 'IDV_EXPIRED', '2': 6},
-    {'1': 'IDV_RP_CANCELED', '2': 7},
-    {'1': 'IDV_FAILED', '2': 8},
+    {'1': 'IDV_FAILED', '2': 5},
   ],
 };
 
@@ -45,8 +42,7 @@ const IDVSessionState$json = {
 final $typed_data.Uint8List iDVSessionStateDescriptor = $convert.base64Decode(
     'Cg9JRFZTZXNzaW9uU3RhdGUSDwoLSURWX0NSRUFURUQQABIRCg1JRFZfSU5JVElBVEVEEAESFg'
     'oSSURWX0FVVEhFTlRJQ0FUSU5HEAISEwoPSURWX0lOX1BST0dSRVNTEAMSDwoLSURWX1NVQ0NF'
-    'U1MQBBIVChFJRFZfVVNFUl9DQU5DRUxFRBAFEg8KC0lEVl9FWFBJUkVEEAYSEwoPSURWX1JQX0'
-    'NBTkNFTEVEEAcSDgoKSURWX0ZBSUxFRBAI');
+    'U1MQBBIOCgpJRFZfRkFJTEVEEAU=');
 
 @$core.Deprecated('Use verificationStateDescriptor instead')
 const VerificationState$json = {
@@ -65,6 +61,44 @@ final $typed_data.Uint8List verificationStateDescriptor = $convert.base64Decode(
     'ChFWZXJpZmljYXRpb25TdGF0ZRIYChRWRVJJRklDQVRJT05fUEVORElORxAAEh4KGlZFUklGSU'
     'NBVElPTl9QRU5ESU5HX1JFVVNFEAESGAoUVkVSSUZJQ0FUSU9OX1NUQVJURUQQAhIYChRWRVJJ'
     'RklDQVRJT05fU1VDQ0VTUxADEhcKE1ZFUklGSUNBVElPTl9GQUlMRUQQBA==');
+
+@$core.Deprecated('Use sessionFailCodeDescriptor instead')
+const SessionFailCode$json = {
+  '1': 'SessionFailCode',
+  '2': [
+    {'1': 'SESSION_FAIL_INTERNAL', '2': 0},
+    {'1': 'SESSION_FAIL_VERIFICATION_FAILED', '2': 1},
+    {'1': 'SESSION_FAIL_AUTHENTICATION', '2': 2},
+    {'1': 'SESSION_FAIL_EXPIRED', '2': 3},
+    {'1': 'SESSION_FAIL_USER_CANCELED', '2': 4},
+    {'1': 'SESSION_FAIL_RP_CANCELED', '2': 5},
+  ],
+};
+
+/// Descriptor for `SessionFailCode`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List sessionFailCodeDescriptor = $convert.base64Decode(
+    'Cg9TZXNzaW9uRmFpbENvZGUSGQoVU0VTU0lPTl9GQUlMX0lOVEVSTkFMEAASJAogU0VTU0lPTl'
+    '9GQUlMX1ZFUklGSUNBVElPTl9GQUlMRUQQARIfChtTRVNTSU9OX0ZBSUxfQVVUSEVOVElDQVRJ'
+    'T04QAhIYChRTRVNTSU9OX0ZBSUxfRVhQSVJFRBADEh4KGlNFU1NJT05fRkFJTF9VU0VSX0NBTk'
+    'NFTEVEEAQSHAoYU0VTU0lPTl9GQUlMX1JQX0NBTkNFTEVEEAU=');
+
+@$core.Deprecated('Use verificationFailCodeDescriptor instead')
+const VerificationFailCode$json = {
+  '1': 'VerificationFailCode',
+  '2': [
+    {'1': 'VERIFICATION_FAIL_INTERNAL', '2': 0},
+    {'1': 'VERIFICATION_FAIL_INVALID_IMAGE', '2': 1},
+    {'1': 'VERIFICATION_FAIL_INAUTHENTIC', '2': 2},
+    {'1': 'VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT', '2': 3},
+  ],
+};
+
+/// Descriptor for `VerificationFailCode`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List verificationFailCodeDescriptor = $convert.base64Decode(
+    'ChRWZXJpZmljYXRpb25GYWlsQ29kZRIeChpWRVJJRklDQVRJT05fRkFJTF9JTlRFUk5BTBAAEi'
+    'MKH1ZFUklGSUNBVElPTl9GQUlMX0lOVkFMSURfSU1BR0UQARIhCh1WRVJJRklDQVRJT05fRkFJ'
+    'TF9JTkFVVEhFTlRJQxACEioKJlZFUklGSUNBVElPTl9GQUlMX1VOU1VQUE9SVEVEX0RPQ1VNRU'
+    '5UEAM=');
 
 @$core.Deprecated('Use iDVSessionDescriptor instead')
 const IDVSession$json = {
@@ -89,19 +123,30 @@ const IDVSession$json = {
       '10': 'verifications'
     },
     {
-      '1': 'result_vp',
+      '1': 'fail_code',
       '3': 5,
       '4': 1,
-      '5': 9,
+      '5': 14,
+      '6': '.services.connect.v1.SessionFailCode',
       '9': 0,
+      '10': 'failCode',
+      '17': true
+    },
+    {
+      '1': 'result_vp',
+      '3': 6,
+      '4': 1,
+      '5': 9,
+      '9': 1,
       '10': 'resultVp',
       '17': true
     },
-    {'1': 'created', '3': 6, '4': 1, '5': 6, '10': 'created'},
-    {'1': 'updated', '3': 7, '4': 1, '5': 6, '10': 'updated'},
+    {'1': 'created', '3': 7, '4': 1, '5': 6, '10': 'created'},
+    {'1': 'updated', '3': 8, '4': 1, '5': 6, '10': 'updated'},
   ],
   '3': [IDVSession_VerificationsEntry$json],
   '8': [
+    {'1': '_fail_code'},
     {'1': '_result_vp'},
   ],
 };
@@ -128,11 +173,13 @@ final $typed_data.Uint8List iDVSessionDescriptor = $convert.base64Decode(
     'CgpJRFZTZXNzaW9uEg4KAmlkGAEgASgJUgJpZBIhCgxjbGllbnRfdG9rZW4YAiABKAlSC2NsaW'
     'VudFRva2VuEjoKBXN0YXRlGAMgASgOMiQuc2VydmljZXMuY29ubmVjdC52MS5JRFZTZXNzaW9u'
     'U3RhdGVSBXN0YXRlElgKDXZlcmlmaWNhdGlvbnMYBCADKAsyMi5zZXJ2aWNlcy5jb25uZWN0Ln'
-    'YxLklEVlNlc3Npb24uVmVyaWZpY2F0aW9uc0VudHJ5Ug12ZXJpZmljYXRpb25zEiAKCXJlc3Vs'
-    'dF92cBgFIAEoCUgAUghyZXN1bHRWcIgBARIYCgdjcmVhdGVkGAYgASgGUgdjcmVhdGVkEhgKB3'
-    'VwZGF0ZWQYByABKAZSB3VwZGF0ZWQaYwoSVmVyaWZpY2F0aW9uc0VudHJ5EhAKA2tleRgBIAEo'
-    'CVIDa2V5EjcKBXZhbHVlGAIgASgLMiEuc2VydmljZXMuY29ubmVjdC52MS5WZXJpZmljYXRpb2'
-    '5SBXZhbHVlOgI4AUIMCgpfcmVzdWx0X3Zw');
+    'YxLklEVlNlc3Npb24uVmVyaWZpY2F0aW9uc0VudHJ5Ug12ZXJpZmljYXRpb25zEkYKCWZhaWxf'
+    'Y29kZRgFIAEoDjIkLnNlcnZpY2VzLmNvbm5lY3QudjEuU2Vzc2lvbkZhaWxDb2RlSABSCGZhaW'
+    'xDb2RliAEBEiAKCXJlc3VsdF92cBgGIAEoCUgBUghyZXN1bHRWcIgBARIYCgdjcmVhdGVkGAcg'
+    'ASgGUgdjcmVhdGVkEhgKB3VwZGF0ZWQYCCABKAZSB3VwZGF0ZWQaYwoSVmVyaWZpY2F0aW9uc0'
+    'VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjcKBXZhbHVlGAIgASgLMiEuc2VydmljZXMuY29ubmVj'
+    'dC52MS5WZXJpZmljYXRpb25SBXZhbHVlOgI4AUIMCgpfZmFpbF9jb2RlQgwKCl9yZXN1bHRfdn'
+    'A=');
 
 @$core.Deprecated('Use verificationDescriptor instead')
 const Verification$json = {
@@ -155,9 +202,22 @@ const Verification$json = {
       '6': '.services.connect.v1.VerificationState',
       '10': 'state'
     },
-    {'1': 'reused', '3': 4, '4': 1, '5': 8, '10': 'reused'},
-    {'1': 'begun', '3': 5, '4': 1, '5': 6, '10': 'begun'},
-    {'1': 'updated', '3': 6, '4': 1, '5': 6, '10': 'updated'},
+    {
+      '1': 'fail_code',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.services.connect.v1.VerificationFailCode',
+      '9': 0,
+      '10': 'failCode',
+      '17': true
+    },
+    {'1': 'reused', '3': 5, '4': 1, '5': 8, '10': 'reused'},
+    {'1': 'begun', '3': 6, '4': 1, '5': 6, '10': 'begun'},
+    {'1': 'updated', '3': 7, '4': 1, '5': 6, '10': 'updated'},
+  ],
+  '8': [
+    {'1': '_fail_code'},
   ],
 };
 
@@ -165,9 +225,10 @@ const Verification$json = {
 final $typed_data.Uint8List verificationDescriptor = $convert.base64Decode(
     'CgxWZXJpZmljYXRpb24SDgoCaWQYASABKAlSAmlkEjkKBHR5cGUYAiABKA4yJS5zZXJ2aWNlcy'
     '5jb25uZWN0LnYxLlZlcmlmaWNhdGlvblR5cGVSBHR5cGUSPAoFc3RhdGUYAyABKA4yJi5zZXJ2'
-    'aWNlcy5jb25uZWN0LnYxLlZlcmlmaWNhdGlvblN0YXRlUgVzdGF0ZRIWCgZyZXVzZWQYBCABKA'
-    'hSBnJldXNlZBIUCgViZWd1bhgFIAEoBlIFYmVndW4SGAoHdXBkYXRlZBgGIAEoBlIHdXBkYXRl'
-    'ZA==');
+    'aWNlcy5jb25uZWN0LnYxLlZlcmlmaWNhdGlvblN0YXRlUgVzdGF0ZRJLCglmYWlsX2NvZGUYBC'
+    'ABKA4yKS5zZXJ2aWNlcy5jb25uZWN0LnYxLlZlcmlmaWNhdGlvbkZhaWxDb2RlSABSCGZhaWxD'
+    'b2RliAEBEhYKBnJldXNlZBgFIAEoCFIGcmV1c2VkEhQKBWJlZ3VuGAYgASgGUgViZWd1bhIYCg'
+    'd1cGRhdGVkGAcgASgGUgd1cGRhdGVkQgwKCl9mYWlsX2NvZGU=');
 
 @$core.Deprecated('Use createSessionRequestDescriptor instead')
 const CreateSessionRequest$json = {
@@ -209,9 +270,9 @@ final $typed_data.Uint8List requestedVerificationDescriptor = $convert.base64Dec
     'ChVSZXF1ZXN0ZWRWZXJpZmljYXRpb24SOQoEdHlwZRgBIAEoDjIlLnNlcnZpY2VzLmNvbm5lY3'
     'QudjEuVmVyaWZpY2F0aW9uVHlwZVIEdHlwZQ==');
 
-@$core.Deprecated('Use createSessionResponse2Descriptor instead')
-const CreateSessionResponse2$json = {
-  '1': 'CreateSessionResponse2',
+@$core.Deprecated('Use createSessionResponseDescriptor instead')
+const CreateSessionResponse$json = {
+  '1': 'CreateSessionResponse',
   '2': [
     {
       '1': 'session',
@@ -224,11 +285,10 @@ const CreateSessionResponse2$json = {
   ],
 };
 
-/// Descriptor for `CreateSessionResponse2`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createSessionResponse2Descriptor =
-    $convert.base64Decode(
-        'ChZDcmVhdGVTZXNzaW9uUmVzcG9uc2UyEjkKB3Nlc3Npb24YASABKAsyHy5zZXJ2aWNlcy5jb2'
-        '5uZWN0LnYxLklEVlNlc3Npb25SB3Nlc3Npb24=');
+/// Descriptor for `CreateSessionResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createSessionResponseDescriptor = $convert.base64Decode(
+    'ChVDcmVhdGVTZXNzaW9uUmVzcG9uc2USOQoHc2Vzc2lvbhgBIAEoCzIfLnNlcnZpY2VzLmNvbm'
+    '5lY3QudjEuSURWU2Vzc2lvblIHc2Vzc2lvbg==');
 
 @$core.Deprecated('Use cancelSessionRequestDescriptor instead')
 const CancelSessionRequest$json = {

@@ -87,11 +87,51 @@ public interface VerificationOrBuilder
    *
    *
    * <pre>
+   * The reason for the Verification's failure.
+   * Only set if `state` is `VERIFICATION_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+   *
+   * @return Whether the failCode field is set.
+   */
+  boolean hasFailCode();
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the Verification's failure.
+   * Only set if `state` is `VERIFICATION_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+   *
+   * @return The enum numeric value on the wire for failCode.
+   */
+  int getFailCodeValue();
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the Verification's failure.
+   * Only set if `state` is `VERIFICATION_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+   *
+   * @return The failCode.
+   */
+  trinsic.services.connect.v1.VerificationFailCode getFailCode();
+
+  /**
+   *
+   *
+   * <pre>
    * Whether this was a reused (true) or fresh (false) verification.
    * If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
    * </pre>
    *
-   * <code>bool reused = 4;</code>
+   * <code>bool reused = 5;</code>
    *
    * @return The reused.
    */
@@ -105,7 +145,7 @@ public interface VerificationOrBuilder
    * by the user -- or `0` if not yet begun.
    * </pre>
    *
-   * <code>fixed64 begun = 5;</code>
+   * <code>fixed64 begun = 6;</code>
    *
    * @return The begun.
    */
@@ -118,7 +158,7 @@ public interface VerificationOrBuilder
    * The unix timestamp, in seconds, when this verification last changed state -- o
    * </pre>
    *
-   * <code>fixed64 updated = 6;</code>
+   * <code>fixed64 updated = 7;</code>
    *
    * @return The updated.
    */

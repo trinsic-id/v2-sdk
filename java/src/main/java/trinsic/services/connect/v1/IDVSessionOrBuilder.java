@@ -148,10 +148,50 @@ public interface IDVSessionOrBuilder
    *
    *
    * <pre>
+   * The reason for the IDVSession's failure.
+   * Only set if `state` is `IDV_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+   *
+   * @return Whether the failCode field is set.
+   */
+  boolean hasFailCode();
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the IDVSession's failure.
+   * Only set if `state` is `IDV_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+   *
+   * @return The enum numeric value on the wire for failCode.
+   */
+  int getFailCodeValue();
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the IDVSession's failure.
+   * Only set if `state` is `IDV_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.SessionFailCode fail_code = 5;</code>
+   *
+   * @return The failCode.
+   */
+  trinsic.services.connect.v1.SessionFailCode getFailCode();
+
+  /**
+   *
+   *
+   * <pre>
    * The resultant signed VP combining the results of all verifications
    * </pre>
    *
-   * <code>optional string result_vp = 5;</code>
+   * <code>optional string result_vp = 6;</code>
    *
    * @return Whether the resultVp field is set.
    */
@@ -163,7 +203,7 @@ public interface IDVSessionOrBuilder
    * The resultant signed VP combining the results of all verifications
    * </pre>
    *
-   * <code>optional string result_vp = 5;</code>
+   * <code>optional string result_vp = 6;</code>
    *
    * @return The resultVp.
    */
@@ -175,7 +215,7 @@ public interface IDVSessionOrBuilder
    * The resultant signed VP combining the results of all verifications
    * </pre>
    *
-   * <code>optional string result_vp = 5;</code>
+   * <code>optional string result_vp = 6;</code>
    *
    * @return The bytes for resultVp.
    */
@@ -188,7 +228,7 @@ public interface IDVSessionOrBuilder
    * The unix timestamp, in seconds, that this IDVSession was created
    * </pre>
    *
-   * <code>fixed64 created = 6;</code>
+   * <code>fixed64 created = 7;</code>
    *
    * @return The created.
    */
@@ -201,7 +241,7 @@ public interface IDVSessionOrBuilder
    * The unix timestamp, in seconds, that this IDVSession's `state` was last updated
    * </pre>
    *
-   * <code>fixed64 updated = 7;</code>
+   * <code>fixed64 updated = 8;</code>
    *
    * @return The updated.
    */

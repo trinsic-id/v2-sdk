@@ -4,1181 +4,1053 @@ import _m0 from "protobufjs/minimal";
 
 /** Contains information about a file stored in Trinsic's CDN */
 export interface File {
-    /** ID of file, generated randomly by Trinsic on upload */
-    id?: string | undefined;
-    /** Wallet ID of uploader */
-    uploaderId?: string | undefined;
-    /** Size, in bytes, of file */
-    size?: number | undefined;
-    /** Uploader-provided MIME type of file */
-    mimeType?: string | undefined;
-    /** ISO 8601 timestamp of when file was uploaded to Trinsic */
-    uploaded?: string | undefined;
-    /** CDN URL of file */
-    url?: string | undefined;
+  /** ID of file, generated randomly by Trinsic on upload */
+  id?:
+    | string
+    | undefined;
+  /** Wallet ID of uploader */
+  uploaderId?:
+    | string
+    | undefined;
+  /** Size, in bytes, of file */
+  size?:
+    | number
+    | undefined;
+  /** Uploader-provided MIME type of file */
+  mimeType?:
+    | string
+    | undefined;
+  /** ISO 8601 timestamp of when file was uploaded to Trinsic */
+  uploaded?:
+    | string
+    | undefined;
+  /** CDN URL of file */
+  url?: string | undefined;
 }
 
 /** Represents aggregate statistics of all files uploaded by a single issuer */
 export interface StorageStats {
-    /** Number of files uploaded by this account */
-    numFiles?: number | undefined;
-    /** Sum total size of all files, in bytes */
-    totalSize?: number | undefined;
+  /** Number of files uploaded by this account */
+  numFiles?:
+    | number
+    | undefined;
+  /** Sum total size of all files, in bytes */
+  totalSize?: number | undefined;
 }
 
 /** Request to upload a file to Trinsic's CDN */
 export interface UploadFileRequest {
-    /** Raw content of file */
-    contents?: Uint8Array | undefined;
-    /** MIME type describing file contents */
-    mimeType?: string | undefined;
+  /** Raw content of file */
+  contents?:
+    | Uint8Array
+    | undefined;
+  /** MIME type describing file contents */
+  mimeType?: string | undefined;
 }
 
 /** Response to `UploadFileRequest` */
 export interface UploadFileResponse {
-    /** Information about newly-uploaded file */
-    uploadedFile?: File | undefined;
+  /** Information about newly-uploaded file */
+  uploadedFile?: File | undefined;
 }
 
 /** Request to fetch information about a stored file */
 export interface GetFileRequest {
-    /** ID of file to fetch */
-    id?: string | undefined;
+  /** ID of file to fetch */
+  id?: string | undefined;
 }
 
 /** Response to `GetFileRequest` */
 export interface GetFileResponse {
-    /** File specified by `id` parameter of `GetFileRequest`. */
-    file?: File | undefined;
+  /** File specified by `id` parameter of `GetFileRequest`. */
+  file?: File | undefined;
 }
 
 /** Request to delete a file from Trinsic's CDN by ID */
 export interface DeleteFileRequest {
-    /** ID of file to delete */
-    id?: string | undefined;
+  /** ID of file to delete */
+  id?: string | undefined;
 }
 
 /** Response to `DeleteFileRequest`. Empty payload. */
-export interface DeleteFileResponse {}
+export interface DeleteFileResponse {
+}
 
 /** Request to list files */
 export interface ListFilesRequest {
-    /** Query to search with. If not specified, will return the most recent 100 files. */
-    query?: string | undefined;
-    /**
-     * Token provided by previous `ListFilesRequest`
-     * if more data is available for query
-     */
-    continuationToken?: string | undefined;
+  /** Query to search with. If not specified, will return the most recent 100 files. */
+  query?:
+    | string
+    | undefined;
+  /**
+   * Token provided by previous `ListFilesRequest`
+   * if more data is available for query
+   */
+  continuationToken?: string | undefined;
 }
 
 /** Response to `ListFilesRequest` */
 export interface ListFilesResponse {
-    /** Files found by query */
-    files?: File[] | undefined;
-    /** Whether more results are available for this query via `continuation_token` */
-    hasMoreResults?: boolean | undefined;
-    /** Token to fetch next set of results via `ListFilesRequest` */
-    continuationToken?: string | undefined;
+  /** Files found by query */
+  files?:
+    | File[]
+    | undefined;
+  /** Whether more results are available for this query via `continuation_token` */
+  hasMoreResults?:
+    | boolean
+    | undefined;
+  /** Token to fetch next set of results via `ListFilesRequest` */
+  continuationToken?: string | undefined;
 }
 
 /** Request to get statistics about files uploaded by this account */
-export interface GetStorageStatsRequest {}
+export interface GetStorageStatsRequest {
+}
 
 /** Response to `GetStorageStatsRequest` */
 export interface GetStorageStatsResponse {
-    /** Statistics about files uploaded by the calling account */
-    stats?: StorageStats | undefined;
+  /** Statistics about files uploaded by the calling account */
+  stats?: StorageStats | undefined;
 }
 
 function createBaseFile(): File {
-    return {
-        id: "",
-        uploaderId: "",
-        size: 0,
-        mimeType: "",
-        uploaded: "",
-        url: "",
-    };
+  return { id: "", uploaderId: "", size: 0, mimeType: "", uploaded: "", url: "" };
 }
 
 export const File = {
-    encode(
-        message: File,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.id !== undefined && message.id !== "") {
-            writer.uint32(10).string(message.id);
-        }
-        if (message.uploaderId !== undefined && message.uploaderId !== "") {
-            writer.uint32(18).string(message.uploaderId);
-        }
-        if (message.size !== undefined && message.size !== 0) {
-            writer.uint32(24).uint32(message.size);
-        }
-        if (message.mimeType !== undefined && message.mimeType !== "") {
-            writer.uint32(34).string(message.mimeType);
-        }
-        if (message.uploaded !== undefined && message.uploaded !== "") {
-            writer.uint32(42).string(message.uploaded);
-        }
-        if (message.url !== undefined && message.url !== "") {
-            writer.uint32(50).string(message.url);
-        }
-        return writer;
-    },
+  encode(message: File, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.uploaderId !== undefined && message.uploaderId !== "") {
+      writer.uint32(18).string(message.uploaderId);
+    }
+    if (message.size !== undefined && message.size !== 0) {
+      writer.uint32(24).uint32(message.size);
+    }
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      writer.uint32(34).string(message.mimeType);
+    }
+    if (message.uploaded !== undefined && message.uploaded !== "") {
+      writer.uint32(42).string(message.uploaded);
+    }
+    if (message.url !== undefined && message.url !== "") {
+      writer.uint32(50).string(message.url);
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): File {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseFile();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): File {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseFile();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.id = reader.string();
-                    continue;
-                case 2:
-                    if (tag !== 18) {
-                        break;
-                    }
+          message.id = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
 
-                    message.uploaderId = reader.string();
-                    continue;
-                case 3:
-                    if (tag !== 24) {
-                        break;
-                    }
+          message.uploaderId = reader.string();
+          continue;
+        case 3:
+          if (tag !== 24) {
+            break;
+          }
 
-                    message.size = reader.uint32();
-                    continue;
-                case 4:
-                    if (tag !== 34) {
-                        break;
-                    }
+          message.size = reader.uint32();
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
 
-                    message.mimeType = reader.string();
-                    continue;
-                case 5:
-                    if (tag !== 42) {
-                        break;
-                    }
+          message.mimeType = reader.string();
+          continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
 
-                    message.uploaded = reader.string();
-                    continue;
-                case 6:
-                    if (tag !== 50) {
-                        break;
-                    }
+          message.uploaded = reader.string();
+          continue;
+        case 6:
+          if (tag !== 50) {
+            break;
+          }
 
-                    message.url = reader.string();
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.url = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): File {
-        return {
-            id: isSet(object.id) ? String(object.id) : "",
-            uploaderId: isSet(object.uploaderId)
-                ? String(object.uploaderId)
-                : "",
-            size: isSet(object.size) ? Number(object.size) : 0,
-            mimeType: isSet(object.mimeType) ? String(object.mimeType) : "",
-            uploaded: isSet(object.uploaded) ? String(object.uploaded) : "",
-            url: isSet(object.url) ? String(object.url) : "",
-        };
-    },
+  fromJSON(object: any): File {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      uploaderId: isSet(object.uploaderId) ? String(object.uploaderId) : "",
+      size: isSet(object.size) ? Number(object.size) : 0,
+      mimeType: isSet(object.mimeType) ? String(object.mimeType) : "",
+      uploaded: isSet(object.uploaded) ? String(object.uploaded) : "",
+      url: isSet(object.url) ? String(object.url) : "",
+    };
+  },
 
-    toJSON(message: File): unknown {
-        const obj: any = {};
-        if (message.id !== undefined && message.id !== "") {
-            obj.id = message.id;
-        }
-        if (message.uploaderId !== undefined && message.uploaderId !== "") {
-            obj.uploaderId = message.uploaderId;
-        }
-        if (message.size !== undefined && message.size !== 0) {
-            obj.size = Math.round(message.size);
-        }
-        if (message.mimeType !== undefined && message.mimeType !== "") {
-            obj.mimeType = message.mimeType;
-        }
-        if (message.uploaded !== undefined && message.uploaded !== "") {
-            obj.uploaded = message.uploaded;
-        }
-        if (message.url !== undefined && message.url !== "") {
-            obj.url = message.url;
-        }
-        return obj;
-    },
+  toJSON(message: File): unknown {
+    const obj: any = {};
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    if (message.uploaderId !== undefined && message.uploaderId !== "") {
+      obj.uploaderId = message.uploaderId;
+    }
+    if (message.size !== undefined && message.size !== 0) {
+      obj.size = Math.round(message.size);
+    }
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      obj.mimeType = message.mimeType;
+    }
+    if (message.uploaded !== undefined && message.uploaded !== "") {
+      obj.uploaded = message.uploaded;
+    }
+    if (message.url !== undefined && message.url !== "") {
+      obj.url = message.url;
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<File>): File {
-        return File.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<File>): File {
-        const message = createBaseFile();
-        message.id = object.id ?? "";
-        message.uploaderId = object.uploaderId ?? "";
-        message.size = object.size ?? 0;
-        message.mimeType = object.mimeType ?? "";
-        message.uploaded = object.uploaded ?? "";
-        message.url = object.url ?? "";
-        return message;
-    },
+  create(base?: DeepPartial<File>): File {
+    return File.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<File>): File {
+    const message = createBaseFile();
+    message.id = object.id ?? "";
+    message.uploaderId = object.uploaderId ?? "";
+    message.size = object.size ?? 0;
+    message.mimeType = object.mimeType ?? "";
+    message.uploaded = object.uploaded ?? "";
+    message.url = object.url ?? "";
+    return message;
+  },
 };
 
 function createBaseStorageStats(): StorageStats {
-    return { numFiles: 0, totalSize: 0 };
+  return { numFiles: 0, totalSize: 0 };
 }
 
 export const StorageStats = {
-    encode(
-        message: StorageStats,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.numFiles !== undefined && message.numFiles !== 0) {
-            writer.uint32(8).uint32(message.numFiles);
-        }
-        if (message.totalSize !== undefined && message.totalSize !== 0) {
-            writer.uint32(16).uint64(message.totalSize);
-        }
-        return writer;
-    },
+  encode(message: StorageStats, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.numFiles !== undefined && message.numFiles !== 0) {
+      writer.uint32(8).uint32(message.numFiles);
+    }
+    if (message.totalSize !== undefined && message.totalSize !== 0) {
+      writer.uint32(16).uint64(message.totalSize);
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): StorageStats {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseStorageStats();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 8) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): StorageStats {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseStorageStats();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
 
-                    message.numFiles = reader.uint32();
-                    continue;
-                case 2:
-                    if (tag !== 16) {
-                        break;
-                    }
+          message.numFiles = reader.uint32();
+          continue;
+        case 2:
+          if (tag !== 16) {
+            break;
+          }
 
-                    message.totalSize = longToNumber(reader.uint64() as Long);
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.totalSize = longToNumber(reader.uint64() as Long);
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): StorageStats {
-        return {
-            numFiles: isSet(object.numFiles) ? Number(object.numFiles) : 0,
-            totalSize: isSet(object.totalSize) ? Number(object.totalSize) : 0,
-        };
-    },
+  fromJSON(object: any): StorageStats {
+    return {
+      numFiles: isSet(object.numFiles) ? Number(object.numFiles) : 0,
+      totalSize: isSet(object.totalSize) ? Number(object.totalSize) : 0,
+    };
+  },
 
-    toJSON(message: StorageStats): unknown {
-        const obj: any = {};
-        if (message.numFiles !== undefined && message.numFiles !== 0) {
-            obj.numFiles = Math.round(message.numFiles);
-        }
-        if (message.totalSize !== undefined && message.totalSize !== 0) {
-            obj.totalSize = Math.round(message.totalSize);
-        }
-        return obj;
-    },
+  toJSON(message: StorageStats): unknown {
+    const obj: any = {};
+    if (message.numFiles !== undefined && message.numFiles !== 0) {
+      obj.numFiles = Math.round(message.numFiles);
+    }
+    if (message.totalSize !== undefined && message.totalSize !== 0) {
+      obj.totalSize = Math.round(message.totalSize);
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<StorageStats>): StorageStats {
-        return StorageStats.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<StorageStats>): StorageStats {
-        const message = createBaseStorageStats();
-        message.numFiles = object.numFiles ?? 0;
-        message.totalSize = object.totalSize ?? 0;
-        return message;
-    },
+  create(base?: DeepPartial<StorageStats>): StorageStats {
+    return StorageStats.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<StorageStats>): StorageStats {
+    const message = createBaseStorageStats();
+    message.numFiles = object.numFiles ?? 0;
+    message.totalSize = object.totalSize ?? 0;
+    return message;
+  },
 };
 
 function createBaseUploadFileRequest(): UploadFileRequest {
-    return { contents: new Uint8Array(0), mimeType: "" };
+  return { contents: new Uint8Array(0), mimeType: "" };
 }
 
 export const UploadFileRequest = {
-    encode(
-        message: UploadFileRequest,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.contents !== undefined && message.contents.length !== 0) {
-            writer.uint32(10).bytes(message.contents);
-        }
-        if (message.mimeType !== undefined && message.mimeType !== "") {
-            writer.uint32(18).string(message.mimeType);
-        }
-        return writer;
-    },
+  encode(message: UploadFileRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.contents !== undefined && message.contents.length !== 0) {
+      writer.uint32(10).bytes(message.contents);
+    }
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      writer.uint32(18).string(message.mimeType);
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): UploadFileRequest {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseUploadFileRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): UploadFileRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUploadFileRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.contents = reader.bytes();
-                    continue;
-                case 2:
-                    if (tag !== 18) {
-                        break;
-                    }
+          message.contents = reader.bytes();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
 
-                    message.mimeType = reader.string();
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.mimeType = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): UploadFileRequest {
-        return {
-            contents: isSet(object.contents)
-                ? bytesFromBase64(object.contents)
-                : new Uint8Array(0),
-            mimeType: isSet(object.mimeType) ? String(object.mimeType) : "",
-        };
-    },
+  fromJSON(object: any): UploadFileRequest {
+    return {
+      contents: isSet(object.contents) ? bytesFromBase64(object.contents) : new Uint8Array(0),
+      mimeType: isSet(object.mimeType) ? String(object.mimeType) : "",
+    };
+  },
 
-    toJSON(message: UploadFileRequest): unknown {
-        const obj: any = {};
-        if (message.contents !== undefined && message.contents.length !== 0) {
-            obj.contents = base64FromBytes(message.contents);
-        }
-        if (message.mimeType !== undefined && message.mimeType !== "") {
-            obj.mimeType = message.mimeType;
-        }
-        return obj;
-    },
+  toJSON(message: UploadFileRequest): unknown {
+    const obj: any = {};
+    if (message.contents !== undefined && message.contents.length !== 0) {
+      obj.contents = base64FromBytes(message.contents);
+    }
+    if (message.mimeType !== undefined && message.mimeType !== "") {
+      obj.mimeType = message.mimeType;
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<UploadFileRequest>): UploadFileRequest {
-        return UploadFileRequest.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<UploadFileRequest>): UploadFileRequest {
-        const message = createBaseUploadFileRequest();
-        message.contents = object.contents ?? new Uint8Array(0);
-        message.mimeType = object.mimeType ?? "";
-        return message;
-    },
+  create(base?: DeepPartial<UploadFileRequest>): UploadFileRequest {
+    return UploadFileRequest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<UploadFileRequest>): UploadFileRequest {
+    const message = createBaseUploadFileRequest();
+    message.contents = object.contents ?? new Uint8Array(0);
+    message.mimeType = object.mimeType ?? "";
+    return message;
+  },
 };
 
 function createBaseUploadFileResponse(): UploadFileResponse {
-    return { uploadedFile: undefined };
+  return { uploadedFile: undefined };
 }
 
 export const UploadFileResponse = {
-    encode(
-        message: UploadFileResponse,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.uploadedFile !== undefined) {
-            File.encode(
-                message.uploadedFile,
-                writer.uint32(10).fork(),
-            ).ldelim();
-        }
-        return writer;
-    },
+  encode(message: UploadFileResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.uploadedFile !== undefined) {
+      File.encode(message.uploadedFile, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
 
-    decode(
-        input: _m0.Reader | Uint8Array,
-        length?: number,
-    ): UploadFileResponse {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseUploadFileResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): UploadFileResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUploadFileResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.uploadedFile = File.decode(reader, reader.uint32());
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.uploadedFile = File.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): UploadFileResponse {
-        return {
-            uploadedFile: isSet(object.uploadedFile)
-                ? File.fromJSON(object.uploadedFile)
-                : undefined,
-        };
-    },
+  fromJSON(object: any): UploadFileResponse {
+    return { uploadedFile: isSet(object.uploadedFile) ? File.fromJSON(object.uploadedFile) : undefined };
+  },
 
-    toJSON(message: UploadFileResponse): unknown {
-        const obj: any = {};
-        if (message.uploadedFile !== undefined) {
-            obj.uploadedFile = File.toJSON(message.uploadedFile);
-        }
-        return obj;
-    },
+  toJSON(message: UploadFileResponse): unknown {
+    const obj: any = {};
+    if (message.uploadedFile !== undefined) {
+      obj.uploadedFile = File.toJSON(message.uploadedFile);
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<UploadFileResponse>): UploadFileResponse {
-        return UploadFileResponse.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<UploadFileResponse>): UploadFileResponse {
-        const message = createBaseUploadFileResponse();
-        message.uploadedFile =
-            object.uploadedFile !== undefined && object.uploadedFile !== null
-                ? File.fromPartial(object.uploadedFile)
-                : undefined;
-        return message;
-    },
+  create(base?: DeepPartial<UploadFileResponse>): UploadFileResponse {
+    return UploadFileResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<UploadFileResponse>): UploadFileResponse {
+    const message = createBaseUploadFileResponse();
+    message.uploadedFile = (object.uploadedFile !== undefined && object.uploadedFile !== null)
+      ? File.fromPartial(object.uploadedFile)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseGetFileRequest(): GetFileRequest {
-    return { id: "" };
+  return { id: "" };
 }
 
 export const GetFileRequest = {
-    encode(
-        message: GetFileRequest,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.id !== undefined && message.id !== "") {
-            writer.uint32(10).string(message.id);
-        }
-        return writer;
-    },
+  encode(message: GetFileRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetFileRequest {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseGetFileRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetFileRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetFileRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.id = reader.string();
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.id = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): GetFileRequest {
-        return { id: isSet(object.id) ? String(object.id) : "" };
-    },
+  fromJSON(object: any): GetFileRequest {
+    return { id: isSet(object.id) ? String(object.id) : "" };
+  },
 
-    toJSON(message: GetFileRequest): unknown {
-        const obj: any = {};
-        if (message.id !== undefined && message.id !== "") {
-            obj.id = message.id;
-        }
-        return obj;
-    },
+  toJSON(message: GetFileRequest): unknown {
+    const obj: any = {};
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<GetFileRequest>): GetFileRequest {
-        return GetFileRequest.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<GetFileRequest>): GetFileRequest {
-        const message = createBaseGetFileRequest();
-        message.id = object.id ?? "";
-        return message;
-    },
+  create(base?: DeepPartial<GetFileRequest>): GetFileRequest {
+    return GetFileRequest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<GetFileRequest>): GetFileRequest {
+    const message = createBaseGetFileRequest();
+    message.id = object.id ?? "";
+    return message;
+  },
 };
 
 function createBaseGetFileResponse(): GetFileResponse {
-    return { file: undefined };
+  return { file: undefined };
 }
 
 export const GetFileResponse = {
-    encode(
-        message: GetFileResponse,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.file !== undefined) {
-            File.encode(message.file, writer.uint32(10).fork()).ldelim();
-        }
-        return writer;
-    },
+  encode(message: GetFileResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.file !== undefined) {
+      File.encode(message.file, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): GetFileResponse {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseGetFileResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetFileResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetFileResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.file = File.decode(reader, reader.uint32());
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.file = File.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): GetFileResponse {
-        return {
-            file: isSet(object.file) ? File.fromJSON(object.file) : undefined,
-        };
-    },
+  fromJSON(object: any): GetFileResponse {
+    return { file: isSet(object.file) ? File.fromJSON(object.file) : undefined };
+  },
 
-    toJSON(message: GetFileResponse): unknown {
-        const obj: any = {};
-        if (message.file !== undefined) {
-            obj.file = File.toJSON(message.file);
-        }
-        return obj;
-    },
+  toJSON(message: GetFileResponse): unknown {
+    const obj: any = {};
+    if (message.file !== undefined) {
+      obj.file = File.toJSON(message.file);
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<GetFileResponse>): GetFileResponse {
-        return GetFileResponse.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<GetFileResponse>): GetFileResponse {
-        const message = createBaseGetFileResponse();
-        message.file =
-            object.file !== undefined && object.file !== null
-                ? File.fromPartial(object.file)
-                : undefined;
-        return message;
-    },
+  create(base?: DeepPartial<GetFileResponse>): GetFileResponse {
+    return GetFileResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<GetFileResponse>): GetFileResponse {
+    const message = createBaseGetFileResponse();
+    message.file = (object.file !== undefined && object.file !== null) ? File.fromPartial(object.file) : undefined;
+    return message;
+  },
 };
 
 function createBaseDeleteFileRequest(): DeleteFileRequest {
-    return { id: "" };
+  return { id: "" };
 }
 
 export const DeleteFileRequest = {
-    encode(
-        message: DeleteFileRequest,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.id !== undefined && message.id !== "") {
-            writer.uint32(10).string(message.id);
-        }
-        return writer;
-    },
+  encode(message: DeleteFileRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== undefined && message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): DeleteFileRequest {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseDeleteFileRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): DeleteFileRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeleteFileRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.id = reader.string();
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.id = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): DeleteFileRequest {
-        return { id: isSet(object.id) ? String(object.id) : "" };
-    },
+  fromJSON(object: any): DeleteFileRequest {
+    return { id: isSet(object.id) ? String(object.id) : "" };
+  },
 
-    toJSON(message: DeleteFileRequest): unknown {
-        const obj: any = {};
-        if (message.id !== undefined && message.id !== "") {
-            obj.id = message.id;
-        }
-        return obj;
-    },
+  toJSON(message: DeleteFileRequest): unknown {
+    const obj: any = {};
+    if (message.id !== undefined && message.id !== "") {
+      obj.id = message.id;
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<DeleteFileRequest>): DeleteFileRequest {
-        return DeleteFileRequest.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<DeleteFileRequest>): DeleteFileRequest {
-        const message = createBaseDeleteFileRequest();
-        message.id = object.id ?? "";
-        return message;
-    },
+  create(base?: DeepPartial<DeleteFileRequest>): DeleteFileRequest {
+    return DeleteFileRequest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<DeleteFileRequest>): DeleteFileRequest {
+    const message = createBaseDeleteFileRequest();
+    message.id = object.id ?? "";
+    return message;
+  },
 };
 
 function createBaseDeleteFileResponse(): DeleteFileResponse {
-    return {};
+  return {};
 }
 
 export const DeleteFileResponse = {
-    encode(
-        _: DeleteFileResponse,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        return writer;
-    },
+  encode(_: DeleteFileResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
 
-    decode(
-        input: _m0.Reader | Uint8Array,
-        length?: number,
-    ): DeleteFileResponse {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseDeleteFileResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+  decode(input: _m0.Reader | Uint8Array, length?: number): DeleteFileResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDeleteFileResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(_: any): DeleteFileResponse {
-        return {};
-    },
+  fromJSON(_: any): DeleteFileResponse {
+    return {};
+  },
 
-    toJSON(_: DeleteFileResponse): unknown {
-        const obj: any = {};
-        return obj;
-    },
+  toJSON(_: DeleteFileResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
 
-    create(base?: DeepPartial<DeleteFileResponse>): DeleteFileResponse {
-        return DeleteFileResponse.fromPartial(base ?? {});
-    },
-    fromPartial(_: DeepPartial<DeleteFileResponse>): DeleteFileResponse {
-        const message = createBaseDeleteFileResponse();
-        return message;
-    },
+  create(base?: DeepPartial<DeleteFileResponse>): DeleteFileResponse {
+    return DeleteFileResponse.fromPartial(base ?? {});
+  },
+  fromPartial(_: DeepPartial<DeleteFileResponse>): DeleteFileResponse {
+    const message = createBaseDeleteFileResponse();
+    return message;
+  },
 };
 
 function createBaseListFilesRequest(): ListFilesRequest {
-    return { query: "", continuationToken: "" };
+  return { query: "", continuationToken: "" };
 }
 
 export const ListFilesRequest = {
-    encode(
-        message: ListFilesRequest,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.query !== undefined && message.query !== "") {
-            writer.uint32(10).string(message.query);
-        }
-        if (
-            message.continuationToken !== undefined &&
-            message.continuationToken !== ""
-        ) {
-            writer.uint32(18).string(message.continuationToken);
-        }
-        return writer;
-    },
+  encode(message: ListFilesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.query !== undefined && message.query !== "") {
+      writer.uint32(10).string(message.query);
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      writer.uint32(18).string(message.continuationToken);
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): ListFilesRequest {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseListFilesRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListFilesRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListFilesRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.query = reader.string();
-                    continue;
-                case 2:
-                    if (tag !== 18) {
-                        break;
-                    }
+          message.query = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
 
-                    message.continuationToken = reader.string();
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): ListFilesRequest {
-        return {
-            query: isSet(object.query) ? String(object.query) : "",
-            continuationToken: isSet(object.continuationToken)
-                ? String(object.continuationToken)
-                : "",
-        };
-    },
+  fromJSON(object: any): ListFilesRequest {
+    return {
+      query: isSet(object.query) ? String(object.query) : "",
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
+    };
+  },
 
-    toJSON(message: ListFilesRequest): unknown {
-        const obj: any = {};
-        if (message.query !== undefined && message.query !== "") {
-            obj.query = message.query;
-        }
-        if (
-            message.continuationToken !== undefined &&
-            message.continuationToken !== ""
-        ) {
-            obj.continuationToken = message.continuationToken;
-        }
-        return obj;
-    },
+  toJSON(message: ListFilesRequest): unknown {
+    const obj: any = {};
+    if (message.query !== undefined && message.query !== "") {
+      obj.query = message.query;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<ListFilesRequest>): ListFilesRequest {
-        return ListFilesRequest.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<ListFilesRequest>): ListFilesRequest {
-        const message = createBaseListFilesRequest();
-        message.query = object.query ?? "";
-        message.continuationToken = object.continuationToken ?? "";
-        return message;
-    },
+  create(base?: DeepPartial<ListFilesRequest>): ListFilesRequest {
+    return ListFilesRequest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<ListFilesRequest>): ListFilesRequest {
+    const message = createBaseListFilesRequest();
+    message.query = object.query ?? "";
+    message.continuationToken = object.continuationToken ?? "";
+    return message;
+  },
 };
 
 function createBaseListFilesResponse(): ListFilesResponse {
-    return { files: [], hasMoreResults: false, continuationToken: "" };
+  return { files: [], hasMoreResults: false, continuationToken: "" };
 }
 
 export const ListFilesResponse = {
-    encode(
-        message: ListFilesResponse,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.files !== undefined && message.files.length !== 0) {
-            for (const v of message.files) {
-                File.encode(v!, writer.uint32(10).fork()).ldelim();
-            }
-        }
-        if (message.hasMoreResults === true) {
-            writer.uint32(16).bool(message.hasMoreResults);
-        }
-        if (
-            message.continuationToken !== undefined &&
-            message.continuationToken !== ""
-        ) {
-            writer.uint32(26).string(message.continuationToken);
-        }
-        return writer;
-    },
+  encode(message: ListFilesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.files !== undefined && message.files.length !== 0) {
+      for (const v of message.files) {
+        File.encode(v!, writer.uint32(10).fork()).ldelim();
+      }
+    }
+    if (message.hasMoreResults === true) {
+      writer.uint32(16).bool(message.hasMoreResults);
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      writer.uint32(26).string(message.continuationToken);
+    }
+    return writer;
+  },
 
-    decode(input: _m0.Reader | Uint8Array, length?: number): ListFilesResponse {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseListFilesResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListFilesResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListFilesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.files!.push(File.decode(reader, reader.uint32()));
-                    continue;
-                case 2:
-                    if (tag !== 16) {
-                        break;
-                    }
+          message.files!.push(File.decode(reader, reader.uint32()));
+          continue;
+        case 2:
+          if (tag !== 16) {
+            break;
+          }
 
-                    message.hasMoreResults = reader.bool();
-                    continue;
-                case 3:
-                    if (tag !== 26) {
-                        break;
-                    }
+          message.hasMoreResults = reader.bool();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
 
-                    message.continuationToken = reader.string();
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.continuationToken = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): ListFilesResponse {
-        return {
-            files: Array.isArray(object?.files)
-                ? object.files.map((e: any) => File.fromJSON(e))
-                : [],
-            hasMoreResults: isSet(object.hasMoreResults)
-                ? Boolean(object.hasMoreResults)
-                : false,
-            continuationToken: isSet(object.continuationToken)
-                ? String(object.continuationToken)
-                : "",
-        };
-    },
+  fromJSON(object: any): ListFilesResponse {
+    return {
+      files: Array.isArray(object?.files) ? object.files.map((e: any) => File.fromJSON(e)) : [],
+      hasMoreResults: isSet(object.hasMoreResults) ? Boolean(object.hasMoreResults) : false,
+      continuationToken: isSet(object.continuationToken) ? String(object.continuationToken) : "",
+    };
+  },
 
-    toJSON(message: ListFilesResponse): unknown {
-        const obj: any = {};
-        if (message.files?.length) {
-            obj.files = message.files.map((e) => File.toJSON(e));
-        }
-        if (message.hasMoreResults === true) {
-            obj.hasMoreResults = message.hasMoreResults;
-        }
-        if (
-            message.continuationToken !== undefined &&
-            message.continuationToken !== ""
-        ) {
-            obj.continuationToken = message.continuationToken;
-        }
-        return obj;
-    },
+  toJSON(message: ListFilesResponse): unknown {
+    const obj: any = {};
+    if (message.files?.length) {
+      obj.files = message.files.map((e) => File.toJSON(e));
+    }
+    if (message.hasMoreResults === true) {
+      obj.hasMoreResults = message.hasMoreResults;
+    }
+    if (message.continuationToken !== undefined && message.continuationToken !== "") {
+      obj.continuationToken = message.continuationToken;
+    }
+    return obj;
+  },
 
-    create(base?: DeepPartial<ListFilesResponse>): ListFilesResponse {
-        return ListFilesResponse.fromPartial(base ?? {});
-    },
-    fromPartial(object: DeepPartial<ListFilesResponse>): ListFilesResponse {
-        const message = createBaseListFilesResponse();
-        message.files = object.files?.map((e) => File.fromPartial(e)) || [];
-        message.hasMoreResults = object.hasMoreResults ?? false;
-        message.continuationToken = object.continuationToken ?? "";
-        return message;
-    },
+  create(base?: DeepPartial<ListFilesResponse>): ListFilesResponse {
+    return ListFilesResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<ListFilesResponse>): ListFilesResponse {
+    const message = createBaseListFilesResponse();
+    message.files = object.files?.map((e) => File.fromPartial(e)) || [];
+    message.hasMoreResults = object.hasMoreResults ?? false;
+    message.continuationToken = object.continuationToken ?? "";
+    return message;
+  },
 };
 
 function createBaseGetStorageStatsRequest(): GetStorageStatsRequest {
-    return {};
+  return {};
 }
 
 export const GetStorageStatsRequest = {
-    encode(
-        _: GetStorageStatsRequest,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        return writer;
-    },
+  encode(_: GetStorageStatsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
 
-    decode(
-        input: _m0.Reader | Uint8Array,
-        length?: number,
-    ): GetStorageStatsRequest {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseGetStorageStatsRequest();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetStorageStatsRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetStorageStatsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(_: any): GetStorageStatsRequest {
-        return {};
-    },
+  fromJSON(_: any): GetStorageStatsRequest {
+    return {};
+  },
 
-    toJSON(_: GetStorageStatsRequest): unknown {
-        const obj: any = {};
-        return obj;
-    },
+  toJSON(_: GetStorageStatsRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
 
-    create(base?: DeepPartial<GetStorageStatsRequest>): GetStorageStatsRequest {
-        return GetStorageStatsRequest.fromPartial(base ?? {});
-    },
-    fromPartial(
-        _: DeepPartial<GetStorageStatsRequest>,
-    ): GetStorageStatsRequest {
-        const message = createBaseGetStorageStatsRequest();
-        return message;
-    },
+  create(base?: DeepPartial<GetStorageStatsRequest>): GetStorageStatsRequest {
+    return GetStorageStatsRequest.fromPartial(base ?? {});
+  },
+  fromPartial(_: DeepPartial<GetStorageStatsRequest>): GetStorageStatsRequest {
+    const message = createBaseGetStorageStatsRequest();
+    return message;
+  },
 };
 
 function createBaseGetStorageStatsResponse(): GetStorageStatsResponse {
-    return { stats: undefined };
+  return { stats: undefined };
 }
 
 export const GetStorageStatsResponse = {
-    encode(
-        message: GetStorageStatsResponse,
-        writer: _m0.Writer = _m0.Writer.create(),
-    ): _m0.Writer {
-        if (message.stats !== undefined) {
-            StorageStats.encode(
-                message.stats,
-                writer.uint32(10).fork(),
-            ).ldelim();
-        }
-        return writer;
-    },
+  encode(message: GetStorageStatsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.stats !== undefined) {
+      StorageStats.encode(message.stats, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
 
-    decode(
-        input: _m0.Reader | Uint8Array,
-        length?: number,
-    ): GetStorageStatsResponse {
-        const reader =
-            input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-        let end = length === undefined ? reader.len : reader.pos + length;
-        const message = createBaseGetStorageStatsResponse();
-        while (reader.pos < end) {
-            const tag = reader.uint32();
-            switch (tag >>> 3) {
-                case 1:
-                    if (tag !== 10) {
-                        break;
-                    }
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetStorageStatsResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetStorageStatsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
 
-                    message.stats = StorageStats.decode(
-                        reader,
-                        reader.uint32(),
-                    );
-                    continue;
-            }
-            if ((tag & 7) === 4 || tag === 0) {
-                break;
-            }
-            reader.skipType(tag & 7);
-        }
-        return message;
-    },
+          message.stats = StorageStats.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
 
-    fromJSON(object: any): GetStorageStatsResponse {
-        return {
-            stats: isSet(object.stats)
-                ? StorageStats.fromJSON(object.stats)
-                : undefined,
-        };
-    },
+  fromJSON(object: any): GetStorageStatsResponse {
+    return { stats: isSet(object.stats) ? StorageStats.fromJSON(object.stats) : undefined };
+  },
 
-    toJSON(message: GetStorageStatsResponse): unknown {
-        const obj: any = {};
-        if (message.stats !== undefined) {
-            obj.stats = StorageStats.toJSON(message.stats);
-        }
-        return obj;
-    },
+  toJSON(message: GetStorageStatsResponse): unknown {
+    const obj: any = {};
+    if (message.stats !== undefined) {
+      obj.stats = StorageStats.toJSON(message.stats);
+    }
+    return obj;
+  },
 
-    create(
-        base?: DeepPartial<GetStorageStatsResponse>,
-    ): GetStorageStatsResponse {
-        return GetStorageStatsResponse.fromPartial(base ?? {});
-    },
-    fromPartial(
-        object: DeepPartial<GetStorageStatsResponse>,
-    ): GetStorageStatsResponse {
-        const message = createBaseGetStorageStatsResponse();
-        message.stats =
-            object.stats !== undefined && object.stats !== null
-                ? StorageStats.fromPartial(object.stats)
-                : undefined;
-        return message;
-    },
+  create(base?: DeepPartial<GetStorageStatsResponse>): GetStorageStatsResponse {
+    return GetStorageStatsResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<GetStorageStatsResponse>): GetStorageStatsResponse {
+    const message = createBaseGetStorageStatsResponse();
+    message.stats = (object.stats !== undefined && object.stats !== null)
+      ? StorageStats.fromPartial(object.stats)
+      : undefined;
+    return message;
+  },
 };
 
 export type FileManagementDefinition = typeof FileManagementDefinition;
 export const FileManagementDefinition = {
-    name: "FileManagement",
-    fullName: "services.filemanagement.v1.FileManagement",
-    methods: {
-        /** Upload a file to Trinsic's CDN */
-        uploadFile: {
-            name: "UploadFile",
-            requestType: UploadFileRequest,
-            requestStream: false,
-            responseType: UploadFileResponse,
-            responseStream: false,
-            options: {
-                _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] },
-            },
-        },
-        /** Fetch information about a file by its ID */
-        getFile: {
-            name: "GetFile",
-            requestType: GetFileRequest,
-            requestStream: false,
-            responseType: GetFileResponse,
-            responseStream: false,
-            options: {
-                _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] },
-            },
-        },
-        /** Delete a file by its ID */
-        deleteFile: {
-            name: "DeleteFile",
-            requestType: DeleteFileRequest,
-            requestStream: false,
-            responseType: DeleteFileResponse,
-            responseStream: false,
-            options: {
-                _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] },
-            },
-        },
-        /** List files the calling account has uploaded */
-        listFiles: {
-            name: "ListFiles",
-            requestType: ListFilesRequest,
-            requestStream: false,
-            responseType: ListFilesResponse,
-            responseStream: false,
-            options: {
-                _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] },
-            },
-        },
-        /** Get statistics about files uploaded by the calling account */
-        getStorageStats: {
-            name: "GetStorageStats",
-            requestType: GetStorageStatsRequest,
-            requestStream: false,
-            responseType: GetStorageStatsResponse,
-            responseStream: false,
-            options: {
-                _unknownFields: {
-                    480010: [
-                        new Uint8Array([4, 34, 2, 8, 1]),
-                        new Uint8Array([2, 24, 1]),
-                    ],
-                },
-            },
-        },
+  name: "FileManagement",
+  fullName: "services.filemanagement.v1.FileManagement",
+  methods: {
+    /** Upload a file to Trinsic's CDN */
+    uploadFile: {
+      name: "UploadFile",
+      requestType: UploadFileRequest,
+      requestStream: false,
+      responseType: UploadFileResponse,
+      responseStream: false,
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
     },
+    /** Fetch information about a file by its ID */
+    getFile: {
+      name: "GetFile",
+      requestType: GetFileRequest,
+      requestStream: false,
+      responseType: GetFileResponse,
+      responseStream: false,
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
+    },
+    /** Delete a file by its ID */
+    deleteFile: {
+      name: "DeleteFile",
+      requestType: DeleteFileRequest,
+      requestStream: false,
+      responseType: DeleteFileResponse,
+      responseStream: false,
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
+    },
+    /** List files the calling account has uploaded */
+    listFiles: {
+      name: "ListFiles",
+      requestType: ListFilesRequest,
+      requestStream: false,
+      responseType: ListFilesResponse,
+      responseStream: false,
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1])] } },
+    },
+    /** Get statistics about files uploaded by the calling account */
+    getStorageStats: {
+      name: "GetStorageStats",
+      requestType: GetStorageStatsRequest,
+      requestStream: false,
+      responseType: GetStorageStatsResponse,
+      responseStream: false,
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1]), new Uint8Array([2, 24, 1])] } },
+    },
+  },
 } as const;
 
 declare const self: any | undefined;
 declare const window: any | undefined;
 declare const global: any | undefined;
 const tsProtoGlobalThis: any = (() => {
-    if (typeof globalThis !== "undefined") {
-        return globalThis;
-    }
-    if (typeof self !== "undefined") {
-        return self;
-    }
-    if (typeof window !== "undefined") {
-        return window;
-    }
-    if (typeof global !== "undefined") {
-        return global;
-    }
-    throw "Unable to locate global object";
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
 })();
 
 function bytesFromBase64(b64: string): Uint8Array {
-    if (tsProtoGlobalThis.Buffer) {
-        return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
-    } else {
-        const bin = tsProtoGlobalThis.atob(b64);
-        const arr = new Uint8Array(bin.length);
-        for (let i = 0; i < bin.length; ++i) {
-            arr[i] = bin.charCodeAt(i);
-        }
-        return arr;
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
     }
+    return arr;
+  }
 }
 
 function base64FromBytes(arr: Uint8Array): string {
-    if (tsProtoGlobalThis.Buffer) {
-        return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
-    } else {
-        const bin: string[] = [];
-        arr.forEach((byte) => {
-            bin.push(String.fromCharCode(byte));
-        });
-        return tsProtoGlobalThis.btoa(bin.join(""));
-    }
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
 }
 
-type Builtin =
-    | Date
-    | Function
-    | Uint8Array
-    | string
-    | number
-    | boolean
-    | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-type DeepPartial<T> = T extends Builtin
-    ? T
-    : T extends Array<infer U>
-    ? Array<DeepPartial<U>>
-    : T extends ReadonlyArray<infer U>
-    ? ReadonlyArray<DeepPartial<U>>
-    : T extends {}
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
-    : Partial<T>;
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToNumber(long: Long): number {
-    if (long.gt(Number.MAX_SAFE_INTEGER)) {
-        throw new tsProtoGlobalThis.Error(
-            "Value is larger than Number.MAX_SAFE_INTEGER",
-        );
-    }
-    return long.toNumber();
+  if (long.gt(Number.MAX_SAFE_INTEGER)) {
+    throw new tsProtoGlobalThis.Error("Value is larger than Number.MAX_SAFE_INTEGER");
+  }
+  return long.toNumber();
 }
 
 if (_m0.util.Long !== Long) {
-    _m0.util.Long = Long as any;
-    _m0.configure();
+  _m0.util.Long = Long as any;
+  _m0.configure();
 }
 
 function isSet(value: any): boolean {
-    return value !== null && value !== undefined;
+  return value !== null && value !== undefined;
 }

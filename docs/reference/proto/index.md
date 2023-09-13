@@ -537,7 +537,7 @@ The Connect service provides access to Trinsic Connect, a reusable identity veri
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse2](/reference/proto#services-connect-v1-CreateSessionResponse2) | Create an IDVSession |
+| CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse](/reference/proto#services-connect-v1-CreateSessionResponse) | Create an IDVSession |
 | CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
 | GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
 
@@ -589,9 +589,9 @@ Request to create an Identity Verification Session
 
 
 
-<a name="services-connect-v1-CreateSessionResponse2"></a>
+<a name="services-connect-v1-CreateSessionResponse"></a>
 
-### CreateSessionResponse2
+### CreateSessionResponse
 Response to `CreateIDVSessionRequest`
 
 
@@ -646,6 +646,7 @@ An Identity Verification Session
 | client_token | [string](/reference/proto#string) | The Client Token for this IDVSession. This should be passed to your frontend to initiate the IDV flow using Trinsic's Web SDK. |
 | state | [IDVSessionState](/reference/proto#services-connect-v1-IDVSessionState) | State of the IDVSession |
 | verifications | [IDVSession.VerificationsEntry](/reference/proto#services-connect-v1-IDVSession-VerificationsEntry)[] | The actual Verifications to perform in this IDV flow |
+| fail_code | [SessionFailCode](/reference/proto#services-connect-v1-SessionFailCode) | The reason for the IDVSession's failure. Only set if `state` is `IDV_FAILED`. |
 | result_vp | [string](/reference/proto#string) | The resultant signed VP combining the results of all verifications |
 | created | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession was created |
 | updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession's `state` was last updated |
@@ -697,6 +698,7 @@ A Verification that is part of an IDVSession
 | id | [string](/reference/proto#string) | The ID of the verification |
 | type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification (driver's license, passport, proof of address, etc) |
 | state | [VerificationState](/reference/proto#services-connect-v1-VerificationState) | The state of the verification |
+| fail_code | [VerificationFailCode](/reference/proto#services-connect-v1-VerificationFailCode) | The reason for the Verification's failure. Only set if `state` is `VERIFICATION_FAILED`. |
 | reused | [bool](/reference/proto#bool) | Whether this was a reused (true) or fresh (false) verification. If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information. |
 | begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
 | updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- o |
@@ -720,10 +722,37 @@ The states a VerificationSession can be in
 | IDV_AUTHENTICATING | 2 | User has entered their phone number, but not yet authenticated with the code sent via SMS |
 | IDV_IN_PROGRESS | 3 | User has been authenticated and is performing identity verification |
 | IDV_SUCCESS | 4 | Session was completed successfully and IDV data is available to RP |
-| IDV_USER_CANCELED | 5 | User explicitly canceled session / did not consent |
-| IDV_EXPIRED | 6 | Session was not completed within {X} timeframe from creation and expired |
-| IDV_RP_CANCELED | 7 | Relying Party canceled the session via the SDK |
-| IDV_FAILED | 8 | The user's identity was not deemed legitimate by the IDV |
+| IDV_FAILED | 5 | The session failed; reason is present in `fail_code`. |
+
+
+
+<a name="services-connect-v1-SessionFailCode"></a>
+
+### SessionFailCode
+The specific reason an IDVSession is in the `Failed` state
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SESSION_FAIL_INTERNAL | 0 | An internal Trinsic error caused this session to fail |
+| SESSION_FAIL_VERIFICATION_FAILED | 1 | The session failed because one or more of the verifications failed. The reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s). |
+| SESSION_FAIL_AUTHENTICATION | 2 | The session failed because the user failed to authenticate with their phone number too many times. |
+| SESSION_FAIL_EXPIRED | 3 | The session expired |
+| SESSION_FAIL_USER_CANCELED | 4 | The user canceled / rejected the session |
+| SESSION_FAIL_RP_CANCELED | 5 | The RP canceled the session |
+
+
+
+<a name="services-connect-v1-VerificationFailCode"></a>
+
+### VerificationFailCode
+The specific reason a Verification is in the `Failed` state
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| VERIFICATION_FAIL_INTERNAL | 0 | An internal Trinsic error caused this verification to fail |
+| VERIFICATION_FAIL_INVALID_IMAGE | 1 | The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed. |
+| VERIFICATION_FAIL_INAUTHENTIC | 2 | The identity data/images provided are suspected to be inauthentic, fraudulent, or forged. |
+| VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT | 3 | The document provided is either of an unsupported type, or from an unsupported country. |
 
 
 

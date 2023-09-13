@@ -26,6 +26,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     id_ = "";
     type_ = 0;
     state_ = 0;
+    failCode_ = 0;
   }
 
   @java.lang.Override
@@ -54,6 +55,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
             trinsic.services.connect.v1.Verification.Builder.class);
   }
 
+  private int bitField0_;
   public static final int ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object id_;
   /**
@@ -175,7 +177,61 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     return result == null ? trinsic.services.connect.v1.VerificationState.UNRECOGNIZED : result;
   }
 
-  public static final int REUSED_FIELD_NUMBER = 4;
+  public static final int FAIL_CODE_FIELD_NUMBER = 4;
+  private int failCode_;
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the Verification's failure.
+   * Only set if `state` is `VERIFICATION_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+   *
+   * @return Whether the failCode field is set.
+   */
+  @java.lang.Override
+  public boolean hasFailCode() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the Verification's failure.
+   * Only set if `state` is `VERIFICATION_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+   *
+   * @return The enum numeric value on the wire for failCode.
+   */
+  @java.lang.Override
+  public int getFailCodeValue() {
+    return failCode_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The reason for the Verification's failure.
+   * Only set if `state` is `VERIFICATION_FAILED`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+   *
+   * @return The failCode.
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.VerificationFailCode getFailCode() {
+    @SuppressWarnings("deprecation")
+    trinsic.services.connect.v1.VerificationFailCode result =
+        trinsic.services.connect.v1.VerificationFailCode.valueOf(failCode_);
+    return result == null ? trinsic.services.connect.v1.VerificationFailCode.UNRECOGNIZED : result;
+  }
+
+  public static final int REUSED_FIELD_NUMBER = 5;
   private boolean reused_;
   /**
    *
@@ -185,7 +241,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
    * If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
    * </pre>
    *
-   * <code>bool reused = 4;</code>
+   * <code>bool reused = 5;</code>
    *
    * @return The reused.
    */
@@ -194,7 +250,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     return reused_;
   }
 
-  public static final int BEGUN_FIELD_NUMBER = 5;
+  public static final int BEGUN_FIELD_NUMBER = 6;
   private long begun_;
   /**
    *
@@ -204,7 +260,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
    * by the user -- or `0` if not yet begun.
    * </pre>
    *
-   * <code>fixed64 begun = 5;</code>
+   * <code>fixed64 begun = 6;</code>
    *
    * @return The begun.
    */
@@ -213,7 +269,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     return begun_;
   }
 
-  public static final int UPDATED_FIELD_NUMBER = 6;
+  public static final int UPDATED_FIELD_NUMBER = 7;
   private long updated_;
   /**
    *
@@ -222,7 +278,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
    * The unix timestamp, in seconds, when this verification last changed state -- o
    * </pre>
    *
-   * <code>fixed64 updated = 6;</code>
+   * <code>fixed64 updated = 7;</code>
    *
    * @return The updated.
    */
@@ -254,14 +310,17 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (state_ != trinsic.services.connect.v1.VerificationState.VERIFICATION_PENDING.getNumber()) {
       output.writeEnum(3, state_);
     }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      output.writeEnum(4, failCode_);
+    }
     if (reused_ != false) {
-      output.writeBool(4, reused_);
+      output.writeBool(5, reused_);
     }
     if (begun_ != 0L) {
-      output.writeFixed64(5, begun_);
+      output.writeFixed64(6, begun_);
     }
     if (updated_ != 0L) {
-      output.writeFixed64(6, updated_);
+      output.writeFixed64(7, updated_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -281,14 +340,17 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (state_ != trinsic.services.connect.v1.VerificationState.VERIFICATION_PENDING.getNumber()) {
       size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, state_);
     }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, failCode_);
+    }
     if (reused_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, reused_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(5, reused_);
     }
     if (begun_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(5, begun_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(6, begun_);
     }
     if (updated_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(6, updated_);
+      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(7, updated_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -308,6 +370,10 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (!getId().equals(other.getId())) return false;
     if (type_ != other.type_) return false;
     if (state_ != other.state_) return false;
+    if (hasFailCode() != other.hasFailCode()) return false;
+    if (hasFailCode()) {
+      if (failCode_ != other.failCode_) return false;
+    }
     if (getReused() != other.getReused()) return false;
     if (getBegun() != other.getBegun()) return false;
     if (getUpdated() != other.getUpdated()) return false;
@@ -328,6 +394,10 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + type_;
     hash = (37 * hash) + STATE_FIELD_NUMBER;
     hash = (53 * hash) + state_;
+    if (hasFailCode()) {
+      hash = (37 * hash) + FAIL_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + failCode_;
+    }
     hash = (37 * hash) + REUSED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getReused());
     hash = (37 * hash) + BEGUN_FIELD_NUMBER;
@@ -478,6 +548,8 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
 
       state_ = 0;
 
+      failCode_ = 0;
+      bitField0_ = (bitField0_ & ~0x00000001);
       reused_ = false;
 
       begun_ = 0L;
@@ -511,12 +583,19 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     public trinsic.services.connect.v1.Verification buildPartial() {
       trinsic.services.connect.v1.Verification result =
           new trinsic.services.connect.v1.Verification(this);
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       result.id_ = id_;
       result.type_ = type_;
       result.state_ = state_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        to_bitField0_ |= 0x00000001;
+      }
+      result.failCode_ = failCode_;
       result.reused_ = reused_;
       result.begun_ = begun_;
       result.updated_ = updated_;
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -576,6 +655,9 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       if (other.state_ != 0) {
         setStateValue(other.getStateValue());
       }
+      if (other.hasFailCode()) {
+        setFailCode(other.getFailCode());
+      }
       if (other.getReused() != false) {
         setReused(other.getReused());
       }
@@ -631,22 +713,28 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
               } // case 24
             case 32:
               {
+                failCode_ = input.readEnum();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 32
+            case 40:
+              {
                 reused_ = input.readBool();
 
                 break;
-              } // case 32
-            case 41:
+              } // case 40
+            case 49:
               {
                 begun_ = input.readFixed64();
 
                 break;
-              } // case 41
-            case 49:
+              } // case 49
+            case 57:
               {
                 updated_ = input.readFixed64();
 
                 break;
-              } // case 49
+              } // case 57
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -663,6 +751,8 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       } // finally
       return this;
     }
+
+    private int bitField0_;
 
     private java.lang.Object id_ = "";
     /**
@@ -952,6 +1042,120 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
+    private int failCode_ = 0;
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the Verification's failure.
+     * Only set if `state` is `VERIFICATION_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+     *
+     * @return Whether the failCode field is set.
+     */
+    @java.lang.Override
+    public boolean hasFailCode() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the Verification's failure.
+     * Only set if `state` is `VERIFICATION_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+     *
+     * @return The enum numeric value on the wire for failCode.
+     */
+    @java.lang.Override
+    public int getFailCodeValue() {
+      return failCode_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the Verification's failure.
+     * Only set if `state` is `VERIFICATION_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+     *
+     * @param value The enum numeric value on the wire for failCode to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFailCodeValue(int value) {
+      bitField0_ |= 0x00000001;
+      failCode_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the Verification's failure.
+     * Only set if `state` is `VERIFICATION_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+     *
+     * @return The failCode.
+     */
+    @java.lang.Override
+    public trinsic.services.connect.v1.VerificationFailCode getFailCode() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.connect.v1.VerificationFailCode result =
+          trinsic.services.connect.v1.VerificationFailCode.valueOf(failCode_);
+      return result == null
+          ? trinsic.services.connect.v1.VerificationFailCode.UNRECOGNIZED
+          : result;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the Verification's failure.
+     * Only set if `state` is `VERIFICATION_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+     *
+     * @param value The failCode to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFailCode(trinsic.services.connect.v1.VerificationFailCode value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      bitField0_ |= 0x00000001;
+      failCode_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The reason for the Verification's failure.
+     * Only set if `state` is `VERIFICATION_FAILED`.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.VerificationFailCode fail_code = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearFailCode() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      failCode_ = 0;
+      onChanged();
+      return this;
+    }
+
     private boolean reused_;
     /**
      *
@@ -961,7 +1165,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
      * </pre>
      *
-     * <code>bool reused = 4;</code>
+     * <code>bool reused = 5;</code>
      *
      * @return The reused.
      */
@@ -977,7 +1181,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
      * </pre>
      *
-     * <code>bool reused = 4;</code>
+     * <code>bool reused = 5;</code>
      *
      * @param value The reused to set.
      * @return This builder for chaining.
@@ -996,7 +1200,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
      * </pre>
      *
-     * <code>bool reused = 4;</code>
+     * <code>bool reused = 5;</code>
      *
      * @return This builder for chaining.
      */
@@ -1016,7 +1220,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * by the user -- or `0` if not yet begun.
      * </pre>
      *
-     * <code>fixed64 begun = 5;</code>
+     * <code>fixed64 begun = 6;</code>
      *
      * @return The begun.
      */
@@ -1032,7 +1236,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * by the user -- or `0` if not yet begun.
      * </pre>
      *
-     * <code>fixed64 begun = 5;</code>
+     * <code>fixed64 begun = 6;</code>
      *
      * @param value The begun to set.
      * @return This builder for chaining.
@@ -1051,7 +1255,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * by the user -- or `0` if not yet begun.
      * </pre>
      *
-     * <code>fixed64 begun = 5;</code>
+     * <code>fixed64 begun = 6;</code>
      *
      * @return This builder for chaining.
      */
@@ -1070,7 +1274,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, when this verification last changed state -- o
      * </pre>
      *
-     * <code>fixed64 updated = 6;</code>
+     * <code>fixed64 updated = 7;</code>
      *
      * @return The updated.
      */
@@ -1085,7 +1289,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, when this verification last changed state -- o
      * </pre>
      *
-     * <code>fixed64 updated = 6;</code>
+     * <code>fixed64 updated = 7;</code>
      *
      * @param value The updated to set.
      * @return This builder for chaining.
@@ -1103,7 +1307,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
      * The unix timestamp, in seconds, when this verification last changed state -- o
      * </pre>
      *
-     * <code>fixed64 updated = 6;</code>
+     * <code>fixed64 updated = 7;</code>
      *
      * @return This builder for chaining.
      */
