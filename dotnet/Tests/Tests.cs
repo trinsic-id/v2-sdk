@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using Trinsic;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Common.V1;
+using Trinsic.Services.Connect.V1;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
 using Trinsic.Services.UniversalWallet.V1;
@@ -293,6 +294,46 @@ public class Tests
         } catch (RpcException e)
         {
             e.StatusCode.Should().Be(StatusCode.PermissionDenied);
+        }
+    }
+
+    [Fact]
+    public async Task ConnectDemo() {
+        var trinsic = new TrinsicService(_options.Clone());
+        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
+
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(authToken));
+
+        try {
+            // createSession() {
+            var createResponse = await trinsic.Connect.CreateSessionAsync(new() {
+                Verifications = {
+                    new RequestedVerification() {
+                        Type = VerificationType.GovernmentId
+                    }
+                }
+            });
+
+            var session = createResponse.Session;
+            var sessionId = session.Id; // Save this in your database
+            var clientToken = session.ClientToken; // Send this to your user's device
+            // }
+
+
+            // getSession() {
+            var getResponse = await trinsic.Connect.GetSessionAsync(new() {
+                IdvSessionId = sessionId
+            });
+            // }
+
+            // cancelSession() {
+            await trinsic.Connect.CancelSessionAsync(new() {
+                IdvSessionId = sessionId
+            });
+            // }
+
+        } catch {
+            // We expect the above calls to fail due to lack of privileges
         }
     }
 
