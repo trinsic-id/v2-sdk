@@ -7,7 +7,7 @@ performed previously on the platform, reducing the number of full verification f
 
 
 !!! warning "Closed Beta"
-    Trinsic Connect is currently in a closed beta; [contact Trinsic](mailto:contact@trinsic.id) to gain access.
+    Trinsic Connect is currently in a closed beta; please [contact us](mailto:contact@trinsic.id) to gain early access.
 
 ---
 
