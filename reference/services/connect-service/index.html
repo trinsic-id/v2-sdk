@@ -2259,11 +2259,17 @@ performed previously on the platform, reducing the number of full verification f
 <p>Create an identity verification session.</p>
 <p>Populate <code>verifications</code> with a single <code>RequestedVerification</code> object, with a <code>type</code> of <code>GovernmentId</code>. In future, multiple verification types 
 will be supported in a single session.</p>
-<p>In the returned <code>session</code> object, handle the following values appropriately:
-- <code>session.id</code>
-  - Save this in your database somewhere. It is necessary to retrieve the results of the verification session.
-- <code>session.client_token</code>
-  - Pass this to your user's device (browser / phone). It is used to invoke the client-side verification flow.</p>
+<p>In the returned <code>session</code> object, handle the following values appropriately:</p>
+<ul>
+<li><code>session.id</code><ul>
+<li>Save this in your database somewhere. It is necessary to retrieve the results of the verification session.</li>
+</ul>
+</li>
+<li><code>session.client_token</code><ul>
+<li>Pass this to your user's device (browser / phone). It is used to invoke the client-side verification flow.</li>
+</ul>
+</li>
+</ul>
 <p>To invoke the verification flow on the user's device, <a href="#invoke-verification-flow-on-the-client">use the client-side SDK</a>, passing the <code>client_token</code> you received.</p>
 <p>See <a href="#get-verification-results">Get Verification Results</a> to understand how to fetch and process the resultant identity data.</p>
 <div class='proto-method-tabs-marker'></div>
@@ -2316,6 +2322,8 @@ will be supported in a single session.</p>
 <hr />
 <h2 id="get-session">Get Session<a class="headerlink" href="#get-session" title="Permanent link">&para;</a></h2>
 <p>Fetch an identity verification session by its ID.</p>
+<p>If the Session has been completed successfully, the results will be available in the <code>result_vp</code> field of the returned Session. See <a href="#get-verification-results">Get Verification Results</a> for information on parsing this field.</p>
+<p>If the Session failed for any reason (cancellation, identity verification failure, expiration, etc.), the failure reason will be given by the <code>fail_code</code> field.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2425,6 +2433,11 @@ Use the <a href="#get-session">Get Session</a> call to get the current Session o
 <p>The verification data is in the form of a <a href="https://www.w3.org/TR/vc-data-model/#presentations" target="_blank">Verifiable Presentation <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>, 
 which will contain one <a href="/learn/concepts/credentials" target="_blank">Verifiable Credential <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> for each Verification requested during <a href="#create-session">Session Creation</a>.</p>
 <p>Below is an example JSON document representing the structure of the output of a Session created with a single Verification of type <code>GOVERNMENT_ID</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">result_vp</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code>{
    &quot;@context&quot;:[
       &quot;https://www.w3.org/2018/credentials/v1&quot;,
