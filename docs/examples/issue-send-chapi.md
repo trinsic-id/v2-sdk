@@ -5,6 +5,12 @@ hide:
 
 # Issue and exchange using CHAPI
 
+!!! note "Source code for this example"
+
+[https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi](https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi)
+
+### Overview
+
 This example uses a backend API to issue a verifiable credential and deliver the credential to the user's wallet using the [Credential Handler API](https://chapi.io) (abbr. CHAPI - see [W3C specification](https://w3c-ccg.github.io/credential-handler-api/)). The CHAPI protocol allows digital wallets to receive Verifiable Credentials from an independent third-party issuer - or present Verifiable Credentials to an independent third-party verifier - in a way that establishes trust and preserves privacy. See our [issuance guide](/guide/issuance/#send-credential-using-chapi) for more details about using CHAPI and its benefits.
 
 In this guide, we will go through the process of setting up an example API endpoint, and a simple web page that consumes this enpoint and invokes CHAPI in the browser.
@@ -125,11 +131,5 @@ Next, we'll attach an event to a button, call our API and pass the result to the
 !!! note "Configure recommended wallet"
 
     Make sure to update the `recommendedHandlerOrigins` property to match your ecosystem, so that users will be offered to use your ecosysystem as digital wallet, although they can choose to use any wallet that supports CHAPI.
-
-### Example source code
-
-You can find a working example and full source code in our GitHub repo:
-
-[https://github.com/trinsic-id/sdk-examples/tree/main/02-issue-chapi](https://github.com/trinsic-id/sdk-examples/tree/main/02-issue-chapi)
 
 Enjoy! 👋

@@ -5,6 +5,12 @@ hide:
 
 # Issue directly and send
 
+!!! note "Source code for this example"
+
+    [https://github.com/trinsic-id/sdk/tree/main/examples/issue-direct-send](https://github.com/trinsic-id/sdk/tree/main/examples/issue-direct-send)
+
+### Overview
+
 In this example, we'll go through the process of issuing a credential at our backend and send this credential to the user's wallet by
 specifying the user's email address. If the user has not created a wallet in our ecosystem, one will be automatically created for them.
 This shows a very basic process of issuance and credential exchange suitable for most scenarios.
@@ -115,11 +121,4 @@ await trinsic.credential().send({
 });
 
 ```
-
-### Example source code
-
-You can find a working example and full source code in our GitHub repo:
-
-[https://github.com/trinsic-id/sdk-examples/tree/main/01-issue-direct-send](https://github.com/trinsic-id/sdk-examples/tree/main/01-issue-direct-send)
-
 Enjoy! 👋

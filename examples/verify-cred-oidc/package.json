@@ -1,0 +1,16 @@
+{
+  "name": "03-request-vp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@trinsic/trinsic": "^1.11.2",
+    "express": "^4.18.2"
+  }
+}
