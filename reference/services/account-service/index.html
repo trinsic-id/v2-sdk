@@ -1742,6 +1742,32 @@
   
   
     <li class="md-nav__item">
+      <a href="../connect-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../credential-service/" class="md-nav__link">
         
   
@@ -2192,6 +2218,7 @@
 <span class="k">using</span><span class="w"> </span><span class="nn">Trinsic</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Sdk.Options.V1</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.Common.V1</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.Connect.V1</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.Provider.V1</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.TrustRegistry.V1</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.UniversalWallet.V1</span><span class="p">;</span>
@@ -2475,6 +2502,46 @@
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">RpcException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">Be</span><span class="p">(</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">PermissionDenied</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Fact]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">ConnectDemo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">authToken</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span>
+
+<span class="w">        </span><span class="n">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">authToken</span><span class="p">));</span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// createSession() {</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">createResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Connect</span><span class="p">.</span><span class="n">CreateSessionAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Verifications</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="nf">RequestedVerification</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VerificationType</span><span class="p">.</span><span class="n">GovernmentId</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">});</span>
+
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createResponse</span><span class="p">.</span><span class="n">Session</span><span class="p">;</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">sessionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="n">Id</span><span class="p">;</span><span class="w"> </span><span class="c1">// Save this in your database</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">clientToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="n">ClientToken</span><span class="p">;</span><span class="w"> </span><span class="c1">// Send this to your user&#39;s device</span>
+<span class="w">            </span><span class="c1">// }</span>
+
+
+<span class="w">            </span><span class="c1">// getSession() {</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">getResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Connect</span><span class="p">.</span><span class="n">GetSessionAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">IdvSessionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionId</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">            </span><span class="c1">// }</span>
+
+<span class="w">            </span><span class="c1">// cancelSession() {</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Connect</span><span class="p">.</span><span class="n">CancelSessionAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">IdvSessionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionId</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">            </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// We expect the above calls to fail due to lack of privileges</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
