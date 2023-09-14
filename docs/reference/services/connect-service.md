@@ -19,10 +19,11 @@ Populate `verifications` with a single `RequestedVerification` object, with a `t
 will be supported in a single session.
 
 In the returned `session` object, handle the following values appropriately:
+
 - `session.id`
-  - Save this in your database somewhere. It is necessary to retrieve the results of the verification session.
+    - Save this in your database somewhere. It is necessary to retrieve the results of the verification session.
 - `session.client_token`
-  - Pass this to your user's device (browser / phone). It is used to invoke the client-side verification flow.
+    - Pass this to your user's device (browser / phone). It is used to invoke the client-side verification flow.
 
 To invoke the verification flow on the user's device, [use the client-side SDK](#invoke-verification-flow-on-the-client), passing the `client_token` you received.
 
@@ -62,6 +63,9 @@ See [Get Verification Results](#get-verification-results) to understand how to f
 
 Fetch an identity verification session by its ID.
 
+If the Session has been completed successfully, the results will be available in the `result_vp` field of the returned Session. See [Get Verification Results](#get-verification-results) for information on parsing this field.
+
+If the Session failed for any reason (cancellation, identity verification failure, expiration, etc.), the failure reason will be given by the `fail_code` field.
 
 {{ proto_sample_start() }}
 
@@ -159,6 +163,7 @@ which will contain one [Verifiable Credential <small>:material-open-in-new:</sma
 
 Below is an example JSON document representing the structure of the output of a Session created with a single Verification of type `GOVERNMENT_ID`:
 
+=== "result_vp"
 ```
 {
    "@context":[
