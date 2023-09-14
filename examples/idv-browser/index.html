@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.trinsic.id/examples/2-issue-send-chapi/">
+        <link rel="canonical" href="https://docs.trinsic.id/examples/idv-browser/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Issue and exchange using CHAPI - Documentation</title>
+        <title>Request Identity Document Verification in browser - Documentation</title>
       
     
     
@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#issue-and-exchange-using-chapi" class="md-skip">
+        <a href="#request-identity-document-verification-in-browser" class="md-skip">
           Skip to content
         </a>
       
@@ -143,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Issue and exchange using CHAPI
+              Request Identity Document Verification in browser
             
           </span>
         </div>
@@ -2062,80 +2062,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#install-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install dependencies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-and-configure-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import and configure services
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-issue-credential-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Issue Credential API
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#serve-static-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Serve static files
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-web-page" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example web page
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example source code
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2154,105 +2080,11 @@
   
 
 
-<h1 id="issue-and-exchange-using-chapi">Issue and exchange using CHAPI<a class="headerlink" href="#issue-and-exchange-using-chapi" title="Permanent link">&para;</a></h1>
-<p>This example uses a backend API to issue a verifiable credential and deliver the credential to the user's wallet using the <a href="https://chapi.io">Credential Handler API</a> (abbr. CHAPI - see <a href="https://w3c-ccg.github.io/credential-handler-api/">W3C specification</a>). The CHAPI protocol allows digital wallets to receive Verifiable Credentials from an independent third-party issuer - or present Verifiable Credentials to an independent third-party verifier - in a way that establishes trust and preserves privacy. See our <a href="/guide/issuance/#send-credential-using-chapi">issuance guide</a> for more details about using CHAPI and its benefits.</p>
-<p>In this guide, we will go through the process of setting up an example API endpoint, and a simple web page that consumes this enpoint and invokes CHAPI in the browser.</p>
-<h3 id="install-dependencies">Install dependencies<a class="headerlink" href="#install-dependencies" title="Permanent link">&para;</a></h3>
-<p>We will use Express to create a simple API and also install Trinsic's SDK.</p>
-<div class="highlight"><pre><span></span><code>npm install express @trinsic/trinsic
-</code></pre></div>
-<h3 id="import-and-configure-services">Import and configure services<a class="headerlink" href="#import-and-configure-services" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>import express from &#39;express&#39;;
-import path from &#39;path&#39;;
-import { SignatureType, TrinsicService } from &quot;@trinsic/trinsic&quot;;
-
-const app = express();
-
-const trinsic = new TrinsicService({
-    authToken: &quot;&lt;AUTH_TOKEN&gt;&quot;,
-});
-</code></pre></div>
-<details class="note">
-<summary>How to obtain an Auth Token</summary>
-<p>You can obtain auth token from the <a href="https://dashboard.trinsic.id" targer="_blank">Dashboard <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> by clicking on the View Auth Token in the Home page.</p>
-<p><a class="glightbox" href="/_static/images/1-api-token.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="/_static/images/1-api-token.png" width="70%"></a></img></p>
-</details>
-<h3 id="create-issue-credential-api">Create Issue Credential API<a class="headerlink" href="#create-issue-credential-api" title="Permanent link">&para;</a></h3>
-<p>Let's configure Express to create an endpoint for issuance served at <code>/api/issue</code>. Next, we'll use Trinsic's SDK to issue a credential from a template
-and return the issued document as a respoinse to the API call. We will use the same template from the <a href="/examples/1-issue-direct-send/#install-and-initialize-the-sdk">previous example</a> and we'll only send few attributes.</p>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/issue&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">issueFromTemplate</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.trinsic.cloud/example/id-document&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">valuesJson</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Dough&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">dateOfBirth</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1990-07-03T10:12:00Z&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">}),</span>
-<span class="w">        </span><span class="nx">signatureType</span><span class="o">:</span><span class="w"> </span><span class="nx">SignatureType</span><span class="p">.</span><span class="nx">STANDARD</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">includeGovernance</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">issueResponse</span><span class="p">.</span><span class="nx">documentJson</span><span class="p">));</span>
-<span class="p">});</span>
-</code></pre></div>
-<h3 id="serve-static-files">Serve static files<a class="headerlink" href="#serve-static-files" title="Permanent link">&para;</a></h3>
-<p>Let's also create a catch-all endpoint that will serve static content. We'll use this to serve a simple HTML page to showcase the use of CHAPI in a browser.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Serve static files from the &#39;public&#39; folder</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="k">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">())));</span>
-
-<span class="c1">// Catch-all to return index.html for any other request</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;index.html&#39;</span><span class="p">));</span>
-<span class="p">});</span>
-</code></pre></div>
-<h3 id="example-web-page">Example web page<a class="headerlink" href="#example-web-page" title="Permanent link">&para;</a></h3>
-<p>Let's create an example web page <code>index.html</code>, reference and initialize the Credential Handler polyfill.</p>
-<div class="highlight"><pre><span></span><code>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/credential-handler-polyfill@3/dist/credential-handler-polyfill.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="c1">// initialize the credential handler polyfill when the page loads</span>
-<span class="w">      </span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialHandlerPolyfill</span><span class="p">.</span><span class="nx">loadOnce</span><span class="p">();</span>
-<span class="w">      </span><span class="p">});</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Next, we'll attach an event to a button, call our API and pass the result to the CHAPI library using the <code>navigator.credentials.store()</code> function.</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;issueButton&quot;</span><span class="p">&gt;</span>Issue Credential<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;issueButton&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// call API to issue credential</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/api/issue&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-
-<span class="w">            </span><span class="c1">// wrap the credential in an unsigned VerifiablePresentation</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">presentation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://www.w3.org/2018/credentials/v1&quot;</span><span class="p">],</span>
-<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;VerifiablePresentation&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">verifiableCredential</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">data</span><span class="p">],</span>
-<span class="w">            </span><span class="p">};</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">webCredential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebCredential</span><span class="p">(</span><span class="s2">&quot;VerifiablePresentation&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">presentation</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">recommendedHandlerOrigins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://example.connect.trinsic.cloud/&quot;</span><span class="p">],</span>
-<span class="w">            </span><span class="p">});</span>
-
-<span class="w">            </span><span class="c1">// invoke CHAPI to store the credential</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">webCredential</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;apiResponse&quot;</span><span class="p">).</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Failed to call API&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+<h1 id="request-identity-document-verification-in-browser">Request Identity Document Verification in browser<a class="headerlink" href="#request-identity-document-verification-in-browser" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
-<p class="admonition-title">Configure recommended wallet</p>
-<p>Make sure to update the <code>recommendedHandlerOrigins</code> property to match your ecosystem, so that users will be offered to use your ecosysystem as digital wallet, although they can choose to use any wallet that supports CHAPI.</p>
+<p class="admonition-title">Source code for this example</p>
+<p><a href="https://github.com/trinsic-id/sdk/tree/main/examples/idv-browser">https://github.com/trinsic-id/sdk/tree/main/examples/idv-browser</a></p>
 </div>
-<h3 id="example-source-code">Example source code<a class="headerlink" href="#example-source-code" title="Permanent link">&para;</a></h3>
-<p>You can find a working example and full source code in our GitHub repo:</p>
-<p><a href="https://github.com/trinsic-id/sdk-examples/tree/main/02-issue-chapi">https://github.com/trinsic-id/sdk-examples/tree/main/02-issue-chapi</a></p>
-<p>Enjoy! 👋</p>
 
   
   
@@ -2309,7 +2141,7 @@ and return the issued document as a respoinse to the API call. We will use the s
               
                 
               
-              Thanks for your feedback! Help us improve this page by using our <a href="https://github.com/trinsic-id/sdk/issues/new/?title=[Docs feedback]+Issue%20and%20exchange%20using%20CHAPI+-+/examples/2-issue-send-chapi/" target="_blank" rel="noopener">GitHub issue form</a>.
+              Thanks for your feedback! Help us improve this page by using our <a href="https://github.com/trinsic-id/sdk/issues/new/?title=[Docs feedback]+Request%20Identity%20Document%20Verification%20in%20browser+-+/examples/idv-browser/" target="_blank" rel="noopener">GitHub issue form</a>.
             </div>
           
         </div>

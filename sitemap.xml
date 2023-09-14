@@ -51,17 +51,32 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.trinsic.id/examples/1-issue-direct-send/</loc>
+         <loc>https://docs.trinsic.id/examples/idv-browser/</loc>
          <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.trinsic.id/examples/2-issue-send-chapi/</loc>
+         <loc>https://docs.trinsic.id/examples/idv-swift/</loc>
          <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.trinsic.id/examples/3-verify-cred-swift/</loc>
+         <loc>https://docs.trinsic.id/examples/issue-direct-send/</loc>
+         <lastmod>2023-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.trinsic.id/examples/issue-send-chapi/</loc>
+         <lastmod>2023-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.trinsic.id/examples/verify-cred-oidc/</loc>
+         <lastmod>2023-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.trinsic.id/examples/verify-cred-swift/</loc>
          <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
