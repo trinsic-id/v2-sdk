@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Example of issuance using CHAPI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+  <button id="issueButton">Issue Credential</button>
+
+  <script src="https://unpkg.com/credential-handler-polyfill@3/dist/credential-handler-polyfill.min.js" defer></script>
+
+  <script>
+    // initialize the credential handler polyfill when the page loads
+    window.addEventListener("load", async () => {
+      await credentialHandlerPolyfill.loadOnce();
+    });
+
+    document.getElementById("issueButton").addEventListener("click", async () => {
+      try {
+        // call API to issue credential
+        const response = await fetch("/api/issue");
+        const data = await response.json();
+
+        // wrap the credential in an unsigned VerifiablePresentation
+        const presentation = {
+          "@context": ["https://www.w3.org/2018/credentials/v1"],
+          type: "VerifiablePresentation",
+          verifiableCredential: [data],
+        };
+        const webCredential = new WebCredential("VerifiablePresentation", presentation, {
+          recommendedHandlerOrigins: ["https://example.connect.trinsic.cloud/"],
+        });
+
+        // invoke CHAPI to store the credential
+        await navigator.credentials.store(webCredential);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  </script>
+</body>
+
+</html>
