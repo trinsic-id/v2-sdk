@@ -55,6 +55,7 @@ nav:
       - Wallet API: reference/services/wallet-service.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
+  - Examples: examples/index.md
 theme:
   name: material
   logo: _static/logo-title.svg
