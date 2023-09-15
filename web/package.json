@@ -2,16 +2,24 @@
     "name": "@trinsic/trinsic",
     "version": "1.0.0",
     "description": "Node and Browser wrapper for the Trinsic services",
-    "main": "dist/index.js",
+    "main": "lib/index.js",
+    "browser": "lib/index.browser.js",
     "types": "lib/index.d.ts",
     "files": [
-        "lib/**/*"
+        "lib/**/*",
+        "dist/**/*"
     ],
     "exports": {
-        ".": "./lib/index.js"
+        ".": {
+            "import": {
+                "browser": "./lib/index.browser.js",
+                "default": "./lib/index.js"
+            },
+            "require": "./lib/index.js"
+        }
     },
     "scripts": {
-        "build": "npm run build:proto && npm run build:vite",
+        "build": "npm run build:proto && npm run build:typescript && npm run build:vite",
         "build:proto": "pwsh Generate-Proto.ps1",
         "build:prettier": "npx prettier ./src ./test --write",
         "build:vite": "vite build",
@@ -45,6 +53,7 @@
         "js-base64": "3.7.5",
         "long": "5.2.3",
         "nice-grpc-web": "3.2.4",
+        "oidc-client-ts": "2.2.5",
         "protobufjs": "7.2.4"
     },
     "devDependencies": {

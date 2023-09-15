@@ -154,6 +154,8 @@ extra:
 
 plugins:
   - search
+  - badges
+  - glightbox
   - macros:
       module_name: mkdocs_macros_main
       verbose: true
