@@ -126,6 +126,13 @@ iframe.rounded-frame {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     border-top: 1px solid #e3e8ee;
+    background-color: rgba(52,152,219, 0.0);
+    transition: 1s ease-in background-color;
+}
+
+.proto-field.flash {
+    background-color: rgba(52,152,219, 0.6);
+    transition: none;
 }
 
 .proto-field-name {
@@ -217,6 +224,10 @@ iframe.rounded-frame {
 /* Make the Sample / Request / Response tab labels larger */
 .proto-method-tabs-marker + .tabbed-set > .tabbed-labels > label {
     font-size: 0.7rem;
+}
+
+.proto-field-ref {
+    cursor: pointer;
 }
 
 .card-container {
