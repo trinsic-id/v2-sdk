@@ -1,11 +1,15 @@
 import {
+    AcceptCredentialRequest,
+    CreateCredentialOfferRequest,
     CreateCredentialTemplateRequest,
     CreateCredentialTemplateResponse,
     CreateEcosystemRequest,
     CreateProofRequest,
     FieldType,
     InsertItemRequest,
+    RejectCredentialRequest,
     SearchRequest,
+    SignatureType,
     TemplateField,
     TrinsicService,
 } from "../src";
@@ -142,11 +146,13 @@ describe("WalletService Unit Tests", () => {
         // createProof() {
         let proof = await trinsic.credential().createProof(
             CreateProofRequest.fromPartial({
+                documentJson: issueResponse.documentJson,
                 itemId: insertItemResponse.itemId,
             }),
         );
         let selectiveProof = await trinsic.credential().createProof(
             CreateProofRequest.fromPartial({
+                documentJson: issueResponse.documentJson,
                 itemId: insertItemResponse.itemId,
                 revealTemplate: {
                     templateAttributes: ["firstName", "lastName"],
@@ -160,11 +166,11 @@ describe("WalletService Unit Tests", () => {
         let verifyResponse = await trinsic.credential().verifyProof({
             proofDocumentJson: proof.proofDocumentJson,
         });
-        // }
 
         let selectiveVerifyResponse = await trinsic.credential().verifyProof({
             proofDocumentJson: selectiveProof.proofDocumentJson,
         });
+        // }
 
         expect(
             verifyResponse.validationResults!["SignatureVerification"].isValid,
@@ -181,6 +187,53 @@ describe("WalletService Unit Tests", () => {
         await trinsic.wallet().deleteItem({
             itemId: itemId,
         });
+        //}
+    });
+
+    it("Demo: create, accept and reject credential offer", async () => {
+        trinsic.options = clinic;
+        let values = JSON.stringify({
+            firstName: "Jane",
+            lastName: "Doe",
+            age: 42,
+        });
+
+        const templateId = template!.data!.id;
+
+        let issueResponse = await trinsic.credential().issueFromTemplate({
+            templateId: templateId,
+            valuesJson: values,
+        });
+
+        expect(issueResponse).not.toBeNull();
+
+        //createCredentialOffer() {
+        let createCredentialOfferResponse = await trinsic.credential().createCredentialOffer(
+            CreateCredentialOfferRequest.fromPartial({
+                templateId: templateId,
+                valuesJson: issueResponse.documentJson,
+                holderBinding: true,
+                includeGovernance: true,
+                generateShareUrl: true,
+                signatureType: SignatureType.EXPERIMENTAL,
+            })
+        );
+        //}
+
+        //acceptCredential() {
+        let acceptCredentialResponse = await trinsic.credential().acceptCredential(
+            AcceptCredentialRequest.fromPartial({
+                documentJson: createCredentialOfferResponse.documentJson,
+            })
+        );
+        //}
+
+        //rejectCredential() {
+        let rejectCredentialResponse = await trinsic.credential().rejectCredential(
+            RejectCredentialRequest.fromPartial({
+                documentJson: createCredentialOfferResponse.documentJson,
+            })
+        );
         //}
     });
 
