@@ -228,6 +228,18 @@ describe("WalletService Unit Tests", () => {
         );
         //}
 
+        //Create another credential offer so the next call can reject an existing offer
+        createCredentialOfferResponse = await trinsic.credential().createCredentialOffer(
+            CreateCredentialOfferRequest.fromPartial({
+                templateId: templateId,
+                valuesJson: issueResponse.documentJson,
+                holderBinding: true,
+                includeGovernance: true,
+                generateShareUrl: true,
+                signatureType: SignatureType.EXPERIMENTAL,
+            })
+        );
+
         //rejectCredential() {
         let rejectCredentialResponse = await trinsic.credential().rejectCredential(
             RejectCredentialRequest.fromPartial({
