@@ -21,7 +21,7 @@ public class ConnectService extends ServiceBase {
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/ConnectService.java
 
   /** Create an IDVSession */
-  public ListenableFuture<CreateSessionResponse2> createSession(CreateSessionRequest request)
+  public ListenableFuture<CreateSessionResponse> createSession(CreateSessionRequest request)
       throws InvalidProtocolBufferException {
 
     return withMetadata(stub, request).createSession(request);

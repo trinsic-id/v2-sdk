@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Example of issuance using CHAPI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+    <div class="text-center space-y-4">
+        <h1 class="text-2xl font-bold">Verifiable Presentation Demo</h1>
+        <p class="text-lg">This is a paragraph of text.</p>
+        <div>
+            <button id="verifyButton" class="btn btn-primary">Request Verifiable Presentation</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@trinsic/trinsic@1.11.3-pre.13/dist/trinsic.min.js"></script>
+
+    <script>
+        // initialize the credential handler polyfill when the page loads
+        const { ConnectClient } = trinsic;
+        const client = new ConnectClient();
+
+        document.getElementById("verifyButton").addEventListener("click", async () => {
+            const presentationResponse = await client.requestVerifiableCredential({
+                ecosystem: "did-hack",
+                schema: "https://schema.trinsic.cloud/did-hack/attendance-credential",
+            });
+
+            console.log(presentationResponse);
+
+            // call API to verify credential
+            const response = await fetch("/api/verify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(presentationResponse.vp_token),
+            });
+            const data = await response.json();
+
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

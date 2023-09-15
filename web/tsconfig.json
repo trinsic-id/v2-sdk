@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES2017",
-        "module": "commonjs",
+        "module": "CommonJS",
         "moduleResolution": "node",
         "declaration": true,
         "sourceMap": true,
@@ -12,5 +12,5 @@
         "forceConsistentCasingInFileNames": true
     },
     "include": ["./**/*.ts"],
-    "exclude": ["node_modules", "lib"]
+    "exclude": ["node_modules", "lib", "dist"]
 }

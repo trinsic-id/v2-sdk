@@ -1,15 +1,15 @@
 # OpenID Credential Exchange Service
 
 ## Overview
-Trinsic provides an [OpenID Connect <small>:material-open-in-new:</small>](https://openid.net/connect/){target=_blank} ("OIDC") service which enables verifiers to request credentials from a user's cloud wallet in a simple and secure way.
+
+Trinsic provides an [OpenID Connect <small>:material-open-in-new:</small>](https://openid.net/connect/){target=\_blank} ("OIDC") service which enables verifiers to request credentials from a user's cloud wallet in a simple and secure way.
 
 This service does not require the use of Trinsic's SDKs in the user's browser, and is therefore lightweight and easy to integrate.
 
 !!! info "Credential Issuance"
-    Currently, Trinsic's OpenID Connect service only enables the sharing of a credential between holder and verifier. We plan to support issuance through this service at a later date.
+Currently, Trinsic's OpenID Connect service only enables the sharing of a credential between holder and verifier. We plan to support issuance through this service at a later date.
 
     In the meantime, use the [InsertItem](../services/wallet-service.md#insert-item) or [Send](../services/credential-service.md#send-via-email) methods to store credentials in a holder's wallet.
-
 
 ## Integration
 
@@ -27,21 +27,22 @@ Because this is an OpenID Connect service, any compliant library may be used -- 
 
 Configure your OIDC library with the following parameters:
 
-| Parameter                       | Description                                                                                                                                                                |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **General Parameters**          |
-| `authority`                     | `https://connect.trinsic.cloud`                                                                                                                                            |
-| `response_type`                 | `code`                                                                                                                                                                     |
-| `scope`                         | `openid`                                                                                                                                                                   |
-| `client_id`                     | Any string which uniquely represents your client application                                                                                                               |
-| `redirect_uri`                  | The URI your user should be redirected to once they have completed (or canceled) the flow                                                                                  |
-| `nonce`                         | *(Optional)* Random nonce value that will be used to bind the generated presentation to the issued token. If not specified, one will be randomly generated. Use this to prevent presentation replays.      |
-| **Trinsic-Specific Parameters** |
-| `trinsic:ecosystem`             | ID of ecosystem user wallet resides in                                                                                                                                     |
-| `trinsic:schema`                | *(Optional)* Comma-separated listed of Schema URLs. Only credentials which match one of these schemas will be returned.                                                    |
-| `trinsic:issuer`                | *(Optional)* Comma-separated list of Issuer DIDs. Only credentials issued by one of these issuers will be returned.                                                        |
-| `trinsic:egf`                   | *(Optional)* Comma-separated list of [Entity Governance Framework](/learn/concepts/trust-registries) IDs. Only credentials bound to one of these EGF IDs will be returned. |
-| `trinsic:mode`                   | *(Optional)* Can be `redirect` (default), `popup`, or `silent`. |
+| Parameter                          | Description                                                                                                                                                                                           |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **General Parameters**             |
+| `authority`                        | `https://connect.trinsic.cloud`                                                                                                                                                                       |
+| `response_type`                    | `code`                                                                                                                                                                                                |
+| `scope`                            | `openid`                                                                                                                                                                                              |
+| `client_id`                        | Any string which uniquely represents your client application                                                                                                                                          |
+| `redirect_uri`                     | The URI your user should be redirected to once they have completed (or canceled) the flow                                                                                                             |
+| `nonce`                            | _(Optional)_ Random nonce value that will be used to bind the generated presentation to the issued token. If not specified, one will be randomly generated. Use this to prevent presentation replays. |
+| **Trinsic-Specific Parameters**    |
+| `trinsic:ecosystem`                | ID of ecosystem user wallet resides in                                                                                                                                                                |
+| `trinsic:schema`                   | _(Optional)_ Comma-separated listed of Schema URLs. Only credentials which match one of these schemas will be returned.                                                                               |
+| `trinsic:issuer`                   | _(Optional)_ Comma-separated list of Issuer DIDs. Only credentials issued by one of these issuers will be returned.                                                                                   |
+| `trinsic:egf`                      | _(Optional)_ Comma-separated list of [Entity Governance Framework](/learn/concepts/trust-registries) IDs. Only credentials bound to one of these EGF IDs will be returned.                            |
+| `trinsic:mode`                     | _(Optional)_ Can be `redirect` (default), `popup`, or `silent`.                                                                                                                                       |
+| `trinsic:verification_template_id` | _(Optional)_ ID of the verification template that will be used to perform the verifications. Format: `urn:template:<ecosystem_name>:<verification_template_name>`                                     |
 
 ### Presentation Replays and ID Tokens
 
@@ -88,10 +89,9 @@ You will receive a JSON object of the following form:
 ```
 
 !!! info "Credential Format"
-    Note that the above data has been modified for brevity.
+Note that the above data has been modified for brevity.
 
     The `@context` and `type` arrays will contain additional entries which are specific to the credential.
-
 
 ### Verify the Received Proof
 
@@ -101,9 +101,8 @@ This proof can be verified with any library that supports VC verifications for B
 
 If you specified a `nonce` in the authorization request, always verify that the `nonce` claim in the JWT ID token matches the similarly named value in the `_vp_token` document. You may find the nonce in the `_vp_token.proof.nonce` path in the JSON structure. Note that the value in this proof may be specified in base64 format, so you may need to reformat your nonce before comparing. If you specified the nonce as base64 in the request, the two values should match with direct string comparison.
 
-
 !!! warning "Always Verify"
-    It may be tempting to simply take the data in `vp_token` and act upon it without first verifying the proof.
+It may be tempting to simply take the data in `vp_token` and act upon it without first verifying the proof.
 
     **Always verify the proof** before making use of its data.
 
@@ -112,7 +111,7 @@ If you specified a `nonce` in the authorization request, always verify that the 
 ## Displaying Linked Data in Credentials
 
 !!! info "SDK Only"
-    The following section presently only applies when using our SDK to create a Template; our Dashboard does not yet support the ability to specify field annotations.
+The following section presently only applies when using our SDK to create a Template; our Dashboard does not yet support the ability to specify field annotations.
 
 Some credential template fields may be intended for URLs which resolve to images or any other data which cannot be directly embedded in a credential. For example, you may wish to include a URL to an image of a physical credential in its digital representation.
 
@@ -120,30 +119,29 @@ By default, these will display to the holders in the OIDC flow as simple text fi
 
 When creating or updating a Template:
 
-- Choose the `URI` type for any Fields which are intended to contain URIs.
-- Configure the `UriData` object on the Field
-  - Set the `RenderMethod` property
-      - If the field is intended to contain an image, use the value `INLINE_IMAGE`.
-      - Otherwise, use `LINK` for a clickable link, or `TEXT` to display the URI in raw form.
-  - Set the `MimeType` property
-      - Use the value `image` if the field is intended to contain a link to an image
-      - Otherwise, the value should be the expected MIME Type of the data
-          - If you are unsure, use `application/octet-stream` as a catch-all
+-   Choose the `URI` type for any Fields which are intended to contain URIs.
+-   Configure the `UriData` object on the Field
+    -   Set the `RenderMethod` property
+        -   If the field is intended to contain an image, use the value `INLINE_IMAGE`.
+        -   Otherwise, use `LINK` for a clickable link, or `TEXT` to display the URI in raw form.
+    -   Set the `MimeType` property
+        -   Use the value `image` if the field is intended to contain a link to an image
+        -   Otherwise, the value should be the expected MIME Type of the data
+            -   If you are unsure, use `application/octet-stream` as a catch-all
 
 ## Sample
 
 We've prepared a sample demonstrating client-side OIDC Verification.
 
 <div class="grid cards" markdown>
-    
+
 -   :fontawesome-brands-github: Sample Source
 
-    ---
+    ***
 
     The source for this sample is available [on GitHub](https://github.com/trinsic-id/sdk/tree/main/samples/oidc-client-verifier)
 
 </div>
-
 
 ## OIDC Libraries
 

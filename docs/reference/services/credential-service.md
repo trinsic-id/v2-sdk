@@ -66,7 +66,7 @@ Issues a credential from a [previously-defined credential template](/reference/s
 ### Add Trust Registry information to issued credential
 
 In order to attach governance information to the credential, issuers must request this explicitly by specifying the parameter
-`include_governance` to `true` in the above request. This will reference the ecosystem's Trust Registry that the issuer is authorized
+{{ field_ref("IssueFromTemplateRequest", "include_governance") }} to `true` in the above request. This will reference the ecosystem's Trust Registry that the issuer is authorized
 to issue credentials of the designated type (schema).
 
 When this parameter is set to `true`, the issued credential will contain extended information in the `issuer` field to assert authorization in
@@ -223,17 +223,17 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
 ---
 
 ## Create Proof
-Creates and signs a [proof](/) for a valid JSON-LD credential, using the BBS+ Signature Suite.
+Creates and signs a proof for a valid JSON-LD credential, using the BBS+ Signature Suite.
 
-If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; otherwise, pass the raw JSON-LD credential via `document_json`.
+If the credential is stored in a Trinsic cloud wallet, pass its {{ field_ref("CreateProofRequest", "item_id") }}; otherwise, pass the raw JSON-LD credential via {{ field_ref("CreateProofRequest", "document_json") }}.
 
 !!! info "Selective Disclosure"
     BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.
 
-    This enables increased user privacy: fields which aren't included in `reveal_document_json` will not be present in the generated proof.
+    This enables increased user privacy: fields which aren't included in {{ field_ref("CreateProofRequest", "reveal_document_json") }} will not be present in the generated proof.
 
-    1. If `reveal_document_json` is passed, a proof will be generated for only the fields specified. This is a JSON-LD frame.
-    2. Rather than formulating a complete JSON-LD frame, you can instead provide a list of proof attributes to reveal, and the service will construct the JSON-LD proof frame internally
+    1. If {{ field_ref("CreateProofRequest", "reveal_document_json") }} is passed, a proof will be generated for only the fields specified. This is a JSON-LD frame.
+    2. Rather than formulating a complete JSON-LD frame, you can instead provide a list of proof attributes to reveal via {{ field_ref("CreateProofRequest", "reveal_template.template_attributes", "reveal_template.template_attributes") }}, and the service will construct the JSON-LD proof frame internally
     3. If neither is provided, the entire proof will be returned.
 
 {{ proto_sample_start() }}
@@ -334,7 +334,7 @@ Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at
 
     For example, a credential may be expired or revoked, but otherwise perfectly valid.
 
-    `validation_results` contains an entry for each of the following verification steps:
+    {{ field_ref("VerifyProofResponse", "validation_results") }} contains an entry for each of the following verification steps:
 
     | Name                                                     | Description                                                                                                          |
     | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |

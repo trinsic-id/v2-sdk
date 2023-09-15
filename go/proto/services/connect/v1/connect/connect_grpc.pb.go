@@ -29,7 +29,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ConnectClient interface {
 	// Create an IDVSession
-	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse2, error)
+	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error)
 	// Cancel an IDVSession
 	CancelSession(ctx context.Context, in *CancelSessionRequest, opts ...grpc.CallOption) (*CancelSessionResponse, error)
 	// Get an IDVSession
@@ -44,8 +44,8 @@ func NewConnectClient(cc grpc.ClientConnInterface) ConnectClient {
 	return &connectClient{cc}
 }
 
-func (c *connectClient) CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse2, error) {
-	out := new(CreateSessionResponse2)
+func (c *connectClient) CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error) {
+	out := new(CreateSessionResponse)
 	err := c.cc.Invoke(ctx, Connect_CreateSession_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -76,7 +76,7 @@ func (c *connectClient) GetSession(ctx context.Context, in *GetSessionRequest, o
 // for forward compatibility
 type ConnectServer interface {
 	// Create an IDVSession
-	CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse2, error)
+	CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error)
 	// Cancel an IDVSession
 	CancelSession(context.Context, *CancelSessionRequest) (*CancelSessionResponse, error)
 	// Get an IDVSession
@@ -88,7 +88,7 @@ type ConnectServer interface {
 type UnimplementedConnectServer struct {
 }
 
-func (UnimplementedConnectServer) CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse2, error) {
+func (UnimplementedConnectServer) CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSession not implemented")
 }
 func (UnimplementedConnectServer) CancelSession(context.Context, *CancelSessionRequest) (*CancelSessionResponse, error) {

@@ -25,6 +25,7 @@ class IDVSession extends $pb.GeneratedMessage {
     $core.String? clientToken,
     IDVSessionState? state,
     $core.Map<$core.String, Verification>? verifications,
+    SessionFailCode? failCode,
     $core.String? resultVp,
     $fixnum.Int64? created,
     $fixnum.Int64? updated,
@@ -41,6 +42,9 @@ class IDVSession extends $pb.GeneratedMessage {
     }
     if (verifications != null) {
       $result.verifications.addAll(verifications);
+    }
+    if (failCode != null) {
+      $result.failCode = failCode;
     }
     if (resultVp != null) {
       $result.resultVp = resultVp;
@@ -79,10 +83,15 @@ class IDVSession extends $pb.GeneratedMessage {
         valueCreator: Verification.create,
         valueDefaultOrMaker: Verification.getDefault,
         packageName: const $pb.PackageName('services.connect.v1'))
-    ..aOS(5, _omitFieldNames ? '' : 'resultVp')
-    ..a<$fixnum.Int64>(6, _omitFieldNames ? '' : 'created', $pb.PbFieldType.OF6,
+    ..e<SessionFailCode>(
+        5, _omitFieldNames ? '' : 'failCode', $pb.PbFieldType.OE,
+        defaultOrMaker: SessionFailCode.SESSION_FAIL_INTERNAL,
+        valueOf: SessionFailCode.valueOf,
+        enumValues: SessionFailCode.values)
+    ..aOS(6, _omitFieldNames ? '' : 'resultVp')
+    ..a<$fixnum.Int64>(7, _omitFieldNames ? '' : 'created', $pb.PbFieldType.OF6,
         defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(7, _omitFieldNames ? '' : 'updated', $pb.PbFieldType.OF6,
+    ..a<$fixnum.Int64>(8, _omitFieldNames ? '' : 'updated', $pb.PbFieldType.OF6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
@@ -151,44 +160,58 @@ class IDVSession extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.Map<$core.String, Verification> get verifications => $_getMap(3);
 
-  /// The resultant signed VP combining the results of all verifications
+  /// The reason for the IDVSession's failure.
+  /// Only set if `state` is `IDV_FAILED`.
   @$pb.TagNumber(5)
-  $core.String get resultVp => $_getSZ(4);
+  SessionFailCode get failCode => $_getN(4);
   @$pb.TagNumber(5)
-  set resultVp($core.String v) {
-    $_setString(4, v);
+  set failCode(SessionFailCode v) {
+    setField(5, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasResultVp() => $_has(4);
+  $core.bool hasFailCode() => $_has(4);
   @$pb.TagNumber(5)
-  void clearResultVp() => clearField(5);
+  void clearFailCode() => clearField(5);
+
+  /// The resultant signed VP combining the results of all verifications
+  @$pb.TagNumber(6)
+  $core.String get resultVp => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set resultVp($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasResultVp() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearResultVp() => clearField(6);
 
   /// The unix timestamp, in seconds, that this IDVSession was created
-  @$pb.TagNumber(6)
-  $fixnum.Int64 get created => $_getI64(5);
-  @$pb.TagNumber(6)
+  @$pb.TagNumber(7)
+  $fixnum.Int64 get created => $_getI64(6);
+  @$pb.TagNumber(7)
   set created($fixnum.Int64 v) {
-    $_setInt64(5, v);
-  }
-
-  @$pb.TagNumber(6)
-  $core.bool hasCreated() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearCreated() => clearField(6);
-
-  /// The unix timestamp, in seconds, that this IDVSession's `state` was last updated
-  @$pb.TagNumber(7)
-  $fixnum.Int64 get updated => $_getI64(6);
-  @$pb.TagNumber(7)
-  set updated($fixnum.Int64 v) {
     $_setInt64(6, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasUpdated() => $_has(6);
+  $core.bool hasCreated() => $_has(6);
   @$pb.TagNumber(7)
-  void clearUpdated() => clearField(7);
+  void clearCreated() => clearField(7);
+
+  /// The unix timestamp, in seconds, that this IDVSession's `state` was last updated
+  @$pb.TagNumber(8)
+  $fixnum.Int64 get updated => $_getI64(7);
+  @$pb.TagNumber(8)
+  set updated($fixnum.Int64 v) {
+    $_setInt64(7, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasUpdated() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearUpdated() => clearField(8);
 }
 
 /// A Verification that is part of an IDVSession
@@ -197,6 +220,7 @@ class Verification extends $pb.GeneratedMessage {
     $core.String? id,
     VerificationType? type,
     VerificationState? state,
+    VerificationFailCode? failCode,
     $core.bool? reused,
     $fixnum.Int64? begun,
     $fixnum.Int64? updated,
@@ -210,6 +234,9 @@ class Verification extends $pb.GeneratedMessage {
     }
     if (state != null) {
       $result.state = state;
+    }
+    if (failCode != null) {
+      $result.failCode = failCode;
     }
     if (reused != null) {
       $result.reused = reused;
@@ -245,10 +272,15 @@ class Verification extends $pb.GeneratedMessage {
         defaultOrMaker: VerificationState.VERIFICATION_PENDING,
         valueOf: VerificationState.valueOf,
         enumValues: VerificationState.values)
-    ..aOB(4, _omitFieldNames ? '' : 'reused')
-    ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'begun', $pb.PbFieldType.OF6,
+    ..e<VerificationFailCode>(
+        4, _omitFieldNames ? '' : 'failCode', $pb.PbFieldType.OE,
+        defaultOrMaker: VerificationFailCode.VERIFICATION_FAIL_INTERNAL,
+        valueOf: VerificationFailCode.valueOf,
+        enumValues: VerificationFailCode.values)
+    ..aOB(5, _omitFieldNames ? '' : 'reused')
+    ..a<$fixnum.Int64>(6, _omitFieldNames ? '' : 'begun', $pb.PbFieldType.OF6,
         defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(6, _omitFieldNames ? '' : 'updated', $pb.PbFieldType.OF6,
+    ..a<$fixnum.Int64>(7, _omitFieldNames ? '' : 'updated', $pb.PbFieldType.OF6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
@@ -314,46 +346,60 @@ class Verification extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearState() => clearField(3);
 
-  /// Whether this was a reused (true) or fresh (false) verification.
-  /// If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
+  /// The reason for the Verification's failure.
+  /// Only set if `state` is `VERIFICATION_FAILED`.
   @$pb.TagNumber(4)
-  $core.bool get reused => $_getBF(3);
+  VerificationFailCode get failCode => $_getN(3);
   @$pb.TagNumber(4)
-  set reused($core.bool v) {
-    $_setBool(3, v);
+  set failCode(VerificationFailCode v) {
+    setField(4, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasReused() => $_has(3);
+  $core.bool hasFailCode() => $_has(3);
   @$pb.TagNumber(4)
-  void clearReused() => clearField(4);
+  void clearFailCode() => clearField(4);
+
+  /// Whether this was a reused (true) or fresh (false) verification.
+  /// If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
+  @$pb.TagNumber(5)
+  $core.bool get reused => $_getBF(4);
+  @$pb.TagNumber(5)
+  set reused($core.bool v) {
+    $_setBool(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasReused() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearReused() => clearField(5);
 
   /// The unix timestamp, in seconds, when this verification was begun
   /// by the user -- or `0` if not yet begun.
-  @$pb.TagNumber(5)
-  $fixnum.Int64 get begun => $_getI64(4);
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(6)
+  $fixnum.Int64 get begun => $_getI64(5);
+  @$pb.TagNumber(6)
   set begun($fixnum.Int64 v) {
-    $_setInt64(4, v);
-  }
-
-  @$pb.TagNumber(5)
-  $core.bool hasBegun() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearBegun() => clearField(5);
-
-  /// The unix timestamp, in seconds, when this verification last changed state -- o
-  @$pb.TagNumber(6)
-  $fixnum.Int64 get updated => $_getI64(5);
-  @$pb.TagNumber(6)
-  set updated($fixnum.Int64 v) {
     $_setInt64(5, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasUpdated() => $_has(5);
+  $core.bool hasBegun() => $_has(5);
   @$pb.TagNumber(6)
-  void clearUpdated() => clearField(6);
+  void clearBegun() => clearField(6);
+
+  /// The unix timestamp, in seconds, when this verification last changed state -- o
+  @$pb.TagNumber(7)
+  $fixnum.Int64 get updated => $_getI64(6);
+  @$pb.TagNumber(7)
+  set updated($fixnum.Int64 v) {
+    $_setInt64(6, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasUpdated() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearUpdated() => clearField(7);
 }
 
 /// Request to create an Identity Verification Session
@@ -484,8 +530,8 @@ class RequestedVerification extends $pb.GeneratedMessage {
 }
 
 /// Response to `CreateIDVSessionRequest`
-class CreateSessionResponse2 extends $pb.GeneratedMessage {
-  factory CreateSessionResponse2({
+class CreateSessionResponse extends $pb.GeneratedMessage {
+  factory CreateSessionResponse({
     IDVSession? session,
   }) {
     final $result = create();
@@ -494,16 +540,16 @@ class CreateSessionResponse2 extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  CreateSessionResponse2._() : super();
-  factory CreateSessionResponse2.fromBuffer($core.List<$core.int> i,
+  CreateSessionResponse._() : super();
+  factory CreateSessionResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory CreateSessionResponse2.fromJson($core.String i,
+  factory CreateSessionResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CreateSessionResponse2',
+      _omitMessageNames ? '' : 'CreateSessionResponse',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
       createEmptyInstance: create)
@@ -514,27 +560,27 @@ class CreateSessionResponse2 extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  CreateSessionResponse2 clone() =>
-      CreateSessionResponse2()..mergeFromMessage(this);
+  CreateSessionResponse clone() =>
+      CreateSessionResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  CreateSessionResponse2 copyWith(
-          void Function(CreateSessionResponse2) updates) =>
-      super.copyWith((message) => updates(message as CreateSessionResponse2))
-          as CreateSessionResponse2;
+  CreateSessionResponse copyWith(
+          void Function(CreateSessionResponse) updates) =>
+      super.copyWith((message) => updates(message as CreateSessionResponse))
+          as CreateSessionResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static CreateSessionResponse2 create() => CreateSessionResponse2._();
-  CreateSessionResponse2 createEmptyInstance() => create();
-  static $pb.PbList<CreateSessionResponse2> createRepeated() =>
-      $pb.PbList<CreateSessionResponse2>();
+  static CreateSessionResponse create() => CreateSessionResponse._();
+  CreateSessionResponse createEmptyInstance() => create();
+  static $pb.PbList<CreateSessionResponse> createRepeated() =>
+      $pb.PbList<CreateSessionResponse>();
   @$core.pragma('dart2js:noInline')
-  static CreateSessionResponse2 getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CreateSessionResponse2>(create);
-  static CreateSessionResponse2? _defaultInstance;
+  static CreateSessionResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CreateSessionResponse>(create);
+  static CreateSessionResponse? _defaultInstance;
 
   /// The created IDVSession
   @$pb.TagNumber(1)
