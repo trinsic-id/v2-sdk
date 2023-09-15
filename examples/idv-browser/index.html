@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Example of issuance using CHAPI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+    <div class="text-center space-y-4">
+        <h1 class="text-2xl font-bold">Identity Verification Demo</h1>
+        <p class="text-lg">This is a simple example of how to initiate identity verification.</p>
+        <div>
+            <button id="verifyButton" class="btn btn-primary">Start Verification</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@trinsic/trinsic@1.11.3-pre.14/dist/trinsic.min.js" defer></script>
+
+    <script>
+        // initialize the credential handler polyfill when the page loads
+
+        document.getElementById("verifyButton").addEventListener("click", async () => {
+            const { ConnectClient } = trinsic;
+            const client = new ConnectClient();
+
+            // 1. Get a valid session from the backend
+            const createResponse = await fetch("/api/create-session", {
+                method: "POST",
+            });
+            const session = await createResponse.json();
+
+            console.log(session);
+
+            // 2. Perform identity verification
+            const idvResponse = await client.identityVerification(session.clientToken);
+
+            console.log(await idvResponse.json());
+
+            // 3. Check the verification status
+            const getResponse = await fetch("/api/get-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ sessionId: session.id }),
+            });
+            const idvResult = await getResponse.json();
+
+            console.log(idvResult);
+        });
+    </script>
+</body>
+
+</html>
