@@ -15,17 +15,17 @@ performed previously on the platform, reducing the number of full verification f
 
 Create an identity verification session.
 
-Populate `verifications` with a single `RequestedVerification` object, with a `type` of `GovernmentId`. In future, multiple verification types 
+Populate {{ field_ref("CreateSessionRequest", "verifications") }} with a single `RequestedVerification` object, with a {{ field_ref("CreateSessionRequest", "verifications[i].type") }} of {{ field_ref("CreateSessionRequest", "verifications[i].type.GOVERNMENT_ID") }}. In future, multiple verification types 
 will be supported in a single session.
 
 In the returned `session` object, handle the following values appropriately:
 
-- `session.id`
+- {{ field_ref("CreateSessionResponse", "session.id", "session.id") }}
     - Save this in your database somewhere. It is necessary to retrieve the results of the verification session.
-- `session.client_token`
+- {{ field_ref("CreateSessionResponse", "session.client_token", "session.client_token") }}
     - Pass this to your user's device (browser / phone). It is used to invoke the client-side verification flow.
 
-To invoke the verification flow on the user's device, [use the client-side SDK](#invoke-verification-flow-on-the-client), passing the `client_token` you received.
+To invoke the verification flow on the user's device, [use the client-side SDK](#invoke-verification-flow-on-the-client), passing the {{ field_ref("CreateSessionResponse", "session.client_token") }} you received.
 
 See [Get Verification Results](#get-verification-results) to understand how to fetch and process the resultant identity data.
 
@@ -63,9 +63,9 @@ See [Get Verification Results](#get-verification-results) to understand how to f
 
 Fetch an identity verification session by its ID.
 
-If the Session has been completed successfully, the results will be available in the `result_vp` field of the returned Session. See [Get Verification Results](#get-verification-results) for information on parsing this field.
+If the Session has been completed successfully, the results will be available in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field of the returned Session. See [Get Verification Results](#get-verification-results) for information on parsing this field.
 
-If the Session failed for any reason (cancellation, identity verification failure, expiration, etc.), the failure reason will be given by the `fail_code` field.
+If the Session failed for any reason (cancellation, identity verification failure, expiration, etc.), the failure reason will be given by the {{ field_ref("GetSessionResponse", "session.fail_code") }} field.
 
 {{ proto_sample_start() }}
 
@@ -97,7 +97,7 @@ If the Session failed for any reason (cancellation, identity verification failur
 
 Cancel an identity verification session by its ID.
 
-A session cannot be canceled if it is in the `SUCCESS` or `FAILED` states.
+A session cannot be canceled if it is in the {{ field_ref("CancelSessionResponse", "session.state.IDV_SUCCESS") }} or {{ field_ref("CancelSessionResponse", "session.state.IDV_FAILED") }} states.
 
 {{ proto_sample_start() }}
 
@@ -125,7 +125,7 @@ A session cannot be canceled if it is in the `SUCCESS` or `FAILED` states.
 
 ## Invoke Verification Flow on the Client
 
-Once a Session has been [created](#create-session), the verification flow must be run on your end-user's device, using the `client_token` returned during Session creation.
+Once a Session has been [created](#create-session), the verification flow must be run on your end-user's device, using the {{ field_ref("CreateSessionResponse", "session.client_token") }}  returned during Session creation.
 
 === "Web (TypeScript)"
     ```ts
@@ -155,8 +155,9 @@ Once a Session has been [created](#create-session), the verification flow must b
 
 ## Get Verification Results
 
-If a verification is successful, its `state` will be `IDV_SUCCESS`, and the resultant data will be available as a JSON string in the `result_vp` field. 
-Use the [Get Session](#get-session) call to get the current Session object, including its `state` and `result_vp`.
+If a verification is successful, its {{ field_ref("GetSessionResponse", "session.state") }}  will be {{ field_ref("GetSessionResponse", "session.state.IDV_SUCCESS") }}, and the resultant data will be available as a JSON string in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field. 
+
+Use the [Get Session](#get-session) call to get the current Session object, including its {{ field_ref("GetSessionResponse", "session.state") }} and {{ field_ref("GetSessionResponse", "session.result_vp") }}.
 
 The verification data is in the form of a [Verifiable Presentation <small>:material-open-in-new:</small>](https://www.w3.org/TR/vc-data-model/#presentations){target=_blank}, 
 which will contain one [Verifiable Credential <small>:material-open-in-new:</small>](/learn/concepts/credentials){target=_blank} for each Verification requested during [Session Creation](#create-session).

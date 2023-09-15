@@ -345,9 +345,9 @@ Wallet deletion is **permanent** and cannot be undone.
 
 ## Search Wallet
 
-Searches a wallet, returning all matching items, and a `continuation_token` to paginate large result sets.
+Searches a wallet, returning all matching items, and a {{ field_ref("SearchResponse", "continuation_token") }} to paginate large result sets.
 
-If no `query` is specified, this call by default returns the first 100 items in the wallet.
+If no {{ field_ref("SearchRequest", "query") }} is specified, this call by default returns the first 100 items in the wallet.
 
 {{ proto_sample_start() }}
 

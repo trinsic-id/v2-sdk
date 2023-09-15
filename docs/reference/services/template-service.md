@@ -10,11 +10,11 @@ The Credential Template Service allows you to manage and search [Credential Temp
 
 Creates a new credential template.
 
-The `name` of a credential template must be unique within your ecosystem, and cannot be changed -- it is used to derive the URI of the template itself.
+The {{ field_ref("CreateCredentialTemplateRequest", "name") }} of a credential template must be unique within your ecosystem, and cannot be changed -- it is used to derive the URI of the template itself.
 
-The `title` and `description` parameters (for the credential template itself, as well as for any of its fields) should be human-readable strings. They should describe the credentials issued by the template, not the template itself (for example, a good title for a medical license template would simply be "Medical License", not "Medical License Template").
+The {{ field_ref("CreateCredentialTemplateRequest", "title") }} and {{ field_ref("CreateCredentialTemplateRequest", "description") }} parameters (for the credential template itself, as well as for any of its {{ field_ref("CreateCredentialTemplateRequest", "fields[key].title", "fields") }}) should be human-readable strings. They should describe the credentials issued by the template, not the template itself (for example, a good title for a medical license template would simply be "Medical License", not "Medical License Template").
 
-`field_ordering` may be used to specify the order in which fields are rendered when displaying a credential, and to categorize fields into logical sections. This is used for display only, and has no bearing on working with credentials as an issuer or verifier.
+{{ field_ref("CreateCredentialTemplateRequest", "field_ordering") }} may be used to specify the order in which fields are rendered when displaying a credential, and to categorize fields into logical sections. This is used for display only, and has no bearing on working with credentials as an issuer or verifier.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -65,9 +65,9 @@ The `title` and `description` parameters (for the credential template itself, as
 
 Updates a credential template's display metadata, such as its human-readable title/description.
 
-This call cannot be used to update credential templates in a way that might invalidate previously-issued credentials: fields cannot be added, removed, or renamed, but their `title` and `description` properties may be updated.
+This call cannot be used to update credential templates in a way that might invalidate previously-issued credentials: fields cannot be added, removed, or renamed, but their {{ field_ref("UpdateCredentialTemplateRequest", "title" ) }} and {{ field_ref("UpdateCredentialTemplateRequest", "description" )}} properties may be updated.
 
-In order to leave a property unchanged (for example, if you wish to change `description` but not `title`), simply leave it unspecified (_don't_ set it to an empty string/object). This applies to fields as well: any field not specified in `fields` will remain unchanged.
+In order to leave a property unchanged (for example, if you wish to change {{ field_ref("UpdateCredentialTemplateRequest", "description" )}} but not {{ field_ref("UpdateCredentialTemplateRequest", "title" ) }}), simply leave it unspecified (_don't_ set it to an empty string/object). This applies to fields as well: any field not specified in {{ field_ref("UpdateCredentialTemplateRequest", "fields" ) }} will remain unchanged.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -116,7 +116,7 @@ In order to leave a property unchanged (for example, if you wish to change `desc
 
 ## Get Credential Template
 
-Fetches a credential template definition by `id`.
+Fetches a credential template definition by {{ field_ref("GetCredentialTemplateRequest", "id" ) }}.
 
 {{ proto_sample_start() }}
 
@@ -166,7 +166,7 @@ Fetches a credential template definition by `id`.
 
 ## Delete Credential Template
 
-Deletes a credential template by `id`.
+Deletes a credential template by {{ field_ref("DeleteCredentialTemplateRequest", "id" ) }}.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -208,9 +208,11 @@ Deletes a credential template by `id`.
 
 ## Search Credential Templates
 
-Searches all credential templates defined in the current ecosystem, and a `continuation_token` to paginate large result sets.
+Searches all credential templates defined in the current ecosystem.
 
-If no `query` is specified, this call by default returns the first 100 templates.
+If no {{ field_ref("SearchCredentialTemplatesRequest", "query") }} is specified, this call by default returns the first 100 templates.
+
+If more results are available than can be returned in a single call, the {{ field_ref("SearchCredentialTemplatesResponse", "continuation_token") }} field in the response will be non-empty; {{ field_ref("SearchCredentialTemplatesRequest", "continuation_token", "pass it back", false) }} in a subsequent request to retrieve the next page.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
