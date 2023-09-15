@@ -126,6 +126,13 @@ iframe.rounded-frame {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     border-top: 1px solid #e3e8ee;
+    background-color: rgba(52,152,219, 0.0);
+    transition: 1s ease-in background-color;
+}
+
+.proto-field.flash {
+    background-color: rgba(52,152,219, 0.6);
+    transition: none;
 }
 
 .proto-field-name {
@@ -293,4 +300,9 @@ iframe.rounded-frame {
 .pill.js {
     background-color: #f7df1e;
     color: white;
+}
+
+
+.proto-field-ref {
+    cursor: pointer;
 }
