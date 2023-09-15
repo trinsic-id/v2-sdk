@@ -107,6 +107,20 @@ def define_env(env):
             # ret += "<br/>"
 
         return ret
+    
+    @env.macro
+    def field_ref(top_message_name: str, field_path: str, display_name: str = None, display_code_block: bool = True):
+        """
+        Creates a link to a specific field/enum value within a request/response message;
+        clicking the link expands to and highlights the referenced field.
+        """
+
+        if display_name is None:
+            display_name = field_path.split(".")[-1]
+
+        wrapper_block_type = "code" if display_code_block else "span"
+
+        return f"<{wrapper_block_type} class='proto-field-ref'><a onclick=\"openFieldRef(this, '{top_message_name}', '{field_path}')\">{display_name}</a></{wrapper_block_type}>"
 
 
 ###### Helper methods below
@@ -125,7 +139,7 @@ def print_enum(enumName: str):
         enum_desc = entity["description"].replace("\n", " ").replace("\r", " ")
 
         ret = (
-            f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'>"
+            f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}' data-proto-short-name='{entity['name']}'>"
             f"<div class='proto-obj-name'><a name='{entity['full_name']}' href='/reference/proto#{entity['full_name']}'>{entity['name']}</a></div>"
             f"<div class='proto-obj-description'>{enum_desc}</div>"
         )
@@ -142,7 +156,7 @@ def print_enum(enumName: str):
         return f"Cannot print proto message: {e}"
 
 
-def print_enum_values(enumName: str):
+def print_enum_values(enumName: str, rawContext: str = None):
     """
     Generates the HTML for just a protobuf enum's values.
     Does not include the enum name or description.
@@ -159,13 +173,18 @@ def print_enum_values(enumName: str):
     for valName in entity["values"]:
         # Get value by name
         value = get_entity(valName)
+        valueShortName = value['name']
 
         # Replace newlines in the value's comments with spaces
         value_desc = value["description"].replace("\n", " ").replace("\r", " ")
 
+        path = valueShortName
+        if rawContext is not None:
+            path = f"{rawContext}.{path}"
+
         fields += (
-            "<div class='proto-field'>"
-            f"<div class='proto-field-name'><span class='proto-obj-subtype-context'>{enumShortName}.</span>{value['name']}</div> "
+            f"<div class='proto-field' data-proto-field-path='{path}' data->"
+            f"<div class='proto-field-name'><span class='proto-obj-subtype-context'>{enumShortName}.</span>{valueShortName}</div> "
             f"<div class='proto-field-type'> = {value['value']}</div>"
             f"<div class='proto-field-description'>{value_desc}</div>"
             "</div>"
@@ -175,7 +194,7 @@ def print_enum_values(enumName: str):
 
     return fields
 
-def print_message(messageName: str, context: str = None):
+def print_message(messageName: str, context: str = None, rawContext: str = None):
     """
     Generates the HTML for a protobuf message's documentation
     """
@@ -188,13 +207,13 @@ def print_message(messageName: str, context: str = None):
         message_desc = entity["description"].replace("\n", " ").replace("\r", " ")
 
         ret = (
-            f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'>"
+            f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'  data-proto-short-name='{entity['name']}'>"
             f"<div class='proto-obj-name'><a name='{entity['full_name']}' href='/reference/proto#{entity['full_name']}'>{entity['name']}</a></div>"
             f"<div class='proto-obj-description'>{message_desc}</div>"
         )
 
         if len(entity["fields"]) > 0:
-            ret += print_message_fields(messageName, context)
+            ret += print_message_fields(messageName, context, rawContext)
         else:
             ret += "<i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i>"
 
@@ -205,7 +224,7 @@ def print_message(messageName: str, context: str = None):
         return f"Cannot print proto message: {e}"
 
 
-def print_message_fields(messageName: str, context: str = None):
+def print_message_fields(messageName: str, context: str = None, rawContext: str = None):
     """
     Generates the HTML for just a protobuf message's fields.
     Does not include the message name or description.
@@ -218,14 +237,14 @@ def print_message_fields(messageName: str, context: str = None):
 
     # Print each field in order
     for fieldName in entity["fields"]:
-        fields += print_field(fieldName, context)
+        fields += print_field(fieldName, context, rawContext)
 
     fields += "</div>"
 
     return fields
 
 
-def print_field(fieldName, context: str = None):
+def print_field(fieldName, context: str = None, rawContext: str = None):
     """
     Generates the HTML for a single protobuf field.
     Also generates the HTML for expandable sub-types if the field is non-primitive.
@@ -285,17 +304,20 @@ def print_field(fieldName, context: str = None):
         field_type = "optional " + field_type
 
     field_short_name = field["name"]
+    field_path = field["name"]
 
     # If this is a field for a nested message, add the context
     # IE, `details` -> `details.account` -> `details.account.id`
     if context is not None:
         field_short_name = f"<span class='proto-obj-subtype-context'>{context}.</span>{field_short_name}"
+    if rawContext is not None:
+        field_path = f"{rawContext}.{field_path}"
 
     # Replace newlines in the field's comments with spaces
     field_desc = field["description"].replace("\n", " ").replace("\r", " ")
 
     ret = (
-        "<div class='proto-field'>"
+        f"<div class='proto-field' data-proto-field-path='{field_path}'>"
         f"<div class='proto-field-name'>{field_short_name}</div> "
         f"<div class='proto-field-type'>{field_type}</div>"
         f"<div class='proto-field-description'>{field_desc}</div>"
@@ -309,24 +331,27 @@ def print_field(fieldName, context: str = None):
         sub_content = None
         sub_content_msg = ""
 
+        # Add the current field name to `context`
+        if context is None:
+            context = rawContext = field["name"]
+        else:
+            context += f".{field['name']}"
+            rawContext += f".{field['name']}"
+
+        if is_map:
+            context += "[<span class='proto-context-array-key'>key</span>]"
+            rawContext += "[key]"
+        elif is_array:
+            context += "[<span class='proto-context-array-key'>i</span>]"
+            rawContext += "[i]"
+
         # If `full_type` points to a Message, document it as a message
         if field_type_index["type"] == "message":
-            # Add the current field name to `context`
-            if context is None:
-                context = field["name"]
-            else:
-                context += f".{field['name']}"
-
-            if is_map:
-                context += "[<span class='proto-context-array-key'>key</span>]"
-            elif is_array:
-                context += "[<span class='proto-context-array-key'>i</span>]"
-
             # Embed just the sub-type's fields, not its name or description
-            sub_content = print_message_fields(field_full_type, context)
+            sub_content = print_message_fields(field_full_type, context, rawContext)
             sub_content_msg = "Show child attributes"
         elif field_type_index["type"] == "enum":
-            sub_content = print_enum_values(field_full_type)
+            sub_content = print_enum_values(field_full_type, rawContext)
             sub_content_msg = "Show enum values"
 
         if sub_content is not None:

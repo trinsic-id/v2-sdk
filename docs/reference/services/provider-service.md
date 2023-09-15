@@ -17,7 +17,7 @@ The Provider Service enables the creation and management of ecosystems.
 
 Creates a new ecosystem, along with a root controlling account.
 
-If `name` is left empty, an anonymous ecosystem will be created.
+If {{ field_ref("CreateEcosystemRequest", "name") }} is left empty, an anonymous ecosystem will be created.
 
 {{proto_sample_start()}}
     === "Trinsic CLI"
