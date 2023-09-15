@@ -53,38 +53,38 @@ export function signatureTypeToJSON(object: SignatureType): string {
 export interface IssueFromTemplateRequest {
   /** ID of template to use */
   templateId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * JSON document string with keys corresponding to the fields of
    * the template referenced by `template_id`
    */
   valuesJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * Save a copy of the issued credential to this user's wallet. This copy will only contain
    * the credential data, but not the secret proof value. Issuers may use this data to
    * keep track of the details for revocation status.
    */
   saveCopy?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /**
    * The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification.
    * If specified, the issued credential will contain an expiration date.
    * https://www.w3.org/TR/vc-data-model/#expiration
    */
   expirationDate?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    */
   includeGovernance?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /** The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. */
   signatureType?: SignatureType | undefined;
 }
@@ -110,36 +110,36 @@ export interface CreateProofRequest {
    * If unspecified, all fields in the document will be revealed
    */
   revealDocumentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** Information about what sections of the document to reveal */
   revealTemplate?:
-  | RevealTemplateAttributes
-  | undefined;
+    | RevealTemplateAttributes
+    | undefined;
   /** Id of verification template with which to construct the JSON-LD proof document */
   verificationTemplateId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** ID of wallet item stored in a Trinsic cloud wallet */
   itemId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    */
   documentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * Wrap the output in a verifiable presentation.
    * If the credential used in the proof is bound to the holder DID,
    * the output will always use a verifiable presentation and this field will be ignored.
    */
   useVerifiablePresentation?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /**
    * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
    * This value may be represented in base64 format in the proof model.
@@ -168,8 +168,8 @@ export interface VerifyProofRequest {
 export interface VerifyProofResponse {
   /** Whether all validations in `validation_results` passed */
   isValid?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /**
    * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
@@ -187,8 +187,8 @@ export interface VerifyProofResponse_ValidationResultsEntry {
 export interface ValidationMessage {
   /** Whether this validation check passed */
   isValid?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /** If validation failed, contains messages explaining why */
   messages?: string[] | undefined;
 }
@@ -197,24 +197,24 @@ export interface ValidationMessage {
 export interface SendRequest {
   /** Email address of user to whom you'll send the item */
   email?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** Wallet ID of the recipient within the ecosystem */
   walletId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** DID URI of the recipient */
   didUri?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** SMS of user to whom you'll send the item */
   phoneNumber?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** Send email notification that credential has been sent to a wallet */
   sendNotification?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /** JSON document to send to recipient */
   documentJson?: string | undefined;
 }
@@ -227,8 +227,8 @@ export interface SendResponse {
 export interface UpdateStatusRequest {
   /** Credential Status ID to update. This is not the same as the credential's ID. */
   credentialStatusId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** New revocation status of credential */
   revoked?: boolean | undefined;
 }
@@ -252,36 +252,36 @@ export interface CheckStatusResponse {
 export interface CreateCredentialOfferRequest {
   /** ID of template to use */
   templateId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * JSON document string with keys corresponding to the fields of
    * the template referenced by `template_id`
    */
   valuesJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * If true, the credential will be issued with holder binding by specifying
    * the holder DID in the credential subject
    */
   holderBinding?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    */
   includeGovernance?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /**
    * If true, a short URL link will be generated that can be used to share the credential offer with the holder.
    * This link will point to the credential offer in the wallet app.
    */
   generateShareUrl?:
-  | boolean
-  | undefined;
+    | boolean
+    | undefined;
   /** The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. */
   signatureType?: SignatureType | undefined;
 }
@@ -289,8 +289,8 @@ export interface CreateCredentialOfferRequest {
 export interface CreateCredentialOfferResponse {
   /** The JSON document that contains the credential offer */
   documentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * If requested, a URL that can be used to share the credential offer with the holder.
    * This is a short URL that can be used in a QR code and will redirect the
@@ -302,8 +302,8 @@ export interface CreateCredentialOfferResponse {
 export interface AcceptCredentialRequest {
   /** The JSON document that contains the credential offer */
   documentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** The ID of the item in the wallet that contains the credential offer */
   itemId?: string | undefined;
 }
@@ -311,8 +311,8 @@ export interface AcceptCredentialRequest {
 export interface AcceptCredentialResponse {
   /** The ID of the item in the wallet that contains the issued credential */
   itemId?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /**
    * The JSON document that contains the issued credential.
    * This item is already stored in the wallet.
@@ -323,8 +323,8 @@ export interface AcceptCredentialResponse {
 export interface RejectCredentialRequest {
   /** The JSON document that contains the credential offer */
   documentJson?:
-  | string
-  | undefined;
+    | string
+    | undefined;
   /** The ID of the item in the wallet that contains the credential offer */
   itemId?: string | undefined;
 }
