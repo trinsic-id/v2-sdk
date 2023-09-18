@@ -17,11 +17,6 @@ export 'src/proto/sdk/options/v1/options.pb.dart';
 export 'src/proto/sdk/options/v1/options.pbenum.dart';
 export 'src/proto/sdk/options/v1/options.pbjson.dart';
 
-export 'src/proto/services/account/v1/account.pb.dart';
-export 'src/proto/services/account/v1/account.pbenum.dart';
-export 'src/proto/services/account/v1/account.pbgrpc.dart';
-export 'src/proto/services/account/v1/account.pbjson.dart';
-
 export 'src/proto/services/common/v1/common.pb.dart';
 export 'src/proto/services/common/v1/common.pbenum.dart';
 export 'src/proto/services/common/v1/common.pbjson.dart';
