@@ -57,76 +57,6 @@ message AccountProfile {
   // protection secret before using the token for authentication.
   TokenProtection protection = 4;
 }
-
-// Request for information about the account used to make the request
-message AccountInfoRequest {}
-
-// Information about the account used to make the request
-message AccountInfoResponse {
-  // The account details associated with
-  // the calling request context
-  AccountDetails details = 1;
-  // The wallet ID associated with this account
-  string wallet_id = 3;
-  // The device ID associated with this account session
-  string device_id = 4;
-  // The ecosystem ID within which this account resides
-  string ecosystem_id = 5;
-  // The public DID associated with this account.
-  // This DID is used as the `issuer` when signing verifiable credentials
-  string public_did = 6;
-
-  // List of active authentication tokens for this wallet.
-  // This list does not contain the issued token, only metadata
-  // such as ID, description, and creation date.
-  repeated WalletAuthToken auth_tokens = 8;
-
-  reserved 2, 7;
-  reserved "ecosystems", "authorized_webhooks";
-}
-
-// Request to begin login flow
-message LoginRequest {
-  // Email address of account. If unspecified, an anonymous account will be created.
-  string email = 1  [(options.optional) = true];
-
-  // ID of Ecosystem to sign into.
-  string ecosystem_id = 3 [(options.optional) = true];
-
-  reserved 2;
-  reserved "invitation_code";
-}
-
-// Response to `LoginRequest`
-message LoginResponse{
-  oneof response {
-    // Random byte sequence unique to this login request.
-    // If present, two-factor confirmation of login is required.
-    // Must be sent back, unaltered, in `LoginConfirm`.
-    bytes challenge = 1;
-
-    // Account profile response. If present, no confirmation of login is required.
-    AccountProfile profile = 2;
-  }
-}
-
-// Request to finalize login flow
-message LoginConfirmRequest {
-  // Challenge received from `Login`
-  bytes challenge = 1;
-
-  // Two-factor confirmation code sent to account email or phone,
-  // hashed using Blake3. Our SDKs will handle this hashing process for you.
-  bytes confirmation_code_hashed = 2;
-}
-
-// Response to `LoginConfirmRequest`
-message LoginConfirmResponse {
-  // Profile response; must be unprotected using unhashed confirmation code.
-  // Our SDKs will handle this process for you, and return to you an authentication token string.
-  AccountProfile profile = 1;
-}
-
 // Information about authentication tokens for a wallet
 message WalletAuthToken {
   // Unique identifier for the token.
@@ -136,26 +66,4 @@ message WalletAuthToken {
   optional string description = 2;
   // Date when the token was created in ISO 8601 format
   string date_created = 3;
-}
-
-service Account {
-  // Begin login flow for specified account, creating one if it does not already exist
-  rpc Login               (LoginRequest)              returns (LoginResponse) {
-    option deprecated = true;
-    option (options.sdk_template_option).ignore = true;
-    option (options.sdk_template_option).anonymous = true;
-  }
-
-  // Finalize login flow with two-factor confirmation code
-  rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse) {
-    option deprecated = true;
-    option (options.sdk_template_option).anonymous = true;
-    option (options.sdk_template_option).ignore = true;
-  }
-
-  // Get account information
-  rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
-    option deprecated = true;
-    option (options.sdk_template_option).no_arguments = true;
-  }
 }
