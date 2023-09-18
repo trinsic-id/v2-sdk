@@ -13,8 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $1;
-import '../../account/v1/account.pbenum.dart' as $1;
+import '../../account/v1/account.pb.dart' as $8;
+import '../../account/v1/account.pbenum.dart' as $8;
 import '../../common/v1/common.pbenum.dart' as $9;
 import 'provider.pbenum.dart';
 
@@ -123,7 +123,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   factory CreateEcosystemRequest({
     $core.String? name,
     $core.String? description,
-    $1.AccountDetails? details,
+    $8.AccountDetails? details,
     $core.String? domain,
   }) {
     final $result = create();
@@ -156,8 +156,8 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'name')
     ..aOS(2, _omitFieldNames ? '' : 'description')
-    ..aOM<$1.AccountDetails>(4, _omitFieldNames ? '' : 'details',
-        subBuilder: $1.AccountDetails.create)
+    ..aOM<$8.AccountDetails>(4, _omitFieldNames ? '' : 'details',
+        subBuilder: $8.AccountDetails.create)
     ..aOS(5, _omitFieldNames ? '' : 'domain')
     ..hasRequiredFields = false;
 
@@ -217,9 +217,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
 
   /// The account details of the owner of the ecosystem
   @$pb.TagNumber(4)
-  $1.AccountDetails get details => $_getN(2);
+  $8.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(4)
-  set details($1.AccountDetails v) {
+  set details($8.AccountDetails v) {
     setField(4, v);
   }
 
@@ -228,7 +228,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $1.AccountDetails ensureDetails() => $_ensure(2);
+  $8.AccountDetails ensureDetails() => $_ensure(2);
 
   /// New domain URL
   @$pb.TagNumber(5)
@@ -248,8 +248,8 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
 class CreateEcosystemResponse extends $pb.GeneratedMessage {
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $1.AccountProfile? profile,
-    $1.ConfirmationMethod? confirmationMethod,
+    $8.AccountProfile? profile,
+    $8.ConfirmationMethod? confirmationMethod,
   }) {
     final $result = create();
     if (ecosystem != null) {
@@ -278,13 +278,13 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOM<Ecosystem>(1, _omitFieldNames ? '' : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$1.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
-        subBuilder: $1.AccountProfile.create)
-    ..e<$1.ConfirmationMethod>(
+    ..aOM<$8.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
+        subBuilder: $8.AccountProfile.create)
+    ..e<$8.ConfirmationMethod>(
         3, _omitFieldNames ? '' : 'confirmationMethod', $pb.PbFieldType.OE,
-        defaultOrMaker: $1.ConfirmationMethod.None,
-        valueOf: $1.ConfirmationMethod.valueOf,
-        enumValues: $1.ConfirmationMethod.values)
+        defaultOrMaker: $8.ConfirmationMethod.None,
+        valueOf: $8.ConfirmationMethod.valueOf,
+        enumValues: $8.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -329,9 +329,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
 
   /// Account profile for auth of the owner of the ecosystem
   @$pb.TagNumber(2)
-  $1.AccountProfile get profile => $_getN(1);
+  $8.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($1.AccountProfile v) {
+  set profile($8.AccountProfile v) {
     setField(2, v);
   }
 
@@ -340,13 +340,13 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $1.AccountProfile ensureProfile() => $_ensure(1);
+  $8.AccountProfile ensureProfile() => $_ensure(1);
 
   /// Indicates if confirmation of account is required.
   @$pb.TagNumber(3)
-  $1.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $8.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($1.ConfirmationMethod v) {
+  set confirmationMethod($8.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -576,283 +576,6 @@ class GetOberonKeyResponse extends $pb.GeneratedMessage {
   void clearKey() => clearField(1);
 }
 
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-class RetrieveDomainVerificationRecordRequest extends $pb.GeneratedMessage {
-  factory RetrieveDomainVerificationRecordRequest() => create();
-  RetrieveDomainVerificationRecordRequest._() : super();
-  factory RetrieveDomainVerificationRecordRequest.fromBuffer(
-          $core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RetrieveDomainVerificationRecordRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'RetrieveDomainVerificationRecordRequest',
-      package: const $pb.PackageName(
-          _omitMessageNames ? '' : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  RetrieveDomainVerificationRecordRequest clone() =>
-      RetrieveDomainVerificationRecordRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  RetrieveDomainVerificationRecordRequest copyWith(
-          void Function(RetrieveDomainVerificationRecordRequest) updates) =>
-      super.copyWith((message) =>
-              updates(message as RetrieveDomainVerificationRecordRequest))
-          as RetrieveDomainVerificationRecordRequest;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static RetrieveDomainVerificationRecordRequest create() =>
-      RetrieveDomainVerificationRecordRequest._();
-  RetrieveDomainVerificationRecordRequest createEmptyInstance() => create();
-  static $pb.PbList<RetrieveDomainVerificationRecordRequest> createRepeated() =>
-      $pb.PbList<RetrieveDomainVerificationRecordRequest>();
-  @$core.pragma('dart2js:noInline')
-  static RetrieveDomainVerificationRecordRequest getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
-          RetrieveDomainVerificationRecordRequest>(create);
-  static RetrieveDomainVerificationRecordRequest? _defaultInstance;
-}
-
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
-  factory RetrieveDomainVerificationRecordResponse({
-    $core.String? verificationRecordName,
-    $core.String? verificationRecordValue,
-  }) {
-    final $result = create();
-    if (verificationRecordName != null) {
-      $result.verificationRecordName = verificationRecordName;
-    }
-    if (verificationRecordValue != null) {
-      $result.verificationRecordValue = verificationRecordValue;
-    }
-    return $result;
-  }
-  RetrieveDomainVerificationRecordResponse._() : super();
-  factory RetrieveDomainVerificationRecordResponse.fromBuffer(
-          $core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RetrieveDomainVerificationRecordResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'RetrieveDomainVerificationRecordResponse',
-      package: const $pb.PackageName(
-          _omitMessageNames ? '' : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'verificationRecordName')
-    ..aOS(2, _omitFieldNames ? '' : 'verificationRecordValue')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  RetrieveDomainVerificationRecordResponse clone() =>
-      RetrieveDomainVerificationRecordResponse()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  RetrieveDomainVerificationRecordResponse copyWith(
-          void Function(RetrieveDomainVerificationRecordResponse) updates) =>
-      super.copyWith((message) =>
-              updates(message as RetrieveDomainVerificationRecordResponse))
-          as RetrieveDomainVerificationRecordResponse;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static RetrieveDomainVerificationRecordResponse create() =>
-      RetrieveDomainVerificationRecordResponse._();
-  RetrieveDomainVerificationRecordResponse createEmptyInstance() => create();
-  static $pb.PbList<RetrieveDomainVerificationRecordResponse>
-      createRepeated() =>
-          $pb.PbList<RetrieveDomainVerificationRecordResponse>();
-  @$core.pragma('dart2js:noInline')
-  static RetrieveDomainVerificationRecordResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
-          RetrieveDomainVerificationRecordResponse>(create);
-  static RetrieveDomainVerificationRecordResponse? _defaultInstance;
-
-  /// TXT record name to use for domain verification
-  @$pb.TagNumber(1)
-  $core.String get verificationRecordName => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set verificationRecordName($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasVerificationRecordName() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearVerificationRecordName() => clearField(1);
-
-  /// TXT code for domain verification
-  @$pb.TagNumber(2)
-  $core.String get verificationRecordValue => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set verificationRecordValue($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasVerificationRecordValue() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearVerificationRecordValue() => clearField(2);
-}
-
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-class RefreshDomainVerificationStatusRequest extends $pb.GeneratedMessage {
-  factory RefreshDomainVerificationStatusRequest() => create();
-  RefreshDomainVerificationStatusRequest._() : super();
-  factory RefreshDomainVerificationStatusRequest.fromBuffer(
-          $core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RefreshDomainVerificationStatusRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'RefreshDomainVerificationStatusRequest',
-      package: const $pb.PackageName(
-          _omitMessageNames ? '' : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  RefreshDomainVerificationStatusRequest clone() =>
-      RefreshDomainVerificationStatusRequest()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  RefreshDomainVerificationStatusRequest copyWith(
-          void Function(RefreshDomainVerificationStatusRequest) updates) =>
-      super.copyWith((message) =>
-              updates(message as RefreshDomainVerificationStatusRequest))
-          as RefreshDomainVerificationStatusRequest;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static RefreshDomainVerificationStatusRequest create() =>
-      RefreshDomainVerificationStatusRequest._();
-  RefreshDomainVerificationStatusRequest createEmptyInstance() => create();
-  static $pb.PbList<RefreshDomainVerificationStatusRequest> createRepeated() =>
-      $pb.PbList<RefreshDomainVerificationStatusRequest>();
-  @$core.pragma('dart2js:noInline')
-  static RefreshDomainVerificationStatusRequest getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
-          RefreshDomainVerificationStatusRequest>(create);
-  static RefreshDomainVerificationStatusRequest? _defaultInstance;
-}
-
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-class RefreshDomainVerificationStatusResponse extends $pb.GeneratedMessage {
-  factory RefreshDomainVerificationStatusResponse({
-    $core.String? domain,
-    $core.bool? domainVerified,
-  }) {
-    final $result = create();
-    if (domain != null) {
-      $result.domain = domain;
-    }
-    if (domainVerified != null) {
-      $result.domainVerified = domainVerified;
-    }
-    return $result;
-  }
-  RefreshDomainVerificationStatusResponse._() : super();
-  factory RefreshDomainVerificationStatusResponse.fromBuffer(
-          $core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory RefreshDomainVerificationStatusResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'RefreshDomainVerificationStatusResponse',
-      package: const $pb.PackageName(
-          _omitMessageNames ? '' : 'services.provider.v1'),
-      createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'domain')
-    ..aOB(2, _omitFieldNames ? '' : 'domainVerified')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  RefreshDomainVerificationStatusResponse clone() =>
-      RefreshDomainVerificationStatusResponse()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  RefreshDomainVerificationStatusResponse copyWith(
-          void Function(RefreshDomainVerificationStatusResponse) updates) =>
-      super.copyWith((message) =>
-              updates(message as RefreshDomainVerificationStatusResponse))
-          as RefreshDomainVerificationStatusResponse;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static RefreshDomainVerificationStatusResponse create() =>
-      RefreshDomainVerificationStatusResponse._();
-  RefreshDomainVerificationStatusResponse createEmptyInstance() => create();
-  static $pb.PbList<RefreshDomainVerificationStatusResponse> createRepeated() =>
-      $pb.PbList<RefreshDomainVerificationStatusResponse>();
-  @$core.pragma('dart2js:noInline')
-  static RefreshDomainVerificationStatusResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
-          RefreshDomainVerificationStatusResponse>(create);
-  static RefreshDomainVerificationStatusResponse? _defaultInstance;
-
-  /// Domain URL verified
-  @$pb.TagNumber(1)
-  $core.String get domain => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set domain($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasDomain() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearDomain() => clearField(1);
-
-  /// Specifies if the above `domain` was successfully verified
-  @$pb.TagNumber(2)
-  $core.bool get domainVerified => $_getBF(1);
-  @$pb.TagNumber(2)
-  set domainVerified($core.bool v) {
-    $_setBool(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasDomainVerified() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearDomainVerified() => clearField(2);
-}
-
 /// Search for issuers/holders/verifiers
 class SearchWalletConfigurationsRequest extends $pb.GeneratedMessage {
   factory SearchWalletConfigurationsRequest({
@@ -1047,7 +770,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? walletId,
     $core.String? publicDid,
     $core.String? configType,
-    $core.Iterable<$1.WalletAuthToken>? authTokens,
+    $core.Iterable<$8.WalletAuthToken>? authTokens,
     @$core.Deprecated('This field is deprecated.')
     $core.Iterable<$core.String>? externalIdentityIds,
     $core.String? ecosystemId,
@@ -1112,9 +835,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'walletId')
     ..aOS(5, _omitFieldNames ? '' : 'publicDid')
     ..aOS(6, _omitFieldNames ? '' : 'configType')
-    ..pc<$1.WalletAuthToken>(
+    ..pc<$8.WalletAuthToken>(
         7, _omitFieldNames ? '' : 'authTokens', $pb.PbFieldType.PM,
-        subBuilder: $1.WalletAuthToken.create)
+        subBuilder: $8.WalletAuthToken.create)
     ..pPS(8, _omitFieldNames ? '' : 'externalIdentityIds')
     ..aOS(9, _omitFieldNames ? '' : 'ecosystemId')
     ..aOS(10, _omitFieldNames ? '' : 'description')
@@ -1235,7 +958,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   /// This list does not contain the issued token, only metadata
   /// such as ID, description, and creation date.
   @$pb.TagNumber(7)
-  $core.List<$1.WalletAuthToken> get authTokens => $_getList(6);
+  $core.List<$8.WalletAuthToken> get authTokens => $_getList(6);
 
   /// List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
   /// This is deprecated; use `external_identities` instead.
