@@ -100,7 +100,7 @@ public class Tests
         // Read the JSON credential data
 
         // issueCredentialSample() {
-        var credential = await trinsic.Credential.IssueFromTemplateAsync(new() {
+        var issueResponse = await trinsic.Credential.IssueFromTemplateAsync(new() {
             TemplateId = template.Data.Id,
             ValuesJson = JsonConvert.SerializeObject(new {
                 field = 123
@@ -108,12 +108,16 @@ public class Tests
         });
         // }
 
-        _testOutputHelper.WriteLine($"Credential:\n{credential.DocumentJson}");
+        _testOutputHelper.WriteLine($"Credential:\n{issueResponse.DocumentJson}");
 
         try
         {
             // sendCredential() {
-            var sendResponse = await trinsic.Credential.SendAsync(new() { Email = "example@trinsic.id" });
+            var sendResponse = await trinsic.Credential.SendAsync(new() {
+                Email = "<EMAIL>",
+                DocumentJson = issueResponse.DocumentJson,
+                SendNotification = true,
+                });
             // }
         } catch
         {
@@ -123,7 +127,7 @@ public class Tests
         trinsic = new TrinsicService(_options.CloneWithAuthToken(allison.AuthToken));
 
         var insertItemResponse =
-            await trinsic.Wallet.InsertItemAsync(new() { ItemJson = credential.DocumentJson });
+            await trinsic.Wallet.InsertItemAsync(new() { ItemJson = issueResponse.DocumentJson });
         var itemId = insertItemResponse.ItemId;
 
         // getItem() {

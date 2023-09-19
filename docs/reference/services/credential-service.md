@@ -98,7 +98,7 @@ Furthermore, the "Create Offer" endpoint enables the issuing party to define and
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createCredentialOffer
+        [Create Credential Offer](../../../web/test/WalletService.test.ts) inside_block:createCredentialOffer
         ```
         <!--/codeinclude-->
 
@@ -116,10 +116,9 @@ The "Accept Offer" method is a mandatory step in the issuance process, as it sol
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:acceptCredential
+        [Accept Credential](../../../web/test/WalletService.test.ts) inside_block:acceptCredential
         ```
         <!--/codeinclude-->
-
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential") }}
 
@@ -128,12 +127,12 @@ The "Accept Offer" method is a mandatory step in the issuance process, as it sol
 ## Reject Credential
 
 This endpoint allows users to decline or reject an offered verifiable credential. By utilizing this endpoint, users can explicitly communicate their decision not to accept the credential being offered to them. By offering this option in your application, your platform promotes user empowerment and supports a transparent workflow for the acceptance or rejection of verifiable credentials.
-
+  
 {{ proto_sample_start() }}
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:rejectCredential
+        [Reject Credential](../../../web/test/WalletService.test.ts) inside_block:rejectCredential
         ```
         <!--/codeinclude-->
 
@@ -389,8 +388,9 @@ The specified email address must be tied to an existing account in the same ecos
 
         ```typescript
         await trinsic.credential().send(SendRequest.fromPartial({
-		    email: "",
-		    documentJson: JSON.stringify({}),
+		    documentJson: issueResponse.documentJson,
+		    email: "<EMAIL>",
+            sendNotification: true,
 	    }));
         ```
 
