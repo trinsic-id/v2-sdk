@@ -52,6 +52,14 @@ public final class ConnectOuterClass {
       internal_static_services_connect_v1_GetSessionResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_GetSessionResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_ListSessionsRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_ListSessionsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_ListSessionsResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_ListSessionsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -62,7 +70,8 @@ public final class ConnectOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n"
-          + "!services/connect/v1/connect.proto\022\023services.connect.v1\"\233\003\n\n"
+          + "!services/connect/v1/connect.proto\022\023ser"
+          + "vices.connect.v1\032\037services/common/v1/common.proto\"\233\003\n\n"
           + "IDVSession\022\n\n"
           + "\002id\030\001 \001(\t\022\024\n"
           + "\014client_token\030\002 \001(\t\0223\n"
@@ -102,7 +111,19 @@ public final class ConnectOuterClass {
           + "\021GetSessionRequest\022\026\n"
           + "\016idv_session_id\030\001 \001(\t\"F\n"
           + "\022GetSessionResponse\0220\n"
-          + "\007session\030\001 \001(\0132\037.services.connect.v1.IDVSession*%\n"
+          + "\007session\030\001 \001(\0132\037.services.connect.v1.IDVSession\"\314\001\n"
+          + "\023ListSessionsRequest\0226\n"
+          + "\010order_by\030\001 \001(\0162$.services.connect.v1.SessionOrdering\022;\n"
+          + "\017order_direction\030\002 \001(\0162\".services.common.v1.OrderDirection\022\026\n"
+          + "\tpage_size\030\003 \001(\005H\000\210\001\001\022\021\n"
+          + "\004page\030\004 \001(\005H\001\210\001\001B\014\n"
+          + "\n"
+          + "_page_sizeB\007\n"
+          + "\005_page\"f\n"
+          + "\024ListSessionsResponse\0221\n"
+          + "\010sessions\030\001 \003(\0132\037.services.connect.v1.IDVSession\022\r\n"
+          + "\005total\030\002 \001(\005\022\014\n"
+          + "\004more\030\003 \001(\010*%\n"
           + "\020VerificationType\022\021\n\r"
           + "GOVERNMENT_ID\020\000*\203\001\n"
           + "\017IDVSessionState\022\017\n"
@@ -129,20 +150,29 @@ public final class ConnectOuterClass {
           + "\032VERIFICATION_FAIL_INTERNAL\020\000\022#\n"
           + "\037VERIFICATION_FAIL_INVALID_IMAGE\020\001\022!\n"
           + "\035VERIFICATION_FAIL_INAUTHENTIC\020\002\022*\n"
-          + "&VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT\020\0032\270\002\n"
+          + "&VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT\020\003*6\n"
+          + "\017SessionOrdering\022\013\n"
+          + "\007CREATED\020\000\022\013\n"
+          + "\007UPDATED\020\001\022\t\n"
+          + "\005STATE\020\0022\235\003\n"
           + "\007Connect\022f\n\r"
           + "CreateSession\022).services.connect.v1.CreateSessionReques"
           + "t\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
           + "CancelSession\022).services.connec"
           + "t.v1.CancelSessionRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
           + "GetSession\022&.services.connect.v1.GetSessionRequ"
-          + "est\032\'.services.connect.v1.GetSessionResponseBZ\n"
-          + "\033trinsic.services.connect.v1P\001Z\033s"
-          + "ervices/connect/v1/connect\252\002\033Trinsic.Services.Connect.V1b\006proto3"
+          + "est\032\'.services.connect.v1.GetSessionResponse\022c\n"
+          + "\014ListSessions\022(.services.connect."
+          + "v1.ListSessionsRequest\032).services.connect.v1.ListSessionsResponseBZ\n"
+          + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/"
+          + "connect\252\002\033Trinsic.Services.Connect.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.services.common.v1.Common.getDescriptor(),
+            });
     internal_static_services_connect_v1_IDVSession_descriptor =
         getDescriptor().getMessageTypes().get(0);
     internal_static_services_connect_v1_IDVSession_fieldAccessorTable =
@@ -232,6 +262,23 @@ public final class ConnectOuterClass {
             new java.lang.String[] {
               "Session",
             });
+    internal_static_services_connect_v1_ListSessionsRequest_descriptor =
+        getDescriptor().getMessageTypes().get(9);
+    internal_static_services_connect_v1_ListSessionsRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_ListSessionsRequest_descriptor,
+            new java.lang.String[] {
+              "OrderBy", "OrderDirection", "PageSize", "Page", "PageSize", "Page",
+            });
+    internal_static_services_connect_v1_ListSessionsResponse_descriptor =
+        getDescriptor().getMessageTypes().get(10);
+    internal_static_services_connect_v1_ListSessionsResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_ListSessionsResponse_descriptor,
+            new java.lang.String[] {
+              "Sessions", "Total", "More",
+            });
+    trinsic.services.common.v1.Common.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

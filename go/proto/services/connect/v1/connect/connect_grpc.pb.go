@@ -22,6 +22,7 @@ const (
 	Connect_CreateSession_FullMethodName = "/services.connect.v1.Connect/CreateSession"
 	Connect_CancelSession_FullMethodName = "/services.connect.v1.Connect/CancelSession"
 	Connect_GetSession_FullMethodName    = "/services.connect.v1.Connect/GetSession"
+	Connect_ListSessions_FullMethodName  = "/services.connect.v1.Connect/ListSessions"
 )
 
 // ConnectClient is the client API for Connect service.
@@ -34,6 +35,8 @@ type ConnectClient interface {
 	CancelSession(ctx context.Context, in *CancelSessionRequest, opts ...grpc.CallOption) (*CancelSessionResponse, error)
 	// Get an IDVSession
 	GetSession(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
+	// List IDVSessions created by the calling wallet
+	ListSessions(ctx context.Context, in *ListSessionsRequest, opts ...grpc.CallOption) (*ListSessionsResponse, error)
 }
 
 type connectClient struct {
@@ -71,6 +74,15 @@ func (c *connectClient) GetSession(ctx context.Context, in *GetSessionRequest, o
 	return out, nil
 }
 
+func (c *connectClient) ListSessions(ctx context.Context, in *ListSessionsRequest, opts ...grpc.CallOption) (*ListSessionsResponse, error) {
+	out := new(ListSessionsResponse)
+	err := c.cc.Invoke(ctx, Connect_ListSessions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ConnectServer is the server API for Connect service.
 // All implementations must embed UnimplementedConnectServer
 // for forward compatibility
@@ -81,6 +93,8 @@ type ConnectServer interface {
 	CancelSession(context.Context, *CancelSessionRequest) (*CancelSessionResponse, error)
 	// Get an IDVSession
 	GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
+	// List IDVSessions created by the calling wallet
+	ListSessions(context.Context, *ListSessionsRequest) (*ListSessionsResponse, error)
 	mustEmbedUnimplementedConnectServer()
 }
 
@@ -96,6 +110,9 @@ func (UnimplementedConnectServer) CancelSession(context.Context, *CancelSessionR
 }
 func (UnimplementedConnectServer) GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSession not implemented")
+}
+func (UnimplementedConnectServer) ListSessions(context.Context, *ListSessionsRequest) (*ListSessionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSessions not implemented")
 }
 func (UnimplementedConnectServer) mustEmbedUnimplementedConnectServer() {}
 
@@ -164,6 +181,24 @@ func _Connect_GetSession_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Connect_ListSessions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSessionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConnectServer).ListSessions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Connect_ListSessions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConnectServer).ListSessions(ctx, req.(*ListSessionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Connect_ServiceDesc is the grpc.ServiceDesc for Connect service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -182,6 +217,10 @@ var Connect_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetSession",
 			Handler:    _Connect_GetSession_Handler,
+		},
+		{
+			MethodName: "ListSessions",
+			Handler:    _Connect_ListSessions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

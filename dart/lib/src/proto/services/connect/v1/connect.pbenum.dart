@@ -150,4 +150,26 @@ class VerificationFailCode extends $pb.ProtobufEnum {
   const VerificationFailCode._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Controls how sessions are ordered in `ListSessions`
+class SessionOrdering extends $pb.ProtobufEnum {
+  static const SessionOrdering CREATED =
+      SessionOrdering._(0, _omitEnumNames ? '' : 'CREATED');
+  static const SessionOrdering UPDATED =
+      SessionOrdering._(1, _omitEnumNames ? '' : 'UPDATED');
+  static const SessionOrdering STATE =
+      SessionOrdering._(2, _omitEnumNames ? '' : 'STATE');
+
+  static const $core.List<SessionOrdering> values = <SessionOrdering>[
+    CREATED,
+    UPDATED,
+    STATE,
+  ];
+
+  static final $core.Map<$core.int, SessionOrdering> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static SessionOrdering? valueOf($core.int value) => _byValue[value];
+
+  const SessionOrdering._($core.int v, $core.String n) : super(v, n);
+}
+
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

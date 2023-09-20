@@ -39,6 +39,12 @@ class ConnectClient extends $grpc.Client {
           ($3.GetSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $3.GetSessionResponse.fromBuffer(value));
+  static final _$listSessions =
+      $grpc.ClientMethod<$3.ListSessionsRequest, $3.ListSessionsResponse>(
+          '/services.connect.v1.Connect/ListSessions',
+          ($3.ListSessionsRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $3.ListSessionsResponse.fromBuffer(value));
 
   ConnectClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -61,6 +67,12 @@ class ConnectClient extends $grpc.Client {
       $3.GetSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getSession, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.ListSessionsResponse> listSessions(
+      $3.ListSessionsRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$listSessions, request, options: options);
   }
 }
 
@@ -94,6 +106,15 @@ abstract class ConnectServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.GetSessionRequest.fromBuffer(value),
         ($3.GetSessionResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$3.ListSessionsRequest, $3.ListSessionsResponse>(
+            'ListSessions',
+            listSessions_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $3.ListSessionsRequest.fromBuffer(value),
+            ($3.ListSessionsResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$3.CreateSessionResponse> createSession_Pre(
@@ -113,10 +134,18 @@ abstract class ConnectServiceBase extends $grpc.Service {
     return getSession(call, await request);
   }
 
+  $async.Future<$3.ListSessionsResponse> listSessions_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$3.ListSessionsRequest> request) async {
+    return listSessions(call, await request);
+  }
+
   $async.Future<$3.CreateSessionResponse> createSession(
       $grpc.ServiceCall call, $3.CreateSessionRequest request);
   $async.Future<$3.CancelSessionResponse> cancelSession(
       $grpc.ServiceCall call, $3.CancelSessionRequest request);
   $async.Future<$3.GetSessionResponse> getSession(
       $grpc.ServiceCall call, $3.GetSessionRequest request);
+  $async.Future<$3.ListSessionsResponse> listSessions(
+      $grpc.ServiceCall call, $3.ListSessionsRequest request);
 }
