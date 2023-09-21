@@ -323,7 +323,7 @@ export class ConnectClient {
         modalContainer.ariaModal = "true";
 
         modalContainer.className = mobileDetect.isDesktop
-            ? "modal__container h-[600px] w-[400px]"
+            ? "modal__container h-[600px] w-[400px] lock-bg"
             : "modal__container h-full min-h-[600px] w-full";
 
         const iframe = document.createElement("iframe");
