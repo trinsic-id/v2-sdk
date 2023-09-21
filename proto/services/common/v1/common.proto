@@ -42,3 +42,9 @@ message TrinsicClientOptions {
   // Authentication token for SDK calls; defaults to empty string (unauthenticated)
   string auth_token = 4;
 }
+
+// The direction to order results
+enum OrderDirection {
+  ASCENDING = 0;
+  DESCENDING = 1;
+}

@@ -730,6 +730,7 @@ The Connect service provides access to Trinsic Connect, a reusable identity veri
 | CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse](/reference/proto#services-connect-v1-CreateSessionResponse) | Create an IDVSession |
 | CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
 | GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
+| ListSessions | [ListSessionsRequest](/reference/proto#services-connect-v1-ListSessionsRequest) | [ListSessionsResponse](/reference/proto#services-connect-v1-ListSessionsResponse) | List IDVSessions created by the calling wallet |
 
  <!-- end services -->
 
@@ -862,6 +863,41 @@ An Identity Verification Session
 
 
 
+<a name="services-connect-v1-ListSessionsRequest"></a>
+
+### ListSessionsRequest
+Request to list all IDVSessions you've created
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| order_by | [SessionOrdering](/reference/proto#services-connect-v1-SessionOrdering) | The field by which sessions should be sorted. Defaults to `CREATED`. |
+| order_direction | [services.common.v1.OrderDirection](/reference/proto#services-common-v1-OrderDirection) | The order in which sessions should be sorted. Defaults to `ASCENDING`. |
+| page_size | [int32](/reference/proto#int32) | The number of results to return per page. Must be between `1` and `10`, inclusive. Defaults to `10`. |
+| page | [int32](/reference/proto#int32) | The page index of results to return. Starts at `1`. Defaults to `1`. |
+
+
+
+
+
+
+<a name="services-connect-v1-ListSessionsResponse"></a>
+
+### ListSessionsResponse
+Response to `ListIDVSessionsRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sessions | [IDVSession](/reference/proto#services-connect-v1-IDVSession)[] | The sessions you've created |
+| total | [int32](/reference/proto#int32) | The total number of sessions you've created |
+| more | [bool](/reference/proto#bool) | If `true`, this is not the last page of results. If `false`, this is the last page of results. |
+
+
+
+
+
+
 <a name="services-connect-v1-RequestedVerification"></a>
 
 ### RequestedVerification
@@ -929,6 +965,19 @@ The specific reason an IDVSession is in the `Failed` state
 | SESSION_FAIL_EXPIRED | 3 | The session expired |
 | SESSION_FAIL_USER_CANCELED | 4 | The user canceled / rejected the session |
 | SESSION_FAIL_RP_CANCELED | 5 | The RP canceled the session |
+
+
+
+<a name="services-connect-v1-SessionOrdering"></a>
+
+### SessionOrdering
+Controls how sessions are ordered in `ListSessions`
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CREATED | 0 | Order sessions according to when they were created |
+| UPDATED | 1 | Order sessions according to when they last changed state |
+| STATE | 2 | Order sessions according to their numerical state |
 
 
 
@@ -2377,6 +2426,18 @@ Nonce used to generate an oberon proof
 
 
  <!-- end messages -->
+
+
+<a name="services-common-v1-OrderDirection"></a>
+
+### OrderDirection
+The direction to order results
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| ASCENDING | 0 |  |
+| DESCENDING | 1 |  |
+
 
 
 <a name="services-common-v1-ResponseStatus"></a>

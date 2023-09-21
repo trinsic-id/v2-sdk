@@ -47,6 +47,19 @@ final $typed_data.Uint8List supportedDidMethodDescriptor =
     $convert.base64Decode(
         'ChJTdXBwb3J0ZWREaWRNZXRob2QSBwoDS0VZEAASBwoDSU9OEAESCAoESU5EWRAC');
 
+@$core.Deprecated('Use orderDirectionDescriptor instead')
+const OrderDirection$json = {
+  '1': 'OrderDirection',
+  '2': [
+    {'1': 'ASCENDING', '2': 0},
+    {'1': 'DESCENDING', '2': 1},
+  ],
+};
+
+/// Descriptor for `OrderDirection`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List orderDirectionDescriptor = $convert.base64Decode(
+    'Cg5PcmRlckRpcmVjdGlvbhINCglBU0NFTkRJTkcQABIOCgpERVNDRU5ESU5HEAE=');
+
 @$core.Deprecated('Use nonceDescriptor instead')
 const Nonce$json = {
   '1': 'Nonce',

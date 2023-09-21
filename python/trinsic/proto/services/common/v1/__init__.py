@@ -35,6 +35,13 @@ class SupportedDidMethod(betterproto.Enum):
     """The did:sov method -- Hyperledger Indy based by Sovrin Foundation"""
 
 
+class OrderDirection(betterproto.Enum):
+    """The direction to order results"""
+
+    ASCENDING = 0
+    DESCENDING = 1
+
+
 @dataclass(eq=False, repr=False)
 class Nonce(betterproto.Message):
     """Nonce used to generate an oberon proof"""

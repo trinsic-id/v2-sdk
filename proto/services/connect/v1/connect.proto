@@ -6,6 +6,8 @@ option go_package = "services/connect/v1/connect";
 option java_package = "trinsic.services.connect.v1";
 option java_multiple_files = true;
 
+import "services/common/v1/common.proto";
+
 // The type of verification to perform
 enum VerificationType {
   // Government-issued ID (driver's license, passport, etc)
@@ -186,6 +188,50 @@ message GetSessionResponse {
   IDVSession session = 1;
 }
 
+// Request to list all IDVSessions you've created
+message ListSessionsRequest {
+  // The field by which sessions should be sorted. Defaults to `CREATED`.
+  SessionOrdering order_by = 1;
+
+  // The order in which sessions should be sorted. Defaults to `ASCENDING`.
+  common.v1.OrderDirection order_direction = 2;
+
+  // The number of results to return per page.
+  // Must be between `1` and `10`, inclusive.
+  // Defaults to `10`.
+  optional int32 page_size = 3;
+
+  // The page index of results to return.
+  // Starts at `1`. 
+  // Defaults to `1`.
+  optional int32 page = 4;
+}
+
+// Response to `ListIDVSessionsRequest`
+message ListSessionsResponse {
+  // The sessions you've created
+  repeated IDVSession sessions = 1;
+
+  // The total number of sessions you've created
+  int32 total = 2;
+
+  // If `true`, this is not the last page of results.
+  // If `false`, this is the last page of results.
+  bool more = 3;
+}
+
+// Controls how sessions are ordered in `ListSessions`
+enum SessionOrdering {
+  // Order sessions according to when they were created
+  CREATED = 0;
+  
+  // Order sessions according to when they last changed state
+  UPDATED = 1;
+  
+  // Order sessions according to their numerical state
+  STATE = 2;
+}
+
 // The Connect service provides access to Trinsic Connect, a reusable identity verification service.
 service Connect {
   // Create an IDVSession
@@ -196,4 +242,7 @@ service Connect {
 
   // Get an IDVSession
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+  
+  // List IDVSessions created by the calling wallet
+  rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse);
 }

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
+import { OrderDirection, orderDirectionFromJSON, orderDirectionToJSON } from "../../common/v1/common";
 
 /** The type of verification to perform */
 export enum VerificationType {
@@ -278,6 +279,49 @@ export function verificationFailCodeToJSON(object: VerificationFailCode): string
   }
 }
 
+/** Controls how sessions are ordered in `ListSessions` */
+export enum SessionOrdering {
+  /** CREATED - Order sessions according to when they were created */
+  CREATED = 0,
+  /** UPDATED - Order sessions according to when they last changed state */
+  UPDATED = 1,
+  /** STATE - Order sessions according to their numerical state */
+  STATE = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function sessionOrderingFromJSON(object: any): SessionOrdering {
+  switch (object) {
+    case 0:
+    case "CREATED":
+      return SessionOrdering.CREATED;
+    case 1:
+    case "UPDATED":
+      return SessionOrdering.UPDATED;
+    case 2:
+    case "STATE":
+      return SessionOrdering.STATE;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return SessionOrdering.UNRECOGNIZED;
+  }
+}
+
+export function sessionOrderingToJSON(object: SessionOrdering): string {
+  switch (object) {
+    case SessionOrdering.CREATED:
+      return "CREATED";
+    case SessionOrdering.UPDATED:
+      return "UPDATED";
+    case SessionOrdering.STATE:
+      return "STATE";
+    case SessionOrdering.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** An Identity Verification Session */
 export interface IDVSession {
   /** The ID of the IDVSession. */
@@ -402,6 +446,49 @@ export interface GetSessionRequest {
 export interface GetSessionResponse {
   /** The IDVSession */
   session?: IDVSession | undefined;
+}
+
+/** Request to list all IDVSessions you've created */
+export interface ListSessionsRequest {
+  /** The field by which sessions should be sorted. Defaults to `CREATED`. */
+  orderBy?:
+    | SessionOrdering
+    | undefined;
+  /** The order in which sessions should be sorted. Defaults to `ASCENDING`. */
+  orderDirection?:
+    | OrderDirection
+    | undefined;
+  /**
+   * The number of results to return per page.
+   * Must be between `1` and `10`, inclusive.
+   * Defaults to `10`.
+   */
+  pageSize?:
+    | number
+    | undefined;
+  /**
+   * The page index of results to return.
+   * Starts at `1`.
+   * Defaults to `1`.
+   */
+  page?: number | undefined;
+}
+
+/** Response to `ListIDVSessionsRequest` */
+export interface ListSessionsResponse {
+  /** The sessions you've created */
+  sessions?:
+    | IDVSession[]
+    | undefined;
+  /** The total number of sessions you've created */
+  total?:
+    | number
+    | undefined;
+  /**
+   * If `true`, this is not the last page of results.
+   * If `false`, this is the last page of results.
+   */
+  more?: boolean | undefined;
 }
 
 function createBaseIDVSession(): IDVSession {
@@ -1235,6 +1322,201 @@ export const GetSessionResponse = {
   },
 };
 
+function createBaseListSessionsRequest(): ListSessionsRequest {
+  return { orderBy: 0, orderDirection: 0, pageSize: undefined, page: undefined };
+}
+
+export const ListSessionsRequest = {
+  encode(message: ListSessionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.orderBy !== undefined && message.orderBy !== 0) {
+      writer.uint32(8).int32(message.orderBy);
+    }
+    if (message.orderDirection !== undefined && message.orderDirection !== 0) {
+      writer.uint32(16).int32(message.orderDirection);
+    }
+    if (message.pageSize !== undefined) {
+      writer.uint32(24).int32(message.pageSize);
+    }
+    if (message.page !== undefined) {
+      writer.uint32(32).int32(message.page);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListSessionsRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListSessionsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.orderBy = reader.int32() as any;
+          continue;
+        case 2:
+          if (tag !== 16) {
+            break;
+          }
+
+          message.orderDirection = reader.int32() as any;
+          continue;
+        case 3:
+          if (tag !== 24) {
+            break;
+          }
+
+          message.pageSize = reader.int32();
+          continue;
+        case 4:
+          if (tag !== 32) {
+            break;
+          }
+
+          message.page = reader.int32();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListSessionsRequest {
+    return {
+      orderBy: isSet(object.orderBy) ? sessionOrderingFromJSON(object.orderBy) : 0,
+      orderDirection: isSet(object.orderDirection) ? orderDirectionFromJSON(object.orderDirection) : 0,
+      pageSize: isSet(object.pageSize) ? Number(object.pageSize) : undefined,
+      page: isSet(object.page) ? Number(object.page) : undefined,
+    };
+  },
+
+  toJSON(message: ListSessionsRequest): unknown {
+    const obj: any = {};
+    if (message.orderBy !== undefined && message.orderBy !== 0) {
+      obj.orderBy = sessionOrderingToJSON(message.orderBy);
+    }
+    if (message.orderDirection !== undefined && message.orderDirection !== 0) {
+      obj.orderDirection = orderDirectionToJSON(message.orderDirection);
+    }
+    if (message.pageSize !== undefined) {
+      obj.pageSize = Math.round(message.pageSize);
+    }
+    if (message.page !== undefined) {
+      obj.page = Math.round(message.page);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListSessionsRequest>): ListSessionsRequest {
+    return ListSessionsRequest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<ListSessionsRequest>): ListSessionsRequest {
+    const message = createBaseListSessionsRequest();
+    message.orderBy = object.orderBy ?? 0;
+    message.orderDirection = object.orderDirection ?? 0;
+    message.pageSize = object.pageSize ?? undefined;
+    message.page = object.page ?? undefined;
+    return message;
+  },
+};
+
+function createBaseListSessionsResponse(): ListSessionsResponse {
+  return { sessions: [], total: 0, more: false };
+}
+
+export const ListSessionsResponse = {
+  encode(message: ListSessionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.sessions !== undefined && message.sessions.length !== 0) {
+      for (const v of message.sessions) {
+        IDVSession.encode(v!, writer.uint32(10).fork()).ldelim();
+      }
+    }
+    if (message.total !== undefined && message.total !== 0) {
+      writer.uint32(16).int32(message.total);
+    }
+    if (message.more === true) {
+      writer.uint32(24).bool(message.more);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): ListSessionsResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListSessionsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.sessions!.push(IDVSession.decode(reader, reader.uint32()));
+          continue;
+        case 2:
+          if (tag !== 16) {
+            break;
+          }
+
+          message.total = reader.int32();
+          continue;
+        case 3:
+          if (tag !== 24) {
+            break;
+          }
+
+          message.more = reader.bool();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListSessionsResponse {
+    return {
+      sessions: Array.isArray(object?.sessions) ? object.sessions.map((e: any) => IDVSession.fromJSON(e)) : [],
+      total: isSet(object.total) ? Number(object.total) : 0,
+      more: isSet(object.more) ? Boolean(object.more) : false,
+    };
+  },
+
+  toJSON(message: ListSessionsResponse): unknown {
+    const obj: any = {};
+    if (message.sessions?.length) {
+      obj.sessions = message.sessions.map((e) => IDVSession.toJSON(e));
+    }
+    if (message.total !== undefined && message.total !== 0) {
+      obj.total = Math.round(message.total);
+    }
+    if (message.more === true) {
+      obj.more = message.more;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<ListSessionsResponse>): ListSessionsResponse {
+    return ListSessionsResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<ListSessionsResponse>): ListSessionsResponse {
+    const message = createBaseListSessionsResponse();
+    message.sessions = object.sessions?.map((e) => IDVSession.fromPartial(e)) || [];
+    message.total = object.total ?? 0;
+    message.more = object.more ?? false;
+    return message;
+  },
+};
+
 /** The Connect service provides access to Trinsic Connect, a reusable identity verification service. */
 export type ConnectDefinition = typeof ConnectDefinition;
 export const ConnectDefinition = {
@@ -1265,6 +1547,15 @@ export const ConnectDefinition = {
       requestType: GetSessionRequest,
       requestStream: false,
       responseType: GetSessionResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** List IDVSessions created by the calling wallet */
+    listSessions: {
+      name: "ListSessions",
+      requestType: ListSessionsRequest,
+      requestStream: false,
+      responseType: ListSessionsResponse,
       responseStream: false,
       options: {},
     },
