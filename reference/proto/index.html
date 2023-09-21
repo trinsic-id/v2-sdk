@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.1+insiders-4.41.0">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0+insiders-4.42.0">
     
     
       
@@ -25,10 +25,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.176649b9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4cd995e6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.da3f46a0.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.0382c2a7.min.css">
       
       
 
@@ -2706,6 +2706,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#listsessionsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ListSessionsRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listsessionsresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ListSessionsResponse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#requestedverification" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2743,6 +2765,17 @@
     <span class="md-ellipsis">
       
         SessionFailCode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sessionordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessionOrdering
       
     </span>
   </a>
@@ -3757,6 +3790,17 @@
     <span class="md-ellipsis">
       
         TrinsicClientOptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderdirection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderDirection
       
     </span>
   </a>
@@ -5525,6 +5569,12 @@ such by assigning roles and permissions to wallet accounts</p>
 <td><a href="/reference/proto#services-connect-v1-GetSessionResponse">GetSessionResponse</a></td>
 <td>Get an IDVSession</td>
 </tr>
+<tr>
+<td>ListSessions</td>
+<td><a href="/reference/proto#services-connect-v1-ListSessionsRequest">ListSessionsRequest</a></td>
+<td><a href="/reference/proto#services-connect-v1-ListSessionsResponse">ListSessionsResponse</a></td>
+<td>List IDVSessions created by the calling wallet</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
@@ -5720,6 +5770,69 @@ such by assigning roles and permissions to wallet accounts</p>
 </tr>
 </tbody>
 </table>
+<p><a name="services-connect-v1-ListSessionsRequest"></a></p>
+<h3 id="listsessionsrequest">ListSessionsRequest<a class="headerlink" href="#listsessionsrequest" title="Permanent link">&para;</a></h3>
+<p>Request to list all IDVSessions you've created</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order_by</td>
+<td><a href="/reference/proto#services-connect-v1-SessionOrdering">SessionOrdering</a></td>
+<td>The field by which sessions should be sorted. Defaults to <code>CREATED</code>.</td>
+</tr>
+<tr>
+<td>order_direction</td>
+<td><a href="/reference/proto#services-common-v1-OrderDirection">services.common.v1.OrderDirection</a></td>
+<td>The order in which sessions should be sorted. Defaults to <code>ASCENDING</code>.</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td><a href="/reference/proto#int32">int32</a></td>
+<td>The number of results to return per page. Must be between <code>1</code> and <code>10</code>, inclusive. Defaults to <code>10</code>.</td>
+</tr>
+<tr>
+<td>page</td>
+<td><a href="/reference/proto#int32">int32</a></td>
+<td>The page index of results to return. Starts at <code>1</code>. Defaults to <code>1</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-connect-v1-ListSessionsResponse"></a></p>
+<h3 id="listsessionsresponse">ListSessionsResponse<a class="headerlink" href="#listsessionsresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>ListIDVSessionsRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessions</td>
+<td><a href="/reference/proto#services-connect-v1-IDVSession">IDVSession</a>[]</td>
+<td>The sessions you've created</td>
+</tr>
+<tr>
+<td>total</td>
+<td><a href="/reference/proto#int32">int32</a></td>
+<td>The total number of sessions you've created</td>
+</tr>
+<tr>
+<td>more</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>If <code>true</code>, this is not the last page of results. If <code>false</code>, this is the last page of results.</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-connect-v1-RequestedVerification"></a></p>
 <h3 id="requestedverification">RequestedVerification<a class="headerlink" href="#requestedverification" title="Permanent link">&para;</a></h3>
 <p>A verification to perform in an IDV flow</p>
@@ -5875,6 +5988,35 @@ such by assigning roles and permissions to wallet accounts</p>
 <td>SESSION_FAIL_RP_CANCELED</td>
 <td>5</td>
 <td>The RP canceled the session</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-connect-v1-SessionOrdering"></a></p>
+<h3 id="sessionordering">SessionOrdering<a class="headerlink" href="#sessionordering" title="Permanent link">&para;</a></h3>
+<p>Controls how sessions are ordered in <code>ListSessions</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CREATED</td>
+<td>0</td>
+<td>Order sessions according to when they were created</td>
+</tr>
+<tr>
+<td>UPDATED</td>
+<td>1</td>
+<td>Order sessions according to when they last changed state</td>
+</tr>
+<tr>
+<td>STATE</td>
+<td>2</td>
+<td>Order sessions according to their numerical state</td>
 </tr>
 </tbody>
 </table>
@@ -8276,6 +8418,30 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
 </table>
 <!-- end messages -->
 
+<p><a name="services-common-v1-OrderDirection"></a></p>
+<h3 id="orderdirection">OrderDirection<a class="headerlink" href="#orderdirection" title="Permanent link">&para;</a></h3>
+<p>The direction to order results</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASCENDING</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>DESCENDING</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-common-v1-ResponseStatus"></a></p>
 <h3 id="responsestatus">ResponseStatus<a class="headerlink" href="#responsestatus" title="Permanent link">&para;</a></h3>
 <table>
