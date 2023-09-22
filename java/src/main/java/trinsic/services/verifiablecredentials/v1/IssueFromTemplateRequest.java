@@ -235,7 +235,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
    *
    * <pre>
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * Trust Registry.
+   * governance framework.
    * </pre>
    *
    * <code>bool include_governance = 6;</code>
@@ -1129,7 +1129,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * Trust Registry.
+     * governance framework.
      * </pre>
      *
      * <code>bool include_governance = 6;</code>
@@ -1145,7 +1145,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * Trust Registry.
+     * governance framework.
      * </pre>
      *
      * <code>bool include_governance = 6;</code>
@@ -1164,7 +1164,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * Trust Registry.
+     * governance framework.
      * </pre>
      *
      * <code>bool include_governance = 6;</code>

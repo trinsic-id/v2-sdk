@@ -17,12 +17,22 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    *
    *
    * <pre>
+   * The Session is not in a failure state.
+   * </pre>
+   *
+   * <code>SESSION_FAIL_NONE = 0;</code>
+   */
+  SESSION_FAIL_NONE(0),
+  /**
+   *
+   *
+   * <pre>
    * An internal Trinsic error caused this session to fail
    * </pre>
    *
-   * <code>SESSION_FAIL_INTERNAL = 0;</code>
+   * <code>SESSION_FAIL_INTERNAL = 1;</code>
    */
-  SESSION_FAIL_INTERNAL(0),
+  SESSION_FAIL_INTERNAL(1),
   /**
    *
    *
@@ -31,9 +41,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s).
    * </pre>
    *
-   * <code>SESSION_FAIL_VERIFICATION_FAILED = 1;</code>
+   * <code>SESSION_FAIL_VERIFICATION_FAILED = 2;</code>
    */
-  SESSION_FAIL_VERIFICATION_FAILED(1),
+  SESSION_FAIL_VERIFICATION_FAILED(2),
   /**
    *
    *
@@ -41,9 +51,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The session failed because the user failed to authenticate with their phone number too many times.
    * </pre>
    *
-   * <code>SESSION_FAIL_AUTHENTICATION = 2;</code>
+   * <code>SESSION_FAIL_AUTHENTICATION = 3;</code>
    */
-  SESSION_FAIL_AUTHENTICATION(2),
+  SESSION_FAIL_AUTHENTICATION(3),
   /**
    *
    *
@@ -51,9 +61,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The session expired
    * </pre>
    *
-   * <code>SESSION_FAIL_EXPIRED = 3;</code>
+   * <code>SESSION_FAIL_EXPIRED = 4;</code>
    */
-  SESSION_FAIL_EXPIRED(3),
+  SESSION_FAIL_EXPIRED(4),
   /**
    *
    *
@@ -61,9 +71,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The user canceled / rejected the session
    * </pre>
    *
-   * <code>SESSION_FAIL_USER_CANCELED = 4;</code>
+   * <code>SESSION_FAIL_USER_CANCELED = 5;</code>
    */
-  SESSION_FAIL_USER_CANCELED(4),
+  SESSION_FAIL_USER_CANCELED(5),
   /**
    *
    *
@@ -71,9 +81,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The RP canceled the session
    * </pre>
    *
-   * <code>SESSION_FAIL_RP_CANCELED = 5;</code>
+   * <code>SESSION_FAIL_RP_CANCELED = 6;</code>
    */
-  SESSION_FAIL_RP_CANCELED(5),
+  SESSION_FAIL_RP_CANCELED(6),
   UNRECOGNIZED(-1),
   ;
 
@@ -81,12 +91,22 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    *
    *
    * <pre>
+   * The Session is not in a failure state.
+   * </pre>
+   *
+   * <code>SESSION_FAIL_NONE = 0;</code>
+   */
+  public static final int SESSION_FAIL_NONE_VALUE = 0;
+  /**
+   *
+   *
+   * <pre>
    * An internal Trinsic error caused this session to fail
    * </pre>
    *
-   * <code>SESSION_FAIL_INTERNAL = 0;</code>
+   * <code>SESSION_FAIL_INTERNAL = 1;</code>
    */
-  public static final int SESSION_FAIL_INTERNAL_VALUE = 0;
+  public static final int SESSION_FAIL_INTERNAL_VALUE = 1;
   /**
    *
    *
@@ -95,9 +115,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s).
    * </pre>
    *
-   * <code>SESSION_FAIL_VERIFICATION_FAILED = 1;</code>
+   * <code>SESSION_FAIL_VERIFICATION_FAILED = 2;</code>
    */
-  public static final int SESSION_FAIL_VERIFICATION_FAILED_VALUE = 1;
+  public static final int SESSION_FAIL_VERIFICATION_FAILED_VALUE = 2;
   /**
    *
    *
@@ -105,9 +125,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The session failed because the user failed to authenticate with their phone number too many times.
    * </pre>
    *
-   * <code>SESSION_FAIL_AUTHENTICATION = 2;</code>
+   * <code>SESSION_FAIL_AUTHENTICATION = 3;</code>
    */
-  public static final int SESSION_FAIL_AUTHENTICATION_VALUE = 2;
+  public static final int SESSION_FAIL_AUTHENTICATION_VALUE = 3;
   /**
    *
    *
@@ -115,9 +135,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The session expired
    * </pre>
    *
-   * <code>SESSION_FAIL_EXPIRED = 3;</code>
+   * <code>SESSION_FAIL_EXPIRED = 4;</code>
    */
-  public static final int SESSION_FAIL_EXPIRED_VALUE = 3;
+  public static final int SESSION_FAIL_EXPIRED_VALUE = 4;
   /**
    *
    *
@@ -125,9 +145,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The user canceled / rejected the session
    * </pre>
    *
-   * <code>SESSION_FAIL_USER_CANCELED = 4;</code>
+   * <code>SESSION_FAIL_USER_CANCELED = 5;</code>
    */
-  public static final int SESSION_FAIL_USER_CANCELED_VALUE = 4;
+  public static final int SESSION_FAIL_USER_CANCELED_VALUE = 5;
   /**
    *
    *
@@ -135,9 +155,9 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
    * The RP canceled the session
    * </pre>
    *
-   * <code>SESSION_FAIL_RP_CANCELED = 5;</code>
+   * <code>SESSION_FAIL_RP_CANCELED = 6;</code>
    */
-  public static final int SESSION_FAIL_RP_CANCELED_VALUE = 5;
+  public static final int SESSION_FAIL_RP_CANCELED_VALUE = 6;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -164,16 +184,18 @@ public enum SessionFailCode implements com.google.protobuf.ProtocolMessageEnum {
   public static SessionFailCode forNumber(int value) {
     switch (value) {
       case 0:
-        return SESSION_FAIL_INTERNAL;
+        return SESSION_FAIL_NONE;
       case 1:
-        return SESSION_FAIL_VERIFICATION_FAILED;
+        return SESSION_FAIL_INTERNAL;
       case 2:
-        return SESSION_FAIL_AUTHENTICATION;
+        return SESSION_FAIL_VERIFICATION_FAILED;
       case 3:
-        return SESSION_FAIL_EXPIRED;
+        return SESSION_FAIL_AUTHENTICATION;
       case 4:
-        return SESSION_FAIL_USER_CANCELED;
+        return SESSION_FAIL_EXPIRED;
       case 5:
+        return SESSION_FAIL_USER_CANCELED;
+      case 6:
         return SESSION_FAIL_RP_CANCELED;
       default:
         return null;

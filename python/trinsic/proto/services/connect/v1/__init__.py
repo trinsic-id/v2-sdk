@@ -84,51 +84,58 @@ class VerificationState(betterproto.Enum):
 class SessionFailCode(betterproto.Enum):
     """The specific reason an IDVSession is in the `Failed` state"""
 
-    SESSION_FAIL_INTERNAL = 0
+    SESSION_FAIL_NONE = 0
+    """The Session is not in a failure state."""
+
+    SESSION_FAIL_INTERNAL = 1
     """An internal Trinsic error caused this session to fail"""
 
-    SESSION_FAIL_VERIFICATION_FAILED = 1
+    SESSION_FAIL_VERIFICATION_FAILED = 2
     """
     The session failed because one or more of the verifications failed. The
     reason for the failure is present in the `fail_reason` field of the
     relevant `Verification` object(s).
     """
 
-    SESSION_FAIL_AUTHENTICATION = 2
+    SESSION_FAIL_AUTHENTICATION = 3
     """
     The session failed because the user failed to authenticate with their phone
     number too many times.
     """
 
-    SESSION_FAIL_EXPIRED = 3
+    SESSION_FAIL_EXPIRED = 4
     """The session expired"""
 
-    SESSION_FAIL_USER_CANCELED = 4
+    SESSION_FAIL_USER_CANCELED = 5
     """The user canceled / rejected the session"""
 
-    SESSION_FAIL_RP_CANCELED = 5
+    SESSION_FAIL_RP_CANCELED = 6
     """The RP canceled the session"""
 
 
 class VerificationFailCode(betterproto.Enum):
     """The specific reason a Verification is in the `Failed` state"""
 
-    VERIFICATION_FAIL_INTERNAL = 0
+    VERIFICATION_FAIL_NONE = 0
+    """The verification is not in a failure state"""
+
+    VERIFICATION_FAIL_INTERNAL = 1
     """An internal Trinsic error caused this verification to fail"""
 
-    VERIFICATION_FAIL_INVALID_IMAGE = 1
+    VERIFICATION_FAIL_INVALID_IMAGE = 2
     """
     The image(s) provided for this verification were either too low-quality,
-    not of the correct type, or otherwise unable to be processed.
+    not of the correct type, or otherwise unable to be processed. This failure
+    reason is non-terminal; the user is able to retry the verification.
     """
 
-    VERIFICATION_FAIL_INAUTHENTIC = 2
+    VERIFICATION_FAIL_INAUTHENTIC = 3
     """
     The identity data/images provided are suspected to be inauthentic,
     fraudulent, or forged.
     """
 
-    VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT = 3
+    VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT = 4
     """
     The document provided is either of an unsupported type, or from an
     unsupported country.

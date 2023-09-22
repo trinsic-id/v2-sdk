@@ -172,7 +172,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
    *
    * <pre>
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * Trust Registry.
+   * governance framework.
    * </pre>
    *
    * <code>bool include_governance = 4;</code>
@@ -958,7 +958,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * Trust Registry.
+     * governance framework.
      * </pre>
      *
      * <code>bool include_governance = 4;</code>
@@ -974,7 +974,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * Trust Registry.
+     * governance framework.
      * </pre>
      *
      * <code>bool include_governance = 4;</code>
@@ -993,7 +993,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * Trust Registry.
+     * governance framework.
      * </pre>
      *
      * <code>bool include_governance = 4;</code>
