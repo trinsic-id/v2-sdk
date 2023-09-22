@@ -74,6 +74,7 @@ class UnregisterMemberRequest(betterproto.Message):
     """
     Request to unregister a member as a valid issuer of a specific credential
     schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+    The URI of the credential schema must be specified.
     """
 
     did_uri: str = betterproto.string_field(1, group="member")
@@ -104,8 +105,8 @@ class UnregisterMemberResponse(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class GetMemberAuthorizationStatusRequest(betterproto.Message):
     """
-    Request to fetch member status in governance framework for a specific
-    credential schema.
+    Request to fetch member status in Trust Registry for a specific credential
+    schema.
     """
 
     did_uri: str = betterproto.string_field(1)
@@ -174,7 +175,7 @@ class AuthorizedMemberSchema(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class GetMemberRequest(betterproto.Message):
-    """Request to get a member of the governance framework"""
+    """Request to get a member of the Trust Registry"""
 
     did_uri: str = betterproto.string_field(1, group="member")
     """DID URI of member to get"""

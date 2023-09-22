@@ -80,7 +80,7 @@ export interface IssueFromTemplateRequest {
     | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    */
   includeGovernance?:
     | boolean
@@ -270,7 +270,7 @@ export interface CreateCredentialOfferRequest {
     | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    */
   includeGovernance?:
     | boolean
@@ -304,7 +304,7 @@ export interface AcceptCredentialRequest {
   documentJson?:
     | string
     | undefined;
-  /** The ID of the item in the wallet that contains the credential offer */
+  /** The ID of the credential offer (Parameter ID inside the JSON document) */
   itemId?: string | undefined;
 }
 
@@ -325,7 +325,7 @@ export interface RejectCredentialRequest {
   documentJson?:
     | string
     | undefined;
-  /** The ID of the item in the wallet that contains the credential offer */
+  /** The ID of the credential offer (Parameter ID inside the JSON document) */
   itemId?: string | undefined;
 }
 

@@ -163,7 +163,7 @@ public interface SendRequestOrBuilder
    * Send email notification that credential has been sent to a wallet
    * </pre>
    *
-   * <code>bool send_notification = 4;</code>
+   * <code>bool send_notification = 4 [(.services.options.optional) = true];</code>
    *
    * @return The sendNotification.
    */

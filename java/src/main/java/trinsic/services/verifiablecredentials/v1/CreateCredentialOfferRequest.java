@@ -156,7 +156,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
    * the holder DID in the credential subject
    * </pre>
    *
-   * <code>bool holder_binding = 3;</code>
+   * <code>bool holder_binding = 3 [(.services.options.optional) = true];</code>
    *
    * @return The holderBinding.
    */
@@ -172,10 +172,10 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
    *
    * <pre>
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    * </pre>
    *
-   * <code>bool include_governance = 4;</code>
+   * <code>bool include_governance = 4 [(.services.options.optional) = true];</code>
    *
    * @return The includeGovernance.
    */
@@ -194,7 +194,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
    * This link will point to the credential offer in the wallet app.
    * </pre>
    *
-   * <code>bool generate_share_url = 5;</code>
+   * <code>bool generate_share_url = 5 [(.services.options.optional) = true];</code>
    *
    * @return The generateShareUrl.
    */
@@ -212,7 +212,9 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
    * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
    * </pre>
    *
-   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   * <code>
+   * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+   * </code>
    *
    * @return The enum numeric value on the wire for signatureType.
    */
@@ -227,7 +229,9 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
    * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
    * </pre>
    *
-   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   * <code>
+   * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+   * </code>
    *
    * @return The signatureType.
    */
@@ -906,7 +910,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * the holder DID in the credential subject
      * </pre>
      *
-     * <code>bool holder_binding = 3;</code>
+     * <code>bool holder_binding = 3 [(.services.options.optional) = true];</code>
      *
      * @return The holderBinding.
      */
@@ -922,7 +926,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * the holder DID in the credential subject
      * </pre>
      *
-     * <code>bool holder_binding = 3;</code>
+     * <code>bool holder_binding = 3 [(.services.options.optional) = true];</code>
      *
      * @param value The holderBinding to set.
      * @return This builder for chaining.
@@ -941,7 +945,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * the holder DID in the credential subject
      * </pre>
      *
-     * <code>bool holder_binding = 3;</code>
+     * <code>bool holder_binding = 3 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
@@ -958,10 +962,10 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * governance framework.
+     * Trust Registry.
      * </pre>
      *
-     * <code>bool include_governance = 4;</code>
+     * <code>bool include_governance = 4 [(.services.options.optional) = true];</code>
      *
      * @return The includeGovernance.
      */
@@ -974,10 +978,10 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * governance framework.
+     * Trust Registry.
      * </pre>
      *
-     * <code>bool include_governance = 4;</code>
+     * <code>bool include_governance = 4 [(.services.options.optional) = true];</code>
      *
      * @param value The includeGovernance to set.
      * @return This builder for chaining.
@@ -993,10 +997,10 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      *
      * <pre>
      * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-     * governance framework.
+     * Trust Registry.
      * </pre>
      *
-     * <code>bool include_governance = 4;</code>
+     * <code>bool include_governance = 4 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
@@ -1016,7 +1020,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * This link will point to the credential offer in the wallet app.
      * </pre>
      *
-     * <code>bool generate_share_url = 5;</code>
+     * <code>bool generate_share_url = 5 [(.services.options.optional) = true];</code>
      *
      * @return The generateShareUrl.
      */
@@ -1032,7 +1036,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * This link will point to the credential offer in the wallet app.
      * </pre>
      *
-     * <code>bool generate_share_url = 5;</code>
+     * <code>bool generate_share_url = 5 [(.services.options.optional) = true];</code>
      *
      * @param value The generateShareUrl to set.
      * @return This builder for chaining.
@@ -1051,7 +1055,7 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * This link will point to the credential offer in the wallet app.
      * </pre>
      *
-     * <code>bool generate_share_url = 5;</code>
+     * <code>bool generate_share_url = 5 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
@@ -1070,7 +1074,9 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
      * </pre>
      *
-     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     * <code>
+     * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+     * </code>
      *
      * @return The enum numeric value on the wire for signatureType.
      */
@@ -1085,7 +1091,9 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
      * </pre>
      *
-     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     * <code>
+     * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+     * </code>
      *
      * @param value The enum numeric value on the wire for signatureType to set.
      * @return This builder for chaining.
@@ -1103,7 +1111,9 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
      * </pre>
      *
-     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     * <code>
+     * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+     * </code>
      *
      * @return The signatureType.
      */
@@ -1123,7 +1133,9 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
      * </pre>
      *
-     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     * <code>
+     * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+     * </code>
      *
      * @param value The signatureType to set.
      * @return This builder for chaining.
@@ -1144,7 +1156,9 @@ public final class CreateCredentialOfferRequest extends com.google.protobuf.Gene
      * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
      * </pre>
      *
-     * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+     * <code>
+     * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+     * </code>
      *
      * @return This builder for chaining.
      */

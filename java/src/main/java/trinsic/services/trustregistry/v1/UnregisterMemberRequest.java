@@ -9,6 +9,7 @@ package trinsic.services.trustregistry.v1;
  * <pre>
  * Request to unregister a member as a valid issuer of a specific credential schema.
  * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+ * The URI of the credential schema must be specified.
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
@@ -576,6 +577,7 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
    * <pre>
    * Request to unregister a member as a valid issuer of a specific credential schema.
    * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+   * The URI of the credential schema must be specified.
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
