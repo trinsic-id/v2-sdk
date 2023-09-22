@@ -13,6 +13,8 @@ import betterproto
 import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
 
+from ...common import v1 as __common_v1__
+
 
 if TYPE_CHECKING:
     from betterproto.grpc.grpclib_client import MetadataLike
@@ -131,6 +133,19 @@ class VerificationFailCode(betterproto.Enum):
     The document provided is either of an unsupported type, or from an
     unsupported country.
     """
+
+
+class SessionOrdering(betterproto.Enum):
+    """Controls how sessions are ordered in `ListSessions`"""
+
+    CREATED = 0
+    """Order sessions according to when they were created"""
+
+    UPDATED = 1
+    """Order sessions according to when they last changed state"""
+
+    STATE = 2
+    """Order sessions according to their numerical state"""
 
 
 @dataclass(eq=False, repr=False)
@@ -277,6 +292,49 @@ class GetSessionResponse(betterproto.Message):
     """The IDVSession"""
 
 
+@dataclass(eq=False, repr=False)
+class ListSessionsRequest(betterproto.Message):
+    """Request to list all IDVSessions you've created"""
+
+    order_by: "SessionOrdering" = betterproto.enum_field(1)
+    """The field by which sessions should be sorted. Defaults to `CREATED`."""
+
+    order_direction: "__common_v1__.OrderDirection" = betterproto.enum_field(2)
+    """
+    The order in which sessions should be sorted. Defaults to `ASCENDING`.
+    """
+
+    page_size: Optional[int] = betterproto.int32_field(
+        3, optional=True, group="_page_size"
+    )
+    """
+    The number of results to return per page. Must be between `1` and `10`,
+    inclusive. Defaults to `10`.
+    """
+
+    page: Optional[int] = betterproto.int32_field(4, optional=True, group="_page")
+    """
+    The page index of results to return. Starts at `1`.  Defaults to `1`.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class ListSessionsResponse(betterproto.Message):
+    """Response to `ListIDVSessionsRequest`"""
+
+    sessions: List["IdvSession"] = betterproto.message_field(1)
+    """The sessions you've created"""
+
+    total: int = betterproto.int32_field(2)
+    """The total number of sessions you've created"""
+
+    more: bool = betterproto.bool_field(3)
+    """
+    If `true`, this is not the last page of results. If `false`, this is the
+    last page of results.
+    """
+
+
 class ConnectStub(betterproto.ServiceStub):
     async def create_session(
         self,
@@ -326,6 +384,22 @@ class ConnectStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def list_sessions(
+        self,
+        list_sessions_request: "ListSessionsRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListSessionsResponse":
+        return await self._unary_unary(
+            "/services.connect.v1.Connect/ListSessions",
+            list_sessions_request,
+            ListSessionsResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class ConnectBase(ServiceBase):
     async def create_session(
@@ -343,6 +417,11 @@ class ConnectBase(ServiceBase):
     ) -> "GetSessionResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def list_sessions(
+        self, list_sessions_request: "ListSessionsRequest"
+    ) -> "ListSessionsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_create_session(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.create_session(request)
@@ -356,6 +435,11 @@ class ConnectBase(ServiceBase):
     async def __rpc_get_session(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.get_session(request)
+        await stream.send_message(response)
+
+    async def __rpc_list_sessions(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.list_sessions(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -377,5 +461,11 @@ class ConnectBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetSessionRequest,
                 GetSessionResponse,
+            ),
+            "/services.connect.v1.Connect/ListSessions": grpclib.const.Handler(
+                self.__rpc_list_sessions,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListSessionsRequest,
+                ListSessionsResponse,
             ),
         }

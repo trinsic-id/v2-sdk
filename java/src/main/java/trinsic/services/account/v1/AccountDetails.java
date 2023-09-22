@@ -40,14 +40,14 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.account.v1.AccountOuterClass
+    return trinsic.services.account.v1.Account
         .internal_static_services_account_v1_AccountDetails_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.account.v1.AccountOuterClass
+    return trinsic.services.account.v1.Account
         .internal_static_services_account_v1_AccountDetails_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             trinsic.services.account.v1.AccountDetails.class,
@@ -404,14 +404,14 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
       // @@protoc_insertion_point(builder_implements:services.account.v1.AccountDetails)
       trinsic.services.account.v1.AccountDetailsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_AccountDetails_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_AccountDetails_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               trinsic.services.account.v1.AccountDetails.class,
@@ -439,7 +439,7 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_AccountDetails_descriptor;
     }
 

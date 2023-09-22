@@ -30,30 +30,6 @@
       "file": "sdk/options/v1/options.proto",
       "parent": "sdk.options.v1.TrinsicOptions"
     },
-    "services.account.v1.Account": {
-      "type": "service",
-      "collection": "services",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.Account.Info": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.Account.Login": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.Account.LoginConfirm": {
-      "type": "method",
-      "collection": "methods",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
     "services.account.v1.AccountDetails": {
       "type": "message",
       "collection": "messages",
@@ -77,54 +53,6 @@
       "collection": "fields",
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.AccountDetails"
-    },
-    "services.account.v1.AccountInfoRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.AccountInfoResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.AccountInfoResponse.auth_tokens": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
-    },
-    "services.account.v1.AccountInfoResponse.details": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
-    },
-    "services.account.v1.AccountInfoResponse.device_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
-    },
-    "services.account.v1.AccountInfoResponse.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
-    },
-    "services.account.v1.AccountInfoResponse.public_did": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
-    },
-    "services.account.v1.AccountInfoResponse.wallet_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.AccountInfoResponse"
     },
     "services.account.v1.AccountProfile": {
       "type": "message",
@@ -192,72 +120,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.ConfirmationMethod"
     },
-    "services.account.v1.LoginConfirmRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.LoginConfirmRequest.challenge": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginConfirmRequest"
-    },
-    "services.account.v1.LoginConfirmRequest.confirmation_code_hashed": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginConfirmRequest"
-    },
-    "services.account.v1.LoginConfirmResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.LoginConfirmResponse.profile": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginConfirmResponse"
-    },
-    "services.account.v1.LoginRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.LoginRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginRequest"
-    },
-    "services.account.v1.LoginRequest.email": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginRequest"
-    },
-    "services.account.v1.LoginResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.LoginResponse.challenge": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginResponse"
-    },
-    "services.account.v1.LoginResponse.profile": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.LoginResponse"
-    },
     "services.account.v1.TokenProtection": {
       "type": "message",
       "collection": "messages",
@@ -317,6 +179,24 @@
       "collection": "fields",
       "file": "services/common/v1/common.proto",
       "parent": "services.common.v1.Nonce"
+    },
+    "services.common.v1.OrderDirection": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/common/v1/common.proto",
+      "parent": ""
+    },
+    "services.common.v1.OrderDirection.ASCENDING": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.OrderDirection"
+    },
+    "services.common.v1.OrderDirection.DESCENDING": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/common/v1/common.proto",
+      "parent": "services.common.v1.OrderDirection"
     },
     "services.common.v1.ResponseStatus": {
       "type": "enum",
@@ -457,6 +337,12 @@
       "parent": ""
     },
     "services.connect.v1.Connect.GetSession": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.Connect.ListSessions": {
       "type": "method",
       "collection": "methods",
       "file": "services/connect/v1/connect.proto",
@@ -624,6 +510,60 @@
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.IDVSessionState"
     },
+    "services.connect.v1.ListSessionsRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.ListSessionsRequest.order_by": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.ListSessionsRequest"
+    },
+    "services.connect.v1.ListSessionsRequest.order_direction": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.ListSessionsRequest"
+    },
+    "services.connect.v1.ListSessionsRequest.page": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.ListSessionsRequest"
+    },
+    "services.connect.v1.ListSessionsRequest.page_size": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.ListSessionsRequest"
+    },
+    "services.connect.v1.ListSessionsResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.ListSessionsResponse.more": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.ListSessionsResponse"
+    },
+    "services.connect.v1.ListSessionsResponse.sessions": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.ListSessionsResponse"
+    },
+    "services.connect.v1.ListSessionsResponse.total": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.ListSessionsResponse"
+    },
     "services.connect.v1.RequestedVerification": {
       "type": "message",
       "collection": "messages",
@@ -677,6 +617,30 @@
       "collection": "enum_values",
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.SessionFailCode"
+    },
+    "services.connect.v1.SessionOrdering": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.SessionOrdering.CREATED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.SessionOrdering"
+    },
+    "services.connect.v1.SessionOrdering.STATE": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.SessionOrdering"
+    },
+    "services.connect.v1.SessionOrdering.UPDATED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.SessionOrdering"
     },
     "services.connect.v1.Verification": {
       "type": "message",
@@ -1482,30 +1446,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.RefreshDomainVerificationStatusRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.RefreshDomainVerificationStatusResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RefreshDomainVerificationStatusResponse"
-    },
-    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RefreshDomainVerificationStatusResponse"
-    },
     "services.provider.v1.RemoveRoleAssignmentRequest": {
       "type": "message",
       "collection": "messages",
@@ -1541,30 +1481,6 @@
       "collection": "messages",
       "file": "services/provider/v1/access-management.proto",
       "parent": ""
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RetrieveDomainVerificationRecordResponse"
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_value": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RetrieveDomainVerificationRecordResponse"
     },
     "services.provider.v1.SearchWalletConfigurationResponse": {
       "type": "message",
@@ -4332,24 +4248,12 @@
       "name": "services/account/v1/account.proto",
       "package": "services.account.v1",
       "description": "",
-      "services": [
-        "services.account.v1.Account"
-      ],
-      "methods": [
-        "services.account.v1.Account.Login",
-        "services.account.v1.Account.LoginConfirm",
-        "services.account.v1.Account.Info"
-      ],
+      "services": [],
+      "methods": [],
       "messages": [
         "services.account.v1.AccountDetails",
         "services.account.v1.TokenProtection",
         "services.account.v1.AccountProfile",
-        "services.account.v1.AccountInfoRequest",
-        "services.account.v1.AccountInfoResponse",
-        "services.account.v1.LoginRequest",
-        "services.account.v1.LoginResponse",
-        "services.account.v1.LoginConfirmRequest",
-        "services.account.v1.LoginConfirmResponse",
         "services.account.v1.WalletAuthToken"
       ],
       "fields": [
@@ -4362,19 +4266,6 @@
         "services.account.v1.AccountProfile.auth_data",
         "services.account.v1.AccountProfile.auth_token",
         "services.account.v1.AccountProfile.protection",
-        "services.account.v1.AccountInfoResponse.details",
-        "services.account.v1.AccountInfoResponse.wallet_id",
-        "services.account.v1.AccountInfoResponse.device_id",
-        "services.account.v1.AccountInfoResponse.ecosystem_id",
-        "services.account.v1.AccountInfoResponse.public_did",
-        "services.account.v1.AccountInfoResponse.auth_tokens",
-        "services.account.v1.LoginRequest.email",
-        "services.account.v1.LoginRequest.ecosystem_id",
-        "services.account.v1.LoginResponse.challenge",
-        "services.account.v1.LoginResponse.profile",
-        "services.account.v1.LoginConfirmRequest.challenge",
-        "services.account.v1.LoginConfirmRequest.confirmation_code_hashed",
-        "services.account.v1.LoginConfirmResponse.profile",
         "services.account.v1.WalletAuthToken.id",
         "services.account.v1.WalletAuthToken.description",
         "services.account.v1.WalletAuthToken.date_created"
@@ -4410,7 +4301,8 @@
       ],
       "enums": [
         "services.common.v1.ResponseStatus",
-        "services.common.v1.SupportedDidMethod"
+        "services.common.v1.SupportedDidMethod",
+        "services.common.v1.OrderDirection"
       ],
       "enum_values": [
         "services.common.v1.ResponseStatus.SUCCESS",
@@ -4421,7 +4313,9 @@
         "services.common.v1.ResponseStatus.UNKNOWN_ERROR",
         "services.common.v1.SupportedDidMethod.KEY",
         "services.common.v1.SupportedDidMethod.ION",
-        "services.common.v1.SupportedDidMethod.INDY"
+        "services.common.v1.SupportedDidMethod.INDY",
+        "services.common.v1.OrderDirection.ASCENDING",
+        "services.common.v1.OrderDirection.DESCENDING"
       ]
     },
     "services/connect/v1/connect.proto": {
@@ -4434,7 +4328,8 @@
       "methods": [
         "services.connect.v1.Connect.CreateSession",
         "services.connect.v1.Connect.CancelSession",
-        "services.connect.v1.Connect.GetSession"
+        "services.connect.v1.Connect.GetSession",
+        "services.connect.v1.Connect.ListSessions"
       ],
       "messages": [
         "services.connect.v1.IDVSession",
@@ -4446,7 +4341,9 @@
         "services.connect.v1.CancelSessionRequest",
         "services.connect.v1.CancelSessionResponse",
         "services.connect.v1.GetSessionRequest",
-        "services.connect.v1.GetSessionResponse"
+        "services.connect.v1.GetSessionResponse",
+        "services.connect.v1.ListSessionsRequest",
+        "services.connect.v1.ListSessionsResponse"
       ],
       "fields": [
         "services.connect.v1.IDVSession.id",
@@ -4472,14 +4369,22 @@
         "services.connect.v1.CancelSessionRequest.idv_session_id",
         "services.connect.v1.CancelSessionResponse.session",
         "services.connect.v1.GetSessionRequest.idv_session_id",
-        "services.connect.v1.GetSessionResponse.session"
+        "services.connect.v1.GetSessionResponse.session",
+        "services.connect.v1.ListSessionsRequest.order_by",
+        "services.connect.v1.ListSessionsRequest.order_direction",
+        "services.connect.v1.ListSessionsRequest.page_size",
+        "services.connect.v1.ListSessionsRequest.page",
+        "services.connect.v1.ListSessionsResponse.sessions",
+        "services.connect.v1.ListSessionsResponse.total",
+        "services.connect.v1.ListSessionsResponse.more"
       ],
       "enums": [
         "services.connect.v1.VerificationType",
         "services.connect.v1.IDVSessionState",
         "services.connect.v1.VerificationState",
         "services.connect.v1.SessionFailCode",
-        "services.connect.v1.VerificationFailCode"
+        "services.connect.v1.VerificationFailCode",
+        "services.connect.v1.SessionOrdering"
       ],
       "enum_values": [
         "services.connect.v1.VerificationType.GOVERNMENT_ID",
@@ -4503,7 +4408,10 @@
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INTERNAL",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INVALID_IMAGE",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INAUTHENTIC",
-        "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT"
+        "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT",
+        "services.connect.v1.SessionOrdering.CREATED",
+        "services.connect.v1.SessionOrdering.UPDATED",
+        "services.connect.v1.SessionOrdering.STATE"
       ]
     },
     "services/file-management/v1/file-management.proto": {
@@ -4643,10 +4551,6 @@
         "services.provider.v1.EcosystemInfoResponse",
         "services.provider.v1.GetOberonKeyRequest",
         "services.provider.v1.GetOberonKeyResponse",
-        "services.provider.v1.RetrieveDomainVerificationRecordRequest",
-        "services.provider.v1.RetrieveDomainVerificationRecordResponse",
-        "services.provider.v1.RefreshDomainVerificationStatusRequest",
-        "services.provider.v1.RefreshDomainVerificationStatusResponse",
         "services.provider.v1.SearchWalletConfigurationsRequest",
         "services.provider.v1.SearchWalletConfigurationResponse",
         "services.provider.v1.WalletConfiguration",
@@ -4669,10 +4573,6 @@
         "services.provider.v1.CreateEcosystemResponse.confirmation_method",
         "services.provider.v1.EcosystemInfoResponse.ecosystem",
         "services.provider.v1.GetOberonKeyResponse.key",
-        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
-        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_value",
-        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
-        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified",
         "services.provider.v1.SearchWalletConfigurationsRequest.query_filter",
         "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token",
         "services.provider.v1.SearchWalletConfigurationResponse.results",
@@ -5218,16 +5118,6 @@
     }
   },
   "services": {
-    "services.account.v1.Account": {
-      "name": "Account",
-      "full_name": "services.account.v1.Account",
-      "description": "",
-      "methods": [
-        "services.account.v1.Account.Login",
-        "services.account.v1.Account.LoginConfirm",
-        "services.account.v1.Account.Info"
-      ]
-    },
     "services.connect.v1.Connect": {
       "name": "Connect",
       "full_name": "services.connect.v1.Connect",
@@ -5235,7 +5125,8 @@
       "methods": [
         "services.connect.v1.Connect.CreateSession",
         "services.connect.v1.Connect.CancelSession",
-        "services.connect.v1.Connect.GetSession"
+        "services.connect.v1.Connect.GetSession",
+        "services.connect.v1.Connect.ListSessions"
       ]
     },
     "services.filemanagement.v1.FileManagement": {
@@ -5346,39 +5237,6 @@
     }
   },
   "methods": {
-    "services.account.v1.Account.Info": {
-      "name": "Info",
-      "full_name": "services.account.v1.Account.Info",
-      "input_type": "services.account.v1.AccountInfoRequest",
-      "output_type": "services.account.v1.AccountInfoResponse",
-      "description": "Get account information",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.account.v1.Account.Login": {
-      "name": "Login",
-      "full_name": "services.account.v1.Account.Login",
-      "input_type": "services.account.v1.LoginRequest",
-      "output_type": "services.account.v1.LoginResponse",
-      "description": "Begin login flow for specified account, creating one if it does not already exist",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
-    "services.account.v1.Account.LoginConfirm": {
-      "name": "LoginConfirm",
-      "full_name": "services.account.v1.Account.LoginConfirm",
-      "input_type": "services.account.v1.LoginConfirmRequest",
-      "output_type": "services.account.v1.LoginConfirmResponse",
-      "description": "Finalize login flow with two-factor confirmation code",
-      "options": {
-        "deprecated": true,
-        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
-      }
-    },
     "services.connect.v1.Connect.CancelSession": {
       "name": "CancelSession",
       "full_name": "services.connect.v1.Connect.CancelSession",
@@ -5399,6 +5257,13 @@
       "input_type": "services.connect.v1.GetSessionRequest",
       "output_type": "services.connect.v1.GetSessionResponse",
       "description": "Get an IDVSession"
+    },
+    "services.connect.v1.Connect.ListSessions": {
+      "name": "ListSessions",
+      "full_name": "services.connect.v1.Connect.ListSessions",
+      "input_type": "services.connect.v1.ListSessionsRequest",
+      "output_type": "services.connect.v1.ListSessionsResponse",
+      "description": "List IDVSessions created by the calling wallet"
     },
     "services.filemanagement.v1.FileManagement.DeleteFile": {
       "name": "DeleteFile",
@@ -5877,29 +5742,6 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.AccountInfoRequest": {
-      "name": "AccountInfoRequest",
-      "full_name": "services.account.v1.AccountInfoRequest",
-      "description": "Request for information about the account used to make the request",
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.AccountInfoResponse": {
-      "name": "AccountInfoResponse",
-      "full_name": "services.account.v1.AccountInfoResponse",
-      "description": "Information about the account used to make the request",
-      "fields": [
-        "services.account.v1.AccountInfoResponse.details",
-        "services.account.v1.AccountInfoResponse.wallet_id",
-        "services.account.v1.AccountInfoResponse.device_id",
-        "services.account.v1.AccountInfoResponse.ecosystem_id",
-        "services.account.v1.AccountInfoResponse.public_did",
-        "services.account.v1.AccountInfoResponse.auth_tokens"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.account.v1.AccountProfile": {
       "name": "AccountProfile",
       "full_name": "services.account.v1.AccountProfile",
@@ -5909,49 +5751,6 @@
         "services.account.v1.AccountProfile.auth_data",
         "services.account.v1.AccountProfile.auth_token",
         "services.account.v1.AccountProfile.protection"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.LoginConfirmRequest": {
-      "name": "LoginConfirmRequest",
-      "full_name": "services.account.v1.LoginConfirmRequest",
-      "description": "Request to finalize login flow",
-      "fields": [
-        "services.account.v1.LoginConfirmRequest.challenge",
-        "services.account.v1.LoginConfirmRequest.confirmation_code_hashed"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.LoginConfirmResponse": {
-      "name": "LoginConfirmResponse",
-      "full_name": "services.account.v1.LoginConfirmResponse",
-      "description": "Response to `LoginConfirmRequest`",
-      "fields": [
-        "services.account.v1.LoginConfirmResponse.profile"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.LoginRequest": {
-      "name": "LoginRequest",
-      "full_name": "services.account.v1.LoginRequest",
-      "description": "Request to begin login flow",
-      "fields": [
-        "services.account.v1.LoginRequest.email",
-        "services.account.v1.LoginRequest.ecosystem_id"
-      ],
-      "messages": [],
-      "enums": []
-    },
-    "services.account.v1.LoginResponse": {
-      "name": "LoginResponse",
-      "full_name": "services.account.v1.LoginResponse",
-      "description": "Response to `LoginRequest`",
-      "fields": [
-        "services.account.v1.LoginResponse.challenge",
-        "services.account.v1.LoginResponse.profile"
       ],
       "messages": [],
       "enums": []
@@ -6090,6 +5889,31 @@
       "fields": [
         "services.connect.v1.IDVSession.VerificationsEntry.key",
         "services.connect.v1.IDVSession.VerificationsEntry.value"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.ListSessionsRequest": {
+      "name": "ListSessionsRequest",
+      "full_name": "services.connect.v1.ListSessionsRequest",
+      "description": "Request to list all IDVSessions you've created",
+      "fields": [
+        "services.connect.v1.ListSessionsRequest.order_by",
+        "services.connect.v1.ListSessionsRequest.order_direction",
+        "services.connect.v1.ListSessionsRequest.page_size",
+        "services.connect.v1.ListSessionsRequest.page"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.ListSessionsResponse": {
+      "name": "ListSessionsResponse",
+      "full_name": "services.connect.v1.ListSessionsResponse",
+      "description": "Response to `ListIDVSessionsRequest`",
+      "fields": [
+        "services.connect.v1.ListSessionsResponse.sessions",
+        "services.connect.v1.ListSessionsResponse.total",
+        "services.connect.v1.ListSessionsResponse.more"
       ],
       "messages": [],
       "enums": []
@@ -6429,31 +6253,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.RefreshDomainVerificationStatusRequest": {
-      "name": "RefreshDomainVerificationStatusRequest",
-      "full_name": "services.provider.v1.RefreshDomainVerificationStatusRequest",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.RefreshDomainVerificationStatusResponse": {
-      "name": "RefreshDomainVerificationStatusResponse",
-      "full_name": "services.provider.v1.RefreshDomainVerificationStatusResponse",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
-        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.RemoveRoleAssignmentRequest": {
       "name": "RemoveRoleAssignmentRequest",
       "full_name": "services.provider.v1.RemoveRoleAssignmentRequest",
@@ -6472,31 +6271,6 @@
       "full_name": "services.provider.v1.RemoveRoleAssignmentResponse",
       "description": "",
       "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordRequest": {
-      "name": "RetrieveDomainVerificationRecordRequest",
-      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordRequest",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [],
-      "messages": [],
-      "enums": []
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse": {
-      "name": "RetrieveDomainVerificationRecordResponse",
-      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse",
-      "description": "The below display can be removed only once the Dashboard is updating this itself - currently it uses this request\nDEPRECATED, will be removed June 1st 2023",
-      "options": {
-        "deprecated": true
-      },
-      "fields": [
-        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
-        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_value"
-      ],
       "messages": [],
       "enums": []
     },
@@ -7913,54 +7687,6 @@
         "services.options.optional": true
       }
     },
-    "services.account.v1.AccountInfoResponse.auth_tokens": {
-      "name": "auth_tokens",
-      "full_name": "services.account.v1.AccountInfoResponse.auth_tokens",
-      "label": "LABEL_REPEATED",
-      "type": "WalletAuthToken",
-      "full_type": "services.account.v1.WalletAuthToken",
-      "description": "List of active authentication tokens for this wallet.\nThis list does not contain the issued token, only metadata\nsuch as ID, description, and creation date."
-    },
-    "services.account.v1.AccountInfoResponse.details": {
-      "name": "details",
-      "full_name": "services.account.v1.AccountInfoResponse.details",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountDetails",
-      "full_type": "services.account.v1.AccountDetails",
-      "description": "The account details associated with\nthe calling request context"
-    },
-    "services.account.v1.AccountInfoResponse.device_id": {
-      "name": "device_id",
-      "full_name": "services.account.v1.AccountInfoResponse.device_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "The device ID associated with this account session"
-    },
-    "services.account.v1.AccountInfoResponse.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.account.v1.AccountInfoResponse.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "The ecosystem ID within which this account resides"
-    },
-    "services.account.v1.AccountInfoResponse.public_did": {
-      "name": "public_did",
-      "full_name": "services.account.v1.AccountInfoResponse.public_did",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "The public DID associated with this account.\nThis DID is used as the `issuer` when signing verifiable credentials"
-    },
-    "services.account.v1.AccountInfoResponse.wallet_id": {
-      "name": "wallet_id",
-      "full_name": "services.account.v1.AccountInfoResponse.wallet_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "The wallet ID associated with this account"
-    },
     "services.account.v1.AccountProfile.auth_data": {
       "name": "auth_data",
       "full_name": "services.account.v1.AccountProfile.auth_data",
@@ -7992,68 +7718,6 @@
       "type": "TokenProtection",
       "full_type": "services.account.v1.TokenProtection",
       "description": "Token security information about the token.\nIf token protection is enabled, implementations must supply\nprotection secret before using the token for authentication."
-    },
-    "services.account.v1.LoginConfirmRequest.challenge": {
-      "name": "challenge",
-      "full_name": "services.account.v1.LoginConfirmRequest.challenge",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": "Challenge received from `Login`"
-    },
-    "services.account.v1.LoginConfirmRequest.confirmation_code_hashed": {
-      "name": "confirmation_code_hashed",
-      "full_name": "services.account.v1.LoginConfirmRequest.confirmation_code_hashed",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": "Two-factor confirmation code sent to account email or phone,\nhashed using Blake3. Our SDKs will handle this hashing process for you."
-    },
-    "services.account.v1.LoginConfirmResponse.profile": {
-      "name": "profile",
-      "full_name": "services.account.v1.LoginConfirmResponse.profile",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountProfile",
-      "full_type": "services.account.v1.AccountProfile",
-      "description": "Profile response; must be unprotected using unhashed confirmation code.\nOur SDKs will handle this process for you, and return to you an authentication token string."
-    },
-    "services.account.v1.LoginRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.account.v1.LoginRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of Ecosystem to sign into.",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.LoginRequest.email": {
-      "name": "email",
-      "full_name": "services.account.v1.LoginRequest.email",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Email address of account. If unspecified, an anonymous account will be created.",
-      "options": {
-        "services.options.optional": true
-      }
-    },
-    "services.account.v1.LoginResponse.challenge": {
-      "name": "challenge",
-      "full_name": "services.account.v1.LoginResponse.challenge",
-      "label": "LABEL_OPTIONAL",
-      "type": "bytes",
-      "full_type": "bytes",
-      "description": "Random byte sequence unique to this login request.\nIf present, two-factor confirmation of login is required.\nMust be sent back, unaltered, in `LoginConfirm`."
-    },
-    "services.account.v1.LoginResponse.profile": {
-      "name": "profile",
-      "full_name": "services.account.v1.LoginResponse.profile",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountProfile",
-      "full_type": "services.account.v1.AccountProfile",
-      "description": "Account profile response. If present, no confirmation of login is required."
     },
     "services.account.v1.TokenProtection.enabled": {
       "name": "enabled",
@@ -8270,6 +7934,62 @@
       "type": "VerificationsEntry",
       "full_type": "services.connect.v1.IDVSession.VerificationsEntry",
       "description": "The actual Verifications to perform in this IDV flow"
+    },
+    "services.connect.v1.ListSessionsRequest.order_by": {
+      "name": "order_by",
+      "full_name": "services.connect.v1.ListSessionsRequest.order_by",
+      "label": "LABEL_OPTIONAL",
+      "type": "SessionOrdering",
+      "full_type": "services.connect.v1.SessionOrdering",
+      "description": "The field by which sessions should be sorted. Defaults to `CREATED`."
+    },
+    "services.connect.v1.ListSessionsRequest.order_direction": {
+      "name": "order_direction",
+      "full_name": "services.connect.v1.ListSessionsRequest.order_direction",
+      "label": "LABEL_OPTIONAL",
+      "type": "OrderDirection",
+      "full_type": "services.common.v1.OrderDirection",
+      "description": "The order in which sessions should be sorted. Defaults to `ASCENDING`."
+    },
+    "services.connect.v1.ListSessionsRequest.page": {
+      "name": "page",
+      "full_name": "services.connect.v1.ListSessionsRequest.page",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "The page index of results to return.\nStarts at `1`. \nDefaults to `1`."
+    },
+    "services.connect.v1.ListSessionsRequest.page_size": {
+      "name": "page_size",
+      "full_name": "services.connect.v1.ListSessionsRequest.page_size",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "The number of results to return per page.\nMust be between `1` and `10`, inclusive.\nDefaults to `10`."
+    },
+    "services.connect.v1.ListSessionsResponse.more": {
+      "name": "more",
+      "full_name": "services.connect.v1.ListSessionsResponse.more",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "If `true`, this is not the last page of results.\nIf `false`, this is the last page of results."
+    },
+    "services.connect.v1.ListSessionsResponse.sessions": {
+      "name": "sessions",
+      "full_name": "services.connect.v1.ListSessionsResponse.sessions",
+      "label": "LABEL_REPEATED",
+      "type": "IDVSession",
+      "full_type": "services.connect.v1.IDVSession",
+      "description": "The sessions you've created"
+    },
+    "services.connect.v1.ListSessionsResponse.total": {
+      "name": "total",
+      "full_name": "services.connect.v1.ListSessionsResponse.total",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "The total number of sessions you've created"
     },
     "services.connect.v1.RequestedVerification.type": {
       "name": "type",
@@ -8744,22 +8464,6 @@
       "full_type": "string",
       "description": "List of roles"
     },
-    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain": {
-      "name": "domain",
-      "full_name": "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Domain URL verified"
-    },
-    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified": {
-      "name": "domain_verified",
-      "full_name": "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified",
-      "label": "LABEL_OPTIONAL",
-      "type": "bool",
-      "full_type": "bool",
-      "description": "Specifies if the above `domain` was successfully verified"
-    },
     "services.provider.v1.RemoveRoleAssignmentRequest.did_uri": {
       "name": "did_uri",
       "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.did_uri",
@@ -8791,22 +8495,6 @@
       "type": "string",
       "full_type": "string",
       "description": "Wallet ID of account to unassign role.\nMutually exclusive with `email` and `didUri`."
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name": {
-      "name": "verification_record_name",
-      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "TXT record name to use for domain verification"
-    },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_value": {
-      "name": "verification_record_value",
-      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_value",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "TXT code for domain verification"
     },
     "services.provider.v1.SearchWalletConfigurationResponse.continuation_token": {
       "name": "continuation_token",
@@ -8945,7 +8633,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Deprecated and will be removed on August 1, 2023 -- use external_identities. \nThis field is set to the first email address present in `external_identities`, if any.",
+      "description": "Deprecated and will be removed on August 1, 2023 -- use external_identities.\nThis field is set to the first email address present in `external_identities`, if any.",
       "options": {
         "deprecated": true,
         "services.options.optional": true
@@ -11010,6 +10698,15 @@
         "services.account.v1.ConfirmationMethod.Other"
       ]
     },
+    "services.common.v1.OrderDirection": {
+      "name": "OrderDirection",
+      "full_name": "services.common.v1.OrderDirection",
+      "description": "The direction to order results",
+      "values": [
+        "services.common.v1.OrderDirection.ASCENDING",
+        "services.common.v1.OrderDirection.DESCENDING"
+      ]
+    },
     "services.common.v1.ResponseStatus": {
       "name": "ResponseStatus",
       "full_name": "services.common.v1.ResponseStatus",
@@ -11057,6 +10754,16 @@
         "services.connect.v1.SessionFailCode.SESSION_FAIL_EXPIRED",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_USER_CANCELED",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_RP_CANCELED"
+      ]
+    },
+    "services.connect.v1.SessionOrdering": {
+      "name": "SessionOrdering",
+      "full_name": "services.connect.v1.SessionOrdering",
+      "description": "Controls how sessions are ordered in `ListSessions`",
+      "values": [
+        "services.connect.v1.SessionOrdering.CREATED",
+        "services.connect.v1.SessionOrdering.UPDATED",
+        "services.connect.v1.SessionOrdering.STATE"
       ]
     },
     "services.connect.v1.VerificationFailCode": {
@@ -11211,6 +10918,18 @@
       "description": "SMS confirmation required",
       "value": 2
     },
+    "services.common.v1.OrderDirection.ASCENDING": {
+      "name": "ASCENDING",
+      "full_name": "services.common.v1.OrderDirection.ASCENDING",
+      "description": "",
+      "value": 0
+    },
+    "services.common.v1.OrderDirection.DESCENDING": {
+      "name": "DESCENDING",
+      "full_name": "services.common.v1.OrderDirection.DESCENDING",
+      "description": "",
+      "value": 1
+    },
     "services.common.v1.ResponseStatus.ITEM_NOT_FOUND": {
       "name": "ITEM_NOT_FOUND",
       "full_name": "services.common.v1.ResponseStatus.ITEM_NOT_FOUND",
@@ -11335,6 +11054,24 @@
       "name": "SESSION_FAIL_VERIFICATION_FAILED",
       "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_VERIFICATION_FAILED",
       "description": "The session failed because one or more of the verifications failed.\nThe reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s).",
+      "value": 1
+    },
+    "services.connect.v1.SessionOrdering.CREATED": {
+      "name": "CREATED",
+      "full_name": "services.connect.v1.SessionOrdering.CREATED",
+      "description": "Order sessions according to when they were created",
+      "value": 0
+    },
+    "services.connect.v1.SessionOrdering.STATE": {
+      "name": "STATE",
+      "full_name": "services.connect.v1.SessionOrdering.STATE",
+      "description": "Order sessions according to their numerical state",
+      "value": 2
+    },
+    "services.connect.v1.SessionOrdering.UPDATED": {
+      "name": "UPDATED",
+      "full_name": "services.connect.v1.SessionOrdering.UPDATED",
+      "description": "Order sessions according to when they last changed state",
       "value": 1
     },
     "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INAUTHENTIC": {

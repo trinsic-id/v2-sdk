@@ -16,12 +16,17 @@
         <div>
             <button id="verifyButton" class="btn btn-primary">Request Verifiable Presentation</button>
         </div>
+
+        <p>
+            <pre class="text-left text-xs" id="responsePanel">
+
+            </pre>
+        </p>
     </div>
 
-    <script src="https://unpkg.com/@trinsic/trinsic@1.11.3-pre.13/dist/trinsic.min.js"></script>
+    <script src="https://unpkg.com/@trinsic/trinsic@1.11.3-pre.15/dist/trinsic.min.js"></script>
 
     <script>
-        // initialize the credential handler polyfill when the page loads
         const { ConnectClient } = trinsic;
         const client = new ConnectClient();
 
@@ -42,6 +47,7 @@
             const data = await response.json();
 
             console.log(data);
+            document.getElementById("responsePanel").innerText = JSON.stringify(data, null, 2);
         });
     </script>
 </body>

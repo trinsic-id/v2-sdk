@@ -105,6 +105,40 @@ export function supportedDidMethodToJSON(object: SupportedDidMethod): string {
   }
 }
 
+/** The direction to order results */
+export enum OrderDirection {
+  ASCENDING = 0,
+  DESCENDING = 1,
+  UNRECOGNIZED = -1,
+}
+
+export function orderDirectionFromJSON(object: any): OrderDirection {
+  switch (object) {
+    case 0:
+    case "ASCENDING":
+      return OrderDirection.ASCENDING;
+    case 1:
+    case "DESCENDING":
+      return OrderDirection.DESCENDING;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return OrderDirection.UNRECOGNIZED;
+  }
+}
+
+export function orderDirectionToJSON(object: OrderDirection): string {
+  switch (object) {
+    case OrderDirection.ASCENDING:
+      return "ASCENDING";
+    case OrderDirection.DESCENDING:
+      return "DESCENDING";
+    case OrderDirection.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** Nonce used to generate an oberon proof */
 export interface Nonce {
   /** UTC unix millisecond timestamp the request was made */

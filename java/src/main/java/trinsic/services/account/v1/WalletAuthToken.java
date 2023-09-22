@@ -40,14 +40,14 @@ public final class WalletAuthToken extends com.google.protobuf.GeneratedMessageV
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.account.v1.AccountOuterClass
+    return trinsic.services.account.v1.Account
         .internal_static_services_account_v1_WalletAuthToken_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.account.v1.AccountOuterClass
+    return trinsic.services.account.v1.Account
         .internal_static_services_account_v1_WalletAuthToken_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             trinsic.services.account.v1.WalletAuthToken.class,
@@ -415,14 +415,14 @@ public final class WalletAuthToken extends com.google.protobuf.GeneratedMessageV
       // @@protoc_insertion_point(builder_implements:services.account.v1.WalletAuthToken)
       trinsic.services.account.v1.WalletAuthTokenOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_WalletAuthToken_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_WalletAuthToken_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               trinsic.services.account.v1.WalletAuthToken.class,
@@ -450,7 +450,7 @@ public final class WalletAuthToken extends com.google.protobuf.GeneratedMessageV
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_WalletAuthToken_descriptor;
     }
 

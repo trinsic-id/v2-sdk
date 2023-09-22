@@ -140,82 +140,6 @@ class GetOberonKeyResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class RetrieveDomainVerificationRecordRequest(betterproto.Message):
-    """
-    The below display can be removed only once the Dashboard is updating this
-    itself - currently it uses this request DEPRECATED, will be removed June
-    1st 2023
-    """
-
-    pass
-
-    def __post_init__(self) -> None:
-        warnings.warn(
-            "RetrieveDomainVerificationRecordRequest is deprecated", DeprecationWarning
-        )
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class RetrieveDomainVerificationRecordResponse(betterproto.Message):
-    """
-    The below display can be removed only once the Dashboard is updating this
-    itself - currently it uses this request DEPRECATED, will be removed June
-    1st 2023
-    """
-
-    verification_record_name: str = betterproto.string_field(1)
-    """TXT record name to use for domain verification"""
-
-    verification_record_value: str = betterproto.string_field(2)
-    """TXT code for domain verification"""
-
-    def __post_init__(self) -> None:
-        warnings.warn(
-            "RetrieveDomainVerificationRecordResponse is deprecated", DeprecationWarning
-        )
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class RefreshDomainVerificationStatusRequest(betterproto.Message):
-    """
-    The below display can be removed only once the Dashboard is updating this
-    itself - currently it uses this request DEPRECATED, will be removed June
-    1st 2023
-    """
-
-    pass
-
-    def __post_init__(self) -> None:
-        warnings.warn(
-            "RefreshDomainVerificationStatusRequest is deprecated", DeprecationWarning
-        )
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
-class RefreshDomainVerificationStatusResponse(betterproto.Message):
-    """
-    The below display can be removed only once the Dashboard is updating this
-    itself - currently it uses this request DEPRECATED, will be removed June
-    1st 2023
-    """
-
-    domain: str = betterproto.string_field(1)
-    """Domain URL verified"""
-
-    domain_verified: bool = betterproto.bool_field(2)
-    """Specifies if the above `domain` was successfully verified"""
-
-    def __post_init__(self) -> None:
-        warnings.warn(
-            "RefreshDomainVerificationStatusResponse is deprecated", DeprecationWarning
-        )
-        super().__post_init__()
-
-
-@dataclass(eq=False, repr=False)
 class SearchWalletConfigurationsRequest(betterproto.Message):
     """Search for issuers/holders/verifiers"""
 
@@ -253,7 +177,7 @@ class WalletConfiguration(betterproto.Message):
     email: str = betterproto.string_field(2)
     """
     Deprecated and will be removed on August 1, 2023 -- use
-    external_identities.  This field is set to the first email address present
+    external_identities. This field is set to the first email address present
     in `external_identities`, if any.
     """
 

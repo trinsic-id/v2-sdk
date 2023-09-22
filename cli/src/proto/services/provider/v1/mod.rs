@@ -78,44 +78,6 @@ pub struct GetOberonKeyResponse {
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
 }
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RetrieveDomainVerificationRecordRequest {}
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RetrieveDomainVerificationRecordResponse {
-    /// TXT record name to use for domain verification
-    #[prost(string, tag = "1")]
-    pub verification_record_name: ::prost::alloc::string::String,
-    /// TXT code for domain verification
-    #[prost(string, tag = "2")]
-    pub verification_record_value: ::prost::alloc::string::String,
-}
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RefreshDomainVerificationStatusRequest {}
-/// The below display can be removed only once the Dashboard is updating this itself - currently it uses this request
-/// DEPRECATED, will be removed June 1st 2023
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RefreshDomainVerificationStatusResponse {
-    /// Domain URL verified
-    #[prost(string, tag = "1")]
-    pub domain: ::prost::alloc::string::String,
-    /// Specifies if the above `domain` was successfully verified
-    #[prost(bool, tag = "2")]
-    pub domain_verified: bool,
-}
 /// Search for issuers/holders/verifiers
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[allow(clippy::derive_partial_eq_without_eq)]

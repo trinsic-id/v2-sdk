@@ -181,7 +181,7 @@ public enum ConfirmationMethod implements com.google.protobuf.ProtocolMessageEnu
   }
 
   public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-    return trinsic.services.account.v1.AccountOuterClass.getDescriptor().getEnumTypes().get(0);
+    return trinsic.services.account.v1.Account.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final ConfirmationMethod[] VALUES = values();

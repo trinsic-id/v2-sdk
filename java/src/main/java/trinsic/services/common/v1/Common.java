@@ -39,9 +39,10 @@ public final class Common {
           + "ALLET_EXISTS\020\013\022\022\n\016ITEM_NOT_FOUND\020\024\022\030\n\023SE"
           + "RIALIZATION_ERROR\020\310\001\022\021\n\rUNKNOWN_ERROR\020d*"
           + "0\n\022SupportedDidMethod\022\007\n\003KEY\020\000\022\007\n\003ION\020\001\022"
-          + "\010\n\004INDY\020\002BV\n\032trinsic.services.common.v1P"
-          + "\001Z\031services/common/v1/common\252\002\032Trinsic.S"
-          + "ervices.Common.V1b\006proto3"
+          + "\010\n\004INDY\020\002*/\n\016OrderDirection\022\r\n\tASCENDING"
+          + "\020\000\022\016\n\nDESCENDING\020\001BV\n\032trinsic.services.c"
+          + "ommon.v1P\001Z\031services/common/v1/common\252\002\032"
+          + "Trinsic.Services.Common.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(

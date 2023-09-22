@@ -156,6 +156,51 @@ public final class ConnectGrpc {
     return getGetSessionMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.connect.v1.ListSessionsRequest,
+          trinsic.services.connect.v1.ListSessionsResponse>
+      getListSessionsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ListSessions",
+      requestType = trinsic.services.connect.v1.ListSessionsRequest.class,
+      responseType = trinsic.services.connect.v1.ListSessionsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.connect.v1.ListSessionsRequest,
+          trinsic.services.connect.v1.ListSessionsResponse>
+      getListSessionsMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.connect.v1.ListSessionsRequest,
+            trinsic.services.connect.v1.ListSessionsResponse>
+        getListSessionsMethod;
+    if ((getListSessionsMethod = ConnectGrpc.getListSessionsMethod) == null) {
+      synchronized (ConnectGrpc.class) {
+        if ((getListSessionsMethod = ConnectGrpc.getListSessionsMethod) == null) {
+          ConnectGrpc.getListSessionsMethod =
+              getListSessionsMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.connect.v1.ListSessionsRequest,
+                          trinsic.services.connect.v1.ListSessionsResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListSessions"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.connect.v1.ListSessionsRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.connect.v1.ListSessionsResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(new ConnectMethodDescriptorSupplier("ListSessions"))
+                      .build();
+        }
+      }
+    }
+    return getListSessionsMethod;
+  }
+
   /** Creates a new async stub that supports all call types for the service */
   public static ConnectStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<ConnectStub> factory =
@@ -249,6 +294,21 @@ public final class ConnectGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetSessionMethod(), responseObserver);
     }
 
+    /**
+     *
+     *
+     * <pre>
+     * List IDVSessions created by the calling wallet
+     * </pre>
+     */
+    public void listSessions(
+        trinsic.services.connect.v1.ListSessionsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.ListSessionsResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getListSessionsMethod(), responseObserver);
+    }
+
     @java.lang.Override
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
@@ -272,6 +332,13 @@ public final class ConnectGrpc {
                   new MethodHandlers<
                       trinsic.services.connect.v1.GetSessionRequest,
                       trinsic.services.connect.v1.GetSessionResponse>(this, METHODID_GET_SESSION)))
+          .addMethod(
+              getListSessionsMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.connect.v1.ListSessionsRequest,
+                      trinsic.services.connect.v1.ListSessionsResponse>(
+                      this, METHODID_LIST_SESSIONS)))
           .build();
     }
   }
@@ -341,6 +408,23 @@ public final class ConnectGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetSessionMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * List IDVSessions created by the calling wallet
+     * </pre>
+     */
+    public void listSessions(
+        trinsic.services.connect.v1.ListSessionsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.ListSessionsResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListSessionsMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
   }
 
   /**
@@ -398,6 +482,19 @@ public final class ConnectGrpc {
         trinsic.services.connect.v1.GetSessionRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetSessionMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * List IDVSessions created by the calling wallet
+     * </pre>
+     */
+    public trinsic.services.connect.v1.ListSessionsResponse listSessions(
+        trinsic.services.connect.v1.ListSessionsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getListSessionsMethod(), getCallOptions(), request);
     }
   }
 
@@ -460,11 +557,26 @@ public final class ConnectGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetSessionMethod(), getCallOptions()), request);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * List IDVSessions created by the calling wallet
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.connect.v1.ListSessionsResponse>
+        listSessions(trinsic.services.connect.v1.ListSessionsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListSessionsMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_SESSION = 0;
   private static final int METHODID_CANCEL_SESSION = 1;
   private static final int METHODID_GET_SESSION = 2;
+  private static final int METHODID_LIST_SESSIONS = 3;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -499,6 +611,12 @@ public final class ConnectGrpc {
           serviceImpl.getSession(
               (trinsic.services.connect.v1.GetSessionRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.connect.v1.GetSessionResponse>)
+                  responseObserver);
+          break;
+        case METHODID_LIST_SESSIONS:
+          serviceImpl.listSessions(
+              (trinsic.services.connect.v1.ListSessionsRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.connect.v1.ListSessionsResponse>)
                   responseObserver);
           break;
         default:
@@ -566,6 +684,7 @@ public final class ConnectGrpc {
                       .addMethod(getCreateSessionMethod())
                       .addMethod(getCancelSessionMethod())
                       .addMethod(getGetSessionMethod())
+                      .addMethod(getListSessionsMethod())
                       .build();
         }
       }

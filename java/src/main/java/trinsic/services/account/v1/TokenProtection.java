@@ -38,14 +38,14 @@ public final class TokenProtection extends com.google.protobuf.GeneratedMessageV
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.account.v1.AccountOuterClass
+    return trinsic.services.account.v1.Account
         .internal_static_services_account_v1_TokenProtection_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.account.v1.AccountOuterClass
+    return trinsic.services.account.v1.Account
         .internal_static_services_account_v1_TokenProtection_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             trinsic.services.account.v1.TokenProtection.class,
@@ -289,14 +289,14 @@ public final class TokenProtection extends com.google.protobuf.GeneratedMessageV
       // @@protoc_insertion_point(builder_implements:services.account.v1.TokenProtection)
       trinsic.services.account.v1.TokenProtectionOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_TokenProtection_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_TokenProtection_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               trinsic.services.account.v1.TokenProtection.class,
@@ -322,7 +322,7 @@ public final class TokenProtection extends com.google.protobuf.GeneratedMessageV
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.account.v1.AccountOuterClass
+      return trinsic.services.account.v1.Account
           .internal_static_services_account_v1_TokenProtection_descriptor;
     }
 

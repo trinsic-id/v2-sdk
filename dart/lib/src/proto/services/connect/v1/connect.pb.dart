@@ -14,6 +14,7 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import '../../common/v1/common.pbenum.dart' as $9;
 import 'connect.pbenum.dart';
 
 export 'connect.pbenum.dart';
@@ -861,6 +862,230 @@ class GetSessionResponse extends $pb.GeneratedMessage {
   void clearSession() => clearField(1);
   @$pb.TagNumber(1)
   IDVSession ensureSession() => $_ensure(0);
+}
+
+/// Request to list all IDVSessions you've created
+class ListSessionsRequest extends $pb.GeneratedMessage {
+  factory ListSessionsRequest({
+    SessionOrdering? orderBy,
+    $9.OrderDirection? orderDirection,
+    $core.int? pageSize,
+    $core.int? page,
+  }) {
+    final $result = create();
+    if (orderBy != null) {
+      $result.orderBy = orderBy;
+    }
+    if (orderDirection != null) {
+      $result.orderDirection = orderDirection;
+    }
+    if (pageSize != null) {
+      $result.pageSize = pageSize;
+    }
+    if (page != null) {
+      $result.page = page;
+    }
+    return $result;
+  }
+  ListSessionsRequest._() : super();
+  factory ListSessionsRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListSessionsRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListSessionsRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..e<SessionOrdering>(
+        1, _omitFieldNames ? '' : 'orderBy', $pb.PbFieldType.OE,
+        defaultOrMaker: SessionOrdering.CREATED,
+        valueOf: SessionOrdering.valueOf,
+        enumValues: SessionOrdering.values)
+    ..e<$9.OrderDirection>(
+        2, _omitFieldNames ? '' : 'orderDirection', $pb.PbFieldType.OE,
+        defaultOrMaker: $9.OrderDirection.ASCENDING,
+        valueOf: $9.OrderDirection.valueOf,
+        enumValues: $9.OrderDirection.values)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ListSessionsRequest clone() => ListSessionsRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ListSessionsRequest copyWith(void Function(ListSessionsRequest) updates) =>
+      super.copyWith((message) => updates(message as ListSessionsRequest))
+          as ListSessionsRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListSessionsRequest create() => ListSessionsRequest._();
+  ListSessionsRequest createEmptyInstance() => create();
+  static $pb.PbList<ListSessionsRequest> createRepeated() =>
+      $pb.PbList<ListSessionsRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ListSessionsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListSessionsRequest>(create);
+  static ListSessionsRequest? _defaultInstance;
+
+  /// The field by which sessions should be sorted. Defaults to `CREATED`.
+  @$pb.TagNumber(1)
+  SessionOrdering get orderBy => $_getN(0);
+  @$pb.TagNumber(1)
+  set orderBy(SessionOrdering v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasOrderBy() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearOrderBy() => clearField(1);
+
+  /// The order in which sessions should be sorted. Defaults to `ASCENDING`.
+  @$pb.TagNumber(2)
+  $9.OrderDirection get orderDirection => $_getN(1);
+  @$pb.TagNumber(2)
+  set orderDirection($9.OrderDirection v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasOrderDirection() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearOrderDirection() => clearField(2);
+
+  /// The number of results to return per page.
+  /// Must be between `1` and `10`, inclusive.
+  /// Defaults to `10`.
+  @$pb.TagNumber(3)
+  $core.int get pageSize => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set pageSize($core.int v) {
+    $_setSignedInt32(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasPageSize() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPageSize() => clearField(3);
+
+  /// The page index of results to return.
+  /// Starts at `1`.
+  /// Defaults to `1`.
+  @$pb.TagNumber(4)
+  $core.int get page => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set page($core.int v) {
+    $_setSignedInt32(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasPage() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPage() => clearField(4);
+}
+
+/// Response to `ListIDVSessionsRequest`
+class ListSessionsResponse extends $pb.GeneratedMessage {
+  factory ListSessionsResponse({
+    $core.Iterable<IDVSession>? sessions,
+    $core.int? total,
+    $core.bool? more,
+  }) {
+    final $result = create();
+    if (sessions != null) {
+      $result.sessions.addAll(sessions);
+    }
+    if (total != null) {
+      $result.total = total;
+    }
+    if (more != null) {
+      $result.more = more;
+    }
+    return $result;
+  }
+  ListSessionsResponse._() : super();
+  factory ListSessionsResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ListSessionsResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListSessionsResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..pc<IDVSession>(1, _omitFieldNames ? '' : 'sessions', $pb.PbFieldType.PM,
+        subBuilder: IDVSession.create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'total', $pb.PbFieldType.O3)
+    ..aOB(3, _omitFieldNames ? '' : 'more')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ListSessionsResponse clone() =>
+      ListSessionsResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ListSessionsResponse copyWith(void Function(ListSessionsResponse) updates) =>
+      super.copyWith((message) => updates(message as ListSessionsResponse))
+          as ListSessionsResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListSessionsResponse create() => ListSessionsResponse._();
+  ListSessionsResponse createEmptyInstance() => create();
+  static $pb.PbList<ListSessionsResponse> createRepeated() =>
+      $pb.PbList<ListSessionsResponse>();
+  @$core.pragma('dart2js:noInline')
+  static ListSessionsResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListSessionsResponse>(create);
+  static ListSessionsResponse? _defaultInstance;
+
+  /// The sessions you've created
+  @$pb.TagNumber(1)
+  $core.List<IDVSession> get sessions => $_getList(0);
+
+  /// The total number of sessions you've created
+  @$pb.TagNumber(2)
+  $core.int get total => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set total($core.int v) {
+    $_setSignedInt32(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasTotal() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTotal() => clearField(2);
+
+  /// If `true`, this is not the last page of results.
+  /// If `false`, this is the last page of results.
+  @$pb.TagNumber(3)
+  $core.bool get more => $_getBF(2);
+  @$pb.TagNumber(3)
+  set more($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasMore() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMore() => clearField(3);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

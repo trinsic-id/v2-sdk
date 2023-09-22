@@ -100,6 +100,20 @@ final $typed_data.Uint8List verificationFailCodeDescriptor = $convert.base64Deco
     'TF9JTkFVVEhFTlRJQxACEioKJlZFUklGSUNBVElPTl9GQUlMX1VOU1VQUE9SVEVEX0RPQ1VNRU'
     '5UEAM=');
 
+@$core.Deprecated('Use sessionOrderingDescriptor instead')
+const SessionOrdering$json = {
+  '1': 'SessionOrdering',
+  '2': [
+    {'1': 'CREATED', '2': 0},
+    {'1': 'UPDATED', '2': 1},
+    {'1': 'STATE', '2': 2},
+  ],
+};
+
+/// Descriptor for `SessionOrdering`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List sessionOrderingDescriptor = $convert.base64Decode(
+    'Cg9TZXNzaW9uT3JkZXJpbmcSCwoHQ1JFQVRFRBAAEgsKB1VQREFURUQQARIJCgVTVEFURRAC');
+
 @$core.Deprecated('Use iDVSessionDescriptor instead')
 const IDVSession$json = {
   '1': 'IDVSession',
@@ -355,3 +369,71 @@ const GetSessionResponse$json = {
 final $typed_data.Uint8List getSessionResponseDescriptor = $convert.base64Decode(
     'ChJHZXRTZXNzaW9uUmVzcG9uc2USOQoHc2Vzc2lvbhgBIAEoCzIfLnNlcnZpY2VzLmNvbm5lY3'
     'QudjEuSURWU2Vzc2lvblIHc2Vzc2lvbg==');
+
+@$core.Deprecated('Use listSessionsRequestDescriptor instead')
+const ListSessionsRequest$json = {
+  '1': 'ListSessionsRequest',
+  '2': [
+    {
+      '1': 'order_by',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.services.connect.v1.SessionOrdering',
+      '10': 'orderBy'
+    },
+    {
+      '1': 'order_direction',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.services.common.v1.OrderDirection',
+      '10': 'orderDirection'
+    },
+    {
+      '1': 'page_size',
+      '3': 3,
+      '4': 1,
+      '5': 5,
+      '9': 0,
+      '10': 'pageSize',
+      '17': true
+    },
+    {'1': 'page', '3': 4, '4': 1, '5': 5, '9': 1, '10': 'page', '17': true},
+  ],
+  '8': [
+    {'1': '_page_size'},
+    {'1': '_page'},
+  ],
+};
+
+/// Descriptor for `ListSessionsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listSessionsRequestDescriptor = $convert.base64Decode(
+    'ChNMaXN0U2Vzc2lvbnNSZXF1ZXN0Ej8KCG9yZGVyX2J5GAEgASgOMiQuc2VydmljZXMuY29ubm'
+    'VjdC52MS5TZXNzaW9uT3JkZXJpbmdSB29yZGVyQnkSSwoPb3JkZXJfZGlyZWN0aW9uGAIgASgO'
+    'MiIuc2VydmljZXMuY29tbW9uLnYxLk9yZGVyRGlyZWN0aW9uUg5vcmRlckRpcmVjdGlvbhIgCg'
+    'lwYWdlX3NpemUYAyABKAVIAFIIcGFnZVNpemWIAQESFwoEcGFnZRgEIAEoBUgBUgRwYWdliAEB'
+    'QgwKCl9wYWdlX3NpemVCBwoFX3BhZ2U=');
+
+@$core.Deprecated('Use listSessionsResponseDescriptor instead')
+const ListSessionsResponse$json = {
+  '1': 'ListSessionsResponse',
+  '2': [
+    {
+      '1': 'sessions',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.services.connect.v1.IDVSession',
+      '10': 'sessions'
+    },
+    {'1': 'total', '3': 2, '4': 1, '5': 5, '10': 'total'},
+    {'1': 'more', '3': 3, '4': 1, '5': 8, '10': 'more'},
+  ],
+};
+
+/// Descriptor for `ListSessionsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listSessionsResponseDescriptor = $convert.base64Decode(
+    'ChRMaXN0U2Vzc2lvbnNSZXNwb25zZRI7CghzZXNzaW9ucxgBIAMoCzIfLnNlcnZpY2VzLmNvbm'
+    '5lY3QudjEuSURWU2Vzc2lvblIIc2Vzc2lvbnMSFAoFdG90YWwYAiABKAVSBXRvdGFsEhIKBG1v'
+    'cmUYAyABKAhSBG1vcmU=');

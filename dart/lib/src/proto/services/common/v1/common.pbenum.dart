@@ -66,4 +66,23 @@ class SupportedDidMethod extends $pb.ProtobufEnum {
   const SupportedDidMethod._($core.int v, $core.String n) : super(v, n);
 }
 
+/// The direction to order results
+class OrderDirection extends $pb.ProtobufEnum {
+  static const OrderDirection ASCENDING =
+      OrderDirection._(0, _omitEnumNames ? '' : 'ASCENDING');
+  static const OrderDirection DESCENDING =
+      OrderDirection._(1, _omitEnumNames ? '' : 'DESCENDING');
+
+  static const $core.List<OrderDirection> values = <OrderDirection>[
+    ASCENDING,
+    DESCENDING,
+  ];
+
+  static final $core.Map<$core.int, OrderDirection> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static OrderDirection? valueOf($core.int value) => _byValue[value];
+
+  const OrderDirection._($core.int v, $core.String n) : super(v, n);
+}
+
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

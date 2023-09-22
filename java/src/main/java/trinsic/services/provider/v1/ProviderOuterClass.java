@@ -41,22 +41,6 @@ public final class ProviderOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_GetOberonKeyResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_SearchWalletConfigurationsRequest_fieldAccessorTable;
@@ -121,15 +105,7 @@ public final class ProviderOuterClass {
           + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"\025\n"
           + "\023GetOberonKeyRequest\"#\n"
           + "\024GetOberonKeyResponse\022\013\n"
-          + "\003key\030\001 \001(\t\"-\n"
-          + "\'RetrieveDomainVerificationRecordRequest:\002\030\001\"s\n"
-          + "(RetrieveDomainVerificationRecordResponse\022 \n"
-          + "\030verification_record_name\030\001 \001(\t\022!\n"
-          + "\031verification_record_value\030\002 \001(\t:\002\030\001\",\n"
-          + "&RefreshDomainVerificationStatusRequest:\002\030\001\"V\n"
-          + "\'RefreshDomainVerificationStatusResponse\022\016\n"
-          + "\006domain\030\001 \001(\t\022\027\n"
-          + "\017domain_verified\030\002 \001(\010:\002\030\001\"[\n"
+          + "\003key\030\001 \001(\t\"[\n"
           + "!SearchWalletConfigurationsRequest\022\024\n"
           + "\014query_filter\030\001 \001(\t\022 \n"
           + "\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"\225\001\n"
@@ -149,8 +125,8 @@ public final class ProviderOuterClass {
           + "\014ecosystem_id\030\t \001(\t\022\023\n"
           + "\013description\030\n"
           + " \001(\t\022I\n"
-          + "\023external_identities\030\013"
-          + " \003(\0132,.services.provider.v1.WalletExternalIdentity\"^\n"
+          + "\023external_identities\030\013 \003(\0132,.ser"
+          + "vices.provider.v1.WalletExternalIdentity\"^\n"
           + "\026WalletExternalIdentity\0228\n"
           + "\010provider\030\001 \001(\0162&.services.provider.v1.IdentityProvider\022\n\n"
           + "\002id\030\002 \001(\t\"r\n\n"
@@ -164,9 +140,9 @@ public final class ProviderOuterClass {
           + " \001(\0162-.services.provider.v1.IndyOptions.IndyNetwork\"\230\001\n"
           + "\013IndyNetwork\022\n\n"
           + "\006Danube\020\000\022\021\n\r"
-          + "SovrinBuilder\020\001\022\021\n"
-          + "\r"
-          + "SovrinStaging\020\002\022\n\n"
+          + "SovrinBuilder\020\001\022\021\n\r"
+          + "SovrinStaging\020\002\022\n"
+          + "\n"
           + "\006Sovrin\020\003\022\017\n"
           + "\013IdUnionTest\020\004\022\013\n"
           + "\007IdUnion\020\005\022\017\n"
@@ -190,23 +166,22 @@ public final class ProviderOuterClass {
           + "\005Phone\020\002\022\013\n"
           + "\007Passkey\020\0032\351\003\n"
           + "\010Provider\022v\n"
-          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemRequest\032"
-          + "-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022s\n"
-          + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyRequest\032*.serv"
-          + "ices.provider.v1.GetOberonKeyResponse\"\014\212\246\035\002\010\001\212\246\035\002\030\001\022_\n\n"
-          + "UpgradeDID\022\'.services.pro"
-          + "vider.v1.UpgradeDidRequest\032(.services.provider.v1.UpgradeDidResponse\022\216\001\n"
-          + "\032SearchWalletConfigurations\0227.services.provider."
-          + "v1.SearchWalletConfigurationsRequest\0327.s"
-          + "ervices.provider.v1.SearchWalletConfigurationResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/provider\252\002"
-          + "\034Trinsic.Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider.v1.C"
+          + "reateEcosystemRequest\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022s\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetO"
+          + "beronKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\014\212\246\035\002\010\001\212\246\035\002\030\001\022_\n\n"
+          + "UpgradeDID\022\'.services.provider.v1.UpgradeDi"
+          + "dRequest\032(.services.provider.v1.UpgradeDidResponse\022\216\001\n"
+          + "\032SearchWalletConfigurations\0227.services.provider.v1.SearchWalletCon"
+          + "figurationsRequest\0327.services.provider.v1.SearchWalletConfigurationResponseB^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/"
+          + "provider/v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
             descriptorData,
             new com.google.protobuf.Descriptors.FileDescriptor[] {
-              trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
+              trinsic.services.account.v1.Account.getDescriptor(),
               trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
               trinsic.services.common.v1.Common.getDescriptor(),
             });
@@ -262,36 +237,8 @@ public final class ProviderOuterClass {
             new java.lang.String[] {
               "Key",
             });
-    internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor =
-        getDescriptor().getMessageTypes().get(7);
-    internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor,
-            new java.lang.String[] {});
-    internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor =
-        getDescriptor().getMessageTypes().get(8);
-    internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor,
-            new java.lang.String[] {
-              "VerificationRecordName", "VerificationRecordValue",
-            });
-    internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor =
-        getDescriptor().getMessageTypes().get(9);
-    internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor,
-            new java.lang.String[] {});
-    internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor =
-        getDescriptor().getMessageTypes().get(10);
-    internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor,
-            new java.lang.String[] {
-              "Domain", "DomainVerified",
-            });
     internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor =
-        getDescriptor().getMessageTypes().get(11);
+        getDescriptor().getMessageTypes().get(7);
     internal_static_services_provider_v1_SearchWalletConfigurationsRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor,
@@ -299,7 +246,7 @@ public final class ProviderOuterClass {
               "QueryFilter", "ContinuationToken",
             });
     internal_static_services_provider_v1_SearchWalletConfigurationResponse_descriptor =
-        getDescriptor().getMessageTypes().get(12);
+        getDescriptor().getMessageTypes().get(8);
     internal_static_services_provider_v1_SearchWalletConfigurationResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_SearchWalletConfigurationResponse_descriptor,
@@ -307,7 +254,7 @@ public final class ProviderOuterClass {
               "Results", "HasMoreResults", "ContinuationToken",
             });
     internal_static_services_provider_v1_WalletConfiguration_descriptor =
-        getDescriptor().getMessageTypes().get(13);
+        getDescriptor().getMessageTypes().get(9);
     internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_WalletConfiguration_descriptor,
@@ -325,7 +272,7 @@ public final class ProviderOuterClass {
               "ExternalIdentities",
             });
     internal_static_services_provider_v1_WalletExternalIdentity_descriptor =
-        getDescriptor().getMessageTypes().get(14);
+        getDescriptor().getMessageTypes().get(10);
     internal_static_services_provider_v1_WalletExternalIdentity_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_WalletExternalIdentity_descriptor,
@@ -333,7 +280,7 @@ public final class ProviderOuterClass {
               "Provider", "Id",
             });
     internal_static_services_provider_v1_IonOptions_descriptor =
-        getDescriptor().getMessageTypes().get(15);
+        getDescriptor().getMessageTypes().get(11);
     internal_static_services_provider_v1_IonOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_IonOptions_descriptor,
@@ -341,7 +288,7 @@ public final class ProviderOuterClass {
               "Network",
             });
     internal_static_services_provider_v1_IndyOptions_descriptor =
-        getDescriptor().getMessageTypes().get(16);
+        getDescriptor().getMessageTypes().get(12);
     internal_static_services_provider_v1_IndyOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_IndyOptions_descriptor,
@@ -349,7 +296,7 @@ public final class ProviderOuterClass {
               "Network",
             });
     internal_static_services_provider_v1_UpgradeDidRequest_descriptor =
-        getDescriptor().getMessageTypes().get(17);
+        getDescriptor().getMessageTypes().get(13);
     internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpgradeDidRequest_descriptor,
@@ -364,7 +311,7 @@ public final class ProviderOuterClass {
               "Options",
             });
     internal_static_services_provider_v1_UpgradeDidResponse_descriptor =
-        getDescriptor().getMessageTypes().get(18);
+        getDescriptor().getMessageTypes().get(14);
     internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpgradeDidResponse_descriptor,
@@ -377,7 +324,7 @@ public final class ProviderOuterClass {
     registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
-    trinsic.services.account.v1.AccountOuterClass.getDescriptor();
+    trinsic.services.account.v1.Account.getDescriptor();
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
     trinsic.services.common.v1.Common.getDescriptor();
   }
