@@ -17,9 +17,44 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
  <!-- end services -->
 
 
-### Service - AccessManagement
-Access Management service provides methods to manage access to ecosystem resources
-such by assigning roles and permissions to wallet accounts
+<a name="sdk-options-v1-TrinsicOptions"></a>
+
+### TrinsicOptions
+Configuration for Trinsic SDK Services
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
+| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
+| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
+
+Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_file-management_v1_file-management-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/file-management/v1/file-management.proto
+
+
+
+<a name="services-filemanagement-v1-FileManagement"></a>
+
+### Service - FileManagement
+
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
@@ -991,6 +1026,383 @@ The type of verification to perform
 
 
 
+<a name="services_verifiable-credentials_v1_verifiable-credentials-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/verifiable-credentials/v1/verifiable-credentials.proto
+
+
+
+<a name="services-verifiablecredentials-v1-VerifiableCredential"></a>
+
+### Service - VerifiableCredential
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| IssueFromTemplate | [IssueFromTemplateRequest](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest) | [IssueFromTemplateResponse](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry values to the credential. |
+| CheckStatus | [CheckStatusRequest](/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status in the revocation registry |
+| UpdateStatus | [UpdateStatusRequest](/reference/proto#services-verifiablecredentials-v1-UpdateStatusRequest) | [UpdateStatusResponse](/reference/proto#services-verifiablecredentials-v1-UpdateStatusResponse) | Update credential status by setting the revocation value |
+| CreateProof | [CreateProofRequest](/reference/proto#services-verifiablecredentials-v1-CreateProofRequest) | [CreateProofResponse](/reference/proto#services-verifiablecredentials-v1-CreateProofResponse) | Create a proof from a signed document that is a valid verifiable credential and contains a signature from which a proof can be derived. |
+| VerifyProof | [VerifyProofRequest](/reference/proto#services-verifiablecredentials-v1-VerifyProofRequest) | [VerifyProofResponse](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse) | Verifies a proof by checking the signature value, and if possible schema validation, revocation status, and issuer status against a trust registry |
+| Send | [SendRequest](/reference/proto#services-verifiablecredentials-v1-SendRequest) | [SendResponse](/reference/proto#services-verifiablecredentials-v1-SendResponse) | Sends a document directly to a user's email within the given ecosystem |
+| CreateCredentialOffer | [CreateCredentialOfferRequest](/reference/proto#services-verifiablecredentials-v1-CreateCredentialOfferRequest) | [CreateCredentialOfferResponse](/reference/proto#services-verifiablecredentials-v1-CreateCredentialOfferResponse) | Create credential offer |
+| AcceptCredential | [AcceptCredentialRequest](/reference/proto#services-verifiablecredentials-v1-AcceptCredentialRequest) | [AcceptCredentialResponse](/reference/proto#services-verifiablecredentials-v1-AcceptCredentialResponse) | Accept an offer to exchange a credential |
+| RejectCredential | [RejectCredentialRequest](/reference/proto#services-verifiablecredentials-v1-RejectCredentialRequest) | [RejectCredentialResponse](/reference/proto#services-verifiablecredentials-v1-RejectCredentialResponse) | Reject an offer to exchange a credential |
+
+ <!-- end services -->
+
+
+<a name="services-verifiablecredentials-v1-AcceptCredentialRequest"></a>
+
+### AcceptCredentialRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](/reference/proto#string) | The JSON document that contains the credential offer |
+| item_id | [string](/reference/proto#string) | The ID of the item in the wallet that contains the credential offer |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-AcceptCredentialResponse"></a>
+
+### AcceptCredentialResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | The ID of the item in the wallet that contains the issued credential |
+| document_json | [string](/reference/proto#string) | The JSON document that contains the issued credential. This item is already stored in the wallet. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-CheckStatusRequest"></a>
+
+### CheckStatusRequest
+Request to check a credential's revocation status
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_status_id | [string](/reference/proto#string) | Credential Status ID to check. This is not the same as the credential's ID. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-CheckStatusResponse"></a>
+
+### CheckStatusResponse
+Response to `CheckStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| revoked | [bool](/reference/proto#bool) | The credential's revocation status |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-CreateCredentialOfferRequest"></a>
+
+### CreateCredentialOfferRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template_id | [string](/reference/proto#string) | ID of template to use |
+| values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
+| holder_binding | [bool](/reference/proto#bool) | If true, the credential will be issued with holder binding by specifying the holder DID in the credential subject |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
+| generate_share_url | [bool](/reference/proto#bool) | If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app. |
+| signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-CreateCredentialOfferResponse"></a>
+
+### CreateCredentialOfferResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](/reference/proto#string) | The JSON document that contains the credential offer |
+| share_url | [string](/reference/proto#string) | If requested, a URL that can be used to share the credential offer with the holder. This is a short URL that can be used in a QR code and will redirect the holder to the credential offer using the wallet app. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-CreateProofRequest"></a>
+
+### CreateProofRequest
+Request to create a proof for a Verifiable Credential using public key tied to caller.
+Either `item_id`, or `document_json` may be provided, not both.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| reveal_document_json | [string](/reference/proto#string) | A valid JSON-LD frame describing which fields should be revealed in the generated proof. If unspecified, all fields in the document will be revealed |
+| reveal_template | [RevealTemplateAttributes](/reference/proto#services-verifiablecredentials-v1-RevealTemplateAttributes) | Information about what sections of the document to reveal |
+| verification_template_id | [string](/reference/proto#string) | Id of verification template with which to construct the JSON-LD proof document |
+| item_id | [string](/reference/proto#string) | ID of wallet item stored in a Trinsic cloud wallet |
+| document_json | [string](/reference/proto#string) | A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
+| use_verifiable_presentation | [bool](/reference/proto#bool) | Wrap the output in a verifiable presentation. If the credential used in the proof is bound to the holder DID, the output will always use a verifiable presentation and this field will be ignored. |
+| nonce | [bytes](/reference/proto#bytes) | Nonce value used to derive the proof. If not specified, a random nonce will be generated. This value may be represented in base64 format in the proof model. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-CreateProofResponse"></a>
+
+### CreateProofResponse
+Response to `CreateProofRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proof_document_json | [string](/reference/proto#string) | Valid JSON-LD proof for the specified credential |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-IssueFromTemplateRequest"></a>
+
+### IssueFromTemplateRequest
+Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template_id | [string](/reference/proto#string) | ID of template to use |
+| values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
+| save_copy | [bool](/reference/proto#bool) | Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status. |
+| expiration_date | [string](/reference/proto#string) | The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
+| signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-IssueFromTemplateResponse"></a>
+
+### IssueFromTemplateResponse
+Response to `IssueFromTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](/reference/proto#string) | Verifiable Credential document, in JSON-LD form, constructed from the specified template and values; signed with public key tied to caller of `IssueFromTemplateRequest` |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-RejectCredentialRequest"></a>
+
+### RejectCredentialRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](/reference/proto#string) | The JSON document that contains the credential offer |
+| item_id | [string](/reference/proto#string) | The ID of the item in the wallet that contains the credential offer |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-RejectCredentialResponse"></a>
+
+### RejectCredentialResponse
+
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-RevealTemplateAttributes"></a>
+
+### RevealTemplateAttributes
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template_attributes | [string](/reference/proto#string)[] | A list of document attributes to reveal. If unset, all attributes will be returned. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-SendRequest"></a>
+
+### SendRequest
+Request to send a document to another user's wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of user to whom you'll send the item |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of the recipient within the ecosystem |
+| did_uri | [string](/reference/proto#string) | DID URI of the recipient |
+| phone_number | [string](/reference/proto#string) | SMS of user to whom you'll send the item |
+| send_notification | [bool](/reference/proto#bool) | Send email notification that credential has been sent to a wallet |
+| document_json | [string](/reference/proto#string) | JSON document to send to recipient |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-SendResponse"></a>
+
+### SendResponse
+Response to `SendRequest`
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-UpdateStatusRequest"></a>
+
+### UpdateStatusRequest
+Request to update a credential's revocation status
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_status_id | [string](/reference/proto#string) | Credential Status ID to update. This is not the same as the credential's ID. |
+| revoked | [bool](/reference/proto#bool) | New revocation status of credential |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-UpdateStatusResponse"></a>
+
+### UpdateStatusResponse
+Response to `UpdateStatusRequest`
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-ValidationMessage"></a>
+
+### ValidationMessage
+Result of a validation check on a proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](/reference/proto#bool) | Whether this validation check passed |
+| messages | [string](/reference/proto#string)[] | If validation failed, contains messages explaining why |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-VerifyProofRequest"></a>
+
+### VerifyProofRequest
+Request to verify a proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proof_document_json | [string](/reference/proto#string) | JSON-LD proof document string to verify |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-VerifyProofResponse"></a>
+
+### VerifyProofResponse
+Response to `VerifyProofRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](/reference/proto#bool) | Whether all validations in `validation_results` passed |
+| validation_results | [VerifyProofResponse.ValidationResultsEntry](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry)[] | Results of each validation check performed, such as schema conformance, revocation status, signature, etc. Detailed results are provided for failed validations. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry"></a>
+
+### VerifyProofResponse.ValidationResultsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [ValidationMessage](/reference/proto#services-verifiablecredentials-v1-ValidationMessage) |  |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-verifiablecredentials-v1-SignatureType"></a>
+
+### SignatureType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNSPECIFIED | 0 | The signature type is not specified. The experimental signature type will be used. |
+| STANDARD | 1 | The signature type uses EdDSA with the Ed25519 curve (NIST compliant). This type of signature does not support selective disclosure of attributes. |
+| EXPERIMENTAL | 2 | The signature type uses BBS signatures with BLS12-381 curve (experimental). This type of signature allows for selective disclosure of attributes. |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="services_verifiable-credentials_templates_v1_templates-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -1796,7 +2208,7 @@ How to display a URI value when rendering a credential.
 <a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
 
 ### GetMemberAuthorizationStatusRequest
-Request to fetch member status in governance framework for a specific credential schema.
+Request to fetch member status in Trust Registry for a specific credential schema.
 
 
 | Field | Type | Description |
@@ -1827,7 +2239,7 @@ Response to `GetMemberAuthorizationStatusRequest`
 <a name="services-trustregistry-v1-GetMemberRequest"></a>
 
 ### GetMemberRequest
-Request to get a member of the governance framework
+Request to get a member of the Trust Registry
 
 
 | Field | Type | Description |
@@ -2032,9 +2444,6 @@ The direction to order results
 
 ### ResponseStatus
 
-### SupportedDidMethod
-Enum of all supported DID Methods
-https://docs.godiddy.com/en/supported-methods
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
