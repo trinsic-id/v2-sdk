@@ -4,7 +4,7 @@ This repo is example code for the documentation article found at [https://docs.t
 
 To configure and run this demo:
 
-- Update the `authToken`` in the `index.js` with your authToken
+- Update the `authToken` in the `index.js` with your auth token
 - Update the `index.html` file to add your `ecosystem` and `schema` in the `requestVerifiableCredential` method
 - Run `npm install` to install required dependencies
 - Run `npm start` and access the demo at `http://localhost:3000`

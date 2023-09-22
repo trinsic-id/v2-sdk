@@ -7,7 +7,7 @@ hide:
 
 !!! note "Source code for this example"
 
-[https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi](https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi)
+    [https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi](https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi)
 
 ### Overview
 
@@ -104,26 +104,24 @@ Next, we'll attach an event to a button, call our API and pass the result to the
 
 <script>
     document.getElementById("issueButton").addEventListener("click", async () => {
-        try {
-            // call API to issue credential
-            const response = await fetch("/api/issue");
-            const data = await response.json();
+        // 1. call API to issue credential
+        const response = await fetch("/api/issue");
+        const data = await response.json();
 
-            // wrap the credential in an unsigned VerifiablePresentation
-            const presentation = {
-                "@context": ["https://www.w3.org/2018/credentials/v1"],
-                type: "VerifiablePresentation",
-                verifiableCredential: [data],
-            };
-            const webCredential = new WebCredential("VerifiablePresentation", presentation, {
-                recommendedHandlerOrigins: ["https://example.connect.trinsic.cloud/"],
-            });
+        // 2. wrap the credential in an unsigned VerifiablePresentation
+        const presentation = {
+            "@context": ["https://www.w3.org/2018/credentials/v1"],
+            type: "VerifiablePresentation",
+            verifiableCredential: [data],
+        };
 
-            // invoke CHAPI to store the credential
-            const result = await navigator.credentials.store(webCredential);
-        } catch (error) {
-            document.getElementById("apiResponse").innerText = "Failed to call API";
-        }
+        // 3. configure the request and recommended origins
+        const webCredential = new WebCredential("VerifiablePresentation", presentation, {
+            recommendedHandlerOrigins: ["https://example.connect.trinsic.cloud/"],
+        });
+
+        // 4. invoke CHAPI to store the credential
+        const result = await navigator.credentials.store(webCredential);
     });
 </script>
 ```
@@ -131,5 +129,9 @@ Next, we'll attach an event to a button, call our API and pass the result to the
 !!! note "Configure recommended wallet"
 
     Make sure to update the `recommendedHandlerOrigins` property to match your ecosystem, so that users will be offered to use your ecosysystem as digital wallet, although they can choose to use any wallet that supports CHAPI.
+
+### Run the demo
+
+Simlpy run `node index.js` and access the page at your configured port (example at http://localhost:3000)
 
 Enjoy! 👋
