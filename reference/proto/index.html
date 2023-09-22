@@ -5960,33 +5960,38 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>SESSION_FAIL_INTERNAL</td>
+<td>SESSION_FAIL_NONE</td>
 <td>0</td>
+<td>The Session is not in a failure state.</td>
+</tr>
+<tr>
+<td>SESSION_FAIL_INTERNAL</td>
+<td>1</td>
 <td>An internal Trinsic error caused this session to fail</td>
 </tr>
 <tr>
 <td>SESSION_FAIL_VERIFICATION_FAILED</td>
-<td>1</td>
+<td>2</td>
 <td>The session failed because one or more of the verifications failed. The reason for the failure is present in the <code>fail_reason</code> field of the relevant <code>Verification</code> object(s).</td>
 </tr>
 <tr>
 <td>SESSION_FAIL_AUTHENTICATION</td>
-<td>2</td>
+<td>3</td>
 <td>The session failed because the user failed to authenticate with their phone number too many times.</td>
 </tr>
 <tr>
 <td>SESSION_FAIL_EXPIRED</td>
-<td>3</td>
+<td>4</td>
 <td>The session expired</td>
 </tr>
 <tr>
 <td>SESSION_FAIL_USER_CANCELED</td>
-<td>4</td>
+<td>5</td>
 <td>The user canceled / rejected the session</td>
 </tr>
 <tr>
 <td>SESSION_FAIL_RP_CANCELED</td>
-<td>5</td>
+<td>6</td>
 <td>The RP canceled the session</td>
 </tr>
 </tbody>
@@ -6033,23 +6038,28 @@ such by assigning roles and permissions to wallet accounts</p>
 </thead>
 <tbody>
 <tr>
-<td>VERIFICATION_FAIL_INTERNAL</td>
+<td>VERIFICATION_FAIL_NONE</td>
 <td>0</td>
+<td>The verification is not in a failure state</td>
+</tr>
+<tr>
+<td>VERIFICATION_FAIL_INTERNAL</td>
+<td>1</td>
 <td>An internal Trinsic error caused this verification to fail</td>
 </tr>
 <tr>
 <td>VERIFICATION_FAIL_INVALID_IMAGE</td>
-<td>1</td>
-<td>The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed.</td>
+<td>2</td>
+<td>The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed. This failure reason is non-terminal; the user is able to retry the verification.</td>
 </tr>
 <tr>
 <td>VERIFICATION_FAIL_INAUTHENTIC</td>
-<td>2</td>
+<td>3</td>
 <td>The identity data/images provided are suspected to be inauthentic, fraudulent, or forged.</td>
 </tr>
 <tr>
 <td>VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT</td>
-<td>3</td>
+<td>4</td>
 <td>The document provided is either of an unsupported type, or from an unsupported country.</td>
 </tr>
 </tbody>
@@ -6303,7 +6313,7 @@ such by assigning roles and permissions to wallet accounts</p>
 <tr>
 <td>include_governance</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
 </tr>
 <tr>
 <td>generate_share_url</td>
@@ -6444,7 +6454,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 <tr>
 <td>include_governance</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry.</td>
+<td>If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework.</td>
 </tr>
 <tr>
 <td>signature_type</td>
@@ -8082,7 +8092,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 </table>
 <p><a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a></p>
 <h3 id="getmemberauthorizationstatusrequest">GetMemberAuthorizationStatusRequest<a class="headerlink" href="#getmemberauthorizationstatusrequest" title="Permanent link">&para;</a></h3>
-<p>Request to fetch member status in Trust Registry for a specific credential schema.</p>
+<p>Request to fetch member status in governance framework for a specific credential schema.</p>
 <table>
 <thead>
 <tr>
@@ -8125,7 +8135,7 @@ Either <code>item_id</code>, or <code>document_json</code> may be provided, not 
 </table>
 <p><a name="services-trustregistry-v1-GetMemberRequest"></a></p>
 <h3 id="getmemberrequest">GetMemberRequest<a class="headerlink" href="#getmemberrequest" title="Permanent link">&para;</a></h3>
-<p>Request to get a member of the Trust Registry</p>
+<p>Request to get a member of the governance framework</p>
 <table>
 <thead>
 <tr>
