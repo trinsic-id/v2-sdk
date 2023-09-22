@@ -959,12 +959,13 @@ The specific reason an IDVSession is in the `Failed` state
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SESSION_FAIL_INTERNAL | 0 | An internal Trinsic error caused this session to fail |
-| SESSION_FAIL_VERIFICATION_FAILED | 1 | The session failed because one or more of the verifications failed. The reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s). |
-| SESSION_FAIL_AUTHENTICATION | 2 | The session failed because the user failed to authenticate with their phone number too many times. |
-| SESSION_FAIL_EXPIRED | 3 | The session expired |
-| SESSION_FAIL_USER_CANCELED | 4 | The user canceled / rejected the session |
-| SESSION_FAIL_RP_CANCELED | 5 | The RP canceled the session |
+| SESSION_FAIL_NONE | 0 | The Session is not in a failure state. |
+| SESSION_FAIL_INTERNAL | 1 | An internal Trinsic error caused this session to fail |
+| SESSION_FAIL_VERIFICATION_FAILED | 2 | The session failed because one or more of the verifications failed. The reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s). |
+| SESSION_FAIL_AUTHENTICATION | 3 | The session failed because the user failed to authenticate with their phone number too many times. |
+| SESSION_FAIL_EXPIRED | 4 | The session expired |
+| SESSION_FAIL_USER_CANCELED | 5 | The user canceled / rejected the session |
+| SESSION_FAIL_RP_CANCELED | 6 | The RP canceled the session |
 
 
 
@@ -988,10 +989,11 @@ The specific reason a Verification is in the `Failed` state
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| VERIFICATION_FAIL_INTERNAL | 0 | An internal Trinsic error caused this verification to fail |
-| VERIFICATION_FAIL_INVALID_IMAGE | 1 | The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed. |
-| VERIFICATION_FAIL_INAUTHENTIC | 2 | The identity data/images provided are suspected to be inauthentic, fraudulent, or forged. |
-| VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT | 3 | The document provided is either of an unsupported type, or from an unsupported country. |
+| VERIFICATION_FAIL_NONE | 0 | The verification is not in a failure state |
+| VERIFICATION_FAIL_INTERNAL | 1 | An internal Trinsic error caused this verification to fail |
+| VERIFICATION_FAIL_INVALID_IMAGE | 2 | The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed. This failure reason is non-terminal; the user is able to retry the verification. |
+| VERIFICATION_FAIL_INAUTHENTIC | 3 | The identity data/images provided are suspected to be inauthentic, fraudulent, or forged. |
+| VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT | 4 | The document provided is either of an unsupported type, or from an unsupported country. |
 
 
 
@@ -1126,7 +1128,7 @@ Response to `CheckStatusRequest`
 | template_id | [string](/reference/proto#string) | ID of template to use |
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | holder_binding | [bool](/reference/proto#bool) | If true, the credential will be issued with holder binding by specifying the holder DID in the credential subject |
-| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework. |
 | generate_share_url | [bool](/reference/proto#bool) | If true, a short URL link will be generated that can be used to share the credential offer with the holder. This link will point to the credential offer in the wallet app. |
 | signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
 
@@ -1200,7 +1202,7 @@ Request to create and sign a JSON-LD Verifiable Credential from a template using
 | values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
 | save_copy | [bool](/reference/proto#bool) | Save a copy of the issued credential to this user's wallet. This copy will only contain the credential data, but not the secret proof value. Issuers may use this data to keep track of the details for revocation status. |
 | expiration_date | [string](/reference/proto#string) | The ISO8601 expiration UTC date of the credential. This is a reserved field in the VC specification. If specified, the issued credential will contain an expiration date. https://www.w3.org/TR/vc-data-model/#expiration |
-| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's Trust Registry. |
+| include_governance | [bool](/reference/proto#bool) | If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's governance framework. |
 | signature_type | [SignatureType](/reference/proto#services-verifiablecredentials-v1-SignatureType) | The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`. |
 
 
@@ -2208,7 +2210,7 @@ How to display a URI value when rendering a credential.
 <a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
 
 ### GetMemberAuthorizationStatusRequest
-Request to fetch member status in Trust Registry for a specific credential schema.
+Request to fetch member status in governance framework for a specific credential schema.
 
 
 | Field | Type | Description |
@@ -2239,7 +2241,7 @@ Response to `GetMemberAuthorizationStatusRequest`
 <a name="services-trustregistry-v1-GetMemberRequest"></a>
 
 ### GetMemberRequest
-Request to get a member of the Trust Registry
+Request to get a member of the governance framework
 
 
 | Field | Type | Description |

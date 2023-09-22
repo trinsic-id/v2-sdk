@@ -116,7 +116,7 @@ export interface UnregisterMemberRequest {
 export interface UnregisterMemberResponse {
 }
 
-/** Request to fetch member status in Trust Registry for a specific credential schema. */
+/** Request to fetch member status in governance framework for a specific credential schema. */
 export interface GetMemberAuthorizationStatusRequest {
   /** DID URI of member */
   didUri?:
@@ -168,7 +168,7 @@ export interface AuthorizedMemberSchema {
   validUntil?: number | undefined;
 }
 
-/** Request to get a member of the Trust Registry */
+/** Request to get a member of the governance framework */
 export interface GetMemberRequest {
   /** DID URI of member to get */
   didUri?:
