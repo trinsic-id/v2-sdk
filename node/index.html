@@ -2200,7 +2200,7 @@
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@trinsic/trinsic&quot;</span><span class="p">);</span>
 </code></pre></div></p>
 <p>You must instantiate the trinsic service first:
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">({</span>
 <span class="w">    </span><span class="cm">/** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */</span>
 <span class="w">    </span><span class="nx">serverEndpoint</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;prod.trinsic.cloud&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="cm">/** Trinsic API port; defaults to `443` */</span>
@@ -2212,7 +2212,7 @@
 <span class="p">});</span>
 </code></pre></div></p>
 <p>Now you can use the SDK:
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newWallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">createWallet</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">newWallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">createWallet</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">newWallet</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span>
 </code></pre></div></p>
 <p>You can find all the SDK methods documented <a href="/reference/">here</a></p>
