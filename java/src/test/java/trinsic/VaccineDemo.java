@@ -118,12 +118,12 @@ public class VaccineDemo {
   }
 
   private static String IssueCredential(
-      TrinsicService trinsicService, String templateId, String clinic)
+      TrinsicService trinsic, String templateId, String clinic)
       throws InvalidProtocolBufferException, ExecutionException, InterruptedException {
     // issueCredential() {
     // Set active profile to 'clinic' so we can issue credential signed
     // with the clinic's signing keys
-    trinsicService.setAuthToken(clinic);
+    trinsic.setAuthToken(clinic);
 
     // Prepare credential values
     var valuesMap = new HashMap<String, Object>();
@@ -137,7 +137,7 @@ public class VaccineDemo {
 
     // Issue credential
     var issueResponse =
-        trinsicService
+        trinsic
             .credential()
             .issueFromTemplate(
                 IssueFromTemplateRequest.newBuilder()

@@ -133,14 +133,14 @@ suspend fun runVaccineDemo() {
 @Throws(
     InvalidProtocolBufferException::class, ExecutionException::class, InterruptedException::class)
 private suspend fun issueCredential(
-    trinsicService: TrinsicServiceKt,
+    trinsic: TrinsicServiceKt,
     templateId: String,
     clinic: String
 ): String {
   // issueCredential() {
   // Set active profile to 'clinic' so we can issue credential signed
   // with the clinic's signing keys
-  trinsicService.setAuthToken(clinic)
+  trinsic.setAuthToken(clinic)
 
   // Prepare credential values
   val valuesMap = HashMap<String, Any>()
@@ -154,7 +154,7 @@ private suspend fun issueCredential(
 
   // Issue credential
   val issueResponse =
-      trinsicService
+      trinsic
           .credential()
           .issueFromTemplate(
               IssueFromTemplateRequest.newBuilder()

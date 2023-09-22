@@ -94,7 +94,7 @@ Future runVaccineDemo() async {
   // }
 
   // storeCredential() {
-  // Alice stores the credential in her cloud wallet.
+  // Allison stores the credential in her cloud wallet.
   trinsic.serviceOptions.authToken = allison.authToken;
   // insertItemWallet() {
   var insertResponse = await trinsic

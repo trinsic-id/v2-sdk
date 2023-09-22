@@ -1,6 +1,6 @@
-import {CreateProofRequest, InsertItemRequest, TrinsicService, VerifyProofResponse} from '@trinsic/trinsic';
-import {resolve} from "path";
-import {readFileSync} from "fs";
+import { CreateProofRequest, InsertItemRequest, TrinsicService, VerifyProofResponse } from '@trinsic/trinsic';
+import { resolve } from "path";
+import { readFileSync } from "fs";
 
 function vaccineCertFramePath(): string {
     return resolve(
@@ -51,9 +51,9 @@ async function vaccineDemo(): Promise<VerifyProofResponse> {
     const trinsic = new TrinsicService();
 
     // Create 3 different profiles for each participant in the scenario
-    const allison = await trinsic.wallet().createWallet({ecosystemId: "default"});
-    const clinic = await trinsic.wallet().createWallet({ecosystemId: "default"});
-    const airline = await trinsic.wallet().createWallet({ecosystemId: "default"});
+    const allison = await trinsic.wallet().createWallet({ ecosystemId: "default" });
+    const clinic = await trinsic.wallet().createWallet({ ecosystemId: "default" });
+    const airline = await trinsic.wallet().createWallet({ ecosystemId: "default" });
 
     // @ts-ignore
     trinsic.options.authToken = clinic.authToken;
@@ -62,12 +62,12 @@ async function vaccineDemo(): Promise<VerifyProofResponse> {
 
     // Sign a credential as the clinic and send it to Allison
     const credentialJson = getVaccineCertUnsignedJSON()
-    const credential = await trinsic.credential().issue({documentJson: JSON.stringify(credentialJson)});
+    const credential = await trinsic.credential().issue({ documentJson: JSON.stringify(credentialJson) });
 
-    // Alice stores the credential in her cloud wallet.
+    // Allison stores the credential in her cloud wallet.
     // @ts-ignore
     trinsic.options.authToken = allison.authToken;
-    const itemId = await trinsic.wallet().insertItem(InsertItemRequest.fromPartial({itemJson: credential.signedDocumentJson}));
+    const itemId = await trinsic.wallet().insertItem(InsertItemRequest.fromPartial({ itemJson: credential.signedDocumentJson }));
 
     // Allison shares the credential with the venue.
     // The venue has communicated with Allison the details of the credential
@@ -83,7 +83,7 @@ async function vaccineDemo(): Promise<VerifyProofResponse> {
     // The trinsic verifies the credential
     // @ts-ignore
     trinsic.options.authToken = (airline);
-    return await trinsic.credential().verifyProof({proofDocumentJson: proof.proofDocumentJson})
+    return await trinsic.credential().verifyProof({ proofDocumentJson: proof.proofDocumentJson })
 }
 
 vaccineDemo().then(x => {

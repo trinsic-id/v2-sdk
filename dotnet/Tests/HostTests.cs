@@ -21,9 +21,9 @@ public class HostTests
 
         await host.StartAsync();
 
-        var trinsicService = host.Services.GetRequiredService<TrinsicService>();
-        var providerService = trinsicService.Provider;
-        var accountService = trinsicService.Wallet;
+        var trinsic = host.Services.GetRequiredService<TrinsicService>();
+        var providerService = trinsic.Provider;
+        var accountService = trinsic.Wallet;
 
         providerService.Should().NotBeNull();
         accountService.Should().NotBeNull();
@@ -51,9 +51,9 @@ public class HostTests
 
         await host.StartAsync();
 
-        var trinsicService = host.Services.GetRequiredService<TrinsicService>();
-        var providerService = trinsicService.Provider;
-        var walletService = trinsicService.Wallet;
+        var trinsic = host.Services.GetRequiredService<TrinsicService>();
+        var providerService = trinsic.Provider;
+        var walletService = trinsic.Wallet;
 
         providerService.Should().NotBeNull();
         walletService.Should().NotBeNull();
