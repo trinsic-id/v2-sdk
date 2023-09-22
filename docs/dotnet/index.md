@@ -50,11 +50,11 @@ public MyController(TrinsicService trinsicService)
 Alternatively, you can simply instantiate this service with or without parameters
 
 ```cs
-var trinsicService = new TrinsicService();
+var trinsic = new TrinsicService();
 
 // or
 
-var trinsicService = new TrinsicService(new ServiceOptions
+var trinsic = new TrinsicService(new ServiceOptions
 {
     AuthToken = "<auth_token>"
 });

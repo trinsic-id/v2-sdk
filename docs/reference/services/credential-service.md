@@ -94,6 +94,14 @@ By utilizing the "Create Offer" endpoint, the issuing party can initiate a reque
 
 Furthermore, the "Create Offer" endpoint enables the issuing party to define and configure the holder binding properties of the credential. This means that the issued credential will be bound to the intended holder, making it non-transferable and restricted for use solely by the authorized holder.
 
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [Create Credential Offer](../../../web/test/WalletService.test.ts) inside_block:createCredentialOffer
+        ```
+        <!--/codeinclude-->
+
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer") }}
 
 ---
@@ -104,6 +112,14 @@ The purpose of the "Accept Offer" method is for the user to formally accept the 
 
 The "Accept Offer" method is a mandatory step in the issuance process, as it solidifies the user's commitment to acquiring the verifiable credential. During this step, if the issuer requested binding information, the user's wallet will submit a proof of DID ownership bind the credential to the user and make it non-transferable. The verifiable credential is then securely generated and delivered to the user, officially establishing their possession and ownership of the credential.
 
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [Accept Credential](../../../web/test/WalletService.test.ts) inside_block:acceptCredential
+        ```
+        <!--/codeinclude-->
+
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential") }}
 
 ---
@@ -111,6 +127,14 @@ The "Accept Offer" method is a mandatory step in the issuance process, as it sol
 ## Reject Credential
 
 This endpoint allows users to decline or reject an offered verifiable credential. By utilizing this endpoint, users can explicitly communicate their decision not to accept the credential being offered to them. By offering this option in your application, your platform promotes user empowerment and supports a transparent workflow for the acceptance or rejection of verifiable credentials.
+  
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [Reject Credential](../../../web/test/WalletService.test.ts) inside_block:rejectCredential
+        ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.RejectCredential") }}
 
@@ -364,8 +388,9 @@ The specified email address must be tied to an existing account in the same ecos
 
         ```typescript
         await trinsic.credential().send(SendRequest.fromPartial({
-		    email: "",
-		    documentJson: JSON.stringify({}),
+		    documentJson: issueResponse.documentJson,
+		    email: "<EMAIL>",
+            sendNotification: true,
 	    }));
         ```
 

@@ -80,7 +80,7 @@ export interface IssueFromTemplateRequest {
     | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    */
   includeGovernance?:
     | boolean
@@ -270,7 +270,7 @@ export interface CreateCredentialOfferRequest {
     | undefined;
   /**
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    */
   includeGovernance?:
     | boolean

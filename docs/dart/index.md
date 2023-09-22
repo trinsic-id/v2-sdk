@@ -24,7 +24,7 @@ Alternatively, you can simply instantiate this service with or without parameter
 ```dart
 import 'package:trinsic_dart/trinsic.dart';
 // ...
-var trinsicService = TrinsicService(null);
+var trinsic = TrinsicService(null);
 // Or, if you have an auth token
-var trinsicService = TrinsicService(trinsicConfig(authToken: "<auth_token>"));
+var trinsic = TrinsicService(trinsicConfig(authToken: "<auth_token>"));
 ```

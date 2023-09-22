@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	trinsicService, err := sdk.NewTrinsic()
+	trinsic, err := sdk.NewTrinsic()
 	if err != nil {
 		panic("Account service not created")
 	}
 
-	profile, err := trinsicService.Account().LoginAnonymous(context.Background())
+	profile, err := trinsic.Account().LoginAnonymous(context.Background())
 	if err != nil {
 		panic("Sign in failed!")
 	}

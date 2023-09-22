@@ -70,7 +70,7 @@ export async function vaccineDemo() {
     // }
 
     // storeCredential() {
-    // Alice stores the credential in her cloud wallet.
+    // Allison stores the credential in her cloud wallet.
     trinsic.options.authToken = allison.authToken;
     const insertResponse = await trinsic.wallet().insertItem(
         InsertItemRequest.fromPartial({
@@ -103,7 +103,7 @@ export async function vaccineDemo() {
 }
 
 async function doTemplate(
-    trinsicService: TrinsicService,
+    trinsic: TrinsicService,
 ): Promise<TemplateData> {
     // createTemplate() {
     //Define all fields
@@ -139,7 +139,7 @@ async function doTemplate(
     });
 
     //Create template
-    const response = await trinsicService.template().create(request);
+    const response = await trinsic.template().create(request);
     const template = response.data;
     // }
 

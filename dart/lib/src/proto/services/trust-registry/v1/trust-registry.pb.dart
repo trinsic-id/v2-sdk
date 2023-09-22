@@ -416,7 +416,7 @@ class UnregisterMemberResponse extends $pb.GeneratedMessage {
   static UnregisterMemberResponse? _defaultInstance;
 }
 
-/// Request to fetch member status in governance framework for a specific credential schema.
+/// Request to fetch member status in Trust Registry for a specific credential schema.
 class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
   factory GetMemberAuthorizationStatusRequest({
     $core.String? didUri,
@@ -971,7 +971,7 @@ class AuthorizedMemberSchema extends $pb.GeneratedMessage {
 
 enum GetMemberRequest_Member { didUri, walletId, email, notSet }
 
-/// Request to get a member of the governance framework
+/// Request to get a member of the Trust Registry
 class GetMemberRequest extends $pb.GeneratedMessage {
   factory GetMemberRequest({
     $core.String? didUri,

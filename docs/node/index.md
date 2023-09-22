@@ -24,7 +24,7 @@ let { TrinsicService } = require("@trinsic/trinsic");
 
 You must instantiate the trinsic service first:
 ```js
-const trinsicService = new TrinsicService({
+const trinsic = new TrinsicService({
     /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
     serverEndpoint: "prod.trinsic.cloud",
     /** Trinsic API port; defaults to `443` */
@@ -38,7 +38,7 @@ const trinsicService = new TrinsicService({
 
 Now you can use the SDK:
 ```js
-const newWallet = await trinsicService.wallet().createWallet();
+const newWallet = await trinsic.wallet().createWallet();
 console.log(JSON.stringify(newWallet, null, 4));
 ```
 
