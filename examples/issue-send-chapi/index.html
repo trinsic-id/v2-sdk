@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0+insiders-4.42.0">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.1+insiders-4.42.0">
     
     
       
@@ -25,10 +25,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4cd995e6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6c7fc8cf.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.0382c2a7.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.46987102.min.css">
       
       
 
@@ -2134,6 +2134,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#run-the-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the demo
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2157,8 +2168,8 @@
 <h1 id="issue-and-exchange-using-chapi">Issue and exchange using CHAPI<a class="headerlink" href="#issue-and-exchange-using-chapi" title="Permanent link">&para;</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Source code for this example</p>
-</div>
 <p><a href="https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi">https://github.com/trinsic-id/sdk/tree/main/examples/issue-send-chapi</a></p>
+</div>
 <h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
 <p>This example uses a backend API to issue a verifiable credential and deliver the credential to the user's wallet using the <a href="https://chapi.io">Credential Handler API</a> (abbr. CHAPI - see <a href="https://w3c-ccg.github.io/credential-handler-api/">W3C specification</a>). The CHAPI protocol allows digital wallets to receive Verifiable Credentials from an independent third-party issuer - or present Verifiable Credentials to an independent third-party verifier - in a way that establishes trust and preserves privacy. See our <a href="/guide/issuance/#send-credential-using-chapi">issuance guide</a> for more details about using CHAPI and its benefits.</p>
 <p>In this guide, we will go through the process of setting up an example API endpoint, and a simple web page that consumes this enpoint and invokes CHAPI in the browser.</p>
@@ -2227,26 +2238,24 @@ and return the issued document as a respoinse to the API call. We will use the s
 
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;issueButton&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// call API to issue credential</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/api/issue&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// 1. call API to issue credential</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/api/issue&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 
-<span class="w">            </span><span class="c1">// wrap the credential in an unsigned VerifiablePresentation</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">presentation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://www.w3.org/2018/credentials/v1&quot;</span><span class="p">],</span>
-<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;VerifiablePresentation&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">verifiableCredential</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">data</span><span class="p">],</span>
-<span class="w">            </span><span class="p">};</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">webCredential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebCredential</span><span class="p">(</span><span class="s2">&quot;VerifiablePresentation&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">presentation</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">recommendedHandlerOrigins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://example.connect.trinsic.cloud/&quot;</span><span class="p">],</span>
-<span class="w">            </span><span class="p">});</span>
+<span class="w">        </span><span class="c1">// 2. wrap the credential in an unsigned VerifiablePresentation</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">presentation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://www.w3.org/2018/credentials/v1&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;VerifiablePresentation&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">verifiableCredential</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">data</span><span class="p">],</span>
+<span class="w">        </span><span class="p">};</span>
 
-<span class="w">            </span><span class="c1">// invoke CHAPI to store the credential</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">webCredential</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;apiResponse&quot;</span><span class="p">).</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Failed to call API&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// 3. configure the request and recommended origins</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">webCredential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebCredential</span><span class="p">(</span><span class="s2">&quot;VerifiablePresentation&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">presentation</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">recommendedHandlerOrigins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://example.connect.trinsic.cloud/&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="c1">// 4. invoke CHAPI to store the credential</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">webCredential</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -2254,6 +2263,8 @@ and return the issued document as a respoinse to the API call. We will use the s
 <p class="admonition-title">Configure recommended wallet</p>
 <p>Make sure to update the <code>recommendedHandlerOrigins</code> property to match your ecosystem, so that users will be offered to use your ecosysystem as digital wallet, although they can choose to use any wallet that supports CHAPI.</p>
 </div>
+<h3 id="run-the-demo">Run the demo<a class="headerlink" href="#run-the-demo" title="Permanent link">&para;</a></h3>
+<p>Simlpy run <code>node index.js</code> and access the page at your configured port (example at http://localhost:3000)</p>
 <p>Enjoy! 👋</p>
 
   

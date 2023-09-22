@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0+insiders-4.42.0">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.1+insiders-4.42.0">
     
     
       
@@ -25,10 +25,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4cd995e6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6c7fc8cf.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.0382c2a7.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.46987102.min.css">
       
       
 
@@ -2062,6 +2062,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-our-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup our demo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-and-configure-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import and configure services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-verify-credential-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Verify Credential API
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2081,6 +2133,103 @@
 
 
 <h1 id="request-verifiable-credential-using-oidc">Request Verifiable Credential using OIDC<a class="headerlink" href="#request-verifiable-credential-using-oidc" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Source code for this example</p>
+<p><a href="https://github.com/trinsic-id/sdk/tree/main/examples/verify-cred-oidc">https://github.com/trinsic-id/sdk/tree/main/examples/verify-cred-oidc</a></p>
+</div>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<p>In this example we'll setup a basic webpage and configure it to request a Verifiable Credential using OIDC protocol in a popup window. You can also configure OIDC using a browser redirect or embedded iframe, but this is beyond the scope of this example.
+We will also configure a backend API that will take the shared credential from the client and verify it using Trinsic's API. This step is optional, you can
+use any third-party service to verify the validity of the credential since these credentials are globally verifiable.</p>
+<h3 id="setup-our-demo">Setup our demo<a class="headerlink" href="#setup-our-demo" title="Permanent link">&para;</a></h3>
+<p>Let's create a new npm project</p>
+<div class="highlight"><pre><span></span><code>npm init
+</code></pre></div>
+<p>and add our dependencies</p>
+<div class="highlight"><pre><span></span><code>npm install express @trinsic/trinsic
+</code></pre></div>
+<h3 id="import-and-configure-services">Import and configure services<a class="headerlink" href="#import-and-configure-services" title="Permanent link">&para;</a></h3>
+<p>Create new file named <code>index.js</code> at the root of the repo and configure the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@trinsic/trinsic&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">authToken</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;AUTH_TOKEN&gt;&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<details class="note">
+<summary>How to obtain an Auth Token</summary>
+<p>You can obtain auth token from the <a href="https://dashboard.trinsic.id" targer="_blank">Dashboard <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> by clicking on the View Auth Token in the Home page.</p>
+<p><a class="glightbox" href="/_static/images/1-api-token.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="/_static/images/1-api-token.png" width="70%"></a></img></p>
+</details>
+<h3 id="create-verify-credential-api">Create Verify Credential API<a class="headerlink" href="#create-verify-credential-api" title="Permanent link">&para;</a></h3>
+<p>Let's configure Express to create an endpoint for verification served at <code>/api/verify</code>. Next, we'll use Trinsic's SDK to verify the credential from the request body and return the verification result as a respoinse to the API call.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/verify&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">verificationResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">verifier</span><span class="p">().</span><span class="nx">verifyCredential</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">credential</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">),</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">verificationResponse</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Add the rest of the express configuration where we will serve static files and run the server at a port of your choice.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Serve static files from the &#39;public&#39; folder</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="k">static</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()));</span>
+
+<span class="c1">// Catch-all to return index.html for any other request</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;index.html&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// Start the server</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server is running on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Access the demo page at http://localhost:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h1 id="example-web-page">Example web page<a class="headerlink" href="#example-web-page" title="Permanent link">&para;</a></h1>
+<p>Create a new file named <code>index.html</code> at the root of the repo and reference Trinsic's SDK.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/@trinsic/trinsic@1.11.3-pre.13/dist/trinsic.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Let's add additional script to register a button click event that will start the process of requesting a Verifiable Credential from the holder.
+Make sure to edit the <code>ecosystem</code> and <code>schema</code> to match the ecosystem and schema you would like to request.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;verifyButton&quot;</span><span class="p">&gt;</span>Request Verifiable Credential<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ConnectClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ConnectClient</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;verifyButton&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">presentationResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">requestVerifiableCredential</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">ecosystem</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;did-hack&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">schema</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.trinsic.cloud/did-hack/attendance-credential&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">presentationResponse</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// call API to verify credential</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/api/verify&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">presentationResponse</span><span class="p">.</span><span class="nx">vp_token</span><span class="p">),</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="run-the-demo">Run the demo<a class="headerlink" href="#run-the-demo" title="Permanent link">&para;</a></h3>
+<p>Run the demo by executing the following command in the terminal</p>
+<div class="highlight"><pre><span></span><code>node index.js
+</code></pre></div>
+<p>The project should run and be accessible at <a href="http://localhost:3000" target="_blank">http://localhost:3000 <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>.</p>
+<p>Enjoy! 👋</p>
 
   
   
