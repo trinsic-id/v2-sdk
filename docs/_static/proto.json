@@ -6395,7 +6395,7 @@
     "services.trustregistry.v1.GetMemberAuthorizationStatusRequest": {
       "name": "GetMemberAuthorizationStatusRequest",
       "full_name": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
-      "description": "Request to fetch member status in governance framework for a specific credential schema.",
+      "description": "Request to fetch member status in Trust Registry for a specific credential schema.",
       "fields": [
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.did_uri",
         "services.trustregistry.v1.GetMemberAuthorizationStatusRequest.schema_uri"
@@ -6416,7 +6416,7 @@
     "services.trustregistry.v1.GetMemberRequest": {
       "name": "GetMemberRequest",
       "full_name": "services.trustregistry.v1.GetMemberRequest",
-      "description": "Request to get a member of the governance framework",
+      "description": "Request to get a member of the Trust Registry",
       "fields": [
         "services.trustregistry.v1.GetMemberRequest.did_uri",
         "services.trustregistry.v1.GetMemberRequest.wallet_id",
@@ -6484,7 +6484,7 @@
     "services.trustregistry.v1.UnregisterMemberRequest": {
       "name": "UnregisterMemberRequest",
       "full_name": "services.trustregistry.v1.UnregisterMemberRequest",
-      "description": "Request to unregister a member as a valid issuer of a specific credential schema.\nOnly one of `did_uri`, `wallet_id`, or `email` may be specified.",
+      "description": "Request to unregister a member as a valid issuer of a specific credential schema.\nOnly one of `did_uri`, `wallet_id`, or `email` may be specified.\nThe URI of the credential schema must be specified.",
       "fields": [
         "services.trustregistry.v1.UnregisterMemberRequest.did_uri",
         "services.trustregistry.v1.UnregisterMemberRequest.wallet_id",
@@ -10333,7 +10333,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The ID of the item in the wallet that contains the credential offer"
+      "description": "The ID of the credential offer (Parameter ID inside the JSON document)",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.AcceptCredentialResponse.document_json": {
       "name": "document_json",
@@ -10373,7 +10376,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, a short URL link will be generated that can be used to share the credential offer with the holder.\nThis link will point to the credential offer in the wallet app."
+      "description": "If true, a short URL link will be generated that can be used to share the credential offer with the holder.\nThis link will point to the credential offer in the wallet app.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding": {
       "name": "holder_binding",
@@ -10381,7 +10387,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the credential will be issued with holder binding by specifying\nthe holder DID in the credential subject"
+      "description": "If true, the credential will be issued with holder binding by specifying\nthe holder DID in the credential subject",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance": {
       "name": "include_governance",
@@ -10389,7 +10398,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type": {
       "name": "signature_type",
@@ -10397,7 +10409,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "SignatureType",
       "full_type": "services.verifiablecredentials.v1.SignatureType",
-      "description": "The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`."
+      "description": "The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id": {
       "name": "template_id",
@@ -10512,7 +10527,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\ngovernance framework."
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry."
     },
     "services.verifiablecredentials.v1.IssueFromTemplateRequest.save_copy": {
       "name": "save_copy",
@@ -10568,7 +10583,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The ID of the item in the wallet that contains the credential offer"
+      "description": "The ID of the credential offer (Parameter ID inside the JSON document)",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes": {
       "name": "template_attributes",
@@ -10616,7 +10634,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Send email notification that credential has been sent to a wallet"
+      "description": "Send email notification that credential has been sent to a wallet",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.SendRequest.wallet_id": {
       "name": "wallet_id",

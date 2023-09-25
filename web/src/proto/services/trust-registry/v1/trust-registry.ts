@@ -94,6 +94,7 @@ export interface RegisterMemberResponse {
 /**
  * Request to unregister a member as a valid issuer of a specific credential schema.
  * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+ * The URI of the credential schema must be specified.
  */
 export interface UnregisterMemberRequest {
   /** DID URI of member to unregister */
@@ -116,7 +117,7 @@ export interface UnregisterMemberRequest {
 export interface UnregisterMemberResponse {
 }
 
-/** Request to fetch member status in governance framework for a specific credential schema. */
+/** Request to fetch member status in Trust Registry for a specific credential schema. */
 export interface GetMemberAuthorizationStatusRequest {
   /** DID URI of member */
   didUri?:
@@ -168,7 +169,7 @@ export interface AuthorizedMemberSchema {
   validUntil?: number | undefined;
 }
 
-/** Request to get a member of the governance framework */
+/** Request to get a member of the Trust Registry */
 export interface GetMemberRequest {
   /** DID URI of member to get */
   didUri?:

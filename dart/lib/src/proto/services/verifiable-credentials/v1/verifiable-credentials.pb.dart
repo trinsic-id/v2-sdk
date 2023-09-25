@@ -156,7 +156,7 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
   void clearExpirationDate() => clearField(5);
 
   /// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-  /// governance framework.
+  /// Trust Registry.
   @$pb.TagNumber(6)
   $core.bool get includeGovernance => $_getBF(4);
   @$pb.TagNumber(6)
@@ -1394,7 +1394,7 @@ class CreateCredentialOfferRequest extends $pb.GeneratedMessage {
   void clearHolderBinding() => clearField(3);
 
   /// If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-  /// governance framework.
+  /// Trust Registry.
   @$pb.TagNumber(4)
   $core.bool get includeGovernance => $_getBF(3);
   @$pb.TagNumber(4)
@@ -1604,7 +1604,7 @@ class AcceptCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocumentJson() => clearField(1);
 
-  /// The ID of the item in the wallet that contains the credential offer
+  /// The ID of the credential offer (Parameter ID inside the JSON document)
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1784,7 +1784,7 @@ class RejectCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocumentJson() => clearField(1);
 
-  /// The ID of the item in the wallet that contains the credential offer
+  /// The ID of the credential offer (Parameter ID inside the JSON document)
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(1);
   @$pb.TagNumber(2)

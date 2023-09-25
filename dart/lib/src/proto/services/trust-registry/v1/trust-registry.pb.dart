@@ -241,6 +241,7 @@ enum UnregisterMemberRequest_Member { didUri, walletId, email, notSet }
 
 /// Request to unregister a member as a valid issuer of a specific credential schema.
 /// Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+/// The URI of the credential schema must be specified.
 class UnregisterMemberRequest extends $pb.GeneratedMessage {
   factory UnregisterMemberRequest({
     $core.String? didUri,
@@ -416,7 +417,7 @@ class UnregisterMemberResponse extends $pb.GeneratedMessage {
   static UnregisterMemberResponse? _defaultInstance;
 }
 
-/// Request to fetch member status in governance framework for a specific credential schema.
+/// Request to fetch member status in Trust Registry for a specific credential schema.
 class GetMemberAuthorizationStatusRequest extends $pb.GeneratedMessage {
   factory GetMemberAuthorizationStatusRequest({
     $core.String? didUri,
@@ -971,7 +972,7 @@ class AuthorizedMemberSchema extends $pb.GeneratedMessage {
 
 enum GetMemberRequest_Member { didUri, walletId, email, notSet }
 
-/// Request to get a member of the governance framework
+/// Request to get a member of the Trust Registry
 class GetMemberRequest extends $pb.GeneratedMessage {
   factory GetMemberRequest({
     $core.String? didUri,

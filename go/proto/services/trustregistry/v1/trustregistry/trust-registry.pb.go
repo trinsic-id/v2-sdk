@@ -243,6 +243,7 @@ func (*RegisterMemberResponse) Descriptor() ([]byte, []int) {
 
 // Request to unregister a member as a valid issuer of a specific credential schema.
 // Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+// The URI of the credential schema must be specified.
 type UnregisterMemberRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -389,7 +390,7 @@ func (*UnregisterMemberResponse) Descriptor() ([]byte, []int) {
 	return file_services_trust_registry_v1_trust_registry_proto_rawDescGZIP(), []int{3}
 }
 
-// Request to fetch member status in governance framework for a specific credential schema.
+// Request to fetch member status in Trust Registry for a specific credential schema.
 type GetMemberAuthorizationStatusRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -754,7 +755,7 @@ func (x *AuthorizedMemberSchema) GetValidUntil() uint64 {
 	return 0
 }
 
-// Request to get a member of the governance framework
+// Request to get a member of the Trust Registry
 type GetMemberRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

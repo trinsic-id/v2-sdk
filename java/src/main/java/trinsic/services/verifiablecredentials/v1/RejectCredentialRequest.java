@@ -164,10 +164,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * The ID of the item in the wallet that contains the credential offer
+   * The ID of the credential offer (Parameter ID inside the JSON document)
    * </pre>
    *
-   * <code>string item_id = 2;</code>
+   * <code>string item_id = 2 [(.services.options.optional) = true];</code>
    *
    * @return Whether the itemId field is set.
    */
@@ -178,10 +178,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * The ID of the item in the wallet that contains the credential offer
+   * The ID of the credential offer (Parameter ID inside the JSON document)
    * </pre>
    *
-   * <code>string item_id = 2;</code>
+   * <code>string item_id = 2 [(.services.options.optional) = true];</code>
    *
    * @return The itemId.
    */
@@ -205,10 +205,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * The ID of the item in the wallet that contains the credential offer
+   * The ID of the credential offer (Parameter ID inside the JSON document)
    * </pre>
    *
-   * <code>string item_id = 2;</code>
+   * <code>string item_id = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for itemId.
    */
@@ -765,10 +765,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * The ID of the item in the wallet that contains the credential offer
+     * The ID of the credential offer (Parameter ID inside the JSON document)
      * </pre>
      *
-     * <code>string item_id = 2;</code>
+     * <code>string item_id = 2 [(.services.options.optional) = true];</code>
      *
      * @return Whether the itemId field is set.
      */
@@ -780,10 +780,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * The ID of the item in the wallet that contains the credential offer
+     * The ID of the credential offer (Parameter ID inside the JSON document)
      * </pre>
      *
-     * <code>string item_id = 2;</code>
+     * <code>string item_id = 2 [(.services.options.optional) = true];</code>
      *
      * @return The itemId.
      */
@@ -808,10 +808,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * The ID of the item in the wallet that contains the credential offer
+     * The ID of the credential offer (Parameter ID inside the JSON document)
      * </pre>
      *
-     * <code>string item_id = 2;</code>
+     * <code>string item_id = 2 [(.services.options.optional) = true];</code>
      *
      * @return The bytes for itemId.
      */
@@ -836,10 +836,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * The ID of the item in the wallet that contains the credential offer
+     * The ID of the credential offer (Parameter ID inside the JSON document)
      * </pre>
      *
-     * <code>string item_id = 2;</code>
+     * <code>string item_id = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The itemId to set.
      * @return This builder for chaining.
@@ -857,10 +857,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * The ID of the item in the wallet that contains the credential offer
+     * The ID of the credential offer (Parameter ID inside the JSON document)
      * </pre>
      *
-     * <code>string item_id = 2;</code>
+     * <code>string item_id = 2 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
@@ -876,10 +876,10 @@ public final class RejectCredentialRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * The ID of the item in the wallet that contains the credential offer
+     * The ID of the credential offer (Parameter ID inside the JSON document)
      * </pre>
      *
-     * <code>string item_id = 2;</code>
+     * <code>string item_id = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The bytes for itemId to set.
      * @return This builder for chaining.

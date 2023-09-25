@@ -394,7 +394,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    * Send email notification that credential has been sent to a wallet
    * </pre>
    *
-   * <code>bool send_notification = 4;</code>
+   * <code>bool send_notification = 4 [(.services.options.optional) = true];</code>
    *
    * @return The sendNotification.
    */
@@ -1500,7 +1500,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * Send email notification that credential has been sent to a wallet
      * </pre>
      *
-     * <code>bool send_notification = 4;</code>
+     * <code>bool send_notification = 4 [(.services.options.optional) = true];</code>
      *
      * @return The sendNotification.
      */
@@ -1515,7 +1515,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * Send email notification that credential has been sent to a wallet
      * </pre>
      *
-     * <code>bool send_notification = 4;</code>
+     * <code>bool send_notification = 4 [(.services.options.optional) = true];</code>
      *
      * @param value The sendNotification to set.
      * @return This builder for chaining.
@@ -1533,7 +1533,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * Send email notification that credential has been sent to a wallet
      * </pre>
      *
-     * <code>bool send_notification = 4;</code>
+     * <code>bool send_notification = 4 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */

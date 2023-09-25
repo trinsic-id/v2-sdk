@@ -68,7 +68,7 @@ public interface CreateCredentialOfferRequestOrBuilder
    * the holder DID in the credential subject
    * </pre>
    *
-   * <code>bool holder_binding = 3;</code>
+   * <code>bool holder_binding = 3 [(.services.options.optional) = true];</code>
    *
    * @return The holderBinding.
    */
@@ -79,10 +79,10 @@ public interface CreateCredentialOfferRequestOrBuilder
    *
    * <pre>
    * If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's
-   * governance framework.
+   * Trust Registry.
    * </pre>
    *
-   * <code>bool include_governance = 4;</code>
+   * <code>bool include_governance = 4 [(.services.options.optional) = true];</code>
    *
    * @return The includeGovernance.
    */
@@ -96,7 +96,7 @@ public interface CreateCredentialOfferRequestOrBuilder
    * This link will point to the credential offer in the wallet app.
    * </pre>
    *
-   * <code>bool generate_share_url = 5;</code>
+   * <code>bool generate_share_url = 5 [(.services.options.optional) = true];</code>
    *
    * @return The generateShareUrl.
    */
@@ -109,7 +109,9 @@ public interface CreateCredentialOfferRequestOrBuilder
    * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
    * </pre>
    *
-   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   * <code>
+   * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+   * </code>
    *
    * @return The enum numeric value on the wire for signatureType.
    */
@@ -121,7 +123,9 @@ public interface CreateCredentialOfferRequestOrBuilder
    * The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.
    * </pre>
    *
-   * <code>.services.verifiablecredentials.v1.SignatureType signature_type = 7;</code>
+   * <code>
+   * .services.verifiablecredentials.v1.SignatureType signature_type = 7 [(.services.options.optional) = true];
+   * </code>
    *
    * @return The signatureType.
    */
