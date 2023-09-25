@@ -2188,10 +2188,9 @@ const trinsic = new TrinsicService({
 <h3 id="issue-credential-from-template">Issue credential from template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h3>
 <p>In order to issue a credential, we need to create a template first. Templates contain a set of attributes about the subject of issuance and
 are required to ensure that credentials are based on a standardized model. In this example we already have created a template for identity document verification. The schema of this template is located at <a href="https://schema.trinsic.cloud/example/id-document" targer="_blank">https://schema.trinsic.cloud/example/id-document  <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>. This is our template schema or template ID.</p>
-<p>Let's create some data for our template.</p>
+<p>Let's create some data for our template:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// following fields are defined in the schema,</span>
-<span class="w">    </span><span class="c1">// but not all are required to be filled in</span>
+<span class="w">    </span><span class="c1">// the following fields are defined in the schema, but not all are required to be filled in</span>
 <span class="w">    </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Dough&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">dateOfBirth</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1990-07-03T10:12:00Z&quot;</span><span class="p">,</span>
@@ -2205,13 +2204,12 @@ are required to ensure that credentials are based on a standardized model. In th
 <span class="w">    </span><span class="nx">dateOfExpiration</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2032-07-03T10:12:00Z&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">documentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;DriversLicense&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">documentNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123-456-7890&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// extra information we&#39;d like to include in the credential</span>
-<span class="w">    </span><span class="c1">// that&#39;s not part of the credential schema</span>
+<span class="w">    </span><span class="c1">// extra information we&#39;d like to include in the credential (not part of the credential schema)</span>
 <span class="w">    </span><span class="nx">additionalData</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Individual was verified in person&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">registeredOnline</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>And finally, we'll issue the credential and print the response to the console.</p>
+<p>And finally, we'll issue the credential and print the response to the console:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">issueFromTemplate</span><span class="p">({</span>
 <span class="w">    </span><span class="c1">// required</span>
 <span class="w">    </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.trinsic.cloud/example/id-document&quot;</span><span class="p">,</span>
@@ -2226,29 +2224,29 @@ are required to ensure that credentials are based on a standardized model. In th
 <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">issueResponse</span><span class="p">.</span><span class="nx">documentJson</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">depth</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
 <p>Let's look at some of the input fields for the <code>issueFromTemplate()</code> request.</p>
-<div class="highlight"><pre><span></span><code>- `templateId` is a required field and refers to the template ID that we want to use.
-- `valuesJson` is a required field and must be an object with fields and their values. This object must be passed as JSON stringified value.
-- `signatureType` is optional field that specifies type of signature that will be used to sign the credential. There are currently two types supported: `Standard` will use NIST approved cryptographic curves, specifically the Ed25519 curve with EDDSA signature. The `Experimental` signature type will use BBS Signatures with BLS12381 curve.
-- `includeGovernance` is optional field that specifies if we&#39;d like governance attestation about the issuer to be included with the credential. This will indicate that the issuer is authorized member of the governance framework for the given ecosystem.
-
-Without governance information:
-```json
-issuer: &#39;did:web:example.connect.trinsic.cloud:zThZXjtWu1PsMXHnQfJGam4&#39;
-```
-
-With governance information:
-```json
-issuer: {
-    id: &#39;did:web:example.connect.trinsic.cloud:zThZXjtWu1PsMXHnQfJGam4&#39;,
-    type: &#39;AuthoritativeMember&#39;,
-    governanceFramework: &#39;urn:trinsic:ecosystems:example&#39;,
-    trustRegistry: &#39;urn:egf:example:default&#39;
-}
-```
-
-- `expirationDate` is optional and specifies the validity period of the issed credential. If specified, this field must be in ISO 8601 format
-- `saveCopy` is optional and will save a copy of the issued credential in the issuer wallet that will be marked as `IssuedVerifiableCredential`. This copy will not contain any cryptographic data or signatures and it&#39;s purpose is to allow the issuers to track the issued credentials and their metadata. This metadata is required if the issuer wants to change the status of the credential and revoke it&#39;s validity. This is controlled using the data found in the `credentialStatus` field.
-</code></pre></div>
+<ul>
+<li><code>templateId</code> is a required field and refers to the template ID that we want to use.</li>
+<li><code>valuesJson</code> is a required field and must be an object with fields and their values. This object must be passed as JSON stringified value.</li>
+<li><code>signatureType</code> is optional field that specifies type of signature that will be used to sign the credential. There are currently two types supported: <code>Standard</code> will use NIST approved cryptographic curves, specifically the Ed25519 curve with EDDSA signature. The <code>Experimental</code> signature type will use BBS Signatures with BLS12381 curve.</li>
+<li>
+<p><code>includeGovernance</code> is optional field that specifies if we'd like governance attestation about the issuer to be included with the credential. This will indicate that the issuer is an authorized member of the given ecosystem's Trust Registry.</p>
+<p>When <code>includeGovernance=false</code>, the Verifiable Credential will only include the issuer's DID:
+<div class="highlight"><pre><span></span><code><span class="err">issuer</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;did</span><span class="p">:</span><span class="err">web</span><span class="p">:</span><span class="err">example.co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">.</span><span class="kc">tr</span><span class="err">i</span><span class="kc">ns</span><span class="err">ic.cloud</span><span class="p">:</span><span class="err">zThZXj</span><span class="kc">t</span><span class="err">Wu</span><span class="mi">1</span><span class="err">PsMXH</span><span class="kc">n</span><span class="err">Q</span><span class="kc">f</span><span class="err">JGam</span><span class="mi">4</span><span class="err">&#39;</span>
+</code></pre></div></p>
+<p>When <code>includeGovernance=true</code>, the Verifiable Credential will include all governance information:
+<div class="highlight"><pre><span></span><code><span class="err">issuer</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;did</span><span class="p">:</span><span class="err">web</span><span class="p">:</span><span class="err">example.co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">.</span><span class="kc">tr</span><span class="err">i</span><span class="kc">ns</span><span class="err">ic.cloud</span><span class="p">:</span><span class="err">zThZXj</span><span class="kc">t</span><span class="err">Wu</span><span class="mi">1</span><span class="err">PsMXH</span><span class="kc">n</span><span class="err">Q</span><span class="kc">f</span><span class="err">JGam</span><span class="mi">4</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="kc">t</span><span class="err">ype</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;Au</span><span class="kc">t</span><span class="err">hori</span><span class="kc">tat</span><span class="err">iveMember&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">gover</span><span class="kc">nan</span><span class="err">ceFramework</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;ur</span><span class="kc">n</span><span class="p">:</span><span class="kc">tr</span><span class="err">i</span><span class="kc">ns</span><span class="err">ic</span><span class="p">:</span><span class="err">ecosys</span><span class="kc">te</span><span class="err">ms</span><span class="p">:</span><span class="err">example&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="kc">trust</span><span class="err">Regis</span><span class="kc">tr</span><span class="err">y</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;ur</span><span class="kc">n</span><span class="p">:</span><span class="err">eg</span><span class="kc">f</span><span class="p">:</span><span class="err">example</span><span class="p">:</span><span class="err">de</span><span class="kc">fault</span><span class="err">&#39;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>expirationDate</code> is optional and specifies the validity period of the issed credential. If specified, this field must be in ISO 8601 format</p>
+</li>
+<li><code>saveCopy</code> is optional and will save a copy of the issued credential in the issuer wallet that will be marked as <code>IssuedVerifiableCredential</code>. This copy will not contain any cryptographic data or signatures and it's purpose is to allow the issuers to track the issued credentials and their metadata. This metadata is required if the issuer wants to change the status of the credential and revoke it's validity. This is controlled using the data found in the <code>credentialStatus</code> field.</li>
+</ul>
 <h3 id="send-the-credential">Send the credential<a class="headerlink" href="#send-the-credential" title="Permanent link">&para;</a></h3>
 <p>Finally, we can just send the credential to the user's wallet by specifying its email address. If you want to send an email notification that a credential has been sent to the user's wallet, just set <code>sendNotification</code> to true.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">send</span><span class="p">({</span>
