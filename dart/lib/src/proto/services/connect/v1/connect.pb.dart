@@ -86,7 +86,7 @@ class IDVSession extends $pb.GeneratedMessage {
         packageName: const $pb.PackageName('services.connect.v1'))
     ..e<SessionFailCode>(
         5, _omitFieldNames ? '' : 'failCode', $pb.PbFieldType.OE,
-        defaultOrMaker: SessionFailCode.SESSION_FAIL_INTERNAL,
+        defaultOrMaker: SessionFailCode.SESSION_FAIL_NONE,
         valueOf: SessionFailCode.valueOf,
         enumValues: SessionFailCode.values)
     ..aOS(6, _omitFieldNames ? '' : 'resultVp')
@@ -275,7 +275,7 @@ class Verification extends $pb.GeneratedMessage {
         enumValues: VerificationState.values)
     ..e<VerificationFailCode>(
         4, _omitFieldNames ? '' : 'failCode', $pb.PbFieldType.OE,
-        defaultOrMaker: VerificationFailCode.VERIFICATION_FAIL_INTERNAL,
+        defaultOrMaker: VerificationFailCode.VERIFICATION_FAIL_NONE,
         valueOf: VerificationFailCode.valueOf,
         enumValues: VerificationFailCode.values)
     ..aOB(5, _omitFieldNames ? '' : 'reused')

@@ -91,21 +91,24 @@ class VerificationState extends $pb.ProtobufEnum {
 
 /// The specific reason an IDVSession is in the `Failed` state
 class SessionFailCode extends $pb.ProtobufEnum {
+  static const SessionFailCode SESSION_FAIL_NONE =
+      SessionFailCode._(0, _omitEnumNames ? '' : 'SESSION_FAIL_NONE');
   static const SessionFailCode SESSION_FAIL_INTERNAL =
-      SessionFailCode._(0, _omitEnumNames ? '' : 'SESSION_FAIL_INTERNAL');
+      SessionFailCode._(1, _omitEnumNames ? '' : 'SESSION_FAIL_INTERNAL');
   static const SessionFailCode SESSION_FAIL_VERIFICATION_FAILED =
       SessionFailCode._(
-          1, _omitEnumNames ? '' : 'SESSION_FAIL_VERIFICATION_FAILED');
+          2, _omitEnumNames ? '' : 'SESSION_FAIL_VERIFICATION_FAILED');
   static const SessionFailCode SESSION_FAIL_AUTHENTICATION =
-      SessionFailCode._(2, _omitEnumNames ? '' : 'SESSION_FAIL_AUTHENTICATION');
+      SessionFailCode._(3, _omitEnumNames ? '' : 'SESSION_FAIL_AUTHENTICATION');
   static const SessionFailCode SESSION_FAIL_EXPIRED =
-      SessionFailCode._(3, _omitEnumNames ? '' : 'SESSION_FAIL_EXPIRED');
+      SessionFailCode._(4, _omitEnumNames ? '' : 'SESSION_FAIL_EXPIRED');
   static const SessionFailCode SESSION_FAIL_USER_CANCELED =
-      SessionFailCode._(4, _omitEnumNames ? '' : 'SESSION_FAIL_USER_CANCELED');
+      SessionFailCode._(5, _omitEnumNames ? '' : 'SESSION_FAIL_USER_CANCELED');
   static const SessionFailCode SESSION_FAIL_RP_CANCELED =
-      SessionFailCode._(5, _omitEnumNames ? '' : 'SESSION_FAIL_RP_CANCELED');
+      SessionFailCode._(6, _omitEnumNames ? '' : 'SESSION_FAIL_RP_CANCELED');
 
   static const $core.List<SessionFailCode> values = <SessionFailCode>[
+    SESSION_FAIL_NONE,
     SESSION_FAIL_INTERNAL,
     SESSION_FAIL_VERIFICATION_FAILED,
     SESSION_FAIL_AUTHENTICATION,
@@ -123,20 +126,23 @@ class SessionFailCode extends $pb.ProtobufEnum {
 
 /// The specific reason a Verification is in the `Failed` state
 class VerificationFailCode extends $pb.ProtobufEnum {
+  static const VerificationFailCode VERIFICATION_FAIL_NONE =
+      VerificationFailCode._(0, _omitEnumNames ? '' : 'VERIFICATION_FAIL_NONE');
   static const VerificationFailCode VERIFICATION_FAIL_INTERNAL =
       VerificationFailCode._(
-          0, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INTERNAL');
+          1, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INTERNAL');
   static const VerificationFailCode VERIFICATION_FAIL_INVALID_IMAGE =
       VerificationFailCode._(
-          1, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INVALID_IMAGE');
+          2, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INVALID_IMAGE');
   static const VerificationFailCode VERIFICATION_FAIL_INAUTHENTIC =
       VerificationFailCode._(
-          2, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INAUTHENTIC');
+          3, _omitEnumNames ? '' : 'VERIFICATION_FAIL_INAUTHENTIC');
   static const VerificationFailCode VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT =
       VerificationFailCode._(
-          3, _omitEnumNames ? '' : 'VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT');
+          4, _omitEnumNames ? '' : 'VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT');
 
   static const $core.List<VerificationFailCode> values = <VerificationFailCode>[
+    VERIFICATION_FAIL_NONE,
     VERIFICATION_FAIL_INTERNAL,
     VERIFICATION_FAIL_INVALID_IMAGE,
     VERIFICATION_FAIL_INAUTHENTIC,

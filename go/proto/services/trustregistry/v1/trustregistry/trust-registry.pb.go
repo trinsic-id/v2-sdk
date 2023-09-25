@@ -243,6 +243,7 @@ func (*RegisterMemberResponse) Descriptor() ([]byte, []int) {
 
 // Request to unregister a member as a valid issuer of a specific credential schema.
 // Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+// The URI of the credential schema must be specified.
 type UnregisterMemberRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

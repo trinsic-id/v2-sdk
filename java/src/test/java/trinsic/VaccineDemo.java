@@ -117,8 +117,12 @@ public class VaccineDemo {
     trinsic.shutdown();
   }
 
+<<<<<<< HEAD
   private static String IssueCredential(
       TrinsicService trinsic, String templateId, String clinic)
+=======
+  private static String IssueCredential(TrinsicService trinsic, String templateId, String clinic)
+>>>>>>> ce96780f3ad2a5b4d93f32e23b438ac723f42f21
       throws InvalidProtocolBufferException, ExecutionException, InterruptedException {
     // issueCredential() {
     // Set active profile to 'clinic' so we can issue credential signed

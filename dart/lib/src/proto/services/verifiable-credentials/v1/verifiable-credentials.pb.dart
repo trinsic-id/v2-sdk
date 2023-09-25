@@ -1604,7 +1604,7 @@ class AcceptCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocumentJson() => clearField(1);
 
-  /// The ID of the item in the wallet that contains the credential offer
+  /// The ID of the credential offer (Parameter ID inside the JSON document)
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -1784,7 +1784,7 @@ class RejectCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocumentJson() => clearField(1);
 
-  /// The ID of the item in the wallet that contains the credential offer
+  /// The ID of the credential offer (Parameter ID inside the JSON document)
   @$pb.TagNumber(2)
   $core.String get itemId => $_getSZ(1);
   @$pb.TagNumber(2)

@@ -278,6 +278,7 @@ const SendRequest$json = {
       '3': 4,
       '4': 1,
       '5': 8,
+      '8': {},
       '10': 'sendNotification'
     },
     {'1': 'document_json', '3': 100, '4': 1, '5': 9, '10': 'documentJson'},
@@ -296,9 +297,9 @@ const SendRequest$json = {
 final $typed_data.Uint8List sendRequestDescriptor = $convert.base64Decode(
     'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYBSABKA'
     'lIAFIId2FsbGV0SWQSGQoHZGlkX3VyaRgGIAEoCUgAUgZkaWRVcmkSIwoMcGhvbmVfbnVtYmVy'
-    'GAcgASgJSABSC3Bob25lTnVtYmVyEisKEXNlbmRfbm90aWZpY2F0aW9uGAQgASgIUhBzZW5kTm'
-    '90aWZpY2F0aW9uEiMKDWRvY3VtZW50X2pzb24YZCABKAlSDGRvY3VtZW50SnNvbkIRCg9kZWxp'
-    'dmVyeV9tZXRob2RKBAgCEANKBAgDEARSF2RpZGNvbW1faW52aXRhdGlvbl9qc29u');
+    'GAcgASgJSABSC3Bob25lTnVtYmVyEjEKEXNlbmRfbm90aWZpY2F0aW9uGAQgASgIQgSAph0BUh'
+    'BzZW5kTm90aWZpY2F0aW9uEiMKDWRvY3VtZW50X2pzb24YZCABKAlSDGRvY3VtZW50SnNvbkIR'
+    'Cg9kZWxpdmVyeV9tZXRob2RKBAgCEANKBAgDEARSF2RpZGNvbW1faW52aXRhdGlvbl9qc29u');
 
 @$core.Deprecated('Use sendResponseDescriptor instead')
 const SendResponse$json = {
@@ -376,12 +377,20 @@ const CreateCredentialOfferRequest$json = {
   '2': [
     {'1': 'template_id', '3': 1, '4': 1, '5': 9, '10': 'templateId'},
     {'1': 'values_json', '3': 2, '4': 1, '5': 9, '10': 'valuesJson'},
-    {'1': 'holder_binding', '3': 3, '4': 1, '5': 8, '10': 'holderBinding'},
+    {
+      '1': 'holder_binding',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '8': {},
+      '10': 'holderBinding'
+    },
     {
       '1': 'include_governance',
       '3': 4,
       '4': 1,
       '5': 8,
+      '8': {},
       '10': 'includeGovernance'
     },
     {
@@ -389,6 +398,7 @@ const CreateCredentialOfferRequest$json = {
       '3': 5,
       '4': 1,
       '5': 8,
+      '8': {},
       '10': 'generateShareUrl'
     },
     {
@@ -397,6 +407,7 @@ const CreateCredentialOfferRequest$json = {
       '4': 1,
       '5': 14,
       '6': '.services.verifiablecredentials.v1.SignatureType',
+      '8': {},
       '10': 'signatureType'
     },
   ],
@@ -405,11 +416,12 @@ const CreateCredentialOfferRequest$json = {
 /// Descriptor for `CreateCredentialOfferRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createCredentialOfferRequestDescriptor = $convert.base64Decode(
     'ChxDcmVhdGVDcmVkZW50aWFsT2ZmZXJSZXF1ZXN0Eh8KC3RlbXBsYXRlX2lkGAEgASgJUgp0ZW'
-    '1wbGF0ZUlkEh8KC3ZhbHVlc19qc29uGAIgASgJUgp2YWx1ZXNKc29uEiUKDmhvbGRlcl9iaW5k'
-    'aW5nGAMgASgIUg1ob2xkZXJCaW5kaW5nEi0KEmluY2x1ZGVfZ292ZXJuYW5jZRgEIAEoCFIRaW'
-    '5jbHVkZUdvdmVybmFuY2USLAoSZ2VuZXJhdGVfc2hhcmVfdXJsGAUgASgIUhBnZW5lcmF0ZVNo'
-    'YXJlVXJsElcKDnNpZ25hdHVyZV90eXBlGAcgASgOMjAuc2VydmljZXMudmVyaWZpYWJsZWNyZW'
-    'RlbnRpYWxzLnYxLlNpZ25hdHVyZVR5cGVSDXNpZ25hdHVyZVR5cGU=');
+    '1wbGF0ZUlkEh8KC3ZhbHVlc19qc29uGAIgASgJUgp2YWx1ZXNKc29uEisKDmhvbGRlcl9iaW5k'
+    'aW5nGAMgASgIQgSAph0BUg1ob2xkZXJCaW5kaW5nEjMKEmluY2x1ZGVfZ292ZXJuYW5jZRgEIA'
+    'EoCEIEgKYdAVIRaW5jbHVkZUdvdmVybmFuY2USMgoSZ2VuZXJhdGVfc2hhcmVfdXJsGAUgASgI'
+    'QgSAph0BUhBnZW5lcmF0ZVNoYXJlVXJsEl0KDnNpZ25hdHVyZV90eXBlGAcgASgOMjAuc2Vydm'
+    'ljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnYxLlNpZ25hdHVyZVR5cGVCBICmHQFSDXNpZ25h'
+    'dHVyZVR5cGU=');
 
 @$core.Deprecated('Use createCredentialOfferResponseDescriptor instead')
 const CreateCredentialOfferResponse$json = {
@@ -438,7 +450,7 @@ const AcceptCredentialRequest$json = {
       '9': 0,
       '10': 'documentJson'
     },
-    {'1': 'item_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'itemId'},
+    {'1': 'item_id', '3': 2, '4': 1, '5': 9, '8': {}, '9': 0, '10': 'itemId'},
   ],
   '8': [
     {'1': 'offer'},
@@ -446,10 +458,9 @@ const AcceptCredentialRequest$json = {
 };
 
 /// Descriptor for `AcceptCredentialRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List acceptCredentialRequestDescriptor =
-    $convert.base64Decode(
-        'ChdBY2NlcHRDcmVkZW50aWFsUmVxdWVzdBIlCg1kb2N1bWVudF9qc29uGAEgASgJSABSDGRvY3'
-        'VtZW50SnNvbhIZCgdpdGVtX2lkGAIgASgJSABSBml0ZW1JZEIHCgVvZmZlcg==');
+final $typed_data.Uint8List acceptCredentialRequestDescriptor = $convert.base64Decode(
+    'ChdBY2NlcHRDcmVkZW50aWFsUmVxdWVzdBIlCg1kb2N1bWVudF9qc29uGAEgASgJSABSDGRvY3'
+    'VtZW50SnNvbhIfCgdpdGVtX2lkGAIgASgJQgSAph0BSABSBml0ZW1JZEIHCgVvZmZlcg==');
 
 @$core.Deprecated('Use acceptCredentialResponseDescriptor instead')
 const AcceptCredentialResponse$json = {
@@ -478,7 +489,7 @@ const RejectCredentialRequest$json = {
       '9': 0,
       '10': 'documentJson'
     },
-    {'1': 'item_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'itemId'},
+    {'1': 'item_id', '3': 2, '4': 1, '5': 9, '8': {}, '9': 0, '10': 'itemId'},
   ],
   '8': [
     {'1': 'offer'},
@@ -486,10 +497,9 @@ const RejectCredentialRequest$json = {
 };
 
 /// Descriptor for `RejectCredentialRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List rejectCredentialRequestDescriptor =
-    $convert.base64Decode(
-        'ChdSZWplY3RDcmVkZW50aWFsUmVxdWVzdBIlCg1kb2N1bWVudF9qc29uGAEgASgJSABSDGRvY3'
-        'VtZW50SnNvbhIZCgdpdGVtX2lkGAIgASgJSABSBml0ZW1JZEIHCgVvZmZlcg==');
+final $typed_data.Uint8List rejectCredentialRequestDescriptor = $convert.base64Decode(
+    'ChdSZWplY3RDcmVkZW50aWFsUmVxdWVzdBIlCg1kb2N1bWVudF9qc29uGAEgASgJSABSDGRvY3'
+    'VtZW50SnNvbhIfCgdpdGVtX2lkGAIgASgJQgSAph0BSABSBml0ZW1JZEIHCgVvZmZlcg==');
 
 @$core.Deprecated('Use rejectCredentialResponseDescriptor instead')
 const RejectCredentialResponse$json = {

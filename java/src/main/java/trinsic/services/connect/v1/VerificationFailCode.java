@@ -17,23 +17,34 @@ public enum VerificationFailCode implements com.google.protobuf.ProtocolMessageE
    *
    *
    * <pre>
+   * The verification is not in a failure state
+   * </pre>
+   *
+   * <code>VERIFICATION_FAIL_NONE = 0;</code>
+   */
+  VERIFICATION_FAIL_NONE(0),
+  /**
+   *
+   *
+   * <pre>
    * An internal Trinsic error caused this verification to fail
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_INTERNAL = 0;</code>
+   * <code>VERIFICATION_FAIL_INTERNAL = 1;</code>
    */
-  VERIFICATION_FAIL_INTERNAL(0),
+  VERIFICATION_FAIL_INTERNAL(1),
   /**
    *
    *
    * <pre>
    * The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise
    * unable to be processed.
+   * This failure reason is non-terminal; the user is able to retry the verification.
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_INVALID_IMAGE = 1;</code>
+   * <code>VERIFICATION_FAIL_INVALID_IMAGE = 2;</code>
    */
-  VERIFICATION_FAIL_INVALID_IMAGE(1),
+  VERIFICATION_FAIL_INVALID_IMAGE(2),
   /**
    *
    *
@@ -41,9 +52,9 @@ public enum VerificationFailCode implements com.google.protobuf.ProtocolMessageE
    * The identity data/images provided are suspected to be inauthentic, fraudulent, or forged.
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_INAUTHENTIC = 2;</code>
+   * <code>VERIFICATION_FAIL_INAUTHENTIC = 3;</code>
    */
-  VERIFICATION_FAIL_INAUTHENTIC(2),
+  VERIFICATION_FAIL_INAUTHENTIC(3),
   /**
    *
    *
@@ -51,9 +62,9 @@ public enum VerificationFailCode implements com.google.protobuf.ProtocolMessageE
    * The document provided is either of an unsupported type, or from an unsupported country.
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT = 3;</code>
+   * <code>VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT = 4;</code>
    */
-  VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT(3),
+  VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT(4),
   UNRECOGNIZED(-1),
   ;
 
@@ -61,23 +72,34 @@ public enum VerificationFailCode implements com.google.protobuf.ProtocolMessageE
    *
    *
    * <pre>
+   * The verification is not in a failure state
+   * </pre>
+   *
+   * <code>VERIFICATION_FAIL_NONE = 0;</code>
+   */
+  public static final int VERIFICATION_FAIL_NONE_VALUE = 0;
+  /**
+   *
+   *
+   * <pre>
    * An internal Trinsic error caused this verification to fail
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_INTERNAL = 0;</code>
+   * <code>VERIFICATION_FAIL_INTERNAL = 1;</code>
    */
-  public static final int VERIFICATION_FAIL_INTERNAL_VALUE = 0;
+  public static final int VERIFICATION_FAIL_INTERNAL_VALUE = 1;
   /**
    *
    *
    * <pre>
    * The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise
    * unable to be processed.
+   * This failure reason is non-terminal; the user is able to retry the verification.
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_INVALID_IMAGE = 1;</code>
+   * <code>VERIFICATION_FAIL_INVALID_IMAGE = 2;</code>
    */
-  public static final int VERIFICATION_FAIL_INVALID_IMAGE_VALUE = 1;
+  public static final int VERIFICATION_FAIL_INVALID_IMAGE_VALUE = 2;
   /**
    *
    *
@@ -85,9 +107,9 @@ public enum VerificationFailCode implements com.google.protobuf.ProtocolMessageE
    * The identity data/images provided are suspected to be inauthentic, fraudulent, or forged.
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_INAUTHENTIC = 2;</code>
+   * <code>VERIFICATION_FAIL_INAUTHENTIC = 3;</code>
    */
-  public static final int VERIFICATION_FAIL_INAUTHENTIC_VALUE = 2;
+  public static final int VERIFICATION_FAIL_INAUTHENTIC_VALUE = 3;
   /**
    *
    *
@@ -95,9 +117,9 @@ public enum VerificationFailCode implements com.google.protobuf.ProtocolMessageE
    * The document provided is either of an unsupported type, or from an unsupported country.
    * </pre>
    *
-   * <code>VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT = 3;</code>
+   * <code>VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT = 4;</code>
    */
-  public static final int VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT_VALUE = 3;
+  public static final int VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT_VALUE = 4;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -124,12 +146,14 @@ public enum VerificationFailCode implements com.google.protobuf.ProtocolMessageE
   public static VerificationFailCode forNumber(int value) {
     switch (value) {
       case 0:
-        return VERIFICATION_FAIL_INTERNAL;
+        return VERIFICATION_FAIL_NONE;
       case 1:
-        return VERIFICATION_FAIL_INVALID_IMAGE;
+        return VERIFICATION_FAIL_INTERNAL;
       case 2:
-        return VERIFICATION_FAIL_INAUTHENTIC;
+        return VERIFICATION_FAIL_INVALID_IMAGE;
       case 3:
+        return VERIFICATION_FAIL_INAUTHENTIC;
+      case 4:
         return VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT;
       default:
         return null;

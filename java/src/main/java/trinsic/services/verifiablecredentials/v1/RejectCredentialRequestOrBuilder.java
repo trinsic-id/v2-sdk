@@ -49,10 +49,10 @@ public interface RejectCredentialRequestOrBuilder
    *
    *
    * <pre>
-   * The ID of the item in the wallet that contains the credential offer
+   * The ID of the credential offer (Parameter ID inside the JSON document)
    * </pre>
    *
-   * <code>string item_id = 2;</code>
+   * <code>string item_id = 2 [(.services.options.optional) = true];</code>
    *
    * @return Whether the itemId field is set.
    */
@@ -61,10 +61,10 @@ public interface RejectCredentialRequestOrBuilder
    *
    *
    * <pre>
-   * The ID of the item in the wallet that contains the credential offer
+   * The ID of the credential offer (Parameter ID inside the JSON document)
    * </pre>
    *
-   * <code>string item_id = 2;</code>
+   * <code>string item_id = 2 [(.services.options.optional) = true];</code>
    *
    * @return The itemId.
    */
@@ -73,10 +73,10 @@ public interface RejectCredentialRequestOrBuilder
    *
    *
    * <pre>
-   * The ID of the item in the wallet that contains the credential offer
+   * The ID of the credential offer (Parameter ID inside the JSON document)
    * </pre>
    *
-   * <code>string item_id = 2;</code>
+   * <code>string item_id = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for itemId.
    */

@@ -74,6 +74,7 @@ class UnregisterMemberRequest(betterproto.Message):
     """
     Request to unregister a member as a valid issuer of a specific credential
     schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+    The URI of the credential schema must be specified.
     """
 
     did_uri: str = betterproto.string_field(1, group="member")

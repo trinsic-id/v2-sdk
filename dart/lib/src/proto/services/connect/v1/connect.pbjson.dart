@@ -66,39 +66,42 @@ final $typed_data.Uint8List verificationStateDescriptor = $convert.base64Decode(
 const SessionFailCode$json = {
   '1': 'SessionFailCode',
   '2': [
-    {'1': 'SESSION_FAIL_INTERNAL', '2': 0},
-    {'1': 'SESSION_FAIL_VERIFICATION_FAILED', '2': 1},
-    {'1': 'SESSION_FAIL_AUTHENTICATION', '2': 2},
-    {'1': 'SESSION_FAIL_EXPIRED', '2': 3},
-    {'1': 'SESSION_FAIL_USER_CANCELED', '2': 4},
-    {'1': 'SESSION_FAIL_RP_CANCELED', '2': 5},
+    {'1': 'SESSION_FAIL_NONE', '2': 0},
+    {'1': 'SESSION_FAIL_INTERNAL', '2': 1},
+    {'1': 'SESSION_FAIL_VERIFICATION_FAILED', '2': 2},
+    {'1': 'SESSION_FAIL_AUTHENTICATION', '2': 3},
+    {'1': 'SESSION_FAIL_EXPIRED', '2': 4},
+    {'1': 'SESSION_FAIL_USER_CANCELED', '2': 5},
+    {'1': 'SESSION_FAIL_RP_CANCELED', '2': 6},
   ],
 };
 
 /// Descriptor for `SessionFailCode`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List sessionFailCodeDescriptor = $convert.base64Decode(
-    'Cg9TZXNzaW9uRmFpbENvZGUSGQoVU0VTU0lPTl9GQUlMX0lOVEVSTkFMEAASJAogU0VTU0lPTl'
-    '9GQUlMX1ZFUklGSUNBVElPTl9GQUlMRUQQARIfChtTRVNTSU9OX0ZBSUxfQVVUSEVOVElDQVRJ'
-    'T04QAhIYChRTRVNTSU9OX0ZBSUxfRVhQSVJFRBADEh4KGlNFU1NJT05fRkFJTF9VU0VSX0NBTk'
-    'NFTEVEEAQSHAoYU0VTU0lPTl9GQUlMX1JQX0NBTkNFTEVEEAU=');
+    'Cg9TZXNzaW9uRmFpbENvZGUSFQoRU0VTU0lPTl9GQUlMX05PTkUQABIZChVTRVNTSU9OX0ZBSU'
+    'xfSU5URVJOQUwQARIkCiBTRVNTSU9OX0ZBSUxfVkVSSUZJQ0FUSU9OX0ZBSUxFRBACEh8KG1NF'
+    'U1NJT05fRkFJTF9BVVRIRU5USUNBVElPThADEhgKFFNFU1NJT05fRkFJTF9FWFBJUkVEEAQSHg'
+    'oaU0VTU0lPTl9GQUlMX1VTRVJfQ0FOQ0VMRUQQBRIcChhTRVNTSU9OX0ZBSUxfUlBfQ0FOQ0VM'
+    'RUQQBg==');
 
 @$core.Deprecated('Use verificationFailCodeDescriptor instead')
 const VerificationFailCode$json = {
   '1': 'VerificationFailCode',
   '2': [
-    {'1': 'VERIFICATION_FAIL_INTERNAL', '2': 0},
-    {'1': 'VERIFICATION_FAIL_INVALID_IMAGE', '2': 1},
-    {'1': 'VERIFICATION_FAIL_INAUTHENTIC', '2': 2},
-    {'1': 'VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT', '2': 3},
+    {'1': 'VERIFICATION_FAIL_NONE', '2': 0},
+    {'1': 'VERIFICATION_FAIL_INTERNAL', '2': 1},
+    {'1': 'VERIFICATION_FAIL_INVALID_IMAGE', '2': 2},
+    {'1': 'VERIFICATION_FAIL_INAUTHENTIC', '2': 3},
+    {'1': 'VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT', '2': 4},
   ],
 };
 
 /// Descriptor for `VerificationFailCode`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List verificationFailCodeDescriptor = $convert.base64Decode(
-    'ChRWZXJpZmljYXRpb25GYWlsQ29kZRIeChpWRVJJRklDQVRJT05fRkFJTF9JTlRFUk5BTBAAEi'
-    'MKH1ZFUklGSUNBVElPTl9GQUlMX0lOVkFMSURfSU1BR0UQARIhCh1WRVJJRklDQVRJT05fRkFJ'
-    'TF9JTkFVVEhFTlRJQxACEioKJlZFUklGSUNBVElPTl9GQUlMX1VOU1VQUE9SVEVEX0RPQ1VNRU'
-    '5UEAM=');
+    'ChRWZXJpZmljYXRpb25GYWlsQ29kZRIaChZWRVJJRklDQVRJT05fRkFJTF9OT05FEAASHgoaVk'
+    'VSSUZJQ0FUSU9OX0ZBSUxfSU5URVJOQUwQARIjCh9WRVJJRklDQVRJT05fRkFJTF9JTlZBTElE'
+    'X0lNQUdFEAISIQodVkVSSUZJQ0FUSU9OX0ZBSUxfSU5BVVRIRU5USUMQAxIqCiZWRVJJRklDQV'
+    'RJT05fRkFJTF9VTlNVUFBPUlRFRF9ET0NVTUVOVBAE');
 
 @$core.Deprecated('Use sessionOrderingDescriptor instead')
 const SessionOrdering$json = {

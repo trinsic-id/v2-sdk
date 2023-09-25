@@ -322,7 +322,9 @@ class AcceptCredentialRequest(betterproto.Message):
     """The JSON document that contains the credential offer"""
 
     item_id: str = betterproto.string_field(2, group="offer")
-    """The ID of the item in the wallet that contains the credential offer"""
+    """
+    The ID of the credential offer (Parameter ID inside the JSON document)
+    """
 
 
 @dataclass(eq=False, repr=False)
@@ -343,7 +345,9 @@ class RejectCredentialRequest(betterproto.Message):
     """The JSON document that contains the credential offer"""
 
     item_id: str = betterproto.string_field(2, group="offer")
-    """The ID of the item in the wallet that contains the credential offer"""
+    """
+    The ID of the credential offer (Parameter ID inside the JSON document)
+    """
 
 
 @dataclass(eq=False, repr=False)

@@ -600,6 +600,12 @@
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.SessionFailCode"
     },
+    "services.connect.v1.SessionFailCode.SESSION_FAIL_NONE": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.SessionFailCode"
+    },
     "services.connect.v1.SessionFailCode.SESSION_FAIL_RP_CANCELED": {
       "type": "enum_value",
       "collection": "enum_values",
@@ -709,6 +715,12 @@
       "parent": "services.connect.v1.VerificationFailCode"
     },
     "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INVALID_IMAGE": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.VerificationFailCode"
+    },
+    "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_NONE": {
       "type": "enum_value",
       "collection": "enum_values",
       "file": "services/connect/v1/connect.proto",
@@ -4399,12 +4411,14 @@
         "services.connect.v1.VerificationState.VERIFICATION_STARTED",
         "services.connect.v1.VerificationState.VERIFICATION_SUCCESS",
         "services.connect.v1.VerificationState.VERIFICATION_FAILED",
+        "services.connect.v1.SessionFailCode.SESSION_FAIL_NONE",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_INTERNAL",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_VERIFICATION_FAILED",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_AUTHENTICATION",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_EXPIRED",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_USER_CANCELED",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_RP_CANCELED",
+        "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_NONE",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INTERNAL",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INVALID_IMAGE",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INAUTHENTIC",
@@ -6470,7 +6484,7 @@
     "services.trustregistry.v1.UnregisterMemberRequest": {
       "name": "UnregisterMemberRequest",
       "full_name": "services.trustregistry.v1.UnregisterMemberRequest",
-      "description": "Request to unregister a member as a valid issuer of a specific credential schema.\nOnly one of `did_uri`, `wallet_id`, or `email` may be specified.",
+      "description": "Request to unregister a member as a valid issuer of a specific credential schema.\nOnly one of `did_uri`, `wallet_id`, or `email` may be specified.\nThe URI of the credential schema must be specified.",
       "fields": [
         "services.trustregistry.v1.UnregisterMemberRequest.did_uri",
         "services.trustregistry.v1.UnregisterMemberRequest.wallet_id",
@@ -10319,7 +10333,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The ID of the item in the wallet that contains the credential offer"
+      "description": "The ID of the credential offer (Parameter ID inside the JSON document)",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.AcceptCredentialResponse.document_json": {
       "name": "document_json",
@@ -10359,7 +10376,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, a short URL link will be generated that can be used to share the credential offer with the holder.\nThis link will point to the credential offer in the wallet app."
+      "description": "If true, a short URL link will be generated that can be used to share the credential offer with the holder.\nThis link will point to the credential offer in the wallet app.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.holder_binding": {
       "name": "holder_binding",
@@ -10367,7 +10387,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the credential will be issued with holder binding by specifying\nthe holder DID in the credential subject"
+      "description": "If true, the credential will be issued with holder binding by specifying\nthe holder DID in the credential subject",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.include_governance": {
       "name": "include_governance",
@@ -10375,7 +10398,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry."
+      "description": "If true, the issued credential will contain an attestation of the issuer's membership in the ecosystem's\nTrust Registry.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.signature_type": {
       "name": "signature_type",
@@ -10383,7 +10409,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "SignatureType",
       "full_type": "services.verifiablecredentials.v1.SignatureType",
-      "description": "The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`."
+      "description": "The type of signature to use when signing the credential. Defaults to `EXPERIMENTAL`.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.CreateCredentialOfferRequest.template_id": {
       "name": "template_id",
@@ -10554,7 +10583,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The ID of the item in the wallet that contains the credential offer"
+      "description": "The ID of the credential offer (Parameter ID inside the JSON document)",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.RevealTemplateAttributes.template_attributes": {
       "name": "template_attributes",
@@ -10602,7 +10634,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Send email notification that credential has been sent to a wallet"
+      "description": "Send email notification that credential has been sent to a wallet",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.verifiablecredentials.v1.SendRequest.wallet_id": {
       "name": "wallet_id",
@@ -10748,6 +10783,7 @@
       "full_name": "services.connect.v1.SessionFailCode",
       "description": "The specific reason an IDVSession is in the `Failed` state",
       "values": [
+        "services.connect.v1.SessionFailCode.SESSION_FAIL_NONE",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_INTERNAL",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_VERIFICATION_FAILED",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_AUTHENTICATION",
@@ -10771,6 +10807,7 @@
       "full_name": "services.connect.v1.VerificationFailCode",
       "description": "The specific reason a Verification is in the `Failed` state",
       "values": [
+        "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_NONE",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INTERNAL",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INVALID_IMAGE",
         "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INAUTHENTIC",
@@ -11024,37 +11061,43 @@
       "name": "SESSION_FAIL_AUTHENTICATION",
       "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_AUTHENTICATION",
       "description": "The session failed because the user failed to authenticate with their phone number too many times.",
-      "value": 2
+      "value": 3
     },
     "services.connect.v1.SessionFailCode.SESSION_FAIL_EXPIRED": {
       "name": "SESSION_FAIL_EXPIRED",
       "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_EXPIRED",
       "description": "The session expired",
-      "value": 3
+      "value": 4
     },
     "services.connect.v1.SessionFailCode.SESSION_FAIL_INTERNAL": {
       "name": "SESSION_FAIL_INTERNAL",
       "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_INTERNAL",
       "description": "An internal Trinsic error caused this session to fail",
+      "value": 1
+    },
+    "services.connect.v1.SessionFailCode.SESSION_FAIL_NONE": {
+      "name": "SESSION_FAIL_NONE",
+      "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_NONE",
+      "description": "The Session is not in a failure state.",
       "value": 0
     },
     "services.connect.v1.SessionFailCode.SESSION_FAIL_RP_CANCELED": {
       "name": "SESSION_FAIL_RP_CANCELED",
       "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_RP_CANCELED",
       "description": "The RP canceled the session",
-      "value": 5
+      "value": 6
     },
     "services.connect.v1.SessionFailCode.SESSION_FAIL_USER_CANCELED": {
       "name": "SESSION_FAIL_USER_CANCELED",
       "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_USER_CANCELED",
       "description": "The user canceled / rejected the session",
-      "value": 4
+      "value": 5
     },
     "services.connect.v1.SessionFailCode.SESSION_FAIL_VERIFICATION_FAILED": {
       "name": "SESSION_FAIL_VERIFICATION_FAILED",
       "full_name": "services.connect.v1.SessionFailCode.SESSION_FAIL_VERIFICATION_FAILED",
       "description": "The session failed because one or more of the verifications failed.\nThe reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s).",
-      "value": 1
+      "value": 2
     },
     "services.connect.v1.SessionOrdering.CREATED": {
       "name": "CREATED",
@@ -11078,25 +11121,31 @@
       "name": "VERIFICATION_FAIL_INAUTHENTIC",
       "full_name": "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INAUTHENTIC",
       "description": "The identity data/images provided are suspected to be inauthentic, fraudulent, or forged.",
-      "value": 2
+      "value": 3
     },
     "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INTERNAL": {
       "name": "VERIFICATION_FAIL_INTERNAL",
       "full_name": "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INTERNAL",
       "description": "An internal Trinsic error caused this verification to fail",
-      "value": 0
+      "value": 1
     },
     "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INVALID_IMAGE": {
       "name": "VERIFICATION_FAIL_INVALID_IMAGE",
       "full_name": "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_INVALID_IMAGE",
-      "description": "The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise\nunable to be processed.",
-      "value": 1
+      "description": "The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise\nunable to be processed.\nThis failure reason is non-terminal; the user is able to retry the verification.",
+      "value": 2
+    },
+    "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_NONE": {
+      "name": "VERIFICATION_FAIL_NONE",
+      "full_name": "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_NONE",
+      "description": "The verification is not in a failure state",
+      "value": 0
     },
     "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT": {
       "name": "VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT",
       "full_name": "services.connect.v1.VerificationFailCode.VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT",
       "description": "The document provided is either of an unsupported type, or from an unsupported country.",
-      "value": 3
+      "value": 4
     },
     "services.connect.v1.VerificationState.VERIFICATION_FAILED": {
       "name": "VERIFICATION_FAILED",

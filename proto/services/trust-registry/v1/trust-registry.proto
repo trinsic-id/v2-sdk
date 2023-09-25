@@ -11,7 +11,7 @@ option java_multiple_files = true;
 message RegisterMemberRequest {
   reserved 30;
   reserved "framework_id";
-  
+
   oneof member {
     // DID URI of member to register
     string did_uri = 1;
@@ -38,10 +38,11 @@ message RegisterMemberResponse {}
 
 // Request to unregister a member as a valid issuer of a specific credential schema.
 // Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+// The URI of the credential schema must be specified.
 message UnregisterMemberRequest {
   reserved 20;
   reserved "framework_id";
-  
+
   oneof member {
     // DID URI of member to unregister
     string did_uri = 1;
