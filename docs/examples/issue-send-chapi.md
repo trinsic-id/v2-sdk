@@ -13,6 +13,11 @@ hide:
 
 This example uses a backend API to issue a verifiable credential and deliver the credential to the user's wallet using the [Credential Handler API](https://chapi.io) (abbr. CHAPI - see [W3C specification](https://w3c-ccg.github.io/credential-handler-api/)). The CHAPI protocol allows digital wallets to receive Verifiable Credentials from an independent third-party issuer - or present Verifiable Credentials to an independent third-party verifier - in a way that establishes trust and preserves privacy. See our [issuance guide](/guide/issuance/#send-credential-using-chapi) for more details about using CHAPI and its benefits.
 
+Let's take a look at the breakdown of interactions between the different actors and components in this scenario:
+<center>
+![/_static/images/flow-chapi-issuance.png](/_static/images/flow-chapi-issuance.png){width=70%}
+</center>
+
 In this guide, we will go through the process of setting up an example API endpoint, and a simple web page that consumes this enpoint and invokes CHAPI in the browser.
 
 ### Install dependencies

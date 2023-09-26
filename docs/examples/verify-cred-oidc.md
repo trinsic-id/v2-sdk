@@ -15,16 +15,20 @@ In this example we'll setup a basic webpage and configure it to request a Verifi
 We will also configure a backend API that will take the shared credential from the client and verify it using Trinsic's API. This step is optional, you can
 use any third-party service to verify the validity of the credential since these credentials are globally verifiable.
 
+Let's take a look at the breakdown of interactions between the different actors and components in this scenario:
+<center>
+![/_static/images/flow-oidc-verification.png](/_static/images/flow-oidc-verification.png){width=70%}
+</center>
 
 ### Setup our demo
 
-Let's create a new npm project
+Let's create a new npm project:
 
 ```
 npm init
 ```
 
-and add our dependencies
+Add our dependencies:
 
 ```
 npm install express @trinsic/trinsic
@@ -85,7 +89,7 @@ app.listen(PORT, () => {
 });
 ```
 
-# Example web page
+### Example web page
 
 Create a new file named `index.html` at the root of the repo and reference Trinsic's SDK.
 
