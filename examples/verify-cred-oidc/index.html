@@ -2143,6 +2143,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#example-web-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example web page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the demo
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2172,11 +2194,15 @@
 <p>In this example we'll setup a basic webpage and configure it to request a Verifiable Credential using OIDC protocol in a popup window. You can also configure OIDC using a browser redirect or embedded iframe, but this is beyond the scope of this example.
 We will also configure a backend API that will take the shared credential from the client and verify it using Trinsic's API. This step is optional, you can
 use any third-party service to verify the validity of the credential since these credentials are globally verifiable.</p>
+<p>Let's take a look at the breakdown of interactions between the different actors and components in this scenario:
+<center>
+<a class="glightbox" href="/_static/images/flow-oidc-verification.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="/_static/images/flow-oidc-verification.png" src="/_static/images/flow-oidc-verification.png" width="70%" /></a>
+</center></p>
 <h3 id="setup-our-demo">Setup our demo<a class="headerlink" href="#setup-our-demo" title="Permanent link">&para;</a></h3>
-<p>Let's create a new npm project</p>
+<p>Let's create a new npm project:</p>
 <div class="highlight"><pre><span></span><code>npm init
 </code></pre></div>
-<p>and add our dependencies</p>
+<p>Add our dependencies:</p>
 <div class="highlight"><pre><span></span><code>npm install express @trinsic/trinsic
 </code></pre></div>
 <h3 id="import-and-configure-services">Import and configure services<a class="headerlink" href="#import-and-configure-services" title="Permanent link">&para;</a></h3>
@@ -2223,7 +2249,7 @@ use any third-party service to verify the validity of the credential since these
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Access the demo page at http://localhost:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h1 id="example-web-page">Example web page<a class="headerlink" href="#example-web-page" title="Permanent link">&para;</a></h1>
+<h3 id="example-web-page">Example web page<a class="headerlink" href="#example-web-page" title="Permanent link">&para;</a></h3>
 <p>Create a new file named <code>index.html</code> at the root of the repo and reference Trinsic's SDK.</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/@trinsic/trinsic@1.11.3-pre.13/dist/trinsic.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>

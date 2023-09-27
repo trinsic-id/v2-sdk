@@ -2203,6 +2203,10 @@
 </div>
 <h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
 <p>This example uses a backend API to issue a verifiable credential and deliver the credential to the user's wallet using the <a href="https://chapi.io">Credential Handler API</a> (abbr. CHAPI - see <a href="https://w3c-ccg.github.io/credential-handler-api/">W3C specification</a>). The CHAPI protocol allows digital wallets to receive Verifiable Credentials from an independent third-party issuer - or present Verifiable Credentials to an independent third-party verifier - in a way that establishes trust and preserves privacy. See our <a href="/guide/issuance/#send-credential-using-chapi">issuance guide</a> for more details about using CHAPI and its benefits.</p>
+<p>Let's take a look at the breakdown of interactions between the different actors and components in this scenario:
+<center>
+<a class="glightbox" href="/_static/images/flow-chapi-issuance.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="/_static/images/flow-chapi-issuance.png" src="/_static/images/flow-chapi-issuance.png" width="70%" /></a>
+</center></p>
 <p>In this guide, we will go through the process of setting up an example API endpoint, and a simple web page that consumes this enpoint and invokes CHAPI in the browser.</p>
 <h3 id="install-dependencies">Install dependencies<a class="headerlink" href="#install-dependencies" title="Permanent link">&para;</a></h3>
 <p>We will use Express to create a simple API and also install Trinsic's SDK.</p>
