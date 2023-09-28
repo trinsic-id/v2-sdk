@@ -274,12 +274,14 @@ export class ConnectClient {
         document.head.appendChild(style);
 
         window.addEventListener("message", async (e) => {
-            this.popupWindow?.close();
-            var response = await this.oidcClient?.processSigninResponse(
-                e.data.url
-            );
-            this.processCallback(response);
-        });
+          if(e.data.source !== "oidc-client") return
+          if(e.data.url === undefined) return
+          this.popupWindow?.close();
+          var response = await this.oidcClient?.processSigninResponse(
+              e.data.url
+          );
+          this.processCallback(response);
+      });
     }
 
     public detectMobile = (): MobileDetect => {
