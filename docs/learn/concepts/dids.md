@@ -32,7 +32,7 @@ In an IDtech product, *issuers* and *holders* will have its own DID, which will 
 
 When verifying a credential, the verifier looks at the DID in the `issuer` field and resolves it to fetch its associated **DID Document**. Then, they verify that the `proof` field is cryptographically valid and was generated using one of the keys in the DID Document. This process guarantees that the issuer claimed by the credential is indeed the entity that signed the credential and that the credential has not been modified.
 
-At Trinsic, when a [wallet](https://docs-v2.trinsic.id/learn/concepts/wallets) is created, we generate a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a `did:key` DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the `public_did` field of the wallet object.
+At Trinsic, when a [wallet](https://docs-v2.trinsic.id/learn/concepts/wallets) is created, we generate a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a `did:web` DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the `public_did` field of the wallet object.
 
 When using this scheme, one must only maintain a list of issuer DIDs which are trusted to issue credentials of a certain type (this might be accomplished by a [Trust Registry](https://docs-v2.trinsic.id/learn/concepts/trust-registries)); the cryptographic guarantees of DIDs and VCs take care of the rest.
 
@@ -44,14 +44,14 @@ We plan to grow the list of supported DID methods as we move towards general ava
 
 | Method   | Type               | Notes                                                                                                                                                                                                                       |
 |----------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| did:key  | Static             | The default DID method for all wallets. Encodes key information directly in the DID; as a result, key rotation requires a new DID.                                                                                          |
+| did:web  | Dynamic             | The default DID method for all wallets. Allows the use of regular web domains to host DID documents and resolution via standard HTTP protocols.                                                                                         |
 | did:ion  | Distributed Ledger | ION is a sidetree/Layer-2 protocol on top of the Bitcoin blockchain. Registering a DID will incur charges if on the mainnet network. [IonOptions](/reference/proto#services-provider-v1-IonOptions)                         |
 | did:indy | Distributed Ledger | INDY is a Hyperledger Indy based protocol. Registering a DID will incur charges if on the main (non test) networks [IndyOptions](/reference/proto#services-provider-v1-IndyOptions)                                         |
 | did:sov  | Distributed Ledger | SOV is the Sovrin Foundation implementation of Hyperledger Indy. It is available via `did:indy:sov` prefix Under *IndyOptions* above. Registering a DID will incur charges if on the main (non test / non builder) networks |
 
 ### Upgrading wallet DIDs
 
-Providers of an ecosystem may *upgrade* a wallet's DID from `did:key` to any of the supported methods via [a simple API call](https://docs-v2.trinsic.id/reference/services/provider-service/#upgrade-wallet-did). Trinsic handles the complexities of this process for you.
+Providers of an ecosystem may *upgrade* a wallet's DID from `did:web` to any of the supported methods via [a simple API call](https://docs-v2.trinsic.id/reference/services/provider-service/#upgrade-wallet-did). Trinsic handles the complexities of this process for you.
 
 Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:
 
