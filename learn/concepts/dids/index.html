@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2+insiders-4.42.0">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.5+insiders-4.42.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2778614.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.13544b29.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.46987102.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -2341,7 +2341,7 @@ The goal of DIDs is to provide a decentralized, method-agnostic way to bundle an
 <p>Trinsic abstracts away the complexities of working with DIDs and cryptography, allowing you to focus on building a great identity product.</p>
 <p>In an IDtech product, <em>issuers</em> and <em>holders</em> will have its own DID, which will be specified in the credentials issued/held by it. It signs a cryptographic proof against the contents of the credential (using its own private key) and stores this in the <code>proof</code> field of the credential. Critically, the public key associated with the signing private key is stored in the issuer's DID Document.</p>
 <p>When verifying a credential, the verifier looks at the DID in the <code>issuer</code> field and resolves it to fetch its associated <strong>DID Document</strong>. Then, they verify that the <code>proof</code> field is cryptographically valid and was generated using one of the keys in the DID Document. This process guarantees that the issuer claimed by the credential is indeed the entity that signed the credential and that the credential has not been modified.</p>
-<p>At Trinsic, when a <a href="https://docs-v2.trinsic.id/learn/concepts/wallets">wallet</a> is created, we generate a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a <code>did:key</code> DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the <code>public_did</code> field of the wallet object.</p>
+<p>At Trinsic, when a <a href="https://docs-v2.trinsic.id/learn/concepts/wallets">wallet</a> is created, we generate a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a <code>did:web</code> DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the <code>public_did</code> field of the wallet object.</p>
 <p>When using this scheme, one must only maintain a list of issuer DIDs which are trusted to issue credentials of a certain type (this might be accomplished by a <a href="https://docs-v2.trinsic.id/learn/concepts/trust-registries">Trust Registry</a>); the cryptographic guarantees of DIDs and VCs take care of the rest.</p>
 <h3 id="supported-did-methods">Supported DID methods<a class="headerlink" href="#supported-did-methods" title="Permanent link">&para;</a></h3>
 <p><strong>More to come</strong></p>
@@ -2356,9 +2356,9 @@ The goal of DIDs is to provide a decentralized, method-agnostic way to bundle an
 </thead>
 <tbody>
 <tr>
-<td>did:key</td>
-<td>Static</td>
-<td>The default DID method for all wallets. Encodes key information directly in the DID; as a result, key rotation requires a new DID.</td>
+<td>did:web</td>
+<td>Dynamic</td>
+<td>The default DID method for all wallets. Allows the use of regular web domains to host DID documents and resolution via standard HTTP protocols.</td>
 </tr>
 <tr>
 <td>did:ion</td>
@@ -2378,7 +2378,7 @@ The goal of DIDs is to provide a decentralized, method-agnostic way to bundle an
 </tbody>
 </table>
 <h3 id="upgrading-wallet-dids">Upgrading wallet DIDs<a class="headerlink" href="#upgrading-wallet-dids" title="Permanent link">&para;</a></h3>
-<p>Providers of an ecosystem may <em>upgrade</em> a wallet's DID from <code>did:key</code> to any of the supported methods via <a href="https://docs-v2.trinsic.id/reference/services/provider-service/#upgrade-wallet-did">a simple API call</a>. Trinsic handles the complexities of this process for you.</p>
+<p>Providers of an ecosystem may <em>upgrade</em> a wallet's DID from <code>did:web</code> to any of the supported methods via <a href="https://docs-v2.trinsic.id/reference/services/provider-service/#upgrade-wallet-did">a simple API call</a>. Trinsic handles the complexities of this process for you.</p>
 <p>Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:</p>
 <p><strong>Data Protection &amp; Compliance</strong></p>
 <p>When writing an identifier to a public, permanent resource like a blockchain, it’s important to be extremely sure that you want that data to remain there forever. Permanence is hard to reconcile with “right to be forgotten”, and the jury is out on whether a person’s identifiers are considered personal data (literally).</p>
@@ -2508,6 +2508,7 @@ The goal of DIDs is to provide a decentralized, method-agnostic way to bundle an
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+    
       <div class="md-consent" data-md-component="consent" id="__consent" hidden>
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
@@ -2582,10 +2583,10 @@ The goal of DIDs is to provide a decentralized, method-agnostic way to bundle an
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.f2da59ea.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.65061dd4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.59e7e423.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
