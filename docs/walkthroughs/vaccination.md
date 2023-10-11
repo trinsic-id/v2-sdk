@@ -585,7 +585,7 @@ First, let's grab our account info. You can use an email address, walletId or Pu
         {
           ...
           "ecosystem_id": "urn:trinsic:ecosystems:<ecosystem-name>",
-          "public_did": "did:key:xxxxxxxx......", // <public_did>
+          "public_did": "did:web:xxxxxxxx......", // <public_did>
           "wallet_id": "urn:trinsic:wallets:xxxxxx....>"
         }
         ```

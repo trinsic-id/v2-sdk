@@ -75,7 +75,7 @@ Here's an example of a VC with extended issuer information:
 
 ```json
 "issuer": {
-    "id": "did:key:z5TcEFAQPu7RkrBCMCJDGgVziV",
+    "id": "did:web:ecosystemid.connect.trinsic.cloud:z5TcEFAQPu7RkrBCMCJDGgVziV",
     "type": "AuthoritativeMember"
     "governanceFramework": "https://acme.org/authorized-issuers",
     "trustRegistry": "urn:egf:acme:92f21b4cb3bc48dd8bb19a872f03afca",

@@ -15,7 +15,7 @@ Registers an authorized issuer for a specific credential type (identified by its
         ```bash
         trinsic trust-registry register-member \
             --schema https://w3id.org/vaccination#VaccinationCertificate \
-            --did did:key:xxxxx.....
+            --did did:web:xxxxx.....
         ```
 
     === "TypeScript"
