@@ -1,5 +1,5 @@
 # The Trinsic Dart SDK
-The Trinsic Dart SDK makes it easy to interact with the Trinsic API from your Dart/Flutter application. The most recent version of the library can be found on [pub.dev](https://pub.dev/packages/trinsic_dart). You can also find the SDKs source on [Github](https://github.com/trinsic-id/sdk/dart).
+The Trinsic Dart SDK makes it easy to interact with the Trinsic API from your Dart/Flutter application. The most recent version of the library can be found on [pub.dev](https://pub.dev/packages/trinsic_dart). You can also find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/dart).
 
 
 !!! note "Supported runtimes"
