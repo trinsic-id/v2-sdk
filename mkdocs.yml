@@ -8,6 +8,7 @@ nav:
   - Home: index.md
   - Platform:
     - Getting Started: guide/platform-walkthrough.md
+    - Trinsic Connect: platform/connect.md
     - Dashboard:
       - Ecosystem Branding: platform/ecosystem-branding.md
       - Domain Verification: platform/domain-verification.md
