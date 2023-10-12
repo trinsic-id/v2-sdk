@@ -91,3 +91,7 @@ sequenceDiagram
 ```
 
 ## How to integrate?
+
+1. Contact the Trinsic team to get access to the configuration portal.
+1. Access the [Trinsic Studio](https://idv.connect.trinsic.cloud) to configure your Connect integration and retrieve your auth token.
+1. See our [Identity Verification Examples](https://docs.trinsic.id/examples/#identity-document-verfications) for easy ways to get started
