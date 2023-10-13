@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@trinsic/trinsic": "^1.11.2"
+    "@trinsic/trinsic": "^1.11.4"
   }
 }
