@@ -1,6 +1,4 @@
 import 'package:test/test.dart';
-import 'package:trinsic_dart/src/trinsic_util.dart';
-import 'package:trinsic_dart/trinsic.dart';
 
 import '../example/ecosystem_example.dart';
 import '../example/templates_demo.dart';
