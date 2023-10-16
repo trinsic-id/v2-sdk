@@ -19,7 +19,7 @@ These example showcase common scenarios for the issuance of verifiable credentia
 
     <span class="pill node">node.js</span>
 
-    Quickly issue a credential directly at your backend and send the issued credential
+    Quickly issue a credential directly to your backend and send the issued credential
     to the user's wallet by specifying their email address. This example is performed on the backend.
 
     <br />
@@ -78,7 +78,7 @@ These example showcase common scenarios for the issuance of verifiable credentia
 
     <br />
 
-    [:octicons-arrow-right-24: Guide for iOS in Swift](/examples/verify-cred-swift)
+    Coming soon...
 
 -   __Request Verifiable Credential on Android__
 
@@ -88,7 +88,7 @@ These example showcase common scenarios for the issuance of verifiable credentia
 
 </div>
 
-## Identity Document Verfications
+## Identity Document Verifications
 
 <div class="grid cards" markdown>
 
@@ -104,7 +104,7 @@ These example showcase common scenarios for the issuance of verifiable credentia
 
     [:octicons-arrow-right-24: Guide in Node.js API and browser](/examples/idv-browser)
 
--   __Request Identity Document Verfication on iOS and MacOS__
+-   __Request Identity Document Verification on iOS and MacOS__
 
     ---
 
