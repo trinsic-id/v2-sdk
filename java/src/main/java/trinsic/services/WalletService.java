@@ -89,6 +89,15 @@ public class WalletService extends ServiceBase {
     return withMetadata(stub, request).getMyInfo(request);
   }
   /**
+   * Retrieve information from an ecosystem wallet by searching for its external identity (email or
+   * phone)
+   */
+  public ListenableFuture<GetWalletFromExternalIdentityResponse> getWalletFromExternalIdentity(
+      GetWalletFromExternalIdentityRequest request) throws InvalidProtocolBufferException {
+
+    return withMetadata(stub, request).getWalletFromExternalIdentity(request);
+  }
+  /**
    * Generate new token for a given wallet and add it to the collection of known auth tokens. This
    * endpoint requires authentication and will return a new token ID and auth token. Use this
    * endpoint if you want to authorize another device, without having to share your existing auth

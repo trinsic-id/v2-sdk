@@ -82,6 +82,14 @@ class WalletService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
+  Future<GetWalletFromExternalIdentityResponse> getWalletFromExternalIdentity(
+      GetWalletFromExternalIdentityRequest request) async {
+    ///  Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+
+    return client.getWalletFromExternalIdentity(request,
+        options: await buildMetadata(request: request));
+  }
+
   Future<GenerateAuthTokenResponse> generateAuthToken(
       GenerateAuthTokenRequest request) async {
     ///  Generate new token for a given wallet and add it to the collection of known auth tokens.
