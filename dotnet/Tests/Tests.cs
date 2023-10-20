@@ -555,7 +555,7 @@ public class Tests
         // var trinsic = new TrinsicService(options);
 
         // Step 1 - initiate identity challenge
-        var addExternalIdentityInitRequest = new AddExternalIdentityInitRequest {
+        var addExternalIdentityInitRequest = new AddExternalIdentityConfirmRequest {
             Identity = "user123@acme-corp.org",
             Provider = IdentityProvider.Email
         };
@@ -572,10 +572,16 @@ public class Tests
         // }
 
 
-        // ADD HERE
+        // getWalletFromExternalIdentity() {
+        var getWalletFromExternalIdentityRequest = new GetWalletFromExternalIdentityRequest {
+            Identity = new WalletExternalIdentity() {
+                Id = "user123@trinsic.id",,
+                Provider = IdentityProvider.Email
+            };
+        };
 
-
-
+        var getWalletFromExternalIdentityResponse = await trinsic.Wallet.GetWalletFromExternalIdentityAsync(getWalletFromExternalIdentityRequest);
+        // }
 
 
         // authenticateInit() {
