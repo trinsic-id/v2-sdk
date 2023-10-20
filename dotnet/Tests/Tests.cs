@@ -541,11 +541,11 @@ public class Tests
         var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(createWalletRequest);
 
         // Response:
-        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
-        //     "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
-        //     "wallet":
-        //         "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
-        //         "publicDid": "did:key:123456"
+        //   "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
+        //   "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
+        //   "wallet":
+        //       "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
+        //       "publicDid": "did:key:123456"
 
         // }
 

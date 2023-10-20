@@ -34,7 +34,7 @@ This may be needed if the user is logging in on a different device, have lost ac
 The process for adding external identity is based on confirming an OTP code that will be sent to the user's email address or phone number. To do this, you should call the
 services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
-#### AddExternalIdentityInit
+### AddExternalIdentityInit
 
 {{ proto_sample_start() }}
     === "C#"
@@ -46,7 +46,7 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit") }}
 
-#### AddExternalIdentityConfirm
+### AddExternalIdentityConfirm
 
 {{ proto_sample_start() }}
     === "C#"
@@ -90,7 +90,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
     - Users want to log in to a different device using their email or phone number
     - Returning users that have lost their previous session and require new auth token
 
-#### AuthenticateInit
+### AuthenticateInit
 
 {{ proto_sample_start() }}
     === "C#"
@@ -102,7 +102,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateInit") }}
 
-#### AuthenticateConfirm
+### AuthenticateConfirm
 
 {{ proto_sample_start() }}
     === "C#"
