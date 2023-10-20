@@ -522,7 +522,7 @@ public class Tests
     }
 
     [Fact(DisplayName = "Demo: Wallet Service samples")]
-    public async Task DemoTemplatesWithIssuance() {
+    public async Task DemoWalletServiceMethods() {
         var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
