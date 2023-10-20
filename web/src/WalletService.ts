@@ -91,6 +91,13 @@ export class WalletService extends ServiceBase {
       metadata: await this.buildMetadata(proto.GetMyInfoRequest.encode(request).finish())
     });
   }
+  /** Retrieve information from an ecosystem wallet by searching for its external identity (email or phone) */
+  public async getWalletFromExternalIdentity(request: proto.GetWalletFromExternalIdentityRequest): Promise<proto.GetWalletFromExternalIdentityResponse> {
+    
+    return this.client.getWalletFromExternalIdentity(request, {
+      metadata: await this.buildMetadata(proto.GetWalletFromExternalIdentityRequest.encode(request).finish())
+    });
+  }
   /** Generate new token for a given wallet and add it to the collection of known auth tokens.
 * This endpoint requires authentication and will return a new token ID and auth token.
 * Use this endpoint if you want to authorize another device, without having to share your

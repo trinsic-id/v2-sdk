@@ -110,6 +110,15 @@ class WalletService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
+    async def get_wallet_from_external_identity(
+        self, *, request: GetWalletFromExternalIdentityRequest
+    ) -> GetWalletFromExternalIdentityResponse:
+        """Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)"""
+
+        return await self.client.get_wallet_from_external_identity(
+            request, metadata=self.build_metadata(request)
+        )
+
     async def generate_auth_token(
         self, *, request: GenerateAuthTokenRequest
     ) -> GenerateAuthTokenResponse:

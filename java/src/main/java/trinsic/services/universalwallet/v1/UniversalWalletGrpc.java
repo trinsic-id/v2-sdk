@@ -441,6 +441,60 @@ public final class UniversalWalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest,
+          trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>
+      getGetWalletFromExternalIdentityMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetWalletFromExternalIdentity",
+      requestType = trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest.class,
+      responseType =
+          trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest,
+          trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>
+      getGetWalletFromExternalIdentityMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest,
+            trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>
+        getGetWalletFromExternalIdentityMethod;
+    if ((getGetWalletFromExternalIdentityMethod =
+            UniversalWalletGrpc.getGetWalletFromExternalIdentityMethod)
+        == null) {
+      synchronized (UniversalWalletGrpc.class) {
+        if ((getGetWalletFromExternalIdentityMethod =
+                UniversalWalletGrpc.getGetWalletFromExternalIdentityMethod)
+            == null) {
+          UniversalWalletGrpc.getGetWalletFromExternalIdentityMethod =
+              getGetWalletFromExternalIdentityMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest,
+                          trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "GetWalletFromExternalIdentity"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1
+                                  .GetWalletFromExternalIdentityRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.universalwallet.v1
+                                  .GetWalletFromExternalIdentityResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new UniversalWalletMethodDescriptorSupplier(
+                              "GetWalletFromExternalIdentity"))
+                      .build();
+        }
+      }
+    }
+    return getGetWalletFromExternalIdentityMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.universalwallet.v1.GenerateAuthTokenRequest,
           trinsic.services.universalwallet.v1.GenerateAuthTokenResponse>
       getGenerateAuthTokenMethod;
@@ -1115,6 +1169,22 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
+     * Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+     * </pre>
+     */
+    public void getWalletFromExternalIdentity(
+        trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getGetWalletFromExternalIdentityMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Generate new token for a given wallet and add it to the collection of known auth tokens.
      * This endpoint requires authentication and will return a new token ID and auth token.
      * Use this endpoint if you want to authorize another device, without having to share your
@@ -1337,6 +1407,13 @@ public final class UniversalWalletGrpc {
                       trinsic.services.universalwallet.v1.GetMyInfoRequest,
                       trinsic.services.universalwallet.v1.GetMyInfoResponse>(
                       this, METHODID_GET_MY_INFO)))
+          .addMethod(
+              getGetWalletFromExternalIdentityMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest,
+                      trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>(
+                      this, METHODID_GET_WALLET_FROM_EXTERNAL_IDENTITY)))
           .addMethod(
               getGenerateAuthTokenMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1568,6 +1645,24 @@ public final class UniversalWalletGrpc {
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetMyInfoMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+     * </pre>
+     */
+    public void getWalletFromExternalIdentity(
+        trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetWalletFromExternalIdentityMethod(), getCallOptions()),
+          request,
+          responseObserver);
     }
 
     /**
@@ -1892,6 +1987,20 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
+     * Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+     * </pre>
+     */
+    public trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse
+        getWalletFromExternalIdentity(
+            trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetWalletFromExternalIdentityMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Generate new token for a given wallet and add it to the collection of known auth tokens.
      * This endpoint requires authentication and will return a new token ID and auth token.
      * Use this endpoint if you want to authorize another device, without having to share your
@@ -2179,6 +2288,22 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
+     * Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>
+        getWalletFromExternalIdentity(
+            trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetWalletFromExternalIdentityMethod(), getCallOptions()),
+          request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Generate new token for a given wallet and add it to the collection of known auth tokens.
      * This endpoint requires authentication and will return a new token ID and auth token.
      * Use this endpoint if you want to authorize another device, without having to share your
@@ -2337,16 +2462,17 @@ public final class UniversalWalletGrpc {
   private static final int METHODID_CREATE_WALLET = 6;
   private static final int METHODID_GET_WALLET_INFO = 7;
   private static final int METHODID_GET_MY_INFO = 8;
-  private static final int METHODID_GENERATE_AUTH_TOKEN = 9;
-  private static final int METHODID_REVOKE_AUTH_TOKEN = 10;
-  private static final int METHODID_ADD_EXTERNAL_IDENTITY_INIT = 11;
-  private static final int METHODID_ADD_EXTERNAL_IDENTITY_CONFIRM = 12;
-  private static final int METHODID_REMOVE_EXTERNAL_IDENTITY = 13;
-  private static final int METHODID_AUTHENTICATE_INIT = 14;
-  private static final int METHODID_AUTHENTICATE_CONFIRM = 15;
-  private static final int METHODID_AUTHENTICATE_RESEND_CODE = 16;
-  private static final int METHODID_LIST_WALLETS = 17;
-  private static final int METHODID_LIST_BY_VERIFICATION_TEMPLATE = 18;
+  private static final int METHODID_GET_WALLET_FROM_EXTERNAL_IDENTITY = 9;
+  private static final int METHODID_GENERATE_AUTH_TOKEN = 10;
+  private static final int METHODID_REVOKE_AUTH_TOKEN = 11;
+  private static final int METHODID_ADD_EXTERNAL_IDENTITY_INIT = 12;
+  private static final int METHODID_ADD_EXTERNAL_IDENTITY_CONFIRM = 13;
+  private static final int METHODID_REMOVE_EXTERNAL_IDENTITY = 14;
+  private static final int METHODID_AUTHENTICATE_INIT = 15;
+  private static final int METHODID_AUTHENTICATE_CONFIRM = 16;
+  private static final int METHODID_AUTHENTICATE_RESEND_CODE = 17;
+  private static final int METHODID_LIST_WALLETS = 18;
+  private static final int METHODID_LIST_BY_VERIFICATION_TEMPLATE = 19;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2420,6 +2546,13 @@ public final class UniversalWalletGrpc {
           serviceImpl.getMyInfo(
               (trinsic.services.universalwallet.v1.GetMyInfoRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.GetMyInfoResponse>)
+                  responseObserver);
+          break;
+        case METHODID_GET_WALLET_FROM_EXTERNAL_IDENTITY:
+          serviceImpl.getWalletFromExternalIdentity(
+              (trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.universalwallet.v1.GetWalletFromExternalIdentityResponse>)
                   responseObserver);
           break;
         case METHODID_GENERATE_AUTH_TOKEN:
@@ -2564,6 +2697,7 @@ public final class UniversalWalletGrpc {
                       .addMethod(getCreateWalletMethod())
                       .addMethod(getGetWalletInfoMethod())
                       .addMethod(getGetMyInfoMethod())
+                      .addMethod(getGetWalletFromExternalIdentityMethod())
                       .addMethod(getGenerateAuthTokenMethod())
                       .addMethod(getRevokeAuthTokenMethod())
                       .addMethod(getAddExternalIdentityInitMethod())

@@ -120,7 +120,7 @@ message CreateWalletRequest {
   // such as email, phone, internal ID, or anything you'd like to associate
   // with this wallet. This field is searchable.
   optional string description = 2 [(options.optional) = true];
-  // Optional identity to add to the wallet (email or sms). 
+  // Optional identity to add to the wallet (email or sms).
   // Use this field when inviting participants into an ecosystem.
   // If this field is set, an auth token will not be sent in the response.
   optional ExternalIdentity identity = 3 [(options.optional) = true];
@@ -188,6 +188,16 @@ message ListWalletsResponse{
   repeated services.provider.v1.WalletConfiguration wallets = 1;
 }
 
+message GetWalletFromExternalIdentityRequest {
+  services.provider.v1.WalletExternalIdentity identity = 1;
+}
+
+// Response to `GetWalletFromExternalIdentityRequest`
+message GetWalletFromExternalIdentityResponse {
+  // Wallet configuration
+  services.provider.v1.WalletConfiguration wallet = 1;
+}
+
 // Service for managing wallets
 service UniversalWallet {
   // Retrieve an item from the wallet with a given item identifier
@@ -214,6 +224,9 @@ service UniversalWallet {
   rpc GetMyInfo(GetMyInfoRequest) returns (GetMyInfoResponse) {
     option (options.sdk_template_option).no_arguments = true;
   }
+
+  // Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+  rpc GetWalletFromExternalIdentity(GetWalletFromExternalIdentityRequest) returns (GetWalletFromExternalIdentityResponse);
 
   // Generate new token for a given wallet and add it to the collection of known auth tokens.
   // This endpoint requires authentication and will return a new token ID and auth token.
@@ -315,7 +328,7 @@ message AuthenticateConfirmResponse {
   string auth_token = 1;
 }
 
-// Request to list templates by 
+// Request to list templates by
 message ListByVerificationTemplateRequest {
   // ID of verification template to list matching credentials
   string verification_template_id = 1;

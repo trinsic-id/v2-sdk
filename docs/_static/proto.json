@@ -2334,6 +2334,30 @@
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": "services.universalwallet.v1.GetMyInfoResponse"
     },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityRequest.identity": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GetWalletFromExternalIdentityRequest"
+    },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityResponse.wallet": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": "services.universalwallet.v1.GetWalletFromExternalIdentityResponse"
+    },
     "services.universalwallet.v1.GetWalletInfoRequest": {
       "type": "message",
       "collection": "messages",
@@ -2605,6 +2629,12 @@
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.GetMyInfo": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/universal-wallet/v1/universal-wallet.proto",
+      "parent": ""
+    },
+    "services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity": {
       "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
@@ -4725,6 +4755,7 @@
         "services.universalwallet.v1.UniversalWallet.CreateWallet",
         "services.universalwallet.v1.UniversalWallet.GetWalletInfo",
         "services.universalwallet.v1.UniversalWallet.GetMyInfo",
+        "services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity",
         "services.universalwallet.v1.UniversalWallet.GenerateAuthToken",
         "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
         "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
@@ -4762,6 +4793,8 @@
         "services.universalwallet.v1.RevokeAuthTokenResponse",
         "services.universalwallet.v1.ListWalletsRequest",
         "services.universalwallet.v1.ListWalletsResponse",
+        "services.universalwallet.v1.GetWalletFromExternalIdentityRequest",
+        "services.universalwallet.v1.GetWalletFromExternalIdentityResponse",
         "services.universalwallet.v1.AddExternalIdentityInitRequest",
         "services.universalwallet.v1.AddExternalIdentityInitResponse",
         "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
@@ -4814,6 +4847,8 @@
         "services.universalwallet.v1.RevokeAuthTokenRequest.token_id",
         "services.universalwallet.v1.ListWalletsRequest.filter",
         "services.universalwallet.v1.ListWalletsResponse.wallets",
+        "services.universalwallet.v1.GetWalletFromExternalIdentityRequest.identity",
+        "services.universalwallet.v1.GetWalletFromExternalIdentityResponse.wallet",
         "services.universalwallet.v1.AddExternalIdentityInitRequest.identity",
         "services.universalwallet.v1.AddExternalIdentityInitRequest.provider",
         "services.universalwallet.v1.AddExternalIdentityInitResponse.challenge",
@@ -5203,6 +5238,7 @@
         "services.universalwallet.v1.UniversalWallet.CreateWallet",
         "services.universalwallet.v1.UniversalWallet.GetWalletInfo",
         "services.universalwallet.v1.UniversalWallet.GetMyInfo",
+        "services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity",
         "services.universalwallet.v1.UniversalWallet.GenerateAuthToken",
         "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
         "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
@@ -5517,6 +5553,13 @@
       "options": {
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
+    },
+    "services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity": {
+      "name": "GetWalletFromExternalIdentity",
+      "full_name": "services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity",
+      "input_type": "services.universalwallet.v1.GetWalletFromExternalIdentityRequest",
+      "output_type": "services.universalwallet.v1.GetWalletFromExternalIdentityResponse",
+      "description": "Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)"
     },
     "services.universalwallet.v1.UniversalWallet.GetWalletInfo": {
       "name": "GetWalletInfo",
@@ -6735,6 +6778,26 @@
       "description": "Response to `GetMyInfoRequest`",
       "fields": [
         "services.universalwallet.v1.GetMyInfoResponse.wallet"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityRequest": {
+      "name": "GetWalletFromExternalIdentityRequest",
+      "full_name": "services.universalwallet.v1.GetWalletFromExternalIdentityRequest",
+      "description": "",
+      "fields": [
+        "services.universalwallet.v1.GetWalletFromExternalIdentityRequest.identity"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityResponse": {
+      "name": "GetWalletFromExternalIdentityResponse",
+      "full_name": "services.universalwallet.v1.GetWalletFromExternalIdentityResponse",
+      "description": "Response to `GetWalletFromExternalIdentityRequest`",
+      "fields": [
+        "services.universalwallet.v1.GetWalletFromExternalIdentityResponse.wallet"
       ],
       "messages": [],
       "enums": []
@@ -9101,7 +9164,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "ExternalIdentity",
       "full_type": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity",
-      "description": "Optional identity to add to the wallet (email or sms). \nUse this field when inviting participants into an ecosystem.\nIf this field is set, an auth token will not be sent in the response.",
+      "description": "Optional identity to add to the wallet (email or sms).\nUse this field when inviting participants into an ecosystem.\nIf this field is set, an auth token will not be sent in the response.",
       "options": {
         "services.options.optional": true
       }
@@ -9221,6 +9284,22 @@
     "services.universalwallet.v1.GetMyInfoResponse.wallet": {
       "name": "wallet",
       "full_name": "services.universalwallet.v1.GetMyInfoResponse.wallet",
+      "label": "LABEL_OPTIONAL",
+      "type": "WalletConfiguration",
+      "full_type": "services.provider.v1.WalletConfiguration",
+      "description": "Wallet configuration"
+    },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityRequest.identity": {
+      "name": "identity",
+      "full_name": "services.universalwallet.v1.GetWalletFromExternalIdentityRequest.identity",
+      "label": "LABEL_OPTIONAL",
+      "type": "WalletExternalIdentity",
+      "full_type": "services.provider.v1.WalletExternalIdentity",
+      "description": ""
+    },
+    "services.universalwallet.v1.GetWalletFromExternalIdentityResponse.wallet": {
+      "name": "wallet",
+      "full_name": "services.universalwallet.v1.GetWalletFromExternalIdentityResponse.wallet",
       "label": "LABEL_OPTIONAL",
       "type": "WalletConfiguration",
       "full_type": "services.provider.v1.WalletConfiguration",

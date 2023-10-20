@@ -19,25 +19,26 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	UniversalWallet_GetItem_FullMethodName                    = "/services.universalwallet.v1.UniversalWallet/GetItem"
-	UniversalWallet_Search_FullMethodName                     = "/services.universalwallet.v1.UniversalWallet/Search"
-	UniversalWallet_InsertItem_FullMethodName                 = "/services.universalwallet.v1.UniversalWallet/InsertItem"
-	UniversalWallet_UpdateItem_FullMethodName                 = "/services.universalwallet.v1.UniversalWallet/UpdateItem"
-	UniversalWallet_DeleteItem_FullMethodName                 = "/services.universalwallet.v1.UniversalWallet/DeleteItem"
-	UniversalWallet_DeleteWallet_FullMethodName               = "/services.universalwallet.v1.UniversalWallet/DeleteWallet"
-	UniversalWallet_CreateWallet_FullMethodName               = "/services.universalwallet.v1.UniversalWallet/CreateWallet"
-	UniversalWallet_GetWalletInfo_FullMethodName              = "/services.universalwallet.v1.UniversalWallet/GetWalletInfo"
-	UniversalWallet_GetMyInfo_FullMethodName                  = "/services.universalwallet.v1.UniversalWallet/GetMyInfo"
-	UniversalWallet_GenerateAuthToken_FullMethodName          = "/services.universalwallet.v1.UniversalWallet/GenerateAuthToken"
-	UniversalWallet_RevokeAuthToken_FullMethodName            = "/services.universalwallet.v1.UniversalWallet/RevokeAuthToken"
-	UniversalWallet_AddExternalIdentityInit_FullMethodName    = "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit"
-	UniversalWallet_AddExternalIdentityConfirm_FullMethodName = "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm"
-	UniversalWallet_RemoveExternalIdentity_FullMethodName     = "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity"
-	UniversalWallet_AuthenticateInit_FullMethodName           = "/services.universalwallet.v1.UniversalWallet/AuthenticateInit"
-	UniversalWallet_AuthenticateConfirm_FullMethodName        = "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm"
-	UniversalWallet_AuthenticateResendCode_FullMethodName     = "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode"
-	UniversalWallet_ListWallets_FullMethodName                = "/services.universalwallet.v1.UniversalWallet/ListWallets"
-	UniversalWallet_ListByVerificationTemplate_FullMethodName = "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate"
+	UniversalWallet_GetItem_FullMethodName                       = "/services.universalwallet.v1.UniversalWallet/GetItem"
+	UniversalWallet_Search_FullMethodName                        = "/services.universalwallet.v1.UniversalWallet/Search"
+	UniversalWallet_InsertItem_FullMethodName                    = "/services.universalwallet.v1.UniversalWallet/InsertItem"
+	UniversalWallet_UpdateItem_FullMethodName                    = "/services.universalwallet.v1.UniversalWallet/UpdateItem"
+	UniversalWallet_DeleteItem_FullMethodName                    = "/services.universalwallet.v1.UniversalWallet/DeleteItem"
+	UniversalWallet_DeleteWallet_FullMethodName                  = "/services.universalwallet.v1.UniversalWallet/DeleteWallet"
+	UniversalWallet_CreateWallet_FullMethodName                  = "/services.universalwallet.v1.UniversalWallet/CreateWallet"
+	UniversalWallet_GetWalletInfo_FullMethodName                 = "/services.universalwallet.v1.UniversalWallet/GetWalletInfo"
+	UniversalWallet_GetMyInfo_FullMethodName                     = "/services.universalwallet.v1.UniversalWallet/GetMyInfo"
+	UniversalWallet_GetWalletFromExternalIdentity_FullMethodName = "/services.universalwallet.v1.UniversalWallet/GetWalletFromExternalIdentity"
+	UniversalWallet_GenerateAuthToken_FullMethodName             = "/services.universalwallet.v1.UniversalWallet/GenerateAuthToken"
+	UniversalWallet_RevokeAuthToken_FullMethodName               = "/services.universalwallet.v1.UniversalWallet/RevokeAuthToken"
+	UniversalWallet_AddExternalIdentityInit_FullMethodName       = "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit"
+	UniversalWallet_AddExternalIdentityConfirm_FullMethodName    = "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm"
+	UniversalWallet_RemoveExternalIdentity_FullMethodName        = "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity"
+	UniversalWallet_AuthenticateInit_FullMethodName              = "/services.universalwallet.v1.UniversalWallet/AuthenticateInit"
+	UniversalWallet_AuthenticateConfirm_FullMethodName           = "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm"
+	UniversalWallet_AuthenticateResendCode_FullMethodName        = "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode"
+	UniversalWallet_ListWallets_FullMethodName                   = "/services.universalwallet.v1.UniversalWallet/ListWallets"
+	UniversalWallet_ListByVerificationTemplate_FullMethodName    = "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate"
 )
 
 // UniversalWalletClient is the client API for UniversalWallet service.
@@ -62,6 +63,8 @@ type UniversalWalletClient interface {
 	GetWalletInfo(ctx context.Context, in *GetWalletInfoRequest, opts ...grpc.CallOption) (*GetWalletInfoResponse, error)
 	// Retrieve wallet details and configuration about the currently authenticated wallet
 	GetMyInfo(ctx context.Context, in *GetMyInfoRequest, opts ...grpc.CallOption) (*GetMyInfoResponse, error)
+	// Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+	GetWalletFromExternalIdentity(ctx context.Context, in *GetWalletFromExternalIdentityRequest, opts ...grpc.CallOption) (*GetWalletFromExternalIdentityResponse, error)
 	// Generate new token for a given wallet and add it to the collection of known auth tokens.
 	// This endpoint requires authentication and will return a new token ID and auth token.
 	// Use this endpoint if you want to authorize another device, without having to share your
@@ -173,6 +176,15 @@ func (c *universalWalletClient) GetWalletInfo(ctx context.Context, in *GetWallet
 func (c *universalWalletClient) GetMyInfo(ctx context.Context, in *GetMyInfoRequest, opts ...grpc.CallOption) (*GetMyInfoResponse, error) {
 	out := new(GetMyInfoResponse)
 	err := c.cc.Invoke(ctx, UniversalWallet_GetMyInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *universalWalletClient) GetWalletFromExternalIdentity(ctx context.Context, in *GetWalletFromExternalIdentityRequest, opts ...grpc.CallOption) (*GetWalletFromExternalIdentityResponse, error) {
+	out := new(GetWalletFromExternalIdentityResponse)
+	err := c.cc.Invoke(ctx, UniversalWallet_GetWalletFromExternalIdentity_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -291,6 +303,8 @@ type UniversalWalletServer interface {
 	GetWalletInfo(context.Context, *GetWalletInfoRequest) (*GetWalletInfoResponse, error)
 	// Retrieve wallet details and configuration about the currently authenticated wallet
 	GetMyInfo(context.Context, *GetMyInfoRequest) (*GetMyInfoResponse, error)
+	// Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+	GetWalletFromExternalIdentity(context.Context, *GetWalletFromExternalIdentityRequest) (*GetWalletFromExternalIdentityResponse, error)
 	// Generate new token for a given wallet and add it to the collection of known auth tokens.
 	// This endpoint requires authentication and will return a new token ID and auth token.
 	// Use this endpoint if you want to authorize another device, without having to share your
@@ -350,6 +364,9 @@ func (UnimplementedUniversalWalletServer) GetWalletInfo(context.Context, *GetWal
 }
 func (UnimplementedUniversalWalletServer) GetMyInfo(context.Context, *GetMyInfoRequest) (*GetMyInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMyInfo not implemented")
+}
+func (UnimplementedUniversalWalletServer) GetWalletFromExternalIdentity(context.Context, *GetWalletFromExternalIdentityRequest) (*GetWalletFromExternalIdentityResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWalletFromExternalIdentity not implemented")
 }
 func (UnimplementedUniversalWalletServer) GenerateAuthToken(context.Context, *GenerateAuthTokenRequest) (*GenerateAuthTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateAuthToken not implemented")
@@ -552,6 +569,24 @@ func _UniversalWallet_GetMyInfo_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UniversalWalletServer).GetMyInfo(ctx, req.(*GetMyInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UniversalWallet_GetWalletFromExternalIdentity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetWalletFromExternalIdentityRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversalWalletServer).GetWalletFromExternalIdentity(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UniversalWallet_GetWalletFromExternalIdentity_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversalWalletServer).GetWalletFromExternalIdentity(ctx, req.(*GetWalletFromExternalIdentityRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -778,6 +813,10 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetMyInfo",
 			Handler:    _UniversalWallet_GetMyInfo_Handler,
+		},
+		{
+			MethodName: "GetWalletFromExternalIdentity",
+			Handler:    _UniversalWallet_GetWalletFromExternalIdentity_Handler,
 		},
 		{
 			MethodName: "GenerateAuthToken",

@@ -5,6 +5,7 @@ import {
   identityProviderFromJSON,
   identityProviderToJSON,
   WalletConfiguration,
+  WalletExternalIdentity,
 } from "../../provider/v1/provider";
 
 /** Request to search items in wallet */
@@ -215,6 +216,16 @@ export interface ListWalletsRequest {
 
 export interface ListWalletsResponse {
   wallets?: WalletConfiguration[] | undefined;
+}
+
+export interface GetWalletFromExternalIdentityRequest {
+  identity?: WalletExternalIdentity | undefined;
+}
+
+/** Response to `GetWalletFromExternalIdentityRequest` */
+export interface GetWalletFromExternalIdentityResponse {
+  /** Wallet configuration */
+  wallet?: WalletConfiguration | undefined;
 }
 
 export interface AddExternalIdentityInitRequest {
@@ -1966,6 +1977,124 @@ export const ListWalletsResponse = {
   },
 };
 
+function createBaseGetWalletFromExternalIdentityRequest(): GetWalletFromExternalIdentityRequest {
+  return { identity: undefined };
+}
+
+export const GetWalletFromExternalIdentityRequest = {
+  encode(message: GetWalletFromExternalIdentityRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.identity !== undefined) {
+      WalletExternalIdentity.encode(message.identity, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetWalletFromExternalIdentityRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetWalletFromExternalIdentityRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.identity = WalletExternalIdentity.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetWalletFromExternalIdentityRequest {
+    return { identity: isSet(object.identity) ? WalletExternalIdentity.fromJSON(object.identity) : undefined };
+  },
+
+  toJSON(message: GetWalletFromExternalIdentityRequest): unknown {
+    const obj: any = {};
+    if (message.identity !== undefined) {
+      obj.identity = WalletExternalIdentity.toJSON(message.identity);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<GetWalletFromExternalIdentityRequest>): GetWalletFromExternalIdentityRequest {
+    return GetWalletFromExternalIdentityRequest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<GetWalletFromExternalIdentityRequest>): GetWalletFromExternalIdentityRequest {
+    const message = createBaseGetWalletFromExternalIdentityRequest();
+    message.identity = (object.identity !== undefined && object.identity !== null)
+      ? WalletExternalIdentity.fromPartial(object.identity)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseGetWalletFromExternalIdentityResponse(): GetWalletFromExternalIdentityResponse {
+  return { wallet: undefined };
+}
+
+export const GetWalletFromExternalIdentityResponse = {
+  encode(message: GetWalletFromExternalIdentityResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.wallet !== undefined) {
+      WalletConfiguration.encode(message.wallet, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetWalletFromExternalIdentityResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetWalletFromExternalIdentityResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.wallet = WalletConfiguration.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetWalletFromExternalIdentityResponse {
+    return { wallet: isSet(object.wallet) ? WalletConfiguration.fromJSON(object.wallet) : undefined };
+  },
+
+  toJSON(message: GetWalletFromExternalIdentityResponse): unknown {
+    const obj: any = {};
+    if (message.wallet !== undefined) {
+      obj.wallet = WalletConfiguration.toJSON(message.wallet);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<GetWalletFromExternalIdentityResponse>): GetWalletFromExternalIdentityResponse {
+    return GetWalletFromExternalIdentityResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<GetWalletFromExternalIdentityResponse>): GetWalletFromExternalIdentityResponse {
+    const message = createBaseGetWalletFromExternalIdentityResponse();
+    message.wallet = (object.wallet !== undefined && object.wallet !== null)
+      ? WalletConfiguration.fromPartial(object.wallet)
+      : undefined;
+    return message;
+  },
+};
+
 function createBaseAddExternalIdentityInitRequest(): AddExternalIdentityInitRequest {
   return { identity: "", provider: 0 };
 }
@@ -2942,6 +3071,15 @@ export const UniversalWalletDefinition = {
       responseType: GetMyInfoResponse,
       responseStream: false,
       options: { _unknownFields: { 480010: [new Uint8Array([2, 24, 1])] } },
+    },
+    /** Retrieve information from an ecosystem wallet by searching for its external identity (email or phone) */
+    getWalletFromExternalIdentity: {
+      name: "GetWalletFromExternalIdentity",
+      requestType: GetWalletFromExternalIdentityRequest,
+      requestStream: false,
+      responseType: GetWalletFromExternalIdentityResponse,
+      responseStream: false,
+      options: {},
     },
     /**
      * Generate new token for a given wallet and add it to the collection of known auth tokens.

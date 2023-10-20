@@ -211,6 +211,24 @@ public class WalletService : ServiceBase
     }
 
 	/// <summary>
+    /// Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+    /// </summary>
+    
+    public GetWalletFromExternalIdentityResponse GetWalletFromExternalIdentity(GetWalletFromExternalIdentityRequest request) {
+        
+        return Client.GetWalletFromExternalIdentity(request, BuildMetadata(request));
+    }
+	
+	/// <summary>
+    /// Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+    /// </summary>
+    
+    public async Task<GetWalletFromExternalIdentityResponse> GetWalletFromExternalIdentityAsync(GetWalletFromExternalIdentityRequest request) {
+        
+        return await Client.GetWalletFromExternalIdentityAsync(request, await BuildMetadataAsync(request));
+    }
+
+	/// <summary>
     /// Generate new token for a given wallet and add it to the collection of known auth tokens.
     ///  This endpoint requires authentication and will return a new token ID and auth token.
     ///  Use this endpoint if you want to authorize another device, without having to share your
