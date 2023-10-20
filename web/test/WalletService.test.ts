@@ -291,7 +291,7 @@ describe("WalletService Unit Tests", () => {
                 }
             });
 
-        // getWalletInfo()
+        // getWalletInfo() {
         //trinsic.options.authToken = trinsic.provider().options.authToken;
         trinsic.options.authToken = root.authToken;
 
@@ -300,8 +300,9 @@ describe("WalletService Unit Tests", () => {
                 walletId: createWalletResponse.wallet?.walletId,
             }),
         );
+        // }
 
-        // getWalletFromExternalIdentity()
+        // getWalletFromExternalIdentity() {
         trinsic.options.authToken = trinsic.provider().options.authToken;
 
         let getWalletFromExternalIdentityResponse = await trinsic.wallet().getWalletFromExternalIdentity(
@@ -312,6 +313,7 @@ describe("WalletService Unit Tests", () => {
                 }
             }),
         );
+        // }
     });
 
     it("Delete wallet functions", async () => {
