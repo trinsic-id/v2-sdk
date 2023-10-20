@@ -6,6 +6,7 @@ import {
     CreateEcosystemRequest,
     CreateProofRequest,
     FieldType,
+    GetWalletFromExternalIdentityRequest,
     GetWalletInfoRequest,
     InsertItemRequest,
     RejectCredentialRequest,
@@ -305,7 +306,7 @@ describe("WalletService Unit Tests", () => {
         let getWalletFromExternalIdentityResponse = await trinsic.wallet().getWalletFromExternalIdentity(
             GetWalletFromExternalIdentityRequest.fromPartial({
                 identity: {
-                    identity: "test@trinsic.id",
+                    id: "test@trinsic.id",
                     provider: 1,
                 }
             }),
