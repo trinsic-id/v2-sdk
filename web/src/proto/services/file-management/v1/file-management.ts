@@ -983,7 +983,7 @@ export const FileManagementDefinition = {
       requestStream: false,
       responseType: GetStorageStatsResponse,
       responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1]), new Uint8Array([2, 24, 1])] } },
+      options: { _unknownFields: { 480010: [new Uint8Array([6, 24, 1, 34, 2, 8, 1])] } },
     },
   },
 } as const;

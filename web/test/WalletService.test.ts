@@ -303,7 +303,7 @@ describe("WalletService Unit Tests", () => {
         trinsic.options.authToken = trinsic.provider().options.authToken;
 
         let getWalletFromExternalIdentityResponse = await trinsic.wallet().getWalletFromExternalIdentity(
-            getWalletFromExternalIdentityRequest.fromPartial({
+            GetWalletFromExternalIdentityRequest.fromPartial({
                 identity: {
                     identity: "test@trinsic.id",
                     provider: 1,
