@@ -49,6 +49,8 @@ type WalletService interface {
 	GetWalletInfo(userContext context.Context, request *wallet.GetWalletInfoRequest) (*wallet.GetWalletInfoResponse, error)
 	// GetMyInfo  Retrieve wallet details and configuration about the currently authenticated wallet
 	GetMyInfo(userContext context.Context) (*wallet.GetMyInfoResponse, error)
+	// GetWalletFromExternalIdentity  Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+	GetWalletFromExternalIdentity(userContext context.Context, request *wallet.GetWalletFromExternalIdentityRequest) (*wallet.GetWalletFromExternalIdentityResponse, error)
 	// GenerateAuthToken  Generate new token for a given wallet and add it to the collection of known auth tokens.
 	// This endpoint requires authentication and will return a new token ID and auth token.
 	// Use this endpoint if you want to authorize another device, without having to share your
@@ -211,6 +213,19 @@ func (w *universalWalletBase) GetMyInfo(userContext context.Context) (*wallet.Ge
 		return nil, err
 	}
 	response, err := w.client.GetMyInfo(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+// GetWalletFromExternalIdentity  Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)
+func (w *universalWalletBase) GetWalletFromExternalIdentity(userContext context.Context, request *wallet.GetWalletFromExternalIdentityRequest) (*wallet.GetWalletFromExternalIdentityResponse, error) {
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := w.client.GetWalletFromExternalIdentity(md, request)
 	if err != nil {
 		return nil, err
 	}

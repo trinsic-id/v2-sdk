@@ -69,6 +69,16 @@ class WalletServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(op
     return withMetadata(stub, request).getMyInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class)
+  suspend fun getWalletFromExternalIdentity(
+      request: GetWalletFromExternalIdentityRequest
+  ): GetWalletFromExternalIdentityResponse {
+    /**
+     * Retrieve information from an ecosystem wallet by searching for its external identity (email
+     * or phone)
+     */
+    return withMetadata(stub, request).getWalletFromExternalIdentity(request)
+  }
+  @Throws(InvalidProtocolBufferException::class)
   suspend fun generateAuthToken(request: GenerateAuthTokenRequest): GenerateAuthTokenResponse {
     /**
      * Generate new token for a given wallet and add it to the collection of known auth tokens. This

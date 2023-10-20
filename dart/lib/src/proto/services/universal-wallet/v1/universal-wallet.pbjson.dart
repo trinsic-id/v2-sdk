@@ -422,6 +422,49 @@ final $typed_data.Uint8List listWalletsResponseDescriptor = $convert.base64Decod
     'ChNMaXN0V2FsbGV0c1Jlc3BvbnNlEkMKB3dhbGxldHMYASADKAsyKS5zZXJ2aWNlcy5wcm92aW'
     'Rlci52MS5XYWxsZXRDb25maWd1cmF0aW9uUgd3YWxsZXRz');
 
+@$core.Deprecated('Use getWalletFromExternalIdentityRequestDescriptor instead')
+const GetWalletFromExternalIdentityRequest$json = {
+  '1': 'GetWalletFromExternalIdentityRequest',
+  '2': [
+    {
+      '1': 'identity',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.WalletExternalIdentity',
+      '10': 'identity'
+    },
+  ],
+};
+
+/// Descriptor for `GetWalletFromExternalIdentityRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getWalletFromExternalIdentityRequestDescriptor =
+    $convert.base64Decode(
+        'CiRHZXRXYWxsZXRGcm9tRXh0ZXJuYWxJZGVudGl0eVJlcXVlc3QSSAoIaWRlbnRpdHkYASABKA'
+        'syLC5zZXJ2aWNlcy5wcm92aWRlci52MS5XYWxsZXRFeHRlcm5hbElkZW50aXR5UghpZGVudGl0'
+        'eQ==');
+
+@$core.Deprecated('Use getWalletFromExternalIdentityResponseDescriptor instead')
+const GetWalletFromExternalIdentityResponse$json = {
+  '1': 'GetWalletFromExternalIdentityResponse',
+  '2': [
+    {
+      '1': 'wallet',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.WalletConfiguration',
+      '10': 'wallet'
+    },
+  ],
+};
+
+/// Descriptor for `GetWalletFromExternalIdentityResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getWalletFromExternalIdentityResponseDescriptor =
+    $convert.base64Decode(
+        'CiVHZXRXYWxsZXRGcm9tRXh0ZXJuYWxJZGVudGl0eVJlc3BvbnNlEkEKBndhbGxldBgBIAEoCz'
+        'IpLnNlcnZpY2VzLnByb3ZpZGVyLnYxLldhbGxldENvbmZpZ3VyYXRpb25SBndhbGxldA==');
+
 @$core.Deprecated('Use addExternalIdentityInitRequestDescriptor instead')
 const AddExternalIdentityInitRequest$json = {
   '1': 'AddExternalIdentityInitRequest',

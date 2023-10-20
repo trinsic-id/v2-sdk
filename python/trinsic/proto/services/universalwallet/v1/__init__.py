@@ -171,7 +171,7 @@ class CreateWalletRequest(betterproto.Message):
         "CreateWalletRequestExternalIdentity"
     ] = betterproto.message_field(3, optional=True, group="_identity")
     """
-    Optional identity to add to the wallet (email or sms).  Use this field when
+    Optional identity to add to the wallet (email or sms). Use this field when
     inviting participants into an ecosystem. If this field is set, an auth
     token will not be sent in the response.
     """
@@ -274,6 +274,19 @@ class ListWalletsRequest(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class ListWalletsResponse(betterproto.Message):
     wallets: List["__provider_v1__.WalletConfiguration"] = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class GetWalletFromExternalIdentityRequest(betterproto.Message):
+    identity: "__provider_v1__.WalletExternalIdentity" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class GetWalletFromExternalIdentityResponse(betterproto.Message):
+    """Response to `GetWalletFromExternalIdentityRequest`"""
+
+    wallet: "__provider_v1__.WalletConfiguration" = betterproto.message_field(1)
+    """Wallet configuration"""
 
 
 @dataclass(eq=False, repr=False)
@@ -555,6 +568,22 @@ class UniversalWalletStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def get_wallet_from_external_identity(
+        self,
+        get_wallet_from_external_identity_request: "GetWalletFromExternalIdentityRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetWalletFromExternalIdentityResponse":
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/GetWalletFromExternalIdentity",
+            get_wallet_from_external_identity_request,
+            GetWalletFromExternalIdentityResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
     async def generate_auth_token(
         self,
         generate_auth_token_request: "GenerateAuthTokenRequest",
@@ -758,6 +787,12 @@ class UniversalWalletBase(ServiceBase):
     ) -> "GetMyInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def get_wallet_from_external_identity(
+        self,
+        get_wallet_from_external_identity_request: "GetWalletFromExternalIdentityRequest",
+    ) -> "GetWalletFromExternalIdentityResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def generate_auth_token(
         self, generate_auth_token_request: "GenerateAuthTokenRequest"
     ) -> "GenerateAuthTokenResponse":
@@ -851,6 +886,13 @@ class UniversalWalletBase(ServiceBase):
     async def __rpc_get_my_info(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.get_my_info(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_wallet_from_external_identity(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.get_wallet_from_external_identity(request)
         await stream.send_message(response)
 
     async def __rpc_generate_auth_token(self, stream: grpclib.server.Stream) -> None:
@@ -968,6 +1010,12 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetMyInfoRequest,
                 GetMyInfoResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/GetWalletFromExternalIdentity": grpclib.const.Handler(
+                self.__rpc_get_wallet_from_external_identity,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetWalletFromExternalIdentityRequest,
+                GetWalletFromExternalIdentityResponse,
             ),
             "/services.universalwallet.v1.UniversalWallet/GenerateAuthToken": grpclib.const.Handler(
                 self.__rpc_generate_auth_token,
